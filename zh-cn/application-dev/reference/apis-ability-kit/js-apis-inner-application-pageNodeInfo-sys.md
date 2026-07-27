@@ -4,31 +4,27 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-用于自动填充的页面节点信息。
+PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节点深度、标签、密码生成规则、自动填充标志及元数据等系统接口字段。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口均为系统接口。
-> 本模块接口仅可在Stage模型下使用。
+>
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[PageNodeInfo](js-apis-inner-application-pageNodeInfo.md)。
 
-## 属性
+## PageNodeInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ----| ---- | ------------------------------------------------------------ |
-| id    | number               | 否   | 否   | 页面节点的ID。                               |
 | depth    | number              | 否   | 否   | 页面节点的深度（单位：px）。                               |
-| autoFillType    | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)        | 否   | 否   | 页面节点的自动填充类型。    |
-| tag    | string              | 否   | 否   | 页面节点的标签。                               |
-| value    | string              | 否   | 否   | 页面节点的值。                               |
-| placeholder    | string              | 否   | 是   | 页面节点的占位符。                               |
-| passwordRules    | string              | 否   | 是   | 生成密码的规则。                               |
+| tag    | string              | 否   | 否   | 页面节点的标签名称，用于标识节点的组件类型。                 |
+| passwordRules    | string              | 否   | 是   | 自动生成密码时的规则，用于指定生成密码的格式和约束（如长度、字符类型等）。仅当自动填充类型为密码时生效。   |
 | enableAutoFill    | boolean              | 否   | 否   | 自动填充标志。true表示已开启自动填充，false表示未开启自动填充。            |
-| rect<sup>12+</sup>    | [AutoFillRect](js-apis-inner-application-autoFillRect-sys.md) | 否   | 否   | 当前节点的坐标和宽高信息。  |
-| isFocus<sup>12+</sup>    | boolean              | 否   | 否   | 当前节点是否获焦。true表示当前节点获焦，false表示当前节点未获焦。   |
-| metadata<sup>12+</sup>    | string              | 否   | 是   | 页面节点的元数据。                               |
+| metadata<sup>12+</sup>    | string              | 否   | 是   | 页面节点的元数据，用于携带节点的自定义属性或配置信息，辅助自动填充服务进行更精确的匹配和填充。默认值为空字符串。     |

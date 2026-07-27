@@ -1,8 +1,8 @@
 # Router切换Navigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@
 
 Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需要在`main_page.json`中声明。
 
-```json
+```json5
 // main_page.json
 {
   "src": [
@@ -25,7 +25,7 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->   
 
 ``` TypeScript
 // Index.ets
@@ -59,9 +59,9 @@ struct Index {
                 return;
               }
               hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
-            })
+            });
           })
-        // ···
+        // ...
       }
       .width('100%')
     }
@@ -164,9 +164,9 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
+每个子页面也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
-```json
+```json5
 // 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
 // router_map.json
 {
@@ -224,7 +224,7 @@ struct Index {
     Navigation(this.pathStack) {
       // ...
     }.width('100%').height('100%')
-    .title('Navigation， Navigation')
+    .title('Navigation, Navigation')
     .mode(NavigationMode.Stack)
   }
 }
@@ -250,7 +250,7 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
-// 删除栈中name为PageOne的所有页面
+// 删除栈中name为pageOne的所有页面
 this.pathStack.removeByName('pageOne');
 
 // 删除指定索引的页面
@@ -262,10 +262,10 @@ this.pathStack.getAllPathName();
 // 获取索引为1的页面参数
 this.pathStack.getParamByIndex(1);
 
-// 获取PageOne页面的参数
+// 获取pageOne页面的参数
 this.pathStack.getParamByName('pageOne');
 
-// 获取PageOne页面的索引集合
+// 获取pageOne页面的索引集合
 this.pathStack.getIndexByName('pageOne');
 // ...
 ```
@@ -381,7 +381,7 @@ struct CustomNode {
   aboutToAppear() {
     // query navigation info
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
-    if (navigationInfo !=  undefined) {
+    if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack ;
     }
   }
@@ -487,7 +487,7 @@ Navigation作为路由容器组件，其内部的页面切换动画本质上属�
 
 页面和页面之间跳转的时候需要进行共享元素过渡动画，Router可以通过通用属性`sharedTransition`来实现共享元素转场，具体可以参考如下链接：
 
-[Router共享元素转场动画](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
+[共享元素转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
 
 Navigation也提供了共享元素一镜到底的转场能力，需要配合`geometryTransition`属性，在子页面（NavDestination）之间切换时，可以实现共享元素转场，具体可参考[Navigation共享元素转场动画](./arkts-navigation-animation.md#共享元素转场)。
 
@@ -577,7 +577,7 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 Navigation作为路由组件，默认支持跨包跳转。
 
-1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件申明为export。
+1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件声明为export。
 
    <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
    
@@ -597,7 +597,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
    
    ``` TypeScript
-   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP';
    ```
 
 3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
@@ -670,21 +670,21 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供@build封装的构建函数，并再通过WrappedBuilder封装后，实现全局封装；
-4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册如路由模块；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)封装后，实现全局封装；
+4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 
-具体的构建过程，可以参考Navigation[自动生成动态路由](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md)示例。
+<!--RP1--><!--RP1End-->
 
 **方案二：** 系统路由表
 
-从API version 12版本开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
+从API version 12开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
 
 具体可参考Navigation[系统路由表](./arkts-navigation-cross-package.md#系统路由表)。
 
 ## 生命周期监听
 
-Router可以通过observer实现注册监听，接口定义请参考Router无感监听[observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
+Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
 
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
@@ -728,19 +728,19 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       // ...
       let windowClass = data;
-      // 获取UIContext实例。
+      // 获取UIContext实例
       let uiContext: UIContext = windowClass.getUIContext();
-      // 获取UIObserver实例。
+      // 获取UIObserver实例
       let uiObserver : UIObserver = uiContext.getUIObserver();
-      // 注册DevNavigation的状态监听.
+      // 注册NavDestination的状态监听
       uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
-        if (info.state == 0) {
+        if (info.state === 0) {
           // NavDestination组件显示时操作
-          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
-      })
-    })
+      });
+    });
   }
 }
 ```
@@ -785,9 +785,9 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | navigationId                  | ResourceStr         | 是   | 包含NavDestination组件的Navigation组件的id。 |
 | name                          | ResourceStr         | 是   | NavDestination组件的名称。                   |
 | state                         | NavDestinationState | 是   | NavDestination组件的状态。                   |
-| index<sup>12+<sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
-| param<sup>12+<sup>            | Object              | 否   | NavDestination组件的参数。                   |
-| navDestinationId<sup>12+<sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
+| index<sup>12+</sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
+| param<sup>12+</sup>            | Object              | 否   | NavDestination组件的参数。                   |
+| navDestinationId<sup>12+</sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
 <!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
 
@@ -808,11 +808,11 @@ export struct NavDestinationExample {
 
 @Component
 struct MyComponent {
-  navDesInfo: uiObserver.NavDestinationInfo | undefined
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {

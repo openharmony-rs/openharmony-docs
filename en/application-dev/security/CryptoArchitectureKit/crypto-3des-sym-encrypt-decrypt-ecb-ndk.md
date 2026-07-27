@@ -67,25 +67,26 @@ If the cipher mode is ECB, you do not need to set encryption and decryption para
 
 If the CBC, CTR, OFB, or CFB block cipher mode is used, you need to set the **iv** parameter for encryption and decryption. For details, see [Setting the IV](#setting-the-iv). You need to modify related parameters when generating and initializing the **Cipher** instance during encryption or decryption.
 
-```c++
+<!-- @[crypt_decrypt_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidance3DES/entry/src/main/cpp/types/project/3des_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTest3DesEcb()
+OH_Crypto_ErrCode doTest3DesEcb()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoSymCipherParams *params = nullptr;
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob input = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
-
-    // Generate a symmetric key randomly.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("3DES192", &genCtx);
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("3DES192", &genCtx); // Randomly generate a symmetric key.
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -93,44 +94,42 @@ static OH_Crypto_ErrCode doTest3DesEcb()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
-    // Encrypt the message.
-    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &encCtx);
+    ret = OH_CryptoSymCipherParams_Create(&params); // Create parameters.
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // If CBC, CTR, OFB, or CFB is used, modify the cipher mode and set the IV.
-    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, nullptr);
+    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &encCtx); // Encryption operation.
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(encCtx, &input, &encData);
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
-    // Decrypt the message.
-    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &decCtx);
+    ret = OH_CryptoSymCipher_Final(encCtx, &input, &outUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // If CBC, CTR, OFB, or CFB is used, modify the cipher mode and set the IV.
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, nullptr);
+    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &decCtx); // Decryption operation.
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
 end:
+    OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     return ret;
 }
 ```

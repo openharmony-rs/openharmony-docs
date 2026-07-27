@@ -566,7 +566,7 @@ export class FriendMoment {
 
 优化后，避免在复用组件OneMoment的aboutToReuse方法中，重复刷新变量moment的各个成员变量，aboutToReuse耗时110μs。
 
-![aovid_refresh_auto_fresh_variable](./figures/component_recycle_case/avoid_auto_vaiable_true_trace.png)
+![avoid_refresh_auto_fresh_variable](./figures/component_recycle_case/avoid_auto_variable_true_trace.png)
 
 所以，通过上述Trace数据证明，避免在复用组件中，对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse方法中再进行更新。会减少aboutToReuse方法的时间，进而减少复用组件的创建时间。
 

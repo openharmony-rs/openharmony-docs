@@ -1,8 +1,8 @@
 # 开放权限（系统授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -46,7 +46,7 @@
 
 允许应用关闭前执行自定义的预关闭动作。
 
-例如，当应用被关闭时，应用可向用户通过弹窗等方式向用户确认是否执行关闭。
+例如，当应用被关闭时，应用可通过弹窗等方式向用户确认是否执行关闭。
 
 **权限级别**：normal
 
@@ -61,6 +61,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：10
 
@@ -80,11 +82,13 @@
 
 允许应用读取加速度传感器的数据。
 
-包括：加速度计传感器、未校准加速度计传感器、线性加速器传感器。
+包括：加速度计传感器、未校准加速度计传感器、线性加速度计传感器。
 
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -144,7 +148,11 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
+
+**变更信息**：从API 22开始，获取该权限后，增加支持P2P能力的使用。
 
 ## ohos.permission.GYROSCOPE
 
@@ -156,11 +164,15 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.INTERNET
 
 允许使用Internet网络。
+
+获取该权限后，应用可以获取IP地址、进行DNS解析或自定义DNS规则等。
 
 **权限级别**：normal
 
@@ -210,6 +222,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：9
 
 **变更信息：** API 9-10，权限级别为system_basic；从API 11开始，变更为normal。
@@ -234,6 +248,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
 
 ## ohos.permission.VIBRATE
@@ -245,6 +261,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -272,6 +290,18 @@
 
 **起始版本**：7
 
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Car | Phone | TV | Wearable
+
+**起始版本**：7
+
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 允许应用进行查询证书及私有凭据等操作。
@@ -286,7 +316,7 @@
 
 允许系统方舟运行时引擎在受限模式下执行动态下发的方舟字节码。
 
-该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。 
+该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。
 
 **权限级别**：normal
 
@@ -301,6 +331,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable | SmartLock
 
 **起始版本**：11
 
@@ -338,9 +370,13 @@
 
 允许应用访问导航信息服务。
 
+获取该权限后，应用可设置导航信息、处理其他应用发送的导航指令等。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -365,6 +401,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -422,11 +460,13 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-当前仅2in1设备应用可申请此权限。
+仅用于在Native层启动同应用内的UIAbility，适用于C/C++调用接口拉起UIAbility的场景。
 
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Phone
 
 **起始版本**：15
 
@@ -642,3 +682,115 @@
 **支持设备**：Phone | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ALLOW_COREDUMP
+
+允许系统将应用进程的内存转储到应用沙箱。
+
+应用获取该权限后，表示应用允许系统将本应用的内存，存储到应用沙箱中。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：2in1
+
+**起始版本**：23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+允许应用使用HDR提亮能力。
+
+获取该权限后，应用可为组件内容添加HDR提亮效果。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询ObjectEditorExtensionAbility信息和拉起ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以查询当前可插入的嵌入内容类型，并编辑该类型的内容。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+允许应用查询卷加解密状态。
+
+获取该权限后，应用可获取卷加解密状态、订阅卷加解密状态变化的系统公共事件等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+允许应用使用手写笔跟手性的增强接口。
+
+获取该权限后，应用可以优化手写效果跟手性，提升应用中使用手写笔书写场景的跟手性体验。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+允许应用获取行业定制配置文件。
+
+行业定制配置文件中，包括用户壁纸、浏览器策略等配置文件。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+允许应用访问和管理车载音频。
+
+获取该权限后，应用可以设置音频音效、管理音区等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.DCAS_RUN_MODEL
+
+允许应用和服务接入端侧模型运行态管理。
+
+获取该权限后，应用可接入端侧模型运行态管理能力，完成模型的加载和推理。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0

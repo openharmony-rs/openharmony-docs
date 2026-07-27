@@ -2,12 +2,12 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HitraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
+hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HiTraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
 
 
 ## 环境要求
@@ -26,13 +26,14 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 | --trace_begin | 开始捕获trace。 |
 | --trace_finish | 结束捕获trace。 |
 | --trace_finish_nodump | 结束捕获trace，与--trace_finish的区别是不输出trace信息。 |
-| --trace_dump | 导出trace信息。 |
+| --trace_dump | 导出trace信息。未指定-o/--output参数时，文本格式Trace默认输出至stdout。 |
 | --record | 使能录制模式，允许长时间采集并落盘trace数据，必须和--trace_begin或--trace_finish一起使用。 |
 | --overwrite | 设置内核缓冲区满之后的行为，未设置此选项时默认丢弃最老数据，设置此选项后丢弃最新数据。 |
 | --file_size | 设置文件大小（单位为KB），仅在采集二进制格式trace数据时有效。 |
+| --total_size | 设置总文件大小（单位为KB），仅在录制模式下采集二进制格式trace数据时有效。<br/>**说明**：从API version 24开始，支持该命令。 |
 | -b N/--buffer_size N | 设置用于存储和读取trace的缓冲区大小（单位为KB）。最小值为512，最大值与设备当前可用内存有关。 |
 | -t N/--time N | 设置hitrace采集时长，单位为s。 |
-| -o/--output filename | 指定目标文件的名称（导出trace格式为文本时默认为stdout，如需保存到文件，建议使用/data/local/tmp路径。导出trace格式为二进制时不支持此选项）。 |
+| -o/--output filename | 指定保存trace数据的文件名称，必须和命令--trace_dump或--record或--dump_bgsrv一起使用。仅支持输出到 /data/local/tmp 目录下。 <br/>**说明**：<br/>对于API version 24及之后版本，导出trace格式为二进制时，支持此命令。<br/>对于API version 23及之前版本，导出trace格式为二进制时，不支持此命令。|
 | -z | 压缩捕获的trace数据。 |
 | --text | 导出trace数据为文本格式（默认为文本格式）。 |
 | --raw | 导出trace数据为二进制格式（默认为文本格式）。 |
@@ -42,6 +43,7 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 | --stop_bgsrv | 关闭快照模式trace捕获。 |
 | --trace_level | 设置trace输出级别阈值，输出级别可以是Debug、Info、Critical、Commercial或其对应缩写D、I、C、M。<br/>**说明**：从API version 19开始，支持该命令。 |
 | --get_level | 查询trace输出级别阈值。<br/>**说明**：从API version 20开始，支持该命令。 |
+| <!--DelRow-->--boot_trace | 配置开机trace（Boot trace），在后续若干次启动过程中，依据预设参数自动采集并落盘一段trace数据，详见下文[配置开机trace](#配置开机trace)。<br/>须以root权限执行，且受开发者模式、可调试镜像等条件约束。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 
 > **说明：**
 >
@@ -49,7 +51,6 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 
 
 ## 常用命令
-
 
 ### 查看帮助信息
 
@@ -95,6 +96,8 @@ options include:
   --dump_bgsrv           Trigger the dump trace task of the trace_service.
   --stop_bgsrv           Disable trace_service in snapshot mode.
   --file_size            Sets the size of the raw trace (KB). The default file size is 102400 KB.
+                         Only effective in raw trace mode
+  --total_size           Sets the total size of all traces (KB). The default total size is 2048 × 1024 KB.
                          Only effective in raw trace mode
   --trace_level level    Set the system parameter "persist.hitrace.level.threshold", which can control
                          the level threshold of tracing. Valid values for "level" include
@@ -261,7 +264,7 @@ $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 
 ### 捕获指定时长二进制格式trace
 
-命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后，采集结束后生成文件的绝对路径会显示在命令行窗口。
+命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后生成文件的绝对路径会显示在命令行窗口。
 
 ```shell
 hitrace -t 10 -b 204800 app --raw
@@ -434,7 +437,7 @@ $ hitrace --start_bgsrv
 ```
 
 
-使用以下命令将当前缓冲区的trace信息导出到文件。二进制格式trace不支持指定路径导出或显示到命令行窗口，导出的文件路径会显示在命令行窗口。
+使用以下命令将当前缓冲区的trace信息导出到文件。二进制格式trace支持指定路径（目前仅支持设定路径为/data/local/tmp）导出或显示到命令行窗口。
 
 
 ```shell
@@ -442,9 +445,9 @@ hitrace --dump_bgsrv
 ```
 
 
-**使用样例**：
+**使用样例1**：
 
-
+不指定路径的标准快照模式命令例如：
 ```shell
 $ hitrace --dump_bgsrv
 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -452,6 +455,15 @@ $ hitrace --dump_bgsrv
     /data/log/hitrace/trace_20250604164454@613340-339960.sys
 ```
 
+**使用样例2**：
+
+从API version 24开始，快照模式下支持指定路径，例如：
+```shell
+$ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
+2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
+2025/06/04 16:50:35 DumpSnapshot done, output:
+     /data/local/tmp/test.sys
+```
 
 在结束捕获时，可以使用下面的命令停止采集。
 
@@ -473,7 +485,7 @@ $ hitrace --stop_bgsrv
 
 ### 录制模式捕获trace
 
-录制模式下，系统会持续保存运行时生成的二进制格式trace，文件大小超过设定的值时会生成新文件。不支持指定保存路径。
+录制模式下，系统会持续保存运行时生成的二进制格式trace，文件大小超过设定的值时会生成新文件。支持指定保存路径（目前仅支持设定路径为/data/local/tmp）。
 
 使用以下命令开启录制模式。缓冲区大小设定为204800KB，文件大小设为102400KB，采集的tag为app和graphic。
 
@@ -481,12 +493,23 @@ $ hitrace --stop_bgsrv
 hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 ```
 
-**使用样例**：
+**使用样例1**：
 
+不指定路径的录制模式下例如：
 ```shell
 $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
 2025/06/04 17:03:37 args: tags:app,graphic bufferSize:204800 overwrite:1 fileSize:102400
+2025/06/04 17:03:37 trace capturing.
+```
+
+**使用样例2**：
+
+从API version 24开始，录制模式下支持指定路径，例如：
+```shell
+$ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 1024000
+2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
+2025/06/04 17:03:37 args: tags:sched, app bufferSize:18432 overwrite:1 totalSize:1024000
 2025/06/04 17:03:37 trace capturing.
 ```
 
@@ -533,7 +556,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 打点级别优先级从高到低分别为 M（Commercial）、C（Critical）、I（Info）、D（Debug），低于trace输出级别阈值的打点将不会生效。
 
-开发者可使用带trace级别的打点接口（参考[js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
+开发者可使用带trace级别的打点接口（参考[@ohos.hiTraceMeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
 
 ```shell
 // 设置trace输出级别阈值
@@ -555,9 +578,78 @@ $ hitrace --get_level
 ```
 
 
+<!--Del-->
+### 配置开机trace
+
+开机trace用于采集系统启动早期阶段（人工难以介入）的trace数据。开发者执行`hitrace --boot_trace`写入采集配置后，系统会在后续启动过程中由init自动拉起采集任务，并将二进制trace文件保存到`/data/local/tmp/`目录。
+
+使用开机trace需满足以下条件，可通过对应命令查询：
+
+| 需满足的条件 | 查询方法 | 满足条件的查询结果 |
+| -------- | -------- | -------- |
+| 已开启开发者模式。 | `param get const.security.developermode.state` | `true` |
+| 系统为可调试镜像。 | `param get const.debuggable` | `1` |
+| 具有root权限。 | `whoami` | `root` |
+| 启动子系统init部件的init trace插件未开启。 | `param get persist.init.trace.enabled` | 不为`1` |
+
+> **注意：**
+>
+> 开机trace采集期间会占用trace管线，可能影响其他trace采集操作。建议避免同时执行其他hitrace采集、导出或录制命令。
+
+命令格式如下：
+
+```shell
+hitrace --boot_trace [参数] tag1 [tag2 ...]
+hitrace --boot_trace off
+```
+
+`tag1 tag2 ...`为要采集的tag列表，至少指定一个；须为`hitrace -l`命令输出中的具体tag，不支持tag分组名。
+
+`off`为关闭开机trace功能；不会删除已有配置文件。再次执行配置命令时，将覆盖写入同一路径。
+
+常用参数如下：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| -b N/--buffer_size N | 设置采集缓冲区大小，单位为KB。未指定时，默认值为18432。 |
+| -t N/--time N | 设置单次采集时长（单位为s），须大于0。未指定时，默认值为30。 |
+| --repeat N | 设置后续启动时自动采集的次数，取值范围为[1, 100]。每触发一次计划内采集，系统参数persist.hitrace.boot_trace.count减1，直至为0后不再自动采集。 |
+| --increment | 启用增量命名。启用后，输出文件名为`{file_prefix}_{n}.sys`，序号`n`从0开始；每次采集成功后序号加1。该选项须写在`--boot_trace`之后。 |
+| --file_prefix prefix | 设置输出文件名前缀，未指定时默认值为`boot_trace`。未启用`--increment`时，输出文件名为`{file_prefix}.sys`。 |
+
+配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)等工具进行分析。
+
+**使用样例1**：配置后续3次启动自动采集，采集tag为`sched`和`app`，单次时长20s：
+
+```shell
+$ hitrace --boot_trace --repeat 3 -t 20 sched app
+```
+
+**使用样例2**：启用增量命名并指定文件前缀：
+
+```shell
+$ hitrace --boot_trace --repeat 2 --increment --file_prefix boot_sched -t 15 sched
+```
+
+**使用样例3**：使用完毕后关闭开机trace功能：
+
+```shell
+$ hitrace --boot_trace off
+```
+
+推荐操作流程如下：
+
+1. 通过`hdc shell`进入设备shell，并切换至root权限。
+2. 执行`hitrace --boot_trace [参数] tag...`写入开机trace配置。
+3. 重启设备，并在`/data/local/tmp/`目录下检查是否生成预期的trace文件。建议等待配置的采集时长后再检查，确保采集与落盘已完成。
+4. 使用完毕后，执行`hitrace --boot_trace off`关闭开机trace功能。
+
+<!--DelEnd-->
+
+
 ## trace文件名说明
 
-使用hitrace命令行工具采集二进制格式trace信息时，不支持指定文件路径。默认保存在/data/log/hitrace路径下，hitrace自动生成文件名并将绝对路径显示在命令行窗口。
+使用hitrace命令行工具采集二进制格式trace信息时，可以指定文件路径（目前仅支持设定路径为/data/local/tmp）。默认保存在/data/log/hitrace路径下，hitrace自动生成文件名并将绝对路径显示在命令行窗口。
 
 快照模式下生成的trace文件名以trace开头，录制模式下生成的trace文件名以record开头，后面为本地时间和boot time（从开机时间开始的时间戳）。
 
@@ -627,3 +719,23 @@ $ hitrace --dump_bgsrv
 1. 采集文本格式trace时，使用-o参数指定输出的文件路径不存在或无权限。建议将trace保存到/data/local/tmp路径下。
 
 2. 磁盘空间已满时，不会生成新的trace文件，建议释放磁盘空间，确保空闲空间大于500MB，然后重新采集。
+
+### 执行hitrace命令后报错“illegal path”
+ 
+ **现象描述**
+ 
+ 执行hitrace命令后报错，命令行窗口显示“illegal path”。
+ 
+```shell
+$ hitrace --dump_bgsrv -o /data/local/test
+2026/03/27 17:25:58 hitrace enter, running_state is SNAPSHOT_DUMP
+2026/03/27 17:25:58 error: illegal path
+```
+
+ **可能原因&解决方法**
+ 
+ illegal path表示指定的路径非法，可能的原因包括：
+ 
+ 1. 采集二进制格式trace时，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。改为/data/local/tmp或其子目录即可。
+ 
+ 2. 录制模式下，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。改为/data/local/tmp或其子目录即可。

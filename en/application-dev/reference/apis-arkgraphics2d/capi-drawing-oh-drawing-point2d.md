@@ -6,13 +6,15 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_Drawing_Point2D
+typedef OH_Drawing_Point2D OH_Drawing_Corner_Radii
 ```
 
 ## Overview
 
-This struct describes a two-dimensional coordinate point.
+**OH_Drawing_Point2D** defines a two-dimensional coordinate point.<br>**OH_Drawing_Corner_Radii** defines rounded corner radii, consisting of an x-axis radius and a y-axis radius.
+
 
 **Since**: 12
 

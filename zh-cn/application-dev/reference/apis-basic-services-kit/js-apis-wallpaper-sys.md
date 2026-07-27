@@ -5,7 +5,7 @@
 <!--Owner: @dreamsky8023-->
 <!--Designer: @dreamsky8023-->
 <!--Tester: @murphy84-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
 
@@ -373,11 +373,15 @@ try {
 }
 ```
 
-## wallpaper.getColorsSync<sup>9+</sup>
+## wallpaper.getColorsSync<sup>(deprecated)</sup>
 
 getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 获取指定类型壁纸的主要颜色信息。
+
+> **说明：**
+> 
+> 从 API version 9开始支持，从API version 23开始废弃。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 

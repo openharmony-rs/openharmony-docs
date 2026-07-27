@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 
@@ -27,7 +27,11 @@ import { EnvironmentCallback } from '@kit.AbilityKit';
 
 onConfigurationUpdated(config: Configuration): void
 
-[注册系统环境变化的监听](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统环境变化时触发回调。
+注册系统环境变化的监听[ApplicationContext.on('environment')](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统环境变化时触发回调。
+
+> **说明：**
+> 
+> onConfigurationUpdated回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务。因此，不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -47,11 +51,11 @@ onConfigurationUpdated(config: Configuration): void
 
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
-[注册系统环境变化的监听](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统内存变化时触发回调。
+注册系统环境变化的监听[ApplicationContext.on('environment')](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)后，在系统内存变化时触发回调。
 
 > **说明：**
 > 
-> 在onMemoryLevel回调中释放UI组件，可能会阻塞当前进程的主线程任务，因此不建议在该回调中释放UI组件。
+> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务。因此，不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -61,7 +65,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 回调返回整机可用的内存级别，显示当前整机可用内存的等级。|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 
@@ -92,7 +96,7 @@ export default class MyAbility extends UIAbility {
     // 1.获取applicationContext
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2.通过applicationContext注册监听应用内生命周期
+      // 2.通过applicationContext注册系统环境变化监听
       callbackId = applicationContext.on('environment', environmentCallback);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);

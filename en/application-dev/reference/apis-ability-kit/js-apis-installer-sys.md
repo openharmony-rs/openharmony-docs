@@ -69,7 +69,7 @@ try {
 
 getBundleInstaller(): Promise\<BundleInstaller>
 
-Obtains a BundleInstaller object. This API uses an asynchronous callback to return the result.
+Obtains a BundleInstaller object. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -177,7 +177,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
@@ -187,18 +187,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700031 | Failed to install the HAP because the overlay check of the HAP failed. |
-| 17700036 | Failed to install the HSP due to the lack of required permission. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700031 | Failed to install the HAP because the overlay check of the HAP is failed. |
+| 17700036 | Failed to install the HSP because lacks appropriate permissions. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700052 | Failed to install the HAP because a debug bundle can be installed only in developer mode. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
 | 17700058 | Failed to install the HAP because the device has been controlled. |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
@@ -268,7 +268,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700010 | Failed to install the HAP because the HAP fails to be parsed. |
@@ -277,18 +277,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700031 | Failed to install the HAP because the overlay check of the HAP failed. |
-| 17700036 | Failed to install the HSP due to the lack of required permission. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700031 | Failed to install the HAP because the overlay check of the HAP is failed. |
+| 17700036 | Failed to install the HSP because lacks appropriate permissions. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700052 | Failed to install the HAP because a debug bundle can be installed only in developer mode. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
 | 17700058 | Failed to install the HAP because the device has been controlled. |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
@@ -361,7 +361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
@@ -371,18 +371,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700031 | Failed to install the HAP because the overlay check of the HAP failed. |
-| 17700036 | Failed to install the HSP due to the lack of required permission. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700031 | Failed to install the HAP because the overlay check of the HAP is failed. |
+| 17700036 | Failed to install the HSP because lacks appropriate permissions. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700052 | Failed to install the HAP because a debug bundle can be installed only in developer mode. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
 | 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
 | 17700058 | Failed to install the HAP because the device has been controlled. |
 | 17700066 | Failed to install the HAP because installing the native package failed. |
@@ -446,14 +446,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
 | 17700004 | The specified user ID is not found. |
-| 17700020 | The specified bundle is pre-installed bundle which cannot be uninstalled. |
-| 17700040 | The specified bundle is a shared bundle which cannot be uninstalled. |
-| 17700045 | Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management. |
+| 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
+| 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
 | 17700060 | The specified application cannot be uninstalled. |
 | 17700062 | Failed to uninstall the app because the app is locked. |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
@@ -514,13 +514,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
-| 17700020 | The specified bundle is pre-installed bundle which cannot be uninstalled. |
-| 17700040 | The specified bundle is a shared bundle which cannot be uninstalled. |
-| 17700045 | Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management. |
+| 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
+| 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
 | 17700060 | The specified application cannot be uninstalled. |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
 
@@ -580,14 +580,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
 | 17700004 | The specified user ID is not found. |
-| 17700020 | The specified bundle is pre-installed bundle which cannot be uninstalled. |
-| 17700040 | The specified bundle is a shared bundle which cannot be uninstalled. |
-| 17700045 | Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management. |
+| 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
+| 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
 | 17700060 | The specified application cannot be uninstalled. |
 | 17700062 | Failed to uninstall the app because the app is locked. |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
@@ -839,11 +839,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 17700020 | The specified bundle is pre-installed bundle which cannot be uninstalled. |
-| 17700037 | The version of the shared bundle is dependent on other applications. |
+| 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| 17700037 | The version of shared bundle is dependent on other applications. |
 | 17700038 | The specified shared bundle does not exist.                  |
 
 **Example**
@@ -904,11 +904,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 17700020 | The specified bundle is pre-installed bundle which cannot be uninstalled. |
-| 17700037 | The version of the shared bundle is dependent on other applications. |
+| 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| 17700037 | The version of shared bundle is dependent on other applications. |
 | 17700038 | The specified shared bundle does not exist.                  |
 
 **Example**
@@ -971,10 +971,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700301 | Failed to add extended resources.                 |
+| 17700301 | AddExtResource failed due to parse file failed.                 |
 
 **Example**
 
@@ -1033,10 +1033,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700302 | Failed to remove extended resources.                  |
+| 17700302 | RemoveExtResource failed due to module does not exist. |
 
 **Example**
 
@@ -1099,17 +1099,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
 | 17700049 | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700051 | Failed to install the HAP because the distribution type of the caller application is not enterprise_mdm. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700051 | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **Example**
 
@@ -1176,17 +1176,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
 | 17700049 | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700051 | Failed to install the HAP because the distribution type of the caller application is not enterprise_mdm. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700051 | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **Example**
 
@@ -1255,17 +1255,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700015 | Failed to install the HAPs because they have different configuration information. |
 | 17700016 | Failed to install the HAP because of insufficient system disk space. |
 | 17700017 | Failed to install the HAP since the version of the HAP to install is too early. |
-| 17700018 | Failed to install the HAP or HSP because the dependent module does not exist. |
-| 17700039 | Failed to install the HSP because installing a shared bundle specified by hapFilePaths is not allowed. |
-| 17700041 | Failed to install the HAP because the installation is forbidden by enterprise device management. |
+| 17700018 | Failed to install because the dependent module does not exist. |
+| 17700039 | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| 17700041 | Failed to install because enterprise device management disallow install. |
 | 17700042 | Failed to install the HAP because of incorrect URI in the data proxy. |
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification failed. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed. |
 | 17700049 | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
-| 17700050 | Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise devices. |
-| 17700051 | Failed to install the HAP because the distribution type of the caller application is not enterprise_mdm. |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| 17700051 | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **Example**
 
@@ -1328,11 +1328,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.UNINSTALL_BUNDLE'. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
-| 17700045 | Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management. |
+| 17700045 | Failed to uninstall because enterprise device management disallow uninstall. |
 | 17700057 | Failed to uninstall updates because the HAP is not pre-installed. |
 | 17700060 | The specified application cannot be uninstalled. |
 | 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
@@ -1578,6 +1578,9 @@ try {
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
 Installs an application. This API uses a promise to return the result.
+> **NOTE**
+>
+> This API does not support the installation of applications whose [distribution type of the application signing certificate](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is set to **enterprise**, **enterprise_mdm**, or **enterprise_normal**.
 
 **System API**: This is a system API.
 
@@ -1606,8 +1609,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE'. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 17700001 | The specified bundleName cannot be found. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
 | 17700071 | It is not allowed to install the enterprise bundle. |
 | 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
@@ -1815,7 +1818,7 @@ Defines the parameters that need to be specified for bundle installation, uninst
 | additionalInfo<sup>10+</sup> | string | No| Yes|Additional information during application installation (usually an enterprise application). By default, no value is passed. The maximum length is 3,000 bytes. This field is usually specified by the application market of the operating system operator.|
 | verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | No| Yes| Information about the code signature file. The default value is null.<br>**NOTE**<br> Starting from API version 10, the code signature file of an application is integrated into the installation package, rather than being specified by using this field. This field is deprecated since API version 11. |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | No| Yes| Parameters of the Profile-guided Optimization (PGO) configuration file. The default value is null.        |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No| Yes| Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.renameInstall**: If the value is **true**, the installation package is moved from the application sandbox to the installation directory using a shared directory. Otherwise, it is copied from the application sandbox to the installation directory using a regular directory.<br> - **ohos.bms.param.enterpriseForAllUser**: If the value is **true**, the enterprise application is installed for all users.<br> - **ohos.bms.param.verifyUninstallRule**: If the value is **true**, an uninstallation handling rule is set to block application uninstallation.<br> - **ohos.bms.param.enterpriseManifest**: The value is the sandbox path of the JSON file used to store the application's manifest, including the bundle name. It is used in the scenario of cloning enterprise applications. If this JSON file exists during cloning, the application package from the old device is copied to the new device for installation.<br> - **ohos.bms.param.installBundleName**: The value is the bundle name of the application. It is used in application installation scenarios and supported since API version 23. If this field is passed during installation, the [getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23) API can be called to obtain the installation status of the application.<br> - **ohos.bms.param.installAllowDowngrade**: If the value is **true**, the application can be installed in downgrade mode (supported since API version 23). That is, if a higher version of the application is already installed on the device, a lower version can be installed over it. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** support downgrade installation. To use downgrade installation, you must request the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions.|
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No| Yes| Extended parameters, represented as an array of the Parameters type. The default value is empty. The options of **Parameters.key** are as follows:<br> - **ohos.bms.param.renameInstall**: If the value is **true**, the installation package is moved from the application sandbox to the installation directory using a shared directory. Otherwise, it is copied from the application sandbox to the installation directory using a regular directory.<br> - **ohos.bms.param.enterpriseForAllUser**: If the value is **true**, the enterprise app is installed for all users. This parameter takes effect only for applications whose [distribution type of the application signing certificate](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is **enterprise_mdm** or **enterprise_normal**.<br> - **ohos.bms.param.verifyUninstallRule**: If the value is **true**, an uninstallation handling rule is set to block application uninstallation.<br> - **ohos.bms.param.enterpriseManifest**: The value is the sandbox path of the JSON file used to store the application's manifest, including the bundle name. It is used in the scenario of cloning enterprise applications. If this JSON file exists during cloning, the application package from the old device is copied to the new device for installation.<br> - **ohos.bms.param.installBundleName**: The value is the bundle name of the application. It is used in application installation scenarios and supported since API version 23. If this field is passed during installation, the [getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23) API can be called to obtain the installation status of the application.<br> - **ohos.bms.param.installAllowDowngrade**: If the value is **true**, the application can be installed in downgrade mode (supported since API version 23). That is, if a higher version of the application is already installed on the device, a lower version can be installed over it. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** support downgrade installation. To use downgrade installation, you must request the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions.|
 ## UninstallParam<sup>10+</sup>
 
 Defines the parameters required for the uninstall of a shared bundle.

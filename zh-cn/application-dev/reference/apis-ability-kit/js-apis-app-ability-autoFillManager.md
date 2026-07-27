@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 autoFillManager模块为应用提供账号、密码、地址、电话号码等用户信息的自动填充能力。
 
@@ -14,8 +14,6 @@ autoFillManager模块为应用提供账号、密码、地址、电话号码等�
 > **说明：**
 > 
 > 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -23,75 +21,147 @@ autoFillManager模块为应用提供账号、密码、地址、电话号码等�
 import { autoFillManager } from '@kit.AbilityKit';
 ```
 
+## OnFillSuccessFn
+
+type OnFillSuccessFn = (viewData: ViewData) => void
+
+当填充请求成功时，会触发该回调。回调返回的viewData包含系统提供的填充数据，开发者可据此将数据应用到当前页面的表单控件中，例如填充登录页面的用户名和密码、或收货地址表单中的姓名和联系方式等。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                              | 必填 | 说明                     |
+| -------- | ------------------------------------------------- | ---- | ----------------------- |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 是   | 自动填充的视图数据信息。 |
+
+## OnFillFailureFn
+
+type OnFillFailureFn = (result: FillFailureResult) => void
+
+当填充请求失败时，会触发该回调。回调返回的result包含失败原因，开发者可据此进行错误处理，例如提示用户填充失败并引导手动输入，或记录失败日志用于排查问题。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                                                | 必填 | 说明                   |
+| ------ | ----------------------------------------------------------------------------------- | ---- | --------------------- |
+| result | [FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 是   | 表示自动填充失败结果。 |
+
 ## AutoSaveCallback
 
 当保存请求完成时所触发的回调接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| onSuccess | [OnSuccessFn](#onsuccessfn23) | 否    | 否    | 当保存请求成功时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onSuccess()方法变更为当前属性，调用方式不变。 |
-| onFailure | [OnFailureFn](#onfailurefn23) | 否    | 否    | 当保存请求失败时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onFailure()方法变更为当前属性，调用方式不变。 |
-
-## OnSuccessFn<sup>23+</sup>
-
-type OnSuccessFn = () => void
-
-当保存请求成功时，会触发该回调。
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+### onSuccess
+
+onSuccess(): void
+
+当保存请求成功时，该回调被调用。开发者可在此时进行后续处理，例如提示用户保存成功或清空表单。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **示例：**
 
-参见[AutoSaveCallback.onFailure](#onfailurefn23)。
+参见[autoFillManager.requestAutoSave](#autofillmanagerrequestautosave)。
 
-## OnFailureFn<sup>23+</sup>
+### onFailure
 
-type OnFailureFn = () => void
+onFailure(): void
 
-当保存请求失败时，会触发该回调。
+当保存请求失败时，该回调被调用。开发者可在此时进行失败处理，例如提示用户保存失败并引导重试。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **示例：**
 
-```ts
-// Index.ets, 含有账号、密码框等组件的页面
-import { autoFillManager } from '@kit.AbilityKit';
-import { UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+参见[autoFillManager.requestAutoSave](#autofillmanagerrequestautosave)。
 
-let uiContext = AppStorage.get<UIContext>("uiContext");
-let callback: autoFillManager.AutoSaveCallback = {
-  onSuccess: () => {
-    console.info(`save request on success.`);
-  },
-  onFailure: () => {
-    console.error(`save request on failure.`);
-  }
-};
+## AutoFillCallback
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('requestAutoSave')
-      .onClick(() => {
-        try {
-          // 发起保存请求
-          autoFillManager.requestAutoSave(uiContext, callback);
-        } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-        }
-      })
-  }
-}
-```
+当填充请求完成时所触发的回调接口。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+### onSuccess
+
+onSuccess: OnFillSuccessFn
+
+当填充请求成功时，该回调被调用，返回的viewData包含可用于填充表单的数据，如用户名密码、收货地址等。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                | 说明                            |
+| ----------------------------------- | ------------------------------- |
+| [OnFillSuccessFn](#onfillsuccessfn) | 用于处理填充请求成功后的回调，接收包含填充视图数据的viewData参数。 |
+
+**示例：**
+
+参见[autoFillManager.requestAutoFill](#autofillmanagerrequestautofill)。
+
+### onFailure
+
+onFailure: OnFillFailureFn
+
+当填充请求失败时，会触发该回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                | 说明                            |
+| ----------------------------------- | ------------------------------- |
+| [OnFillFailureFn](#onfillfailurefn) | 用于处理填充请求失败后的回调，接收包含失败原因的result参数。 |
+
+**示例：**
+
+参见[autoFillManager.requestAutoFill](#autofillmanagerrequestautofill)。
 
 > **说明：**
 >
@@ -109,12 +179,14 @@ requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | context | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | 是 | 将在其中执行保存操作的UI上下文。 |
-| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 当保存请求完成时所触发的回调接口。|
+| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 当保存请求完成时所触发的回调接口，用于异步接收保存操作的结果。不传此参数时不触发回调。|
 
 **错误码：**
 
@@ -137,27 +209,29 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 创建本地存储实例
     let localStorageData: Record<string, string | common.UIAbilityContext> = {
       'message': "AutoFill Page",
       'context': this.context,
     };
     let storage = new LocalStorage(localStorageData);
+    // 加载页面内容
     windowStage.loadContent('pages/Index', storage, (err, data) => {
       if (err && err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      // Obtain the main window.
+      // 获取主窗口
       windowStage.getMainWindow((err: BusinessError, data: window.Window) => {
-        let errCode: number = err?.code;
-        if (errCode) {
+        if (err?.code) {
           console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
           return;
         }
         console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        // get UIContext instance.
+        // 获取UIContext实例
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-        PersistentStorage.persistProp("uiContext", uiContext);
+        // 将UIContext存储到AppStorage中，供其他页面访问
+        AppStorage.setOrCreate("uiContext", uiContext);
       })
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
@@ -171,38 +245,381 @@ import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let uiContext = AppStorage.get<UIContext>('uiContext');
+// 定义自动保存回调
+let callback: autoFillManager.AutoSaveCallback = {
+  onSuccess: () => {
+    console.info(`save request on success.`);
+  },
+  onFailure: () => {
+    console.error(`save request on failure.`);
+  }
+};
+
 @Entry
 @Component
 struct Index {
+  @State userName: string = "";
+  @State password: string = "";
+  // 获取当前UIContext实例
+  private uiContext: UIContext = this.getUIContext();
   build() {
-    Row() {
-      Column() {
-        Text('Hello World')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+    GridRow({ gutter: { y: 20 } }) {
+      GridCol({ span: 20 }) {
+        TextInput({ placeholder: 'Enter userName', text: this.userName })
+          .type(InputType.USER_NAME)
+          .width('90%')
+          .onChange((value: string) => {
+            this.userName = value
+          })
       }
-
-      Button('requestAutoSave')
-        .onClick(() => {
-          let uiContext = AppStorage.get<UIContext>("uiContext");
-          console.info("uiContext: ", JSON.stringify(uiContext));
-          try {
-            // 发起保存请求
-            autoFillManager.requestAutoSave(uiContext, {
-              onSuccess: () => {
-                console.info(`save request on success.`);
-              },
-              onFailure: () => {
-                console.error(`save request on failure.`);
-              }
-            });
-          } catch (error) {
-            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-          }
-        })
-        .width('100%')
+      GridCol({ span: 20 }) {
+        TextInput({ placeholder: 'Enter password', text: this.password })
+          .type(InputType.Password)
+          .width('90%')
+          .onChange((value: string) => {
+            this.password = value
+          })
+      }
+      GridCol({ span: 20 }) {
+        Button('requestAutoSave')
+          .onClick(() => {
+            try {
+              // 发起保存请求
+              autoFillManager.requestAutoSave(this.uiContext, callback);
+            } catch (error) {
+              console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+            }
+          })
+      }
     }
-    .height('100%')
   }
 }
 ```
+
+## autoFillManager.requestAutoSave
+
+requestAutoSave(context: UIContext, request: SaveRequest, callback?: AutoSaveCallback): void
+
+请求保存表单数据。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                                    | 必填 | 说明                            |
+| -------- | ----------------------------------------------------------------------- | ---- | ------------------------------- |
+| context  | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)            | 是   | 将在其中执行保存操作的UI上下文。 |
+| request  | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest) | 是   | 自动保存请求信息，包含需要保存的视图数据信息。 |
+| callback | [AutoSaveCallback](#autosavecallback)                                   | 否   | 当保存请求完成时所触发的回调接口，用于异步接收保存操作的结果。不传此参数时不触发回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+| 错误码ID | 错误信息        |
+| ---------| --------------- |
+| 16000050 | Internal error. |
+
+**示例：**
+```ts
+// Index.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// request需按照实际工程配置
+let request: autoFillManager.SaveRequest = {
+  viewData: {
+    bundleName: "com.example.testBundleName",
+    pageUrl: "testPageUrl",
+    pageNodeInfos: [
+      {
+        id: 1,
+        autoFillType: autoFillManager.AutoFillType.USER_NAME,
+        value: "testValue1",
+        placeholder: "testPlaceholder1",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      },
+      {
+        id: 2,
+        autoFillType: autoFillManager.AutoFillType.PASSWORD,
+        value: "testValue2",
+        placeholder: "testPlaceholder2",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      }
+    ],
+    pageRect: {
+      left: 1,
+      top: 1,
+      width: 1,
+      height: 1
+    }
+  }
+}
+// 定义自动保存回调
+let callback: autoFillManager.AutoSaveCallback = {
+  onSuccess: () => {
+    console.info(`save request on success.`);
+  },
+  onFailure: () => {
+    console.error(`save request on failure.`);
+  }
+};
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    GridRow({ gutter: { y: 20 } }) {
+      GridCol({ span: 20 }) {
+        Button('requestAutoSave')
+          .onClick(() => {
+            try {
+              // 发起保存请求
+              autoFillManager.requestAutoSave(this.uiContext, request, callback);
+            } catch (error) {
+              console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+            }
+          })
+      }
+    }
+  }
+}
+```
+
+## autoFillManager.requestAutoFill
+
+requestAutoFill(context: UIContext, request: FillRequest, callback?: AutoFillCallback): void
+
+请求填充表单数据。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                                    | 必填 | 说明                            |
+| -------- | ----------------------------------------------------------------------- | ---- | ------------------------------- |
+| context  | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)            | 是   | 将在其中执行填充操作的UI上下文。 |
+| request  | [FillRequest](js-apis-inner-application-autoFillRequest.md#fillrequest) | 是   | 自动填充请求信息。 |
+| callback | [AutoFillCallback](#autofillcallback)                                   | 否   | 当填充请求完成时所触发的回调接口，用于异步接收填充操作的结果。不传此参数时不触发回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+| 错误码ID | 错误信息        |
+| ---------| --------------- |
+| 16000050 | Internal error. |
+
+**示例：**
+```ts
+// Index.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// request需按照实际工程配置
+let request: autoFillManager.FillRequest = {
+  type: autoFillManager.AutoFillType.USER_NAME,
+  viewData: {
+    bundleName: "com.example.testBundleName",
+    pageUrl: "testPageUrl",
+    pageNodeInfos: [
+      {
+        id: 1,
+        autoFillType: autoFillManager.AutoFillType.USER_NAME,
+        value: "testValue1",
+        placeholder: "testPlaceholder1",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      },
+      {
+        id: 2,
+        autoFillType: autoFillManager.AutoFillType.PASSWORD,
+        value: "testValue2",
+        placeholder: "testPlaceholder2",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      }
+    ],
+    pageRect: {
+      left: 1,
+      top: 1,
+      width: 1,
+      height: 1
+    }
+  }
+}
+// 定义自动填充回调
+let callback: autoFillManager.AutoFillCallback = {
+  onSuccess: (viewData: autoFillManager.ViewData) => {
+    console.info(`fill request on success, viewData: ${JSON.stringify(viewData)}`);
+  },
+  onFailure: (result: autoFillManager.FillFailureResult) => {
+    console.error(`fill request on failure, result: ${JSON.stringify(result)}`);
+  }
+};
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    GridRow({ gutter: { y: 20 } }) {
+      GridCol({ span: 20 }) {
+        Button('requestAutoFill')
+          .onClick(() => {
+            try {
+              // 发起填充请求
+              autoFillManager.requestAutoFill(this.uiContext, request, callback);
+            } catch (error) {
+              console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+            }
+          })
+      }
+    }
+  }
+}
+```
+
+## ViewData
+
+type ViewData = _ViewData.default
+
+自动填充的视图数据信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                       | 说明                        |
+| ---------------------------------------------------------- | --------------------------- |
+| [_ViewData](js-apis-inner-application-viewData.md#viewdata-1).default | 表示自动填充的视图数据信息。 |
+
+## PageNodeInfo
+
+type PageNodeInfo = _PageNodeInfo.default
+
+自动填充的页面节点信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                               | 说明                        |
+| ------------------------------------------------------------------ | --------------------------- |
+| [_PageNodeInfo](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo-1).default | 表示自动填充的页面节点信息。 |
+
+## FillRequest
+
+type FillRequest = _AutoFillRequest.FillRequest
+
+自动填充的请求信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                                                     | 说明                    |
+| ---------------------------------------------------------------------------------------- | ----------------------- |
+| [_AutoFillRequest.FillRequest](js-apis-inner-application-autoFillRequest.md#fillrequest) | 表示自动填充的请求信息。 |
+
+## SaveRequest
+
+type SaveRequest = _AutoFillRequest.SaveRequest
+
+自动保存的请求信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                                                     | 说明                    |
+| ---------------------------------------------------------------------------------------- | ----------------------- |
+| [_AutoFillRequest.SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest) | 表示自动保存的请求信息。 |
+
+## AutoFillRect
+
+type AutoFillRect = _AutoFillRect.default
+
+用于自动填充的矩形区域。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                               | 说明                        |
+| ------------------------------------------------------------------ | --------------------------- |
+| [_AutoFillRect](js-apis-inner-application-autoFillRect.md#autofillrect-1).default | 表示用于自动填充的矩形区域。 |
+
+## FillFailureResult
+
+type FillFailureResult = _FillFailureResult
+
+自动填充失败结果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型                                                                                                 | 说明                  |
+| ---------------------------------------------------------------------------------------------------- | --------------------- |
+| [_FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 表示自动填充失败结果。 |

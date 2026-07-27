@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, and set the update time.
@@ -38,7 +38,7 @@ Sets the next refresh time for a widget. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
@@ -96,7 +96,7 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -115,7 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
@@ -132,6 +132,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -147,7 +150,7 @@ Updates a widget. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -165,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 Updates a widget. This API uses a promise to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -209,7 +215,7 @@ Updates a widget. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -227,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -262,7 +268,7 @@ Obtains the application's widget information on the device. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -308,7 +314,7 @@ Obtains the application's widget information that meets a filter criterion on th
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -364,7 +370,7 @@ Obtains information about widgets that meet the criteria of the current applicat
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -412,7 +418,7 @@ Opens the widget editing page.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
@@ -478,12 +484,13 @@ Closes the widget editing page.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md#801-api-not-supported) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
-| 801      | CCapability not supported due to limited device capabilities. |
+| 801      | Capability not supported due to limited device capabilities. |
 | 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
 
 **Example**
 
@@ -513,7 +520,12 @@ struct Page {
         })
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
-          formProvider.closeFormEditAbility();
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')
@@ -543,7 +555,7 @@ Opens the Widget Manager page of the current application.
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -602,7 +614,7 @@ Obtains the information of the widget that has been added to the home screen on 
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -650,7 +662,7 @@ Obtains the information of all widgets that have been added to the home screen o
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -680,6 +692,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
+> **NOTE**
+>
+> 1. This API is unavailable in the power-saving mode and will return the error code 16501000.
+> 2. If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -700,7 +717,7 @@ Requests an animation. This API takes effect only for [scene-based widgets](../.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -719,7 +736,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -766,7 +783,7 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -785,7 +802,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
@@ -822,7 +839,7 @@ Obtains the position and dimension of a widget. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -840,7 +857,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
@@ -875,7 +892,7 @@ Obtains the information of a specified widget that has been added to the home sc
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -923,7 +940,7 @@ Obtains information about all widgets that have been added to the home screen. T
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -977,7 +994,7 @@ Reloads widgets. For widgets with the same **moduleName**, **abilityName**, and 
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -1032,7 +1049,7 @@ Reloads all widgets. Invoked in the main process of the application, this API no
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |

@@ -1,8 +1,8 @@
-# class (MakerNoteHuaweiMetadata)
+# Class (MakerNoteHuaweiMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -57,7 +57,7 @@ import { image } from '@kit.ImageKit';
 | isFrontCamera             | boolean        | 否   | 是   | 是否使用前置摄像头。true表示使用，false表示不使用。                     |
 | rollAngle                 | number         | 否   | 是   | 左右滚动角度。                                                 |
 | pitchAngle                | number         | 否   | 是   | 俯仰角度。                                                   |
-| physicalAperture          | number         | 否   | 是   | 物理光圈值。单位是[fNumber](arkts-apis-image-ExifMetadata.md)。                                                   |
+| physicalAperture          | number         | 否   | 是   | 物理光圈值。单位是fNumber。                                                   |
 | focusMode                 | [FocusMode](arkts-apis-image-e.md#focusmode23) | 否   | 是   | 镜头对焦控制策略，决定相机如何调整焦距。                |
 
 ## createInstance
@@ -82,7 +82,7 @@ static createInstance(): MakerNoteHuaweiMetadata
 async function makerNoteHuaweiCreateInstance(context: Context) {
   let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
   if (makerNoteHuaweiMetadata != undefined) {
-    console.info("createInstance success");
+    console.info("Succeeded in creating a MakerNoteHuaweiMetadata instance.");
   }
 }
 ```
@@ -123,11 +123,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -138,9 +138,9 @@ async function makerNoteHuaweiGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     await metaData.makerNoteHuaweiMetadata.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -184,11 +184,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -203,7 +203,7 @@ async function makerNoteHuaweiSetProperties(context: Context) {
       "HwMnoteXmageMode": "9"
     };
     await metaData.makerNoteHuaweiMetadata.setProperties(setkey).then(async () => {
-      console.info('Set properties success.');
+      console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -233,11 +233,11 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -249,9 +249,9 @@ async function makerNoteHuaweiGetAllProperties(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     await metaData.makerNoteHuaweiMetadata.getAllProperties().then((data) => {
       const count = Object.keys(data).length;
-      console.info(`Get metadata all properties: ${data}`);
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -279,11 +279,11 @@ clone(): Promise\<MakerNoteHuaweiMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -295,9 +295,9 @@ async function makerNoteHuaweiClone(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     let new_metadata = await metaData.makerNoteHuaweiMetadata.clone();
     new_metadata.getProperties(["HwMnoteIsXmageSupported"]).then((data1) => {
-      console.info(`Clone new_metadata and get Properties: ${data1}`);
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -305,7 +305,7 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -324,11 +324,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -340,13 +340,13 @@ async function makerNoteHuaweiGetBlob(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -379,11 +379,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -395,7 +395,7 @@ async function makerNoteHuaweiSetBlob(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     let blob = await metaData.makerNoteHuaweiMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.makerNoteHuaweiMetadata.setBlob(blob);
     }
     let new_blob = metaData.makerNoteHuaweiMetadata.getBlob();

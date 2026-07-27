@@ -1,10 +1,10 @@
-# 延迟加载（lazy import）
+# 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -12,7 +12,7 @@
 >
 > - 延迟加载特性在API 12版本开始支持。
 >
-> - 开发者如需在API 12上使用lazy import语法，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则将无法通过编译。参考[DevEco Studio build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)。
+> - 开发者如需在API 12上使用lazy import语法，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则将无法通过编译。请参考DevEco Studio [build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)配置。
 > - 针对API version大于12的工程，开发者可直接使用lazy import语法，无需再进行其他配置。
 
 ## 功能特性
@@ -21,7 +21,7 @@
 
 ## 使用方式
 
-开发者可以利用[DevEco Profiler展示冷启动过程文件加载情况](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、[可延迟加载文件检测](#可延迟加载文件检测)、<!--Del-->[<!--DelEnd-->Trace<!--Del-->](../performance/common-trace-using-instructions.md)<!--DelEnd-->工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考[可延迟加载文件检测](#可延迟加载文件检测)<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
+开发者可以参考[Launch模板基本操作](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、[可延迟加载文件检测](#可延迟加载文件检测)、<!--Del-->[<!--DelEnd-->常用Trace使用指导<!--Del-->](../performance/common-trace-using-instructions.md)<!--DelEnd-->，利用工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考[可延迟加载文件检测](#可延迟加载文件检测)<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
 
 > **说明：**
 >
@@ -32,22 +32,22 @@
 - 使用lazy-import延迟加载。
 
 ```typescript
-// main.ets   
+// main.ets
 import lazy { a } from "./mod1";    // "mod1" 未执行
 import { c } from "./mod2";         // "mod2" 执行
-        
+
 // ...
-        
+
 console.info("main executed");
 while (false) {
     let xx = a;
     let yy = c;
 }
-        
+
 // mod1.ets
 export let a = "mod1 executed"
 console.info(a);
-        
+
 // mod2.ets
 export let c = "mod2 executed"
 console.info(c);
@@ -63,37 +63,43 @@ main executed
 
 - 同时对同一模块引用lazy-import与import。
 
-```typescript
-// main.ets   
-import lazy { a } from "./mod1";    // "mod1" 未执行
-import { c } from "./mod2";         // "mod2" 执行
-import { b } from "./mod1";         // "mod1" 执行
-        
-// ...
-        
-console.info("main executed");
-while (false) {
-    let xx = a;
-    let yy = c;
-    let zz = b;
-}
-        
-// mod1.ets
-export let a = "mod1 a executed"
-console.info(a);
-        
-export let b = "mod1 b executed"
-console.info(b);
-        
-// mod2.ets
-export let c = "mod2 c executed"
-console.info(c);
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/main.ets) -->
 
+``` TypeScript
+import lazy { a } from './mod1'; // 'mod1' 未执行
+import { c } from './mod2'; // 'mod2' 执行
+import { b } from './mod1'; // 'mod1' 执行
+```
+
+<!-- @[main_running_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/main.ets) -->
+
+``` TypeScript
+console.info('main executed');
+while (false) {
+  let xx = a;
+  let yy = c;
+  let zz = b;
+}
+```
+<!-- @[export_module_variable_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/mod1.ets) -->
+
+``` TypeScript
+export let a = 'mod1 a executed';
+console.info(a);
+export let b = 'mod1 b executed';
+console.info(b);
+```
+
+<!-- @[export_module_variable_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/mod2.ets) -->
+
+``` TypeScript
+export let c = 'mod2 c executed';
+console.info(c);
 ```
 
 执行结果为：
 
-```typescript  
+```typescript
 mod2 c executed
 mod1 a executed
 mod1 b executed
@@ -102,7 +108,7 @@ main executed
 
 如果在main.ets内删除lazy关键字，执行顺序如下：
 
-```typescript  
+```typescript
 mod1 a executed
 mod1 b executed
 mod2 c executed
@@ -140,7 +146,7 @@ lazy-import 相较于动态加载的优势：
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
-    延迟加载对于共享模块依旧生效，使用限制参考[共享模块开发指导](../arkts-utils/arkts-sendable-module.md)。
+    延迟加载对于共享模块依旧生效，使用限制参考[共享模块](../arkts-utils/arkts-sendable-module.md)开发指导。
 
 ### 错误示例
 
@@ -169,30 +175,42 @@ import lazy type { obj } from "./mod";    // 不支持，编译器、应用编�
 import type lazy { obj } from "./mod";    // 不支持，编译器、应用编译报错
 ```
 
-### 不推荐用法 
+### 不推荐用法
 
 - 在同一个ets文件中，期望延迟加载的依赖模块标记不完全。
 
 标记不完全将导致延迟加载失效，并且增加识别延迟加载的开销。
 
 ```typescript
-// main.ets   
+// mod1.ets
+export let a = "Variable A from mod1";
+export let b = "Variable B from mod1";
+console.info("mod1 executed");
+
+// mod2.ets
+export let c = "Variable C from mod2";
+console.info("mod2 executed");
+
+// main.ets
 import lazy { a } from "./mod1";    // 从"mod1"内获取a对象，标记为延迟加载
 import { c } from "./mod2";
 import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记lazy，"mod1"默认执行
-        
+
 // ...
 ```
 
 - 在同一ets文件中，未使用延迟加载变量并再次导出，不支持延迟加载变量被re-export导出，可以通过打开工程级build-profile.json5文件中的reExportCheckMode开关进行扫描排查。
 
-```typescript
-// build-profile.json5
-"arkOptions":{
-    "reExportCheckMode":"compatible"
+<!-- @[lazy_import_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/build-profile.json5) -->
+
+``` JSON5
+"buildOption": {
+  "arkOptions": {
+    "reExportCheckMode": "compatible"
+  },
+  // ...
 }
 ```
-
 > **说明：**
 >
 > - 针对以下场景，编译时是否进行拦截报错：使用lazy import导入的变量，在同文件中被再次导出。
@@ -203,18 +221,28 @@ import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记la
 
 这种方式导出的变量c未在B.ets中使用，因此C.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
 
-```typescript
+<!-- @[import_variable_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/A.ets) -->
+
+``` TypeScript
 // A.ets
-import { c } from "./B";
+import { c } from './B';
 console.info(c);
+```
 
+<!-- @[import_export_variable_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/B.ets) -->
+
+``` TypeScript
 // B.ets
-import lazy { c } from "./C";    // 从"C"内获取c对象，标记为延迟加载
-export { c }
+import lazy { c } from './C'; // 从'C'内获取c对象，标记为延迟加载
+export { c };
+```
 
+<!-- @[export_variable_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/C.ets) -->
+
+``` TypeScript
 // C.ets
-let c = "c";
-export { c }
+let c = 'c';
+export { c };
 ```
 
 执行结果：
@@ -224,18 +252,28 @@ ReferenceError: c is not initialized
     at func_main_0 (A.ets:2:13)
 ```
 
-```typescript
+<!-- @[a_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/A_ns.ets) -->
+
+``` TypeScript
 // A_ns.ets
-import * as ns from "./B";
+import * as ns from './B';
 console.info(ns.c);
+```
 
+<!-- @[import_export_variable_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/B.ets) -->
+
+``` TypeScript
 // B.ets
-import lazy { c } from "./C";    // 从“C”内获取c对象，标记为延迟加载
-export { c }
+import lazy { c } from './C'; // 从'C'内获取c对象，标记为延迟加载
+export { c };
+```
 
+<!-- @[export_variable_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/C.ets) -->
+
+``` TypeScript
 // C.ets
-let c = "c";
-export { c }
+let c = 'c';
+export { c };
 ```
 
 执行结果：
@@ -248,7 +286,7 @@ ReferenceError: module environment is undefined
 ### 注意事项
 
 - 不依赖该模块执行的副作用（如初始化全局变量，挂载globalThis等）。可参考：[模块加载副作用及优化](./arkts-module-side-effects.md)。
-- 使用导出对象时，触发延迟加载的耗时可能导致对应特性的功能劣化。由于lazy-import的后续加载是同步加载，可能在某些场景阻塞任务执行（比如在点击业务时触发了懒加载，那么运行时会执行冷启动为加载的文件，增加执行耗时，存在掉帧风险），是否使用延迟加载仍需要开发者自行评估。
+- 使用导出对象时，触发延迟加载的耗时可能导致对应特性的功能劣化。由于lazy-import的后续加载是同步加载，可能在某些场景阻塞任务执行（比如在点击业务时触发了懒加载，那么运行时会执行冷启动未加载的文件，增加执行耗时，存在掉帧风险），是否使用延迟加载仍需要开发者自行评估。
 - 使用lazy特性可能导致模块未执行，从而引发bug。
 - 已经被动态加载的文件同时使用lazy-import时，这些文件会执行lazy标识，在动态加载的then逻辑中同步加载。
 
@@ -262,7 +300,7 @@ ReferenceError: module environment is undefined
 
 ### 检测步骤
 
-1. 打开工具：获取[hdc工具](../dfx/hdc.md#环境准备)，连接设备，在终端直接输入下方命令执行。
+1. 打开工具：获取[hdc](../dfx/hdc.md)工具，连接设备，在终端直接输入下方命令执行。
 
     ```shell
     hdc shell param set persist.ark.properties 0x200105c
@@ -274,7 +312,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。  
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
 
     > **注意：**
     >
@@ -284,7 +322,7 @@ ReferenceError: module environment is undefined
 
 4. 关闭工具
 
-   该工具常开会损耗性能，使用后应及时关闭。  
+   该工具常开会损耗性能，使用后应及时关闭。
 
     ```shell
     hdc shell param set persist.ark.properties 0x000105c
@@ -292,8 +330,9 @@ ReferenceError: module environment is undefined
 
 ### 生成文件介绍
 
-工具会根据设置的抓取时间，分别记录主线程和子线程在该时间内的文件加载情况。各线程独立计时。  
-例如，设置时间为1秒，工具将记录主线程和子线程各自启动后1秒内的文件执行情况。  
+工具会根据设置的抓取时间，分别记录主线程和子线程在该时间内的文件加载情况。各线程独立计时。
+
+例如，设置时间为1秒，工具将记录主线程和子线程各自启动后1秒内的文件执行情况。
 
 文件生成路径：`data/app/el2/100/base/${bundleName}/files`
 
@@ -309,13 +348,14 @@ ReferenceError: module environment is undefined
 
 **示例**
 
-当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。  
+当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。
 
-文件生成路径：data/app/el2/100/base/com.example.myapplication/files  
+文件生成路径：data/app/el2/100/base/com.example.myapplication/files
 
-主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt  
+主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt
 
-子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt  
+子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt
+
 ![deferrable-tool-file](figures/deferrable-tool-file.png)
 
 ### 检测原理
@@ -326,20 +366,30 @@ A文件执行过程完成了变量定义赋值并进行导出，对应A文件的
 
 在Index文件执行时，B文件的导出函数func被顶层执行，因此B文件的导出是无法优化的，在工具侧就会显示used。但是A文件的导出变量a在Index文件的myFunc函数被调用时才使用，如果冷启动阶段没有其他文件调用myFunc函数，那么A文件在工具侧就会显示unused，即可以延迟加载。
 
-```ts
-// Index.ets
+<!-- @[testing_principle01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/index.ets) -->
+
+``` TypeScript
 import { a } from './A';
 import { func } from './B';
 func(); // 使用B文件变量
 export function myFunc() {
-    return a; // a变量未被使用
-} 
+  return a; // a变量未被使用
+}
+```
+
+<!-- @[export_variable_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/A.ets) -->
+
+``` TypeScript
 // A.ets
 export let a = 10;
+```
 
+<!-- @[export_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/B.ets) -->
+
+``` TypeScript
 // B.ets
 export function func() {
-    return 20;
+  return 20;
 }
 ```
 
@@ -357,64 +407,86 @@ export function func() {
 
 ### 被使用文件
 
-在冷启动阶段，导出内容被其他文件使用的文件称为used file。  
+在冷启动阶段，导出内容被其他文件使用的文件称为used file。
 
 - 场景1：通过静态加载所加载的文件，其父文件（parentModule）代表该文件的引入方。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-        parentModule 1: &entry/src/main/ets/pages/outer& a
-    ```  
+        parentModule 1: &entry/src/main/ets/pages/outer1& a
+    ```
 
     对应写法示例：
 
-    ```ts
-    // entry/src/main/ets/pages/outer.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outer文件执行时就被使用
-    ```  
+    <!-- @[scenario_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/outer1.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/pages/outer1.ets
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
+    ```
 
-- 场景2：通过静态加载所加载的文件，存在多个父文件。  
+    ```ts
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
+    ```
+
+- 场景2：通过静态加载所加载的文件，存在多个父文件。
 
     ```text
     // 说明：显示顺序不代表父文件的加载顺序。
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outer& a
+       parentModule 1: &entry/src/main/ets/pages/outer1& a
        parentModule 2: &entry/src/main/ets/pages/innerinner& a
     ```
 
     对应写法示例：
 
-    ```ts
-    // entry/src/main/ets/pages/outer.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outer文件执行时就被使用
+    <!-- @[scenario_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/outer1.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/pages/outer1.ets
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
+    ```
 
-    // entry/src/main/ets/pages/innerinner.ets
+    <!-- @[scenario_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/innerinner.ets) -->
+    
+    ``` TypeScript
     import { a } from './1' // innerinner文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在innerinner文件执行时就被使用
-    ```  
+    console.info('example ', a); // a变量在innerinner文件执行时就被使用
+    ```
+
+    ```ts
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
+    ```
 
 - 场景3：通过静态加载所加载的文件，存在多个导出，但是只显示了一部分。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outer& a
+       parentModule 1: &entry/src/main/ets/pages/outer2& a
     ```
 
     对应写法示例：
 
-    ```ts
-    // entry/src/main/ets/pages/outer.ets
+    <!-- @[scenario_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/outer2.ets) -->
+    
+    ``` TypeScript
     import { a , b } from './1' // 加载1文件的多个变量
-    console.info("example ", a); // a被使用
+    console.info('example', a); // a被使用
     export function myFunc() {
-     return b; // b未被使用
+      return b; // b未被使用
     }
-    // entry/src/main/ets/pages/1.ets
+    ```
+
+    <!-- @[export_variable_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/1.ets) -->
+    
+    ``` TypeScript
     export let a = 10;
     export let b = 100;
-    ```  
+    ```
 
 - 场景4：动态加载或使用napi接口加载时，暂未支持父文件打印，因此不会显示父文件。
 
@@ -424,10 +496,17 @@ export function func() {
 
     对应写法示例：
 
-    ```ts
-    import("./1").then((ns:ESObject) => {
-        console.info('import file 1 success');
+    <!-- @[scenario_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/outer3.ets) -->
+    
+    ``` TypeScript
+    import('./1').then((ns:ESObject) => {
+      console.info('import file 1 success');
     });
+    ```
+
+    ```ts
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
     ```
 
 - 场景5：通过loadContent、pushUrl等接口加载的文件，其父文件（parentModule）统一显示为EntryPoint。
@@ -452,21 +531,28 @@ export function func() {
 
     对应写法示例：
 
-    ```ts
-    // entry/src/main/ets/pages/1.ets
+    <!-- @[unused_file_no_lazy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/2.ets) -->
+    
+    ``` TypeScript
     import { a } from './under1' // 加载under1文件的变量
     export function myFunc() {
-     return a; // a未被使用
+      return a; // a未被使用
     }
-    ```  
+    ```
+
+    ```ts
+    // entry/src/main/ets/pages/under1.ets
+    export let a = "a";
+    ```
 
     可使用延迟加载：
 
-    ```ts
-    // entry/src/main/ets/pages/1.ets
+    <!-- @[unused_file_with_lazy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/3.ets) -->
+    
+    ``` TypeScript
     import lazy { a } from './under1' // 不在此处触发under1文件的加载
     export function myFunc() {
-     return a; // 此时触发under1文件的加载
+      return a; // 此时触发under1文件的加载
     }
     ```
 
@@ -477,7 +563,10 @@ export function func() {
 下述例子中A文件被引用，在应用启动到点击按钮的这段时间里，A文件并没有被实际执行，在冷启动阶段加载A文件的行为属于冗余。
 
 ```javascript
-// A为任意可以被引入的ets文件
+// A.ets
+export let A = "A";
+
+// Index.ets
 import { A } from "./A";
 
 @Entry
@@ -524,8 +613,11 @@ struct Index {
 工具筛选出冗余文件后，开发者可在引入时添加`lazy`关键字，标记文件可延迟加载。
 
 ```javascript
-// 此处添加lazy关键字，标记该文件可延迟加载
-import lazy { A } from "./A";
+// A.ets
+export let A = "A";
+
+// Index.ets
+import lazy { A } from "./A"; // 此处添加lazy关键字，标记该文件可延迟加载
 
 @Entry
 @Component
@@ -551,7 +643,7 @@ struct Index {
 
 | 优化效果 | 加载文件耗时（微秒μs） |
 |---------| --------------------- |
-| 优化前 | 412us              |
-| 优化后 | 350us              |
+| 优化前 | 412μs              |
+| 优化后 | 350μs              |
 
 根据上述优化前后案例Trace图对比分析，使用延迟加载后应用冷启动时不再加载A文件，在资源加载阶段减少因加载冗余文件产生的耗时约15%，提高了应用冷启动性能。（由于案例仅演示场景，优化数据仅做参考，在实际业务中随着引用文件的复杂度提高，引用文件数量增多，优化效果也会随之提升。）

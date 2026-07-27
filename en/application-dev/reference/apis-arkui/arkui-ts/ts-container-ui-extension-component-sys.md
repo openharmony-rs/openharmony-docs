@@ -72,7 +72,7 @@ Invoked when the connection to the remote UIExtensionAbility is set up, that is,
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy>) | Yes| Callback invoked to send data to the remote Ability.                         |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy> | Yes| Callback invoked to send data to the remote Ability.                         |
 
 ### onReceive
 
@@ -416,6 +416,11 @@ struct Second {
   private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
   private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
 
+  aboutToDisappear(): void {
+    console.info('start do proxy off!');
+    this.proxy?.off('syncReceiverRegister');
+    this.proxy?.off('asyncReceiverRegister');
+  }
 
   build() {
     Row() {

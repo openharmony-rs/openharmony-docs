@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 使用场景
 
@@ -36,7 +36,7 @@
 
 ## 测试事项
 
-![zh-cn_image_0000001737423156](figures/zh-cn_image_0000001737423156.png)
+![internationalization-phone-settings](figures/internationalization-phone-settings.png)
 
 1. 检查界面截断、变形或布局异常等问题。其中，界面截断可通过观察界面字符串是否以“]”正确结尾，看不到“]”说明界面字符串未完整显示。
 

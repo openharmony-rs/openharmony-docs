@@ -1,7 +1,7 @@
 # OH_Drawing_Range
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -11,7 +11,7 @@ typedef struct OH_Drawing_Range OH_Drawing_Range
 
 ## 概述
 
-用于接收字体的起始位置和结束位置。
+用于接收文本的起始位置和结束位置。
 
 **起始版本：** 11
 

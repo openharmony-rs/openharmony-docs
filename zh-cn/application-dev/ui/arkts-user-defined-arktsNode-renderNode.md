@@ -1,9 +1,9 @@
 # 自定义渲染节点 (RenderNode)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -22,11 +22,11 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 
 > **说明：**
 >
-> - RenderNode中查询获取得到的子树结构按照开发通过RenderNode的接口传递的参数构建。
+> - RenderNode中获取的子树结构由开发者通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
 >
-> - RenderNode如果要与系统直接结合显示，使用需要依赖FrameNode中获取的RenderNode进行挂载上树。
+> - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
-<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
+<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -42,7 +42,7 @@ renderNode.frame = {
   width: 200,
   height: 350
 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xfff5f5f5;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
   // 设置node节点的Frame大小
@@ -53,7 +53,7 @@ for (let i = 0; i < 5; i++) {
     height: 50
   };
   // 设置node节点的背景颜色
-  node.backgroundColor = 0xff00ff00;
+  node.backgroundColor = 0xff00bfff;
   // 将新增节点挂载在renderNode上
   renderNode.appendChild(node);
 }
@@ -76,31 +76,42 @@ class MyNodeController extends NodeController {
 @Component
 export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
+  @State myLog: string = '';
 
   build() {
     // ...
-      Row() {
+      Column() {
         NodeContainer(this.myNodeController)
           .width(200)
           .height(350);
+        Text(this.myLog).width(300).height(40).margin({ top: 20, left: 20, bottom: 20 });
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
-            const nextSibling = child!.getNextSibling()
-            if (child === null || nextSibling === null) {
-              hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
-            } else {
-              // 获取子节点的位置信息
-              hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            if (child === null) {
+              hilog.info(DOMAIN, TEST_TAG, ' the child is null');
+              this.myLog = 'the child is null';
+            } else{
+              const nextSibling = child!.getNextSibling()
+              if (nextSibling === null) {
+                hilog.info(DOMAIN, TEST_TAG, ' the nextSibling is null');
+                this.myLog = 'the nextSibling is null';
+              } else {
+                // 获取子节点的位置信息
+                hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+                this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+              }
             }
           });
-      };
+      }.width(300).margin({ left: 20 });
 
       // ...
   }
 }
 ```
+![](figures/operation_node_tree.png)
 
 ## 设置和获取渲染相关属性
 
@@ -108,11 +119,11 @@ RenderNode中可以设置渲染相关的属性，包括：[backgroundColor](../r
 
 > **说明：**
 > 
-> - RenderNode中查询获取得到的属性为设置的属性值。
+> - RenderNode中获取的属性为设置的属性值。
 > 
 > - 若未传入参数或者传入参数为非法值则查询获得的为默认值。
 >
-> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
+> - 不建议对[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
@@ -138,7 +149,7 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.size = { width: 100, height: 100 };
 
 class MyNodeController extends NodeController {
@@ -164,10 +175,11 @@ export struct RenderingProperties {
   build() {
     // ...
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column() {
-          NodeContainer(this.myNodeController);
-        };
+      Column() {
+        NodeContainer(this.myNodeController).height(260);
+      };
 
+      Flex() {
         // 设置RenderNode的位置
         Button('position')
           .width(300)
@@ -175,7 +187,7 @@ export struct RenderingProperties {
             renderNode.position = { x: 10, y: 10 };
             hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
           });
-
+        Column().width(20);
         // 设置RenderNode的轴心
         Button('pivot')
           .width(300)
@@ -183,7 +195,9 @@ export struct RenderingProperties {
             renderNode.pivot = { x: 0.5, y: 0.6 };
             hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
           });
+      }
 
+      Flex() {
         // 修改RenderNode的缩放比例
         Button('scale')
           .width(300)
@@ -191,7 +205,7 @@ export struct RenderingProperties {
             renderNode.scale = { x: 0.5, y: 1 };
             hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
           });
-
+        Column().width(20);
         // 设置RenderNode的平移量
         Button('translation')
           .width(300)
@@ -199,7 +213,9 @@ export struct RenderingProperties {
             renderNode.translation = { x: 100, y: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的旋转角度
         Button('rotation')
           .width(300)
@@ -207,7 +223,7 @@ export struct RenderingProperties {
             renderNode.rotation = { x: 45, y: 0, z: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
           });
-
+        Column().width(20);
         // 设置RenderNode的变换矩阵
         Button('transform')
           .width(300)
@@ -220,13 +236,15 @@ export struct RenderingProperties {
             ];
             hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的阴影属性
         Button('shadow')
           .width(300)
           .onClick(() => {
             renderNode.shadowElevation = 10; // 设置阴影的光照高度
-            renderNode.shadowColor = 0XFF00FF00;
+            renderNode.shadowColor = 0xff2787d9;
             renderNode.shadowOffset = { x: 10, y: 10 };
             renderNode.shadowAlpha = 0.1;
             hilog.info(DOMAIN, TEST_TAG, ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
@@ -234,7 +252,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
           });
-
+        Column().width(20);
         // 设置RenderNode的阴影模糊半径
         Button('shadowRadius')
           .width(300)
@@ -246,7 +264,9 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
             hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
           });
+      }
 
+      Flex() {
         // 设置RenderNode的边框样式
         Button('border')
           .width(300)
@@ -264,10 +284,10 @@ export struct RenderingProperties {
               bottom: BorderStyle.Solid
             }
             renderNode.borderColor = {
-              left: 0xFF0000FF,
-              top: 0xFF0000FF,
-              right: 0xFF0000FF,
-              bottom: 0xFF0000FF
+              left: 0xffd5d5d5,
+              top: 0xffd5d5d5,
+              right: 0xffd5d5d5,
+              bottom: 0xffd5d5d5
             };
             renderNode.borderRadius = {
               topLeft: 32,
@@ -280,7 +300,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
             hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
           })
-
+        Column().width(20);
         // 设置RenderNode的遮罩
         Button('shapeMask')
           .width(300)
@@ -288,6 +308,7 @@ export struct RenderingProperties {
             renderNode.shapeMask = mask;
             hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
           });
+      }
 
         // 设置RenderNode的剪裁形状
         Button('shapeClip')
@@ -310,6 +331,7 @@ export struct RenderingProperties {
   }
 }
 ```
+![](figures/rendering_properties.gif)
 
 ## 自定义绘制
 
@@ -343,12 +365,12 @@ class MyRenderNode extends RenderNode {
     // 设置笔刷颜色
     brush.setColor({
       alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
+      red: 81,
+      green: 157,
+      blue: 180
     });
     canvas.attachBrush(brush);
-    // 绘制矩阵
+    // 绘制矩形
     canvas.drawRect({
       left: 0,
       right: this.width,
@@ -367,7 +389,7 @@ renderNode.frame = {
   width: 300,
   height: 300
 };
-renderNode.backgroundColor = 0xff0000ff;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.opacity = 0.5;
 
 class MyNodeController extends NodeController {
@@ -400,20 +422,21 @@ export struct CustomDraw {
     // ...
       Column() {
         NodeContainer(this.myNodeController)
-          .width('100%');
+          .width('100%').height(320);
         Button('Invalidate')
           .onClick(() => {
             // 同步调用多次，仅触发一次重绘，draw回调中的日志仅打印一次
             renderNode.width += 10;
             renderNode.invalidate();
             renderNode.invalidate();
-          });
+          }).margin({left: -80});
       };
 
       // ...
   }
 }
 ```
+![](figures/custom_draw.gif)
 
 ## 调整自定义绘制Canvas的变换矩阵
 
@@ -575,7 +598,7 @@ export struct CustomDrawCanvas {
 
 **Node-API调用示例：**
 
-C++侧可通过Node-API来获取Canvas，并进行后续的自定义绘制操作。
+C++侧可通过Node-API来获取[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)，并进行后续的自定义绘制操作。
 
 <!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
 
@@ -635,6 +658,9 @@ static napi_value OnDraw(napi_env env, napi_callback_info info)
     OH_Drawing_CanvasAttachPen(canvas, pen);
 
     OH_Drawing_CanvasDrawPath(canvas, path);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_PathDestroy(path);
 
     return nullptr;
 }
@@ -693,7 +719,7 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 ArkTS侧代码：
 
-<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
+<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) --> 
 
 ``` TypeScript
 import bridge from 'libentry.so'; // 该 so 由 Node-API 编写并生成
@@ -709,8 +735,8 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // 需要将 context 中的宽度和高度从vp转换为px
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
-      this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width),
+      this.uiContext.vp2px(context.size.height));
   }
 }
 
@@ -746,9 +772,11 @@ export struct CustomDrawCanvasNative {
 }
 ```
 
+![RenderNode-NodeAPI](./figures/renderNode-NodeAPI.png)
+
 ## 设置标签
 
-开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，这有助于在节点Inspector中更清晰地区分各节点。
+开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，有助于在使用inspector[检查页面布局](./arkts-inspector-overview.md)时更清晰区分各节点。
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
@@ -772,7 +800,7 @@ class MyNodeController extends NodeController {
         width: 100,
         height: 100
       };
-      renderChildNode.backgroundColor = 0xffff0000;
+      renderChildNode.backgroundColor = 0xff519db4;
       renderChildNode.label = 'customRenderChildNode';
       hilog.info(DOMAIN, 'label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
@@ -793,13 +821,14 @@ export struct SetLabel {
         NodeContainer(this.myNodeController)
           .width(300)
           .height(700)
-          .backgroundColor(Color.Gray);
+          .backgroundColor(0xffd5d5d5);
       };
 
       // ...
   }
 }
 ```
+![](figures/set_label.png)
 
 ## 查询当前RenderNode是否解除引用
 
@@ -807,7 +836,7 @@ export struct SetLabel {
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
-<!-- @[check_rander_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRanderNodeDisposed.ets) -->
+<!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
@@ -847,7 +876,7 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-export struct CheckRanderNodeDisposed {
+export struct CheckRenderNodeDisposed {
   @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
@@ -878,3 +907,5 @@ export struct CheckRanderNodeDisposed {
   }
 }
 ```
+
+![](figures/check_render_node_disposed.gif)

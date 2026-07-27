@@ -43,7 +43,7 @@ In the following example, when a user clicks the **Get Location** button on the 
   </head>
   <body>
       <p id="locationInfo">Location information</p>
-      <button onclick="getLocation()">Get Location</button>
+      <button onclick="getLocation()">Obtain Location</button>
 
       <script>
           var locationInfo=document.getElementById("locationInfo");
@@ -103,7 +103,7 @@ In the following example, when a user clicks the **Get Location** button on the 
             // The location permission request is notified only to the current Web component. Other Web components in the application are not affected.
             this.uiContext.showAlertDialog({
               title: 'Location Permission',
-              message:'Grant access to the device location?',
+              message: 'Grant access to the device location?',
               primaryButton: {
                 value: 'cancel',
                 action: () => {
@@ -139,7 +139,7 @@ In the following example, when a user clicks the **Get Location** button on the 
   ```
 
 ## Managing Location Permissions
-The Web component provides the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class for managing web page location permissions, including [allowgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) for adding a location permission, [getaccessiblegeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) for viewing location permissions, and [deleteallgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation) for deleting a location permission.  
+The **Web** component provides the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class for managing web page location permissions, including [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) for adding a location permission, [getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) for viewing location permissions, and [deleteAllGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation) for deleting a location permission.  
 
 
 ```ts

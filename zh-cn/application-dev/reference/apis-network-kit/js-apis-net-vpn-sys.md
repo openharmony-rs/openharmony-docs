@@ -46,7 +46,7 @@ createVpnConnection(context: AbilityContext): VpnConnection
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息         |
 | --------- | ---------------- |
@@ -103,7 +103,7 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -179,7 +179,7 @@ setUp(config: VpnConfig): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -251,7 +251,7 @@ protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -296,7 +296,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
@@ -332,7 +332,7 @@ protect(socketFd: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -377,7 +377,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
@@ -409,7 +409,7 @@ destroy(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -464,7 +464,7 @@ destroy(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

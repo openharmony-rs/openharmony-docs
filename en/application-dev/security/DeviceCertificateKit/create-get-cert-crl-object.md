@@ -27,7 +27,9 @@ This topic walks you through on how to filter certificates or CRLs based on a **
 
 6. Use [CertCRLCollection.selectCRLs](../../reference/apis-device-certificate-kit/js-apis-cert.md#selectcrls11) to search for all CRLs that match [X509CRLMatchParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crlmatchparameters11).
 
-```ts
+<!-- @[certificate_collection_and_certificate_revocation_list_collection_object_creation_and_acquisition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateGetCertCrlObject.ets) -->
+
+``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -93,9 +95,9 @@ async function sample() {
   let collection: cert.CertCRLCollection = {} as cert.CertCRLCollection;
   try {
     collection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
-    console.info('createCertCRLCollection success');
+    console.info('createCertCRLCollection result: success.');
   } catch (err) {
-    console.error('createCertCRLCollection failed');
+    console.error(`createCertCRLCollection failed: errCode: ${err.code}, message: ${err.message}`);
   }
 
   const certParam: cert.X509CertMatchParameters = {
@@ -104,7 +106,7 @@ async function sample() {
   try {
     let certs: cert.X509Cert[] = await collection.selectCerts(certParam);
   } catch (err) {
-    console.error('selectCerts failed');
+    console.error(`selectCerts failed: errCode: ${err.code}, message: ${err.message}`);
   }
 
   const crlParam: cert.X509CRLMatchParameters = {
@@ -112,11 +114,9 @@ async function sample() {
   }
   try {
     let crls: cert.X509CRL[] = await collection.selectCRLs(crlParam);
-    console.info('selectCRLs success');
+    console.info('selectCRLs result: success.');
   } catch (err) {
-    console.error('selectCRLs failed');
+    console.error(`selectCRLs failed: errCode: ${err.code}, message: ${err.message}`);
   }
 }
 ```
-
-## 

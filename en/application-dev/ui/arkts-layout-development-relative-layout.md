@@ -109,7 +109,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
   }
   ```
 
-  ![en-us_image_0000001562820901](figures/en-us_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - Example of using a sibling element as the anchor:
 
@@ -158,7 +158,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
   }
   ```
 
-  ![en-us_image_0000001562940613](figures/en-us_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - Make sure the anchors of a child component do not depend on each other.
 
@@ -757,11 +757,13 @@ struct RelativeGuideLineExample {
 
 ## Setting Barriers for Multiple Components
 
-A barrier represents the outermost shared boundary of a specified group of components in a particular direction within the container. For example, the barrier below a group of components corresponds to the lowest position among their bottom boundaries, which can be understood as the minimum or maximum coordinate value. Barriers help ensure that a component does not overlap with any component in a reference group.
+A barrier is a dynamic reference boundary for a container. It calculates the outermost shared boundary of a specified group of components in a particular direction based on their actual positions. It is used when a component needs to be positioned relative to the collective boundary of multiple components, for example, to achieve the effect of "to the right of these components" or "not overlapping any other component."
 
 Barriers can be positioned in four directions: top, bottom, left, or right. Vertical barriers (including **TOP** and **BOTTOM**) can only serve as horizontal anchors for components. If they are used as vertical anchors, their value default to **0**. Horizontal barriers (including **LEFT** and **RIGHT**) can only serve as vertical anchors for components. If they are used as horizontal anchors, their value default to **0**.
 
-The following code defines two barriers representing the right and bottom boundaries of row1 and row2, respectively. These barriers can be used as anchors for row3 and row4 to prevent unnecessary component overlap.
+Unlike static guidelines, barriers automatically update based on the positional changes of the referenced component. You only need to define the desired direction.
+
+In the following sample code, the **item1**, **item2**, and **item3** components can be considered to be enclosed by an invisible rectangular area. **outer1** is positioned below this invisible area based on its bottom boundary, and **outer2** is positioned to the right of this invisible area based on its right boundary.
 
 <!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
 
@@ -770,66 +772,115 @@ The following code defines two barriers representing the right and bottom bounda
 @Component
 struct Index {
   build() {
-    Row() {
-      RelativeContainer() {
-        Row() {
-          Text('row1')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+    RelativeContainer() {
+      Text('item 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#a3cf62')
-        .id('row1')
-
-        Row() {
-          Text('row2')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+        .id('item1')
+        .alignRules({
+          top: {
+            anchor: '__container__',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: '__container__',
+            align: HorizontalAlign.Start
+          }
+        })
+      Text('item 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item2')
+        .alignRules({
+          top: {
+            anchor: 'item1',
+            align: VerticalAlign.Bottom
+          },
+          left: {
+            anchor: 'item1',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('item 3')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item3')
+        .alignRules({
+          bottom: {
+            anchor: 'item2',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'item2',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('outer 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#00ae9d')
+        // Define the position.
         .alignRules({
-          middle: { anchor: 'row1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Bottom }
+          top: {
+            anchor: 'barrier_bottom',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_left',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row2')
 
-        Row() {
-          Text('row3')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
-        .backgroundColor('#0a59f7')
+      Text('outer 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#00ae9d')
+        // Define the position.
         .alignRules({
-          left: { anchor: 'barrier1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Top }
+          top: {
+            anchor: 'barrier_top',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_right',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row3')
-
-        Row() {
-          Text('row4')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(50)
-        .height(50)
-        .backgroundColor('#2ca9e0')
-        .alignRules({
-          left: { anchor: 'row1', align: HorizontalAlign.Start },
-          top: { anchor: 'barrier2', align: VerticalAlign.Bottom }
-        })
-        .id('row4')
-      }
-      .width(300)
-      .height(300)
-      .margin({ left: 50 })
-      .border({ width: 2, color: '#6699FF' })
-      .barrier([{ id: 'barrier1', direction: BarrierDirection.RIGHT, referencedId: ['row1', 'row2'] },
-        { id: 'barrier2', direction: BarrierDirection.BOTTOM, referencedId: ['row1', 'row2'] }])
     }
-    .height('100%')
+    .width('100%')
+    .padding(10)
+    .barrier([
+      {
+        id: 'barrier_left',
+        direction: BarrierDirection.LEFT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_right',
+        direction: BarrierDirection.RIGHT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_top',
+        direction: BarrierDirection.TOP,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_bottom',
+        direction: BarrierDirection.BOTTOM,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+    ])
   }
 }
 ```
 
-![relative container](figures/relativecontainer5.png)
+![relative container](figures/relativecontainer10.png)

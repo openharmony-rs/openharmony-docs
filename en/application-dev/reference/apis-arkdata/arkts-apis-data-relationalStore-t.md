@@ -1,10 +1,12 @@
 # Types
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8af95004d9117739e6649a82566e8756f994e75a translatedAt=2026-07-14T10:28:10.883Z pushedAt=2026-07-17T09:25:12.103Z -->
 
 > **NOTE**
 > 
@@ -32,15 +34,15 @@ Defines the types of the value in a KV pair. The type varies with the parameter 
 
 | Type   | Description                |
 | ------- | -------------------- |
-| null<sup>10+</sup>    | Null.  |
+| null    | Null.   |
 | number  | Number.  |
 | string  | String. |
 | boolean | Boolean.|
-| Uint8Array<sup>10+</sup>           | Uint8 array.           |
-| Asset<sup>10+</sup>  | [Asset](arkts-apis-data-relationalStore-i.md#asset10).<br>If the value type is Asset, the type in the SQL statement for creating a table must be ASSET.|
-| Assets<sup>10+</sup> | [Assets](#assets10).<br>If the value type is Assets, the type in the SQL statement for creating a table must be ASSETS.|
-| Float32Array<sup>12+</sup> | Array of 32-bit floating-point numbers.<br>If the field type is Float32Array, the type in the SQL statement for creating a table must be floatvector(128).|
-| bigint<sup>12+</sup> | Integer of any length.<br>If the value type is bigint, the type in the SQL statement for creating a table must be **UNLIMITED INT**. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md).<br>**NOTE**<br>The bigint type does not support value comparison and cannot be used with the following predicates: **between**, **notBetween**, **greaterThan**, **lessThan**, **greaterThanOrEqualTo**, **lessThanOrEqualTo**, **orderByAsc**, and **orderByDesc**<br>To write a value of bigint type, use **BigInt()** or add **n** to the end of the value, for example,'let data = BigInt(1234)' or 'let data = 1234n'.<br>If data of the number type is written to a bigint field, the type of the return value obtained (queried) is number but not bigint.|
+| Uint8Array           | Uint8 array.            |
+| Asset<sup>10+</sup>  | [Asset](arkts-apis-data-relationalStore-i.md#asset10).<br/>When the field type is Asset, the type should be ASSET in the SQL statement for creating a table. |
+| Assets<sup>10+</sup> | [Assets](#assets10).<br/>When the field type is Assets, the type should be ASSETS in the SQL statement for creating a table. |
+| Float32Array<sup>12+</sup> | Array of 32-bit floating-point numbers.<br/>When the field type is Float32Array, the type should be floatvector(128) in the SQL statement for creating a table. |
+| bigint<sup>12+</sup> | Integer of any length.<br/>When the field type is bigint, the type should be UNLIMITED INT in the SQL statement for creating a table. For details, see [Data Persistence by Relational Database](../../database/data-persistence-by-rdb-store.md).<br/>**NOTE**<br/>Fields of the bigint type cannot be compared in size and do not support the following predicate operations: **between**, **notBetween**, **greaterThan**, **lessThan**, **greaterThanOrEqualTo**, **lessThanOrEqualTo**, **orderByAsc**, and **orderByDesc**.<br/>When writing data to a bigint field, you must explicitly specify the bigint type by using the **BigInt()** method or appending **n** to the data, for example, **let data = BigInt(1234)** or **let data = 1234n**.<br/>If data of the number type is written to a bigint field, the type of the data returned by the query is number instead of bigint. |
 
 ## ValuesBucket
 
@@ -54,7 +56,7 @@ Defines the data in the form of a KV pair. **ValuesBucket** cannot be passed acr
 | ---------------- | ---------------------------- |
 | Record<string, [ValueType](#valuetype)> | Types of the key and value in a KV pair. The key type is string, and the value type is [ValueType](#valuetype).|
 
-## PRIKeyType<sup>10+</sup> 
+## PRIKeyType<sup>10+</sup>
 
 type PRIKeyType = number | string
 
@@ -71,15 +73,15 @@ Enumerates the types of the primary key in a row of a database table.
 
 type UTCTime = Date
 
-Represents the data type of the UTC time.
+Represents the data type of UTC time.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | Type| Description           |
 | ---- | --------------- |
-| Date | UTC time.|
+| Date | UTC time. |
 
-## ModifyTime<sup>10+</sup> 
+## ModifyTime<sup>10+</sup>
 
 type ModifyTime = Map<PRIKeyType, UTCTime>
 
@@ -89,7 +91,7 @@ Represents the data type of the primary key and modification time of a database 
 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in the database table, and the value is the last modification time of the row in UTC format.|
+| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in a database table, and the value is the last modification time of the row, in UTC format. |
 
 ## RowData<sup>23+</sup>
 

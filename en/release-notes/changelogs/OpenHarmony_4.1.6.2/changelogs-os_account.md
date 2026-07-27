@@ -24,7 +24,7 @@ OpenHarmony SDK OpenHarmony_4.1.6.2
 
 **Key API/Component Changes**
 
-Before the change:
+Before change:
 
 ```js
     interface IUserAuthCallback  {
@@ -40,7 +40,7 @@ Before the change:
     }
 ```
 
-After the change:
+After change:
 
 ```js
     interface IUserAuthCallback  {

@@ -1,12 +1,17 @@
 # @ohos.matrix4 (Matrix Transformation)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
+Provides matrix transformation capabilities for components, including translation, rotation, and scaling. For details, see [Transformation](arkui-ts/ts-universal-attributes-transformation.md).
+
+**Matrix4** can be used in the following scenarios:
+
+In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [transform](arkui-ts/ts-universal-attributes-transformation.md#transform18) API uses the **Matrix4** object to display the matrix transformation in two-dimensional transformation, and the [transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+
 
 > **NOTE**
 >
@@ -34,7 +39,7 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes  | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1, 0, 0, 0,<br>0, 1, 0, 0,<br>0, 0, 1, 0,<br>0, 0, 0, 1] |
+| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes  | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br>0,&nbsp;1,&nbsp;0,&nbsp;0,<br>0,&nbsp;0,&nbsp;1,&nbsp;0,<br>0,&nbsp;0,&nbsp;0,&nbsp;1] |
 
 **Return value**
 
@@ -202,7 +207,8 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/en-us_image_0000001219744185.png)
+![Matrix4-copy](figures/Matrix4-copy.png)
+
 ### combine
 
 combine(options: Matrix4Transit): Matrix4Transit
@@ -257,7 +263,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001118642902](figures/en-us_image_0000001118642902.png)
+![Matrix4-combine](figures/Matrix4-combine.png)
 
 
 ### invert
@@ -352,7 +358,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219662645](figures/en-us_image_0000001219662645.png)
+![Matrix4-translate](figures/Matrix4-translate.png)
 
 
 ### scale
@@ -406,7 +412,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864131](figures/en-us_image_0000001219864131.png)
+![Matrix4-scale](figures/Matrix4-scale.png)
 
 
 ### skew<sup>12+</sup>
@@ -416,6 +422,8 @@ skew(x: number, y: number): Matrix4Transit
 Skews this matrix object along the x and y axes. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,7 +466,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864132](figures/en-us_image_0000001219864132.jpeg)
+![Matrix4-skew](figures/Matrix4-skew.jpeg)
 
 
 ### rotate
@@ -511,7 +519,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001174422898](figures/en-us_image_0000001174422898.png)
+![Matrix4-rotate](figures/Matrix4-rotate.png)
 
 
 ### transformPoint
@@ -573,7 +581,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864133](figures/en-us_image_0000001219864133.PNG)
+![Matrix4-Matrix4](figures/Matrix4-Matrix4.PNG)
 
 ### setPolyToPoly<sup>12+</sup>
 
@@ -582,6 +590,8 @@ setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 Maps the vertex coordinates of a polygon to those of another polygon.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,6 +692,8 @@ Describes the configuration options for polygon-to-polygon transformation mappin
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type  | Read-Only| Optional| Description                                                       |
@@ -697,6 +709,8 @@ Describes the configuration options for polygon-to-polygon transformation mappin
 Defines the data structure of a coordinate point.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -756,7 +770,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/en-us_image_0000001219744181.png)
+![Matrix4-copy1](figures/Matrix4-copy1.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 

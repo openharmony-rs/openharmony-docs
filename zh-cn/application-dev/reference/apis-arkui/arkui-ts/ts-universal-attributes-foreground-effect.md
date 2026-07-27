@@ -1,8 +1,8 @@
 # 前景属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,13 +10,15 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## foregroundEffect
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-设置组件的前景属性。
+设置组件的前景效果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -26,7 +28,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景效果，包括：模糊半径。 |
 
 **返回值：**
 
@@ -57,7 +59,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 struct Index {
   build() {
     Row() {
-      // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
           .width(100)
           .height(100)

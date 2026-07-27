@@ -9,13 +9,13 @@
 
 Crypto Architecture Kit provides cryptographic functionalities, such as encryption and decryption, signing and signature verification, message authentication code (MAC) generation, hash computation, random number generation, and key derivation.
 
-Crypto Architecture Kit shields the implementation differences of third-party cryptographic algorithm libraries to elevate your app experience.
+Crypto Architecture Kit shields the implementation differences of third-party cryptographic algorithm libraries to implement rapid application development.
 
 ## Constraints
 
 - Crypto Architecture Kit does not support multi-thread concurrent operations.
 
-- Currently, Crypto Architecture Kit supports only OpenSSL.
+- Currently, Crypto Architecture Kit is implemented based on OpenSSL.
 
 - Crypto Architecture Kit provides most of the common algorithms. However, some algorithms and specifications, such as MD5, are not applicable to scenarios with high security requirements. Use appropriate algorithms based on service requirements.
 
@@ -54,6 +54,8 @@ Before you get started, be sure to understand the following basic concepts:
   The public key is public and open to anyone in the system, while the private key is private.
 
   For signing and signature verification, the private key is used to sign the plaintext, and the public key is used to verify the signature.
+
+<!--RP1--><!--RP1End-->
 
 ## Related Kits
 

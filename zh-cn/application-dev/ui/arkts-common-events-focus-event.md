@@ -75,11 +75,11 @@ export struct FocusActiveExample {
 
 示例操作步骤：
 1. 点击Set Active按钮，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口进入焦点激活态。
-2. Tab走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
+2. Tab键走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖Page、Dialog、SheetPage、ModalPage、Menu、Popup、NavBar、NavDestination等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、[全屏模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)页面、[半模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)页面、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -111,6 +111,7 @@ export struct FocusActiveExample {
 
 ``` TypeScript
 @Entry
+@Component
 export struct FocusTransferExample {
   @State logText: string = '\n';
   context = this.getUIContext().getHostContext();
@@ -128,8 +129,12 @@ export struct FocusTransferExample {
               .margin(20)
               .onClick(() => {
                 // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
-                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
-                this.getUIContext().getFocusController().requestFocus('Row 2');
+                try {
+                  this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                  this.getUIContext().getFocusController().requestFocus('Row 2');
+                } catch (error) {
+                  console.error('Row 2 request focus failed!');
+                }
               })
           }
         }
@@ -140,24 +145,40 @@ export struct FocusTransferExample {
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
-            Button('button 3')
+            Button('Button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
           }
           .id('Row 2')
           .onFocus(() => {
             // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            try {
+              this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            } catch (error) {
+              console.error('Get string failed!');
+            }
           })
         }
         .onFocus(() => {
           // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          try {
+            this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          } catch (error) {
+            console.error('Get string failed!');
+          }
         })
 
         Scroll() {
@@ -298,16 +319,16 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_2.gif)
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_3.gif)
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
 
-投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持配置了wrap属性的Flex组件。运行规则如下：
+投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持RelativeContainer组件、配置了wrap属性的Flex组件。运行规则如下：
 
 
 - 方向键走焦时，判断投影与子组件区域的重叠面积，在所有面积不为0的子组件中，计算它们与当前获焦组件的中心点直线距离，选择距离最短的子组件。若存在多个备选子组件，则选择节点树上更靠前的子组件。若无任何子组件与投影有重叠，说明该容器无法处理该方向键的走焦请求。
@@ -382,7 +403,7 @@ export struct ProjectAreaFocusFlexExample {
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -401,7 +422,7 @@ onFocus(event: () => void)
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
 
 ```ts
-onBlur(event:() => void)
+onBlur(event: () => void)
 ```
 
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
@@ -471,7 +492,7 @@ export struct OnFocusBlur {
 ```
 
 
-![zh-cn_image_0000001511740584](figures/zh-cn_image_0000001511740584.gif)
+![focus-event](figures/focus-event.gif)
 
 
 上述示例包含以下3步：
@@ -484,7 +505,7 @@ export struct OnFocusBlur {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -506,17 +527,17 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onBlur`);
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onFocus`);
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
           })
 
           Row() { // 父节点Row2
@@ -525,17 +546,17 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onBlur`);
               })
           }
           .onFocus(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onFocus`);
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
           })
         }.width('100%').margin({ top: 5 })
       }.width('100%')
@@ -567,7 +588,7 @@ focusable(value: boolean)
 
 - 有获焦能力，但默认不可获焦的组件，典型的是Text、Image组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置onClick或是单指单击的Tap手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
 
-- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
+- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)、[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)组件，此类组件即使使用focusable属性也无法使其可获焦。
 
 设置容器组件可获焦：
 
@@ -602,7 +623,7 @@ focusOnTouch(value: boolean)
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -635,7 +656,7 @@ focusOnTouch(value: boolean)
              })
            Divider()
  
-           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusOnTouch为true
              .borderColor(this.color2)
              .borderWidth(2)
              .width(300)
@@ -666,11 +687,11 @@ focusOnTouch(value: boolean)
  
            Divider()
  
-           Row() {
+           Row({ space: 20 }) {
              Button('Button1')
                .width(140).height(70)
              Button('Button2')
-               .width(160).height(70)
+               .width(140).height(70)
            }
  
            Divider()
@@ -1039,7 +1060,7 @@ export struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1089,7 +1110,11 @@ export struct RequestFocusExample {
               Button('FocusController.requestFocus')
                 .width(200).height(70).fontColor(Color.White)
                 .onClick(() => {
-                  this.getUIContext().getFocusController().requestFocus('testButton');
+                  try {
+                    this.getUIContext().getFocusController().requestFocus('testButton');
+                  } catch (error) {
+                    console.error('Request focus failed!');
+                  }
                 })
                 .backgroundColor('#ff2787d9')
   
@@ -1208,7 +1233,7 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
 
   <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
   
@@ -1284,9 +1309,9 @@ Tab键走焦：tabIndex配置在容器上。
 
 上述示例包含以下3步：
 
-- 使用Tab走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
+- 使用Tab键走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
 - 在走焦至Button2时，使用方向下键，将焦点转移至Button3上。
-- 使用Tab走焦，焦点在Button1和Button3之间循环走焦。
+- 使用Tab键走焦，焦点在Button1和Button3之间循环走焦。
 
 ## 焦点组与获焦优先级
 
@@ -1529,12 +1554,15 @@ export struct FocusScopeIdExample {
 
 当组件获焦且存在点击事件（`onClick`）或单指单击事件（`TapGesture`）时，回车和空格会触发对应的事件回调。
 
->  **说明：**
+> **说明：**
 >
->  1. 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
->  2. 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
->  3. 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
->  4. 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
+> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
+>
+> - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
+>
+> - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
+>
+> - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    
@@ -1578,34 +1606,46 @@ export struct FocusScopeIdExample {
 | [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) | 否       | false        |
 | [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) | 是       | true         |
 | [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) | 是       | true         |
+| [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)                 | 否       | false        |
 | [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | 是       | true         |
 | [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | 是       | true         |
+| [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)                 | 否       | false        |
+| [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) | 否       | false         |
 | [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md) | 否       | false         |
 | [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md) | 是       | false        |
 | [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md) | 是       | true         |
 | [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md) | 是       | false        |
+| [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)                 | 否       | false        |
 | [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md) | 是       | false        |
 | [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) | 是       | false        |
 | [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md) | 否       | false        |
 | [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)                 | 否       | false        |
+| [Indicator](../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md) | 是       | true        |
+| [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)                 | 否       | false        |
 | [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) | 是       | true        |
 | [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md) | 否       | false        |
 | [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) | 是       | true         |
 | [MenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | 是       | true         |
 | [MenuItemGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md) | 否       | false         |
+| [MultiNavigation](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md) | 否       | false         |
 | [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 是       | true       |
 | [NavRouter](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md) | 否       | false        |
 | [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) | 是       | true        |
+| [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md) | 否       | false        |
 | [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md) | 是       | true        |
+| [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)                 | 否       | false        |
+| [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)                 | 否       | false        |
 | [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md) | 是       | true        |
 | [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md) | 是       | true        |
 | [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | 是       | true         |
 | [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md) | 是       | true         |
+| [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md) | 否       | false        |
 | [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) | 是       | true         |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 否       | false        |
 | [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md) | 否       | false        |
 | [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) | 是       | true         |
 | [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | 是       | true         |
+| [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) | 否       | false        |
 | [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | 是       | true         |
 | [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) | 否       | false        |
 | [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md) | 是       | true         |
@@ -1640,6 +1680,7 @@ export struct FocusScopeIdExample {
 | [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) | 是     | true         |
 | [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | 是     | true         |
 | [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)         | 是     | true         |
+| [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) | 否     | false         |
 | [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) | 是     | true         |
 | [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | 是     | true         |
 | [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | 是     | true         |
@@ -1653,7 +1694,7 @@ export struct FocusScopeIdExample {
 | [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) | 是     | true         |
 | [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | 是     | true         |
 | [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | 是     | true         |
-| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | 是     | true         |
+| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | 否     | false         |
 | [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)         | 否     | false         |
 | [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)         | 是     | true         |
 

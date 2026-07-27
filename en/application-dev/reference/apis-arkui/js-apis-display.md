@@ -1,12 +1,12 @@
 # @ohos.display (Display)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The **Display** module provides APIs for managing displays, such as obtaining information about the default display, obtaining information about all displays, and listening for the addition and removal of displays.
+This module provides basic capabilities for managing display devices, including obtaining information about the default display device and all display devices, and listening for display device insertion and removal state changes. This module supports the management of multiple types of display devices, which is applicable to scenarios such as multi-screen collaboration, foldable screen adaptation, and screen status listening. It helps you implement features such as adapting application layouts to different display devices, responding to screen status changes, and optimizing multi-screen user experience.
 
 > **NOTE**
 >
@@ -38,7 +38,7 @@ Enumerates the states of a display.
 
 ## Orientation<sup>10+</sup>
 
-Enumerates the orientations of a display.
+Enumerates the display orientations of a display.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -82,17 +82,19 @@ Enumerates the fold statuses of a foldable device. For dual-fold axis devices, w
 | FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 11 | For dual-fold axis devices, both the first and second fold axes are fully open.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 21 | For dual-fold axis devices, the first fold axis is fully open, and the second fold axis is half-folded.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 12 | For dual-fold axis devices, the first fold axis is folded, and the second fold axis is fully open.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 22 | For dual-fold axis devices, the first fold axis is folded, and the second fold axis is fully folded.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 22 | For dual-fold axis devices, the first fold axis is folded, and the second fold axis is half-folded.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 13 | For dual-fold axis devices, the first fold axis is half-folded, and the second fold axis is fully open.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | For dual-fold axis devices, both the first and second fold axes are half-folded.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 >**NOTE**<br>
-> Devices with only one fold axis can be in the **FOLD_STATUS_EXPANDED**, **FOLD_STATUS_FOLDED**, or **FOLD_STATUS_HALF_FOLDED** state.<br>
-> Devices with two fold axes can be in any of the states provided in the table above, except for **FOLD_STATUS_UNKNOWN**, which indicates an unusable fold status.
+>
+>- Devices with only one fold axis can be in the **FOLD_STATUS_EXPANDED**, **FOLD_STATUS_FOLDED**, or **FOLD_STATUS_HALF_FOLDED** state.<br>
+>
+>- Devices with two fold axes can be in any of the states provided in the table above, except for **FOLD_STATUS_UNKNOWN**, which indicates an unusable fold status.
 
 ## FoldDisplayMode<sup>10+</sup>
 
-Enumerates the display modes of a foldable device.
+Enumerates the screen display modes of a foldable device.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -107,12 +109,16 @@ Enumerates the display modes of a foldable device.
 | FOLD_DISPLAY_MODE_COORDINATION | 4 | Both screens of the device are displayed in collaborative mode.|
 
 >**NOTE**<br>
->For foldable devices where both the inner and outer screens can serve as the primary screen — like large or wide-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_FULL**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_MAIN**.<br>
->For foldable devices where the outer screen serves only as an auxiliary display — like small-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_MAIN**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_SUB**.
+>
+>- For foldable devices where both the inner and outer screens can serve as the primary screen — like large or wide-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_FULL**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_MAIN**.<br>
+>
+>- For foldable devices where the outer screen serves only as an auxiliary display — like small-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_MAIN**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_SUB**.
 
 ## CornerType<sup>23+</sup>
 
 Enumerates the types of corners on the screen.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -127,6 +133,10 @@ Enumerates the types of corners on the screen.
 
 Describes a single rounded corner on the screen.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name  | Type| Read-Only| Optional| Description              |
@@ -137,7 +147,7 @@ Describes a single rounded corner on the screen.
 
 ## FoldCreaseRegion<sup>10+</sup>
 
-Describes the crease region of a foldable device.
+Describes the crease region of a foldable device's screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -158,8 +168,8 @@ Describes a rectangle on the display.
 
 | Name  | Type|  Read-Only| Optional| Description              |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | number   | No  | No  | Left boundary of the rectangle, in px. The value is an integer.|
-| top    | number   | No  | No  | Top boundary of the rectangle, in px. The value is an integer.|
+| left   | number   | No  | No  | X coordinate of the vertex in the upper left corner of the rectangle relative to the top-left vertex of the screen, in px. The value must be an integer.|
+| top    | number   | No  | No  | Y coordinate of the vertex in the upper left corner of the rectangle relative to the top-left vertex of the screen, in px. The value must be an integer.|
 | width  | number   | No  | No  | Width of the rectangle, in px. The value is an integer.  |
 | height | number   | No  | No  | Height of the rectangle, in px. The value is an integer.  |
 
@@ -207,15 +217,14 @@ Describes the display mode of a device and the corresponding physical screen res
 ## BrightnessInfo<sup>22+</sup>
 Describes the screen brightness information. The information comes from the underlying screen data.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name                       | Type     | Read-Only| Optional| Description              |
 | --------------------------- | -------- | ---- | ---- | ------------------ |
-| currentHeadroom             | number    | Yes | No  | Dynamic brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.|
-| maxHeadroom                 | number    | Yes | No  | Maximum brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.|
-| sdrNits                     | number    | Yes | No  | Screen brightness. The value is a floating-point number greater than 0. The default value is **500.0**.|
+| currentHeadroom             | number    | Yes | No  | Dynamic brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| maxHeadroom                 | number    | Yes | No  | Maximum brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| sdrNits                     | number    | Yes | No  | Screen brightness. The value is a floating-point number greater than 0. The default value is **500.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| brightnessPosition          | number    | Yes | Yes  | Position of the brightness bar corresponding to the current screen brightness. The value is a floating-point number ranging from 0.0 to 1.0. The default value is **0.0**. The value **0.0** indicates the lowest screen brightness, and **1.0** indicates the highest screen brightness. The returned brightness bar position may have an error of 0.01 compared with the actual position.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br> **Model constraint**: This API can be used only in the stage model.|
 
 ## BrightnessCallback<sup>22+</sup>
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
@@ -253,7 +262,7 @@ Describes the virtual screen parameters.
 | name      | string   | No  | No  | Name of the virtual screen, which can be customized.              |
 | width     | number   | No  | No  | Width of the virtual screen, in px. The value must be a positive integer.|
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be a positive integer.|
-| density   | number   | No  | No  | Density of the virtual screen, in px. The value is a floating-point number.|
+| density   | number   | No  | No  | Density of the virtual screen. The value must be a floating point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen, which can be customized. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used.       |
 | supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
 
@@ -293,7 +302,7 @@ Obtains a Display object based on the display ID.
 
 | Name| Type                     | Mandatory| Description      |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | number                    | Yes  | Display ID. The value must be an integer greater than or equal to 0. An object can be obtained only when the passed-in display ID is correct. You can use the value of the **displayId** property in [WindowProperties](arkts-apis-window-i.md#windowproperties) as the input parameter.|
+| displayId     | number                    | Yes  | Screen ID. The value must be a non-negative integer. An object can be obtained only when the passed-in display ID is correct. You can use the value of the **displayId** property in [WindowProperties](arkts-apis-window-i.md#windowproperties) as the input parameter.|
 
 **Return value**
 
@@ -307,14 +316,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -328,7 +335,7 @@ try {
 
 ## display.getBrightnessInfo<sup>22+</sup>
 
-getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+getBrightnessInfo(displayId: number): BrightnessInfo
 
 Obtains the screen brightness information of a display. If the screen does not support HDR, the **currentHeadroom** and **maxHeadroom** fields in the returned [BrightnessInfo](#brightnessinfo22) object use the default values. For virtual screens, the **sdrNits** field in the BrightnessInfo object uses the default value.
 
@@ -354,18 +361,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
 ```ts 
-import { display } from '@kit.ArkUI';
-
 try {
-  let brightNessInfo = display.getBrightnessInfo(0);
-  console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
+  let brightnessInfo = display.getBrightnessInfo(0);
+  console.info(`brightness info: ${JSON.stringify(brightnessInfo)}`);
 } catch (error) {
   console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
 }
@@ -399,7 +404,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects) => {
@@ -441,8 +445,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
@@ -455,7 +457,7 @@ try {
 
 getPrimaryDisplaySync(): Display
 
-Obtains the information about the primary display. For devices other than 2-in-1 devices, the Display object obtained is the built-in screen. For 2-in-1 devices with an external screen, the Display object obtained is the primary screen. For 2-in-1 devices without an external screen, the Display object obtained is the built-in screen.
+Obtains the information about the primary display. For devices other than PCs/2-in-1 devices, the **Display** object obtained is the built-in screen. For PCs/2-in-1 devices with an external screen, the **Display** object obtained is the primary screen. For PCs/2-in-1 devices without an external screen, the **Display** object obtained is the built-in screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -478,8 +480,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
@@ -513,7 +513,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
@@ -555,7 +554,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -590,7 +588,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
 
@@ -601,7 +599,7 @@ let callback: Callback<number> = (data: number) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
 
-display.on("add", callback);
+display.on('add', callback);
 ```
 
 ## display.off('add'|'remove'|'change')
@@ -627,14 +625,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
-
 // Unregister all the callbacks that have been registered through on().
-display.off("remove");
+display.off('remove');
 
 let callback: Callback<number> = (data: number) => {
   console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
@@ -648,6 +645,8 @@ display.off('remove', callback);
 onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Callback&lt;number&gt;): void
 
 Subscribes to changes of specified attributes of a display.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -665,7 +664,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 801     | Capability not supported. Function onChangeWithAttribute can not work correctly due to limited device capabilities. |
-| 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |
+| 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |   
 
 **Example**
 
@@ -705,8 +704,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
@@ -737,8 +734,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
@@ -752,7 +747,7 @@ Obtains the display mode of this foldable device.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API returns **0** for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API returns **0** for PC/2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
 
 **Return value**
 
@@ -771,8 +766,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldDisplayMode = display.getFoldDisplayMode();
 console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ```
@@ -780,7 +773,7 @@ console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ## display.getCurrentFoldCreaseRegion<sup>10+</sup>
 getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
-Obtains the crease region of the foldable device in the current display mode.
+Obtains the crease region of a foldable device's screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -792,7 +785,7 @@ Obtains the crease region of the foldable device in the current display mode.
 
 | Type| Description|
 | ----------------------------------------------- | ------------------------------------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | Crease region of the device.|
+| [FoldCreaseRegion](#foldcreaseregion10) | FoldCreaseRegion object, which returns the crease region of the foldable device in the current display mode.|
 
 **Error codes**
 
@@ -805,8 +798,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
@@ -831,8 +822,8 @@ To check whether the content is displayed on the inner or outer screen of the fo
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The event **'foldStatusChange'** is triggered when the fold status of the device changes.|
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | Yes  | Callback used to return the fold status.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'foldStatusChange'**, indicating the event of the folding status change of the foldable device.|
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | Yes  | Callback used to return the folding status.|
 
 **Error codes**
 
@@ -840,7 +831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -851,7 +842,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * The callback parameter used for subscription must be passed as an object.
  * If an anonymous function is used for registration, a new underlying object is created each time the function is called, causing memory leakage.
-*/
+ */
 let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
@@ -872,8 +863,8 @@ Unsubscribes from fold status change events of the foldable device.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The event **'foldStatusChange'** is triggered when the fold status of the device changes.|
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | No  | Callback used to return the fold status. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'foldStatusChange'**, indicating the event of the folding status change of the foldable device.|
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | No  | Callback used to return the folding status. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -881,13 +872,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
-
 // Unregister all the callbacks that have been registered through on().
 display.off('foldStatusChange');
 
@@ -912,7 +902,7 @@ Subscribes to events related to screen brightness information changes. If the sc
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating that the screen brightness information is changed.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating the event of the screen brightness information change.|
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | Yes  | Callback used to return the display ID (parameter 1) and the corresponding screen brightness information (parameter 2).|
 
 **Error codes**
@@ -921,9 +911,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
@@ -932,9 +922,9 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.on("brightnessInfoChange", callback);
+  display.on('brightnessInfoChange', callback);
 } catch (error) {
-  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+  console.error(`Failed to register brightnessInfoChange listener. Code ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -952,7 +942,7 @@ Unsubscribes from events related to screen brightness information changes.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating that the screen brightness information is changed.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating the event of the screen brightness information change.|
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | No  | Callback used to return the brightnessInfo status change. If this parameter is not specified, all subscriptions to the specified event are canceled. The first parameter indicates the display ID, and the second parameter indicates the screen brightness information.|
 
 **Error codes**
@@ -961,9 +951,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
@@ -972,9 +962,9 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.off("brightnessInfoChange", callback);
+  display.off('brightnessInfoChange', callback);
 } catch (error) {
-  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+  console.error(`Failed to unregister brightnessInfoChange listener. Code ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -992,8 +982,8 @@ Subscribes to folding angle change events of the foldable device. Note that ther
 
 | Name  | Type                                     | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'foldAngleChange'** is triggered when the folding angle of the device changes.|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | Yes| Callback used to return the folding angle (0–180 degrees). For dual-fold axis devices, the array contains two angles. The first value represents the folding angle of the first fold axis, while the second value represents the folding angle of the second fold axis.|
+| type     | string                                   | Yes| Event type. The value is fixed at **'foldAngleChange'**, indicating the event of the folding angle change of the foldable device.|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | Yes| Callback used to return the folding angle of the foldable device screen, ranging from 0 to 180 degrees. For dual-fold axis devices, the array contains two angles. The first value represents the folding angle of the first fold axis, while the second value represents the folding angle of the second fold axis.|
 
 **Error codes**
 
@@ -1001,7 +991,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -1029,8 +1019,8 @@ Unsubscribes from folding angle change events of the foldable device.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                    | Yes | Event type. The event **'foldAngleChange'** is triggered when the folding angle of the device changes.|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | No | Callback used to return the folding angle (0–180 degrees). If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| type     | string                                    | Yes | Event type. The value is fixed at **'foldAngleChange'**, indicating the event of the folding angle change of the foldable device.|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | No | Callback used to return the folding angle of the foldable device screen, ranging from 0 to 180 degrees. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -1038,12 +1028,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('foldAngleChange');
@@ -1069,7 +1060,7 @@ Subscribes to events indicating whether the device's screen content is being cap
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| type     | string                                   | Yes| Event type. The value is fixed at **'captureStatusChange'**, indicating the event of the screen content capture status change of the device.|
 | callback | Callback&lt;boolean&gt; | Yes| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once.|
 
 **Error codes**
@@ -1078,7 +1069,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -1106,7 +1097,7 @@ Unsubscribes from events indicating whether the device's screen content is being
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| type     | string                                   | Yes| Event type. The value is fixed at **'captureStatusChange'**, indicating the event of the screen content capture status change of the device.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
@@ -1115,12 +1106,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('captureStatusChange');
@@ -1158,10 +1150,55 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
+// Check whether the screen content is captured.
 ret = display.isCaptured();
+```
+
+## display.isCaptured
+isCaptured(bundleNameList: Array\<string>): boolean
+
+Checks whether the device's screen content is being captured by an application in the application list.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                                                   |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| bundleNameList | Array\<string> | Yes  | List of applications to be checked. The maximum length of the array is 100. If the length exceeds 100, error code 1400004 is returned.|
+
+**Return value**
+
+| Type| Description|
+| ----------------------------------------------- | ------------------------------------------------------- |
+| boolean | Check result for whether the device's screen content is being captured. **true** means that the device's screen content is being captured by an application in the specified application list, and **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1. The size of bundleNameList is larger than 100. |
+
+**Example**
+
+```ts
+try {
+  const bundleList: Array<string> = ['com.example.app'];
+  let ret = display.isCaptured(bundleList);
+  console.info(`The screen is captured or not: ${ret}`);
+} catch (err) {
+  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## display.on('foldDisplayModeChange')<sup>10+</sup>
@@ -1178,14 +1215,12 @@ The two are different. In terms of timing, the fold status changes first, and th
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
-
 **Parameters**
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The event **'foldDisplayModeChange'** is triggered when the display mode of the device changes.|
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | Yes  | Callback used to return the display mode.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'foldDisplayModeChange'**, indicating the event of the screen display mode change of the foldable device.|
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | Yes  | Callback used to return the screen display mode of the foldable device.|
 
 **Error codes**
 
@@ -1193,7 +1228,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -1204,7 +1239,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * The callback parameter used for subscription must be passed as an object.
  * If an anonymous function is used for registration, a new underlying object is created each time the function is called, causing memory leakage.
-*/
+ */
 let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
   console.info(`Listening enabled. Data: ${data}`);
 }; 
@@ -1221,14 +1256,12 @@ Unsubscribes from display mode change events of the foldable device.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
-
 **Parameters**
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The event **'foldDisplayModeChange'** is triggered when the display mode of the device changes.|
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | No  | Callback used to return the display mode. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| type     | string                                   | Yes  | Event type. The value is fixed at **'foldDisplayModeChange'**, indicating the event of the screen display mode change of the foldable device.|
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | No  | Callback used to If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -1236,12 +1269,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('foldDisplayModeChange');
@@ -1282,7 +1316,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function createVirtualScreen can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 
@@ -1300,7 +1334,7 @@ class VirtualScreenConfig {
   supportsFocus ?: boolean = true;
 }
 
-let config : VirtualScreenConfig = {
+let config: VirtualScreenConfig = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1310,9 +1344,9 @@ let config : VirtualScreenConfig = {
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {
-  console.info(`Succeeded in creating the virtual screen.ScreenId : ${screenId}`);
+  console.info(`Succeeded in creating the virtual screen. ScreenId: ${screenId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1345,7 +1379,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function destroyVirtualScreen can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1356,10 +1390,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenId: number = 1;
+// Destroy the virtual screen.
 display.destroyVirtualScreen(screenId).then(() => {
   console.info('Succeeded in destroying the virtual screen.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen.Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1393,7 +1428,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function setVirtualScreenSurface can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1401,7 +1436,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1415,7 +1450,7 @@ struct Index {
     display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
   }
   build() {
@@ -1425,7 +1460,7 @@ struct Index {
         controller: this.xComponentController
       })
       Button('setSurface')
-        .onClick((event: ClickEvent) => {
+        .onClick(() => {
           this.setVirtualScreenSurface();
       }).width('100%')
       .height(20)
@@ -1446,6 +1481,8 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **Required permissions**: ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on wearables, error code 801 is reported. If it is called on other device types, it has no effect and does not report errors.
+
 **Parameters**
 
 | Name   | Type  | Mandatory| Description         |
@@ -1465,7 +1502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801     | Capability not supported.function makeUnique can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1476,10 +1513,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenId: number = 0;
+// Set the screen to independent mode.
 display.makeUnique(screenId).then(() => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to make unique screens. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to make unique screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1512,13 +1550,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
+// Define the relative coordinates to convert.
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -1528,6 +1565,7 @@ let relativePosition: display.RelativePosition = {
 };
 
 try {
+   // Convert the relative coordinates to global coordinates.
   let position: display.Position = display.convertRelativeToGlobalCoordinate(relativePosition);
   console.info(`The global coordinate is ${position.x}, ${position.y}`)
 } catch (exception) {
@@ -1550,7 +1588,7 @@ Converts global coordinates (based on the top-left corner of the primary screen)
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
 | position  | [Position](#position20) | Yes| Global coordinates to convert.|
-| displayId | number | No| Display ID for the relative coordinates. If this parameter is passed, the coordinates are converted relative to this screen. If it is not provided, the coordinates are converted to the screen where the global coordinates are located, or the primary screen if they are not on any screen.|
+| displayId | number | No| Display ID for the relative coordinates. If this parameter is passed, the coordinates are converted relative to this screen. If this parameter is not passed, the coordinates are converted by default to the relative coordinates of the screen where the global coordinates are located. If the global coordinates are not on any screen, the coordinates are converted to the relative coordinates of the primary screen by default.|
 
 **Return value**
 
@@ -1565,19 +1603,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
+// Define the global coordinates to convert.
 let position: display.Position = {
     x: 100,
     y: 200
 };
 
 try {
+  // Convert the global coordinates to relative coordinates.
   let relPos: display.RelativePosition = display.convertGlobalToRelativeCoordinate(position, 0);
   console.info(`The relative coordinate is ${relPos.displayId}, ${relPos.position.x}, ${relPos.position.y}`)
 } catch (exception) {
@@ -1723,6 +1761,7 @@ Implements a Display instance, with attributes and APIs defined.
 Before calling any API in Display, you must use [getAllDisplays()](#displaygetalldisplays9) or [getDefaultDisplaySync()](#displaygetdefaultdisplaysync9) to obtain a Display instance.
 
 ### Attributes
+<!--Table: 26%; 20%; 7%; 7%; 40% -->
 
 | Name| Type| Read-Only| Optional| Description                                                                                                           |
 | -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------|
@@ -1741,9 +1780,9 @@ Before calling any API in Display, you must use [getAllDisplays()](#displaygetal
 | xDPI | number | Yes| No| Exact physical pixels per inch of the display in the X axis. The value must be a floating-point number.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                   |
 | yDPI | number | Yes| No| Exact physical pixels per inch of the display in the Y axis. The value must be a floating-point number.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                   |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md)> | Yes| No| All color spaces supported by the display.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                               |
-| hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md)> | Yes| No| All HDR formats supported by the display.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                              |
-| availableWidth<sup>12+</sup> | number | Yes| No| Width of the available area, in px. The value is an integer greater than 0.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the width of the available area on the current device, you can use the **width** property.                                                |
-| availableHeight<sup>12+</sup> | number | Yes| No| Height of the available area, in px. The value is an integer greater than 0.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the height of the available area on the current device, you can use the **height** property.                                               |
+| hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)> | Yes| No| All HDR formats supported by the display.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                              |
+| availableWidth<sup>12+</sup> | number | Yes| No| Width of the available area, in px. The value is an integer greater than 0.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Device behavior differences**:<br>This API can be properly called on devices running OpenHarmony 7.0.0 or later.<br>For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work for other device types. To obtain the width of the available area on the current device screen, you can use the **width** attribute.                                                |
+| availableHeight<sup>12+</sup> | number | Yes| No| Height of the available area, in px. The value is an integer greater than 0.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Device behavior differences**:<br>This API can be properly called on devices running OpenHarmony 7.0.0 or later.<br>For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work for other device types. To obtain the height of the available area on the current device screen, you can use the **height** attribute.                                                |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | Yes| Yes| Screen shape of the display. The default value is **RECTANGLE**.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | Yes| Yes| Display mode for screen content. The default value is **DisplaySourceMode.NONE**.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                                   |
 | x<sup>19+</sup> | number | Yes| Yes| X coordinate of the top-left corner of the display relative to the origin, which is the top-left corner of the primary screen, measured in px. The value is an integer. The default value is **0**. The actual value is returned only when **DisplaySourceMode** is set to **MAIN** or **EXTEND**; otherwise, the default value **0** is returned.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                                   |
@@ -1751,9 +1790,11 @@ Before calling any API in Display, you must use [getAllDisplays()](#displaygetal
 | supportedRefreshRates<sup>20+</sup> | Array&lt;number&gt; | Yes| Yes| All refresh rates supported by the display, sorted in ascending order. The refresh rate is a positive integer, in Hz. The default value is empty.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                                 |
 
 ### getRoundedCorner<sup>23+</sup>
-getRoundedCorner(): Array\<RoundedCorner\>
+getRoundedCorner(): Array&lt;RoundedCorner&gt;
 
 Obtains the rounded corner information of the display. The rounded corner information of the display is determined by the product configuration. Only physical screens that have a defined corner-radius value returns rounded corner information; otherwise, an empty array is returned. Virtual displays always return an empty array.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1784,14 +1825,14 @@ try {
   let data = displayClass.getRoundedCorner();
   console.info(`Succeeded in getting rounded corner. Data: ${JSON.stringify(data)}`);
 } catch (error) {
-  console.error(`Failed to getRoundedCorner. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get rounded corner. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ### getCutoutInfo<sup>9+</sup>
 getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
 
-Obtains the cutout information of the display. This API uses an asynchronous callback to return the result. You are advised not to use the cutout area during application layout.
+Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display. This API uses an asynchronous callback to return the result. You are advised not to use the cutout area during application layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1831,7 +1872,7 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 ### getCutoutInfo<sup>9+</sup>
 getCutoutInfo(): Promise&lt;CutoutInfo&gt;
 
-Obtains the cutout information of the display. This API uses a promise to return the result. You are advised not to use the cutout area during application layout.
+Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display. This API uses a promise to return the result. You are advised not to use the cutout area during application layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1862,7 +1903,7 @@ let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
 promise.then((data: display.CutoutInfo) => {
   console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get cutoutInfo. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1877,7 +1918,11 @@ The available area is the space left for applications after the system UI (such 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, you can use the **width** and **height** attributes in [Display](#attributes).
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work for other device types. To obtain the available area on the current device screen, you can use the **width** and **height** attributes in [Display](#attributes).
 
 **Return value**
 
@@ -1898,14 +1943,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
   let promise = displayClass.getAvailableArea();
   promise.then((data) => {
-    console.info(`Succeeded get the available area in this display. data: ${JSON.stringify(data)}`);
+    console.info(`Succeeded in getting the available area in this display. data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
   })
@@ -1923,7 +1967,11 @@ Subscribes to changes of the available area on the display of the current device
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
 
 **Parameters**
 
@@ -1938,15 +1986,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -1954,7 +2000,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.on("availableAreaChange", callback);
+  displayClass.on('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -1970,7 +2016,11 @@ Unsubscribes from changes of the available area on the display of the current de
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
 
 **Parameters**
 
@@ -1985,15 +2035,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -2001,7 +2049,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.off("availableAreaChange", callback);
+  displayClass.off('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -2018,7 +2066,7 @@ Obtains the live crease region of the foldable device in the current display mod
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | Live crease region of the device.|
+| [FoldCreaseRegion](#foldcreaseregion10) | Crease region of the foldable device in the current display mode.|
 
 **Error codes**
 
@@ -2032,8 +2080,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();

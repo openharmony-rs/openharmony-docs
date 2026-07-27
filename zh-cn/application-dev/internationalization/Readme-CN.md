@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 - [Localization Kit简介](i18n-l10n.md)
 - 应用国际化<!--i18n-->
@@ -31,7 +31,7 @@
         - [概述](i18n-display-overview.md)
         - [本地化语言与地区名称](i18n-language-region-display.md)
 - 应用本地化<!--l10n-->
-    - [提供多语言资源](l10n-multilingual-resources.md)
+    - [多语言适配](l10n-multilingual-resources.md)
     - 提升可翻译性<!--l10n-translation-->
         - [避免硬编码与拼接](l10n-hard-coding-concatenate.md)
         - [提供翻译场景](l10n-translation-scene.md)
@@ -42,3 +42,4 @@
         - [翻译伪本地化测试](pseudo-i18n-testing-translation.md)
         - [界面镜像伪本地化测试](pseudo-i18n-testing-mirror.md)
     - [语言测试](linguistic-testing.md)
+- [Localization Kit术语](localization-glossary.md)

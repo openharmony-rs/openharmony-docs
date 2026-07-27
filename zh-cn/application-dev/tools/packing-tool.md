@@ -3,18 +3,18 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 打包工具用于在程序编译完成后，对编译出的文件等进行打包，以供安装发布。开发者可以使用DevEco Studio进行打包，也可使用打包工具的JAR包进行打包，JAR包通常存放在SDK路径下的toolchains目录中。
 
 打包工具支持生成：Ability类型的模块包（HAP）、动态共享包（HSP）、应用程序包（App）、快速修复模块包（HQF）、快速修复包（APPQF）。
 
-打包指令中的文件来源于[DevEco Studio编译构建产物](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)，文件路径查看操作如下。<br/>
-1. 在DevEco Studio工程根目录下的/hvigor/hvigor-config.json5文件中，修改"logging"下的"level"字段为"debug"。<br/>
-2. 在DevEco Studio菜单栏，依次选择"构建 -> 清理项目"。<br/>
-3. 在DevEco Studio菜单栏，依次选择"构建 -> 构建APP(s)"。<br/>
-4. 在DevEco Studio底部"构建"窗口，搜索"app_packing_tool.jar"，确认打包参数中文件的路径。<br/>
+打包指令中的文件来源于[DevEco Studio编译构建产物](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)，文件路径查看操作如下。<br>
+1. 在DevEco Studio工程根目录下的/hvigor/hvigor-config.json5文件中，修改"logging"下的"level"字段为"debug"。<br>
+2. 在DevEco Studio菜单栏，依次选择"构建 -> 清理项目"。<br>
+3. 在DevEco Studio菜单栏，依次选择"构建 -> 构建APP(s)"。<br>
+4. 在DevEco Studio底部"构建"窗口，搜索"app_packing_tool.jar"，确认打包参数中文件的路径。<br>
 
 打包工具会对module.json文件属性进行合法性校验。module.json文件是编译构建产物，其属性值在编译构建时自动生成，与配置文件中配置项对应关系如下。
 
@@ -32,11 +32,13 @@
 | targetAPIVersion         | 应用运行需要的API目标版本。 | -                        | targetAPIVersion           | targetSdkVersion/compileSdkVersion  <br/>说明：targetSdkVersion存在时，targetAPIVersion由targetSdkVersion决定；<br/>否则，targetAPIVersion由compileSdkVersion决定。               |
 | querySchemes             | 允许应用进行跳转查询的URL schemes。| querySchemes              | -                          | -                                |
 | generateBuildHash        | 标识当前HAP或HSP是否由打包工具生成哈希值。| generateBuildHash    | generateBuildHash          | -                                |
+| buildVersion               | 应用的构建版本号。        | -                        | buildVersion                 | -                                |
 
 ## 约束与限制
 
 - 打包工具需要运行在Java8及其以上环境。
 - 打包指令中参数和参数值需成对出现。例如，HAP打包指令中--resources-path \<path>，其中--resources-path为指令参数，path为参数值，两者需要同时出现。
+- 不建议使用JDK 20版本运行打包工具。JDK 20对zip64扩展数据字段的校验规则存在已知缺陷，当zip包（如HAP、HSP或任何zip64文件）的目录中zip64扩展字段长度异常时，解析会抛出`Invalid CEN header (invalid zip64 extra data field size)`异常。建议使用JDK 17（LTS）或JDK 21（LTS）等长期支持版本。若必须使用JDK 20，可在JVM启动参数中添加`-Djdk.util.zip.disableZip64ExtraFieldValidation=true`规避此问题。
 
 ## HAP打包指令
 
@@ -50,14 +52,14 @@
 - 出于运行时性能等考量，--lib-path指定目录外的文件不会进行压缩。
 
 示例：
-- [Stage模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- Stage模型示例：
 
 
     ```bash
-    java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>] [--pkg-sdk-info-path <path>]
+    java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>] [--pkg-sdk-info-path <path>] [--skills-path <path>]
     ```
 
-- [FA模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- FA模型示例：
 
 
     ```bash
@@ -83,8 +85,8 @@
 | --ets-path       | 否         | NA            | 存放ets文件目录路径。                                        | 仅Stage模型生效。 |
 | --out-path       | 是         | NA            | 目标文件路径，文件名必须以.hap为后缀。                       | NA              |
 | --force          | 否         | boolean       | 当目标文件路径已存在时，控制是否强制执行覆盖。当--out-path目标文件打包前已存在，该参数为true时，覆盖写入；为false时，终止打包过程并报错。当--out-path目标文件打包前不存在，正常打包，该参数无效。默认值为false。 | NA              |
-| --an-path        | 否         | NA            | 存放[an文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅stage模型生效。 |
-| --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅stage模型生效。 |
+| --an-path        | 否         | NA            | 存放[an文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
+| --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
 | --dir-list       | 否         | NA            | 可指定目标文件夹列表，将其打入HAP包内。                      | NA              |
 | --compress-level | 否         | number        | lib库下文件压缩等级，默认值1。可选等级1-9。在应用配置compressNativeLibs参数为true的情况下生效，数值越大压缩率越高、压缩速度越慢。 | NA  |
 | --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 | 仅Stage模型生效。              |
@@ -92,6 +94,7 @@
 | --exist-src-path | 否 | NA | 指定增量打包时的源HAP包路径，该路径必须指向一个已存在的、有效的.hap文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HAP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HAP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
 | --pkg-sdk-info-path | 否         | NA            | pkgSdkInfo.json（构建产物中依赖的HAR的基本信息，包括模块名和版本）文件路径，文件名必须为pkgSdkInfo.json。<br/>从API version 23开始支持该参数。     | 仅Stage模型生效。  |
+| --skills-path | 否         | NA            | 存放skill目录的路径。打包时，根据module.json5文件中的skillProfiles配置项，将--skills-path目录下对应的skill内容打入HAP包内。<br/>当bundleType为app或atomicService时，允许传入该参数。当bundleType为shared、appService或appPlugin时，不允许传入该参数，否则打包失败。<br/>从API版本26.0.0开始支持该参数。 | 仅Stage模型生效。  |
 
 ## HSP打包指令
 
@@ -103,7 +106,7 @@ HSP包实现了多个HAP对文件的共享，开发者可以使用打包工具�
 
 示例：
 ```bash
-java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--pkg-sdk-info-path <path>]
+java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--pkg-sdk-info-path <path>] [--skills-path <path>]
 ```
 
 **表3** HSP打包指令参数说明
@@ -114,7 +117,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --json-path      | 是         | NA            | .json文件路径，文件名必须为module.json。                     |
 | --profile-path   | 否         | NA            | CAPABILITY.profile文件路径。                                 |
 | --dex-path       | 否         | NA            | 1. dex文件路径，文件名必须以.dex为后缀。如果是多个dex需要用“，”分隔。<br/>2. dex文件路径也可以为目录。 |
-| --lib-path       | 否         | NA            | lib库文件路径。从API version 22开始，--exist-src-path配置有效且--lib-path-retain配置为true时，对libs目录做增量打包，直接拷贝--exist-src-path配置的源HAP包中的libs目录，不再打包--lib-path配置的libs目录，--lib-path参数无效。|
+| --lib-path       | 否         | NA            | lib库文件路径。从API version 22开始，--exist-src-path配置有效且--lib-path-retain配置为true时，对libs目录做增量打包，直接拷贝--exist-src-path配置的源HSP包中的libs目录，不再打包--lib-path配置的libs目录，--lib-path参数无效。|
 | --resources-path | 否         | NA            | resources资源包路径。                                        |
 | --index-path     | 否         | NA            | .index文件路径，文件名必须为resources.index。                |
 | --pack-info-path | 否         | NA            | pack.info文件路径，文件名必须为pack.info。                   |
@@ -127,6 +130,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --exist-src-path | 否 | NA | 指定增量打包时的源HSP包路径，该路径必须指向一个已存在的、有效的.hsp文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HSP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 |
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HSP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。|
 | --pkg-sdk-info-path | 否         | NA            | pkgSdkInfo.json（构建产物中依赖的HAR的基本信息，包括模块名和版本）文件路径，文件名必须为pkgSdkInfo.json。<br/>从API version 23开始支持该参数。     |
+| --skills-path | 否         | NA            | 存放skill目录的路径。打包时，根据module.json5文件中的skillProfiles配置项，将--skills-path目录下对应的skill内容打入HSP包内。<br/>当bundleType为app、atomicService或skill时，允许传入该参数。当bundleType为shared、appService或appPlugin时，不允许传入该参数，否则打包失败。<br/>从API版本26.0.0开始支持该参数。 |
 
 ## App打包指令
 
@@ -145,6 +149,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
+| buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
 
 > **说明：** 
 >
@@ -163,7 +168,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 ```
 
 **表5** App打包指令参数说明
-
+<!--Table: 25%; 10%; 10%; 55%-->
 | 指令                 | 是否必选项 | 选项          | 描述                                                           |
 |--------------------|-------|-------------|--------------------------------------------------------------|
 | --mode             | 是     | app         | 多个HAP需满足HAP的合法性校验。                                           |
@@ -181,8 +186,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --replace-pack-info    | 否     | boolean          | 打包APP时，是否使用由--pack-info-path参数指定的pack.info文件替换HAP、HSP包中的pack.info文件。如果为true表示替换，false表示不替换，默认值为true。<br/>从API version 22开始支持该参数。 |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-
-
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 多工程打包指令
 
@@ -201,6 +205,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
+| buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
 
 > **说明：** 
 >
@@ -227,8 +232,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-
-
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## HQF打包指令
 
@@ -295,7 +299,7 @@ java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp 
 | 指令             | 是否必选项 | 选项               | 描述                                                                |
 |----------------|-------|------------------|-------------------------------------------------------------------|
 | --mode         | 是     | versionNormalize | 命令类型。                                                             |
-| --input-list   | 是     | HAP或HSP的路径       | 1. HAP或HSP包文件路径，文件名必须以.HAP或.HSP为后缀。如果是多个HAP或HSP包需要“,”分隔。<br/>2. 传入目录时，会读取目录下所有的HAP和HSP文件。 |
+| --input-list   | 是     | HAP或HSP的路径       | 1. HAP或HSP包文件路径，文件名必须以.hap或.hsp为后缀。如果是多个HAP或HSP包需要“,”分隔。<br/>2. 传入目录时，会读取目录下所有的HAP和HSP文件。 |
 | --version-code | 是     | 版本号              | 指定的版本号，HAP、HSP的版本号会被修改为该版本。需要为整数，且不小于所有传入的HAP、HSP的版本号。            |
 | --version-name | 是     | 版本名称             | 指定的版本名称，HAP、HSP的版本名称会被修改为该版本名称。                                    |
 | --out-path     | 是     | NA               | 目标文件路径，需要为一个目录。                                                   |
@@ -352,6 +356,7 @@ java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp 
 | --delivery-with-install       | 否         | 当前HAP是否在用户主动安装HAP所在应用的时候一起安装 | 指定的HAP是否需要一起安装，传入的包的deliveryWithInstall会被修改为该类型。指定的值不能为空，该字段的详细定义和规格参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)中的deliveryWithInstall字段。 |
 | --device-types                | 否         | 允许Ability运行的设备类型                          | 指定的设备类型，传入的包的设备类型会被修改为该类型。指定的值不能为空，该字段的详细定义和规格请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)中的deviceTypes字段，传入值的形式为字符串格式，多个设备类型之间使用“,”分隔。 |
 | --out-path                    | 是         | NA                                                 | 目标文件路径，需要为一个有读写权限的目录。                   |
+| --build-version                | 否         | 构建版本号                                             | 指定的构建版本号，传入的包的构建版本号会被修改为该版本号。指定的值不能为空值，该字段的详细定义和规格请参考[app.json5](../quick-start/app-configuration-file.md#配置文件标签)中的buildVersion字段。 |
 
 ## res模式打包指令
 
@@ -389,6 +394,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 | minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP或HSP的minAPIVersion字段值均保持一致。    |
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
+| buildVersion                      | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。 |
 
 > **说明：** 
 >
@@ -424,6 +430,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                      |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 扫描重复so文件
 
@@ -461,6 +468,47 @@ json统计结果：
 | md5   | String          | 重复so文件的MD5值。          |
 | size  | int             | 重复so文件的大小。单位为Byte。 |
 | files | Vector\<String> | 重复so文件的路径。     |
+
+## so去重报告
+
+通过[App打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)打包生成App包时，设置--deduplicate-so为true开启so去重功能，系统将在打包过程中对重复的so文件进行去重处理，并在打包成功后生成去重报告。去重报告将存放在打包生成的App包所在目录下的`so_dedup_report.json`文件中。去重报告记录了去重操作的时间戳、节省的总文件大小，以及每个模块中保留和移除的so文件列表。
+
+去重报告的示例如下：
+```json
+{
+    "timestamp":"2026-07-04T09:24:50Z",
+    "totalSavedSize":4120,
+    "modules":{
+        "feature":{
+            "kept":[],
+            "removed":[
+                "libs/arm64-v8a/libshared.so"
+            ]
+        },
+        "entry":{
+            "kept":[
+                "libs/arm64-v8a/libshared.so"
+            ],
+            "removed":[]
+        }
+    }
+}
+```
+
+**表18 so去重报告字段信息**
+
+| 字段           | 类型   | 描述                                                         |
+| -------------- | ------ | ------------------------------------------------------------ |
+| timestamp      | String | so去重操作的时间戳，格式为ISO 8601（例如：2026-07-04T09:24:50Z）。 |
+| totalSavedSize | int    | 通过去重操作节省的总文件大小，即去重前后所有HAP/HSP包大小差值之和（app压缩前），单位为Byte。                  |
+| modules        | Object | 各个模块的去重详情，key为模块名称，value为该模块的去重信息对象。   |
+
+**表19 模块去重信息字段信息**
+
+| 字段    | 类型            | 描述                                                         |
+| ------- | --------------- | ------------------------------------------------------------ |
+| kept    | Vector\<String> | 该模块中保留的so文件路径列表（只针对存在重复的so）。                              |
+| removed | Vector\<String> | 该模块中被移除的so文件路径列表。 |
 
 ## 打包工具错误码
 
@@ -873,11 +921,13 @@ Verify stage hap info failed.
 
 **可能原因**
 
-`module.json5`中`atomicService`或`continueBundleName`存在配置错误，或`app.json5`中`asanEnabled`或`hwasanEnabled`存在配置错误。
+1. `module.json5`中`atomicService`或`continueBundleName`存在配置错误；或`app.json5`中`asanEnabled`或`hwasanEnabled`存在配置错误。
+2. `module.json5`中`moduleType`为`skill`并且`bundleType`不为`skill`；或`bundleType`为`skill`并且`moduleType`不为`skill`。独立skill模块的bundleType和moduleType必须同为skill。
 
 **处理步骤**
 
-参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
+1. 参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
+2. 如果是独立skill模块，确保[app.json5](../quick-start/app-configuration-file.md)中`bundleType`和[module.json5](../quick-start/module-configuration-file.md)中`type`均配置为`skill`。
 
 ### 10012004 检查参数asanEnabled失败
 **错误信息**
@@ -1065,11 +1115,16 @@ Read Stage hap verify info exist exception.
 
 **可能原因**
 
-解析module.json时发生I/O异常。
+1. 解析module.json时发生I/O异常。
+2. JDK 20对zip64扩展数据字段校验存在已知缺陷，当zip包（如HAP、HSP或任何zip64文件）的目录中zip64扩展字段长度异常时，解析会抛出`Invalid CEN header (invalid zip64 extra data field size)`异常。
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+1. 根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+2. 若“Error Message:”中包含`Invalid CEN header (invalid zip64 extra data field size)`，请检查当前JDK版本是否为JDK 20。建议更换为JDK 17（LTS）或JDK 21（LTS）等长期支持版本。若无法更换JDK版本，可在JVM启动参数中添加`-Djdk.util.zip.disableZip64ExtraFieldValidation=true`规避此问题。在打包指令中添加JVM启动参数的示例如下：
+   ```bash
+   java -Djdk.util.zip.disableZip64ExtraFieldValidation=true -jar app_packing_tool.jar --mode app --hap-path <path> --out-path <path> --pack-info-path <path>
+   ```
 
 ### 10012014 打包--lib-path指定目录失败
 **错误信息**
@@ -1145,7 +1200,7 @@ Check shared App mode invalid.
 
 1. 存在两个以上的[HSP包](../quick-start/in-app-hsp.md)。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
 
-    ![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
+    ![alt text](figures/error-causes.png)
 
 2. HSP包在`module.json5`中配置了`dependencies`。
 
@@ -1237,11 +1292,13 @@ Verify stage hsp info failed.
 
 1. `module.json5`中的`atomicService`、`continueBundleName`存在配置错误，或`app.json5`中的`asanEnabled`、`hwasanEnabled`存在配置错误。
 2. overlay配置出错。
+3. `module.json5`中的`type`既不是`shared`也不是`skill`。独立skill模块的`type`必须为`skill`。
 
 **处理步骤**
 
 1. 参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
 2. 参考[检查overlay失败](#10012008-检查overlay失败)，更改配置项。
+3. 检查[module.json5](../quick-start/module-configuration-file.md)，确保`type`配置为`shared`或`skill`。
 
 ### 10012023 json文件格式化失败
 **错误信息**
@@ -1605,6 +1662,23 @@ HSP/HAP模块module.json文件中minAPIVersion小于21，且deduplicateHar的值
 
 打包HSP/HAP时，如果deduplicateHar的属性值为true时，则要求minAPIVersion大于等于21。
 
+### 10012055 二进制文件解压缩配置校验失败
+**错误信息**
+
+Binary file decompression configuration verification failed.
+
+**错误描述**
+
+打包HSP/HAP时，二进制文件的解压缩配置校验失败。
+
+**可能原因**
+
+HSP/HAP在[module.json5](../quick-start/module-configuration-file.md)配置了应用内可执行二进制文件的路径信息[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)且存在二进制文件，但配置为以不解压libs库的方式进行安装。
+
+**处理步骤**
+
+如果module.json5中配置了executableBinaryPaths且存在二进制文件，请确保配置为应用以解压libs库的方式进行安装，即module.json5配置文件中的extractNativeLibs或compressNativeLibs中至少有一项为true。
+
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
 
@@ -1696,13 +1770,15 @@ Failed to parse module.json and bundleType.
 1. 模块的[app.json5](../quick-start/app-configuration-file.md)配置文件中`bundleType`为app，但[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`属性值为true。
 2. 模块的app.json5配置文件中`bundleType`为atomicService，但module.json5中的`installationFree`属性值为false。
 3. 模块的app.json5配置文件中`bundleType`为shared，但module.json5中的`type`属性值不是shared。
+4. `bundleType`为skill，但module.json5中的`type`属性值不为skill；或`type`为skill但`bundleType`不为skill。独立skill模块的bundleType和moduleType必须同为skill。
 
 **处理步骤**
 
 1. 确保app.json5配置文件中`bundleType`为app时，module.json5中的`installationFree`属性值为false。
 2. 确保app.json5配置文件中`bundleType`为atomicService时，module.json5中的`installationFree`属性值为true。
 3. 确保app.json5配置文件中`bundleType`为shared时，module.json5中的`type`属性值也是shared。
-4. 当有多条报错信息时，优先根据第一条报错信息进行排查。
+4. 确保独立skill模块时，app.json5配置文件中`bundleType`和module.json5中的`type`均配置为skill。
+5. 当有多条报错信息时，优先根据第一条报错信息进行排查。
 
 ### 10013006 检查entry模块中的ability失败
 **错误信息**
@@ -2803,22 +2879,23 @@ Incremental pack hsp exception.
 
 根据日志中“Error Message:”，确认异常信息。
 
-### 10011021 通用归一化命令失败
-
+### 10021001 so去重失败
 **错误信息**
 
-Parse and check args invalid in generalNormalize mode.
+so deduplication failed.
 
 **错误描述**
 
-通用归一化命令失败。
+so去重失败。
 
 **可能原因**
 
-1. 传入的参数类型错误。
-2. 传入参数范围错误。
-3. 传入HAP或HSP包不完整，缺少json文件（json文件配置请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)）。
+1. so去重过程中发生I/O异常。
+2. so文件MD5计算失败。
+3. 文件系统操作失败。
 
 **处理步骤**
 
-检查并传入正确的命令参数和有效的包文件。
+1. 根据日志中“Error Message:”信息，确认具体的异常原因。
+2. 检查模块中libs目录和so文件是否完整。
+3. 确保有足够的磁盘空间进行so去重操作。

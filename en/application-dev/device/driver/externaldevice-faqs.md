@@ -1,10 +1,11 @@
 # FAQs
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:47.465Z pushedAt=2026-06-25T06:57:00.211Z -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -33,10 +34,10 @@ The message "compileSdkVersion and releaseType of the app do not match the apiVe
 | API Type| Minimum API Version| OpenHarmony Version|
 | --------- | --------- | --------- |
 | Application development APIs (ArkTS APIs)| API10 | 4.0 Release or later|
-| USB DDK APIs| API10 | 4.0 Release or later|
-| HID DDK APIs| API11 | 4.1 Release or later|
-| USB Serial DDK API| API18 | 5.1 Release or later|
-| SCSI Peripheral DDK API| API18 | 5.1 Release or later|
+| UsbDdk APIs| API10 | 4.0 Release or later|
+| HidDdk APIs| API11 | 4.1 Release or later|
+| USBSerialDDK APIs| API18 | 5.1 Release or later|
+| ScsiPeripheralDDK APIs| API18 | 5.1 Release or later|
 <!--RP3End-->
 
 ## Failed to Parse the Local .so File During HAP Installation
@@ -47,4 +48,4 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 
 ### Solution
 
-Configure the value of `abiFilters` in `buildOption/externalNativeOptions` in the `build-profile.json5` file. For details, see [Application Debugging] (https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5).
+According to the solution provided in [What should I do if "code:9568347 error: install parse native so failed" is displayed during HAP installation or error message "TypeError: Cannot read property xxx of undefined" is displayed during HAP running?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5) in application debugging, manually set **abiFilters** in **buildOption/externalNativeOptions** in the **build-profile.json5** file.

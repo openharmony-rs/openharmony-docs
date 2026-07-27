@@ -3,15 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiAppEvent提供了事件订阅接口，用于获取应用的事件。
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 **订阅接口功能介绍**：
 
@@ -49,9 +49,9 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-``` TypeScript
-import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-```
+   ``` TypeScript
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets” 文件，在onCreate函数中添加对崩溃事件、按钮点击事件的订阅。
 
@@ -171,7 +171,7 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
      .height('5%')
      .onClick(() => {
        // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventParams: Record<string, number> = { 'clickTime': 100 };
        let eventInfo: hiAppEvent.AppEventInfo = {
          // 事件领域定义
          domain: 'button',
@@ -185,7 +185,8 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
        hiAppEvent.write(eventInfo).then(() => {
          hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
        }).catch((err: BusinessError) => {
-         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+         hilog.error(0x0000, 'testTag',
+           `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
        });
      })
    ```

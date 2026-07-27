@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:28.393Z pushedAt=2026-06-25T06:57:26.253Z -->
 
 ## Function Description
 
@@ -23,11 +24,15 @@ As a basic service provided by the system for applications, Input Kit fulfills i
 
 1. Before using the following functions, declare the corresponding permissions.
 
-  | API | Description| Permission|
-  | ------------------------------------------------------------ | -------------------------- |-----|
-  | setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
-  | getShieldStatus(shieldMode: ShieldMode): boolean | Obtains the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
+   | API | Description| Permission|
+   | ------------------------------------------------------------ | -------------------------- |-----|
+   | setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
+   | getShieldStatus(shieldMode: ShieldMode): boolean | Obtains the shortcut key shield status. The value **true** means to shield shortcut keys, and the value **false** means the opposite.|ohos.permission.INPUT_CONTROL_DISPATCHING|
 
 2. The APIs provided by the [inputConsumer](inputconsumer-guidelines-sys.md), [inputEventClient](inputeventclient-guidelines-sys.md), [inputMonitor](inputmonitor-guidelines-sys.md), and [shortKey](shortkey-guidelines-sys.md) modules are system APIs. Wherein, the APIs provided by the [inputMonitor](inputmonitor-guidelines-sys.md) module require the **ohos.permission.INPUT_MONITORING** permission.
 
 <!--DelEnd-->
+
+<!--RP1-->
+
+<!--RP1End-->

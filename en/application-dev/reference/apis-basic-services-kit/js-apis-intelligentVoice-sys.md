@@ -124,7 +124,7 @@ Creates an instance of the intelligent voice enrollment engine. This API uses an
 | Name  | Type                               | Mandatory| Description                  |
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | descriptor    | [EnrollIntelligentVoiceEngineDescriptor](#enrollintelligentvoiceenginedescriptor)                              | Yes  | Descriptor of the intelligent voice enrollment engine.  |
-| callback    | AsyncCallback\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>         | Yes  | Callback used to return the result.  |
+| callback    | AsyncCallback\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>         | Yes  | Callback used to return the intelligent voice enrollment engine.  |
 
 **Error codes**
 
@@ -178,7 +178,7 @@ Creates an instance of the intelligent voice enrollment engine. This API uses a 
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Callback used to return the result.                  |
+| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Promise used to return the intelligent voice enrollment engine.                  |
 
 **Error codes**
 
@@ -225,7 +225,7 @@ Creates an instance of the intelligent voice wakeup engine. This API uses an asy
 | Name  | Type                               | Mandatory| Description                  |
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | descriptor    | [WakeupIntelligentVoiceEngineDescriptor](#wakeupintelligentvoiceenginedescriptor)                              | Yes  | Descriptor of the intelligent voice wakeup engine.  |
-| callback    | AsyncCallback\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)\>         | Yes  | Callback used to return the result.  |
+| callback    | AsyncCallback\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)\>         | Yes  | Callback used to return the intelligent voice wakeup engine.  |
 
 **Error codes**
 
@@ -279,7 +279,7 @@ Creates an instance of the intelligent voice wakeup engine. This API uses a prom
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Callback used to return the result.                  |
+| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Promise used to return the intelligent voice wakeup engine.                  |
 
 **Error codes**
 
@@ -548,7 +548,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 22700101 | No memory.                        |
 | 22700102 | Invalid parameter.                            |
 | 22700107 | System error.                            |
@@ -834,6 +834,7 @@ Defines the enrollment engine configuration.
 ## SensibilityType
 
 Enumerates wakeup sensibility types.
+
 A sensibility type maps to a wakeup threshold. A higher sensibility indicates a lower threshold and a higher wakeup probability.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
@@ -1068,7 +1069,7 @@ if (enrollIntelligentVoiceEngine != null) {
     if (err) {
       console.error(`Failed to initialize enrollIntelligentVoice engine. Code:${err.code}, message:${err.message}`);
     } else {
-      console.info(`Succeeded in initialzing enrollIntelligentVoice engine.`);
+      console.info(`Succeeded in initializing enrollIntelligentVoice engine.`);
     }
   });
 }
@@ -1142,7 +1143,7 @@ Obtains the enrollment result. This API uses an asynchronous callback to return 
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | isLast     | boolean                           | Yes  | Whether this is the last enrollment. The value **true** indicates the last enrollment, and the value **false** indicates the opposite.|
-| callback     | AsyncCallback&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;                           | Yes  | Callback used to return the registration result.|
 
 **Error codes**
 
@@ -1153,6 +1154,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 
@@ -1192,7 +1194,7 @@ Obtains the enrollment result. This API uses a promise to return the result.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;            | Promise used to return the result.                  |
+|  Promise&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;            | Promise used to return the registration result.                  |
 
 **Error codes**
 
@@ -1203,6 +1205,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 
@@ -1678,7 +1681,7 @@ Obtains specified intelligent voice parameters. This API uses an asynchronous ca
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | key     | string                           | Yes  | Key.|
-| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the intelligent voice parameters.|
 
 **Error codes**
 
@@ -1728,7 +1731,7 @@ Obtains specified intelligent voice parameters. This API uses a promise to retur
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise\<string\>            | Promise used to return the result.                  |
+|  Promise\<string\>            | Promise used to return the intelligent voice parameters.                  |
 
 **Error codes**
 
@@ -2268,7 +2271,7 @@ Obtains specified intelligent voice parameters. This API uses an asynchronous ca
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | key     | string                           | Yes  | Key.|
-| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the intelligent voice parameters.|
 
 **Error codes**
 
@@ -2318,7 +2321,7 @@ Obtains specified intelligent voice parameters. This API uses a promise to retur
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise\<string\>            | Promise used to return the result.                  |
+|  Promise\<string\>            | Promise used to return the intelligent voice parameters.                  |
 
 **Error codes**
 

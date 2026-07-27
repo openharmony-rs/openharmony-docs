@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 The **TestRunner** module provides a test framework. You can use the APIs of this module to prepare the unit test environment and run test cases.
 
@@ -25,22 +25,13 @@ import { TestRunner } from '@kit.TestKit';
 
 ## TestRunner
 
+**TestRunner** is a template for the unit test framework. You can inherit this class and override all its methods to customize the unit test framework.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| onPrepare | [OnPrepareFn](#onpreparefn23) | No   | No   | Prepares the unit test environment to run test cases.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>Since API version 23, the original **onPrepare()** API is changed to a property, but its usage remains unchanged.|
-| onRun | [OnRunFn](#onrunfn23) | No   | No   | Runs all test cases.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>Since API version 23, the original **onRun()** API is changed to a property, but its usage remains unchanged.|
-
-## OnPrepareFn<sup>23+</sup>
-
-type OnPrepareFn = () => void
-
-Triggered when the unit test environment is ready.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
+| -------- | -------- | -------- | -------- | -------- |
+| onStop | [OnStopFn](#onstopfn) | No| Yes| Called when the test is complete and before the test environment exits.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 **Example**
 
@@ -53,19 +44,49 @@ export default class UserTestRunner implements TestRunner {
   }
 
   onRun() {
+    console.info('Trigger onRun');
+  }
+
+  onStop() {
+    console.info('Trigger onStop');
   }
 }
 ```
 
-## OnRunFn<sup>23+</sup>
+### onPrepare
 
-type OnRunFn = () => void
+onPrepare(): void
 
-Triggered when the test case is executed.
+Prepares the unit test environment to run test cases.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Example**
+
+```ts 
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+  }
+}
+```
+
+### onRun
+
+onRun(): void
+
+Runs test cases.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Example**
 
@@ -81,3 +102,17 @@ export default class UserTestRunner implements TestRunner {
   }
 }
 ```
+
+## OnStopFn
+
+type OnStopFn = () => void
+
+Called when the test is complete and before the test environment exits.
+
+ **Since**: 26.0.0
+ 
+ **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+ 
+ **Model restriction**: This API can be used only in the stage model.
+
+ **System capability**: SystemCapability.Ability.AbilityRuntime.Core

@@ -13,7 +13,7 @@ typedef void *OH_AI_DeviceInfoHandle
 
 ## 概述
 
-MindSpore的运行设备信息的指针。
+MindSpore运行设备信息的指针。
 
 **起始版本：** 9
 

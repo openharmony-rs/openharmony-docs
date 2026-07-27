@@ -1,10 +1,10 @@
 # jsvm_types.h
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
@@ -56,6 +56,7 @@
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | 包含属性监听回调的结构的指针类型。                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。                                 |
 | [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | 与JSVM_COMPILE_COMPILE_PROFILE一起传递的编译采样文件。 |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) | JSVM_DeserializeResult | 与JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT一起传递的后台反序列化结果。 |
 
 ### 枚举
 
@@ -90,8 +91,10 @@
 | 名称                                                                                                                                                                 | typedef关键字 | 描述 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------| -- | -- |
 | [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)](#jsvm_finalize)                                                     | JSVM_CDECL* JSVM_Finalize | 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会在关联的JS对象被GC回收时被调用，用以执行native的清理动作。 |
-| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | ASCII输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
+| [typedef void (JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied)](#jsvm_finalizearraybuffer)                   | JSVM_CDECL* JSVM_FinalizeArrayBuffer | 函数指针类型，在调用[OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口时，可传入该类型的函数调用。回调函数将会在接口创建的ArrayBuffer对象被GC回收时被调用，用以执行native的清理动作（必须先定义JSVM_EXPERIMENTAL宏才能使用此接口）。 |
+| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc)                         | JSVM_CDECL* JSVM_HandlerForGC | GC回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_handlerforheapthreshold)                         | JSVM_CDECL* JSVM_HandlerForHeapThreshold | 堆内存阈值回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)](#jsvm_handlerforoomerror)                             | JSVM_CDECL* JSVM_HandlerForOOMError | OOM-Error回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Fatal-Error回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Promise-Reject回调的函数指针类型。 |
@@ -293,7 +296,7 @@ enum JSVM_MemoryPressureLevel
 | JSVM_MEMORY_PRESSURE_LEVEL_NONE | 无压力。 |
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | 中等压力。 |
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | 临界压力。 |
-| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | 通知系统内存不足。<br>警告：这对垃圾回收性能有很强的负面影响。<br>建议：使用其他值来影响垃圾回收计划。<br>**起始版本：** 22  |
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | 通知系统内存不足，立即触发垃圾回收。<br>**起始版本：** 22  |
 
 ### JSVM_CompileMode
 
@@ -333,6 +336,8 @@ JSVM_CompileOptions 中的 id 对应类型，每个值有对应的 content 类�
 | JSVM_COMPILE_SCRIPT_ORIGIN | JSVM脚本来源。 |
 | JSVM_COMPILE_COMPILE_PROFILE | JSVM编译依赖。 |
 | JSVM_COMPILE_ENABLE_SOURCE_MAP | JSVM的 Source Map 的使能情况。 |
+| JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT | JSVM脚本的后台反序列化结果。<br>**起始版本：** 24 |
+| JSVM_COMPILE_CODE_CACHE_REJECTED | JSVM字节码缓存是否被拒绝。<br>**起始版本：** 24 |
 
 ### JSVM_RegExpFlags
 
@@ -407,8 +412,8 @@ enum JSVM_CacheType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_CACHE_TYPE_JS | JS 缓存, 由接口 OH_JSVM_CreateCodeCache 生成。 |
-| JSVM_CACHE_TYPE_WASM | WebAssembly 缓存, 由接口 OH_JSVM_CreateWasmCache 生成。 |
+| JSVM_CACHE_TYPE_JS | JS 缓存，由接口 OH_JSVM_CreateCodeCache 生成。 |
+| JSVM_CACHE_TYPE_WASM | WebAssembly 缓存，由接口 OH_JSVM_CreateWasmCache 生成。 |
 
 ### JSVM_MicrotaskPolicy
 
@@ -441,12 +446,12 @@ JSVM 内部 Trace 事件的类别。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| JSVM_TRACE_VM | 采集 JSVM 主要接口调用, 例如执行 js 脚本。 |
-| JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。 |
-| JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。 |
+| JSVM_TRACE_VM | 采集 JSVM 主要接口调用，例如执行 js 脚本。 |
+| JSVM_TRACE_COMPILE | 采集编译相关的接口调用，例如后台编译。 |
+| JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用，例如中断与微任务。 |
 | JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。 |
 | JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。 |
-| JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。 |
+| JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用，例如编译与实例化 WASM 模块。 |
 | JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。 |
 
 ### JSVM_CBTriggerTimeForGC
@@ -599,6 +604,32 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* f
 
 **起始版本：** 11
 
+### JSVM_FinalizeArrayBuffer()
+
+```c
+#ifdef JSVM_EXPERIMENTAL
+typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied);
+#endif // JSVM_EXPERIMENTAL
+```
+
+**描述**
+
+> **注意**：
+>
+> 此接口是实验性接口，需定义`JSVM_EXPERIMENTAL`宏后方可使用。
+
+函数指针类型，在调用[OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口时，可传入该类型的函数调用。回调函数将会在关联的ArrayBuffer对象被回收时被调用，用以执行native的清理动作。使用`JSVM_FinalizeArrayBuffer`请遵循以下规则：
+
+- 由于`JSVM_FinalizeArrayBuffer`回调函数的调用时机具有不确定性（可能是GC期间，也可能是虚拟机销毁期间等），回调时JSVM环境可能已经销毁，因此`JSVM_FinalizeArrayBuffer`的`env`参数始终是NULL。
+
+- 回调函数仅做资源释放，不要执行复杂逻辑。回调函数中不能调用其他JSVM API。
+
+- 回调函数可能在非JSVM主线程上调用，如果回调需要访问共享状态，必须使用原子操作或锁进行同步。
+
+- 根据`copied`参数决定内存的释放策略，详见[使用JSVM-API接口从外部内存创建ArrayBuffer](../../napi/use-jsvm-about-external-arraybuffer.md)。
+
+**起始版本：** 26.0.0
+
 ### JSVM_OutputStream()
 
 ```c
@@ -607,7 +638,7 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* str
 
 **描述**
 
-ASCII输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
+输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
 
 **起始版本：** 12
 
@@ -628,6 +659,18 @@ typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSV
 GC回调的函数指针类型。
 
 **起始版本：** 18
+
+### JSVM_HandlerForHeapThreshold()
+
+```c
+typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)
+```
+
+**描述**
+
+堆内存阈值回调的函数指针类型。
+
+**起始版本：** 26.0.0
 
 ### JSVM_HandlerForOOMError()
 

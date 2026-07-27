@@ -16,7 +16,7 @@ The module provides APIs for you to install, uninstall, and recover bundles on d
 >
 > The APIs provided by this module are system APIs.
 
-## BundleInstaller.install<sup>(deprecated)<sup>
+## BundleInstaller.install<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -71,7 +71,7 @@ bundleInstall.getBundleInstaller().then(installer => {
 });
 ```
 
-## BundleInstaller.uninstall<sup>(deprecated)<sup>
+## BundleInstaller.uninstall<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -125,7 +125,7 @@ bundleInstall.getBundleInstaller().then(installer => {
   console.error('getBundleInstaller failed. Cause: ' + message);
 });
 ```
-## BundleInstaller.recover<sup>(deprecated)<sup>
+## BundleInstaller.recover<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -167,11 +167,11 @@ let installParam: bundleInstall.InstallParam = {
 };
 
 bundleInstall.getBundleInstaller().then(installer => {
-  installer.uninstall(bundleName, installParam, err => {
+  installer.recover(bundleName, installParam, err => {
     if (err) {
-      console.error('uninstall failed:' + JSON.stringify(err));
+      console.error('recover failed:' + JSON.stringify(err));
     } else {
-      console.info('uninstall successfully.');
+      console.info('recover successfully.');
     }
   });
 }).catch((error: BusinessError) => {
@@ -180,7 +180,7 @@ bundleInstall.getBundleInstaller().then(installer => {
 });
 ```
 
-## InstallParam<sup>(deprecated)<sup>
+## InstallParam<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -198,7 +198,7 @@ Describes the parameters required for bundle installation, recovery, or uninstal
 | installFlag | number  | No | No | Installation flag.<br>The value can be:<br>**1** (default): overwrite installation.<br>**16**: installation-free.|
 | isKeepData  | boolean | No | No | Whether to retain the bundle data when the application is uninstalled. The default value is **false**. **true** to retain, **false** otherwise.|
 
-## InstallStatus<sup>(deprecated)<sup>
+## InstallStatus<sup>(deprecated)</sup>
 
 Describes the bundle installation or uninstall status.
 
@@ -209,7 +209,7 @@ Describes the bundle installation or uninstall status.
 | Name         | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | status        | bundle.[InstallErrorCode](js-apis-Bundle.md#installerrorcodedeprecated) | No  | No  | Installation or uninstall error code. The value must be defined in [InstallErrorCode](js-apis-Bundle.md#installerrorcodedeprecated).|
-| statusMessage | string                                                       | No  | No  | Installation or uninstall status message.  <br> **SUCCESS**: Installation succeeded.<br> **STATUS_INSTALL_FAILURE**: Installation failed (no installation file exists).<br> **STATUS_INSTALL_FAILURE_ABORTED**: Installation aborted.<br> **STATUS_INSTALL_FAILURE_INVALID**: Invalid installation parameter.<br> **STATUS_INSTALL_FAILURE_CONFLICT**: Installation conflict. (The basic information of the new version is inconsistent with that of the currently installed application.)<br> **STATUS_INSTALL_FAILURE_STORAGE**: Failed to store the bundle information.<br> **STATUS_INSTALL_FAILURE_INCOMPATIBLE**: Installation incompatible. (Commonly occurs during an unsupported version downgrade or due to incorrect signature information.)<br> **STATUS_UNINSTALL_FAILURE**: Uninstall failed. (The application to be uninstalled is not found.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall aborted. (This error code is not in use.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall conflict. (Failed to uninstall a system application or end the application process.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT**: Installation failed. (Download timed out.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED**: Installation failed. (Download failed.)<br> **STATUS_RECOVER_FAILURE_INVALID**: Failed to restore the pre-installed application.<br> **STATUS_ABILITY_NOT_FOUND**: Ability not found.<br> **STATUS_BMS_SERVICE_ERROR**: BMS service error.<br> **STATUS_FAILED_NO_SPACE_LEFT**: Insufficient device space.<br> **STATUS_GRANT_REQUEST_PERMISSIONS_FAILED**: Application authorization failed.<br> **STATUS_INSTALL_PERMISSION_DENIED**: No installation permission.<br> **STATUS_UNINSTALL_PERMISSION_DENIED**: No uninstall permission.|
+| statusMessage | string                                                       | No  | No  | Installation or uninstall status message.  <br> **SUCCESS**: Installation succeeded.<br> **STATUS_INSTALL_FAILURE**: Installation failed (no installation file exists).<br> **STATUS_INSTALL_FAILURE_ABORTED**: Installation aborted.<br> **STATUS_INSTALL_FAILURE_INVALID**: Invalid installation parameter.<br> **STATUS_INSTALL_FAILURE_CONFLICT**: Installation conflict. (The basic information of the application to update is inconsistent with that of the existing application.)<br> **STATUS_INSTALL_FAILURE_STORAGE**: Failed to store the bundle information.<br> **STATUS_INSTALL_FAILURE_INCOMPATIBLE**: Installation incompatibility. (A downgrade occurs or the signature information is incorrect.)<br> **STATUS_UNINSTALL_FAILURE**: Uninstallation failed. (The application to be uninstalled is not found.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstallation aborted. (This error code is not in use.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstallation conflict. (Failed to uninstall a system application or end the application process.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT**: Installation failed. (Download timed out.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED**: Installation failed. (Download failed.)<br> **STATUS_RECOVER_FAILURE_INVALID**: Failed to restore the pre-installed application.<br> **STATUS_ABILITY_NOT_FOUND**: Ability not found.<br> **STATUS_BMS_SERVICE_ERROR**: BMS service error.<br> **STATUS_FAILED_NO_SPACE_LEFT**: Insufficient device space.<br> **STATUS_GRANT_REQUEST_PERMISSIONS_FAILED**: Application authorization failed.<br> **STATUS_INSTALL_PERMISSION_DENIED**: No installation permission.<br> **STATUS_UNINSTALL_PERMISSION_DENIED**: No uninstallation permission.|
 
 ## Obtaining the Sandbox Path
 For the FA model, the sandbox path of a bundle can be obtained using the APIs in [Context](js-apis-inner-app-context.md). For the stage model, the sandbox path can be obtained using the property in [Context](js-apis-inner-application-uiAbilityContext-sys.md#uiabilitycontext). The following describes how to obtain the sandbox path.

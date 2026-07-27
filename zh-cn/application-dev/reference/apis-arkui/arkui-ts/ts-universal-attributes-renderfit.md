@@ -1,8 +1,8 @@
 # 组件内容填充方式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## renderFit
 
@@ -52,7 +54,7 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
+| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
 
 **返回值：**
 
@@ -83,23 +85,23 @@ struct RenderFitExample {
 
   build() {
     Column() {
-      Text("Hello")
+      Text('Hello')
         .width(this.width1)
         .height(this.height1)
         .borderWidth(1)
         .textAlign(TextAlign.Start)
-        .renderFit(RenderFit.LEFT)// 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
+        .renderFit(RenderFit.LEFT) // 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
         .margin(20)
 
-      Text("Hello")
+      Text('Hello')
         .width(this.width1)
         .height(this.height1)
         .textAlign(TextAlign.Center)
         .borderWidth(1)
-        .renderFit(RenderFit.CENTER)// 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
+        .renderFit(RenderFit.CENTER) // 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
         .margin(20)
 
-      Button("animate")
+      Button('animate')
         .onClick(() => {
           this.getUIContext()?.animateTo({ curve: Curve.Ease }, () => {
             if (this.flag) {
@@ -112,7 +114,7 @@ struct RenderFitExample {
             this.flag = !this.flag;
           })
         })
-    }.width("100%").height("100%").alignItems(HorizontalAlign.Center)
+    }.width('100%').height('100%').alignItems(HorizontalAlign.Center)
   }
 }
 ```

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 Context模块提供了ability或application的上下文的能力，包括访问特定应用程序的资源等。
 
@@ -31,9 +31,9 @@ createBundleContext(bundleName: string): Context
 
 > **说明：**
 >
-> stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
+> Stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext)替代。
 >
-> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -90,7 +90,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -194,7 +194,7 @@ export default class EntryAbility extends UIAbility {
 
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
-该接口用于OEM厂商预置的[系统级HSP](../../quick-start/application-package-glossary.md#系统级hsp)创建自己的[ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager)。
+该接口用于OEM厂商预置的[系统级HSP](../../quick-start/application-package-glossary.md#系统级hsp)创建自己的[resmgr.ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager)。
 
 **系统接口**：此接口为系统接口。
 
@@ -204,7 +204,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 | 参数名       | 类型     | 必填   | 说明   |
 | -------- |--------| ---- |------|
-| bundleName | string | 是    | 包名。  |
+| bundleName | string | 是    | Bundle名称。  |
 | moduleName | string | 是    | 模块名。 |
 
 **错误码**：

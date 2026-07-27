@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## Overview
@@ -26,7 +26,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset, which provides information about a data asset.|
+| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset,<br>which provides information about a data asset.|
 
 ### Enums
 
@@ -128,7 +128,7 @@ Sets the absolute path (URI) of an asset in the system.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| const char *uri |  Pointer to the URI to set.|
+| const char *uri | Pointer to the URI to set.|
 
 **Returns**
 
@@ -180,7 +180,7 @@ Sets the creation time for an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t createTime | Creation time to set.|
+| int64_t createTime | Creation time to set. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -206,7 +206,7 @@ Sets the last modification time for a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t modifyTime | Last modification time to set.|
+| int64_t modifyTime | Last modification time to set. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -232,7 +232,7 @@ Sets the size of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| size_t size | Size of the data asset to set.|
+| size_t size | Size of the space to be occupied, in bytes. The value is a non-negative integer.|
 
 **Returns**
 
@@ -258,7 +258,7 @@ Sets the status of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| [Data_AssetStatus](#data_assetstatus) status | Status to set. For details, see [Data_AssetStatus](capi-data-asset-h.md#data_assetstatus).|
+| [Data_AssetStatus](#data_assetstatus) status | Status to set. For details, see [Data_AssetStatus](#data_assetstatus).|
 
 **Returns**
 
@@ -365,7 +365,7 @@ Obtains the creation time of a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t *createTime | Pointer to the creation time obtained, in int64_t format.|
+| int64_t *createTime | Pointer to the creation time obtained, in int64_t format. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -395,7 +395,7 @@ Obtains the last modification time of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t *modifyTime | Pointer to the last modification time obtained, in int64_t format.|
+| int64_t *modifyTime | Pointer to the last modification time obtained, in int64_t format. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -447,7 +447,7 @@ Obtains the status of a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| [Data_AssetStatus](#data_assetstatus) *status | Pointer to the [Data_AssetStatus](capi-data-asset-h.md#data_assetstatus) obtained.|
+| [Data_AssetStatus](#data_assetstatus) *status | Pointer to the [Data_AssetStatus](#data_assetstatus) obtained.|
 
 **Returns**
 
@@ -471,7 +471,7 @@ Creates a [Data_Asset](capi-rdb-data-asset.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.|
+| [Data_Asset](capi-rdb-data-asset.md) * | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone) API to release the memory.|
 
 ### OH_Data_Asset_DestroyOne()
 
@@ -514,13 +514,13 @@ Creates a specified number of [Data_Asset](capi-rdb-data-asset.md) instances.
 
 | Name| Description|
 | -- | -- |
-| uint32_t count | Number of data assets to create.|
+| uint32_t count | Number of [Data_Asset](capi-rdb-data-asset.md) instances to be created.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.|
+| [Data_Asset](capi-rdb-data-asset.md) ** | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) struct pointer array created if the operation is successful; returns **NULL** otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple) API to release the memory.|
 
 ### OH_Data_Asset_DestroyMultiple()
 
@@ -539,7 +539,7 @@ Destroys multiple [Data_Asset](capi-rdb-data-asset.md) objects and reclaims the 
 
 | Name| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) **assets | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
+| [Data_Asset](capi-rdb-data-asset.md) **assets | Pointer to the [Data_Asset](capi-rdb-data-asset.md) struct pointer array.|
 | uint32_t count | Number of [Data_Asset](capi-rdb-data-asset.md) objects to be destroyed.|
 
 **Returns**

@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，可以通过[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的应用包信息，其中参数[bundleFlags](js-apis-bundleManager.md#bundleflag)指定所返回的[BundleInfo](js-apis-bundleManager-bundleInfo.md)中所包含的信息。
 
@@ -22,6 +22,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                              | string                                                       | 是   | 否   | 应用包的名称，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的bundleName字段。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -40,6 +41,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | routerMap<sup>12+</sup>           | Array\<[RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12)>           | 是   | 否   | 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | appIndex<sup>12+</sup>    | number    | 是   | 否   | 应用包的分身索引标识，仅在分身应用中生效。 |
 | firstInstallTime<sup>18+</sup>                        | number                                                       | 是   | 是   | 应用在当前设备的首次安装时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒，预置应用的首次安装时间戳为1533657660000。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| buildVersion<sup>23+</sup>                        | string                                                       | 是   | 是   | 应用包的构建版本号，用于标识相同发布版本下的不同构建版本包，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的buildVersion字段。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## ReqPermissionDetail
@@ -64,7 +66,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## UsedScene
 
-描述权限使用的场景和时机。
+描述权限的使用场景和时机，帮助开发者合理申请和使用权限。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -77,7 +79,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## SignatureInfo
 
-描述应用包的签名信息。
+描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -90,7 +92,7 @@ import { bundleManager } from '@kit.AbilityKit';
 |appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识。详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
 |certificate<sup>14+</sup>| string         | 是   | 是   | 应用的证书公钥。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。            |
 
-## AppCloneIdentity<sup>14+<sup>
+## AppCloneIdentity<sup>14+</sup>
 
 描述应用包的身份信息。
 
@@ -99,4 +101,20 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName | string         | 是   | 否   | 应用的bundleName。          |
-| appIndex | number | 是   | 否   | 应用包的分身索引信息。 |
+| appIndex | number | 是   | 否   | 应用包的分身索引信息。取值为整数，范围：[0-5]，0表示主应用，1-5等表示分身应用。 |
+
+## AlternateIconInfo
+
+描述应用备用图标信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | --------------| ---- | ---- | ---------------------------|
+| iconName | string         | 是   | 否   | 备用图标的名称。          |
+| iconId   | number         | 是   | 否   | 备用图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。       |
+| enabled  | boolean        | 是   | 否   | 备用图标是否启用。<br/>true：表示当前备用图标启用。<br/>false：表示当前备用图标未启用。<br/>**说明：** 应用最多只能启用一个备用图标。       |

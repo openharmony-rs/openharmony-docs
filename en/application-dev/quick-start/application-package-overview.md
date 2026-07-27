@@ -17,7 +17,7 @@ The system provides an efficient management mechanism for application packages. 
 
 ## Multi-Module Design Mechanism
 
-- **Modular development**: An application may provide a wide range of features. It is a good practice to divide and manage application features by module. During development, you can develop each functional module as an independent module, which contains source code, resource files, third-party libraries, and configuration files (also called profiles). Each module can be built independently to implement specific features. This modular, loosely coupling mode facilitates application development, maintenance, and expansion.
+- **Modular development**: An application may provide a wide range of features. It is a good practice to divide and manage application features by module. During development, you can develop each functional module as an independent module, which contains source code, resource files, third-party libraries, and configuration files. Each module can be built independently to implement specific features. This modular, loosely coupling mode facilitates application development, maintenance, and expansion.
 
 - **Multi-device adaptation**: You may want your application to deliver features specific to device types. With the multi-module design mechanism, you can achieve this purpose by specifying the supported device types for each of the modules in your application. You can configure some modules to support all device types, and some to support only one or more device types (such as tablet). In this way, the AppGallery can distribute application packages to specified device types, with appropriate filtering, matching, and combination.
 
@@ -71,10 +71,10 @@ You can select a package type for development based on application requirements.
 | Including resource files and .so files| √  |√ |√|
 | Depending on other HARs| √ |√  |√  |
 | Depending on other HSPs| √ |√  |√  |
-| Being installed or run on a device separately| √ |× |× |
+| Being installed or run on a device separately| √ |× |√ |
 
 > **NOTE**
 >
-> - If the HAR supports the declaration of the **pages** tag, when the HAR is packaged into the HAP or HSP, the relative paths of **pages** existing in the HAR and HAP/HSP may be duplicated, disabling the specific routing page from being identified. Therefore, the configuration file of a HAR does not support declaration of the **pages** tag. Still, it can include pages, which can be redirected through **Navigation**.
+> - If the HAR supports the declaration of the **pages** tag, when the HAR is packaged into the HAP or HSP, the relative paths of **pages** existing in the HAR and HAP/HSP may be duplicated, disabling the specific routing page from being identified. Therefore, the configuration file of a HAR does not support declaration of the **pages** tag. Still, it can include pages, which can be redirected through [Navigation](../ui/arkts-navigation-jump.md#routing-operations).
 > - As the HSP supports only intra-application sharing, a HAR that depends on any HSP can be shared only within the same application. Do not release such a HAR to a second-party or third-party repository for other applications to use: Using it in other applications will result in build failures.
 > - HAR and HSP do not support cyclic dependency or dependency transfer. For details, see the constraints in [HAR](har-package.md#constraints) and [HSP](in-app-hsp.md#constraints).

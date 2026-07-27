@@ -16,14 +16,14 @@ Media queries are widely used on mobile devices. You can use them to modify the 
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > The **media** attribute uses the actual size, physical pixel, and screen resolution of the device by default. Do not confuse them with the configuration based on basic screen width 720 px.
 
 
 ## CSS Syntax Rules
 
-Use **\@media** to import query statements. The rule is as follows:
+Use **@media** to import query statements. The rule is as follows:
 
 
 ```css
@@ -34,13 +34,13 @@ Use **\@media** to import query statements. The rule is as follows:
 
 Example:
 
-\@media screen and (round-screen: true) { … } // The condition is met when the device screen is round.
+\@media screen and (round-screen: true) { ... } // The condition is met when the device screen is round.
 
-\@media (max-height: 800) { … } // Range query. CSS level 3 is used.
+\@media (max-height: 800) { ... } // Range query. CSS level 3 is used.
 
 \@media (height &lt;= 800) { ... } // Range query. CSS level 4 is used, and the statement is equivalent to that of CSS level 3.
 
-\@media screen and (device-type: tv) or (resolution &lt; 2) { … } // Multi-condition query that contains the media type and multiple media features.
+\@media screen and (device-type: tv) or (resolution &lt; 2) { ... } // Multi-condition query that contains the media type and multiple media features.
 
 
 ## Referencing Resources on a Page
@@ -48,14 +48,14 @@ Example:
 Use **@import** to import a media query. The rule is as follows:
 
 
-```
+```js
 @import url [media-type] [and|not|only] [(media-feature)];
 ```
 
 Example:
 
 
-```
+```js
 @import '../common/style.css' screen and (min-width: 600) and (max-width: 1200);
 ```
 
@@ -69,17 +69,17 @@ Example:
 
 ## Media Logical Operation
 
-Media logical operators (and, or, not, and only) are used to implement complex media query. They can also be combined using comma (,). The following table describes the operators.
+You can use logical operators (**and**, **or**, **not**, and **only**) to compose complex media queries. You can also combine them using comma (,). The following table describes the operators.
 
   **Table 1** Media logical operators
 
 | Type| Description|
 | -------- | -------- |
-| and | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions.<br>For example, **screen and (device-type: wearable) and (max-height: 600)** indicates that the query is valid when the device type is wearable and the maximum height of the application is 600 pixel units.|
+| and | The **and** logical operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions.<br>For example, **screen and (device-type: wearable) and (max-height: 600)** indicates that the query is valid when the device type is wearable and the maximum height of the application is 600 pixel units.|
 | not | The **not** operator is used to perform a logical negation for a media query. **true** is returned if the query condition is not met. Otherwise, **false** is returned. In a media query list, logical negation is performed only for the media query using the **not** operator.<br>For example, **not screen and (min-height: 50) and (max-height: 600)** indicates that the query is valid when the height of the application is less than 50 pixel units or greater than 600 pixel units.<br>You must specify the media type when using the **not** operator.|
-| only | The **only** operator applies the selected style only when the entire expression is matched. It can be used to prevent ambiguity on browsers of earlier versions. The statements that contain both media types and media features produce ambiguity when they are received by some browsers of earlier versions. For example:<br>screen and (min-height: 50)<br>The browsers of earlier versions would mislead this sentence into screen, causing the fact that the specified style is applied when only the media type is matched. In this case, the **only** operator can be used to avoid this problem.<br>You must specify the media type when using the **only** operator.|
-| ,(comma) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator.<br>For example, **screen and (min-height: 1000),  (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
-| or | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true.<br>For example, **screen and (max-height: 1000) or  (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
+| only | The **only** operator applies the selected style only when the entire expression is matched. It can be used to prevent ambiguity on browsers of earlier versions. The statements that contain both media types and media features produce ambiguity when they are received by some browsers of earlier versions. For example:<br>screen&nbsp;and&nbsp;(min-height:&nbsp;50)<br>the browsers of earlier versions would mislead this sentence into **screen**, causing the fact that the specified style is applied when only the media type is matched. In this case, the **only** operator can be used to avoid this issue.<br>You must specify the media type when using the **only** operator.|
+| ,(comma) | The comma operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator.<br>For example, **screen and (min-height: 1000), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
+| or | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true.<br>For example, **screen and (max-height: 1000) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
 
 At MediaQuery Level 4, range query is imported so that you can use the operators including &lt;=, &gt;=, &lt;, and &gt; besides the max- and min-operators.
 
@@ -87,10 +87,10 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 
 | Type| Description|
 | -------- | -------- |
-| &lt;= | Less than or equal to, for example, **screen and (height &lt;= 50)**.|
-| &gt;= | Greater than or equal to, for example, **screen and (height &gt;= 600)**.|
-| &lt; | Less than, for example, **screen and (height &lt; 50)**.|
-| &gt; | Greater than, for example, **screen and (height &gt; 600)**.|
+| &lt;= | Less than or equal to, for example, **screen and (height <= 50)**.|
+| &gt;= | Greater than or equal to, for example, **screen and (height >= 600)**.|
+| &lt; | Less than, for example, **screen and (height < 50)**.|
+| &gt; | Greater than, for example, **screen and (height > 600)**.|
 
 
 ## Media Features
@@ -107,7 +107,7 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | min-resolution | Minimum device resolution.|
 | max-resolution | Maximum device resolution.|
 | orientation | Screen orientation.<br>Options are as follows:<br>- orientation: portrait<br>- orientation: landscape|
-| aspect-ratio | Ratio of the width to the height of the display area on the application page.<br>Example: **aspect-ratio:1/2**|
+| aspect-ratio | Ratio of the width to the height of the display area on the application page.<br>Example: **aspect-ratio: 1/2**|
 | min-aspect-ratio | Minimum ratio of the width to the height of the display area on the application page.|
 | max-aspect-ratio | Maximum ratio of the width to the height of the display area on the application page.|
 | device-height | Height of the device.|

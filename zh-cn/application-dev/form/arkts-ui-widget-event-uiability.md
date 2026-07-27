@@ -1,9 +1,9 @@
 # 通过router或call事件刷新卡片内容
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 使用router事件，点击卡片可拉起对应应用的UIAbility至前台，并刷新卡片。使用call事件，点击卡片可拉起对应应用的UIAbility至后台，并刷新卡片。在卡片页面中可以通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口触发router事件或者call事件拉起UIAbility，然后由UIAbility刷新卡片内容，下面是这种刷新方式的简单示例。
@@ -16,9 +16,10 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。
   
-    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) -->
+    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
     let storageUpdateRouter = new LocalStorage();
     
     @Entry(storageUpdateRouter)
@@ -79,6 +80,7 @@
     <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -94,7 +96,7 @@
       }
     
       handleFormRouterEvent(want: Want, source: string): void {
-        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${JSON.stringify(want)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${want.parameters?.params as string}`);
         if (want.parameters && want.parameters[formInfo.FormParam.IDENTITY_KEY] !== undefined) {
           let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
           // want.parameters.params 对应 postCardAction() 中 params 内容
@@ -104,17 +106,17 @@
             'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
           };
           let formMsg = formBindingData.createFormBindingData(formData);
-          formProvider.updateForm(curFormId, formMsg).then((data) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.', JSON.stringify(data));
+          formProvider.updateForm(curFormId, formMsg).then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm failed.', JSON.stringify(error));
+            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
           });
         }
       }
     
       // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', JSON.stringify(want));
+        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', want.parameters?.params as string);
         this.handleFormRouterEvent(want, 'onNewWant');
       }
     
@@ -122,24 +124,25 @@
     
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
     
-        windowStage.loadContent('pages/Index', (err, data) => {
+        windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
             return;
           }
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
         });
       }
     }
     ```
-
+    
 ## 通过call事件刷新卡片内容
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发call事件拉起UIAbility至后台。
   
-    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) -->
+    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
     let storageUpdateCall = new LocalStorage();
     
     @Entry(storageUpdateCall)
@@ -201,6 +204,7 @@
     <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -247,10 +251,10 @@
           'calleeDetail': message
         };
         let formMsg: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(curFormId, formMsg).then((data) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success. ${JSON.stringify(data)}`);
+        formProvider.updateForm(curFormId, formMsg).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success.`);
         }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed: ${JSON.stringify(error)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
         });
       }
       return new MyParcelable(CONST_NUMBER_1, 'aaa');
@@ -262,26 +266,25 @@
           // 监听call事件所需的方法
           this.callee.on(MSG_SEND_METHOD, funACall);
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${error.code}, error message: ${error.message}`);
         }
-        ;
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
     
-        windowStage.loadContent('pages/Index', (err, data) => {
+        windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content.error code: ${err.code}, error message: ${err.message}`);
             return;
           }
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
         });
       }
     }
     ```
-
+    
   要拉起UIAbility至后台，需要在`module.json5`配置文件中，配置`ohos.permission.KEEP_BACKGROUND_RUNNING`权限。
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
     

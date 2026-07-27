@@ -24,9 +24,9 @@ start(callback: AsyncCallback\<void\>): void
 
 Starts to output metadata. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -65,9 +65,9 @@ start(): Promise\<void\>
 
 Starts to output metadata. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value**
 
@@ -104,9 +104,9 @@ stop(callback: AsyncCallback\<void\>): void
 
 Stops outputting metadata. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -136,9 +136,9 @@ stop(): Promise\<void\>
 
 Stops outputting metadata. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value**
 
@@ -170,15 +170,15 @@ Subscribes to events indicating available metadata objects. This API uses an asy
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
 | Name     | Type        | Mandatory| Description                                 |
 | -------- | -------------- | ---- | ------------------------------------ |
-| type     | string         | Yes  | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created. This event is triggered and the corresponding metadata is returned when valid metadata is detected.|
+| type     | string         | Yes  | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created.<br>This event is triggered and the corresponding metadata is returned when valid metadata is detected. If the input field is incorrect, no valid listening will be created.|
 | callback | AsyncCallback\<Array\<[MetadataObject](arkts-apis-camera-i.md#metadataobject)\>\> | Yes  | Callback used to return the metadata.|
 
 **Example**
@@ -205,9 +205,9 @@ off(type: 'metadataObjectsAvailable', callback?: AsyncCallback\<Array\<MetadataO
 
 Unsubscribes from events indicating available metadata objects.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -234,9 +234,9 @@ Subscribes to metadata error events. This API uses an asynchronous callback to r
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -265,9 +265,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 Unsubscribes from metadata error events.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
@@ -281,5 +281,205 @@ Unsubscribes from metadata error events.
 ```ts
 function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): void {
   metadataOutput.off('error');
+}
+```
+
+## addMetadataObjectTypes<sup>23+</sup> 
+
+addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+Adds the types of metadata objects to be detected.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name                 | Type                                              | Mandatory| Description                         |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.        |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.addMetadataObjectTypes(types);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+## removeMetadataObjectTypes<sup>23+</sup> 
+
+removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+Removes the types of metadata objects to be detected.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name                 | Type                                              | Mandatory| Description                         |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.                                   |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.removeMetadataObjectTypes(types);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+## isLockMetadataObjectTrackingSupported
+
+isLockMetadataObjectTrackingSupported(): boolean
+
+Checks whether the device supports the function of locking a metadata object (such as a cat or dog face) for tracking.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type                    | Description                    |
+| ----------------------  | ------------------------ |
+| boolean          | Whether the device supports the function of locking a metadata object for tracking. **true** if supported; **false** otherwise.|
+
+**Example**
+
+```ts
+function checkLockMetadataSupport(metadataOutput: camera.MetadataOutput): void {
+  let isSupported: boolean = metadataOutput.isLockMetadataObjectTrackingSupported();
+  console.info(`Lock metadata object tracking supported: ${isSupported}`);
+}
+```
+
+## lockMetadataObjectTracking
+
+lockMetadataObjectTracking(point: Point): void
+
+Locks a metadata object (such as a cat or dog face) for tracking.
+ 
+> **NOTE**
+>
+> - This function tracks the object pointed to by **point**. If such object does not exist, this function does not take effect.
+> - Locking for tracking is automatically canceled when the tracked object has left the viewfinder range for more than three seconds or the object is unlocked.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name                 | Type                                              | Mandatory| Description                         |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| point  | [Point](arkts-apis-camera-i.md#point)  | Yes | Point used to lock the metadata object for tracking.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                  |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function lockMetadata(metadataOutput: camera.MetadataOutput, point: camera.Point): void {
+  try {
+    metadataOutput.lockMetadataObjectTracking(point);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`lockMetadataObjectTracking error. error code: ${err.code}`);
+  }
+}
+```
+
+## unlockMetadataObjectTracking
+
+unlockMetadataObjectTracking(): void
+
+Unlocks the metadata object (such as a cat or dog face) for tracking.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unlockMetadata(metadataOutput: camera.MetadataOutput): void {
+  try {
+    metadataOutput.unlockMetadataObjectTracking();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`unlockMetadataObjectTracking error. error code: ${err.code}`);
+  }
 }
 ```

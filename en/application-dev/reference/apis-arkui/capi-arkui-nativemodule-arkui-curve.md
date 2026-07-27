@@ -1,8 +1,8 @@
 # ArkUI_Curve
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_Curve ArkUI_Curve
 
 ## Overview
 
-Defines an interpolation curve.
+Defines an interpolation curve object, which is used to calculate the interpolation of an animation attribute value.
 
 **Since**: 12
 

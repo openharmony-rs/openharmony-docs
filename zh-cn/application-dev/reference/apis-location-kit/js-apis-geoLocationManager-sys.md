@@ -59,7 +59,20 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | 否 | 是 | true：地名信息来自于逆地理编码模拟功能。<br/>false：地名信息不是来自于逆地理编码模拟功能。<br/>**系统API**：此接口为系统接口。 |
+| isFromMock | Boolean | 否 | 是 | true：地名信息来自于逆地理编码模拟功能。<br/>false：地名信息不是来自于逆地理编码模拟功能。<br/>**系统接口**：此接口为系统接口。 |
+
+
+## GeofenceTransitionEvent<sup>12+</sup>
+
+地理围栏事件。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | 该事件表示设备正在接近地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | 该事件表示设备已离开地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
 
 
 ## Location
@@ -68,10 +81,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br/>**系统API**：此接口为系统接口。 |
-
 
 ## ReverseGeocodingMockInfo
 
@@ -79,12 +88,12 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | 否 | 否 | 表示经纬度信息。 **系统API**：此接口为系统接口。|
-| geoAddress |  [GeoAddress](#geoaddress) | 否 | 否 |表示地名信息。 **系统API**：此接口为系统接口。|
+| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | 否 | 否 | 表示经纬度信息。 <br>**系统接口**：此接口为系统接口。|
+| geoAddress |  [GeoAddress](#geoaddress) | 否 | 否 |表示地名信息。 <br>**系统接口**：此接口为系统接口。|
 
 
 ## LocationMockConfig
@@ -93,12 +102,12 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| timeInterval | number | 否 | 否 | 表示模拟位置上报的时间间隔，单位是秒。 **系统API**：此接口为系统接口。|
-| locations | Array&lt;[Location](#location)&gt; | 否 | 否 | 表示模拟位置数组。 **系统API**：此接口为系统接口。|
+| timeInterval | number | 否 | 否 | 表示模拟位置上报的时间间隔，单位是秒。 <br>**系统接口**：此接口为系统接口。|
+| locations | Array&lt;[Location](#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -106,30 +115,17 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | 否 | 否 | 表示请求获取数据的类型。 **系统API**：此接口为系统接口。|
-| needStartScan |  boolean | 否 | 否 | true：需要发起扫描。<br/>false：不需要发起扫描。 **系统API**：此接口为系统接口。|
-| scanInterval |  number | 否 | 是 | 表示扫描的时间间隔。单位是毫秒，默认值是10000毫秒，取值范围为大于0。 **系统API**：此接口为系统接口。|
-| scanTimeout |  number | 否 | 是 | 表示单次扫描的超时时间。单位是毫秒，默认值是10000毫秒，取值范围为大于0小于600000。 **系统API**：此接口为系统接口。|
-| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 **系统API**：此接口为系统接口。|
-| arfcn<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示绝对无线载频信道号（Absolute Radio Frequency Channel Number，ARFCN）。 **系统API**：此接口为系统接口。|
-| plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） **系统API**：此接口为系统接口。|
-
-
-## ContinuousLocationRequest<sup>12+</sup>
-
-持续定位的请求参数。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | 否 | 是 | 表示运动类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。**系统API**：此接口为系统接口。|
+| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | 否 | 否 | 表示请求获取数据的类型。 <br>**系统接口**：此接口为系统接口。|
+| needStartScan |  boolean | 否 | 否 | true：需要发起扫描。<br/>false：不需要发起扫描。 <br>**系统接口**：此接口为系统接口。|
+| scanInterval |  number | 否 | 是 | 表示扫描的时间间隔。单位是毫秒，默认值是10000毫秒，取值范围为大于0。 <br>**系统接口**：此接口为系统接口。|
+| scanTimeout |  number | 否 | 是 | 表示单次扫描的超时时间。单位是毫秒，默认值是10000毫秒，取值范围为大于0小于600000。 <br>**系统接口**：此接口为系统接口。|
+| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示绝对无线载频信道号（Absolute Radio Frequency Channel Number，ARFCN）。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## LocatingRequiredData<sup>10+</sup>
@@ -138,15 +134,15 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 **系统API**：此接口为系统接口。|
-| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 **系统API**：此接口为系统接口。|
-| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 **系统API**：此接口为系统接口。|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。 **系统API**：此接口为系统接口。|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。 **系统API**：此接口为系统接口。|
+| wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 <br>**系统接口**：此接口为系统接口。|
+| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 <br>**系统接口**：此接口为系统接口。|
+| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -155,15 +151,15 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | WiFi热点的SSID，编码格式为UTF-8。 **系统API**：此接口为系统接口。|
-| bssid | string | 否 | 否 | WiFi热点的BSSID。 **系统API**：此接口为系统接口。|
-| rssi | number | 否 | 否 | WiFi热点的信号强度(dBm)。 **系统API**：此接口为系统接口。|
-| frequency | number | 否 | 否 | WiFi热点的频率。单位是赫兹。 **系统API**：此接口为系统接口。|
-| timestamp | number | 否 | 否 | 时间戳。 **系统API**：此接口为系统接口。|
+| ssid | string | 否 | 否 | WiFi热点的SSID，编码格式为UTF-8。 <br>**系统接口**：此接口为系统接口。|
+| bssid | string | 否 | 否 | WiFi热点的BSSID。<br> **系统接口**：此接口为系统接口。|
+| rssi | number | 否 | 否 | WiFi热点的信号强度(dBm)。<br> **系统接口**：此接口为系统接口。|
+| frequency | number | 否 | 否 | WiFi热点的频率。单位是赫兹。 <br>**系统接口**：此接口为系统接口。|
+| timestamp | number | 否 | 否 | 时间戳，单位微秒。<br> **系统接口**：此接口为系统接口。|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -172,14 +168,14 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | 否 | 否 | 蓝牙设备名称。 **系统API**：此接口为系统接口。|
-| macAddress | string | 否 | 否 | 蓝牙设备的MAC地址。 **系统API**：此接口为系统接口。|
-| rssi | number | 否 | 否 | 蓝牙设备的信号强度(dBm)。 **系统API**：此接口为系统接口。|
-| timestamp | number | 否 | 否 | 时间戳。 **系统API**：此接口为系统接口。|
+| deviceName | string | 否 | 否 | 蓝牙设备名称。<br> **系统接口**：此接口为系统接口。|
+| macAddress | string | 否 | 否 | 蓝牙设备的MAC地址。<br> **系统接口**：此接口为系统接口。|
+| rssi | number | 否 | 否 | 蓝牙设备的信号强度(dBm)。<br> **系统接口**：此接口为系统接口。|
+| timestamp | number | 否 | 否 | 时间戳，单位微秒。<br> **系统接口**：此接口为系统接口。|
 
 
 ## CellInfo<sup>23+</sup>
@@ -188,20 +184,22 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| timeSinceBoot | number | 否 | 否 | 表示从本次开机到获取位置成功所经过的时间，单位为纳秒。设置飞行模式并解除不记为重启。 **系统API**：此接口为系统接口。|
-| cellId | number | 否 | 否 | 表示蜂窝网络的小区ID。 **系统API**：此接口为系统接口。|
-| lac | number | 否 | 否 | 表示位置区码。 **系统API**：此接口为系统接口。|
-| mcc | number | 否 | 否 | 表示移动国家码。 **系统API**：此接口为系统接口。|
-| mnc | number | 否 | 否 | 表示移动网络代码。 **系统API**：此接口为系统接口。|
-| rat | number | 否 | 否 | 表示无线接入技术。 **系统API**：此接口为系统接口。|
-| signalIntensity | number | 否 | 否 | 表示信号强度。 **系统API**：此接口为系统接口。|
-| arfcn | number | 否 | 否 | 表示绝对无线载频信道号（absolute radio frequency channel number）。 **系统API**：此接口为系统接口。|
-| pci | number | 否 | 否 | 表示物理小区标识。 **系统API**：此接口为系统接口。|
-| additionsMap | Map&lt;string, string&gt; | 否 | 否 | 附加信息。 **系统API**：此接口为系统接口。|
+| timeSinceBoot | number | 否 | 否 | 表示从本次开机到获取位置成功所经过的时间，单位为纳秒。设置飞行模式并解除不记为重启。 <br>**系统接口**：此接口为系统接口。|
+| cellId | number | 否 | 否 | 表示蜂窝网络的小区ID。<br> **系统接口**：此接口为系统接口。|
+| lac | number | 否 | 否 | 表示位置区码。 <br>**系统接口**：此接口为系统接口。|
+| mcc | number | 否 | 否 | 表示移动国家码。 <br>**系统接口**：此接口为系统接口。|
+| mnc | number | 否 | 否 | 表示移动网络代码。<br> **系统接口**：此接口为系统接口。|
+| rat | number | 否 | 否 | 表示无线接入技术。<br> **系统接口**：此接口为系统接口。|
+| signalIntensity | number | 否 | 否 | 表示信号强度。 <br>**系统接口**：此接口为系统接口。|
+| arfcn | number | 否 | 否 | 表示绝对无线载频信道号（absolute radio frequency channel number）。<br> **系统接口**：此接口为系统接口。|
+| pci | number | 否 | 否 | 表示物理小区标识。 <br>**系统接口**：此接口为系统接口。|
+| additionsMap | Map&lt;string, string&gt; | 否 | 否 | 附加信息。 <br>**系统接口**：此接口为系统接口。|
 
 
 ## LocationPrivacyType
@@ -210,13 +208,13 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| OTHERS | 0 | 其他场景。预留字段。 **系统API**：此接口为系统接口。|
-| STARTUP | 1 | 开机向导场景下的隐私协议。在开机时弹出协议，提醒用户阅读并选择是否授权。 **系统API**：此接口为系统接口。|
-| CORE_LOCATION | 2 | 开启网络定位时弹出的隐私协议。 **系统API**：此接口为系统接口。|
+| OTHERS | 0 | 其他场景。预留字段。 <br>**系统接口**：此接口为系统接口。|
+| STARTUP | 1 | 开机向导场景下的隐私协议。在开机时弹出协议，提醒用户阅读并选择是否授权。<br> **系统接口**：此接口为系统接口。|
+| CORE_LOCATION | 2 | 开启网络定位时弹出的隐私协议。<br> **系统接口**：此接口为系统接口。|
 
 ## LocatingRequiredDataType<sup>10+</sup>
 
@@ -224,13 +222,13 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI  | 1 | 表示WiFi扫描信息。 **系统API**：此接口为系统接口。|
-| BLUETOOTH | 2 | 表示蓝牙扫描信息。 **系统API**：此接口为系统接口。|
-| CELLULAR<sup>23+</sup> | 3 | 表示蜂窝小区信息。 **系统API**：此接口为系统接口。|
+| WIFI  | 1 | 表示WiFi扫描信息。<br> **系统接口**：此接口为系统接口。|
+| BLUETOOTH | 2 | 表示蓝牙扫描信息。<br> **系统接口**：此接口为系统接口。|
+| CELLULAR<sup>23+</sup> | 3 | 表示蜂窝小区信息。<br> **系统接口**：此接口为系统接口。|
 
 
 ## LocationIconStatus<sup>12+</sup>
@@ -239,28 +237,13 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| LOCATING_NOT_STARTED  | 0 | 表示当前无定位业务，无需显示定位图标。 **系统API**：此接口为系统接口。|
-| LOCATING_STARTED | 1 | 表示当前在进行普通定位业务，需要显示普通定位图标。 **系统API**：此接口为系统接口。|
-| HD_LOCATING_STARTED | 2 | 表示当前正在进行高精度定位业务，需要显示高精度定位图标。 **系统API**：此接口为系统接口。|
-
-
-## SportsType<sup>18+</sup>
-
-运动类型。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| RUNNING   | 1 |  表示跑步。 |
-| WALKING    | 2 | 表示步行。 |
-| CYCLING     | 3 | 表示骑行。 |
+| LOCATING_NOT_STARTED  | 0 | 表示当前无定位业务，无需显示定位图标。<br> **系统接口**：此接口为系统接口。|
+| LOCATING_STARTED | 1 | 表示当前在进行普通定位业务，需要显示普通定位图标。<br> **系统接口**：此接口为系统接口。|
+| HD_LOCATING_STARTED | 2 | 表示当前正在进行高精度定位业务，需要显示高精度定位图标。<br> **系统接口**：此接口为系统接口。|
 
 
 ## geoLocationManager.on('locatingRequiredDataChange')<sup>10+</sup>
@@ -273,7 +256,7 @@ on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig, callb
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -285,7 +268,7 @@ on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig, callb
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -322,7 +305,7 @@ off(type: 'locatingRequiredDataChange', callback?: Callback&lt;Array&lt;Locating
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -333,7 +316,7 @@ off(type: 'locatingRequiredDataChange', callback?: Callback&lt;Array&lt;Locating
 
 **错误码**：
 
-错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -365,7 +348,7 @@ enableLocation(callback: AsyncCallback&lt;void&gt;): void
 
 打开位置服务，使用callback异步回调。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS 和 ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -379,7 +362,7 @@ enableLocation(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -412,7 +395,7 @@ enableLocation(): Promise&lt;void&gt;
 
 打开位置服务，使用Promise异步回调。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS 和 ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -426,7 +409,7 @@ enableLocation(): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -459,7 +442,7 @@ disableLocation(): void
 
 关闭位置服务。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS 和 ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -467,7 +450,7 @@ disableLocation(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -496,13 +479,13 @@ enableLocationMock(): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -533,13 +516,13 @@ disableLocationMock(): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -572,7 +555,7 @@ setMockedLocations(config: LocationMockConfig): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
@@ -584,7 +567,7 @@ setMockedLocations(config: LocationMockConfig): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -680,13 +663,13 @@ enableReverseGeocodingMock(): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -716,13 +699,13 @@ disableReverseGeocodingMock(): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -754,7 +737,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**: ohos.permission.MOCK_LOCATION
 
@@ -766,7 +749,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -868,7 +851,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -886,7 +869,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -914,7 +897,7 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
 设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS
 
@@ -929,7 +912,7 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -962,7 +945,7 @@ getLocatingRequiredData(config: LocatingRequiredDataConfig): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -978,7 +961,7 @@ getLocatingRequiredData(config: LocatingRequiredDataConfig): Promise&lt;Array&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1016,7 +999,7 @@ on(type: 'locationIconStatusChange', callback: Callback&lt;LocationIconStatus&gt
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1027,7 +1010,7 @@ on(type: 'locationIconStatusChange', callback: Callback&lt;LocationIconStatus&gt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1060,7 +1043,7 @@ off(type: 'locationIconStatusChange', callback?: Callback&lt;LocationIconStatus&
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1071,7 +1054,7 @@ off(type: 'locationIconStatusChange', callback?: Callback&lt;LocationIconStatus&
 
 **错误码**：
 
-错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1105,7 +1088,7 @@ getLocationIconStatus(): LocationIconStatus
 
 **系统能力**：SystemCapability.Location.Location.Core
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1115,7 +1098,7 @@ getLocationIconStatus(): LocationIconStatus
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1142,7 +1125,7 @@ enableLocationByUserId(userId: number): Promise&lt;void&gt;
 
 打开指定系统账号的定位开关，使用Promise异步回调。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS 和 ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -1162,7 +1145,7 @@ enableLocationByUserId(userId: number): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1198,7 +1181,7 @@ disableLocationByUserId(userId: number): void
 
 关闭指定系统账号的定位开关。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_SECURE_SETTINGS 和 ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -1212,7 +1195,7 @@ disableLocationByUserId(userId: number): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1242,7 +1225,7 @@ isLocationEnabledByUserId(userId: number): boolean
 
 判断指定系统账号的位置开关是否开启。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -1260,7 +1243,7 @@ isLocationEnabledByUserId(userId: number): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1291,7 +1274,7 @@ setLocationSwitchIgnored(isIgnored: boolean): void
 
 设置为true后，允许应用在位置开关关闭的场景获取到位置信息，有效时间为从调用接口成功开始的两分钟。
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.LOCATION_SWITCH_IGNORED
 
@@ -1305,7 +1288,7 @@ setLocationSwitchIgnored(isIgnored: boolean): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

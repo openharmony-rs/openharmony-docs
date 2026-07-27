@@ -1,18 +1,18 @@
 # @ohos.PiPWindow (PiP Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. PiP is mainly used in video playback, video calls, or video meetings.
+The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. It is applicable to video playback, video calls, and video conferences.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets, but is unavailable on all other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets.<!--Del--> Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.<!--DelEnd-->
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -26,7 +26,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 isPiPEnabled(): boolean
 
-Checks whether the PiP feature is supported.
+Checks whether the current device supports the PiP feature.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -41,8 +41,8 @@ Checks whether the PiP feature is supported.
 **Example**
 
 ```ts
-let enable: boolean = PiPWindow.isPiPEnabled();
-console.info('isPipEnabled:' + enable);
+let enable: boolean = PiPWindow.isPiPEnabled(); // Check whether the PiP window is supported.
+console.info('isPiPEnabled:' + enable);
 ```
 
 ## PiPWindow.create
@@ -73,8 +73,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                                                        |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **Example**
 
@@ -158,7 +158,7 @@ struct Index {
     };
 
     createPiP() {
-        let promise: Promise<PiPWindow.PiPController> = PiPWindow.create(this.config);
+        let promise: Promise<PiPWindow.PiPController> = PiPWindow.create(this.config);  // Create a PiP controller.
         promise.then((data: PiPWindow.PiPController) => {
             this.pipController = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
@@ -183,7 +183,7 @@ struct Index {
 
 create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;PiPController&gt;
 
-Creates a PiP controller through a type node. This API uses a promise to return the result.
+Creates a PiP controller. This API uses **typeNode** to add a custom UI node for PiP. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -208,8 +208,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                                                        |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **Example**
 
@@ -237,10 +237,10 @@ struct Index {
         type: XComponentType.SURFACE,
         controller: this.xComponentController
     }
-    private xComponent = typeNode.createNode(this.context, 'XComponent', this.options);
+    private xComponent = typeNode.createNode(this.context, 'XComponent', this.options); // Create an XComponent node to render the PiP content.
 
     createPiP() {
-        let promise: Promise<PiPWindow.PiPController> = PiPWindow.create(this.config, this.xComponent);
+        let promise: Promise<PiPWindow.PiPController> = PiPWindow.create(this.config, this.xComponent); // Use typeNode to create a PiP controller.
         promise.then((data: PiPWindow.PiPController) => {
             this.pipController = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
@@ -271,16 +271,16 @@ Defines the parameters for creating a PiP controller.
 |---------------------|----------------------------------------------------------------------------|-----|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No | No| Context environment.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | No | No| Original [XComponent](arkui-ts/ts-basic-components-xcomponent.md) controller.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
-| navigationId        | string                                                           | No | Yes| Navigation ID of the current page. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| handleId<sup>22+</sup>        | number                                                                     | No | Yes| ID of the page to show when users touch [Full-screen Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/pipwindow-overview#section13787164103315) to restore the original screen. This parameter applies only in scenarios where the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages. It can be set to any subpage ID within the Navigation hierarchy. The default value is **-1**, indicating that the topmost page in the Navigation stack is restored. You are advised to use [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) to obtain the page ID. When you use page routing provided by [Navigation](arkui-ts/ts-basic-components-navigation.md), you are advised to use the [system routing table](../../ui/arkts-navigation-cross-package.md#system-routing-table). Otherwise, the page ID obtained by calling [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) may be incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| templateType        | [PiPTemplateType](#piptemplatetype)                                        | No | Yes| Template type, which is used to distinguish video playback, video call, and video meeting scenarios. If no value is passed, the video playback template is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
-| contentWidth        | number                                                                     | No | Yes| Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1920. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the width of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
-| contentHeight       | number                                                           | No | Yes| Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1080. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the height of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
-| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No| Yes | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for an application, the basic components (for example, play/pause of the video playback component group) are displayed. A maximum of three components can be configured in the list.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
-| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI that can be displayed at the top of the PiP window. If no value is passed, custom UI is not used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
+| navigationId        | string                                                           | No | Yes| ID of the **Navigation** component. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility (application component) uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| handleId<sup>22+</sup>        | number                                                                     | No | Yes| ID of the subpage under the **Navigation** component. After the full-screen window button is touched, the specified page is restored. This parameter applies only to the scenario where the UIAbility (application component) uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages. You can set this parameter to the ID of a subpage under **Navigation**. The default value is **-1**, indicating that the topmost page in the Navigation stack is restored. You are advised to use [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) to obtain the page ID. When you use page routing provided by [Navigation](arkui-ts/ts-basic-components-navigation.md), you are advised to use the [system routing table](../../ui/arkts-navigation-cross-package.md#system-routing-table). Otherwise, the page ID obtained by calling [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) may be incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| templateType        | [PiPTemplateType](#piptemplatetype)                                        | No | Yes| Template type, which is used to distinguish video playback, video call, video meeting, and live broadcast scenarios. If no value is passed, the video playback template is used by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| contentWidth        | number                                                                     | No | Yes| Width of the original content, in px. The value is a positive integer. It is used to determine the aspect ratio of the PiP window. When a **PiPController** is created using **typeNode** (that is, the **contentNode** parameter is passed using [PiPWindow.create()](#pipwindowcreate12)), the default value is **1920** if this parameter is not specified. When a **PiPController** is created without using **typeNode** (that is, the **contentNode** parameter is not passed using [PiPWindow.create()](#pipwindowcreate)), the default value is the width of [XComponent](arkui-ts/ts-basic-components-xcomponent.md) if this parameter is not specified.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| contentHeight       | number                                                           | No | Yes| Height of the original content, in px. The value is a positive integer. It is used to determine the aspect ratio of the PiP window. When a **PiPController** is created using **typeNode** (that is, the **contentNode** parameter is passed using [PiPWindow.create()](#pipwindowcreate12)), the default value is **1080** if this parameter is not specified. When a **PiPController** is created without using **typeNode** (that is, the **contentNode** parameter is not passed using [PiPWindow.create()](#pipwindowcreate)), the default value is the height of [XComponent](arkui-ts/ts-basic-components-xcomponent.md) if this parameter is not specified.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No| Yes | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for the application, the panel displays basic components (such as the play/pause component of the video playback component group). If this parameter is set for the application, a maximum of three components can be selected. If more than three controls are selected, error code 401 is reported by the API.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
+| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI controller, which is used to implement the custom UI features on the PiP page. If this parameter is left empty, the custom UI features are not used by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No | Yes| A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                         |
-| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>The value **1** means a small window,<br>and **2** means a large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
-| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | No  | Yes |  Whether the PiP window automatically snaps to screen corners. When this feature is enabled, the screen is divided into four hot zones (top-left, top-right, bottom-left, and bottom-right). When users lift their finger while dragging the PiP window within a hot zone, the PiP window is automatically snapped to the nearest corner.<br>**true**: enables corner snapping.<br>**false**: disables corner snapping.<br>The default value is **true**.<br>**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                                                |
+| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Size of the PiP window that the current application starts for the first time. The value range is [0, 2] and the value must be an integer.<br>**0**: no size is set. The PiP window is started based on the size before the PiP window of the previous application is closed.<br>**1**: small window.<br>**2**: large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
+| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | No  | Yes |  Whether the PiP window automatically snaps to screen corners. When this feature is enabled, the screen is divided into four hot zones (top-left, top-right, bottom-left, and bottom-right). When the PiP window is displayed, it appears in the corresponding corner of the screen based on the position where it disappears last time. The user can drag the window freely, and once the user releases the window, it automatically snaps to the screen edge.<br>**true**: enables corner snapping.<br>**false**: disables corner snapping.<br>The default value is **true**.<br>**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                                                |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -292,9 +292,9 @@ Describes the size of a PiP window.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | Yes  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
-| height | number   | Yes  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
-| scale  | number   | Yes  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
+| width  | number   | No  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
+| height | number   | No  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
+| scale  | number   | No  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
 
 ## PiPWindowInfo<sup>15+</sup>
 
@@ -306,12 +306,12 @@ Describes the PiP window information.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| windowId  | number   | Yes  | No  | ID of the PiP window.|
-| size  | [PiPWindowSize](#pipwindowsize15)  | Yes  | No  | Size of the PiP window.|
+| windowId  | number   | No  | No  | ID of the PiP window, which uniquely identifies the current PiP window instance.|
+| size  | [PiPWindowSize](#pipwindowsize15)  | No  | No  | Size of the PiP window.|
 
 ## PiPTemplateType
 
-Enumerates the PIP template types.
+Enumerates the PiP template types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -319,7 +319,7 @@ Enumerates the PIP template types.
 
 | Name           | Value  | Description                                  |
 |---------------|-----|--------------------------------------|
-| VIDEO_PLAY    | 0   | Video playback template. A PiP window will be started during video playback, and the video playback template is loaded.  |
+| VIDEO_PLAY    | 0   | Video playback template. A PiP window will be started during video playback, and the video playback template will be loaded. The template contains the play/pause component by default.  |
 | VIDEO_CALL    | 1   | Video call template. A PiP window will be started during a video call, and the video call template will be loaded.|
 | VIDEO_MEETING | 2   | Video meeting template. A PiP window will be started during a video meeting, and the video meeting template will be loaded.|
 | VIDEO_LIVE    | 3   | Live template. A PiP window will be started during a live, and the live template is loaded.    |
@@ -345,7 +345,7 @@ Enumerates the PiP states.
 
 type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeetingControlGroup | VideoLiveControlGroup
 
-Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. By default, the controller displays only basic components (such as the play/pause component of the video playback component group).
+Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. This API must match [PiPTemplateType](#piptemplatetype) when being used. Otherwise, the [create](#pipwindowcreate) API returns error code 401.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -512,10 +512,10 @@ Enumerates the statuses of components displayed on the PiP controller.
 
 | Name                  | Value  | Description                   |
 |----------------------|-----|-----------------------|
-| PLAY       | 1   | Play.         |
-| PAUSE    | 0   | Pause.          |
-| OPEN    | 1   | Open.           |
-| CLOSE       | 0   | Close.         |
+| PLAY       | 1   | Playback state. It is used for the **VIDEO_PLAY_PAUSE** component to indicate that the video is being played.         |
+| PAUSE    | 0   | Paused state. It is used for the **VIDEO_PLAY_PAUSE** component to indicate that the video is paused.          |
+| OPEN    | 1   | Enabled state. It is used for the **MICROPHONE_SWITCH**, **CAMERA_SWITCH**, or **MUTE_SWITCH** components to indicate that the microphone, camera, or mute feature is enabled.           |
+| CLOSE       | 0   | Disabled state. It is used for the **MICROPHONE_SWITCH**, **CAMERA_SWITCH**, or **MUTE_SWITCH** components to indicate that the microphone, camera, or mute feature is disabled.         |
 
 ## PiPControlType<sup>12+</sup>
 
@@ -566,7 +566,7 @@ Describes the parameters in the callback of the action event of the PiP controll
 | Name                      | Type          | Read-Only | Optional  | Description                                                                                                                               |
 |--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
 | controlType       |  [PiPControlType](#pipcontroltype12)      | No | No| Type of the action event of the PiP controller. The application performs processing based on the component type. For example, if the video play/pause component is touched, the application starts or stops the video.                                                                     |
-| status | [PiPControlStatus](#pipcontrolstatus12) | No | Yes| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **PiPControlStatus.PLAY** means that the component is enabled and **PiPControlStatus.PAUSE** means that the component is disabled. For the hang-up component, the default value is **-1**.|
+| status | [PiPControlStatus](#pipcontrolstatus12) | No | Yes| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **PiPControlStatus.OPEN** means that the component is enabled and **PiPControlStatus.CLOSE** means that the component is disabled. For the hang-up component, the default value is **-1**.|
 
 ## PiPController
 
@@ -602,12 +602,13 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | 1300013    | Failed to create the PiP window.                       |
 | 1300014    | PiP internal error.                                    |
 | 1300015    | Repeated PiP operation.                                |
+| 1300034    | This operation conflicts with other floating windows. Possible cause: App has already started float view.<br>Applicable versions: 26.0.0+|
 
 **Example**
 
 ```ts
 // You can call pipController according to the pipController definition.
-let promise : Promise<void> = this.pipController.startPiP();
+let promise : Promise<void> = this.pipController.startPiP(); // Start the PiP window.
 promise.then(() => {
   console.info(`Succeeded in starting pip.`);
 }).catch((err: BusinessError) => {
@@ -644,7 +645,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
-let promise : Promise<void> = this.pipController.stopPiP();
+let promise : Promise<void> = this.pipController.stopPiP(); // Stop the PiP window.
 promise.then(() => {
   console.info(`Succeeded in stopping pip.`);
 }).catch((err: BusinessError) => {
@@ -656,7 +657,7 @@ promise.then(() => {
 
 setAutoStartEnabled(enable: boolean): void
 
-Sets whether to automatically start a PiP window when the user returns to the home screen. By default, no PiP window is started.
+Sets whether to automatically start the PiP window when the application's main window which can start the PiP window transitions to the background. By default, the PiP window is not automatically started.
 
 If the XComponent approach is used to implement PiP and the **Navigation** component is used for route management, the system caches the top stack information with the specified navigation ID upon the first call of **setAutoStartEnabled(true)**.
 
@@ -668,13 +669,13 @@ If the XComponent approach is used to implement PiP and the **Navigation** compo
 
 | Name     | Type       | Mandatory   | Description                             |
 |----------|-----------|-------|---------------------------------|
-| enable   | boolean   | Yes    | Whether to automatically start a PiP window when the user returns to the home screen. **true** to start, **false** otherwise. If the automatic PiP startup feature is disabled in Settings, a PiP window will not be automatically started in such a case even if this parameter is set to **true**. |
+| enable   | boolean   | Yes    | If the PiP window needs to be automatically started when the application's main window transitions to the background, set this parameter to **true**. Otherwise, set this parameter to **false**. If the PiP feature under **Settings** > **System** > **Multi-window** is disabled, the PiP window will not be automatically started when the application's main window transitions to the background even if this parameter is set to **true**. |
 
 **Example**
 
 ```ts
 let enable: boolean = true;
-this.pipController.setAutoStartEnabled(enable);
+this.pipController.setAutoStartEnabled(enable); // Set whether to automatically start the PiP window when the application's main window transitions to the background.
 ```
 
 ### updateContentSize
@@ -686,13 +687,16 @@ Updates the media content size when the media content changes.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
+<!--Del-->
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. On cars, only fixed sizes are supported. If the aspect ratio is greater than or equal to 1, a small window in landscape mode is used. If the aspect ratio is less than 1, a large window in portrait mode is used.
+<!--DelEnd-->
 
 **Parameters**
 
 | Name   | Type    | Mandatory | Description                                    |
 |--------|--------|-----|----------------------------------------|
-| width  | number | Yes  | Width of the media content, in px. The value must be a number greater than 0. It is used to update the aspect ratio of the PiP window. |
-| height | number | Yes  | Height of the media content, in px. The value must be a number greater than 0. It is used to update the aspect ratio of the PiP window. |
+| width  | number | Yes  | Width of the media content, in px. The value must be an integer greater than 0. This parameter is used to update the aspect ratio of the PiP window. |
+| height | number | Yes  | Height of the media content, in px. The value must be an integer greater than 0. This parameter is used to update the aspect ratio of the PiP window. |
 
 **Error codes**
 
@@ -707,13 +711,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let width: number = 540; // The content width changes to 540 px.
 let height: number = 960; // The content height changes to 960 px.
-this.pipController.updateContentSize(width, height);
+this.pipController.updateContentSize(width, height); // Update the size of the PiP window content.
 ```
 
 ### updatePiPControlStatus<sup>12+</sup>
 updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): void
 
-Updates the PiP component status.
+Updates the PiP controller status.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -723,8 +727,8 @@ Updates the PiP component status.
 
 | Name   | Type    | Mandatory | Description                                                                                                |
 |--------|--------|-----|----------------------------------------------------------------------------------------------------|
-| controlType  | [PiPControlType](#pipcontroltype12)  | Yes  | Type of the component displayed on the PiP controller. Currently, only **VIDEO_PLAY_PAUSE**, **MICROPHONE_SWITCH**, **CAMERA_SWITCH**, and **MUTE_SWITCH** are supported.|
-| status | [PiPControlStatus](#pipcontrolstatus12)  | Yes  | Status of the component displayed on the PiP controller.                                                                                    |
+| controlType  | [PiPControlType](#pipcontroltype12)  | Yes  | Type of the PiP controller. Currently, only the **VIDEO_PLAY_PAUSE**, **MICROPHONE_SWITCH**, **CAMERA_SWITCH**, and **MUTE_SWITCH** component types are supported. If other component types are passed, they do not take effect and no error is reported.|
+| status | [PiPControlStatus](#pipcontrolstatus12)  | Yes  | Status of the PiP controller.                                                                                    |
 
 **Error codes**
 
@@ -739,7 +743,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let controlType: PiPWindow.PiPControlType = PiPWindow.PiPControlType.VIDEO_PLAY_PAUSE; // Play/Pause component displayed on the video playback control panel.
 let status: PiPWindow.PiPControlStatus = PiPWindow.PiPControlStatus.PLAY; // The Play/Pause component displayed on the video playback control panel is in the playing state.
-this.pipController.updatePiPControlStatus(controlType, status);
+this.pipController.updatePiPControlStatus(controlType, status); // Update the PiP controller status.
 ```
 
 ### updateContentNode<sup>18+</sup>
@@ -765,12 +769,12 @@ Updates the PiP node content. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
 **Example**
@@ -778,20 +782,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { typeNode, UIContext } from '@kit.ArkUI';
 
-let context: UIContext | undefined = undefined; // You can pass UIContext or use this.getUIContext() in the layout to assign a valid value to context.
+let context: UIContext = this.getUIContext(); // Obtain UIContext using this.getUIContext().
 
 try {
-  let contentNode = typeNode.createNode(context, "XComponent");
-  this.pipController.updateContentNode(contentNode);
+  let contentNode = typeNode.createNode(context, "XComponent"); // Create an XComponent node to render the PiP window content.
+  this.pipController.updateContentNode(contentNode); // Update the PiP node content.
 } catch (exception) {
-  console.error(`Failed to update content node. Cause: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to update content node. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
 ### setPiPControlEnabled<sup>12+</sup>
 setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void
 
-Sets the enabled status for a component displayed on the PiP controller.
+Sets the enabled status of the PiP controller.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -801,8 +805,8 @@ Sets the enabled status for a component displayed on the PiP controller.
 
 | Name        | Type    | Mandatory | Description                                    |
 |-------------|--------|-----|----------------------------------------|
-| controlType | [PiPControlType](#pipcontroltype12)  | Yes  | Type of the component displayed on the PiP controller. |
-| enabled     | boolean | Yes  | Enabled status of the component displayed on the PiP controller. **true** if enabled, **false** otherwise. |
+| controlType | [PiPControlType](#pipcontroltype12)  | Yes  | Type of the PiP controller. |
+| enabled     | boolean | Yes  | Enabled status of the PiP controller. **true** if enabled, **false** otherwise. |
 
 **Error codes**
 
@@ -817,10 +821,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let controlType: PiPWindow.PiPControlType = PiPWindow.PiPControlType.VIDEO_PLAY_PAUSE; // Play/Pause component displayed on the video playback control panel.
 let enabled: boolean = false; // The Play/Pause component displayed on the video playback control panel is in the disabled state.
-this.pipController.setPiPControlEnabled(controlType, enabled);
+this.pipController.setPiPControlEnabled(controlType, enabled); // Set the enabled status of the PiP controller.
 ```
 ### getPiPWindowInfo<sup>15+</sup>
-getPiPWindowInfo(): Promise&lt;[PiPWindowInfo](#pipwindowinfo15)&gt;
+getPiPWindowInfo(): Promise&lt;PiPWindowInfo&gt;
 
 Obtains the PIP window information. This API uses a promise to return the result.
 
@@ -848,15 +852,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let pipWindowInfo: PiPWindow.PiPWindowInfo | undefined = undefined;
 try {
+  // Obtain the PiP window information.
   let promise : Promise<PiPWindow.PiPWindowInfo> = this.pipController.getPiPWindowInfo();
   promise.then((data) => {
+    // Save the obtained PiP window information.
     pipWindowInfo = data;
     console.info('Success in get pip window info. Info: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get pip window info. Cause code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get pip window info. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to get pip window info. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to get pip window info. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -891,15 +897,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let pipSwitchStatus: boolean | undefined = undefined;
 try {
+  // Obtain the status of the switch for automatically starting the PiP window.
   let promise : Promise<boolean> = this.pipController.getPiPSettingSwitch();
   promise.then((data) => {
+    // Save the obtained switch status.
     pipSwitchStatus = data;
     console.info('Succeeded in getting pip switch status. switchStatus: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get pip switch status. Cause code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get pip switch status. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to get pip switch status. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to get pip switch status. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -916,7 +924,7 @@ Check whether the PiP window is active. This API uses a promise to return the re
 
 | Type                  | Description                 |
 |----------------------|---------------------|
-| Promise&lt;boolean&gt;  | Promise used to return the PiP window status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If this API is called when the PiP lifecycle is not [STARTED](#pipstate), **false** is always returned.|
+| Promise&lt;boolean&gt;  | Promise used to return the PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If this API is called when the PiP lifecycle is not [STARTED](#pipstate), **false** is always returned.|
 
 **Error codes**
 
@@ -931,15 +939,17 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ``` ts
 let pipActiveStatus: boolean | undefined = undefined;
 try {
+  // Check whether the PiP window is active.
   let promise : Promise<boolean> | undefined = this.pipController?.isPiPActive();
   promise?.then((data) => {
+    // Save the obtained active status of the PiP window.
     pipActiveStatus = data;
     console.info('Succeeded in getting pip active status. activeStatus: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get pip active status. Cause code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get pip active status. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to get pip active status. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to get pip active status. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -957,12 +967,13 @@ Subscribes to PiP state events. To avoid potential memory leaks, you are advised
 
 | Name       | Type       | Mandatory  | Description                                                                                               |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
-| type       | string    | Yes   | Event type. The event **'stateChange'** is triggered when the PiP state changes.                                                            |
-| callback   | function  | Yes   | Callback used to return the result, which includes the following information:<br>- **state**: [PiPState](#pipstate), indicating the new PiP state.<br>- **reason**: a string indicating the reason for the state change. <br>Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, the value of **reason** is always **0**, which can be ignored.<br>Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, **reason** indicates the reason for switching the current lifecycle. The options are as follows:<br>**"requestStart"**: An application calls the **startPip** API.<br>**"autoStart"**: The application is automatically started in PiP mode when it is switched to the background.<br>**"requestDelete"**: The application calls the **stopPip** API.<br>**"panelActionDelete"**: The user taps the close button in the PiP window.<br>**"dragDelete"**: The user drags the PiP window to delete.<br>**"panelActionRestore"**: The user taps the restore button in the PiP window (or taps the PiP window if there is no restore button) to restore the PiP window.<br>**"other"**: Other reasons, such as the current window or application's main window being closed due to the startup of a new PiP window.|
+| type       | string    | Yes   | Event type. The value is fixed at **'stateChange'**, indicating that the PiP state changes.                                                            |
+| callback   | function  | Yes   | Callback used to return the result, which includes the following information:<br>- **state**: [PiPState](#pipstate), indicating the new PiP state.<br>- **reason**: a string indicating the reason for the state change. <br>Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, the value of **reason** is always **0**, which can be ignored.<br>Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, **reason** indicates the reason for switching the current lifecycle. The options are as follows:<br>**"requestStart"**: The application calls the **startPiP** API.<br>**"autoStart"**: The application is automatically started in PiP mode when it is switched to the background.<br>**"requestDelete"**: The application calls the **stopPiP** API.<br>**"panelActionDelete"**: The user taps the close button in the PiP window.<br>**"dragDelete"**: The user drags the PiP window to delete.<br>**"panelActionRestore"**: The user taps the restore button in the PiP window (or taps the PiP window if there is no restore button) to restore the PiP window.<br>**"other"**: Other reasons, such as the current window or application's main window being closed due to the startup of a new PiP window.|
 
 **Example**
 
 ```ts
+// Subscribe to PiP state events.
 this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string) => {
   let curState: string = '';
   switch (state) {
@@ -1005,11 +1016,12 @@ Unsubscribes from PiP state events.
 
 | Name      | Type           | Mandatory   | Description                                    |
 |-----------|---------------|-------|----------------------------------------|
-| type      | string        | Yes    | Event type. The event **'stateChange'** is triggered when the PiP state changes. |
+| type      | string        | Yes    | Event type. The value is fixed at **'stateChange'**, indicating that the PiP state changes. |
 
 **Example**
 
 ```ts
+// Unsubscribe from PiP state events.
 this.pipController.off('stateChange');
 ```
 
@@ -1017,7 +1029,7 @@ this.pipController.off('stateChange');
 
 on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): void
 
-Subscribes to PiP action events. To avoid potential memory leaks, you are advised to stop listening when it is no longer needed. The [on('controlEvent')](#oncontrolevent12) API is preferred.
+Subscribes to PiP controller action events. To avoid potential memory leaks, you are advised to stop listening when it is no longer needed. The [on('controlEvent')](#oncontrolevent12) API is preferred.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1027,12 +1039,13 @@ Subscribes to PiP action events. To avoid potential memory leaks, you are advise
 
 | Name     | Type        | Mandatory   | Description                                               |
 |----------|------------|-------|---------------------------------------------------|
-| type     | string     | Yes    | Event type. The value **'controlPanelActionEvent'** indicates the PiP action event.|
+| type     | string     | Yes    | Event type. The value is fixed at **'controlPanelActionEvent'**, indicating the action event of the PiP controller.|
 | callback | [ControlPanelActionEventCallback](#controlpanelactioneventcallback12)  | Yes    | Action event callback of the PiP controller.                               |
 
 **Example**
 
 ```ts
+// Subscribe to PiP controller action events.
 this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEventType, status?: number) => {
   switch (event) {
     case 'playbackStateChanged':
@@ -1065,7 +1078,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 
 on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
 
-Subscribes to PiP action events. To avoid potential memory leaks, you are advised to stop listening when it is no longer needed.
+Subscribes to PiP controller action events. To avoid potential memory leaks, you are advised to stop listening when it is no longer needed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1075,12 +1088,13 @@ Subscribes to PiP action events. To avoid potential memory leaks, you are advise
 
 | Name     | Type                                                 | Mandatory   | Description                                    |
 |----------|-----------------------------------------------------|-------|----------------------------------------|
-| type     | string                                              | Yes    | Event type. The value **'controlEvent'** indicates the PiP action event.|
+| type     | string                                              | Yes    | Event type. The value is fixed at **'controlEvent'**, indicating the action event of the PiP controller.|
 | callback | Callback<[ControlEventParam](#controleventparam12)> | Yes    | Action event callback of the PiP controller.                    |
 
 **Example**
 
 ```ts
+// Subscribe to PiP controller action events.
 this.pipController.on('controlEvent', (control) => {
   switch (control.controlType) {
     case PiPWindow.PiPControlType.VIDEO_PLAY_PAUSE:
@@ -1113,7 +1127,7 @@ this.pipController.on('controlEvent', (control) => {
 
 off(type: 'controlPanelActionEvent'): void
 
-Unsubscribes from PiP action events. The **[off('controlEvent')](#offcontrolevent12)** API is preferred.
+Unsubscribes from PiP controller action events. The [off('controlEvent')](#offcontrolevent12) API is preferred.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1123,11 +1137,12 @@ Unsubscribes from PiP action events. The **[off('controlEvent')](#offcontroleven
 
 | Name       | Type                          | Mandatory  | Description                                           |
 |------------|------------------------------|------|-----------------------------------------------|
-| type       | string                       | Yes   | Event type. The value **'controlPanelActionEvent'** indicates the PiP action event.  |
+| type       | string                       | Yes   | Event type. The value is fixed at **'controlPanelActionEvent'**, indicating the action event of the PiP controller.  |
 
 **Example**
 
 ```ts
+// Unsubscribe from PiP controller action events.
 this.pipController.off('controlPanelActionEvent');
 ```
 
@@ -1135,7 +1150,7 @@ this.pipController.off('controlPanelActionEvent');
 
 off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
 
-Unsubscribes from PiP action events.
+Unsubscribes from PiP controller action events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1145,13 +1160,17 @@ Unsubscribes from PiP action events.
 
 | Name       | Type                                                 | Mandatory| Description                                                    |
 |------------|-----------------------------------------------------|----|--------------------------------------------------------|
-| type       | string                                              | Yes | Event type. The value **'controlEvent'** indicates the PiP action event.                |
-| callback | Callback<[ControlEventParam](#controleventparam12)> | No | Action event callback of the PiP controller. If no value is passed in, all subscriptions to the specified event are canceled.|
+| type       | string                                              | Yes | Event type. The value is fixed at **'controlEvent'**, indicating the action event of the PiP controller.                |
+| callback | Callback<[ControlEventParam](#controleventparam12)> | No | Describes the action event callback of the PiP controller. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Example**
 
 ```ts
-this.pipController.off('controlEvent', () => {});
+let callbackFunc = (event: PiPWindow.ControlEventParam) => {
+  console.info(`receive control event: ${event.controlType}, ${event.status}`);
+}
+// Unsubscribe from PiP controller action events.
+this.pipController.off('controlEvent', callbackFunc);
 ```
 
 ### on('pipWindowSizeChange')<sup>15+</sup>
@@ -1168,7 +1187,7 @@ Subscribes to PiP window size change events. To avoid potential memory leaks, yo
 
 | Name     | Type                                         | Mandatory   | Description                                               |
 |----------|---------------------------------------------|-------|---------------------------------------------------|
-| type     | string                                      | Yes    | Event type. The value is fixed at **'pipWindowSizeChange'**, indicating the PiP window size change event.|
+| type     | string                                      | Yes    | Event type. The value is fixed at **'pipWindowSizeChange'**, indicating that the PiP window size changes.|
 | callback | Callback<[PiPWindowSize](#pipwindowsize15)> | Yes    | Callback used to return the size of the current PiP window.|
 
 **Error codes**
@@ -1178,18 +1197,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
 **Example**
 
 ```ts
 try {
+  // Subscribe to PiP window size change events.
   this.pipController.on('pipWindowSizeChange', (size: PiPWindow.PiPWindowSize) => {
     console.info('Succeeded in enabling the listener for pip window size changes. size: ' + JSON.stringify(size));
   });
 } catch (exception) {
-  console.error(`Failed to enable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to enable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -1207,17 +1227,17 @@ Unsubscribes from the PiP window size change event.
 
 | Name     | Type        | Mandatory| Description                                                                 |
 |----------|------------|----|---------------------------------------------------------------------|
-| type     | string     | Yes | Event type. The value is fixed at **'pipWindowSizeChange'**, indicating the PiP window size change event.                        |
+| type     | string     | Yes | Event type. The value is fixed at **'pipWindowSizeChange'**, indicating that the PiP window size changes.                        |
 | callback | Callback<[PiPWindowSize](#pipwindowsize15)> | No | Callback used to return the size of the current PiP window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **Example**
 
@@ -1229,7 +1249,7 @@ try {
   // Enable listening through the on API.
   this.pipController.on('pipWindowSizeChange', callback);
 } catch (exception) {
-  console.error(`Failed to enable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to enable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
 }
 
 try {
@@ -1238,7 +1258,7 @@ try {
   // Unregister all the callbacks that have been registered through on().
   this.pipController.off('pipWindowSizeChange');
 } catch (exception) {
-  console.error(`Failed to disable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to disable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -1256,7 +1276,7 @@ Subscribes to PiP window active status change events. To avoid potential memory 
 
 | Name| Type| Mandatory| Description|
 |----------|---------------------------------------------|-------|---------------------------------------------------|
-| type | string | Yes| Event type. The event **'activeStatusChange'** is triggered when the PiP window active status changes.|
+| type | string | Yes| Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes.|
 | callback | Callback\<boolean\> | Yes| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar).|
 
 **Example**
@@ -1265,6 +1285,7 @@ Subscribes to PiP window active status change events. To avoid potential memory 
 let callback = (activeStatus: boolean) => {
   console.info(`pip window is visible: ${activeStatus}`);
 }
+// Subscribe to PiP window active status change events.
 this.pipController.on('activeStatusChange', callback);
 ```
 
@@ -1282,7 +1303,7 @@ Unsubscribes from PiP window active status change events.
 
 | Name| Type| Mandatory| Description|
 |----------|------------|----|---------------------------------------------------------------------|
-| type | string | Yes| Event type. The event **'activeStatusChange'** is triggered when the PiP window active status changes.|
+| type | string | Yes| Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes.|
 | callback | Callback\<boolean\> | No| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Example**
@@ -1291,5 +1312,6 @@ Unsubscribes from PiP window active status change events.
 let callback = (activeStatus: boolean) => {
   console.info(`pip window is visible: ${activeStatus}`);
 }
+// Unsubscribe from PiP window active status change events.
 this.pipController.off('activeStatusChange', callback);
 ```

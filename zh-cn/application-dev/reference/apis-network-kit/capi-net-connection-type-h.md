@@ -31,7 +31,7 @@
 | [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | NetConn_NetAddr | 网络地址。 |
 | [NetConn_Route](capi-netconnection-netconn-route.md) | NetConn_Route | 路由配置信息。 |
 | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | NetConn_HttpProxy | 代理配置信息。 |
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | 网络链接信息。 |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | 网络连接信息。 |
 | [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | NetConn_NetHandleList | 网络列表。 |
 | [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | NetConn_NetSpecifier | 网络的特征集。 |
 | [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | NetConn_NetConnCallback | 网络状态监听回调集合。 |
@@ -53,14 +53,14 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| NETCONN_MAX_RTT_NUM   4  | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md)的成员变量rtt数组的长度。 | 
-| NETCONN_MAX_NET_SIZE   32     | [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md)的成员变量netHandles数组的长度。 | 
-| NETCONN_MAX_BEARER_TYPE_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量bearerTypes数组的长度。 | 
-| NETCONN_MAX_CAP_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量netCaps数组的长度。 | 
-| NETCONN_MAX_ADDR_SIZE   32    | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量netAddrList、dnsList数组的长度。 | 
-| NETCONN_MAX_ROUTE_SIZE   64   | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量routeList数组的长度。 | 
-| NETCONN_MAX_EXCLUSION_SIZE   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量exclusionList数组的长度。 | 
-| NETCONN_MAX_STR_LEN   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量host数组的长度。 | 
+| NETCONN_MAX_NET_SIZE   32     | [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md)的成员变量netHandles数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量bearerTypes数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_CAP_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量netCaps数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_ADDR_SIZE   32    | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量netAddrList、dnsList数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_ROUTE_SIZE   64   | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量routeList数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_EXCLUSION_SIZE   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量exclusionList数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_STR_LEN   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量host数组的长度。<br>**起始版本：** 11 | 
+| NETCONN_MAX_RTT_NUM   4  | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md)的成员变量rtt数组的长度。<br>**起始版本：** 20 | 
 
 ### 函数
 
@@ -71,6 +71,7 @@
 | [typedef void (\*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)](#oh_netconn_networkavailable) | OH_NetConn_NetworkAvailable | 网络可用回调。 |
 | [typedef void (\*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle,NetConn_NetCapabilities *netCapabilities)](#oh_netconn_netcapabilitieschange) | OH_NetConn_NetCapabilitiesChange | 网络能力集变更回调。 |
 | [typedef void (\*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle,NetConn_ConnectionProperties *connConnetionProperties)](#oh_netconn_netconnectionpropertieschange) | OH_NetConn_NetConnectionPropertiesChange | 网络连接属性变更回调。 |
+| [typedef void (\*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)](#oh_netconn_globalhttpproxyrefreshcallback) | OH_NetConn_GlobalHttpProxyRefreshCallback | 全局HTTP代理重新认证结果的回调。 |
 | [typedef void (\*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)](#oh_netconn_netlost) | OH_NetConn_NetLost | 网络断开回调。 |
 | [typedef void (\*OH_NetConn_NetUnavailable)(void)](#oh_netconn_netunavailable) | OH_NetConn_NetUnavailable | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。 |
 | [typedef void (\*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)](#oh_netconn_netblockstatuschange) | OH_NetConn_NetBlockStatusChange | 网络阻塞状态变更回调。 |
@@ -200,6 +201,26 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 |------------------------------| -- |
 | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | 变化的代理配置信息,可能是空指针。 |
 
+### OH_NetConn_GlobalHttpProxyRefreshCallback()
+
+```c
+typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)
+```
+
+**描述**
+
+全局HTTP代理重新认证结果的回调。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| (int32_t result | 重新认证的结果。0表示成功，其他值表示失败。 |
+| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | 当重新认证成功（result为0）时，表示刷新后的全局HTTP代理信息。如果重新认证失败（result非0）时，proxy为NULL。该proxy对象由系统持有，仅在该回调函数内部有效。调用者不得释放或修改它。如果调用者需要在回调返回后继续使用该代理信息，必须进行深拷贝。 |
+| void \*userContext | 用户自定义数据。系统不会访问、拷贝或释放该数据。 |
+
 ### OH_NetConn_NetworkAvailable()
 
 ```c
@@ -309,4 +330,3 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 | -- | -- |
 | [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 网络句柄。 |
 |  bool blocked | 指示网络是否将被阻塞的标志。true表示网络被阻塞，false表示网络未被阻塞。 |
-

@@ -4,7 +4,7 @@
 <!--Owner: @geng_wd-->
 <!--Designer: @geng_wd-->
 <!--Tester: @wzzqishi-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 当设备长时间未被使用，或通过按键操作时，可以使设备进入待机模式。待机模式不影响应用使用，还可以延长电池续航时间。通过本模块接口，可查询设备或应用是否为待机模式，以及为应用申请或取消待机资源管控。
 

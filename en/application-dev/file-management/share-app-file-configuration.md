@@ -38,8 +38,12 @@ From API version 23, shared directory configuration is supported. In the [applic
 
    | Property| Description| Data Type| Mandatory|
    | -------- | -------- | -------- | -------- |
-   | path | Shared path, which defaults to [/el2](share-app-file.md#shareable-application-directories). Its value must be unique. The options are as follows:<br>- `/base/files`<br>- `/base/preferences`<br>- `/base/haps` | string | Mandatory when **scopes** exists.|
+   | path | Shared path. Currently, only the [el2 directory](share-app-file.md#shareable-application-directories) is supported. It is unique in **scopes**. The options are as follows:<br>- `/base/files`<br>- `/base/preferences`<br>- `/base/haps` | string | Mandatory when **scopes** exists.|
    | permission | Shared path permission. The options are as follows:<br>- `r`: read-only.<br>- `r+w`: read and write.| string | Mandatory when **scopes** exists.|
+
+> **NOTE**
+>
+> If the configuration is modified during an application update, the new configuration takes effect for management, and temporary shared file permissions remain unaffected.
 
    Example of **share_files.json**:
 

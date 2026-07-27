@@ -90,6 +90,7 @@ OS\(操作系统\)开发时，经常会遇到多个代码仓的修改具有编�
 
 | 门禁检查项  |  常见报错信息 |
 | ------------ | ------------ |
+| [API参考链接跳转锚点准确](./markdown-check/API-reference-link-check.md)  | 1. 链接名称在标题及标题下表格均不存在 <br>2. 链接名称不准确 <br>3. 检测到链接名称与目标页面标题不一致 |
 | [有序列表格式](./markdown-check/md-style-check.md#有序列表格式)  | 序列号格式异常 |
 | [代码块格式](./markdown-check/md-style-check.md#代码块格式)  | 代码块格式错误  |
 | [代码块缩进格式](./markdown-check/md-style-check.md#代码块缩进格式)  | 代码块缩进异常  |
@@ -99,6 +100,12 @@ OS\(操作系统\)开发时，经常会遇到多个代码仓的修改具有编�
 | [HTML标签规范](./markdown-check/md-style-check.md#html标签规范)  |  1. 第xxx行br错误<br>2. 第xxx行sup错误 |
 | [@link异常检测](./markdown-check/md-style-check.md#link异常检测)  | 第xxx行链接错误；错误信息  |
 | [链接（图片链接）格式错误](./markdown-check/md-style-check.md#链接图片链接格式错误)  | 链接格式错误  |
+| [标题存在序号](./markdown-check/md-style-check.md#标题存在序号)  | 标题中有序号  |
+| [示例代码中不可使用console.log](./markdown-check/md-style-check.md#示例代码中不可使用consolelog)  | 日志打印方式错误；不可使用console.log进行日志打印。 |
+| [代码注释符](./markdown-check/md-style-check.md#代码注释符)  | 代码注释格式异常 |
+| [JSON/JSON5代码格式检查](./markdown-check/md-style-check.md#jsonjson5代码格式检查)  | json代码块中格式存在异常，请将代码块放置在IDE中进行确认处理。 |
+| [段落格式](./markdown-check/md-style-check.md#段落格式)  |  段落之间需要存在空行  |
+| [urlpath检查](./markdown-check/md-style-check.md#readme中urlpath检查)  |  urlpath格式检查  |
 
 
 <!--no_check-->

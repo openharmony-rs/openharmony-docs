@@ -1,10 +1,10 @@
 # 使用Node-API接口进行异步任务开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -156,7 +156,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   testNapi.asyncWork(1024).then((result) => {
+   testNapi.asyncWork(1024).then((result: number) => {
      hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
@@ -272,14 +272,15 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import nativeModule from 'libentry1.so';
+
    let num1: number = 123;
    let num2: number = 456;
    ```
 
-   <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   nativeModule.asyncWork(num1, num2, (result) => {
+   nativeModule.asyncWork(num1, num2, (result: number) => {
      hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
@@ -308,7 +309,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 2. Worker线程示例代码。
 
-   <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->
+   <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->  
    
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
@@ -320,7 +321,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    
    port.onmessage = (e : MessageEvents) => {
        console.info('Worker thread received data:', e.data.num1 + '、' + e.data.num2);
-       nativeModule.asyncWork(e.data.num1, e.data.num2, (result) => {
+       nativeModule.asyncWork(e.data.num1, e.data.num2, (result: number) => {
            port.postMessage(result);
        });
    }
@@ -335,10 +336,10 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    let num2: number = 456;
    ```
 
-   <!-- @[AsyncWorkCallbackWorker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[AsyncWorkCallbackWorker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
+   const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    wk.postMessage({num1, num2});
    wk.onmessage = (msg) => {
      console.info('result is:', msg.data);
@@ -366,7 +367,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    @Concurrent
    function nativeCall(num1 : number, num2 : number): void {
      console.info('Taskpool thread received data:', + num1 + '、' + num2);
-     nativeModule.asyncWork(num1, num2, (result) => {
+     nativeModule.asyncWork(num1, num2, (result: number) => {
        hilog.info(0x0000, 'XXX', 'result is: %{public}d', result);
      });
    }

@@ -1,27 +1,26 @@
 # 使用HiCollie检测业务线程卡死卡顿问题（C/C++）
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
 用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为[应用冻屏](appfreeze-guidelines.md)。本文面向开发者介绍HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死事件的能力。
 
-> **说明：**
->
-> 在非主线程使用相关接口。
-
 ## 接口说明
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiCollie_Init_StuckDetection | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>默认检测时间：3s上报BUSSINESS_THREAD_BLOCK_3S告警事件，6s上报BUSSINESS_THREAD_BLOCK_6S卡死事件。 |
-| OH_HiCollie_Init_StuckDetectionWithTimeout | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>开发者可以设置卡死检测时间，可设置的时间范围：[3, 15]，单位：s。<br/>说明：从API version 18开始，支持该接口。 |
-| OH_HiCollie_Init_JankDetection | 注册应用业务线程卡顿检测的回调函数。<br/>线程卡顿监控功能需要开发者实现两个卡顿检测回调函数，分别放在业务线程处理事件的前后。作为插桩函数，监控业务线程处理事件执行情况。 |
-| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task。<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。 |
+| OH_HiCollie_Init_StuckDetection | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>默认检测时间：3s上报BUSSINESS_THREAD_BLOCK_3S告警事件，6s上报BUSSINESS_THREAD_BLOCK_6S卡死事件。<br/>**说明**：在非主线程使用该接口。 |
+| OH_HiCollie_Init_StuckDetectionWithTimeout | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>开发者可以设置卡死检测时间，可设置的时间范围：[3, 15]，单位：s。<br/>**说明**：<br/>- 在非主线程使用该接口。<br/>- 从API version 18开始，支持该接口。 |
+| OH_HiCollie_Init_JankDetection | 注册应用业务线程卡顿检测的回调函数。<br/>线程卡顿监控功能需要开发者实现两个卡顿检测回调函数，分别放在业务线程处理事件的前后。作为插桩函数，监控业务线程处理事件执行情况。<br/>**说明**：在非主线程使用该接口。 |
+| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task。<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。<br/>**说明**：<br/>- 在非主线程使用该接口。<br/>- 该接口仅对[release版本应用](performance-analysis-kit-terminology.md#release版本应用)生效，对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)不生效。 |
+| OH_HiCollie_ReportInputBlock | 上报应用输入无响应事件，生成卡死故障日志，辅助定位应用卡死问题。如果在PC或平板设备上，还会弹窗提示用户继续等待或关闭应用，其他设备不会弹窗。建议如下两种方式使用该接口。<br/>方式一（推荐）：配合OH_HiCollie_Report、OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口使用，业务线程通过上述接口周期性检测自身卡死情况，当满足业务线程卡死且有输入事件（如屏幕点击、鼠标点击、键盘输入等）条件时再调用OH_HiCollie_ReportInputBlock接口。<br/>方式二：业务线程不通过OH_HiCollie_Report、OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口也能检测自身卡死情况，则应用结合业务线程卡死情况和输入事件再调用OH_HiCollie_ReportInputBlock接口。<br/>**说明**：<br/>- 该接口可以在主线程使用，比如输入事件需要先经过主线程再封装传递给业务线程处理，业务线程卡死时维护一个状态标志位，主线程结合业务线程的卡死状态标志位和输入事件再调用该接口。<br/>- 该接口仅对[release版本应用](performance-analysis-kit-terminology.md#release版本应用)生效，对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)不生效。<br/>- 从API version 24开始，支持该接口。 |
+| OH_HiCollie_SetFreezeCallback | 将冻屏回调设置进系统，系统将在冻屏事件发生时回调此函数。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiCollie_AssociateProcessReport | 主动报告一个进程的冻屏事件。此时会生成[应用执行超时事件](hiappevent-watcher-apphicollie-events.md)事件。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
@@ -31,9 +30,13 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 2. 业务线程卡死故障：
    
-   （1）OH_HiCollie_Init_StuckDetection检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过3s没有被执行，上报BUSSINESS_THREAD_BLOCK_3S线程告警事件；超过6s依然没有被执行，会上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件根据系统匹配规则生成appfreeze故障日志。
+   （1）OH_HiCollie_Init_StuckDetection检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过3s没有被执行，上报BUSSINESS_THREAD_BLOCK_3S线程告警事件；超过6s依然没有被执行，上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件根据系统匹配规则生成appfreeze故障日志。
 
-   （2）OH_HiCollie_Init_StuckDetectionWithTimeout检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过stuckTimeout时间没有被执行，上报BUSSINESS_THREAD_BLOCK_3S告警事件；超过stuckTimeout \* 2时间，依然没有被执行，会上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件匹配生成appfreeze故障日志。
+   （2）OH_HiCollie_Init_StuckDetectionWithTimeout检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过stuckTimeout时间没有被执行，上报BUSSINESS_THREAD_BLOCK_3S告警事件；超过stuckTimeout \* 2时间，依然没有被执行，上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件匹配生成appfreeze故障日志。
+
+> **注意：**
+>
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
 
 ## 日志规格
 
@@ -43,9 +46,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 ## 开发步骤
 
-下文将展示如何在应用内增加一个按钮，并单击该按钮以调用HiCollie Ndk接口。
+下文将展示如何在应用内增加一个按钮，并单击该按钮以调用HiCollie NDK接口。
 
-1. 新建Native C++工程，目录结构如下：
+1. 在DevEco Studio中，新建Native C++工程，目录结构如下：
 
    ```yml
    entry:
@@ -64,16 +67,16 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
              - Index.ets
    ```
 
-2. 编辑“CMakeLists.txt”文件，添加源文件及动态库：
+2. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库：
 
    ```cmake
    # 新增动态库依赖libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so)
    ```
 
-3. 编辑“napi_init.cpp”文件，导入依赖的文件，定义LOG_TAG，下述代码步骤用于模拟卡死卡顿场景，具体使用请结合业务需要。示例代码如下：
+3. 编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，导入依赖的文件，定义LOG_TAG，下述代码步骤用于模拟卡死卡顿场景，具体使用请结合业务需要。示例代码如下：
 
-   （1）**应用线程卡顿检测**： OH_HiCollie_Init_JankDetection，示例代码如下：
+   - 从API version 12开始，支持**应用线程卡顿检测**：OH_HiCollie_Init_JankDetection，示例代码如下：
 
    ```c++
    #include <thread>
@@ -86,11 +89,11 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #undef LOG_TAG
    #define LOG_TAG "JankTest"
    
-   //定义两个回调函数对象
+   // 定义两个回调函数对象
    static OH_HiCollie_BeginFunc beginFunc_;
    static OH_HiCollie_EndFunc endFunc_;
    
-   //定义监控应用显示开始、结束的回调函数
+   // 定义监控应用显示开始、结束的回调函数
    void InitBeginFunc(const char* eventName)
    {
        std::string str(eventName);
@@ -104,14 +107,14 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    
    void StartDelayTimer()
    {
-     //等待1s
+     // 等待1s
      std::chrono::seconds delay(1);
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay before");
      std::this_thread::sleep_for(delay);
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay after");
    }
    
-   //定义子线程回调函数
+   // 定义子线程回调函数
    void TestJankDetection()
    {
        // 初始化回调函数参数
@@ -172,7 +175,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-   （2）**应用线程卡死检测**： OH_HiCollie_Init_StuckDetection, 示例代码如下：
+   - 从API version 12开始，支持**应用线程卡死检测**： OH_HiCollie_Init_StuckDetection, 示例代码如下：
 
    ```c++
    #include "napi/native_api.h"
@@ -184,7 +187,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #include <unistd.h>
    
    #undef LOG_TAG
-   #define LOG_TAG "StruckTest"
+   #define LOG_TAG "StuckTest"
    
    // 自定义阻塞时间，模拟卡死场景，单位：s
    const int64_t BLOCK_TIME = 3; 
@@ -230,7 +233,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      ReportEvent();
    }
    
-   //定义子线程回调函数
+   // 定义子线程回调函数
    void InitStuckDetection()
    {
      // 初始化线程卡死监控函数
@@ -275,7 +278,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-   （3）**应用线程卡死检测，自定义检测时间**： OH_HiCollie_Init_StuckDetectionWithTimeout，示例代码如下：
+   - 从API version 18开始，支持**应用线程卡死检测，自定义检测时间**：OH_HiCollie_Init_StuckDetectionWithTimeout，示例代码如下：
 
    ```c++
    #include "napi/native_api.h"
@@ -286,7 +289,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #include <unistd.h>
    
    #undef LOG_TAG
-   #define LOG_TAG "StruckTest"
+   #define LOG_TAG "StuckTest"
    
    // 自定义休眠时间，模拟卡死场景
    const int64_t BLOCK_TIME = 5; 
@@ -332,13 +335,13 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      ReportEvent();
    }
    
-   //定义子线程回调函数
+   // 定义子线程回调函数
    void InitStuckDetectionWithTimeout()
    {
      // 初始化线程卡死监控函数
      int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, BLOCK_TIME);
      // 成功结果：0
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
+     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
    }
    
    static napi_value TestHiCollieStuckWithTimeoutNdk(napi_env env, napi_callback_info info)
@@ -376,28 +379,228 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
        napi_module_register(&demoModule);
    }
    ```
-
-4. 将TestHiCollieNdk注册为ArkTS接口。
+ 
+   - 从API version 24开始，支持**应用线程卡死检测，应用主动上报输入无响应故障**：OH_HiCollie_ReportInputBlock，示例代码如下：
+ 
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hicollie/hicollie.h"
+   #include <atomic>
+   #include <thread>
+   #include <string>
+   #include <unistd.h>
    
-   （1）OH_HiCollie_Init_JankDetection示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   #undef LOG_TAG
+   #define LOG_TAG "StuckTest"
+   
+   // 自定义阻塞时间，模拟卡死场景，单位：s
+   const int64_t BLOCK_TIME = 3; 
+   // 设置应用线程执行任务情况标志位, true-正常，false-卡死
+   std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
+   // 设置上报应用线程卡死事件标志位
+   std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
+   
+   void ReportEvent() {
+       bool temp = isSixSecondEvent_->load();
+       int reportResult = OH_HiCollie_Report(&temp);
+       // 成功：0
+       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d", reportResult, isSixSecondEvent_->load());
+       isSixSecondEvent_->store(temp);
+   }
+   
+   void SetTimeout()
+   {
+     int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
+       system_clock::now().time_since_epoch()).count();
+     sleep(BLOCK_TIME);
+     int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
+       system_clock::now().time_since_epoch()).count();
+     if (currentTime - now < BLOCK_TIME) {
+       appThreadIsAlive_->store(true);
+       return;
+     }
+     appThreadIsAlive_->store(false);
+   }
+   
+   // 开发者可自定义周期性检测任务
+   void Timer()
+   {
+     // 每隔3s检查应用是否正常执行任务
+     if (appThreadIsAlive_->load()) {
+       OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
+       // 更新appThreadIsAlive_，正常执行下次检测时为true
+       appThreadIsAlive_->store(false);
+       // 模拟超时场景
+       SetTimeout();
+       return;
+     }
+     ReportEvent();
+   }
+   
+   // 定义子线程回调函数
+   void InitStuckDetection()
+   {
+     // 初始化线程卡死监控函数
+     int initResult = OH_HiCollie_Init_StuckDetection(Timer);
+     // 成功结果：0
+     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
+   }
+   
+   static napi_value TestHiCollieStuckNdk(napi_env env, napi_callback_info info)
+   {
+     // 创建子线程
+     std::thread threadObj(InitStuckDetection);
+     // 执行任务
+     threadObj.join();
+     return 0;
+   }
+   
+   static napi_value TestHiCollieInputBlock(napi_env env, napi_callback_info info)
+   {
+     // 子线程未卡死，不上报
+     if (appThreadIsAlive_->load()) {
+       return 0;
+     }
+     OH_HiCollie_ReportInputBlock();
+     return 0;
+   }
+   
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "testHiCollieStuckNdk", nullptr, TestHiCollieStuckNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "testHiCollieInputBlock", nullptr, TestHiCollieInputBlock, nullptr, nullptr, nullptr, napi_default, nullptr}
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
+   
+   - 从API version 24开始，支持**应用线程卡死检测，三方框架生成自定义日志**：OH_HiCollie_SetFreezeCallback、OH_HiCollie_AssociateProcessReport，示例代码如下：
 
-   ```typescript
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hicollie/hicollie.h"
+   #include <thread>
+   #include <string>
+   #include <unistd.h>
+   
+   #undef LOG_TAG
+   #define LOG_TAG "StuckTest"
+
+   static size_t UserCall(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
+   {
+      std::string source("Freeze is happened");
+      if (type == OH_THREAD_BLOCK_3S) {
+          source += ":block 3s";
+      } else if (type == OH_THREAD_BLOCK_6S) {
+          source += ":block 6s";
+      } else {
+          source += ":other block";
+      }
+      char* buffer1 = (char*)buffer;
+      int needed = snprintf(buffer1, size, "UserCallback%s", source.c_str());
+      return needed; 
+   }
+   
+   static napi_value TestHiCollieSetFreezeCallback(napi_env env, napi_callback_info info)
+   {
+      // 设置用户回调
+      OH_HiCollie_SetFreezeCallback(UserCall);
+      return 0;
+   }
+   
+   static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
+   {
+      // 上报BUSINESS_THREAD_BLOCK_3S事件
+      OH_HiCollie_AssociateProcessReport(false);
+      sleep(3);
+      // 上报BUSINESS_THREAD_BLOCK_6S事件
+      OH_HiCollie_AssociateProcessReport(true);
+      return 0;
+   }
+
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "testHiCollieSetFreezeCallback", nullptr, TestHiCollieSetFreezeCallback, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "testHiCollieAssociateProcessReport", nullptr, TestHiCollieAssociateProcessReport, nullptr, nullptr, nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
+
+4. 编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口。
+   
+   - OH_HiCollie_Init_JankDetection示例：
+
+   ```ts
    export const testHiCollieJankNdk: () => void;
    ```
 
-   （2）OH_HiCollie_Init_StuckDetection示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   - OH_HiCollie_Init_StuckDetection示例：
 
-   ```typescript
+   ```ts
    export const testHiCollieStuckNdk: () => void;
    ```
 
-   （3）OH_HiCollie_Init_StuckDetectionWithTimeout示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   - OH_HiCollie_Init_StuckDetectionWithTimeout示例：
 
-   ```typescript
+   ```ts
    export const testHiCollieStuckWithTimeoutNdk: () => void;
    ```
 
-5. 编辑“Index.ets”文件：
+    - OH_HiCollie_ReportInputBlock示例：
+
+   ```ts
+   export const testHiCollieStuckNdk: () => void;
+   export const testHiCollieInputBlock: () => void;
+   ```
+
+    - OH_HiCollie_SetFreezeCallback、OH_HiCollie_AssociateProcessReport示例：
+
+   ```ts
+   export const testHiCollieSetFreezeCallback: () => void;
+   export const testHiCollieAssociateProcessReport: () => void;
+   ```
+5. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件：
 
    ```ts
    import testNapi from 'libentry.so'
@@ -408,7 +611,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      build() {
        RelativeContainer() {
          Column() {
-           //选择下方对应的功能，可在此处添加不同的点击事件
+           // 选择下方对应的功能，可在此处添加不同的点击事件
            
          }
          .width('100%')
@@ -419,7 +622,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-   （1）添加点击事件，触发OH_HiCollie_Init_JankDetection方法。
+   - 添加点击事件，触发OH_HiCollie_Init_JankDetection方法。
 
    ```ts
    Column() {
@@ -433,7 +636,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-   （2）添加点击事件，触发OH_HiCollie_Init_StuckDetection方法。
+   - 添加点击事件，触发OH_HiCollie_Init_StuckDetection方法。
 
    ```ts
    Column() {
@@ -447,7 +650,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-   （3）添加点击事件，触发OH_HiCollie_Init_StuckDetectionWithTimeout方法。
+   - 添加点击事件，触发OH_HiCollie_Init_StuckDetectionWithTimeout方法。
 
    ```ts
    Column() {
@@ -460,19 +663,68 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
        .onClick(testNapi.testHiCollieStuckWithTimeoutNdk);
    }
    ```
+   
+    - 添加点击事件，触发OH_HiCollie_Init_StuckDetectionWithTimeout方法和OH_HiCollie_ReportInputBlock方法。
+
+   ```ts
+   Column() {
+     Button("testHiCollieStuckNdk", { stateEffect:true, type: ButtonType.Capsule})
+       .width('75%')
+       .height(50)
+       .margin(15)
+       .fontSize(20)
+       .fontWeight(FontWeight.Bold)
+       .onClick(testNapi.testHiCollieStuckNdk);
+     Button("testHiCollieInputBlock", { stateEffect:true, type: ButtonType.Capsule})
+       .width('75%')
+       .height(50)
+       .margin(15)
+       .fontSize(20)
+       .fontWeight(FontWeight.Bold)
+       .onClick(testNapi.testHiCollieInputBlock);
+   }
+   ```
+    - 添加点击事件，触发OH_HiCollie_SetFreezeCallback方法和OH_HiCollie_AssociateProcessReport方法。
+
+   ```ts
+   Column() {
+     Button("testHiCollieSetFreezeCallback", { stateEffect:true, type: ButtonType.Capsule})
+       .width('75%')
+       .height(50)
+       .margin(15)
+       .fontSize(20)
+       .fontWeight(FontWeight.Bold)
+       .onClick(testNapi.testHiCollieSetFreezeCallback);
+     Button("testHiCollieAssociateProcessReport", { stateEffect:true, type: ButtonType.Capsule})
+       .width('75%')
+       .height(50)
+       .margin(15)
+       .fontSize(20)
+       .fontWeight(FontWeight.Bold)
+       .onClick(testNapi.testHiCollieAssociateProcessReport);
+   }
+   ```
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。
 
 7. 在DevEco Studio的底部，切换到“Log”窗口，过滤自定义的LOG_TAG。
    
-   （1）点击“testHiCollieJankNdk”按钮。
+   - 点击“testHiCollieJankNdk”按钮。
 
    此时窗口将显示通过OH_HiCollie_Init_JankDetection接口获取的应用业务线程采样栈的超时信息。可以通过订阅hiappevent获取对应的事件，参见[订阅主线程超时事件](hiappevent-watcher-mainthreadjank-events-arkts.md)。
 
-   （2）点击“testHiCollieStuckNdk”按钮。
+   - 点击“testHiCollieStuckNdk”按钮。
 
    此时窗口将显示通过OH_HiCollie_Init_StuckDetection接口，初始化卡死检测回调函数。可以根据实际业务场景，自行定义卡死检测函数。
 
-   （3）点击“testHiCollieStuckWithTimeoutNdk”按钮。
+   - 点击“testHiCollieStuckWithTimeoutNdk”按钮。
 
    此时窗口将显示通过OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化卡死检测回调函数。可以根据实际业务场景，自行定义卡死检测函数，及卡死检测时间。
+
+   - 先点击“testHiCollieStuckNdk”按钮，再持续点击“testHiCollieInputBlock”按钮。
+
+   此时窗口将显示通过OH_HiCollie_Init_StuckDetection接口，初始化卡死检测回调函数。在PC或平板设备上前6秒时间内点击“testHiCollieInputBlock”按钮没有弹窗，后续点击该按钮会有弹窗。可以根据实际业务场景，自行定义卡死检测函数或输入事件判断的条件。
+
+   - 先点击“testHiCollieSetFreezeCallback”按钮，再点击“testHiCollieAssociateProcessReport”按钮。
+
+   此时窗口将显示通过OH_HiCollie_SetFreezeCallback接口，设置自定义日志函数，再通过OH_HiCollie_AssociateProcessReport接口上报线程超时事件，随后生成[APP_HICOLLIE](hiappevent-watcher-apphicollie-events.md)事件，其中包含回调日志字段。

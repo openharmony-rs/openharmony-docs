@@ -109,3 +109,51 @@ function getExposureBiasRange(photoSession: camera.PhotoSession): Array<number> 
   return biasRangeArray;
 }
 ```
+
+## isExposureMeteringModeSupported<sup>24+</sup>
+
+isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
+
+Checks whether the specified exposure metering mode is supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                          | Mandatory | Description                          |
+| -------- | -------------------------------| ---- | ----------------------------- |
+| aeMeteringMode   | [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)  | Yes  | Exposure metering mode.                |
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| boolean    | Whether the exposure metering mode is supported. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isExposureMeteringModeSupported(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoSession.isExposureMeteringModeSupported(aeMeteringMode);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```

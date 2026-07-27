@@ -1,9 +1,9 @@
 # Updating Widget Content by State
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 There are cases where multiple copies of the same widget are added to the home screen to accommodate different needs. In these cases, the widget content needs to be dynamically updated based on the state. This topic exemplifies how this is implemented. In the following example, two copies of the weather widget are added to the home screen: one for displaying the weather of London, and the other Beijing, both configured to be updated at 07:00 every morning. The widget provider detects the target city, and then displays the city-specific weather information on the widgets.
@@ -41,6 +41,7 @@ There are cases where multiple copies of the same widget are added to the home s
     <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets
     let storageUpdateByStatus = new LocalStorage();
     
     @Entry(storageUpdateByStatus)
@@ -157,6 +158,7 @@ There are cases where multiple copies of the same widget are added to the home s
     <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
     import { Want } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     import { BusinessError } from '@kit.BasicServicesKit';

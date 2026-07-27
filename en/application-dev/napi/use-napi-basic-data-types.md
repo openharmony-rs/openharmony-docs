@@ -207,7 +207,7 @@ import testNapi from 'libentry.so';
 
 // If a number within the int64 value range is passed in, the original number will be returned.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number %{public}d', testNapi.getValueInt64(80));
-// If "sAs" (a non-number) is passed in, 'undefined' will be returned.
+// If "ss" (a non-number) is passed in, 'undefined' will be returned.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_not_number %{public}s', testNapi.getValueInt64('sAs'));
 // If a number out of the int64 value range is passed in, it will cause integer overflow and loss of precision. The number returned is not equal to the number passed in.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_oversize %{public}d', testNapi.getValueInt64(9223372036854775809));

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 采用Deep Linking进行跳转时，系统会根据接口中传入的uri信息，在本地已安装的应用中寻找到符合条件的应用并进行拉起。当匹配到多个应用时，会拉起应用选择框。
 
@@ -23,8 +23,6 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 > **说明：**
 > 
 > skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。
-> 
-> Deep Linking中的scheme取值不以"ohos"开头。通常不为"https"、"http"、"file"等已被系统应用使用的值，否则会匹配到对应的系统应用。
 
 
 配置示例如下：
@@ -155,7 +153,7 @@ struct DeepOpenLinkIndex {
 
 ### 使用startAbility实现应用跳转
 
-[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入want中，通过调用[隐式want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
+[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
 
 
 示例代码如下：
@@ -245,7 +243,7 @@ struct DeepWebIndex {
 
 前端页面代码：
 ```html
-// index.html
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>

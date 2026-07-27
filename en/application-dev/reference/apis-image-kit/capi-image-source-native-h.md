@@ -30,6 +30,7 @@ The file declares the APIs for image decoding.
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) | OH_ImageSource_Info | Describes the image source information, which is encapsulated at the native layer. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct.|
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) | OH_DecodingOptionsForPicture | Describes the decoding options for pictures. They are obtained by calling [OH_DecodingOptionsForPicture_Create](#oh_decodingoptionsforpicture_create).|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) | OH_DecodingOptions | Describes the decoding options, which are encapsulated at the native layer. The struct is used to set decoding options and is passed in as an input parameter for creating a PixelMap. For details, see [OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap).|
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) | OH_ImageRawData | Describes the raw data in an image, which is obtained through [OH_ImageSourceNative_CreateImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_createimagerawdata).|
 
 ### Enums
 
@@ -44,11 +45,11 @@ The file declares the APIs for image decoding.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)](#oh_imagesourceinfo_create) | Creates the pointer to an OH_ImageSource_Info object.|
-| [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | Obtains the image width.|
-| [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | Obtains the image height.|
-| [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | Obtains the dynamic range of an image.|
-| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)](#oh_imagesourceinfo_getmimetype) | Obtains the MIME type of an image.|
-| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | Releases the pointer to an OH_ImageSource_Info object.|
+| [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | Obtains the image width. For an SVG image without the width property, the default value **0** is returned.|
+| [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | Obtains the image height. For an SVG image without the height property, the default value **0** is returned.|
+| [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | Check whether an image is HDR.|
+| [Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | Obtains the MIME type of an image.|
+| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | Releases the pointer to an OH_ImageSource_Info object. After this API is called, all properties related to the OH_ImageSource_Info struct are released. Therefore, before calling this API, ensure that the relevant properties are no longer needed or that a deep copy of these properties has been completed.|
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | Creates the pointer to an OH_DecodingOptions object.|
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | Obtains the pixel format.|
 | [Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options, int32_t pixelFormat)](#oh_decodingoptions_setpixelformat) | Sets the pixel format.|
@@ -56,8 +57,8 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_t index)](#oh_decodingoptions_setindex) | Sets the index for an image.|
 | [Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)](#oh_decodingoptions_getrotate) | Obtains the rotation degree.|
 | [Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)](#oh_decodingoptions_setrotate) | Sets the rotation angle.|
-| [Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_getdesiredsize) | Obtains the desired output size.|
-| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | Sets the desired output size.|
+| [Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_getdesiredsize) | Obtains the desired output dimensions.|
+| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | Sets the desired output dimensions. The **desiredSize** parameter determines the dimensions of the PixelMap obtained after decoding, where both the width and height must be positive integers. If the aspect ratio is different from the original, the PixelMap will be stretched or scaled to the specified dimensions. The original dimensions are used by default.|
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_getdesiredregion) | Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** function cannot meet the regional decoding requirements, starting from API version 19, you are advised to use [OH_DecodingOptions_GetCropRegion](#oh_decodingoptions_getcropregion) instead.|
 | [Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_setdesiredregion) | Sets the region to decode.<br> The actual decoding will process the entire original image, without any regional decoding effect. Starting from API version 19, you are advised to use [OH_DecodingOptions_SetCropRegion](#oh_decodingoptions_setcropregion) instead.|
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)](#oh_decodingoptions_getdesireddynamicrange) | Obtains the desired dynamic range configured during decoding.|
@@ -71,7 +72,7 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)](#oh_decodingoptions_release) | Releases the pointer to an OH_DecodingOptions object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromuri) | Creates the pointer to an OH_ImageSourceNative object based on a URI.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromfd) | Creates the pointer to an OH_ImageSourceNative object based on a file descriptor.|
-| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).|
+| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The passed **data** must be undecoded. Do not pass the pixel buffer data such as RGBA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | Creates an image source from data buffer. The data buffer is directly accessed by the image source object, and therefore the data buffer must remain accessible within the lifecycle of the image source object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | Creates the pointer to an OH_ImageSourceNative object by using the raw file descriptor of an image resource file.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | Creates the pointer to an OH_PixelmapNative object based on decoding options.|
@@ -81,8 +82,22 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | Creates the pointer to an OH_PictureNative object at the specified index.|
 | [Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)](#oh_imagesourcenative_getdelaytimelist) | Obtains the image delay time list.|
 | [Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index, OH_ImageSource_Info *info)](#oh_imagesourcenative_getimageinfo) | Obtains the information about an image with a given index.|
-| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | Obtains the value of an image property.|
-| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | Obtains the value of an image property. The output **value.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | Obtains the value of an image property. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t *value)](#oh_imagesourcenative_getimagepropertyshort) | Obtains an image property value of the short integer type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t *value)](#oh_imagesourcenative_getimagepropertylong) | Obtains an image property value of the long integer type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double *value)](#oh_imagesourcenative_getimagepropertydouble) | Obtains an image property value of the floating-point type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyArraySize(OH_ImageSourceNative *source, Image_String *key, size_t *size)](#oh_imagesourcenative_getimagepropertyarraysize) | Obtains the length of a property array or a string property.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative *source, Image_String *key, char *value, size_t size)](#oh_imagesourcenative_getimagepropertystring) | Obtains an image property value of the string type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)](#oh_imagesourcenative_getimagepropertyintarray) | Obtains an image property value of the integer array type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)](#oh_imagesourcenative_getimagepropertydoublearray) | Obtains an image property value of the floating-point array type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)](#oh_imagesourcenative_getimagepropertyblob) | Obtains an image property value of the binary object type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t value)](#oh_imagesourcenative_modifyimagepropertyshort) | Changes an image property value of the short integer type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t value)](#oh_imagesourcenative_modifyimagepropertylong) | Changes an image property value of the long integer type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double value)](#oh_imagesourcenative_modifyimagepropertydouble) | Changes an image property value of the floating-point type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)](#oh_imagesourcenative_modifyimagepropertyintarray) | Changes an image property value of the integer array type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)](#oh_imagesourcenative_modifyimagepropertydoublearray) | Changes an image property value of the floating-point array type.|
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)](#oh_imagesourcenative_modifyimagepropertyblob) | Changes an image property value of the binary object type.|
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | Obtains the value of an image property. The output **value.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_modifyimageproperty) | Modifies the value of an image property.|
 | [Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)](#oh_imagesourcenative_getframecount) | Obtains the number of image frames.|
 | [Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)](#oh_imagesourcenative_getsupportedformats) | Obtains the supported image formats that can be decoded.|
@@ -91,6 +106,10 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)](#oh_decodingoptionsforpicture_getdesiredauxiliarypictures) | Obtains desired auxiliary pictures in the decoding options (auxiliary pictures contained in **picture** expected to be decoded.)|
 | [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)](#oh_decodingoptionsforpicture_setdesiredauxiliarypictures) | Sets desired auxiliary pictures in the decoding options.|
 | [Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPicture *options)](#oh_decodingoptionsforpicture_release) | Releases the pointer to an OH_DecodingOptionsForPicture object.|
+| [Image_ErrorCode OH_ImageSourceNative_CreateImageRawData(const OH_ImageSourceNative *source, OH_ImageRawData **rawData)](#oh_imagesourcenative_createimagerawdata) | Obtains the rawData object from an image.|
+| [Image_ErrorCode OH_ImageSourceNative_GetBufferFromRawData(const OH_ImageRawData *rawData, uint8_t **data, size_t *length)](#oh_imagesourcenative_getbufferfromrawdata) | Obtains binary data from a rawData object.|
+| [Image_ErrorCode OH_ImageSourceNative_GetBitsPerPixelFromRawData(const OH_ImageRawData *rawData, uint8_t *bitsPerPixel)](#oh_imagesourcenative_getbitsperpixelfromrawdata) | Obtains the number of bits occupied by each pixel in the buffer data.|
+| [Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawData)](#oh_imagesourcenative_destroyimagerawdata) | Destroys a rawData object.|
 
 ## Enum Description
 
@@ -138,14 +157,14 @@ enum Image_CropAndScaleStrategy
 
 **Description**
 
-Enumerates the cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.<br> If the **ImageCropAndScaleStrategy** parameter is not specified in [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) and both **desiredRegion** and **desiredSize** are set, the final decoding result may vary slightly due to differences in decoding algorithms used for different image formats.<br> For example, if the original image size is 200x200, and you specify **desiredSize:{width: 150, height: 150}, desiredRegion:{x: 0, y: 0, width: 100, height: 100}**, the expectation is to decode the top-left 1/4 region of the original image and then scale the pixelMap size to 150x150.<br> For JPEG and WebP images (as well as some DNG images that decode a JPEG preview within the file and therefore are treated as JPEG format), the system first performs downsampling. For instance, it might downsample by 7/8 and then crop the region based on a 175x175 image size. As a result, the final cropped region will be slightly larger than the top-left 1/4 of the original image.<br> For SVG images, which are vector-based and can be scaled without losing clarity, the system scales the image based on the ratio of **desiredSize** to the original image size and then crops the region. This results in a decoded region that may differ from the exact 1/4 region of the original image.<br> To ensure consistent results when both **desiredRegion** and **desiredSize** are set, set the **ImageCropAndScaleStrategy** parameter to **CROP_FIRST**.
+Enumerates the cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.<br> If **Image_CropAndScaleStrategy** is not specified in [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) and both **desiredRegion** and **desiredSize** are set, the final decoding result may vary slightly due to differences in decoding algorithms used for different image formats.<br> For example, if the original image size is 200x200, and you specify **desiredSize:{width: 150, height: 150}, desiredRegion:{x: 0, y: 0, width: 100, height: 100}**, the expectation is to decode the top-left 1/4 region of the original image and then scale the pixelMap size to 150x150.<br> For JPEG and WebP images (as well as some DNG images that decode a JPEG preview within the file and therefore are treated as JPEG format), the system first performs downsampling. For instance, it might downsample by 7/8 and then crop the region based on a 175x175 image size. As a result, the final cropped region will be slightly larger than the top-left 1/4 of the original image.<br> For SVG images, since they are vector graphics, they can be scaled arbitrarily without loss of clarity. During decoding, the scaling ratio is determined based on the proportion between **desiredSize** and the original image size. Cropping is then performed on the scaled image. As a result, the actual decoded region returned may vary.<br> To ensure consistent results when both **desiredRegion** and **desiredSize** are set, set **Image_CropAndScaleStrategy** to **CROP_FIRST**.
 
 **Since**: 18
 
 | Enum Item| Description|
 | -- | -- |
-| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | Crops and then scales the image.|
-| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | Scales and then crops the image.|
+| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | Scales and then crops the image.|
+| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | Crops and then scales the image.|
 
 
 ## Function Description
@@ -167,7 +186,7 @@ Creates the pointer to an OH_ImageSource_Info object.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) **info | Double pointer to the OH_ImageSource_Info object created.|
+| [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) **info | Double pointer to an OH_ImageSource_Info object.|
 
 **Returns**
 
@@ -183,7 +202,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 
 **Description**
 
-Obtains the image width.
+Obtains the image width. For an SVG image without the width property, the default value **0** is returned.
 
 **Since**: 12
 
@@ -209,7 +228,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 
 **Description**
 
-Obtains the image height.
+Obtains the image height. For an SVG image without the height property, the default value **0** is returned.
 
 **Since**: 12
 
@@ -235,7 +254,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 
 **Description**
 
-Obtains the dynamic range of an image.
+Check whether an image is HDR.
 
 **Since**: 12
 
@@ -245,7 +264,7 @@ Obtains the dynamic range of an image.
 | Name| Description|
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | Pointer to an OH_ImageSource_Info object.|
-| bool *isHdr | Pointer to a Boolean that specifies whether the HDR is used.|
+| bool *isHdr | Whether the image is HDR. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Returns**
 
@@ -253,15 +272,21 @@ Obtains the dynamic range of an image.
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
-### OH_ImageSourceInfo_GetMimetype()
+### OH_ImageSourceInfo_GetMimeType()
 
 ```c
-Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)
+Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimeType)
 ```
 
 **Description**
 
 Obtains the MIME type of an image.
+
+> **NOTE**
+>
+> - The member variable **data** of the [mimeType struct](./capi-image-nativemodule-image-string.md#member-variables) is a char pointer that points to the **mimeType** address held within the **info** struct. Release **info** will result in this memory being deallocated.
+> - To avoid garbled characters, you can either make a deep copy of **mimeType.data**, or release **info** when **mimeType** is no longer needed.
+> - **mimeType.data** does not end with **\0** and must be used together with **mimeType.size**.
 
 **Since**: 20
 
@@ -271,7 +296,7 @@ Obtains the MIME type of an image.
 | Name| Description|
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | Pointer to an OH_ImageSource_Info object.|
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | Pointer to the MIME type.|
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimeType | Pointer to the MIME type.|
 
 **Returns**
 
@@ -287,7 +312,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 **Description**
 
-Releases the pointer to an OH_ImageSource_Info object.
+Releases the pointer to an OH_ImageSource_Info object. After this API is called, all properties related to the OH_ImageSource_Info struct are released. Therefore, before calling this API, ensure that the relevant properties are no longer needed or that a deep copy of these properties has been completed.
 
 **Since**: 12
 
@@ -321,7 +346,7 @@ Creates the pointer to an OH_DecodingOptions object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to the OH_DecodingOptions object created.|
+| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to an OH_DecodingOptions object.|
 
 **Returns**
 
@@ -332,7 +357,7 @@ Creates the pointer to an OH_DecodingOptions object.
 ### OH_DecodingOptions_GetPixelFormat()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,int32_t *pixelFormat)
+Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)
 ```
 
 **Description**
@@ -347,7 +372,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t *pixelFormat | Pixel format. The default value is **RGBA_8888**. For details about pixel formats, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -373,7 +398,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t pixelFormat | Pixel format. The default value is **RGBA_8888**. For details about pixel formats, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -399,7 +424,7 @@ Obtains the index of an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| uint32_t *index | Pointer to the index of the image.|
+| uint32_t *index | Pointer to the image index. The default value is **0**.|
 
 **Returns**
 
@@ -425,7 +450,7 @@ Sets the index for an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| uint32_t index | Index of the image.|
+| uint32_t index | Image index. The default value is **0**.|
 
 **Returns**
 
@@ -451,7 +476,7 @@ Obtains the rotation degree.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| float *rotate | Pointer to the angle to rotate, in degrees.|
+| float *rotate | Pointer to the rotation degree, in deg. The default value is **0**.|
 
 **Returns**
 
@@ -477,7 +502,7 @@ Sets the rotation angle.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| float rotate | Angle to rotate, in degrees.|
+| float rotate | Rotation degree, in deg. The default value is **0**.|
 
 **Returns**
 
@@ -488,12 +513,12 @@ Sets the rotation angle.
 ### OH_DecodingOptions_GetDesiredSize()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
+Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)
 ```
 
 **Description**
 
-Obtains the desired output size.
+Obtains the desired output dimensions.
 
 **Since**: 12
 
@@ -503,7 +528,7 @@ Obtains the desired output size.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size.|
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Expected output dimensions. The default value is the original image dimensions.|
 
 **Returns**
 
@@ -514,12 +539,12 @@ Obtains the desired output size.
 ### OH_DecodingOptions_SetDesiredSize()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
+Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)
 ```
 
 **Description**
 
-Sets the desired output size.
+Sets the desired output dimensions. The **desiredSize** parameter determines the dimensions of the PixelMap obtained after decoding, where both the width and height must be positive integers. If the aspect ratio is different from the original, the PixelMap will be stretched or scaled to the specified dimensions. The original dimensions are used by default.
 
 **Since**: 12
 
@@ -529,7 +554,7 @@ Sets the desired output size.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size.|
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Expected output dimensions. The default value is the original image dimensions.|
 
 **Returns**
 
@@ -540,7 +565,7 @@ Sets the desired output size.
 ### OH_DecodingOptions_GetDesiredRegion()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
+Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)
 ```
 
 **Description**
@@ -555,7 +580,7 @@ Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** f
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode.|
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Region to decode. By default, the full image area is used.|
 
 **Returns**
 
@@ -566,7 +591,7 @@ Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** f
 ### OH_DecodingOptions_SetDesiredRegion()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
+Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)
 ```
 
 **Description**
@@ -581,7 +606,7 @@ Sets the region to decode.<br> The actual decoding will process the entire origi
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode.|
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Region to decode. By default, the full image area is used.|
 
 **Returns**
 
@@ -592,7 +617,7 @@ Sets the region to decode.<br> The actual decoding will process the entire origi
 ### OH_DecodingOptions_GetDesiredDynamicRange()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options,int32_t *desiredDynamicRange)
+Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)
 ```
 
 **Description**
@@ -607,7 +632,7 @@ Obtains the desired dynamic range configured during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t *desiredDynamicRange | Pointer to the expected dynamic range. The default value is **SDR**. For details, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -618,7 +643,7 @@ Obtains the desired dynamic range configured during decoding.
 ### OH_DecodingOptions_SetDesiredDynamicRange()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options,int32_t desiredDynamicRange)
+Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options, int32_t desiredDynamicRange)
 ```
 
 **Description**
@@ -633,7 +658,7 @@ Sets the desired dynamic range during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t desiredDynamicRange | Expected dynamic range. The default value is **SDR**. For details, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -696,7 +721,7 @@ Sets the desired color space for the decoding options.
 ### OH_DecodingOptions_SetCropAndScaleStrategy()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t cropAndScaleStrategy)
+Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options, int32_t cropAndScaleStrategy)
 ```
 
 **Description**
@@ -722,7 +747,7 @@ Sets the cropping and scaling strategy used during decoding.
 ### OH_DecodingOptions_GetCropAndScaleStrategy()
 
 ```c
-Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t *cropAndScaleStrategy)
+Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options, int32_t *cropAndScaleStrategy)
 ```
 
 **Description**
@@ -757,7 +782,6 @@ Obtains the cropping region in the decoding options.
 
 **Since**: 19
 
-
 **Parameters**
 
 | Name| Description|
@@ -782,7 +806,6 @@ Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Im
 Sets the cropping region in the decoding options.
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -809,7 +832,6 @@ Releases the pointer to an OH_DecodingOptions object.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -834,14 +856,13 @@ Creates the pointer to an OH_ImageSourceNative object based on a URI.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | char *uri | Pointer to the URI of the image source. Only file URIs or Base64 URIs are accepted. Currently, only absolute paths are supported.|
 | size_t uriSize | URI length.|
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
 
 **Returns**
 
@@ -861,13 +882,12 @@ Creates the pointer to an OH_ImageSourceNative object based on a file descriptor
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | int32_t fd | File descriptor.|
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
 
 **Returns**
 
@@ -883,10 +903,9 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 **Description**
 
-Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).
+Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The passed **data** must be undecoded. Do not pass the pixel buffer data such as RGBA and YUV.<br> If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -894,7 +913,7 @@ Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> 
 | -- | -- |
 | uint8_t *data | Pointer to the buffer data.|
 | size_t dataSize | Size of the buffer.|
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
 
 **Returns**
 
@@ -905,7 +924,7 @@ Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> 
 ### OH_ImageSourceNative_CreateFromDataWithUserBuffer()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength,OH_ImageSourceNative **imageSource)
+Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)
 ```
 
 **Description**
@@ -941,13 +960,12 @@ Creates the pointer to an OH_ImageSourceNative object by using the raw file desc
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [RawFileDescriptor](../apis-localization-kit/capi-rawfile-rawfiledescriptor.md) *rawFile | Pointer to the file descriptor of the raw file.|
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | Double pointer to the OH_ImageSourceNative object created at the C++ local layer.|
 
 **Returns**
 
@@ -958,7 +976,7 @@ Creates the pointer to an OH_ImageSourceNative object by using the raw file desc
 ### OH_ImageSourceNative_CreatePixelmap()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative **pixelmap)
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
 **Description**
@@ -972,7 +990,7 @@ Creates the pointer to an OH_PixelmapNative object based on decoding options.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to the decoding options.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Double pointer to the OH_PixelmapNative object created at the C++ local layer.|
 
@@ -985,7 +1003,7 @@ Creates the pointer to an OH_PixelmapNative object based on decoding options.
 ### OH_ImageSourceNative_CreatePixelmapUsingAllocator()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source,OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
 ```
 
 **Description**
@@ -999,7 +1017,7 @@ Creates an OH_PixelmapNative object based on decoding options and memory type, w
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to the decoding options.|
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | Memory type used by the returned PixelMap.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Double pointer to the OH_PixelmapNative object created at the C++ local layer.|
@@ -1013,7 +1031,7 @@ Creates an OH_PixelmapNative object based on decoding options and memory type, w
 ### OH_ImageSourceNative_CreatePixelmapList()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative *resVecPixMap[], size_t size)
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)
 ```
 
 **Description**
@@ -1027,7 +1045,7 @@ Creates an array of OH_PixelmapNative objects based on decoding options.<br> Thi
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to the decoding options.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *resVecPixMap[] | Pointer to an array of OH_PixelmapNative objects created at the C++ local layer.|
 | size_t size | Size of the array. You can use [OH_ImageSourceNative_GetFrameCount](#oh_imagesourcenative_getframecount) to obtain the size.|
@@ -1041,7 +1059,7 @@ Creates an array of OH_PixelmapNative objects based on decoding options.<br> Thi
 ### OH_ImageSourceNative_CreatePicture()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options,OH_PictureNative **picture)
+Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)
 ```
 
 **Description**
@@ -1055,7 +1073,7 @@ Creates the pointer to an OH_PictureNative object based on decoding options.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | Pointer to the decoding options.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | Double pointer to the OH_PictureNative object created at the C++ local layer.|
 
@@ -1068,7 +1086,7 @@ Creates the pointer to an OH_PictureNative object based on decoding options.
 ### OH_ImageSourceNative_CreatePictureAtIndex()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index,OH_PictureNative **picture)
+Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)
 ```
 
 **Description**
@@ -1109,7 +1127,7 @@ Obtains the image delay time list.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | int32_t *delayTimeList | Pointer to the delay time list obtained. It cannot be a null pointer.|
 | size_t size | Size of the delay time list. You can use [OH_ImageSourceNative_GetFrameCount](#oh_imagesourcenative_getframecount) to obtain the size.|
 
@@ -1122,7 +1140,7 @@ Obtains the image delay time list.
 ### OH_ImageSourceNative_GetImageInfo()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index,OH_ImageSource_Info *info)
+Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index, OH_ImageSource_Info *info)
 ```
 
 **Description**
@@ -1136,7 +1154,7 @@ Obtains the information about an image with a given index.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | int32_t index | Index of an image. For a GIF image, the value range is [0, N-1], where N indicates the number of GIF frames. For an image with only one frame, you can pass in **0**.|
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | Pointer to the image information obtained, which is an OH_ImageSource_Info struct.|
 
@@ -1149,23 +1167,22 @@ Obtains the information about an image with a given index.
 ### OH_ImageSourceNative_GetImageProperty()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
 ```
 
 **Description**
 
-Obtains the value of an image property.
+Obtains the value of an image property.<br> **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
-| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details, see [Image_String](capi-image-nativemodule-image-string.md). For details about the value range of **key**, see the definition of [OHOS_IMAGE_PROPERTY_XXX](capi-image-common-h.md#variables). The memory must be released after the image source is used. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
-| [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value obtained. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object. OH_ImageSourceNative must be actively released after use. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property. For details about the value range, see **OHOS_IMAGE_PROPERTY_*XXX*** series constants defined in [Variables](capi-image-common-h.md#variables) of **image_common.h**.|
+| [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the obtained value (output parameter). Before calling this API, set **value->data** to a null pointer and **value->size** to **0**. The API will automatically allocate the required memory for **value->data** and assign a value to **value->size**. After finishing using this memory, release the memory pointed to by **value->data** using the **free()** function provided by the C standard library. Otherwise, a memory leak will occur.|
 
 **Returns**
 
@@ -1173,15 +1190,463 @@ Obtains the value of an image property.
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
-### OH_ImageSourceNative_GetImagePropertyWithNull()
+### OH_ImageSourceNative_GetImagePropertyShort()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t *value)
 ```
 
 **Description**
 
-Obtains the value of an image property. The output **value.data** is terminated with a string terminator.
+Obtains an image property value of the short integer type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| uint16_t *value | Pointer to the obtained property value. This is the output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the short integer type.|
+
+### OH_ImageSourceNative_GetImagePropertyLong()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t *value)
+```
+
+**Description**
+
+Obtains an image property value of the long integer type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| uint32_t *value | Pointer to the obtained property value. This is the output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the long integer type.|
+
+### OH_ImageSourceNative_GetImagePropertyDouble()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double *value)
+```
+
+**Description**
+
+Obtains an image property value of the floating-point type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| double *value | Pointer to the obtained property value. This is the output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the floating-point type.|
+
+### OH_ImageSourceNative_GetImagePropertyArraySize()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyArraySize(OH_ImageSourceNative *source, Image_String *key, size_t *size)
+```
+
+**Description**
+
+Obtains the length of a property array or a string property.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| size_t *size | Pointer to the length of the property array or string property. This is the output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the array or string type.|
+
+### OH_ImageSourceNative_GetImagePropertyString()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative *source, Image_String *key, char *value, size_t size)
+```
+
+**Description**
+
+Obtains an image property value of the string type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| char *value | Pointer to the obtained property value. This is the output parameter. The caller is responsible for memory management and deallocation.|
+| size_t size | String length.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the string type.|
+
+### OH_ImageSourceNative_GetImagePropertyIntArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)
+```
+
+**Description**
+
+Obtains an image property value of the integer array type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| int32_t *value | Pointer to the obtained property value. This is the output parameter. The caller is responsible for memory management and deallocation.|
+| size_t size | String length.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the integer array type.|
+
+### OH_ImageSourceNative_GetImagePropertyDoubleArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)
+```
+
+**Description**
+
+Obtains an image property value of the floating-point array type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| double *value | Pointer to the obtained property value. This is the output parameter. The caller is responsible for memory management and deallocation.|
+| size_t size | Size of the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the floating-point array type.|
+
+### OH_ImageSourceNative_GetImagePropertyBlob()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)
+```
+
+**Description**
+
+Obtains an image property value of the binary object type.
+
+> **NOTE**
+>
+> When reading a DNG image, this API applies special handling to some keys. Refer to the **OHOS_IMAGE_PROPERTY_XXX** series constants defined in [Variables](capi-image-common-h.md#variables) for the string values of the following fields:
+> - **NewSubfileType**, **ImageWidth**, **ImageLength**, **DefaultCropSize**, **Orientation**, **Compression**, **PhotometricInterpretation**, **PlanarConfiguration**, **RowsPerStrip**, **StripOffsets**, **StripByteCounts**, **SamplesPerPixel**, **BitsPerSample**, **YCbCrCoefficients**, **YCbCrSubSampling**, **YCbCrPositioning**, **ReferenceBlackWhite**, **XResolution**, **YResolution**, and **ResolutionUnit**: For these properties, values related to the main image are returned.
+> - **ImageUniqueID**: The value is verified based on the specifications. If the value fails to comply with the specifications, an empty string is returned.
+> - **ExifVersion**, **FlashpixVersion**, and **ColorSpace**: If the image does not contain these properties, an error code is returned.
+> - **DNGVersion**: If the value is earlier than **1.0.0.0**, **1.0.0.0** is returned.
+> - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
+> - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
+> - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property is to be queried.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property to be queried.|
+| void *value | Pointer to the obtained property value. This is the output parameter. The caller is responsible for memory management and deallocation.|
+| size_t size | Size of the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the binary object type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyShort()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t value)
+```
+
+**Description**
+
+Changes an image property value of the short integer type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| uint16_t value | Property value.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the short integer type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyLong()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t value)
+```
+
+**Description**
+
+Changes an image property value of the long integer type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| uint32_t value | Property value.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the long integer type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyDouble()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double value)
+```
+
+**Description**
+
+Changes an image property value of the floating-point type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| double value | Property value.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the floating-point type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyIntArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)
+```
+
+**Description**
+
+Changes an image property value of the integer array type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| int32_t *value | Pointer to the property value.|
+| size_t size | Size of the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the integer array type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyDoubleArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)
+```
+
+**Description**
+
+Changes an image property value of the floating-point array type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| double *value | Pointer to the property value.|
+| size_t size | Size of the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the floating-point array type.|
+
+### OH_ImageSourceNative_ModifyImagePropertyBlob()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)
+```
+
+**Description**
+
+Changes an image property value of the binary object type.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to ImageSource whose property value is to be changed.|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property whose value is to be changed.|
+| void *value | Pointer to the property value.|
+| size_t size | Size of the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: **source**, **key**, or **value** is **nullptr**.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: Image properties for the current MIME type are not supported for querying.<br>         **IMAGE_SOURCE_UNSUPPORTED_METADATA**: The specified metadata does not exist or is not of the binary object type.|
+
+### OH_ImageSourceNative_GetImagePropertyWithNull()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
+```
+
+**Description**
+
+Obtains the value of an image property. The output **value.data** ends with the string terminator **\0**.
 
 **Since**: 19
 
@@ -1190,9 +1655,9 @@ Obtains the value of an image property. The output **value.data** is terminated 
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
-| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key.|
-| [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value obtained.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source |  Pointer to an OH_ImageSourceNative object. OH_ImageSourceNative must be actively released after use. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details about the value range, see **OHOS_IMAGE_PROPERTY_*XXX*** series constants defined in [Variables](capi-image-common-h.md#variables) of **image_common.h**.|
+| [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value obtained. Before calling this API, set **value->data** to a null pointer and **value->size** to **0**. The API will automatically allocate the required memory for **value->data** and assign a value to **value->size**. After finishing using this memory, release the memory pointed to by **value->data** using the **free()** function provided by the C standard library. Otherwise, a memory leak may occur.|
 
 **Returns**
 
@@ -1203,7 +1668,7 @@ Obtains the value of an image property. The output **value.data** is terminated 
 ### OH_ImageSourceNative_ModifyImageProperty()
 
 ```c
-Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
 ```
 
 **Description**
@@ -1217,8 +1682,8 @@ Modifies the value of an image property.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
-| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details, see [Image_String](capi-image-nativemodule-image-string.md). **key** is an Exif constant. The memory must be released after the image source is used. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object. OH_ImageSourceNative must be actively released after use. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details about the value range, see **OHOS_IMAGE_PROPERTY_*XXX*** series constants defined in [Variables](capi-image-common-h.md#variables) of **image_common.h**.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the new value.|
 
 **Returns**
@@ -1244,7 +1709,7 @@ Obtains the number of image frames.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | uint32_t *frameCount | Pointer to the number of frames obtained.|
 
 **Returns**
@@ -1296,7 +1761,7 @@ Releases the pointer to an OH_ImageSourceNative object.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 
 **Returns**
 
@@ -1321,7 +1786,7 @@ Creates the pointer to an OH_DecodingOptionsForPicture object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to the OH_DecodingOptionsForPicture object created.|
+| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to an OH_DecodingOptionsForPicture object.|
 
 **Returns**
 
@@ -1332,7 +1797,7 @@ Creates the pointer to an OH_DecodingOptionsForPicture object.
 ### OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures()
 
 ```c
-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
+Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
 ```
 
 **Description**
@@ -1359,7 +1824,7 @@ Obtains desired auxiliary pictures in the decoding options (auxiliary pictures c
 ### OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures()
 
 ```c
-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
+Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
 ```
 
 **Description**
@@ -1407,3 +1872,103 @@ Releases the pointer to an OH_DecodingOptionsForPicture object.
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+
+### OH_ImageSourceNative_CreateImageRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_CreateImageRawData(const OH_ImageSourceNative *source, OH_ImageRawData **rawData)
+```
+
+**Description**
+
+Obtains the rawData object from an image. The rawData object usually occupies a large amount of memory because it contains raw data from the camera.<br>        When the rawData object is no longer needed, call the [OH_ImageSourceNative_DestroyImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_destroyimagerawdata) method to destroy it in a timely manner to deallocate memory resources.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to the image source.|
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) **rawData | Double pointer to the rawData object obtained after decoding.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_SOURCE**: The source is incorrect.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.<br>         **IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE**: The MIME type is not supported.|
+
+### OH_ImageSourceNative_GetBufferFromRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetBufferFromRawData(const OH_ImageRawData *rawData, uint8_t **data, size_t *length)
+```
+
+**Description**
+
+Obtains binary data from a rawData object.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | Pointer to the rawData object.|
+| uint8_t **data | Pointer to the binary buffer data.|
+| size_t *length | Pointer to the length of the obtained data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.|
+
+### OH_ImageSourceNative_GetBitsPerPixelFromRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetBitsPerPixelFromRawData(const OH_ImageRawData *rawData, uint8_t *bitsPerPixel)
+```
+
+**Description**
+
+Obtains the number of bits occupied by each pixel in the buffer data.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | Pointer to the rawData object.|
+| uint8_t *bitsPerPixel | Pointer to the number of bits per pixel.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.|
+
+### OH_ImageSourceNative_DestroyImageRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawData)
+```
+
+**Description**
+
+Destroys a rawData object.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | Pointer to the rawData object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.|

@@ -32,7 +32,7 @@ Obtains the Kiosk mode status information, including whether the system is in ki
 
 **System API**: This is a system API.
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones, PC/2-in-1 devices, and tablets. On other devices, it returns the error code 801.
 
 **Return value**
 

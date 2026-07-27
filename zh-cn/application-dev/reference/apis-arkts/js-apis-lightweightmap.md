@@ -1,20 +1,20 @@
 # @ohos.util.LightWeightMap (非线性容器LightWeightMap)  
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-LightWeightMap可用于存储具有关联关系的key-value键值对集合，存储元素中key值唯一，每个key对应一个value。
+LightWeightMap可用于存储具有关联关系的key-value键值对，其中key值唯一，每个key对应一个value。
 
-LightWeightMap依据泛型定义，采用轻量级结构，初始默认容量大小为8，每次扩容大小为原始容量的两倍。
+LightWeightMap依据泛型定义，采用轻量级结构，默认容量大小为8，每次扩容大小为原始容量的两倍。
 
-集合中key值的查找依赖于hash算法，通过一个数组存储hash值，然后映射到其他数组中的key值及value值。
+集合中key值的查找依赖于hash算法，通过一个数组存储hash值，然后映射到对应的key值及value值。
 
-LightWeightMap和[HashMap](js-apis-hashmap.md)都是用来存储键值对的集合，但LightWeightMap占用内存更小。
+LightWeightMap和[HashMap](js-apis-hashmap.md)都是用来存储键值对的容器，但LightWeightMap占用内存更小。
 
-**推荐使用场景：** 当需要存取key-value键值对时，推荐使用占用内存更小的LightWeightMap。
+**推荐使用场景：** 当需要存取key-value键值对且对内存占用较为敏感时（如需要同时维护大量小型键值对集合、运行在内存受限的环境中），推荐使用占用内存更小的LightWeightMap。
 
 文档中使用了泛型，涉及以下泛型标记符：
 - K：Key，键<br>
@@ -28,18 +28,18 @@ LightWeightMap和[HashMap](js-apis-hashmap.md)都是用来存储键值对的集�
 
 ## 规格限制
 
-当LightWeightMap存入的key为number类型且值大于INT32_MAX或小于INT32_MIN时，针对LightWeightMap的操作，其结果可能与预期不一致。
+当LightWeightMap存入的key为number类型且值大于INT32_MAX（即2147483647）或小于INT32_MIN（即-2147483648）时，针对LightWeightMap的操作，其结果可能与预期不一致。
 
 这是因为，当key为number类型且值大于INT32_MAX或小于INT32_MIN时，存储结构会发生改变。
 
 例如在以下示例针对key的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
 
 ```ts
-let mp = new LightWeightMap<number, number>();
+let lightWeightMap = new LightWeightMap<number, number>();
 let key = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
-mp.set(key, 1001);
-console.info("result:", mp.hasKey(1758783600));  // result: false 
-console.info("result:", mp.hasKey(key));  // result: true
+lightWeightMap.set(key, 1001);
+console.info('result:', lightWeightMap.hasKey(1758783600));  // result: false 
+console.info('result:', lightWeightMap.hasKey(key));  // result: true
 ```
 
 ## 导入模块
@@ -65,7 +65,7 @@ import { LightWeightMap } from '@kit.ArkTS';
 
 constructor()
 
-LightWeightMap的构造函数。
+LightWeightMap的构造函数，创建一个空的LightWeightMap实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -114,7 +114,7 @@ isEmpty(): boolean
 **示例：**
 
 ```ts
-const lightWeightMap = new LightWeightMap<string, number>();
+let lightWeightMap = new LightWeightMap<string, number>();
 let result = lightWeightMap.isEmpty();
 console.info("result:", result);  // result: true
 ```
@@ -134,7 +134,7 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| map | LightWeightMap<K, V> | 是 | 比较对象。 |
+| map | [LightWeightMap<K, V>](#lightweightmap) | 是 | 用于比较的LightWeightMap对象，判断当前实例是否包含此map中的所有元素。 |
 
 **返回值：**
 
@@ -144,11 +144,10 @@ hasAll(map: LightWeightMap<K, V>): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The hasAll method cannot be bound. |
 
 **示例：**
@@ -157,9 +156,9 @@ hasAll(map: LightWeightMap<K, V>): boolean
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let map = new LightWeightMap<string, number>();
-map.set("sparrow", 356);
-let result = lightWeightMap.hasAll(map); 
+let targetMap = new LightWeightMap<string, number>();
+targetMap.set("sparrow", 356);
+let result = lightWeightMap.hasAll(targetMap); 
 console.info("result = ", result); // result = true
 ```
 
@@ -168,7 +167,7 @@ console.info("result = ", result); // result = true
 
 hasKey(key: K): boolean
 
-判断LightWeightMap中是否包含指定key。
+判断LightWeightMap中是否包含指定key。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致，详见[规格限制](#规格限制)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -178,7 +177,7 @@ hasKey(key: K): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | K | 是 | 指定key。 |
+| key | K | 是 | 指定key。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。 |
 
 **返回值：**
 
@@ -218,7 +217,7 @@ hasValue(value: V): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | V | 是 | 指定元素。 |
+| value | V | 是 | 要判断是否包含的value。 |
 
 **返回值：**
 
@@ -247,7 +246,7 @@ console.info("result:", result);  // result: true
 
 increaseCapacityTo(minimumCapacity: number): void
 
-将当前LightWeightMap扩容至指定容量。如果传入的容量值大于或等于当前LightWeightMap中的元素个数，将容量变更为新容量，小于则不会变更。
+将当前LightWeightMap扩容至指定容量。如果传入的容量值大于或等于当前LightWeightMap中的元素个数，将容量扩容至新容量，小于则不会变更。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -257,15 +256,14 @@ increaseCapacityTo(minimumCapacity: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| minimumCapacity | number | 是 | 需要容纳的元素数量。 |
+| minimumCapacity | number | 是 | 需要容纳的元素数量。取值需大于等于0，大于等于当前元素个数时扩容生效，否则不变更容量。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **示例：**
@@ -279,7 +277,7 @@ lightWeightMap.increaseCapacityTo(10);
 
 get(key: K): V
 
-获取指定key所对应的value。
+获取指定key所对应的value。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -320,7 +318,7 @@ console.info("result:", result);  // result: 356
 
 getIndexOfKey(key: K): number
 
-查找key元素首次出现的下标值，如果未找到返回-1。
+查找key元素首次出现的下标值，如果未找到返回-1。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -361,7 +359,7 @@ console.info("result:", result);  // result: 0
 
 getIndexOfValue(value: V): number
 
-查找value元素首次出现的下标值，如果未找到则返回-1。
+查找指定value元素首次出现的下标值，如果未找到则返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -371,7 +369,7 @@ getIndexOfValue(value: V): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | V | 是 | 被查找的元素。 |
+| value | V | 是 | 要查找首次出现下标位置的值。 |
 
 **返回值：**
 
@@ -412,21 +410,20 @@ getKeyAt(index: number): K
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 所查找的下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 所查找的下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| K | 返回该下标对应的元素键值对中key值。 |
+| K | 返回该下标对应的元素键值对中key值，如果未找到则返回undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getKeyAt method cannot be bound. |
 
@@ -445,7 +442,7 @@ console.info("result:", result);  // result: squirrel
 
 setAll(map: LightWeightMap<K, V>): void
 
-将一个LightWeightMap中的所有元素组添加到另一个LightWeightMap中。
+将一个LightWeightMap中的所有元素添加到另一个LightWeightMap中，如果目标LightWeightMap中已存在相同的key，则会更新其对应的value。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -455,15 +452,14 @@ setAll(map: LightWeightMap<K, V>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| map | LightWeightMap<K, V> | 是 | 提供添加元素的LightWeightMap。 |
+| map | [LightWeightMap<K, V>](#lightweightmap) | 是 | 提供添加元素的LightWeightMap。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The setAll method cannot be bound. |
 
 **示例：**
@@ -482,7 +478,7 @@ console.info("result:", result);  // result: 356
 ### set
 set(key: K, value: V): Object
 
-向LightWeightMap中添加或更新一组数据。
+向LightWeightMap中添加或更新一组数据。调用成功后，若key不存在则新增键值对且length增加，若key已存在则更新对应value值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -492,14 +488,14 @@ set(key: K, value: V): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | K | 是 | 添加或更新成员数据的键名。 |
+| key | K | 是 | 添加或更新成员数据的键名。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。 |
 | value | V | 是 | 添加或更新成员数据的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object | 返回添加或更新数据后的LightWeightMap。|
+| Object | 返回添加或更新后的LightWeightMap实例对象。|
 
 **错误码：**
 
@@ -522,7 +518,7 @@ console.info("result:", result);  // result: squirrel:123
 
 remove(key: K): V
 
-删除指定key映射的元素。
+删除指定key映射的元素。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -562,7 +558,7 @@ console.info("result:", result);  // result: 356
 
 removeAt(index: number): boolean
 
-删除指定下标对应的元素。
+删除指定下标对应的元素。调用成功后，若下标有效则该位置的键值对从LightWeightMap中移除且length减少。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -572,7 +568,7 @@ removeAt(index: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 要删除的元素的下标位置。取值范围：[0, length-1]，需小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -582,11 +578,10 @@ removeAt(index: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **示例：**
@@ -604,7 +599,7 @@ console.info("result:", result);  // result: true
 
 setValueAt(index: number, newValue: V): boolean
 
-替换指定下标对应键值对中的值。
+替换指定下标对应键值对中的值。调用成功后，指定下标处键值对的值将被替换为newValue。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -614,7 +609,7 @@ setValueAt(index: number, newValue: V): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 | newValue | V | 是 | 替换键值对中的值。 |
 
 **返回值：**
@@ -625,11 +620,10 @@ setValueAt(index: number, newValue: V): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
@@ -658,7 +652,7 @@ getValueAt(index: number): V
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -668,11 +662,10 @@ getValueAt(index: number): V
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getValueAt method cannot be bound. |
 
@@ -744,6 +737,7 @@ keys(): IterableIterator&lt;K&gt;
 **示例：**
 
 ```ts
+// 不建议在keys中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -760,7 +754,7 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;V&gt;
 
-返回包含此映射中所有键值的新迭代器对象。
+返回包含此映射中所有值的新迭代器对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -783,6 +777,7 @@ values(): IterableIterator&lt;V&gt;
 **示例：**
 
 ```ts
+// 不建议在values中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
@@ -799,7 +794,7 @@ for (let value of values) {
 
 forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object): void
 
-通过回调函数来遍历实例对象上的元素及其下标。
+通过回调函数来遍历实例对象上的元素及其键值对信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -809,23 +804,22 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | 是 | 回调函数。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
+| callbackFn | function | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。当需要回调函数中的this指向非当前实例对象时传入此参数，当不需要改变this指向时可不传入。不传入时，默认值为当前实例对象。 |
 
 callbackFn的参数说明：
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | V | 否 | 当前遍历到的元素键值对的值，默认值为首个键值对的值。 |
-| key | K | 否 | 当前遍历到的元素键值对的键，默认值为首个键值对的键。 |
-| map | LightWeightMap<K, V> | 否 | 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
+| value | V | 否 | 当前遍历到的元素键值对的值。 |
+| key | K | 否 | 当前遍历到的元素键值对的键。 |
+| map | [LightWeightMap<K, V>](#lightweightmap) | 否 | 当前调用forEach方法的实例对象，默认值为当前实例对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -844,10 +838,10 @@ lightWeightMap.forEach((value: number, key: string) => {
 ```ts
 // 不建议在forEach中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 let lightWeightMap = new LightWeightMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.set("sparrow" + i, 123);
 }
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   lightWeightMap.remove("sparrow" + i);
 }
 ```
@@ -866,7 +860,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| IterableIterator<[K, V]> | 返回一个迭代器。 |
+| IterableIterator<[K, V]> | 返回包含此映射中所有键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -882,12 +876,12 @@ entries(): IterableIterator<[K, V]>
 let lightWeightMap = new LightWeightMap<string, number>();
 lightWeightMap.set("squirrel", 123);
 lightWeightMap.set("sparrow", 356);
-let iter = lightWeightMap.entries();
-let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
+let iteratorResult = lightWeightMap.entries();
+let temp: IteratorResult<Object[]> = iteratorResult.next();
+while (!temp.done) {
   console.info("key:" + temp.value[0]);
   console.info("value:" + temp.value[1]);
-  temp = iter.next();
+  temp = iteratorResult.next();
 }
 ```
 ```ts
@@ -915,7 +909,7 @@ toString(): String
 
 | 类型 | 说明 |
 | -------- | -------- |
-| String | 返回一个字符串。 |
+| String | 返回将此映射中键值对拼接而成的字符串。 |
 
 **错误码：**
 
@@ -939,7 +933,7 @@ console.info("result:", result);  // result: sparrow:356,squirrel:123
 
 [Symbol.iterator]\(): IterableIterator&lt;[K, V]&gt;
 
-返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
+返回一个迭代器，迭代器的每一项都是一个包含键和值的[K, V]数组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

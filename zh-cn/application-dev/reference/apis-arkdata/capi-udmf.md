@@ -16,9 +16,9 @@
 
 | 名称                                       | 描述                                                         |
 | ------------------------------------------ | ------------------------------------------------------------ |
-| [udmf.h](capi-udmf-h.md)                   | 提供访问统一数据管理框架数据的接口、数据结构、枚举类型。引用文件：<database/udmf/udmf.h> |
-| [udmf_err_code.h](capi-udmf-err-code-h.md) | 声明统一数据管理框架错误码信息。引用文件：<database/udmf/udmf_err_code.h> |
-| [udmf_meta.h](capi-udmf-meta-h.md)         | 声明统一类型数据信息。引用文件：<database/udmf/udmf_meta.h>  |
-| [uds.h](capi-uds-h.md)                     | 提供标准化数据结构相关接口函数、结构体定义。引用文件：<database/udmf/uds.h> |
-| [utd.h](capi-utd-h.md)                     | 提供标准化数据类型描述相关接口和数据结构。引用文件：<database/udmf/utd.h> |
+| [udmf.h](capi-udmf-h.md)                   | 提供访问统一数据管理框架数据的接口、数据结构、枚举类型。当参数类型为char*时，字符串必须以空字符（'\0'）结尾，否则可能导致未定义行为或函数返回错误。 |
+| [udmf_err_code.h](capi-udmf-err-code-h.md) | 声明统一数据管理框架错误码定义和错误描述信息。 |
+| [udmf_meta.h](capi-udmf-meta-h.md)         | 声明统一类型数据信息。  |
+| [uds.h](capi-uds-h.md)                     | 提供标准化数据结构相关接口函数、结构体定义。当参数类型为char*时，字符串必须以空字符（'\0'）结尾，否则可能导致未定义行为或函数返回错误。 |
+| [utd.h](capi-utd-h.md)                     | 提供标准化数据类型描述相关接口和数据结构。当参数类型为char*时，字符串必须以空字符（'\0'）结尾，否则可能导致未定义行为或函数返回错误。 |
 

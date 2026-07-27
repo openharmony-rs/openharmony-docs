@@ -2,15 +2,26 @@
 
 - 模块
   - composer 
+    - [Display (V1_4)](_composer_display_v14.md)
+    - [Display (V1_3)](_composer_display_v13.md)
     - [Display (V1_2)](index_composer_display_v12.md) 
     - [Display (V1_1)](_display_v11.md)
     - [Display (V1_0)](_display_v10.md)
   - buffer
+    - [Display (V1_4)](_buffer_display_v14.md)
+    - [Display (V1_3)](_buffer_display_v13.md)
     - [Display (V1_2)](index_buffer_display_v13.md)
     - [Display (V1_1)](index_buffer_display_v11.md)
     - [Display (V1_0)](index_buffer_display_v10.md)
 - 头文件
   - composer
+    - Display (V1_4)
+      - [DisplayComposerType.idl](_composer_display_composer_type_8idl_v14.md)
+      - [IDisplayComposer.idl](_composer_i_display_composer_8idl_v14.md)
+    - Display (V1_3)
+      - [DisplayComposerType.idl](_composer_display_composer_type_8idl_v13.md)
+      - [IDisplayComposer.idl](_composer_i_display_composer_8idl_v13.md)
+      - [IHwcEventCallback.idl](_composer_i_hwc_event_callback_8idl_v13.md)
     - Display (V1_2)
       - [DisplayComposerType.idl](files_composer_display_v12_display_composer_type_8idl.md)
       - [IDisplayComposer.idl](files_composer_display_v12_i_display_composer_8idl.md)
@@ -31,6 +42,10 @@
       - [IRefreshCallback.idl](_i_refresh_callback_8idl_v10.md)
       - [IVBlankCallback.idl](_i_v_blank_callback_8idl_v10.md)
   - buffer
+    - Display (V1_4)
+      - [IAllocator.idl](_buffer_i_allocator_8idl_v14.md)
+    - Display (V1_3)
+      - [IMapper.idl](_buffer_i_mapper_8idl_v13.md)
     - Display (V1_2)
       - [DisplayBufferType.idl](files_buffer_display_v12_display_buffer_type_8idl.md)
       - [IMapper.idl](files_buffer_display_v12_i_mapper_8idl.md)
@@ -42,6 +57,11 @@
         - [IMapper.idl](files_buffer_display_v10_i_mapper_8idl.md)
 - 结构体
   - composer 
+    - Display (V1_4)
+      - [IDisplayComposer](_composer_interface_i_display_composer_v14.md)
+    - Display (V1_3)
+      - [IDisplayComposer](_composer_interface_i_display_composer_v13.md)
+      - [IHwcEventCallback](_composer_interface_i_hwc_event_callback_v13.md)
     - Display (V1_2)
       - [IDisplayComposer](annotated_composer_display_v12_interface_i_display_composer.md)
       - [IVBlankIdleCallback](annotated_composer_display_v12_interface_i_v_blank_idle_callback.md)
@@ -80,6 +100,10 @@
       - [VerifyAllocInfo](_verify_alloc_info_v10.md)
       - [YUVDescInfo](_y_u_v_desc_info_v10.md)
   - buffer
+    - Display (V1_4)
+      - [IAllocator](_buffer_interface_i_allocator_v14.md)
+    - Display (V1_3)
+      - [IMapper](_buffer_interface_i_mapper_v13.md)
     - Display (V1_2)
       - [ImageLayout](annotated_buffer_display_v12_image_layout.md)
       - [ImagePlane](annotated_buffer_display_v12_image_plane.md)

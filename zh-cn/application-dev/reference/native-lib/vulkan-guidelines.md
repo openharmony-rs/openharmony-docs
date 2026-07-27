@@ -104,7 +104,7 @@ libnative_buffer.so
    2. 从XComponent组件中获取OHNativeWindow。
 
       ```c++
-      // XComponent在创建Suface时的回调函数
+      // XComponent在创建Surface时的回调函数
       void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window) {
           // 在回调函数里可以拿到OHNativeWindow
           OHNativeWindow *nativeWindow = static_cast<OHNativeWindow *>(window);

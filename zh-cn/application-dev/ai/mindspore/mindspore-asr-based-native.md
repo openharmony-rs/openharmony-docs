@@ -13,6 +13,10 @@
 
 语音识别可以将一段音频信息转换为文本，在智能语音助手、语音输入、语音搜索等领域有广泛的应用。
 
+## 环境配置
+
+若需要使用模拟器运行该示例，请参考：[使用模拟器运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-emulator)
+
 ## 基本概念
 
 - N-API：用于构建ArkTS本地化组件的一套接口。可利用N-API，将C/C++开发的库封装成ArkTS模块。
@@ -34,10 +38,9 @@
 
 调用[@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md)、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md)，实现播放音频的功能。
 
-<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) -->
+<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) --> 
 
-```typescript
-// player.ets
+``` TypeScript
 import { media } from '@kit.MediaKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +142,7 @@ export default class AVPlayerDemo {
 
 在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，依次对3个模型进行推理，推理代码流程如下。
 
-1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h、base64.h、base64.cc来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)，下载后置于entry/src/main/cpp/src目录下。
+1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h的来源是[AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h)，base64.h、base64.cpp的来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)下载后置于entry/src/main/cpp/src目录下。
 
    <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
@@ -389,13 +392,14 @@ export default class AVPlayerDemo {
    }
    ```
 
-   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
-
-   ```c++
+   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
+   
+   ``` C++
    void SuppressTokens(BinBuffer &logits, bool isInitial)
    {
        auto logits_data = static_cast<float *>(logits.first);
        if (isInitial) {
+           // 假设这两个值在 logits 中的索引位置
            logits_data[WHISPER_EOT] = NEG_INF;
            logits_data[WHISPER_BLANK] = NEG_INF;
        }
@@ -408,14 +412,15 @@ export default class AVPlayerDemo {
    }
    ```
 
-   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
-
-   ```c++
+   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
+   
+   ``` C++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
                                 const BinBuffer &n_layer_cross_v, const BinBuffer &logits_init,
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
                                 const BinBuffer &data_embedding, const int loop, const int offset_init)
    {
+       // logits
        BinBuffer logits{nullptr, 51865 * sizeof(float)};
        logits.first = malloc(logits.second);
        if (!logits.first) {
@@ -463,6 +468,12 @@ export default class AVPlayerDemo {
            void *data_embedding_src =
                static_cast<char *>(data_embedding.first) + offset * WHISPER_N_TEXT_STATE * sizeof(float);
            memcpy(slice.first, data_embedding_src, slice.second);
+           // out_n_layer_self_k_cache
+           // out_n_layer_self_v_cache
+           // n_layer_cross_k
+           // n_layer_cross_v
+           // slice
+           // token
            BinBuffer mask_bin(mask.data(), mask.size() * sizeof(float));
            int ret = RunMSLiteModel(model, {tokens, out_n_layer_self_k_cache_new, out_n_layer_self_v_cache_new,
                                             n_layer_cross_k, n_layer_cross_v, slice, mask_bin});
@@ -608,8 +619,8 @@ export default class AVPlayerDemo {
        auto modelBuffer3 = ReadBinFile(resourcesManager, modelName3);
        auto decoder_loop = CreateMSLiteModel(modelBuffer3);
    
-       const std::string dataName_embedding = "tiny-positional_embedding.bin"; // 获取输入数据
-       auto data_embedding = ReadBinFile(resourcesManager, dataName_embedding);
+       const std::string dataNameEmbedding = "tiny-positional_embedding.bin"; // 获取输入数据
+       auto data_embedding = ReadBinFile(resourcesManager, dataNameEmbedding);
        if (data_embedding.first == nullptr) {
            OH_AI_ModelDestroy(&encoder);
            OH_AI_ModelDestroy(&decoder_main);
@@ -705,12 +716,12 @@ export default class AVPlayerDemo {
 
 ### 调用封装的ArkTS模块进行推理并输出结果
 
-在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
+在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。若提示@nutpi/chinese_transverter不存在，请参考[中文简繁体转换器三方库](https://developer.huawei.com/consumer/cn/forum/topic/0202169478029484501?fid=0109140870620153026)安装@nutpi/chinese_transverter组件。
 
-<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// Index.ets
+<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 import msliteNapi from 'libentry.so'
 import AVPlayerDemo from './player';
 import { transverter, TransverterType, TransverterLanguage } from "@nutpi/chinese_transverter"
@@ -732,7 +743,7 @@ struct Index {
           .fontSize(30)
           .fontWeight(FontWeight.Bold);
         Button() {
-          Text('播放示例音频')
+          Text($r('app.string.play'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
@@ -750,7 +761,7 @@ struct Index {
           myClass.avPlayerFdSrcDemo();
         })
         Button() {
-          Text('识别示例音频')
+          Text($r('app.string.asr'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
@@ -797,7 +808,7 @@ struct Index {
 
 ### 调测验证
 
-1. 在DevEco Studio中连接设备，点击Run entry，编译Hap，有如下显示：
+1. 在DevEco Studio中连接设备，点击Run entry，编译HAP，有如下显示：
 
    ```shell
    Launching com.samples.mindsporelitecdemoasr

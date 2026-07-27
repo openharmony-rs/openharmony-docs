@@ -1,4 +1,4 @@
-# @ohos.net.vpn (VPN 管理)
+# @ohos.net.vpn (VPN管理)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

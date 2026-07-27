@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 This component is supported since API version 18. An arc list is a specialized list designed for circular screens. It can efficiently display information in a structured and scrollable form. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
@@ -50,15 +50,14 @@ export struct ArcListShow {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
-        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ArcListItem() {
               Row() {
                 Image($r('app.media.wlan')).width('99px').height('99px')
                   .borderRadius('50px').margin({ left: 7 })
                 Column() {
-                  Text($r('app.string.ArcListStyles_waln')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_wlan')).fontSize('38px').fontColor('#FFFFFFFF')
                   Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
                 }.width('190px')
 
@@ -146,10 +145,7 @@ export struct ArcListShow {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+      // ...
     }
     .backgroundColor('#f1f2f3')
     // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
@@ -173,7 +169,6 @@ ArkTS provides component loop rendering capabilities using [ForEach](../ui/rende
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
-import { ComponentCard } from '../../common/Card';
 import { common } from '@kit.AbilityKit';
 
 class Contact {
@@ -203,8 +198,7 @@ export struct ArcListContents {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."
-        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ForEach(this.contacts, (item: Contact) => {
               ArcListItem() {
@@ -232,10 +226,7 @@ export struct ArcListContents {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
     // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."
@@ -285,14 +276,14 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
    ``` TypeScript
    ArcList({ header: this.arcListHeader }) {
      ArcListItem() {
-     // ···
+       // ...
      }
-     // ···
+     // ...
    
      ArcListItem() {
-     // ···
+       // ...
      }
-     // ···
+     // ...
    }
    ```
 
@@ -308,7 +299,7 @@ When initializing the **ArcList** component, you can use the [space](../referenc
 
 ``` TypeScript
 ArcList({ initialIndex: 2 }) {
-  // ···
+  // ...
 }
 .space(LengthMetrics.px(30))
 ```
@@ -325,7 +316,7 @@ By default, items in an **ArcList** component automatically scale when they are 
 
 ``` TypeScript
 ArcListItem() {
-// ···
+  // ...
 }
 .autoScale(false)
 ```
@@ -344,11 +335,11 @@ When using the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.m
 
 ``` TypeScript
 ArcList({ header: this.arcListHeader }) {
-  // ···
+  // ...
 }
 .scrollBar(BarState.Auto)
 .scrollBarWidth(LengthMetrics.px(10))
-.scrollBarColor(ColorMetrics.resourceColor(Color.White))
+.scrollBarColor(ColorMetrics.numeric(Color.White))
 ```
 
   **Figure 6** Built-in scrollbar of the ArcList component
@@ -374,7 +365,7 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
    ``` TypeScript
    // Use arcListScroller to initialize the scroller parameter to bind it with the ArcList component.
    ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
-     // ···
+     // ...
    }
    ```
 

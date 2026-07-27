@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >
@@ -23,8 +23,8 @@ The system ability works abnormally.
 **可能原因**
 
 该错误码表示系统服务工作异常，可能原因如下。
-1. DMS服务没有正常启动。
-2. DMS的binder对象无法正常获取。
+1. 分布式组件管理服务没有正常启动。
+2. 分布式组件管理服务的binder对象无法正常获取。
 3. 流转依赖的其他服务没有正常启动或者binder对象无法获取。
 
 **处理步骤**
@@ -98,8 +98,8 @@ The system ability works abnormally.
 **可能原因**
 
 该错误码表示系统服务工作异常，可能原因如下。
-1. DMS服务没有正常启动。
-2. DMS的binder对象无法正常获取。
+1. 分布式组件管理服务没有正常启动。
+2. 分布式组件管理服务的binder对象无法正常获取。
 3. 流转依赖的其他服务没有正常启动或者binder对象无法获取。
 
 **处理步骤**

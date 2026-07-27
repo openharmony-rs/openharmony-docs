@@ -1,7 +1,7 @@
 # Defining Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -112,4 +112,4 @@ export default {
 }
 ```
 
-![en-us_image_00000011](figures/en-us_image_00000011.gif)
+![Defining-Gesture-Events](figures/Defining-Gesture-Events.gif)

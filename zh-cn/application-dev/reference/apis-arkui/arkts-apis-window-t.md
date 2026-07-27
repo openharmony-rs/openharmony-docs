@@ -1,8 +1,8 @@
 # Types
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -25,7 +25,7 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
-| 'navigation'   | <!--RP13--><!--RP13End-->三键导航栏。   |
+| 'navigation'   | 三键导航栏<!--RP13-->或工具栏。当前工具栏仅Car设备支持。<!--RP13End-->   |
 | 'navigationIndicator'   | 底部导航。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
@@ -78,7 +78,7 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 旋转事件通知通用回调函数。
 
-开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
+开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -88,10 +88,29 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | -------------------------- |
-| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
+| info | T    | 是   | 旋转事件信息，系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数，用于通知开发者旋转后的窗口信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |
+| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值，用于调整旋转后的窗口位置。 |
+
+## WindowEventListener
+
+type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+
+窗口生命周期事件通知的回调函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ------------------ |
+| windowId | number  | 是  | 触发生命周期变更的窗口ID，用于标识发生状态变化的特定窗口。|
+| event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

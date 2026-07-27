@@ -264,7 +264,7 @@ struct BindContentCoverDemo {
 
 
 
-![en-us_image_0000001646921957](figures/en-us_image_0000001646921957.gif)
+![en-us_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
 
 
 
@@ -386,7 +386,7 @@ struct BindSheetDemo {
 }
 ```
 
-![en-us_image_0000001599977924](figures/en-us_image_0000001599977924.gif)
+![en-us_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
 
 
 ## Creating a Menu with bindMenu
@@ -446,7 +446,7 @@ struct BindMenuDemo {
 }
 ```
 
-![en-us_image_0000001599643478](figures/en-us_image_0000001599643478.gif)
+
 
 
 ## Creating a Context Menu with bindContextMenu
@@ -531,7 +531,7 @@ struct BindContextMenuDemo {
 }
 ```
 
-![en-us_image_0000001600137920](figures/en-us_image_0000001600137920.gif)
+![en-us_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
 
 
 ## Creating a Popup with bindPopup
@@ -599,7 +599,7 @@ struct BindPopupDemo {
 
 
 
-![en-us_image_0000001649282285](figures/en-us_image_0000001649282285.gif)
+![en-us_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
 
 
 ## Creating Modal Transition with if
@@ -618,18 +618,18 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace $r('app.string.modal_transition_text29') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
-  private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
-    // Replace $r('app.string.modal_transition_text30') with the actual resource file. In this example, the value in the resource file is "Personal hotspot."
-    $r('app.string.modal_transition_text30'),
-    // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
-    $r('app.string.modal_transition_text31')];
-  // Replace $r('app.string.modal_transition_text32') with the actual resource file. In this example, the value in the resource file is "Projection."
-  private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
-    // Replace $r('app.string.modal_transition_text33') with the actual resource file. In this example, the value in the resource file is "Print."
-    $r('app.string.modal_transition_text33'), 'VPN',
-    // Replace $r('app.string.modal_transition_text34') with the actual resource file. In this example, the value in the resource file is "Private DNS."
-    $r('app.string.modal_transition_text34'), 'NFC'];
+  // In the resources\base\element\string.json file, set name to 'modal_transition_text29' and value to a non-null string.
+  private listArr: ResourceStr[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text30' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text31' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
+  // In the resources\base\element\string.json file, set name to 'modal_transition_text32' and value to a non-null string.
+  private shareArr: ResourceStr[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text33' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text34' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
   // Step 1: Define a state variable to control page display.
   @State isShowShare: boolean = false;
 
@@ -809,4 +809,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-![en-us_image_0000001597792146](figures/en-us_image_0000001597792146.gif)
+![en-us_image_0000001597792146](figures/Modal-Transition.gif)

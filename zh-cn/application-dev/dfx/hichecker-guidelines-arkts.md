@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -29,7 +29,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 
 ## 接口说明
 
-检测模式接口由HiChecker模块提供，详细API请参考[@ohos.hichecker (检测模式) ArkTS API参考](../reference/apis-performance-analysis-kit/js-apis-hichecker.md)。
+检测模式接口由HiChecker模块提供，详细API请参考[@ohos.hichecker](../reference/apis-performance-analysis-kit/js-apis-hichecker.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -57,11 +57,11 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 添加检测规则，规则意义见检测模式API参考
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-       let filePath: string = this.context.cacheDir + '/test.JPG';
-       const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
-       const imagePackerApi = image.createImagePacker();
+       let filePath: string = this.context.filesDir + '/test.JPG';
+       const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+       const imagePackerObj: image.ImagePacker = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
-       imagePackerApi.packing(imageSourceApi, packOpts);
+       imagePackerObj.packToData(imageSourceObj, packOpts);
        // 以上5行通过image子系统触发检测规则
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
@@ -100,7 +100,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
    };
    ```
 
-2. 安装hap后运行，通过DevEco Studio Log插件过滤 HICHECKER 关键字日志或者通过 hdc shell "hilog | grep HICHECKER" 命令查询，有如下调用栈信息说明检测成功（调用栈为触发检测规则时的调用栈）。
+2. 安装hap后运行，通过DevEco Studio Log插件过滤 HICHECKER 关键字日志或者通过 hdc shell "hilog | grep HICHECKER" 命令查询，有如下调用栈信息说明检测成功（调用栈为触发检测时的调用栈）。
 
    ```shell
    08-05 23:11:07.206  1799  1799 I C02d0b/HICHECKER: StackTrace:

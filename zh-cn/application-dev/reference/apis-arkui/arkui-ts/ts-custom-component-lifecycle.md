@@ -1,7 +1,7 @@
 # 自定义组件的生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Owner: @seaside_wu1; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -29,7 +29,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 aboutToAppear?(): void
 
-aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变[状态变量](../../../ui/state-management/arkts-state-management-glossary.md#状态变量state-variables)，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
+aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变[状态变量](../../../ui/state-management/arkts-state-management-glossary.md#state-variables状态变量)，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
 
 > **说明：**
 >
@@ -50,13 +50,15 @@ onDidBuild函数在自定义组件的build()函数执行后调用，开发者可
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToDisappear
 
 aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
+aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
 
 > **说明：**
 >
@@ -116,16 +118,19 @@ struct IndexComponent {
   @State textColor: Color = Color.Black;
 
   onPageShow() {
+    // onPageShow触发时将textColor置为Blue
     this.textColor = Color.Blue;
     console.info('IndexComponent onPageShow');
   }
 
   onPageHide() {
+    // onPageHide触发时将textColor置为Transparent
     this.textColor = Color.Transparent;
     console.info('IndexComponent onPageHide');
   }
 
   onBackPress() {
+    // 点击返回键触发onBackPress，将textColor置为Red
     this.textColor = Color.Red;
     console.info('IndexComponent onBackPress');
   }
@@ -140,15 +145,17 @@ struct IndexComponent {
   }
 }
 ```
-![zh-cn_image_lifecycle](figures/zh-cn_image_lifecycle.gif)
+![zh-cn_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
 
 onNewParam?(param: ESObject): void
 
-该回调仅生效于由[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的、作为[router路由](../js-apis-router.md)页面存在的自定义组件。当之前存在于路由栈中的页面，通过[单实例模式](../js-apis-router.md#routermode9)移动到栈顶时触发该回调。
+该回调仅生效于由[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的、作为[router](../js-apis-router.md)路由页面存在的自定义组件。当之前存在于路由栈中的页面，通过单实例模式[RouterMode](../js-apis-router.md#routermode9)移动到栈顶时触发该回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,6 +198,7 @@ struct Index {
             params: new routerParam('push pageOne Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若PageOne已在栈中，会复用并触发PageOne.onNewParam
       Button('push pageOne Single')
         .margin(10)
         .onClick(() => {
@@ -232,6 +240,7 @@ struct PageOne {
             params: new routerParam('push Index Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若Index已在栈中，会复用并触发Index.onNewParam
       Button('push Index Single')
         .margin(10)
         .onClick(() => {
@@ -255,10 +264,12 @@ aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
 > **说明：**
 >
-> * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse#section7441712174414)。
+> * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-component_reuse#避免对linkobjectlinkprop等自动更新的状态变量在abouttoreuse中重复赋值)。
 > * 在滑动场景中，使用组件复用通常需要用该回调函数去更新组件的状态变量，因此在该回调函数中应避免耗时操作，否则会导致丢帧卡顿。最佳实践请参考[主线程耗时操作优化指导-组件复用回调](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -285,6 +296,7 @@ struct Index {
 
   build() {
     Column() {
+      // 点击Button切换switch，控制Child从组件树移除或重新加入
       Button('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -306,8 +318,8 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
-    this.message = params.message as Message
+    console.info('Reuse Child');
+    this.message = params.message as Message;
   }
 
   build() {
@@ -330,6 +342,8 @@ aboutToReuse?(): void
 详细内容请参考[\@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,6 +384,8 @@ aboutToRecycle?(): void
 组件的生命周期回调，在可复用组件从组件树上被加入到复用缓存之前调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,7 +432,7 @@ struct Child {
   }
 
   aboutToRecycle() {
-    //这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存，引发内存泄漏
+    // 这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存，引发内存泄漏
     console.info("Recycle Child,child进入复用池中");
   }
 
@@ -443,6 +459,8 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -453,15 +471,19 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 
 ## Theme<sup>12+</sup>
 
-type Theme = Theme
+type Theme = import('../api/@ohos.arkui.theme').Theme
+
+主题对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [Theme](../js-apis-arkui-theme.md#theme) | 自定义组件当前生效的Theme对象。 |
+| import('../api/@ohos.arkui.theme').[Theme](../js-apis-arkui-theme.md#theme) | 自定义组件当前生效的Theme对象。 |
 
 V1：
 
@@ -472,7 +494,7 @@ import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 class BlueColors implements CustomColors {
   fontPrimary = Color.White;
   backgroundPrimary = Color.Blue;
-  brand = Color.Blue; //品牌色
+  brand = Color.Blue; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -543,7 +565,7 @@ import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 class BlueColors implements CustomColors {
   fontPrimary = Color.White;
   backgroundPrimary = Color.Blue;
-  brand = Color.Blue; //品牌色
+  brand = Color.Blue; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -628,6 +650,8 @@ onFormRecycle回调函数在卡片回收时执行，卡片提供方可以返回�
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -650,6 +674,7 @@ struct WidgetCard {
 
   onFormRecycle(): string {
     let formId: string = "1859635745"
+    // 卡片回收时触发回调
     console.info("card is recycled, formID: " + formId);
     return formId;
   }
@@ -693,6 +718,8 @@ onFormRecover回调函数在卡片恢复时执行，卡片提供方可以拿到�
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -720,6 +747,7 @@ struct WidgetCard {
   }
 
   onFormRecover(statusData: string): void {
+    // 在卡片恢复时触发回调
     console.info("card has been restored, formID: " + statusData);
   }
 

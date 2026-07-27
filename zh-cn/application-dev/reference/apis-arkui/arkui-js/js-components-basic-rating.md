@@ -99,4 +99,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001198670487](figures/zh-cn_image_0000001198670487.png)
+![rating](figures/rating.png)

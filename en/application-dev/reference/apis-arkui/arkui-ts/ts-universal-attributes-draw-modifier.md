@@ -140,7 +140,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 
 drawOverlay(drawContext: DrawContext): void
 
-Draws the overlay. Override this method to implement custom overlay drawing operations in this component. Unlike [drawForeground](#drawforeground20), **drawOverlay** can implement drawing outside the component boundary.
+Draws the overlay. Override this method to implement custom overlay drawing operations in this component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -315,7 +315,8 @@ class MyFullDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
@@ -342,7 +343,8 @@ class MyFrontDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 

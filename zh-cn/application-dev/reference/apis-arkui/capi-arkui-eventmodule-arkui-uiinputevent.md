@@ -1,7 +1,7 @@
 # ArkUI_UIInputEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
 
 ## 概述
 
-UI输入事件定义。
+ArkUI_UIInputEvent用于表示ArkUI中的UI输入事件。ArkUI_EventModule中的事件接口通过该对象向回调传递输入事件数据，开发者可使用查询接口获取事件信息，适用于识别或响应用户输入事件的场景。
 
 **起始版本：** 12
 

@@ -47,7 +47,7 @@ The following figure shows a notification carrying action buttons.
    <!-- @[create_launch_uiability_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
-   let wantAgentObj: WantAgent; // Save the created WantAgent object for completing the trigger operations at a later time.
+   let wantAgentObj: WantAgent | null = null; // Store the created WantAgent object for subsequent trigger actions.
    
    // Set the action type through operationType of WantAgentInfo.
    let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -73,7 +73,7 @@ The following figure shows a notification carrying action buttons.
    <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
-   let wantAgentObj: WantAgent; // Save the created WantAgent object for completing the trigger operations at a later time.
+   let wantAgentObj: WantAgent | null = null; // Store the created WantAgent object for subsequent trigger actions.
    
    // Set the action type through operationType of WantAgentInfo.
    let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -124,7 +124,7 @@ The following figure shows a notification carrying action buttons.
      title: 'open_the_app',
      // Before using wantAgentObj, ensure that a value has been assigned to it (that is, step 3 is performed).
      // WantAgent of the notification buttons
-     wantAgent: wantAgentObj
+     wantAgent: wantAgentObj!
    };
    
    // Create a NotificationRequest object.
@@ -139,7 +139,7 @@ The following figure shows a notification carrying action buttons.
      },
      id: 6,
      // WantAgent of the notification
-     wantAgent: wantAgentObj,
+     wantAgent: wantAgentObj!,
      // Action buttons
      actionButtons: [actionButton],
    };

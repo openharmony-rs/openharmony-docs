@@ -1,10 +1,12 @@
 # Types
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+
+本文档提供 ArkWeb 组件中使用的类型定义，包括 Web 控制器及各类事件回调函数类型。其中，WebviewController 用于控制 Web 组件的行为；各类回调函数类型为开发者提供 Web 组件运行过程中多种事件场景的事件监听和处理能力。
 
 > **说明：**
 >
@@ -14,7 +16,7 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
 提供Web控制器的方法。
 
@@ -22,7 +24,7 @@ type WebviewController = WebviewController
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
+| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 
@@ -122,7 +124,7 @@ type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeE
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12)  | 是 | 提供同层标签的可见性信息。 |
+| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12)  | 是 | 提供同层标签可见性变化的信息。|
 
 ## OnFullScreenEnterCallback<sup>12+</sup>
 
@@ -142,7 +144,7 @@ Web组件进入全屏时触发的回调。
 
 type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPaint](./arkts-basic-components-web-i.md#firstmeaningfulpaint12)) => void
 
-网页绘制页面度量信息的回调，当网页加载完页面主要内容时会触发该回调。
+网页首次绘制页面主要内容度量的回调，当网页加载完页面主要内容时会触发此回调。与OnLargestContentfulPaintCallback关注最大内容元素绘制时间、OnFirstScreenPaintCallback关注首屏可见内容渲染完成相比，本回调更关注主要内容是否加载完成，适合评估用户可见内容的加载体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -156,7 +158,7 @@ type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPai
 
 type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
-网页绘制页面最大内容度量信息的回调。
+当网页绘制最大内容区域时触发的回调，用于获取最大内容绘制的性能度量信息。适用于需要监控网页加载性能、优化页面渲染速度等场景。与OnFirstMeaningfulPaintCallback关注主要内容加载完成、OnFirstScreenPaintCallback关注首屏可见内容渲染完成相比，本回调关注最大内容元素的绘制时间，适合评估页面渲染完成度和性能瓶颈。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -268,11 +270,11 @@ onOverrideErrorPage的回调函数，网页加载失败时触发。
 | ------- | ------------------------ |
 | string | 返回以Base64编码的HTML文本内容。 |
 
-## MouseInfoCallback<sup>20+<sup>
+## MouseInfoCallback<sup>20+</sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
-当鼠标/触摸板点击到同层标签时触发该回调。
+当鼠标/触摸板单击到同层标签时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -280,13 +282,13 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | 是 | 提供鼠标/触摸板在同层标签上点击或长按的详细信息。 |
+| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | 是 | 提供鼠标/触摸板在同层标签上单击或长按的详细信息。 |
 
 **示例：**
 
 完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
 
-## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+## OnNativeEmbedObjectParamChangeCallback<sup>21+</sup>
 
 type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
 
@@ -304,7 +306,7 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
 
-## OnDetectBlankScreenCallback<sup>22+<sup>
+## OnDetectBlankScreenCallback<sup>22+</sup>
 
 type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
 
@@ -324,9 +326,9 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
-type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void
 
-当页面摄像头状态发生改变时触发此回调。
+当页面摄像设备状态发生改变时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -338,7 +340,7 @@ type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) 
 
 ## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
 
-type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void
 
 当页面麦克风状态发生改变时触发此回调。
 
@@ -354,7 +356,7 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 type TextSelectionChangeCallback = (selectionText: string) => void
 
-onTextSelectionChange的回调函数，选区内容改变时触发。
+onTextSelectionChange的回调，选区内容改变时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -368,11 +370,11 @@ onTextSelectionChange的回调函数，选区内容改变时触发。
 
 完整示例代码参考[onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23)。
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
 type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
-检测到首屏渲染结束时会触发此回调。
+检测到首屏渲染结束时会触发此回调。与OnFirstMeaningfulPaintCallback关注主要内容加载完成、OnLargestContentfulPaintCallback关注最大内容元素绘制时间相比，本回调更关注首屏可见内容的渲染完成时间，适合评估用户首次视觉体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -385,3 +387,102 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 **示例：**
 
 完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。
+
+## OnCreateAISession
+
+type OnCreateAISession = (id: string, params: string, result: OnAISessionCallback) => boolean
+
+AI会话创建回调函数类型。允许自定义模型初始化和结果处理。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 会话创建时传递的上下文数据，JSON字符串格式。|
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统会话创建结果的回调函数。 |
+
+**返回值：**
+
+| 类型      | 说明                                            |
+| ------- | --------------------------------------------- |
+| boolean | `true`表示使用自定义逻辑，跳过系统默认行为；`false`表示继续执行系统默认逻辑。 |
+
+## OnExecuteAIAction
+
+type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void
+
+AI会话执行操作回调函数类型。用于自定义实现AI模型执行。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 执行操作时传递的上下文数据，JSON字符串格式。|
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统操作执行结果的回调函数。 |
+
+## OnDestroyAISession
+
+type OnDestroyAISession = (id: string) => void
+
+AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资源。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明      |
+| --- | ------ | -- | ------- |
+| id  | string | 是  | 会话任务ID。 |
+
+## OnAISessionCallback
+
+type OnAISessionCallback = (state: AISessionResultType, content: string) => void
+
+AI会话操作结果回调函数类型。用于报告会话创建或执行的结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名     | 类型                                                                             | 必填 | 说明              |
+| ------- | ------------------------------------------------------------------------------ | -- | --------------- |
+| state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | 是  | AI会话创建或执行的状态结果。 |
+| content | string                                                                         | 是  | AI会话的响应内容，文本或JSON格式，包含AI模型生成的回复内容。|
+
+## OnInputmethodAttachedCallback
+
+type OnInputmethodAttachedCallback = () => void;
+
+当检测到输入法绑定成功时，会触发此回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**示例：**
+
+完整示例代码参考[onInputmethodAttached](./arkts-basic-components-web-events.md#oninputmethodattached)。

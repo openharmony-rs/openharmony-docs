@@ -1,13 +1,17 @@
 # CanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
 使用CanvasRenderingContext2D在canvas画布组件上进行绘制，绘制对象可以是矩形、文本。
+
+> **说明：**
+>
+> 从API版本23开始，预览器不再受JS文件大小不能超过48KB的限制。对于API版本22及之前，JS文件大小不能超过48 KB。
 
 **示例：**
 
@@ -33,7 +37,7 @@ export default {
 }
 ```
 
-  ![zh-cn_image_0000001431548113](figures/zh-cn_image_0000001431548113.png)
+  ![CanvasRenderingContext2D](figures/CanvasRenderingContext2D.png)
 
 
 ## fillRect()
@@ -51,7 +55,7 @@ export default {
 
 **示例：**
 
- ![zh-cn_image_0000001431388525](figures/zh-cn_image_0000001431388525.png)
+ ![fillRect](figures/fillRect.png)
 
 
   ```javascript
@@ -71,7 +75,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431388505](figures/zh-cn_image_0000001431388505.png)
+  ![fillStyle](figures/fillStyle.png)
 
 
   ```javascript
@@ -95,7 +99,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001381268264](figures/zh-cn_image_0000001381268264.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
   ```javascript
@@ -117,7 +121,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431548109](figures/zh-cn_image_0000001431548109.png)
+  ![fillText](figures/fillText.png)
 
 
   ```javascript
@@ -138,7 +142,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431548121](figures/zh-cn_image_0000001431548121.png)
+  ![lineWidth](figures/lineWidth.png)
 
 
   ```javascript
@@ -159,7 +163,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001380789172](figures/zh-cn_image_0000001380789172.png)
+  ![strokeStyle](figures/strokeStyle.png)
 
 
   ```javascript
@@ -175,7 +179,7 @@ export default {
 
 **示例：**
 
-![zh-cn_image_0000001431388513](figures/zh-cn_image_0000001431388513.png)
+![stroke](figures/stroke.png)
 
   ```javascript
   ctx.moveTo(25, 25);
@@ -191,12 +195,12 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431548125](figures/zh-cn_image_0000001431548125.png)
+  ![beginPath](figures/beginPath.png)
 
 
   ```javascript
   ctx.beginPath();              
-  ctx.lineWidth = '6';
+  ctx.lineWidth = 6;
   ctx.strokeStyle = '#0000ff';
   ctx.moveTo(15, 80); 
   ctx.lineTo(280, 80);
@@ -217,7 +221,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431388529](figures/zh-cn_image_0000001431388529.png)
+  ![moveTo](figures/moveTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -240,7 +244,7 @@ export default {
 
 **示例：**
 
-![zh-cn_image_0000001431148365](figures/zh-cn_image_0000001431148365.png)
+![lineTo](figures/lineTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -256,7 +260,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001381268284](figures/zh-cn_image_0000001381268284.png)
+  ![closePath](figures/closePath.png)
 
 
   ```javascript
@@ -281,7 +285,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001381108328](figures/zh-cn_image_0000001381108328.png)
+  ![font](figures/font.png)
 
 
   ```javascript
@@ -302,7 +306,7 @@ export default {
 
 **示例：**
 
-  ![zh-cn_image_0000001431388517](figures/zh-cn_image_0000001431388517.png)
+  ![textAlign](figures/textAlign.png)
 
 
   ```javascript
@@ -340,7 +344,7 @@ export default {
 
 **示例：**
 
-![zh-cn_image_0000001381108320](figures/zh-cn_image_0000001381108320.png)
+![arc](figures/arc.png)
 
   ```javascript
   ctx.beginPath();
@@ -364,7 +368,7 @@ export default {
 
 **示例：**
 
-![zh-cn_image_0000001381108312](figures/zh-cn_image_0000001381108312.png)
+![rect](figures/rect.png)
 
   ```javascript
   ctx.rect(20, 20, 100, 100); // Create a 100*100 rectangle at (20, 20)

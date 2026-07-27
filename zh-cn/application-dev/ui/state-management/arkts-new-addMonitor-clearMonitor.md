@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -120,7 +120,7 @@ struct Page {
 
   aboutToAppear(): void {
     // 错误用法，已经给age注册过方法名为onChange1的函数，无法重复注册相同函数名的监听函数
-    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key
+    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor 'onChange1' owned by 'User' path: 'age' - failed when adding duplicate path
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
@@ -151,7 +151,7 @@ class User {
   }
 
   constructor() {
-    // 正确用法，给a注册监听函数onChange1，没有设置options默认为异步监听回调
+    // 正确用法，给age注册监听函数onChange1，没有设置options默认为异步监听回调
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // 错误用法，不能改变this.onChange1的监听回调的方式
     // 打印错误日志提示： FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore
@@ -181,7 +181,8 @@ struct Page {
 - clearMonitor可以删除path对应的状态变量的监听函数，开发者可以通过传入监听回调函数来指定删除具体的监听函数，也可以不指定具体的监听函数，删除当前path对应状态变量的所有监听回调函数。
 
   需要注意：当调用clearMonitor时，如果发现当前回调函数没有在path对应的状态变量上注册过，或者当前状态变量没有任何监听函数，都会打印告警日志提示开发者删除失败。
-监听函数被删除后，状态变量的改变不会再回调对应的监听函数。
+
+  监听函数被删除后，状态变量的改变不会再回调对应的监听函数。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
@@ -254,7 +255,7 @@ struct Page {
   下面为addMonitor的例子，clearMonitor同理。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @ObservedV2
   class A {
     @Trace a: number = 0;
@@ -388,7 +389,7 @@ struct Page {
   UIUtils.clearMonitor(a, 'a', a.onChange1);
   // 正确用法，删除a所有的监听函数
   UIUtils.clearMonitor(a, 'a');
-  // 正确用法。等于不传参数，删除b所有的监听函数
+  // 正确用法。等于不传参数，删除a所有的监听函数
   UIUtils.clearMonitor(a, 'a', undefined);
   // 错误用法，传入的回调函数为匿名函数，错误码130002
   UIUtils.clearMonitor(a, 'a', (mon: IMonitor) => {});
@@ -402,12 +403,13 @@ addMonitor和装饰器[\@Monitor](./arkts-new-monitor.md)监听变化的主要�
 | [监听\@ObservedV2类中@Trace修饰属性的变化](#监听observedv2类中trace修饰属性和componentv2组件中状态变量的变化)   | 支持 | 支持 |
 | [监听\@ComponentV2组件中状态变量的变化](#监听observedv2类中trace修饰属性和componentv2组件中状态变量的变化) | 支持 | 支持 |
 | [监听数组类型状态变量的下标和length的变化](#监听数组类型状态变量的下标和length的变化)  | 支持 | 支持 |
-| 监听Map、Set、Date类型状态变量变化  | 不支持 | 不支持 |
-| [独立监听path变化](#独立监听path) | 支持 | 不支持 |
-| [监听变量从可访问到不访问和从不可访问到可访问](#监听变量从可访问到不访问和从不可访问到可访问)  | 支持 | 不支持 |
+| [监听内置类型状态变量API调用](#监听内置类型状态变量api调用) | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [独立监听path变化](#独立监听path) | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [监听变量从可访问到不访问和从不可访问到可访问](#监听变量从可访问到不访问和从不可访问到可访问)  | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
 | [配置同步监听函数](#配置同步监听函数)  | 支持 | 不支持 |
 | [监听构造函数中同步修改的状态变量的变化](#监听构造函数中同步修改的状态变量的变化)  | 支持 | 不支持 |
 | [动态取消@ObservedV2/@ComponentV2实例的监听](#动态取消observedv2componentv2实例的监听)  | 支持 | 不支持 |
+| [使用包含通配符的路径](#使用包含通配符的路径) | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
 
 ## 使用场景
 ### 监听\@ObservedV2类中@Trace修饰属性和\@ComponentV2组件中状态变量的变化
@@ -518,7 +520,7 @@ struct Page {
         this.arr[2] += 'z';
       })
       Text(`push`).fontSize(20).onClick(() => {
-        // 在数组末尾push新数组项'd'，其index为4，index为4没有被监听
+        // 在数组末尾push新数组项'd'，其index为3，index为3没有被监听
         // 数组长度改变，length被监听
         // onChange回调：onChange: View property arr.length change from 3 to 4
         this.arr.push('d');
@@ -585,7 +587,7 @@ struct Index {
 ```
 
 ### 监听变量从可访问到不访问和从不可访问到可访问
-[\@Monitor](./arkts-new-monitor.md#无法监听变量从可访问变为不可访问和从不可访问变为可访问)不会记录状态变量不可访问时的状态，所以其无法监听变量从可访问到不访问和从不可访问到可访问。
+[\@Monitor不会记录状态变量不可访问时的状态](./arkts-new-monitor.md#无法监听变量从可访问变为不可访问和从不可访问变为可访问)，所以其无法监听变量从可访问到不访问和从不可访问到可访问。
 
 addMonitor会记录变量不可访问的状态，所以可以监听变量从可访问到不访问和从不可访问到可访问。例子如下。
 
@@ -660,6 +662,7 @@ struct Page {
   }
 
   aboutToAppear(): void {
+    // addMonitor支持配置成同步监听函数
     UIUtils.addMonitor(this, 'user.age', this.onChange, { isSynchronous: true })
   }
 
@@ -689,6 +692,7 @@ class User {
 struct Page {
   @Local user: User = new User();
 
+  // @Monitor仅支持异步监听
   @Monitor('user.age')
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -727,6 +731,7 @@ class Info {
   @Trace message: string = 'not initialized';
 
   constructor() {
+    // addMonitor可以监听构造函数中message的变化
     UIUtils.addMonitor(this, 'message', this.onMessageChange);
     this.message = 'initialized';
   }
@@ -830,6 +835,472 @@ struct Child {
   build() {
     Column() {
       Text(`${this.count}`).fontSize(20)
+    }
+  }
+}
+```
+
+### 使用包含通配符的路径
+
+从API版本26.0.0开始，MonitorOptions新增`enableWildcard`配置项（默认值为false），当显式设置为true时，addMonitor可以支持使用通配符路径。当未配置`enableWildcard`为true，但使用通配符路径时，该路径被认为不合法，该次addMonitor的添加不会生效。
+
+`enableWildcard`将在第一次为函数创建监听时生效，后续无法被更改。对`enableWildcard`值的检查发生在检测到路径中含有通配符时。当首次创建监听时，`enableWildcard`设置为true，后续路径中不含通配符时，将不会检查`enableWildcard`的值，因此即使此时传递`enableWildcard`为false，也会忽略该false，仍添加监听。当首次创建监听时，`enableWildcard`设置为false，若后续路径中含有通配符，无论`enableWildcard`是否传递为true，该路径都被认为不合法，该次addMonitor的添加不会生效。
+
+正确使用通配符的方式如下：
+
+```ts
+UIUtils.addMonitor(this, 'obj.*', this.onChange, { enableWildcard: true });
+```
+
+以下写法将保持原有行为，不会生效：
+
+```ts
+// enableWildcard未配置为true，路径不合法
+UIUtils.addMonitor(this, 'obj.*', this.onChange);
+```
+
+通配符路径的使用规则可以参考@Monitor文档中对[监听包含通配符的路径](arkts-new-monitor.md#监听包含通配符的路径)的说明。
+
+addMonitor使用通配符观察对象属性变化的用例如下。
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIUtils } from '@kit.ArkUI';
+@ObservedV2
+class ClassA {
+  @Trace propA: number = 8;
+  @Trace propB: number = 99;
+
+  constructor(a: number, b: number) {
+    this.propA = a;
+    this.propB = b;
+  }
+}
+
+@Entry
+@ComponentV2
+struct MonitorWildcardObject {
+  @Local cls: ClassA = new ClassA(100, 100);
+
+  onClsChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onClsChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  aboutToAppear(): void {
+    UIUtils.addMonitor(this, 'cls.*', this.onClsChanged, { enableWildcard: true });
+  }
+
+  build() {
+    Column() {
+      Button(`Change propA: ${this.cls.propA}`)
+        .onClick(() => {
+          this.cls.propA += 1; // 触发onClsChanged
+        })
+      Button(`Change propB: ${this.cls.propB}`)
+        .onClick(() => {
+          this.cls.propB += 1; // 触发onClsChanged
+        })
+      Button('Assign new object')
+        .onClick(() => {
+          this.cls = new ClassA(-200, -200); // 触发onClsChanged
+        })
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'cls.*'); // 取消监听
+        })
+    }
+  }
+}
+```
+
+### 监听内置类型状态变量API调用
+
+从API版本26.0.0开始，可以通过配置使用通配符的方式，实现对Array、Map、Set、Date类型状态变量API调用的监听。
+
+**使用通配符监听Array对象的变化**
+
+使能通配符的addMonitor可以监听到数组的API调用。任意数组的方法被调用时，addMonitor注册的回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`copyWithin`、`fill`、`reverse`、`sort`。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class Person {
+  @Trace firstName: string = 'first';
+  @Trace lastName: string = 'last';
+  constructor(first: string = 'no first', last: string = 'no last') {
+    this.firstName = first;
+    this.lastName = last;
+  }
+}
+
+@ObservedV2
+class ArrayOfPerson extends Array<Person> {}
+
+@ObservedV2
+class TopArray extends Array<ArrayOfPerson> {}
+
+@Entry
+@ComponentV2
+struct DocAddMonitorAPIArrayOfArrays {
+  @Local topArray: TopArray = this.makeNewTopArray();
+
+  topArrayMonitor1Star(monitor: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `TopArray[1]: ${monitor.dirty.toString()}`);
+  }
+
+  topArrayMonitorStar(monitor: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `TopArray: ${monitor.dirty.toString()}`);
+  }
+
+  makeNewTopArray(): TopArray {
+    return new TopArray(
+      new ArrayOfPerson(new Person('Adrian'), new Person('Andrew'), new Person('Aaliyah'), new Person('Amir'), new Person('Angel')),
+      new ArrayOfPerson(new Person('Carter'), new Person('Charlie'), new Person('Cooper'), new Person('Cole'), new Person('Callie')),
+      new ArrayOfPerson(new Person('Daniel'), new Person('Daisy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
+    );
+  }
+
+  aboutToAppear(): void {
+    // 使能通配符
+    UIUtils.addMonitor(this, 'topArray.1.*', this.topArrayMonitor1Star, { enableWildcard: true });
+    UIUtils.addMonitor(this, 'topArray.*', this.topArrayMonitorStar, { enableWildcard: true });
+  }
+
+  build() {
+    Column() {
+      // topArrayMonitor1Star与topArrayMonitorStar回调均触发
+      Button('topArray = new TopArray')
+        .onClick(() => {
+          this.topArray = this.makeNewTopArray();
+        })
+
+      // 当topArray[1][0]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
+      Button('topArray[1][0] = new Person')
+        .onClick(() => {
+          if (this.topArray.length > 1 && this.topArray[1].length > 0) {
+            this.topArray[1][0] = new Person();
+          }
+        })
+
+      // 当topArray[0][1]存在时，topArrayMonitor1Star与topArrayMonitorStar回调均不触发
+      Button('topArray[0][1] = new Person')
+        .onClick(() => {
+          if (this.topArray.length > 0 && this.topArray[0].length > 1) {
+            this.topArray[0][1] = new Person();
+          }
+        })
+
+      // 当topArray[1]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
+      Button('topArray[1].push')
+        .onClick(() => {
+          if (this.topArray.length > 1 && this.topArray[1] instanceof ArrayOfPerson) {
+            this.topArray[1].push(new Person());
+          }
+        })
+
+      // 当topArray的length大于2时，topArrayMonitor1Star与topArrayMonitorStar回调均触发
+      Button('topArray.shift (length>2)')
+        .onClick(() => {
+          if (this.topArray.length > 2) {
+            this.topArray.shift();
+          }
+        })
+
+      // 当topArray[0]存在时，topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
+      Button('topArray[0] = new ArrayOfPerson')
+        .onClick(() => {
+          if (this.topArray.length > 0) {
+            this.topArray[0] = new ArrayOfPerson(new Person(), new Person());
+          }
+        })
+
+      // 当topArray[1][0]存在时，topArrayMonitor1Star与topArrayMonitorStar回调均不触发
+      Button('topArray[1][0].last update')
+        .onClick(() => {
+          if (this.topArray.length > 1 && this.topArray[1].length > 0 && this.topArray[1][0] instanceof Person) {
+            this.topArray[1][0].lastName += '~';
+          }
+        })
+
+      // topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
+      Button('topArray = new TopArray, keep [1]')
+        .onClick(() => {
+          let newTop = this.makeNewTopArray();
+          newTop[1] = this.topArray[1]; // topArray.1未改变，路径'topArray.1.*'中通配符前最后一个确定值未改变
+          this.topArray = newTop;
+        })
+
+      // topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
+      Button('topArray.push')
+        .onClick(() => {
+          this.topArray.push(new ArrayOfPerson(new Person(), new Person()));
+        })
+
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'topArray.1.*');
+          UIUtils.clearMonitor(this, 'topArray.*');
+        })
+    }
+  }
+}
+```
+
+**使用通配符监听Date对象的变化**
+
+使用通配符可以监听Date对象的API调用。
+
+```ts
+UIUtils.addMonitor(target, 'dateInstance.*', callback, { enableWildcard: true });
+```
+
+addMonitor注册的监听会在以下情况回调：
+
+- `dateInstance`被赋新值。
+- 调用Date的任意API，包括`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`。即使这些API未实际对Date的值产生更改，addMonitor注册的监听回调也会触发。
+
+使用通配符监听Date对象的示例如下。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@ComponentV2 struct DocAddMonitorAPIDate {
+  @Local date: Date = new Date();
+
+  onDateChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onDateChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  aboutToAppear(): void {
+    // 使能通配符
+    UIUtils.addMonitor(this, 'date.*', this.onDateChanged, { enableWildcard: true });
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      // API调用触发onDateChanged
+      Button(`date.setMilliseconds(1000)`)
+        .onClick(() => {
+          this.date.setMilliseconds(1000);
+        })
+      // API调用触发onDateChanged
+      Button(`date.setTime(1000000)`)
+        .onClick(() => {
+          this.date.setTime(1000000);
+        })
+      // API调用触发onDateChanged
+      Button(`Assign new Date`)
+        .onClick(() => {
+          this.date = new Date();
+        })
+      // 整体赋相同值，不触发onDateChanged
+      Button(`Re-assign the same Date`)
+        .onClick(() => {
+          let sameDate = this.date;
+          this.date = sameDate;
+        })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'date.*');
+        })
+    }
+  }
+}
+```
+
+**使用通配符监听Map对象的变化**
+
+使用通配符可以监听Map对象的API调用。
+
+```ts
+UIUtils.addMonitor(target, 'mapInstance.*', callback, { enableWildcard: true });
+```
+
+addMonitor注册的监听会在以下情况回调：
+
+- `mapInstance`被赋新值。
+- 调用Map的API，例如`set`、`delete`、`clear`时触发。与Array、Date不同的是，只有当变化真的发生时，回调才会触发。这意味着，当对空Map调用`clear`，对不存在的Map键值调用`delete`，以及不实际改变值的`set`调用都不会触发addMonitor注册的监听回调。
+
+与Array不同，addMonitor无法对Map的某一个key做监听。
+
+使用通配符监听Map对象的示例如下。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@ComponentV2
+struct DocAddMonitorAPIMap {
+  @Local map: Map<string, string> = new Map<string, string>();
+  cnt: number = 0;
+
+  onMapSizeChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onMapSizeChanged, size dirty: ${m.dirty.toString()}`);
+  }
+
+  onMapChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onMapChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  aboutToAppear(): void {
+    UIUtils.addMonitor(this, 'map.size', this.onMapSizeChanged);
+    // 使能通配符
+    UIUtils.addMonitor(this, 'map.*', this.onMapChanged, { enableWildcard: true });
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text(`map.size: ${this.map.size}`)
+      Text(`map.get('one'): ${this.map.get('one')}`)
+      // 在首次点击时，onMapSizeChanged、onMapChanged回调都触发
+      Button(`Init, map.set('one', 'A'), map.set('two', 'B')`)
+        .onClick(() => {
+          this.map.set('one', 'A');
+          this.map.set('two', 'B');
+        })
+      // onMapSizeChanged、onMapChanged回调都触发
+      Button(`Add new, map.set('three' + this.cnt, 'C')`)
+        .onClick(() => {
+          this.cnt++;
+          this.map.set('three' + this.cnt, 'C')
+        })
+      // 当'one'不存在时，onMapSizeChanged、onMapChanged回调都不触发
+      // 当'one'存在时，onMapSizeChanged、onMapChanged回调都触发
+      Button(`Delete from map: map.delete('one')`)
+        .onClick(() => {
+          this.map.delete('one')
+        })
+      // 当map不为空时，onMapSizeChanged、onMapChanged回调都触发
+      // 当map为空时，onMapSizeChanged、onMapChanged回调都不触发
+      Button(`Clear map`)
+        .onClick(() => {
+          this.map.clear();
+        })
+      // 在首次点击且假设存在（'one' -> 'A'）时，仅onMapChanged回调触发
+      // 若已经设置过（'one' -> 'TWO'），则onMapSizeChanged、onMapChanged回调都不触发
+      Button(`Update one to 'TWO' - map.set('one', 'TWO')`)
+        .onClick(() => {
+          this.map.set('one', 'TWO');
+        })
+      // 当Map不存在'one'时，onMapSizeChanged、onMapChanged回调都触发
+      // 当Map存在'one'时，onMapSizeChanged、onMapChanged回调都不会触发
+      Button(`Update one to the same - map.set('one', sameval)`)
+        .onClick(() => {
+          const sameval = this.map.get('one') ?? 'one' ;
+          this.map.set('one', sameval);
+        })
+      // 当Map不存在'one'时，onMapSizeChanged、onMapChanged回调都触发
+      // 当Map存在'one'时，仅onMapChanged回调触发
+      Button(`Update one to new value - map.set('one', newval)`)
+        .onClick(() => {
+          let newval = 'x' + (++this.cnt);
+          this.map.set('one', newval);
+        })
+      // 当map为空时，仅onMapChanged回调触发
+      // 当map不为空时，onMapChanged、onMapSizeChanged回调都触发
+      Button(`new map`)
+        .onClick(() => {
+          this.map = new Map();
+        })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'map.size');
+          UIUtils.clearMonitor(this, 'map.*');
+        })
+    }
+    .border({ style: BorderStyle.Solid, width: 2, color: Color.Green })
+  }
+}
+```
+
+**使用通配符监听Set对象的变化**
+
+使用通配符可以监听Set对象的API调用。
+
+```ts
+UIUtils.addMonitor(target, 'setInstance.*', callback, { enableWildcard: true });
+```
+
+addMonitor注册的监听会在以下情况回调：
+
+- `setInstance`被赋新值。
+- 调用Set的API，例如`add`、`delete`、`clear`时触发。与Array、Date不同的是，只有当变化真的发生时，回调才会触发。这意味着，当对空Set调用`clear`，对不存在的Set元素调用`delete`，以及不实际新增元素的`add`调用都不会触发addMonitor注册的监听回调。
+
+与Array不同，addMonitor无法对Set的某一个key做监听。
+
+使用通配符监听Set对象的示例如下。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@ComponentV2 struct DocAddMonitorAPISet {
+  @Local set: Set<string> = new Set<string>();
+  cnt: number = 0;
+
+  onSetChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onSetChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  onSetSizeChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `onSetSizeChanged, size dirty: ${m.dirty.toString()}`);
+  }
+
+  aboutToAppear(): void {
+    // 使能通配符
+    UIUtils.addMonitor(this, 'set.*', this.onSetChanged, { enableWildcard: true });
+    UIUtils.addMonitor(this, 'set.size', this.onSetSizeChanged);
+    this.set.add('one');
+    this.set.add('two');
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      // onSetChanged、onSetSizeChanged回调都触发
+      Button(`Add three<Num> to the set`)
+        .onClick(() => {
+          this.cnt++;
+          this.set.add('three' + this.cnt);
+        })
+      // 当元素不存在时，onSetChanged、onSetSizeChanged回调都不触发
+      // 当元素存在时，onSetChanged、onSetSizeChanged回调都触发
+      Button(`Delete 'three<Num>' from the set - set.delete(...)`)
+        .onClick(() => {
+          this.set.delete('three' + this.cnt);
+        })
+      // 当set不为空时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set为空时，onSetChanged、onSetSizeChanged回调都不触发
+      Button(`Clear the set - set.clear()`)
+        .onClick(() => {
+          this.set.clear();
+        })
+      // 当set不为空时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set为空时，仅onSetChanged回调触发
+      Button(`Assign new set`)
+        .onClick(() => {
+          this.set = new Set();
+        })
+      // 当set不包含'one'时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set包含'one'时，onSetChanged、onSetSizeChanged回调都不触发
+      Button(`Add 'one' to the set`)
+        .onClick(() => {
+          this.set.add('one');
+        })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'set.*');
+          UIUtils.clearMonitor(this, 'set.size');
+        })
     }
   }
 }

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块管理和获取应用的上下文[Context](../../application-models/application-context-stage.md)，以及控制应用进程的状态。
 
@@ -34,17 +34,17 @@ import { application } from '@kit.AbilityKit';
 | TYPE_CREATE_WINDOW_STAGE     | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 | TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    进程最终预加载到[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)执行完成阶段。      |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。使用Promise异步回调。
 
 > **说明：**
 >
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
-**原子化服务API**：从API version 12开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -79,7 +79,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let moduleContext: common.Context;
     try {
-      application.createModuleContext(this.context, 'entry').then((data: Context) => {
+      application.createModuleContext(this.context, 'entry').then((data: common.Context) => {
         moduleContext = data;
         console.info('createModuleContext success!');
       }).catch((error: BusinessError) => {
@@ -104,7 +104,7 @@ getApplicationContext(): ApplicationContext
 
 重复调用该接口，将生成新的ApplicationContext对象。
 
-**原子化服务API**：从API version 14开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -145,11 +145,11 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContextInstance(): ApplicationContext
 
-获取应用上下文。开发者使用该接口时，无需依赖Context基类。
+获取应用上下文实例。开发者使用该接口时，无需依赖Context基类。
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
-**原子化服务API**：从API version 23开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -219,7 +219,7 @@ export default class EntryAbility extends UIAbility {
     let moduleContext: common.Context;
     try {
       application.createPluginModuleContext(this.context, 'com.example.pluginBundleName', 'pluginModuleName')
-        .then((data: Context) => {
+        .then((data: common.Context) => {
           moduleContext = data;
           console.info('createPluginModuleContext success!');
         })
@@ -275,7 +275,7 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 
 | 类型               | 说明                |
 | ------------------ | ------------------- |
-|Promise\<void> | Promise对象。无返回结果。 |
+|Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ demoteCurrentFromCandidateMasterProcess(): Promise\<void>
 
 | 类型               | 说明                |
 | ------------------ | ------------------- |
-|Promise\<void> | Promise对象。无返回结果。 |
+|Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -367,11 +367,11 @@ export default class EntryAbility extends UIAbility {
 
 exitMasterProcessRole(): Promise\<void>
 
-放弃当前进程的[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)身份。使用Promise异步回调。
+退出当前进程的[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)身份。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异：** 该接口仅在2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口仅在PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -441,6 +441,57 @@ import { AbilityStage, application } from '@kit.AbilityKit';
 export default class MyAbilityStage extends AbilityStage{
   onCreate() {
     let appPreloadType = application.getAppPreloadType();
+  }
+}
+```
+
+## application.createModuleContextSync
+
+createModuleContextSync(context: Context, moduleName: string): \<Context>
+
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。该接口为同步接口。
+
+> **说明：**
+>
+> 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContextSync接口创建多个Context实例，以免影响用户体验。
+
+**起始版本**： 26.1.0
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名        | 类型                                       | 必填   | 说明             |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 表示应用上下文。 |
+| moduleName | string | 是 | 表示应用模块名。 |
+
+**返回值：**
+
+| 类型               | 说明                |
+| ------------------ | ------------------- |
+| \<[Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md)> | 返回创建的Context。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](./errorcode-ability.md)。
+
+| 错误码ID | 错误信息        |
+| -------- | --------------- |
+| 16000011  | The context does not exist. |
+| 16000021  | The module does not exist. |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let moduleContext = application.createModuleContextSync(this.context, 'entry');
   }
 }
 ```

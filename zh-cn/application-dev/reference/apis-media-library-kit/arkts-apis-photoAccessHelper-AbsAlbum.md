@@ -29,7 +29,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | count | number | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
 | lpath<sup>23+</sup> | string | 是    | 是    | 相册虚拟路径。 |
-| changeTime<sup>23+</sup> | number | 是    | 是    | 相册的更改时间。 |
+| changeTime<sup>23+</sup> | number | 是    | 是    | 相册的更改时间，单位：秒。 |
 
 ## getAssets
 
@@ -50,14 +50,15 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：12+        |
+| 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -117,14 +118,15 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：20+        |
+| 13900012     | Permission denied. <br> 适用版本：10-19         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 

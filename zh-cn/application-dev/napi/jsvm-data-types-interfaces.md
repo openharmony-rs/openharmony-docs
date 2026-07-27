@@ -1,10 +1,10 @@
 # JSVM-API 支持的数据类型和接口
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## JSVM-API 的数据类型
 
@@ -17,7 +17,7 @@
 ```c++
     typedef enum {
         JSVM_OK,                              /* 成功状态 */
-        JSVM_INVALID_ARG,                     /* 无效的状态 */
+        JSVM_INVALID_ARG,                     /* 无效参数状态 */
         JSVM_OBJECT_EXPECTED,                 /* 期待传入对象类型 */
         JSVM_STRING_EXPECTED,                 /* 期待传入字符串类型 */
         JSVM_NAME_EXPECTED,                   /* 期待传入名字 */
@@ -25,7 +25,7 @@
         JSVM_NUMBER_EXPECTED,                 /* 期待传入数字类型 */
         JSVM_BOOL_EXPECTED,                   /* 期待传入布尔类型 */
         JSVM_ARRAY_EXPECTED,                  /* 期待传入数组类型 */
-        JSVM_GENERIC_FAILURE,                 /* 泛型失败状态 */
+        JSVM_GENERIC_FAILURE,                 /* 通用失败状态 */
         JSVM_PENDING_EXCEPTION,               /* 挂起异常状态 */
         JSVM_CANCELLED,                       /* 取消状态 */
         JSVM_ESCAPE_CALLED_TWICE,             /* 转义调用了2次 */
@@ -70,7 +70,7 @@ typedef struct {
 
 - 禁止缓存JSVM_Env，并禁止在不同Worker中传递JSVM_Env。
 
-- 在不同线程间共享JSVM_Env时，要保证在线程切换时在前一个线程中关闭env scope并在新的线程中打开新的env scope，以保证threadlocal变量的线程隔离。
+- 若要在不同线程间共享JSVM_Env，要保证在线程切换时在前一个线程中关闭env scope并在新的线程中打开新的env scope，以保证thread-local变量的线程隔离。
 
 ### JSVM_ValueType
 
@@ -93,7 +93,7 @@ typedef enum {
 
 ### JSVM_TypedarrayType
 
-TypedArray 的基本二进制标量数据类型。
+描述Typedarray的类型。
 
 ```c++
 typedef enum {
@@ -173,6 +173,14 @@ typedef enum {
     JSVM_COMPILE_COMPILE_PROFILE,
     /** switch for source map support. */
     JSVM_COMPILE_ENABLE_SOURCE_MAP,
+    /** background deserialize code cache result.
+     * @since 24
+     */
+    JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT,
+    /** whether the code cache is rejected.
+     * @since 24
+     */
+    JSVM_COMPILE_CODE_CACHE_REJECTED,
 } JSVM_CompileOptionId;
 ```
 
@@ -223,6 +231,8 @@ typedef struct {
 
 - sourceMapUrl : sourceMap 的路径，当前仅支持运行设备上的本地路径，可以为空。
 - resourceName : 待编译的 js script 的名字。
+- resourceLineOffset : 这段代码在源文件中的起始行号。
+- resourceColumnOffset : 这段代码在源文件中的起始列号。
 
 ```c
 typedef struct {
@@ -237,7 +247,6 @@ typedef struct {
 } JSVM_ScriptOrigin;
 ```
 
-### JSVM
 ### 内存管理类型
 
 JSVM-API 包含以下内存管理类型：
@@ -430,6 +439,7 @@ static void LowMemoryInit(bool &vmInit) {
         int argc = 4;
         initOptions.argc = &argc;
         const char* argv[4];
+        argv[0] = "";
         argv[1] = "--incremental-marking-hard-trigger=40";
         argv[2] = "--min-semi-space-size=1";
         argv[3] = "--max-semi-space-size=4";
@@ -451,6 +461,7 @@ static void LowGCFrequencyInit(bool &vmInit) {
         int argc = 4;
         initOptions.argc = &argc;
         const char* argv[4];
+        argv[0] = "";
         argv[1] = "--incremental-marking-hard-trigger=80";
         argv[2] = "--min-semi-space-size=16";
         argv[3] = "--max-semi-space-size=16";
@@ -464,7 +475,9 @@ static void LowGCFrequencyInit(bool &vmInit) {
 执行结果：
 
 使用以上三个接口可以分别初始化具备不同特性的 VM 平台。初始化之后，可以创建 VM 实例，并执行 JavaScript 脚本。
+
 相比 NormalInit 接口，LowGCFrequencyInit 接口初始化的VM平台 GC 触发频次更低。
+
 相比 NormalInit 接口，LowMemoryInit 接口初始化的VM平台内存占用更少。
 
 **创建 VM 实例**
@@ -625,7 +638,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
 
     uint8_t* data = dataPtr ? *dataPtr : nullptr;
-    auto compilMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
+    auto compileMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // 编译js代码
@@ -641,7 +654,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     JSVM_CompileOptions option[3];
     option[0] = {
         .id = JSVM_COMPILE_MODE,
-        .content = { .num = compilMode }
+        .content = { .num = compileMode }
     };
     JSVM_CodeCache codeCache = {
         .cache = data,
@@ -876,7 +889,7 @@ OH_JSVM_IsError(env, error, &isError);
 OH_JSVM_ThrowTypeError(env, nullptr, "type error1");
 ```
 
-使用OH_JSVM_GetAndClearLastException后将异常信息以字符串形式打印
+使用OH_JSVM_GetAndClearLastException后将异常信息以字符串形式打印。
 
 ```c++
 if (status != JSVM_OK) // 当执行失败出现异常时
@@ -942,7 +955,7 @@ OH_JSVM_CreateObject(env, &obj);
 OH_JSVM_CloseHandleScope(env, scope);
 ```
 
-通过escapable handle scope保护在scope范围内创建的对象在父作用域范围内不被回收
+通过escapable handle scope保护在scope范围内创建的对象在父作用域范围内不被回收。
 
 ```c++
 JSVM_EscapableHandleScope scope;
@@ -955,7 +968,7 @@ JSVM_CALL(OH_JSVM_CloseEscapableHandleScope(env, scope));
 return escapee;
 ```
 
-通过CreateReference创建对象引用和释放
+通过CreateReference创建对象引用和释放。
 
 ```c++
 JSVM_Value obj = nullptr;
@@ -972,7 +985,7 @@ OH_JSVM_GetReferenceValue(env, reference, &result);
 OH_JSVM_DeleteReference(env, reference);
 ```
 
-通过 RetainScript 持久化保存 JSVM_Script 并使用
+通过 RetainScript 持久化保存 JSVM_Script 并使用。
 
 ```c++
 JSVM_HandleScope scope;
@@ -1026,8 +1039,8 @@ JSVM_CALL(OH_JSVM_CloseHandleScope(env, scope));
 |OH_JSVM_CreateBigintUint64 | 根据 Uint64 类型对象创建 JavaScript Bigint 对象 |
 |OH_JSVM_CreateBigintWords | 根据给定的 Uint64_t 数组创建一个 JavaScript BigInt 对象 |
 |OH_JSVM_CreateStringLatin1 | 根据 Latin-1 编码的字符串创建一个 JavaScript string 对象 |
-|OH_JSVM_CreateStringUtf16 | 根据 Utf16 编码的字符串创建一个 JavaScript string 对象 |
-|OH_JSVM_CreateStringUtf8 | 根据 Utf8 编码的字符串创建一个 JavaScript string 对象 |
+|OH_JSVM_CreateStringUtf16 | 根据 UTF-16 编码的字符串创建一个 JavaScript string 对象 |
+|OH_JSVM_CreateStringUtf8 | 根据 UTF-8 编码的字符串创建一个 JavaScript string 对象 |
 |OH_JSVM_CreateMap | 创建一个新的 JavaScript Map对象 |
 |OH_JSVM_CreateRegExp | 根据输入的字符串创建一个JavaScript 正则对象 |
 |OH_JSVM_CreateSet | 创建一个新的 JavaScript Set对象 |
@@ -1128,8 +1141,8 @@ OH_JSVM_CreateSet(env, &value);
 |OH_JSVM_GetValueInt32 | 获取给定 JavaScript number 的 Int32 基础类型值 |
 |OH_JSVM_GetValueInt64 | 获取给定 JavaScript number 的 Int64 基础类型值 |
 |OH_JSVM_GetValueStringLatin1 | 获取给定 JavaScript string 对象的 Latin1 编码字符串 |
-|OH_JSVM_GetValueStringUtf8 | 获取给定 JavaScript string 对象的 Utf8 编码字符串 |
-|OH_JSVM_GetValueStringUtf16 | 获取给定 JavaScript string 对象的 Utf16 编码字符串 |
+|OH_JSVM_GetValueStringUtf8 | 获取给定 JavaScript string 对象的 UTF-8 编码字符串 |
+|OH_JSVM_GetValueStringUtf16 | 获取给定 JavaScript string 对象的 UTF-16 编码字符串 |
 |OH_JSVM_GetValueUint32 | 获取给定 JavaScript number 的 Uint32 基础类型值 |
 |OH_JSVM_GetBoolean | 返回用于表示给定布尔值的 JavaScript 单例对象 |
 |OH_JSVM_GetGlobal | 返回当前环境中的全局 global 对象 |
@@ -1274,7 +1287,7 @@ JSVM_Value bigIntValue;
 OH_JSVM_CoerceToBigInt(env, boolValue, &bigIntValue);
 ```
 
-判断两个JSVM_Value对象类型是否严格相同：先比较操作数类型，操作数类型不同就是不相等，操作数类型相同时，比较值是否相等，相等才返回true。
+判断两个JSVM_Value对象是否严格相同：先比较操作数类型，操作数类型不同就是不相等，操作数类型相同时，比较值是否相等，相等才返回true。
 
 ```c++
 JSVM_Value value = nullptr;
@@ -1286,7 +1299,7 @@ bool isArray = true;
 OH_JSVM_StrictEquals(env, value, value, &isArray);
 ```
 
-判断两个JSVM_Value对象类型是否宽松相同：判断两个操作数的类型是否相同，若不相同，且可以转换为相同的数据类型，转换为相同的数据类型后，值做严格相等比较，其他的都返回false。
+判断两个JSVM_Value对象是否宽松相同：判断两个操作数的类型是否相同，若不相同，且可以转换为相同的数据类型，转换为相同的数据类型后，值做严格相等比较，其他的都返回false。
 
 ```c++
 JSVM_HandleScope handleScope;
@@ -1370,7 +1383,7 @@ JS对象属性的增加、删除、获取和判断。
 |OH_JSVM_GetElement | 获取给定对象指定索引处的元素。 |
 |OH_JSVM_HasElement | 若给定对象的指定索引处拥有属性，获取该元素。 |
 |OH_JSVM_DeleteElement | 尝试删除给定对象的指定索引处的元素。 |
-|OH_JSVM_DefineProperties |  批量的向给定对象中定义属性。 |
+|OH_JSVM_DefineProperties |  在给定对象中定义多个属性。 |
 |OH_JSVM_ObjectFreeze | 冻结给定的对象,防止向其添加新属性，删除现有属性，防止更改现有属性的可枚举性、可配置性或可写性，并防止更改现有属性的值。 |
 |OH_JSVM_ObjectSeal | 密封给定的对象。这可以防止向其添加新属性，以及将所有现有属性标记为不可配置。 |
 |OH_JSVM_ObjectSetPrototypeOf | 为给定对象设置一个原型。 |
@@ -1543,7 +1556,7 @@ OH_JSVM_CreateFunctionWithScript(env, "add", JSVM_AUTO_LENGTH, 2, argus, script,
 |OH_JSVM_CheckObjectTypeTag | 检查给定的类型标签是否与对象上的类型标签匹配。 |
 |OH_JSVM_AddFinalizer | 为对象添加 JSVM_Finalize 回调，以便在 JavaScript 对象被垃圾回收时调用来释放原生对象。 |
 |OH_JSVM_DefineClassWithPropertyHandler | 定义一个具有给定类名、构造函数、属性和回调处理程序的JavaScript类，并作为函数回调进行调用。属性操作包括getter、setter、deleter、enumerator等。 |
-|OH_JSVM_DefineClassWithOptions | 定义一个具有给定类名、构造函数、属性和回调处理程序、父类的JavaScript类，并根据传入了DefineClassOptions来决定是否需要为所定义的Class设置属性代理、预留internal-field槽位、为class作为函数进行调用时设置函数回调。|
+|OH_JSVM_DefineClassWithOptions | 定义一个具有给定类名、构造函数、属性和回调处理程序、父类的JavaScript类，并根据传入的DefineClassOptions决定是否需要为所定义的Class设置属性代理、预留internal-field槽位、为class作为函数进行调用时设置函数回调。|
 
 场景示例：
 
@@ -2489,7 +2502,7 @@ napi_value close_JSVM_environment(napi_env env1, napi_callback_info info)
     return result;
 }
 
-//清除和释放与实例相关联的内存资源
+// 清除和释放与实例相关联的内存资源
 void InstanceFinalizeCallback(JSVM_Env env, void *finalizeData, void *finalizeHint)
 {
     if (finalizeData) {
@@ -2508,17 +2521,17 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
     }
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    //用于获取回调函数参数
+    // 用于获取回调函数参数
     napi_get_cb_info(env1, info, &argc, args , nullptr, nullptr);
     napi_valuetype valuetype0;
     napi_typeof(env1, args[0], &valuetype0);
     int32_t tmp = 0;
     napi_get_value_int32(env1, args[0], &tmp);
     instanceData->value = tmp;
-    //将获得的参数与当前运行的JSVM环境关联起来
+    // 将获得的参数与当前运行的JSVM环境关联起来
     OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
     InstanceData *resData = nullptr;
-    //获取与当前运行的JSVM环境相关联的数据
+    // 获取与当前运行的JSVM环境相关联的数据
     OH_JSVM_GetInstanceData(env, (void **)&resData);
     napi_value result;
     napi_create_uint32(env1, resData->value, &result);
@@ -2539,4 +2552,18 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 |OH_JSVM_PerformMicrotaskCheckpoint| 执行任务队列里的微任务 |
 
 场景示例：
+
 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md)
+
+### 后台反序列化
+
+**场景介绍**
+
+后台反序列化允许在后台线程中异步反序列化代码缓存，通过减少同步反序列化时间提升应用启动性能。
+
+**接口说明**
+
+| 接口 | 功能说明 |
+| -------- | -------- |
+| OH_JSVM_BackgroundDeserialize | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| OH_JSVM_ReleaseDeserializeResult | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|

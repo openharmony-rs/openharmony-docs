@@ -1,10 +1,10 @@
 # @ohos.zlib (Zip模块)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
-<!--Owner: @wanghang904-->
-<!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @jsjzju-->
+<!--Designer: @jsjzju-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供压缩解压缩文件的能力。
 
@@ -138,7 +138,7 @@ compressFile(inFile: string, outFile: string, options: Options, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
@@ -205,7 +205,7 @@ compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ------------------------------------- |
@@ -244,7 +244,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback\<void>): void
 
-解压文件，解压的结果。使用callback异步回调。
+解压文件，解压的结果使用callback异步回调。
 
 > **说明：**
 >
@@ -261,20 +261,20 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 | 参数名                  | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
 | inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
+| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
 | options                 | [Options](#options) | 是   | 解压的配置参数。                                             |
 | callback | AsyncCallback\<void>            | 是   | 异步获取解压结果之后的回调。成功返回null，失败返回错误码。                                             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
 | 900002   | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
 
 **示例：**
 
@@ -325,7 +325,7 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | inFile  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
+| outFile | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
 | options | [Options](#options) | 否   | 解压时的配置参数。                                           |
 
 **返回值：**
@@ -336,14 +336,14 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | ------ | ------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001 | The input source file is invalid.      |
 | 900002 | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
 
 **示例：**
 
@@ -391,12 +391,12 @@ decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>)
 | 参数名                  | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
 | inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
+| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
 | callback | AsyncCallback\<void>            | 是   | 异步获取解压结果之后的回调。成功返回null，失败返回错误码。                                             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
@@ -453,7 +453,7 @@ getOriginalSize(compressedFile: string): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | ------ | ------------------------------------- |
@@ -508,7 +508,7 @@ compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1107,7 +1107,7 @@ compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1162,7 +1162,7 @@ compress2(dest: ArrayBuffer, source: ArrayBuffer, level: CompressLevel, sourceLe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1217,7 +1217,7 @@ uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1278,7 +1278,7 @@ uncompress2(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1379,7 +1379,7 @@ inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | check  | number  | 是   | 预期的校验和。                  |
 
 **返回值：**
@@ -1390,7 +1390,7 @@ inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1439,7 +1439,7 @@ inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1449,7 +1449,7 @@ inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1498,7 +1498,7 @@ inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1508,7 +1508,7 @@ inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1590,7 +1590,7 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1600,7 +1600,7 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1649,7 +1649,7 @@ inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 字典数据。                      |
 
 **返回值：**
@@ -1660,7 +1660,7 @@ inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1747,7 +1747,7 @@ inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。   |
 
 **返回值：**
@@ -1758,7 +1758,7 @@ inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1807,7 +1807,7 @@ inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1817,7 +1817,7 @@ inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1866,7 +1866,7 @@ inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | bits   | number  | 是   | 指定要写入比特缓冲区的比特数。                      |
 | value  | number  | 是   | 用于填充比特缓冲区的比特值。                      |
 
@@ -1878,7 +1878,7 @@ inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1927,7 +1927,7 @@ inflateMark(strm: ZStream): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1985,7 +1985,7 @@ inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。   |
 
 **返回值：**
@@ -1996,7 +1996,7 @@ inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2041,7 +2041,7 @@ inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2095,7 +2095,7 @@ inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                             |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | 是   | 参考[ZStream定义](#zstream12)。  |
+| strm   | [ZStream](#zstream12)                 | 是   | zlib压缩解压的数据流管理对象。  |
 | header | [GzHeader](#gzheader12) | 是   | 从压缩数据流中提取的gzip头信息。 |
 
 **返回值：**
@@ -2106,7 +2106,7 @@ inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2155,7 +2155,7 @@ inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 接收解压缩字典的实际内容。      |
 
 **返回值：**
@@ -2166,7 +2166,7 @@ inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2215,7 +2215,7 @@ inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2225,7 +2225,7 @@ inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2279,7 +2279,7 @@ inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型 | 必填 | 说明                    |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | 是   | 参考[Zip定义](#zip12)。 |
+| source | [Zip](#zip12)  | 是   | 压缩或解压缩的对象实例。 |
 
 **返回值：**
 
@@ -2289,7 +2289,7 @@ inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2339,7 +2339,7 @@ inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2397,7 +2397,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 | 参数名     | 类型        | 必填 | 说明                                          |
 | ---------- | ----------- | ---- | --------------------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。               |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。               |
 | windowBits | number      | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。 |
 | window     | ArrayBuffer | 是   | 预设的窗口缓冲区。                            |
 
@@ -2409,7 +2409,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2434,7 +2434,7 @@ inflateBackInit()函数分配的所有内存都被释放。使用Promise异步�
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2444,7 +2444,7 @@ inflateBackInit()函数分配的所有内存都被释放。使用Promise异步�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2469,7 +2469,7 @@ inflateBack(strm: ZStream, backIn: InflateBackInputCallback, inDesc: object, bac
 
 | 参数名  | 类型                      | 必填 | 说明                                                         |
 | ------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| strm    | ZStream                   | 是   | 参考[ZStream定义](#zstream12)。                              |
+| strm    | [ZStream](#zstream12)                   | 是   | zlib压缩解压的数据流管理对象。                              |
 | backIn  | InflateBackInputCallback  | 是   | 一种函数，用于从末尾解压缩数据，以从输入源读取原始压缩数据。 |
 | inDesc  | object                    | 是   | 通用对象。                                                   |
 | backOut | InflateBackOutputCallback | 是   | 将解压缩的数据写入目标输出。                                 |
@@ -2483,7 +2483,7 @@ inflateBack(strm: ZStream, backIn: InflateBackInputCallback, inDesc: object, bac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2645,7 +2645,7 @@ type InflateBackInputCallback = (inDesc: object) => ArrayBuffer
 
 **返回值：**
 
-| 类型                                           | 说明                        |
+| 类型                                           | 说明                        |
 | ---------------------------------------------- | --------------------------- |
 | ArrayBuffer | 从输入数据源成功读取的内容缓冲区。 |
 
@@ -2669,7 +2669,7 @@ type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: num
 
 **返回值：**
 
-| 类型                                           | 说明                        |
+| 类型                                           | 说明                        |
 | ---------------------------------------------- | --------------------------- |
 | number | 输出缓冲区的字节数。 |
 
@@ -2687,8 +2687,8 @@ inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | 是   | 参考[ZStream定义](#zstream12)。                     |
-| flush  | CompressFlushMode | 是   | 参考[CompressFlushMode定义](#compressflushmode12)。 |
+| strm   | [ZStream](#zstream12)           | 是   | zlib压缩解压的数据流管理对象。                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -2698,7 +2698,7 @@ inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2774,7 +2774,7 @@ deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型          | 必填 | 说明                                          |
 | ------ | ------------- | ---- | --------------------------------------------- |
-| strm   | ZStream       | 是   | 参考[ZStream定义](#zstream12)。               |
+| strm   | [ZStream](#zstream12)       | 是   | zlib压缩解压的数据流管理对象。               |
 | level  | CompressLevel | 是   | 参考[CompressLevel枚举定义](#compresslevel)。 |
 
 **返回值：**
@@ -2785,7 +2785,7 @@ deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2834,9 +2834,9 @@ deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, window
 
 | 参数名     | 类型             | 必填 | 说明                                                |
 | ---------- | ---------------- | ---- | --------------------------------------------------- |
-| strm       | ZStream          | 是   | 参考[ZStream定义](#zstream12)。                     |
+| strm       | [ZStream](#zstream12)          | 是   | zlib压缩解压的数据流管理对象。                     |
 | level      | CompressLevel    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
-| method     | CompressMethod   | 是   | 参考[CompressMethod枚举定义](#compressmethod12)。   |
+| method     | [CompressMethod](#compressmethod12)   | 是   | 压缩算法的枚举类型，指定使用DEFLATED压缩方法。   |
 | windowBits | number           | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。                       |
 | memLevel   | MemLevel         | 是   | 参考[MemLevel枚举定义](#memlevel)。                 |
 | strategy   | CompressStrategy | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
@@ -2849,7 +2849,7 @@ deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, window
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2899,8 +2899,8 @@ deflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | 是   | 参考[ZStream定义](#zstream12)。                     |
-| flush  | CompressFlushMode | 是   | 参考[CompressFlushMode定义](#compressflushmode12)。 |
+| strm   | [ZStream](#zstream12)           | 是   | zlib压缩解压的数据流管理对象。                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -2910,7 +2910,7 @@ deflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2965,7 +2965,7 @@ deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2975,7 +2975,7 @@ deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3034,7 +3034,7 @@ deflateBound(strm: ZStream, sourceLength: number): Promise&lt;number&gt;
 
 | 参数名    | 类型    | 必填 | 说明                            |
 | --------- | ------- | ---- | ------------------------------- |
-| strm      | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm      | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | sourceLength | number  | 是   | 源数据长度。                    |
 
 **返回值：**
@@ -3098,7 +3098,7 @@ deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                             |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | 是   | 参考[ZStream定义](#zstream12)。  |
+| strm   | [ZStream](#zstream12)                 | 是   | zlib压缩解压的数据流管理对象。  |
 | head   | [GzHeader](#gzheader12) | 是   | 从压缩数据流中提取的gzip头信息。 |
 
 **返回值：**
@@ -3109,7 +3109,7 @@ deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3164,7 +3164,7 @@ deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型 | 必填 | 说明                    |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | 是   | 参考[Zip定义](#zip12)。 |
+| source | [Zip](#zip12)  | 是   | 压缩或解压缩的对象实例。 |
 
 **返回值：**
 
@@ -3174,7 +3174,7 @@ deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3228,7 +3228,7 @@ deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 字典数据。                      |
 
 **返回值：**
@@ -3239,7 +3239,7 @@ deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3293,7 +3293,7 @@ deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 接收压缩字典的实际内容。      |
 
 **返回值：**
@@ -3304,7 +3304,7 @@ deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3363,7 +3363,7 @@ deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: numb
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | goodLength | number  | 是   | 匹配的长度阈值。                |
 | maxLazy    | number  | 是   | 压缩算法在构建哈夫曼树时的延迟匹配策略，取值范围为0到4的整数。1到4，值越大，算法越‘懒’，匹配过程越慢，但可能生成更优的压缩结果。0：禁用懒惰匹配，算法会尽快构建哈夫曼树，压缩速度快，但压缩率低。  |
 | niceLength | number  | 是   | 适合的延迟长度阈值。              |
@@ -3377,7 +3377,7 @@ deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3431,7 +3431,7 @@ deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3441,7 +3441,7 @@ deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3495,7 +3495,7 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3505,7 +3505,7 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3559,7 +3559,7 @@ deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3569,7 +3569,7 @@ deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3623,7 +3623,7 @@ deflateParams(strm: ZStream, level: CompressLevel, strategy: CompressStrategy): 
 
 | 参数名   | 类型             | 必填 | 说明                                                |
 | -------- | ---------------- | ---- | --------------------------------------------------- |
-| strm     | ZStream          | 是   | 参考[ZStream定义](#zstream12)。                     |
+| strm     | [ZStream](#zstream12)          | 是   | zlib压缩解压的数据流管理对象。                     |
 | level    | CompressLevel    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
 | strategy | CompressStrategy | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
 
@@ -3635,7 +3635,7 @@ deflateParams(strm: ZStream, level: CompressLevel, strategy: CompressStrategy): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3689,7 +3689,7 @@ deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | bits   | number  | 是   | 要插入的位数，取值范围在0~16。  |
 | value  | number  | 是   | 与位数相对应的位值。            |
 
@@ -3701,7 +3701,7 @@ deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3754,6 +3754,7 @@ Options用于指定在压缩或解压Zip文件时的选项。
 | strategy | [CompressStrategy](#compressstrategy) | 否   | 是  | 压缩时指定的压缩策略。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 压缩或解压时指定的串行或并行策略。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。        |
+| keepTopLevelFolder | boolean | 否   | 是  | 压缩文件夹时，是否在压缩包中保留顶层文件夹。true表示保留顶层文件夹；false表示不保留顶层文件夹。默认值为false。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。        |
 
 ## CompressLevel
 
@@ -3897,7 +3898,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status  | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | destLen | number       | 否   | 否   | 目标缓冲区的总长度。                          |
 
 ## DictionaryOutputInfo<sup>12+</sup>
@@ -3908,7 +3909,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称             | 类型         | 只读 | 可选 | 说明                                          |
 | ---------------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status           | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status           | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | dictionaryLength | number       | 否   | 否   | 字典的长度。                                  |
 
 ## DecompressionOutputInfo<sup>12+</sup>
@@ -3919,7 +3920,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称         | 类型         | 只读 | 可选 | 说明                                          |
 | ------------ | ------------ | ---- | ---- | --------------------------------------------- |
-| status       | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status       | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | destLength   | number       | 否   | 否   | 目标缓冲区的长度。                            |
 | sourceLength | number       | 否   | 否   | 源缓冲区的长度。                              |
 
@@ -3931,7 +3932,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status  | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | pending | number       | 否   | 否   | 已生成的输出字节数。                          |
 | bits    | number       | 否   | 否   | 已生成的输出位数。                            |
 
@@ -4023,7 +4024,7 @@ gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | fd     | number | 是   | 文件描述符。通常情况下，通过系统调用“open”或其他方法获得的。 |
-| mode   | string | 是   | 用于指定访问模式。                                           |
+| mode   | string | 是   | 用于指定访问模式。详情与[gzopen](#gzopen12)一致。            |
 
 **返回值：**
 
@@ -4033,7 +4034,7 @@ gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4163,10 +4164,10 @@ gzopen(path: string, mode: string): Promise&lt;void&gt;
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                 |
-| ------ | ------ | ---- | -------------------- |
-| path   | string | 是   | 需要打开的文件路径。 |
-| mode   | string | 是   | 指定文件打开方法。   |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| path   | string | 是   | 需要打开的文件路径。                                         |
+| mode   | string | 是   | 指定文件打开方法。<br>基础模式（必须三选一）：<br/>-&nbsp;“r”或“rb”：读取模式，自动检测并解压gzip文件（若非gzip格式则直接读取原始数据）。<br/>-&nbsp;“w”或“wb”：写入模式，创建新文件并压缩数据。<br/>-&nbsp;“a”或“ab”：追加模式，在现有文件末尾追加新的gzip流（不校验原文件格式）。<br/>可选功能参数（可组合使用）：<br/>-&nbsp;压缩级别：0（不压缩）至9（最佳压缩），默认压缩级别为6，需要配合写入模式或者追加模式使用。<br/>-&nbsp;压缩策略：“f”（过滤策略）、“h”（霍夫曼策略）、“R”（游标编码策略）、“F”（固定编码策略），只能选取一种压缩策略。<br/>-&nbsp;透明模式：“T”，写入时不压缩且不生成gzip头（生成普通文件），与压缩策略互斥。<br/>-&nbsp;独占创建：“x”，如果文件存在则打开失败，需要配合写入模式或者追加模式使用<br/>-&nbsp;close-on-exec标志：“e”，设置文件描述符的FD_CLOEXEC属性（依赖系统支持）。<br/>模式字符串示例：<br/>-&nbsp;“r”：读取模式，读取时以二进制形式读取。<br/>-&nbsp;“rb”：读取模式，读取时以二进制形式读取。<br/>-&nbsp;“wb6”：写入模式，压缩时以二进制形式写入，压缩级别为6。<br/>-&nbsp;“wb9f”：写入模式，压缩时以二进制形式写入，压缩级别为最佳压缩，压缩策略采用过滤策略。<br/>-&nbsp;“wbT”：写入模式，不压缩，生成普通文件。<br/>-&nbsp;“wbx”：写入模式，压缩时以二进制形式写入，采用独占创建的方式写入文件。<br/>-&nbsp;“abx”：追加模式，压缩时以二进制形式追加并写入，采用独占创建的方式写入文件。 |
 
 **返回值：**
 
@@ -4176,7 +4177,7 @@ gzopen(path: string, mode: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4359,7 +4360,7 @@ gzclose(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4489,7 +4490,7 @@ gzerror(): Promise&lt;GzErrorOutputInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
@@ -4564,7 +4565,7 @@ gzgetc(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4626,7 +4627,7 @@ gzflush(flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                         |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
-| flush  | CompressFlushMode | 是   | 控制刷新操作的行为，参考[CompressFlushMode枚举](#compressflushmode12)的定义。 |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -4636,7 +4637,7 @@ gzflush(flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4708,7 +4709,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4785,7 +4786,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4858,7 +4859,7 @@ gzclosew(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4921,7 +4922,7 @@ gzcloser(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
@@ -4992,7 +4993,7 @@ gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5067,7 +5068,7 @@ gzungetc(c: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5134,7 +5135,7 @@ gztell(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5204,7 +5205,7 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise&lt;Return
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5266,7 +5267,7 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 | 参数名 | 类型                 | 必填 | 说明                                                         |
 | ------ | -------------------- | ---- | ------------------------------------------------------------ |
 | offset | number               | 是   | 目标偏移位置。                                               |
-| whence | OffsetReferencePoint | 是   | 定义偏移的参考点，参考[OffsetReferencePoint枚举定义](#offsetreferencepoint12)。 |
+| whence | [OffsetReferencePoint](#offsetreferencepoint12) | 是   | 文件查找起始位置的枚举类型。 |
 
 **返回值：**
 
@@ -5276,7 +5277,7 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5340,7 +5341,7 @@ gzrewind(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5411,7 +5412,7 @@ gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5490,7 +5491,7 @@ gzputs(str: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5560,7 +5561,7 @@ gzputc(ch: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5621,7 +5622,7 @@ gzprintf(format: string, ...args: Array&lt;string | number&gt;): Promise&lt;numb
 | 参数名 | 类型                          | 必填 | 说明                   |
 | ------ | ----------------------------- | ---- | ---------------------- |
 | format | string                        | 是   | 格式化描述符和纯文本。 |
-| ...args   | Array&lt;string \| number&gt; | 否   | 可变参数列表。         |
+| ...args   | Array&lt;string \| number&gt; | 否   | 可变参数列表。传入可变参数，例如gzprintf("name is %s, age is %d", "Tom", 23)，写入内容为“name is Tom, age is 23”。不传可变参数，例如gzprintf("name is %s, age is %d")，写入内容为“name is %s, age is %d”。      |
 
 **返回值：**
 
@@ -5631,7 +5632,7 @@ gzprintf(format: string, ...args: Array&lt;string | number&gt;): Promise&lt;numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5696,7 +5697,7 @@ gzoffset(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5765,7 +5766,7 @@ gzgets(buf: ArrayBuffer): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5823,7 +5824,7 @@ struct Index {
 
 | 名称      | 类型         | 只读 | 可选 | 说明                                         |
 | --------- | ------------ | ---- | ---- | -------------------------------------------- |
-| status    | ReturnStatus | 否   | 否   | 返回zlib文件状态码，参考ReturnStatus的定义。 |
+| status    | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | statusMsg | string       | 否   | 否   | zlib文件上发生的最后一个状态的状态消息。     |
 
 ## OffsetReferencePoint<sup>12+</sup>

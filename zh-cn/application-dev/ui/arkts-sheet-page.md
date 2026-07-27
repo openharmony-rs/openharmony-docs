@@ -1,8 +1,8 @@
 # 绑定半模态页面（bindSheet）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,7 @@
 
  - 半模态内嵌[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)时，不支持再在UIExtension内拉起半模态/弹窗。
 
- - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss/onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
+ - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
 
 ## 生命周期
 
@@ -35,16 +35,16 @@
 
 1. 内容处于最顶部（内容不可滚动时以此状态处理）
 
-   上滑时，优先向上扩展面板档位，如无档位可扩展，则滚动内容
+   上滑时，优先向上扩展面板挡位，如无挡位可扩展，则滚动内容
 
-   下滑时，优先向下收缩面板档位，如无档位可收缩，则关闭面板
+   下滑时，优先向下收缩面板挡位，如无挡位可收缩，则关闭面板
 2. 内容处于中间位置（可上下滚动）
 
    上/下滑时，优先滚动内容，直至页面内容到达底部/顶部
 
 3. 内容处于底部位置（内容可滚动时）
 
-   上滑时，呈现内容区域回弹效果，不切换档位
+   上滑时，呈现内容区域回弹效果，不切换挡位
 
    下滑时，滚动内容直到到达顶部
 
@@ -131,7 +131,7 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
-<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -143,7 +143,7 @@ const BUNDLE = 'SupportingAgingFriendly_';
 @Entry
 @Component
 struct OnWillDismiss_Dismiss {
-  @State isShow: Boolean = false;
+  @State isShow: boolean = false;
 
   @Builder
   myBuilder() {
@@ -158,6 +158,7 @@ struct OnWillDismiss_Dismiss {
         this.isShow = true
       })
       .margin(120)
+      // 第一步：创建半模态页面
       .bindSheet($$this.isShow, this.myBuilder(), {
         height: SheetSize.MEDIUM,
         blurStyle: BlurStyle.Thick,
@@ -166,11 +167,11 @@ struct OnWillDismiss_Dismiss {
         title: { title: 'title', subtitle: 'subtitle' },
         enableOutsideInteractive: false,
         onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
-          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
+          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否选择关闭半模态"
           this.getUIContext().showAlertDialog(
             {
-              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
-              message: $r('app.string.bindContentCover_label2'),
+              // 请将$r('app.string.bindSheetCmd_label12')替换为实际资源文件，在本示例中该资源文件的value值为"是否选择关闭半模态"
+              message: $r('app.string.bindSheetCmd_label12'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
               gridCount: 4,
@@ -216,7 +217,7 @@ struct OnWillDismiss_Dismiss {
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 ```
@@ -230,12 +231,12 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 
 onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
- //没有注册springBack，下拉半模态页面无回弹行为
+// 没有注册springBack，下拉半模态页面无回弹行为
 }),
 ```
 

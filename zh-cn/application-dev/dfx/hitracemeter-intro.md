@@ -2,15 +2,15 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-本文介绍HiTraceMeter接口的使用方法。开发者可以在代码中调用HitraceMeter接口进行trace打点，然后可使用[hitrace](hitrace.md)命令行工具或者[hidebug](hidebug-guidelines.md#获取应用trace记录信息)提供的trace采集接口，获取程序运行时产生的打点信息，了解程序运行的进程、线程、时间戳、CPU等信息，以帮助开发者进行问题分析和性能调优。
+本文介绍HiTraceMeter接口的使用方法。开发者可以在代码中调用HiTraceMeter接口进行trace打点，然后可使用[hitrace](hitrace.md)命令行工具或者[hidebug](hidebug-guidelines.md#获取应用trace记录信息)提供的trace采集接口，获取程序运行时产生的打点信息，了解程序运行的进程、线程、时间戳、CPU等信息，以帮助开发者进行问题分析和性能调优。
 
 
-HitraceMeter提供ArkTS和C/C++两种接口，按需选择。
+HiTraceMeter提供ArkTS和C/C++两种接口，按需选择。
 
 
 - [使用HiTraceMeter跟踪性能（ArkTS）](hitracemeter-guidelines-arkts.md)
@@ -26,6 +26,6 @@ trace_marker节点为只写节点，程序将打点信息写入到trace_marker�
 
 trace节点为只读节点，可从中读取系统当前缓冲区内的所有记录。hitrace命令行工具封装了对该节点的读取操作，开发者可使用命令将采集的打点信息显示在命令行或保存到设备文件中。
 
-调用HitraceMeter接口生成的打点信息格式可查看[用户态trace格式说明](hitracemeter-view.md#用户态trace格式说明)。
+调用HiTraceMeter接口生成的打点信息格式可查看[用户态trace格式说明](hitracemeter-view.md#用户态trace格式说明)。
 
 **HiTraceMeter Tag**：跟踪数据使用类别，每个软件子系统对应一个tag。可以在hdc命令行中用“hitrace -l”命令查看所有的tag名及其简介。使用[hitrace](hitrace.md)命令行工具采集跟踪数据时，需要指定tag，采集结果仅包含指定tag类别的跟踪数据。应用中调用HiTraceMeter打点使用的tag是app。

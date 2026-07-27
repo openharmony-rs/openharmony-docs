@@ -1,12 +1,12 @@
 # @ohos.util (util工具函数)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）、虚拟机维测能力（[ArkTSVM<sup>23+</sup>](#arktsvm23)）、二进制流解码（[StringDecoder<sup>12+</sup>](#stringdecoder12)）、堆内存阈值配置（[HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)）等功能。此外还提供获取对象Hash值（[util.getHash<sup>12+</sup>](#utilgethash12)）、获取主线程栈追踪信息（[util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)）等工具函数。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { util } from '@kit.ArkTS';
 
 format(format: string,  ...args: Object[]): string
 
-使用样式化字符串将输入内容按特定格式输出。
+使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -33,21 +33,13 @@ format(format: string,  ...args: Object[]): string
 | 参数名  | 类型     | 必填 | 说明           |
 | ------- | -------- | ---- | -------------- |
 | format  | string   | 是   | 格式化字符串，可以包含零个或多个占位符，用于指定要插入的参数的位置和格式。 |
-| ...args | Object[] | 否   | 替换format参数中占位符的数据，此参数缺失时，默认返回第一个参数。|
+| ...args | Object[] | 否   | 替换format参数中占位符的数据，此参数缺失时，直接返回格式化字符串本身。|
 
 **返回值：**
 
 | 类型   | 说明              |
 | ------ | -----------------|
 | string | 格式化后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **格式说明符：**
 
@@ -57,10 +49,10 @@ format(format: string,  ...args: Object[]): string
 | %d     | 将参数作为十进制整数进行格式化输出，用于除Symbol和BigInt之外的所有值。|
 | %i     | 将字符串转换为十进制整数，用于除BigInt和Symbol之外的所有值。|
 | %f     | 将字符串转换为浮点数，用于除BigInt和Symbol之外的所有值。|
-| %j     | 将JavaScript对象转换为JSON字符串进行格式化输出。|
+| %j     | 将JavaScript对象序列化为JSON字符串进行格式化输出。|
 | %o     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示，但不包含对象的原型链信息。|
 | %O     | 用于将JavaScript对象进行格式化输出，将对象转换为字符串表示。|
-| %c     | 只在浏览器环境中有效。其余环境不会产生样式效果。|
+| %c     | CSS样式占位符，仅在浏览器环境中有效，用于指定格式化输出的样式；其余环境会忽略该占位符。|
 | %%     | 转义百分号的特殊格式化占位符。|
 
 **示例：**
@@ -121,7 +113,7 @@ Formatted object using %o: { name: 'John',
   address:
   { city: 'New York',
     country: 'USA' } }
-*/
+ */
 const percentage = 80;
 let arg = 'homework';
 formattedString = util.format('John finished %d%% of the %s', percentage, arg);
@@ -133,7 +125,7 @@ console.info(formattedString);
 
 errnoToString(errno: number): string
 
-获取系统错误码对应的详细信息。
+获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误，常用于错误日志记录和错误提示显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -149,15 +141,7 @@ errnoToString(errno: number): string
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| string | 错误码对应的详细信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | 错误码对应的详细信息，包含可读的错误描述文本，便于开发者定位问题。 |
 
 **示例：**
 
@@ -192,7 +176,9 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 >
 > 该接口要求参数original必须是异步函数类型。如果传入的参数不是异步函数，不会进行拦截，但是会输出错误信息："callbackWrapper: The type of Parameter must be AsyncFunction"。
 >
-> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。
+> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。
+>
+> 由于此方法返回类型的声明为`(err: Object, value: Object) => void`，TypeScript编译器会按照该声明进行参数数量校验，因此当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。当original为多个入参的函数时，此接口返回的函数当前仅支持传入一个参数，可使用array等容器进行多个入参的传入调用（参照下方示例代码）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -202,7 +188,7 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 异步函数。 |
+| original | Function | 是 | 异步函数，要求函数返回Promise对象。该异步函数的resolve值会作为回调的第二个参数传入，reject原因会作为回调的第一个参数传入。 |
 
 **返回值：**
 
@@ -210,17 +196,10 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 | -------- | -------- |
 | (err: Object, value: Object)=&gt;void | 返回一个回调函数，该函数第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
+// original为一个入参示例
 async function fn(input: string) {
   return input;
 }
@@ -232,11 +211,26 @@ cb('hello world', (err : Object, ret : string) => {
 // 输出结果：hello world
 ```
 
+```ts
+// original需要传入多个入参场景示例
+async function fn(args: Array<string | number | Function>) {
+  console.info('args[0]: ' + args[0]); // args[0]: hello world
+  console.info('args[1]: ' + args[1]); // args[1]: 8
+  return args[0];
+}
+let cb = util.callbackWrapper(fn);
+let args: Array<string | number | Function> = ['hello world', 8]
+cb(args, (err : Object, ret : string) => {
+  if (err) throw new Error;
+  console.info(ret); // 输出结果：hello world
+});
+```
+
 ## util.promisify<sup>9+</sup>
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
+接收一个采用"错误优先"回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。适用于将旧版回调式异步API转换为Promise风格，以便使用async/await语法进行调用，从而简化异步代码编写。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -252,15 +246,7 @@ promisify(original: (err: Object, value: Object) =&gt; void): Function
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 返回一个&nbsp;Promise&nbsp;的函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Function | 返回一个Promise函数，该Promise在原始回调函数成功执行时resolve为回调的value值，在原始回调函数执行出错时reject为错误对象。 |
 
 **示例：**
 
@@ -294,21 +280,13 @@ generateRandomUUID(entropyCache?: boolean): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| entropyCache | boolean | 否 | 是否使用已缓存的UUID，true表示使用缓存的UUID，false表示不使用缓存的UUID，默认true。 |
+| entropyCache | boolean | 否 | 是否使用已缓存的UUID，true表示使用缓存的UUID以提升性能（最多缓存128个UUID，缓存用尽后会重新生成以保证随机性），false表示不使用缓存的UUID，默认true。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 表示此UUID的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -322,7 +300,7 @@ console.info("RFC 4122 Version 4 UUID:" + uuid);
 
 generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
-使用加密安全随机数生成器生成随机的RFC 4122版本4的UUID。
+使用加密安全随机数生成器生成随机的RFC 4122版本4的Uint8Array类型UUID。为了提升性能，此接口会默认使用缓存，即入参为true，最多可缓存128个随机的UUID。当缓存中128个UUID用尽后，会重新生成，以保证UUID的随机性。如需禁用缓存，请将入参设置为false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -340,14 +318,6 @@ generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 | -------- | -------- |
 | Uint8Array | 表示此UUID的Uint8Array值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -360,7 +330,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -370,21 +340,20 @@ parseUUID(uuid: string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uuid | string | 是 | UUID字符串。 |
+| uuid | string | 是 | UUID字符串，必须符合RFC 4122版本规范。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回表示此UUID的Uint8Array，如果解析失败，则抛出SyntaxError。 |
+| Uint8Array | 返回表示此UUID的Uint8Array，如果解析失败，则抛出异常，错误码为10200002。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200002 | Invalid uuid string. |
 
 **示例：**
@@ -418,7 +387,7 @@ printf(format: string,  ...args: Object[]): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 按特定格式式样化后的字符串。 |
+| string | 按特定格式式样化后的字符串，包含根据格式说明符处理后的参数值。 |
 
 **示例：**
 
@@ -478,7 +447,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 采用错误优先回调模式的函数，第一个参数err是拒绝原因，第二个参数value是已解决的值。 |
 
 **返回值：**
 
@@ -495,7 +464,7 @@ getHash(object: object): number
 
 首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -503,21 +472,13 @@ getHash(object: object): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| object | object | 是 | 需要获取Hash值的对象。 |
+| object | object | 是 | 需要获取Hash值的非原始类型对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | Hash值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| number | 对象的Hash值，首次获取时返回随机值，同一对象多次获取返回值保持不变。 |
 
 **示例：**
 
@@ -542,7 +503,7 @@ getMainThreadStackTrace(): string
 
 该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -559,16 +520,35 @@ let stack = util.getMainThreadStackTrace();
 console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
+## MultithreadingDetectionOptions
+
+MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMultithreadingDetectionEnabled](#setmultithreadingdetectionenabled23)函数的行为参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| abort  | boolean  | 否       | 是       | 控制检测到多线程问题时是否崩溃。传入true表示检测到多线程问题时立即崩溃，适用于开发调试阶段需要快速暴露多线程问题的场景；传入false表示不崩溃仅上报故障信息，适用于生产环境需要保持服务可用性的场景。默认true。|
+| frequency  | number  | 否       | 是       | 多线程安全检测的粒度，表示每发生多少次函数调用进行一次多线程安全检测，该值越大采样频率越低，对应用性能影响越小，但可能漏检部分多线程安全使用问题场景，范围为[100, 2147483647]，默认100。|
+| interval  | number  | 否       | 是       | 多线程安全检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
 
 ## ArkTSVM<sup>23+</sup>
 
-ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+ArkTSVM是一个类，用于给开发者提供虚拟机的诊断与维护能力，包括多线程安全检测、堆内存信息获取、内存泄漏防护、全局引用追踪和堆内存预警等功能。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
-static setMultithreadingDetectionEnabled(enabled: boolean): void
+static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions): void
 
-若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+若enabled为true则开启，为false则关闭。开启多线程安全检测，多线程问题的C/C++崩溃转储文件（cppcrash文件）里会包含多线程信息（如线程ID、锁状态等）。关闭多线程安全检测，则C/C++崩溃转储文件（cppcrash文件）里不会包含多线程信息。
+
+options是用于配置多线程安全检测的行为参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -578,24 +558,317 @@ static setMultithreadingDetectionEnabled(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+| enabled  | boolean  | 是       | 控制多线程安全检测开关的开启或关闭。true表示开启，false表示关闭。|
+| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程安全检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**起始版本：** 26.0.0|
 
 **示例：**
 
 ```ts
 import { util } from '@kit.ArkTS';
 
-//打开多线程检测开关
+// 打开多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(true);
-//关闭多线程检测开关
+// 关闭多线程安全检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+// 设置崩溃行为
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { abort: false });
+// 调整检测粒度
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { frequency: 200 });
+// 调整上报间隔
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { interval: 10 });
+// 同时设置三个参数
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
+  abort: false,
+  frequency: 500,
+  interval: 60
+});
 ```
+
+### getAllVMHeapMemoryInfo<sup>24+</sup>
+
+static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
+
+获取所有VM线程的堆内存信息，包括线程ID、线程名称、堆类型和堆对象大小，适用于内存泄漏排查、内存使用分析等场景。使用Promise异步回调。
+
+接口获取到的堆包含两种类型：local堆，即应用进程中每个ArkTS线程独有的虚拟机堆；shared堆，即应用进程中所有ArkTS线程共享的虚拟机堆。
+
+> **说明：**
+>
+> 此接口在执行时会暂停所有VM线程运行以获取内存信息。由于需要等待所有VM线程暂停，高负载场景下调用此接口的耗时可能较高。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise<[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)[]> | Promise对象，解析为HeapMemoryInfo对象数组，每个对象包含线程ID、线程名称、堆类型和堆对象大小。此方法可以获取local堆和shared堆的内存信息。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.getAllVMHeapMemoryInfo().then(
+  result => {
+    result.forEach(info => {
+      console.info(info.threadId?.toString());
+      console.info(info.threadName);
+      console.info(info.heapType);
+      console.info(info.heapObjectSize.toString());
+    })
+  }
+);
+```
+
+### enableLocalHandleDetection<sup>24+</sup>
+
+static enableLocalHandleDetection(): void
+
+EventHandler和libuv的异步事件循环机制在执行异步任务时，任务将不在当前handle scope的管理范围内执行，创建的napi_value不会被自动回收。若开发者在任务回调中未添加scope，将导致内存泄漏。调用该接口后，可确保这两个机制的任务在scope范围内执行，从而避免内存泄漏。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**示例：**
+
+``` C++
+// napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+#include "uv.h"
+
+static napi_value CreateObject(napi_env env, napi_callback_info info)
+{
+    uv_loop_s* loop = nullptr;
+    napi_status status = napi_get_uv_event_loop(env, &loop);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_uv_event_loop fail");
+        return nullptr;
+    }
+    uv_work_t* work = new uv_work_t;
+    work->data = env;
+    int ret = uv_queue_work(loop, work,
+        [](uv_work_t* work){},
+        [](uv_work_t* work, int status){
+            napi_env env = static_cast<napi_env>(work->data);
+            for (int i = 0; i < 1000; i++) {
+                napi_value obj = nullptr;
+                // 在libuv提供的异步机制中没有加scope会导致内存泄漏
+                napi_create_object(env, &obj);
+            }
+            delete work;
+        }
+    );
+    if (ret != 0) {
+        delete work;
+    }
+    return nullptr;
+}
+```
+
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libuv.so
+```
+
+``` TypeScript
+// index.d.ts 接口声明
+export const createObject: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS侧示例代码
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // 若不开启LocalHandle内存泄漏兜底机制，可能导致内存溢出。启用该机制后，系统将自动回收EventHandler和libuv异步任务中创建的napi_value
+  util.ArkTSVM.enableLocalHandleDetection();
+  testNapi.createObject();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createObject success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
+}
+```
+
+**可能出现的问题：**
+
+如果之前内存泄漏的对象被继续使用，使用enableLocalHandleDetection接口后，系统会回收内存泄漏对象。继续使用该对象会导致内存泄漏问题转变为稳定性问题。
+
+``` C++
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // 直接存储到全局变量，开启LocalHandle内存泄漏兜底机制后被释放
+    return nullptr;
+}
+```
+
+### setTrackGlobalRef
+
+static setTrackGlobalRef(enable: boolean): void
+
+开启或关闭napi_ref与全局对象之间的关联追踪。开启后，堆快照中全局对象节点将包含napi_ref的地址信息；关闭后（enable为false），将停止追踪，堆快照中不再显示napi_ref与全局对象之间的关联关系。
+
+开启追踪后，虚拟机会额外记录napi_ref与全局对象的关联关系，可能带来一定的内存和性能开销。在不需要调试时，建议调用`util.ArkTSVM.setTrackGlobalRef(false)`关闭追踪。
+
+该接口的开关为进程级别，进程内的所有线程共享同一开关状态。在任意线程调用本接口设置开关后，将对该进程内所有线程生效。
+
+关于napi_ref的详细说明，请参考[napi_ref](../../napi/use-napi-life-cycle.md#napi_ref)使用指导。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enable | boolean | 是 | 是否开启追踪。true表示开启追踪（可能带来一定的内存和性能开销），false表示关闭追踪。建议在不需要调试时设置为false以避免性能开销。 |
+
+**示例：**
+
+``` C++
+// napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+
+static napi_value CreateGlobalRef(napi_env env, napi_callback_info info)
+{
+    napi_value js_obj = nullptr;
+    napi_create_object(env, &js_obj);
+    // 创建napi_ref，与全局handle建立关联
+    napi_ref ref = nullptr;
+    napi_create_reference(env, js_obj, 1, &ref);
+    // 开启setTrackGlobalRef后，堆快照中将包含该ref对应的native引用地址信息
+    return nullptr;
+}
+```
+
+``` TypeScript
+// Index.d.ts 接口声明
+export const createGlobalRef: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS侧示例代码
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // 开启napi_ref与全局handle的关联追踪，开启后堆快照中将包含native引用地址信息
+  util.ArkTSVM.setTrackGlobalRef(true);
+  testNapi.createGlobalRef();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createGlobalRef success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
+}
+```
+
+### onVMHeapMemoryPressure<sup>24+</sup>
+
+static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
+
+注册一个回调函数，在虚拟机主线程完成垃圾回收后，如果堆内存超过预警阈值则触发回调执行，适用于主动内存管理（在内存压力较大时触发资源清理）、OOM预防等场景。
+
+虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<string\> | 是 | 垃圾回收后内存达到预警阈值时触发的回调函数，字符串参数表示内存压力事件的类型。目前事件的类型有三种取值，"LocalHeapMemPressure"，"SharedHeapMemPressure"，"ProcessHeapMemPressure"。 |
+| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | 是 | 堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 注册成功返回true，当不在主线程调用或回调已注册时返回false。 |
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+let callback = (event: string) => {
+  console.info('Memory pressure event: ' + event);
+};
+
+let threshold: util.HeapMemoryThreshold = {
+  localHeapThreshold: 75,
+  sharedHeapThreshold: 80,
+  processHeapThreshold: 85
+};
+
+let result : boolean = util.ArkTSVM.onVMHeapMemoryPressure(callback, threshold);
+console.info('Registration result: ' + result);
+```
+
+### offVMHeapMemoryPressure<sup>24+</sup>
+
+static offVMHeapMemoryPressure(): void
+
+取消已注册的内存预警回调函数。此接口需要在主线程调用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.offVMHeapMemoryPressure();
+```
+
+## HeapMemoryThreshold<sup>24+</sup>
+
+堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | ---- |
+| localHeapThreshold | number | 否 | 是 | local堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听local堆。|
+| sharedHeapThreshold | number | 否 | 是 | shared堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听shared堆。|
+| processHeapThreshold | number | 否 | 是 | 进程总虚拟机堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听进程总虚拟机堆大小。|
+
+## HeapMemoryInfo<sup>24+</sup>
+
+描述local堆或shared堆的内存信息，包含线程标识和堆内存大小等详细数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是local堆，该值为表示运行线程ID的整数；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是local堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为local堆，"shared"表示堆类型为shared堆。|
+| heapObjectSize | number | 否 | 否 | 堆对象大小，单位为KB（向上取整的整数）。|
 
 ## TextDecoderOptions<sup>11+</sup>
 
 解码相关选项参数，包含两个属性fatal和ignoreBOM。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -608,7 +881,7 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(false);
 
 用于配置decodeToString方法在解码字节流时的行为参数。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -620,13 +893,13 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(false);
 
 解码是否跟随附加数据块相关选项参数。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| stream | boolean | 否 | 是 | 在随后的[decodeWithStream](#decodewithstreamdeprecated)调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 
@@ -636,7 +909,7 @@ Aspect类用于封装提供切面能力（Aspect Oriented Programming，简写AO
 
 static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void
 
-在指定的类对象的原方法执行前插入一个函数。执行addBefore接口后，先运行插入的函数逻辑，再执行指定类对象的原方法。
+在指定的类对象的原方法执行前插入一个函数，适用于日志记录、性能监控、权限校验等需要在方法执行前进行拦截处理的场景。执行addBefore接口后，先运行插入的函数逻辑，再执行指定类对象的原方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -650,14 +923,6 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 | methodName   | string   | 是   | 指定的原方法名，不支持read-only方法。                    |
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。      |
 | before       | Function | 是   | 要插入的函数对象。函数有参数，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参数，无参时不做处理。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -743,14 +1008,6 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。      |
 | after        | Function | 是   | 要插入的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），第二个参数是原方法的返回值（如果原方法没有返回值，则为undefined），其余参数是原方法的参数。函数也可以无参，无参时不做处理。  |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -788,7 +1045,7 @@ console.info('result is ' + result);
 console.info('asp.msg is ' + asp.msg);
 // 输出结果：asp.msg is msg111
 
-// 前后插桩的例子
+// 分别添加前置和后置插桩的例子
 class AroundTest {
   foo(arg: string) {
     console.info('execute foo with arg ' + arg);
@@ -811,7 +1068,7 @@ util.Aspect.addAfter(AroundTest, 'foo', false, () => {
 
 static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void
 
-将指定类的原方法替换为另一个函数。replace接口执行完成后，调用指定的类方法时，仅执行替换后的逻辑。最终返回替换函数执行完毕的返回值。
+将指定类的原方法替换为另一个函数，适用于行为替换、兼容性适配、条件执行等需要完全改变方法实现逻辑的场景。replace接口执行完成后，调用指定的类方法时，仅执行替换后的逻辑。最终返回替换函数执行完毕的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -825,14 +1082,6 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 | methodName   | string   | 是   | 指定的原方法名，不支持read-only方法。                  |
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。       |
 | instead      | Function | 是   | 要用来替换原方法的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参，无参时不做处理。   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -885,13 +1134,13 @@ TextDecoder用于将字节数组解码为字符串，支持utf-8、utf-16le/be�
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | 是 | 否 | 编码格式。<br/>-&nbsp;支持格式：utf-8、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、x-mac-cyrillic、gbk、gb18030、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、utf-16be、utf-16le、gb2312、iso-8859-1。 |
 | fatal | boolean | 是 | 否 | 是否显示致命错误，true表示显示，false表示不显示。 |
-| ignoreBOM | boolean | 是 | 否 | 是否忽略BOM（byte order marker）标记，默认值为false，表示解码结果包含BOM标记。 |
+| ignoreBOM | boolean | 是 | 否 | 是否忽略BOM（byte order marker）标记，true表示忽略BOM标记，false表示解码结果包含BOM标记，默认值为false。 |
 
 ### constructor<sup>9+</sup>
 
 constructor()
 
-TextDecoder的构造函数。
+TextDecoder的构造函数，创建一个默认编码格式为'utf-8'的TextDecoder实例，fatal默认为false，ignoreBOM默认为false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -911,7 +1160,7 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 
 替代有参构造函数的功能。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -919,22 +1168,14 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 
 | 参数名   | 类型   | 必填 | 说明                                             |
 | -------- | ------ | ---- | ------------------------------------------------ |
-| encoding | string | 否   | 编码格式，默认值是'utf-8'。                      |
-| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。|
+| encoding | string | 否   | 编码格式，支持格式参见[encoding属性](#属性)，默认值是'utf-8'。                      |
+| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值。 |
 
 **返回值：**
 
 | 类型       | 说明               |
 | ---------- | ------------------ |
-| [TextDecoder](#textdecoder) | 返回一个TextDecoder对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [TextDecoder](#textdecoder) | 返回一个用于将字节数组按指定编码格式解码为字符串的TextDecoder对象。 |
 
 **示例：**
 
@@ -955,7 +1196,11 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 将输入参数解码后输出对应文本。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+> **说明：**
+>
+> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -964,7 +1209,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | 是 | 需要解码的数组。 |
-| options | [DecodeToStringOptions](#decodetostringoptions12) | 否 | 解码相关选项参数。默认undefined。|
+| options | [DecodeToStringOptions](#decodetostringoptions12) | 否 | 解码相关选项参数，用于控制解码行为。当需要以流式方式分块处理数据且保留不完整字节序列时传入此参数并设置stream为true；不传入时默认为undefined，即不保留不完整字节序列，直接在当前调用中解码。 |
 
 **返回值：**
 
@@ -972,17 +1217,10 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 | -------- | -------- |
 | string | 解码后的数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
+// 当解析不含有\0的字节的示例代码
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -997,6 +1235,25 @@ console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
 ```
 
+```ts
+// 当解析含有\0的字节的示例代码
+let textDecoderOptions: util.TextDecoderOptions = {
+  fatal: false,
+  ignoreBOM : true
+}
+let decodeToStringOptions: util.DecodeToStringOptions = {
+  stream: false
+}
+let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+let uint8 = new Uint8Array([97, 98, 0, 99]);
+let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+console.info("retStr = " + retStr);
+// 输出结果：retStr = abc
+let retJson = JSON.stringify(retStr)
+console.info("retJson = " + retJson);
+// 输出结果：retJson = ab/u0000c
+```
+
 ### decodeWithStream<sup>(deprecated)</sup>
 
 decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
@@ -1007,7 +1264,7 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用[decodeToString<sup>12+</sup>](#decodetostring12)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1016,21 +1273,13 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | 是 | 符合格式需要解码的数组。 |
-| options | [DecodeWithStreamOptions](#decodewithstreamoptions11) | 否 | 解码相关选项参数。 |
+| options | [DecodeWithStreamOptions](#decodewithstreamoptions11) | 否 | 解码相关选项参数。此参数不填时，对应各属性取其默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 解码后的数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1073,7 +1322,7 @@ TextDecoder的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 编码格式，默认值是'utf-8'。 |
-| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值。 |
 
   **表1** options
 
@@ -1105,7 +1354,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | 是 | 符合格式需要解码的数组。 |
-| options | { stream?: false } | 否 | 解码相关选项参数。 |
+| options | { stream?: false } | 否 | 解码相关选项参数。不传此参数时，stream默认为false，即不跟随附加数据块。 |
 
 **表2** options
 
@@ -1142,7 +1391,7 @@ console.info("retStr = " + retStr);
 
 ### 属性
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1173,9 +1422,9 @@ TextEncoder将字符串编码为字节数组，支持多种编码格式。
 
 constructor()
 
-TextEncoder的构造函数。
+TextEncoder的构造函数，创建一个默认编码格式为'utf-8'的TextEncoder实例。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1191,7 +1440,7 @@ constructor(encoding?: string)
 
 TextEncoder的构造函数。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1199,15 +1448,7 @@ TextEncoder的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
-| encoding | string | 否 | 编码格式，默认值为'utf-8'。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| encoding | string | 否 | 编码格式，支持格式参见[encoding属性](#属性-2)，默认值为'utf-8'。 |
 
 **示例：**
 
@@ -1221,7 +1462,7 @@ static create(encoding?: string): TextEncoder
 
 创建TextEncoder对象的方法。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1235,15 +1476,7 @@ static create(encoding?: string): TextEncoder
 
 | 类型       | 说明               |
 | ---------- | ------------------ |
-| [TextEncoder](#textencoder) | 返回一个TextEncoder对象。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [TextEncoder](#textencoder) | 返回一个用于将字符串按指定编码格式编码为字节数组的TextEncoder对象。 |
 
 **示例：**
 
@@ -1257,7 +1490,7 @@ encodeInto(input?: string): Uint8Array
 
 将输入参数编码后输出Uint8Array对象。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1271,15 +1504,7 @@ encodeInto(input?: string): Uint8Array
 
 | 类型       | 说明               |
 | ---------- | ------------------ |
-| Uint8Array | 返回编码后的Uint8Array对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| Uint8Array | 返回编码后的Uint8Array对象。当入参为空字符串时，返回undefined。 |
 
 **示例：**
 
@@ -1296,7 +1521,7 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 
 对字符串进行编码，将结果存储到dest数组。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1312,14 +1537,6 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | 类型       | 说明               |
 | ---------- | ------------------ |
 | [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1376,7 +1593,7 @@ console.info("uint8 = " + uint8);
 
 encode(input?: string): Uint8Array
 
-将输入参数编码后输出对应文本。
+将输入字符串编码后输出对应的Uint8Array字节数组。
 
 > **说明：**
 >
@@ -1407,13 +1624,13 @@ console.info("result = " + result);
 
 ## RationalNumber<sup>8+</sup>
 
-RationalNumber主要用于有理数的比较，并提供获取分子和分母的方法。使用toString()方法可以将有理数转换为字符串形式，使用该类可以方便地进行有理数的各种操作。
+RationalNumber主要用于有理数的比较，并提供获取分子和分母的方法。RationalNumber内部以分子和分母存储有理数，创建时会自动对分数进行简化。需要注意的是：当分母为0时，有理数表示为Infinity；当分子和分母均为0时，有理数表示为NaN（非数字）。使用[toString()](#tostring8)方法可以将有理数转换为字符串形式，使用该类可以方便地进行有理数的各种操作。
 
 ### constructor<sup>9+</sup>
 
 constructor()
 
-RationalNumber的构造函数。
+RationalNumber的构造函数，创建一个默认分子为0、分母为1的RationalNumber实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1450,15 +1667,7 @@ static parseRationalNumber(numerator: number,denominator: number): RationalNumbe
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RationalNumber](#rationalnumber8) | RationalNumber对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [RationalNumber](#rationalnumber8) | 具有给定分子和分母的RationalNumber有理数对象。 |
 
 **示例：**
 
@@ -1484,21 +1693,13 @@ static createRationalFromString(rationalString: string): RationalNumber
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| rationalString | string | 是 | 字符串格式。 |
+| rationalString | string | 是 | 有理数字符串格式，如"3/4"。若传入小数类型字符串格式，不会拦截但会输出错误信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RationalNumber](#rationalnumber8)​ | RationalNumber对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | The type of rationalString must be string. |
+| [RationalNumber](#rationalnumber8)​ | 由给定字符串创建的RationalNumber有理数对象。 |
 
 **示例：**
 
@@ -1527,14 +1728,6 @@ compare(another: RationalNumber): number​
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
 | number | 两个对象相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1592,7 +1785,7 @@ equals(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | Object | 是 | 其他类型对象。 |
+| obj | Object | 是 | 用于与当前RationalNumber对象比较的对象，传入非RationalNumber类型时返回false。 |
 
 **返回值：**
 
@@ -1644,14 +1837,6 @@ static getCommonFactor(number1: number, number2: number): number
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
 | number | 返回两个给定数字的最大公约数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1727,7 +1912,7 @@ console.info("result = " + result);
 
 ### isZero<sup>8+</sup>
 
-isZero():boolean
+isZero(): boolean
 
 检查当前RationalNumber对象是否为0。
 
@@ -1791,7 +1976,7 @@ console.info("result = " + result);
 
 ### isFinite<sup>8+</sup>
 
-isFinite():boolean
+isFinite(): boolean
 
 检查RationalNumber对象是否表示一个有限值。
 
@@ -1869,8 +2054,8 @@ RationalNumber的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| numerator | number | 是 | 分子，整数类型。 |
-| denominator | number | 是 | 分母，整数类型。 |
+| numerator | number | 是 | 分子，整数类型。取值范围：-Number.MAX_VALUE <= numerator <= Number.MAX_VALUE。 |
+| denominator | number | 是 | 分母，整数类型。取值范围：-Number.MAX_VALUE <= denominator <= Number.MAX_VALUE。 |
 
 **示例：**
 
@@ -1928,8 +2113,8 @@ static getCommonDivisor(number1: number,number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| number1 | number | 是 | 整数类型。 |
-| number2 | number | 是 | 整数类型。 |
+| number1 | number | 是 | 整数类型。-Number.MAX_VALUE <= number1 <= Number.MAX_VALUE。 |
+| number2 | number | 是 | 整数类型。-Number.MAX_VALUE <= number2 <= Number.MAX_VALUE。 |
 
 **返回值：**
 
@@ -1951,7 +2136,7 @@ LRUCache用于在缓存空间不足时，将近期最少使用的数据替换为
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| length | number | 是   | 否   | 当前缓冲区中值的总数。 |
+| length | number | 是   | 否   | 当前缓存中值的总数。 |
 
 **示例：**
 
@@ -1978,20 +2163,12 @@ constructor(capacity?: number)
 
 | 参数名   | 类型   | 必填 | 说明                         |
 | -------- | ------ | ---- | ---------------------------- |
-| capacity | number | 否   | 指示要为缓冲区自定义的容量，不传默认值为64，最大值不能超过2147483647。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| capacity | number | 否   | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]，默认值为64。 |
 
 **示例：**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
+let lruCache = new util.LRUCache<number, number>();
 ```
 
 
@@ -1999,7 +2176,7 @@ let pro = new util.LRUCache<number, number>();
 
 updateCapacity(newCapacity: number): void
 
-更新缓冲区容量为指定值，如果newCapacity小于或等于0，则抛出异常。当缓冲区中值的总数大于指定容量时，会执行删除操作。
+更新缓存容量为指定值，如果newCapacity小于或等于0，则抛出异常。当缓存中值的总数大于指定容量时，会执行删除操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2009,15 +2186,7 @@ updateCapacity(newCapacity: number): void
 
 | 参数名      | 类型   | 必填 | 说明                         |
 | ----------- | ------ | ---- | ---------------------------- |
-| newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| newCapacity | number | 是   | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]。 |
 
 **示例：**
 
@@ -2030,7 +2199,7 @@ pro.updateCapacity(100);
 
 toString(): string
 
-返回对象的字符串表示。
+返回对象的字符串表示，格式为LRUCache[ maxSize = 缓存区最大值, hits = 查询匹配成功次数, misses = 查询匹配失败次数, hitRate = 查询匹配率 ]。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2058,7 +2227,7 @@ console.info(pro.toString());
 
 getCapacity(): number
 
-获取当前缓冲区的容量。
+获取当前缓存的容量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2083,7 +2252,7 @@ console.info('result = ' + result);
 
 clear(): void
 
-清除当前缓冲区中的键值对。
+清除当前缓冲区中的键值对，并触发afterRemoval回调方法执行后续操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2172,7 +2341,7 @@ console.info('result = ' + result);
 
 getRemovalCount(): number
 
-获取缓冲区键值对的回收次数。
+获取缓存键值对的回收次数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2227,7 +2396,7 @@ getMatchCount(): number
 
 getPutCount(): number
 
-获取将值添加到缓冲区的次数。
+获取将值添加到缓存的次数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2253,7 +2422,7 @@ console.info('result = ' + result);
 
 isEmpty(): boolean
 
-检查缓冲区是否为空。
+检查缓存是否为空。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2263,7 +2432,7 @@ isEmpty(): boolean
 
 | 类型    | 说明                                     |
 | ------- | ---------------------------------------- |
-| boolean | 如果缓冲区不包含任何值，则返回true。 |
+| boolean | 如果缓存不包含任何值，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -2279,7 +2448,7 @@ console.info('result = ' + result);
 
 get(key: K): V | undefined
 
-返回键对应的值。当键不在缓冲区中时，通过[createDefault<sup>9+</sup>](#createdefault9)接口创建，若createDefault创建的值不为undefined时，此时会调用[afterRemoval<sup>9+</sup>](#afterremoval9)接口，返回createDefault创建的值。
+返回键对应的值。当键不在缓存中时，通过[createDefault](#createdefault9)接口创建，若createDefault创建的值不为undefined时，此时会调用[afterRemoval](#afterremoval9)接口，返回createDefault创建的值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2297,14 +2466,6 @@ get(key: K): V | undefined
 | ------------------------ | ------------------------------------------------------------ |
 | V \| undefined | 如果指定的键存在于缓冲区中，则返回与键关联的值；否则返回createDefault创建的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2319,7 +2480,7 @@ console.info('result = ' + result);
 
 put(key: K,value: V): V
 
-将键值对添加到缓冲区，返回与添加的键关联的值。当缓冲区中值的总数超过容量时，执行删除操作。
+将键值对添加到缓存，返回与添加的键关联的值。当缓存中值的总数超过容量时，执行删除操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2338,14 +2499,6 @@ put(key: K,value: V): V
 | ---- | ------------------------------------------------------------ |
 | V    | 返回与添加的键关联的值。如果键或值为空，则抛出此异常。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2359,7 +2512,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-获取当前缓冲区中所有值，从最近最少访问到最近访问的顺序列表。
+获取当前缓存中所有值，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2395,7 +2548,7 @@ console.info('result = ' + result);
 
 keys(): K[]
 
-获取当前缓冲区中所有键，从最近最少访问到最近访问的顺序列表。
+获取当前缓存中所有键，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2431,7 +2584,7 @@ console.info('result = ' + result);
 
 remove(key: K): V | undefined
 
-从当前缓冲区中删除指定的键及其关联的值，并返回键关联的值。如果指定的键不存在，则返回undefined。
+从当前缓存中删除指定的键及其关联的值，并返回键关联的值。如果指定的键不存在，则返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2441,21 +2594,13 @@ remove(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | ---- | ---- | -------------- |
-| key    | K    | 是   | 要删除的键值。 |
+| key    | K    | 是   | 要删除的键。 |
 
 **返回值：**
 
 | 类型                     | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| V&nbsp;\|&nbsp;undefined | 返回一个包含已删除键值对的Optional对象；如果key不存在，则返回undefined，如果key为null，则抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| V&nbsp;\|&nbsp;undefined | 返回与已删除键关联的值；如果key不存在，则返回undefined，如果key为null，则抛出异常。 |
 
 **示例：**
 
@@ -2489,14 +2634,6 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | key      | K       | 是   | 表示删除的键。                                               |
 | value    | V       | 是   | 表示删除的值。                                               |
 | newValue | V       | 是   | 如果已调用put方法并且要添加的键已经存在，则参数值是关联的新值。其他情况下参数值为空。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例一：**
 
@@ -2575,14 +2712,14 @@ lru.clear();             // 清空整个缓冲区
          isEvict = false
          key = bb, valueStr = testB
          key = cc, valueStr = testC
-*/
+ */
 ```
 
 ### contains<sup>9+</sup>
 
 contains(key: K): boolean
 
-检查当前缓冲区是否包含指定的键。
+检查当前缓存是否包含指定的键。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2598,15 +2735,7 @@ contains(key: K): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | 如果缓冲区包含指定的键，则返回&nbsp;true。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| boolean | 如果缓存包含指定的键，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -2622,7 +2751,7 @@ console.info('result = ' + result);
 
 createDefault(key: K): V
 
-如果在缓冲区未匹配到键，则执行后续操作，参数表示未匹配的键，返回与键关联的值，默认返回undefined。
+如果在缓存中未匹配到键，则执行后续操作，参数表示未匹配的键，返回与键关联的值，默认返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2639,14 +2768,6 @@ createDefault(key: K): V
 | 类型 | 说明               |
 | ---- | ------------------ |
 | V    | 返回与键关联的值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -2671,7 +2792,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 | 类型        | 说明                 |
 | ----------- | -------------------- |
-| IterableIterator&lt;[K, V]&gt; | 返回一个可迭代数组。 |
+| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器对象，用于按插入顺序遍历当前缓冲区中的所有键值对[key, value]。 |
 
 **示例：**
 
@@ -2790,7 +2911,7 @@ type ScopeType = ScopeComparable | number
 
 ## ScopeHelper<sup>9+</sup>
 
-ScopeHelper接口用于描述一个字段的有效范围。构造函数用于创建具有指定下限和上限的对象，并要求这些对象必须具有可比性。
+ScopeHelper接口用于描述一个字段的有效范围，常用于输入值范围校验、配置参数区间判断等场景。构造函数用于创建具有指定下限和上限的对象，并要求这些对象必须具有可比性。通过ScopeHelper，开发者可以方便地进行范围交集、并集计算以及值是否在范围内的判断，避免无效数据进入业务逻辑。
 
 ### constructor<sup>9+</sup>
 
@@ -2806,16 +2927,8 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 | 参数名   | 类型                     | 必填 | 说明                   |
 | -------- | ------------------------ | ---- | ---------------------- |
-| lowerObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的下限。 |
-| upperObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的上限。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| lowerObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的下限，需具有可比性。 |
+| upperObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的上限，需具有可比性。 |
 
 **示例：**
 
@@ -2915,14 +3028,6 @@ intersect(range: ScopeHelper): ScopeHelper
 | ------------------------------ | ------------------------------ |
 | [ScopeHelper](#scopehelper9) | 返回给定范围和当前范围的交集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2979,14 +3084,6 @@ intersect(lowerObj:ScopeType,upperObj:ScopeType):ScopeHelper
 | 类型                         | 说明                                     |
 | ---------------------------- | ---------------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回当前范围与给定下限和上限范围的交集。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3138,14 +3235,6 @@ expand(lowerObj: ScopeType,upperObj: ScopeType): ScopeHelper
 | ---------------------------- | ------------------------------------ |
 | [ScopeHelper](#scopehelper9) | 返回当前范围和给定下限和上限的并集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3201,14 +3290,6 @@ expand(range: ScopeHelper): ScopeHelper
 | ---------------------------- | ---------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回包括当前范围和给定范围的并集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3257,21 +3338,13 @@ expand(value: ScopeType): ScopeHelper
 
 | 参数名 | 类型                     | 必填 | 说明             |
 | ------ | ------------------------ | ---- | ---------------- |
-| value  | [ScopeType](#scopetype8) | 是   | 传入一个给定值。 |
+| value  | [ScopeType](#scopetype8) | 是   | 要检查是否在当前范围内的值。 |
 
 **返回值：**
 
 | 类型                         | 说明                             |
 | ---------------------------- | -------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回包括当前范围和给定值的并集。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3327,14 +3400,6 @@ contains(value: ScopeType): boolean
 | ------- | --------------------------------------------------- |
 | boolean | 如果给定值包含在当前范围内返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3388,14 +3453,6 @@ contains(range: ScopeHelper): boolean
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
 | boolean | 如果给定范围在当前范围内则返回true，否则返回false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3453,14 +3510,6 @@ clamp(value: ScopeType): ScopeType
 | ------------------------ | ------------------------------------------------------------ |
 | [ScopeType](#scopetype8) | 如果传入的value小于下限，返回lowerObj；如果大于上限值，返回upperObj；如果在当前范围内，返回value。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3501,11 +3550,11 @@ Base64Helper类提供Base64编解码和Base64URL编解码功能。Base64编码�
 
 constructor()
 
-Base64Helper的构造函数。
+Base64Helper的构造函数，创建一个用于Base64编解码的Base64Helper实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **示例：**
 
@@ -3519,7 +3568,7 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 
 通过输入参数编码后输出Uint8Array对象。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3535,14 +3584,6 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 | 类型       | 说明                          |
 | ---------- | ----------------------------- |
 | Uint8Array | 返回编码后的Uint8Array对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3561,7 +3602,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 
 将输入的Uint8Array字节数组进行Base64编码，返回一个字符串结果。该方法支持多种编码格式，包括标准Base64编码、MIME格式的Base64编码（带有换行符）、URL安全格式的Base64编码等。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3577,14 +3618,6 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 | 类型   | 说明                 |
 | ------ | -------------------- |
 | string | 返回编码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3605,7 +3638,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
 
   // BASIC编码
   let base64Helper = new util.Base64Helper();
@@ -3621,7 +3654,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
   
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
@@ -3637,7 +3670,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3654,7 +3687,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   ```
 
 ### decodeSync<sup>9+</sup>
@@ -3663,7 +3696,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 
 将输入参数解码后输出对应Uint8Array对象。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3680,14 +3713,6 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 | ---------- | ----------------------------- |
 | Uint8Array | 返回解码后新分配的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -3697,7 +3722,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
   console.info("result = " + result);
   /*
   输出结果：result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-  */
+   */
   ```
 
 
@@ -3707,7 +3732,7 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
 将输入参数异步编码后输出对应Uint8Array对象。使用Promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3722,15 +3747,7 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
 | 类型                      | 说明                              |
 | ------------------------- | --------------------------------- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回异步编码后新分配的Uint8Array对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Promise&lt;Uint8Array&gt; | Promise对象。编码成功时resolve为新分配的Uint8Array对象，编码失败时reject为错误对象。 |
 
 **示例：**
 
@@ -3748,7 +3765,7 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
 encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 
-将输入参数异步编码后输出对应文本。
+将输入参数异步编码后输出对应文本。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3765,15 +3782,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 
 | 类型                  | 说明                     |
 | --------------------- | ------------------------ |
-| Promise&lt;string&gt; | 返回异步编码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| Promise&lt;string&gt; | Promise对象。编码成功时resolve为Base64编码后的字符串，编码失败时reject为错误对象。 |
 
 **示例：**
 
@@ -3786,7 +3795,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
     输出结果：TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-    */
+     */
 
   })
   ```
@@ -3796,7 +3805,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 
 decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 
-将输入参数异步解码后输出对应Uint8Array对象。
+将输入参数异步解码后输出对应Uint8Array对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3815,14 +3824,6 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | 返回异步解码后新分配的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -3832,7 +3833,7 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
     console.info(val.toString());
     /*
     输出结果：77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-    */
+     */
   })
   ```
 
@@ -3844,9 +3845,9 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 
 constructor(encoding?: string)
 
-StringDecoder的构造函数。
+StringDecoder的构造函数，创建一个默认编码为'utf-8'的StringDecoder实例。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3855,14 +3856,6 @@ StringDecoder的构造函数。
 | 参数名 | 类型                           | 必填 | 说明                              |
 | ------ | ------------------------------ | ---- | --------------------------------- |
 | encoding  | string | 否   | 输入数据的编码类型。默认值：'utf-8'。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3876,7 +3869,7 @@ write(chunk: string | Uint8Array): string
 
 返回一个解码后的字符串，确保Uint8Array末尾的任何不完整的多字节字符从返回的字符串中被过滤，并保存在一个内部的buffer中用于下次调用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3890,15 +3883,7 @@ write(chunk: string | Uint8Array): string
 
 | 类型       | 说明                          |
 | ---------- | ----------------------------- |
-| string | 返回解码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | 返回解码后的字符串，不完整的多字节字符已从返回值中过滤，并保存在内部缓冲区中供下次调用处理。 |
 
 **示例：**
 
@@ -3916,7 +3901,7 @@ end(chunk?: string | Uint8Array): string
 
 结束解码过程，以字符串形式返回存储在内部缓冲区中的所有剩余输入。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3924,21 +3909,13 @@ end(chunk?: string | Uint8Array): string
 
 | 参数名 | 类型       | 必填 | 说明                |
 | ------ | ---------- | ---- | ------------------- |
-| chunk  | string \| Uint8Array | 否   | 需要解码的字符串。默认为undefined。 |
+| chunk  | string \| Uint8Array | 否   | 需要解码的最后一部分数据。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。要解码的字符串。默认为undefined。 |
 
 **返回值：**
 
 | 类型       | 说明                          |
 | ---------- | ----------------------------- |
-| string | 返回解码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | 返回存储在内部缓冲区中的所有剩余解码内容组成的字符串。 |
 
 **示例：**
 
@@ -3962,10 +3939,10 @@ Base64编码格式枚举。
 
 | 名称   |值| 说明               |
 | ----- |---| ----------------- |
-| BASIC | 0 | 表示BASIC编码格式。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| MIME  | 1 | 表示MIME编码格式。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| BASIC_URL_SAFE<sup>12+</sup> | 2 | 表示BASIC_URL_SAFE编码格式。<br/>从API version 12开始支持此枚举。**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
-| MIME_URL_SAFE<sup>12+</sup> | 3 | 表示MIME_URL_SAFE编码格式。<br/>从API version 12开始支持此枚举。**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| BASIC | 0 | 表示BASIC编码格式。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| MIME  | 1 | 表示MIME编码格式。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| BASIC_URL_SAFE<sup>12+</sup> | 2 | 表示BASIC_URL_SAFE编码格式。<br/>从API version 12开始支持此枚举。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| MIME_URL_SAFE<sup>12+</sup> | 3 | 表示MIME_URL_SAFE编码格式。<br/>从API version 12开始支持此枚举。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 
 ## types<sup>8+</sup>
@@ -3976,7 +3953,7 @@ types为不同类型的内置对象提供类型检查，可以避免由于类型
 
 constructor()
 
-Types的构造函数。
+Types的构造函数，创建一个用于内置对象类型检查的types实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4153,6 +4130,42 @@ isAsyncFunction(value: Object): boolean
   // 输出结果：result = true
   ```
 
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+>
+> 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  @Sendable
+  class SendableClass {
+    async asyncFunction() {}
+  }
+
+  let type = new util.types();
+  let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+  console.info("result = " + result1);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+  const instance = new SendableClass();
+  let result2 = type.isAsyncFunction(instance.asyncFunction);
+  console.info("result = " + result2);
+  // 输出结果：result = false
+  ```
+
 
 ### isBooleanObject<sup>(deprecated)</sup>
 
@@ -4162,7 +4175,7 @@ isBooleanObject(value: Object): boolean
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 14开始废弃，没有替代接口。
+> 从 API version 8开始支持，从API version 14开始废弃。没有替代接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4343,7 +4356,7 @@ isExternal(value: Object): boolean
   }
   EXTERN_C_END
   // 此处已省略模块注册的代码, 你可能需要自行注册Testexternal方法
-  ...
+  // ...
 
   ```
 
@@ -4464,6 +4477,30 @@ isGeneratorFunction(value: Object): boolean
   let result = type.isGeneratorFunction(foo);
   console.info("result = " + result);
   // 输出结果：result = true
+  ```
+
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  let type = new util.types();
+  let result = type.isGeneratorFunction(asyncGeneratorFunc);
+  console.info("result = " + result);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
   ```
 
 
@@ -4624,7 +4661,7 @@ isMap(value: Object): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 如果是Map类型返回则返回true，否则返回false。 |
+| boolean | 如果是Map类型则返回true，否则返回false。 |
 
 **示例：**
 
@@ -4964,7 +5001,7 @@ isSymbolObject(value: Object): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 如果是Symbol对象类型为则返回true，否则返回false。 |
+| boolean | 如果是Symbol对象类型则返回true，否则返回false。 |
 
 **示例：**
 <!--code_no_check-->
@@ -5374,7 +5411,7 @@ onFinalization(heldValue: T): void
 
 ## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
 
-AutoFinalizerCleaner是用于关联对象生命周期与资源清理逻辑的工具类。主要的作用是将实现了AutoFinalizer&lt;T&gt;接口的对象与特定值绑定，当对象被回收时自动触发资源清理回调。
+AutoFinalizerCleaner是用于关联对象生命周期与资源清理逻辑的工具类，需要和AutoFinalizer&lt;T&gt;一起使用。主要的作用是将实现了AutoFinalizer&lt;T&gt;接口的对象与特定值绑定，当对象被回收时自动触发资源清理回调。只使用AutoFinalizerCleaner而不实现AutoFinalizer接口没有任何功能。
 
 ### register&lt;T&gt;<sup>22+</sup>
 
@@ -5425,7 +5462,7 @@ const device = new DeviceManageViewModel("test");
 | length | number | 是 | 否 | 当前缓冲区中值的总数。 |
 
 **示例：**
-
+  <!--code_no_check-->
   ```ts
   let pro : util.LruBuffer<number,number>= new util.LruBuffer();
   pro.put(2,10);
@@ -5451,7 +5488,7 @@ constructor(capacity?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capacity | number | 否 | 指示要为缓冲区自定义的容量，默认值为64。 |
+| capacity | number | 否 | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]，默认值为64。 |
 
 **示例：**
 
@@ -5475,7 +5512,7 @@ updateCapacity(newCapacity: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| newCapacity | number | 是 | 指示要为缓冲区自定义的容量。 |
+| newCapacity | number | 是 | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]。 |
 
 **示例：**
 
@@ -5545,7 +5582,7 @@ getCapacity(): number
 
 clear(): void
 
-清除当前缓冲区中的键值对，后续调用afterRemoval()方法执行操作。
+清除当前缓冲区中的键值对，后续调用[afterRemoval](#afterremoval9)方法执行操作。
 
 > **说明：**
 >
@@ -5722,7 +5759,7 @@ isEmpty(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 如果当前缓冲区不包含任何值，则返回true。 |
+| boolean | 如果当前缓冲区不包含任何值，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -5738,7 +5775,7 @@ isEmpty(): boolean
 
 get(key: K): V | undefined
 
-表示要查询的键。
+返回键对应的值。当键不在缓冲区中时，返回undefined。
 
 > **说明：**
 >
@@ -5784,7 +5821,7 @@ put(key: K,value: V): V
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | K | 是 | 要添加的密钥。 |
+| key | K | 是 | 要添加的键。 |
 | value | V | 是 | 指示与要添加的键关联的值。 |
 
 **返回值：**
@@ -5876,7 +5913,7 @@ remove(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | K | 是 | 要删除的密钥。 |
+| key | K | 是 | 要删除的键。 |
 
 **返回值：**
 
@@ -5963,7 +6000,7 @@ contains(key: K): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 如果缓冲区包含指定的键，则返回&nbsp;true。 |
+| boolean | 如果缓冲区包含指定的键，则返回true；否则返回false。 |
 
 **示例：**
 
@@ -5979,7 +6016,7 @@ contains(key: K): boolean
 
 createDefault(key: K): V
 
-如果未计算特定键的值，则执行后续操作，参数表示丢失的键，返回与键关联的值。
+当缓冲区中未匹配到指定键时，执行后续处理逻辑，参数表示未匹配到的键，返回与该键关联的值，默认返回undefined。
 
 > **说明：**
 >

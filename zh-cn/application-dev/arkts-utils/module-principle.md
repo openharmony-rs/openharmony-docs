@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。
 
@@ -71,8 +71,10 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交互格式，�
 
 JSON文件只能使用default方式导入，如下所示：
 
-```
-import data from './example.json'
+<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import data from './ImportJson.json';
 ```
 
 ### Native模块
@@ -85,13 +87,17 @@ Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情
 
 示例：
 
-```
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+
+``` TypeScript
 // libentry.so对应的index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
-```
-// test.ets
-import { add } from 'libentry.so'
-add(2, 3)
+<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) --> 
+
+``` TypeScript
+// NameImport.ets
+import { add } from 'libentry.so';
+add(2, 3);
 ```

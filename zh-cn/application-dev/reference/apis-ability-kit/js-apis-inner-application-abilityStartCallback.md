@@ -3,15 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义拉起UIExtensionAbility执行结果的回调。
 
@@ -54,7 +47,7 @@ onError(code: number, name: string, message: string): void
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
 | code | number | 是    | 拉起UIExtensionAbility执行失败时返回的结果码。 |
-| name | string | 是    | 拉起UIExtensionAbility执行失败时返回的名称。 |
+| name | string | 是    | 拉起UIExtensionAbility执行失败时返回的错误名称，用于标识错误类型。 |
 | message | string | 是    | 拉起UIExtensionAbility执行失败时返回的错误信息。 |
 
 **示例：**
@@ -88,7 +81,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### onResult<sup>12+<sup>
+### onResult<sup>12+</sup>
 
 onResult?(parameter: AbilityResult): void
 
@@ -117,10 +110,10 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
       }
     };
 

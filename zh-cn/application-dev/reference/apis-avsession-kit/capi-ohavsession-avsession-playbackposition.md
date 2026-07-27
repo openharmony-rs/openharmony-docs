@@ -1,7 +1,7 @@
 # AVSession_PlaybackPosition
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,7 +18,7 @@ typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
 
-**所在头文件：** [native_avsession.h](capi-native-avsession-h.md)
+**所在头文件：** [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 
 ## 汇总
 

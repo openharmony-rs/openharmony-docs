@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-text-style.md)、[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)等。此时，可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件属性来解决此问题。
+> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等。此时，可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件属性来解决此问题。
 
 ## 概述
 
@@ -39,7 +39,7 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 ### 基础场景
 
-下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的黑色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
+下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的灰色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
 
 <!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 

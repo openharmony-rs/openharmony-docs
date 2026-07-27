@@ -1,12 +1,12 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
+formProvider模块提供了获取卡片信息、更新卡片、设置卡片刷新时间等能力。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次更新时间，使用callback异步回调。
+设置指定卡片的下一次刷新时间，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -33,7 +33,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | number |  是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -57,17 +57,17 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -75,7 +75,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次更新时间，使用Promise异步回调。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +86,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | number | 是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 
 **返回值：**
 
@@ -115,15 +115,15 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -132,6 +132,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +168,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -174,13 +177,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider updateForm success`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -227,7 +233,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -237,10 +243,10 @@ try {
   formProvider.updateForm(formId, obj).then(() => {
     console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -280,13 +286,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getFormsInfo((error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 ## formProvider.getFormsInfo
@@ -324,19 +330,19 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
   formProvider.getFormsInfo(filter, (error, data) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -380,17 +386,17 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -478,7 +484,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
@@ -518,7 +524,7 @@ struct Page {
             formProvider.closeFormEditAbility();
             console.info(`${TAG} close FormEditAbility success.`);
           } catch (error) {
-            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+            console.error(`${TAG} close FormEditAbility failed, code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -537,6 +543,8 @@ openFormManager(want: Want): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
 
 **参数：**
 
@@ -576,7 +584,7 @@ const want: Want = {
 try {
   formProvider.openFormManager(want);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -590,7 +598,7 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfoById](#formprovidergetpublishedrunningforminfobyid20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -627,10 +635,10 @@ try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
     console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -644,7 +652,7 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 > **说明：**
 >
-> 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
+> 该接口从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -674,10 +682,10 @@ try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -686,8 +694,14 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
+> **说明：**
+>
+> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
+> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -695,7 +709,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 | 参数名 | 类型                                                                 | 必填 | 说明        |
 | ------ |--------------------------------------------------------------------| ---- |-----------|
-| formId | string                                                             | 是 | 卡片id标识。|
+| formId | string                                                             | 是 | 卡片标识。|
 | overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 是 | 动效请求参数信息。|
 
 **返回值：**
@@ -725,7 +739,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -741,10 +755,10 @@ try {
   formProvider.requestOverflow(formId, overflowInfo).then(() => {
     console.info('requestOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -756,13 +770,15 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+
 **系统能力：** SystemCapability.Ability.Form
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -791,16 +807,16 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
     console.info('cancelOverflow succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -818,13 +834,13 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 参数名 | 类型         | 必填 | 说明        |
 | ------ |-------------| ---- |-----------|
-| formId | string      | 是 | 卡片id标识。|
+| formId | string      | 是 | 卡片标识。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -846,14 +862,16 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
     console.info(`getFormRect succeed, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -947,10 +965,10 @@ try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1006,10 +1024,10 @@ try {
   formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
     console.info(`reloadForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 ## formProvider.reloadAllForms<sup>22+</sup>
@@ -1057,9 +1075,9 @@ try {
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

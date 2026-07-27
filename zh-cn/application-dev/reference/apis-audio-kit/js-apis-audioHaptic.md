@@ -1,8 +1,8 @@
 # @ohos.multimedia.audioHaptic (音振协同)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
 | AUDIO_LATENCY_MODE_NORMAL       | 0      | 普通时延模式。                                |
-| AUDIO_LATENCY_MODE_FAST         | 1      | 低时延模式。该模式适用于比较短的音频文件，音频文件过长时可能被截断，该特性与[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)一致。 |
+| AUDIO_LATENCY_MODE_FAST         | 1      | 低时延模式。当音频文件过长时可能被截断，该特性与[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)一致。 |
 
 ## AudioHapticPlayerOptions
 
@@ -69,12 +69,12 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 >
 > 开发者需要确保fd是可用的文件描述符，且offset和length的值都是正确的。
 
-**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 | 名称     | 类型           |只读  | 可选  | 说明                             |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
 | fd        | number         | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
-| offset    | number         | 否   | 是   | 文件中数据读取的偏移量。默认情况下，偏移量为0。|
+| offset    | number         | 否   | 是   | 文件中数据读取的偏移量，单位为字节。默认情况下，偏移量为0。|
 | length    | number         | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
 
 ## AudioHapticManager
@@ -98,8 +98,8 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | 是   | 音频资源的Uri。<br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。<br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。<br>- 对两种时延模式，均建议传入文件的绝对路径。           |
-| hapticUri | string                                  | 是   | 振动资源的Uri。<br>振动资源格式支持可参考[HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。<br>建议传入文件的绝对路径。         |
+| audioUri  | string                                  | 是   | 音频资源的Uri。<br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。<br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)的要求。<br>- 对两种时延模式，均建议传入文件的绝对路径。           |
+| hapticUri | string                                  | 是   | 振动资源的Uri。<br>振动资源格式支持可参考[HapticFileDescriptor](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)的要求。<br>建议传入文件的绝对路径。         |
 
 **返回值：**
 
@@ -125,10 +125,10 @@ let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri�
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  console.info(`Succeeded in registering source. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
+  console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -143,7 +143,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
 
-**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
 **参数：**
 
@@ -183,10 +183,10 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-  console.info('Succeeded in doing registerSourceFromFd.');
+  console.info(`Succeeded in registering source from fd. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -230,9 +230,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let id = 0; // 需要通过registerSource方法获取。
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
-  console.info('Succeeded in doing unregisterSource.');
+  console.info('Succeeded in unregistering source.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to unregisterSource. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -358,9 +358,9 @@ let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undef
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
-  console.info('Succeeded in doing createPlayer.');
+  console.info('Succeeded in creating player.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to createPlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -445,9 +445,9 @@ start(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.start().then(() => {
-  console.info(`Promise returned to indicate that start playing successfully.`);
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to start playing. ${err}`);
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -480,9 +480,9 @@ stop(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.stop().then(() => {
-  console.info(`Promise returned to indicate that stop playing successfully.`);
+  console.info('Succeeded in stopping.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop playing. ${err}`);
+  console.error(`Failed to stop Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -514,9 +514,9 @@ release(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.release().then(() => {
-  console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to release the audio haptic player. ${err}`);
+  console.error(`Failed to release. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -560,9 +560,9 @@ setVolume(volume: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setVolume(0.5).then(() => {
-  console.info('Promise returned to indicate that set volume successfully.');
+  console.info('Succeeded in setting volume.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set volume. ${err}`);
+  console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -574,7 +574,7 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 
 >**注意：**
 >
-> 该方法需在音振播放器销毁前调用。
+> 该方法需在音振播放器释放前调用。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -604,9 +604,9 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setLoop(true).then(() => {
-  console.info('Promise returned to indicate that set player loop successfully.');
+  console.info('Succeeded in setting loop.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set player loop. ${err}`);
+  console.error(`Failed to set loop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -629,7 +629,7 @@ on(type: 'endOfStream', callback: Callback&lt;void&gt;): void
 
 ```ts
 audioHapticPlayerInstance.on('endOfStream', () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on function.');
 });
 ```
 
@@ -656,7 +656,7 @@ audioHapticPlayerInstance.off('endOfStream');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let endOfStreamCallback = () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on or off function.');
 };
 
 audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);

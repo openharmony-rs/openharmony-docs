@@ -4,7 +4,7 @@
 <!--Owner: @baiheng-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
@@ -14,7 +14,7 @@ The **systemload** module allows the system to determine the system load level b
 
 ## Modules to Import
 
-```
+```ts
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 

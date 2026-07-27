@@ -1,9 +1,9 @@
 # FormEditExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 **FormEditExtensionContext**, inherited from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md).
@@ -45,7 +45,7 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -57,8 +57,8 @@ For details about the error codes, see [Form Error Codes](errorcode-form.md) and
 **Example**
 
 ```ts
-import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 
@@ -74,15 +74,14 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${data.resultCode}`)
       });
     } catch (e) {
-      console.error(TAG, `startSecondPage failed:${e}`)
+      console.error(TAG, `startSecondPage failed, code: ${e.code}, message: ${e.message}`)
       return
     }
   }
 }
-
 ```
 
 ### startUIAbility<sup>23+<sup>
@@ -109,7 +108,7 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -138,7 +137,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         console.info(TAG, `startUIAbility success`);
       });
     } catch (e) {
-      console.error(TAG, `startUIAbility failed:${e}`);
+      console.error(TAG, `startUIAbility failed, code: ${e.code}, message: ${e.message}`);
       return
     }
   }

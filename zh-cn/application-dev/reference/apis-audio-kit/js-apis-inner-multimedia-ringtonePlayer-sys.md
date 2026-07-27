@@ -1,8 +1,8 @@
 # ringtonePlayer (铃声播放器)(系统接口)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -506,7 +506,7 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
 });
 ```
 
-### off('audioInterrupt') <sup>10+</sup>
+### off('audioInterrupt')
 
 off(type: 'audioInterrupt'): void
 

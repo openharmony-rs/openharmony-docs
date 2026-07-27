@@ -5,11 +5,11 @@
 <!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 接口说明
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅资源泄漏事件。API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅资源泄漏事件。API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 **订阅接口功能介绍**：
 
@@ -77,7 +77,7 @@
       编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
-      //定义一个变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -97,6 +97,7 @@
                           auto uid = params["uid"].asInt();
                           auto resourceType = params["resourceType"].asString();
                           auto bundleName = params["bundle_name"].asString();
+                          auto appRunningUniqueId = params["app_running_unique_id"].asString();
                           auto bundleVersion = params["bundle_version"].asString();
                           auto memory = writer.write(params["memory"]);
                           auto externalLog = writer.write(params["external_log"]);
@@ -106,6 +107,7 @@
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.resource_type=%{public}s", resourceType.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
@@ -123,7 +125,7 @@
           const char *names[] = {EVENT_RESOURCE_OVERLIMIT};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件回立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -136,7 +138,7 @@
       编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
       ```c++
-      //定义一个变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
@@ -158,6 +160,7 @@
                       auto uid = eventInfo["uid"].asInt();
                       auto resourceType = eventInfo["resourceType"].asString();
                       auto bundleName = eventInfo["bundle_name"].asString();
+                      auto appRunningUniqueId = eventInfo["app_running_unique_id"].asString();
                       auto bundleVersion = eventInfo["bundle_version"].asString();
                       auto memory = writer.write(eventInfo["memory"]);
                       auto externalLog = writer.write(eventInfo["external_log"]);
@@ -167,6 +170,7 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.resource_type=%{public}s", resourceType.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
@@ -237,24 +241,24 @@
 
 1. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其 `onClick` 函数中构造资源泄漏场景，以触发资源泄漏事件。
 
-   此处需要使用[hidebug.setAppResourceLimit](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetappresourcelimit12)设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”(开关状态变更后需重启设备)。接口示例代码如下：
+   此处需要使用[hidebug.setAppResourceLimit](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetappresourcelimit12)设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”（开关状态变更后需重启设备）。接口示例代码如下：
 
    <!-- @[PssLeakEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    Button('pss leak')
-       .type(ButtonType.Capsule)
-       .margin({
-         top: 20
-       })
-       .backgroundColor('#0D9FFB')
-       .width('80%')
-       .height('5%')
-       .onClick(() => {
-         // 设置一个简单的资源泄漏场景
-         hilog.info(0x0000, 'testTag', 'click pss leak button');
-         testNapi.leakMB(3072);
-       })
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 设置一个简单的资源泄漏场景
+       hilog.info(0x0000, 'testTag', 'click pss leak button');
+       testNapi.leakMB(3072);
+     })
    ```
 
 2. 添加 pss leak 相关内容：
@@ -400,9 +404,9 @@
    }
    ```
 
-	- 初始化：
+    - 初始化：
 
-	<!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
@@ -415,12 +419,12 @@
         return exports;
     }
     ```
-	
-	编辑“Index.d.ts”文件：
+    
+    编辑"Index.d.ts"文件：
 
-	- 添加类型声明：
+    - 添加类型声明：
 
-	<!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     
     ``` TypeScript
     export const leakMB: (size: number) => void;
@@ -441,6 +445,7 @@
    08-07 03:53:35.349 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.uid=20010043
    08-07 03:53:35.349 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.resource_type=pss_memory
    08-07 03:53:35.349 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
+   08-07 03:53:35.349 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.app_running_unique_id=12369547851223645271
    08-07 03:53:35.349 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.bundle_version=1.0.0
    08-07 03:53:35.350 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.memory={"pss":2100257,"rss":1352644,"sys_avail_mem":250272,"sys_free_mem":60004,"sys_total_mem":1992340,"vss":2462936}
    08-07 03:53:35.350 1719-1738/? I A00000/testTag: HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572401_6808.log","/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572412_6808.log"]

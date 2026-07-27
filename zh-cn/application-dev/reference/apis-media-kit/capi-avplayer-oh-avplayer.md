@@ -1,7 +1,7 @@
 # OH_AVPlayer
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -12,7 +12,7 @@ typedef struct OH_AVPlayer OH_AVPlayer
 
 ## 概述
 
-初始化AVPlayer。
+声明OH_AVPlayer结构体类型。
 
 **起始版本：** 11
 

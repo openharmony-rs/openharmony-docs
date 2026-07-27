@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,9 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 以下接口需先使用UIContext中的requireDynamicSyncScene()方法获取DynamicSyncScene对象，再通过此实例调用对应方法。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 以下接口需先使用UIContext中的[requireDynamicSyncScene](arkts-apis-uicontext-uicontext.md#requiredynamicsyncscene12)方法获取DynamicSyncScene对象，再通过此实例调用对应方法。
 
 ## setFrameRateRange<sup>12+</sup>
 

@@ -1,8 +1,8 @@
-# 数据防泄漏服务开发指导
+# 数据防泄漏服务开发指导(ArkTS)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -17,7 +17,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 应用需要访问DLP文件时，系统会自动安装应用的DLP沙箱分身应用，相当于完全独立的应用，数据和配置会继承原应用，但相互之间并不共享。分身应用在运行时会处于DLP沙箱环境中，访问外部的权限会被限制，以防止数据的泄漏。每当打开一个新的DLP文件会生成一个应用沙箱分身，沙箱应用之间也是相互隔离的，当应用关闭后应用分身会自动卸载，沙箱期间产生的临时数据也会丢弃。
 
-正常情况下，应用不会感知到沙箱的存在，访问的也是解密后的明文，和访问普通文件没有区别，但由于DLP沙箱会限制其访问外部的权限（例如网络、剪切板、截屏、录屏、蓝牙等）。为了更好的用户体验，需要应用进行适配，例如文件只读的情况下，不应显示“保存”按钮，不应主动联网等。
+正常情况下，应用不会感知到沙箱的存在，访问的也是解密后的明文，和访问普通文件没有区别，但由于DLP沙箱会限制其访问外部的权限（例如网络、剪贴板、截屏、录屏、蓝牙等）。为了更好的用户体验，需要应用进行适配，例如文件只读的情况下，不应显示“保存”按钮，不应主动联网等。
 
 ## 沙箱限制
 
@@ -52,7 +52,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|清理沙箱应用配置信息。|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br> | 在当前UIAbility界面以无边框形式打开DLP权限管理应用（只支持Stage模式）。 |
 |setEnterprisePolicy(policy: EnterprisePolicy): void|设置企业应用防护策略。|
-| scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| 识别指定文件中的敏感内容。 <br>从API 21开始支持该接口。 |
+| scanFile(filePath: string, identifyPolicies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| 识别指定文件中的敏感内容。 <br>从API 21开始支持该接口。 |
 
 ## 开发步骤
 
@@ -68,7 +68,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。  
 
-   使用该接口的前置条件：链接DLP凭据服务器。  
+   使用该接口的前置条件：连接DLP凭据服务器。  
 
     <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -132,7 +132,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
   
 3. 2B生成dlp加密文件。  
 
-   使用该接口的前置条件：链接DLP凭据服务器。
+   使用该接口的前置条件：连接DLP凭据服务器。
 
    [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
 
@@ -231,7 +231,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
    使用该接口的前置条件：需要dlp文件进行判断。
 
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     isCurrentDlpFile() {
@@ -253,12 +253,11 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
         hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
       }).finally(() => {
-          fs.closeSync(file);
+        fileIo.closeSync(file);
       });
     }
     ```
-
-
+    
 8. 订阅、取消订阅DLP打开事件。
 
     <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -391,7 +390,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。  
     
-    使用该接口的前置条件：链接DLP凭据服务器。
+    使用该接口的前置条件：连接DLP凭据服务器。
 
     <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -421,7 +420,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
 15. 查询当前系统是否提供DLP特性。  
 
-    使用该接口的前置条件：链接DLP凭据服务器。
+    使用该接口的前置条件：连接DLP凭据服务器。
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -439,7 +438,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
 16. 设置企业应用防护策略。   
 
-    使用该接口的前置条件：链接DLP凭据服务器。
+    使用该接口的前置条件：连接DLP凭据服务器。
     
     16.1 策略格式。
     | 字段名 | 类型 | 说明 |
@@ -451,13 +450,13 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     16.2 规则格式。
     | 字段名 | 类型 | 说明 |
     | -------- | -------- | -------- |
-      | ruleId |string | 规则名称，长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
-    | attributes | Array&lt;Attribute&gt; | 具体属性信息列表，一条规则可以设置多条规则，最多32条。 |
+    | ruleId |string | 规则名称，长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
+    | attributes | Array&lt;Attribute&gt; | 具体属性信息列表，一条规则可以设置多条属性，最多32条。 |
 
     16.3 属性信息格式。
     | 字段名 | 类型 | 说明 |
     | -------- | -------- | -------- |
-      | attributeId |string | 属性信息名称。 |
+    | attributeId |string | 属性信息名称。 |
     | attributeValues | Array&lt;string&gt; | 属性值，一条属性信息可以设置多个属性值，最多32个。 |
     | valueType | number | 属性值类型，0表示整型，1代表字符串。 |
     | opt | number | 判断方法，用于真实属性信息与策略属性信息作比较。 |
@@ -465,7 +464,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     16.4 当前支持的属性信息。
     | 属性信息名称 | 属性值 | 属性值类型 | 场景 |
     | -------- | -------- | -------- | -------- |
-     | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | 整型 | 1：设备健康报告显示正常。 <br>2：设备有健康风险，但风险因子和root无关。 <br> 3：设备有健康风险，且风险因子和root相关。 <br> 4：异常场景。 |
+    | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | 整型 | 1：设备健康报告显示正常。 <br>2：设备有健康风险，但风险因子和root无关。 <br> 3：设备有健康风险，且风险因子和root相关。 <br> 4：异常场景。 |
     | NetStatus | InterNet <br> ExtraNet <br> NoNet | 字符串 | InterNet：设备在公司内部使用。<br>ExtraNet：设备在公司外部使用。<br>NoNet：设备处于离线断网状态。 |
     | DebugMode | 1 <br> 2 | 整型 | 1：该设备已开启调试模式。<br>2：该设备未开启调试模式。 |
     | AdvancedSecurityMode | 1 <br> 2 | 整型 | 1：该设备已开启高级安全模式。<br>2：该设备未开启高级安全模式。  |

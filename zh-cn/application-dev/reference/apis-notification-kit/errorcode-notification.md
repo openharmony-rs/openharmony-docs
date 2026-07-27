@@ -1,8 +1,8 @@
 # 通知错误码
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -62,7 +62,7 @@ Failed to connect to the service.
 
 **处理步骤**
 
-重启系统。
+等待一段时间后重试，或检查通知服务运行状态，必要时重启通知服务。
 
 ## 1600004 通知开关关闭
 
@@ -98,9 +98,9 @@ Notification slot disabled.
 
 **处理步骤**
 
-1、通知设置里查看应用是否有该类型渠道，没有需要新增。
+1. 通知设置里查看应用是否有该类型渠道，没有需要新增。
 
-2、通知设置里查看应用该类型渠道状态，要保持开启状态。
+2. 通知设置里查看应用该类型渠道状态，要保持开启状态。
 
 <!--Del-->
 ## 1600006 通知删除失败
@@ -156,7 +156,7 @@ The user does not exist.
 
 **处理步骤**
 
-检查传入的用户信息。
+确认传入的用户信息是否正确。
 
 ## 1600009 通知发布频度超过限制
 
@@ -214,7 +214,7 @@ Failed to read the template configuration.
 请检查系统中模板配置文件是否存在，配置文件路径：/system/etc/notification_template/external.json。
 <!--DelEnd-->
 
-## 1600012 内存空间不够
+## 1600012 内存空间不足
 
 **错误信息**
 
@@ -222,11 +222,13 @@ No memory space.
 
 **错误描述**
 
-内存申请出现错误，方法将返回该错误码。
+内存申请可能因内存空间不足出现错误，方法将返回该错误码。
 
 **可能原因**
 
-内存申请出现错误。
+1. 内存空间不足。
+
+2. 内存申请出现错误。
 
 **处理步骤**
 
@@ -255,19 +257,27 @@ A notification dialog box is already displayed.
 
 **错误信息**
 
-No permission.
+1. No permission.
+
+2. The right of liveView is not enabled.
 
 **错误描述**
 
-没有相关权限，方法将返回该错误码。
+1. 没有相关权限，方法将返回该错误码。
+
+2. 当应用发布三方实况类型通知，且未申请实况窗权益时，将返回该错误码。
 
 **可能原因**
 
-没有相关权限。
+1. 没有相关权限。
+
+2. 应用未申请对应场景的权益。
 
 **处理步骤**
 
-确认是否具有相关权限。
+1. 确认是否具有相关权限。
+
+2. 请确认是否申请实况窗权益。
 
 ## 1600015 当前通知状态不支持重复配置
 
@@ -421,8 +431,7 @@ The specified bundle is invalid.
 检查包信息是否正确。
 <!--DelEnd-->
 
-<!--Del-->
-## 1600023 app NotificationSubscriberExtensionAbility未实现
+## 1600023 应用未实现NotificationSubscriberExtensionAbility
 
 **错误信息**
 
@@ -430,7 +439,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **错误描述**
 
-应用未实现NotificationSubscriberExtensionAbility。
+应用未实现NotificationSubscriberExtensionAbility，将返回该错误码。
 
 **可能原因**
 
@@ -439,7 +448,6 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 **处理步骤**
 
 应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
-<!--DelEnd-->
 
 <!--Del-->
 ## 1600024 未配置自定义铃声
@@ -520,3 +528,41 @@ The "Awareness & suggestions" switch of the location-based service is off.
 
 打开如下位置开关，设置->隐私和安全->位置->最底部“系统服务”->感知与提醒。
 <!--DelEnd-->
+
+<!--Del-->
+## 1600028 当前通知不支持该接口
+
+**错误信息**
+
+This notification is not supported.
+
+**错误描述**
+
+当前通知不支持该接口。
+
+**可能原因**
+
+设置稍后提醒时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
+
+**处理步骤**
+
+设置稍后提醒时，检查该通知类型是否为三方实况、系统实况或者其他无法删除的类型。
+<!--DelEnd-->
+
+## 1600029 系统无法找到实况窗卡片自定义扩展区的ExtensionAbility
+
+**错误信息**
+
+The system failed to find the ExtensionAbility instance for the custom Live View widget template.
+
+**错误描述**
+
+当应用发布三方实况类型通知时，系统未找到自定义扩展区的ExtensionAbility实例，方法将返回该错误码。
+
+**可能原因**
+
+应用未配置或未正确配置实况窗卡片自定义扩展区的ExtensionAbility。
+
+**处理步骤**
+
+检查应用是否正确配置实况窗卡片自定义扩展区的ExtensionAbility。

@@ -173,7 +173,7 @@ Adds a path to this path.
   }
   ```
 
-  ![en-us_image_0000001211898520](figures/en-us_image_0000001211898520.png)
+  ![addPath](figures/addPath.png)
 
 
 ### closePath
@@ -219,7 +219,7 @@ Moves the current point of the path back to the start point of the path, and dra
   }
   ```
 
-  ![en-us_image_0000001212218482](figures/en-us_image_0000001212218482.png)
+  ![closePath2](figures/closePath2.png)
 
 
 ### moveTo
@@ -278,7 +278,7 @@ Moves the current coordinate point of the path to the target point, without draw
   }
   ```
 
-  ![en-us_image_0000001257138389](figures/en-us_image_0000001257138389.png)
+  ![moveTo3](figures/moveTo3.png)
 
 
 ### lineTo
@@ -332,7 +332,7 @@ Draws a straight line from the current point to the target point.
   }
   ```
 
-  ![en-us_image_0000001256858435](figures/en-us_image_0000001256858435.png)
+  ![lineTo3](figures/lineTo3.png)
 
 
 ### bezierCurveTo
@@ -387,7 +387,7 @@ Draws a cubic Bezier curve on the canvas.
   }
   ```
 
-  ![en-us_image_0000001257058445](figures/en-us_image_0000001257058445.png)
+  ![bezierCurveTo3](figures/bezierCurveTo3.png)
 
 
 ### quadraticCurveTo
@@ -440,7 +440,7 @@ Creates a quadratic Bezier curve path.
   }
   ```
 
-  ![en-us_image_0000001212058512](figures/en-us_image_0000001212058512.png)
+  ![quadraticCurveTo3](figures/quadraticCurveTo3.png)
 
 
 ### arc
@@ -494,7 +494,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001212378446](figures/en-us_image_0000001212378446.png)
+  ![arc](figures/arc.png)
 
 
 ### arcTo
@@ -548,7 +548,7 @@ Draws an arc based on the radius and points on the arc.
   }
   ```
 
-  ![en-us_image_0000001212058510](figures/en-us_image_0000001212058510.png)
+  ![arcTo2](figures/arcTo2.png)
 
 
 ### ellipse
@@ -604,7 +604,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![en-us_image_0000001257138391](figures/en-us_image_0000001257138391.png)
+  ![ellipse](figures/ellipse.png)
 
 
 ### rect
@@ -656,7 +656,7 @@ Creates a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001256978385](figures/en-us_image_0000001256978385.png)
+  ![rect](figures/rect.png)
 
 ### roundRect<sup>20+</sup>
 
@@ -676,7 +676,7 @@ Creates a rounded rectangle path. This method does not directly render the conte
 | ---- | ------ | ---- | ------------- |
 | x    | number | Yes   | X coordinate of the upper left corner of the rectangle.<br>If the value is null, the value 0 is used. If the value is undefined, the value is invalid and no drawing is performed.<br>To draw a complete rectangle, the options are as follows: [0, Canvas width)<br>Default unit: vp.|
 | y    | number | Yes   | Y coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp.|
-| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from left to right.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp.|
+| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from right to left.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp.|
 | h    | number | Yes   | Height of the rectangle. A negative value indicates that the rectangle is drawn from bottom to top.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and no drawing is performed.<br>To draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp.|
 | radii | number \| Array\<number> | No| Number or list of the arc radius used for the rectangle corner.<br>If the parameter type is number, the arc radius of all rectangle corners is the number.<br>If the parameter type is Array\<number>, the number is 1 to 4.<br>[Arc radius of all rectangle corners]<br>[Arc radius of the upper left and lower right rectangle corners, and arc radius of the upper right and lower left rectangle corners]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right and lower left rectangle corners, and arc radius of the lower right rectangle corner]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right rectangle corner, arc radius of the lower right rectangle corner, and arc radius of the lower left rectangle corner]<br>If the value of radii is negative or the number of lists is not within the range of [1, 4], error code 103701 is reported.<br>Default value: 0. If the value is null or undefined, the default value is used.<br>If the arc radius exceeds the width and height of the rectangle, the arc radius is scaled proportionally to the width and height.<br>Default unit: vp.|
 

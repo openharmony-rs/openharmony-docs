@@ -1,21 +1,23 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
-The **XComponentNode** module provides APIs for the XComponentNode, which represent an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
+The **XComponentNode** module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
 
 > **NOTE**
 >
-> This module is deprecated since API version 12. You are advised to use the [typeNode of the XComponent type](./js-apis-arkui-frameNode.md#xcomponent12) instead.
+> - The APIs of this module are deprecated since API version 12. You are advised to use the APIs of the **typeNode** module in the [XComponent](./js-apis-arkui-frameNode.md#xcomponent12) type instead.
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+>
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> **XComponentNode** is not available in DevEco Studio Previewer.
+> - **XComponentNode** is not available in DevEco Studio Previewer.
 
 ## Modules to Import
 
@@ -42,7 +44,7 @@ Constructor used to create an XComponentNode.
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uiContext   | [UIContext](arkts-apis-uicontext-uicontext.md)                      | Yes  | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context).|
-| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for creating an XComponentNode.                              |
+| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for constructing an XComponentNode.                              |
 | id          | string                                                       | Yes  | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
 | type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes  | Type of the **XComponent**. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
 | libraryName | string                                                       | No  | Name of the dynamic library generated during compilation at the native layer. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
@@ -108,7 +110,7 @@ Changes the rendering type of the XComponentNode.
 ## Example
 
 ```ts
-import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext} from '@kit.ArkUI'
+import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext } from '@kit.ArkUI'
 
 class XComponentNodeController extends NodeController {
   private xComponentNode: MyXComponentNode | null = null;

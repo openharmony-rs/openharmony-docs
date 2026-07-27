@@ -6,21 +6,23 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI。展示的内容在另外一个进程中运行，本应用并不参与其中的布局和渲染。
+UIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI。展示的内容在另外一个进程中运行，本应用并不参与其中的布局和渲染。通过进程隔离，可实现应用间UI的安全隔离与崩溃隔离，同时支持模块的独立开发与部署。
 
-通常用于有进程隔离诉求的模块化开发场景。
+通常用于有进程隔离诉求的模块化开发场景，如嵌入第三方应用提供的功能模块、实现应用间的UI能力扩展等。
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块为系统接口。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块为系统接口。
 
 ## 使用约束
 
 本组件不支持预览。
 
-被拉起的Ability必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[实现带UI的Ability扩展](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+被拉起的Ability（应用组件）必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[带界面的ExtensionAbility组件](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 
 必须显式设置组件宽高为非0有效值。
 
@@ -43,8 +45,8 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| want                  | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 要加载的Ability。  |
-| options<sup>11+</sup> | [UIExtensionOptions](#uiextensionoptions11)                | 否   | 需要传递的构造项。 |
+| want                  | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 要加载的Ability，必须是带UI的Ability扩展。Want的parameters中需设置ability.want.params.uiExtensionType字段，取值需与扩展Ability在module.json5中配置的type一致。  |
+| options<sup>11+</sup> | [UIExtensionOptions](#uiextensionoptions11) | 否 | 需要传递的构造参数，用于自定义UIExtensionComponent的配置（如设置占位符、DPI跟随策略、窗口Mode跟随策略等）。当需要自定义上述配置时传入此参数，不传入时使用默认配置。 |
 
 ## 属性
 
@@ -54,7 +56,7 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 不支持[点击](ts-universal-events-click.md)等通用事件。
 
-将事件经过坐标转换后传递给对端Ability处理。
+组件将事件经过坐标转换后传递给被拉起的Ability处理。
 
 支持以下事件：
 
@@ -72,7 +74,7 @@ UIExtensionAbility连接完成时的回调，之后可使用proxy向被拉起的
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy>) | 是 | 回调函数，用于向对端Ability发送数据。                          |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。UIExtensionAbility连接完成后触发，入参为UIExtensionProxy，可通过proxy向被拉起的Ability发送数据。                          |
 
 ### onReceive
 
@@ -88,18 +90,18 @@ onReceive(callback: ReceiveCallback)
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [ReceiveCallback](#receivecallback18) | 是 | 回调函数，返回收到的来自对端Ability的数据。                 |
+| callback | [ReceiveCallback](#receivecallback18) | 是 | 回调函数，返回收到的来自被拉起的Ability的数据。 |
 
 ### onResult<sup>(deprecated)</sup>
 
 onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: Want}>)
 
-被拉起的Ability扩展调用terminateSelfWithResult时会先触发本回调函数，再触发OnRelease。
+被拉起的Ability扩展调用terminateSelfWithResult时会先触发本回调函数，再触发onRelease。
 
-本回调内可处理对端Ability的结果数据，可参考[AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md)。
+本回调内可处理被拉起的Ability的结果数据，可参考[AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md)。
 
 > **说明：**
-> 从 API version 10 开始支持，从 API version 12 开始废弃，建议使用[onTerminated](#onterminated12)替代。
+> 从API version 10开始支持，从API version 12开始废弃。建议使用[onTerminated](#onterminated12)替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -109,8 +111,7 @@ onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#call
 
 | 参数名                       | 类型   | 必填 |说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| code                        | number | 是 | 收到来自对端Ability的处理结果code。                          |
-| want                        | Want | 否 |收到来自对端Ability的处理结果[Want](../../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: [Want](../../apis-ability-kit/js-apis-app-ability-want.md)}> | 是 | 回调函数，被拉起的Ability扩展调用terminateSelfWithResult时返回的结果数据。                          |
 
 ### onRelease<sup>(deprecated)</sup>
 
@@ -123,7 +124,7 @@ onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 被拉起的Ability扩展意外Crash或被kill时，触发本回调，此时releaseCode为1。
 
 > **说明：**
-> 从 API version 10 开始支持，从 API version 12 开始废弃，建议使用[onTerminated](#onterminated12)或者[onError](#onerror)替代。
+> 从API version 10开始支持，从API version 12开始废弃。建议使用[onTerminated](#onterminated12)、[onError](#onerror)替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -198,8 +199,8 @@ onDrawReady(callback: Callback\<void>)
 
 |  名称 | 类型   | 只读 |可选 | 说明                                                 |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | number | 否 | 否 | 被拉起UIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
-| want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。   |
+| code    | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
+| want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起的UIExtensionAbility退出时返回的数据。默认值为undefined。   |
 
 ## ReceiveCallback<sup>18+</sup>
 type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>
@@ -216,7 +217,7 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 ## UIExtensionOptions<sup>11+</sup>
 
-用于在UIExtensionComponent进行构造的时传递可选的构造参数。
+用于在UIExtensionComponent进行构造时传递可选的构造参数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -225,11 +226,11 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 名称               | 类型                             | 只读 | 可选 | 说明                                                                                                      |
 | ----                 | ---------------------------------------- | ---- | ---- | ---------------                                                                                               |
-| isTransferringCaller | boolean                                  | 否 | 是  | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。</br> 默认值：false |
-| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | 否 | 是   | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。 |
-| dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](ts-container-ui-extension-component-sys.md#dpifollowstrategy12)                 | 否 | 是   | 提供接口支持设置DPI跟随宿主或跟随UIExtensionAbility。</br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
-| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtension内部渲染未完成时显示, key值支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)。 |
-| windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18)   | 否 | 是   | 提供接口以支持设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。</br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE |
+| isTransferringCaller | boolean                                  | 否 | 是  | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。true表示转发上一级的Caller信息，false表示不转发上一级的Caller信息。<br> 默认值：false |
+| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。当需要在连接建立前向用户展示加载状态或提示内容时传入此参数，不设置时默认不显示占位内容。 |
+| dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](#dpifollowstrategy12)                 | 否 | 是   | 提供接口支持设置DPI跟随宿主或跟随UIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
+| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtensionAbility内部渲染未完成时显示，key值仅支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)，传入其他key值时不生效。不设置时默认不显示尺寸变化占位内容。 |
+| windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](#windowmodefollowstrategy18)   | 否 | 是   | 提供接口以支持设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE |
 
 ## DpiFollowStrategy<sup>12+</sup>
 
@@ -257,13 +258,20 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 ## UIExtensionProxy
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据、订阅和取消订阅注册。
+用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability，并订阅和取消订阅扩展Ability的注册事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### send
 
 send(data: Record\<string, Object\>): void
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据的场景，提供异步发送数据。
+用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability的场景，提供异步发送数据。
+
+> **说明：**
+> send与sendSync均可用于向被拉起的Ability发送数据。send为异步发送，无返回值，适用于不需要获取扩展Ability回复的场景；sendSync为同步发送，可获取扩展Ability的回复数据，适用于需要同步获取处理结果的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -273,13 +281,13 @@ send(data: Record\<string, Object\>): void
 
 | 参数名  | 类型                                     | 必填   | 说明            |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | 是    | 异步发送给被拉起的扩展Ability的数据。API version 18之前的版本，data的类型为Object。 |
+| data | Record\<string, Object\> | 是    | 异步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
 
 ### sendSync<sup>11+</sup>
 
 sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据的场景，提供同步发送数据。
+用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability的场景，提供同步发送数据。
 
 **系统接口：** 此接口为系统接口。
 
@@ -289,11 +297,11 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 | 参数名  | 类型                                     | 必填   | 说明            |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | 是    | 同步发送给被拉起的扩展Ability的数据。 |
+| data | Record\<string, Object\> | 是    | 同步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
 
 **返回值：**
 
-| 类型 | 描述 |
+| 类型 | 说明 |
 | ---- | ----|
 | Record\<string, Object\> | 扩展Ability回复的数据。 |
 
@@ -311,6 +319,9 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 用于在双方建立连接成功后，组件使用方订阅被拉起的Ability发生异步注册的场景。
 
+> **说明：**
+> asyncReceiverRegister与syncReceiverRegister分别订阅扩展Ability的异步和同步数据接收注册事件。当扩展Ability调用setReceiveDataCallback注册异步接收时，触发asyncReceiverRegister回调；当扩展Ability调用setReceiveDataForResultCallback注册同步接收时，触发syncReceiverRegister回调。开发者应根据扩展Ability使用的数据接收方式选择订阅对应的事件。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -319,12 +330,12 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 | 参数名  | 类型 |必填 | 说明 |
 | ------ | -------- |---- | ------- |
-| type   | string | 是 | 代表订阅扩展Ability发生异步注册回调。 |
-| callback   | Callback\<UIExtensionProxy\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
+| type   | string | 是 | 事件类型，取值为'asyncReceiverRegister'，表示订阅扩展Ability发生异步注册回调。 |
+| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
 
 ### on('syncReceiverRegister')<sup>11+</sup>
 
-on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void;
+on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 用于在双方建立连接成功后，组件使用方订阅被拉起的Ability发生同步注册的场景。
 
@@ -336,14 +347,14 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void;
 
 | 参数名  | 类型 |必填 | 说明 |
 | ------ | -------- |---- | ------- |
-| type   | string | 是 | 订阅扩展Ability发生同步注册回调。 |
-| callback   | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| type   | string | 是 | 事件类型，取值为'syncReceiverRegister'，表示订阅扩展Ability发生同步注册回调。 |
+| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ### off('asyncReceiverRegister')<sup>11+</sup>
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-用于在双方建立连接成功后，组件使用方取消订阅被拉起的Ability发生异步注册的场景。
+用于在双方建立连接成功后，组件使用方取消订阅被拉起的Ability发生异步注册的场景。本方法与on('asyncReceiverRegister')配合使用，用于取消通过on('asyncReceiverRegister')注册的订阅。当不再需要监听异步注册事件时（如组件销毁前），应调用本方法取消订阅，避免回调无法释放。
 
 **系统接口：** 此接口为系统接口。
 
@@ -353,14 +364,14 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
-| type   | string | 是 | 取消订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。<br> 非空代表取消订阅异步对应回调。 |
+| type   | string | 是 | 事件类型，取值为'asyncReceiverRegister'，表示取消订阅扩展Ability发生异步注册回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。<br> 非空代表取消订阅对应的异步注册回调。 |
 
 ### off('syncReceiverRegister')<sup>11+</sup>
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-用于在双方建立连接成功后，组件使用方取消订阅被拉起的Ability发生同步注册的场景。
+用于在双方建立连接成功后，组件使用方取消订阅被拉起的Ability发生同步注册的场景。本方法与on('syncReceiverRegister')配合使用，用于取消通过on('syncReceiverRegister')注册的订阅。当不再需要监听同步注册事件时（如组件销毁前），应调用本方法取消订阅，避免回调无法释放。
 
 **系统接口：** 此接口为系统接口。
 
@@ -370,8 +381,8 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
-| type   | string | 是 | 取消订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发回调<br> 非空代表取消订阅同步对应回调。 |
+| type   | string | 是 | 事件类型，取值为'syncReceiverRegister'，表示取消订阅扩展Ability发生同步注册回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发回调。<br> 非空代表取消订阅对应的同步注册回调。 |
 
 ## 示例
 
@@ -381,7 +392,7 @@ UIExtensionComponent组件使用分为使用方和提供方。本示例仅展示
 
 **组件使用方**
 
-使用方入口界面Index.ets内容如下:
+使用方入口界面Index.ets内容如下：
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 
@@ -408,7 +419,6 @@ struct Second {
   @State message1: string = 'Hello World 1';
   @State message2: string = 'Hello World 2';
   @State message3: string = 'Hello World 3';
-  @State visible: Visibility = Visibility.Hidden;
   @State wid: number = 300;
   @State hei: number = 300;
   @State windowStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
@@ -416,6 +426,11 @@ struct Second {
   private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
   private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
 
+  aboutToDisappear(): void {
+    console.info('start do proxy off!');
+    this.proxy?.off('syncReceiverRegister');
+    this.proxy?.off('asyncReceiverRegister');
+  }
 
   build() {
     Row() {
@@ -444,7 +459,7 @@ struct Second {
             this.message3 = JSON.stringify(data['data']);
           })
           .onError((info) => {
-            console.error(`onError: code = ${info.code}`);
+            console.error(`onError: code = ${info.code}, message = ${info.message}`);
           })
           .onTerminated((info) => {
             console.info('onTerminated: code =' + info.code + ', want = ' + JSON.stringify(info.want));
@@ -456,7 +471,7 @@ struct Second {
             this.proxy.on("syncReceiverRegister", syncRegisterCallback1);
 
             this.proxy.on("asyncReceiverRegister", (proxy1) => {
-              console.info("on invoke for test, type is asyncReceiverRegister");
+              console.info('on invoke for test, type is asyncReceiverRegister');
             });
           })
 
@@ -468,7 +483,7 @@ struct Second {
               let re = this.proxy.sendSync({data: "你好2"});
               console.info("for test, re=" + JSON.stringify(re));
             } catch (err) {
-              console.error(`sendSync failed for test. errCode=${err.code}, msg=${err.message}`);
+              console.error(`sendSync failed for test. Code: ${err.code}, message: ${err.message}`);
             }
           }
         })
@@ -481,15 +496,15 @@ struct Second {
 
 function syncRegisterCallback1(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback1, type is syncReceiverRegister");
-}
+};
 
 function syncRegisterCallback2(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback2, type is syncReceiverRegister");
-}
+};
 ```
 **组件提供方**
 
-提供方包含三个文件需要修改
+提供方包含三个文件需要修改：
 - 提供方新增扩展入口文件/src/main/ets/uiextensionability/UIExtensionProvider.ets
 ```ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -545,18 +560,18 @@ struct Extension {
   @Builder
   PageMap(name: string) {
     if (name === "hello") {
-      pageOneTmp();
+      PageOne();
     }
   }
 
   onPageShow() {
     if (this.session != undefined) {
-      this.session.setReceiveDataCallback((data)=> {
+      this.session.setReceiveDataCallback((data) => {
         this.storageLink = JSON.stringify(data);
         console.info("invoke for test, handle callback set by setReceiveDataCallback successfully");
       })
 
-      this.session.setReceiveDataForResultCallback(func1);
+      this.session.setReceiveDataForResultCallback(onReceiveDataForResult);
     }
   }
 
@@ -567,19 +582,19 @@ struct Extension {
           Text(this.storageLink)
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
-          Button("点击向Component发送数据").onClick(()=>{
+          Button("点击向Component发送数据").onClick(() => {
             if (this.session != undefined) {
               this.session.sendData({"data": 543321});
               console.info('send 543321, for test');
             }
           })
-          Button("terminate").onClick(()=> {
+          Button("terminate").onClick(() => {
             if (this.session != undefined) {
               this.session.terminateSelf();
             }
             storage.clear();
           })
-          Button("terminate with result").onClick(()=>{
+          Button("terminate with result").onClick(() => {
             if (this.session != undefined) {
               this.session.terminateSelfWithResult({
                 resultCode: 0,
@@ -592,7 +607,7 @@ struct Extension {
             storage.clear();
           })
 
-          Button("点击跳转").onClick(()=> {
+          Button("点击跳转").onClick(() => {
             this.pathStack.pushPath({ name: "hello"});
           })
         }
@@ -605,8 +620,8 @@ struct Extension {
 
 // pageOne
 @Component
-export struct pageOneTmp {
-  pathStack: NavPathStack = new NavPathStack()
+export struct PageOne {
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     NavDestination() {
@@ -625,7 +640,7 @@ export struct pageOneTmp {
   }
 }
 
-function func1(data: Record<string, Object>): Record<string, Object> {
+function onReceiveDataForResult(data: Record<string, Object>): Record<string, Object> {
   let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
   linkToMsg.set(JSON.stringify(data));
   console.info("invoke for test, handle callback set by setReceiveDataForResultCallback successfully");
@@ -634,7 +649,7 @@ function func1(data: Record<string, Object>): Record<string, Object> {
 
 ```
 
-- 提供方扩展Ability, module配置文件/src/main/module.json5添加对应配置
+- 提供方扩展Ability，module配置文件/src/main/module.json5添加对应配置
 ```json
 {
     "name": "UIExtensionProvider",
@@ -642,7 +657,7 @@ function func1(data: Record<string, Object>): Record<string, Object> {
     "description": "1",
     "label": "$string:EntryAbility_label",
     "type": "sys/commonUI",
-    "exported": true,
+    "exported": true
 }
 ```
 
@@ -660,9 +675,9 @@ function func1(data: Record<string, Object>): Record<string, Object> {
 
 提供方扩展入口文件UIExtensionProvider.ets与[示例1](#示例1-加载uiextension)扩展入口文件UIExtensionProvider.ets代码一致。
 
-提供方扩展Ability, module配置文件与[示例1](#示例1-加载uiextension)扩展module配置文件module.json5代码一致。
+提供方扩展Ability、module配置文件与[示例1](#示例1-加载uiextension)扩展module配置文件module.json5代码一致。
 
-- 使用方组件使用示例:
+- 使用方组件使用示例：
 ```ts
 @Entry
 @Component
@@ -670,7 +685,6 @@ struct Second {
   @State message1: string = 'Hello World 1';
   @State message2: string = 'Hello World 2';
   @State message3: string = 'Hello World 3';
-  @State visible: Visibility = Visibility.Hidden;
   @State wid: number = 300;
   @State hei: number = 300;
   private scroller: Scroller = new Scroller();
@@ -711,7 +725,7 @@ struct Second {
               .onRemoteReady((proxy) => {
                 console.info('onRemoteReady, for test');
               })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
         }
         .width('100%')
       }
@@ -741,7 +755,6 @@ struct Second {
 @Entry
 @Component
 struct Extension {
-  @StorageLink('message') storageLink: string = '';
   private scroller: Scroller = new Scroller();
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -763,7 +776,7 @@ struct Extension {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
       }
 

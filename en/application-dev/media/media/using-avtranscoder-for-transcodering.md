@@ -6,19 +6,19 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can check whether the current device supports the AVTranscoder by calling [canIUse](../../reference/common/js-apis-syscap.md#caniuse). If the return value of canIUse("SystemCapability.Multimedia.Media.AVTranscoder") is **true**, the transcoding capability can be used.
+You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can check whether the current device supports the AVTranscoder by calling [canIUse](../../reference/common/js-apis-syscap.md#caniuse). If the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**, the transcoding capability can be used.
 
 This topic describes how to use the AVTranscoder to implement video transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
 
 ## How to Develop
 
-Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md) for the API reference.
+For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md).
 
 > **NOTE**
 >
 > To forward, upload, or save the transcoded file, the application must call the system API **await avTranscoder.release()** after receiving the complete event. This ensures the integrity of the video file.
 
-1. Create an AVTranscoder instance.
+1. Create an [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12) instance.
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -38,7 +38,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private currentProgress: number = 0;
    private avTranscoder: media.AVTranscoder | undefined = undefined;
@@ -77,7 +77,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
          // 2. Close the FD of the output file.
-         fs.closeSync(this.avTranscoder!.fdDst);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
@@ -92,7 +92,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
    > 
    > - If local files are used for transcoding, ensure that the files are available and the application sandbox path is used for access. For details about how to obtain the application sandbox path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
    > 
-   > - To obtain the application file path, you should use the Context property. You are advised to use **getUIContext** to obtain a UIContext instance and use **getHostContext** to call **getContext** of the bound instance. For details, see [Obtaining Context](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+   > - To obtain the application file path, you should use the **Context** property. You are advised to use **getUIContext** to obtain a **UIContext** instance and use **getHostContext** to call **getContext** of the bound instance. For details, see [getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
    >
    > - You can also use **ResourceManager.getRawFd()** to obtain the FD of a file packed in the HAP file. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
 
@@ -161,7 +161,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
    > **fdDst** specifies the FD of the output file after transcoding. The value is a number. You must call [ohos.file.fs of Core File Kit](../../reference/apis-core-file-kit/js-apis-file-fs.md) to implement access to the application file. For details, see [Accessing Application Files](../../file-management/app-file-access.md).
    
    ```ts
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private avTranscoder: media.AVTranscoder | undefined = undefined;
    private context: Context | undefined;
@@ -178,7 +178,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
        // Set the sandbox path of the output target file.
        let outputFilePath = this.context.filesDir + "/output.mp4";
        // Create and open a file if the file does not exist. Open it if the file exists.
-       let file = fs.openSync(outputFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(outputFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        // Set fdDst of the output file.
        this.avTranscoder.fdDst = file.fd; // Obtain the file descriptor of the created video file by referring to the sample code in Accessing Application Files.
      }
@@ -267,27 +267,27 @@ Read [AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
          // 2. Close the FD of the output file.
-         fs.closeSync(this.avTranscoder!.fdDst);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
    ```
 10. A complete example of starting, pausing, resuming, and exiting transcoding.
 
-   ```ts
-   async avTranscoderDemo() {
-     await this.startTranscoderingProcess(); // Start transcoding.
-     await this.pauseTranscoderingProcess(); // Pause transcoding.
-     await this.resumeTranscoderingProcess(); // Resume transcoding.
-   }
-   ```
+    ```ts
+    async avTranscoderDemo() {
+      await this.startTranscoderingProcess(); // Start transcoding.
+      await this.pauseTranscoderingProcess(); // Pause transcoding.
+      await this.resumeTranscoderingProcess(); // Resume transcoding.
+    }
+    ```
 
 ## Running the Sample Project
 
 Refer to the sample code below to implement transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
   
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AVTranscoderArkTS
     entry/src/main/ets/
     └── pages

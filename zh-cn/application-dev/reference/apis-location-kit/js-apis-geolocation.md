@@ -1497,7 +1497,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 位置服务中的错误码信息。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[位置服务子系统错误码](errorcode-geoLocationManager.md)替代。
+> 从API version 9开始废弃，建议使用[位置服务错误码](errorcode-geoLocationManager.md)替代。
 
 **需要权限**：ohos.permission.LOCATION
 

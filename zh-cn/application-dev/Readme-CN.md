@@ -7,12 +7,12 @@
 <!--Adviser: @zhang_yixin13-->
 
 - [应用开发导读](application-dev-guide.md)
-- 了解OpenHarmony
+- 了解OpenHarmony<!--about-openharmony-->
   - [了解OpenHarmony开源项目](../OpenHarmony-Overview_zh.md)
   - [术语](../glossary.md)
   - [版本说明](../release-notes/Readme.md)
 - [入门](quick-start/Readme-CN.md)
-- 开发
+- 开发<!--development-->
   - 应用框架<!--app-framework-->
     - [Ability Kit（程序框架服务）](application-models/Readme-CN.md)
     - [ArkData（方舟数据管理）](database/Readme-CN.md)
@@ -20,6 +20,7 @@
     - [ArkUI（方舟UI框架）](ui/Readme-CN.md)
     - [ArkWeb（方舟Web）](web/Readme-CN.md)
     - [Background Tasks Kit（后台任务开发服务）](task-management/Readme-CN.md)
+    - [Content Embed Kit（内容嵌入服务）](content-embed/Readme-CN.md)
     - [Core File Kit（文件基础服务）](file-management/Readme-CN.md)
     - [Form Kit（卡片开发服务）](form/Readme-CN.md)
     - [IME Kit（输入法开发服务）](inputmethod/Readme-CN.md)
@@ -44,6 +45,7 @@
       - [Function Flow Runtime Kit（任务并发调度服务）](ffrt/Readme-CN.md)
       - [Input Kit（多模输入服务）](device/input/Readme-CN.md)
       - [MDM Kit（企业设备管理服务）](mdm/Readme-CN.md)
+      - [Kernel Enhance Kit（内核增强能力）](kernel-enhance/Readme-CN.md)
     - 硬件<!--system-hardware-->
       - [Driver Development Kit（驱动开发服务）](device/driver/Readme-CN.md)
       - [Multimodal Awareness Kit（多模态融合感知服务）](device/stationary/Readme-CN.md)
@@ -78,13 +80,13 @@
   - [IDL工具规格及使用说明书](IDL/idl-guidelines.md)
   - [Native API的相关指导](napi/Readme-CN.md)
   - [性能](performance/Readme-CN.md)
-- 工具
+- 工具<!--tools-->
   - [DevEco Studio（OpenHarmony）使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)
   - [调试工具](tools/Readme-CN.md)
-- 示例教程
+- 示例教程<!--example-tutorial-->
   - [示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/README_zh.md)
   - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md)
 - [API参考](reference/Readme-CN.md)
 - [常见问题](faqs/Readme-CN.md)
-- 贡献
+- 贡献<!--contribution-->
   - [参与贡献](../contribute/贡献文档.md)

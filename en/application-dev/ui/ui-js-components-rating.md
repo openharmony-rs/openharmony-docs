@@ -39,7 +39,7 @@ Create a **\<rating>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001227701031](figures/en-us_image_0000001227701031.gif)
+![rating-Component](figures/rating-Component.gif)
 
 
 ## Setting the Rating Level
@@ -72,7 +72,7 @@ Use the **\<rating>** component to set the number of stars in a rating bar and t
 }
 ```
 
-![en-us_image_0000001227422709](figures/en-us_image_0000001227422709.gif)
+![Rating-Level](figures/Rating-Level.gif)
 
 
 ## Setting the Rating Style
@@ -120,7 +120,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001178685854](figures/en-us_image_0000001178685854.gif)
+![Rating-Style](figures/Rating-Style.gif)
 
 > **NOTE**
 > - You must set **star-background**, **star-secondary**, and **star-foreground**. If they are not set, gray rating stars will be displayed, indicating an incorrect image source configuration
@@ -170,7 +170,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001181823160](figures/en-us_image_0000001181823160.gif)
+![Binding-Events-2](figures/Binding-Events-2.gif)
 
 
 ## Example
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001224086459](figures/en-us_image_0000001224086459.gif)
+![rating-Development](figures/rating-Development.gif)

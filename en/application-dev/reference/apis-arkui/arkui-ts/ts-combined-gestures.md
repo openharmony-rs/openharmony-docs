@@ -128,8 +128,8 @@ Diagram:
 
 In sequence recognition mode, the long press gesture event is triggered first.
 
-![en-us_image_0000001174104384](figures/en-us_image_0000001174104384.png)
+![combinedGestures2](figures/combinedGestures2.png)
 
 After the long press gesture is recognized, the pan gesture event is triggered.
 
- ![en-us_image1_0000001174104384](figures/en-us_image1_0000001174104384.png) 
+ ![combinedGestures1](figures/combinedGestures1.png) 

@@ -4,12 +4,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
-[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，应用的[HAP](../quick-start/hap-package.md)在首次加载时会创建一个AbilityStage实例，可以对该Module进行初始化等操作。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
+[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，应用的[HAP](../quick-start/hap-package.md)在首次加载时会创建一个AbilityStage实例，可以对该Module进行初始化等操作。AbilityStage与HAP一一对应，即每个HAP拥有一个AbilityStage实例。
 
 AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)、[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#ondestroy12)生命周期回调和[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)、[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)、[onMemoryLevel()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)、[onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)、[onPrepareTermination()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onpreparetermination15)等事件回调。
 
@@ -35,9 +35,9 @@ AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability
 DevEco Studio默认工程中未自动生成AbilityStage，如需要使用AbilityStage的能力，可以手动新建一个AbilityStage文件，具体步骤如下。
 
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为myabilitystage。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为exampleabilitystage。
 
-2. 在myabilitystage目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAbilityStage.ets。
+2. 在exampleabilitystage目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAbilityStage.ets。
 
 3. 打开MyAbilityStage.ets文件，导入AbilityStage的依赖包，自定义类继承AbilityStage并加上需要的生命周期回调，示例中增加了一个[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调。
 

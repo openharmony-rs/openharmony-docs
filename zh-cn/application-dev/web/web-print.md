@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件打印html页面时可通过W3C标准协议接口和应用接口两种方式实现。
+Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种方式实现。
 
 使用打印功能前，请在module.json5中配置相关权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
@@ -19,9 +19,9 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
   ```
 
 ## 使用W3C标准协议接口拉起打印
-通过创建打印适配器，拉起打印应用，并对当前Web页面内容进行渲染，渲染后生成的PDF文件信息通过fd传递给打印框架。W3C标准协议接口window.print()方法用于打印当前页面或弹出打印对话框。该方法没有任何参数，只需要在JavaScript中调用即可。
+通过创建打印适配器，拉起打印应用，并对当前Web页面内容进行渲染，渲染后生成的PDF文件信息通过文件描述符（fd）传递给打印框架。W3C标准协议接口window.print()方法用于打印当前页面或弹出打印对话框。该方法没有任何参数，只需要在JavaScript中调用即可。
 
-可通过前端css样式控制是否打印，例如@media print。再通过web加载该html页面的方式运行。
+可通过前端CSS样式控制是否打印，例如@media print。再通过Web加载该HTML页面的方式运行。
 
 - print.html页面代码。
 
@@ -153,8 +153,8 @@ struct WebComponent {
       Button('createWebPrintDocumentAdapter')
         .onClick(() => {
           try {
-            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
-            print.print('example_job_id', webPrintDocadapter, null, this.getUIContext().getHostContext());
+            let webPrintDocAdapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_job_id', webPrintDocAdapter, null, this.getUIContext().getHostContext());
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }

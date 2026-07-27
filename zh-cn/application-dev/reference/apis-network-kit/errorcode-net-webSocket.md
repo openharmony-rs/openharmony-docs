@@ -19,17 +19,27 @@ Websocket connect failed.
 
 **错误描述**
 
-Websocket连接失败。
+WebSocket连接失败。
 
 **可能原因**
 
-1. 服务器拒绝客户端连接、协议出现问题导致握手失败或证书验证失败。
+1. 连接建立失败：可能是服务器拒绝客户端连接、协议出现问题导致握手失败或证书验证失败。
 
-2. 客户端或服务端断开连接时无状态码。
+2. 链路异常断开：客户端或服务端断开连接时无正常状态码。
+
+3. 握手阶段消息头处理异常：在添加header过程中发生错误。
+
+4. 系统内部异常。
 
 **处理步骤**
 
-检查协议是否有效、证书校验是否通过，重新连接。
+1. 检查协议是否有效、证书校验是否通过，重新连接。
+
+2. 检查网络是否异常，或切换网络重新连接。
+
+3. 检查添加header是否正确。
+
+4. 如果问题仍然存在，收集完整日志后联系技术支持获取帮助。 
 
 ## 2302001 Websocket URL错误
 
@@ -39,7 +49,7 @@ Websocket url error.
 
 **错误描述**
 
-Websocket URL错误。
+WebSocket URL错误。
 
 **可能原因**
 
@@ -59,7 +69,7 @@ Websocket certificate file does not exist.
 
 **错误描述**
 
-Websocket 证书不存在。
+WebSocket 证书不存在。
 
 **可能原因**
 
@@ -80,11 +90,11 @@ Websocket connection already exists.
 
 **错误描述**
 
-Websocket 连接已经存在。
+WebSocket 连接已经存在。
 
 **可能原因**
 
-Websocket 连接已经建立。
+WebSocket 连接已经建立。
 
 **处理步骤**
 
@@ -98,11 +108,11 @@ Can't listen to the given NIC.
 
 **错误描述**
 
-WebsocketServer无法在指定的NIC上进行网络监听。
+WebSocketServer无法在指定的NIC上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的ip地址无效。
+WebSocketServer服务器配置文件中的ip地址无效。
 
 **处理步骤**
 
@@ -116,15 +126,33 @@ Can't listen to the given Port.
 
 **错误描述**
 
-WebsocketServer无法在指定的端口上进行网络监听。
+WebSocketServer无法在指定的端口上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的端口号无效。
+WebSocketServer服务器配置文件中的端口号无效。
 
 **处理步骤**
 
 检查端口号的有效性。
+
+## 2302007 WebsocketServer当前监听的端口已被占用
+
+**错误信息**
+
+Websocket port already occupied.
+
+**错误描述**
+
+WebsocketServer当前监听的端口已经被占用。
+
+**可能原因**
+
+指定的监听端口已被其他进程占用。
+
+**处理步骤**
+
+更换一个未被占用的端口。
 
 ## 2302998 不允许访问域名
 

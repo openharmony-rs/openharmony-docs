@@ -471,11 +471,14 @@ struct SymbolMusicDemo {
   @State symbolSourcesIndex: number = 0;
   @State symbolText: string[] = [
     // Replace $r('app.string.play_in_order') with the actual resource file. In this example, the value in the resource file is "Play in order."
-    resourceGetString.resourceToString($r('app.string.play_in_order')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_order').id),
     // Replace $r('app.string.play_in_single_repeat') with the actual resource file. In this example, the value in the resource file is "Loop song."
-    resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_single_repeat').id),
     // Replace $r('app.string.shuffle_play') with the actual resource file. In this example, the value in the resource file is "Shuffle."
-    resourceGetString.resourceToString($r('app.string.shuffle_play')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.shuffle_play').id),
   ];
   @State symbolTextIndex: number = 0;
   @State fontColorValue: ResourceColor = Color.Grey;
@@ -486,7 +489,8 @@ struct SymbolMusicDemo {
       Row() {
         Text() {
           // Replace $r('app.string.current_playlist') with the actual resource file. In this example, the value in the resource file is "Playlist."
-          Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
+          Span(this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.current_playlist').id))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
           Span('(101)')

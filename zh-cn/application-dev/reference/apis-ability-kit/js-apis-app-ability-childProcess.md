@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 开发者自定义子进程的基类。通过[childProcessManager](js-apis-app-ability-childProcessManager.md)启动子进程时，需要继承此类并重写入口方法。
 
@@ -32,7 +32,7 @@ onStart(args?: ChildProcessArgs): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | args<sup>12+</sup> | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 否 | 传递到子进程的参数。 |
+  | args<sup>12+</sup> | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 否 | 传递到子进程的参数。参数为可选，不传或传null时使用默认配置启动。 |
 
 **示例：**
 ```ts
@@ -43,7 +43,7 @@ export default class DemoProcess extends ChildProcess {
   onStart(args?: ChildProcessArgs) {
     let entryParams = args?.entryParams;
     let fd = args?.fds?.key1;
-    // ..
+    // ...
   }
 }
 ```

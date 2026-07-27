@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c++
-typedef struct ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle
+typedef ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle
 ```
 
 ## Overview

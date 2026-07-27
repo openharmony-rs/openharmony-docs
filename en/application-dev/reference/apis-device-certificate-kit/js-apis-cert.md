@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-The certificate algorithm library framework provides certificate-related APIs. The **certFramework** module depends on the basic algorithm capabilities of the Crypto framework. For details, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
+The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [@ohos.security.cryptoFramework (Crypto Framework)](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
 > **NOTE**
 >
@@ -22,32 +22,49 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## CertResult
 
- Enumerates the error codes.
+ Enumerates the operation results.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| INVALID_PARAMS                        | 401      | Invalid parameters.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| NOT_SUPPORT                           | 801      | This operation is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_RUNTIME_ERROR                     | 19020002 | Runtime error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API**: This API can be used in atomic services since API version 20.              |
-| ERR_CRYPTO_OPERATION                  | 19030001 | Crypto operation error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.     |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
-| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The password for the private key is incorrect.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| INVALID_PARAMS                        | 401      | Invalid parameter.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| NOT_SUPPORT                           | 801      | Unsupported operation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_RUNTIME_ERROR                     | 19020002 | This error code is reported if an error occurs during running.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API:** This API can be used in atomic services since API version 20.              |
+| ERR_CRYPTO_OPERATION                  | 19030001 | An error occurs when the API of a third-party algorithm library is called.<br> **Atomic service API:** This API can be used in atomic services since API version 12.     |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API:** This API can be used in atomic services since API version 12.          |
+| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                 |
+| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API:** This API can be used in atomic services since API version 12.      |
+| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The password for the private key is incorrect.<br> **Atomic service API:** This API can be used in atomic services since API version 18.       |
+| ERR_CERT_UNTRUSTED               | 19030009 | This error code is reported if the certificate is untrusted.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_HAS_REVOKED             | 19030010 | This error code is reported if the certificate has been revoked.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | This error code is reported if there is an unknown critical extension.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_HOSTNAME_MISMATCH       | 19030012 | This error code is reported if the hostname is not matched.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_EMAIL_ADDRESS_MISMATCH  | 19030013 | The email address in the certificate is not matched.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_KEYUSAGE_MISMATCH       | 19030014 | Certificate key usage mismatch in the certificate.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_NOT_FOUND                | 19030015 | This error code is reported if the attempt to obtain the CRL fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_NOT_YET_VALID            | 19030016 | This error code is reported if the CRL has not taken effect.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_HAS_EXPIRED              | 19030017 | This error code is reported if the CRL has expired.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | This error code is reported if the CRL signature verification fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | This error code is reported if the attempt to obtain the CRL issuer fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | This error code is reported if the attempt to obtain the Online Certificate Status Protocol (OCSP) response fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_RESPONSE_INVALID        | 19030021 | This error code is reported if the OCSP response is invalid.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | This error code is reported if the OCSP signature verification fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | This error code is reported if the OCSP certificate status is unknown.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_NETWORK_TIMEOUT              | 19030024 | This error code is reported if the network connection times out.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## DataBlob
-Defines a binary data array.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
- **System capability**: SystemCapability.Security.Cert
+ **Atomic service API:** This API can be used in atomic services since API version 12.
+
+ **System capability:** SystemCapability.Security.Cert
 | Name          | Type          | Read-Only| Optional| Description             |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Uint8Array     | No  | No  | Data.   |
@@ -56,9 +73,9 @@ Defines a binary data array.
 
 Defines a list of data arrays.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 | Name          | Type          | Read-Only| Optional| Description              |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Array\<Uint8Array>     | No  | No  | Data list.   |
@@ -67,104 +84,104 @@ Defines a list of data arrays.
 
  Enumerates the certificate encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| FORMAT_DER | 0      | Distinguished Encoding Rules (DER) format.|
-| FORMAT_PEM | 1      | Privacy-Enhanced Mail (PEM) format.|
-| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7 format.|
+| FORMAT_DER | 0      | DER.|
+| FORMAT_PEM | 1      | PEM.|
+| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7.|
 
 ## EncodingBaseFormat<sup>18+</sup>
 
  Enumerates the CSR encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| PEM | 0      | Privacy-Enhanced Mail (PEM) format.|
-| DER | 1      | Distinguished Encoding Rules (DER) format.|
+| PEM | 0      | PEM format.|
+| DER | 1      | DER.|
 
 ## CsrAttribute<sup>18+</sup>
  Defines the extension attributes for the CSR encoding format configuration.
 
-OpenSSL defines extension types, such as challengePassword and keyUsage.
+OpenSSL defines extension types, such as the challenge password and key usage.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | type | string | No  | No  | Extension type defined by OpenSSL.|
-| value | string | No  | No | Extended value.|
+| value | string | No  | No | Extension value.|
 
 ## CsrGenerationConfig<sup>18+</sup>
-Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest algorithm, and output format.
+Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest (MD) algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Provides APIs for managing the **X500DistinguishedName** instance.|
-| mdName | string | No  | No  | MD algorithm to use.|
+| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Object of the Name type defined by X.509.|
+| mdName | string | No  | No  | MD algorithm name.|
 | attributes | Array\<[CsrAttribute](#csrattribute18)> | No  | Yes  | Extension.|
-| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output format.|
+| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output type.|
 
 > **NOTE**
 >
-> - **subject** is an object of the Name type defined by X509.
+> - **subject** is an object of the Name type defined by X.509.
 >
-> - **mdName** specifies the message digest algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
+> - **mdName** specifies the MD algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
 >
-> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, for example, **challengePassword** and **keyUsage**.
+> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, such as the challenge password and key usage.
 >
-> - **outFormat** specifies the format of the CSR generated. If it is not specified, the PEM format is used by default.
+> - **outFormat** specifies the format of the CSR generated. If no value is set, the PEM format is used by default.
 
 ## CertItemType<sup>10+</sup>
 
- Enumerates the certificate fields that can be obtained.
+ Enumerates the certificate fields that can be obtained. 
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                            | Value  | Description                          |
 | -------------------------------- | ---- | ------------------------------ |
-| CERT_ITEM_TYPE_TBS               | 0    | Information to be signed.    |
+| CERT_ITEM_TYPE_TBS               | 0    | To be signed certificate.    |
 | CERT_ITEM_TYPE_PUBLIC_KEY        | 1    | Public key of the certificate.      |
 | CERT_ITEM_TYPE_ISSUER_UNIQUE_ID  | 2    | Unique ID of the certificate issuer.|
 | CERT_ITEM_TYPE_SUBJECT_UNIQUE_ID | 3    | Unique ID of the certificate subject.  |
-| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions, each of which is identified by a unique object identifier (OID).    |
+| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions.    |
 
 ## ExtensionOidType<sup>10+</sup>
 
- Enumerates the OID types of the certificate extensions that can be obtained.
+ Enumerates the object identifier (OID) types of the certificate extensions that can be obtained.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                         | Value  | Description                                         |
 | ----------------------------- | ---- | --------------------------------------------- |
-| EXTENSION_OID_TYPE_ALL        | 0    | All object identifiers.           |
-| EXTENSION_OID_TYPE_CRITICAL   | 1    | Object identifier whose **critical** is **true**. |
-| EXTENSION_OID_TYPE_UNCRITICAL | 2    | Object identifier whose **critical** is **false**.|
+| EXTENSION_OID_TYPE_ALL        | 0    | All OIDs of the certificate extensions.           |
+| EXTENSION_OID_TYPE_CRITICAL   | 1    | OID whose **critical** is **true** of the certificate extensions. |
+| EXTENSION_OID_TYPE_UNCRITICAL | 2    | OID whose **critical** is **false** of the certificate extensions.|
 
 ## ExtensionEntryType<sup>10+</sup>
 
  Enumerates the object types in certificate extensions that can be obtained.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                               | Value  | Description                        |
 | ----------------------------------- | ---- | ---------------------------- |
@@ -176,9 +193,9 @@ Represents the configuration for generating a CSR using an RSA private key, incl
 
  Enumerates the obtained encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -190,9 +207,9 @@ Defines a certificate binary array in encoding format.
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                          |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------ |
@@ -206,158 +223,157 @@ Defines the certificate chain data, which is passed in as input parameters durin
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| data           | Uint8Array                        | No  | No  | Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG** indicates that the first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.|
-| count          | number                            | No  | No  | Number of certificates contained in the input data.                              |
+| data           | Uint8Array                        | No  | No  | Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG**, where **08ABCDEFGH** is the first certificate and **07ABCDEFG** is the second certificate. The first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.|
+| count          | number                            | No  | No  | Number of certificates.                              |
 | encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.                                          |
 
 ## GeneralNameType<sup>12+</sup>
 
-Enumerates the types of the common name (CN), which uniquely identifies the subject of the certificate.
+Enumerates the types of the general name, which uniquely identifies the subject of the certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Value                             | Description              |
 | -------------- | --------------------------------- | ------------------ |
-| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Indicates others. |
-| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Indicates an email address. |
-| GENERAL_NAME_TYPE_DNS_NAME | 2 |  Indicates a DNS name. |
-| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  Indicates an X.400 address. |
-| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Indicates a directory name. |
-| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Indicates an Electronic Data Interchange (EDI) entity. |
-| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Indicates a uniform resource identifier. |
-| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  Indicates an IP address. |
-| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Indicates a registered object identifier. |
+| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Other name. |
+| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Email address. |
+| GENERAL_NAME_TYPE_DNS_NAME | 2 |  DNS name. |
+| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  X.400 address. |
+| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Directory name. |
+| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Electronic Data Interchange (EDI) entity. |
+| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Uniform Resource Identifier (URI). |
+| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  IP address. |
+| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Registered OID. |
 
 ## GeneralName<sup>12+</sup>
 
-Represents the CN information of a certificate.
+Indicates the general name of the certificate subject.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- |  ---- |------------------ |
-| type | [GeneralNameType](#generalname12)    | No| No| Type of the certificate subject. |
+| type | [GeneralNameType](#generalnametype12)    | No| No| Type of the certificate subject. |
 | name | Uint8Array    | No |  Yes|DER format of the certificate subject. |
 
 ## X509CertMatchParameters<sup>11+</sup>
 
 Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object. |
-| validDate | string    | No |  Yes|Certificate validity period. |
-| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.|
-| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.|
-| serialNumber | bigint    | No |  Yes|Serial number of the certificate. |
-| subject | Uint8Array | No | Yes|Certificate subject, in DER format.|
-| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.|
-| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.|
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Subject Alternative Names (SANs) of the certificate.|
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.|
-| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).|
-| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.|
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the certificate.|
-| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.|
-| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy.|
-| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.|
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Identifier of the public key of the certificate's subject.|
+| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| validDate | string    | No |  Yes|Certificate validity period, for example, **20231121074700Z**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| serialNumber | bigint    | No |  Yes|Serial number of the certificate.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subject | Uint8Array | No | Yes|Certificate subject, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Certificate subject name.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all subject names of the certificate. **true**: yes; **false**: no.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Path length of the CA certificate.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the extended key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Public key identifier (Subject Key Identifier extension) of the certificate subject.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| privateKey | string \| Uint8Array | No | Yes|Private key of the certificate. The value can be a string (indicating a PEM-encoded private key) or a Uint8Array (indicating a DER-encoded private key).<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
 Represents the parameters used to match a certificate revocation list (CRL). If no parameter is specified, all CRLs are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
-| issuer | Array\<Uint8Array> | No | Yes |Issuers of the certificates. At least one issuer must be matched.|
+| issuer | Array\<Uint8Array> | No | Yes |Issuer as the filter criteria. At least one issuer must be matched.|
 | x509Cert | [X509Cert](#x509cert) | No | Yes |Certificate object used to determine whether the certificate is in the CRL.|
-| updateDateTime<sup>12+</sup> | string | No | Yes |Certificate update time.|
-| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum number of CRLs.|
-| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum number of CRLs.|
+| updateDateTime<sup>12+</sup> | string | No | Yes |Certificate update time, for example, **20231121074700Z**.|
+| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum CRL number.|
+| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum CRL number.|
 
 ## CertChainBuildParameters<sup>12+</sup>
 
-Represents the parameters for building a certificate chain.
+Defines the parameters for building a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
 | certMatchParameters | [X509CertMatchParameters](#x509certmatchparameters11) | No | No |Filter criteria.|
 | maxLength | number | No | Yes |Maximum length of the CA certificate in the certificate chain.|
-| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Parameters for certificate chain validation.|
+| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Verification condition.|
 
 ## CertChainBuildResult<sup>12+</sup>
 
-Represents the certificate chain build result.
+Represents the result of building the certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
 | certChain | [X509CertChain](#x509certchain11) | Yes | No |Certificate chain object created.|
-| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Result of the certificate chain validation.|
+| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Certificate chain validation result.|
 
 ## X509TrustAnchor<sup>11+</sup>
 
 Represents an X.509 trust anchor, which is used to verify the certificate chain. The certificate or public key in the trust anchor is used as the trusted root to verify the certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name     | Type                 | Read-Only| Optional| Description                       |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate. If **CACert** is set, only **CACert** is used to validate the certificate chain. **CAPubKey** and **CASubject** are not used.            |
+| CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate. If **CACert** is set, only **CACert** is used to validate the certificate chain. **CAPubKey** and **CASubject** are not used.|
 | CAPubKey  | Uint8Array            | No  | Yes  | Public key of the trusted CA certificate, in DER format. This parameter takes effect only when **CACert** is not set.|
-| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the **CAPubKey** type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
+| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the CA public key type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
 | nameConstraints<sup>12+</sup> | Uint8Array      | No  | Yes  | Name constraints, in DER format. Only the leaf certificate of the current certificate chain is validated.|
 
 ## RevocationCheckOptions<sup>12+</sup>
 
  Enumerates the options for checking the certificate revocation status.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. Only the first CRL distribution point address can be obtained from the CDP extension of the certificate to check the certificate revocation status, or the first OCSP server address can be obtained from the AIA extension of the certificate to check the certificate revocation status. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. It is disabled by default.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. It is disabled by default.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this capability is enabled, the system ignores the network unreachable error when obtaining the CRL or OCSP response over the network for revocation status check. It is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. The certificate revocation status can be checked by obtaining the first CRL distribution point address from the CDP extension or the first OCSP server address from the AIA extension. Only HTTP is supported. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows checking the revocation status of the intermediate certificate if the CRL/OCSP response cannot be used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this option is enabled, the response of a local CRL is used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this option is enabled, the CRL/OCSP response obtained over the network is used to check the certificate revocation status, ignoring the unreachable network error. It is disabled by default. The unreachable network error may cause failure to verify the certificate chain.<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
 
 ## ValidationPolicyType<sup>12+</sup>
 
  Enumerates the types of the online certificate chain validation policy.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -368,9 +384,9 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 
  Enumerates the purposes, for which the key in the certificate is used.
  
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -381,99 +397,190 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 | KEYUSAGE_KEY_AGREEMENT | 4 | The certificate holder can use the private key contained in the certificate to perform key agreement operations.|
 | KEYUSAGE_KEY_CERT_SIGN | 5 | The certificate holder can use the private key contained in the certificate to sign other certificates.|
 | KEYUSAGE_CRL_SIGN | 6 | The certificate holder can use the private key contained in the certificate to sign CRLs.|
-| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption operations only.|
-| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption operations only.|
+| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption only.|
+| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption only.|
+
+## CertRevocationFlag
+
+Enumerates certificate revocation flags.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name                                 | Value  | Description                         |
+| --------------------------------------| -------- | -----------------------------|
+| CERT_REVOCATION_PREFER_OCSP | 0 | OCSP check (preferred). This flag takes effect only when both **CERT_REVOCATION_CRL_CHECK** and **CERT_REVOCATION_OCSP_CHECK** are set.<br>After this flag is set, the OCSP check is performed first. If no response is found or the check times out, the CRL check is performed.<br>If this flag is not set, the CRL check is performed first. If no CRL is found or the check times out, the OCSP check is performed.|
+| CERT_REVOCATION_CRL_CHECK | 1 | CRL check. Verify the certificate status based on a CRL.<br>Match a CRL using the **crls** parameter of [X509CertRevokedParams](#x509certrevokedparams) first. If no CRL is matched and the **allowDownloadCrl** parameter of [X509CertRevokedParams](#x509certrevokedparams) is set to **true**, the CRL is downloaded using the CDP extension of the certificate.|
+| CERT_REVOCATION_OCSP_CHECK | 2 | OCSP check. Verify the certificate status based on the OCSP response.<br>Match an OCSP response using the **ocspResponses** parameter of [X509CertRevokedParams](#x509certrevokedparams) first. If no response is matched and the **allowOcspCheckOnline** parameter of [X509CertRevokedParams](#x509certrevokedparams) is set to **true**, the OCSP URL is obtained from the certificate AIA extension and a request is sent to obtain the response.|
+| CERT_REVOCATION_CHECK_ALL_CERT | 3 | Revocation status check of all certificates.<br>After this parameter is set, the revocation statuses of all certificates (excluding self-signed certificates) in the certificate chain are checked.<br>If this parameter is not set, only the endpoint certificate (the first certificate in the certificate chain) is checked.|
+
+## OcspDigest
+
+Enumerates OCSP digest algorithms.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name                                 | Value  | Description                         |
+| --------------------------------------| -------- | -----------------------------|
+| SHA1 | 0 | SHA-1.|
+| SHA224 | 1 | SHA-224.|
+| SHA256 | 2 | SHA-256.|
+| SHA384 | 3 | SHA-384.|
+| SHA512 | 4 | SHA-512.|
+
+## X509CertRevokedParams
+
+Enumerates the certificate revocation check parameters.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| revocationFlags | Array\<[CertRevocationFlag](#certrevocationflag)> | No  | No  | Certificate revocation check flags. Value range: [1, 4]. The array must contain **CERT_REVOCATION_CRL_CHECK** or **CERT_REVOCATION_OCSP_CHECK**.|
+| crls | Array\<[X509CRL](#x509crl11)> | No  | Yes  | CRLs. Maximum number: 100.|
+| allowDownloadCrl | boolean | No  | Yes  | Whether to allow downloading CRLs. The default value is **false**. **true**: CRLs are downloaded using the CDP extension of the certificate. **false**: CRLs are not downloaded.|
+| ocspResponses | Array\<Uint8Array> | No  | Yes  | OCSP response data. Preset OCSP response data. Maximum number: 100.|
+| allowOcspCheckOnline | boolean | No  | Yes  | Whether to allow online OCSP check. The default value is **false**. **true**: Online OCSP check is performed. That is, the OCSP URL is obtained from the certificate AIA extension and a request is sent to obtain a response. **false**: Online OCSP check is not performed.|
+| ocspDigest | [OcspDigest](#ocspdigest) | No  | Yes  | Digest algorithm used for OCSP requests. The default value is **SHA256**.|
+
+## CertValidationParams
+
+Represents the parameters for certificate validation.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| untrustedCerts | Array\<[X509Cert](#x509cert)> | No  | Yes  | Untrusted certificates. The intermediate certificates used only for building a certificate chain cannot be used as trust anchors. Maximum number: 100.|
+| trustedCerts | Array\<[X509Cert](#x509cert)> | No  | Yes  | Trusted certificates. Trusted root certificates or intermediate CA certificates can be specified as trust anchors for verification. Maximum number: 100.<br>During verification, the certificate chain must be traceable back to a trusted certificate. Therefore, either this parameter or **trustSystemCa must** must be set to **true**.|
+| trustSystemCa | boolean | No  | Yes  | Whether to trust system CA certificates. The default value is **false**. **true**: Use the system's prebuilt CA certificate store as the trust anchor. **false**: Do not use the system's prebuilt CA certificate store as the trust anchor.<br>This parameter can be used to verify public website certificates. You do not need to manually configure the root certificate.|
+| partialChain | boolean | No  | Yes  | Whether to allow partial certificate chain verification. The default value is **false**. **true**: Any certificate in the trusted certificate list can be used as the trust anchor, and it is not necessary to trace back to the root certificate. **false**: The root certificate must be traced back to when the certificate chain is constructed.|
+| allowDownloadIntermediateCa | boolean | No  | Yes  | Whether to allow downloading intermediate CA certificates from the network. The default value is **false**. **true**: When the intermediate certificate is missing in the certificate chain, it is allowed to download the issuer certificate using the issuer address in the certificate AIA extension so that the certificate chain is incomplete. **false**: It is not allowed to download the intermediate CA certificate from the network.|
+| date | string | No  | Yes  | Verification date. The format is *YYMMDDHHMMSSZ* or *YYYYMMDDHHMMSSZ*. The current system time is used by default.<br>The verification time can be customized, which is applicable to scenarios such as offline verification of historical signatures.|
+| validateDate | boolean | No  | Yes  | Whether to verify the date. The default value is **true**. **true**: The certificate and CRL validity periods are verified. **false**: The certificate and CRL validity periods are not verified.|
+| ignoreErrs | Array\<[CertResult](#certresult)> | No  | Yes  | Whether to ignore specific verification errors. Maximum number: 8.<br>The following errors can be ignored: **ERR_CERT_NOT_YET_VALID**, **ERR_CERT_HAS_EXPIRED**, **ERR_UNKNOWN_CRITICAL_EXTENSION**, **ERR_CRL_NOT_FOUND**, **ERR_CRL_NOT_YET_VALID**, **ERR_CRL_HAS_EXPIRED**, **ERR_OCSP_RESPONSE_NOT_FOUND**, and **ERR_NETWORK_TIMEOUT**.|
+| hostnames | Array\<string> | No  | Yes  | Host names. This parameter is used to check whether the subject alternative name (SAN) or common name (CN) of a certificate contains the specified host name. A maximum of 100 host names are supported. Each host name contains a maximum of 128 characters.<br>This parameter is applicable to scenarios such as HTTPS.<br>If one of the host names is matched, the verification is successful.|
+| emailAddresses | Array\<string> | No  | Yes  | Email addresses. This parameter is used to verify that the certificate contains the specified email address. A maximum of one email address is supported. The email address contains a maximum of 128 characters.|
+| keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes  | Key usages. This parameter is used to check whether the key usage extension of the certificate contains the specified usage. Maximum number: 9.<br>The verification is successful only when the certificate contains all specified key usages.|
+| userId | Uint8Array | No  | Yes  | User ID. This parameter is used to specify the user ID required for signature verification when the SM2 certificate is verified. Maximum length: 128 characters.<br>This parameter is commonly set to **[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]** for SM certificates, which corresponds to the ASCII string of **1234567812345678** of 16 bytes.<br>After **userId** is set, certificate revocation check is not supported.|
+| revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | No  | Yes  | Certificate revocation check parameters, which are used to check whether a certificate is revoked. The parameters include the CRL list, OCSP response data, and whether to allow online check.|
+
+## CertValidationResult
+
+Represents the certificate verification result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| certChain | Array\<[X509Cert](#x509cert)> | Yes  | No  | Verified certificate chain. When the verification is successful, a complete certificate chain (from the device certificate to the trust anchor) is returned. It can be used for subsequent certificate information query or other verification operations.|
 
 ## RevocationCheckParameter<sup>12+</sup>
 
 Represents the parameters for checking the certificate revocation status for a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | ocspRequestExtension | Array\<Uint8Array> | No  | Yes  |OCSP request extensions.|
-| ocspResponderURI | string | No  | Yes  |URL of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.|
+| ocspResponderURI | string | No  | Yes  |URI of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.<br>Note: The current URI takes effect only for entity certificates.|
 | ocspResponderCert | [X509Cert](#x509cert)  | No  | Yes  |Signing certificate used for verifying the signature of the OCSP response.|
 | ocspResponses | Uint8Array | No  | Yes  |Alternative OCSP responses.|
-| crlDownloadURI | string | No  | Yes  |Address used to download the CRLs.|
+| crlDownloadURI | string | No  | Yes  |Alternative address used to download the CRLs.<br>Note: The current URI takes effect only for entity certificates.|
 | options | Array\<[RevocationCheckOptions](#revocationcheckoptions12)> | No  | Yes  |A set of rules for obtaining the certificate revocation status.|
-| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512** are supported. The default value is **SHA256**.|
+| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options include **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512**. The default value is **SHA256**.|
 
 ## CertChainValidationParameters<sup>11+</sup>
 
 Represents the parameters for certificate chain validation.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
-| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to validate the certificate chain. **true** means yes; **false** otherwise.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow the application to download the missing intermediate CA certificate from the network.<br>**true** means yes; **false** otherwise. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. To use the network for download, you need to request the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
-| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Check whether the certificate is in a CRL.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API:** This API can be used in atomic services since API version 12.           |
+| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to verify the certificate chain. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 20.|
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow downloading the missing intermediate CA certificate from the network.<br>**true**: yes; **false**: no. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the ohos.permission.INTERNET permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
+| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Whether the certificate is in the CRL.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
 
 
 ## CertChainValidationResult<sup>11+</sup>
 
 Represents the return value of certificate chain validation.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name       | Type                                 | Read-Only| Optional| Description          |
 | ----------- | ------------------------------------- | ---- | ---- | -------------- |
 | trustAnchor | [X509TrustAnchor](#x509trustanchor11) | Yes  | No  | Trust anchor.  |
 | entityCert  | [X509Cert](#x509cert)                 | Yes  | No  | Entity certificate.|
 
-## EncodingBaseFormat<sup>18+</sup>
-
-Enumerates the basic encoding formats.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.Security.Cert
-
-| Name| Value| Description              |
-| ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
-| DER  | 1   | DER.     |
-
 ## Pkcs12Data<sup>18+</sup>
 
-Represents data of the parsed PKCS #12 (.p12) file.
+Represents the certificate, private key, and other certificates obtained after a PKCS #12 file is parsed.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| privateKey   | string \| Uint8Array                              | No  | Yes  |Private key obtained after the .p12 file is parsed.            |
-| cert         | [X509Cert](#x509cert)                             | No  | Yes  |X.509 certificate obtained after the .p12 file is parsed.                      |
-| otherCerts   | Array\<[X509Cert](#x509cert)>                     | No  | Yes  |Other certificates obtained after the .p12 file is parsed.|
+| privateKey   | string \| Uint8Array                              | No  | Yes  |Private key obtained after the PKCS #12 file is parsed.            |
+| cert         | [X509Cert](#x509cert)                             | No  | Yes  |Certificate obtained after the PKCS #12 file is parsed.                      |
+| otherCerts   | Array\<[X509Cert](#x509cert)>                     | No  | Yes  |Other certificates obtained after the PKCS #12 file is parsed.|
 
 ## Pkcs12ParsingConfig<sup>18+</sup>
 
-Represents the configuration for parsing .p12 files.
+Represents the configuration for parsing PKCS #12 files.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | No  | No  |Password of the .p12 file.            |
+| password     | string                                            | No  | No  |Password of the PKCS #12 file.            |
 | needsPrivateKey  | boolean                                       | No  | Yes  |Whether to obtain the private key. The default value is **true**.<br>**true**: To obtain the private key in PKCS #8 format; **false**: Not to obtain the private key.|
-| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>**Note**: This parameter is valid only when **needsPrivateKey** is set to **true**.|
+| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>Note: This parameter is valid only when **needsPrivateKey** is set to **true**.|
 | needsCert    | boolean                                           | No  | Yes  |Whether to obtain the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | needsOtherCerts  | boolean                                       | No  | Yes  |Whether to obtain other certificates. The default value is **false**. **true**: yes; **false**: no.|
 
@@ -481,9 +588,9 @@ Represents the configuration for parsing .p12 files.
 
 Enumerates password-based encryption scheme (PBES) algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name      | Value  | Description         |
 | ----------| -------- | ---------------|
@@ -495,13 +602,13 @@ Enumerates password-based encryption scheme (PBES) algorithms.
 
 Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| saltLen      | number                                            | No  | Yes  |Length of the salt value. The default value is **16**, and the minimum value is **8**.|
+| saltLen      | number                                            | No  | Yes  |Salt length. The default value is **16**, and the minimum value is **8**.|
 | iterations | number                                          | No  | Yes  |Number of iterations. The default value is **2048**.                      |
 | encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | No  | Yes  |PBES algorithm type. The default value is **AES_256_CBC**.       |
 
@@ -509,9 +616,9 @@ Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
 Enumerates the PKCS #12 MAC digest algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -521,66 +628,66 @@ Enumerates the PKCS #12 MAC digest algorithms.
 
 ## Pkcs12CreationConfig<sup>21+</sup>
 
-Represents the configuration for creating .p12 files.
+Represents the configuration for parsing PKCS #12 files.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | No  | No  |Password of the .p12 file. The minimum length is 4.            |
+| password     | string                                            | No  | No  |Password of the PKCS #12 file. The minimum length is 4.            |
 | keyEncParams | [PbesParams](#pbesparams21)                       | No  | Yes  |Algorithm parameters for encrypting the private key.                      |
-| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true** means to encrypt the certificate; **false** otherwise.|
+| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | certEncParams | [PbesParams](#pbesparams21)                      | No  | Yes  |Algorithm parameters for encrypting the certificate.|
-| macSaltLen   | number                                            | No  | Yes  |Length of the salt value of the P12 MAC. The minimum value is **8**, and the default value is **16**.|
-| macIterations | number                                           | No  | Yes  |Number of P12 MAC iterations. The default value is **2048**.|
-| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |Enumerates the P12 MAC digest algorithms. The default value is **SHA256**.|
+| macSaltLen   | number                                            | No  | Yes  |Salt length of the PKCS #12 MAC algorithm. The minimum value is **8**, and the default value is **16**.|
+| macIterations | number                                           | No  | Yes  |Number of iterations for the PKCS #12 MAC algorithm. The default value is **2048**.|
+| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |PKCS #12 MAC digest algorithm. The default value is **SHA256**.|
 
 ## CmsContentType<sup>18+</sup>
 
 Enumerates the Cryptographic Message Syntax (CMS) message types.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | Signature data.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
-| ENVELOPED_DATA<sup>22+</sup>  | 1 | Encapsulated data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SIGNED_DATA | 0 | Signed data.<br> **Atomic service API:** This API can be used in atomic services since API version 18.|
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | Enveloped data.<br> **Atomic service API:** This API can be used in atomic services since API version 22.|
 
 ## CmsContentDataFormat<sup>18+</sup>
 
 Enumerates the CMS message formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name  | Value| Description                    |
 | ------ | --- | ------------------------ |
-| BINARY | 0   | Binary.    |
-| TEXT   | 1   | Text.      |
+| BINARY | 0   | Binary data format.    |
+| TEXT   | 1   | Text data format.      |
 
 ## CmsFormat<sup>18+</sup>
 
 Enumerates the CMS signature formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name| Value| Description              |
 | ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
+| PEM  | 0   | PEM format.     |
 | DER  | 1   | DER.     |
 
 ## CmsRsaSignaturePadding<sup>22+</sup>
 
 Enumerates the RSA CMS signature padding modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
@@ -591,9 +698,9 @@ Enumerates the RSA CMS signature padding modes.
 
 Enumerates the digest algorithms of the CMS KeyAgree type.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
@@ -605,39 +712,39 @@ Enumerates the digest algorithms of the CMS KeyAgree type.
 
 Enumerates the symmetric algorithms of the CMS recipient.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| AES_128_CBC      | 0  | AES_128_CBC.    |
-| AES_192_CBC      | 1  | AES_192_CBC.    |
-| AES_256_CBC      | 2  | AES_256_CBC.    |
-| AES_128_GCM      | 3  | AES_128_GCM.    |
-| AES_192_GCM      | 4  | AES_192_GCM.    |
-| AES_256_GCM      | 5  | AES_256_GCM.    |
+| AES_128_CBC      | 0  | AES-128-CBC.    |
+| AES_192_CBC      | 1  | AES-192-CBC.    |
+| AES_256_CBC      | 2  | AES-256-CBC.    |
+| AES_128_GCM      | 3  | AES-128-GCM.    |
+| AES_192_GCM      | 4  | AES-192-GCM.    |
+| AES_256_GCM      | 5  | AES-256-GCM.    |
 
 ## CmsCertType<sup>22+</sup>
 
 Enumerates certificate types obtained from CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| SIGNER_CERTS      | 0  | Signer certificates.    |
+| SIGNER_CERTS      | 0  | Signer certificate.    |
 | ALL_CERTS         | 1  | All certificates.    |
 
 ## PrivateKeyInfo<sup>18+</sup>
 
-Represents the private key information.
+Represents information about the private key.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -648,23 +755,23 @@ Represents the private key information.
 
 Represents the configuration of the CMS signer.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                                 |  Read-Only |  Optional |Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.               |
-| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature. The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> **Note**: This parameter is valid only when the private key type of the signature is RSA.<br> **Atomic service API**: This API can be used in atomic services since API version 22.            |
-| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.                           |
-| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.          |
-| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.           |
+| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API:** This API can be used in atomic services since API version 18.               |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> Note: This parameter is valid only when the signer private key is an RSA key.<br> **Atomic service API:** This API can be used in atomic services since API version 22.            |
+| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.                           |
+| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.          |
+| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the S/MIME capability for CMS objects. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.           |
 
 ## CmsKeyTransRecipientInfo<sup>22+</sup>
 
-Represents KeyTrans recipient information encapsulated in CMS data.
+Represents the recipient information for key transport encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description         |
 | --------------------- | ----------------------------- | ---- | ---- |------------- |
@@ -672,11 +779,11 @@ Represents KeyTrans recipient information encapsulated in CMS data.
 
 ## CmsKeyAgreeRecipientInfo<sup>22+</sup>
 
-Represents KeyAgree recipient information encapsulated in CMS data.
+Represents the recipient information for key agreement encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description            |
 | --------------------- | ----------------------------- | ---- | ---- |--------------- |
@@ -685,57 +792,57 @@ Represents KeyAgree recipient information encapsulated in CMS data.
 
 ## CmsRecipientInfo<sup>22+</sup>
 
-Represents recipient information encapsulated in CMS data.
+Represents the recipient information encapsulated using CMS.
 
 > **NOTE**
 >
-> At least one recipient needs to be set.
+> At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |KeyTrans recipient information.  |
-| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | keyAgree recipient information.        |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |Recipient information for key transport.  |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | Recipient information for key agreement.        |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
 Represents the configuration for generating the CMS signing result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 | outFormat             | [CmsFormat](#cmsformat18)                          | No  |Yes  | Format of the CMS data generated. The default value is **DER**.        |
-| isDetached     | boolean                            | No  |Yes  | Whether the final CMS data does not contain the raw data. The default value is **false**. **true**: raw data is contained; **false**: raw data is not contained.        |
+| isDetached     | boolean                            | No  |Yes  | Whether the CMS data generated contains raw data. The default value is **false**. **true**: yes; **false**: no.        |
 
 ## CmsVerificationConfig<sup>22+</sup>
 
 Represents CMS verification configuration.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.  |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.<br> Note: You need to configure the trust certificates for all signers.  |
 | signerCerts       |Array\<[X509Cert](#x509cert)>                        | No  | Yes  |Signing certificate. This parameter is left empty by default.        |
-| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter can be left empty in attached mode.  |
+| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter is optional in attached mode.  |
 | contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## CmsEnvelopedDecryptionConfig<sup>22+</sup>
 
-Represents CMS decapsulation configuration.
+Represents configuration for decapsulation with CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                    | Type                         | Read-Only| Optional|Description                                                  |
 | -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
@@ -748,18 +855,18 @@ Represents CMS decapsulation configuration.
 
 createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : void
 
-Creates an X.509 certificate instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate pair. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.        |
-| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback invoked to return the **X509Cert** instance created.|
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback used to return the **X509Cert** instance created.|
 
 **Error codes**
 
@@ -805,9 +912,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
   }
 });
 ```
@@ -816,11 +923,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
-Creates an X.509 certificate instance. This API uses a promise to return the result.
+Creates an X.509 certificate pair. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -832,7 +939,7 @@ Creates an X.509 certificate instance. This API uses a promise to return the res
 
 | Type    | Description            |
 | ------- | ---------------- |
-| Promise\<[X509Cert](#x509cert)> | Returns the **X509Cert** instance created.|
+| Promise\<[X509Cert](#x509cert)> | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -878,25 +985,25 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.info('createX509Cert success');
+  console.info('createX509Cert result: success.');
 }).catch((error: BusinessError) => {
-  console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
 ## X509Cert
 
-Provides APIs for X.509 certificate operations.
+X.509 certificate class.
 
 ### verify
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of an X.509 certificate. This API uses an asynchronous callback to return the result.
+Verifies the certificate signature. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -942,15 +1049,15 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  // Assign a value based on the encodingBlob format. FORMAT_PEM and FORMAT_DER are supported.
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
 
     // Obtain PubKey by using getPublicKey() of the upper-level X509Cert object (or the current certificate object is a self-signed certificate).
     try {
@@ -959,14 +1066,14 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
       // Verify the certificate signature.
       x509Cert.verify(pubKey, (err, data) => {
         if (err) {
-          console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+          console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
         } else {
-          console.info('verify success');
+          console.info('verify result: success.');
         }
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getPublicKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getPublicKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -976,11 +1083,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of an X.509 certificate. This API uses a promise to return the result.
+Verifies the certificate signature. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -1036,21 +1143,21 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.info('createX509Cert success');
+  console.info('createX509Cert result: success.');
 
   try {
     // Obtain PubKey by using getPublicKey() of the upper-level X509Cert object (or the current certificate object is a self-signed certificate).
     let pubKey = x509Cert.getPublicKey();
     x509Cert.verify(pubKey).then(result => {
-      console.info('verify success');
+      console.info('verify result: success.');
     }).catch((error: BusinessError) => {
-      console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
-  } catch (err) {
-    console.error('get public key failed');
+  } catch (error) {
+    console.error(`getPublicKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }).catch((error: BusinessError) => {
-  console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -1060,15 +1167,15 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 certificate data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                            |
 | -------- | --------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 certificate data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 certificate data obtained.|
 
 **Error codes**
 
@@ -1078,7 +1185,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -1114,14 +1221,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     x509Cert.getEncoded((error, data) => {
       if (error) {
-        console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('getEncoded success');
+        console.info('getEncoded result: success.');
       }
     });
   }
@@ -1134,9 +1241,9 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 certificate data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1152,7 +1259,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -1188,14 +1295,14 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 cert.createX509Cert(encodingBlob).then(x509Cert => {
-  console.info('createX509Cert success');
+  console.info('createX509Cert result: success.');
   x509Cert.getEncoded().then(result => {
-    console.info('getEncoded success');
+    console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
-    console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -1203,11 +1310,11 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getPublicKey() : cryptoFramework.PubKey
 
-Obtains the public key of this X.509 certificate.
+Obtains the public key of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1258,14 +1365,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let pubKey = x509Cert.getPublicKey();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getPublicKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getPublicKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1275,17 +1382,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 checkValidityWithDate(date: string) : void
 
-Checks the validity period of this X.509 certificate.
+Checks the validity period of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type           | Mandatory| Description       |
 | -------- | -------------- | ---- | ---------- |
-| date     | string         | Yes  | Date in the ASN.1 format.|
+| date     | string         | Yes  | Date of the X.509 certificate to check, in ASN.1 format.|
 
 **Error codes**
 
@@ -1333,9 +1440,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
 
     let date = '231001000001Z';
     // Verify the certificate validity period.
@@ -1343,7 +1450,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
       x509Cert.checkValidityWithDate(date);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('checkValidityWithDate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`checkValidityWithDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1355,9 +1462,9 @@ getVersion() : number
 
 Obtains the X.509 certificate version.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1397,9 +1504,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let version = x509Cert.getVersion();
   }
 });
@@ -1415,7 +1522,7 @@ Obtains the X.509 certificate serial number.
 >
 > This API is supported since API version 9 and deprecated since API version 10. Use [getCertSerialNumber](#getcertserialnumber10) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1456,9 +1563,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let serialNumber = x509Cert.getSerialNumber();
   }
 });
@@ -1470,9 +1577,9 @@ getCertSerialNumber() : bigint
 
 Obtains the X.509 certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1486,7 +1593,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 
 **Example**
 
@@ -1522,14 +1629,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let serialNumber = x509Cert.getCertSerialNumber();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getCertSerialNumber failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getCertSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1539,21 +1646,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName() : DataBlob
 
-Obtains the X.509 certificate issuer.
+Obtains the X.509 certificate issuer name.
 
 > **NOTE**
 >
 > The obtained X.509 certificate issuer name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                  |
 | --------------------- | ---------------------- |
-| [DataBlob](#datablob) | X.509 certificate issuer obtained.|
+| [DataBlob](#datablob) | X.509 certificate issuer name obtained.|
 
 **Error codes**
 
@@ -1562,7 +1669,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -1599,14 +1706,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let issuerName = x509Cert.getIssuerName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1616,11 +1723,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 certificate based on the encoding type.
+Obtains the X.509 certificate issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -1641,7 +1748,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error.|
 
@@ -1691,15 +1798,15 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let issuerName = x509Cert.getIssuerName(cert.EncodingType.ENCODING_UTF8);
       console.info('issuerName output is ' + issuerName);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1709,21 +1816,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectName(encodingType?: EncodingType) : DataBlob
 
-Obtains the subject of this X.509 certificate.
+Obtains the X.509 certificate subject name.
 
 > **NOTE**
 >
 > The obtained X.509 certificate subject name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. If this parameter is set, the subject name in UTF-8 format is to be obtained. If this parameter is not set, the subject name in ASCII encoding format is obtained by default.<br>This parameter is available since API version 12. |
+| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. The value is UTF-8. If this parameter is not set, ASCII encoding is used by default.<br>This parameter can be set in versions later than API version 12. |
 
 **Return value**
 
@@ -1737,9 +1844,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
+| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>Applicable versions: 12 and later         |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -1776,20 +1883,20 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let subjectName = x509Cert.getSubjectName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSubjectName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSubjectName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
     try {
       let subjectNameutf8 = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSubjectNameUtf8 failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSubjectNameUtf8 failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1799,11 +1906,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotBeforeTime() : string
 
-Obtains the start time of this X.509 certificate.
+Obtains the start time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1818,7 +1925,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -1855,14 +1962,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let notBefore = x509Cert.getNotBeforeTime();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getNotBeforeTime failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getNotBeforeTime failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1872,11 +1979,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotAfterTime() : string
 
-Obtains the expiration time of this X.509 certificate.
+Obtains the expiration time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1891,14 +1998,13 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -1929,14 +2035,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let notAfter = x509Cert.getNotAfterTime();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getNotAfterTime failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getNotAfterTime failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -1946,17 +2052,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignature() : DataBlob
 
-Obtains the signature data of this X.509 certificate.
+Obtains the signature data of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | Signature data obtained.|
+| [DataBlob](#datablob) | Indicates the X.509 certificate signature data.|
 
 **Error codes**
 
@@ -1965,14 +2071,13 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -2003,14 +2108,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let signature = x509Cert.getSignature();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignature failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2020,17 +2125,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of this X.509 certificate.
+Obtains the name of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| string | X.509 certificate signing algorithm obtained.|
+| string | Name of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
@@ -2039,14 +2144,13 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -2077,14 +2181,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let sigAlgName = x509Cert.getSignatureAlgName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2094,17 +2198,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-Obtains the object identifier (OID) of the X.509 certificate signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                             |
 | ------ | --------------------------------- |
-| string | OID obtained. It will be truncated if the length exceeds 128 bytes.|
+| string | OID obtained. It will be truncated if the length exceeds 127 bytes.|
 
 **Error codes**
 
@@ -2113,7 +2217,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -2150,14 +2254,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let sigAlgOid = x509Cert.getSignatureAlgOid();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgOid failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2167,17 +2271,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the signing algorithm parameters of this X.509 certificate.
+Obtains parameters of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | X.509 certificate signing algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
@@ -2187,7 +2291,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -2239,14 +2343,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let sigAlgParams = x509Cert.getSignatureAlgParams();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgParams failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2258,15 +2362,15 @@ getKeyUsage() : DataBlob
 
 Obtains the key usage of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | Key usage of the X.509 certificate obtained.|
+| [DataBlob](#datablob) | Usage of the X.509 certificate key.|
 
 **Error codes**
 
@@ -2321,14 +2425,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let keyUsage = x509Cert.getKeyUsage();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getKeyUsage failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getKeyUsage failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2340,9 +2444,9 @@ getExtKeyUsage() : DataArray
 
 Obtains the usage of the extended key of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2357,7 +2461,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -2405,14 +2509,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let extKeyUsage = x509Cert.getExtKeyUsage();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getExtKeyUsage failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getExtKeyUsage failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2422,11 +2526,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getBasicConstraints() : number
 
-Obtains the basic constraints for obtaining this X.509 certificate.
+Obtains basic constraints on the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2467,9 +2571,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let basicConstraints = x509Cert.getBasicConstraints();
   }
 });
@@ -2479,21 +2583,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectAltNames() : DataArray
 
-Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
+Obtains the alternative subject names of the X.509 certificate.
 
 > **NOTE**
 >
-> The obtained SANs contain a string terminator.
+> The obtained alternative subject names of the X.509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                    |
 | ----------------------- | ------------------------ |
-| [DataArray](#dataarray) | SANs obtained.|
+| [DataArray](#dataarray) | Alternative subject names of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -2502,7 +2606,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -2550,14 +2654,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let subjectAltNames = x509Cert.getSubjectAltNames();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSubjectAltNames failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSubjectAltNames failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2567,21 +2671,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerAltNames() : DataArray
 
-Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
+Obtains the alternative issuer names of the X509 certificate.
 
 > **NOTE**
 >
-> The obtained IANs contain a string terminator.
+> The obtained alternative issuer names of the X509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                      |
 | ----------------------- | -------------------------- |
-| [DataArray](#dataarray) | IANs obtained.|
+| [DataArray](#dataarray) | Alternative issuer names of the X509 certificate obtained.|
 
 **Error codes**
 
@@ -2590,7 +2694,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **Example**
@@ -2636,14 +2740,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let issuerAltNames = x509Cert.getIssuerAltNames();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerAltNames failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerAltNames failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2655,9 +2759,9 @@ getItem(itemType: CertItemType) : DataBlob
 
 Obtains the fields in the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2679,7 +2783,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -2716,15 +2820,15 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   if (error) {
-    console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     try {
       let tbs = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_TBS);
       let pubKey = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_PUBLIC_KEY);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getItem failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -2733,11 +2837,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 match(param: X509CertMatchParameters): boolean
 
-Checks whether this certificate matches the specified parameters.
+Checks whether the certificate matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2809,7 +2913,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -2825,9 +2929,10 @@ async function matchX509Cert() {
       publicKeyAlgID: '1.2.840.113549.1.1.1'
     };
     const result = x509Cert.match(param);
-    console.info('call x509Cert match success');
+    console.info('call x509Cert match result: success.');
   } catch (err) {
-    console.error('call x509Cert match failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`call x509Cert match failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2836,11 +2941,11 @@ async function matchX509Cert() {
 
 getCRLDistributionPoint(): DataArray
 
-Obtains the CRL distribution points of this X.509 certificate.
+Obtains URIs of the distribution points for this X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2855,7 +2960,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -2873,21 +2978,21 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-  "MIIB/jCCAaSgAwIBAgICA+gwCgYIKoZIzj0EAwIwLDELMAkGA1UEBhMCQ04xDTAL\n" +
-  "BgNVBAoMBHRlc3QxDjAMBgNVBAMMBXN1YmNhMB4XDTIzMTAwNzA0MDEwOFoXDTMz\n" +
-  "MTAwNDA0MDEwOFowLDELMAkGA1UEBhMCQ04xDTALBgNVBAoMBHRlc3QxDjAMBgNV\n" +
-  "BAMMBWxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZDPvdlJI6Yv4fiaR\n" +
-  "nQHcusXVbukk90mQ0rBGOYRikFvgvm5cjTdaUGcQKEtwYIKDQl5n6Pf7ElCJ7GRz\n" +
-  "raWZ+qOBtTCBsjAJBgNVHRMEAjAAMCwGCWCGSAGG+EIBDQQfFh1PcGVuU1NMIEdl\n" +
-  "bmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQU63Gbl8gIsUn0VyZ4rya3PCjm\n" +
-  "sfEwHwYDVR0jBBgwFoAU77mynM0rz1SD43DQjleWM7bF+MEwNwYDVR0fBDAwLjAs\n" +
-  "oCqgKIYmaHR0cDovL3Rlc3QudGVzdENSTGRwLmNvbS9DUkxfRFBfMS5jcmwwCgYI\n" +
-  "KoZIzj0EAwIDSAAwRQIhAISKHH9u221mBgdDWfll3loLvEHJ3or9NUO5Zn6SrX6L\n" +
-  "AiAtRlOa6/mTD68faQTdhsAaQP955QfW34B4yFqU2Bq72A==\n" +
-  "-----END CERTIFICATE-----\n";
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIB/jCCAaSgAwIBAgICA+gwCgYIKoZIzj0EAwIwLDELMAkGA1UEBhMCQ04xDTAL\n' +
+  'BgNVBAoMBHRlc3QxDjAMBgNVBAMMBXN1YmNhMB4XDTIzMTAwNzA0MDEwOFoXDTMz\n' +
+  'MTAwNDA0MDEwOFowLDELMAkGA1UEBhMCQ04xDTALBgNVBAoMBHRlc3QxDjAMBgNV\n' +
+  'BAMMBWxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZDPvdlJI6Yv4fiaR\n' +
+  'nQHcusXVbukk90mQ0rBGOYRikFvgvm5cjTdaUGcQKEtwYIKDQl5n6Pf7ElCJ7GRz\n' +
+  'raWZ+qOBtTCBsjAJBgNVHRMEAjAAMCwGCWCGSAGG+EIBDQQfFh1PcGVuU1NMIEdl\n' +
+  'bmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQU63Gbl8gIsUn0VyZ4rya3PCjm\n' +
+  'sfEwHwYDVR0jBBgwFoAU77mynM0rz1SD43DQjleWM7bF+MEwNwYDVR0fBDAwLjAs\n' +
+  'oCqgKIYmaHR0cDovL3Rlc3QudGVzdENSTGRwLmNvbS9DUkxfRFBfMS5jcmwwCgYI\n' +
+  'KoZIzj0EAwIDSAAwRQIhAISKHH9u221mBgdDWfll3loLvEHJ3or9NUO5Zn6SrX6L\n' +
+  'AiAtRlOa6/mTD68faQTdhsAaQP955QfW34B4yFqU2Bq72A==\n' +
+  '-----END CERTIFICATE-----\n';
 
-  // Certificate binary data, which needs to match your case.
+// Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
   // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
@@ -2898,11 +3003,11 @@ async function certGetCRLDistributionPoint() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let point = x509Cert.getCRLDistributionPoint();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2913,15 +3018,15 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -2930,7 +3035,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -2948,46 +3053,46 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n" +
-    "BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n" +
-    "BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n" +
-    "ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n" +
-    "VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n" +
-    "BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n" +
-    "dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n" +
-    "Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n" +
-    "gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n" +
-    "xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n" +
-    "4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n" +
-    "O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n" +
-    "/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n" +
-    "FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n" +
-    "BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n" +
-    "AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n" +
-    "mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n" +
-    "4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n" +
-    "MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n" +
-    "MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n" +
-    "pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n" +
-    "-----END CERTIFICATE-----\n"
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n' +
+  'BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n' +
+  'BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n' +
+  'ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n' +
+  'VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n' +
+  'BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n' +
+  'dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n' +
+  'Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n' +
+  'gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n' +
+  'xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n' +
+  '4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n' +
+  'O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n' +
+  '/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n' +
+  'FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n' +
+  'BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n' +
+  'AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n' +
+  'mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n' +
+  '4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n' +
+  'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
+  'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
+  'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
+  '-----END CERTIFICATE-----\n'
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certGetIssuerX500DistinguishedName() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let name = x509Cert.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2996,17 +3101,17 @@ async function certGetIssuerX500DistinguishedName() {
 
 getSubjectX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the X.509 certificate subject (holder).
+Obtains the distinguished name of the X.509 certificate subject.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -3015,7 +3120,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3033,46 +3138,46 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n" +
-    "BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n" +
-    "BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n" +
-    "ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n" +
-    "VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n" +
-    "BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n" +
-    "dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n" +
-    "Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n" +
-    "gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n" +
-    "xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n" +
-    "4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n" +
-    "O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n" +
-    "/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n" +
-    "FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n" +
-    "BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n" +
-    "AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n" +
-    "mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n" +
-    "4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n" +
-    "MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n" +
-    "MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n" +
-    "pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n" +
-    "-----END CERTIFICATE-----\n"
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n' +
+  'BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n' +
+  'BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n' +
+  'ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n' +
+  'VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n' +
+  'BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n' +
+  'dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n' +
+  'Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n' +
+  'gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n' +
+  'xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n' +
+  '4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n' +
+  'O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n' +
+  '/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n' +
+  'FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n' +
+  'BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n' +
+  'AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n' +
+  'mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n' +
+  '4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n' +
+  'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
+  'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
+  'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
+  '-----END CERTIFICATE-----\n'
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certGetSubjectX500DistinguishedName() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let name = x509Cert.getSubjectX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3083,9 +3188,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3100,7 +3205,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3118,46 +3223,46 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n" +
-    "BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n" +
-    "BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n" +
-    "ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n" +
-    "VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n" +
-    "BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n" +
-    "dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n" +
-    "Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n" +
-    "gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n" +
-    "xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n" +
-    "4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n" +
-    "O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n" +
-    "/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n" +
-    "FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n" +
-    "BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n" +
-    "AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n" +
-    "mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n" +
-    "4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n" +
-    "MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n" +
-    "MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n" +
-    "pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n" +
-    "-----END CERTIFICATE-----\n"
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n' +
+  'BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n' +
+  'BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n' +
+  'ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n' +
+  'VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n' +
+  'BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n' +
+  'dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n' +
+  'Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n' +
+  'gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n' +
+  'xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n' +
+  '4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n' +
+  'O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n' +
+  '/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n' +
+  'FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n' +
+  'BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n' +
+  'AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n' +
+  'mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n' +
+  '4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n' +
+  'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
+  'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
+  'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
+  '-----END CERTIFICATE-----\n'
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certToString() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     console.info('certToString success: ' + x509Cert.toString());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3168,9 +3273,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format. 
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3191,7 +3296,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -3232,22 +3337,22 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
     'kY1ah7eSx4wwaKrLOM06ZkzORMnY5GAy8Aup+UCh6mWU3dPv3w==\n' +
     '-----END CERTIFICATE-----\n';
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certToString() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     console.info('certToString success: ' + x509Cert.toString(cert.EncodingType.ENCODING_UTF8));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3258,15 +3363,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -3275,7 +3380,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3293,46 +3398,46 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n" +
-    "BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n" +
-    "BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n" +
-    "ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n" +
-    "VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n" +
-    "BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n" +
-    "dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n" +
-    "Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n" +
-    "gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n" +
-    "xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n" +
-    "4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n" +
-    "O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n" +
-    "/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n" +
-    "FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n" +
-    "BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n" +
-    "AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n" +
-    "mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n" +
-    "4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n" +
-    "MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n" +
-    "MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n" +
-    "pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n" +
-    "-----END CERTIFICATE-----\n"
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n' +
+  'BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n' +
+  'BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n' +
+  'ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n' +
+  'VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n' +
+  'BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n' +
+  'dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n' +
+  'Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n' +
+  'gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n' +
+  'xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n' +
+  '4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n' +
+  'O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n' +
+  '/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n' +
+  'FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n' +
+  'BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n' +
+  'AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n' +
+  'mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n' +
+  '4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n' +
+  'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
+  'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
+  'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
+  '-----END CERTIFICATE-----\n'
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certHashCode() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     console.info('certHashCode success: ' + x509Cert.hashCode());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3341,17 +3446,17 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
@@ -3360,7 +3465,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3378,46 +3483,46 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n" +
-    "BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n" +
-    "BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n" +
-    "ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n" +
-    "VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n" +
-    "BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n" +
-    "dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n" +
-    "Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n" +
-    "gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n" +
-    "xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n" +
-    "4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n" +
-    "O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n" +
-    "/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n" +
-    "FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n" +
-    "BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n" +
-    "AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n" +
-    "mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n" +
-    "4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n" +
-    "MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n" +
-    "MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n" +
-    "pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n" +
-    "-----END CERTIFICATE-----\n"
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID1TCCAr2gAwIBAgIITXr1++kFUU4wDQYJKoZIhvcNAQELBQAwcDELMAkGA1UE\n' +
+  'BhMCQ04xEjAQBgNVBAgTCWd1YW5nZG9uZzERMA8GA1UEBxMIc2hlbnpoZW4xEjAQ\n' +
+  'BgNVBAoTCXRlc3RTZWNDYTESMBAGA1UECxMJdGVzdFNlY0NhMRIwEAYDVQQDEwl0\n' +
+  'ZXN0U2VjQ2EwHhcNMjMxMjIxMDAwMDAwWhcNMjcxMjIwMjM1OTU5WjBxMQswCQYD\n' +
+  'VQQGEwJDTjEOMAwGA1UECBMFZ2Fuc3UxEDAOBgNVBAcTB2xhbnpob3UxFDASBgNV\n' +
+  'BAoTC3Rlc3RUaGlyZENhMRQwEgYDVQQLEwt0ZXN0VGhpcmRDYTEUMBIGA1UEAxML\n' +
+  'dGVzdFRoaXJkQ2EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJMKSq\n' +
+  'Fn4G4EJATauw+4s+n/JbINBAiuhzURzzdt2T8JJQLDV9RHj4mZt84yv6lqEpl2fm\n' +
+  'gIClfu173pEV51/PSq5IaV481u/Dz/OTy9TwfxmIXAWdNpyodDOg4I9K7LC01ge8\n' +
+  'xxyKFi7k7m2eTGA4dYQM0E0AEXzCpg2JN3IIIPhzHCIVJmYjcbVxiaFkvT4ZFFUk\n' +
+  '4rDSbAQdn6dJ29msrFm8iGhMGC/bzq9Bii38Qg4y4o89QYiboRWCxv3XfuibT+jw\n' +
+  'O3pmfsFuT8/bKOWVm94FmRxiKuj6iE8UVewxtByzDgAsBtJKDjaCv3IkqfbIu+sq\n' +
+  '/eeJkVJRJXAP3ZpLAgMBAAGjcjBwMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\n' +
+  'FIxvPSwEmjOMW10H+gn2gy5HvMmMMAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEE\n' +
+  'BAMCAAcwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTANBgkqhkiG9w0B\n' +
+  'AQsFAAOCAQEAWu0u72g5y1weexPoJQnUgcwVtuC+/tTS9YvyCtKYE91gn97LSWn9\n' +
+  'mXXGmLceU27B8JwhER9JeiQO1SUdDcvlfb5vt6eB+5cbZcgeERUBP8t0znh7DbMg\n' +
+  '4TFjt9gZ970PZ1OlTBNPoZNRBKIox61KVUhiVKTVSbXlVP1yUF1uSlSq+0NYayHw\n' +
+  'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
+  'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
+  'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
+  '-----END CERTIFICATE-----\n'
 
-  // Certificate binary data, which needs to match your case.
-  let encodingBlob: cert.EncodingBlob = {
-    data: stringToUint8Array(certData),
-    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM
-  };
+// Certificate binary data, which needs to match your case.
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
 
 async function certGetExtensionsObject() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
     let object = x509Cert.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3426,17 +3531,17 @@ async function certGetExtensionsObject() {
 
 createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExtension>) : void
 
-Creates a **CertExtension** instance. This API uses an asynchronous callback to return the result.
+Creates a certificate extension object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized data obtained.|
+| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized data of the certificate extension.|
 | callback | AsyncCallback\<[CertExtension](#certextension10)> | Yes  | Callback for the **CertExtension** instance.|
 
 **Error codes**
@@ -3476,9 +3581,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
-    console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
   }
 });
 ```
@@ -3487,17 +3592,17 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
-Creates a **CertExtension** instance. This API uses a promise to return the result.
+Creates a certificate extension object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                      |
 | -------- | ----------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized data obtained.|
+| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized data of the certificate extension.|
 
 **Return value**
 
@@ -3542,31 +3647,31 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createCertExtension(encodingBlob).then(certExt => {
-  console.info('createCertExtension success');
+  console.info('createCertExtension result: success.');
 }).catch((error: BusinessError) => {
-  console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
 ## CertExtension<sup>10+</sup>
 
-Provides APIs for operating the certificate extensions.
+Certificate extension
 
 ### getEncoded<sup>10+</sup>
 
 getEncoded() : EncodingBlob
 
-Obtains the serialized data of the certificate extensions.
+Obtains the serialized data of the certificate extension.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                         | Description                        |
 | ----------------------------- | ---------------------------- |
-| [EncodingBlob](#encodingblob) | Serialized data obtained.|
+| [EncodingBlob](#encodingblob) | Serialized data of the certificate extension.|
 
 **Error codes**
 
@@ -3575,7 +3680,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3605,14 +3710,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
-    console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
     try {
       let extEncodedBlob = certExt.getEncoded();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('ext getEncoded failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`ext getEncoded failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -3622,11 +3727,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getOidList(valueType : ExtensionOidType) : DataArray
 
-Obtains the OIDs of the certificate extensions.
+Obtains the OIDs of certificate extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3638,7 +3743,7 @@ Obtains the OIDs of the certificate extensions.
 
 | Type                   | Description                            |
 | ----------------------- | -------------------------------- |
-| [DataArray](#dataarray) | OIDs obtained.|
+| [DataArray](#dataarray) | OIDs of certificate extensions.|
 
 **Error codes**
 
@@ -3648,7 +3753,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3678,14 +3783,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
-    console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
     try {
       let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('ext getOidList failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`ext getOidList failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -3695,11 +3800,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
-Obtains the certificate extension object information.
+Obtains the information about the certificate extension field object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3722,7 +3827,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3752,9 +3857,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
-    console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
     let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
     let oidBlob: cert.DataBlob = {
       data: oid
@@ -3763,7 +3868,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
       let entry = certExt.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oidBlob);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('ext getEntry failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`ext getEntry failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -3774,11 +3879,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 checkCA() : number
 
-Checks whether the certificate is a CA certificate.
+Checks whether a certificate is a CA certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3793,7 +3898,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3822,14 +3927,14 @@ let encodingBlob: cert.EncodingBlob = {
 };
 cert.createCertExtension(encodingBlob, (error, certExt) => {
   if (error) {
-    console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
     try {
       let res = certExt.checkCA();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('ext checkCA failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`ext checkCA failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -3839,11 +3944,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 hasUnsupportedCriticalExtension(): boolean
 
-Checks whether there is critical extension that is not supported.
+Checks whether there is any critical extension that is not supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3858,7 +3963,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -3884,11 +3989,11 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createCertExtension(encodingBlob).then((extensionObj) => {
-  console.info('createCertExtension success!');
+  console.info('createCertExtension result: success.');
   const result = extensionObj.hasUnsupportedCriticalExtension()
-  console.info('has unsupported critical extension result is:' + result);
+  console.info('has unsupported critical extension result =' + result);
 }).catch((err: BusinessError) => {
-  console.error('createCertExtension failed');
+  console.error(`createCertExtension failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
 
@@ -3896,20 +4001,20 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
 
 createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                               | Mandatory| Description                          |
 | -------- | ----------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)       | Yes  | Serialized CRL data.    |
-| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback used to return the **X509Crl** instance created.|
 
 **Error codes**
 
@@ -3953,9 +4058,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
   }
 });
 ```
@@ -3964,13 +4069,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4026,9 +4131,9 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.info('createX509Crl success');
+  console.info('createX509Crl result: success.');
 }).catch((error: BusinessError) => {
-  console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -4036,18 +4141,18 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | Serialized CRL data. The data length cannot exceed 8192 bytes.    |
-| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback used to return the **X509Crl** instance created.|
 
 **Error codes**
 
@@ -4091,9 +4196,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, X509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
   }
 });
 ```
@@ -4102,11 +4207,11 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
 
 createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4162,15 +4267,15 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(X509CRL => {
-  console.info('createX509CRL success');
+  console.info('createX509CRL result: success.');
 }).catch((error: BusinessError) => {
-  console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
 ## X509Crl<sup>(deprecated)</sup>
 
-Provides APIs for X.509 certificate CRL operations.
+Defines an X.509 CRL.
 
 > **NOTE**
 >
@@ -4180,13 +4285,13 @@ Provides APIs for X.509 certificate CRL operations.
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.isRevoked](#isrevoked11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4257,19 +4362,19 @@ let certEncodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     // Create an X509Cert instance.
     cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
       if (error) {
-        console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
         try {
           let revokedFlag = x509Crl.isRevoked(x509Cert);
         } catch (error) {
           let e: BusinessError = error as BusinessError;
-          console.error('isRevoked failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`isRevoked failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
       }
     });
@@ -4287,7 +4392,7 @@ Obtains the CRL type.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getType](#gettype11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -4327,9 +4432,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     let type = x509Crl.getType();
   }
 });
@@ -4345,13 +4450,13 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                        | Mandatory| Description                                      |
 | -------- | ---------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
 
 **Error codes**
 
@@ -4361,7 +4466,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -4396,14 +4501,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     x509Crl.getEncoded((error, data) => {
       if (error) {
-        console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('getEncoded success');
+        console.info('getEncoded result: success.');
       }
     });
   }
@@ -4420,7 +4525,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -4436,7 +4541,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -4471,14 +4576,14 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.info('createX509Crl success');
+  console.info('createX509Crl result: success.');
   x509Crl.getEncoded().then(result => {
-    console.info('getEncoded success');
+    console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
-    console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -4486,13 +4591,13 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4601,13 +4706,12 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
         data: priKeyData,
       };
@@ -4616,21 +4720,21 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
       };
       keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob, (e, keyPair) => {
         if (e) {
-          console.error('convert key failed, message: ' + e.message + 'code: ' + e.code);
+          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         } else {
-          console.info('convert key success');
+          console.info('convert key result: success.');
           x509Crl.verify(keyPair.pubKey, (err, data) => {
             if (err) {
-              console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+              console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
             } else  {
-              console.info('verify success');
+              console.info('verify result: success.');
             }
           });
         }
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('get pubKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -4640,13 +4744,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4759,12 +4863,12 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.info('createX509Crl success');
+  console.info('createX509Crl result: success.');
 
   try {
     // Generate a public key object.
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-    console.info('createAsyKeyGenerator success');
+    console.info('createAsyKeyGenerator result: success.');
     let priEncodingBlob: cryptoFramework.DataBlob = {
       data: priKeyData,
     };
@@ -4772,21 +4876,21 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
       data: pubKeyData,
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
-      console.info('convert key success');
+      console.info('convert key result: success.');
       x509Crl.verify(keyPair.pubKey).then(result => {
-        console.info('verify success');
+        console.info('verify result: success.');
       }).catch((error: BusinessError) => {
-        console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('convert key failed, message: ' + error.message + 'code: ' + error.code);
+      console.error(`convert key failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('get pubKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
-  console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -4800,13 +4904,13 @@ Obtains the version of the X.509 CRL.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getVersion](#getversion11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -4840,9 +4944,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     let version = x509Crl.getVersion();
   }
 });
@@ -4852,19 +4956,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getIssuerName](#getissuername11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
@@ -4873,7 +4977,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -4909,14 +5013,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let issuerName = x509Crl.getIssuerName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -4926,19 +5030,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getLastUpdate](#getlastupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
@@ -4947,7 +5051,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -4983,14 +5087,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let lastUpdate = x509Crl.getLastUpdate();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getLastUpdate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getLastUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5000,19 +5104,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the next update date (in ASN.1 format) of this CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getNextUpdate](#getnextupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
@@ -5021,7 +5125,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5057,14 +5161,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let nextUpdate = x509Crl.getNextUpdate();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getNextUpdate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getNextUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5074,13 +5178,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCert(serialNumber : number) : X509CrlEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked X.509 certificate based on the specified certificate serial number.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCert](#getrevokedcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5137,15 +5241,15 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     let serialNumber = 1000;
     try {
       let entry = x509Crl.getRevokedCert(serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5161,7 +5265,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5249,20 +5353,20 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     // Create an X.509 certificate object.
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509Crl.getRevokedCertWithCert(x509Cert);
-        console.info('getRevokedCertWithCert success');
+        console.info('getRevokedCertWithCert result: success.');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
-        console.error('getRevokedCertWithCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`getRevokedCertWithCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
       }
     }).catch((error: BusinessError) => {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
   }
 });
@@ -5272,19 +5376,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
-Obtains the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains a list of revoked X.509 certificates. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                | Mandatory| Description                            |
 | -------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback used to return the revoked X.509 certificates obtained.|
 
 **Error codes**
 
@@ -5328,14 +5432,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     x509Crl.getRevokedCerts((error, array) => {
       if (error) {
-        console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('getRevokedCerts success');
+        console.info('getRevokedCerts result: success.');
       }
     });
   }
@@ -5346,19 +5450,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
-Obtains the revoked X.509 certificates. This API uses a promise to return the result.
+Obtains a list of revoked X.509 certificates. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                          | Description                  |
 | ---------------------------------------------- | ---------------------- |
-| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | The list of revoked X.509 certificates obtained.|
 
 **Error codes**
 
@@ -5402,14 +5506,14 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
-  console.info('createX509Crl success');
+  console.info('createX509Crl result: success.');
   x509Crl.getRevokedCerts().then(array => {
-    console.info('getRevokedCerts success');
+    console.info('getRevokedCerts result: success.');
   }).catch((error: BusinessError) => {
-    console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -5417,13 +5521,13 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 getTbsInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getTBSInfo](#gettbsinfo11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5438,7 +5542,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5474,14 +5578,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let tbsInfo = x509Crl.getTbsInfo();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getTbsInfo failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getTbsInfo failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5497,7 +5601,7 @@ Obtains the signature data of the X.509 CRL.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5512,7 +5616,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5548,14 +5652,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let signature = x509Crl.getSignature();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignature failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5565,19 +5669,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
@@ -5586,7 +5690,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5622,14 +5726,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let sigAlgName = x509Crl.getSignatureAlgName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5639,19 +5743,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgOid](#getsignaturealgoid11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -5660,7 +5764,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5696,14 +5800,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let sigAlgOid = x509Crl.getSignatureAlgOid();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgOid failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -5713,19 +5817,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgParams](#getsignaturealgparams11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -5735,7 +5839,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -5771,31 +5875,31 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
       let sigAlgParams = x509Crl.getSignatureAlgParams();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgParams failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
 ```
 ## X509CRL<sup>11+</sup>
 
-Provides APIs for managing a CRL object.
+Defines a list of revoked certificates.
 
 ### isRevoked<sup>11+</sup>
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5866,19 +5970,19 @@ let certEncodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     // Create an X509Cert instance.
     cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
       if (error) {
-        console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
         try {
           let revokedFlag = x509CRL.isRevoked(x509Cert);
         } catch (error) {
           let e: BusinessError = error as BusinessError;
-          console.error('isRevoked failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`isRevoked failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
       }
     });
@@ -5892,9 +5996,9 @@ getType() : string
 
 Obtains the CRL type.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5934,9 +6038,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let type = x509CRL.getType();
   }
 });
@@ -5948,15 +6052,15 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                      |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
 
 **Error codes**
 
@@ -5966,7 +6070,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -6001,14 +6105,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     x509CRL.getEncoded((error, data) => {
       if (error) {
-        console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('getEncoded success');
+        console.info('getEncoded result: success.');
       }
     });
   }
@@ -6021,9 +6125,9 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 CRL data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -6039,7 +6143,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -6074,14 +6178,14 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.info('createX509CRL success');
+  console.info('createX509CRL result: success.');
   x509CRL.getEncoded().then(result => {
-    console.info('getEncoded success');
+    console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
-    console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -6089,11 +6193,11 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6202,13 +6306,12 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509Crl success');
+    console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
         data: priKeyData,
       };
@@ -6217,21 +6320,21 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
       };
       keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob, (e, keyPair) => {
         if (e) {
-          console.error('convert key failed, message: ' + e.message + 'code: ' + e.code);
+          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         } else {
-          console.info('convert key success');
+          console.info('convert key result: success.');
           x509CRL.verify(keyPair.pubKey, (err, data) => {
             if (err) {
-              console.error('verify failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+              console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
             } else {
-              console.info('verify success');
+              console.info('verify result: success.');
             }
           });
         }
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('get pubKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6241,11 +6344,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6358,12 +6461,12 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.info('createX509Crl success');
+  console.info('createX509Crl result: success.');
 
   try {
     // Generate a public key object.
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-    console.info('createAsyKeyGenerator success');
+    console.info('createAsyKeyGenerator result: success.');
     let priEncodingBlob: cryptoFramework.DataBlob = {
       data: priKeyData,
     };
@@ -6371,21 +6474,21 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
       data: pubKeyData,
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
-      console.info('convert key success');
+      console.info('convert key result: success.');
       x509CRL.verify(keyPair.pubKey).then(result => {
-        console.info('verify success');
+        console.info('verify result: success.');
       }).catch((error: BusinessError) => {
-        console.error('verify failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('convert key failed, message: ' + error.message + 'code: ' + error.code);
+      console.error(`convert key failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('get pubKey failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
-  console.error('createX509Crl failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -6395,15 +6498,15 @@ getVersion() : number
 
 Obtains the version of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -6437,9 +6540,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let version = x509CRL.getVersion();
   }
 });
@@ -6449,21 +6552,21 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > The obtained X.509 CRL issuer name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
@@ -6472,7 +6575,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -6508,14 +6611,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let issuerName = x509CRL.getIssuerName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6525,11 +6628,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 CRL based on the encoding type.
+Obtains the X.509 CRL issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6550,7 +6653,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -6590,15 +6693,15 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let issuerName = x509CRL.getIssuerName(cert.EncodingType.ENCODING_UTF8);
-      console.info('issuerName output is ' + issuerName);
+      console.info('issuerName output = ' + issuerName);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getIssuerName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6608,17 +6711,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
@@ -6627,7 +6730,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -6663,14 +6766,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let lastUpdate  = x509CRL.getLastUpdate();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getLastUpdate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getLastUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6680,17 +6783,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the next update date (in ASN.1 format) of this CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
@@ -6699,7 +6802,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -6735,14 +6838,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let nextUpdate = x509CRL.getNextUpdate();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getNextUpdate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getNextUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6752,11 +6855,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked X.509 certificate based on the specified certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6813,15 +6916,15 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let serialNumber = BigInt(1000);
     try {
       let entry = x509CRL.getRevokedCert(serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6833,9 +6936,9 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
 Obtains the revoked X.509 certificate based on the specified certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6923,20 +7026,20 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     // Create an X.509 certificate object.
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509CRL.getRevokedCertWithCert(x509Cert);
-        console.info('getRevokedCertWithCert success');
+        console.info('getRevokedCertWithCert result: success.');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
-        console.error('getRevokedCertWithCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`getRevokedCertWithCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
       }
     }).catch((error: BusinessError) => {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     })
   }
 });
@@ -6946,17 +7049,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
-Obtains the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains a list of revoked X.509 certificates. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                  | Mandatory| Description                            |
 | -------- | ------------------------------------------------------ | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback used to return the revoked X.509 certificates obtained.|
 
 **Error codes**
 
@@ -7000,14 +7103,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     x509CRL.getRevokedCerts((error, array) => {
       if (error) {
-        console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('getRevokedCerts success');
+        console.info('getRevokedCerts result: success.');
       }
     });
   }
@@ -7018,17 +7121,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
-Obtains the revoked X.509 certificates. This API uses a promise to return the result.
+Obtains a list of revoked X.509 certificates. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                            | Description                  |
 | ------------------------------------------------ | ---------------------- |
-| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | The list of revoked X.509 certificates obtained.|
 
 **Error codes**
 
@@ -7072,14 +7175,14 @@ let encodingBlob: cert.EncodingBlob = {
 };
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
-  console.info('createX509CRL success');
+  console.info('createX509CRL result: success.');
   x509CRL.getRevokedCerts().then(array => {
-    console.info('getRevokedCerts success');
+    console.info('getRevokedCerts result: success.');
   }).catch((error: BusinessError) => {
-    console.error('getRevokedCerts failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -7089,9 +7192,9 @@ getSignature() : DataBlob
 
 Obtains the signature data of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7106,7 +7209,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7142,14 +7245,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let signature = x509CRL.getSignature();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignature failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7159,17 +7262,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
@@ -7178,7 +7281,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7214,14 +7317,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let sigAlgName = x509CRL.getSignatureAlgName();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgName failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7231,17 +7334,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -7250,7 +7353,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7286,14 +7389,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let sigAlgOid = x509CRL.getSignatureAlgOid();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgOid failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7303,17 +7406,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -7323,7 +7426,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7359,14 +7462,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let sigAlgParams = x509CRL.getSignatureAlgParams();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('getSignatureAlgParams failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7376,11 +7479,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getTBSInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7395,7 +7498,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7431,14 +7534,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let tbsInfo = x509CRL.getTBSInfo();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getTBSInfo failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getTBSInfo failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7450,9 +7553,9 @@ getExtensions(): DataBlob
 
 Obtains the CRL extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7467,7 +7570,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7506,14 +7609,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   if (error) {
-    console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     try {
       let extensions = x509CRL.getExtensions();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getExtensions failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7523,11 +7626,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 match(param: X509CRLMatchParameters): boolean
 
-Checks whether this CRL matches the specified parameters.
+Checks whether the CRL matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -7582,24 +7685,24 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-const certData = "-----BEGIN CERTIFICATE-----\r\n" +
-  "MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n" +
-  "BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n" +
-  "BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n" +
-  "WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n" +
-  "dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n" +
-  "EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n" +
-  "pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n" +
-  "poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n" +
-  "BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n" +
-  "BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n" +
-  "ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n" +
-  "fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n" +
-  "Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n" +
-  "y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n" +
-  "V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n" +
-  "Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n" +
-  "-----END CERTIFICATE-----\r\n";
+const certData = '-----BEGIN CERTIFICATE-----\r\n' +
+  'MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n' +
+  'BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n' +
+  'BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n' +
+  'WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n' +
+  'dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n' +
+  'EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n' +
+  'pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n' +
+  'poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n' +
+  'BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n' +
+  'BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n' +
+  'ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n' +
+  'fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n' +
+  'Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n' +
+  'y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n' +
+  'V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n' +
+  'Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n' +
+  '-----END CERTIFICATE-----\r\n';
 const certEncodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
   encodingFormat: cert.EncodingFormat.FORMAT_PEM,
@@ -7609,25 +7712,31 @@ async function crlMatch() {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.info('createX509Cert success');
-  } catch (err) {
-    console.error('createX509Cert failed');
+    console.info('createX509Cert result: success.');
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 
   cert.createX509CRL(crlEncodingBlob, (error, x509CRL) => {
     if (error) {
-      console.error('createX509CRL failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
-      console.info('createX509CRL success');
+      console.info('createX509CRL result: success.');
       try {
         const param: cert.X509CRLMatchParameters = {
-          issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
+          issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43,
+            0x4E, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73,
+            0x75, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E,
+            0x67, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09,
+            0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03,
+            0x13, 0x02, 0x74, 0x73])],
           x509Cert: x509Cert
         }
         const result = x509CRL.match(param);
       } catch (error) {
         let e: BusinessError = error as BusinessError;
-        console.error('x509CRL match failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`x509CRL match failed, errCode: ${e.code}, errMsg: ${e.message}`);
       }
     }
   });
@@ -7640,15 +7749,15 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -7657,7 +7766,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7695,11 +7804,11 @@ async function crlGetIssuerX500DistinguishedName() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let name = x509Crl.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -7710,9 +7819,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7727,7 +7836,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7765,11 +7874,11 @@ async function crlToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     console.info('crlToString success: ' + x509Crl.toString());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -7780,9 +7889,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -7803,7 +7912,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -7845,11 +7954,11 @@ async function crlToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     console.info('crlToString success: ' + x509Crl.toString(cert.EncodingType.ENCODING_UTF8));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -7860,15 +7969,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -7877,7 +7986,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7915,11 +8024,11 @@ async function crlHashCode() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     console.info('crlHashCode success: ' + x509Crl.hashCode());
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -7928,17 +8037,17 @@ async function crlHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
@@ -7947,7 +8056,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -7986,15 +8095,15 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-async function crlHashCode() {
+async function crlGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let object = x509Crl.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -8003,17 +8112,17 @@ async function crlHashCode() {
 
 createCertChainValidator(algorithm :string) : CertChainValidator
 
-Creates a **CertChainValidator** object.
+Creates a certificate chain validator object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| algorithm | string | Yes  | Certificate chain validator algorithm. Currently, only **PKIX** is supported.|
+| algorithm | string | Yes  | Algorithm of the certificate chain validator obtained. Currently, only **PKIX** is supported.|
 
 **Return value**
 
@@ -8030,7 +8139,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8043,34 +8152,35 @@ try {
   let validator = cert.createCertChainValidator('PKIX');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error('createCertChainValidator failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
 ## CertChainValidator
 
-Provides APIs for certificate chain validator operations.
+Describes a certificate chain validator object.
 
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | -------------------------- |
-| algorithm  | string | Yes  | No  | Algorithm used by the X509 certificate chain validator.|
+| algorithm  | string | Yes  | No  | Algorithm of the X.509 certificate chain validator.|
 
 
 ### validate
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
-Validates an X.509 certificate chain. This API uses an asynchronous callback to return the result.
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+Verifies the X.509 certificate chain. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -8087,14 +8197,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -8134,24 +8244,24 @@ let certPem = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----';
 
 let caPem = '-----BEGIN CERTIFICATE-----\n' +
-'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
-'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
-'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
-'6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
-'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
-'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
-'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
-'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
-'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
-'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
-'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
-'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
-'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
-'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
-'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
-'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
-'sSus\n' +
-'-----END CERTIFICATE-----';
+  'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
+  'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
+  'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
+  '6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
+  'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
+  'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
+  'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
+  'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
+  'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
+  'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
+  'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
+  'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
+  'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
+  'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
+  'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
+  'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
+  'sSus\n' +
+  '-----END CERTIFICATE-----';
 
 let certPemData = stringToUint8Array(certPem);
 let caPemData = stringToUint8Array(caPem);
@@ -8159,7 +8269,8 @@ let caPemData = stringToUint8Array(caPem);
 let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer)
 let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer)
 
-let certChainBuff = new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
+let certChainBuff =
+  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
 certChainBuff.set(certPemDataLenData)
 certChainBuff.set(certPemData, certPemDataLenData.length)
 certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length)
@@ -8177,14 +8288,14 @@ try {
   let validator = cert.createCertChainValidator('PKIX');
   validator.validate(certChainData, (error, data) => {
     if (error) {
-      console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
-      console.info('validate success');
+      console.info('validate result: success.');
     }
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error('validate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -8192,12 +8303,13 @@ try {
 
 validate(certChain : CertChainData) : Promise\<void>
 
-Validates an X.509 certificate chain. This API uses a promise to return the result.
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+Verifies the X.509 certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -8219,14 +8331,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -8266,24 +8378,24 @@ let certPem = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----';
 
 let caPem = '-----BEGIN CERTIFICATE-----\n' +
-'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
-'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
-'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
-'6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
-'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
-'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
-'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
-'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
-'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
-'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
-'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
-'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
-'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
-'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
-'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
-'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
-'sSus\n' +
-'-----END CERTIFICATE-----';
+  'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
+  'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
+  'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
+  '6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
+  'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
+  'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
+  'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
+  'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
+  'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
+  'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
+  'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
+  'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
+  'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
+  'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
+  'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
+  'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
+  'sSus\n' +
+  '-----END CERTIFICATE-----';
 
 let certPemData = stringToUint8Array(certPem);
 let caPemData = stringToUint8Array(caPem);
@@ -8291,7 +8403,8 @@ let caPemData = stringToUint8Array(caPem);
 let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer)
 let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer)
 
-let certChainBuff = new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
+let certChainBuff =
+  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
 certChainBuff.set(certPemDataLenData)
 certChainBuff.set(certPemData, certPemDataLenData.length)
 certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length)
@@ -8308,41 +8421,224 @@ let certChainData: cert.CertChainData = {
 try {
   let validator = cert.createCertChainValidator('PKIX');
   validator.validate(certChainData).then(result => {
-    console.info('validate success');
+    console.info('validate result: success.');
   }).catch((error: BusinessError) => {
-    console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    console.error(`validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error('validate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+### validateCert
+
+validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValidationResult&gt;
+
+Validates a certificate by building and verifying a certificate chain. This API uses a promise to return the result.
+
+Follow the following rules when building a certificate chain:
+1. Trusted anchor source: Always use the trusted certificate list (**trustedCerts**) as the trusted anchor source. The pre-configured certificate can be used as a trusted anchor only when **trustSystemCa** is set to **true**.
+2. Issuer search sequence: The system searches for the issuer from the trusted anchor source first. If the issuer cannot be found, the system searches for the issuer from the untrusted certificate list (**untrustedCerts**). The intermediate CA certificate downloaded from the Internet is an untrusted certificate.
+3. Trust anchor locking: Once the issuer is found from the trusted anchor source, the subsequent search process does not back track to untrusted certificates. That is, subsequent certificates must come from the trusted anchor source.
+4. Build completion condition: If the value of **partialChain** is **false** (default value), the build is complete only when the root certificate (from the signing certificate) is found. If the value of **partialChain** is **true**, the build is complete when the issuer is initially found from the trust anchor source.
+5. Subsequent verification: After the certificate chain is built, other verification operations, such as certificate signature verification and certificate revocation check, are performed.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name   | Type                           | Mandatory| Description                      |
+| --------- | ------------------------------- | ---- | -------------------------- |
+| cert | [X509Cert](#x509cert) | Yes  | Certificate to be verified.|
+| params | [CertValidationParams](#certvalidationparams) | Yes  | Parameters for certificate validation.|
+
+**Return value**
+
+| Type          | Description       |
+| -------------- | ----------- |
+| Promise\<[CertValidationResult](#certvalidationresult)> | Promise used to return the verification result.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message                                         |
+| -------- | ------------------------------------------------- |
+| 19020001 | memory malloc failed.                                     |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | parameter check failed.                           |
+| 19030001 | crypto operation error.                           |
+| 19030002 | the certificate signature verification failed.    |
+| 19030003 | the certificate has not taken effect.             |
+| 19030004 | the certificate has expired.                      |
+| 19030005 | failed to obtain the certificate issuer.          |
+| 19030006 | the key cannot be used for signing a certificate. |
+| 19030007 | the key cannot be used for a digital signature.     |
+| 19030009 | untrusted certificate.    |
+| 19030010 | the certificate has been revoked.             |
+| 19030011 | unsupported critical extension.          |
+| 19030012 | hostname mismatch in the certificate. |
+| 19030013 | email address mismatch in the certificate.     |
+| 19030014 | key usage mismatch in the certificate. |
+| 19030015 | failed to obtain the certificate revocation list.          |
+| 19030016 | the certificate revocation list has not taken effect.             |
+| 19030017 | the certificate revocation list has expired.                      |
+| 19030018 | failed to verify the signature of the certificate revocation list.          |
+| 19030019 | failed to find the issuer of the certificate revocation list. |
+| 19030020 | failed to obtain the OCSP response.     |
+| 19030021 | invalid OCSP response.             |
+| 19030022 | failed to verify the OCSP signature.                      |
+| 19030023 | unknown OCSP certificate status.          |
+| 19030024 | network connection timed out. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// EC P-256 certificate chain data
+const endEntityCertPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICwzCCAmmgAwIBAgIUIThWddD/8p7w5QyXOoRY05O61FMwCgYIKoZIzj0EAwIw\n' +
+    'gYsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlq\n' +
+    'aW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEdMBsGA1UECwwUVGVzdCBJ\n' +
+    'bnRlcm1lZGlhdGUgQ0ExHTAbBgNVBAMMFFRlc3QgSW50ZXJtZWRpYXRlIENBMB4X\n' +
+    'DTI2MDMzMTA4MjY1OFoXDTI3MDMzMTA4MjY1OFowgYIxCzAJBgNVBAYTAkNOMRAw\n' +
+    'DgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0\n' +
+    'IE9yZ2FuaXphdGlvbjEYMBYGA1UECwwPVGVzdCBEZXBhcnRtZW50MRkwFwYDVQQD\n' +
+    'DBB0ZXN0LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEspH8\n' +
+    'JVcqNrg7oP4PYHADsW8tc1kIF86JG5SSjh1fz4ja3dF98PMMrsbQtcBZiwp8rD5e\n' +
+    'Gp2Nv/C2ymnjJfrig6OBsTCBrjAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDAd\n' +
+    'BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwHQYDVR0OBBYEFH6aJ7ZQayEZ\n' +
+    'LeenLt7zowBoafRpMB8GA1UdIwQYMBaAFI2lMRV2YgzF/DBP92jUzOLdzSDdMDIG\n' +
+    'A1UdEQQrMCmCEHRlc3QuZXhhbXBsZS5jb22CD3d3dy5leGFtcGxlLmNvbYcEfwAA\n' +
+    'ATAKBggqhkjOPQQDAgNIADBFAiEAidnsForpQc9qTBpa68YEYS0TQRUySHaUB/pr\n' +
+    'PNfAYqECIGGKM44mqQgSvZyYQHnlnu3jkbHpFJTaQBAvz9B1jFuc\n' +
+    '-----END CERTIFICATE-----\n';
+
+const intermediateCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICbzCCAhWgAwIBAgIUI8/xor2S98OupuBX6hWevxhvK+wwCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NThaFw0z\n' +
+    'MTAzMzAwODI2NThaMIGLMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQ\n' +
+    'MA4GA1UEBwwHQmVpamluZzEaMBgGA1UECgwRVGVzdCBPcmdhbml6YXRpb24xHTAb\n' +
+    'BgNVBAsMFFRlc3QgSW50ZXJtZWRpYXRlIENBMR0wGwYDVQQDDBRUZXN0IEludGVy\n' +
+    'bWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABER6WRsCn7Bh3v8c\n' +
+    'k6PIkLeM+ot5l0A46XJdfvuJco58ifzBHjtu4kFOkZTA9F0Hb6JefG590CK5ddiD\n' +
+    'g5lOHwKjZjBkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgEGMB0G\n' +
+    'A1UdDgQWBBSNpTEVdmIMxfwwT/do1Mzi3c0g3TAfBgNVHSMEGDAWgBS/nd4dYdW3\n' +
+    'zFxQ1pl2U8I/bfUA3zAKBggqhkjOPQQDAgNIADBFAiEA87NkGCv47e5RWc8DsFd/\n' +
+    'zL6/2Xn2EoveC+HoUYpxhZMCIAG+ZuTLmUsjalUGbWyR101hxHfvr4ImbEMeYSaA\n' +
+    'sVBn\n' +
+    '-----END CERTIFICATE-----\n';
+
+const rootCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICWzCCAgGgAwIBAgIUd/I1bFJJw/xQtPEJP6C1E4Fj9jswCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NTdaFw0z\n' +
+    'NjAzMjgwODI2NTdaMHsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAw\n' +
+    'DgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEVMBMG\n' +
+    'A1UECwwMVGVzdCBSb290IENBMRUwEwYDVQQDDAxUZXN0IFJvb3QgQ0EwWTATBgcq\n' +
+    'hkjOPQIBBggqhkjOPQMBBwNCAASFeWawqQET+c6EowNooKYiTw1KPzJBgssxQXo7\n' +
+    'UEXSQnLHh8sBwVvNN4oFVFImT31DyJVKwxBXpwbrEN1s8J1Io2MwYTAPBgNVHRMB\n' +
+    'Af8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUv53eHWHVt8xcUNaZ\n' +
+    'dlPCP231AN8wHwYDVR0jBBgwFoAUv53eHWHVt8xcUNaZdlPCP231AN8wCgYIKoZI\n' +
+    'zj0EAwIDSAAwRQIhAIbyIrOZL1GhkRiI2i4IhKmFa4AoXJftTEA5wev99QpkAiA3\n' +
+    'khFrJ4rRSpHqbfGN1U14HkFKiCXBalaIe+NISxgC3Q==\n' +
+    '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function validateCert(): Promise<void> {
+  try {
+    // Create an endEntityCertPem object.
+    let certEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(endEntityCertPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+
+    // Create a trust anchor certificate (root CA).
+    let rootCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rootCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let rootCaCert = await cert.createX509Cert(rootCaEncodingBlob);
+
+    // Create an intermediate certificate.
+    let intermediateCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(intermediateCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let intermediateCaCert = await cert.createX509Cert(intermediateCaEncodingBlob);
+
+    // Set verification parameters.
+    let params: cert.CertValidationParams = {
+      trustedCerts: [rootCaCert],
+      untrustedCerts: [intermediateCaCert],
+      validateDate: false
+    };
+
+    // Create a validator and verify the certificate.
+    let validator = cert.createCertChainValidator('PKIX');
+    let result = await validator.validateCert(x509Cert, params);
+
+    console.info('Certificate validation succeeded!');
+    console.info(`Verified chain length: ${result.certChain.length}`);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i}: ${subject}`);
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+
+validateCert();
 ```
 
 ## X509CrlEntry<sup>(deprecated)</sup>
 
-Provides APIs for operating the revoked certificates.
+Defines the revoked certificate object.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry](#x509crlentry11) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-Obtains the serialized data of the revoked certificate. This API uses an asynchronous callback to return the result.
+Obtains the serialized data of this revoked certificate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-2) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized data of the revoked certificate.|
 
 **Error codes**
 
@@ -8352,7 +8648,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8387,23 +8683,23 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('create x509 crl result: success.');
 
     try {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       crlEntry.getEncoded((error, data) => {
         if (error) {
-          console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+          console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
         } else {
-          console.info('getEncoded success');
+          console.info('getEncoded result: success.');
         }
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8413,13 +8709,13 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-Obtains the serialized data of the revoked certificate. This API uses a promise to return the result.
+Obtains the serialized data of this revoked certificate. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8435,7 +8731,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8470,21 +8766,21 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('create x509 crl result: success.');
 
     try {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       crlEntry.getEncoded().then(result => {
-        console.info('getEncoded success');
+        console.info('getEncoded result: success.');
       }).catch((error: BusinessError) => {
-        console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8500,7 +8796,7 @@ Obtains the serial number of this revoked certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8540,9 +8836,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('create x509 crl result: success.');
 
     try {
       let serialNumber = 1000;
@@ -8550,7 +8846,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       serialNumber = crlEntry.getSerialNumber();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getSerialNumber failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8566,7 +8862,7 @@ Obtains the issuer of a revoked certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getCertIssuer](#getcertissuer11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8582,7 +8878,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | -------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 
 **Example**
 
@@ -8616,9 +8912,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('create x509 crl result: success.');
 
     try {
       let serialNumber = 1000;
@@ -8626,7 +8922,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       let issuer = crlEntry.getCertIssuer();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getCertIssuer failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8636,19 +8932,19 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getRevocationDate() : string
 
-Obtains the date when the certificate is revoked.
+Obtains the date (in ASN.1 format) when the certificate is revoked.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description               |
 | ------ | ------------------ |
-| string | Certificate revocation date, in ASN.1 format.|
+| string | Certificate revocation date obtained, in ASN.1 format.|
 
 **Error codes**
 
@@ -8657,7 +8953,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8692,9 +8988,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob, (err, x509Crl) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('create x509 crl result: success.');
 
     try {
       let serialNumber = 1000;
@@ -8702,7 +8998,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       let date = crlEntry.getRevocationDate();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getRevocationDate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getRevocationDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8710,23 +9006,23 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 ## X509CRLEntry<sup>11+</sup>
 
-Provides APIs for operating the revoked certificates.
+Defines the revoked certificate object.
 
 ### getEncoded<sup>11+</sup>
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-Obtains the serialized data of the revoked certificate. This API uses an asynchronous callback to return the result.
+Obtains the serialized data of this revoked certificate. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized data of the revoked certificate.|
 
 **Error codes**
 
@@ -8736,7 +9032,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8771,23 +9067,23 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('create x509 CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       crlEntry.getEncoded((error, data) => {
         if (error) {
-          console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+          console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
         } else {
-          console.info('getEncoded success');
+          console.info('getEncoded result: success.');
         }
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8797,11 +9093,11 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-Obtains the serialized data of the revoked certificate. This API uses a promise to return the result.
+Obtains the serialized data of this revoked certificate. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8817,7 +9113,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8852,21 +9148,21 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('create x509 CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       crlEntry.getEncoded().then(result => {
-        console.info('getEncoded success');
+        console.info('getEncoded result: success.');
       }).catch((error: BusinessError) => {
-        console.error('getEncoded failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8878,9 +9174,9 @@ getSerialNumber() : bigint
 
 Obtains the serial number of this revoked certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8895,7 +9191,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -8930,9 +9226,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509Crl failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 crl success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
@@ -8940,7 +9236,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       serialNumber = crlEntry.getSerialNumber();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getSerialNumber failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -8956,9 +9252,9 @@ Obtains the issuer of a revoked certificate.
 >
 > The obtained issuer of this revoked certificate contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8974,7 +9270,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9009,9 +9305,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
@@ -9019,7 +9315,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let issuer = crlEntry.getCertIssuer();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getCertIssuer failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -9031,9 +9327,9 @@ getCertIssuer(encodingType: EncodingType): string
 
 Obtains the issuer information of a revoked certificate based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -9055,7 +9351,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -9092,18 +9388,18 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(1591942200000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       let issuer = crlEntry.getCertIssuer(cert.EncodingType.ENCODING_UTF8);
-      console.info('issuer output is ' + issuer);
+      console.info('issuer output = ' + issuer);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getCertIssuer failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -9115,9 +9411,9 @@ getRevocationDate() : string
 
 Obtains the date when the certificate was revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9132,7 +9428,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9167,9 +9463,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
@@ -9177,7 +9473,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let date = crlEntry.getRevocationDate();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getRevocationDate failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getRevocationDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -9189,15 +9485,15 @@ getExtensions(): DataBlob
 
 Obtains the CRL extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | CRl extensions obtained.|
+| [DataBlob](#datablob) | X.509 CRL entry extensions obtained.|
 
 **Error codes**
 
@@ -9206,7 +9502,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9244,9 +9540,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(4);
@@ -9254,7 +9550,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let extensions = crlEntry.getExtensions();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or getExtensions failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or getExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -9266,15 +9562,15 @@ hasExtensions(): boolean
 
 Checks whether this CRL entry has extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| boolean | Returns **true** if the CRL entry has extension; returns **false** otherwise.|
+| boolean | **true** is returned if the CRL entry has extensions; **false** is returned otherwise.|
 
 **Error codes**
 
@@ -9283,7 +9579,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9318,9 +9614,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob, (err, x509CRL) => {
   if (err) {
-    console.error('createX509CRL failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CRL failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('create x509 CRL success');
+    console.info('createX509CRL result: success.');
 
     try {
       let serialNumber = BigInt(1000);
@@ -9328,7 +9624,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let hasExtensions = crlEntry.hasExtensions();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('getRevokedCert or hasExtensions failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`getRevokedCert or hasExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 })
@@ -9338,17 +9634,17 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the certificate issuer.
+Obtains the distinguished name of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -9357,7 +9653,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9394,11 +9690,11 @@ async function certGetCertIssuerX500DistinguishedName() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let name = x509Crl.getRevokedCert(BigInt(1000)).getCertIssuerX500DistinguishedName();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -9409,9 +9705,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9426,7 +9722,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9463,11 +9759,11 @@ async function certToString() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     console.info('toString success: ' + x509Crl.getRevokedCert(BigInt(1000)).toString());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -9478,15 +9774,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -9495,7 +9791,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9532,11 +9828,11 @@ async function certHashCode() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     console.info('hashCode success: ' + x509Crl.getRevokedCert(BigInt(1000)).hashCode());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -9545,17 +9841,17 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
@@ -9564,7 +9860,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -9668,11 +9964,11 @@ async function certGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
     let object = x509Crl.getRevokedCert(BigInt('14091103387070223745671018446433705560')).getExtensionsObject();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -9683,22 +9979,22 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 Creates an object for a collection of X.509 certificates and CRLs.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificates. |
-| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRLs. |
+| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificate array. |
+| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRL array. |
 
 **Return value**
 
 | Type              | Description                |
 | ------------------ | -------------------- |
-| [CertCRLCollection](#certcrlcollection11) | **CertCRLCollection** object created.|
+| [CertCRLCollection](#certcrlcollection11) | Certificate and CRL collection.|
 
 **Error codes**
 
@@ -9745,7 +10041,7 @@ async function createX509CRL(): Promise<cert.X509CRL> {
     x509CRL = await cert.createX509CRL(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CRL;
 }
@@ -9772,7 +10068,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -9782,16 +10078,17 @@ async function createCollection() {
   const x509CRL = await createX509CRL();
   try {
     const collection: cert.CertCRLCollection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
-    console.info('createCertCRLCollection success');
+    console.info('createCertCRLCollection result: success.');
   } catch (err) {
-    console.error('createCertCRLCollection failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertCRLCollection failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
 
 ## CertCRLCollection<sup>11+</sup>
 
-Provides APIs for locating certificates or CRLs in a **CertCRLCollection** object.
+Defines the certificate and CRL collection.
 
 ### selectCerts<sup>11+</sup>
 
@@ -9799,9 +10096,9 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 Selects certificates that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -9813,7 +10110,7 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 | Type                                   | Description                                   |
 | --------------------------------------- | --------------------------------------- |
-| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return the result. Matched certificates.|
+| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return the matched certificates.|
 
 **Error codes**
 
@@ -9862,7 +10159,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -9880,9 +10177,10 @@ async function selectCerts() {
       publicKeyAlgID: '1.2.840.10045.2.1'
     };
     const certs = await collection.selectCerts(param);
-    console.info('call selectCerts success');
+    console.info('call selectCerts result: success.');
   } catch (err) {
-    console.error('call selectCerts failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`call selectCerts failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -9893,16 +10191,16 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 Selects certificates that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
 | param | [X509CertMatchParameters](#x509certmatchparameters11) | Yes  | Parameters used to match the certificates.  |
-| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback invoked to return the matched certificates.|
+| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback used to return the matched certificates.|
 
 **Error codes**
 
@@ -9951,7 +10249,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -9969,9 +10267,9 @@ async function selectCerts() {
   };
   collection.selectCerts(param, (err, certs) => {
     if (err) {
-      console.error('selectCerts failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+      console.error(`selectCerts failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
-      console.info('selectCerts success');
+      console.info('selectCerts result: success.');
     }
   });
 }
@@ -9983,9 +10281,9 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 Selects CRLs that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10045,30 +10343,30 @@ async function createX509CRL(): Promise<cert.X509CRL> {
     x509CRL = await cert.createX509CRL(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CRL;
 }
 
 async function createX509Cert(): Promise<cert.X509Cert> {
-  const certData = "-----BEGIN CERTIFICATE-----\r\n" +
-    "MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n" +
-    "BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n" +
-    "BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n" +
-    "WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n" +
-    "dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n" +
-    "EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n" +
-    "pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n" +
-    "poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n" +
-    "BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n" +
-    "BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n" +
-    "ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n" +
-    "fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n" +
-    "Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n" +
-    "y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n" +
-    "V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n" +
-    "Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n" +
-    "-----END CERTIFICATE-----\r\n";
+  const certData = '-----BEGIN CERTIFICATE-----\r\n' +
+    'MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n' +
+    'BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n' +
+    'BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n' +
+    'WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n' +
+    'dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n' +
+    'EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n' +
+    'pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n' +
+    'poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n' +
+    'BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n' +
+    'BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n' +
+    'ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n' +
+    'fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n' +
+    'Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n' +
+    'y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n' +
+    'V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n' +
+    'Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n' +
+    '-----END CERTIFICATE-----\r\n';
   const certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     encodingFormat: cert.EncodingFormat.FORMAT_PEM,
@@ -10077,9 +10375,10 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
   } catch (err) {
-    console.error('createX509Cert failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -10090,14 +10389,19 @@ async function selectCRLs() {
   const collection = cert.createCertCRLCollection([], [x509CRL]);
 
   const param: cert.X509CRLMatchParameters = {
-    issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
+    issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E,
+      0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31,
+      0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B,
+      0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04,
+      0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
     x509Cert: x509Cert
   }
   try {
     const crls = await collection.selectCRLs(param);
-    console.info('selectCRLs success');
+    console.info('selectCRLs result: success.');
   } catch (err) {
-    console.error('selectCRLs failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`selectCRLs failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -10108,9 +10412,9 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 Selects CRLs that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10165,30 +10469,30 @@ async function createX509CRL(): Promise<cert.X509CRL> {
     x509CRL = await cert.createX509CRL(encodingBlob);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createX509CRL failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CRL;
 }
 
 async function createX509Cert(): Promise<cert.X509Cert> {
-  const certData = "-----BEGIN CERTIFICATE-----\r\n" +
-    "MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n" +
-    "BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n" +
-    "BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n" +
-    "WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n" +
-    "dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n" +
-    "EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n" +
-    "pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n" +
-    "poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n" +
-    "BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n" +
-    "BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n" +
-    "ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n" +
-    "fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n" +
-    "Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n" +
-    "y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n" +
-    "V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n" +
-    "Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n" +
-    "-----END CERTIFICATE-----\r\n";
+  const certData = '-----BEGIN CERTIFICATE-----\r\n' +
+    'MIIC8TCCAdmgAwIBAgIIFB75m06RTHwwDQYJKoZIhvcNAQELBQAwWDELMAkGA1UE\r\n' +
+    'BhMCQ04xEDAOBgNVBAgTB0ppYW5nc3UxEDAOBgNVBAcTB05hbmppbmcxCzAJBgNV\r\n' +
+    'BAoTAnRzMQswCQYDVQQLEwJ0czELMAkGA1UEAxMCdHMwHhcNMjMxMTIzMDMzMjAw\r\n' +
+    'WhcNMjQxMTIzMDMzMjAwWjBhMQswCQYDVQQGEwJDTjEQMA4GA1UECBMHSmlhbmdz\r\n' +
+    'dTEQMA4GA1UEBxMHTmFuamluZzEMMAoGA1UEChMDdHMxMQwwCgYDVQQLEwN0czEx\r\n' +
+    'EjAQBgNVBAMTCTEyNy4wLjAuMTAqMAUGAytlcAMhALsWnY9cMNC6jzduM69vI3Ej\r\n' +
+    'pUlgHtEHS8kRfmYBupJSo4GvMIGsMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNSg\r\n' +
+    'poQvfxR8A1Y4St8NjOHkRpm4MAsGA1UdDwQEAwID+DAnBgNVHSUEIDAeBggrBgEF\r\n' +
+    'BQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEyNy4wLjAuMTAR\r\n' +
+    'BglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0\r\n' +
+    'ZTANBgkqhkiG9w0BAQsFAAOCAQEAfnLmPF6BtAUCZ9pjt1ITdXc5M4LJfMw5IPcv\r\n' +
+    'fUAvhdaUXtqBQcjGCWtDdhyb1n5Xp+N7oKz/Cnn0NGFTwVArtFiQ5NEP2CmrckLh\r\n' +
+    'Da4VnsDFU+zx2Bbfwo5Ms7iArxyx0fArbMZzN9D1lZcVjiIxp1+3k1/0sdCemcY/\r\n' +
+    'y7mw5NwkcczLWLBZl1/Ho8b4dlo1wTA7TZk9uu8UwYBwXDrQe6S9rMcvMcRKiJ9e\r\n' +
+    'V4SYZIO7ihr8+n4LQDQP+spvX4cf925a3kyZrftfvGCJ2ZNwvsPhyumYhaBqAgSy\r\n' +
+    'Up2BImymAqPi157q9EeYcQz170TtDZHGmjYzdQxhOAHRb6/IdQ==\r\n' +
+    '-----END CERTIFICATE-----\r\n';
   const certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     encodingFormat: cert.EncodingFormat.FORMAT_PEM,
@@ -10197,9 +10501,10 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
   try {
     x509Cert = await cert.createX509Cert(certEncodingBlob);
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
   } catch (err) {
-    console.error('createX509Cert failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -10210,14 +10515,18 @@ async function selectCRLs() {
   const collection = cert.createCertCRLCollection([], [x509CRL]);
 
   const param: cert.X509CRLMatchParameters = {
-    issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
+    issuer: [new Uint8Array([0x30, 0x58, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4E,
+      0x31, 0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4A, 0x69, 0x61, 0x6E, 0x67, 0x73, 0x75, 0x31,
+      0x10, 0x30, 0x0E, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x07, 0x4E, 0x61, 0x6E, 0x6A, 0x69, 0x6E, 0x67, 0x31, 0x0B,
+      0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04,
+      0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
     x509Cert: x509Cert
   }
   collection.selectCRLs(param, (err, crls) => {
     if (err) {
-      console.error('selectCRLs failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+      console.error(`selectCRLs failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
-      console.info('selectCRLs success');
+      console.info('selectCRLs result: success.');
     }
   });
 }
@@ -10227,11 +10536,11 @@ async function selectCRLs() {
 
 createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
-Creates an X.509 certificate chain instance. This API uses a promise to return the result.
+Creates an X.509 certificate chain object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10243,7 +10552,7 @@ Creates an X.509 certificate chain instance. This API uses a promise to return t
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X509CertChain](#x509certchain11)> | **X509CertChain** object created.|
+| Promise\<[X509CertChain](#x509certchain11)> | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -10271,60 +10580,60 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function createX509CertChain(): Promise<cert.X509CertChain> {
-  let certChainData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n" +
-    "BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n" +
-    "ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n" +
-    "MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n" +
-    "Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n" +
-    "MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n" +
-    "CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n" +
-    "p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n" +
-    "rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n" +
-    "zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n" +
-    "T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n" +
-    "8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n" +
-    "VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n" +
-    "IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n" +
-    "Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n" +
-    "ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n" +
-    "izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n" +
-    "B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n" +
-    "GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n" +
-    "DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n" +
-    "iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n" +
-    "-----END CERTIFICATE-----\n" +
-    "-----BEGIN CERTIFICATE-----\n" +
-    "MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-    "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-    "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n" +
-    "OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-    "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n" +
-    "AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n" +
-    "YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n" +
-    "SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n" +
-    "TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n" +
-    "STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n" +
-    "nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n" +
-    "pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n" +
-    "OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n" +
-    "CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n" +
-    "b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n" +
-    "uKPWR9dKBA==\n" +
-    "-----END CERTIFICATE-----\n" +
-    "-----BEGIN CERTIFICATE-----\n"  +
-    "MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-    "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-    "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n" +
-    "MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-    "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n" +
-    "AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n" +
-    "klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n" +
-    "St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n" +
-    "AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n" +
-    "KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n" +
-    "xjoE\n" +
-    "-----END CERTIFICATE-----\n";
+  let certChainData = '-----BEGIN CERTIFICATE-----\n' +
+    'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n' +
+    'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n' +
+    'ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n' +
+    'MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n' +
+    'Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n' +
+    'MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n' +
+    'CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n' +
+    'p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n' +
+    'rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n' +
+    'zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n' +
+    'T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n' +
+    '8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n' +
+    'VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n' +
+    'IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n' +
+    'Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n' +
+    'ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n' +
+    'izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n' +
+    'B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n' +
+    'GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n' +
+    'DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n' +
+    'iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n' +
+    '-----END CERTIFICATE-----\n' +
+    '-----BEGIN CERTIFICATE-----\n' +
+    'MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+    'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+    'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n' +
+    'OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+    'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n' +
+    'AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n' +
+    'YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n' +
+    'SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n' +
+    'TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n' +
+    'STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n' +
+    'nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n' +
+    'pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n' +
+    'OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n' +
+    'CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n' +
+    'b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n' +
+    'uKPWR9dKBA==\n' +
+    '-----END CERTIFICATE-----\n' +
+    '-----BEGIN CERTIFICATE-----\n' +
+    'MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+    'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+    'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n' +
+    'MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+    'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n' +
+    'AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n' +
+    'klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n' +
+    'St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n' +
+    'AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n' +
+    'KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n' +
+    'xjoE\n' +
+    '-----END CERTIFICATE-----\n';
 
   // Binary data of the certificate chain, which needs to be assigned by the service.
   let encodingBlob: cert.EncodingBlob = {
@@ -10337,7 +10646,7 @@ async function createX509CertChain(): Promise<cert.X509CertChain> {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -10349,18 +10658,18 @@ createX509CertChain();
 
 createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertChain>): void
 
-Creates an X.509 certificate chain instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate chain object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.       |
-| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback invoked to return the **X509CertChain** instance created.|
+| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback used to return the **X509CertChain** instance created.|
 
 **Error codes**
 
@@ -10386,60 +10695,60 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certChainData = "-----BEGIN CERTIFICATE-----\n" +
-  "MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n" +
-  "BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n" +
-  "ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n" +
-  "MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n" +
-  "Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n" +
-  "MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n" +
-  "CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n" +
-  "p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n" +
-  "rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n" +
-  "zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n" +
-  "T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n" +
-  "8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n" +
-  "VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n" +
-  "IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n" +
-  "Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n" +
-  "ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n" +
-  "izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n" +
-  "B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n" +
-  "GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n" +
-  "DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n" +
-  "iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n" +
-  "OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n" +
-  "AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n" +
-  "YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n" +
-  "SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n" +
-  "TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n" +
-  "STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n" +
-  "nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n" +
-  "pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n" +
-  "OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n" +
-  "CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n" +
-  "b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n" +
-  "uKPWR9dKBA==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n"  +
-  "MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n" +
-  "MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n" +
-  "AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n" +
-  "klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n" +
-  "St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n" +
-  "AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n" +
-  "KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n" +
-  "xjoE\n" +
-  "-----END CERTIFICATE-----\n";
+let certChainData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n' +
+  'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n' +
+  'ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n' +
+  'MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n' +
+  'Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n' +
+  'MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n' +
+  'CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n' +
+  'p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n' +
+  'rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n' +
+  'zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n' +
+  'T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n' +
+  '8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n' +
+  'VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n' +
+  'IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n' +
+  'Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n' +
+  'ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n' +
+  'izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n' +
+  'B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n' +
+  'GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n' +
+  'DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n' +
+  'iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n' +
+  'OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n' +
+  'AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n' +
+  'YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n' +
+  'SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n' +
+  'TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n' +
+  'STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n' +
+  'nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n' +
+  'pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n' +
+  'OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n' +
+  'CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n' +
+  'b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n' +
+  'uKPWR9dKBA==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n' +
+  'MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n' +
+  'AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n' +
+  'klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n' +
+  'St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n' +
+  'AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n' +
+  'KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n' +
+  'xjoE\n' +
+  '-----END CERTIFICATE-----\n';
 
 // Binary data of the certificate chain, which needs to be assigned by the service.
 let encodingBlob: cert.EncodingBlob = {
@@ -10450,9 +10759,9 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
-    console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CertChain failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('createX509CertChain success');
+    console.info('createX509CertChain result: success.');
   }
 });
 ```
@@ -10463,21 +10772,21 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| certs    | Array\<[X509Cert](#x509cert)> | Yes  | Array of X.509 certificates.|
+| certs    | Array\<[X509Cert](#x509cert)> | Yes  | X.509 certificates.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [X509CertChain](#x509certchain11) | **X509CertChain** object created.|
+| [X509CertChain](#x509certchain11) | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -10527,7 +10836,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -10539,7 +10848,7 @@ async function createX509CertChain(): Promise<cert.X509CertChain> {
     x509CertChain = cert.createX509CertChain([x509Cert]);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -10553,21 +10862,21 @@ buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12
 
 Builds an X.509 certificate chain with a **CertChainBuildParameters** object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| param | [CertChainBuildParameters](#certchainbuildparameters12) | Yes  | Object used to build the certificate chain.<br> The value of **maxLength** in [CertChainBuildParameters](#certchainbuildparameters12) must be less than the number of certificates in the certificate set.|
+| param | [CertChainBuildParameters](#certchainbuildparameters12) | Yes  | Object used to build the certificate chain.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | **X509CertChain** object created.|
+| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -10577,14 +10886,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -10624,24 +10933,24 @@ let certPem = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----';
 
 let caPem = '-----BEGIN CERTIFICATE-----\n' +
-'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
-'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
-'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
-'6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
-'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
-'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
-'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
-'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
-'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
-'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
-'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
-'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
-'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
-'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
-'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
-'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
-'sSus\n' +
-'-----END CERTIFICATE-----';
+  'MIIC/zCCAeegAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
+  'IENBMB4XDTI0MDMxOTAyMDIyNFoXDTM0MDMxNzAyMDIyNFowEjEQMA4GA1UEAwwH\n' +
+  'Um9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxI5SDvRfKU\n' +
+  '6XaTeyh2LHlUK0rVSeYfXkYf5Mc3Pgucg+ewzQjxkACMx5NYaW1zfGDNPG1i5IZl\n' +
+  'cPeWNz1Tm2g6wTd+LyNoNOOmwfLV8pLXSfAukgNrBREf3BzVrbu7hvPd2MmLH23H\n' +
+  'OBM9uDPTIqu3n2CDN2EzwULjaSk2g+jvhVKsDLInu5uKPmZBFhs1FWKgcnVnlbi1\n' +
+  'AyAx4efheits6EO70oV6UufCEtS1VsBXQHZRAG4ogshWldRBVNxkU6yHAfg0mM/5\n' +
+  'EhrZsfh51fWqlrhNWrInjgNV3xIt5ebTIgKZWUlSVHEA/UqDoGfY+CsAJdteZWOW\n' +
+  'KjsrC/DK2O0CAwEAAaNgMF4wHQYDVR0OBBYEFHRb+SgJu8O0UYdRBkszePocqxbY\n' +
+  'MB8GA1UdIwQYMBaAFHRb+SgJu8O0UYdRBkszePocqxbYMA8GA1UdEwEB/wQFMAMB\n' +
+  'Af8wCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQAKOT1ObfQNMN2wdfHq\n' +
+  'PQgFDDp6rBMbZe70LswPirSXljo4S/vfbG+gBoWCdu/SfsV+lyP75kg1wX0IQvzW\n' +
+  'xYNh864dgqPmGd0v8TIfM0UT0PpnowUyBHQ+E7LNYIOh/kjHbl3oERdEFA2PUyE9\n' +
+  'j3GLdg8oe/LqhEQCSAlH+v2RQgBZ9eVN+mSdUxwywm9U3acb0uqVkGiWK/ywumpg\n' +
+  'AmIZLMJtMVvg8uDkfy16Z4lChTEdNaJVUqPczUNk2kHXIF4we4be9HoOuTVz/SD/\n' +
+  'IsOhXn/BjS3jnhyS9fxo+opJf9zVTWI02Hlh1WVVtH/m3nIZblyAJhcjCHA2wZSz\n' +
+  'sSus\n' +
+  '-----END CERTIFICATE-----';
 
 async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   // Certificate binary data, which needs to match your case.
@@ -10656,7 +10965,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -10667,12 +10976,12 @@ async function buildX509CertChain() {
     const x509Cert = await createX509Cert(certPem);
     let certCrlCollection = cert.createCertCRLCollection([x509Cert]);
     let param: cert.CertChainBuildParameters = {
-      certMatchParameters: {validDate:'20240812080000Z'},
+      certMatchParameters: { validDate: '20240812080000Z' },
       maxLength: 3,
       validationParameters: {
         date: '20240812080000Z',
         certCRLs: [certCrlCollection],
-        trustAnchors: [{CACert:caCert}, {CACert:caCert}],
+        trustAnchors: [{ CACert: caCert }, { CACert: caCert }],
       }
     }
     let certChainBuildResult = await cert.buildX509CertChain(param);
@@ -10680,7 +10989,7 @@ async function buildX509CertChain() {
     console.info("ca subject name: " + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data)
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 
@@ -10691,24 +11000,24 @@ buildX509CertChain();
 
 parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
-Parses a .p12 file. 
+Obtains the certificate, private key, and other certificates by parsing a PKCS #12 (.p12) file and returns the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | Uint8Array | Yes| .p12 file to parse, in DER format.|
-| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the file.|
+| data | Uint8Array | Yes| PKCS #12 file to parse, in DER format.|
+| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the PKCS #12 file.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [Pkcs12Data](#pkcs12data18) | Data parsed from the .p12 file.|
+| [Pkcs12Data](#pkcs12data18) | Certificate, private key, and other certificates parsed from a PKCS #12 file.|
 
 **Error codes**
 
@@ -10718,7 +11027,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
@@ -10729,171 +11038,172 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 function doTestParsePkcs12() {
   try {
-    let p12_cert = new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
-      0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
-      0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
-      0x06, 0xa0, 0x82, 0x03, 0xa8, 0x30, 0x82, 0x03, 0xa4, 0x02, 0x01, 0x00, 0x30, 0x82, 0x03, 0x9d,
-      0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0x30, 0x1c, 0x06, 0x0a, 0x2a,
-      0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x06, 0x30, 0x0e, 0x04, 0x08, 0x7c, 0xd8, 0x60,
-      0x3a, 0x07, 0xfb, 0x87, 0x8b, 0x02, 0x02, 0x08, 0x00, 0x80, 0x82, 0x03, 0x70, 0x4d, 0x64, 0xbe,
-      0x82, 0xc2, 0x59, 0x58, 0x65, 0xf0, 0x37, 0x46, 0x4f, 0x6b, 0xfa, 0x43, 0x2e, 0x9d, 0xd9, 0x4f,
-      0xd3, 0x54, 0x71, 0x69, 0x6e, 0x03, 0xf8, 0xb8, 0xf9, 0x05, 0xa2, 0x70, 0xa8, 0x70, 0xfb, 0xe6,
-      0xda, 0x73, 0xdb, 0x4e, 0xdf, 0x72, 0xcd, 0xb6, 0x88, 0x81, 0xec, 0x3f, 0x8d, 0x7b, 0xdc, 0xa6,
-      0x62, 0xd3, 0xd1, 0xdc, 0xef, 0xb9, 0x76, 0xb5, 0xd3, 0xb3, 0xfb, 0x61, 0x50, 0xeb, 0x22, 0x9b,
-      0x72, 0x20, 0xb4, 0xe9, 0x7c, 0x5e, 0xaf, 0xa9, 0xb6, 0x40, 0x69, 0x70, 0xea, 0x79, 0x02, 0x1d,
-      0x66, 0x71, 0x62, 0x39, 0x31, 0xd3, 0x31, 0xb1, 0x6f, 0x2a, 0x2d, 0x13, 0x59, 0xe9, 0xb7, 0x98,
-      0xbe, 0x67, 0xfa, 0x5d, 0x6f, 0x8f, 0x7a, 0x43, 0x10, 0x5a, 0x3f, 0x13, 0xda, 0xb0, 0x94, 0x08,
-      0x82, 0xf4, 0x39, 0x1d, 0x42, 0x26, 0x4a, 0xbe, 0x13, 0xe9, 0x89, 0x55, 0x52, 0xa4, 0x16, 0x3d,
-      0x50, 0x83, 0x5c, 0xb9, 0x00, 0x5e, 0x03, 0x35, 0x65, 0x13, 0x1f, 0xd8, 0xf8, 0xeb, 0x28, 0xe5,
-      0x00, 0x09, 0x9a, 0x62, 0x65, 0xab, 0x28, 0x21, 0x2e, 0x55, 0x11, 0x77, 0x7e, 0x64, 0xae, 0x12,
-      0xc1, 0x5e, 0x85, 0xf2, 0xe7, 0xf7, 0x2b, 0x51, 0x46, 0xa6, 0xf8, 0x55, 0x2c, 0xc4, 0x0a, 0x80,
-      0x6a, 0xc2, 0xa8, 0xba, 0x94, 0xf8, 0xee, 0x18, 0xf7, 0x32, 0x50, 0x53, 0xcc, 0x1e, 0x53, 0x85,
-      0xeb, 0x0d, 0x1e, 0xec, 0xe2, 0xbb, 0xc2, 0xf3, 0xf7, 0x80, 0xfd, 0x81, 0x63, 0x8f, 0x87, 0x98,
-      0x09, 0x47, 0x72, 0xee, 0x2d, 0x5a, 0x18, 0x89, 0x6b, 0x95, 0xef, 0x52, 0xde, 0x4d, 0xf5, 0x48,
-      0x2a, 0x38, 0x6f, 0x4b, 0x98, 0x3c, 0x6d, 0x41, 0xdd, 0x1b, 0xfd, 0x65, 0x1b, 0x87, 0x8a, 0xcf,
-      0xec, 0x47, 0xe3, 0x7a, 0xa0, 0x56, 0xd9, 0x36, 0x36, 0xcb, 0x17, 0xaa, 0x1b, 0x24, 0x79, 0x96,
-      0xc6, 0x60, 0xd4, 0xe4, 0xa8, 0x59, 0x35, 0x5e, 0x4e, 0x00, 0xbf, 0x9a, 0xf5, 0x5c, 0x2a, 0xd7,
-      0xd7, 0x92, 0x98, 0x79, 0xad, 0x13, 0xda, 0xea, 0xde, 0xcd, 0x65, 0x81, 0x26, 0xbd, 0x55, 0x0f,
-      0xa4, 0x73, 0x54, 0x7b, 0x2f, 0x55, 0x2a, 0x2f, 0xb9, 0x2d, 0x6e, 0x04, 0xc8, 0x37, 0x5e, 0x93,
-      0x09, 0xa7, 0x7f, 0xb1, 0x6b, 0x4a, 0x9f, 0xea, 0x59, 0x19, 0x57, 0xd0, 0xc1, 0xa1, 0x6b, 0xaf,
-      0x27, 0x2b, 0xac, 0x81, 0xec, 0xcd, 0x2e, 0xa2, 0xa6, 0x08, 0x01, 0xfc, 0xa1, 0xbc, 0xc9, 0xdc,
-      0x97, 0xb9, 0x48, 0xa8, 0x65, 0x5d, 0x63, 0xdb, 0x5c, 0x7e, 0x55, 0xe7, 0x47, 0xf2, 0x74, 0x17,
-      0x67, 0xfe, 0x56, 0x20, 0x54, 0x65, 0x11, 0xdf, 0xec, 0x75, 0x70, 0x49, 0x59, 0xd1, 0xea, 0x6b,
-      0x8f, 0x39, 0xec, 0x5d, 0x81, 0x82, 0x9a, 0xec, 0xce, 0x6c, 0x0c, 0x32, 0x14, 0xbd, 0xef, 0xac,
-      0xae, 0x04, 0xd0, 0x75, 0x62, 0xf5, 0x82, 0x16, 0xd1, 0xa8, 0xfb, 0x22, 0x2a, 0xc2, 0xe7, 0x7a,
-      0x75, 0x08, 0x59, 0x99, 0x34, 0x3d, 0xd9, 0xd7, 0x66, 0xb8, 0xcd, 0xaa, 0xf4, 0x48, 0xcc, 0x21,
-      0x25, 0x83, 0xae, 0xad, 0x55, 0x0e, 0xff, 0x44, 0xf3, 0xcc, 0xd1, 0x89, 0x72, 0x0f, 0x9f, 0xe3,
-      0xe5, 0xc7, 0xd4, 0x53, 0x94, 0xd6, 0xfb, 0x35, 0xd5, 0xd8, 0x2f, 0xa7, 0x4b, 0xf9, 0x50, 0x15,
-      0x1e, 0x35, 0xfc, 0x3d, 0xca, 0xad, 0xb6, 0x49, 0x16, 0xee, 0xff, 0xd7, 0x8a, 0xcc, 0xf0, 0x96,
-      0x11, 0x97, 0x22, 0xf3, 0xf7, 0x7c, 0x7a, 0x50, 0x49, 0x12, 0x68, 0x6e, 0x0e, 0x62, 0x32, 0xc7,
-      0xe9, 0xc3, 0xa0, 0x1b, 0xfe, 0x29, 0x8c, 0x46, 0xc2, 0x7e, 0xe1, 0xea, 0xc3, 0xcb, 0x30, 0xaf,
-      0xe4, 0x60, 0xe5, 0xa5, 0xa5, 0xb8, 0xf4, 0x16, 0xfa, 0x19, 0xd0, 0x1c, 0x14, 0xce, 0xf9, 0xa8,
-      0x0b, 0x3f, 0x87, 0x89, 0xd3, 0xed, 0x9e, 0x16, 0x14, 0xbb, 0xd3, 0x64, 0xeb, 0x00, 0xe7, 0x48,
-      0x1f, 0xd4, 0x47, 0xbc, 0xa9, 0x6f, 0x03, 0xe0, 0x0e, 0xaf, 0xb9, 0xad, 0x05, 0xa0, 0x1d, 0xee,
-      0x0a, 0xcd, 0x0f, 0xd0, 0xb8, 0xf1, 0x35, 0x80, 0xa7, 0x72, 0xcd, 0x36, 0x8e, 0xce, 0x72, 0xf9,
-      0x9f, 0xd5, 0x29, 0xae, 0x02, 0xb7, 0xbe, 0x65, 0xff, 0x38, 0x45, 0xf8, 0x8d, 0x87, 0x2f, 0xf8,
-      0xdd, 0xc1, 0x72, 0x17, 0x2b, 0xdd, 0x3e, 0xfe, 0x01, 0xa0, 0x59, 0xb3, 0x19, 0x92, 0xf0, 0x59,
-      0xf5, 0x06, 0x77, 0x8b, 0x1a, 0x41, 0x1d, 0x8b, 0x80, 0x74, 0x95, 0x8b, 0x30, 0x03, 0x18, 0xdd,
-      0x1e, 0x1b, 0x21, 0x36, 0xdf, 0xde, 0xc3, 0xa2, 0x68, 0xe0, 0x3d, 0x94, 0x37, 0x6b, 0x48, 0xb2,
-      0xb9, 0x41, 0x53, 0xd6, 0x65, 0xef, 0x7a, 0x3d, 0xdc, 0x09, 0x17, 0x66, 0xb4, 0x05, 0x58, 0x8a,
-      0x5d, 0x2f, 0x40, 0x4a, 0x91, 0x8a, 0xa5, 0xb7, 0x29, 0xfb, 0x37, 0x81, 0x71, 0x77, 0x50, 0x8d,
-      0x34, 0x80, 0x7e, 0xab, 0xb9, 0xc8, 0xdc, 0xb7, 0x2c, 0x7e, 0xbc, 0xad, 0x7c, 0x14, 0x5c, 0xf6,
-      0x90, 0x88, 0x0e, 0x0d, 0x50, 0x7a, 0x4e, 0xa6, 0x85, 0xe4, 0x2a, 0xe7, 0x67, 0x21, 0x53, 0xbb,
-      0x73, 0xd5, 0x30, 0x78, 0xbd, 0x08, 0x2b, 0x42, 0x44, 0x3e, 0x5d, 0x2b, 0x2f, 0x09, 0x8e, 0x82,
-      0xc3, 0x5b, 0x9e, 0xd8, 0x20, 0xc6, 0xb7, 0x42, 0xe5, 0xb3, 0x60, 0x0b, 0x9b, 0x01, 0x76, 0x26,
-      0xf7, 0xc1, 0xf7, 0xe1, 0xd1, 0x46, 0xf7, 0x9c, 0x21, 0xfd, 0x66, 0xb7, 0x14, 0x1d, 0x89, 0xb5,
-      0xd3, 0xa1, 0x4e, 0x57, 0x97, 0xe7, 0xe4, 0x63, 0x96, 0xe2, 0x6f, 0x10, 0x6a, 0xb7, 0x8e, 0x83,
-      0x64, 0x22, 0x10, 0x02, 0x27, 0x87, 0x6d, 0xb6, 0x11, 0x51, 0xe9, 0xe6, 0x68, 0x1a, 0xc8, 0xd3,
-      0x6b, 0x23, 0x33, 0x68, 0x66, 0xab, 0x4d, 0xf9, 0x92, 0x11, 0x67, 0x9d, 0x24, 0xee, 0x18, 0xa8,
-      0x3c, 0x5a, 0xfe, 0x79, 0x76, 0x99, 0xeb, 0x9f, 0x19, 0x9d, 0x74, 0xee, 0x13, 0xd9, 0xb1, 0x7b,
-      0x4e, 0xcf, 0x30, 0x05, 0xdb, 0x5a, 0x3e, 0x00, 0x7e, 0x0a, 0xed, 0x6f, 0xaf, 0x0d, 0x1b, 0xf3,
-      0x61, 0x24, 0x06, 0xe7, 0xf2, 0x57, 0x72, 0xf8, 0x61, 0x4d, 0x5f, 0x00, 0x78, 0x1f, 0x4d, 0xc7,
-      0x28, 0x5e, 0xc4, 0x9b, 0xed, 0xac, 0x4f, 0x16, 0xaf, 0x81, 0x85, 0x33, 0x16, 0xbd, 0x6a, 0xb9,
-      0xb2, 0x8e, 0x25, 0xbc, 0xaf, 0xfd, 0xea, 0xb7, 0x20, 0x32, 0x15, 0x62, 0x77, 0x52, 0xa1, 0xf2,
-      0xd0, 0x9d, 0x12, 0x4c, 0x85, 0x71, 0x08, 0x03, 0xa7, 0x94, 0x34, 0xb4, 0x96, 0x30, 0x82, 0x05,
-      0x41, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x05, 0x32,
-      0x04, 0x82, 0x05, 0x2e, 0x30, 0x82, 0x05, 0x2a, 0x30, 0x82, 0x05, 0x26, 0x06, 0x0b, 0x2a, 0x86,
-      0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x0a, 0x01, 0x02, 0xa0, 0x82, 0x04, 0xee, 0x30, 0x82, 0x04,
-      0xea, 0x30, 0x1c, 0x06, 0x0a, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x03, 0x30,
-      0x0e, 0x04, 0x08, 0x30, 0xee, 0xbd, 0x7c, 0xcb, 0xb5, 0xa5, 0x1b, 0x02, 0x02, 0x08, 0x00, 0x04,
-      0x82, 0x04, 0xc8, 0x1e, 0xd0, 0x7f, 0x7e, 0x86, 0x1c, 0x6f, 0x0e, 0xac, 0x6c, 0xe3, 0x35, 0xcb,
-      0xff, 0xe4, 0x84, 0x88, 0x97, 0x45, 0xf3, 0x48, 0xa9, 0x98, 0xeb, 0x74, 0x91, 0x53, 0x07, 0x7a,
-      0xe4, 0x78, 0x89, 0x13, 0xe7, 0xce, 0xa3, 0xc5, 0xab, 0x2c, 0x16, 0xe5, 0x02, 0x64, 0xc6, 0xb5,
-      0x11, 0x36, 0x69, 0x0b, 0x5f, 0x7e, 0x95, 0x27, 0x59, 0x9a, 0xac, 0x98, 0x12, 0x76, 0x39, 0x31,
-      0xaa, 0x4f, 0x22, 0x55, 0x21, 0x71, 0x20, 0xeb, 0x4e, 0x5e, 0x2d, 0xd8, 0xab, 0xd9, 0x64, 0x38,
-      0x13, 0x9a, 0x14, 0x48, 0x7f, 0x48, 0x05, 0xec, 0x49, 0x55, 0x80, 0x49, 0xaf, 0x4e, 0x29, 0xdf,
-      0x4a, 0xfb, 0xa1, 0x20, 0x2f, 0x98, 0x35, 0xf7, 0x8f, 0xb9, 0x41, 0x8b, 0x00, 0x14, 0x23, 0x9a,
-      0x43, 0xfe, 0x55, 0xfc, 0xe5, 0x57, 0x19, 0xa9, 0x74, 0x44, 0x1f, 0xdd, 0xc3, 0xc8, 0x9f, 0xfa,
-      0x9f, 0x67, 0x93, 0xed, 0x79, 0x11, 0xe1, 0x4e, 0xed, 0xd6, 0x20, 0x82, 0xc8, 0x85, 0xdf, 0x4e,
-      0xa0, 0xcd, 0xd8, 0x36, 0x37, 0x4f, 0x67, 0x9d, 0x84, 0x44, 0x14, 0xce, 0xc0, 0xc9, 0xa6, 0xbd,
-      0x73, 0x06, 0x27, 0xb7, 0x16, 0x97, 0x8c, 0x61, 0xd9, 0x63, 0xb2, 0x56, 0x8d, 0x28, 0x9e, 0x2e,
-      0xcf, 0xa3, 0xfe, 0x8d, 0xaa, 0xef, 0x69, 0x32, 0x7b, 0x32, 0xbe, 0xd5, 0x62, 0x2c, 0x2e, 0x7f,
-      0x72, 0xdb, 0x3c, 0x4b, 0xe4, 0x76, 0xa3, 0xa9, 0xa1, 0x67, 0x84, 0x86, 0xea, 0x14, 0x15, 0x6c,
-      0x74, 0xd2, 0xac, 0x0e, 0xe2, 0x54, 0x54, 0xd4, 0x31, 0xa3, 0x88, 0x66, 0x89, 0x31, 0x7b, 0xf7,
-      0x3c, 0x92, 0xce, 0x3e, 0x86, 0xfb, 0x57, 0xc8, 0x65, 0xae, 0x85, 0x6d, 0x48, 0xf6, 0xe6, 0x37,
-      0xeb, 0x77, 0xcf, 0x06, 0xd6, 0x9e, 0x54, 0xb4, 0xd8, 0x9a, 0x5f, 0xdd, 0xc5, 0xa5, 0x05, 0xa0,
-      0x4b, 0xd1, 0x54, 0xab, 0x4f, 0xd0, 0x3e, 0x6b, 0x8f, 0x03, 0x66, 0xd4, 0xe2, 0x90, 0xea, 0x2d,
-      0x9b, 0x6a, 0x2b, 0xc4, 0x7b, 0x9d, 0xf1, 0xb5, 0x22, 0xdf, 0x86, 0xc2, 0xfd, 0x13, 0x0a, 0x69,
-      0x29, 0x59, 0xe9, 0x45, 0xcd, 0xdf, 0xcd, 0xa5, 0x71, 0x7e, 0x70, 0xc3, 0x60, 0x9e, 0x47, 0x5d,
-      0xd4, 0x6c, 0xcc, 0x15, 0x51, 0x23, 0x5b, 0x4e, 0xee, 0x72, 0x80, 0x49, 0xd6, 0xac, 0x89, 0x16,
-      0x65, 0xf4, 0x95, 0x57, 0x19, 0x13, 0xab, 0x9c, 0x08, 0xe8, 0xdf, 0x0a, 0xe2, 0x39, 0xfc, 0xff,
-      0x42, 0x02, 0xac, 0xaf, 0xf1, 0xb6, 0x56, 0xef, 0x75, 0x60, 0x2f, 0xc2, 0x5d, 0xef, 0xf5, 0x79,
-      0xb5, 0x46, 0xa0, 0xb5, 0x03, 0x67, 0xef, 0x78, 0x3d, 0x49, 0xd0, 0xc5, 0x0e, 0xff, 0x42, 0x72,
-      0x02, 0x86, 0x99, 0x93, 0xaa, 0xa3, 0x9e, 0x2c, 0xc7, 0xec, 0xa2, 0xdf, 0x25, 0x4e, 0x28, 0x81,
-      0x82, 0x3e, 0x29, 0xd3, 0x37, 0xfd, 0x32, 0xf4, 0x85, 0x46, 0x42, 0xb9, 0x94, 0x44, 0x8a, 0xbf,
-      0xd9, 0x14, 0xcb, 0xb6, 0xd3, 0xc5, 0xe7, 0x6b, 0x28, 0x70, 0xc3, 0x9c, 0xc2, 0x93, 0x9d, 0x2f,
-      0xab, 0xd6, 0xb2, 0x19, 0x28, 0x9a, 0xda, 0x0d, 0x90, 0x5b, 0xba, 0x64, 0x6f, 0xcc, 0x11, 0xef,
-      0x6c, 0x88, 0x18, 0x4f, 0x86, 0x6e, 0xed, 0xcf, 0xde, 0x0d, 0xec, 0xe2, 0x12, 0xc3, 0x89, 0x0a,
-      0x3f, 0xbb, 0x3d, 0x8c, 0x8f, 0xa9, 0x40, 0xe6, 0xf8, 0xd1, 0x1a, 0x9a, 0x7e, 0x8a, 0xd7, 0x7b,
-      0x56, 0xf4, 0x5d, 0x80, 0x64, 0xd5, 0x88, 0x86, 0x85, 0x18, 0x30, 0x5d, 0x64, 0x04, 0xb3, 0xc2,
-      0xc7, 0x80, 0xda, 0x3e, 0xc4, 0xd6, 0xf6, 0xc4, 0x95, 0x56, 0xd5, 0xad, 0x82, 0x86, 0xcc, 0x1a,
-      0x05, 0x69, 0x06, 0x08, 0x5b, 0x19, 0xea, 0x10, 0xc5, 0xcd, 0x67, 0x93, 0xab, 0x0f, 0xe3, 0xba,
-      0xb0, 0x0d, 0xac, 0x99, 0x0d, 0x35, 0x6f, 0xe5, 0x41, 0xb2, 0x7c, 0x87, 0x91, 0x6c, 0xe2, 0x75,
-      0x9b, 0x64, 0x62, 0x06, 0x2a, 0x8b, 0xd9, 0x4d, 0x23, 0xcd, 0x2b, 0xef, 0xf5, 0x61, 0x82, 0x8e,
-      0x3f, 0xf6, 0x2b, 0xe1, 0x6f, 0xcf, 0xbd, 0xaa, 0x07, 0x97, 0x49, 0x4e, 0x02, 0x9d, 0xa5, 0x9e,
-      0xc5, 0xd7, 0x8b, 0xd3, 0xe1, 0xd9, 0x35, 0x96, 0x9d, 0x1f, 0xa2, 0xf6, 0x91, 0xee, 0xd1, 0x3b,
-      0xa8, 0xfe, 0x4d, 0xeb, 0xf9, 0xfc, 0xe4, 0xab, 0x60, 0xb7, 0x86, 0x9d, 0x2a, 0x35, 0xb0, 0x00,
-      0xd4, 0x3c, 0x2a, 0x7e, 0x6d, 0x65, 0x5f, 0xf3, 0x7c, 0x23, 0x57, 0x52, 0x2a, 0x8c, 0x5b, 0x36,
-      0x74, 0xb7, 0x61, 0x49, 0xf0, 0xdf, 0xcf, 0x8a, 0x28, 0xc5, 0x8d, 0xbc, 0x20, 0xcc, 0xac, 0x86,
-      0x20, 0xd8, 0x2d, 0x86, 0x99, 0xf5, 0xf0, 0xdb, 0xed, 0x8d, 0xf9, 0xd7, 0x4e, 0xa8, 0xde, 0x84,
-      0x35, 0x50, 0xc1, 0x7c, 0xbd, 0xdf, 0xc2, 0x24, 0x1a, 0x49, 0x24, 0x9a, 0x37, 0x93, 0xca, 0x2d,
-      0x73, 0x47, 0x8f, 0x83, 0xed, 0x4d, 0xca, 0xf8, 0xf0, 0xd3, 0x9b, 0xe0, 0x4b, 0x3b, 0xf1, 0x86,
-      0xeb, 0x78, 0x7b, 0x42, 0xa1, 0xb9, 0x36, 0x15, 0xde, 0x63, 0xab, 0x8b, 0x8b, 0x5d, 0xa2, 0x92,
-      0x10, 0x95, 0xdf, 0xda, 0xd7, 0xba, 0xa0, 0x26, 0xb9, 0xdc, 0x83, 0xeb, 0xdc, 0xd2, 0x1f, 0xf1,
-      0xb1, 0x8d, 0x21, 0x51, 0x71, 0x59, 0x0e, 0xe8, 0x7e, 0xf1, 0x53, 0x08, 0x98, 0x79, 0x05, 0x3b,
-      0x22, 0xf1, 0xda, 0x07, 0x0d, 0xf7, 0x89, 0x5e, 0xc4, 0x62, 0x8c, 0xf9, 0x19, 0xc8, 0xbc, 0xa4,
-      0x0c, 0x6f, 0x41, 0x34, 0x56, 0x22, 0x6b, 0xe6, 0xee, 0x7c, 0x4a, 0xd9, 0x26, 0x8c, 0x56, 0x12,
-      0xf3, 0x03, 0x12, 0x1c, 0x5b, 0x8d, 0x64, 0x5c, 0x1c, 0xb6, 0x0f, 0x93, 0xaf, 0xb1, 0x67, 0x6f,
-      0x13, 0xdd, 0xe3, 0xcf, 0x0e, 0xe6, 0x06, 0xf3, 0xb2, 0xbc, 0x99, 0xf5, 0xb0, 0xd7, 0xe9, 0x7e,
-      0xb0, 0x6a, 0xb9, 0xb5, 0xda, 0xcf, 0x88, 0xf1, 0xc5, 0x58, 0x54, 0x05, 0x5c, 0x9d, 0x79, 0xc2,
-      0xcd, 0xbb, 0xc6, 0xf2, 0x69, 0xa9, 0xe3, 0x4e, 0x05, 0x0d, 0x02, 0xb6, 0x4d, 0x8e, 0x7d, 0x60,
-      0x8e, 0xda, 0x4d, 0x28, 0xd2, 0xec, 0x8a, 0x11, 0xe3, 0xe7, 0x17, 0x20, 0x07, 0x7b, 0xfc, 0x9b,
-      0x4e, 0xf7, 0x79, 0xf5, 0x0a, 0x6e, 0xd1, 0x1e, 0x7b, 0x83, 0x66, 0x5e, 0x1b, 0x9d, 0x36, 0x32,
-      0x89, 0xf6, 0x72, 0xa5, 0x58, 0x54, 0x42, 0xba, 0x90, 0xf3, 0xbb, 0x05, 0x46, 0xa4, 0x91, 0x1c,
-      0xdb, 0xab, 0xf3, 0x68, 0x56, 0x7a, 0xd3, 0xff, 0x3f, 0x9f, 0xc5, 0x4a, 0x47, 0xbd, 0x89, 0x46,
-      0xf6, 0x94, 0x3a, 0x94, 0xd4, 0x30, 0xd3, 0xae, 0x0d, 0x99, 0x95, 0xf7, 0x75, 0xfe, 0x14, 0x10,
-      0x9e, 0xed, 0x21, 0x0f, 0x0d, 0x54, 0x7d, 0x54, 0xc5, 0x80, 0x21, 0x4d, 0xf2, 0xaf, 0x67, 0xaf,
-      0x8a, 0x76, 0x9e, 0x34, 0x32, 0x74, 0x89, 0x2a, 0x32, 0xf9, 0x48, 0x20, 0x90, 0xe6, 0x4a, 0xa3,
-      0x7f, 0xf2, 0x2a, 0x51, 0x22, 0x93, 0xe5, 0xdd, 0x59, 0xb3, 0x83, 0xa8, 0x47, 0xf5, 0x6b, 0x38,
-      0x24, 0xc2, 0xac, 0x2d, 0x03, 0xda, 0xb1, 0x17, 0x19, 0xe0, 0x38, 0x2c, 0xb3, 0xa6, 0x4c, 0x8e,
-      0xae, 0x63, 0xa7, 0xae, 0x96, 0xb1, 0x07, 0x8c, 0x8f, 0x6a, 0x08, 0x32, 0x15, 0x1f, 0x33, 0x97,
-      0x21, 0x3b, 0x51, 0x70, 0xc5, 0x1f, 0xa6, 0xa3, 0x8a, 0xd0, 0x8f, 0x0b, 0xda, 0x64, 0xab, 0xbe,
-      0xee, 0x4b, 0x14, 0xfd, 0x32, 0x87, 0x9e, 0xa7, 0x19, 0x75, 0xc9, 0xaa, 0xd3, 0xed, 0xa7, 0xa0,
-      0x01, 0xe7, 0xa0, 0xe5, 0x28, 0xdd, 0x3b, 0x7c, 0x49, 0xe4, 0x24, 0x7d, 0x92, 0x86, 0x25, 0x03,
-      0xb3, 0x66, 0x04, 0xf3, 0xa1, 0x40, 0x11, 0x35, 0x3a, 0x1d, 0xbf, 0x1c, 0x02, 0x83, 0x3d, 0x37,
-      0x51, 0x88, 0xa3, 0x2b, 0x10, 0x8c, 0x8e, 0x10, 0xdd, 0xdc, 0xef, 0xa4, 0xe9, 0x14, 0x77, 0xb6,
-      0x8e, 0x75, 0xb6, 0x8e, 0xea, 0xaa, 0x57, 0x16, 0x1f, 0xb0, 0x0c, 0xbc, 0x44, 0xed, 0x92, 0x94,
-      0x9a, 0xb4, 0xf3, 0x31, 0x64, 0x02, 0x5c, 0xa1, 0x51, 0x63, 0x39, 0x42, 0x74, 0x7a, 0x1d, 0xf2,
-      0xf5, 0x92, 0x50, 0xf1, 0x5a, 0x8a, 0xde, 0xb3, 0x4e, 0xf1, 0x6e, 0x67, 0xd9, 0x5b, 0x00, 0xa7,
-      0xd1, 0x90, 0x58, 0x36, 0xc4, 0x15, 0x80, 0xbb, 0xa5, 0xbb, 0x98, 0xc0, 0x8a, 0x9b, 0x17, 0x35,
-      0x36, 0x3b, 0x62, 0x0f, 0x29, 0xcd, 0xe9, 0x04, 0x0e, 0x9d, 0xca, 0x43, 0x04, 0xdf, 0x17, 0x49,
-      0xbf, 0xb6, 0x7a, 0x7a, 0x3c, 0xdb, 0x0d, 0x6d, 0xd5, 0x89, 0xb9, 0x69, 0x94, 0xd8, 0xb2, 0xd6,
-      0x38, 0x8a, 0xcc, 0x78, 0x44, 0x40, 0x63, 0x9f, 0x1e, 0x0e, 0x40, 0x33, 0x51, 0xd3, 0x65, 0xf8,
-      0xf1, 0x42, 0x06, 0x75, 0x84, 0xe7, 0xb1, 0xe9, 0xd6, 0xa4, 0x5e, 0x7f, 0xb0, 0x48, 0x6f, 0x80,
-      0x92, 0xf8, 0xfc, 0x2a, 0xdb, 0x18, 0x97, 0xe5, 0xe7, 0xc7, 0x46, 0xb6, 0x59, 0x8c, 0x3a, 0x09,
-      0x91, 0xc1, 0x49, 0x55, 0xf9, 0xf3, 0x87, 0x19, 0xdc, 0x72, 0x56, 0xd3, 0x20, 0x5e, 0xc5, 0x3d,
-      0xfb, 0x19, 0xea, 0x6a, 0xdf, 0x09, 0xb2, 0x8f, 0xb6, 0xdd, 0x26, 0x31, 0x25, 0x30, 0x23, 0x06,
-      0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x3b, 0xd2,
-      0xb3, 0x51, 0x4c, 0x57, 0xd0, 0xca, 0x34, 0xa4, 0xf0, 0x06, 0xdd, 0xe9, 0x76, 0x08, 0xdb, 0x7b,
-      0x3a, 0xb0, 0x30, 0x31, 0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05,
-      0x00, 0x04, 0x14, 0x8e, 0x7f, 0x87, 0x67, 0x78, 0x64, 0x93, 0x36, 0x35, 0xe5, 0x93, 0x9d, 0xac,
-      0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
-      0x7e, 0x02, 0x02, 0x08, 0x00]);
+    let p12_cert =
+      new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
+        0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
+        0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
+        0x06, 0xa0, 0x82, 0x03, 0xa8, 0x30, 0x82, 0x03, 0xa4, 0x02, 0x01, 0x00, 0x30, 0x82, 0x03, 0x9d,
+        0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0x30, 0x1c, 0x06, 0x0a, 0x2a,
+        0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x06, 0x30, 0x0e, 0x04, 0x08, 0x7c, 0xd8, 0x60,
+        0x3a, 0x07, 0xfb, 0x87, 0x8b, 0x02, 0x02, 0x08, 0x00, 0x80, 0x82, 0x03, 0x70, 0x4d, 0x64, 0xbe,
+        0x82, 0xc2, 0x59, 0x58, 0x65, 0xf0, 0x37, 0x46, 0x4f, 0x6b, 0xfa, 0x43, 0x2e, 0x9d, 0xd9, 0x4f,
+        0xd3, 0x54, 0x71, 0x69, 0x6e, 0x03, 0xf8, 0xb8, 0xf9, 0x05, 0xa2, 0x70, 0xa8, 0x70, 0xfb, 0xe6,
+        0xda, 0x73, 0xdb, 0x4e, 0xdf, 0x72, 0xcd, 0xb6, 0x88, 0x81, 0xec, 0x3f, 0x8d, 0x7b, 0xdc, 0xa6,
+        0x62, 0xd3, 0xd1, 0xdc, 0xef, 0xb9, 0x76, 0xb5, 0xd3, 0xb3, 0xfb, 0x61, 0x50, 0xeb, 0x22, 0x9b,
+        0x72, 0x20, 0xb4, 0xe9, 0x7c, 0x5e, 0xaf, 0xa9, 0xb6, 0x40, 0x69, 0x70, 0xea, 0x79, 0x02, 0x1d,
+        0x66, 0x71, 0x62, 0x39, 0x31, 0xd3, 0x31, 0xb1, 0x6f, 0x2a, 0x2d, 0x13, 0x59, 0xe9, 0xb7, 0x98,
+        0xbe, 0x67, 0xfa, 0x5d, 0x6f, 0x8f, 0x7a, 0x43, 0x10, 0x5a, 0x3f, 0x13, 0xda, 0xb0, 0x94, 0x08,
+        0x82, 0xf4, 0x39, 0x1d, 0x42, 0x26, 0x4a, 0xbe, 0x13, 0xe9, 0x89, 0x55, 0x52, 0xa4, 0x16, 0x3d,
+        0x50, 0x83, 0x5c, 0xb9, 0x00, 0x5e, 0x03, 0x35, 0x65, 0x13, 0x1f, 0xd8, 0xf8, 0xeb, 0x28, 0xe5,
+        0x00, 0x09, 0x9a, 0x62, 0x65, 0xab, 0x28, 0x21, 0x2e, 0x55, 0x11, 0x77, 0x7e, 0x64, 0xae, 0x12,
+        0xc1, 0x5e, 0x85, 0xf2, 0xe7, 0xf7, 0x2b, 0x51, 0x46, 0xa6, 0xf8, 0x55, 0x2c, 0xc4, 0x0a, 0x80,
+        0x6a, 0xc2, 0xa8, 0xba, 0x94, 0xf8, 0xee, 0x18, 0xf7, 0x32, 0x50, 0x53, 0xcc, 0x1e, 0x53, 0x85,
+        0xeb, 0x0d, 0x1e, 0xec, 0xe2, 0xbb, 0xc2, 0xf3, 0xf7, 0x80, 0xfd, 0x81, 0x63, 0x8f, 0x87, 0x98,
+        0x09, 0x47, 0x72, 0xee, 0x2d, 0x5a, 0x18, 0x89, 0x6b, 0x95, 0xef, 0x52, 0xde, 0x4d, 0xf5, 0x48,
+        0x2a, 0x38, 0x6f, 0x4b, 0x98, 0x3c, 0x6d, 0x41, 0xdd, 0x1b, 0xfd, 0x65, 0x1b, 0x87, 0x8a, 0xcf,
+        0xec, 0x47, 0xe3, 0x7a, 0xa0, 0x56, 0xd9, 0x36, 0x36, 0xcb, 0x17, 0xaa, 0x1b, 0x24, 0x79, 0x96,
+        0xc6, 0x60, 0xd4, 0xe4, 0xa8, 0x59, 0x35, 0x5e, 0x4e, 0x00, 0xbf, 0x9a, 0xf5, 0x5c, 0x2a, 0xd7,
+        0xd7, 0x92, 0x98, 0x79, 0xad, 0x13, 0xda, 0xea, 0xde, 0xcd, 0x65, 0x81, 0x26, 0xbd, 0x55, 0x0f,
+        0xa4, 0x73, 0x54, 0x7b, 0x2f, 0x55, 0x2a, 0x2f, 0xb9, 0x2d, 0x6e, 0x04, 0xc8, 0x37, 0x5e, 0x93,
+        0x09, 0xa7, 0x7f, 0xb1, 0x6b, 0x4a, 0x9f, 0xea, 0x59, 0x19, 0x57, 0xd0, 0xc1, 0xa1, 0x6b, 0xaf,
+        0x27, 0x2b, 0xac, 0x81, 0xec, 0xcd, 0x2e, 0xa2, 0xa6, 0x08, 0x01, 0xfc, 0xa1, 0xbc, 0xc9, 0xdc,
+        0x97, 0xb9, 0x48, 0xa8, 0x65, 0x5d, 0x63, 0xdb, 0x5c, 0x7e, 0x55, 0xe7, 0x47, 0xf2, 0x74, 0x17,
+        0x67, 0xfe, 0x56, 0x20, 0x54, 0x65, 0x11, 0xdf, 0xec, 0x75, 0x70, 0x49, 0x59, 0xd1, 0xea, 0x6b,
+        0x8f, 0x39, 0xec, 0x5d, 0x81, 0x82, 0x9a, 0xec, 0xce, 0x6c, 0x0c, 0x32, 0x14, 0xbd, 0xef, 0xac,
+        0xae, 0x04, 0xd0, 0x75, 0x62, 0xf5, 0x82, 0x16, 0xd1, 0xa8, 0xfb, 0x22, 0x2a, 0xc2, 0xe7, 0x7a,
+        0x75, 0x08, 0x59, 0x99, 0x34, 0x3d, 0xd9, 0xd7, 0x66, 0xb8, 0xcd, 0xaa, 0xf4, 0x48, 0xcc, 0x21,
+        0x25, 0x83, 0xae, 0xad, 0x55, 0x0e, 0xff, 0x44, 0xf3, 0xcc, 0xd1, 0x89, 0x72, 0x0f, 0x9f, 0xe3,
+        0xe5, 0xc7, 0xd4, 0x53, 0x94, 0xd6, 0xfb, 0x35, 0xd5, 0xd8, 0x2f, 0xa7, 0x4b, 0xf9, 0x50, 0x15,
+        0x1e, 0x35, 0xfc, 0x3d, 0xca, 0xad, 0xb6, 0x49, 0x16, 0xee, 0xff, 0xd7, 0x8a, 0xcc, 0xf0, 0x96,
+        0x11, 0x97, 0x22, 0xf3, 0xf7, 0x7c, 0x7a, 0x50, 0x49, 0x12, 0x68, 0x6e, 0x0e, 0x62, 0x32, 0xc7,
+        0xe9, 0xc3, 0xa0, 0x1b, 0xfe, 0x29, 0x8c, 0x46, 0xc2, 0x7e, 0xe1, 0xea, 0xc3, 0xcb, 0x30, 0xaf,
+        0xe4, 0x60, 0xe5, 0xa5, 0xa5, 0xb8, 0xf4, 0x16, 0xfa, 0x19, 0xd0, 0x1c, 0x14, 0xce, 0xf9, 0xa8,
+        0x0b, 0x3f, 0x87, 0x89, 0xd3, 0xed, 0x9e, 0x16, 0x14, 0xbb, 0xd3, 0x64, 0xeb, 0x00, 0xe7, 0x48,
+        0x1f, 0xd4, 0x47, 0xbc, 0xa9, 0x6f, 0x03, 0xe0, 0x0e, 0xaf, 0xb9, 0xad, 0x05, 0xa0, 0x1d, 0xee,
+        0x0a, 0xcd, 0x0f, 0xd0, 0xb8, 0xf1, 0x35, 0x80, 0xa7, 0x72, 0xcd, 0x36, 0x8e, 0xce, 0x72, 0xf9,
+        0x9f, 0xd5, 0x29, 0xae, 0x02, 0xb7, 0xbe, 0x65, 0xff, 0x38, 0x45, 0xf8, 0x8d, 0x87, 0x2f, 0xf8,
+        0xdd, 0xc1, 0x72, 0x17, 0x2b, 0xdd, 0x3e, 0xfe, 0x01, 0xa0, 0x59, 0xb3, 0x19, 0x92, 0xf0, 0x59,
+        0xf5, 0x06, 0x77, 0x8b, 0x1a, 0x41, 0x1d, 0x8b, 0x80, 0x74, 0x95, 0x8b, 0x30, 0x03, 0x18, 0xdd,
+        0x1e, 0x1b, 0x21, 0x36, 0xdf, 0xde, 0xc3, 0xa2, 0x68, 0xe0, 0x3d, 0x94, 0x37, 0x6b, 0x48, 0xb2,
+        0xb9, 0x41, 0x53, 0xd6, 0x65, 0xef, 0x7a, 0x3d, 0xdc, 0x09, 0x17, 0x66, 0xb4, 0x05, 0x58, 0x8a,
+        0x5d, 0x2f, 0x40, 0x4a, 0x91, 0x8a, 0xa5, 0xb7, 0x29, 0xfb, 0x37, 0x81, 0x71, 0x77, 0x50, 0x8d,
+        0x34, 0x80, 0x7e, 0xab, 0xb9, 0xc8, 0xdc, 0xb7, 0x2c, 0x7e, 0xbc, 0xad, 0x7c, 0x14, 0x5c, 0xf6,
+        0x90, 0x88, 0x0e, 0x0d, 0x50, 0x7a, 0x4e, 0xa6, 0x85, 0xe4, 0x2a, 0xe7, 0x67, 0x21, 0x53, 0xbb,
+        0x73, 0xd5, 0x30, 0x78, 0xbd, 0x08, 0x2b, 0x42, 0x44, 0x3e, 0x5d, 0x2b, 0x2f, 0x09, 0x8e, 0x82,
+        0xc3, 0x5b, 0x9e, 0xd8, 0x20, 0xc6, 0xb7, 0x42, 0xe5, 0xb3, 0x60, 0x0b, 0x9b, 0x01, 0x76, 0x26,
+        0xf7, 0xc1, 0xf7, 0xe1, 0xd1, 0x46, 0xf7, 0x9c, 0x21, 0xfd, 0x66, 0xb7, 0x14, 0x1d, 0x89, 0xb5,
+        0xd3, 0xa1, 0x4e, 0x57, 0x97, 0xe7, 0xe4, 0x63, 0x96, 0xe2, 0x6f, 0x10, 0x6a, 0xb7, 0x8e, 0x83,
+        0x64, 0x22, 0x10, 0x02, 0x27, 0x87, 0x6d, 0xb6, 0x11, 0x51, 0xe9, 0xe6, 0x68, 0x1a, 0xc8, 0xd3,
+        0x6b, 0x23, 0x33, 0x68, 0x66, 0xab, 0x4d, 0xf9, 0x92, 0x11, 0x67, 0x9d, 0x24, 0xee, 0x18, 0xa8,
+        0x3c, 0x5a, 0xfe, 0x79, 0x76, 0x99, 0xeb, 0x9f, 0x19, 0x9d, 0x74, 0xee, 0x13, 0xd9, 0xb1, 0x7b,
+        0x4e, 0xcf, 0x30, 0x05, 0xdb, 0x5a, 0x3e, 0x00, 0x7e, 0x0a, 0xed, 0x6f, 0xaf, 0x0d, 0x1b, 0xf3,
+        0x61, 0x24, 0x06, 0xe7, 0xf2, 0x57, 0x72, 0xf8, 0x61, 0x4d, 0x5f, 0x00, 0x78, 0x1f, 0x4d, 0xc7,
+        0x28, 0x5e, 0xc4, 0x9b, 0xed, 0xac, 0x4f, 0x16, 0xaf, 0x81, 0x85, 0x33, 0x16, 0xbd, 0x6a, 0xb9,
+        0xb2, 0x8e, 0x25, 0xbc, 0xaf, 0xfd, 0xea, 0xb7, 0x20, 0x32, 0x15, 0x62, 0x77, 0x52, 0xa1, 0xf2,
+        0xd0, 0x9d, 0x12, 0x4c, 0x85, 0x71, 0x08, 0x03, 0xa7, 0x94, 0x34, 0xb4, 0x96, 0x30, 0x82, 0x05,
+        0x41, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x05, 0x32,
+        0x04, 0x82, 0x05, 0x2e, 0x30, 0x82, 0x05, 0x2a, 0x30, 0x82, 0x05, 0x26, 0x06, 0x0b, 0x2a, 0x86,
+        0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x0a, 0x01, 0x02, 0xa0, 0x82, 0x04, 0xee, 0x30, 0x82, 0x04,
+        0xea, 0x30, 0x1c, 0x06, 0x0a, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x03, 0x30,
+        0x0e, 0x04, 0x08, 0x30, 0xee, 0xbd, 0x7c, 0xcb, 0xb5, 0xa5, 0x1b, 0x02, 0x02, 0x08, 0x00, 0x04,
+        0x82, 0x04, 0xc8, 0x1e, 0xd0, 0x7f, 0x7e, 0x86, 0x1c, 0x6f, 0x0e, 0xac, 0x6c, 0xe3, 0x35, 0xcb,
+        0xff, 0xe4, 0x84, 0x88, 0x97, 0x45, 0xf3, 0x48, 0xa9, 0x98, 0xeb, 0x74, 0x91, 0x53, 0x07, 0x7a,
+        0xe4, 0x78, 0x89, 0x13, 0xe7, 0xce, 0xa3, 0xc5, 0xab, 0x2c, 0x16, 0xe5, 0x02, 0x64, 0xc6, 0xb5,
+        0x11, 0x36, 0x69, 0x0b, 0x5f, 0x7e, 0x95, 0x27, 0x59, 0x9a, 0xac, 0x98, 0x12, 0x76, 0x39, 0x31,
+        0xaa, 0x4f, 0x22, 0x55, 0x21, 0x71, 0x20, 0xeb, 0x4e, 0x5e, 0x2d, 0xd8, 0xab, 0xd9, 0x64, 0x38,
+        0x13, 0x9a, 0x14, 0x48, 0x7f, 0x48, 0x05, 0xec, 0x49, 0x55, 0x80, 0x49, 0xaf, 0x4e, 0x29, 0xdf,
+        0x4a, 0xfb, 0xa1, 0x20, 0x2f, 0x98, 0x35, 0xf7, 0x8f, 0xb9, 0x41, 0x8b, 0x00, 0x14, 0x23, 0x9a,
+        0x43, 0xfe, 0x55, 0xfc, 0xe5, 0x57, 0x19, 0xa9, 0x74, 0x44, 0x1f, 0xdd, 0xc3, 0xc8, 0x9f, 0xfa,
+        0x9f, 0x67, 0x93, 0xed, 0x79, 0x11, 0xe1, 0x4e, 0xed, 0xd6, 0x20, 0x82, 0xc8, 0x85, 0xdf, 0x4e,
+        0xa0, 0xcd, 0xd8, 0x36, 0x37, 0x4f, 0x67, 0x9d, 0x84, 0x44, 0x14, 0xce, 0xc0, 0xc9, 0xa6, 0xbd,
+        0x73, 0x06, 0x27, 0xb7, 0x16, 0x97, 0x8c, 0x61, 0xd9, 0x63, 0xb2, 0x56, 0x8d, 0x28, 0x9e, 0x2e,
+        0xcf, 0xa3, 0xfe, 0x8d, 0xaa, 0xef, 0x69, 0x32, 0x7b, 0x32, 0xbe, 0xd5, 0x62, 0x2c, 0x2e, 0x7f,
+        0x72, 0xdb, 0x3c, 0x4b, 0xe4, 0x76, 0xa3, 0xa9, 0xa1, 0x67, 0x84, 0x86, 0xea, 0x14, 0x15, 0x6c,
+        0x74, 0xd2, 0xac, 0x0e, 0xe2, 0x54, 0x54, 0xd4, 0x31, 0xa3, 0x88, 0x66, 0x89, 0x31, 0x7b, 0xf7,
+        0x3c, 0x92, 0xce, 0x3e, 0x86, 0xfb, 0x57, 0xc8, 0x65, 0xae, 0x85, 0x6d, 0x48, 0xf6, 0xe6, 0x37,
+        0xeb, 0x77, 0xcf, 0x06, 0xd6, 0x9e, 0x54, 0xb4, 0xd8, 0x9a, 0x5f, 0xdd, 0xc5, 0xa5, 0x05, 0xa0,
+        0x4b, 0xd1, 0x54, 0xab, 0x4f, 0xd0, 0x3e, 0x6b, 0x8f, 0x03, 0x66, 0xd4, 0xe2, 0x90, 0xea, 0x2d,
+        0x9b, 0x6a, 0x2b, 0xc4, 0x7b, 0x9d, 0xf1, 0xb5, 0x22, 0xdf, 0x86, 0xc2, 0xfd, 0x13, 0x0a, 0x69,
+        0x29, 0x59, 0xe9, 0x45, 0xcd, 0xdf, 0xcd, 0xa5, 0x71, 0x7e, 0x70, 0xc3, 0x60, 0x9e, 0x47, 0x5d,
+        0xd4, 0x6c, 0xcc, 0x15, 0x51, 0x23, 0x5b, 0x4e, 0xee, 0x72, 0x80, 0x49, 0xd6, 0xac, 0x89, 0x16,
+        0x65, 0xf4, 0x95, 0x57, 0x19, 0x13, 0xab, 0x9c, 0x08, 0xe8, 0xdf, 0x0a, 0xe2, 0x39, 0xfc, 0xff,
+        0x42, 0x02, 0xac, 0xaf, 0xf1, 0xb6, 0x56, 0xef, 0x75, 0x60, 0x2f, 0xc2, 0x5d, 0xef, 0xf5, 0x79,
+        0xb5, 0x46, 0xa0, 0xb5, 0x03, 0x67, 0xef, 0x78, 0x3d, 0x49, 0xd0, 0xc5, 0x0e, 0xff, 0x42, 0x72,
+        0x02, 0x86, 0x99, 0x93, 0xaa, 0xa3, 0x9e, 0x2c, 0xc7, 0xec, 0xa2, 0xdf, 0x25, 0x4e, 0x28, 0x81,
+        0x82, 0x3e, 0x29, 0xd3, 0x37, 0xfd, 0x32, 0xf4, 0x85, 0x46, 0x42, 0xb9, 0x94, 0x44, 0x8a, 0xbf,
+        0xd9, 0x14, 0xcb, 0xb6, 0xd3, 0xc5, 0xe7, 0x6b, 0x28, 0x70, 0xc3, 0x9c, 0xc2, 0x93, 0x9d, 0x2f,
+        0xab, 0xd6, 0xb2, 0x19, 0x28, 0x9a, 0xda, 0x0d, 0x90, 0x5b, 0xba, 0x64, 0x6f, 0xcc, 0x11, 0xef,
+        0x6c, 0x88, 0x18, 0x4f, 0x86, 0x6e, 0xed, 0xcf, 0xde, 0x0d, 0xec, 0xe2, 0x12, 0xc3, 0x89, 0x0a,
+        0x3f, 0xbb, 0x3d, 0x8c, 0x8f, 0xa9, 0x40, 0xe6, 0xf8, 0xd1, 0x1a, 0x9a, 0x7e, 0x8a, 0xd7, 0x7b,
+        0x56, 0xf4, 0x5d, 0x80, 0x64, 0xd5, 0x88, 0x86, 0x85, 0x18, 0x30, 0x5d, 0x64, 0x04, 0xb3, 0xc2,
+        0xc7, 0x80, 0xda, 0x3e, 0xc4, 0xd6, 0xf6, 0xc4, 0x95, 0x56, 0xd5, 0xad, 0x82, 0x86, 0xcc, 0x1a,
+        0x05, 0x69, 0x06, 0x08, 0x5b, 0x19, 0xea, 0x10, 0xc5, 0xcd, 0x67, 0x93, 0xab, 0x0f, 0xe3, 0xba,
+        0xb0, 0x0d, 0xac, 0x99, 0x0d, 0x35, 0x6f, 0xe5, 0x41, 0xb2, 0x7c, 0x87, 0x91, 0x6c, 0xe2, 0x75,
+        0x9b, 0x64, 0x62, 0x06, 0x2a, 0x8b, 0xd9, 0x4d, 0x23, 0xcd, 0x2b, 0xef, 0xf5, 0x61, 0x82, 0x8e,
+        0x3f, 0xf6, 0x2b, 0xe1, 0x6f, 0xcf, 0xbd, 0xaa, 0x07, 0x97, 0x49, 0x4e, 0x02, 0x9d, 0xa5, 0x9e,
+        0xc5, 0xd7, 0x8b, 0xd3, 0xe1, 0xd9, 0x35, 0x96, 0x9d, 0x1f, 0xa2, 0xf6, 0x91, 0xee, 0xd1, 0x3b,
+        0xa8, 0xfe, 0x4d, 0xeb, 0xf9, 0xfc, 0xe4, 0xab, 0x60, 0xb7, 0x86, 0x9d, 0x2a, 0x35, 0xb0, 0x00,
+        0xd4, 0x3c, 0x2a, 0x7e, 0x6d, 0x65, 0x5f, 0xf3, 0x7c, 0x23, 0x57, 0x52, 0x2a, 0x8c, 0x5b, 0x36,
+        0x74, 0xb7, 0x61, 0x49, 0xf0, 0xdf, 0xcf, 0x8a, 0x28, 0xc5, 0x8d, 0xbc, 0x20, 0xcc, 0xac, 0x86,
+        0x20, 0xd8, 0x2d, 0x86, 0x99, 0xf5, 0xf0, 0xdb, 0xed, 0x8d, 0xf9, 0xd7, 0x4e, 0xa8, 0xde, 0x84,
+        0x35, 0x50, 0xc1, 0x7c, 0xbd, 0xdf, 0xc2, 0x24, 0x1a, 0x49, 0x24, 0x9a, 0x37, 0x93, 0xca, 0x2d,
+        0x73, 0x47, 0x8f, 0x83, 0xed, 0x4d, 0xca, 0xf8, 0xf0, 0xd3, 0x9b, 0xe0, 0x4b, 0x3b, 0xf1, 0x86,
+        0xeb, 0x78, 0x7b, 0x42, 0xa1, 0xb9, 0x36, 0x15, 0xde, 0x63, 0xab, 0x8b, 0x8b, 0x5d, 0xa2, 0x92,
+        0x10, 0x95, 0xdf, 0xda, 0xd7, 0xba, 0xa0, 0x26, 0xb9, 0xdc, 0x83, 0xeb, 0xdc, 0xd2, 0x1f, 0xf1,
+        0xb1, 0x8d, 0x21, 0x51, 0x71, 0x59, 0x0e, 0xe8, 0x7e, 0xf1, 0x53, 0x08, 0x98, 0x79, 0x05, 0x3b,
+        0x22, 0xf1, 0xda, 0x07, 0x0d, 0xf7, 0x89, 0x5e, 0xc4, 0x62, 0x8c, 0xf9, 0x19, 0xc8, 0xbc, 0xa4,
+        0x0c, 0x6f, 0x41, 0x34, 0x56, 0x22, 0x6b, 0xe6, 0xee, 0x7c, 0x4a, 0xd9, 0x26, 0x8c, 0x56, 0x12,
+        0xf3, 0x03, 0x12, 0x1c, 0x5b, 0x8d, 0x64, 0x5c, 0x1c, 0xb6, 0x0f, 0x93, 0xaf, 0xb1, 0x67, 0x6f,
+        0x13, 0xdd, 0xe3, 0xcf, 0x0e, 0xe6, 0x06, 0xf3, 0xb2, 0xbc, 0x99, 0xf5, 0xb0, 0xd7, 0xe9, 0x7e,
+        0xb0, 0x6a, 0xb9, 0xb5, 0xda, 0xcf, 0x88, 0xf1, 0xc5, 0x58, 0x54, 0x05, 0x5c, 0x9d, 0x79, 0xc2,
+        0xcd, 0xbb, 0xc6, 0xf2, 0x69, 0xa9, 0xe3, 0x4e, 0x05, 0x0d, 0x02, 0xb6, 0x4d, 0x8e, 0x7d, 0x60,
+        0x8e, 0xda, 0x4d, 0x28, 0xd2, 0xec, 0x8a, 0x11, 0xe3, 0xe7, 0x17, 0x20, 0x07, 0x7b, 0xfc, 0x9b,
+        0x4e, 0xf7, 0x79, 0xf5, 0x0a, 0x6e, 0xd1, 0x1e, 0x7b, 0x83, 0x66, 0x5e, 0x1b, 0x9d, 0x36, 0x32,
+        0x89, 0xf6, 0x72, 0xa5, 0x58, 0x54, 0x42, 0xba, 0x90, 0xf3, 0xbb, 0x05, 0x46, 0xa4, 0x91, 0x1c,
+        0xdb, 0xab, 0xf3, 0x68, 0x56, 0x7a, 0xd3, 0xff, 0x3f, 0x9f, 0xc5, 0x4a, 0x47, 0xbd, 0x89, 0x46,
+        0xf6, 0x94, 0x3a, 0x94, 0xd4, 0x30, 0xd3, 0xae, 0x0d, 0x99, 0x95, 0xf7, 0x75, 0xfe, 0x14, 0x10,
+        0x9e, 0xed, 0x21, 0x0f, 0x0d, 0x54, 0x7d, 0x54, 0xc5, 0x80, 0x21, 0x4d, 0xf2, 0xaf, 0x67, 0xaf,
+        0x8a, 0x76, 0x9e, 0x34, 0x32, 0x74, 0x89, 0x2a, 0x32, 0xf9, 0x48, 0x20, 0x90, 0xe6, 0x4a, 0xa3,
+        0x7f, 0xf2, 0x2a, 0x51, 0x22, 0x93, 0xe5, 0xdd, 0x59, 0xb3, 0x83, 0xa8, 0x47, 0xf5, 0x6b, 0x38,
+        0x24, 0xc2, 0xac, 0x2d, 0x03, 0xda, 0xb1, 0x17, 0x19, 0xe0, 0x38, 0x2c, 0xb3, 0xa6, 0x4c, 0x8e,
+        0xae, 0x63, 0xa7, 0xae, 0x96, 0xb1, 0x07, 0x8c, 0x8f, 0x6a, 0x08, 0x32, 0x15, 0x1f, 0x33, 0x97,
+        0x21, 0x3b, 0x51, 0x70, 0xc5, 0x1f, 0xa6, 0xa3, 0x8a, 0xd0, 0x8f, 0x0b, 0xda, 0x64, 0xab, 0xbe,
+        0xee, 0x4b, 0x14, 0xfd, 0x32, 0x87, 0x9e, 0xa7, 0x19, 0x75, 0xc9, 0xaa, 0xd3, 0xed, 0xa7, 0xa0,
+        0x01, 0xe7, 0xa0, 0xe5, 0x28, 0xdd, 0x3b, 0x7c, 0x49, 0xe4, 0x24, 0x7d, 0x92, 0x86, 0x25, 0x03,
+        0xb3, 0x66, 0x04, 0xf3, 0xa1, 0x40, 0x11, 0x35, 0x3a, 0x1d, 0xbf, 0x1c, 0x02, 0x83, 0x3d, 0x37,
+        0x51, 0x88, 0xa3, 0x2b, 0x10, 0x8c, 0x8e, 0x10, 0xdd, 0xdc, 0xef, 0xa4, 0xe9, 0x14, 0x77, 0xb6,
+        0x8e, 0x75, 0xb6, 0x8e, 0xea, 0xaa, 0x57, 0x16, 0x1f, 0xb0, 0x0c, 0xbc, 0x44, 0xed, 0x92, 0x94,
+        0x9a, 0xb4, 0xf3, 0x31, 0x64, 0x02, 0x5c, 0xa1, 0x51, 0x63, 0x39, 0x42, 0x74, 0x7a, 0x1d, 0xf2,
+        0xf5, 0x92, 0x50, 0xf1, 0x5a, 0x8a, 0xde, 0xb3, 0x4e, 0xf1, 0x6e, 0x67, 0xd9, 0x5b, 0x00, 0xa7,
+        0xd1, 0x90, 0x58, 0x36, 0xc4, 0x15, 0x80, 0xbb, 0xa5, 0xbb, 0x98, 0xc0, 0x8a, 0x9b, 0x17, 0x35,
+        0x36, 0x3b, 0x62, 0x0f, 0x29, 0xcd, 0xe9, 0x04, 0x0e, 0x9d, 0xca, 0x43, 0x04, 0xdf, 0x17, 0x49,
+        0xbf, 0xb6, 0x7a, 0x7a, 0x3c, 0xdb, 0x0d, 0x6d, 0xd5, 0x89, 0xb9, 0x69, 0x94, 0xd8, 0xb2, 0xd6,
+        0x38, 0x8a, 0xcc, 0x78, 0x44, 0x40, 0x63, 0x9f, 0x1e, 0x0e, 0x40, 0x33, 0x51, 0xd3, 0x65, 0xf8,
+        0xf1, 0x42, 0x06, 0x75, 0x84, 0xe7, 0xb1, 0xe9, 0xd6, 0xa4, 0x5e, 0x7f, 0xb0, 0x48, 0x6f, 0x80,
+        0x92, 0xf8, 0xfc, 0x2a, 0xdb, 0x18, 0x97, 0xe5, 0xe7, 0xc7, 0x46, 0xb6, 0x59, 0x8c, 0x3a, 0x09,
+        0x91, 0xc1, 0x49, 0x55, 0xf9, 0xf3, 0x87, 0x19, 0xdc, 0x72, 0x56, 0xd3, 0x20, 0x5e, 0xc5, 0x3d,
+        0xfb, 0x19, 0xea, 0x6a, 0xdf, 0x09, 0xb2, 0x8f, 0xb6, 0xdd, 0x26, 0x31, 0x25, 0x30, 0x23, 0x06,
+        0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x3b, 0xd2,
+        0xb3, 0x51, 0x4c, 0x57, 0xd0, 0xca, 0x34, 0xa4, 0xf0, 0x06, 0xdd, 0xe9, 0x76, 0x08, 0xdb, 0x7b,
+        0x3a, 0xb0, 0x30, 0x31, 0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05,
+        0x00, 0x04, 0x14, 0x8e, 0x7f, 0x87, 0x67, 0x78, 0x64, 0x93, 0x36, 0x35, 0xe5, 0x93, 0x9d, 0xac,
+        0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
+        0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let conf: cert.Pkcs12ParsingConfig = {
-      password: "123456",
+      password: '123456',
       needsCert: false,
       needsPrivateKey: true,
       privateKeyFormat: cert.EncodingBaseFormat.DER,
       needsOtherCerts: false,
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12_cert, conf);
-    console.info("parsePKCS12 succeed.");
+    console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
-      console.info("privateKey:" + p12.privateKey.toString())
+      console.info('privateKey:' + p12.privateKey.toString())
     }
   } catch (error) {
-    console.error(`parsePKCS12 failed: errCode: ${error.code}, message: ${error.message}`);
+    console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -10902,11 +11212,11 @@ function doTestParsePkcs12() {
 
 parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
-Parses a PKCS #12 file. This API uses a promise to return the result.
+Obtains the certificate, private key, and other certificates by parsing a PKCS #12 file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10928,8 +11238,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is too large.                                    |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
@@ -10940,175 +11250,176 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 async function doTestParsePkcs12() {
   try {
-    let p12_cert = new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
-      0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
-      0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
-      0x06, 0xa0, 0x82, 0x03, 0xa8, 0x30, 0x82, 0x03, 0xa4, 0x02, 0x01, 0x00, 0x30, 0x82, 0x03, 0x9d,
-      0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0x30, 0x1c, 0x06, 0x0a, 0x2a,
-      0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x06, 0x30, 0x0e, 0x04, 0x08, 0x7c, 0xd8, 0x60,
-      0x3a, 0x07, 0xfb, 0x87, 0x8b, 0x02, 0x02, 0x08, 0x00, 0x80, 0x82, 0x03, 0x70, 0x4d, 0x64, 0xbe,
-      0x82, 0xc2, 0x59, 0x58, 0x65, 0xf0, 0x37, 0x46, 0x4f, 0x6b, 0xfa, 0x43, 0x2e, 0x9d, 0xd9, 0x4f,
-      0xd3, 0x54, 0x71, 0x69, 0x6e, 0x03, 0xf8, 0xb8, 0xf9, 0x05, 0xa2, 0x70, 0xa8, 0x70, 0xfb, 0xe6,
-      0xda, 0x73, 0xdb, 0x4e, 0xdf, 0x72, 0xcd, 0xb6, 0x88, 0x81, 0xec, 0x3f, 0x8d, 0x7b, 0xdc, 0xa6,
-      0x62, 0xd3, 0xd1, 0xdc, 0xef, 0xb9, 0x76, 0xb5, 0xd3, 0xb3, 0xfb, 0x61, 0x50, 0xeb, 0x22, 0x9b,
-      0x72, 0x20, 0xb4, 0xe9, 0x7c, 0x5e, 0xaf, 0xa9, 0xb6, 0x40, 0x69, 0x70, 0xea, 0x79, 0x02, 0x1d,
-      0x66, 0x71, 0x62, 0x39, 0x31, 0xd3, 0x31, 0xb1, 0x6f, 0x2a, 0x2d, 0x13, 0x59, 0xe9, 0xb7, 0x98,
-      0xbe, 0x67, 0xfa, 0x5d, 0x6f, 0x8f, 0x7a, 0x43, 0x10, 0x5a, 0x3f, 0x13, 0xda, 0xb0, 0x94, 0x08,
-      0x82, 0xf4, 0x39, 0x1d, 0x42, 0x26, 0x4a, 0xbe, 0x13, 0xe9, 0x89, 0x55, 0x52, 0xa4, 0x16, 0x3d,
-      0x50, 0x83, 0x5c, 0xb9, 0x00, 0x5e, 0x03, 0x35, 0x65, 0x13, 0x1f, 0xd8, 0xf8, 0xeb, 0x28, 0xe5,
-      0x00, 0x09, 0x9a, 0x62, 0x65, 0xab, 0x28, 0x21, 0x2e, 0x55, 0x11, 0x77, 0x7e, 0x64, 0xae, 0x12,
-      0xc1, 0x5e, 0x85, 0xf2, 0xe7, 0xf7, 0x2b, 0x51, 0x46, 0xa6, 0xf8, 0x55, 0x2c, 0xc4, 0x0a, 0x80,
-      0x6a, 0xc2, 0xa8, 0xba, 0x94, 0xf8, 0xee, 0x18, 0xf7, 0x32, 0x50, 0x53, 0xcc, 0x1e, 0x53, 0x85,
-      0xeb, 0x0d, 0x1e, 0xec, 0xe2, 0xbb, 0xc2, 0xf3, 0xf7, 0x80, 0xfd, 0x81, 0x63, 0x8f, 0x87, 0x98,
-      0x09, 0x47, 0x72, 0xee, 0x2d, 0x5a, 0x18, 0x89, 0x6b, 0x95, 0xef, 0x52, 0xde, 0x4d, 0xf5, 0x48,
-      0x2a, 0x38, 0x6f, 0x4b, 0x98, 0x3c, 0x6d, 0x41, 0xdd, 0x1b, 0xfd, 0x65, 0x1b, 0x87, 0x8a, 0xcf,
-      0xec, 0x47, 0xe3, 0x7a, 0xa0, 0x56, 0xd9, 0x36, 0x36, 0xcb, 0x17, 0xaa, 0x1b, 0x24, 0x79, 0x96,
-      0xc6, 0x60, 0xd4, 0xe4, 0xa8, 0x59, 0x35, 0x5e, 0x4e, 0x00, 0xbf, 0x9a, 0xf5, 0x5c, 0x2a, 0xd7,
-      0xd7, 0x92, 0x98, 0x79, 0xad, 0x13, 0xda, 0xea, 0xde, 0xcd, 0x65, 0x81, 0x26, 0xbd, 0x55, 0x0f,
-      0xa4, 0x73, 0x54, 0x7b, 0x2f, 0x55, 0x2a, 0x2f, 0xb9, 0x2d, 0x6e, 0x04, 0xc8, 0x37, 0x5e, 0x93,
-      0x09, 0xa7, 0x7f, 0xb1, 0x6b, 0x4a, 0x9f, 0xea, 0x59, 0x19, 0x57, 0xd0, 0xc1, 0xa1, 0x6b, 0xaf,
-      0x27, 0x2b, 0xac, 0x81, 0xec, 0xcd, 0x2e, 0xa2, 0xa6, 0x08, 0x01, 0xfc, 0xa1, 0xbc, 0xc9, 0xdc,
-      0x97, 0xb9, 0x48, 0xa8, 0x65, 0x5d, 0x63, 0xdb, 0x5c, 0x7e, 0x55, 0xe7, 0x47, 0xf2, 0x74, 0x17,
-      0x67, 0xfe, 0x56, 0x20, 0x54, 0x65, 0x11, 0xdf, 0xec, 0x75, 0x70, 0x49, 0x59, 0xd1, 0xea, 0x6b,
-      0x8f, 0x39, 0xec, 0x5d, 0x81, 0x82, 0x9a, 0xec, 0xce, 0x6c, 0x0c, 0x32, 0x14, 0xbd, 0xef, 0xac,
-      0xae, 0x04, 0xd0, 0x75, 0x62, 0xf5, 0x82, 0x16, 0xd1, 0xa8, 0xfb, 0x22, 0x2a, 0xc2, 0xe7, 0x7a,
-      0x75, 0x08, 0x59, 0x99, 0x34, 0x3d, 0xd9, 0xd7, 0x66, 0xb8, 0xcd, 0xaa, 0xf4, 0x48, 0xcc, 0x21,
-      0x25, 0x83, 0xae, 0xad, 0x55, 0x0e, 0xff, 0x44, 0xf3, 0xcc, 0xd1, 0x89, 0x72, 0x0f, 0x9f, 0xe3,
-      0xe5, 0xc7, 0xd4, 0x53, 0x94, 0xd6, 0xfb, 0x35, 0xd5, 0xd8, 0x2f, 0xa7, 0x4b, 0xf9, 0x50, 0x15,
-      0x1e, 0x35, 0xfc, 0x3d, 0xca, 0xad, 0xb6, 0x49, 0x16, 0xee, 0xff, 0xd7, 0x8a, 0xcc, 0xf0, 0x96,
-      0x11, 0x97, 0x22, 0xf3, 0xf7, 0x7c, 0x7a, 0x50, 0x49, 0x12, 0x68, 0x6e, 0x0e, 0x62, 0x32, 0xc7,
-      0xe9, 0xc3, 0xa0, 0x1b, 0xfe, 0x29, 0x8c, 0x46, 0xc2, 0x7e, 0xe1, 0xea, 0xc3, 0xcb, 0x30, 0xaf,
-      0xe4, 0x60, 0xe5, 0xa5, 0xa5, 0xb8, 0xf4, 0x16, 0xfa, 0x19, 0xd0, 0x1c, 0x14, 0xce, 0xf9, 0xa8,
-      0x0b, 0x3f, 0x87, 0x89, 0xd3, 0xed, 0x9e, 0x16, 0x14, 0xbb, 0xd3, 0x64, 0xeb, 0x00, 0xe7, 0x48,
-      0x1f, 0xd4, 0x47, 0xbc, 0xa9, 0x6f, 0x03, 0xe0, 0x0e, 0xaf, 0xb9, 0xad, 0x05, 0xa0, 0x1d, 0xee,
-      0x0a, 0xcd, 0x0f, 0xd0, 0xb8, 0xf1, 0x35, 0x80, 0xa7, 0x72, 0xcd, 0x36, 0x8e, 0xce, 0x72, 0xf9,
-      0x9f, 0xd5, 0x29, 0xae, 0x02, 0xb7, 0xbe, 0x65, 0xff, 0x38, 0x45, 0xf8, 0x8d, 0x87, 0x2f, 0xf8,
-      0xdd, 0xc1, 0x72, 0x17, 0x2b, 0xdd, 0x3e, 0xfe, 0x01, 0xa0, 0x59, 0xb3, 0x19, 0x92, 0xf0, 0x59,
-      0xf5, 0x06, 0x77, 0x8b, 0x1a, 0x41, 0x1d, 0x8b, 0x80, 0x74, 0x95, 0x8b, 0x30, 0x03, 0x18, 0xdd,
-      0x1e, 0x1b, 0x21, 0x36, 0xdf, 0xde, 0xc3, 0xa2, 0x68, 0xe0, 0x3d, 0x94, 0x37, 0x6b, 0x48, 0xb2,
-      0xb9, 0x41, 0x53, 0xd6, 0x65, 0xef, 0x7a, 0x3d, 0xdc, 0x09, 0x17, 0x66, 0xb4, 0x05, 0x58, 0x8a,
-      0x5d, 0x2f, 0x40, 0x4a, 0x91, 0x8a, 0xa5, 0xb7, 0x29, 0xfb, 0x37, 0x81, 0x71, 0x77, 0x50, 0x8d,
-      0x34, 0x80, 0x7e, 0xab, 0xb9, 0xc8, 0xdc, 0xb7, 0x2c, 0x7e, 0xbc, 0xad, 0x7c, 0x14, 0x5c, 0xf6,
-      0x90, 0x88, 0x0e, 0x0d, 0x50, 0x7a, 0x4e, 0xa6, 0x85, 0xe4, 0x2a, 0xe7, 0x67, 0x21, 0x53, 0xbb,
-      0x73, 0xd5, 0x30, 0x78, 0xbd, 0x08, 0x2b, 0x42, 0x44, 0x3e, 0x5d, 0x2b, 0x2f, 0x09, 0x8e, 0x82,
-      0xc3, 0x5b, 0x9e, 0xd8, 0x20, 0xc6, 0xb7, 0x42, 0xe5, 0xb3, 0x60, 0x0b, 0x9b, 0x01, 0x76, 0x26,
-      0xf7, 0xc1, 0xf7, 0xe1, 0xd1, 0x46, 0xf7, 0x9c, 0x21, 0xfd, 0x66, 0xb7, 0x14, 0x1d, 0x89, 0xb5,
-      0xd3, 0xa1, 0x4e, 0x57, 0x97, 0xe7, 0xe4, 0x63, 0x96, 0xe2, 0x6f, 0x10, 0x6a, 0xb7, 0x8e, 0x83,
-      0x64, 0x22, 0x10, 0x02, 0x27, 0x87, 0x6d, 0xb6, 0x11, 0x51, 0xe9, 0xe6, 0x68, 0x1a, 0xc8, 0xd3,
-      0x6b, 0x23, 0x33, 0x68, 0x66, 0xab, 0x4d, 0xf9, 0x92, 0x11, 0x67, 0x9d, 0x24, 0xee, 0x18, 0xa8,
-      0x3c, 0x5a, 0xfe, 0x79, 0x76, 0x99, 0xeb, 0x9f, 0x19, 0x9d, 0x74, 0xee, 0x13, 0xd9, 0xb1, 0x7b,
-      0x4e, 0xcf, 0x30, 0x05, 0xdb, 0x5a, 0x3e, 0x00, 0x7e, 0x0a, 0xed, 0x6f, 0xaf, 0x0d, 0x1b, 0xf3,
-      0x61, 0x24, 0x06, 0xe7, 0xf2, 0x57, 0x72, 0xf8, 0x61, 0x4d, 0x5f, 0x00, 0x78, 0x1f, 0x4d, 0xc7,
-      0x28, 0x5e, 0xc4, 0x9b, 0xed, 0xac, 0x4f, 0x16, 0xaf, 0x81, 0x85, 0x33, 0x16, 0xbd, 0x6a, 0xb9,
-      0xb2, 0x8e, 0x25, 0xbc, 0xaf, 0xfd, 0xea, 0xb7, 0x20, 0x32, 0x15, 0x62, 0x77, 0x52, 0xa1, 0xf2,
-      0xd0, 0x9d, 0x12, 0x4c, 0x85, 0x71, 0x08, 0x03, 0xa7, 0x94, 0x34, 0xb4, 0x96, 0x30, 0x82, 0x05,
-      0x41, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x05, 0x32,
-      0x04, 0x82, 0x05, 0x2e, 0x30, 0x82, 0x05, 0x2a, 0x30, 0x82, 0x05, 0x26, 0x06, 0x0b, 0x2a, 0x86,
-      0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x0a, 0x01, 0x02, 0xa0, 0x82, 0x04, 0xee, 0x30, 0x82, 0x04,
-      0xea, 0x30, 0x1c, 0x06, 0x0a, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x03, 0x30,
-      0x0e, 0x04, 0x08, 0x30, 0xee, 0xbd, 0x7c, 0xcb, 0xb5, 0xa5, 0x1b, 0x02, 0x02, 0x08, 0x00, 0x04,
-      0x82, 0x04, 0xc8, 0x1e, 0xd0, 0x7f, 0x7e, 0x86, 0x1c, 0x6f, 0x0e, 0xac, 0x6c, 0xe3, 0x35, 0xcb,
-      0xff, 0xe4, 0x84, 0x88, 0x97, 0x45, 0xf3, 0x48, 0xa9, 0x98, 0xeb, 0x74, 0x91, 0x53, 0x07, 0x7a,
-      0xe4, 0x78, 0x89, 0x13, 0xe7, 0xce, 0xa3, 0xc5, 0xab, 0x2c, 0x16, 0xe5, 0x02, 0x64, 0xc6, 0xb5,
-      0x11, 0x36, 0x69, 0x0b, 0x5f, 0x7e, 0x95, 0x27, 0x59, 0x9a, 0xac, 0x98, 0x12, 0x76, 0x39, 0x31,
-      0xaa, 0x4f, 0x22, 0x55, 0x21, 0x71, 0x20, 0xeb, 0x4e, 0x5e, 0x2d, 0xd8, 0xab, 0xd9, 0x64, 0x38,
-      0x13, 0x9a, 0x14, 0x48, 0x7f, 0x48, 0x05, 0xec, 0x49, 0x55, 0x80, 0x49, 0xaf, 0x4e, 0x29, 0xdf,
-      0x4a, 0xfb, 0xa1, 0x20, 0x2f, 0x98, 0x35, 0xf7, 0x8f, 0xb9, 0x41, 0x8b, 0x00, 0x14, 0x23, 0x9a,
-      0x43, 0xfe, 0x55, 0xfc, 0xe5, 0x57, 0x19, 0xa9, 0x74, 0x44, 0x1f, 0xdd, 0xc3, 0xc8, 0x9f, 0xfa,
-      0x9f, 0x67, 0x93, 0xed, 0x79, 0x11, 0xe1, 0x4e, 0xed, 0xd6, 0x20, 0x82, 0xc8, 0x85, 0xdf, 0x4e,
-      0xa0, 0xcd, 0xd8, 0x36, 0x37, 0x4f, 0x67, 0x9d, 0x84, 0x44, 0x14, 0xce, 0xc0, 0xc9, 0xa6, 0xbd,
-      0x73, 0x06, 0x27, 0xb7, 0x16, 0x97, 0x8c, 0x61, 0xd9, 0x63, 0xb2, 0x56, 0x8d, 0x28, 0x9e, 0x2e,
-      0xcf, 0xa3, 0xfe, 0x8d, 0xaa, 0xef, 0x69, 0x32, 0x7b, 0x32, 0xbe, 0xd5, 0x62, 0x2c, 0x2e, 0x7f,
-      0x72, 0xdb, 0x3c, 0x4b, 0xe4, 0x76, 0xa3, 0xa9, 0xa1, 0x67, 0x84, 0x86, 0xea, 0x14, 0x15, 0x6c,
-      0x74, 0xd2, 0xac, 0x0e, 0xe2, 0x54, 0x54, 0xd4, 0x31, 0xa3, 0x88, 0x66, 0x89, 0x31, 0x7b, 0xf7,
-      0x3c, 0x92, 0xce, 0x3e, 0x86, 0xfb, 0x57, 0xc8, 0x65, 0xae, 0x85, 0x6d, 0x48, 0xf6, 0xe6, 0x37,
-      0xeb, 0x77, 0xcf, 0x06, 0xd6, 0x9e, 0x54, 0xb4, 0xd8, 0x9a, 0x5f, 0xdd, 0xc5, 0xa5, 0x05, 0xa0,
-      0x4b, 0xd1, 0x54, 0xab, 0x4f, 0xd0, 0x3e, 0x6b, 0x8f, 0x03, 0x66, 0xd4, 0xe2, 0x90, 0xea, 0x2d,
-      0x9b, 0x6a, 0x2b, 0xc4, 0x7b, 0x9d, 0xf1, 0xb5, 0x22, 0xdf, 0x86, 0xc2, 0xfd, 0x13, 0x0a, 0x69,
-      0x29, 0x59, 0xe9, 0x45, 0xcd, 0xdf, 0xcd, 0xa5, 0x71, 0x7e, 0x70, 0xc3, 0x60, 0x9e, 0x47, 0x5d,
-      0xd4, 0x6c, 0xcc, 0x15, 0x51, 0x23, 0x5b, 0x4e, 0xee, 0x72, 0x80, 0x49, 0xd6, 0xac, 0x89, 0x16,
-      0x65, 0xf4, 0x95, 0x57, 0x19, 0x13, 0xab, 0x9c, 0x08, 0xe8, 0xdf, 0x0a, 0xe2, 0x39, 0xfc, 0xff,
-      0x42, 0x02, 0xac, 0xaf, 0xf1, 0xb6, 0x56, 0xef, 0x75, 0x60, 0x2f, 0xc2, 0x5d, 0xef, 0xf5, 0x79,
-      0xb5, 0x46, 0xa0, 0xb5, 0x03, 0x67, 0xef, 0x78, 0x3d, 0x49, 0xd0, 0xc5, 0x0e, 0xff, 0x42, 0x72,
-      0x02, 0x86, 0x99, 0x93, 0xaa, 0xa3, 0x9e, 0x2c, 0xc7, 0xec, 0xa2, 0xdf, 0x25, 0x4e, 0x28, 0x81,
-      0x82, 0x3e, 0x29, 0xd3, 0x37, 0xfd, 0x32, 0xf4, 0x85, 0x46, 0x42, 0xb9, 0x94, 0x44, 0x8a, 0xbf,
-      0xd9, 0x14, 0xcb, 0xb6, 0xd3, 0xc5, 0xe7, 0x6b, 0x28, 0x70, 0xc3, 0x9c, 0xc2, 0x93, 0x9d, 0x2f,
-      0xab, 0xd6, 0xb2, 0x19, 0x28, 0x9a, 0xda, 0x0d, 0x90, 0x5b, 0xba, 0x64, 0x6f, 0xcc, 0x11, 0xef,
-      0x6c, 0x88, 0x18, 0x4f, 0x86, 0x6e, 0xed, 0xcf, 0xde, 0x0d, 0xec, 0xe2, 0x12, 0xc3, 0x89, 0x0a,
-      0x3f, 0xbb, 0x3d, 0x8c, 0x8f, 0xa9, 0x40, 0xe6, 0xf8, 0xd1, 0x1a, 0x9a, 0x7e, 0x8a, 0xd7, 0x7b,
-      0x56, 0xf4, 0x5d, 0x80, 0x64, 0xd5, 0x88, 0x86, 0x85, 0x18, 0x30, 0x5d, 0x64, 0x04, 0xb3, 0xc2,
-      0xc7, 0x80, 0xda, 0x3e, 0xc4, 0xd6, 0xf6, 0xc4, 0x95, 0x56, 0xd5, 0xad, 0x82, 0x86, 0xcc, 0x1a,
-      0x05, 0x69, 0x06, 0x08, 0x5b, 0x19, 0xea, 0x10, 0xc5, 0xcd, 0x67, 0x93, 0xab, 0x0f, 0xe3, 0xba,
-      0xb0, 0x0d, 0xac, 0x99, 0x0d, 0x35, 0x6f, 0xe5, 0x41, 0xb2, 0x7c, 0x87, 0x91, 0x6c, 0xe2, 0x75,
-      0x9b, 0x64, 0x62, 0x06, 0x2a, 0x8b, 0xd9, 0x4d, 0x23, 0xcd, 0x2b, 0xef, 0xf5, 0x61, 0x82, 0x8e,
-      0x3f, 0xf6, 0x2b, 0xe1, 0x6f, 0xcf, 0xbd, 0xaa, 0x07, 0x97, 0x49, 0x4e, 0x02, 0x9d, 0xa5, 0x9e,
-      0xc5, 0xd7, 0x8b, 0xd3, 0xe1, 0xd9, 0x35, 0x96, 0x9d, 0x1f, 0xa2, 0xf6, 0x91, 0xee, 0xd1, 0x3b,
-      0xa8, 0xfe, 0x4d, 0xeb, 0xf9, 0xfc, 0xe4, 0xab, 0x60, 0xb7, 0x86, 0x9d, 0x2a, 0x35, 0xb0, 0x00,
-      0xd4, 0x3c, 0x2a, 0x7e, 0x6d, 0x65, 0x5f, 0xf3, 0x7c, 0x23, 0x57, 0x52, 0x2a, 0x8c, 0x5b, 0x36,
-      0x74, 0xb7, 0x61, 0x49, 0xf0, 0xdf, 0xcf, 0x8a, 0x28, 0xc5, 0x8d, 0xbc, 0x20, 0xcc, 0xac, 0x86,
-      0x20, 0xd8, 0x2d, 0x86, 0x99, 0xf5, 0xf0, 0xdb, 0xed, 0x8d, 0xf9, 0xd7, 0x4e, 0xa8, 0xde, 0x84,
-      0x35, 0x50, 0xc1, 0x7c, 0xbd, 0xdf, 0xc2, 0x24, 0x1a, 0x49, 0x24, 0x9a, 0x37, 0x93, 0xca, 0x2d,
-      0x73, 0x47, 0x8f, 0x83, 0xed, 0x4d, 0xca, 0xf8, 0xf0, 0xd3, 0x9b, 0xe0, 0x4b, 0x3b, 0xf1, 0x86,
-      0xeb, 0x78, 0x7b, 0x42, 0xa1, 0xb9, 0x36, 0x15, 0xde, 0x63, 0xab, 0x8b, 0x8b, 0x5d, 0xa2, 0x92,
-      0x10, 0x95, 0xdf, 0xda, 0xd7, 0xba, 0xa0, 0x26, 0xb9, 0xdc, 0x83, 0xeb, 0xdc, 0xd2, 0x1f, 0xf1,
-      0xb1, 0x8d, 0x21, 0x51, 0x71, 0x59, 0x0e, 0xe8, 0x7e, 0xf1, 0x53, 0x08, 0x98, 0x79, 0x05, 0x3b,
-      0x22, 0xf1, 0xda, 0x07, 0x0d, 0xf7, 0x89, 0x5e, 0xc4, 0x62, 0x8c, 0xf9, 0x19, 0xc8, 0xbc, 0xa4,
-      0x0c, 0x6f, 0x41, 0x34, 0x56, 0x22, 0x6b, 0xe6, 0xee, 0x7c, 0x4a, 0xd9, 0x26, 0x8c, 0x56, 0x12,
-      0xf3, 0x03, 0x12, 0x1c, 0x5b, 0x8d, 0x64, 0x5c, 0x1c, 0xb6, 0x0f, 0x93, 0xaf, 0xb1, 0x67, 0x6f,
-      0x13, 0xdd, 0xe3, 0xcf, 0x0e, 0xe6, 0x06, 0xf3, 0xb2, 0xbc, 0x99, 0xf5, 0xb0, 0xd7, 0xe9, 0x7e,
-      0xb0, 0x6a, 0xb9, 0xb5, 0xda, 0xcf, 0x88, 0xf1, 0xc5, 0x58, 0x54, 0x05, 0x5c, 0x9d, 0x79, 0xc2,
-      0xcd, 0xbb, 0xc6, 0xf2, 0x69, 0xa9, 0xe3, 0x4e, 0x05, 0x0d, 0x02, 0xb6, 0x4d, 0x8e, 0x7d, 0x60,
-      0x8e, 0xda, 0x4d, 0x28, 0xd2, 0xec, 0x8a, 0x11, 0xe3, 0xe7, 0x17, 0x20, 0x07, 0x7b, 0xfc, 0x9b,
-      0x4e, 0xf7, 0x79, 0xf5, 0x0a, 0x6e, 0xd1, 0x1e, 0x7b, 0x83, 0x66, 0x5e, 0x1b, 0x9d, 0x36, 0x32,
-      0x89, 0xf6, 0x72, 0xa5, 0x58, 0x54, 0x42, 0xba, 0x90, 0xf3, 0xbb, 0x05, 0x46, 0xa4, 0x91, 0x1c,
-      0xdb, 0xab, 0xf3, 0x68, 0x56, 0x7a, 0xd3, 0xff, 0x3f, 0x9f, 0xc5, 0x4a, 0x47, 0xbd, 0x89, 0x46,
-      0xf6, 0x94, 0x3a, 0x94, 0xd4, 0x30, 0xd3, 0xae, 0x0d, 0x99, 0x95, 0xf7, 0x75, 0xfe, 0x14, 0x10,
-      0x9e, 0xed, 0x21, 0x0f, 0x0d, 0x54, 0x7d, 0x54, 0xc5, 0x80, 0x21, 0x4d, 0xf2, 0xaf, 0x67, 0xaf,
-      0x8a, 0x76, 0x9e, 0x34, 0x32, 0x74, 0x89, 0x2a, 0x32, 0xf9, 0x48, 0x20, 0x90, 0xe6, 0x4a, 0xa3,
-      0x7f, 0xf2, 0x2a, 0x51, 0x22, 0x93, 0xe5, 0xdd, 0x59, 0xb3, 0x83, 0xa8, 0x47, 0xf5, 0x6b, 0x38,
-      0x24, 0xc2, 0xac, 0x2d, 0x03, 0xda, 0xb1, 0x17, 0x19, 0xe0, 0x38, 0x2c, 0xb3, 0xa6, 0x4c, 0x8e,
-      0xae, 0x63, 0xa7, 0xae, 0x96, 0xb1, 0x07, 0x8c, 0x8f, 0x6a, 0x08, 0x32, 0x15, 0x1f, 0x33, 0x97,
-      0x21, 0x3b, 0x51, 0x70, 0xc5, 0x1f, 0xa6, 0xa3, 0x8a, 0xd0, 0x8f, 0x0b, 0xda, 0x64, 0xab, 0xbe,
-      0xee, 0x4b, 0x14, 0xfd, 0x32, 0x87, 0x9e, 0xa7, 0x19, 0x75, 0xc9, 0xaa, 0xd3, 0xed, 0xa7, 0xa0,
-      0x01, 0xe7, 0xa0, 0xe5, 0x28, 0xdd, 0x3b, 0x7c, 0x49, 0xe4, 0x24, 0x7d, 0x92, 0x86, 0x25, 0x03,
-      0xb3, 0x66, 0x04, 0xf3, 0xa1, 0x40, 0x11, 0x35, 0x3a, 0x1d, 0xbf, 0x1c, 0x02, 0x83, 0x3d, 0x37,
-      0x51, 0x88, 0xa3, 0x2b, 0x10, 0x8c, 0x8e, 0x10, 0xdd, 0xdc, 0xef, 0xa4, 0xe9, 0x14, 0x77, 0xb6,
-      0x8e, 0x75, 0xb6, 0x8e, 0xea, 0xaa, 0x57, 0x16, 0x1f, 0xb0, 0x0c, 0xbc, 0x44, 0xed, 0x92, 0x94,
-      0x9a, 0xb4, 0xf3, 0x31, 0x64, 0x02, 0x5c, 0xa1, 0x51, 0x63, 0x39, 0x42, 0x74, 0x7a, 0x1d, 0xf2,
-      0xf5, 0x92, 0x50, 0xf1, 0x5a, 0x8a, 0xde, 0xb3, 0x4e, 0xf1, 0x6e, 0x67, 0xd9, 0x5b, 0x00, 0xa7,
-      0xd1, 0x90, 0x58, 0x36, 0xc4, 0x15, 0x80, 0xbb, 0xa5, 0xbb, 0x98, 0xc0, 0x8a, 0x9b, 0x17, 0x35,
-      0x36, 0x3b, 0x62, 0x0f, 0x29, 0xcd, 0xe9, 0x04, 0x0e, 0x9d, 0xca, 0x43, 0x04, 0xdf, 0x17, 0x49,
-      0xbf, 0xb6, 0x7a, 0x7a, 0x3c, 0xdb, 0x0d, 0x6d, 0xd5, 0x89, 0xb9, 0x69, 0x94, 0xd8, 0xb2, 0xd6,
-      0x38, 0x8a, 0xcc, 0x78, 0x44, 0x40, 0x63, 0x9f, 0x1e, 0x0e, 0x40, 0x33, 0x51, 0xd3, 0x65, 0xf8,
-      0xf1, 0x42, 0x06, 0x75, 0x84, 0xe7, 0xb1, 0xe9, 0xd6, 0xa4, 0x5e, 0x7f, 0xb0, 0x48, 0x6f, 0x80,
-      0x92, 0xf8, 0xfc, 0x2a, 0xdb, 0x18, 0x97, 0xe5, 0xe7, 0xc7, 0x46, 0xb6, 0x59, 0x8c, 0x3a, 0x09,
-      0x91, 0xc1, 0x49, 0x55, 0xf9, 0xf3, 0x87, 0x19, 0xdc, 0x72, 0x56, 0xd3, 0x20, 0x5e, 0xc5, 0x3d,
-      0xfb, 0x19, 0xea, 0x6a, 0xdf, 0x09, 0xb2, 0x8f, 0xb6, 0xdd, 0x26, 0x31, 0x25, 0x30, 0x23, 0x06,
-      0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x3b, 0xd2,
-      0xb3, 0x51, 0x4c, 0x57, 0xd0, 0xca, 0x34, 0xa4, 0xf0, 0x06, 0xdd, 0xe9, 0x76, 0x08, 0xdb, 0x7b,
-      0x3a, 0xb0, 0x30, 0x31, 0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05,
-      0x00, 0x04, 0x14, 0x8e, 0x7f, 0x87, 0x67, 0x78, 0x64, 0x93, 0x36, 0x35, 0xe5, 0x93, 0x9d, 0xac,
-      0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
-      0x7e, 0x02, 0x02, 0x08, 0x00]);
+    let p12_cert =
+      new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
+        0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
+        0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
+        0x06, 0xa0, 0x82, 0x03, 0xa8, 0x30, 0x82, 0x03, 0xa4, 0x02, 0x01, 0x00, 0x30, 0x82, 0x03, 0x9d,
+        0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0x30, 0x1c, 0x06, 0x0a, 0x2a,
+        0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x06, 0x30, 0x0e, 0x04, 0x08, 0x7c, 0xd8, 0x60,
+        0x3a, 0x07, 0xfb, 0x87, 0x8b, 0x02, 0x02, 0x08, 0x00, 0x80, 0x82, 0x03, 0x70, 0x4d, 0x64, 0xbe,
+        0x82, 0xc2, 0x59, 0x58, 0x65, 0xf0, 0x37, 0x46, 0x4f, 0x6b, 0xfa, 0x43, 0x2e, 0x9d, 0xd9, 0x4f,
+        0xd3, 0x54, 0x71, 0x69, 0x6e, 0x03, 0xf8, 0xb8, 0xf9, 0x05, 0xa2, 0x70, 0xa8, 0x70, 0xfb, 0xe6,
+        0xda, 0x73, 0xdb, 0x4e, 0xdf, 0x72, 0xcd, 0xb6, 0x88, 0x81, 0xec, 0x3f, 0x8d, 0x7b, 0xdc, 0xa6,
+        0x62, 0xd3, 0xd1, 0xdc, 0xef, 0xb9, 0x76, 0xb5, 0xd3, 0xb3, 0xfb, 0x61, 0x50, 0xeb, 0x22, 0x9b,
+        0x72, 0x20, 0xb4, 0xe9, 0x7c, 0x5e, 0xaf, 0xa9, 0xb6, 0x40, 0x69, 0x70, 0xea, 0x79, 0x02, 0x1d,
+        0x66, 0x71, 0x62, 0x39, 0x31, 0xd3, 0x31, 0xb1, 0x6f, 0x2a, 0x2d, 0x13, 0x59, 0xe9, 0xb7, 0x98,
+        0xbe, 0x67, 0xfa, 0x5d, 0x6f, 0x8f, 0x7a, 0x43, 0x10, 0x5a, 0x3f, 0x13, 0xda, 0xb0, 0x94, 0x08,
+        0x82, 0xf4, 0x39, 0x1d, 0x42, 0x26, 0x4a, 0xbe, 0x13, 0xe9, 0x89, 0x55, 0x52, 0xa4, 0x16, 0x3d,
+        0x50, 0x83, 0x5c, 0xb9, 0x00, 0x5e, 0x03, 0x35, 0x65, 0x13, 0x1f, 0xd8, 0xf8, 0xeb, 0x28, 0xe5,
+        0x00, 0x09, 0x9a, 0x62, 0x65, 0xab, 0x28, 0x21, 0x2e, 0x55, 0x11, 0x77, 0x7e, 0x64, 0xae, 0x12,
+        0xc1, 0x5e, 0x85, 0xf2, 0xe7, 0xf7, 0x2b, 0x51, 0x46, 0xa6, 0xf8, 0x55, 0x2c, 0xc4, 0x0a, 0x80,
+        0x6a, 0xc2, 0xa8, 0xba, 0x94, 0xf8, 0xee, 0x18, 0xf7, 0x32, 0x50, 0x53, 0xcc, 0x1e, 0x53, 0x85,
+        0xeb, 0x0d, 0x1e, 0xec, 0xe2, 0xbb, 0xc2, 0xf3, 0xf7, 0x80, 0xfd, 0x81, 0x63, 0x8f, 0x87, 0x98,
+        0x09, 0x47, 0x72, 0xee, 0x2d, 0x5a, 0x18, 0x89, 0x6b, 0x95, 0xef, 0x52, 0xde, 0x4d, 0xf5, 0x48,
+        0x2a, 0x38, 0x6f, 0x4b, 0x98, 0x3c, 0x6d, 0x41, 0xdd, 0x1b, 0xfd, 0x65, 0x1b, 0x87, 0x8a, 0xcf,
+        0xec, 0x47, 0xe3, 0x7a, 0xa0, 0x56, 0xd9, 0x36, 0x36, 0xcb, 0x17, 0xaa, 0x1b, 0x24, 0x79, 0x96,
+        0xc6, 0x60, 0xd4, 0xe4, 0xa8, 0x59, 0x35, 0x5e, 0x4e, 0x00, 0xbf, 0x9a, 0xf5, 0x5c, 0x2a, 0xd7,
+        0xd7, 0x92, 0x98, 0x79, 0xad, 0x13, 0xda, 0xea, 0xde, 0xcd, 0x65, 0x81, 0x26, 0xbd, 0x55, 0x0f,
+        0xa4, 0x73, 0x54, 0x7b, 0x2f, 0x55, 0x2a, 0x2f, 0xb9, 0x2d, 0x6e, 0x04, 0xc8, 0x37, 0x5e, 0x93,
+        0x09, 0xa7, 0x7f, 0xb1, 0x6b, 0x4a, 0x9f, 0xea, 0x59, 0x19, 0x57, 0xd0, 0xc1, 0xa1, 0x6b, 0xaf,
+        0x27, 0x2b, 0xac, 0x81, 0xec, 0xcd, 0x2e, 0xa2, 0xa6, 0x08, 0x01, 0xfc, 0xa1, 0xbc, 0xc9, 0xdc,
+        0x97, 0xb9, 0x48, 0xa8, 0x65, 0x5d, 0x63, 0xdb, 0x5c, 0x7e, 0x55, 0xe7, 0x47, 0xf2, 0x74, 0x17,
+        0x67, 0xfe, 0x56, 0x20, 0x54, 0x65, 0x11, 0xdf, 0xec, 0x75, 0x70, 0x49, 0x59, 0xd1, 0xea, 0x6b,
+        0x8f, 0x39, 0xec, 0x5d, 0x81, 0x82, 0x9a, 0xec, 0xce, 0x6c, 0x0c, 0x32, 0x14, 0xbd, 0xef, 0xac,
+        0xae, 0x04, 0xd0, 0x75, 0x62, 0xf5, 0x82, 0x16, 0xd1, 0xa8, 0xfb, 0x22, 0x2a, 0xc2, 0xe7, 0x7a,
+        0x75, 0x08, 0x59, 0x99, 0x34, 0x3d, 0xd9, 0xd7, 0x66, 0xb8, 0xcd, 0xaa, 0xf4, 0x48, 0xcc, 0x21,
+        0x25, 0x83, 0xae, 0xad, 0x55, 0x0e, 0xff, 0x44, 0xf3, 0xcc, 0xd1, 0x89, 0x72, 0x0f, 0x9f, 0xe3,
+        0xe5, 0xc7, 0xd4, 0x53, 0x94, 0xd6, 0xfb, 0x35, 0xd5, 0xd8, 0x2f, 0xa7, 0x4b, 0xf9, 0x50, 0x15,
+        0x1e, 0x35, 0xfc, 0x3d, 0xca, 0xad, 0xb6, 0x49, 0x16, 0xee, 0xff, 0xd7, 0x8a, 0xcc, 0xf0, 0x96,
+        0x11, 0x97, 0x22, 0xf3, 0xf7, 0x7c, 0x7a, 0x50, 0x49, 0x12, 0x68, 0x6e, 0x0e, 0x62, 0x32, 0xc7,
+        0xe9, 0xc3, 0xa0, 0x1b, 0xfe, 0x29, 0x8c, 0x46, 0xc2, 0x7e, 0xe1, 0xea, 0xc3, 0xcb, 0x30, 0xaf,
+        0xe4, 0x60, 0xe5, 0xa5, 0xa5, 0xb8, 0xf4, 0x16, 0xfa, 0x19, 0xd0, 0x1c, 0x14, 0xce, 0xf9, 0xa8,
+        0x0b, 0x3f, 0x87, 0x89, 0xd3, 0xed, 0x9e, 0x16, 0x14, 0xbb, 0xd3, 0x64, 0xeb, 0x00, 0xe7, 0x48,
+        0x1f, 0xd4, 0x47, 0xbc, 0xa9, 0x6f, 0x03, 0xe0, 0x0e, 0xaf, 0xb9, 0xad, 0x05, 0xa0, 0x1d, 0xee,
+        0x0a, 0xcd, 0x0f, 0xd0, 0xb8, 0xf1, 0x35, 0x80, 0xa7, 0x72, 0xcd, 0x36, 0x8e, 0xce, 0x72, 0xf9,
+        0x9f, 0xd5, 0x29, 0xae, 0x02, 0xb7, 0xbe, 0x65, 0xff, 0x38, 0x45, 0xf8, 0x8d, 0x87, 0x2f, 0xf8,
+        0xdd, 0xc1, 0x72, 0x17, 0x2b, 0xdd, 0x3e, 0xfe, 0x01, 0xa0, 0x59, 0xb3, 0x19, 0x92, 0xf0, 0x59,
+        0xf5, 0x06, 0x77, 0x8b, 0x1a, 0x41, 0x1d, 0x8b, 0x80, 0x74, 0x95, 0x8b, 0x30, 0x03, 0x18, 0xdd,
+        0x1e, 0x1b, 0x21, 0x36, 0xdf, 0xde, 0xc3, 0xa2, 0x68, 0xe0, 0x3d, 0x94, 0x37, 0x6b, 0x48, 0xb2,
+        0xb9, 0x41, 0x53, 0xd6, 0x65, 0xef, 0x7a, 0x3d, 0xdc, 0x09, 0x17, 0x66, 0xb4, 0x05, 0x58, 0x8a,
+        0x5d, 0x2f, 0x40, 0x4a, 0x91, 0x8a, 0xa5, 0xb7, 0x29, 0xfb, 0x37, 0x81, 0x71, 0x77, 0x50, 0x8d,
+        0x34, 0x80, 0x7e, 0xab, 0xb9, 0xc8, 0xdc, 0xb7, 0x2c, 0x7e, 0xbc, 0xad, 0x7c, 0x14, 0x5c, 0xf6,
+        0x90, 0x88, 0x0e, 0x0d, 0x50, 0x7a, 0x4e, 0xa6, 0x85, 0xe4, 0x2a, 0xe7, 0x67, 0x21, 0x53, 0xbb,
+        0x73, 0xd5, 0x30, 0x78, 0xbd, 0x08, 0x2b, 0x42, 0x44, 0x3e, 0x5d, 0x2b, 0x2f, 0x09, 0x8e, 0x82,
+        0xc3, 0x5b, 0x9e, 0xd8, 0x20, 0xc6, 0xb7, 0x42, 0xe5, 0xb3, 0x60, 0x0b, 0x9b, 0x01, 0x76, 0x26,
+        0xf7, 0xc1, 0xf7, 0xe1, 0xd1, 0x46, 0xf7, 0x9c, 0x21, 0xfd, 0x66, 0xb7, 0x14, 0x1d, 0x89, 0xb5,
+        0xd3, 0xa1, 0x4e, 0x57, 0x97, 0xe7, 0xe4, 0x63, 0x96, 0xe2, 0x6f, 0x10, 0x6a, 0xb7, 0x8e, 0x83,
+        0x64, 0x22, 0x10, 0x02, 0x27, 0x87, 0x6d, 0xb6, 0x11, 0x51, 0xe9, 0xe6, 0x68, 0x1a, 0xc8, 0xd3,
+        0x6b, 0x23, 0x33, 0x68, 0x66, 0xab, 0x4d, 0xf9, 0x92, 0x11, 0x67, 0x9d, 0x24, 0xee, 0x18, 0xa8,
+        0x3c, 0x5a, 0xfe, 0x79, 0x76, 0x99, 0xeb, 0x9f, 0x19, 0x9d, 0x74, 0xee, 0x13, 0xd9, 0xb1, 0x7b,
+        0x4e, 0xcf, 0x30, 0x05, 0xdb, 0x5a, 0x3e, 0x00, 0x7e, 0x0a, 0xed, 0x6f, 0xaf, 0x0d, 0x1b, 0xf3,
+        0x61, 0x24, 0x06, 0xe7, 0xf2, 0x57, 0x72, 0xf8, 0x61, 0x4d, 0x5f, 0x00, 0x78, 0x1f, 0x4d, 0xc7,
+        0x28, 0x5e, 0xc4, 0x9b, 0xed, 0xac, 0x4f, 0x16, 0xaf, 0x81, 0x85, 0x33, 0x16, 0xbd, 0x6a, 0xb9,
+        0xb2, 0x8e, 0x25, 0xbc, 0xaf, 0xfd, 0xea, 0xb7, 0x20, 0x32, 0x15, 0x62, 0x77, 0x52, 0xa1, 0xf2,
+        0xd0, 0x9d, 0x12, 0x4c, 0x85, 0x71, 0x08, 0x03, 0xa7, 0x94, 0x34, 0xb4, 0x96, 0x30, 0x82, 0x05,
+        0x41, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x05, 0x32,
+        0x04, 0x82, 0x05, 0x2e, 0x30, 0x82, 0x05, 0x2a, 0x30, 0x82, 0x05, 0x26, 0x06, 0x0b, 0x2a, 0x86,
+        0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x0a, 0x01, 0x02, 0xa0, 0x82, 0x04, 0xee, 0x30, 0x82, 0x04,
+        0xea, 0x30, 0x1c, 0x06, 0x0a, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x03, 0x30,
+        0x0e, 0x04, 0x08, 0x30, 0xee, 0xbd, 0x7c, 0xcb, 0xb5, 0xa5, 0x1b, 0x02, 0x02, 0x08, 0x00, 0x04,
+        0x82, 0x04, 0xc8, 0x1e, 0xd0, 0x7f, 0x7e, 0x86, 0x1c, 0x6f, 0x0e, 0xac, 0x6c, 0xe3, 0x35, 0xcb,
+        0xff, 0xe4, 0x84, 0x88, 0x97, 0x45, 0xf3, 0x48, 0xa9, 0x98, 0xeb, 0x74, 0x91, 0x53, 0x07, 0x7a,
+        0xe4, 0x78, 0x89, 0x13, 0xe7, 0xce, 0xa3, 0xc5, 0xab, 0x2c, 0x16, 0xe5, 0x02, 0x64, 0xc6, 0xb5,
+        0x11, 0x36, 0x69, 0x0b, 0x5f, 0x7e, 0x95, 0x27, 0x59, 0x9a, 0xac, 0x98, 0x12, 0x76, 0x39, 0x31,
+        0xaa, 0x4f, 0x22, 0x55, 0x21, 0x71, 0x20, 0xeb, 0x4e, 0x5e, 0x2d, 0xd8, 0xab, 0xd9, 0x64, 0x38,
+        0x13, 0x9a, 0x14, 0x48, 0x7f, 0x48, 0x05, 0xec, 0x49, 0x55, 0x80, 0x49, 0xaf, 0x4e, 0x29, 0xdf,
+        0x4a, 0xfb, 0xa1, 0x20, 0x2f, 0x98, 0x35, 0xf7, 0x8f, 0xb9, 0x41, 0x8b, 0x00, 0x14, 0x23, 0x9a,
+        0x43, 0xfe, 0x55, 0xfc, 0xe5, 0x57, 0x19, 0xa9, 0x74, 0x44, 0x1f, 0xdd, 0xc3, 0xc8, 0x9f, 0xfa,
+        0x9f, 0x67, 0x93, 0xed, 0x79, 0x11, 0xe1, 0x4e, 0xed, 0xd6, 0x20, 0x82, 0xc8, 0x85, 0xdf, 0x4e,
+        0xa0, 0xcd, 0xd8, 0x36, 0x37, 0x4f, 0x67, 0x9d, 0x84, 0x44, 0x14, 0xce, 0xc0, 0xc9, 0xa6, 0xbd,
+        0x73, 0x06, 0x27, 0xb7, 0x16, 0x97, 0x8c, 0x61, 0xd9, 0x63, 0xb2, 0x56, 0x8d, 0x28, 0x9e, 0x2e,
+        0xcf, 0xa3, 0xfe, 0x8d, 0xaa, 0xef, 0x69, 0x32, 0x7b, 0x32, 0xbe, 0xd5, 0x62, 0x2c, 0x2e, 0x7f,
+        0x72, 0xdb, 0x3c, 0x4b, 0xe4, 0x76, 0xa3, 0xa9, 0xa1, 0x67, 0x84, 0x86, 0xea, 0x14, 0x15, 0x6c,
+        0x74, 0xd2, 0xac, 0x0e, 0xe2, 0x54, 0x54, 0xd4, 0x31, 0xa3, 0x88, 0x66, 0x89, 0x31, 0x7b, 0xf7,
+        0x3c, 0x92, 0xce, 0x3e, 0x86, 0xfb, 0x57, 0xc8, 0x65, 0xae, 0x85, 0x6d, 0x48, 0xf6, 0xe6, 0x37,
+        0xeb, 0x77, 0xcf, 0x06, 0xd6, 0x9e, 0x54, 0xb4, 0xd8, 0x9a, 0x5f, 0xdd, 0xc5, 0xa5, 0x05, 0xa0,
+        0x4b, 0xd1, 0x54, 0xab, 0x4f, 0xd0, 0x3e, 0x6b, 0x8f, 0x03, 0x66, 0xd4, 0xe2, 0x90, 0xea, 0x2d,
+        0x9b, 0x6a, 0x2b, 0xc4, 0x7b, 0x9d, 0xf1, 0xb5, 0x22, 0xdf, 0x86, 0xc2, 0xfd, 0x13, 0x0a, 0x69,
+        0x29, 0x59, 0xe9, 0x45, 0xcd, 0xdf, 0xcd, 0xa5, 0x71, 0x7e, 0x70, 0xc3, 0x60, 0x9e, 0x47, 0x5d,
+        0xd4, 0x6c, 0xcc, 0x15, 0x51, 0x23, 0x5b, 0x4e, 0xee, 0x72, 0x80, 0x49, 0xd6, 0xac, 0x89, 0x16,
+        0x65, 0xf4, 0x95, 0x57, 0x19, 0x13, 0xab, 0x9c, 0x08, 0xe8, 0xdf, 0x0a, 0xe2, 0x39, 0xfc, 0xff,
+        0x42, 0x02, 0xac, 0xaf, 0xf1, 0xb6, 0x56, 0xef, 0x75, 0x60, 0x2f, 0xc2, 0x5d, 0xef, 0xf5, 0x79,
+        0xb5, 0x46, 0xa0, 0xb5, 0x03, 0x67, 0xef, 0x78, 0x3d, 0x49, 0xd0, 0xc5, 0x0e, 0xff, 0x42, 0x72,
+        0x02, 0x86, 0x99, 0x93, 0xaa, 0xa3, 0x9e, 0x2c, 0xc7, 0xec, 0xa2, 0xdf, 0x25, 0x4e, 0x28, 0x81,
+        0x82, 0x3e, 0x29, 0xd3, 0x37, 0xfd, 0x32, 0xf4, 0x85, 0x46, 0x42, 0xb9, 0x94, 0x44, 0x8a, 0xbf,
+        0xd9, 0x14, 0xcb, 0xb6, 0xd3, 0xc5, 0xe7, 0x6b, 0x28, 0x70, 0xc3, 0x9c, 0xc2, 0x93, 0x9d, 0x2f,
+        0xab, 0xd6, 0xb2, 0x19, 0x28, 0x9a, 0xda, 0x0d, 0x90, 0x5b, 0xba, 0x64, 0x6f, 0xcc, 0x11, 0xef,
+        0x6c, 0x88, 0x18, 0x4f, 0x86, 0x6e, 0xed, 0xcf, 0xde, 0x0d, 0xec, 0xe2, 0x12, 0xc3, 0x89, 0x0a,
+        0x3f, 0xbb, 0x3d, 0x8c, 0x8f, 0xa9, 0x40, 0xe6, 0xf8, 0xd1, 0x1a, 0x9a, 0x7e, 0x8a, 0xd7, 0x7b,
+        0x56, 0xf4, 0x5d, 0x80, 0x64, 0xd5, 0x88, 0x86, 0x85, 0x18, 0x30, 0x5d, 0x64, 0x04, 0xb3, 0xc2,
+        0xc7, 0x80, 0xda, 0x3e, 0xc4, 0xd6, 0xf6, 0xc4, 0x95, 0x56, 0xd5, 0xad, 0x82, 0x86, 0xcc, 0x1a,
+        0x05, 0x69, 0x06, 0x08, 0x5b, 0x19, 0xea, 0x10, 0xc5, 0xcd, 0x67, 0x93, 0xab, 0x0f, 0xe3, 0xba,
+        0xb0, 0x0d, 0xac, 0x99, 0x0d, 0x35, 0x6f, 0xe5, 0x41, 0xb2, 0x7c, 0x87, 0x91, 0x6c, 0xe2, 0x75,
+        0x9b, 0x64, 0x62, 0x06, 0x2a, 0x8b, 0xd9, 0x4d, 0x23, 0xcd, 0x2b, 0xef, 0xf5, 0x61, 0x82, 0x8e,
+        0x3f, 0xf6, 0x2b, 0xe1, 0x6f, 0xcf, 0xbd, 0xaa, 0x07, 0x97, 0x49, 0x4e, 0x02, 0x9d, 0xa5, 0x9e,
+        0xc5, 0xd7, 0x8b, 0xd3, 0xe1, 0xd9, 0x35, 0x96, 0x9d, 0x1f, 0xa2, 0xf6, 0x91, 0xee, 0xd1, 0x3b,
+        0xa8, 0xfe, 0x4d, 0xeb, 0xf9, 0xfc, 0xe4, 0xab, 0x60, 0xb7, 0x86, 0x9d, 0x2a, 0x35, 0xb0, 0x00,
+        0xd4, 0x3c, 0x2a, 0x7e, 0x6d, 0x65, 0x5f, 0xf3, 0x7c, 0x23, 0x57, 0x52, 0x2a, 0x8c, 0x5b, 0x36,
+        0x74, 0xb7, 0x61, 0x49, 0xf0, 0xdf, 0xcf, 0x8a, 0x28, 0xc5, 0x8d, 0xbc, 0x20, 0xcc, 0xac, 0x86,
+        0x20, 0xd8, 0x2d, 0x86, 0x99, 0xf5, 0xf0, 0xdb, 0xed, 0x8d, 0xf9, 0xd7, 0x4e, 0xa8, 0xde, 0x84,
+        0x35, 0x50, 0xc1, 0x7c, 0xbd, 0xdf, 0xc2, 0x24, 0x1a, 0x49, 0x24, 0x9a, 0x37, 0x93, 0xca, 0x2d,
+        0x73, 0x47, 0x8f, 0x83, 0xed, 0x4d, 0xca, 0xf8, 0xf0, 0xd3, 0x9b, 0xe0, 0x4b, 0x3b, 0xf1, 0x86,
+        0xeb, 0x78, 0x7b, 0x42, 0xa1, 0xb9, 0x36, 0x15, 0xde, 0x63, 0xab, 0x8b, 0x8b, 0x5d, 0xa2, 0x92,
+        0x10, 0x95, 0xdf, 0xda, 0xd7, 0xba, 0xa0, 0x26, 0xb9, 0xdc, 0x83, 0xeb, 0xdc, 0xd2, 0x1f, 0xf1,
+        0xb1, 0x8d, 0x21, 0x51, 0x71, 0x59, 0x0e, 0xe8, 0x7e, 0xf1, 0x53, 0x08, 0x98, 0x79, 0x05, 0x3b,
+        0x22, 0xf1, 0xda, 0x07, 0x0d, 0xf7, 0x89, 0x5e, 0xc4, 0x62, 0x8c, 0xf9, 0x19, 0xc8, 0xbc, 0xa4,
+        0x0c, 0x6f, 0x41, 0x34, 0x56, 0x22, 0x6b, 0xe6, 0xee, 0x7c, 0x4a, 0xd9, 0x26, 0x8c, 0x56, 0x12,
+        0xf3, 0x03, 0x12, 0x1c, 0x5b, 0x8d, 0x64, 0x5c, 0x1c, 0xb6, 0x0f, 0x93, 0xaf, 0xb1, 0x67, 0x6f,
+        0x13, 0xdd, 0xe3, 0xcf, 0x0e, 0xe6, 0x06, 0xf3, 0xb2, 0xbc, 0x99, 0xf5, 0xb0, 0xd7, 0xe9, 0x7e,
+        0xb0, 0x6a, 0xb9, 0xb5, 0xda, 0xcf, 0x88, 0xf1, 0xc5, 0x58, 0x54, 0x05, 0x5c, 0x9d, 0x79, 0xc2,
+        0xcd, 0xbb, 0xc6, 0xf2, 0x69, 0xa9, 0xe3, 0x4e, 0x05, 0x0d, 0x02, 0xb6, 0x4d, 0x8e, 0x7d, 0x60,
+        0x8e, 0xda, 0x4d, 0x28, 0xd2, 0xec, 0x8a, 0x11, 0xe3, 0xe7, 0x17, 0x20, 0x07, 0x7b, 0xfc, 0x9b,
+        0x4e, 0xf7, 0x79, 0xf5, 0x0a, 0x6e, 0xd1, 0x1e, 0x7b, 0x83, 0x66, 0x5e, 0x1b, 0x9d, 0x36, 0x32,
+        0x89, 0xf6, 0x72, 0xa5, 0x58, 0x54, 0x42, 0xba, 0x90, 0xf3, 0xbb, 0x05, 0x46, 0xa4, 0x91, 0x1c,
+        0xdb, 0xab, 0xf3, 0x68, 0x56, 0x7a, 0xd3, 0xff, 0x3f, 0x9f, 0xc5, 0x4a, 0x47, 0xbd, 0x89, 0x46,
+        0xf6, 0x94, 0x3a, 0x94, 0xd4, 0x30, 0xd3, 0xae, 0x0d, 0x99, 0x95, 0xf7, 0x75, 0xfe, 0x14, 0x10,
+        0x9e, 0xed, 0x21, 0x0f, 0x0d, 0x54, 0x7d, 0x54, 0xc5, 0x80, 0x21, 0x4d, 0xf2, 0xaf, 0x67, 0xaf,
+        0x8a, 0x76, 0x9e, 0x34, 0x32, 0x74, 0x89, 0x2a, 0x32, 0xf9, 0x48, 0x20, 0x90, 0xe6, 0x4a, 0xa3,
+        0x7f, 0xf2, 0x2a, 0x51, 0x22, 0x93, 0xe5, 0xdd, 0x59, 0xb3, 0x83, 0xa8, 0x47, 0xf5, 0x6b, 0x38,
+        0x24, 0xc2, 0xac, 0x2d, 0x03, 0xda, 0xb1, 0x17, 0x19, 0xe0, 0x38, 0x2c, 0xb3, 0xa6, 0x4c, 0x8e,
+        0xae, 0x63, 0xa7, 0xae, 0x96, 0xb1, 0x07, 0x8c, 0x8f, 0x6a, 0x08, 0x32, 0x15, 0x1f, 0x33, 0x97,
+        0x21, 0x3b, 0x51, 0x70, 0xc5, 0x1f, 0xa6, 0xa3, 0x8a, 0xd0, 0x8f, 0x0b, 0xda, 0x64, 0xab, 0xbe,
+        0xee, 0x4b, 0x14, 0xfd, 0x32, 0x87, 0x9e, 0xa7, 0x19, 0x75, 0xc9, 0xaa, 0xd3, 0xed, 0xa7, 0xa0,
+        0x01, 0xe7, 0xa0, 0xe5, 0x28, 0xdd, 0x3b, 0x7c, 0x49, 0xe4, 0x24, 0x7d, 0x92, 0x86, 0x25, 0x03,
+        0xb3, 0x66, 0x04, 0xf3, 0xa1, 0x40, 0x11, 0x35, 0x3a, 0x1d, 0xbf, 0x1c, 0x02, 0x83, 0x3d, 0x37,
+        0x51, 0x88, 0xa3, 0x2b, 0x10, 0x8c, 0x8e, 0x10, 0xdd, 0xdc, 0xef, 0xa4, 0xe9, 0x14, 0x77, 0xb6,
+        0x8e, 0x75, 0xb6, 0x8e, 0xea, 0xaa, 0x57, 0x16, 0x1f, 0xb0, 0x0c, 0xbc, 0x44, 0xed, 0x92, 0x94,
+        0x9a, 0xb4, 0xf3, 0x31, 0x64, 0x02, 0x5c, 0xa1, 0x51, 0x63, 0x39, 0x42, 0x74, 0x7a, 0x1d, 0xf2,
+        0xf5, 0x92, 0x50, 0xf1, 0x5a, 0x8a, 0xde, 0xb3, 0x4e, 0xf1, 0x6e, 0x67, 0xd9, 0x5b, 0x00, 0xa7,
+        0xd1, 0x90, 0x58, 0x36, 0xc4, 0x15, 0x80, 0xbb, 0xa5, 0xbb, 0x98, 0xc0, 0x8a, 0x9b, 0x17, 0x35,
+        0x36, 0x3b, 0x62, 0x0f, 0x29, 0xcd, 0xe9, 0x04, 0x0e, 0x9d, 0xca, 0x43, 0x04, 0xdf, 0x17, 0x49,
+        0xbf, 0xb6, 0x7a, 0x7a, 0x3c, 0xdb, 0x0d, 0x6d, 0xd5, 0x89, 0xb9, 0x69, 0x94, 0xd8, 0xb2, 0xd6,
+        0x38, 0x8a, 0xcc, 0x78, 0x44, 0x40, 0x63, 0x9f, 0x1e, 0x0e, 0x40, 0x33, 0x51, 0xd3, 0x65, 0xf8,
+        0xf1, 0x42, 0x06, 0x75, 0x84, 0xe7, 0xb1, 0xe9, 0xd6, 0xa4, 0x5e, 0x7f, 0xb0, 0x48, 0x6f, 0x80,
+        0x92, 0xf8, 0xfc, 0x2a, 0xdb, 0x18, 0x97, 0xe5, 0xe7, 0xc7, 0x46, 0xb6, 0x59, 0x8c, 0x3a, 0x09,
+        0x91, 0xc1, 0x49, 0x55, 0xf9, 0xf3, 0x87, 0x19, 0xdc, 0x72, 0x56, 0xd3, 0x20, 0x5e, 0xc5, 0x3d,
+        0xfb, 0x19, 0xea, 0x6a, 0xdf, 0x09, 0xb2, 0x8f, 0xb6, 0xdd, 0x26, 0x31, 0x25, 0x30, 0x23, 0x06,
+        0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x3b, 0xd2,
+        0xb3, 0x51, 0x4c, 0x57, 0xd0, 0xca, 0x34, 0xa4, 0xf0, 0x06, 0xdd, 0xe9, 0x76, 0x08, 0xdb, 0x7b,
+        0x3a, 0xb0, 0x30, 0x31, 0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05,
+        0x00, 0x04, 0x14, 0x8e, 0x7f, 0x87, 0x67, 0x78, 0x64, 0x93, 0x36, 0x35, 0xe5, 0x93, 0x9d, 0xac,
+        0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
+        0x7e, 0x02, 0x02, 0x08, 0x00]);
 
-    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, "123456");
-    console.info("parsePKCS12 succeed.");
+    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, '123456');
+    console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
-      console.info("privateKey:" + p12.privateKey.toString());
+      console.info('privateKey:' + p12.privateKey.toString());
     }
     if (p12.cert) {
-      console.info("cert:" + p12.cert.toString());
+      console.info('cert:' + p12.cert.toString());
     }
     if (p12.otherCerts && Array.isArray(p12.otherCerts)) {
-      console.info("otherCerts counts:", p12.otherCerts.length);
+      console.info('otherCerts counts:', p12.otherCerts.length);
       p12.otherCerts.forEach((cert, idx) => {
         console.info(`otherCerts[${idx}]:\n${cert.toString()}`);
       });
     } else {
-      console.info("otherCerts is empty or not an array.");
+      console.info('otherCerts is empty or not an array.');
     }
   } catch (err) {
-    console.error(`parsePKCS12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`parsePKCS12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
@@ -11121,20 +11432,20 @@ Creates PKCS #12 data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | [Pkcs12Data](#pkcs12data18) | Yes| PKCS #12 data object to be packed.|
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the PKCS #12 file.|
+| data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating a PKCS #12 file.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> | Promise used to return the result. PKCS #12 file created, in DER format.|
+| Promise\<Uint8Array> | Promise used to PKCS #12 file created, in DER format.|
 
 **Error codes**
 
@@ -11143,7 +11454,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
 | 19030001 | crypto operation error.                           |
 
@@ -11246,7 +11557,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
   return x509Cert;
 }
@@ -11255,43 +11566,43 @@ async function doTestCreatePkcs12() {
   const caCert = await createX509Cert(othercert);
   const x509Cert = await createX509Cert(certData);
 
-  let data : cert.Pkcs12Data = {
-    privateKey : priKey,
-    cert : x509Cert,
-    otherCerts : [caCert]
+  let data: cert.Pkcs12Data = {
+    privateKey: priKey,
+    cert: x509Cert,
+    otherCerts: [caCert]
   }
 
-  let keyParam : cert.PbesParams = {
-    saltLen : 16,
-    iterations : 2048,
-    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_192_CBC
+  let keyParam: cert.PbesParams = {
+    saltLen: 16,
+    iterations: 2048,
+    encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_192_CBC
   }
 
-  let certParam : cert.PbesParams = {
-    saltLen : 16,
-    iterations : 2048,
-    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_256_CBC
+  let certParam: cert.PbesParams = {
+    saltLen: 16,
+    iterations: 2048,
+    encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_256_CBC
   }
 
-  let config : cert.Pkcs12CreationConfig = {
-    password : "123456",
-    keyEncParams : keyParam,
-    encryptCert : true,
-    certEncParams : certParam,
-    macSaltLen : 16,
-    macIterations : 2048,
-    macDigestAlgorithm : cert.Pkcs12MacDigestAlgorithm.SHA384
+  let config: cert.Pkcs12CreationConfig = {
+    password: '123456',
+    keyEncParams: keyParam,
+    encryptCert: true,
+    certEncParams: certParam,
+    macSaltLen: 16,
+    macIterations: 2048,
+    macDigestAlgorithm: cert.Pkcs12MacDigestAlgorithm.SHA384
   }
   try {
     let p12 = await cert.createPkcs12(data, config);
-    console.info("createPkcs12 succeed p12 = " + p12);
+    console.info('createPkcs12 result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createPkcs12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
 
-## cert.createPkcs12<sup>21+</sup>
+## cert.createPkcs12Sync<sup>21+</sup>
 
 createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
@@ -11299,20 +11610,20 @@ Creates PKCS #12 data. This API uses a promise to return the result synchronousl
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
 | data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the P12 file.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating a PKCS #12 file.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Uint8Array | P12 file created, in DER format.|
+| Uint8Array | PKCS #12 file created, in DER format.|
 
 **Error codes**
 
@@ -11321,7 +11632,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
 | 19030001 | crypto operation error.                           |
 
@@ -11424,7 +11735,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
   return x509Cert;
 }
@@ -11433,38 +11744,38 @@ async function doTestCreatePkcs12Sync() {
   const caCert = await createX509Cert(othercert);
   const x509Cert = await createX509Cert(certData);
 
-  let data : cert.Pkcs12Data = {
-    privateKey : priKey,
-    cert : x509Cert,
-    otherCerts : [caCert]
+  let data: cert.Pkcs12Data = {
+    privateKey: priKey,
+    cert: x509Cert,
+    otherCerts: [caCert]
   }
 
-  let keyParam : cert.PbesParams = {
-    saltLen : 16,
-    iterations : 2048,
-    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_192_CBC
+  let keyParam: cert.PbesParams = {
+    saltLen: 16,
+    iterations: 2048,
+    encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_192_CBC
   }
 
-  let certParam : cert.PbesParams = {
-    saltLen : 16,
-    iterations : 2048,
-    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_256_CBC
+  let certParam: cert.PbesParams = {
+    saltLen: 16,
+    iterations: 2048,
+    encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_256_CBC
   }
 
-  let config : cert.Pkcs12CreationConfig = {
-    password : "123456",
-    keyEncParams : keyParam,
-    encryptCert : true,
-    certEncParams : certParam,
-    macSaltLen : 16,
-    macIterations : 2048,
-    macDigestAlgorithm : cert.Pkcs12MacDigestAlgorithm.SHA384
+  let config: cert.Pkcs12CreationConfig = {
+    password: '123456',
+    keyEncParams: keyParam,
+    encryptCert: true,
+    certEncParams: certParam,
+    macSaltLen: 16,
+    macIterations: 2048,
+    macDigestAlgorithm: cert.Pkcs12MacDigestAlgorithm.SHA384
   }
   try {
     let p12 = cert.createPkcs12Sync(data, config);
-    console.info("createPkcs12Sync succeed p12 = " + p12);
+    console.info('createPkcs12Sync result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createPkcs12Sync failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
@@ -11475,22 +11786,22 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certificate parsed from a .p12 keystore file. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| keystore | Uint8Array | Yes| .p12 file to parse, in DER format.|
-| pwd | string | Yes| Password of the .p12 file.|
+| keystore | Uint8Array | Yes| PKCS #12 file, in DER format.|
+| pwd | string | Yes| PKCS #12 password.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | **X509TrustAnchor** object array created.|
+| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | **X509TrustAnchor** object array.|
 
 **Error codes**
 
@@ -11500,14 +11811,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -11517,36 +11828,136 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   cert.createTrustAnchorsWithKeyStore(
-    new Uint8Array([0x30, 0x82, 0x07, 0x5C, 0x02, 0x01, 0x03, 0x30, 0x82, 0x07, 0x12, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x07, 0x03, 0x04, 0x82, 0x06, 0xFF, 0x30, 0x82, 0x06, 0xFB, 0x30, 0x82, 0x05, 0xB2, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x06, 0xA0, 0x82, 0x05, 0xA3, 0x30, 0x82, 0x05, 0x9F, 0x02, 0x01, 0x00, 0x30, 0x82, 0x05, 0x98, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C, 0x30, 0x1C, 0x04, 0x08, 0xA9, 0x1C, 0x1B, 0x19, 0x36, 0xDE, 0xD4, 0x20, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06, 0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0x7D, 0xE5, 0x23, 0x96, 0x18, 0x8B, 0xF4, 0xBC, 0x9F, 0x4E, 0xE8, 0xE9, 0xAA, 0x52, 0x18, 0x39, 0x80, 0x82, 0x05, 0x30, 0x02, 0x2D, 0x59, 0xA9, 0x96, 0x5A, 0xFE, 0x20, 0x18, 0xB2, 0x25, 0xEA, 0xFC, 0x86, 0x0F, 0xA8, 0x3C, 0x2B, 0x26, 0x2F, 0x44, 0x6E, 0xF3, 0x15, 0xB7, 0x94, 0xE4, 0x43, 0xEE, 0xE6, 0xC3, 0xBB, 0x3C, 0x9E, 0x60, 0x08, 0xF8, 0x15, 0x61, 0x44, 0xD0, 0xEA, 0xD5, 0x6D, 0x1A, 0x3B, 0x9F, 0x4E, 0x2A, 0x1E, 0xBB, 0xB9, 0x4E, 0x15, 0x43, 0xB8, 0x68, 0xDB, 0x1A, 0x4E, 0x41, 0xBA, 0x29, 0x8E, 0x75, 0xEB, 0x12, 0xC1, 0xF0, 0x4B, 0x0D, 0x13, 0xB2, 0xC2, 0x48, 0x6F, 0xC4, 0xC4, 0x82, 0xF2, 0x26, 0xD4, 0x3D, 0x1F, 0x42, 0x7D, 0x67, 0xB0, 0x37, 0x55, 0x9E, 0xD9, 0x46, 0x99, 0x98, 0xB4, 0xE7, 0x4B, 0x07, 0x08, 0x3F, 0xD3, 0x96, 0x9A, 0xC5, 0xDA, 0x37, 0x74, 0x08, 0x5D, 0x3B, 0x06, 0x8A, 0x16, 0x6D, 0x81, 0x63, 0x01, 0x83, 0x94, 0xDA, 0x1B, 0x0E, 0x04, 0xCE, 0x18, 0xF0, 0x51, 0x22, 0xD8, 0x2D, 0xF1, 0x69, 0x0C, 0xCB, 0xC9, 0x51, 0x17, 0x07, 0x1F, 0x2B, 0xCF, 0x74, 0x26, 0xD7, 0x73, 0xB3, 0x2D, 0xF2, 0x82, 0xF0, 0x38, 0x5B, 0x8A, 0x8F, 0xCD, 0x84, 0x69, 0x40, 0x59, 0xCE, 0xB3, 0x39, 0xFE, 0xF6, 0xB7, 0x24, 0x89, 0x34, 0xFF, 0xF4, 0x40, 0x50, 0x06, 0x4D, 0xC6, 0x13, 0x82, 0xAF, 0x7F, 0x84, 0xB1, 0x67, 0x3C, 0x89, 0xBB, 0x5D, 0x32, 0xC3, 0xA6, 0xF1, 0x7D, 0xF5, 0x72, 0x68, 0x75, 0xCE, 0x69, 0xAB, 0x6C, 0x32, 0xDA, 0x16, 0x3B, 0xC4, 0xCA, 0x47, 0x45, 0xE9, 0x59, 0x1E, 0xB1, 0x70, 0xDA, 0x8A, 0x00, 0x69, 0x80, 0x40, 0xCA, 0x60, 0xE6, 0x07, 0x16, 0xF0, 0xA2, 0xF9, 0x12, 0x7D, 0x09, 0x43, 0x66, 0x46, 0x78, 0x35, 0xA6, 0x94, 0x35, 0x60, 0x82, 0xFC, 0xB8, 0x5E, 0x39, 0xE7, 0xA1, 0x22, 0xAD, 0xCC, 0x6F, 0x5E, 0xCE, 0x01, 0x6B, 0xA1, 0xDD, 0xE5, 0xDD, 0x79, 0x9B, 0xA1, 0x28, 0xC4, 0x03, 0x84, 0x8D, 0x6C, 0x07, 0xD4, 0xFE, 0x57, 0xFB, 0x89, 0x3F, 0x43, 0x44, 0x69, 0xF1, 0x9E, 0x53, 0x6C, 0x11, 0x11, 0x96, 0x79, 0xE4, 0xB8, 0x3B, 0x49, 0x2E, 0xF6, 0x3B, 0xC5, 0x6C, 0x76, 0x21, 0x22, 0x15, 0x85, 0x77, 0x8A, 0xDD, 0xD2, 0x43, 0x85, 0x73, 0x39, 0x77, 0x9F, 0xFA, 0x8F, 0xCF, 0xCB, 0xEA, 0x62, 0xBD, 0x5C, 0x66, 0x45, 0xCD, 0xB0, 0xCA, 0x42, 0xCC, 0xB9, 0xCF, 0xE3, 0x84, 0x63, 0x9F, 0x63, 0xCE, 0x49, 0xE9, 0x74, 0x26, 0xCC, 0x26, 0x78, 0xCE, 0x9F, 0x4E, 0x38, 0xA2, 0x9C, 0xEB, 0x75, 0xC5, 0x33, 0x6B, 0x00, 0x83, 0x85, 0xA3, 0x0F, 0xE7, 0xE1, 0x11, 0xA6, 0x48, 0xDC, 0xEF, 0x0C, 0x05, 0xB3, 0xDE, 0x94, 0xB9, 0x69, 0xCB, 0x27, 0x09, 0xAB, 0x27, 0xD8, 0x06, 0xED, 0x25, 0xBC, 0xA6, 0x2E, 0xB7, 0xF9, 0x2E, 0xAD, 0x84, 0x1D, 0xDD, 0x73, 0xD8, 0xC0, 0x46, 0x8A, 0xFE, 0x9A, 0xDF, 0x07, 0xE1, 0x33, 0xE2, 0x1C, 0x37, 0x6A, 0x8E, 0xA2, 0x91, 0x0B, 0xD7, 0x76, 0xEF, 0x3C, 0x87, 0x4A, 0x53, 0x84, 0xFA, 0xFA, 0xC5, 0x71, 0x76, 0xC0, 0x75, 0x70, 0x67, 0x67, 0x71, 0x9D, 0x8B, 0x81, 0x6F, 0x68, 0xC5, 0xB1, 0xFC, 0xA3, 0x59, 0xB5, 0xD0, 0x03, 0x56, 0xE7, 0x89, 0x03, 0xD7, 0x99, 0xDE, 0x66, 0x33, 0xFA, 0x53, 0x50, 0x5F, 0xB4, 0x9D, 0xB3, 0x90, 0x8F, 0x57, 0x20, 0xF0, 0x8B, 0xDB, 0x73, 0xCA, 0xA4, 0x71, 0x61, 0x67, 0x6A, 0x6D, 0xA5, 0xCA, 0x88, 0xD4, 0xCC, 0x82, 0x34, 0xC9, 0x3E, 0x10, 0x10, 0x57, 0xD1, 0x08, 0x96, 0x80, 0x09, 0xA8, 0xBB, 0x6F, 0x53, 0x8F, 0xFD, 0x87, 0xCF, 0x73, 0xFC, 0xE1, 0x3A, 0x92, 0x2E, 0x78, 0x66, 0xFB, 0x86, 0x5D, 0x62, 0xE0, 0xC4, 0x58, 0x55, 0x3F, 0xA4, 0xEA, 0xA1, 0xBE, 0x5B, 0x5E, 0x8E, 0x46, 0x50, 0x5E, 0x7C, 0x01, 0xD6, 0x63, 0xAA, 0x6F, 0xD5, 0xFD, 0xAF, 0xC5, 0x1D, 0xB3, 0x90, 0x9C, 0xD8, 0x5F, 0x8D, 0xF2, 0x81, 0xEB, 0xBF, 0xA1, 0xDE, 0xB7, 0x9D, 0xCD, 0x24, 0x82, 0x06, 0x0B, 0x63, 0xE6, 0xBF, 0x57, 0x51, 0xF0, 0xB6, 0xE9, 0x7F, 0xAA, 0x7B, 0x10, 0xBD, 0xCD, 0x85, 0x41, 0xE0, 0xD7, 0xF1, 0x53, 0xB7, 0xF8, 0x46, 0x91, 0x9E, 0x8D, 0x4B, 0xCB, 0x28, 0x35, 0x40, 0x37, 0x1E, 0x83, 0x64, 0x6A, 0x70, 0x01, 0x9D, 0xBF, 0xF1, 0x0E, 0xB6, 0x2E, 0x7A, 0xB7, 0x8F, 0x0F, 0x8C, 0x69, 0xD6, 0xF2, 0xD1, 0xF6, 0x1E, 0xCD, 0x08, 0xA8, 0xD4, 0x1B, 0xCB, 0x38, 0xEA, 0x26, 0x37, 0x5C, 0x60, 0x3A, 0x38, 0x5B, 0x12, 0x1D, 0x00, 0x7B, 0xEC, 0xCE, 0xFB, 0x89, 0x23, 0x8A, 0x11, 0xE1, 0x1B, 0xDE, 0x54, 0x91, 0x6A, 0x26, 0x22, 0xD0, 0x1C, 0x2E, 0xBA, 0xD0, 0x92, 0x87, 0xDA, 0xF0, 0x93, 0xBB, 0x3A, 0x2C, 0x52, 0xFB, 0xB2, 0xA9, 0xA8, 0x92, 0x19, 0xE3, 0x19, 0xDC, 0xB0, 0x0E, 0xC5, 0xE7, 0x9D, 0xFB, 0xF9, 0xA3, 0x23, 0x32, 0xD0, 0x4E, 0x2C, 0x05, 0x2D, 0x76, 0xDB, 0x93, 0x53, 0x5B, 0x0E, 0x2A, 0xA3, 0xDD, 0x5F, 0xD3, 0x1A, 0x3B, 0x1E, 0x1F, 0x26, 0x88, 0x43, 0xAD, 0x10, 0x1F, 0xA9, 0xC4, 0xF9, 0x1F, 0xCD, 0xA5, 0xD2, 0xDC, 0x24, 0x95, 0x1D, 0xE7, 0x57, 0xE1, 0x02, 0x0A, 0x20, 0xEA, 0x6A, 0x78, 0x4E, 0x96, 0xE2, 0xE5, 0x6D, 0x6F, 0xFD, 0x81, 0x7B, 0x61, 0x85, 0xA3, 0x3D, 0xC5, 0x7B, 0xEF, 0xAE, 0x58, 0xA2, 0xDB, 0x91, 0x73, 0xDB, 0x47, 0x8E, 0xD1, 0x7D, 0xD7, 0x8F, 0x56, 0x06, 0x28, 0x8C, 0x78, 0x73, 0x02, 0x65, 0xB0, 0x16, 0x4B, 0xE6, 0xA3, 0xD7, 0x06, 0x7C, 0xEA, 0x7D, 0xE2, 0xAE, 0xBB, 0xE5, 0xD2, 0xEB, 0xF0, 0x91, 0x71, 0x7C, 0xBC, 0xA6, 0x1A, 0xE8, 0x9F, 0xD3, 0xA9, 0x3C, 0x5D, 0x60, 0xCF, 0x59, 0x26, 0x46, 0x45, 0xF2, 0x7F, 0x85, 0x6B, 0xE7, 0xC2, 0x58, 0x52, 0x90, 0x12, 0x07, 0xBA, 0xE6, 0xB8, 0xE5, 0xD7, 0x24, 0x93, 0xD5, 0x6E, 0xB1, 0x74, 0x6C, 0xAA, 0xA0, 0x60, 0xBF, 0xF3, 0x32, 0x41, 0x0B, 0xA2, 0x01, 0x84, 0x0D, 0x83, 0xE4, 0x43, 0xD1, 0xBA, 0xC1, 0x92, 0x84, 0x26, 0xF8, 0xF2, 0x77, 0x20, 0x1B, 0xF2, 0x8F, 0x00, 0x69, 0x18, 0x2F, 0x6C, 0xA8, 0x58, 0xB5, 0x5D, 0xFA, 0x27, 0xD2, 0x38, 0xD2, 0x49, 0x6E, 0xDF, 0x55, 0x79, 0xAF, 0x1C, 0x44, 0xDA, 0x5A, 0xD7, 0x44, 0x53, 0x50, 0x8B, 0x77, 0x70, 0x4D, 0x91, 0xEC, 0x07, 0xA5, 0x64, 0x21, 0x3C, 0x31, 0x09, 0x68, 0x65, 0xB4, 0xFA, 0xBE, 0x23, 0xF9, 0xDF, 0x77, 0x46, 0xA2, 0x9A, 0x5D, 0xE3, 0xBE, 0x1E, 0xE3, 0x84, 0xEF, 0xAE, 0x7D, 0xF8, 0x1C, 0x54, 0xE8, 0x4E, 0xAE, 0xB5, 0xBB, 0xD6, 0xC3, 0x8D, 0x56, 0x79, 0xE8, 0x7C, 0x43, 0xDC, 0xF3, 0xB3, 0x7A, 0x30, 0x22, 0x09, 0xBC, 0x10, 0xD6, 0x84, 0xC4, 0x0F, 0x4C, 0x0B, 0xA2, 0xD1, 0xCB, 0xCD, 0x1F, 0x50, 0x3D, 0xF7, 0x23, 0x45, 0x55, 0x18, 0x21, 0x3D, 0x64, 0x05, 0x2E, 0x52, 0x3A, 0x73, 0xFD, 0xF2, 0xA9, 0xCA, 0x3F, 0xF6, 0x7F, 0x87, 0xE8, 0x56, 0x9B, 0x68, 0x6B, 0x20, 0xB0, 0x1D, 0x83, 0x04, 0x2F, 0x59, 0xFD, 0x84, 0x57, 0x7D, 0x82, 0x97, 0x96, 0xE8, 0xFB, 0xDF, 0x71, 0x8C, 0x26, 0x47, 0x85, 0xA5, 0xBE, 0xFB, 0xF5, 0x05, 0x4C, 0xD3, 0x3D, 0x73, 0xF4, 0xA5, 0xF1, 0xA3, 0x99, 0x98, 0x1B, 0x84, 0x8B, 0xB3, 0x53, 0xCE, 0x4D, 0xEA, 0x5A, 0x48, 0xD2, 0xB9, 0x7E, 0xB6, 0xEB, 0x9B, 0x94, 0x6F, 0xDD, 0x44, 0x80, 0x89, 0xD2, 0x78, 0x6D, 0xB9, 0xDA, 0x8B, 0x83, 0x49, 0xE0, 0x4D, 0x49, 0xDF, 0x6B, 0xFF, 0xF7, 0x04, 0x00, 0x32, 0xAA, 0x1D, 0x4F, 0x8D, 0x4B, 0xDE, 0xB8, 0x0D, 0xC6, 0x54, 0x1C, 0xB2, 0xCD, 0x60, 0x29, 0x72, 0x0A, 0x7E, 0xE7, 0xEB, 0x7A, 0xF6, 0x5B, 0x04, 0x3F, 0x5B, 0x93, 0x12, 0x0D, 0xD5, 0xFF, 0x7A, 0x41, 0x44, 0x0B, 0x37, 0x12, 0x82, 0x3D, 0xDD, 0x1E, 0x59, 0xB9, 0xBE, 0x0F, 0x9E, 0xD6, 0xD0, 0x68, 0x69, 0x74, 0xF9, 0xB1, 0x21, 0xA3, 0x70, 0x4F, 0xDA, 0xF8, 0x9F, 0xB9, 0x49, 0x3F, 0xC6, 0xB2, 0x69, 0xC8, 0xD8, 0x60, 0xF1, 0x6A, 0x52, 0x07, 0xFA, 0x42, 0xFD, 0xA9, 0x06, 0xCF, 0x97, 0x4A, 0x0E, 0xC5, 0xFC, 0x63, 0x27, 0x54, 0xC8, 0xBE, 0x8B, 0x4F, 0xB6, 0x42, 0xBC, 0xA2, 0xCC, 0x70, 0x4A, 0x6B, 0x24, 0x5B, 0x68, 0x28, 0x47, 0xFA, 0x6B, 0x89, 0x28, 0x07, 0x5D, 0xE0, 0x2C, 0x4A, 0xD9, 0x22, 0xE3, 0xB3, 0x2F, 0xAA, 0xC2, 0xA0, 0x7C, 0x0F, 0x92, 0xC5, 0xDD, 0xB6, 0x23, 0x8F, 0x73, 0x73, 0x0F, 0xD7, 0x73, 0x71, 0x2F, 0x0A, 0x78, 0xE8, 0x5B, 0xDB, 0xC2, 0xE0, 0xDB, 0xC9, 0x3E, 0xC3, 0x72, 0x9C, 0x14, 0xD7, 0xD1, 0x28, 0xFD, 0xF4, 0xEE, 0xBC, 0x0E, 0x13, 0x37, 0xCA, 0x85, 0x9F, 0xB9, 0xA2, 0x0E, 0xF6, 0xE7, 0x49, 0xD1, 0xD0, 0x11, 0x76, 0x53, 0xA3, 0x73, 0x95, 0x2A, 0x23, 0xC8, 0x0E, 0x97, 0x83, 0x07, 0x64, 0xB2, 0x51, 0xB7, 0xC8, 0x51, 0x9F, 0xA4, 0x3E, 0x7B, 0xA4, 0x18, 0x6D, 0x99, 0xF0, 0x6E, 0xC3, 0x97, 0xAE, 0xF4, 0xB7, 0x66, 0x37, 0xFA, 0x65, 0xFC, 0x5E, 0xE2, 0x57, 0xFA, 0x8B, 0x4C, 0x86, 0x10, 0xB4, 0x5C, 0xA4, 0xD2, 0x60, 0x83, 0x69, 0x1E, 0xFF, 0x36, 0x9B, 0xF9, 0x84, 0xFB, 0xB8, 0x83, 0x64, 0xF1, 0x41, 0xA5, 0x25, 0x56, 0x21, 0xBA, 0x13, 0x98, 0x0C, 0x3B, 0x04, 0xAA, 0x6C, 0x9A, 0xD4, 0xE3, 0x13, 0x15, 0x54, 0x05, 0x4C, 0x5C, 0xE1, 0x7A, 0x31, 0x5E, 0x90, 0xCF, 0x48, 0x4E, 0x83, 0xD7, 0x7F, 0xED, 0x93, 0x22, 0xAB, 0x67, 0xE7, 0x76, 0x32, 0x64, 0xBA, 0x5A, 0x21, 0x3E, 0x30, 0x82, 0x01, 0x41, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x01, 0x32, 0x04, 0x82, 0x01, 0x2E, 0x30, 0x82, 0x01, 0x2A, 0x30, 0x82, 0x01, 0x26, 0x06, 0x0B, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x0C, 0x0A, 0x01, 0x02, 0xA0, 0x81, 0xEF, 0x30, 0x81, 0xEC, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C, 0x30, 0x1C, 0x04, 0x08, 0xED, 0x3E, 0xED, 0x07, 0x5C, 0x1F, 0x71, 0xAD, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06, 0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0xA7, 0x49, 0xA4, 0x6E, 0x00, 0x19, 0x75, 0x59, 0x75, 0x59, 0xBA, 0x4B, 0xC7, 0x24, 0x88, 0x34, 0x04, 0x81, 0x90, 0xCA, 0x23, 0x82, 0xAA, 0x16, 0x57, 0x99, 0xFA, 0x94, 0x9F, 0xAE, 0x32, 0x5C, 0x5B, 0xE7, 0x01, 0xD0, 0xED, 0xA7, 0x58, 0x57, 0x52, 0xBF, 0x57, 0x13, 0xD4, 0x15, 0xB0, 0x06, 0xF5, 0x38, 0xCC, 0x64, 0x23, 0x09, 0xD5, 0x8C, 0x0D, 0x64, 0x31, 0xFA, 0x74, 0xAA, 0x96, 0x7E, 0x9B, 0x16, 0xCA, 0x21, 0xFD, 0xC0, 0x54, 0x91, 0x40, 0x7F, 0xB3, 0xF2, 0xA3, 0xEC, 0xA1, 0x4A, 0x07, 0xF0, 0x87, 0x22, 0xDB, 0x8A, 0x49, 0x89, 0xF7, 0xF2, 0x6A, 0xFC, 0x8D, 0x03, 0x6E, 0x32, 0x4F, 0xD0, 0xD8, 0x93, 0x92, 0xA5, 0xF1, 0x41, 0xBD, 0xEA, 0xE1, 0x38, 0xA9, 0xD8, 0x9D, 0xAB, 0xB4, 0x8E, 0x4A, 0x40, 0x0E, 0xC7, 0xE3, 0xE9, 0xBF, 0x0E, 0xBA, 0x8D, 0xAA, 0x3E, 0x93, 0x53, 0x88, 0xEE, 0x0A, 0x2C, 0x71, 0xF1, 0x61, 0x44, 0xA5, 0xAD, 0xED, 0x3E, 0xAB, 0x32, 0x9A, 0x32, 0x85, 0x08, 0xF5, 0x8B, 0xCC, 0x15, 0x35, 0xEE, 0xFA, 0x17, 0x27, 0x97, 0x8D, 0xD9, 0x1C, 0x5E, 0x74, 0x9D, 0x7B, 0x31, 0x25, 0x30, 0x23, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x5F, 0x8E, 0xAB, 0x9C, 0x5F, 0xE2, 0x3B, 0xB1, 0x5C, 0x1A, 0x36, 0x1D, 0x7D, 0xCB, 0x90, 0x45, 0x20, 0x3C, 0x3B, 0xAC, 0x30, 0x41, 0x30, 0x31, 0x30, 0x0D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20, 0x93, 0x25, 0xC4, 0x3E, 0x2A, 0x6D, 0x4C, 0x30, 0x87, 0x0F, 0xE3, 0x5A, 0x95, 0xB0, 0xF2, 0x6C, 0xBA, 0x07, 0x89, 0x7D, 0xFB, 0xCF, 0xCF, 0x1D, 0x54, 0xA3, 0x36, 0x24, 0x7B, 0x30, 0x97, 0xB5, 0x04, 0x08, 0xE7, 0x96, 0x59, 0xCC, 0x42, 0x9F, 0xEF, 0xFC, 0x02, 0x02, 0x08, 0x00]),
+    new Uint8Array([0x30, 0x82, 0x07, 0x5C, 0x02, 0x01, 0x03, 0x30, 0x82, 0x07, 0x12, 0x06, 0x09, 0x2A, 0x86, 0x48,
+      0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x07, 0x03, 0x04, 0x82, 0x06, 0xFF, 0x30, 0x82, 0x06, 0xFB, 0x30,
+      0x82, 0x05, 0xB2, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x06, 0xA0, 0x82, 0x05, 0xA3, 0x30,
+      0x82, 0x05, 0x9F, 0x02, 0x01, 0x00, 0x30, 0x82, 0x05, 0x98, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01,
+      0x07, 0x01, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29,
+      0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C, 0x30, 0x1C, 0x04, 0x08, 0xA9, 0x1C, 0x1B, 0x19,
+      0x36, 0xDE, 0xD4, 0x20, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06, 0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02,
+      0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0x7D,
+      0xE5, 0x23, 0x96, 0x18, 0x8B, 0xF4, 0xBC, 0x9F, 0x4E, 0xE8, 0xE9, 0xAA, 0x52, 0x18, 0x39, 0x80, 0x82, 0x05, 0x30,
+      0x02, 0x2D, 0x59, 0xA9, 0x96, 0x5A, 0xFE, 0x20, 0x18, 0xB2, 0x25, 0xEA, 0xFC, 0x86, 0x0F, 0xA8, 0x3C, 0x2B, 0x26,
+      0x2F, 0x44, 0x6E, 0xF3, 0x15, 0xB7, 0x94, 0xE4, 0x43, 0xEE, 0xE6, 0xC3, 0xBB, 0x3C, 0x9E, 0x60, 0x08, 0xF8, 0x15,
+      0x61, 0x44, 0xD0, 0xEA, 0xD5, 0x6D, 0x1A, 0x3B, 0x9F, 0x4E, 0x2A, 0x1E, 0xBB, 0xB9, 0x4E, 0x15, 0x43, 0xB8, 0x68,
+      0xDB, 0x1A, 0x4E, 0x41, 0xBA, 0x29, 0x8E, 0x75, 0xEB, 0x12, 0xC1, 0xF0, 0x4B, 0x0D, 0x13, 0xB2, 0xC2, 0x48, 0x6F,
+      0xC4, 0xC4, 0x82, 0xF2, 0x26, 0xD4, 0x3D, 0x1F, 0x42, 0x7D, 0x67, 0xB0, 0x37, 0x55, 0x9E, 0xD9, 0x46, 0x99, 0x98,
+      0xB4, 0xE7, 0x4B, 0x07, 0x08, 0x3F, 0xD3, 0x96, 0x9A, 0xC5, 0xDA, 0x37, 0x74, 0x08, 0x5D, 0x3B, 0x06, 0x8A, 0x16,
+      0x6D, 0x81, 0x63, 0x01, 0x83, 0x94, 0xDA, 0x1B, 0x0E, 0x04, 0xCE, 0x18, 0xF0, 0x51, 0x22, 0xD8, 0x2D, 0xF1, 0x69,
+      0x0C, 0xCB, 0xC9, 0x51, 0x17, 0x07, 0x1F, 0x2B, 0xCF, 0x74, 0x26, 0xD7, 0x73, 0xB3, 0x2D, 0xF2, 0x82, 0xF0, 0x38,
+      0x5B, 0x8A, 0x8F, 0xCD, 0x84, 0x69, 0x40, 0x59, 0xCE, 0xB3, 0x39, 0xFE, 0xF6, 0xB7, 0x24, 0x89, 0x34, 0xFF, 0xF4,
+      0x40, 0x50, 0x06, 0x4D, 0xC6, 0x13, 0x82, 0xAF, 0x7F, 0x84, 0xB1, 0x67, 0x3C, 0x89, 0xBB, 0x5D, 0x32, 0xC3, 0xA6,
+      0xF1, 0x7D, 0xF5, 0x72, 0x68, 0x75, 0xCE, 0x69, 0xAB, 0x6C, 0x32, 0xDA, 0x16, 0x3B, 0xC4, 0xCA, 0x47, 0x45, 0xE9,
+      0x59, 0x1E, 0xB1, 0x70, 0xDA, 0x8A, 0x00, 0x69, 0x80, 0x40, 0xCA, 0x60, 0xE6, 0x07, 0x16, 0xF0, 0xA2, 0xF9, 0x12,
+      0x7D, 0x09, 0x43, 0x66, 0x46, 0x78, 0x35, 0xA6, 0x94, 0x35, 0x60, 0x82, 0xFC, 0xB8, 0x5E, 0x39, 0xE7, 0xA1, 0x22,
+      0xAD, 0xCC, 0x6F, 0x5E, 0xCE, 0x01, 0x6B, 0xA1, 0xDD, 0xE5, 0xDD, 0x79, 0x9B, 0xA1, 0x28, 0xC4, 0x03, 0x84, 0x8D,
+      0x6C, 0x07, 0xD4, 0xFE, 0x57, 0xFB, 0x89, 0x3F, 0x43, 0x44, 0x69, 0xF1, 0x9E, 0x53, 0x6C, 0x11, 0x11, 0x96, 0x79,
+      0xE4, 0xB8, 0x3B, 0x49, 0x2E, 0xF6, 0x3B, 0xC5, 0x6C, 0x76, 0x21, 0x22, 0x15, 0x85, 0x77, 0x8A, 0xDD, 0xD2, 0x43,
+      0x85, 0x73, 0x39, 0x77, 0x9F, 0xFA, 0x8F, 0xCF, 0xCB, 0xEA, 0x62, 0xBD, 0x5C, 0x66, 0x45, 0xCD, 0xB0, 0xCA, 0x42,
+      0xCC, 0xB9, 0xCF, 0xE3, 0x84, 0x63, 0x9F, 0x63, 0xCE, 0x49, 0xE9, 0x74, 0x26, 0xCC, 0x26, 0x78, 0xCE, 0x9F, 0x4E,
+      0x38, 0xA2, 0x9C, 0xEB, 0x75, 0xC5, 0x33, 0x6B, 0x00, 0x83, 0x85, 0xA3, 0x0F, 0xE7, 0xE1, 0x11, 0xA6, 0x48, 0xDC,
+      0xEF, 0x0C, 0x05, 0xB3, 0xDE, 0x94, 0xB9, 0x69, 0xCB, 0x27, 0x09, 0xAB, 0x27, 0xD8, 0x06, 0xED, 0x25, 0xBC, 0xA6,
+      0x2E, 0xB7, 0xF9, 0x2E, 0xAD, 0x84, 0x1D, 0xDD, 0x73, 0xD8, 0xC0, 0x46, 0x8A, 0xFE, 0x9A, 0xDF, 0x07, 0xE1, 0x33,
+      0xE2, 0x1C, 0x37, 0x6A, 0x8E, 0xA2, 0x91, 0x0B, 0xD7, 0x76, 0xEF, 0x3C, 0x87, 0x4A, 0x53, 0x84, 0xFA, 0xFA, 0xC5,
+      0x71, 0x76, 0xC0, 0x75, 0x70, 0x67, 0x67, 0x71, 0x9D, 0x8B, 0x81, 0x6F, 0x68, 0xC5, 0xB1, 0xFC, 0xA3, 0x59, 0xB5,
+      0xD0, 0x03, 0x56, 0xE7, 0x89, 0x03, 0xD7, 0x99, 0xDE, 0x66, 0x33, 0xFA, 0x53, 0x50, 0x5F, 0xB4, 0x9D, 0xB3, 0x90,
+      0x8F, 0x57, 0x20, 0xF0, 0x8B, 0xDB, 0x73, 0xCA, 0xA4, 0x71, 0x61, 0x67, 0x6A, 0x6D, 0xA5, 0xCA, 0x88, 0xD4, 0xCC,
+      0x82, 0x34, 0xC9, 0x3E, 0x10, 0x10, 0x57, 0xD1, 0x08, 0x96, 0x80, 0x09, 0xA8, 0xBB, 0x6F, 0x53, 0x8F, 0xFD, 0x87,
+      0xCF, 0x73, 0xFC, 0xE1, 0x3A, 0x92, 0x2E, 0x78, 0x66, 0xFB, 0x86, 0x5D, 0x62, 0xE0, 0xC4, 0x58, 0x55, 0x3F, 0xA4,
+      0xEA, 0xA1, 0xBE, 0x5B, 0x5E, 0x8E, 0x46, 0x50, 0x5E, 0x7C, 0x01, 0xD6, 0x63, 0xAA, 0x6F, 0xD5, 0xFD, 0xAF, 0xC5,
+      0x1D, 0xB3, 0x90, 0x9C, 0xD8, 0x5F, 0x8D, 0xF2, 0x81, 0xEB, 0xBF, 0xA1, 0xDE, 0xB7, 0x9D, 0xCD, 0x24, 0x82, 0x06,
+      0x0B, 0x63, 0xE6, 0xBF, 0x57, 0x51, 0xF0, 0xB6, 0xE9, 0x7F, 0xAA, 0x7B, 0x10, 0xBD, 0xCD, 0x85, 0x41, 0xE0, 0xD7,
+      0xF1, 0x53, 0xB7, 0xF8, 0x46, 0x91, 0x9E, 0x8D, 0x4B, 0xCB, 0x28, 0x35, 0x40, 0x37, 0x1E, 0x83, 0x64, 0x6A, 0x70,
+      0x01, 0x9D, 0xBF, 0xF1, 0x0E, 0xB6, 0x2E, 0x7A, 0xB7, 0x8F, 0x0F, 0x8C, 0x69, 0xD6, 0xF2, 0xD1, 0xF6, 0x1E, 0xCD,
+      0x08, 0xA8, 0xD4, 0x1B, 0xCB, 0x38, 0xEA, 0x26, 0x37, 0x5C, 0x60, 0x3A, 0x38, 0x5B, 0x12, 0x1D, 0x00, 0x7B, 0xEC,
+      0xCE, 0xFB, 0x89, 0x23, 0x8A, 0x11, 0xE1, 0x1B, 0xDE, 0x54, 0x91, 0x6A, 0x26, 0x22, 0xD0, 0x1C, 0x2E, 0xBA, 0xD0,
+      0x92, 0x87, 0xDA, 0xF0, 0x93, 0xBB, 0x3A, 0x2C, 0x52, 0xFB, 0xB2, 0xA9, 0xA8, 0x92, 0x19, 0xE3, 0x19, 0xDC, 0xB0,
+      0x0E, 0xC5, 0xE7, 0x9D, 0xFB, 0xF9, 0xA3, 0x23, 0x32, 0xD0, 0x4E, 0x2C, 0x05, 0x2D, 0x76, 0xDB, 0x93, 0x53, 0x5B,
+      0x0E, 0x2A, 0xA3, 0xDD, 0x5F, 0xD3, 0x1A, 0x3B, 0x1E, 0x1F, 0x26, 0x88, 0x43, 0xAD, 0x10, 0x1F, 0xA9, 0xC4, 0xF9,
+      0x1F, 0xCD, 0xA5, 0xD2, 0xDC, 0x24, 0x95, 0x1D, 0xE7, 0x57, 0xE1, 0x02, 0x0A, 0x20, 0xEA, 0x6A, 0x78, 0x4E, 0x96,
+      0xE2, 0xE5, 0x6D, 0x6F, 0xFD, 0x81, 0x7B, 0x61, 0x85, 0xA3, 0x3D, 0xC5, 0x7B, 0xEF, 0xAE, 0x58, 0xA2, 0xDB, 0x91,
+      0x73, 0xDB, 0x47, 0x8E, 0xD1, 0x7D, 0xD7, 0x8F, 0x56, 0x06, 0x28, 0x8C, 0x78, 0x73, 0x02, 0x65, 0xB0, 0x16, 0x4B,
+      0xE6, 0xA3, 0xD7, 0x06, 0x7C, 0xEA, 0x7D, 0xE2, 0xAE, 0xBB, 0xE5, 0xD2, 0xEB, 0xF0, 0x91, 0x71, 0x7C, 0xBC, 0xA6,
+      0x1A, 0xE8, 0x9F, 0xD3, 0xA9, 0x3C, 0x5D, 0x60, 0xCF, 0x59, 0x26, 0x46, 0x45, 0xF2, 0x7F, 0x85, 0x6B, 0xE7, 0xC2,
+      0x58, 0x52, 0x90, 0x12, 0x07, 0xBA, 0xE6, 0xB8, 0xE5, 0xD7, 0x24, 0x93, 0xD5, 0x6E, 0xB1, 0x74, 0x6C, 0xAA, 0xA0,
+      0x60, 0xBF, 0xF3, 0x32, 0x41, 0x0B, 0xA2, 0x01, 0x84, 0x0D, 0x83, 0xE4, 0x43, 0xD1, 0xBA, 0xC1, 0x92, 0x84, 0x26,
+      0xF8, 0xF2, 0x77, 0x20, 0x1B, 0xF2, 0x8F, 0x00, 0x69, 0x18, 0x2F, 0x6C, 0xA8, 0x58, 0xB5, 0x5D, 0xFA, 0x27, 0xD2,
+      0x38, 0xD2, 0x49, 0x6E, 0xDF, 0x55, 0x79, 0xAF, 0x1C, 0x44, 0xDA, 0x5A, 0xD7, 0x44, 0x53, 0x50, 0x8B, 0x77, 0x70,
+      0x4D, 0x91, 0xEC, 0x07, 0xA5, 0x64, 0x21, 0x3C, 0x31, 0x09, 0x68, 0x65, 0xB4, 0xFA, 0xBE, 0x23, 0xF9, 0xDF, 0x77,
+      0x46, 0xA2, 0x9A, 0x5D, 0xE3, 0xBE, 0x1E, 0xE3, 0x84, 0xEF, 0xAE, 0x7D, 0xF8, 0x1C, 0x54, 0xE8, 0x4E, 0xAE, 0xB5,
+      0xBB, 0xD6, 0xC3, 0x8D, 0x56, 0x79, 0xE8, 0x7C, 0x43, 0xDC, 0xF3, 0xB3, 0x7A, 0x30, 0x22, 0x09, 0xBC, 0x10, 0xD6,
+      0x84, 0xC4, 0x0F, 0x4C, 0x0B, 0xA2, 0xD1, 0xCB, 0xCD, 0x1F, 0x50, 0x3D, 0xF7, 0x23, 0x45, 0x55, 0x18, 0x21, 0x3D,
+      0x64, 0x05, 0x2E, 0x52, 0x3A, 0x73, 0xFD, 0xF2, 0xA9, 0xCA, 0x3F, 0xF6, 0x7F, 0x87, 0xE8, 0x56, 0x9B, 0x68, 0x6B,
+      0x20, 0xB0, 0x1D, 0x83, 0x04, 0x2F, 0x59, 0xFD, 0x84, 0x57, 0x7D, 0x82, 0x97, 0x96, 0xE8, 0xFB, 0xDF, 0x71, 0x8C,
+      0x26, 0x47, 0x85, 0xA5, 0xBE, 0xFB, 0xF5, 0x05, 0x4C, 0xD3, 0x3D, 0x73, 0xF4, 0xA5, 0xF1, 0xA3, 0x99, 0x98, 0x1B,
+      0x84, 0x8B, 0xB3, 0x53, 0xCE, 0x4D, 0xEA, 0x5A, 0x48, 0xD2, 0xB9, 0x7E, 0xB6, 0xEB, 0x9B, 0x94, 0x6F, 0xDD, 0x44,
+      0x80, 0x89, 0xD2, 0x78, 0x6D, 0xB9, 0xDA, 0x8B, 0x83, 0x49, 0xE0, 0x4D, 0x49, 0xDF, 0x6B, 0xFF, 0xF7, 0x04, 0x00,
+      0x32, 0xAA, 0x1D, 0x4F, 0x8D, 0x4B, 0xDE, 0xB8, 0x0D, 0xC6, 0x54, 0x1C, 0xB2, 0xCD, 0x60, 0x29, 0x72, 0x0A, 0x7E,
+      0xE7, 0xEB, 0x7A, 0xF6, 0x5B, 0x04, 0x3F, 0x5B, 0x93, 0x12, 0x0D, 0xD5, 0xFF, 0x7A, 0x41, 0x44, 0x0B, 0x37, 0x12,
+      0x82, 0x3D, 0xDD, 0x1E, 0x59, 0xB9, 0xBE, 0x0F, 0x9E, 0xD6, 0xD0, 0x68, 0x69, 0x74, 0xF9, 0xB1, 0x21, 0xA3, 0x70,
+      0x4F, 0xDA, 0xF8, 0x9F, 0xB9, 0x49, 0x3F, 0xC6, 0xB2, 0x69, 0xC8, 0xD8, 0x60, 0xF1, 0x6A, 0x52, 0x07, 0xFA, 0x42,
+      0xFD, 0xA9, 0x06, 0xCF, 0x97, 0x4A, 0x0E, 0xC5, 0xFC, 0x63, 0x27, 0x54, 0xC8, 0xBE, 0x8B, 0x4F, 0xB6, 0x42, 0xBC,
+      0xA2, 0xCC, 0x70, 0x4A, 0x6B, 0x24, 0x5B, 0x68, 0x28, 0x47, 0xFA, 0x6B, 0x89, 0x28, 0x07, 0x5D, 0xE0, 0x2C, 0x4A,
+      0xD9, 0x22, 0xE3, 0xB3, 0x2F, 0xAA, 0xC2, 0xA0, 0x7C, 0x0F, 0x92, 0xC5, 0xDD, 0xB6, 0x23, 0x8F, 0x73, 0x73, 0x0F,
+      0xD7, 0x73, 0x71, 0x2F, 0x0A, 0x78, 0xE8, 0x5B, 0xDB, 0xC2, 0xE0, 0xDB, 0xC9, 0x3E, 0xC3, 0x72, 0x9C, 0x14, 0xD7,
+      0xD1, 0x28, 0xFD, 0xF4, 0xEE, 0xBC, 0x0E, 0x13, 0x37, 0xCA, 0x85, 0x9F, 0xB9, 0xA2, 0x0E, 0xF6, 0xE7, 0x49, 0xD1,
+      0xD0, 0x11, 0x76, 0x53, 0xA3, 0x73, 0x95, 0x2A, 0x23, 0xC8, 0x0E, 0x97, 0x83, 0x07, 0x64, 0xB2, 0x51, 0xB7, 0xC8,
+      0x51, 0x9F, 0xA4, 0x3E, 0x7B, 0xA4, 0x18, 0x6D, 0x99, 0xF0, 0x6E, 0xC3, 0x97, 0xAE, 0xF4, 0xB7, 0x66, 0x37, 0xFA,
+      0x65, 0xFC, 0x5E, 0xE2, 0x57, 0xFA, 0x8B, 0x4C, 0x86, 0x10, 0xB4, 0x5C, 0xA4, 0xD2, 0x60, 0x83, 0x69, 0x1E, 0xFF,
+      0x36, 0x9B, 0xF9, 0x84, 0xFB, 0xB8, 0x83, 0x64, 0xF1, 0x41, 0xA5, 0x25, 0x56, 0x21, 0xBA, 0x13, 0x98, 0x0C, 0x3B,
+      0x04, 0xAA, 0x6C, 0x9A, 0xD4, 0xE3, 0x13, 0x15, 0x54, 0x05, 0x4C, 0x5C, 0xE1, 0x7A, 0x31, 0x5E, 0x90, 0xCF, 0x48,
+      0x4E, 0x83, 0xD7, 0x7F, 0xED, 0x93, 0x22, 0xAB, 0x67, 0xE7, 0x76, 0x32, 0x64, 0xBA, 0x5A, 0x21, 0x3E, 0x30, 0x82,
+      0x01, 0x41, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x01, 0xA0, 0x82, 0x01, 0x32, 0x04, 0x82,
+      0x01, 0x2E, 0x30, 0x82, 0x01, 0x2A, 0x30, 0x82, 0x01, 0x26, 0x06, 0x0B, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01,
+      0x0C, 0x0A, 0x01, 0x02, 0xA0, 0x81, 0xEF, 0x30, 0x81, 0xEC, 0x30, 0x57, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7,
+      0x0D, 0x01, 0x05, 0x0D, 0x30, 0x4A, 0x30, 0x29, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x05, 0x0C,
+      0x30, 0x1C, 0x04, 0x08, 0xED, 0x3E, 0xED, 0x07, 0x5C, 0x1F, 0x71, 0xAD, 0x02, 0x02, 0x08, 0x00, 0x30, 0x0C, 0x06,
+      0x08, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x02, 0x09, 0x05, 0x00, 0x30, 0x1D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01,
+      0x65, 0x03, 0x04, 0x01, 0x2A, 0x04, 0x10, 0xA7, 0x49, 0xA4, 0x6E, 0x00, 0x19, 0x75, 0x59, 0x75, 0x59, 0xBA, 0x4B,
+      0xC7, 0x24, 0x88, 0x34, 0x04, 0x81, 0x90, 0xCA, 0x23, 0x82, 0xAA, 0x16, 0x57, 0x99, 0xFA, 0x94, 0x9F, 0xAE, 0x32,
+      0x5C, 0x5B, 0xE7, 0x01, 0xD0, 0xED, 0xA7, 0x58, 0x57, 0x52, 0xBF, 0x57, 0x13, 0xD4, 0x15, 0xB0, 0x06, 0xF5, 0x38,
+      0xCC, 0x64, 0x23, 0x09, 0xD5, 0x8C, 0x0D, 0x64, 0x31, 0xFA, 0x74, 0xAA, 0x96, 0x7E, 0x9B, 0x16, 0xCA, 0x21, 0xFD,
+      0xC0, 0x54, 0x91, 0x40, 0x7F, 0xB3, 0xF2, 0xA3, 0xEC, 0xA1, 0x4A, 0x07, 0xF0, 0x87, 0x22, 0xDB, 0x8A, 0x49, 0x89,
+      0xF7, 0xF2, 0x6A, 0xFC, 0x8D, 0x03, 0x6E, 0x32, 0x4F, 0xD0, 0xD8, 0x93, 0x92, 0xA5, 0xF1, 0x41, 0xBD, 0xEA, 0xE1,
+      0x38, 0xA9, 0xD8, 0x9D, 0xAB, 0xB4, 0x8E, 0x4A, 0x40, 0x0E, 0xC7, 0xE3, 0xE9, 0xBF, 0x0E, 0xBA, 0x8D, 0xAA, 0x3E,
+      0x93, 0x53, 0x88, 0xEE, 0x0A, 0x2C, 0x71, 0xF1, 0x61, 0x44, 0xA5, 0xAD, 0xED, 0x3E, 0xAB, 0x32, 0x9A, 0x32, 0x85,
+      0x08, 0xF5, 0x8B, 0xCC, 0x15, 0x35, 0xEE, 0xFA, 0x17, 0x27, 0x97, 0x8D, 0xD9, 0x1C, 0x5E, 0x74, 0x9D, 0x7B, 0x31,
+      0x25, 0x30, 0x23, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x5F,
+      0x8E, 0xAB, 0x9C, 0x5F, 0xE2, 0x3B, 0xB1, 0x5C, 0x1A, 0x36, 0x1D, 0x7D, 0xCB, 0x90, 0x45, 0x20, 0x3C, 0x3B, 0xAC,
+      0x30, 0x41, 0x30, 0x31, 0x30, 0x0D, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00,
+      0x04, 0x20, 0x93, 0x25, 0xC4, 0x3E, 0x2A, 0x6D, 0x4C, 0x30, 0x87, 0x0F, 0xE3, 0x5A, 0x95, 0xB0, 0xF2, 0x6C, 0xBA,
+      0x07, 0x89, 0x7D, 0xFB, 0xCF, 0xCF, 0x1D, 0x54, 0xA3, 0x36, 0x24, 0x7B, 0x30, 0x97, 0xB5, 0x04, 0x08, 0xE7, 0x96,
+      0x59, 0xCC, 0x42, 0x9F, 0xEF, 0xFC, 0x02, 0x02, 0x08, 0x00]),
     '123456').then((data) => {
-      console.info('createTrustAnchorsWithKeyStore success, number of the result is: ' + data.length);
-  }).catch((err : BusinessError) => {
-    console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, message: ${err.message}`);
+    console.info('createTrustAnchorsWithKeyStore result: success, number of the result = ' + data.length);
+  }).catch((err: BusinessError) => {
+    console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
   })
 } catch (error) {
-  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, message: ${error.message}`);
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
 }
+
 ```
 
 ## X509CertChain<sup>11+</sup>
 
-Provides APIs for managing the X.509 certificate chain.
+Describes an X.509 certificate chain object.
 
 ### getCertList<sup>11+</sup>
 
 getCertList(): Array\<X509Cert>
 
-Obtains the X.509 certificate list.
+Obtains a list of X.509 certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Array\<[X509Cert](#x509cert)> | X.509 certificate list obtained.|
+| Array\<[X509Cert](#x509cert)> | X.509 certificates.|
 
 **Error codes**
 
@@ -11573,60 +11984,60 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certChainData = "-----BEGIN CERTIFICATE-----\n" +
-  "MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n" +
-  "BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n" +
-  "ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n" +
-  "MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n" +
-  "Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n" +
-  "MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n" +
-  "CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n" +
-  "p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n" +
-  "rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n" +
-  "zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n" +
-  "T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n" +
-  "8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n" +
-  "VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n" +
-  "IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n" +
-  "Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n" +
-  "ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n" +
-  "izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n" +
-  "B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n" +
-  "GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n" +
-  "DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n" +
-  "iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n" +
-  "OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n" +
-  "AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n" +
-  "YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n" +
-  "SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n" +
-  "TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n" +
-  "STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n" +
-  "nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n" +
-  "pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n" +
-  "OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n" +
-  "CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n" +
-  "b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n" +
-  "uKPWR9dKBA==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n"  +
-  "MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n" +
-  "MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n" +
-  "AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n" +
-  "klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n" +
-  "St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n" +
-  "AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n" +
-  "KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n" +
-  "xjoE\n" +
-  "-----END CERTIFICATE-----\n";
+let certChainData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n' +
+  'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n' +
+  'ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n' +
+  'MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n' +
+  'Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n' +
+  'MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n' +
+  'CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n' +
+  'p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n' +
+  'rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n' +
+  'zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n' +
+  'T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n' +
+  '8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n' +
+  'VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n' +
+  'IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n' +
+  'Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n' +
+  'ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n' +
+  'izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n' +
+  'B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n' +
+  'GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n' +
+  'DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n' +
+  'iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n' +
+  'OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n' +
+  'AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n' +
+  'YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n' +
+  'SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n' +
+  'TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n' +
+  'STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n' +
+  'nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n' +
+  'pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n' +
+  'OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n' +
+  'CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n' +
+  'b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n' +
+  'uKPWR9dKBA==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n' +
+  'MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n' +
+  'AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n' +
+  'klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n' +
+  'St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n' +
+  'AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n' +
+  'KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n' +
+  'xjoE\n' +
+  '-----END CERTIFICATE-----\n';
 
 // Binary data of the certificate chain, which needs to be assigned by the service.
 let encodingBlob: cert.EncodingBlob = {
@@ -11637,14 +12048,14 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
-    console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CertChain failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('createX509CertChain success');
+    console.info('createX509CertChain result: success.');
     try {
       let certList = certChain.getCertList();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error('X509CertChain getCertList failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`X509CertChain getCertList failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -11654,23 +12065,23 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 
 validate(param: CertChainValidationParameters): Promise\<CertChainValidationResult>
 
-Validates a certificate chain. This API uses a promise to return the result.
+Verifies the certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the result.|
+| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the certificate chain verification result.|
 
 **Error codes**
 
@@ -11680,14 +12091,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error.           |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect.           |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer.           |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 19030007 | the key cannot be used for a digital signature.      |
 
 **Example**
 
@@ -11705,60 +12116,60 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function createX509CertChain(): Promise<cert.X509CertChain> {
-  let certChainData = "-----BEGIN CERTIFICATE-----\n" +
-    "MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n" +
-    "BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n" +
-    "ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n" +
-    "MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n" +
-    "Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n" +
-    "MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n" +
-    "CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n" +
-    "p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n" +
-    "rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n" +
-    "zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n" +
-    "T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n" +
-    "8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n" +
-    "VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n" +
-    "IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n" +
-    "Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n" +
-    "ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n" +
-    "izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n" +
-    "B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n" +
-    "GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n" +
-    "DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n" +
-    "iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n" +
-    "-----END CERTIFICATE-----\n" +
-    "-----BEGIN CERTIFICATE-----\n" +
-    "MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-    "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-    "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n" +
-    "OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-    "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n" +
-    "AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n" +
-    "YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n" +
-    "SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n" +
-    "TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n" +
-    "STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n" +
-    "nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n" +
-    "pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n" +
-    "OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n" +
-    "CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n" +
-    "b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n" +
-    "uKPWR9dKBA==\n" +
-    "-----END CERTIFICATE-----\n" +
-    "-----BEGIN CERTIFICATE-----\n"  +
-    "MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-    "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-    "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n" +
-    "MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-    "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n" +
-    "AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n" +
-    "klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n" +
-    "St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n" +
-    "AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n" +
-    "KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n" +
-    "xjoE\n" +
-    "-----END CERTIFICATE-----\n";
+  let certChainData = '-----BEGIN CERTIFICATE-----\n' +
+    'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n' +
+    'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n' +
+    'ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n' +
+    'MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n' +
+    'Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n' +
+    'MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n' +
+    'CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n' +
+    'p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n' +
+    'rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n' +
+    'zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n' +
+    'T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n' +
+    '8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n' +
+    'VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n' +
+    'IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n' +
+    'Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n' +
+    'ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n' +
+    'izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n' +
+    'B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n' +
+    'GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n' +
+    'DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n' +
+    'iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n' +
+    '-----END CERTIFICATE-----\n' +
+    '-----BEGIN CERTIFICATE-----\n' +
+    'MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+    'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+    'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n' +
+    'OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+    'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n' +
+    'AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n' +
+    'YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n' +
+    'SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n' +
+    'TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n' +
+    'STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n' +
+    'nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n' +
+    'pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n' +
+    'OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n' +
+    'CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n' +
+    'b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n' +
+    'uKPWR9dKBA==\n' +
+    '-----END CERTIFICATE-----\n' +
+    '-----BEGIN CERTIFICATE-----\n' +
+    'MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+    'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+    'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n' +
+    'MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+    'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n' +
+    'AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n' +
+    'klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n' +
+    'St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n' +
+    'AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n' +
+    'KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n' +
+    'xjoE\n' +
+    '-----END CERTIFICATE-----\n';
 
   // Binary data of the certificate chain, which needs to be assigned by the service.
   let encodingBlob: cert.EncodingBlob = {
@@ -11769,10 +12180,9 @@ async function createX509CertChain(): Promise<cert.X509CertChain> {
   let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
-  }
-  catch (error) {
+  } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -11783,16 +12193,23 @@ async function validate() {
   const param: cert.CertChainValidationParameters = {
     date: '20231212080000Z',
     trustAnchors: [{
-        CAPubKey: new Uint8Array([0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00, 0xbb, 0x16,0x9d, 0x8f, 0x5c, 0x30, 0xd0, 0xba, 0x8f, 0x37, 0x6e, 0x33, 0xaf, 0x6f, 0x23, 0x71, 0x23, 0xa5, 0x49, 0x60,0x1e, 0xd1, 0x07, 0x4b, 0xc9, 0x11, 0x7e, 0x66, 0x01, 0xba, 0x92, 0x52]),
-        CASubject: new Uint8Array([0x30, 0x5a, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x45,0x4e, 0x31, 0x10, 0x30, 0x0e, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x45, 0x6e, 0x67, 0x6c, 0x61, 0x6e,0x64, 0x31, 0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e,0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a,0x06, 0x03, 0x55, 0x04, 0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,0x03, 0x13, 0x03, 0x74, 0x73, 0x31]),
+      CAPubKey: new Uint8Array([0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00, 0xbb, 0x16,
+        0x9d, 0x8f, 0x5c, 0x30, 0xd0, 0xba, 0x8f, 0x37, 0x6e, 0x33, 0xaf, 0x6f, 0x23, 0x71, 0x23, 0xa5, 0x49, 0x60,
+        0x1e, 0xd1, 0x07, 0x4b, 0xc9, 0x11, 0x7e, 0x66, 0x01, 0xba, 0x92, 0x52]),
+      CASubject: new Uint8Array([0x30, 0x5a, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x45,
+        0x4e, 0x31, 0x10, 0x30, 0x0e, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x45, 0x6e, 0x67, 0x6c, 0x61, 0x6e,
+        0x64, 0x31, 0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e,
+        0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a,
+        0x06, 0x03, 0x55, 0x04, 0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,
+        0x03, 0x13, 0x03, 0x74, 0x73, 0x31]),
     }]
   }
   try {
     const validationRes = await certChain.validate(param);
-    console.info('X509CertChain validate success');
-  }
-  catch (err) {
-    console.error('X509CertChain validate failed');
+    console.info('X509CertChain validate result: success.');
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 
@@ -11803,18 +12220,18 @@ validate();
 
 validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChainValidationResult>): void
 
-Validates a certificate chain. This API uses an asynchronous callback to return the result.
+Verifies a certificate chain using verification parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description     |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
-| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the certificate chain validation result.|
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
+| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the certificate chain verification result.|
 
 **Error codes**
 
@@ -11824,14 +12241,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error.           |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect.           |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer.           |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 19030007 | the key cannot be used for a digital signature.      |
 
 **Example**
 
@@ -11847,60 +12264,60 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-let certChainData = "-----BEGIN CERTIFICATE-----\n" +
-  "MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n" +
-  "BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n" +
-  "ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n" +
-  "MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n" +
-  "Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n" +
-  "MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n" +
-  "CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n" +
-  "p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n" +
-  "rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n" +
-  "zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n" +
-  "T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n" +
-  "8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n" +
-  "VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n" +
-  "IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n" +
-  "Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n" +
-  "ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n" +
-  "izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n" +
-  "B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n" +
-  "GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n" +
-  "DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n" +
-  "iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n" +
-  "OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n" +
-  "AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n" +
-  "YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n" +
-  "SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n" +
-  "TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n" +
-  "STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n" +
-  "nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n" +
-  "pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n" +
-  "OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n" +
-  "CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n" +
-  "b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n" +
-  "uKPWR9dKBA==\n" +
-  "-----END CERTIFICATE-----\n" +
-  "-----BEGIN CERTIFICATE-----\n"  +
-  "MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n" +
-  "DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n" +
-  "MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n" +
-  "MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n" +
-  "A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n" +
-  "AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n" +
-  "klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n" +
-  "St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n" +
-  "AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n" +
-  "KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n" +
-  "xjoE\n" +
-  "-----END CERTIFICATE-----\n";
+let certChainData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\n' +
+  'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRvbjEMMAoGA1UE\n' +
+  'ChMDdHMyMQwwCgYDVQQLEwN0czIxDDAKBgNVBAMTA3RzMjAeFw0yMzEyMDUwNzM5\n' +
+  'MDBaFw0yNDEwMzEyMzU5MDBaMGExCzAJBgNVBAYTAkNOMRAwDgYDVQQIEwdKaWFu\n' +
+  'Z3N1MRAwDgYDVQQHEwdOYW5qaW5nMQwwCgYDVQQKEwN0czMxDDAKBgNVBAsTA3Rz\n' +
+  'MzESMBAGA1UEAxMJMTI3LjAuMC4xMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n' +
+  'CgKCAQEAtt+2QxUevbolYLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLR\n' +
+  'p26LFV/F8ebwPyo8YEBKSwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmc\n' +
+  'rVvLBNMeVnxY86xHpo0MTNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0j\n' +
+  'zT9GjeUP6JLdLFUZJKUPSTK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/U\n' +
+  'T+p5ThAMH593zszlz330nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI3\n' +
+  '8MFQFJKvRHfgTAvVsvAvpBUM2DuBKwIDAQABo4GsMIGpMAkGA1UdEwQCMAAwHQYD\n' +
+  'VR0OBBYEFDfsHTMZwoA6eaDFlBUyDpka+sYtMAsGA1UdDwQEAwID+DAnBgNVHSUE\n' +
+  'IDAeBggrBgEFBQcDAQYIKwYBBQUHAwIGCCsGAQUFBwMEMBQGA1UdEQQNMAuCCTEy\n' +
+  'Ny4wLjAuMTARBglghkgBhvhCAQEEBAMCBkAwHgYJYIZIAYb4QgENBBEWD3hjYSBj\n' +
+  'ZXJ0aWZpY2F0ZTANBgkqhkiG9w0BAQsFAAOCAQEAp5vTvXrt8ZpgRJVtzv9ss0lJ\n' +
+  'izp1fJf+ft5cDXrs7TSD5oHrSW2vk/ZieIMhexU4LFwhs4OE7jK6pgI48Dseqxx7\n' +
+  'B/KktxhVMJUmVXd9Ayjp6f+BtZlIk0cArPuoXToXjsV8caTGBXHRdzxpAk/w9syc\n' +
+  'GYrbH9TrdNMuTizOb+k268oKXUageZNxHmd7YvOXkcNgrd29jzwXKDYYiUa1DISz\n' +
+  'DnYaJOgPt0B/5izhoWNK7GhJDy9KEuLURcTSWFysbbnljwO9INPT9MmlS83PdAgN\n' +
+  'iS8VXF4pce1W9U5jH7d7k0JDVSXybebe1iPFphsZpYM/NE+jap+mPy1nTCbf9g==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIC0zCCAoWgAwIBAgIIXpLoPpQVWnkwBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDczNzAwWhcNMjQw\n' +
+  'OTAxMjM1OTAwWjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czIxDDAKBgNVBAsTA3RzMjEMMAoGA1UE\n' +
+  'AxMDdHMyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtt+2QxUevbol\n' +
+  'YLp51QGcUpageI4fwGLIqv4fj4aoVnHFOOBqVOVpfCLRp26LFV/F8ebwPyo8YEBK\n' +
+  'SwXzMD1573rMSbaH9BalscH5lZYAbetXoio6YRvzlcmcrVvLBNMeVnxY86xHpo0M\n' +
+  'TNyP7W024rZsxWO98xFQVdoiaBC+7+midlisx2Y+7u0jzT9GjeUP6JLdLFUZJKUP\n' +
+  'STK3jVzw9v1eZQZKYoNfU6vFMd6ndtwW6qEnwpzmmX/UT+p5ThAMH593zszlz330\n' +
+  'nTSXBjIsGkyvOz9gSB0Z0LAuJj06XUNhGL5xKJYKbdI38MFQFJKvRHfgTAvVsvAv\n' +
+  'pBUM2DuBKwIDAQABo28wbTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBQ37B0zGcKA\n' +
+  'OnmgxZQVMg6ZGvrGLTALBgNVHQ8EBAMCAQYwEQYJYIZIAYb4QgEBBAQDAgAHMB4G\n' +
+  'CWCGSAGG+EIBDQQRFg94Y2EgY2VydGlmaWNhdGUwBQYDK2VwA0EAuasLBe55YgvF\n' +
+  'b4wmHeohylc9r8cFGS1LNQ5UcSn3sGqMYf6ehnef16NLuCW6upHCs8Sui4iAMvsP\n' +
+  'uKPWR9dKBA==\n' +
+  '-----END CERTIFICATE-----\n' +
+  '-----BEGIN CERTIFICATE-----\n' +
+  'MIIB3zCCAZGgAwIBAgIIWQvOEDl+ya4wBQYDK2VwMFoxCzAJBgNVBAYTAkVOMRAw\n' +
+  'DgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZMb25kb24xDDAKBgNVBAoTA3RzMTEM\n' +
+  'MAoGA1UECxMDdHMxMQwwCgYDVQQDEwN0czEwHhcNMjMxMjA1MDAwMDAwWhcNMjQx\n' +
+  'MjA0MjM1OTU5WjBaMQswCQYDVQQGEwJFTjEQMA4GA1UECBMHRW5nbGFuZDEPMA0G\n' +
+  'A1UEBxMGTG9uZG9uMQwwCgYDVQQKEwN0czExDDAKBgNVBAsTA3RzMTEMMAoGA1UE\n' +
+  'AxMDdHMxMCowBQYDK2VwAyEAuxadj1ww0LqPN24zr28jcSOlSWAe0QdLyRF+ZgG6\n' +
+  'klKjdTBzMBIGA1UdEwEB/wQIMAYBAf8CARQwHQYDVR0OBBYEFNSgpoQvfxR8A1Y4\n' +
+  'St8NjOHkRpm4MAsGA1UdDwQEAwIBBjARBglghkgBhvhCAQEEBAMCAAcwHgYJYIZI\n' +
+  'AYb4QgENBBEWD3hjYSBjZXJ0aWZpY2F0ZTAFBgMrZXADQQAblBgoa72X/K13WOvc\n' +
+  'KW0fqBgFKvLy85hWD6Ufi61k4ProQiZzMK+0+y9jReKelPx/zRdCCgSbQroAR2mV\n' +
+  'xjoE\n' +
+  '-----END CERTIFICATE-----\n';
 
 // Binary data of the certificate chain, which needs to be assigned by the service.
 let encodingBlob: cert.EncodingBlob = {
@@ -11913,21 +12330,28 @@ let encodingBlob: cert.EncodingBlob = {
 let param: cert.CertChainValidationParameters = {
   date: '20231212080000Z',
   trustAnchors: [{
-    CAPubKey: new Uint8Array([0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00, 0xbb, 0x16,0x9d, 0x8f, 0x5c, 0x30, 0xd0, 0xba, 0x8f, 0x37, 0x6e, 0x33, 0xaf, 0x6f, 0x23, 0x71, 0x23, 0xa5, 0x49, 0x60,0x1e, 0xd1, 0x07, 0x4b, 0xc9, 0x11, 0x7e, 0x66, 0x01, 0xba, 0x92, 0x52]),
-    CASubject: new Uint8Array([0x30, 0x5a, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x45,0x4e, 0x31, 0x10, 0x30, 0x0e, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x45, 0x6e, 0x67, 0x6c, 0x61, 0x6e,0x64, 0x31, 0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e,0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a,0x06, 0x03, 0x55, 0x04, 0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,0x03, 0x13, 0x03, 0x74, 0x73, 0x31]),
+    CAPubKey: new Uint8Array([0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00, 0xbb, 0x16, 0x9d,
+      0x8f, 0x5c, 0x30, 0xd0, 0xba, 0x8f, 0x37, 0x6e, 0x33, 0xaf, 0x6f, 0x23, 0x71, 0x23, 0xa5, 0x49, 0x60, 0x1e, 0xd1,
+      0x07, 0x4b, 0xc9, 0x11, 0x7e, 0x66, 0x01, 0xba, 0x92, 0x52]),
+    CASubject: new Uint8Array([0x30, 0x5a, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x45, 0x4e,
+      0x31, 0x10, 0x30, 0x0e, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x45, 0x6e, 0x67, 0x6c, 0x61, 0x6e, 0x64, 0x31,
+      0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e, 0x31, 0x0c, 0x30,
+      0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,
+      0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x03, 0x74, 0x73,
+      0x31]),
   }]
 };
 
 cert.createX509CertChain(encodingBlob, (err, certChain) => {
   if (err) {
-    console.error('createX509CertChain failed, errCode: ' + err.code + ', errMsg: ' + err.message);
+    console.error(`createX509CertChain failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
-    console.info('createX509CertChain success');
+    console.info('createX509CertChain result: success.');
     certChain.validate(param, (error, validationRes) => {
       if (error) {
-        console.error('X509CertChain validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+        console.error(`X509CertChain validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
-        console.info('X509CertChain validate success');
+        console.info('X509CertChain validate result: success.');
       }
     });
   }
@@ -11940,9 +12364,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -11957,7 +12381,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12053,11 +12477,11 @@ async function certChainToString() {
   let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
-    console.info('createX509CertChain success');
+    console.info('createX509CertChain result: success.');
     console.info('toString success: ' + x509CertChain.toString());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12067,15 +12491,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -12084,7 +12508,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12180,11 +12604,11 @@ async function certChainHashCode() {
   let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
-    console.info('createX509CertChain success');
+    console.info('createX509CertChain result: success.');
     console.info('hashCode success: ' + x509CertChain.hashCode());
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12193,11 +12617,11 @@ async function certChainHashCode() {
 
 generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 
-Generates a CSR.
+Generates a CSR using the specified RSA private key by passing configuration parameters such as the subject, extension, MD algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -12220,7 +12644,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030008 | maybe wrong password. |
 
@@ -12233,9 +12657,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function createCsrTest() {
   let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
   let prikeyEnstr: string =
-    '-----BEGIN RSA PRIVATE KEY-----\n'                                  +
-      'Proc-Type: 4,ENCRYPTED\n'                                           +
-      'DEK-Info: AES-128-CBC,B5FFA3AEEE7176106FDDB0988B532F07\n\n'         +
+    '-----BEGIN RSA PRIVATE KEY-----\n' +
+      'Proc-Type: 4,ENCRYPTED\n' +
+      'DEK-Info: AES-128-CBC,B5FFA3AEEE7176106FDDB0988B532F07\n\n' +
       't3zNRGKp5X4BNkcsYATad/Le+94yMIX9CoNAGsBIDzQw+773UMGIoeGEYVlXWc8x\n' +
       'N1XWDinn4ytWw9x9OfUYgmNnrdkWRSaIuw+SpQfBgJip+MsNERYOHZ5TYWTR8n3k\n' +
       '7/jHY8eCgTsP3hbNtyaePIrtbTLZGZAHG1YWY5UmLaYoI1O6/Vvobx72lx3b43Tx\n' +
@@ -12252,39 +12676,39 @@ async function createCsrTest() {
       '-----END RSA PRIVATE KEY-----\n';
   let priKeyInfo: cert.PrivateKeyInfo = {
     key: prikeyEnstr,
-    password : "123abc"
+    password: '123abc'
   }
   let keyUsage: cert.CsrAttribute = {
-    type: "keyUsage",
-    value: "digitalSignature, keyEncipherment"
+    type: 'keyUsage',
+    value: 'digitalSignature, keyEncipherment'
   };
 
   let challengePassword: cert.CsrAttribute = {
-    type:"challengePassword",
-    value: "123456"
+    type: 'challengePassword',
+    value: '123456'
   };
   let attribute: cert.CsrAttribute[] = [
-    keyUsage,challengePassword
+    keyUsage, challengePassword
   ];
   try {
     let data = await cert.createX500DistinguishedName(nameStr);
-    console.info('createX500DistinguishedName success' + data.getName("CN").toString());
+    console.info('createX500DistinguishedName result: success. ' + data.getName('CN').toString());
     let conf: cert.CsrGenerationConfig = {
       subject: data,
-      mdName: "SHA256",
+      mdName: 'SHA256',
       outFormat: cert.EncodingBaseFormat.PEM,
       attributes: attribute
     }
     try {
       let csrStr = cert.generateCsr(priKeyInfo, conf)
-      console.info('generateCsr success return str is' + csrStr.toString())
+      console.info('generateCsr result: success, return str is ' + csrStr.toString())
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error('generateCsr failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      console.error(`generateCsr failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12293,17 +12717,17 @@ async function createCsrTest() {
 
 createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
-Creates an **X500DistinguishedName** object in string format. This API uses a promise to return the result.
+Creates an **X500DistinguishedName** object with a name in the form of a string. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | Yes|DN of the string type defined by X.509.|
+| nameStr | string | Yes|Name of the string type defined by X.509. Distinguishable names are separated by slashes (/). Each distinguishable name is in the format of *an attribute***=***a value*. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **/CN=example.com/O=Example/C=CN**.|
 
 **Return value**
 
@@ -12319,14 +12743,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect. |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer. |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 19030007 | the key cannot be used for a digital signature. |
 
 **Example**
 
@@ -12348,14 +12772,14 @@ async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12364,17 +12788,17 @@ async function createX500DistinguishedName() {
 
 createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName>
 
-Creates an **X500DistinguishedName** object in DER format. This API uses a promise to return the result.
+Creates an **X500DistinguishedName** object with a name in DER format. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameDer | Uint8Array | Yes|Name of the Uint8Array type in DER format defined by X.509.|
+| nameDer | Uint8Array | Yes|Name of the Uint8Array type defined by X.509 in DER format.|
 
 **Return value**
 
@@ -12390,14 +12814,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect. |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer. |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 19030007 | the key cannot be used for a digital signature. |
 
 **Example**
 
@@ -12405,41 +12829,44 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let nameDer = new Uint8Array([48,41,49,11,48,9,6,3,85,4,3,12,2,67,65,49,13,48,11,6,3,85,4,10,12,4,116,101,115,116,49,11,48,9,6,3,85,4,6,19,2,67,78]);
+let nameDer =
+  new Uint8Array([48, 41, 49, 11, 48, 9, 6, 3, 85, 4, 3, 12, 2, 67, 65, 49, 13, 48, 11, 6, 3, 85, 4, 10, 12, 4, 116,
+    101, 115, 116, 49, 11, 48, 9, 6, 3, 85, 4, 6, 19, 2, 67, 78]);
+
 async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameDer)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
 ## X500DistinguishedName<sup>12+</sup>
 
-Provides APIs for managing the **X500DistinguishedName** instance.
+Object of the Name type defined by X.509.
 
 ### getName<sup>12+</sup>
 
 getName(): string
 
-Obtains the DN in the form of a string.
+Obtains the distinguished name in the form of a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | DN in the form of a string obtained.|
+| string | Distinguished name obtained.|
 
 **Error codes**
 
@@ -12448,7 +12875,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12457,20 +12884,23 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let nameDer = new Uint8Array([48,41,49,11,48,9,6,3,85,4,3,12,2,67,65,49,13,48,11,6,3,85,4,10,12,4,116,101,115,116,49,11,48,9,6,3,85,4,6,19,2,67,78]);
+let nameDer =
+  new Uint8Array([48, 41, 49, 11, 48, 9, 6, 3, 85, 4, 3, 12, 2, 67, 65, 49, 13, 48, 11, 6, 3, 85, 4, 10, 12, 4, 116,
+    101, 115, 116, 49, 11, 48, 9, 6, 3, 85, 4, 6, 19, 2, 67, 78]);
+
 async function getName() {
   try {
     cert.createX500DistinguishedName(nameDer)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
         console.info('createX500DistinguishedName getName: ' + data.getName());
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12479,23 +12909,23 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-Obtains DNs of the specified type.
+Obtains the string of the relative distinguished names (RDNs) of the specified types.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type | string | Yes| Type of the DNs to obtain.|
+| type | string | Yes| RDN of the specified type. For example, **CN** and **OU**.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| Array\<string> | DNs obtained.|
+| Array\<string> | RDN string array.|
 
 **Error codes**
 
@@ -12505,7 +12935,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12519,15 +12949,15 @@ async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
         console.info('createX500DistinguishedName getName: ' + data.getName("CN"));
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12538,21 +12968,21 @@ getName(encodingType: EncodingType): string
 
 Obtains the string of the distinguished names based on the specified encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type         | Mandatory| Description          |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding type.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | A string of distinguishable names, separated by commas (,).|
+| string | String of the distinguished names separated by commas (,).|
 
 **Error codes**
 
@@ -12561,7 +12991,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -12571,39 +13001,50 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-et nameStr = '/CN=Shaanxi@Xi'an/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
+let nameStr = '/CN=Shaanxi@Baoji/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS'
 async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
         console.info('createX500DistinguishedName getName: ' + data.getName(cert.EncodingType.ENCODING_UTF8));
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
 
-### getEncoded<sup>12+</sup>
+### getName
 
-getEncoded(): EncodingBlob
+getName(type: string, encodingType: EncodingType): Array\<string>
 
-Obtains the data of the X.509 certificate **extensions** field.
+Obtains an array of RDN strings based on the specified type and encoding format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Since:** 26.0.0
 
-**System capability**: SystemCapability.Security.Cert
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| type | string | Yes| RDN of the specified type. For example, **CN** and **OU**.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| [EncodingBlob](#encodingblob) | X.509 certificate serialization data obtained.|
+| Array\<string> | RDN string array.|
 
 **Error codes**
 
@@ -12612,7 +13053,58 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let nameStr = '/CN=Example CA/OU=test cert/O=test/L=XA/ST=SX/C=CN/CN=RSA CA/CN=Test';
+async function getName() {
+  try {
+    cert.createX500DistinguishedName(nameStr)
+      .then((data) => {
+        console.info('createX500DistinguishedName result: success.');
+        console.info('createX500DistinguishedName getName: ' + data.getName("CN", cert.EncodingType.ENCODING_UTF8));
+      })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      })
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### getEncoded<sup>12+</sup>
+
+getEncoded(): EncodingBlob
+
+Obtains the usage of the extended key of this X.509 certificate.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Return value**
+
+| Type   | Description                                             |
+| ------- | ------------------------------------------------- |
+| [EncodingBlob](#encodingblob) | X.509 certificate serialization data.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12626,15 +13118,15 @@ async function getEncoded() {
   try {
     cert.createX500DistinguishedName(nameStr)
       .then((data) => {
-        console.info('createX500DistinguishedName success');
+        console.info('createX500DistinguishedName result: success.');
         let encodingBlobData = data.getEncoded();
       })
       .catch((err: BusinessError) => {
-        console.error('createX500DistinguishedName catch, errCode: ' + err.code + ', errMsg: ' + err.message);
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
       })
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX500DistinguishedName catch, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -12645,15 +13137,15 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 Creates a **CmsGenerator** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS message type.|
+| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS content type.|
 
 **Return value**
 
@@ -12669,7 +13161,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12711,15 +13203,15 @@ function testcreateCmsGenerator() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
           let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-          console.info('testcreateCmsGenerator createCmsGenerator success.');
+          console.info('testcreateCmsGenerator createCmsGenerator result: success.');
         } catch (err) {
           let e: BusinessError = err as BusinessError;
-          console.error('createCmsGenerator failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`createCmsGenerator failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
     }
   });
@@ -12733,29 +13225,29 @@ Provides APIs for generating the messages in CMS format.
 > **NOTE**
 >
 > PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### addSigner<sup>18+</sup>
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-Adds signer information to the CMS whose content type is **SIGNED_DATA**.
-	
+Adds a signer to the CMS **SIGNED_DATA** structure.
+  
 > **NOTE**
 >
-> OpenSSL does not support signature verification for self-signed certificates. Therefore, self-signed certificates cannot be used as signers.
+> OpenSSL does not support signature verification of self-signed certificates. Therefore, self-signed certificates cannot be used as issuer certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| cert |  [X509Cert](#x509cert) | Yes| X.509 certificate.|
+| cert |  [X509Cert](#x509cert) | Yes| X.509 certificate|
 | keyInfo | [PrivateKeyInfo](#privatekeyinfo18) | Yes| Private key information.|
-| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| Signer configuration.|
+| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| CMS signer configuration.|
 
 **Error codes**
 
@@ -12765,7 +13257,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030008 | maybe wrong password. |
 
@@ -12827,12 +13319,12 @@ function testAddSigner() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
           let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-          console.info('testAddSigner createCmsGenerator success.');
+          console.info('testAddSigner createCmsGenerator result: success.');
           let privateKeyInfo: cert.PrivateKeyInfo = {
             key: rsaStr1024,
             password: '123456'
@@ -12845,10 +13337,10 @@ function testAddSigner() {
             addSmimeCapAttr:false
           }
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-          console.info('testAddSigner addSigner success.');
+          console.info('testAddSigner addSigner result: success.');
         } catch (err) {
           let e: BusinessError = err as BusinessError;
-          console.error('testAddSigner failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`testAddSigner failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
     }
   });
@@ -12859,19 +13351,19 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the issuer certificate of a signing certificate.
+Adds a certificate for the CMS **SIGNED_DATA** structure, for example, the issuer certificate of a signing certificate.
 
-If the **addSigner** API is not called and only the certificate is added, the generated CMS signature data contains only the certificate.
+If the certificate is added without calling **addSigner**, the generated CMS signature data contains only the certificate information.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| cert   | [X509Cert](#x509cert)  | Yes  | X.509 certificate to add.     |
+| cert   | [X509Cert](#x509cert)  | Yes  | X.509 certificate to be added.     |
 
 **Error codes**
 
@@ -12881,7 +13373,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -12923,18 +13415,18 @@ function testAddCert() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
           let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-          console.info('testAddCert createCmsGenerator success.');
+          console.info('testAddCert createCmsGenerator result: success.');
           // If the same certificate is added, an error will be reported.
           cmsGenerator.addCert(x509Cert);
-          console.info('testAddCert addCert success.');
+          console.info('testAddCert addCert result: success.');
         } catch (err) {
           let e: BusinessError = err as BusinessError;
-          console.error('testAddCert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`testAddCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
     }
   });
@@ -12945,19 +13437,19 @@ function testAddCert() {
 
 setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
 
-Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA**.
+Sets the encryption algorithm for CMS **ENVELOPED_DATA**.
 
-This method should be called immediately after the **CmsGenerator** of the **ENVELOPED_DATA** type is created. If this method is not called, AES_256_GCM is used as the encryption algorithm by default.
+This API should be called immediately after a **CmsGenerator** object of the **ENVELOPED_DATA** type is created. If not, AES_256_GCM is used as the encryption algorithm by default.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used by the CMS to encapsulate data.     |
+| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used to encapsulate data based on CMS.     |
 
 **Error codes**
 
@@ -12966,7 +13458,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
@@ -12979,12 +13471,12 @@ function testSetRecipientEncryptionAlgorithm() {
   try {
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-    console.info(`createCmsGenerator success.`);
+    console.info(`createCmsGenerator result: success.`);
     let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_128_CBC;
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
-    console.info(`setRecipientEncryptionAlgorithm success.`);
+    console.info(`setRecipientEncryptionAlgorithm result: success.`);
   } catch (err) {
-    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
@@ -12993,19 +13485,19 @@ function testSetRecipientEncryptionAlgorithm() {
 
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
-Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**. This API uses a promise to return the result.
+Adds recipient information to the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-At least one recipient needs to be set.
+At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient information.     |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient Information.     |
 
 **Return value**
 
@@ -13020,7 +13512,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
 | 19030001 | crypto operation error. |
 
@@ -13086,7 +13578,7 @@ async function testAddRecipientInfo() {
     let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-    console.info(`createCmsGenerator success.`);
+    console.info(`createCmsGenerator result: success.`);
 
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
       cert : eccx509Certcert,
@@ -13100,9 +13592,9 @@ async function testAddRecipientInfo() {
       keyAgreeInfo : eccCert,
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
-    console.info(`addRecipientInfo success.`);
+    console.info(`addRecipientInfo result: success.`);
   } catch (err) {
-    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
@@ -13111,17 +13603,17 @@ async function testAddRecipientInfo() {
 
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 
-Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data.
+Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
@@ -13138,7 +13630,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -13199,12 +13691,12 @@ async function testDoFinalByPromise() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
       try {
         let cmsContentType = cert.CmsContentType.SIGNED_DATA;
         let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testDoFinalByPromise createCmsGenerator success.');
+        console.info('testDoFinalByPromise createCmsGenerator result: success.');
         let privateKeyInfo: cert.PrivateKeyInfo = {
           key: rsaStr1024,
           password: '123456'
@@ -13217,9 +13709,9 @@ async function testDoFinalByPromise() {
           addSmimeCapAttr:true
         }
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testDoFinalByPromise addSigner success.');
+        console.info('testDoFinalByPromise addSigner result: success.');
         cmsGenerator.addCert(x509Cert);
-        console.info('testDoFinalByPromise addCert success.');
+        console.info('testDoFinalByPromise addCert result: success.');
         let content = new Uint8Array([1,2,3,4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
           contentDataFormat : cert.CmsContentDataFormat.BINARY,
@@ -13227,13 +13719,13 @@ async function testDoFinalByPromise() {
           isDetached : true
         };
         cmsGenerator.doFinal(content, optionsFinal).then(result => {
-          console.info('testDoFinalByPromise doFinal success, result = %s', result);
+          console.info('testDoFinalByPromise doFinal result: success, result = %s', result);
         }).catch((error: BusinessError) => {
-          console.error('testDoFinalByPromise failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+          console.error(`testDoFinalByPromise failed, errCode: ${error.code}, errMsg: ${error.message}`);
         });
       } catch (err) {
         let e: BusinessError = err as BusinessError;
-        console.error('testDoFinalByPromise failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`testDoFinalByPromise failed, errCode: ${e.code}, errMsg: ${e.message}`);
       }
     }
   });
@@ -13246,22 +13738,22 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API returns the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Uint8Array \| string            | CMS data generated.|
+| Uint8Array \| string            | CMS data returned.|
 
 **Error codes**
 
@@ -13271,7 +13763,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -13332,12 +13824,12 @@ function testDoFinalSync() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
           let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-          console.info('testDoFinalSync createCmsGenerator success.');
+          console.info('testDoFinalSync createCmsGenerator result: success.');
           let privateKeyInfo: cert.PrivateKeyInfo = {
             key: rsaStr1024,
             password: '123456'
@@ -13350,9 +13842,9 @@ function testDoFinalSync() {
             addSmimeCapAttr:false
           }
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-          console.info('testDoFinalSync addSigner success.');
+          console.info('testDoFinalSync addSigner result: success.');
           cmsGenerator.addCert(x509Cert);
-          console.info('testDoFinalSync addCert success.');
+          console.info('testDoFinalSync addCert result: success.');
           let content = new Uint8Array([1,2,3,4]);
           let optionsFinal: cert.CmsGeneratorOptions = {
             contentDataFormat : cert.CmsContentDataFormat.BINARY,
@@ -13360,10 +13852,10 @@ function testDoFinalSync() {
             isDetached : false
           };
           let output = cmsGenerator.doFinalSync(content, optionsFinal);
-          console.info('testDoFinalSync doFinalSync success, output = %s.',output);
+          console.info('testDoFinalSync doFinalSync result: success, output = %s.',output);
         } catch (err) {
           let e: BusinessError = err as BusinessError;
-          console.error('testDoFinalSync failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+          console.error(`testDoFinalSync failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
     }
   });
@@ -13374,13 +13866,13 @@ function testDoFinalSync() {
 
 getEncryptedContentData(): Promise\<Uint8Array>
 
-Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_DATA**. This API uses a promise to return the result.
+Obtains the encrypted data of the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
+Obtains the encrypted data if a **CmsGenerator** object of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -13395,7 +13887,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -13462,10 +13954,10 @@ async function testGetEncryptedContentData() {
 
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-    console.info(`createCmsGenerator success.`);
+    console.info(`createCmsGenerator result: success.`);
     let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
-    console.info(`setRecipientEncryptionAlgorithm success.`);
+    console.info(`setRecipientEncryptionAlgorithm result: success.`);
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
       cert : eccx509Certcert,
       digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
@@ -13478,7 +13970,7 @@ async function testGetEncryptedContentData() {
       keyAgreeInfo : eccCert,
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
-    console.info(`addRecipientInfo success.`);
+    console.info(`addRecipientInfo result: success.`);
     let content = new Uint8Array([1,2,3,4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
       contentDataFormat : cert.CmsContentDataFormat.BINARY,
@@ -13486,11 +13978,11 @@ async function testGetEncryptedContentData() {
       isDetached : true
     };
     let cms = await cmsGenerator.doFinal(content, optionsFinal);
-    console.info(`doFinal success, cms = %s`, cms);
+    console.info(`doFinal result: success, cms = %s`, cms);
     let data = await cmsGenerator.getEncryptedContentData();
-    console.info(`getEncryptedContentData success, data = %s`, data);
+    console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, errMsg: ${err.message}`);
   }
 }
 ```
@@ -13501,15 +13993,15 @@ createCmsParser(): CmsParser
 
 Creates a **CmsParser** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| [CmsParser](#cmsparser22) | CmsParser object.|
+| [CmsParser](#cmsparser22) | **CmsParser** object.|
 
 **Error codes**
 
@@ -13518,7 +14010,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -13526,81 +14018,80 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
-    // Convert the string into a Uint8Array.
+// Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   };
   return new Uint8Array(arr);
-  }
+}
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
-
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
   return x509Cert;
-  }
+}
 
 async function testCmsVerifyTest() {
   try {
@@ -13610,7 +14101,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -13626,9 +14117,9 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -13639,21 +14130,21 @@ Verifies and decapsulates signed and encapsulated messages in CMS format.
 > **NOTE**
 >
 > PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### setRawData<sup>22+</sup>
 
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 Converts data in CMS format into CMS objects. This API uses a promise to return the result.
-	
+  
 > **NOTE**
 >
-> CMS data in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array** corresponds to the DER format.
+> CMS data in PEM and DER formats is supported. The string is in PEM format, and the Uint8Array data is in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -13675,7 +14166,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
@@ -13685,76 +14176,76 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
-  }
+}
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
@@ -13770,7 +14261,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -13786,9 +14277,9 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -13797,11 +14288,11 @@ async function testCmsVerifyTest() {
 
 getContentType(): CmsContentType
 
-Obtains the CMS data type. Currently, signature data and decapsulated data can be obtained.
+Obtains the CMS data type. Currently, only signature data and encapsulated data can be obtained.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -13816,7 +14307,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -13825,76 +14316,76 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
-    // Convert the string into a Uint8Array.
+// Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   };
   return new Uint8Array(arr);
 }
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
@@ -13910,7 +14401,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -13926,11 +14417,11 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     let contentType: cert.CmsContentType = verify.getContentType();
-    console.info("contentType is " + contentType);
+    console.info('contentType = ' + contentType);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -13941,9 +14432,9 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -13964,7 +14455,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
 | 19030001 | crypto operation error. |
 | 19030003 | the certificate has not taken effect. |
@@ -13977,77 +14468,76 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
-    // Convert the string into a Uint8Array.
+// Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   };
   return new Uint8Array(arr);
 }
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
-
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
 
@@ -14062,7 +14552,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14078,9 +14568,9 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -14091,9 +14581,9 @@ getContentData(): Promise\<Uint8Array>
 
 Obtains the plaintext data from CMS data of the signature type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -14108,7 +14598,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -14117,77 +14607,76 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
-
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
 
@@ -14202,7 +14691,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14218,11 +14707,11 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
     let contentData = await verify.getContentData();
-    console.info("verifySignedData success, contentData is "+ contentData);
+    console.info('getContentData result: success, contentData = ' + contentData);
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -14231,17 +14720,17 @@ async function testCmsVerifyTest() {
 
 getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
-Obtains the certificate from CMS data of the signature type by passing enumerated values. The signer certificate or all certificates can be obtained. This API uses a promise to return the result.
+Obtains the certificate from CMS data of the signature type by passing enumerated values. Currently, the signer certificate or all certificates can be obtained. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type |  [CmsCertType](#cmscerttype22) | Yes| Obtains the certificate type from CMS.|
+| type |  [CmsCertType](#cmscerttype22) | Yes| Type of the certificate obtained from the CMS.|
 
 **Return value**
 
@@ -14256,8 +14745,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | parameter check failed. Possible causes: <br>1. The value of type is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
 **Example**
@@ -14266,76 +14755,76 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
-  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
-  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
-  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
-  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
-  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
-  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
-  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
-  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
-  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
-  "1Cyy/+qufhBUJw5om7E=\n"                                             +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n' +
+    'Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n' +
+    'MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n' +
+    'CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n' +
+    'PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n' +
+    '1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n' +
+    'MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n' +
+    'bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n' +
+    'MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n' +
+    'X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n' +
+    '1Cyy/+qufhBUJw5om7E=\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_INTER_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
-  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
-  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
-  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
-  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
-  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
-  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
-  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
-  "ia4tt478nYeQgMChg+xtSw==\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n' +
+    'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n' +
+    'HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n' +
+    'SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n' +
+    'hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n' +
+    'VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n' +
+    'GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n' +
+    'puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n' +
+    'ia4tt478nYeQgMChg+xtSw==\n' +
+    '-----END CERTIFICATE-----';
 
 let ECC_256_PUB_ROOT_CERT: string =
-  "-----BEGIN CERTIFICATE-----\n" +
-  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
-  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
-  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
-  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
-  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
-  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
-  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
-  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
-  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
-  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n' +
+    'bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n' +
+    'DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n' +
+    'wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n' +
+    '50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n' +
+    'A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n' +
+    'HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n' +
+    'ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n' +
+    'wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRI_ENTRY_KEY: string =
-  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
-  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
-  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
-  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
-  "-----END EC PRIVATE KEY-----";
+  '-----BEGIN EC PRIVATE KEY-----\n' +
+    'MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n' +
+    'AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n' +
+    'HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n' +
+    '-----END EC PRIVATE KEY-----';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
@@ -14351,7 +14840,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: "SHA256",
+      mdName: 'SHA256',
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14367,12 +14856,12 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info("verifySignedData success");
+    console.info('verifySignedData result: success.');
     let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
-    console.info("getCerts success, cert num is " + signerCerts.length);
+    console.info('getCerts result: success, signerCerts.length = ' + signerCerts.length);
     await verify.getContentData();
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -14381,17 +14870,17 @@ async function testCmsVerifyTest() {
 
 decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
-Verifies the CMS of the **Enveloped_DATA** content type. This API uses a promise to return the result.
+Decrypts CMS **Enveloped_DATA**. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| CMS decapsulation configuration content.|
+| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| Configuration for decryption of CMS data.|
 
 **Return value**
 
@@ -14406,7 +14895,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
@@ -14416,40 +14905,40 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUBKEY: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n" +
-  "MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n" +
-  "6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n" +
-  "OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n" +
-  "VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n" +
-  "6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n" +
-  "VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n" +
-  "MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n" +
-  "ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n" +
-  "EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n" +
-  "zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n" +
-  "FmEJWqEMYudBH3Ul\n"                                                 +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n' +
+    'MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n' +
+    '6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n' +
+    'OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n' +
+    'VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n' +
+    '6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n' +
+    'VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n' +
+    'MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n' +
+    'ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n' +
+    'EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n' +
+    'zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n' +
+    'FmEJWqEMYudBH3Ul\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRIVATE: string =
-  "-----BEGIN PRIVATE KEY-----\n"                                      +
-  "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n" +
-  "pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n" +
-  "FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n"         +
-  "-----END PRIVATE KEY-----";
+  '-----BEGIN PRIVATE KEY-----\n' +
+    'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n' +
+    'pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n' +
+    'FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n' +
+    '-----END PRIVATE KEY-----';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
-      arr.push(str.charCodeAt(i));
+    arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
 async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   let encodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(inStream),
-      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    data: stringToUint8Array(inStream),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
 
@@ -14467,28 +14956,29 @@ async function testCmsDecryptTest() {
     cms.setRecipientEncryptionAlgorithm(cert.CmsRecipientEncryptionAlgorithm.AES_128_GCM);
     let recipientInfo: cert.CmsRecipientInfo = {
       keyAgreeInfo: {
-          cert: x509CertEc,
-          digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+        cert: x509CertEc,
+        digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
       }
     };
     await cms.addRecipientInfo(recipientInfo);
-    console.info("add recipient success:" + recipientInfo.keyAgreeInfo?.digestAlgorithm);
+    console.info('addRecipientInfo result: success, recipientInfo.keyAgreeInfo.digestAlgorithm = ' +
+      recipientInfo.keyAgreeInfo?.digestAlgorithm);
     let envelopeData = await cms.doFinal(plainText, option);
-    console.info("doFinal success:" + envelopeData);
+    console.info('doFinal result: success, envelopeData = ' + envelopeData);
     let cipherText = await cms.getEncryptedContentData();
-    console.info("cipherText success:" + cipherText);
+    console.info('getEncryptedContentData result: success, cipherText = ' + cipherText);
     let config: cert.CmsEnvelopedDecryptionConfig = {
       keyInfo: {
-          key: ECC_256_PRIVATE
+        key: ECC_256_PRIVATE
       },
     };
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info("[XTS] Decrypt success:" + decPlainText);
-    console.info("decryptEnvelopedData success");
+    console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
+    console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```

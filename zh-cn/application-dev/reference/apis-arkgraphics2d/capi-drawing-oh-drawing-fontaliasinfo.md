@@ -1,7 +1,7 @@
 # OH_Drawing_FontAliasInfo
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -26,6 +26,6 @@ typedef struct OH_Drawing_FontAliasInfo {...} OH_Drawing_FontAliasInfo
 | 名称 | 描述 |
 | -- | -- |
 | char* familyName | 字体家族名。 |
-| int weight | 字体字重值，当字重值大于0时，表示此字体集只包含所指定weight的字体，当字重值等于0时，表示此字体集包含所有字体。 |
+| int weight | 字体字重值，当字重值大于0时，表示此字体集只包含所指定字重的字体，当字重值等于0时，表示此字体集包含所有字体。 |
 
 

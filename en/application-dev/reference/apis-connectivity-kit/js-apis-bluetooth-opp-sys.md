@@ -381,7 +381,7 @@ Unsubscribes from Bluetooth file transfer completion events.
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | Yes   | Event type. The field has a fixed value of **receiveIncomingFile**. After **off('receiveIncomingFile')** is called, an event will be returned when file transfer stops.|
+| type     | string                                   | Yes   | Event type. The field has a fixed value of **receiveIncomingFile**. After **off('receiveIncomingFile')** is called, an event will not be returned when file transfer stops.|
 
 **Error codes**
 

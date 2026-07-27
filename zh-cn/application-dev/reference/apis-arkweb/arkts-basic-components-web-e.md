@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -16,17 +16,17 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
 | Debug | 1 | 调试级别。 |
-| Error | 4 | 错误级别。 |
 | Info  | 2 | 消息级别。 |
-| Log   | 5 | 日志级别。 |
 | Warn  | 3 | 警告级别。 |
+| Error | 4 | 错误级别。 |
+| Log   | 5 | 日志级别。<br/>**起始版本：** 8<br/> **废弃版本：** 26.0.0 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
@@ -70,7 +70,7 @@ ConsoleMessage的日志来源。
 
 > **说明：**
 >
-> 从API version9开始支持，从API version 21开始废弃。建议使用[WebHitTestType](./arkts-apis-webview-e.md#webhittesttype)替代。
+> 从API version 9开始支持，从API version 21开始废弃。建议使用[WebHitTestType](./arkts-apis-webview-e.md#webhittesttype)替代。
 
 | 名称            | 值 | 说明                       |
 | ------------- | -- | ------------------------ |
@@ -92,7 +92,7 @@ ConsoleMessage的日志来源。
 | 名称      | 值 | 说明                                   |
 | ------- | -- | ------------------------------------ |
 | Default<sup>9+</sup> | 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。 |
-| None    | 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。     |
+| None    | 1 | 优先使用cache（含过期）加载资源，无cache时从网络获取。     |
 | Online  | 2 | 强制从网络获取最新资源，不使用任何cache。               |
 | Only    | 3 | 仅使用本地cache加载资源。                        |
 
@@ -105,8 +105,8 @@ ConsoleMessage的日志来源。
 
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
-| NEVER  | 0 | Web过滚动模式关闭。 |
-| ALWAYS | 1 | Web过滚动模式开启。 |
+| NEVER  | 0 | Web过滚动模式关闭。适用于不需要额外滚动效果的页面，如内容高度与容器高度匹配的场景。 |
+| ALWAYS | 1 | Web过滚动模式开启。适用于需要增强滚动反馈的场景，如列表页面或需要明确滚动边界指示的场景。 |
 
 ## BlurOnKeyboardHideMode<sup>14+</sup>
 
@@ -118,12 +118,12 @@ ConsoleMessage的日志来源。
 
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
-| SILENT  | 0 | 软键盘收起时Web组件失焦功能关闭，当用户手动收起软键盘时焦点仍在文本框。 |
-| BLUR | 1 | 软键盘收起时Web组件失焦功能开启，当用户手动收起软键盘时，焦点会从文本框转移到Web的body上，文本框失焦。 |
+| SILENT  | 0 | 软键盘收起时Web组件失焦功能关闭，当用户手动收起软键盘时焦点仍在文本框。适用于需要保持输入焦点的场景。 |
+| BLUR | 1 | 软键盘收起时Web组件失焦功能开启，当用户手动收起软键盘时，焦点会从文本框转移到Web的body上，文本框失焦。适用于需要标准输入框行为的场景。 |
 
 ## WebDarkMode<sup>9+</sup>
 
-Web深色模式的配置。
+Web深色模式的配置，用于控制网页内容的深色主题显示，帮助开发者根据用户偏好和系统主题提升视觉体验和可读性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -131,7 +131,7 @@ Web深色模式的配置。
 | ---- | -- | ------------ |
 | Off  | 0 | Web深色模式关闭。   |
 | On   | 1 | Web深色模式开启。   |
-| Auto | 2 | Web深色模式跟随系统。 |
+| Auto | 2 | Web深色模式跟随系统。适用于Web组件主题需要与系统保持一致的场景，推荐使用此模式以提供一致的用户体验。 |
 
 ## WebCaptureMode<sup>10+</sup>
 
@@ -166,11 +166,11 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出。         |
+| ProcessAbnormalTermination | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
 | ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
 | ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
 | ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因。             |
+| ProcessExitUnknown         | 4 | 其他原因，比如渲染进程孵化失败。        |
 
 ## SslError<sup>9+</sup>
 
@@ -187,7 +187,7 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 ## FileSelectorMode<sup>9+</sup>
 
-文件选择器的模式。
+文件选择器的模式，用于控制文件选择器的打开方式和行为，帮助开发者实现文件上传等文件操作场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -200,14 +200,14 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 ## WebLayoutMode<sup>11+</sup>
 
-Web布局模式的配置。
+Web布局模式的配置，用于控制Web内容的页面布局方式，帮助开发者根据屏幕尺寸和显示需求优化网页的适配性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
-| NONE        | 0 | Web布局跟随系统。         |
-| FIT_CONTENT | 1 | Web基于页面大小的自适应网页布局。 |
+| NONE        | 0 | Web布局跟随系统。适用于传统网页布局场景，保持与系统默认行为一致。         |
+| FIT_CONTENT | 1 | Web基于页面大小的自适应网页布局。适用于需要根据屏幕尺寸自动调整布局的场景，推荐用于移动端网页优化。 |
 
 ## RenderProcessNotRespondingReason<sup>12+</sup>
 
@@ -221,6 +221,8 @@ Web布局模式的配置。
 | NAVIGATION_COMMIT_TIMEOUT      | 1 | 新的网页加载导航响应超时。   |
 
 ## ProtectedResourceType<sup>9+</sup>
+
+ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源类型，用于控制MIDI、相机、麦克风、传感器等敏感资源的访问权限，帮助开发者在保护用户隐私的同时提供丰富的 Web 功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -275,7 +277,7 @@ Web布局模式的配置。
 
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
-| None      | 0 | 非输入框。                       |
+| None      | 0 | 非输入框，指不可编辑的网页元素，如按钮、div、span等普通HTML元素。                       |
 | PlainText | 1 | 纯文本类型，包括text、search、email等。 |
 | Password  | 2 | 密码类型。                       |
 | Number    | 3 | 数字类型。                       |
@@ -346,8 +348,8 @@ Web布局模式的配置。
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
-| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的宽度最大规格不超过500,000 px（物理像素）。   |
+| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的高度最大规格不超过7,680 px（物理像素）。   |
+| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的高度最大规格不超过500,000 px（物理像素）。   |
 
 ## ViewportFit<sup>12+</sup>
 
@@ -357,9 +359,9 @@ Web布局模式的配置。
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| AUTO                  | 0 | 默认值，整个网页可见。   |
-| CONTAINS      | 1 | 初始布局视口和视觉视口为适应设备显示屏的最大矩形内。   |
-| COVER      | 2| 初始布局视口和视觉视口为设备物理屏幕的外接矩形内。   |
+| AUTO                  | 0 | 默认值，整个网页可见。适用于希望网页完全在可视区域内显示的场景，推荐用于大多数常规网页。   |
+| CONTAINS      | 1 | 初始布局视口和视觉视口为适应设备显示屏的最大矩形内。适用于需要确保内容完全在安全区域内的场景，如避免刘海屏遮挡重要内容。   |
+| COVER      | 2| 初始布局视口和视觉视口为设备物理屏幕的外接矩形内。适用于需要网页内容延伸到屏幕边缘的场景，如全屏背景效果或沉浸式体验。   |
 
 ## WebKeyboardAvoidMode<sup>12+</sup>
 
@@ -403,7 +405,7 @@ Web布局模式的配置。
 
 ## AudioSessionType<sup>20+</sup>
 
-应用中Web音频类型。
+应用中 Web 音频类型，用于控制 Web 音频的音频流类型和行为，帮助开发者根据应用场景优化音频体验，如支持网页游戏声音与系统音乐同时播放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -444,25 +446,25 @@ Web布局模式的配置。
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | 默认值，按vsync调度流程绘制。         |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollby（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollBy（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
 
 ## PdfLoadResult<sup>20+</sup>
 
-定义PDF页面的加载结果。
+定义PDF页面的加载结果，用于标识PDF文件加载过程中的各种状态和错误类型，帮助开发者在PDF显示失败时进行错误诊断和用户提示。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 值    | 说明                                       |
 | -------------- | ---- | ---------------------------------------- |
 | LOAD_SUCCESS | 0 | PDF页面加载成功。    |
-| PARSE_ERROR_FILE | 1 | PDF文件加载失败的错误码。 |
-| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
-| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
-| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+| PARSE_ERROR_FILE | 1 | PDF文件加载失败。 |
+| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持。 |
+| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确。 |
+| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败。 |
 
 ## DetectedBlankScreenReason<sup>22+</sup>
 
-白屏的具体原因。
+白屏的具体原因，用于标识页面白屏现象的底层原因，帮助开发者快速定位问题来源，提升页面加载问题的排查效率和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -473,7 +475,7 @@ Web布局模式的配置。
 
 ## BlankScreenDetectionMethod<sup>22+</sup>
 
-白屏检测使用的检测策略的方法。
+白屏检测使用的检测策略的方法，用于定义页面内容检测的具体算法和点位，帮助开发者在检测准确性和性能开销之间取得平衡，及时发现页面渲染异常。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -506,7 +508,7 @@ PIN码认证结果。
 
 ## CameraCaptureState<sup>23+</sup>
 
-定义摄像头使用状态的值。
+定义摄像头使用状态的值，用于标识摄像头的当前工作状态，帮助开发者实时监控摄像头资源使用情况，优化资源管理和用户隐私保护。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -518,7 +520,7 @@ PIN码认证结果。
 
 ## MicrophoneCaptureState<sup>23+</sup>
 
-定义麦克风使用状态的值。
+定义麦克风使用状态的值，用于标识麦克风的当前工作状态，帮助开发者实时监控麦克风资源使用情况，优化资源管理和用户隐私保护。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -530,7 +532,7 @@ PIN码认证结果。
 
 ## NavigationPolicy<sup>23+</sup>
 
-WebView中新窗口的打开方式。
+WebView中新窗口的打开方式，支持弹窗、新窗口、前台和后台标签页等多种方式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -540,3 +542,86 @@ WebView中新窗口的打开方式。
 | NEW_WINDOW                    | 1 | 在新窗口中打开。   |
 | NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
 | NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |
+
+## ScrollDirectionalLockType
+
+定义滑动方向锁定的场景类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称           | 值 | 说明                           |
+| ------------- | -- | ------------------------------ |
+| ALL           | 0  | 所有场景都支持滑动锁定。     |
+| NESTED_SCROLL | 1  | 嵌套滚动场景下支持滑动锁定。 |
+
+## ScrollbarLayoutPolicy
+
+定义滚动条布局模式控制参数的枚举类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称    | 值  | 说明                                 |
+| ------- | --- | ------------------------------------ |
+| CONTENT | 0   | 滚动条左右布局模式跟随css设定。      |
+| SYSTEM  | 1   | 滚动条左右布局模式跟随系统语种设定。 |
+
+## AISessionType
+
+支持的AI会话类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                 | 值 | 说明        |
+| ------------------ | - | --------- |
+| TRANSLATOR         | 1 | 翻译模型。     |
+| LANGUAGE_DETECTOR  | 2 | 语言检测模型。   |
+| SUMMARIZER         | 3 | 内容摘要生成模型。 |
+| WRITER             | 4 | 写作助手模型。   |
+| REWRITER           | 5 | 内容改写助手模型。 |
+| PROMPT             | 6 | 提示词模型。    |
+| PROOFREADER        | 7 | 内容校对助手模型。 |
+
+## AISessionResultType
+
+AI会话操作的结果状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称      | 值 | 说明       |
+| ------- | - | -------- |
+| SUCCESS | 0 | 操作执行成功。  |
+| FAILURE | 1 | 操作执行失败。  |
+| RUNNING | 2 | 操作正在执行中。 |
+
+## WebKeyboardAppearanceMode
+
+WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助开发者根据应用主题和用户偏好提供一致性的视觉体验，支持默认外观、系统跟随、浅色和深色沉浸式风格。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------- | ----  | ------------------- |
+| NONE_IMMERSIVE  | 0 |默认外观模式，不采用沉浸式风格。 |
+| IMMERSIVE       | 1 |沉浸式模式，跟随系统。|
+| LIGHT_IMMERSIVE | 2 |浅色沉浸式风格。                |
+| DARK_IMMERSIVE  | 3 |深色沉浸式风格。                |

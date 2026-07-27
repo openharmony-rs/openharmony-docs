@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **NOTE**
@@ -16,19 +16,19 @@ Defines the RDB store configuration.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Database file name, which is the unique identifier of the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| name | string | No| No| RDB store file name, which uniquely identifies the RDB store. The value cannot be an empty string or contain the path separator (/). Creating two databases with the same name in the same process is prohibited; otherwise, functions such as device-device sync, device-cloud sync, silent access, and key backup may malfunction.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | No| No| Security level of the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| encrypt | boolean | No| Yes| Whether to encrypt the RDB store.<br> **true**: encrypt the RDB store.<br> **false** (default): not encrypt the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| encrypt | boolean | No| Yes| Whether to encrypt the RDB store. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [rekeyEx](arkts-apis-data-relationalStore-RdbStore.md#rekeyex22) API.<br> **true**: encrypt the RDB store.<br> **false** (default): not encrypt the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | dataGroupId<sup>10+</sup> | string | No| Yes| Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>**Model restriction**: This parameter can be used only in the stage model.<br>This parameter is supported since API version 10. If **dataGroupId** is specified, the **RdbStore** instance will be created in the sandbox directory of the specified **dataGroupId**. However, the encrypted RDB store in this sandbox directory does not support multi-process access. If this parameter is left blank, the **RdbStore** instance will be created in the sandbox directory of the application by default.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| customDir<sup>11+</sup> | string | No| Yes| Custom database path.<br>**Constraints**: The maximum length of the database path is 128 bytes. If the database path exceeds 128 bytes, the RDB store fails to be opened and an error is returned.<br>This parameter is supported since API version 11. The database is created in the following directory structure: **context.databaseDir** + **"/rdb/"** + **customDir**, where **context.databaseDir** indicates the path of the application sandbox, **"/rdb/"** indicates the RDB store created, and **customDir** indicates a user-defined path. If this parameter is left blank, the **RdbStore** instance will be created in the sandbox directory of the application by default. Since API version 18, if the **rootDir** parameter is also configured, the RDB store in the following directory will be opened or deleted: **rootDir** + "/" + **customDir** + "/" + **name**.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| rootDir<sup>18+</sup> | string | No| Yes| Root path of the database.<br>This parameter is supported since API version 18. The database in the **rootDir** + "/" + **customDir** directory will be opened or deleted. The database opened is read-only. Writing data to a read-only database will trigger error 801. If this parameter is set when you want to open or delete an RDB store, ensure that the database file exists in the corresponding path and the caller has the read permission. Otherwise, error 14800010 will be returned.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| customDir<sup>11+</sup> | string | No| Yes| Custom RDB store path.<br>**Restrictions**: The store path can contain a maximum of 128 bytes. If the size exceeds 128 bytes, the store fails to be opened and error code 401 is returned. For details, see [Universal Error Codes](../errorcode-universal.md).<br>This parameter is supported since API version 11. The database is created in the following directory structure: **context.databaseDir** + **"/rdb/"** + **customDir**, where **context.databaseDir** indicates the path of the application sandbox, **"/rdb/"** indicates the relational database created, and **customDir** indicates a user-defined path. If this parameter is left blank, the **RdbStore** instance will be created in the sandbox directory of the application by default. Since API version 18, if the **rootDir** parameter is also configured, the database in the following path will be opened or deleted: **rootDir** + "/" + **customDir** + "/" + **name**.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| rootDir<sup>18+</sup> | string | No| Yes| Root path of the RDB store. The default value is an empty string.<br>This parameter is supported since API version 18. The database in the **rootDir** + "/" + **customDir** directory will be opened or deleted. The database opened is read-only. Writing data to a read-only database will trigger error 801. If this parameter is set when you want to open or delete an RDB store, ensure that the database file exists in the corresponding path and the caller has the read permission. Otherwise, error 14800010 will be returned.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | autoCleanDirtyData<sup>11+</sup> | boolean | No| Yes| Whether to automatically clear the dirty data (data that has been deleted from the cloud) from the local device. The value **true** means to clear the dirty data automatically; **false** means to clear the data manually. <br>Default value: **true**.<br>For a database with device-cloud synergy, this parameter can be used to set whether to automatically clear the data deleted from the cloud on the device. You can manually clear the data by calling [cleanDirtyData<sup>11+</sup>](arkts-apis-data-relationalStore-RdbStore.md#cleandirtydata11).<br>This parameter is supported since API version 11.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
 | allowRebuild<sup>12+</sup> | boolean | No| Yes| Whether to automatically delete the RDB store and create an empty table in the case of an exception.<br>**true**: delete the RDB store and create an empty table in the case of an exception.<br>**false** (default): not delete the RDB store in the case of an exception.<br>This parameter is supported since API version 12.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | isReadOnly<sup>12+</sup> | boolean | No| Yes| Whether the RDB store is read-only.<br>**true**: The RDB store is read-only. Writing data to the RDB store will result in error code 801.<br>**false** (default): The RDB store is readable and writeable.<br>This parameter is supported since API version 12.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| pluginLibs<sup>12+</sup> | Array\<string> | No| Yes| Loads custom dynamic libraries. Multiple dynamic library names can be passed in the array. For details, see [Constraints and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| pluginLibs<sup>12+</sup> | Array\<string> | No| Yes| Array of custom dynamic libraries to be loaded. Multiple dynamic library names can be passed in the array. The default value is an empty array. For details, see [Constraints and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | cryptoParam<sup>14+</sup> | [CryptoParam](#cryptoparam14) | No| Yes| Custom encryption parameters.<br>If this parameter is left empty, the default encryption parameters are used. For details, see default values of [CryptoParam](#cryptoparam14).<br>This parameter is valid only when **encrypt** is set to **true** or the key is not empty.<br>This parameter is supported since API version 14.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | vector<sup>18+</sup> | boolean | No| Yes| Whether the RDB store is a vector store. The value **true** means the RDB store is a vector store, and the value **false** means the opposite.<br>Default value: **false**.<br>The vector store is ideal for storing and managing high-dimensional vector data, while the RDB store is optimal for storing and processing structured data.<br>Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | No| Yes| Type of the tokenizer to be used for FTS.<br>If this parameter is left blank, English tokenization is supported if FTS does not support Chinese or multi-language tokenization.<br>If you want to use a custom tokenizer, you can configure it through the **pluginLibs** parameter. For details, see [Restrictions and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | No| Yes| Type of the tokenizer to be used for full-text search (FTS).<br>If this parameter is left blank, English tokenization is supported when FTS does not support Chinese or multi-language tokenization.<br>If you want to use a custom tokenizer, you can configure it through the **pluginLibs** parameter. For details, see [Restrictions and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | persist<sup>18+</sup> | boolean | No| Yes| Whether to persist an RDB store. The value **true** means to persist the RDB store; **false** means the opposite (using an in-memory database). The default value is **true**.<br>An in-memory database does not support encryption, backup, restore, cross-process access, and distributed capabilities, with the **securityLevel** property ignored.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | enableSemanticIndex<sup>20+</sup> | boolean | No| Yes| Whether to enable the semantic index processing feature for the database. The value **true** means to enable the semantic index processing feature; **false** means the opposite. The default value is **false**.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 
@@ -40,12 +40,12 @@ Represents the configuration of database encryption parameters. This configurati
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| encryptionKey  | Uint8Array | No| No| Key used for database encryption and decryption.<br>If this parameter is not specified, the RDB store generates a key, saves the key, and uses the key to open the database file.<br>If the key is not required, you need to set the key to 0.|
-| iterationCount | number | No| Yes| Number of iterations of the PBKDF2 algorithm used in the RDB store. The value is an integer. <br>Default value: **10000**.<br>The value must be an integer greater than 0. If it is not an integer, the value is rounded down.<br>If this parameter is not specified or is set to **0**, the default value **10000** and the default encryption algorithm **AES_256_GCM** are used.|
+| encryptionKey  | Uint8Array | No| No| Key used for database encryption and decryption.<br>If this parameter is not specified, the RDB store generates a key, saves the key, and uses the key to open the database file.<br>If the key is not required, you need to set the key to **0**.|
+| iterationCount | number | No| Yes| Number of iterations of the PBKDF2 algorithm used in the RDB store. The value is an integer. <br>Default value: **10000**.<br>The value must be an integer greater than 0. If the value is not an integer, it is rounded down. If the value is less than 0, error code 401 is returned. For details, see [Universal Error Codes](../errorcode-universal.md).<br>If this parameter is not specified or is set to **0**, the default value **10000** and the default encryption algorithm **AES_256_GCM** are used.|
 | encryptionAlgo | [EncryptionAlgo](arkts-apis-data-relationalStore-e.md#encryptionalgo14) | No| Yes| Algorithm used for database encryption and decryption. <br>Default value: **AES_256_GCM**.|
 | hmacAlgo       | [HmacAlgo](arkts-apis-data-relationalStore-e.md#hmacalgo14) | No| Yes| HMAC algorithm used for database encryption and decryption. <br>Default value: **SHA256**.|
 | kdfAlgo        | [KdfAlgo](arkts-apis-data-relationalStore-e.md#kdfalgo14) | No| Yes| PBKDF2 algorithm used for database encryption and decryption. <br>Default value: the same as the HMAC algorithm used.|
-| cryptoPageSize | number | No| Yes| Page size used for database encryption and decryption, in bytes. <br>Default value: **1024**.<br>The value must be an integer within the range of 1024 to 65536 and must be 2<sup>n</sup>. If the specified value is not an integer, the value is rounded down.|
+| cryptoPageSize | number | No| Yes| Page size used for database encryption and decryption. The value is an integer. Unit: byte <br>Default value: **1024**.<br>The value must be an integer within the range of 1,024 to 65,536 and must be 2<sup>n</sup>. If the specified value is not an integer, the value is rounded down.|
 
 ## Asset<sup>10+</sup>
 
@@ -55,12 +55,12 @@ Represents the asset (such as a document, image, or video).
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Asset name.|
-| uri | string | No| No| Asset URI, which is an absolute path in the system.|
-| path | string | No| No| Path of an asset in the application sandbox.|
+| name | string | No| No| Asset name, which contains a maximum of 256 bytes.|
+| uri | string | No| No| Asset URI, which is an absolute path in the system. The path length cannot exceed 1024 bytes.|
+| path | string | No| No| Path of the asset in the application sandbox. The path contains a maximum of 1024 bytes.|
 | createTime | string | No| No| Time when an asset is created.|
 | modifyTime | string | No| No| Time when an asset is last modified.|
-| size | string | No| No| Asset size. In the device-cloud synchronization mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid synchronization exceptions or misjudgment caused by format differences.|
+| size | string | No| No| Asset size. In the device-cloud sync mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid sync exceptions or misjudgment caused by format differences.|
 | status | [AssetStatus](arkts-apis-data-relationalStore-e.md#assetstatus10) | No  | Yes  | Asset status. <br>Default value: **ASSET_NORMAL**.|
 
 ## ChangeInfo<sup>10+</sup>
@@ -85,9 +85,14 @@ Defines a struct for distributed configuration of a table.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| autoSync | boolean | No| No| The value **true** means both auto sync and manual sync are supported for the table; **false** means only manual sync is supported for the table.|
+| autoSync | boolean | No| No| Whether the table supports automatic device-cloud synchronization. If the value is **true**, the system can automatically trigger device-cloud sync. If the value is **false**, the system cannot automatically trigger device-cloud sync, and the [cloudSync](arkts-apis-data-relationalStore-RdbStore.md#cloudsync10-3) API needs to be called to trigger device-cloud sync.|
 | asyncDownloadAsset<sup>18+</sup> | boolean | No| Yes| Whether to download assets synchronously or asynchronously when device-cloud sync is being performed for the current RDB store. The value **true** means to use an asynchronous task to download assets after all data is downloaded; **false** means to download assets synchronously. <br>Default value: **false**.|
 | enableCloud<sup>18+</sup> | boolean | No| Yes| Whether to enable device-cloud sync for this RDB store. The value **true** means to enable device-cloud sync; **false** means the opposite. The default value is **true**.|
+| tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | No| Yes| Distributed table type. **DEVICE_COLLABORATION** indicates the device collaboration table, and **SINGLE_VERSION** indicates the single version table. For cross-device data sync, the default value is **DEVICE_COLLABORATION**. For device-cloud data sync, the default value is **SINGLE_VERSION**, and **DEVICE_COLLABORATION** is not supported.|
+| assetConflictPolicy | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | No| Yes| Asset conflict policy. The default value is **CONFLICT_POLICY_DEFAULT**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| assetTempPath | string | No| Yes| Temporary asset path. This parameter is valid only when **assetConflictPolicy** is set to **CONFLICT_POLICY_TEMP_PATH**. The value must be a temporary path in [distributedfiles](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). Format example: **tmp/**. If this parameter is not specified or the path is invalid, error code 401 will be returned. The default value is empty.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| assetDownloadOnDemand | boolean | No| Yes| Whether to download assets on demand. **true** indicates that only data is synced down to the local device. When asset download is required, call the [cloudSyncEx](arkts-apis-data-relationalStore-RdbStore.md#cloudsyncex) API to trigger the asset download. **false** indicates that both data and assets are synced down to the local device. The default value is **false**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.                  |
+| autoSyncSwitch | boolean | No| Yes| Whether to enable auto-sync. The value **true** means to enable auto-sync, and **false** means the opposite. The default value is **true**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## Statistic<sup>10+</sup>
 
@@ -119,11 +124,28 @@ Defines a struct for statistics of the overall device-cloud sync (upload and dow
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name    | Type                                             | Read-Only| Optional | Description                                                        |
-| -------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | No  |   No  | Device-cloud sync process.                                          |
-| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | No  |   No  | Device-cloud sync state.                                    |
+| Name    | Type                                             | Read-Only| Optional | Description                                       |
+| -------- | ------------------------------------------------- | ---- | ---- |-------------------------------------------|
+| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | No  |   No  | Device-cloud sync process.                                |
+| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | No  |   No  | Device-cloud sync state.                             |
 | details  | Record<string, [TableDetails](#tabledetails10)> | No  |   No  | Statistics of each table.<br>The key indicates the table name, and the value indicates the device-cloud sync statistics of the table.|
+| message | string | No| Yes  | Detailed message of the sync status. You can view the detailed failure cause in **message**. The default value is empty.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+
+## CloudSyncConfig
+
+Defines the cloud sync configuration.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description                                       |
+|------|------|------|------|-------------------------------------------|
+| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | No| No| RDB store sync mode.                                 |
+| enablePredicate | boolean | No| Yes| Whether to enable table-level sync. The value **true** means to enable table-level sync, and **false** means the opposite. The default value is **false**.|
+| predicate | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | No| Yes| Table-level sync predicate. This parameter is valid only when **enablePredicate** is set to **true**.     |
 
 ## SqlExecutionInfo<sup>12+</sup>
 
@@ -147,7 +169,7 @@ Represents details about the SQL statement executed by the database.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| sql  | string | No| No| SQL statements to be executed.|
+| sql  | string | No| No| SQL statement to be executed.|
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No| No| Parameters in the SQL statements to be executed.|
 
 ## ExceptionMessage<sup>20+</sup>
@@ -159,8 +181,8 @@ Represents an exception message about the SQL statement executed by the database
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | code | number | No| No| Error code returned by the executed SQL statement. For details about the values and meanings, see [SQLite Error Codes](https://www.sqlite.org/rescode.html).|
-| message | string | No| No| Exception message returned by the executed SQL statement.|
-| sql | string | No| No| SQL statement that reports the error.|
+| message | string | No| No| Error message returned by the executed SQL statement. The length cannot exceed 1024 bytes.|
+| sql | string | No| No| SQL statement that triggers the error. The length cannot exceed 1024 bytes.|
 
 ## TransactionOptions<sup>14+</sup>
 
@@ -174,14 +196,14 @@ Represents the configuration of a transaction object.
 
 ## Constraints and Examples of pluginLibs
 
-**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number exceeds 16, the library fails to be opened and the error code 14800000 is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and the error code 14800010 is returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite. The path is in the format of [context.bundleCodeDir+ "/libs/arm64/" + *name of the .so file*"], in which **context.bundleCodeDir** is the application sandbox path, **libs** is a fixed directory, and **arm64** is the subdirectory determined by the system architecture. For example, if the system architecture is arm64-v8a, the subdirectory is arm64.<br>Example: [context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>
-The following is an example of using **pluginLibs** to load a custom tokenizer:<br>1. Implement an FTS5 loadable tokenizer extension and compile it into a .so file. For details about the compilation, see [Building an NDK Project with CMake](../../napi/build-with-ndk-cmake.md).<br>2. Copy the generated .so file to the corresponding subdirectory in the **entry/libs/** directory of the project. If the subdirectory does not exist, create one. The subdirectory is determined by the system architecture. For example, put the file in the **entry/libs/arm64-v8a** or **entry/libs/armeabi-v7a** directory, respectively, if the system architecture is arm64-v8a or armeabi-v7a.<br>3. Load the custom tokenizer.
+**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number exceeds 16, the library fails to be opened and the error code 14800000 is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and the error code 14800010 is returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite. The path is in the format of [context.bundleCodeDir + "/libs/arm64/" + *name of the .so file*], in which **context.bundleCodeDir** is the application sandbox path, **libs** is a fixed directory, and **arm64** is the subdirectory determined by the system architecture. For example, if the system architecture is arm64-v8a, the subdirectory is arm64.<br>Example: [context.bundleCodeDir + "/libs/arm64/" + libtokenizer.so]. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>
+The following is an example of using **pluginLibs** to load a custom tokenizer:<br> 1. Implement an FTS5 loadable tokenizer extension and compile it into a .so file. For details about the compilation, see [Building an NDK Project with CMake](../../napi/build-with-ndk-cmake.md).<br>2. Copy the generated .so file to the corresponding subdirectory in the **entry/libs/** directory of the project. If the subdirectory does not exist, create one. The subdirectory is determined by the system architecture. For example, put the file in the **entry/libs/arm64-v8a** or **entry/libs/armeabi-v7a** directory, respectively, if the system architecture is arm64-v8a or armeabi-v7a.<br>3. Load the custom tokenizer.
 
 ```ts
-import relationalStore from '@ohos.data.relationalStore'
+import { relationalStore } from '@kit.ArkData'
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import fs from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit'
 
 export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
@@ -193,7 +215,7 @@ export default class EntryAbility extends UIAbility {
     let bundleCodeDir = this.context.bundleCodeDir;
     // libdistributeddb_extension.so is the name of the .so file compiled by the FTS5 loadable tokenizer extension.
     let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
-    let res = await fs.access(soPath);
+    let res = await fileIo.access(soPath);
     if (!res) {
       console.error("Dynamic library not accessible");
       return;
@@ -205,7 +227,7 @@ export default class EntryAbility extends UIAbility {
     try {
       rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
       // Use the custom tokenizer to create an FTS5 virtual table. Set the tokenize parameter to the actual tokenizer name.
-      await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING fts5(title, keywords, body, tokenize=koowork_tokenizer);");
+      await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING FTS5(title, keywords, body, tokenize=koowork_tokenizer);");
       console.info("CREATE VIRTUAL TABLE OK");
       await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'Today is Sunday');");
       console.info("INSERT VIRTUAL TABLE OK, body is 'Today is Sunday'");
@@ -223,3 +245,44 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## ReturningConfig<sup>23+</sup>
+
+Specifies the list of field names to return after returning-related APIs are called and the maximum number of records allowed in the result set.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name             | Type         | Read-Only| Optional| Description                                                        |
+| ----------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
+| columns           | Array\<string\> | No  | No  | Fields returned in the result set. One to four fields are supported for input. Note: Field names containing spaces ( ), commas (,), or asterisks (*) are not allowed.|
+| maxReturningCount | number           | No  | Yes  | Maximum number of rows returned in the result set. The default value is **1024**, and the maximum value is **32766**. Note: If the actual number of modified rows exceeds the value set for **maxReturningCount**, the system will discard the excess data.|
+
+## Result<sup>23+</sup>
+
+Records the number of affected data rows and the result set.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name     | Type                                                        | Read-Only| Optional| Description                                                        |
+| --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| changed   | number                                                         | Yes  | No  | Number of affected rows.                                        |
+| resultSet | [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | Yes| No| Result set of the affected data. Defaults to 1,024 rows of data, with a maximum supported limit of 32,766 rows supported; excess rows will be discarded.|
+
+## SyncResult
+
+Defines the device sync result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name     | Type                                                        | Read-Only| Optional| Description                                                        |
+| --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| device   | string                                                         | Yes  | No  | ID of the device to be synced. You can obtain the list of all trusted device IDs through the [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) API.                                        |
+| code | [SyncResultCode](arkts-apis-data-relationalStore-e.md#syncresultcode) | Yes| No| Status code of the sync result.|
+| message | string | Yes| No| Sync result information.|

@@ -52,7 +52,7 @@ Defines a key-value pair data structure that conforms to JSON format.
 
 ### PushParameters
 
-Defines the parameters required when using the **PluginManager.Push** API.
+Defines the parameters required when using the **pluginComponentManager.push** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -63,12 +63,12 @@ Defines the parameters required when using the **PluginManager.Push** API.
 | want      | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component user.                         |
 | name      | string                              | No| No   | Component name.                                   |
 | data      | [KVObject](#kvobject)               | No| No   | Component data.                                  |
-| extraData | [KVObject](#kvobject)               | No| No   | Additional data.                                  |
+| extraData | [KVObject](#kvobject)               | No| No   | Extra data.                                  |
 | jsonPath  | string                              | No| Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
 
 ### RequestParameters
 
-Defines the parameters required when using the **PluginManager.Request** API.
+Defines the parameters required when using the **pluginComponentManager.request** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -83,7 +83,7 @@ Defines the parameters required when using the **PluginManager.Request** API.
 
 ### RequestCallbackParameters
 
-Provides the result returned after the **PluginManager.Request** API is called.
+Provides the result returned after the **pluginComponentManager.request** API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -93,7 +93,7 @@ Provides the result returned after the **PluginManager.Request** API is called.
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
 | componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | No| No   | Component template.|
 | data              | [KVObject](#kvobject)                    | No| No   | Component data.|
-| extraData         | [KVObject](#kvobject)                    | No| No   | Additional data.|
+| extraData         | [KVObject](#kvobject)                    | No| No   | Extra data.|
 
 ### RequestEventResult
 
@@ -124,7 +124,7 @@ Registers the listener for the push event.
 | Name       | Type                                      | Mandatory  | Description                    |
 | --------- | ---------------------------------------- | ---- | ---------------------- |
 | source    | [Want](../apis-ability-kit/js-apis-application-want.md)      | Yes   | Information about the push request sender.        |
-| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Name of the requested component template.|
+| template  | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Component template.|
 | data      | [KVObject](#kvobject)                    | Yes   | Data.                   |
 | extraData | [KVObject](#kvobject)                    | Yes   | Extra data.                 |
 
@@ -277,7 +277,7 @@ pluginComponentManager.request(
 
 ### pluginComponentManager.on
 
-on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback ): void
+on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback): void
 
 Listens for events of the request type and returns the requested data, or listens for events of the push type and receives the data pushed by the provider.
 

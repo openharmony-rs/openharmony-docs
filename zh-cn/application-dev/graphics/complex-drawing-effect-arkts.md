@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -45,7 +45,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
   canvas.attachBrush(brushCircle);
   canvas.drawCircle(500, 500, 200);
   const brush = new drawing.Brush();
-  //  设置混合模式
+  // 设置混合模式
   brush.setBlendMode(drawing.BlendMode.SRC_IN);
   canvas.saveLayer(null, brush);
 
@@ -61,7 +61,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## 路径效果
@@ -164,7 +164,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果

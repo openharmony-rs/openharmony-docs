@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 <!--deprecated_code_no_check-->
 
@@ -103,7 +103,7 @@ context.getOrCreateLocalDir().then((data) => {
 
 verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback\<number>): void
 
-验证系统中运行的特定pid和uid是否允许指定的权限。使用callback异步回调。
+验证系统中运行的特定pid和uid是否具有指定的权限。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -134,7 +134,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
     });
 });
 ```
-示例代码中出现的getBundleInfo相关描述可参考对应[文档](js-apis-bundleManager.md)。
+示例代码中出现的getBundleInfo相关描述可参考对应[@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)。
 
 
 
@@ -222,6 +222,8 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number, res
 
 **示例：**
 
+ArkTS示例：
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -244,6 +246,74 @@ context.requestPermissionsFromUser(
 );
 ```
 
+JS示例：
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="申请权限" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1,
+            (error, data) => {
+                if (error && error.code !== 0) {
+                    console.error(`requestPermissionsFromUser fail, error: ${JSON.stringify(error)}`);
+                } else {
+                    console.info(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
+                }
+            }
+        );
+    }
+}
+```
 
 ## Context.requestPermissionsFromUser<sup>7+</sup>
 
@@ -268,6 +338,8 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number): Pr
 
 **示例：**
 
+ArkTS示例：
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -283,6 +355,70 @@ context.requestPermissionsFromUser(
         console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
     }
 );
+```
+
+JS示例：
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="申请权限" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1).then((data)=>{
+                console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
+            }
+        );
+    }
+}
 ```
 
 
@@ -439,7 +575,7 @@ context.getDisplayOrientation((error, data) => {
 
 getDisplayOrientation(): Promise\<bundle.DisplayOrientation>
 
-获取此能力的当前显示方向。使用Promise异步回调。
+获取当前Ability的显示方向。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -537,7 +673,7 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 
 | 参数名          | 类型                                       | 必填   | 说明           |
 | ----------- | ---------------------------------------- | ---- | ------------ |
-| orientation | [bundle.DisplayOrientation](js-apis-bundleManager.md#displayorientation) | 是    | 指示当前能力的新方向。 |
+| orientation | [bundle.DisplayOrientation](js-apis-bundleManager.md#displayorientation) | 是    | 表示屏幕方向。 |
 | callback    | AsyncCallback\<void> | 是    | 回调函数。当设置当前Ability的显示方向成功，err为undefined，否则为错误对象。    |
 
 **示例：**
@@ -596,6 +732,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -628,6 +766,8 @@ setShowOnLockScreen(show: boolean): Promise\<void>
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -665,7 +805,9 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -697,7 +839,9 @@ setWakeUpScreen(wakeUp: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -765,7 +909,7 @@ context.getProcessInfo((error, data) => {
 
 getProcessInfo(): Promise\<ProcessInfo>
 
-获取有关当前进程的信息，包括进程id和名称。使用Promise异步回调。
+获取有关当前进程的信息，包括进程ID和名称。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -827,7 +971,7 @@ context.getElementName((error, data) => {
 
 getElementName(): Promise\<ElementName>
 
-获取当前能力的ohos.bundleManager.ElementName对象。使用Promise异步回调。
+获取当前Ability的ohos.bundleManager.ElementName对象。使用Promise异步回调。
 
 此方法仅适用于页面功能。
 
@@ -973,7 +1117,7 @@ context.getCallingBundle().then((data) => {
 
 getCacheDir(callback: AsyncCallback\<string>): void
 
-获取该应用程序的内部存储目录。使用callback异步回调。
+获取该应用程序的缓存目录。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -981,7 +1125,7 @@ getCacheDir(callback: AsyncCallback\<string>): void
 
 | 参数名       | 类型                     | 必填   | 说明              |
 | -------- | ---------------------- | ---- | --------------- |
-| callback | AsyncCallback\<string> | 是    | 回调函数，返回该应用程序的内部存储目录。 |
+| callback | AsyncCallback\<string> | 是    | 回调函数，返回该应用程序的缓存目录。 |
 
 **示例：**
 
@@ -1003,7 +1147,7 @@ context.getCacheDir((error, data) => {
 
 getCacheDir(): Promise\<string>
 
-获取该应用程序的内部存储目录。使用Promise异步回调。
+获取该应用程序的缓存目录。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1011,7 +1155,7 @@ getCacheDir(): Promise\<string>
 
 | 类型               | 说明              |
 | ---------------- | --------------- |
-| Promise\<string> | Promise对象，返回该应用程序的内部存储目录。 |
+| Promise\<string> | Promise对象，返回该应用程序的缓存目录。 |
 
 **示例：**
 
@@ -1392,7 +1536,7 @@ let context: featureAbility.Context = featureAbility.getContext().getApplication
 
 isUpdatingConfigurations(callback: AsyncCallback\<boolean>): void
 
-检查此能力的配置是否正在更改。使用callback异步回调。
+检查此Ability的配置是否正在更改。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1422,7 +1566,7 @@ context.isUpdatingConfigurations((error, data) => {
 
 isUpdatingConfigurations(): Promise\<boolean>
 
-检查此能力的配置是否正在更改。使用Promise异步回调。
+检查此Ability的配置是否正在更改。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

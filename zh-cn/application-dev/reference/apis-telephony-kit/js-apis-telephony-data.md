@@ -31,7 +31,7 @@ getDefaultCellularDataSlotId(callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                       |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<number\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| callback | AsyncCallback\<number\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotId为2。 |
 
 **示例：**
 
@@ -60,7 +60,7 @@ getDefaultCellularDataSlotId(): Promise\<number\>
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| Promise\<number\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotId为2。 |
 
 **示例：**
 
@@ -87,7 +87,7 @@ getDefaultCellularDataSlotIdSync(): number
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| number | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。<br />- 2：esim和天际通场景下，默认移动数据的slotId为2。 |
 
 **示例：**
 
@@ -102,7 +102,7 @@ console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 
 getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
-获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -141,7 +141,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 
 getCellularDataFlowType(): Promise\<DataFlowType\>
 
-获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -151,7 +151,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 | 类型                                     | 说明                                            |
 | ---------------------------------------- | ----------------------------------------------- |
-| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
+| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -352,7 +352,7 @@ isCellularDataEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -395,7 +395,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -531,7 +531,7 @@ getDefaultCellularDataSimId(): number
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。 |
+| number | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。<br/>- 0：无SIM卡。<br/>- 9999：esim场景下，默认移动数据的SIM卡ID为9999。<br/>- 99999：天际通场景下，默认移动数据的SIM卡ID为99999。 |
 
 **示例：**
 
@@ -547,7 +547,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 异步获取默认移动数据的SIM卡的APN（access point name，接入点名称）信息。
 
-**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公室可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
+**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公时可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
@@ -712,6 +712,56 @@ data.getActiveApnName().then((apn: string) => {
     console.info(`getActiveApnName success, apn: ${apn}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## data.showSystemApnSettings
+
+showSystemApnSettings(context: Context): Promise\<void>
+
+打开当前默认移动数据卡对应的APN配置界面。使用Promise异步回调。
+
+> **说明：**
+>
+>- 该接口仅支持查看和选择当前已添加的通用APN，不支持新建或修改。
+>
+>- 若未插入SIM卡或设备不支持APN配置，将无法打开该配置界面。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Telephony.CellularData
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**设备行为差异**：该接口在Phone、Tablet中可正常调用，在其他设备类型中调用不生效。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext）。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                          |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |Promise对象。无返回结果的Promise对象。|
+
+**示例：**
+
+> **说明：** 
+>
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+data.showSystemApnSettings(context).then(() => {
+  console.info("showSystemApnSettings success");
+}).catch(() => {
+  console.error("showSystemApnSettings failed");
 });
 ```
 

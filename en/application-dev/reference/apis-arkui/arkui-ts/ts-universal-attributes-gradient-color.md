@@ -56,7 +56,7 @@ Creates a linear gradient. Compared to [linearGradient](#lineargradient), this A
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LinearGradientOptions](#lineargradientoptions18)>| Yes  | Linear gradient.<br>If **options** is **undefined**, the linear gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientOptions](#lineargradientoptions18)>| Yes  | Linear gradient.<br>If **options** is **undefined**, the linear gradient is disabled.|
 
 **Return value**
 
@@ -125,7 +125,7 @@ Creates a sweep gradient. Compared to [sweepGradient](#sweepgradient), this API 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SweepGradientOptions](#sweepgradientoptions18)>| Yes  | Sweep gradient.<br>If **options** is **undefined**, the sweep gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SweepGradientOptions](#sweepgradientoptions18)>| Yes  | Sweep gradient.<br>If **options** is **undefined**, the sweep gradient is disabled.|
 
 **Return value**
 
@@ -204,7 +204,7 @@ Creates a radial gradient. Compared to [radialGradient](#radialgradient), this A
 
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RadialGradientOptions](#radialgradientoptions18)>| Yes| Radial gradient.<br>If **options** is **undefined**, the radial gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RadialGradientOptions](#radialgradientoptions18)>| Yes| Radial gradient.<br>If **options** is **undefined**, the radial gradient is disabled.|
 
 **Return value**
 

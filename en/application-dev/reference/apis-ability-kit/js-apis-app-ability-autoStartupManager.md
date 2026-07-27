@@ -29,6 +29,8 @@ Checks whether the current application is enabled for automatic startup at boot 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones, PC/2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 801.
+
 **Return value**
 
 | Type                                         | Description                                 |

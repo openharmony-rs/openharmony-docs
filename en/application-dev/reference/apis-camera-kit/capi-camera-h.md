@@ -8,7 +8,7 @@
 
 ## Overview
 
-The file declares the basic concepts of the camera.
+Defines the basic APIs of the camera.
 
 **File to include**: <ohcamera/camera.h>
 
@@ -26,6 +26,7 @@ The file declares the basic concepts of the camera.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | Camera_DeviceQueryInfo | Describes the camera device query information.|
 | [Camera_Size](capi-oh-camera-camera-size.md) | Camera_Size | Describes the parameters related to the size.|
 | [Camera_Profile](capi-oh-camera-camera-profile.md) | Camera_Profile | Describes the profile of a camera stream.|
 | [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | Camera_FrameRateRange | Describes the frame rate range.|
@@ -48,6 +49,11 @@ The file declares the basic concepts of the camera.
 | [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | Describes the automatic device switching status information.|
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | Describes the camera's concurrency information.|
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | Describes the effect status information of a camera controller.|
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | Describes the check result for whether a camera lens is blocked or dirty.|
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | Describes the zoom range.|
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | Describes the physical aperture configuration.|
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | Focus change information.|
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | Defines the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br> You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
 
 ### Enums
@@ -60,9 +66,12 @@ The file declares the basic concepts of the camera.
 | [Camera_Position](#camera_position) | Camera_Position | Enumerates the camera positions.|
 | [Camera_Type](#camera_type) | Camera_Type | Enumerates the camera types.|
 | [Camera_Connection](#camera_connection) | Camera_Connection | Enumerates the camera connection types.|
+| [OH_Camera_SensorColorFilterArrangement](#oh_camera_sensorcolorfilterarrangement) | OH_Camera_SensorColorFilterArrangement | Enumerates the arrangement modes of the color filter array of a sensor.|
 | [Camera_Format](#camera_format) | Camera_Format | Enumerates the camera output formats.|
 | [Camera_FlashMode](#camera_flashmode) | Camera_FlashMode | Enumerates the flash modes.|
+| [OH_Camera_FlashState](#oh_camera_flashstate) | OH_Camera_FlashState | Enumerates the flash states.|
 | [Camera_ExposureMode](#camera_exposuremode) | Camera_ExposureMode | Enumerates the exposure modes.|
+| [OH_Camera_ExposureMeteringMode](#oh_camera_exposuremeteringmode) | OH_Camera_ExposureMeteringMode | Enumerates the exposure metering modes.|
 | [Camera_FocusMode](#camera_focusmode) | Camera_FocusMode | Enumerates the focus modes.|
 | [Camera_FocusState](#camera_focusstate) | Camera_FocusState | Enumerates the focus states.|
 | [Camera_VideoStabilizationMode](#camera_videostabilizationmode) | Camera_VideoStabilizationMode | Enumerates the video stabilization modes.|
@@ -81,6 +90,10 @@ The file declares the basic concepts of the camera.
 | [Camera_WhiteBalanceMode](#camera_whitebalancemode) | Camera_WhiteBalanceMode | Enumerates the white balance modes.|
 | [Camera_ControlCenterEffectType](#camera_controlcentereffecttype) | Camera_ControlCenterEffectType | Enumerates the effect types of a camera controller.|
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | Enumerates the photo quality prioritization strategies.|
+| [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | Enumerates the optical image stabilization (OIS) modes.|
+| [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | Enumerates the OIS axes.|
+| [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | Enumerates the exposure states of the camera.|
+| [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | Enumerates the metadata object emotion types.|
 
 ### Functions
 
@@ -116,7 +129,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal,<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -153,7 +166,7 @@ Enumerates the camera scene modes.
 | -- | -- |
 | NORMAL_PHOTO = 1 | Normal photo mode.|
 | NORMAL_VIDEO = 2 | Normal video mode.|
-| SECURE_PHOTO = 12 | Secure mode.|
+| SECURE_PHOTO = 12 | Secure mode, which is mainly provided for high-security applications like banking that require features such as biometric verification. The secure mode requires the encryption algorithm framework and trusted application services. For details, see [Device Certificate Kit](../../security/DeviceCertificateKit/device-certificate-kit-intro.md).|
 
 ### Camera_Position
 
@@ -211,6 +224,25 @@ Enumerates the camera connection types.
 | CAMERA_CONNECTION_USB_PLUGIN = 1 | Camera connected using USB.|
 | CAMERA_CONNECTION_REMOTE = 2 | Remote camera.|
 
+### OH_Camera_SensorColorFilterArrangement
+
+```c
+enum OH_Camera_SensorColorFilterArrangement
+```
+
+**Description**
+
+Enumerates the arrangement modes of the color filter array of a sensor.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_SENSOR_CFA_BGGR = 0 | Blue-green-green-red (BGGR) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_GBRG = 1 | Green-blue-red-green (GBRG) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_GRBG = 2 | Green-red-blue-green (GRBG) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_RGGB = 3 | Red-green-green-blue (RGGB) color filter array arrangement.<br>**Since**: 24|
+
 ### Camera_Format
 
 ```c
@@ -226,10 +258,13 @@ Enumerates the camera output formats.
 | Enum Item| Description|
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888.|
+| CAMERA_FORMAT_DNG = 4 | DNG format.<br>**Since**: 24|
+| CAMERA_FORMAT_DNG_XDRAW = 5 | Enhanced DNG format.<br>**Since**: 26.0.0|
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420 SP.|
 | CAMERA_FORMAT_JPEG = 2000 | JPEG.|
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010.<br>**Since**: 12|
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010.<br>**Since**: 12|
+| CAMERA_FORMAT_HEIC = 2003 | HEIC.<br>**Since**: 13|
 
 ### Camera_FlashMode
 
@@ -247,8 +282,26 @@ Enumerates the flash modes.
 | -- | -- |
 | FLASH_MODE_CLOSE = 0 | The flash is off.|
 | FLASH_MODE_OPEN = 1 | The flash is on.|
-| FLASH_MODE_AUTO = 2 | The flash mode is auto.|
+| FLASH_MODE_AUTO = 2 | Auto mode.|
 | FLASH_MODE_ALWAYS_OPEN = 3 | The flash is steady on.|
+
+### OH_Camera_FlashState
+
+```c
+enum OH_Camera_FlashState
+```
+
+**Description**
+
+Enumerates the flash states.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | The flash is unavailable. This is the default value.<br>**Since**: 24|
+| OH_CAMERA_FLASH_STATE_READY = 1 | The flash is available.<br>**Since**: 24|
+| OH_CAMERA_FLASH_STATE_FLASHING = 2 | The flash is turned on.<br>**Since**: 24|
 
 ### Camera_ExposureMode
 
@@ -264,9 +317,29 @@ Enumerates the exposure modes.
 
 | Enum Item| Description|
 | -- | -- |
-| EXPOSURE_MODE_LOCKED = 0 | Exposure locked.|
-| EXPOSURE_MODE_AUTO = 1 | Auto exposure.|
-| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.|
+| EXPOSURE_MODE_UNSPECIFIED = -1 | Unspecified exposure.<br>**Since**: 24|
+| EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
+| EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+| EXPOSURE_MODE_MANUAL = 3 | Manual exposure mode You can use the [OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration) API to set the exposure duration.<br>**Since**: 24|
+
+### OH_Camera_ExposureMeteringMode
+
+```c
+enum OH_Camera_ExposureMeteringMode
+```
+
+**Description**
+
+Enumerates the exposure metering modes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | Matrix metering mode. Light is measured across the entire frame in this mode, which is ideal for shooting natural landscapes.<br>**Since**: 24|
+| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | Center-weighted metering mode. The light near the center of the screen is concentrated on in this mode, which is ideal for shooting portraits.<br>**Since**: 24|
+| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | Spot metering mode. The light in a specified small area is concentrated on in this mode, which is ideal for shooting details of the subject (such as eyes).<br>**Since**: 24|
 
 ### Camera_FocusMode
 
@@ -284,7 +357,7 @@ Enumerates the focus modes.
 | -- | -- |
 | FOCUS_MODE_MANUAL = 0 | Manual focus.|
 | FOCUS_MODE_CONTINUOUS_AUTO = 1 | Continuous auto focus.|
-| FOCUS_MODE_AUTO = 2 | Auto focus.|
+| FOCUS_MODE_AUTO = 2 | Auto mode.|
 | FOCUS_MODE_LOCKED = 3 | Focus locked.|
 
 ### Camera_FocusState
@@ -339,14 +412,14 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_0](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_90](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_180](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_270](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 23|
 
 ### Camera_QualityLevel
 
@@ -380,7 +453,9 @@ Enumerates the metadata object types.
 
 | Enum Item| Description|
 | -- | -- |
-| FACE_DETECTION = 0 | Metadata object used for face detection.|
+| FACE_DETECTION = 0 | Metadata object used for face detection.<br> Since API version 23, you are advised to use the new enum value [CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype) instead.|
+| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | Metadata object used for face detection.<br>**Since**: 23|
+| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | Metadata object used for body detection.<br>**Since**: 23|
 
 ### Camera_TorchMode
 
@@ -396,12 +471,12 @@ Enumerates the flashlight modes.
 
 | Enum Item| Description|
 | -- | -- |
-| OFF = 0 | The flashlight is always off.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 22|
-| ON = 1 | The flashlight is always on.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 22|
-| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 22|
+| OFF = 0 | The flashlight is always off.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_OFF](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 23|
+| ON = 1 | The flashlight is always on.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_ON](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 23|
+| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_AUTO](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 23|
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +492,8 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 22, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 22|
+| NORMAL = 0 | Bessel curve mode.<br> Since API version 23, you are advised to use the new enum value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](capi-camera-h.md#camera_smoothzoommode) instead.|
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 23|
 
 ### Camera_SystemPressureLevel
 
@@ -458,6 +533,7 @@ Enumerates the preconfigured photo resolution types.
 | PRECONFIG_1080P = 1 | 1080p resolution.|
 | PRECONFIG_4K = 2 | 4K resolution.|
 | PRECONFIG_HIGH_QUALITY = 3 | High-quality photos.|
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | Resolution that supports HDR preview and GIF photography.<br>**Since**: 23|
 
 ### Camera_PreconfigRatio
 
@@ -509,12 +585,12 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 22|
-| EXPANDED = 1 | Unfolded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 22|
-| FOLDED = 2 | Folded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 22|
+| NON_FOLDABLE = 0 | Unfoldable.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_NON_FOLDABLE](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 23|
+| EXPANDED = 1 | Unfolded.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_EXPANDED](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 23|
+| FOLDED = 2 | Folded.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_FOLDED](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 23|
 
 ### Camera_QualityPrioritization
 
@@ -588,6 +664,8 @@ Enumerates the effect types of a camera controller.
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | Beauty effect.|
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | Portrait blur effect.|
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | Auto focus effect.<br>**Since**: 24|
+| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | Effect types of a camera controller, which is the XMAGE style.<br>**Since**: 26.0.0|
 
 ### Camera_PhotoQualityPrioritization
 
@@ -605,6 +683,77 @@ Enumerates the photo quality prioritization strategies.
 | -- | -- |
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | Focuses on image quality, which may increase the time required for capturing photos to ensure high-quality output.|
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | Focuses on performance, trading off image quality for faster capture times.|
+
+### OH_Camera_OISMode
+
+```c
+enum OH_Camera_OISMode
+```
+
+**Description**
+
+Enumerates the optical image stabilization (OIS) modes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_OIS_MODE_OFF = 0 | OIS mode disabled.|
+| OH_CAMERA_OIS_MODE_AUTO = 1 | Auto OIS mode.|
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | Manual OIS mode.|
+
+### OH_Camera_OISAxes
+
+```c
+enum OH_Camera_OISAxes
+```
+
+**Description**
+
+Enumerates the OIS axes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | Pitch axis: controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.|
+| OH_CAMERA_OIS_AXES_YAW = 1 | Yaw axis: controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
+
+### OH_Camera_ExposureState
+
+```c
+enum OH_Camera_ExposureState
+```
+
+**Description**
+
+Enumerates the exposure states of the camera.
+
+**Since**: 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | Focusing.<br>**Since**: 26.0.0|
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | Exposure converged.<br>**Since**: 26.0.0|
+
+### OH_Camera_MetadataObjectEmotion
+
+```c
+enum OH_Camera_MetadataObjectEmotion
+```
+
+**Description**
+
+Enumerates the metadata object emotion types.
+
+**Since**: 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | Neutral.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | Sad.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | Smile.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | Surprise.<br>**Since**: 26.0.0|
 
 
 ## Function Description
@@ -631,7 +780,7 @@ Obtains a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_Camera_DeleteCameraManager()
 
@@ -655,4 +804,4 @@ Deletes a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

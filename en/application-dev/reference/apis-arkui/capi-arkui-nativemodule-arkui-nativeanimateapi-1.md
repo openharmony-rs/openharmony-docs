@@ -1,8 +1,8 @@
 # ArkUI_NativeAnimateAPI_1
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -41,12 +41,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 **Description**
 
-
 Defines an explicit animation.
-
-> **NOTE**
->
-> Make sure the component attributes to be set in the event closure have been set before.
 
 **Parameters**
 
@@ -54,14 +49,14 @@ Defines an explicit animation.
 |-----------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context                           | **UIContext** instance.|
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option                       | Defines the animation configuration.|
-| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                                                                   | Closure function for the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
+| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                   | Closure function for the animation. The system automatically inserts the transition animation if the state changes in the closure function.<br>Note: Make sure the component attributes to be set in the closure function have been set before.|
 | [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)* complete | Callback invoked when the animation playback is complete.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>            Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>            Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### keyframeAnimateTo()
 
@@ -85,7 +80,7 @@ Defines a keyframe animation.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>            Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>            Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>            Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### createAnimator()
 

@@ -329,28 +329,28 @@ The following example demonstrates how to create a rendering node, implement cus
 
 ## Mixing and Mounting Native Components and Rendering Nodes
 
-Since from API version 22, you can efficiently mix and mount native components and rendering nodes. Specifically, you can obtain the rendering node of a native component and mount it to that of a non-native component. In this way, the rendering nodes of both the native component the non-native component are mixed.
+Since from API version 22, you can efficiently mix and mount native components and rendering nodes. To be specific, you can obtain the rendering node corresponding to a native component and mount it to that of a non-native component. In this way, the rendering nodes of both the native and non-native components are mixed.
 
 Before mixing and mounting, you need to accept the native components. After the parent node accepts the target child node, the child node becomes an auxiliary node of the parent node. Only the auxiliary node can obtain the rendering node and mount it to another position in the rendering node tree.
 
 ### Accepting a Child Node as an Auxiliary Node
 
 A node that meets the following conditions can be used as the parent node in the [OH_ArkUI_NativeModule_AdoptChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) API to accept other nodes:
-1. The parent node is an imperative node created on the C-API side.
-2. The parent node is an imperative node created on the ArkTS side.
+1. The node is an imperative node created on the C-API side.
+2. The node is an imperative node created on the ArkTS side.
 
 A node that meets the following conditions can be used as a child node in the **OH_ArkUI_NativeModule_AdoptChild** API to be accepted by other parent nodes:
-1. The child node is an imperative node created on the C-API side.
-2. The child node is an imperative node created on the ArkTS side.
+1. The node is an imperative node created on the C-API side.
+2. The node is an imperative node created on the ArkTS side.
 3. The child node is the root node under BuilderNode.
 
-After a child node is accepted as an auxiliary node, it cannot be mounted to other nodes as a regular child node. Otherwise, an error code will be thrown. However, the child node can be accepted by other parent nodes again. In this case, the child node will become a new auxiliary node of the other parent nodes. The accepted child node is not the real child node of its parent node, and cannot be found by the child component query API. It cannot be operated like a regular child node, and does not receive the measurement layout and event transfer from the parent node. It only receives the [lifecycle](../application-models/uiability-lifecycle.md#overview) from the parent node.
+After a child node is accepted as an auxiliary node, it cannot be mounted to other nodes as a regular child node. Otherwise, an error code will be thrown. However, the child node can be accepted by other parent nodes again. In this case, the child node will become a new auxiliary node of the other parent nodes. The accepted child node is not the real child node of its parent node, and cannot be found by the child component query API. It cannot be operated like a regular child node, and does not receive the measurement layout and event transfer from the parent node. It only receives the [lifecycle](../application-models/uiability-lifecycle.md#overview) propagation from the parent node.
 
 ### Obtaining the Rendering Node of an Auxiliary Node
 
 When an auxiliary node is accepted, you can call [OH_ArkUI_RenderNodeUtils_GetRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_getrendernode) to obtain its corresponding rendering node.
 
-When you call the [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md) to destroy the parent node, call [OH_ArkUI_RenderNodeUtils_DisposeNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) to release the rendering node. Otherwise, memory leakage will occur.
+When you call the [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md) to destroy the parent node, call [OH_ArkUI_RenderNodeUtils_DisposeNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) to release the rendering node. Otherwise, a memory leak will occur.
 
 
 ### Operating a Rendering Node from an Auxiliary Node
@@ -364,15 +364,15 @@ After obtaining a rendering node from an accepted auxiliary node, you can use it
 
    If the parent node of the auxiliary node calls the [OH_ArkUI_NativeModule_RemoveAdoptedChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_removeadoptedchild) API to cancel the offscreen mounting status, the rendering node will also be removed from the rendering node tree.
 
-3. If the auxiliary node corresponding to a rendering node from an auxiliary node is no longer in the offscreen mounting state, the rendering node cannot be mounted to another rendering node.
+3. If the auxiliary node is no longer in the offscreen mounting state, the rendering node from this auxiliary node cannot be mounted to other rendering nodes.
 
 ### Creating and Accepting Web Components for Mixed Mounting
 
 Before developing the following code, create a project by referring to [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
-<!--RP1-->For details about the complete example, see [native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample).<!--RP1End-->
+<!--RP1--> <!--RP1End-->
 
-1. The NDK initializes the component environment and creates the root node of the corresponding rendering node.
+1. Initialize the component environment using the NDK and create the root node of the corresponding rendering node.
 
    <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
    
@@ -392,7 +392,7 @@ Before developing the following code, create a project by referring to [Integrat
        column->SetWidth(g_contentWidth);
        column->SetHeight(g_contentHeight);
        auto text = std::make_shared<ArkUITextNode>();
-       text->SetTextContent("This is an example of mounting the rendering node obtained from frameNode. Click the mount button below.");
+       text->SetTextContent("This is an example of mounting a rendering node obtained from frameNode. Click the mount button below.");
        text->SetWidth(g_num300);
        text->SetHeight(g_num100);
    
@@ -403,7 +403,7 @@ Before developing the following code, create a project by referring to [Integrat
        column->AddChild(Custom);
        custom_ = Custom;
        
-       // Set up the mountable environment and mount renderNode as the root node of the custom component.
+       // Set up the mountable environment and mount the rendering node as the root node of the custom component.
        auto renderNode = std::make_shared<ArkUIRenderNode>();
        Custom->AddRenderNode(renderNode);
        renderNode->SetSize(g_num300, g_num300);
@@ -561,7 +561,7 @@ Before developing the following code, create a project by referring to [Integrat
    }
    ```
 
-3. The C-API side obtains and accepts the node, and obtains the corresponding rendering node.
+3. Obtain and accept the node, and obtain the corresponding rendering node on the C-API side.
 
    <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
    
@@ -584,7 +584,7 @@ Before developing the following code, create a project by referring to [Integrat
    }
    ```
 
-4. The C-API side cancels the accepted state of the node and releases the corresponding rendering node.
+4. Cancel the accepted state of the node and release the corresponding rendering node on the C-API side.
 
    <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
    
@@ -593,11 +593,10 @@ Before developing the following code, create a project by referring to [Integrat
    napi_value RemoveAdopt(napi_env env, napi_callback_info info)
    {
        OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
-       // After the node is released, you need to call OH_ArkUI_RenderNodeUtils_DisposeNode to release the corresponding rendering node. Otherwise, memory leakage occurs.
+       // After the node is released, you need to call OH_ArkUI_RenderNodeUtils_DisposeNode to release the corresponding rendering node. Otherwise, a memory leak occurs.
        OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
        nodeHandle_ = nullptr;
        renderHandle_ = nullptr;
        return nullptr;
    }
    ```
-<!--no_check-->

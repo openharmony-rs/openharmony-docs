@@ -9,7 +9,7 @@
 
 以RSA和SM2为例，随机生成非对称密钥对（OH_CryptoKeyPair），并获得二进制数据。
 
-非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或运输。
+非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或传输。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -33,7 +33,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 #include "file.h"
 
-OH_Crypto_ErrCode randomGenerateAsymKey()
+OH_Crypto_ErrCode generateRSAKey()
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -87,7 +87,7 @@ OH_Crypto_ErrCode randomGenerateAsymKey()
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 #include "file.h"
 
-OH_Crypto_ErrCode randomGenerateRSA()
+OH_Crypto_ErrCode generateSM2Key()
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *dupKeyPair = nullptr;
@@ -115,6 +115,7 @@ OH_Crypto_ErrCode randomGenerateRSA()
         return ret;
     }
 
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(ctx);
     OH_CryptoKeyPair_Destroy(dupKeyPair);
     return ret;

@@ -12,7 +12,7 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 ## Overview
 
-The struct describes a request ID.
+Defines a struct for the request ID.
 
 A value of this type is returned when a media asset is requested.
 

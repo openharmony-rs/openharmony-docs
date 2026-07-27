@@ -11,27 +11,27 @@
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库模块](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库框架](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
    ```
 
-2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表的对象。
+2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X.509证书吊销列表的对象。
 
 3. 解析证书吊销列表信息。
 
-   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看[API参考文档](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
+   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509CRL11+](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
 
 4. 基于已有公钥信息，创建PublicKey公钥对象。
 
-   具体可参考[加解密算法库框架-指定二进制数据生成非对称密钥对](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)。
+   具体可参考加解密算法库框架-指定二进制数据生成非对称密钥对[convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)。
 
 5. 调用[X509CRL.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify11)校验签名合法性。
 
-6. 基于已有的X509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
+6. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
 
-7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X509证书是否已被吊销。
+7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X.509证书是否已被吊销。
 
 8. 调用[X509CRL.getRevokedCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#getrevokedcert11)获取被吊销证书对象。
 
@@ -52,7 +52,7 @@ import { util } from '@kit.ArkTS';
 function crlSample(): void {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
-    // 将CRL数据从string转为Unit8Array。
+    // 将CRL数据从string转为Uint8Array。
     data: textEncoder.encodeInto(crlData),
     // CRL格式，仅支持PEM和DER格式。在这个例子中，CRL用的是PEM格式。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -66,7 +66,7 @@ function crlSample(): void {
       return;
     }
     // 创建X509CRL实例成功。
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
 
     // 获取CRL的版本。
     let version = x509Crl.getVersion();
@@ -86,24 +86,24 @@ function crlSample(): void {
     // 公钥的二进制数据需要传入@ohos.security.cryptoFramework的convertKey()方法去获取公钥对象。
     try {
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator result: success.');
       let pubEncodingBlob: cryptoFramework.DataBlob = {
         data: pubKeyData,
       };
       keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
         if (e == null) {
-          console.info('convert key success');
+          console.info('convertKey result: success.');
           x509Crl.verify(keyPair.pubKey, (err, data) => {
             if (err == null) {
               // 签名验证成功。
-              console.info('verify success');
+              console.info('verify result: success.');
             } else {
               // 签名验证失败。
               console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
             }
           });
         } else {
-          console.error(`convert key failed, message: ${e.message}, code: ${e.code} `);
+          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
       })
     } catch (error) {
@@ -118,21 +118,21 @@ function crlSample(): void {
     };
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
-    cert.createX509Cert(certBlob, (err, cert) => {
-      serial = cert.getCertSerialNumber();
+    cert.createX509Cert(certBlob, (err, x509Cert) => {
+      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
           // 检查证书是否被吊销。
-          revokedFlag = x509Crl.isRevoked(cert);
+          revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);
           if (!revokedFlag) {
-            console.info('the given cert is not revoked.');
+            console.info('the given x509Cert is not revoked.');
             return;
           }
           // 根据序列号来获取被吊销的证书。
           try {
             let crlEntry = x509Crl.getRevokedCert(serial);
-            console.info('get getRevokedCert success');
+            console.info('getRevokedCert result: success.');
             let serialNumber = crlEntry.getSerialNumber();
             console.info(`crlEntry serialNumber is: ${serialNumber}`);
 

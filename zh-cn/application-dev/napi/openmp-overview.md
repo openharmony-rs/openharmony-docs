@@ -1,10 +1,10 @@
 # OpenMP简介
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yangming4249-->
+<!--Owner: @rePeek-->
 <!--Designer: @ychen3--->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 [OpenMP（Open Multi-Processing）](https://www.openmp.org/)是一套支持跨平台共享内存方式的多线程并发的编程API，由一套编译器指令、库和一些能够影响运行行为的环境变量构成，提供了对并行算法的高层抽象描述，适合在多核CPU机器上的并行程序设计。编译器根据程序中添加的pragma指令，自动将pragma指令标记的程序片段并行处理，使用OpenMP可以降低并行编程的复杂度。
 
@@ -14,6 +14,6 @@ OpenMP广泛应用于科学计算、图像处理、机器学习、金融计算�
 
 ## 版本说明
 
-当前Openharmony中的OpenMP库采用[llvm 15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4)中的实现，对应OpenMP API版本请参考[clang-OpenMPSupport](https://clang.llvm.org/docs/OpenMPSupport.html)。
+当前OpenHarmony中的OpenMP库采用[llvm 15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4)中的实现，对应OpenMP API版本请参考[clang-OpenMPSupport](https://clang.llvm.org/docs/OpenMPSupport.html)。
 
-Openharmony应用中使用OpenMP请参考[OpenMP应用构建和运行指南](./openmp-guideline.md)。
+OpenHarmony应用中使用OpenMP请参考[OpenMP应用构建和运行指南](./openmp-guideline.md)。

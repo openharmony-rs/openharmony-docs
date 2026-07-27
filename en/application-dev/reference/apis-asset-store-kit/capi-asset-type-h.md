@@ -72,7 +72,7 @@ Enumerates the types of the keys of asset attributes.
 | Enum| Description|
 | -- | -- |
 | ASSET_TYPE_BOOL = 0x1 << 28 | Boolean.|
-| ASSET_TYPE_NUMBER = 0x2 << 28 | uint32_t.|
+| ASSET_TYPE_NUMBER = 0x2 << 28 | Number (uint32_t).|
 | ASSET_TYPE_BYTES = 0x3 << 28 | Bytes.|
 
 ### Asset_Tag

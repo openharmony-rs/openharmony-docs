@@ -14,6 +14,8 @@ This file declares the functions related to the pixel map in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -39,7 +41,7 @@ This file declares the functions related to the pixel map in the drawing module.
 
 ### OH_Drawing_PixelMapGetFromNativePixelMap()
 
-```
+```c
 OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)
 ```
 
@@ -66,7 +68,7 @@ Obtains the pixel map defined by this module from a pixel map defined by the ima
 
 ### OH_Drawing_PixelMapGetFromOhPixelMapNative()
 
-```
+```c
 OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -93,7 +95,7 @@ Obtains the pixel map defined by this module from a pixel map defined by the ima
 
 ### OH_Drawing_PixelMapDissolve()
 
-```
+```c
 void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 ```
 

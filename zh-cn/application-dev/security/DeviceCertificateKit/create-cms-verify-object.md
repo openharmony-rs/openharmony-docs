@@ -7,20 +7,20 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，支持证书CMS验签。
+从API version 22开始，支持证书CMS验签。
 
-PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。
+PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic Message Syntax，加密消息语法）作为PKCS #7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。
 
 目前仅支持CMS签名数据和封装数据。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 签名的开发步骤查看[cms签名](../../security/DeviceCertificateKit/create-cms-sign-object.md)。
+2. 签名的开发步骤查看[CMS签名](../../security/DeviceCertificateKit/create-cms-sign-object.md)。
 
 3. 调用[cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22)创建CmsParser对象。
 
@@ -109,7 +109,12 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
-  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+  }
 
   return x509Cert;
 }
@@ -138,9 +143,9 @@ async function testCmsVerifyTest() {
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
-    console.info(`verifySignedData success.`);
+    console.info(`verifySignedData result: success.`);
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```

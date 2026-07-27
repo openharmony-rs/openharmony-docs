@@ -12,13 +12,13 @@ typedef struct {...} ArkUI_Margin
 
 ## 概述
 
-外边距属性，用于描述组件的外边距属性。
+外边距属性，定义组件边界与父容器或相邻组件之间的空白区域，影响组件在布局中的实际占用空间和位置。
 
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [water_flow.h](capi-water-flow-h.md)
 
 ## 汇总
 

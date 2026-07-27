@@ -1,7 +1,7 @@
 # ExceptionPrompt
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,6 +13,8 @@
 > **说明：**
 >
 > - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 >
 > - 如果ExceptionPrompt设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ExceptionPrompt本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ExceptionPrompt设置通用属性和通用事件。
 
@@ -45,8 +47,8 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | options | [PromptOptions](#promptoptions) | 是 | \@Prop | 指定当前异常提示的配置信息。 |
-| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数。 |
-| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。 |
+| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数，缺省时不执行任何操作。 |
+| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。缺省时不执行任何操作。 |
 
 ## PromptOptions
 
@@ -60,7 +62,7 @@ PromptOptions定义options的类型。
 | -------- |----------------------------------------------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | icon | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的异常图标样式。<br/>默认不设置或设置为undefined，异常图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                    |
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                           |
-| tip | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| tip | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到位置状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | marginType | [MarginType](#margintype)                                                        | 否 | 否 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                     |
 | actionText | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>默认不设置或设置为undefined，文字内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                     |
 | marginTop | [Dimension](ts-types.md#dimension10)                                             | 否 | 否 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                  |
@@ -179,16 +181,6 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct Index1 {
-  @State ButtonText: string = '';
-  @State MAP_HEIGHT: string = '30%';
-  @State duration: number = 2500;
-  @State tips: string = '';
-  @State actionText: string = '';
-  controller: TextInputController = new TextInputController();
-  cancel: () => void = () => {
-  };
-  confirm: () => void = () => {
-  };
   @State options: PromptOptions = {
     icon: $r('sys.media.ohos_ic_public_fail'),
     tip: '',

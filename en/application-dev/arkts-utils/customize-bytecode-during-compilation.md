@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 You can modify Ark bytecode files using the customization capabilities provided by the ArkTS compilation toolchain.
 
@@ -14,7 +14,7 @@ Develop a dynamic library file to manipulate Ark bytecode files. In the **build-
 
 ## Execution
 
-If **transformLib** is configured and the dynamic library file is successfully loaded, the compiler generates an ARK bytecode file to the default location. It then calls the **Transform** method in the dynamic library, passing the path of the ARK bytecode file as a parameter. The **Transform** method, which includes developer-defined modification logic, is used to regenerate the Ark bytecode file. The operation of updating the bytecode file to disk is executed by the user.
+If **transformLib** is configured and the dynamic library file is successfully loaded, the compiler generates an Ark bytecode file to the default location. It then calls the **Transform** method in the dynamic library, passing the path of the Ark bytecode file as a parameter. The **Transform** method, which includes developer-defined modification logic, is used to regenerate the Ark bytecode file. The operation of updating the bytecode file to disk is executed by the user.
 
 Below is a template for a dynamic library, which you can use to implement the specific logic for the **Transform** method as required.
 
@@ -26,12 +26,12 @@ Below is a template for a dynamic library, which you can use to implement the sp
 
    ```c++
    /**
-    * @brief Entry method for modifying the ARK bytecode file.
-    * @param abc_path Path for storing the ARK bytecode file to be processed.
+    * @brief Entry method for modifying the Ark bytecode file.
+    * @param abc_path Path for storing the Ark bytecode file to be processed.
     */
    extern "C" int Transform(const char *abc_path)
    {
-       // You can read the ARK bytecode file corresponding to abc_path, modify related data based on the ARK bytecode format, and generate a new ARK bytecode file.
+       // You can read the Ark bytecode file corresponding to abc_path, modify related data based on the Ark bytecode format, and generate a new Ark bytecode file.
        return 0;
    }
    ```
@@ -40,19 +40,19 @@ Below is a template for a dynamic library, which you can use to implement the sp
 
    Windows:
 
-   ```
+   ```bash
    g++ --shared -o example.dll example.cpp
    ```
 
    Linux:
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
    macOS:
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 

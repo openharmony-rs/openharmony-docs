@@ -1,9 +1,9 @@
 # ArkTS卡片主动刷新
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 本文主要提供主动刷新的开发指导，刷新流程请参考[主动刷新概述](./arkts-ui-widget-interaction-overview.md#主动刷新)。
@@ -17,66 +17,66 @@
 
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
 
-   <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
-    let storageUpdateByMsg = new LocalStorage();
-    
-    @Entry(storageUpdateByMsg)
-    @Component
-    struct UpdateByMessageCard {
-      // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
-      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
-      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-    
-      build() {
-        Column() {
-          Column() {
-            Text(this.title)
-              .fontColor('#FFFFFF')
-              .opacity(0.9)
-              .fontSize(14)
-              .margin({ top: '8%', left: '10%' })
-            Text(this.detail)
-              .fontColor('#FFFFFF')
-              .opacity(0.6)
-              .fontSize(12)
-              .margin({ top: '5%', left: '10%' })
-          }.width('100%').height('50%')
-          .alignItems(HorizontalAlign.Start)
-    
-          Row() {
-            // ...
-            Button() {
-              // $r('app.string.update')需要替换为开发者所需的资源文件
-              Text($r('app.string.update'))
-                .fontColor('#45A6F4')
-                .fontSize(12)
-            }
-            .width(120)
-            .height(32)
-            .margin({ top: '30%', bottom: '10%' })
-            .backgroundColor('#FFFFFF')
-            .borderRadius(16)
-            .onClick(() => {
-              postCardAction(this, {
-                action: 'message',
-                params: { msgTest: 'messageEvent' }
-              });
-            })
-          }.width('100%').height('40%')
-          .justifyContent(FlexAlign.Center)
-        }
-        .width('100%')
-        .height('100%')
-        .alignItems(HorizontalAlign.Start)
-        // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
-        .backgroundImage($r('app.media.CardEvent'))
-        .backgroundImageSize(ImageSize.Cover)
-      }
-    }
-    ```
+   <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
+   let storageUpdateByMsg = new LocalStorage();
+   
+   @Entry(storageUpdateByMsg)
+   @Component
+   struct UpdateByMessageCard {
+     // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontColor('#FFFFFF')
+             .opacity(0.6)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           // ...
+           Button() {
+             // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update'))
+               .fontColor('#45A6F4')
+               .fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message',
+               params: { msgTest: 'messageEvent' }
+             });
+           })
+         }.width('100%').height('40%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
@@ -113,9 +113,16 @@
      }
    
      onUpdateForm(formId: string): void {
-       // ...
+       // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-       // ...
+       let obj: Record<string, string> = {
+         'title': 'titleOnUpdateForm',
+         'detail': 'detailOnUpdateForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+       });
      }
    
      onChangeFormVisibility(newStatus: Record<string, number>): void {
@@ -124,15 +131,14 @@
      }
    
      onFormEvent(formId: string, message: string): void {
-       // ...
+       // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-   
        class FormDataClass {
          title: string = 'Title Update.'; // 和卡片布局中对应
          detail: string = 'Description update success.'; // 和卡片布局中对应
        }
    
-       // ...
+       // 请根据业务替换为实际刷新的卡片数据
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
        formProvider.updateForm(formId, formInfo).then(() => {
@@ -162,25 +168,25 @@
    }
    
    ```
-
+   
 4. 资源文件如下。
    ```ts
    // entry/src/main/resources/zh_CN/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    },
-   	    {
-   	      "name": "update",
-   	      "value": "刷新"
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        },
+        {
+          "name": "update",
+          "value": "刷新"
+        }
       ]
    }
    ```
@@ -196,7 +202,7 @@
 
 2. 实现卡片布局，在卡片上创建两个待刷新的Text。
 
-   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
+   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
@@ -230,7 +236,7 @@
 
 3. 在FormExtensionAbility中实现onUpdateForm回调，通过updateForm接口定义卡片刷新逻辑。
 
-   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -261,6 +267,7 @@
    
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       // 更新卡片数据
        formProvider.updateForm(formId, formInfo).then(() => {
          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
        }).catch((error: BusinessError) => {
@@ -285,7 +292,7 @@
 
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
 
-   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
@@ -304,14 +311,14 @@
                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                let moduleName: string = 'entry';
                let abilityName: string = 'EntryFormAbility';
-               let formName: string = 'reloadByUIAbilityCard';
+               let formName: string = 'ReloadByUIAbility';
                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
                  console.info(`reloadForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
          Button('reloadAllForms')
@@ -324,7 +331,7 @@
                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
        }
@@ -337,19 +344,19 @@
 
 5. 资源文件如下。
 
-   ```json
+   ```json5
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        }
       ]
    }
    ```
@@ -361,7 +368,7 @@
 
 由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
-   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { formHost } from '@kit.FormKit';
@@ -390,21 +397,21 @@
              temporary: false,
            })
              .size({
-               width:200,
-               height:200,
+               width: 200,
+               height: 200,
              })
              .borderColor(Color.Black)
              .borderRadius(10)
              .borderWidth(1)
              .onAcquired((form: FormCallbackInfo) => {
-               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`)
+               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`)
                this.formId = form.id.toString();
              })
              .onRouter(() => {
                hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
              })
              .onError((error) => {
-               hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
+               hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
              })
            // ...
            Button($r('app.string.button_update'))
@@ -415,7 +422,8 @@
                  formHost.requestForm(this.formId).then(() => {
                    hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
                  }).catch((error: BusinessError) => {
-                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+                   hilog.error(DOMAIN_NUMBER, TAG,
+                     `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
                    hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
                  })
                }

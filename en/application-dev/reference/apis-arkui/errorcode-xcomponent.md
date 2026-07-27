@@ -10,11 +10,11 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 103501 XComponent in Invalid State
+## 103501 Invalid XComponent Status
 
 **Error Message**
 
-XComponent is in invalid state.
+Failed to call the method because the **XComponent** is invalid.
 
 **Description**
 

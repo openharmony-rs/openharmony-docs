@@ -54,7 +54,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to open the camera, error code: ${err.code}.`);
+      console.error(`Failed to open camera, error code: ${err.code}.`);
       return;
     }
     console.info('Callback returned with camera opened.');
@@ -98,7 +98,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open().then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -144,7 +144,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(true).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -191,7 +191,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(0).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -375,7 +375,7 @@ getPhysicalCameraOrientation(): number
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| number    | 返回设备当前折叠状态下的物理镜头角度。 |
+| number    | 返回设备当前折叠状态下的物理镜头角度。<br>单位为度数（degree），取值范围为[0, 360]。 |
 
 **示例：**
 

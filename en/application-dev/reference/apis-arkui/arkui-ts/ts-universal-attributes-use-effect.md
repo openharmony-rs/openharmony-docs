@@ -171,5 +171,5 @@ struct Index {
 }
 ```
 
-![en-us_image_useeffect_effecttype](figures/en-us_image_useeffect_effecttype.png)
+![en-us_image_useeffect_effecttype](figures/image-useeffect-effecttype.png)
 <!--DelEnd-->

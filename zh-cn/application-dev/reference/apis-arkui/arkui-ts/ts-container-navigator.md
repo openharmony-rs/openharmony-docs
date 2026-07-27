@@ -1,8 +1,8 @@
 # Navigator
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -47,7 +47,7 @@ Navigator()
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavigationAttribute](ts-basic-components-navigation.md#属性)替代。NavigationAttribute为Navigation组件的属性。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用NavigationAttribute替代。NavigationAttribute为[Navigation](ts-basic-components-navigation.md)组件的属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -97,7 +97,7 @@ params(value: object)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[param](ts-basic-components-navigation.md#属性-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -151,7 +151,23 @@ type(value: NavigationType)
 ## 示例
 
 ```ts
-// Navigator.ets
+// code.ets
+export interface NameObject {
+  name: string;
+}
+
+export class TextObject {
+  text: NameObject;
+
+  constructor(text: NameObject) {
+    this.text = text;
+  }
+}
+```
+
+```ts
+import { NameObject, TextObject } from '../../code';
+
 @Entry
 @Component
 struct NavigatorExample {
@@ -174,22 +190,11 @@ struct NavigatorExample {
     }.height(150).width(350).padding(35)
   }
 }
-
-interface NameObject {
-  name: string;
-}
-
-class TextObject {
-  text: NameObject;
-
-  constructor(text: NameObject) {
-    this.text = text;
-  }
-}
 ```
 
 ```ts
-// Detail.ets
+import { NameObject } from '../../code';
+
 @Entry
 @Component
 struct DetailExample {
@@ -209,10 +214,6 @@ struct DetailExample {
     .width('100%').height(200).padding({ left: 35, right: 35, top: 35 })
   }
 }
-
-interface NameObject {
-  name: string;
-}
 ```
 
 ```ts
@@ -230,4 +231,4 @@ struct BackExample {
 }
 ```
 
-![zh-cn_image_0000001219864145](figures/zh-cn_image_0000001219864145.gif)
+![navigator](figures/navigator.gif)

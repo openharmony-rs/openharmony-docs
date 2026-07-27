@@ -1,12 +1,12 @@
 # Driver Development Kit简介
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
-Driver Development Kit（驱动开发套件）为外设驱动开发者提供高效、安全、丰富的扩展外设驱动开发解决方案ArkTs-API和C-API，支持外设驱动开发者为消费者带来外设即插即用的极致体验。
+Driver Development Kit（驱动开发套件）为外设驱动开发者提供高效、安全、丰富的扩展外设驱动开发解决方案ArkTS-API和C-API，支持外设驱动开发者为消费者带来外设即插即用的极致体验。
 
 ## 使用场景
 
@@ -65,17 +65,21 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 ## 约束与限制
 
-调用Driver Development Kit提供的ArkTs-API或者C-API，开发者需要申请指定权限，才能使用相关接口。
+调用Driver Development Kit提供的ArkTS-API或者C-API，开发者需要申请特定权限，才能使用相关接口。
 
 所需权限如下：
 
 | API 类型 | DDK类型 | 权限名称 |
 | --------- | --------- | --------- |
-| ArkTs-API | 不涉及 | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
+| ArkTS-API | 不涉及 | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
 | C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
 | C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
 | C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
 | C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
+
+<!--RP1--><!--RP1End-->
+
+针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的[约束限制](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#约束限制)。
 
 ## 关联模块
 
@@ -83,10 +87,10 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 | 名称 | 作用 | 
 | --------- | --------- |
-| PerformanceAnalysisKit | 引入{[hilog](../../dfx/hilog.md)}用于日志打印。| 
-| BasicServicesKit       | 引入{[BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror)}用于捕获错误信息。 |
-| IPCKit                 | 引入{[rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)}用于驱动与客户端IPC（Inter-Process Communication）通信。|
-| AbilityKit             | 引入{[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)}用于生命周期管理。|
+| PerformanceAnalysisKit | 引入[hilog](../../reference/apis-performance-analysis-kit/js-apis-hilog.md)用于日志打印。| 
+| BasicServicesKit       | 引入[BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror)用于捕获错误信息。 |
+| IPCKit                 | 引入[rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)用于驱动与客户端IPC（Inter-Process Communication）通信。|
+| AbilityKit             | 引入[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)用于生命周期管理。|
 
 ## 驱动应用规格说明
 1.驱动应用定义
@@ -95,9 +99,9 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 2.驱动应用安装卸载规格
 - 安装策略
-  - 当用户安装某一驱动应用时，系统会将应用安装到当前已有的所有用户空间下。
-  - 当创建新用户时，系统会将已安装的驱动应用在该用户空间下进行安装。
-- 卸载策略：当用户在任意用户空间下发起卸载某一驱动应用，系统会将所有用户空间下的该驱动应用卸载。
+  - 当用户安装某一驱动应用时，系统会将应用安装到当前已有的所有用户环境下。
+  - 当创建新用户时，系统会将已安装的驱动应用在该用户环境下进行安装。
+- 卸载策略：当用户在任意用户环境下发起卸载某一驱动应用，系统会将所有用户环境下的该驱动应用卸载。
 
 3.基于DriverExtensionAbility生命周期管理说明
 - ExtensionAbility是基于场景服务的扩展能力的统称，简称为扩展能力（例如用户态扩展驱动、卡片、输入法等）以便满足不同的使用场景。
@@ -105,7 +109,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 4.在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。
-- 在DriverExtensionAbility中仅支持访问DDK（[docs/zh-cn/application-dev/reference/apis-driverdevelopment-kit · OpenHarmony/docs - AtomGit | GitCode](https://gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev/reference/apis-driverdevelopment-kit)）API，实现对非标外设进行访问控制和数据通信。
+- 在DriverExtensionAbility中仅支持访问DDK（Driver Development Kit）API，实现对非标外设进行访问控制和数据通信。
 - 基于驱动开发安全约束及驱动开发业务场景，在DriverExtensionAbility中不支持访问其它ArkTS API，以防止恶意行为和数据泄露。
 - DriverExtensionAbility受限访问ArkTS API方案说明：
   - ArkTS API受限原理：在初始化和创建Extension进程时，会根据Extension配置的受限访问ArkTS API名单加载系统模块。在运行时，如果在DriverExtensionAbility中调用受限ArkTS API，由于初始化和创建阶段未加载相应系统模块，API会调用失败。

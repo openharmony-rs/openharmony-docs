@@ -6,11 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-滑动条组件，通常用于快速调节设置值，如音量调节、亮度调节等应用场景。
+滑动条组件，通常用于快速调节设置值，如音量调节、亮度调节等应用场景。支持样式定制、方向配置、交互方式和无障碍功能，能解决UI一致性问题，提升开发效率，从而改善用户体验并降低开发成本。
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 从API版本26.0.0开始，Slider组件传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启系统材质的开关标记，不影响实际视觉效果。主要影响Slider的滑块大小、滑块样式、阴影等视觉属性。传入undefined时，系统材质不生效，表现为原先的Slider样式。
 
 
 ## 子组件
@@ -32,7 +34,7 @@ Slider(options?: SliderOptions)
 
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| options | [SliderOptions](#slideroptions对象说明) | 否   | 配置滑动条的参数。 |
+| options | [SliderOptions](#slideroptions对象说明) | 否   | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。 |
 
 ## SliderOptions对象说明
 
@@ -46,17 +48,17 @@ Slider(options?: SliderOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | number | 否 | 是 | 当前进度值。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7设置滑动条的双向绑定](#示例7设置滑动条的双向绑定)。 |
+| value | number | 否 | 是 | 当前进度值。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 |
 | min | number | 否 | 是 | 设置最小值。<br/>默认值：0 |
-| max | number | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>min >= max异常情况，min取默认值0，max取默认值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
-| step | number | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max值，则按默认值显示。 |
+| max | number | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>当min >= max时，min取默认值0，max取默认值100。<br/>当value不在[min, max]范围内时，取min或者max，靠近min取min，靠近max取max。 |
+| step | number | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max - min值，则按默认值显示。 |
 | style | [SliderStyle](#sliderstyle枚举说明) | 否 | 是 | 设置Slider的滑块与滑轨显示样式。<br/>默认值：SliderStyle.OutSet |
 | direction<sup>8+</sup> | [Axis](ts-appendix-enums.md#axis) | 否 | 是 | 设置滑动条滑动方向为水平或竖直方向。<br/>默认值：Axis.Horizontal |
 | reverse<sup>8+</sup> | boolean | 否 | 是 | 设置滑动条取值范围是否反向。<br/>true：横向Slider从右往左滑动，竖向Slider从下往上滑动；false：横向Slider从左往右滑动，竖向Slider从上往下滑动。<br/>默认值：false |
 
 ## SliderStyle枚举说明
 
-滑动条滑块在滑轨上显示的样式，具体样式请参考[Slider组件滑块与滑轨是如何对齐的](../../../ui/arkts-select-component-faq.md#slider组件滑块与滑轨是如何对齐的)。
+滑动条滑块在滑轨上显示的样式，样式说明请参考[Slider组件滑块与滑轨是如何对齐的](../../../ui/arkts-select-component-faq.md#slider组件滑块与滑轨是如何对齐的)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +66,13 @@ Slider(options?: SliderOptions)
 | -------- | -------- |
 | OutSet | 滑块在滑轨上。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InSet | 滑块在滑轨内。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NONE<sup>12+</sup> | 无滑块 <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NONE<sup>12+</sup> | 无滑块 <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 >  **说明：** 
 >
 >  - Slider无默认padding。
->  - 当Slider为水平滑动条时，默认高度为40vp，宽度为父容器的宽度，滑动条居中显示，当滑动条的style为SliderStyle.OutSet时，左右间距分别为9vp，即为[blockSize](#blocksize10)宽度的一半，当滑动条的style为SliderStyle.InSet时，左右间距分别为6vp，若设置padding，padding不会覆盖左右间距。
->  - 当Slider为竖直滑动条时，默认宽度为40vp，高度为父容器的高度，滑动条居中显示，当滑动条的style为SliderStyle.OutSet时，上下间距分别为10vp，当滑动条的style为SliderStyle.InSet时，上下间距分别为6vp，若设置padding，padding不会覆盖上下间距。
+>  - 水平滑动条时，默认高度为40vp，宽度为父容器的宽度，滑动条居中显示，style为SliderStyle.OutSet时，左右间距分别为9vp，即为[blockSize](#blocksize10)宽度的一半，style为SliderStyle.InSet时，左右间距分别为6vp，若设置padding，padding不会覆盖左右间距。
+>  - 竖直滑动条时，默认宽度为40vp，高度为父容器的高度，滑动条居中显示，style为SliderStyle.OutSet时，上下间距分别为10vp，style为SliderStyle.InSet时，上下间距分别为6vp，若设置padding，padding不会覆盖上下间距。
 
 ## 属性
 
@@ -104,7 +106,7 @@ blockColor(value: ResourceColor)
 
 blockColor(value: ResourceColor | LinearGradient)
 
-设置Slider滑块的颜色，支持渐变色。
+设置Slider滑块的颜色，支持渐变色。与blockColor相比，新增LinearGradient类型支持。
 
 当滑块形状设置为SliderBlockType.DEFAULT时，blockColor可设置默认圆形滑块颜色。
 
@@ -116,13 +118,15 @@ blockColor(value: ResourceColor | LinearGradient)
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)  | 是   | 滑块的颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)  | 是   | 滑块的颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')`<br/>**说明：** <br/>当滑块形状设置为SliderBlockType.IMAGE时，滑块无填充，设置blockColor不生效。 |
 
 ### trackColor
 
@@ -130,11 +134,11 @@ trackColor(value: ResourceColor | LinearGradient)
 
 设置滑轨的背景颜色。
 
-从API version 12开始支持利用LinearGradient设置滑轨的渐变色。
+从API version 12开始，支持使用LinearGradient类型设置滑轨的渐变色。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口在原子化服务中仅支持ResourceColor类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,15 +146,17 @@ trackColor(value: ResourceColor | LinearGradient)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
 
 ### trackColorMetrics<sup>23+</sup>
 
 trackColorMetrics(color: ColorMetricsLinearGradient)
 
-设置滑轨轨道的线性渐变背景颜色。
+设置滑轨的线性渐变背景颜色。与trackColor相比，使用ColorMetricsLinearGradient类型支持指定色域的渐变。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**与trackColor的关系：** trackColorMetrics与trackColor功能类似，但使用ColorMetricsLinearGradient类型支持指定色域的渐变控制；trackColor中的LinearGradient类型不支持原子化服务，而trackColorMetrics支持。两者功能类似，不能同时生效，后调用的方法会覆盖先调用的设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +166,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，滑轨背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
 
 ### selectedColor
 
@@ -190,6 +196,8 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -202,7 +210,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 showSteps(value: boolean)
 
-设置当前是否显示步长刻度值。
+设置是否显示步长刻度值。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -214,7 +222,7 @@ showSteps(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | 是   | 当前是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br/>默认值：false |
+| value  | boolean | 是   | 是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br/>默认值：false |
 
 ### showTips
 
@@ -222,9 +230,9 @@ showTips(value: boolean, content?: ResourceStr)
 
 设置滑动时是否显示气泡提示。
 
-当direction的值为Axis.Horizontal时，tip显示在滑块上方，如果上方空间不够，则在下方显示。当值为Axis.Vertical时，tip显示在滑块左边，如果左边空间不够，则在右边显示。当不设置周边边距或者周边边距比较小时，tip会被截断。
+当direction的值为Axis.Horizontal时，气泡提示显示在滑块上方；若上方空间不足以显示完整气泡提示，则在下方显示。当值为Axis.Vertical时，气泡提示显示在滑块左边；若左边空间不足以显示完整气泡提示，则在右边显示。当未设置周边边距或边距小于气泡提示所需空间时，气泡提示会被截断。
 
-tip的绘制区域为Slider自身节点的overlay。
+气泡提示的绘制区域为Slider自身节点的overlay。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -237,7 +245,7 @@ tip的绘制区域为Slider自身节点的overlay。
 | 参数名                | 类型                                   | 必填 | 说明                                       |
 | --------------------- | -------------------------------------- | ---- | ------------------------------------------ |
 | value                 | boolean                                | 是   | 滑动时是否显示气泡提示。<br/>true：显示气泡；false：不显示气泡。<br/>默认值：false |
-| content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 气泡提示的文本内容，默认显示当前百分比。   |
+| content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 气泡提示的文本内容。传入时显示自定义文本（当需要展示特定格式或额外信息时使用），不传入时默认显示当前百分比数值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
 
 ### trackThickness<sup>8+</sup>
 
@@ -247,7 +255,7 @@ trackThickness(value: Length)
 
 为保证滑块和滑轨的[SliderStyle](#sliderstyle枚举说明)样式，[blockSize](#blocksize10)跟随trackThickness同比例增减。
 
-当style为[SliderStyle](#sliderstyle枚举说明).OutSet时，trackThickness ：[blockSize](#blocksize10) = 1 ：4，当style为[SliderStyle](#sliderstyle枚举说明).InSet时，trackThickness ：[blockSize](#blocksize10) = 5 ：3。
+当style为[SliderStyle](#sliderstyle枚举说明).OutSet时，trackThickness:[blockSize](#blocksize10)=1:4，当style为[SliderStyle](#sliderstyle枚举说明).InSet时，trackThickness:[blockSize](#blocksize10)=5:3。
 
 trackThickness或[blockSize](#blocksize10)的大小超过Slider组件的宽度或高度时，取默认值。
 
@@ -263,7 +271,7 @@ trackThickness或[blockSize](#blocksize10)的大小超过Slider组件的宽度�
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 滑轨的粗细。<br/>默认值：当参数style的值设置[SliderStyle](#sliderstyle枚举说明).OutSet 时为 4.0vp，[SliderStyle](#sliderstyle枚举说明).InSet时为20.0vp。 |
+| value  | [Length](ts-types.md#length) | 是   | 滑轨的粗细。<br/>默认值：style为[SliderStyle](#sliderstyle枚举说明).OutSet时为4.0vp，style为[SliderStyle](#sliderstyle枚举说明).InSet时为20.0vp。 |
 
 ### blockBorderColor<sup>10+</sup>
 
@@ -278,6 +286,8 @@ blockBorderColor(value: ResourceColor)
 当滑块形状设置为SliderBlockType.SHAPE时，blockBorderColor可设置自定义形状中线的颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,13 +311,15 @@ blockBorderWidth(value: Length)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| value  | [Length](ts-types.md#length) | 是   | 滑块描边粗细。<br/>**说明：** <br/>设置string类型时，不支持百分比。 |
+| value  | [Length](ts-types.md#length) | 是   | 滑块描边粗细。<br/>**说明：** <br/>value为string类型时，不支持百分比。 |
 
 ### stepColor<sup>10+</sup>
 
@@ -317,21 +329,25 @@ stepColor(value: ResourceColor)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                               |
 | ------ | ------------------------------------------ | ---- | ---------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 刻度颜色。<br/>默认值：<br/>`$r('sys.color.ohos_id_color_foreground')`混合<br/>`$r('sys.color.ohos_id_alpha_normal_bg')`透明度的颜色 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 刻度颜色。<br/>默认值：<br/>混入`$r('sys.color.ohos_id_alpha_normal_bg')`透明度的`$r('sys.color.ohos_id_color_foreground')`颜色。 |
 
 ### trackBorderRadius<sup>10+</sup>
 
 trackBorderRadius(value: Length)
 
-设置底板圆角半径。
+设置滑轨圆角半径。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -339,7 +355,7 @@ trackBorderRadius(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 底板圆角半径。<br/>默认值：<br/>style值为SliderStyle.OutSet时默认值为'2vp'。<br/>style值为SliderStyle.InSet时默认值为'10vp'。<br/>**说明：** <br/>设定值小于0时取默认值。 |
+| value  | [Length](ts-types.md#length) | 是   | 滑轨圆角半径。<br/>默认值：<br/>style为SliderStyle.OutSet时默认值为2vp。<br/>style为SliderStyle.InSet时默认值为10vp。<br/>**说明：** <br/>设定值小于0时取默认值。 |
 
 ### selectedBorderRadius<sup>12+</sup>
 
@@ -349,13 +365,15 @@ selectedBorderRadius(value: Dimension)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | [Dimension](ts-types.md#dimension10)| 是   | 已选择部分的圆角半径。<br/>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
+| value  | [Dimension](ts-types.md#dimension10)| 是   | 已滑动部分的圆角半径。<br/>默认值：style为SliderStyle.InSet或SliderStyle.OutSet时，跟随滑轨圆角；style为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
 
 ### blockSize<sup>10+</sup>
 
@@ -371,13 +389,15 @@ blockSize(value: SizeOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SizeOptions](ts-types.md#sizeoptions) | 是   | 滑块大小。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时为，此字段不生效。<br/>当设置的blockSize的宽高值不相等时，取较小值的尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
+| value  | [SizeOptions](ts-types.md#sizeoptions) | 是   | 滑块大小。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时，此字段不生效。<br/>当blockSize宽高不相等时，取较小值作为尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
 
 ### blockStyle<sup>10+</sup>
 
@@ -387,13 +407,15 @@ blockStyle(value: SliderBlockStyle)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SliderBlockStyle](#sliderblockstyle10对象说明) | 是   | 滑块形状参数。<br/>默认值：SliderBlockType.DEFAULT，滑块形状为圆形。 |
+| value  | [SliderBlockStyle](#sliderblockstyle10对象说明) | 是   | 滑块形状参数。<br/>默认值为SliderBlockType.DEFAULT，即圆形滑块。 |
 
 ### stepSize<sup>10+</sup>
 
@@ -403,13 +425,15 @@ stepSize(value: Length)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                  |
 | ------ | ---------------------------- | ---- | ------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 刻度大小（直径）。 <br/>默认值：'4vp'<br/>取值范围：[0, [trackThickness](#trackthickness8)) |
+| value  | [Length](ts-types.md#length) | 是   | 刻度大小（直径）。 <br/>默认值：'4vp'<br/>取值范围：[0, [trackThickness](#trackthickness8))，单位为vp |
 
 ### sliderInteractionMode<sup>12+</sup>
 
@@ -419,21 +443,25 @@ sliderInteractionMode(value: SliderInteraction)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                              | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SliderInteraction](#sliderinteraction12枚举说明) | 是   | 用户与滑动条组件交互方式。 <br /> 默认值：SliderInteraction.SLIDE_AND_CLICK。 |
+| value  | [SliderInteraction](#sliderinteraction12枚举说明) | 是   | 用户与滑动条组件交互方式。<br/>默认值为SliderInteraction.SLIDE_AND_CLICK。 |
 
 ### minResponsiveDistance<sup>12+</sup>
 
 minResponsiveDistance(value: number)
 
-设置滑动响应的最小距离。
+设置滑块开始滑动的最小响应距离。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -441,7 +469,7 @@ minResponsiveDistance(value: number)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | number | 是   | 设置滑动响应的最小距离，滑动超过此距离后滑块才开始滑动。<br/>默认值：0<br/>**说明：** <br/>单位与[SliderOptions](#slideroptions对象说明)中的属性min以及属性max一致。<br/>当value小于0、大于max-min或非法值时，取默认值。  |
+| value  | number | 是   | 设置滑块开始滑动的最小响应距离。<br/>默认值：0<br/>**说明：** <br/>单位与[SliderOptions](#slideroptions对象说明)中的属性min以及属性max一致。<br/>当value小于0、大于max-min、为NaN或非数字类型时，取默认值。  |
 
 ### contentModifier<sup>12+</sup>
 
@@ -451,13 +479,15 @@ contentModifier(modifier: ContentModifier\<SliderConfiguration>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md)[\<SliderConfiguration>](#sliderconfiguration12对象说明) | 是   | 在Slider组件上，定制内容区的方法。<br/>ContentModifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[SliderConfiguration](#sliderconfiguration12对象说明)> | 是   | 在Slider组件上，定制内容区的方法。<br/>ContentModifier为内容修改器，需自定义class实现该接口。 |
 
 >  **说明：**
 >
@@ -468,9 +498,11 @@ contentModifier(modifier: ContentModifier\<SliderConfiguration>)
 
 slideRange(value: SlideRange)
 
-设置有效滑动区间。
+设置有效滑动区间。设置后滑块滑动范围被限制在[from, to]区间内，区间外的点击和手势不会触发滑动；value初始值若超出区间会自动调整到区间边界。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -478,7 +510,7 @@ slideRange(value: SlideRange)
 
 | 参数名 | 类型                                | 必填 | 说明             |
 | ------ | ----------------------------------- | ---- | ---------------- |
-| value  | [SlideRange](#sliderange12对象说明) | 是   | 设置有效滑动区间 |
+| value  | [SlideRange](#sliderange12对象说明) | 是   | 有效滑动区间 |
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -498,19 +530,21 @@ enableHapticFeedback(enabled: boolean)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled  | boolean | 是   | 设置是否开启触控反馈。<br/>true：开启触控反馈；false：不开启触控反馈。<br/>默认值：true|
+| enabled  | boolean | 是   | 是否开启触控反馈。<br/>true：开启触控反馈；false：不开启触控反馈。<br/>默认值：true|
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
-设置旋转表冠的灵敏度。
+设置旋转表冠灵敏度。
 
 > **说明：**
 >
@@ -518,13 +552,15 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | 是   | 旋转表冠的灵敏度。<br />默认值：CrownSensitivity.MEDIUM |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是   | 旋转表冠灵敏度。<br />默认值：CrownSensitivity.MEDIUM |
 
 ### prefix<sup>20+</sup>
 
@@ -534,14 +570,16 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。 |
-| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 滑动条前缀的可视化内容，显示在滑动条起始位置。 |
+| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑动条前缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
 
@@ -551,14 +589,16 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。 |
-| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 滑动条后缀的可视化内容，显示在滑动条结束位置。 |
+| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑动条后缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
 
@@ -574,24 +614,26 @@ showSteps(value: boolean, options?: SliderShowStepOptions)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| value | boolean | 是 | 当前是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br />默认值：false |
+| value | boolean | 是 | 是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br />默认值：false |
 | options | [SliderShowStepOptions](#slidershowstepoptions20) | 否 | 刻度点无障碍文本的配置选项，用于设置与无障碍功能相关的属性。<br/>默认值：null |
 
 ### minLabel<sup>(deprecated)</sup>
 
 minLabel(value: string)
 
-设置最小值。
+设置最小值标签的文本内容。
 
 > **说明：** 
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用min替代。min是[SliderOptions](#slideroptions对象说明)中的属性。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[SliderOptions](#slideroptions对象说明)的min属性替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -599,17 +641,17 @@ minLabel(value: string)
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最小值。 |
+| value  | string | 是   | 最小值标签文本。 |
 
 ### maxLabel<sup>(deprecated)</sup>
 
 maxLabel(value: string)
 
-设置最大值。
+设置最大值标签的文本内容。
 
 > **说明：** 
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用max替代。max是[SliderOptions](#slideroptions对象说明)中的属性。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[SliderOptions](#slideroptions对象说明)的max属性替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -617,11 +659,11 @@ maxLabel(value: string)
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最大值。 |
+| value  | string | 是   | 最大值标签文本。 |
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
-滑轨轨道的线性渐变背景颜色。
+滑轨的线性渐变背景颜色。
 
 ### constructor<sup>23+</sup>
 
@@ -639,11 +681,11 @@ ColorMetricsLinearGradient的构造函数。
 
 | 参数名         | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
-| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
+| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组，每个元素描述一个颜色及其在渐变中的断点值。 |
 
 ## ColorMetricsStop<sup>23+</sup>
 
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
+线性渐变颜色断点类型，用于描述渐变色颜色断点。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -654,7 +696,7 @@ ColorMetricsLinearGradient的构造函数。
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
-| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值。小于0置为0，大于1置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
@@ -662,20 +704,24 @@ Slider前后缀组件无障碍信息参数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 用于提供辅助功能的文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>默认值："" |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 用于提供辅助功能的详细描述，描述滑块前缀或后缀的功能或用途，供屏幕阅读器等工具使用。 <br/>默认值为“单指双击即可执行”。 |
-| accessibilityLevel       | string      | 否   | 是  | 用于控制某个组件是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：当前组件会转换为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。 |
-| accessibilityGroup       | boolean     | 否   | 是  | 用于标识该元素是否属于一个无障碍的组，帮助屏幕阅读器等工具将相关元素进行分组处理。<br/>true：该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；false：不启用无障碍分组。<br/>默认值：false |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 无障碍文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>默认值："" |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 无障碍功能详细描述，描述滑块前缀或后缀的功能或用途，供屏幕阅读器等工具使用。 <br/>默认值为“单指双击即可执行”。 |
+| accessibilityLevel       | string      | 否   | 是  | 控制组件是否可被无障碍辅助服务识别。<br>支持的值为:<br>"auto"：当前组件会转换为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。 |
+| accessibilityGroup       | boolean     | 否   | 是  | 标识元素是否属于无障碍组，帮助屏幕阅读器等工具分组相关元素。<br/>true：该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；false：不启用无障碍分组。<br/>默认值：false |
 
 ## SliderPrefixOptions<sup>20+</sup>
 
 Slider前缀组件无障碍信息参数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -687,6 +733,8 @@ Slider后缀组件无障碍信息参数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 提供后缀组件的无障碍信息，继承自[SliderCustomContentOptions](#slidercustomcontentoptions20)。
@@ -697,11 +745,13 @@ Slider刻度点的无障碍文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 用于提供辅助功能的文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>默认值："" |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>默认值："" |
 
 ## SliderShowStepOptions<sup>20+</sup>
 
@@ -709,11 +759,13 @@ Slider刻度点的无障碍文本信息映射集。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | 否 | 是 | 用于设置刻度点提供辅助功能文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 <br/>默认值：{} |
+| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | 否 | 是 | 刻度点无障碍文本映射集，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 <br/>默认值：{} |
 
 ## SliderBlockStyle<sup>10+</sup>对象说明
 
@@ -721,19 +773,23 @@ Slider组件滑块形状参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| type  | [SliderBlockType](#sliderblocktype10枚举说明)                | 否   | 否   | 设置滑块形状。<br/>默认值：SliderBlockType.DEFAULT，使用圆形滑块。 |
-| image | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 设置滑块图片资源。<br />图片显示区域大小由blockSize属性控制，请勿输入尺寸过大的图片。 |
-| shape | [Circle](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[Ellipse](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[Path](ts-drawing-components-path.md)&nbsp;\|&nbsp;[Rect](ts-drawing-components-rect.md)&nbsp; | 否   | 是   | 设置滑块使用的自定义形状。                                   |
+| type  | [SliderBlockType](#sliderblocktype10枚举说明)                | 否   | 否   | 滑块形状。<br/>默认值：SliderBlockType.DEFAULT，使用圆形滑块。 |
+| image | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 设置滑块图片资源。<br />图片显示区域大小由blockSize属性控制，请勿输入尺寸过大的图片。<br/>**说明：** 仅当type为SliderBlockType.IMAGE时生效，与shape属性互斥，不能同时使用。 |
+| shape | [Circle](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[Ellipse](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[Path](ts-drawing-components-path.md)&nbsp;\|&nbsp;[Rect](ts-drawing-components-rect.md)&nbsp; | 否   | 是   | 设置滑块使用的自定义形状。<br/>**说明：** 仅当type为SliderBlockType.SHAPE时生效，与image属性互斥，不能同时使用。                                   |
 
 ## SliderBlockType<sup>10+</sup>枚举说明
 
 Slider组件滑块形状枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,6 +805,8 @@ Slider组件滑块形状枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 |说明                          |
@@ -759,9 +817,11 @@ Slider组件滑块形状枚举。
 
 ## SlideRange<sup>12+</sup>对象说明
 
-定义SlideRange中使用的回调类型。
+定义有效滑动区间。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -772,11 +832,11 @@ Slider组件滑块形状枚举。
 
 >  **说明：**
 >
->  - 当前仅当min<=from<=to<=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。
+>  - 仅当min<=from<=to<=max时生效（min和max取实际生效值）。
 >  - 可只设置from或者to，也可以同时设置from和to。
 >  - 当接口生效且设置的from处于紧邻的step整数倍的值之间，则from实际取左区间step整数倍的那个值或者min作为修正后的值。
 >  - 当接口生效且设置的to处于紧邻的step整数倍的值之间，则to实际取右区间step整数倍的那个值或者MAX作为修正后的值。
->  - 在from和to取修正值后， 当value是undefined或null时，其取值与from一致; 当value是数值型且value <= from，则取from; 当value > to，则取to。
+>  - from和to取修正值后，value为undefined或null时与from一致；value为数值且<=from时取from；value>to时取to。
 
 ## 事件
 
@@ -788,9 +848,9 @@ onChange(callback:&nbsp;(value:&nbsp;number,&nbsp;mode:&nbsp;SliderChangeMode)&n
 
 Slider拖动或点击时触发事件回调。
 
-Begin和End状态当手势点击时都会触发，Moving和Click状态当value值发生变化时触发。
+Begin和End状态在点击时触发，Moving和Click状态在value值变化时触发。
 
-当连贯动作为拖动动作时，不触发Click状态。
+连贯拖动动作不触发Click状态。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -802,12 +862,12 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number                                        | 是   | 当前滑动进度值，变化范围为对应步长steps数组。若返回值有小数，可使用number.toFixed()方法将数据处理为预期的精度。 |
-| mode   | [SliderChangeMode](#sliderchangemode枚举说明) | 是   | 事件触发的相关状态值。                                       |
+| value  | number                                        | 是   | 当前滑动进度值，返回值精度由Slider的step参数决定。若返回值有小数，可使用number.toFixed()方法将数据处理为预期的精度。 |
+| mode   | [SliderChangeMode](#sliderchangemode枚举说明) | 是   | 事件触发的相关状态值。可选值包括Begin、Moving、End和Click，详见[SliderChangeMode枚举说明](#sliderchangemode枚举说明)。                                       |
 
 ## SliderChangeMode枚举说明
 
-滑块的状态值。包括按下、拖动、离开以及点击滑动条使滑块位置时。
+滑块状态值，包括按下、拖动、离开、点击滑动条使滑块移动时。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -817,16 +877,18 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| Begin | 0 | 手势/鼠标接触或者按下滑块。 |
-| Moving | 1 | 正在拖动滑块过程中。 |
-| End | 2 | 手势/鼠标离开滑块。<br/>**说明：** <br/>异常值恢复成默认值时触发，即value设置小于min或大于max。 |
-| Click<sup>8+</sup> | 3    | 点击滑动条使滑块位置移动。 |
+| Begin | 0 | 手势或鼠标接触/按下滑块。 |
+| Moving | 1 | 拖动滑块过程中。 |
+| End | 2 | 手势或鼠标离开滑块。<br/>**说明：** <br/>手势或鼠标离开滑块时触发，包含正常拖动结束；异常值恢复成默认值时触发，即value设置小于min或大于max。 |
+| Click<sup>8+</sup> | 3    | 点击滑动条使滑块移动。 |
 
 ## SliderConfiguration<sup>12+</sup>对象说明
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -835,7 +897,7 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 | value | number | 否 | 否 | 当前进度值。 |
 | min | number | 否 | 否 | 最小值。 |
 | max | number | 否 | 否 | 最大值。 |
-| step | number | 否 | 否 | Slider滑动步长。 |
+| step | number | 否 | 否 | Slider滑动步长，表示滑动条每次滑动的数值增量。 |
 | triggerChange | [SliderTriggerChangeCallback](#slidertriggerchangecallback12) | 否 | 否 | 触发Slider变化。 |
 
 ## SliderTriggerChangeCallback<sup>12+</sup>
@@ -846,13 +908,15 @@ type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMode) => vo
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明              |
 | ------ | ------ | ---------------- | ---------------- |
-| value | number | 是 | 设置当前的进度值。<br/>取值范围：[[min](#slideroptions对象说明)-[max](#slideroptions对象说明)] |
+| value | number | 是 | 设置当前进度值。<br/>取值范围：[[min](#slideroptions对象说明)-[max](#slideroptions对象说明)] |
 | mode | [SliderChangeMode](#sliderchangemode枚举说明) | 是 | 设置事件触发的相关状态值。 |
 
 ## 示例
@@ -1009,7 +1073,7 @@ struct SliderExample {
               value: this.vInSetValueOne,
               style: SliderStyle.InSet,
               direction: Axis.Vertical,
-              reverse: true // 竖向的Slider默认是上端是min值，下端是max值，因此想要从下往上滑动，需要设置reverse为true
+              reverse: true // 竖向Slider默认上端为min值，下端为max值。从下往上滑动需设置reverse为true
             })
               .showTips(true)
               .onChange((value: number, mode: SliderChangeMode) => {
@@ -1097,7 +1161,7 @@ struct SliderExample {
 
 ### 示例3（自定义滑动条）
 
-该示例实现了Slider组件通过样式Builder定制内容区。点击增加按钮，进度条会按照原Slider设置的步长增加，反之点减少按钮进度条会减少，并触发原组件的onChange事件。
+通过样式Builder定制Slider组件内容区。点击增加按钮，进度条会按照原Slider设置的步长增加，反之点击减少按钮进度条会减少，并触发原组件的onChange事件。
 
 ```ts
 // xxx.ets
@@ -1216,7 +1280,7 @@ struct SliderExample {
 
 ### 示例4（设置滑动条渐变色）
 
-该示例通过colorGradient设置滑动条渐变色，通过focusable、defaultFocus和focusOnTouch设置滑动条支持表冠操作。
+该示例通过selectedColor设置滑动条渐变色，通过focusable、defaultFocus和focusOnTouch设置滑动条支持表冠操作。
 
 ```ts
 // xxx.ets
@@ -1300,7 +1364,7 @@ struct SliderExample {
 
 ### 示例5（滑动条设置前后缀内容）
 
-该示例实现了Slider组件通过prefix、suffix属性设置滑动条的前后缀内容，定制其内容区以及无障碍属性。设置无障碍属性后，屏幕阅读器将以设置的无障碍内容进行朗读。
+通过prefix、suffix属性设置滑动条的前后缀内容，定制其内容区以及无障碍属性。设置无障碍属性后，屏幕阅读器将以设置的无障碍内容进行朗读。
 
 ```ts
 // xxx.ets
@@ -1518,16 +1582,16 @@ struct SliderExample {
 
 ### 示例6（滑动条设置刻度点无障碍文本）
 
-该示例实现了Slider组件通过showSteps属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。
+通过[showSteps](#showsteps20)属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。从API version 20开始，[showSteps](#showsteps20)方法新增可选参数options。
 
 ```ts
 
 class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
   optionMaps:Map<number, SliderStepItemAccessibility> = new Map()
-    .set(1, {text : "123123"})
-    .set(2, {text : "Slider无障碍文本"})
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider无障碍文本'})
     .set(3, {text : $r('app.string.stepItemText')})
-    .set(4, {text : "!@#$%^&*()"});
+    .set(4, {text : '!@#$%^&*()'});
   applyNormalAttribute(instance: SliderAttribute): void {
     instance.showSteps(true, {stepsAccessibility: this.optionMaps})
   }
@@ -1539,15 +1603,15 @@ struct SliderExample {
   @State optionMaps:Map<number, SliderStepItemAccessibility> = new Map();
   private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
   aboutToAppear(){
-    this.optionMaps.set(1, {text : "123123"})
-    this.optionMaps.set(2, {text : "Slider无障碍文本"})
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider无障碍文本'})
     this.optionMaps.set(3, {text : $r('app.string.app_name')})
-    this.optionMaps.set(4, {text : "!@#$%^&*()"})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
     this.show = true;
   }
   build() {
     Column({ space: 8 }) {
-      Text("show steps").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1560,9 +1624,10 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .showSteps(true, {stepsAccessibility: this.optionMaps})
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
-      Text("modifier").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1575,7 +1640,7 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .attributeModifier(this.sliderModifier)
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
     }
   }
@@ -1586,7 +1651,7 @@ struct SliderExample {
 
 ### 示例7（设置滑动条的双向绑定）
 
-从API version 11开始，通过将[SliderOptions](#slideroptions对象说明)的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
+从API version 11开始，将[SliderOptions](#slideroptions对象说明)的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
 
 ```ts
 // xxx.ets
@@ -1620,7 +1685,7 @@ struct SliderExample {
 
 ### 示例8（滑块设置渐变色）
 
-该示例实现了Slider组件通过blockColor属性设置滑块渐变色。
+通过blockColor属性设置滑块渐变色。
 
 ```ts
 
@@ -1741,7 +1806,7 @@ struct SliderExample {
 
 ### 示例9（设置滑轨的背景颜色）
 
-该示例通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值，包括偏移和颜色。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
+通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
 
 从API version 23开始，新增trackColorMetrics接口。
 
@@ -1782,3 +1847,38 @@ struct SliderExample {
 ```
 
 ![slider_9](figures/slider_9.png)
+
+### 示例10（设置滑动条的系统材质）
+
+该示例通过通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)为滑动条设置沉浸式材质。
+
+从API版本26.0.0开始，新增systemMaterial接口。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SliderSystemMaterial {
+  build() {
+    RelativeContainer() {
+      Slider({
+        style: SliderStyle.InSet
+      })
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+        }))
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Grey)
+  }
+}
+```
+
+![slider_10](figures/slider_10.png)

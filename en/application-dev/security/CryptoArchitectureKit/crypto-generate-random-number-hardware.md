@@ -14,7 +14,7 @@ Random numbers are used to generate temporary session keys and asymmetric encryp
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
-You need to call the related APIs of [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) to implement the hardware entropy source.
+You need to call the [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) APIs to implement the hardware entropy source.
 
 You can call APIs to:
 
@@ -57,25 +57,32 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
    The length of the random number to generate ranges from **1** to **INT_MAX**, in bytes.
 
 - Return the result using **await**:
-  ```ts
+  <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function doRand() {
-    let rand = cryptoFramework.createRandom();
-    rand.enableHardwareEntropy();
-    let seed = new Uint8Array([1, 2, 3]);
-    rand.setSeed({ data: seed });
-    let len = 12;
-    let randOutput = await rand.generateRandom(len);
-    console.info('rand output:' + randOutput.data);
-  }
+      let rand = cryptoFramework.createRandom();
+      rand.enableHardwareEntropy();
+      let seed = new Uint8Array([1, 2, 3]);
+      rand.setSeed({ data: seed });
+      let len = 12;
+      let randOutput = await rand.generateRandom(len);
+      console.info('rand output: ' + randOutput.data);
+    }
   ```
 
+
 - Return the result synchronously:
-  ```ts
+  <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
@@ -83,13 +90,13 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {
-        console.info("[Sync]: rand result: " + randData.data);
+        console.info('[Sync]: rand result: ' + randData.data);
       } else {
-        console.error("[Sync]: get rand result fail!");
+        console.error('[Sync]: get rand result: fail!');
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`do rand failed, ${e.code}, ${e.message}`);
+      console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

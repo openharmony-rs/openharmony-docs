@@ -7,21 +7,21 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API 23开始，支持证书链校验时下载缺失的中间CA证书。
+从API version 23开始，支持证书链校验时下载缺失的中间CA证书。
 
-以创建X509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。
+以创建X.509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert-1)创建X509证书对象，并返回结果。
+2. 基于已有的证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert-1)创建X.509证书对象，并返回结果。
 
-3. 调用[cert.buildX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certbuildx509certchain12)创建X509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。
+3. 调用[cert.buildX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certbuildx509certchain12)创建X.509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。
 
 > **说明**
 >
@@ -113,7 +113,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509Cert;
 }
@@ -132,7 +132,7 @@ async function buildX509CertChain() {
       }
     }
     let data = await cert.buildX509CertChain(param);
-    console.info('buildX509CertChain success: certChainLength = ' + data.certChain.getCertList().length);
+    console.info('buildX509CertChain result: success, certChainLength = ' + data.certChain.getCertList().length);
   } catch (err) {
     console.error(`buildX509CertChain failed: errCode: ${err.code}, message: ${err.message}`);
   }

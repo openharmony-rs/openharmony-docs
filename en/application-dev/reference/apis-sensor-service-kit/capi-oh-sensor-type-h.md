@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## Overview
@@ -706,7 +706,7 @@ Sets a callback function to report sensor data.
 | Name| Description|
 | -- | -- |
 | [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | Pointer to the sensor subscriber information.|
-| [const Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | Sets the callback function.|
+| [Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | Sets the callback function.|
 
 **Returns**
 

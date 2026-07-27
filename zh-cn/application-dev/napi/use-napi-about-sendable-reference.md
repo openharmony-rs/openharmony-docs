@@ -1,17 +1,17 @@
 # 使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较于`napi_ref`，`napi_sendable_ref`支持跨ArkTS线程操作，但同时也存在一些限制。
 
 ## 场景介绍
 
-开发者可使用[napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)接口创建指向Sendable ArkTS对象的Sendable强引用，使用[napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value)获取被引用的ArkTS对象，使用[napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference)删除Sendable强引用。这些操作即可在同一ArkTS线程进行，也可在不同ArkTS线程进行。
+开发者可使用[napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)接口创建指向Sendable ArkTS对象的Sendable强引用，使用[napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value)获取被引用的ArkTS对象，使用[napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference)删除Sendable强引用。这些操作既可以在同一ArkTS线程进行，也可在不同ArkTS线程进行。
 
 ## Sendable强引用对象关联接口
 
@@ -286,11 +286,11 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
    /**
-   * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessage = (event: MessageEvents) => {
       let data: string = event.data;
       hilog.info(DOMAIN, 'testTag', data);
@@ -300,20 +300,20 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
    };
 
    /**
-   * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessageerror = (event: MessageEvents) => {
    };
 
    /**
-   * Defines the event handler to be called when an exception occurs during worker execution.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event error message
-   */
+    * Defines the event handler to be called when an exception occurs during worker execution.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event error message
+    */
    workerPort.onerror = (event: ErrorEvent) => {
    };
    ```

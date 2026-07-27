@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -35,10 +35,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | 获取当前应用信息，包含应用包名和应用指纹信息。 |
+| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | 获取当前应用信息，包含应用包名和应用指纹信息。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回对象下的字段的指针。 |
 | [char* OH_NativeBundle_GetAppId()](#oh_nativebundle_getappid) | 获取当前应用的appId。appId是应用的唯一标识，由应用包名和签名信息决定。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
 | [char* OH_NativeBundle_GetAppIdentifier()](#oh_nativebundle_getappidentifier)| 获取当前应用的应用程序标识符。该应用程序标识符在应用的整个生命周期中不会发生变化，包括版本更新、证书更改、公钥和私钥更改以及应用程序迁移。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
-| [OH_NativeBundle_ElementName_OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
+| [OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回对象下的字段的指针。 |
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | 获取当前应用适用的设备类型。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | 查询当前应用的调试模式。 |
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | 获取当前应用程序的模块元数据数组。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
@@ -80,7 +80,7 @@ char* OH_NativeBundle_GetAppId()
 
 | 类型 | 说明 |
 | -- | -- |
-| char* | 返回一个新创建的字符串，用于指示appID信息。如果返回的对象为NULL，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| char* | 返回一个新创建的字符串，用于指示appId信息。如果返回的对象为NULL，则表示创建失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -181,7 +181,7 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)* | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
@@ -203,7 +203,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* fileType | 表示待查询的特定文件类型，推荐使用[UTD类型](../../database/uniform-data-type-descriptors.md)，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)和文件后缀名称，如：'text/xml' 、 '.png'等。文件后缀与文件类型的映射关系参见[UTD预置列表](../../database/uniform-data-type-list.md)。不支持传'\*/\*'。 |
+| char* fileType | 表示待查询的特定文件类型，推荐使用[UTD类型](../../database/uniform-data-type-descriptors.md)，比如："general.plain-text"、"general.image"。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)和文件后缀名称，如："text/xml" 、 ".png"等。文件后缀与文件类型的映射关系参见[UTD预置列表](../../database/uniform-data-type-list.md)。不支持传"\*/\*"。 |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | 表示返回的组件资源信息列表。 |
 | size_t* size | 表示返回的组件资源信息列表大小。 |
 

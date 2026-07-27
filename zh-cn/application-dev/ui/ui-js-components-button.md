@@ -32,7 +32,7 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 }
 ```
 
-![zh-cn_image_0000001211225091](figures/zh-cn_image_0000001211225091.png)
+![button-Component](figures/button-Component.png)
 
 
 ## 设置button类型
@@ -76,7 +76,7 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 ```
 
 
-![zh-cn_image_0000001208771093](figures/zh-cn_image_0000001208771093.png)
+![Button-Type](figures/Button-Type.png)
 
 
 > **说明：**
@@ -88,11 +88,12 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 
 
 ```json
-<!-- config.json -->
-"module": {
-  "reqPermissions": [{
-    "name": "ohos.permission.INTERNET"
-  }],
+{
+  "module": {
+    "reqPermissions": [{
+      "name": "ohos.permission.INTERNET"
+    }]
+  }
 }
 ```
 
@@ -127,7 +128,6 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data: {
     percent: 0,
@@ -141,7 +141,7 @@ export default {
         this.percent += 1;
         this.downloadText = this.percent+ "%";
        } else{
-         promptAction.showToast({
+         this.getUIContext().getPromptAction().showToast({
             message: "Download succeeded."
          })
          this.paused()
@@ -157,13 +157,13 @@ export default {
   },
  setProgress(e) {
     if(this.isPaused){
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "Started Downloading"
       })
       this.start();
       this.isPaused = false;
     }else{
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "Paused."
       })
       this.paused();
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001208393581](figures/zh-cn_image_0000001208393581.gif)
+![Download-Progress](figures/Download-Progress.gif)
 
 > **说明：** 
 >
@@ -182,7 +182,7 @@ export default {
 
 ## 场景示例
 
-在本场景中，开发者可根据输入的文本内容进行button类型切换。
+在本场景中，开发者可根据输入的文本内容进行input类型切换。
 
 
 ```html
@@ -191,7 +191,7 @@ export default {
   <div class="input-item">
     <input class="input-text" id="change" type="{{mytype}}"  placeholder="{{myholder}}" 
       style="background-color:{{mystyle1}};
-      placeholder-color:{{mystyle2}};flex-grow:{{myflex}};"name="{{myname}}" value="{{myvalue}}"></input>
+      placeholder-color:{{mystyle2}};flex-grow:{{myflex}};" name="{{myname}}" value="{{myvalue}}"></input>
   </div>
   <div class="input-item">
     <div class="doc-row">
@@ -285,4 +285,4 @@ export default {
 ```
 
 
-![zh-cn_image_0000001234129289](figures/zh-cn_image_0000001234129289.gif)
+![Example-Scenario-1](figures/Example-Scenario-1.gif)

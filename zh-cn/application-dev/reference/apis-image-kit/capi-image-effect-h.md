@@ -58,7 +58,7 @@
 | [ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffect, int32_t textureId,int32_t colorSpace)](#oh_imageeffect_setinputtextureid) | 配置输入包含图片内容的纹理标识。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEffect, int32_t textureId)](#oh_imageeffect_setoutputtextureid) | 配置输出包含渲染后的纹理标识。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)](#oh_imageeffect_start) | 启动效果器。 |
-| [ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)](#oh_imageeffect_stop) | 停止生效效果。 |
+| [ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)](#oh_imageeffect_stop) | 停止效果。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)](#oh_imageeffect_release) | 释放OH_ImageEffect实例资源。 |
 | [ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **info)](#oh_imageeffect_save) | 序列化效果器。 |
 | [OH_ImageEffect *OH_ImageEffect_Restore(const char *info)](#oh_imageeffect_restore) | 反序列化效果器。 |
@@ -775,7 +775,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 
 **描述**
 
-停止生效效果。
+停止效果。
 
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 

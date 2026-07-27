@@ -1,20 +1,21 @@
 # SCSI Peripheral DDK Development
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:14.315Z pushedAt=2026-06-25T06:57:15.673Z -->
 
 ## Overview
 
-Small Computer System Interface (SCSI) devices, such as disk arrays, tape libraries, and specific types of storage servers, are widely used in enterprise-level storage solutions and industrial application scenarios. If the operating system does not have an adaptation driver for these devices, the devices cannot be identified or used after being connected. SCSI Peripheral Driver Development Kit (DDK) is a suite provided for SCSI device driver development. It allows you to develop SCSI device drivers at the application layer based on the user mode.
+Small Computer System Interface (SCSI) devices, such as disk arrays, tape libraries, and specific types of storage servers, are widely used in enterprise-level storage solutions and industrial application scenarios. If the operating system does not have an adaptation driver for these devices, the devices cannot be identified or used after being connected. The SCSI Peripheral Driver Development Kit (ScsiPeripheralDDK) is a suite provided for SCSI device driver development. It allows you to develop SCSI device drivers at the application layer based on the user mode.
 
-The SCSI Peripheral DDK supports seven common commands (including INQUIRY, READ CAPACITY, TEST UNIT READY, REQUEST SENSE, READ, WRITE, and VERIFY) in the three command sets: SCSI Primary Commands (SPC), SCSI Block Commands (SBC), and Multimedia Commands (MMC). You can use these commands at your preference.
+The ScsiPeripheralDDK supports seven common commands (including **INQUIRY**, **READ CAPACITY**, **TEST UNIT READY**, **REQUEST SENSE**, **READ**, **WRITE**, and **VERIFY**) in the three command sets: SCSI Primary Commands (SPC), SCSI Block Commands (SBC), and Multimedia Commands (MMC). You can use these commands at your preference.
 
 ### Basic Concepts
 
-Before developing the SCSI Peripheral DDK, you must understand the following basic concepts:
+Before you get started, understand the following concepts:
 
 - **SCSI**
 
@@ -50,19 +51,19 @@ Before developing the SCSI Peripheral DDK, you must understand the following bas
 
 ### Implementation Principles
 
-A non-standard peripheral application obtains the SCSI device ID by using the peripheral management service, and delivers the ID and the action to the SCSI driver application through RPC. The SCSI driver application can obtain the basic information about the SCSI device and read and write data by invoking the SCSI Peripheral DDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
+A non-standard peripheral application obtains the SCSI device ID by using the peripheral management service, and delivers the ID and the action to the SCSI driver application through RPC. The SCSI driver application can obtain the basic information about the SCSI device and read and write data by invoking the ScsiPeripheralDDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
 
-**Figure 1** Principle of invoking the SCSI Peripheral DDK
+**Figure 1** Principle of invoking the ScsiPeripheralDDK
 
 ![SCSI_Peripheral_DDK schematic diagram](figures/ddk-schematic-diagram.png)
 
 ### Constraints
 
-- The open APIs of SCSI Peripheral DDK support the development of standard SCSI peripheral drivers.
+- The open APIs of the ScsiPeripheralDDK support the development of standard SCSI peripheral drivers.
 
-- The open APIs of SCSI Peripheral DDK can be used only within the lifecycle of **DriverExtensionAbility**.
+- The open APIs of the ScsiPeripheralDDK can be used only within the lifecycle of **DriverExtensionAbility**.
 
-- To use the open APIs of SCSI Peripheral DDK, you need to declare the corresponding ACL permission **ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL** in **module.json5**.
+- To use the open APIs of the ScsiPeripheralDDK, you need to declare the corresponding ACL permission **ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL** in **module.json5**.
 
 ## Environment Setup
 
@@ -74,8 +75,8 @@ Before you get started, make necessary preparations by following instructions in
 
 | **Name**| Description|
 | -------- | -------- |
-| int32_t OH_ScsiPeripheral_Init(void) | Initializes the SCSI Peripheral DDK.|
-| int32_t OH_ScsiPeripheral_Release(void) | Releases the SCSI Peripheral DDK.|
+| int32_t OH_ScsiPeripheral_Init(void) | Initializes the ScsiPeripheralDDK.|
+| int32_t OH_ScsiPeripheral_Release(void) | Releases the ScsiPeripheralDDK.|
 | int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev) | Opens the SCSI device specified by **deviceId** and **interfaceIndex**.|
 | int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev) | Disables the SCSI device.|
 | int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request, ScsiPeripheral_Response *response) | Checks whether the logical units are ready.|
@@ -90,11 +91,11 @@ Before you get started, make necessary preparations by following instructions in
 | int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap) | Destroys a buffer.|
 | int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen, ScsiPeripheral_BasicSenseInfo *senseInfo) | Parses basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.|
 
-For details about the interface, see [SCSI Peripheral DDK](../../reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md).
+For details about the APIs, see [ScsiPeripheralDDK](../../reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md).
 
 ### How to Develop
 
-The following describes how to use the SCSI Peripheral DDK to develop non-standard SCSI peripheral drivers.
+The following describes how to use the ScsiPeripheralDDK to develop non-standard SCSI peripheral drivers:
 
 **Adding Dynamic Link Libraries**
 
@@ -109,23 +110,23 @@ libscsi.z.so
 #include <scsi_peripheral/scsi_peripheral_types.h>
 ```
 
-1. Initialize the SCSI Peripheral DDK.
+1. Initialize the ScsiPeripheralDDK.
 
-   Use **OH_ScsiPeripheral_Init** in **scsi_peripheral_api.h** to initialize the SCSI Peripheral DDK.
+   Call **OH_ScsiPeripheral_Init** in **scsi_peripheral_api.h** to initialize the ScsiPeripheralDDK.
 
    <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
-   // Initialize the SCSI Peripheral DDK.
+   // Initialize the ScsiPeripheralDDK.
    int32_t ret = OH_ScsiPeripheral_Init();
    ```
 
 2. Open the device.
 
-   After the SCSI Peripheral DDK is initialized, use **OH_ScsiPeripheral_Open** in **scsi_peripheral_api.h** to open the SCSI device.
+   After the ScsiPeripheralDDK is initialized, call **OH_ScsiPeripheral_Open** in **scsi_peripheral_api.h** to open the SCSI device.
 
    <!-- @[driver_scsi_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_Open(g_devHandle, interfaceIndex, &g_scsiPeripheralDevice);
    ```
@@ -135,7 +136,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_CreateDeviceMemMap** in **scsi_peripheral_api.h** to create the memory buffer **devMmap**.
 
    <!-- @[driver_scsi_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_CreateDeviceMemMap(g_scsiPeripheralDevice, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
    ```
@@ -145,7 +146,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_TestUnitReady** in **scsi_peripheral_api.h** to check whether the logical unit is ready.
 
    <!-- @[driver_scsi_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_TestUnitReady(g_scsiPeripheralDevice, &request, &response);
    ```
@@ -155,7 +156,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_Inquiry** in **scsi_peripheral_api.h** to obtain the basic information about the SCSI device.
 
    <!-- @[driver_scsi_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Inquiry(g_scsiPeripheralDevice, &inquiryRequest, &inquiryInfo, &response);
    ```
@@ -165,7 +166,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_ReadCapacity10** in **scsi_peripheral_api.h** to obtain the SCSI device capacity information.
 
    <!-- @[driver_scsi_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_ReadCapacity10(g_scsiPeripheralDevice, &readCapacityRequest, &capacityInfo, &response);
    ```
@@ -175,7 +176,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_RequestSense** in **scsi_peripheral_api.h** to obtain sense data.
 
    <!-- @[driver_scsi_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_RequestSense(g_scsiPeripheralDevice, &senseRequest, &response);
    ```
@@ -185,7 +186,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_ParseBasicSenseInfo** in **scsi_peripheral_api.h** to parse basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
 
    <!-- @[driver_scsi_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_ParseBasicSenseInfo(response.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN,
        &senseInfo);
@@ -196,7 +197,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_Read10** in **scsi_peripheral_api.h** to read data from a specified logical block.
 
    <!-- @[driver_scsi_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Read10(g_scsiPeripheralDevice, &request, &response);
    ```
@@ -206,7 +207,7 @@ libscsi.z.so
     Use **OH_ScsiPeripheral_Write10** in **scsi_peripheral_api.h** to write data to a specified logical block of the device.
 
     <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Write10(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -216,17 +217,17 @@ libscsi.z.so
     Use **OH_ScsiPeripheral_Verify10** in **scsi_peripheral_api.h** to verify a specified logical block.
 
     <!-- @[driver_scsi_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Verify10(g_scsiPeripheralDevice, &request, &response);
     ```
 
 12. (Optional) Send SCSI commands in CDB mode.
 
-    Use **OH_SCSIPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
+    Use **OH_ScsiPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
 
     <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_SendRequestByCdb(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -236,7 +237,7 @@ libscsi.z.so
     After all requests are processed and before the program exits, use **OH_ScsiPeripheral_DestroyDeviceMemMap** in **scsi_peripheral_api.h** to destroy the buffer.
 
     <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
     ```
@@ -246,17 +247,17 @@ libscsi.z.so
     After the buffer is destroyed, use **OH_ScsiPeripheral_Close** in **scsi_peripheral_api.h** to close the device.
 
     <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
     ```
 
-15. Release the SCSI Peripheral DDK.
+15. Release the ScsiPeripheralDDK.
 
-    After the SCSI device is closed, use **OH_ScsiPeripheral_Release** in **scsi_peripheral_api.h** to release the SCSI Peripheral DDK.
+    After the SCSI device is closed, call **OH_ScsiPeripheral_Release** in **scsi_peripheral_api.h** to release the ScsiPeripheralDDK.
 
     <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_Release();
     ```

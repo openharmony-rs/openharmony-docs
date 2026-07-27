@@ -3,8 +3,8 @@
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @wanghuan2025-->
-<!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 使用场景
 
@@ -127,7 +127,9 @@ MacOS系统中解析示例
 
 rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件](../dfx/hiappevent-watcher-resourceleak-events.md)，自定义事件处理逻辑。
 
-从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[设置当前进程转储虚拟机原始堆快照的裁剪级别](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)。
+从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)接口设置当前进程转储虚拟机原始堆快照的裁剪级别。
+
+从API version 22开始，TRIM_LEVEL_1模式新增对象属性名解析能力，生成的rawheap文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
 | 规格 | 特点 |
 | :--- | :--- |
 | TRIM_LEVEL_1 | dump速度快，生成的rawheap文件大。<br>API version 20之前版本，虚拟机默认为TRIM_LEVEL_1规格。 |
@@ -188,3 +190,25 @@ rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对�
 指定的生成文件路径没有写入权限。<br>
 **解决措施**<br>
 更改到有写权限的路径可以解决。
+
+### 文件解析失败
+**问题现象**<br>
+工具解析完成，进行转换时失败，未生成heapsnapshot文件。
+```bash
+[INFO ] ParseVersion            current metadata version is 1.0.0
+[INFO ] ParseTypeEnums          total JSType count 214
+[INFO ] ParseTypeList           total metadata count 220
+[INFO ] SetBitField             set BitField offset 8
+[INFO ] SetBitField             set BindingSize offset 32
+[INFO ] SetBitField             set Length offset 8
+[INFO ] SetBitField             set Data offset 16
+[INFO ] ReadVersion             current rawheap version is 1.0.0
+[INFO ] RawHeap                 start to translate rawheap
+[INFO ] ReadRootTable           root node count 6244
+[INFO ] ReadStringTable         string table count 11208
+[INFO ] ReadObjTable            section objects count 96432
+```
+**原因**<br>
+解析工具版本过低。<br>
+**解决措施**<br>
+使用[DevEco Studio 6.1.1 Release](https://developer.huawei.com/consumer/cn/download/deveco-studio)及以上版本的工具。

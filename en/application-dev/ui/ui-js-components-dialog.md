@@ -67,7 +67,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267767893](figures/en-us_image_0000001267767893.gif)
+![dialog-Component](figures/dialog-Component.gif)
 
 
 ## Setting Dialog Box Response
@@ -148,7 +148,7 @@ export default {
 ```
 
 
-![en-us_image_0000001223287720](figures/en-us_image_0000001223287720.gif)
+![Dialog-Box-Response](figures/Dialog-Box-Response.gif)
 
 
 > **NOTE**
@@ -322,4 +322,4 @@ export default {
 ```
 
 
-![en-us_image_0000001223127756](figures/en-us_image_0000001223127756.gif)
+![Example-Scenario-3](figures/Example-Scenario-3.gif)

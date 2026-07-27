@@ -1,10 +1,10 @@
 # ArkTSUtils.locks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决多并发实例间的数据竞争问题，ArkTS语言基础库引入了异步锁能力。为了开发者的开发效率，AsyncLock对象支持跨并发实例引用传递。
 
@@ -21,7 +21,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## AsyncLockCallback
@@ -59,13 +59,13 @@ class A {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     return lock.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     await lock.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
@@ -77,18 +77,18 @@ class A {
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
 @Concurrent
 async function foo(a: A) {
-  await a.setCount(10)
+  await a.setCount(10);
 }
 ```
 
@@ -161,24 +161,31 @@ static query(name: string): AsyncLockState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
 
 ```ts
-// 你已经在别的地方创建了一个锁。
-// let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
+// 查询已存在的锁信息
+let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
 let state = ArkTSUtils.locks.AsyncLock.query('queryTestLock');
-if (!state) {
-    throw new Error('测试失败：期望有效的状态，但得到的是 ' + state);
-}
 let pending: ArkTSUtils.locks.AsyncLockInfo[] = state.pending;
 let held: ArkTSUtils.locks.AsyncLockInfo[] = state.held;
+// 输出当前处于pending状态的锁数量
+console.info(`Number of pending locks: ${pending.length}`);
+// 输出当前处于held状态的锁数量
+console.info(`Number of held locks: ${held.length}`);
+
+// 查询不存在的锁信息，会抛出错误信息：The lock does not exist.
+try {
+  let state1 = ArkTSUtils.locks.AsyncLock.query('queryTestLock1');
+} catch (e) {
+  console.error(`Error is: ${e}`);
+}
 ```
 
 ### queryAll
@@ -200,17 +207,19 @@ static queryAll(): AsyncLockState[]
 **示例：**
 
 ```ts
+// 查询已存在的锁信息
+let lock1 = ArkTSUtils.locks.AsyncLock.request("queryTestLock1");
+let lock2 = ArkTSUtils.locks.AsyncLock.request("queryTestLock2");
 let states: ArkTSUtils.locks.AsyncLockState[] = ArkTSUtils.locks.AsyncLock.queryAll();
-if (states.length === 0) {
-    throw new Error('测试失败：期望至少有1个状态，但得到的是 ' + states.length);
-}
+// 输出当前存在的锁数量
+console.info("The states size is " + states.length);
 ```
 
 ### lockAsync
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
-在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
+在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。若锁已被其他任务持有，当前请求将进入等待队列，待锁释放后按顺序获取锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -230,11 +239,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -250,7 +258,7 @@ let p1 = lock.lockAsync<void>(() => {
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
-在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
+在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。若锁已被其他任务持有，当前请求将进入等待队列，待锁释放后按顺序获取锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -271,11 +279,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -313,11 +320,10 @@ lockAsync\<T, U>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode, options: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist.     |
 | 10200031 | Timeout exceeded. |
 
@@ -544,15 +550,15 @@ wait(): Promise\<void>
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.wait().then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 ```
 
 ### waitFor<sup>18+</sup>
 
-waitFor(timeout : number) : Promise\<void>
+waitFor(timeout: number): Promise\<void>
 
-异步调用进入等待中, 将在被唤醒或者等待时间结束后继续执行。使用Promise异步回调。
+异步调用进入等待中，将在被唤醒或者等待时间结束后继续执行。使用Promise异步回调。
 
 **原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
 
@@ -562,7 +568,7 @@ waitFor(timeout : number) : Promise\<void>
 
 | 名称 | 类型   | 必填 | 说明       |
 | -------- | -------- | ---- | ---------- |
-| timeout | number | 是   | 等待时间，单位为ms，正整数。 |
+| timeout | number | 是   | 等待时间，单位为毫秒，正整数。 |
 
 **返回值：**
 
@@ -575,13 +581,13 @@ waitFor(timeout : number) : Promise\<void>
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 ```
 
 ### notifyAll<sup>18+</sup>
 
-notifyAll() : void
+notifyAll(): void
 
 通知所有等待的线程。
 
@@ -594,7 +600,7 @@ notifyAll() : void
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 // 通知所有等待的线程。
 conditionVariable.notifyAll();
@@ -602,7 +608,7 @@ conditionVariable.notifyAll();
 
 ### notifyOne<sup>18+</sup>
 
-notifyOne() : void
+notifyOne(): void
 
 通知第一个等待的线程。
 
@@ -615,7 +621,7 @@ notifyOne() : void
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread a being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread a being awakened, then continue...`); // 被唤醒后输出日志
 });
 // 通知第一个等待的线程。
 conditionVariable.notifyOne();

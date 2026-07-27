@@ -61,7 +61,7 @@
 | allow-scale | boolean                    | true       | 否    | 弧形按钮的文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。true表示跟随系统放大缩小，false表示不跟随系统放大缩小。           |
 | font-style  | string                     | normal     | 否    | 弧形按钮的字体样式。                               |
 | font-weight | number&nbsp;\|&nbsp;string | normal     | 否    | 弧形按钮的字体粗细。见[text组件font-weight的样式属性](js-components-basic-text.md#样式)。 |
-| font-family | &lt;string&gt;             | sans-serif | 否    | 按钮的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
+| font-family | &lt;string&gt;             | sans-serif | 否    | 弧形按钮的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
 
 
 ## 事件
@@ -154,4 +154,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125132](figures/zh-cn_image_0000001127125132.png)
+![Text-button](figures/Text-button.png)

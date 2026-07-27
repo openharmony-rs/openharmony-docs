@@ -9,7 +9,7 @@
 
 ## Viewing Logs on DevEco Studio
 
-In DevEco Studio Profiler, you can display HiTraceMeter logs to analyze the CPU usage and thread running status of applications and services and view the CPU consumption in a specified period. For details, see [CPU Activity Analysis: CPU](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-cpu).
+In DevEco Studio Profiler, you can display HiTraceMeter logs to analyze the CPU usage and thread running status of applications and services and view the CPU consumption in a specified period. For details, see [CPU Activity Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-cpu).
 
 
 ## Viewing Logs Using Command Line Tools
@@ -42,8 +42,8 @@ In DevEco Studio Profiler, you can display HiTraceMeter logs to analyze the CPU 
 
       In DevEco Studio Profiler, select **Open File** to import the HiTraceMeter log file. 
 
-      For details, see [CPU Activity Analysis: CPU](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-cpu).
-   - Use [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host) for analysis. You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+      For details, see [CPU Activity Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-cpu).
+   - Use the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/README_zh.md) tool for analysis.
 
 ## User-Mode Trace Format
 
@@ -136,7 +136,7 @@ The following describes fields of the user-mode trace, including the field compo
   >
   > 1. Since API version 19, the output level can be customized. In versions earlier than API version 19, the output level is **COMMERCIAL** by default.
   >
-  > 2. The system user-mode trace may have multiple tags. However, the tag set cannot be specified in the application user-mode trace APIs provided by [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [capi-trace-h](../reference/apis-performance-analysis-kit/capi-trace-h.md). The tag of the application user-mode trace is **app** and its value is **62**.
+  > 2. The system user-mode trace may have multiple tags. However, the tag set cannot be specified in the application user-mode trace APIs provided by [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md). The tag of the application user-mode trace is **app** and its value is **62**.
 
 
 - **Custom category names**
@@ -219,7 +219,7 @@ In the user-mode trace, if the middle field is empty, the vertical bar (|) is re
 
 ### HiTraceMeter Tags
 
-The following shows the user-mode tag set of HiTraceMeter. The tag values are the left shift values based on the digit 1 at the actual code layer. You can run the [hitrace -l command](hitrace.md#displaying-the-tag-list-in-hitrace) to obtain the description of the user-mode tag. **always** is the default tag and **commercial** is the custom tag for the commercial version.
+The following shows the user-mode tag set of HiTraceMeter. The tag values are the left shift values based on the digit 1 at the actual code layer. You can use [hitrace](hitrace.md#displaying-the-tag-list-in-hitrace) to obtain the description of the user-mode tag. **always** is the default enabled system tag and **commercial** is the custom tag for the commercial version.
 
 | Name           | Constant Value at the Code Layer| Value|
 | ------------------ | ------------ | ----- |

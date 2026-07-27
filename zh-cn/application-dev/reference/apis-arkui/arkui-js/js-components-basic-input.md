@@ -1,7 +1,7 @@
 # input
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -37,7 +37,7 @@
 | headericon                       | string                  | -         | 否    | 在文本输入前的图标资源路径，该图标不支持点击事件（button，checkbox和radio不生效），图标格式为jpg，png和svg。 |
 | showcounter<sup>5+</sup>         | boolean                 | false     | 否    | 文本输入框是否显示计数下标，需要配合maxlength一起使用。<br/>true表示显示，false表示不显示。         |
 | menuoptions<sup>5+</sup>         | Array&lt;MenuOption&gt; | -         | 否    | 设置文本选择弹框点击更多按钮之后显示的菜单项。                  |
-| autofocus<sup>6+</sup>           | boolean                 | false     | 否    | 是否自动获焦。<br/>应用首页中设置不生效，可在onActive中延迟（100-500ms左右）调用focus方法实现输入框在首页中自动获焦。<br/>true表示文本框自动获焦，false表示文本框不自动获焦。 |
+| autofocus<sup>6+</sup>           | boolean                 | false     | 否    | 是否自动获取焦点。应用首页中设置不生效，可在onActive中延迟（100-500ms左右）调用focus方法实现输入框在首页中自动获取焦点。true表示文本框自动获取焦点，false表示文本框不自动获取焦点。 |
 | selectedstart<sup>6+</sup>       | number                  | -1        | 否    | 开始选择文本时初始选择位置。                           |
 | selectedend<sup>6+</sup>         | number                  | -1        | 否    | 开始选择文本时结尾选择位置。                           |
 | softkeyboardenabled<sup>6+</sup> | boolean                 | true      | 否    | 编辑时是否弹出系统软键盘。<br/>true表示会弹出系统软键盘，false表示不会弹出。                            |
@@ -79,7 +79,7 @@
   | share<sup>5+</sup>        | {<br>&nbsp;value:&nbsp;selectedText<br>&nbsp;} | 设置此事件后，进行文本选择操作后文本选择弹窗会出现分享按钮，点击分享按钮之后，触发该回调，返回选中的文本内容。 |
   | search<sup>5+</sup>       | {<br>&nbsp;value:&nbsp;selectedText<br>&nbsp;} | 设置此事件后，进行文本选择操作后文本选择弹窗会出现搜索按钮，点击搜索按钮之后，触发该回调，返回选中的文本内容。 |
   | optionselect<sup>5+</sup> | {<br>&nbsp;index: optionIndex,<br>&nbsp;value:&nbsp;selectedText<br>&nbsp;} | 文本选择弹窗中设置menuoptions属性后，用户在文本选择操作后，点击菜单项后触发该回调，返回点击的菜单项序号和选中的文本内容。 |
-  | selectchange<sup>6+</sup> | {<br>start:&nbsp;number,<br>end:&nbsp;number<br>&nbsp;} | 文本选择变化时触发事件。                             |
+  | selectchange<sup>6+</sup> | {<br>start:&nbsp;number,<br>end:&nbsp;number<br>&nbsp;} | 文本选择变化时触发该事件，返回文本选择的起始和结束位置。                             |
 
 - 当input类型为checkbox、radio时，支持如下事件：
 
@@ -126,7 +126,7 @@
      width: 60%;
      background-color: gray;
      margin-top: 20px;
-    }
+   }
    ```
    
    ```js
@@ -150,11 +150,11 @@
          error: 'error text'
        });
      },
-    }
+   }
    ```
 
 
-   ![zh-cn_image_0000001252835901](figures/zh-cn_image_0000001252835901.png)
+   ![submit-button](figures/submit-button.png)
 
 2. type为button
    ```html
@@ -176,7 +176,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001207995958](figures/zh-cn_image_0000001207995958.png)
+   ![input](figures/input.png)
 
 3. type为checkbox
    ```html
@@ -209,7 +209,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001208155956](figures/zh-cn_image_0000001208155956.png)
+   ![input01](figures/input01.png)
 
 4. type为radio
    ```html
@@ -246,4 +246,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001208315918](figures/zh-cn_image_0000001208315918.png)
+   ![input02](figures/input02.png)

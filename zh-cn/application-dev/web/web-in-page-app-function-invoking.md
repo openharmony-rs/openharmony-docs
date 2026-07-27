@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-开发者使用Web组件将应用侧代码注册到前端页面中，注册完成之后，前端页面中使用注册的对象名称就可以调用应用侧的方法，实现在前端页面中调用应用侧方法。
+开发者使用Web组件将应用侧代码注册到前端页面中，注册完成之后，前端页面中使用注册的对象名称就可以调用应用侧的方法。
 
 ## 如何建立应用侧与H5侧的交互通道
 
@@ -83,9 +83,10 @@ struct WebComponent {
 
 - 示例1：
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
   
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -121,6 +122,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -144,10 +146,9 @@ struct WebComponent {
  
 - 示例2：
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
    
    ``` TypeScript
-   // xxx.ets
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -211,8 +212,8 @@ struct WebComponent {
    }
    ```
 
-- 可选参数permission是一个json字符串，示例如下：
-  ```json
+- 可选参数permission是一个JSON字符串，示例如下：
+  ```json5
   {
     "javascriptProxyPermission": {
       "urlPermissionList": [       // Object级权限，如果匹配，所有Method都授权

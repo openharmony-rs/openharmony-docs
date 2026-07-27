@@ -2,14 +2,14 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
 [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件提供滑动轮播显示的能力。Swiper本身是一个容器组件，当设置了多个子组件后，可以对这些子组件进行轮播显示。通常，在一些应用首页显示推荐的内容时，需要用到轮播显示的能力。
 
-针对复杂页面场景，可以使用 Swiper 组件的预加载机制，利用主线程的空闲时间来提前构建和布局绘制组件，优化滑动体验。<!--Del-->详细指导见[Swiper高性能开发指导](../performance/swiper_optimization.md)。<!--DelEnd-->
+针对复杂页面场景，可以使用Swiper组件的预加载机制，利用主线程的空闲时间来提前构建和布局绘制组件，优化滑动体验。<!--Del-->详细指导见[Swiper高性能开发指导](../performance/swiper_optimization.md)。<!--DelEnd-->
 
 
 ## 布局与约束
@@ -25,33 +25,33 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-<!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->
+<!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->   
 
 ``` TypeScript
-  Swiper() {
-    Text('0')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Gray)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
+Swiper() {
+  Text('0')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Gray)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 
-    Text('1')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Green)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
+  Text('1')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Green)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 
-    Text('2')
-      .width('90%')
-      .height('100%')
-      .backgroundColor(Color.Pink)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-  }
-// ···
-  .loop(true)
+  Text('2')
+    .width('90%')
+    .height('100%')
+    .backgroundColor(Color.Pink)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+}
+// ...
+.loop(true)
 ```
 
 ![loop_true](figures/loop_true.gif)
@@ -131,7 +131,7 @@ Swiper() {
 
 - 自定义导航点样式
 
-选中的导航点，直径设为30vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
+选中的导航点，宽度设为30vp且高度设为15vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
 
 <!-- @[customize_navigation_point_styles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
@@ -200,7 +200,9 @@ Swiper支持手指滑动、点击导航点和通过控制器三种方式切换�
 <!-- @[switch_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperPageSwitchMethod.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct SwiperPageSwitchMethod {
   private swiperBackgroundColors: Color[] = [Color.Blue, Color.Brown, Color.Gray, Color.Green, Color.Orange,
@@ -218,7 +220,7 @@ export struct SwiperPageSwitchMethod {
   }
 
   build() {
-    // ···
+    // ...
           Column({ space: 5 }) {
             Swiper(this.swiperController) {
               ForEach(this.swiperBackgroundColors, (backgroundColor: Color, index: number) => {
@@ -230,7 +232,7 @@ export struct SwiperPageSwitchMethod {
                   .fontSize(30)
               })
             }
-            // ···
+            // ...
             .indicator(true)
 
             Row({ space: 12 }) {
@@ -267,7 +269,7 @@ export struct SwiperPageSwitchMethod {
                 })
             }.margin(5)
           }
-        // ···
+          // ...
   }
 
   private toSwiperAnimationModeStr() {
@@ -337,39 +339,38 @@ Swiper(
 
 Swiper支持在一个页面内同时显示多个子组件，通过[displayCount](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displaycount8)属性设置。
 
-<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->
+<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->  
 
 ``` TypeScript
-  Swiper() {
-    Text('0')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Gray)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('1')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Green)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('2')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Pink)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-    Text('3')
-      .width(250)
-      .height(250)
-      .backgroundColor(Color.Yellow)
-      .textAlign(TextAlign.Center)
-      .fontSize(30)
-  }
-// ···
-  .indicator(true)
-  .displayCount(2)
+Swiper() {
+  Text('0')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Gray)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('1')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Green)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('2')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Pink)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
+  Text('3')
+    .width(250)
+    .height(250)
+    .backgroundColor(Color.Yellow)
+    .textAlign(TextAlign.Center)
+    .fontSize(30)
 }
+// ...
+.indicator(true)
+.displayCount(2)
 ```
 
 ![two](figures/two.PNG)
@@ -381,7 +382,9 @@ Swiper支持通过[customContentTransition](../reference/apis-arkui/arkui-ts/ts-
 <!-- @[customize_transition_animations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperCustomAnimation.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct SwiperCustomAnimation {
   private DISPLAY_COUNT: number = 2;
@@ -402,9 +405,9 @@ export struct SwiperCustomAnimation {
   }
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           Swiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -451,10 +454,10 @@ export struct SwiperCustomAnimation {
               }
             }
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -463,7 +466,7 @@ export struct SwiperCustomAnimation {
 
 ## Swiper与Tabs联动
 
-Swiper选中的元素改变时，会通过[onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18)回调事件，将元素的索引值index返回。通过调用[tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex)方法来实现Tabs页签的切换。
+从API version 18开始，Swiper选中的元素改变时，会通过[onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18)回调事件，将元素的索引值index返回。通过调用[tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex)方法来实现Tabs页签的切换。
 
 <!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
 
@@ -491,7 +494,8 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct SwiperAndTabsLinkage {
   @State fontColor: string = '#182431';
@@ -545,7 +549,7 @@ export struct SwiperAndTabsLinkage {
             .width('100%')
 
             Swiper(this.swiperController) {
-              LazyForEach(this.swiperData, (item: string) => {
+              LazyForEach(this.swiperData, (item: number) => {
                 Text(item.toString())
                   .onAppear(()=>{
                     console.info('onAppear ' + item.toString());
@@ -558,7 +562,7 @@ export struct SwiperAndTabsLinkage {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, (item: string) => item)
+              }, (item: number) => item.toString())
             }
             .loop(false)
             .onSelected((index: number) => {
@@ -575,7 +579,7 @@ export struct SwiperAndTabsLinkage {
 
 ## 设置圆点导航点间距
 
-针对圆点导航点，可以通过DotIndicator的[space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19)属性来设置圆点导航点的间距。
+从API version 19开始，针对圆点导航点，可以通过DotIndicator的[space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19)属性来设置圆点导航点的间距。
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
@@ -593,7 +597,7 @@ Swiper(
 
 ## 导航点忽略组件大小
 
-当导航点的[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，可通过调用bottom(bottom, ignoreSize)属性来进行设置。将ignoreSize设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
+当导航点的[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，从API version 19开始，可通过调用[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom19)(bottom, ignoreSize)属性来进行设置。将ignoreSize设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
 
 - 圆点导航点忽略组件大小。
 
@@ -633,7 +637,7 @@ Swiper(
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
-// ···
+// ...
 
 
 class MyDataSource implements IDataSource {
@@ -658,7 +662,8 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct SwiperIgnoreComponentSize {
 
@@ -682,20 +687,20 @@ export struct SwiperIgnoreComponentSize {
   }
 
   build() {
-    // ···
+    // ...
           Scroll() {
             Column({ space: 20 }) {
               Swiper(
                 this.swiperController1
               ) {
-                LazyForEach(this.data1, (item: string) => {
+                LazyForEach(this.data1, (item: number) => {
                   Text(item.toString())
                     .width('90%')
                     .height(120)
                     .backgroundColor(0xAFEEEE)
                     .textAlign(TextAlign.Center)
                     .fontSize(30)
-                }, (item: string) => item)
+                }, (item: number) => item.toString())
               }
               .indicator(new DotIndicator()
                 .space(this.space)
@@ -729,7 +734,7 @@ export struct SwiperIgnoreComponentSize {
               }.margin(2)
             }.width('100%')
           }
-        // ···
+          // ...
   }
 }
 ```
@@ -738,11 +743,11 @@ export struct SwiperIgnoreComponentSize {
 
 ## 保持可见内容位置不变
 
-Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20)属性，可在使用LazyForEach懒加载数据时（如通过onDataAdd新增数据），保持当前可见内容位置不变，避免因数据增删导致的视图跳动。该属性默认值为false。
+从API version 20开始，Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20)属性，可在使用LazyForEach懒加载数据时（如通过onDataAdd新增数据），保持当前可见内容位置不变，避免因数据增删导致的视图跳动。该属性默认值为false。
 
 maintainVisibleContentPosition为true时，显示区域上方或前方插入或删除数据时可见内容位置不变。
 
-关于数据[LazyForEach：懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
+关于数据[LazyForEach：数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
 
 <!-- @[visible_content_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets) -->
 
@@ -790,7 +795,8 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct SwiperVisibleContentPosition {
   private data: MyDataSource = new MyDataSource();

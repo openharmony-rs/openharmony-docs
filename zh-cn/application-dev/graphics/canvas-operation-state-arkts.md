@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -211,12 +211,12 @@ canvas.detachBrush();
 ## 画布状态保存与恢复
 
 
-保存操作用于保存当前画布的状态到一个栈顶，恢复操作用于恢复保存在栈顶的画布状态，恢复操作一旦执行，保存和恢复操作中间一系列平移、缩放、剪裁等操作都会被清除。
+保存操作用于保存当前画布的状态到一个栈顶，恢复操作用于恢复保存在栈顶的画布状态，恢复操作一旦执行，保存和恢复操作中间一系列平移、缩放、裁剪等操作都会被清除。
 
 
 ### 接口说明
 
-画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

@@ -1,16 +1,16 @@
 # Custom Render Node (RenderNode)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
 For third-party frameworks that lack an inherent rendering environment, leveraging the system's basic rendering and animation capabilities is crucial. Such frameworks often have their own mechanisms for front-end parsing, layout management, and event handling. As a result, the universal attributes and events associated with [FrameNode](./arkts-user-defined-arktsNode-frameNode.md) may be redundant for these frameworks, potentially causing duplicate work in managing layout and event logic.
 
-This is where [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) becomes beneficial. **RenderNode** is a streamlined render node designed to offer rendering-specific features. It allows for setting of basic rendering properties and provides the capability to dynamically add and remove nodes and to implement custom drawing. These can be used to provide third-party frameworks with essential rendering and animation capabilities.
+This is where [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) becomes beneficial. **RenderNode** is a streamlined render node designed to offer rendering-specific features. It allows for setting of basic rendering attributes and provides the capability to dynamically add and remove nodes and to implement custom drawing. These can be used to provide third-party frameworks with essential rendering and animation capabilities.
 
 ## Creating and Removing Nodes
 
@@ -22,9 +22,9 @@ With **RenderNode**, you can add, delete, query, and modify nodes, thereby chang
 
 > **NOTE**
 >
-> - The subtree structure obtained through queries in **RenderNode** is constructed based on the parameters passed through the APIs of **RenderNode**.
+> - The subtree structure obtained from **RenderNode** is constructed based on the parameters passed through the [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild) API.
 >
-> - To integrate a RenderNode with the system for display, you need to mount the RenderNode obtained from a FrameNode onto the component tree.
+> - To integrate a **RenderNode** with the system for display, you need to mount the **RenderNode** obtained from a **FrameNode** onto the component tree.
 
 <!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
 
@@ -76,43 +76,49 @@ class MyNodeController extends NodeController {
 @Component
 export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
+  @State myLog: string = '';
 
   build() {
     // ...
-      Row() {
+      Column() {
         NodeContainer(this.myNodeController)
           .width(200)
           .height(350);
+        Text(this.myLog).width(300).height(40).margin({ top: 20, left: 20, bottom: 20 });
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
             const nextSibling = child!.getNextSibling()
             if (child === null || nextSibling === null) {
               hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
+              this.myLog = 'the child or nextChild is null';
             } else {
               // Obtain the position of the child node.
               hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
                 `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+              this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
             }
           });
-      };
+      }.width(300).margin({ left: 20 });
 
       // ...
   }
 }
 ```
+![](figures/operation_node_tree.png)
 
-## Setting and Obtaining Rendering-related Properties
+## Setting and Obtaining Rendering-related Attributes
 
-In **RenderNode**, you can set rendering-related properties, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
+In **RenderNode**, you can set rendering-related attributes, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
 
 > **NOTE**
 > 
-> - The properties obtained from a query in **RenderNode** are the values that have been explicitly set.
+> - The attribute values obtained from **RenderNode** are the values that have been explicitly set.
 > 
 > - If no parameters are provided or if the provided parameters are invalid, the query will return the default values.
 >
-> - Avoid modifying RenderNodes in a BuilderNode. In **BuilderNode**, how properties are applied and updated is governed by the state management system, independently of manual intervention. Be aware that setting the same **RenderNode** property in both BuilderNode and FrameNode could lead to unexpected behavior.
+> - Avoid modifying RenderNodes in [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md). In **BuilderNode**, how attributes are applied and updated is governed by the state management system, independently of manual intervention. Be aware that setting the same **RenderNode** attribute in both **BuilderNode** and **FrameNode** could lead to unexpected behavior.
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
@@ -138,7 +144,7 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.size = { width: 100, height: 100 };
 
 class MyNodeController extends NodeController {
@@ -164,10 +170,11 @@ export struct RenderingProperties {
   build() {
     // ...
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column() {
-          NodeContainer(this.myNodeController);
-        };
+      Column() {
+        NodeContainer(this.myNodeController).height(260);
+      };
 
+      Flex() {
         // Set the position of the RenderNode.
         Button('position')
           .width(300)
@@ -175,7 +182,7 @@ export struct RenderingProperties {
             renderNode.position = { x: 10, y: 10 };
             hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
           });
-
+        Column().width(20);
         // Set the pivot of the RenderNode.
         Button('pivot')
           .width(300)
@@ -183,7 +190,9 @@ export struct RenderingProperties {
             renderNode.pivot = { x: 0.5, y: 0.6 };
             hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
           });
+      }
 
+      Flex() {
         // Modify the scale factor of the RenderNode.
         Button('scale')
           .width(300)
@@ -191,7 +200,7 @@ export struct RenderingProperties {
             renderNode.scale = { x: 0.5, y: 1 };
             hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
           });
-
+        Column().width(20);
         // Set the translation amount of the RenderNode.
         Button('translation')
           .width(300)
@@ -199,7 +208,9 @@ export struct RenderingProperties {
             renderNode.translation = { x: 100, y: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
           });
+      }
 
+      Flex() {
         // Set the rotation angle of RenderNode.
         Button('rotation')
           .width(300)
@@ -207,7 +218,7 @@ export struct RenderingProperties {
             renderNode.rotation = { x: 45, y: 0, z: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
           });
-
+        Column().width(20);
         // Set the transformation matrix of the RenderNode.
         Button('transform')
           .width(300)
@@ -220,13 +231,15 @@ export struct RenderingProperties {
             ];
             hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
           });
+      }
 
+      Flex() {
         // Set the shadow attributes of the RenderNode.
         Button('shadow')
           .width(300)
           .onClick(() => {
             renderNode.shadowElevation = 10; // Set shadow elevation.
-            renderNode.shadowColor = 0XFF00FF00;
+            renderNode.shadowColor = 0xff2787d9;
             renderNode.shadowOffset = { x: 10, y: 10 };
             renderNode.shadowAlpha = 0.1;
             hilog.info(DOMAIN, TEST_TAG, ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
@@ -234,7 +247,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
           });
-
+        Column().width(20);
         // Set the shadow blur radius of the RenderNode.
         Button('shadowRadius')
           .width(300)
@@ -246,7 +259,9 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
             hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
           });
+      }
 
+      Flex() {
         // Set the border style of the RenderNode.
         Button('border')
           .width(300)
@@ -264,10 +279,10 @@ export struct RenderingProperties {
               bottom: BorderStyle.Solid
             }
             renderNode.borderColor = {
-              left: 0xFF0000FF,
-              top: 0xFF0000FF,
-              right: 0xFF0000FF,
-              bottom: 0xFF0000FF
+              left: 0xffd5d5d5,
+              top: 0xffd5d5d5,
+              right: 0xffd5d5d5,
+              bottom: 0xffd5d5d5
             };
             renderNode.borderRadius = {
               topLeft: 32,
@@ -280,7 +295,7 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
             hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
           })
-
+        Column().width(20);
         // Set the mask of the RenderNode.
         Button('shapeMask')
           .width(300)
@@ -288,6 +303,7 @@ export struct RenderingProperties {
             renderNode.shapeMask = mask;
             hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
           });
+      }
 
         // Set the clipping shape of the RenderNode.
         Button('shapeClip')
@@ -310,6 +326,7 @@ export struct RenderingProperties {
   }
 }
 ```
+![](figures/rendering_properties.gif)
 
 ## Using Custom Drawing
 
@@ -343,9 +360,9 @@ class MyRenderNode extends RenderNode {
     // Set the brush color.
     brush.setColor({
       alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
+      red: 81,
+      green: 157,
+      blue: 180
     });
     canvas.attachBrush(brush);
     // Draw a rectangle.
@@ -367,7 +384,7 @@ renderNode.frame = {
   width: 300,
   height: 300
 };
-renderNode.backgroundColor = 0xff0000ff;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.opacity = 0.5;
 
 class MyNodeController extends NodeController {
@@ -400,20 +417,21 @@ export struct CustomDraw {
     // ...
       Column() {
         NodeContainer(this.myNodeController)
-          .width('100%');
+          .width('100%').height(320);
         Button('Invalidate')
           .onClick(() => {
             // Calling invalidate() multiple times synchronously will trigger only a single redraw. As a result, the log inside the draw callback will be printed only once.
             renderNode.width += 10;
             renderNode.invalidate();
             renderNode.invalidate();
-          });
+          }).margin({left: -80});
       };
 
       // ...
   }
 }
 ```
+![](figures/custom_draw.gif)
 
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
 
@@ -575,7 +593,7 @@ export struct CustomDrawCanvas {
 
 **Node-API sample code**
 
-The C++ side can obtain the canvas through the Node-API and perform subsequent custom drawing operations.
+The C++ side can obtain the [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) through the Node-API and perform subsequent custom drawing operations.
 
 <!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
 
@@ -748,7 +766,7 @@ export struct CustomDrawCanvasNative {
 
 ## Setting the Label
 
-You can use the [label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12) API to assign labels for RenderNodes. This makes it easier to distinguish between nodes under node **Inspector**.
+You can use the [label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12) API to set label information for a RenderNode, which helps you distinguish nodes more clearly when using the inspector to [inspect page layouts](./arkts-inspector-overview.md).
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
@@ -772,7 +790,7 @@ class MyNodeController extends NodeController {
         width: 100,
         height: 100
       };
-      renderChildNode.backgroundColor = 0xffff0000;
+      renderChildNode.backgroundColor = 0xff519db4;
       renderChildNode.label = 'customRenderChildNode';
       hilog.info(DOMAIN, 'label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
@@ -793,21 +811,22 @@ export struct SetLabel {
         NodeContainer(this.myNodeController)
           .width(300)
           .height(700)
-          .backgroundColor(Color.Gray);
+          .backgroundColor(0xffd5d5d5);
       };
 
       // ...
   }
 }
 ```
+![](figures/set_label.png)
 
 ## Checking RenderNode Reference Status
 
-Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values.
+Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. In the ArkUI framework, frontend nodes are created at the ArkTS code level and are responsible for interacting with developers. Backend nodes are entity nodes maintained at the bottom layer of the ArkUI framework and are responsible for processing specific logic.
 
 Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20) API to check whether a **RenderNode** object has released its reference to backend entity nodes. This enables verification of node validity before operations to prevent potential issues.
 
-<!-- @[check_rander_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRanderNodeDisposed.ets) -->
+<!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
@@ -847,7 +866,7 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-export struct CheckRanderNodeDisposed {
+export struct CheckRenderNodeDisposed {
   @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
@@ -878,3 +897,5 @@ export struct CheckRanderNodeDisposed {
   }
 }
 ```
+
+![](figures/check_render_node_disposed.gif)

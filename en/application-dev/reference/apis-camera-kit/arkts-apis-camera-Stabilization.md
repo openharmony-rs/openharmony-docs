@@ -6,13 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Stabilization inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
+**Stabilization** inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 
 It provides APIs to set video stabilization.
 
 You can set video stabilization only when a [VideoOutput](arkts-apis-camera-VideoOutput.md) stream exists in the session.
-
-The enumerated value **HIGH** of [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode) takes effect only when the resolution of [Profile](arkts-apis-camera-i.md#profile) is 1920 x 1080.
 
 > **NOTE**
 >

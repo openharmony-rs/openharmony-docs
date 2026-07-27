@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPEG, BMP, SVG, WEBP, GIF, TIFF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
+More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
 
 To use the **Image** component, call the following API:
@@ -58,7 +58,7 @@ Archived data sources can be classified into local resources, network resources,
   - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
   - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
 
-  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 
@@ -183,7 +183,7 @@ Archived data sources can be classified into local resources, network resources,
 
 ### Pixel Map
 
-A pixel map is a pixel image obtained after image decoding. For details, see [Introduction to Image Kit](../media/image/image-overview.md). In the following example, the data returned by the loaded online image is decoded into a pixel map, which is then displayed on the **Image** component.
+PixelMap is a pixel image after image decoding. For details, see [Introduction to Image Kit](../media/image/image-overview.md). In the following example, the data returned by the loaded online image is decoded into a pixel map, which is then displayed on the **Image** component.
 
 
   <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
@@ -513,7 +513,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
   }
   ```
 
-![en-us_image_0000001622804833](figures/en-us_image_0000001622804833.png)
+![en-us_image_0000001622804833](figures/Image-Scale-Mode.png)
 
 
 ### Using Image Interpolation
@@ -578,7 +578,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
   }
   ```
 
-![en-us_image_0000001643127365](figures/en-us_image_0000001643127365.png)
+![en-us_image_0000001643127365](figures/Image-Interpolation.png)
 
 
 ### Setting Image Repeat Pattern
@@ -634,7 +634,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
   }
   ```
 
-![en-us_image_0000001593444112](figures/en-us_image_0000001593444112.png)
+![en-us_image_0000001593444112](figures/Setting-Image-Repeat.png)
 
 
 ### Setting Image Rendering Mode
@@ -675,7 +675,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
   }
   ```
 
-![en-us_image_0000001593293100](figures/en-us_image_0000001593293100.png)
+![en-us_image_0000001593293100](figures/Setting-Image-Rendering.png)
 
 
 ### Setting Image Decoding Size
@@ -727,7 +727,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
   }
   ```
 
-![en-us_image_0000001593769844](figures/en-us_image_0000001593769844.png)
+![en-us_image_0000001593769844](figures/Image-Decoding-Size.png)
 
 
 ### Adding a Filter to an Image
@@ -765,7 +765,7 @@ You can use the **colorFilter** attribute to add a filter to an image.
   }
   ```
 
-![en-us_image_0000001643171357](figures/en-us_image_0000001643171357.png)
+![en-us_image_0000001643171357](figures/Adding-Filter-Image.png)
 
 
 ### Synchronously Loading Images
@@ -835,4 +835,4 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
   }
   ```
 
-![en-us_image_0000001511740460](figures/en-us_image_0000001511740460.png)
+![en-us_image_0000001511740460](figures/Adding-Events.png)

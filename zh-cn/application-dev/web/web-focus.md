@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-开发者可利用Web组件的焦点管理功能，有效管理Web组件的聚焦与失焦，同时利用H5侧的W3C标准接口，管理网页界面上唯一可交互的元素聚焦与失焦。
+开发者可利用Web组件的焦点管理功能，有效管理Web组件的获焦与失焦，同时利用H5端的W3C标准接口，管理网页界面上唯一可交互的元素获焦与失焦。
 
 - Web组件与ArkUI组件焦点控制的常用接口及其使用场景：
 
@@ -41,8 +41,8 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 
 - 按键走焦
 
-  - 支持ArkWeb与其他组件通过Tab键、Shift+Tab键走焦。
-  - 支持ArkWeb内部网页元素通过Tab键、Shift+Tab键走焦，网页元素走焦完成后，抛回ArkUI继续框架侧走焦。
+  - 支持Web组件与其他组件通过Tab键、Shift+Tab键走焦。
+  - 支持Web组件内部网页元素通过Tab键、Shift+Tab键走焦，网页元素走焦完成后，抛回ArkUI继续框架侧走焦。
 
 - 点击申请获焦
 
@@ -53,18 +53,18 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 
 被动走焦的场景有：
 
-- 组件删除：当焦点所在的Web组件被移除时，系统会按照先向后再向前的原则，将焦点转移至相邻的同级组件。若所有同级组件均不可获焦，则焦点将被释放，并通知其父级组件进行焦点处理。
+- 组件移除：当焦点所在的Web组件被移除时，系统会按照先向后再向前的原则，将焦点转移至相邻的同级组件。若所有同级组件均不可获焦，则焦点将被释放，并通知其父级组件进行焦点处理。
 
-- 属性变更：若将处于焦点状态的组件的focusable或enabled属性设置为false，或者将visibility属性设置为不可见，系统将自动转移焦点至其他可获焦组件，转移方式同组件删除。
+- 属性变更：若将处于焦点状态的组件的focusable或enabled属性设置为false，或者将visibility属性设置为不可见，系统将自动转移焦点至其他可获焦组件，转移方式同组件移除。
 
-- Web组件不可见：ArkWeb获焦后，应用前后台切换、页面切换、Navigation导航等场景，ArkWeb会失焦再获焦。
+- Web组件不可见：Web组件获焦后，应用前后台切换、页面切换、Navigation导航等场景，Web组件会失焦再获焦。
 
-- Web组件加载网页：ArkWeb通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：过场动画过程中父组件不可获焦、应用侧设置了web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)再次尝试使web组件获焦。当获焦成功后，应用侧onFocus、W3C focus事件均会上报。
+- Web组件加载网页：Web组件通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时Web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：转场动画过程中父组件不可获焦、应用侧设置了Web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)再次尝试使Web组件获焦。当获焦成功后，应用侧onFocus、W3C focus事件均会上报。
 
 - autofocus样式：设置了autofocus样式的元素网页完成加载时默认获焦。若该元素支持文本输入，则输入框会有光标闪烁，但不会弹出软键盘。如需自动弹出软键盘，可参考[软键盘自动弹出](web-docking-softkeyboard.md#软键盘自动弹出)。
 
 
-- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的ArkWeb场景中（[menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[datepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[timepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)、下拉框、弹窗等），ArkWeb均会失焦。
+- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的Web组件场景中（[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)、下拉框、弹窗等），Web组件均会失焦。
 
 ## Web组件与ArkUI组件焦点控制
 
@@ -139,7 +139,7 @@ struct WebComponent {
   }
 }
 ```
-**示例图1**  组件焦点获焦/失焦事件
+**示例图1**  组件获焦/失焦事件
 
 通过requestFocus接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
 
@@ -158,7 +158,7 @@ addEventListener("blur", (event) => {});
 
 onblur = (event) => {};
 ```
-- W3C autofocus，表示元素应在页面加载时或其所属的 `dialog` 显示时被聚焦
+- W3C autofocus，表示元素应在页面加载时或其所属的 `dialog` 显示时获焦
 ```js
 <input name="q" autofocus />
 ```
@@ -186,7 +186,7 @@ struct WebComponent {
 
 加载的html文件。
 ```html
-// test.html
+<!-- test.html -->
 <!DOCTYPE html>
 <html>
 <head>

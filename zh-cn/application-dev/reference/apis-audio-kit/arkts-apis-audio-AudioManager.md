@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -230,6 +230,8 @@ getSessionManager(): AudioSessionManager
 
 获取音频会话管理器。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **返回值：**
@@ -267,6 +269,83 @@ import { audio } from '@kit.AudioKit';
 let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
 ```
 
+## getDeviceEnhanceManager()
+
+getDeviceEnhanceManager(): AudioDeviceEnhanceManager
+
+获取音频设备增强管理器实例。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----------------------------------------------- | -------------------------------- |
+| [AudioDeviceEnhanceManager](arkts-apis-audio-AudioDeviceEnhanceManager.md) | 返回一个AudioDeviceEnhanceManager实例。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+```
+
+## getDebuggingManager
+
+getDebuggingManager(): AudioDebuggingManager
+
+获取音频调试管理器实例。该实例为单例，获取后可重复使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | 返回AudioDebuggingManager实例。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+let debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+```
+
+## getRecordingManager
+
+getRecordingManager(): AudioRecordingManager
+
+获取录音策略管理器。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型                                       | 说明                          |
+|------------------------------------------| ----------------------------- |
+| [AudioRecordingManager](arkts-apis-audio-AudioRecordingManager.md) | AudioRecordingManager实例。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
+```
+
 ## setAudioParameter<sup>(deprecated)</sup>
 
 setAudioParameter(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
@@ -276,7 +355,8 @@ setAudioParameter(key: string, value: string, callback: AsyncCallback&lt;void&gt
 接口根据硬件设备的支持能力扩展音频配置。支持的参数与产品和设备强相关，非通用参数，示例代码内使用样例参数。
 
 > **说明：**
-> 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 11开始废弃。
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
@@ -313,7 +393,8 @@ setAudioParameter(key: string, value: string): Promise&lt;void&gt;
 接口根据硬件设备的支持能力扩展音频配置。支持的参数与产品和设备强相关，非通用参数，示例代码内使用样例参数。
 
 > **说明：**
-> 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 11开始废弃。
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
@@ -349,7 +430,8 @@ getAudioParameter(key: string, callback: AsyncCallback&lt;string&gt;): void
 本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
 
 > **说明：**
-> 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 11开始废弃。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -383,7 +465,8 @@ getAudioParameter(key: string): Promise&lt;string&gt;
 本接口的使用场景为：根据硬件设备的支持能力扩展音频配置。在不同的设备平台上，所支持的音频参数会存在差异。示例代码内使用样例参数，实际支持的音频配置参数见具体设备平台的资料描述。
 
 > **说明：**
-> 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 11开始废弃。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -411,13 +494,10 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
 
 setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定流的音量。使用callback异步回调。
+设置指定流的音量等级。使用callback异步回调。
 
 > **说明：**
-> 
-> - 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
-> 
-> - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看API文档：[音量面板](ohos-multimedia-avvolumepanel.md)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -451,13 +531,10 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
 
 setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
-设置指定流的音量。使用Promise异步回调。
+设置指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
->
-> - 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
->
-> - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看API文档：[音量面板](ohos-multimedia-avvolumepanel.md)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -490,7 +567,7 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的音量。使用callback异步回调。
+获取指定流的音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated)替代；API version 20及以后，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
@@ -502,7 +579,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 | 参数名     | 类型                                | 必填 | 说明               |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
 
 **示例：**
 
@@ -522,7 +599,7 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
 
 getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的音量。使用Promise异步回调。
+获取指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated)替代；API version 20及以后，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
@@ -539,7 +616,7 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
 
 **示例：**
 
@@ -553,7 +630,7 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的最小音量。使用callback异步回调。
+获取指定流的最小音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
@@ -565,7 +642,7 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 | 参数名     | 类型                                | 必填 | 说明               |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
 **示例：**
 
@@ -585,7 +662,7 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的最小音量。使用Promise异步回调。
+获取指定流的最小音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
@@ -602,7 +679,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最小音量。 |
+| Promise&lt;number&gt; | Promise对象，返回最小音量等级。 |
 
 **示例：**
 
@@ -616,7 +693,7 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的最大音量。使用callback异步回调。
+获取指定流的最大音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
@@ -628,7 +705,7 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 | 参数名     | 类型                                | 必填 | 说明                   |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。           |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
 **示例：**
 
@@ -648,7 +725,7 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的最大音量。使用Promise异步回调。
+获取指定流的最大音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
@@ -665,7 +742,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                          |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最大音量。 |
+| Promise&lt;number&gt; | Promise对象，返回最大音量等级。 |
 
 **示例：**
 
@@ -684,7 +761,7 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -719,7 +796,7 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 当该音量流可设置的最小音量不能为0时，不支持静音操作。例如：闹钟和通话。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[AVVolumePanel](ohos-multimedia-avvolumepanel.md#avvolumepanel)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -878,7 +955,8 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 设置铃声模式。使用callback异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -914,7 +992,8 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 设置铃声模式。使用Promise异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
@@ -1197,7 +1276,8 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 设置麦克风静音状态。使用callback异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -1231,7 +1311,8 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 设置麦克风静音状态。使用Promise异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.MICROPHONE
 

@@ -7,9 +7,12 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-应用开发者可以使用[应用账号SDK](../../reference/apis-basic-services-kit/js-apis-appAccount.md)管理本应用的账号数据。
+应用开发者可以使用[@ohos.account.appAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md)管理本应用的账号数据。
 
 能力限制：应用卸载场景下，被卸载应用的账号数据会被删除；本地账号删除场景下，被删除本地账号下的所有应用的账号数据会被删除。
+
+<!--RP2-->
+<!--RP2End-->
 
 ## 开发准备
 

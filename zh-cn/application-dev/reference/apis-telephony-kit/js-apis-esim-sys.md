@@ -234,8 +234,7 @@ eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDow
 
 ## eSIM.getDownloadableProfiles
 
-getDownloadableProfiles\(slotId: number, portIndex: number,
-forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
+getDownloadableProfiles\(slotId: number, portIndex: number, forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 获取可用的可下载配置文件列表。使用Promise异步回调。
 
@@ -287,8 +286,7 @@ eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfile
 
 ## eSIM.downloadProfile
 
-downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
-configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
+downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile, configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 
 下载配置文件。使用Promise异步回调。
 
@@ -509,8 +507,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 ## eSIM.switchToProfile
 
-switchToProfile\(slotId: number, portIndex: number, iccid: string,
-forceDisableProfile: boolean\): Promise\<ResultCode\>
+switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
 切换到(启用)给定的配置文件。使用Promise异步回调。
 
@@ -971,6 +968,49 @@ try {
 } catch (err) {
     console.error(`getContractInfo, promise: err->${JSON.stringify(err)}`)
 }
+```
+
+## eSIM.getEsimFreeStorage<sup>23+</sup>
+
+getEsimFreeStorage\(): Promise\<number>
+
+通过该接口获取eUICC硬件的剩余存储空间。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_TELEPHONY_ESIM_STATE
+
+**系统能力**：SystemCapability.Telephony.CoreService.Esim
+
+**返回值：**
+
+| 类型            | 说明                      |
+| ------------- | ----------------------- |
+| Promise\<number> | Promise对象，返回eUICC硬件的剩余存储空间，以KB为单位。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                    |
+| ------- | --------------------------------------- |
+| 201     | Permission denied.                      |
+| 202     | Nonsystem applications use system APIs. |
+| 801     | Capability not supported.               |
+| 3120001 | Service connection failed.              |
+| 3120002 | System internal error.                  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { eSIM } from '@kit.TelephonyKit';
+
+eSIM.getEsimFreeStorage().then((data) => {
+    console.info(`getEsimFreeStorage invoking succeeded.freeStorage: ${data}`);
+}).catch((err: BusinessError<void>) => {
+    console.error(`getEsimFreeStorage , promise: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## GetDownloadableProfileMetadataResult

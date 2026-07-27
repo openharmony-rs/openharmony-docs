@@ -56,7 +56,7 @@ Sets whether to enable the DOM Storage API permission. If this attribute is not 
 
 fileAccess(fileAccess: boolean)
 
-Sets whether to enable access to the file system in the application. This setting does not affect the access to the files specified through [$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md). For API version 11 and earlier versions, access to the file system in the application is enabled by default if this attribute is not explicitly called. Since API version 12, access to the file system in the application is disabled by default if this attribute is not explicitly called.
+Sets whether to enable access to the file system in the application. This setting does not affect the access to the files specified through [$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md#accessing-resources). For API version 11 and earlier versions, access to the file system in the application is enabled by default if this attribute is not explicitly called. Since API version 12, access to the file system in the application is disabled by default if this attribute is not explicitly called.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -127,7 +127,7 @@ Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The
 
 > **NOTE**
 >
-> The **javaScriptProxy** API must be used in pair with the **deleteJavaScriptRegister** API to prevent memory leaks.
+> The **javaScriptProxy** API must be used in pair with the [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
 > All parameters of the **javaScriptProxy** object cannot be updated.
 > When registering a **javaScriptProxy** object, select at least one of the synchronous and asynchronous method lists, or both.
 > Only one object can be registered through this API. To register multiple objects, use [registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy).
@@ -2409,7 +2409,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 > **NOTE**
 >
-> - Currently, the **viewport** parameter of the **meta** tag on the frontend HTML page is enabled or disabled based on whether **User-Agent** contains the **Mobile** field. If a **User-Agent** does not contain the **Mobile** field, the **viewport** attribute in the **meta** tag is disabled by default. In this case, you can explicitly set the **metaViewport** attribute to **true** to overwrite the disabled state.
+> - Currently, the **viewport** attribute of the **meta** tag on the frontend HTML page is enabled or disabled based on whether **User-Agent** contains the **Mobile** field. If a **User-Agent** does not contain the **Mobile** field, the **viewport** attribute in the **meta** tag is disabled by default. In this case, you can explicitly set the **metaViewport** attribute to **true** to overwrite the disabled state.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

@@ -1,8 +1,8 @@
 # @ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -45,9 +45,9 @@ import { systemSoundManager } from '@kit.AudioKit';
 | 名称                            | 值  | 说明                                                                     |
 | ------------------------------- |----|------------------------------------------------------------------------|
 | RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_0替代。 |
-| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。                                                              |
+| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | SIM卡1的铃声。                                                              |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。 |
-| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。                                                              |
+| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | SIM卡2的铃声。                                                              |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -59,8 +59,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                            | 值   | 说明         |
 | ------------------------------- |-----|------------|
-| SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | sim卡1的短信提示音。 |
-| SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | sim卡2的短信提示音。 |
+| SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | SIM卡1的短信提示音。 |
+| SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SIM卡2的短信提示音。 |
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | 通知提示音。     |
 
 ## MediaType<sup>20+</sup>
@@ -409,7 +409,7 @@ getMediaType(): MediaType
 
 | 类型    | 说明     |
 |--------|--------|
-| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置mediatype，则此函数返回的默认值为AUDIO。|
+| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置媒体类型，则此函数返回的默认值为AUDIO。|
 
 **错误码：**
 
@@ -490,10 +490,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 
 | 名称                     | 值 | 说明         |
 | ------------------------|----|--------|
-| CALL_SIM_CARD_0         | 0  | sim卡1的来电铃声的振动。 |
-| CALL_SIM_CARD_1         | 1  | sim卡2的来电铃声的振动。 |
-| TEXT_MESSAGE_SIM_CARD_0 | 20 | sim卡1的短信提示音的振动。 |
-| TEXT_MESSAGE_SIM_CARD_1 | 21 | sim卡2的短信提示音的振动。 |
+| CALL_SIM_CARD_0         | 0  | SIM卡1的来电铃声的振动。 |
+| CALL_SIM_CARD_1         | 1  | SIM卡2的来电铃声的振动。 |
+| TEXT_MESSAGE_SIM_CARD_0 | 20 | SIM卡1的短信提示音的振动。 |
+| TEXT_MESSAGE_SIM_CARD_1 | 21 | SIM卡2的短信提示音的振动。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
 
 ## ToneHapticsMode<sup>14+</sup>
@@ -630,7 +630,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则URI为空。 柔和振动是指马达振动强度较标准振动弱。|
 
 **错误码：**
 
@@ -1076,7 +1076,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 | 参数名   | 类型                             | 必填 | 说明                     |
 | -------- | -------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)| 是   | 当前应用的上下文。         |
-| type     | [RingtoneType](#ringtonetype)  | 是   | 被设置的系统铃声的类型。   |
+| type     | [RingtoneType](#ringtonetype)  | 是   | 待获取的系统铃声的类型。   |
 
 **返回值：**
 
@@ -1164,6 +1164,136 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 });
 ```
 
+### getMockHapticRingtonePlayer
+
+getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
+
+获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                         |
+| -------- | --------------------------------| ---- | --------------------------- |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。            |
+| hapticUri     | string  | 是   | 触觉文件的URI，需确保为JSON文件且在系统文件中真实存在。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;[RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 202 |Caller is not a system application.|
+| 20700002 |Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system.|
+| 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
+let hapticUri = 'file://data/test.json'; // 需更改为目标触觉文件URI。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+  if (value != null) {
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
+    systemRingtonePlayer = value;
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getMockHapticRingtonePlayer
+
+getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
+
+获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                         |
+| -------- | --------------------------------| ---- | --------------------------- |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。            |
+| type     | [RingtoneType](#ringtonetype)   | 是   | 待获取播放器的铃声类型。 |
+| ringtoneUri     | string  | 是   | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;[RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 202 |Caller is not a system application.|
+| 20700002 |Parameter verification failed. Possible causes: 1. The type exceeds the valid range, please use the RingtoneType enum for input. 2. The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
+| 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
+let ringtoneUri = 'file://data/test.json'; // 需更改为目标铃音文件URI。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+  if (value != null) {
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
+    systemRingtonePlayer = value;
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ### setSystemToneUri<sup>11+</sup>
 
 setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promise&lt;void&gt;
@@ -1180,7 +1310,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。         |
 | uri      | string                              | 是   | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
-| type     | [SystemToneType](#systemtonetype11) | 是   | 被设置的系统提示音的类型。   |
+| type     | [SystemToneType](#systemtonetype11) | 是   | 待获取的系统提示音的类型。   |
 
 **返回值：**
 
@@ -1598,7 +1728,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1748,7 +1878,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1853,7 +1983,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1861,8 +1991,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1911,7 +2041,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是  | 当前应用的上下文。                                                              |
 | toneAttr | [ToneAttrs](#toneattrs12) | 是  | 铃音属性。                                                                  |
-| fd  | number    | 是  | 文件描述符，可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。 |
+| fd  | number    | 是  | 文件描述符，可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。 |
 | offset | number    | 否  | 读取数据的偏移量（以字节为单位）。默认情况下为0。                                              |
 | length | number    | 否  | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。                                 |
 
@@ -1923,7 +2053,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1931,8 +2061,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -2045,7 +2175,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2098,7 +2228,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2155,7 +2285,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2206,7 +2336,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2259,7 +2389,7 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2337,7 +2467,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
 
 openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSoundError]>>
 
-获取系统铃声的属性列表。使用Promise异步回调。
+批量打开铃声文件。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -2357,7 +2487,7 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2369,15 +2499,18 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing openToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.openToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in opening tone list.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to open tone list. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2407,7 +2540,7 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2420,19 +2553,22 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing removeCustomizedToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.removeCustomizedToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in using removeCustomizedToneList function.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to use removeCustomizedToneList function. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2460,7 +2596,7 @@ type SystemTonePlayer = _SystemTonePlayer
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 

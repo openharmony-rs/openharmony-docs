@@ -20,7 +20,7 @@ Decorates a function that is called when the initialization of a custom componen
 
 > **NOTE**
 >
-> You cannot change the status variable in this callback. Otherwise, the application will break down.
+> You cannot change the state variable in this callback. Otherwise, the application will break down.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -52,7 +52,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentBuilt: MethodDecorator
 
-Decorates a function that is called after the **build()** function of the custom component is executed for the first time, that is, when the component status changes from from **CustomComponentLifecycleState.APPEARED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as tracking data reporting.
+Decorates a function that is called after the **build()** function of the custom component is executed for the first time, that is, when the component status changes from **CustomComponentLifecycleState.APPEARED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as tracking data reporting.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -100,7 +100,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentDetach: MethodDecorator
 
-Decorates a function that is called before the status of the custom component changes back from **CustomComponentLifecycleState.MOUNTED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as modifying non-status variables.
+Decorates a function that is called before the status of the custom component changes back from **CustomComponentLifecycleState.MOUNTED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as modifying non-state variables.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -120,9 +120,9 @@ Decorates a function that is called when a reusable custom component is re-added
 
 > **NOTE**
 >
-> -  The value of **param** is not **undefined** in the callback of the reused state management V1 component.
+> -  The value of **params** is not **undefined** in the callback of the reused state management V1 component.
 >
-> -  The value of **param** is **undefined** in the callback of the reused state management V2 component.
+> -  The value of **params** is **undefined** in the callback of the reused state management V2 component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -134,7 +134,7 @@ Decorates a function that is called when a reusable custom component is re-added
 
 | Parameter | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | No   | The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.|
+| params   | Record\<string, Object \| undefined \| null> | No   | The value is not **undefined** in the reuse callback of the V1 component and is **undefined** in the reuse callback of the V2 component.|
 
 **Example**
 
@@ -144,7 +144,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentRecycle: MethodDecorator
 
-Decorates a function that is called when the necessary recycling operations defined in the application are performed. That is, this function is triggeredd when the component status changes from **CustomComponentLifecycleState.BUILT** to **CustomComponentLifecycleState.RECYCLED**. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
+Decorates a function that is called when the necessary recycling operations defined in the application are performed. That is, this function is triggered when the component status changes from **CustomComponentLifecycleState.BUILT** to **CustomComponentLifecycleState.RECYCLED**. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -243,7 +243,7 @@ Observes lifecycle status changes of a custom component, and triggers the lifecy
 
 aboutToAppear?(): void
 
-Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the status variables in this phase. Its function is similar to that of [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
+Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the state variables in this phase. Its function is similar to that of [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -303,7 +303,7 @@ Called when a custom component is detached from the main tree. You can use this 
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-Called when a reusable custom component is re-added to the node tree from the cache to receive the component constructors. The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.
+Called when a reusable custom component is re-added to the node tree from the cache to receive the component constructors. The value of **params** is not **undefined** in the reuse callback of the V1 component. The value of **params** is **undefined** in the reuse callback of the V2 component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -315,7 +315,7 @@ Called when a reusable custom component is re-added to the node tree from the ca
 
 | Parameter | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | No   | The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.|
+| params   | Record\<string, Object \| undefined \| null> | No   | The value is not **undefined** in the reuse callback of the V1 component and is **undefined** in the reuse callback of the V2 component.|
 
 ### aboutToRecycle
 

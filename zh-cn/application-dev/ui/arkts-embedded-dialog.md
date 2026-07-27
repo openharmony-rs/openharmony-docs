@@ -39,11 +39,12 @@ this.getUIContext().getPromptAction().openCustomDialog({
 })
 ```
 
-如果希望弹出框显示在某个指定页面内，需通过第二个参数[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
+如果希望弹出框显示在某个指定页面内，需在options入参中设置[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)属性来实现。此属性接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
 
 > **说明：**
 > 
-> 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
+> - 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
+> - levelUniqueId必须传入[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的uniqueId，建议使用FrameNode的[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)方法获取uniqueId。
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
@@ -58,7 +59,7 @@ Text(this.message).id('test_text')
         this.customDialogComponent();
       },
       // ···
-      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框	
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
     })
       .then((dialogId: number) => {
@@ -201,7 +202,7 @@ struct Next {
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
- 	 
+
 let customDialogId: number = 0;
 
 @Builder

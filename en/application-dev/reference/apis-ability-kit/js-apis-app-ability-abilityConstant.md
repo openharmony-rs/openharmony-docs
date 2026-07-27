@@ -44,6 +44,8 @@ Describes the launch parameters, which mainly include the ability launch reasons
 | lastExitReason | [LastExitReason](#lastexitreason) | No| No| An enumerated value indicating the reason for the last exit of the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lastExitMessage<sup>12+</sup> | string | No| No| Detailed message that describes the reason for the last exit of the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | No| Yes| Key runtime information for the last exit of the ability (including process ID, exit timestamp, and RSS memory value).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| launchUTCTime<sup>23+</sup> | number | No| Yes| UTC timestamp when the UIAbility starts, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Constraints**:<br>This feature takes effect only when the UIAbility is started. For other types of abilities (for example, UIExtensionAbility), the obtained start time is the default value **0**.|
+| launchUptime<sup>23+</sup> | number | No| Yes| System uptime (the time elapsed since the system booted up) when the UIAbility starts, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Constraints**:<br>This feature takes effect only when the UIAbility is started. For other types of abilities (for example, UIExtensionAbility), the obtained start time is the default value **0**.|
 
 ## LaunchReason
 
@@ -186,19 +188,13 @@ export default class MyAbility extends UIAbility {
 
 Enumerates the memory levels of the entire device. You can use it in [onMemoryLevel()](js-apis-app-ability-ability.md#abilityonmemorylevel) of the UIAbility to complete different operations.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Name                        | Value| Description               |
 | ---                         | --- | ---           |
-| MEMORY_LEVEL_MODERATE       | 0   | Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.| 
-| MEMORY_LEVEL_LOW            | 1   | Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.| 
-| MEMORY_LEVEL_CRITICAL       | 2   | Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.|
-| MEMORY_LEVEL_UI_HIDDEN<sup>23+</sup>      | 3   | Indicates that all UI interfaces of the application are invisible, and some resources should be released. This enumeration takes effect only for applications switched from the foreground to the background.|  
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>23+</sup>     | 4   | Indicates that the application has just been used, that is, it is in the first third of the Least Recently Used (LRU) list, and will not be cleaned up by the system temporarily. This enumeration takes effect only for background applications.|  
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>23+</sup>    | 5   | Indicates that the application has not been used for a period of time after being used by the user, that is, it is in the middle third of the LRU list, and is at risk of being cleaned up by the system. This enumeration takes effect only for background applications.| 
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>23+</sup>    | 6   | Indicates that the application has not been used for a long time, that is, it is in the last third of the LRU list, and will be prioritized for cleanup by the system. This enumeration takes effect only for background applications.|
+| MEMORY_LEVEL_MODERATE       | 0   | Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
+| MEMORY_LEVEL_LOW            | 1   | Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
+| MEMORY_LEVEL_CRITICAL       | 2   | Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 > 
@@ -206,8 +202,6 @@ Enumerates the memory levels of the entire device. You can use it in [onMemoryLe
 >   - When the available memory of the entire device drops to 1700 MB to 1800 MB, the **onMemoryLevel** callback with a value of **0** is triggered, indicating that the available memory is moderate.
 >   - When the available memory of the entire device drops to 1600 MB to 1700 MB, the **onMemoryLevel** callback with a value of **1** is triggered, indicating that the available memory is low.
 >   - When the available memory of the entire device drops below 1600 MB, the **onMemoryLevel** callback with a value of **2** is triggered, indicating that the available memory is critically low.
->
-> - LRU: Indicates a linked list sorted by the application's recent usage order. Typically, recently used applications are placed at the head of the list (front position), and the least frequently used applications are placed at the tail (rear position). When the memory is insufficient, applications at the rear position are cleared first.
 
 **Example**
 

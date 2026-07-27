@@ -1,16 +1,16 @@
 # Repeat：可复用的循环渲染
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 > 
 > - Repeat从API version 12开始支持。
 > 
-> - 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> - 本文档仅为开发指南。组件接口规范见[Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md) API参数说明。
 > 
 > - 由于不同设备屏幕宽高不同，本指南内的示例的实际效果和截图有偏差。
 
@@ -34,9 +34,8 @@ Repeat根据容器组件的**显示区域和预加载区域**加载子组件。�
 ## 使用限制
 
 - Repeat必须在滚动类容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持Repeat懒加载场景。<br/>
-循环渲染只允许创建一个子组件，子组件应当是允许包含在容器组件中的子组件。例如：Repeat与[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件配合使用时，子组件必须为[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件。
+循环渲染只允许创建一个子组件，子组件应当是允许包含在容器组件中的子组件。例如：Repeat与[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件配合使用时，子组件需要为[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件或者[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)组件。
 - Repeat[懒加载模式](#懒加载能力说明)不支持与[状态管理（V1）](../state-management/arkts-state-management-overview.md#状态管理v1)配合使用，否则会导致渲染异常。
-- Repeat当前不支持动画效果。
 - 滚动容器组件内只能包含一个Repeat。以List为例，不建议同时包含ListItem、ForEach、LazyForEach，不建议同时包含多个Repeat。
 - 当Repeat与自定义组件或[@Builder](../state-management/arkts-builder.md)函数混用时，必须将RepeatItem类型整体进行传参，组件才能监听到数据变化。详见[与@Builder混用时状态变量未刷新](#与builder混用时状态变量未刷新)。
 - Repeat子组件复用时不会触发[aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)、[aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期。
@@ -62,7 +61,8 @@ Repeat通过[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-r
 ``` TypeScript
 // 在List容器组件中使用Repeat
 @Entry
-@ComponentV2 // 推荐使用V2装饰器
+@ComponentV2
+  // 推荐使用V2装饰器
 struct RepeatExample {
   @Local dataArr: Array<string> = []; // 数据源
 
@@ -99,7 +99,7 @@ struct RepeatExample {
 
 Repeat提供渲染模板（template）能力，可以在同一个数据源中渲染多种子组件。每个数据项会根据[.templateId()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)得到template type，从而渲染type对应的`.template()`中的子组件。
 
-> **说明:**
+> **说明：**
 >
 > - `.template()`需要在[懒加载模式](#懒加载能力说明)下使用。
 > - `.each()`等价于template type为空字符串的`.template()`。
@@ -136,7 +136,7 @@ struct RepeatExampleWithTemplates {
           .key((item: string, index: number): string => JSON.stringify(item)) // 键值生成函数
           .virtualScroll({ totalCount: this.dataArr.length }) // 打开懒加载，totalCount为期望加载的数据长度
           .templateId((item: string, index: number): string => { // 根据返回值寻找对应的模板子组件进行渲染
-            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的5个为B，其余为默认模板
+            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的6个为B，其余为默认模板
           })
           .template('A', (ri: RepeatItem<string>) => { // 'A'模板
             ListItem() {
@@ -167,7 +167,7 @@ Repeat的[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repea
 
 当`.key()`缺省时，Repeat会生成新的随机键值。当发现有重复key时，Repeat会在已有键值的基础上递归生成新的键值，直到没有重复键值。
 
-> **说明:**
+> **说明：**
 >
 > - 键值（key）与索引（index）的区别：键值是数据项的唯一标识符，Repeat根据键值是否发生变化判断数据项是否更新；索引只标识数据项在数组中的位置。
 > - 在[懒加载模式](#懒加载能力说明)下，Repeat也会通过状态管理机制监听数据本身的变化，从而实现高效的更新。
@@ -256,6 +256,8 @@ Repeat具有节点复用能力。Repeat子组件从组件树中移除时，会�
 Repeat组件默认开启节点复用功能。从API version 18开始，在懒加载模式下，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
 
 从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
+
+从API version 18开始，Repeat允许在[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)中使用[@ReusableV2](../state-management/arkts-new-reusableV2.md)装饰的自定义组件。Repeat自身的复用能力优先于@ReusableV2的复用能力。在懒加载模式下，正常滑动场景、更新场景不会触发@ReusableV2的回收和复用，若开发者希望使用@ReusableV2的复用能力，建议关闭Repeat自身的复用能力。在全量加载模式下，删除、创建子组件会触发@ReusableV2的回收和复用。使用示例可参考[在Repeat组件中使用](../state-management/arkts-new-reusableV2.md#在repeat组件中使用)@ReusableV2。
 
 > **说明：**
 > 
@@ -412,6 +414,7 @@ struct RepeatLazyLoadingLongData {
   // 假设数据源总长度较长，为1000。初始数组未提供数据。
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
+
   build() {
     Column({ space: 5 }) {
       // 初始显示位置为index = 100，数据可通过懒加载自动获取。
@@ -419,9 +422,13 @@ struct RepeatLazyLoadingLongData {
         Repeat(this.arr)
           .virtualScroll({
             // 期望的数据源总长度为1000。
-            onTotalCount: () => { return 1000; },
+            onTotalCount: () => {
+              return 1000;
+            },
             // 实现数据懒加载。
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -433,10 +440,13 @@ struct RepeatLazyLoadingLongData {
           })
       }
       .height('80%')
-      .border({ width: 1})
+      .border({ width: 1 })
+
       // 显示位置跳转至index = 500，数据可通过懒加载自动获取。
       Button('ScrollToIndex 500')
-        .onClick(() => { this.scroller.scrollToIndex(500); })
+        .onClick(() => {
+          this.scroller.scrollToIndex(500);
+        })
     }
   }
 }
@@ -457,18 +467,23 @@ struct RepeatLazyLoadingLongData {
 @ComponentV2
 struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
-            onTotalCount: () => { return 100; },
+            onTotalCount: () => {
+              return 100;
+            },
             // 实现数据懒加载。
             onLazyLoading: (index: number) => {
               // 创建占位符。
               this.arr[index] = '';
               // 模拟高耗时加载过程，通过异步任务加载数据。
-              setTimeout(() => { this.arr[index] = index.toString(); }, 1000);
+              setTimeout(() => {
+                this.arr[index] = index.toString();
+              }, 1000);
             }
           })
           .each((obj: RepeatItem<string>) => {
@@ -481,7 +496,7 @@ struct RepeatLazyLoadingSync {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
     }
   }
 }
@@ -497,8 +512,8 @@ struct RepeatLazyLoadingSync {
 
 > **说明：** 
 >
-> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件`cachedCount > 0`，否则将会导致渲染异常。
-> - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
+> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) > 0，否则将会导致渲染异常。
+> - 若与[Swiper-Loop](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop)模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
 > - 开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
 
 <!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
@@ -508,20 +523,26 @@ struct RepeatLazyLoadingSync {
 @ComponentV2
 struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
+
   // 提供首屏显示所需的初始数据。
   aboutToAppear(): void {
     for (let i = 0; i < 15; i++) {
       this.arr.push(i.toString());
     }
   }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
             // 数据无限懒加载。
-            onTotalCount: () => { return this.arr.length + 1; },
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onTotalCount: () => {
+              return this.arr.length + 1;
+            },
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -533,7 +554,7 @@ struct RepeatLazyLoadingInfinite {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
       // 建议设置cachedCount > 0。
       .cachedCount(1)
     }
@@ -584,7 +605,7 @@ struct RepeatVirtualScrollOnMove {
               Text(obj.item)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
-                .size({height: 100, width: '100%'})
+                .size({ height: 100, width: '100%' })
             }.margin(10)
             .borderRadius(10)
             .backgroundColor('#FFFFFFFF')
@@ -680,6 +701,115 @@ struct PreInsertDemo {
 运行效果：
 
 ![Repeat-pre-insert-preserve](figures/repeat-pre-insert-preserve.gif)
+
+### animateTo动效
+
+从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+
+Repeat子组件过渡动画的判定规则如下：
+1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。
+2. 子组件从内部离开显示区域和预加载区域时，将被判定为删除组件（仅懒加载模式）。
+3. 子组件更新时，若键值发生变化，将被判定为删除旧组件，插入新组件。
+4. 删除子组件，并在过渡动画结束前重新插入该组件，将被判定为插入新组件，原过渡动画不受影响。
+5. 过渡动画中的子组件，滑出显示区域和预加载区域时，动画将直接结束（仅懒加载模式）。
+
+> **说明：**
+>
+> - 仅支持与List配合使用，与其他容器组件配合使用时的动画效果为未定义行为。
+> - 仅支持显示区域内子组件的动画效果，显示区域外子组件的动画效果为未定义行为。
+> - 过渡动画具体设置方式和动画效果请参考[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口。
+
+**示例代码**
+
+<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+
+``` TypeScript
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: ItemInfo[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new ItemInfo(`Item ${i}`, `#FFFFFF`));
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Add')
+          .onClick(() => {
+            // 为插入子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, new ItemInfo(`New item ${this.count++}`, `#FFFFFF`))
+            })
+          })
+        Button('Delete')
+          .onClick(() => {
+            // 为删除子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 1)
+            })
+          })
+        Button('Exchange')
+          .onClick(() => {
+            // 为交换子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              let temp = this.dataArray[1];
+              this.dataArray[1] = this.dataArray[0]
+              this.dataArray[0] = temp;
+            })
+          })
+        Button('Update')
+          .onClick(() => {
+            // 为更新子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray[0].info = 'Item updated';
+              this.dataArray[0].color = '#86C5E3';
+            })
+          })
+      }
+      List({ space: 5 }) {
+        Repeat(this.dataArray)
+          .each((repeatItem) => {
+            ListItem() {
+              Text(repeatItem.item.info)
+            }
+            .backgroundColor(repeatItem.item.color)
+            .width(150)
+            .height(50)
+            .border({ width: 1 })
+            // 设置子组件插入和删除时的过渡效果
+            .transition(TransitionEffect.translate({ x: 300 }))
+          })
+          .key((item: ItemInfo, index: number) => item.key)
+          .virtualScroll()
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+  }
+}
+
+@ObservedV2
+class ItemInfo {
+  @Trace public info: string;
+  @Trace public color: string;
+  public key: string;
+  constructor(info: string, color: string) {
+    this.info = info;
+    this.color = color;
+    this.key = info;
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animation](figures/repeat-animation.gif)
 
 ## 常见使用场景
 
@@ -797,23 +927,27 @@ struct RepeatVirtualScroll {
           })
           .virtualScroll({ totalCount: this.simpleList.length })
           .templateId((item: Repeat006Clazz, index: number) => {
-            return (index % 2 === 0) ? 'odd' : 'even';
+            return (index % 2 === 0) ? 'even' : 'odd';
           })
           .template('odd', (ri) => {
-            Text(`[odd] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Blue)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[odd] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Blue)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 3 })
           .template('even', (ri) => {
-            Text(`[even] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Green)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[even] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Green)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 1 })
       }
       .cachedCount(2)
@@ -828,7 +962,7 @@ struct RepeatVirtualScroll {
 }
 ```
 
-该示例代码展示了100项自定义类`RepeatClazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
+该示例代码展示了100项自定义类`Repeat006Clazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 
@@ -1480,7 +1614,7 @@ struct EntryCompSucc {
 
 ### 与@Builder混用时状态变量未刷新
 
-当Repeat与[@Builder](../state-management/arkts-builder.md)混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)函数、[Binding类](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20)和[MutableBinding类](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)实现@Builder函数中状态变量的刷新。
+当Repeat与[@Builder](../state-management/arkts-builder.md)混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)函数、[Binding](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20)类和[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)类实现@Builder函数中状态变量的刷新。
 
 示例代码如下：
 
@@ -1530,8 +1664,11 @@ struct RepeatBuilderPage {
             }.border({ width: 1 })
           }).virtualScroll()
       }
-      .cachedCount(1).border({ width: 1 })
-      .width('70%').height('60%').alignListItem(ListItemAlign.Center)
+      .cachedCount(1)
+      .border({ width: 1 })
+      .width('70%')
+      .height('60%')
+      .alignListItem(ListItemAlign.Center)
 
       Button('click to change data.').onClick(() => {
         this.simpleList[0] = 10000; // 修改第一项数据为10000。

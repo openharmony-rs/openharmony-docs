@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
 \@Builder装饰的函数也称为“自定义构建函数”。
 
@@ -14,7 +14,7 @@ ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，�
 
 @Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#状态变量state-variables)或使用[生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
 2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
@@ -43,7 +43,7 @@ ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，�
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+    // @Builder装饰此函数，使其成为自定义构建函数，用于配置并构建Text组件
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
@@ -79,9 +79,10 @@ struct BuilderDemo {
 
 示例：
 
-<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) --> 
+<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) -->  
 
 ``` TypeScript
+// 全局自定义构建函数showTextBuilder
 @Builder
 function showTextBuilder() {
   Text('Hello World')
@@ -113,7 +114,7 @@ struct BuilderSample {
 
 - 在\@Builder装饰的函数内部，不允许改变参数值。
 
-- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
+- \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -123,7 +124,7 @@ struct BuilderSample {
 
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详细用例见[\@Builder支持状态变量刷新](#builder支持状态变量刷新)。
 
-使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUtils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
+使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUtils.makeBinding()`中额外传入写状态变量的回调函数可以将@Builder函数内对参数的修改，传递到调用@Builder函数的组件中。
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -208,7 +209,7 @@ struct ParameterReference {
 
 调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
-<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) -->
+<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -225,6 +226,7 @@ struct ParameterValue {
 
   build() {
     Column() {
+      // 按值传递参数，状态变量的改变不会引起overBuilderByValue内的UI刷新
       overBuilderByValue(this.label)
     }
   }
@@ -235,13 +237,13 @@ struct ParameterValue {
 
 1. \@Builder装饰的函数内部在没有使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)时不允许修改参数值，修改不会触发UI刷新。若[按引用传递参数](#按引用传递参数)且仅传入一个参数时，修改参数内部的属性会抛出运行时错误。使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值，请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
-2. \@Builder按引用传递且仅传入一个参数时，才会触发动态渲染UI。请参考[按引用传递参数](#按引用传递参数)。
+2. @Builder按引用传递传入一个参数时，可以触发动态渲染UI，请参考[按引用传递参数](#按引用传递参数)。
 
-3. 如果\@Builder传入的参数是两个或两个以上，不会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
+3. 如果\@Builder传入的参数是两个或两个以上，且未使用[按回调传递参数](#按回调传递参数)，不会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
 4. \@Builder传入的参数中同时包含按值传递和按引用传递，不会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
-5. \@Builder的参数必须按照对象字面量的形式，把所需属性一一传入，才会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
+5. 不允许在\@Builder函数里修改参数的属性，否则会抛出运行时错误，从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)，示例请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
 
 ## 使用场景
@@ -250,7 +252,7 @@ struct ParameterValue {
 
 创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过[`aboutToAppear`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数和按钮的点击事件更新`builderValue`，实现UI的动态渲染。
 
-<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) -->
+<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -287,6 +289,7 @@ struct PrivateBuilder {
           .borderRadius(20)
           .textAlign(TextAlign.Center)
         this.builder()
+        // 点击Button更新builderValue，用于更新文本显示
         Button('Click to change the builderValue')
           .onClick(() => {
             this.builderValue = 'builderValue was clicked';
@@ -302,11 +305,11 @@ struct PrivateBuilder {
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
-### 全局自定义构建函数
+### 使用全局自定义构建函数
 
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
-<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) --> 
+<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) -->  
 
 ``` TypeScript
 class ChildTmp {
@@ -379,6 +382,7 @@ struct ParentDemo {
         tmpValue: this.objParam.tmpValue,
         arrayTmpValue: this.objParam.arrayTmpValue
       })
+      // 点击Button更新objParam，触发overBuilder内组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'Hello World';
         this.objParam.numValue = 1;
@@ -402,7 +406,7 @@ struct ParentDemo {
 
 在该场景中，`@Builder`被用来展示Text组件，不会参与动态UI刷新。Text组件中值的变化是通过使用装饰器的特性，监听到值的改变触发的UI刷新，而不是通过`@Builder`的能力触发的。
 
-<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) -->
+<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) --> 
 
 ``` TypeScript
 class ChildrenTmp {
@@ -442,6 +446,7 @@ struct ParentSample {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
+      // 点击Button更新label，触发Text组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'strValue Hello World';
         this.label = 'label Hello World';
@@ -458,7 +463,7 @@ struct ParentSample {
 
 ### 将@Builder装饰的函数当作CustomBuilder类型使用
 
-当参数类型为[`CustomBuilder`](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+当参数类型为[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
 
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
@@ -767,7 +772,7 @@ struct ParentPage {
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-当通过引用传递方式向`@Builder`传递参数时，若参数为`@Local`装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
+当通过引用传递方式向`@Builder`传递参数时，若参数为[`@Local`](arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
 
@@ -965,7 +970,7 @@ struct ReusableChildTwoPage {
 
 ### \@Builder支持状态变量刷新
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
 
 <!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) --> 
 
@@ -1230,7 +1235,7 @@ struct Parent3 {
 
 【反例】
 
-在@ComponentV2装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
+在[@ComponentV2](arkts-create-custom-components.md#componentv2)装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 
@@ -1281,7 +1286,7 @@ struct PageBuilderIncorrectUsage {
 
 在@ComponentV2装饰器装饰的自定义组件中，只有使用@ObservedV2装饰的ParamTmpClass类和使用@Trace装饰的count属性才能触发UI刷新。
 
-<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) --> 
+<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -1331,6 +1336,9 @@ struct PageBuilderCorrectUsage {
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
       if (this.builderParams.count < 100) {
+        // builderParams是被@ObservedV2装饰的ParamTmpClass类
+        // count属性被@Trace装饰
+        // count变化会引起UI刷新
         this.builderParams.count += 5;
         this.mapValue.set('name', this.builderParams.count);
         this.setValue.add(this.builderParams.count);
@@ -1551,6 +1559,7 @@ struct BackGround1 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
@@ -1610,9 +1619,14 @@ struct BackGround2 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-notui.gif](./figures/arkts-builder-faq-notui.gif)
 
 ### 在\@Builder方法中使用MutableBinding未传递set访问器
 
@@ -1629,15 +1643,18 @@ class GlobalTmp1 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBinding<number>) {
-  Column() {
+  Column({ space: 5 }) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 点击Button触发set访问器会造成运行时错误
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -1647,19 +1664,21 @@ struct MakeBindingTest1 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Text(`${this.GlobalTmp1.strValue}`)
       builderWithTwoParams1(UIUtils.makeBinding(() => this.GlobalTmp1),
         UIUtils.makeBinding<number>(() => this.num)) // 构造MutableBinding类型参数时没有传SetterCallback
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp1.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
-MutableBinding的使用规格详见[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
+使用规格详见状态管理API文档中的[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
 
 【正例】
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
@@ -1672,15 +1691,18 @@ class GlobalTmp2 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
-  Column() {
+  Column({space: 5}) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 修改了MutableBinding类型参数的value属性
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -1690,25 +1712,32 @@ struct MakeBindingTest2 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({space: 5}) {
       Text(`${this.GlobalTmp2.strValue}`)
+      // 正确用法：构造MutableBinding时传递了SetterCallback
       builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
         UIUtils.makeBinding<number>(() => this.num,
           val => {
             this.num = val;
           }))
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp2.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
 
-### 在\@Builder装饰的函数内部修改入参内容
+示例效果图：
 
-不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。
+![arkts-builder-faq-mutablebinding-no-setter.gif](./figures/arkts-builder-faq-mutablebinding-no-setter.gif)
+
+### 在@Builder装饰的函数内部修改入参内容
+
+不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
 
 【反例】
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
@@ -1769,6 +1798,7 @@ struct ParentMod1 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量，观察UI刷新
           this.label = 'ArkUI';
         })
       this.extendBlank();
@@ -1804,13 +1834,15 @@ interface TempMod2 {
 // 使用MutableBinding在@Builder装饰的函数内部修改参数值
 @Builder
 function overBuilderMod2(param: MutableBinding<TempMod2>) {
-  Column() {
+  Column({ space: 5 }) {
     Button(`Mod--overBuilder === ${param.value.paramA}`)
       .onClick(() => {
+        // 修改对象参数的属性值
         param.value.paramA = 'Yes';
       })
     Button(`change`)
       .onClick(() => {
+        // 整体替换对象参数
         param.value = { paramA: 'trialOne' };
       })
   }
@@ -1847,6 +1879,7 @@ struct ParentMod2 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量的属性
           this.objectOne.paramA = 'ArkUI';
         })
       this.extendBlank();
@@ -1859,9 +1892,14 @@ struct ParentMod2 {
         )
       );
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-change-parameter.gif](./figures/arkts-builder-faq-change-parameter.gif)
 
 ### 在\@Watch函数中执行\@Builder函数
 
@@ -1874,6 +1912,7 @@ struct ParentMod2 {
 @Entry
 @Component
 struct Child1 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -1883,6 +1922,7 @@ struct Child1 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
     this.watchBuilder(this.content); // 错误写法，在@Watch函数中使用@Builder函数
   }
@@ -1891,6 +1931,7 @@ struct Child1 {
     Column() {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
@@ -1901,12 +1942,13 @@ struct Child1 {
 Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数中使用\@Builder函数。
 
 【正例】
-<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) -->
+<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
 
 ``` TypeScript
 @Entry
 @Component
 struct Child2 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -1916,18 +1958,26 @@ struct Child2 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
+    // 正确写法，不在@Watch函数中使用@Builder函数
     console.info(`content value has changed.`);
   }
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-builder-faq-watch-builder.gif](./figures/arkts-builder-faq-watch-builder.gif)

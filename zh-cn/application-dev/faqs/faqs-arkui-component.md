@@ -1,10 +1,11 @@
 # ArkUI组件开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+<!--deprecated_code_no_check-->
 
 
 ## 自定义弹窗能否在ts文件中定义和使用(API 9)
@@ -215,7 +216,7 @@ struct Index {
 
 **问题现象**
 
-自定义弹窗当前默认在窗口居中显示，当自定义弹窗需要与窗口边框对齐是需要设置自定义弹窗的对齐方式。
+自定义弹窗当前默认在窗口居中显示，当自定义弹窗需要与窗口边框对齐时需要设置自定义弹窗的对齐方式。
 
 **解决措施**
 
@@ -372,7 +373,7 @@ struct TextInputDemo {
 
 **参考链接**
 
-[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset)
+[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)
 
 
 ## 如何实现文本竖向排列(API 9)
@@ -577,7 +578,7 @@ struct VideoCreateComponent {
 
 **参考链接**
 
-[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#start)
+[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)
 
 ## 如何设置组件不同状态下的样式(API 9)
 
@@ -592,7 +593,7 @@ struct VideoCreateComponent {
 **代码示例**
 
 ``` ts
-//xxx.ts
+// xxx.ts
 @Entry
 @Component
 struct StyleExample {
@@ -669,12 +670,12 @@ class Model {
 @Component
 struct EntryComponent {
   test() {
-    console.log('testTag test in my component');
+    console.info('testTag test in my component');
   }
 
   build() {
     Column() {
-      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) //初始化时传递定义的方法
+      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) // 初始化时传递定义的方法
     }
   }
 }
@@ -778,9 +779,9 @@ struct SideBarContainerExample {
 
 **解决措施**
 
-Canvas组件最终的显示内容分两种，一种是组件通用属性的绘制内容，比如背景色，boarder等这类组件属性方法设置的渲染属性，这类属性是可以通过状态变量驱动更新的。
+Canvas组件最终的显示内容分两种，一种是组件通用属性的绘制内容，比如背景色，border等这类组件属性方法设置的渲染属性，这类属性是可以通过状态变量驱动更新的。
 
-另一种是通过CanvasRenderingContext2D绘制接口由应用自行绘制的内容。该类命令时绘制接口不响应状态变量，该类接口内置表脏功能，只要调用就会在下一帧刷新绘制内容，不需要开发者显式刷新。
+另一种是通过CanvasRenderingContext2D绘制接口由应用自行绘制的内容。该类命令式绘制接口不响应状态变量，该类接口内置标脏功能，只要调用就会在下一帧刷新绘制内容，不需要开发者显式刷新。
 
 **参考链接**
 
@@ -790,7 +791,7 @@ Canvas组件最终的显示内容分两种，一种是组件通用属性的绘�
 
 **原因分析**
 
-List没有设置高度时，如果子组件总高度大于List父组件的高度时，List会取List父组件高度。如果List有其他兄弟节点，可能会吧List部分顶出父组件显示区域外，看起来像是划不到底部。
+List没有设置高度时，如果子组件总高度大于List父组件的高度时，List会取List父组件高度。如果List有其他兄弟节点，可能会把List部分顶出父组件显示区域外，看起来像是滑不到底部。
 
 **解决措施**
 
@@ -842,7 +843,7 @@ UI的构建build方法内无法插入日志，导致应用无法感知UI绘制�
 
 **解决措施**
 
-使用@Watch回调来监测状态变量的变化，如果执行回调函数，说明在下一次vysnc信号发送时，使用该状态变量的UI会刷新绘制。
+使用@Watch回调来监测状态变量的变化，如果执行回调函数，说明在下一次vsync信号发送时，使用该状态变量的UI会刷新绘制。
 
 示例代码如下：
 

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
- 表示下载任务，您可以使用此对象来操作相应的下载任务。
+WebDownloadItem是ArkWeb框架中用于表示和管理单个下载任务的类。通过[WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)的回调参数，应用可以获取到WebDownloadItem实例，进而对下载任务进行查询和控制，包括启动下载到指定路径、查询下载进度和状态、暂停/恢复/取消任务、序列化失败任务以便后续恢复等。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ getCurrentSpeed(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 下载的速度（字节每秒）。 |
+| number | 下载的速度，单位：字节每秒。 |
 
 **示例：**
 
@@ -233,7 +233,7 @@ getTotalBytes(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 待下载文件的总长度，-1代表总大小未知。 |
+| number | 待下载文件的总长度，-1代表总大小未知。单位：字节。 |
 
 **示例：**
 
@@ -363,7 +363,7 @@ getLastErrorCode(): WebDownloadErrorCode
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | 下载发生错误的时候的错误码。 |
+| [WebDownloadErrorCode](./arkts-apis-webview-e.md#webdownloaderrorcode11) | 下载失败时的错误码。 |
 
 **示例：**
 
@@ -450,7 +450,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download， method:" + webDownloadItem.getMethod());
+              console.info("will start a download, method:" + webDownloadItem.getMethod());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
@@ -515,7 +515,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download， mime type:" + webDownloadItem.getMimeType());
+              console.info("will start a download, mime type:" + webDownloadItem.getMimeType());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
@@ -809,6 +809,140 @@ struct WebComponent {
 }
 ```
 
+## getOriginalUrl<sup>24+</sup>
+
+getOriginalUrl(): string
+
+获取下载文件的原始URL地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 下载文件的原始URL地址。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, original URL: " + webDownloadItem.getOriginalUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getReferrerUrl<sup>24+</sup>
+
+getReferrerUrl(): string
+
+获取下载文件的referrer地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 下载文件的referrer地址。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, referrer URL: " + webDownloadItem.getReferrerUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## serialize<sup>11+</sup>
 
 serialize(): Uint8Array
@@ -971,7 +1105,7 @@ struct WebComponent {
 
 start(downloadPath: string): void
 
-开始下载到指定目录，参数为下载文件的磁盘存储路径(包含文件名)。
+开始下载到指定目录，参数为下载文件的磁盘存储路径（包含文件名）。
 
 > **说明：**
 >
@@ -983,7 +1117,7 @@ start(downloadPath: string): void
 
 | 参数名 | 类型                   | 必填 | 说明                             |
 | ------ | ---------------------- | ---- | ------------------------------|
-| downloadPath   | string     | 是  | 下载文件的路径(包含文件名)，路径长度与文件管理中长度一致，最长255字符。 |
+| downloadPath   | string     | 是  | 下载文件的路径（包含文件名），路径长度与文件管理中长度一致，最长255字节。 |
 
 **错误码：**
 
@@ -1059,7 +1193,7 @@ struct WebComponent {
 
 cancel(): void
 
-取消一个正在下载的下载任务。
+取消下载任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1139,7 +1273,7 @@ struct WebComponent {
 
 pause(): void
 
-暂停一个正在下载的下载任务。
+暂停下载任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -2,20 +2,20 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## Available APIs
 
-You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query an asset.
+You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query assets.
 
 The following table describes the attributes for querying an asset.
 
 > **NOTE**
 >
-> In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ASSET_TAG_ALIAS** and those containing **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 > It takes a long time to query the plaintext of the asset attribute **ASSET_TAG_SECRET** due to the need of decryption. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ATTRIBUTES**.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                                        |
@@ -85,7 +85,7 @@ For details about how to query the plaintext of an asset in a group, see [Queryi
        
        Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
        Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query. At most one asset will meet the condition.
            {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
        };
    
@@ -136,7 +136,7 @@ For details about how to query the attributes of an asset in a group, see [Query
        
        Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
        Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query. At most one asset will meet the condition.
            {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // Return only the asset attributes. The attributes do not need to be decrypted, so the query takes a short time.
        };
    
@@ -157,7 +157,7 @@ For details about how to query the attributes of an asset in a group, see [Query
    }
    ```
 
-### Querying Attributes of Assets
+### Querying Attributes of Assets in Batches
 
 Query attributes of assets whose label is **demo_label** in batches. A total of 10 records that meet the conditions are returned. The results are sorted by the content of the **ASSET_TAG_DATA_LABEL_NORMAL_1** attribute.
 

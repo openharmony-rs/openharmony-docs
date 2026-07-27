@@ -6,9 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-  
+ Instance of the API class between the web media player and the ArkWeb kernel.
 
-Implements a **CreateNativeMediaPlayerCallback** object to control the player created by the application for taking over the web page media playback. This object is a return value type of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
+The ArkWeb kernel uses an object of this interface class to control the player created by the application to take over web page media.
 
 > **NOTE**
 >

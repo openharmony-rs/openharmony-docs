@@ -24,7 +24,7 @@ The filtering rules for highlighting special entities are as follows:
 
 After being highlighted, text entities on the page are converted into hyperlinks. When they are touched or left-clicked, the operation menu is displayed based on the entity type.
 
-<!-- @[web_DataDetector_Hightlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

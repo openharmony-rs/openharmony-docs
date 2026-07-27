@@ -54,7 +54,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调。 |
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调函数。 |
 
 ### 宏定义
 
@@ -79,8 +79,8 @@
 | MAX_MEDIA_KEY_STATUS_NAME_LEN 64 | 媒体密钥状态名称的最大长度。<br>**起始版本：** 11 |
 | MAX_MEDIA_KEY_STATUS_VALUE_LEN 256 | 媒体密钥状态值的最大长度。<br>**起始版本：** 11 |
 | DRM_UUID_LEN 16 | DRM解决方案的UUID长度。<br>**起始版本：** 11 |
-| MAX_PSSH_DATA_LEN 2048 | PSSH（Protected System Specific Header）信息的最大长度。<br>**起始版本：** 11 |
-| MAX_PSSH_INFO_COUNT 8 | PSSH（Protected System Specific Header）信息的最大数量。<br>**起始版本：** 11 |
+| MAX_PSSH_DATA_LEN 2048 | PSSH（Protection System Specific Header）信息的最大长度。<br>**起始版本：** 11 |
+| MAX_PSSH_INFO_COUNT 8 | PSSH（Protection System Specific Header）信息的最大数量。<br>**起始版本：** 11 |
 | MAX_MEDIA_KEY_SYSTEM_NAME_LEN 128 | MediaKeySystem名称的最大长度。<br>**起始版本：** 12 |
 | MAX_MEDIA_KEY_SYSTEM_NUM 8 | MediaKeySystem的最大数量。<br>**起始版本：** 12 |
 
@@ -226,7 +226,7 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 **描述**
 
-应用为从媒体源获取DRM信息而设置的回调。
+应用为从媒体源获取DRM信息而设置的回调函数。
 
 **起始版本：** 11
 
@@ -235,6 +235,6 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 从媒体源获取的DRM信息。 |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 输出参数，从媒体源获取的DRM信息，包含DRM内容保护系统的唯一标识和PSSH数据。 |
 
 

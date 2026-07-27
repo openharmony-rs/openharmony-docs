@@ -1,8 +1,8 @@
 # ArkUI_TranslationOptions
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_TranslationOptions
 
 ## 概述
 
-定义组件转场时的平移效果对象。
+定义组件转场时平移效果的配置选项，用于设置组件在转场过程中横向、纵向和深度方向的平移距离。
 
 **起始版本：** 12
 
@@ -28,6 +28,4 @@ typedef struct {...} ArkUI_TranslationOptions
 | -- | -- |
 | float x | 横向的平移距离，单位为vp。 |
 | float y | 纵向的平移距离，单位为vp。 |
-| float z | 竖向的平移距离，单位为vp。 |
-
-
+| float z | 深度方向的平移距离，单位为vp。 |

@@ -3,15 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了应用事件打点能力，包括对打点数据的落盘，以及对打点功能的管理配置。
 
 > **说明：**
 >
-> - 本模块接口从API version 9开始废弃，建议使用新接口[`@ohos.hiviewdfx.hiAppEvent`](js-apis-hiviewdfx-hiappevent.md)替代。
+> - 本模块接口从API version 9开始废弃，建议使用新接口[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)替代。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -163,7 +163,7 @@ hiAppEvent.configure(config1);
 
 // 配置事件文件目录存储限额大小
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -176,8 +176,8 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| disable    | boolean | 否 | 是 | 应用打点功能开关。配置值为true表示关闭打点功能，false表示不关闭打点功能。 |
-| maxStorage | string  | 否 | 是 | 打点数据本地存储文件所在目录的配额大小，默认限额为“10M”。所在目录大小超出限额后会对目录进行清理操作，会按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出限额时停止。 |
+| disable    | boolean | 否 | 是 | 应用打点功能开关，默认值为false。配置值为true表示关闭打点功能，false表示不关闭打点功能。 |
+| maxStorage | string  | 否 | 是 | 打点数据本地存储文件所在目录的配额大小，默认限额为“10MB”。所在目录大小超出限额后会对目录进行清理操作，会按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出限额时停止。 |
 
 
 ## EventType

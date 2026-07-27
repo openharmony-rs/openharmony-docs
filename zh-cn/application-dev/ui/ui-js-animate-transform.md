@@ -1,8 +1,8 @@
 # transform样式动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,7 +11,7 @@
 
 ## 设置静态动画
 
-创建一个正方形并旋转90°变成菱形，并用下方的长方形把菱形下半部分遮盖形成屋顶，设置长方形translate属性值为(150px,-150px)确定坐标位置形成门，再使用position属性使横纵线跟随父组件（正方形）移动到指定坐标位置，接着设置scale属性使父子组件一起变大形成窗户大小，最后使用skewX属性使组件倾斜后设置坐标translate(200px,-710px)得到烟囱。
+创建一个正方形并旋转90°变成菱形，并用下方的长方形把菱形下半部分遮盖形成屋顶，设置长方形translate属性值为(150px,-137px)确定坐标位置形成门，再使用position属性使横纵线跟随父组件（正方形）移动到指定坐标位置，接着设置scale属性使父子组件一起变大形成窗户大小，最后使用skewX属性使组件倾斜后设置坐标translate(200px,-710px)得到烟囱。
 
 ```html
 <!-- xxx.hml -->
@@ -95,7 +95,7 @@
 }
 ```
 
-![zh-cn_image_0000001220634677](figures/zh-cn_image_0000001220634677.png)
+![Designing-Static-Animation](figures/Designing-Static-Animation.png)
 
 
 ## 设置平移动画
@@ -174,7 +174,7 @@
 }
 ```
 
-![zh-cn_image_0000001174756438](figures/zh-cn_image_0000001174756438.gif)
+![Translation-Animation](figures/Translation-Animation.gif)
 
 
 ## 设置旋转动画
@@ -307,7 +307,7 @@
 }
 ```
 
-![zh-cn_image_0000001220316305](figures/zh-cn_image_0000001220316305.gif)
+![Designing-Rotation-Animation](figures/Designing-Rotation-Animation.gif)
 
 > **说明：** 
 >
@@ -420,7 +420,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001220396251](figures/zh-cn_image_0000001220396251.gif)
+![Designing-Scaling-Animation](figures/Designing-Scaling-Animation.gif)
 
 > **说明：** 
 >
@@ -429,7 +429,7 @@ text{
 
 ## 设置matrix属性
 
-matrix是一个入参为六个值的矩阵，6个值分别代表：scaleX, skewY, skewX, scaleY, translateX, translateY。下面示例中设置了matrix属性为matrix(1,0,0,1,0,200)使组件移动和倾斜。
+matrix是一个参数为六个值的矩阵，6个值分别代表：scaleX, skewY, skewX, scaleY, translateX, translateY。下面示例中设置了matrix属性为matrix(1,0,0,1,0,200)使组件移动和倾斜。
 
 ```html
 <!-- xxx.hml -->
@@ -469,7 +469,7 @@ matrix是一个入参为六个值的矩阵，6个值分别代表：scaleX, skewY
 }
 ```
 
-![zh-cn_image_0000001174756580](figures/zh-cn_image_0000001174756580.gif)
+![Setting-matrix](figures/Setting-matrix.gif)
 
 
 ## 整合transform属性
@@ -579,7 +579,7 @@ transform可以设置多个值并且多个值可同时设置，下面案例中�
 }
 ```
 
-![zh-cn_image_0000001220554911](figures/zh-cn_image_0000001220554911.gif)
+![Integrating-transform-Attributes](figures/Integrating-transform-Attributes.gif)
 
 > **说明：**
 > - 当设置多个transform时，后续的transform值会把前面的覆盖掉。若想同时使用多个动画样式可用复合写法，例：transform: scale(1) rotate(0) translate(0,0)。

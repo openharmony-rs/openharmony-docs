@@ -15,7 +15,7 @@ The **nfctech** module provides APIs for reading and writing tags that use diffe
 
 > **NOTE**
 >
-> If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability Development](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+> If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## Modules to Import
 
@@ -219,7 +219,7 @@ For details about how to obtain an **NfcVTag** object, see [NFC Tag Read/Write D
 
 The following describes the unique APIs of **NfcVTag**.
 
-### NfcvTag.getResponseFlags
+### NfcVTag.getResponseFlags
 
 getResponseFlags(): number
 
@@ -245,7 +245,7 @@ let responseFlags : number = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
-### NfcvTag.getDsfId
+### NfcVTag.getDsfId
 
 getDsfId(): number
 
@@ -1087,7 +1087,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06] // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1746,7 +1746,7 @@ function nfcTechDemo() {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2381,7 +2381,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        let rawData = [0x01, 0x02, 0x03, 0x04]; // Set the correct data. The value must contain 4 bytes. 
+        let rawData = [0x01, 0x02, 0x03, 0x04]; // Set the correct data. The value must contain 4 bytes.
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
@@ -2443,7 +2443,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes. 
+        let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes.
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
@@ -2479,7 +2479,7 @@ Obtains the type of this MIFARE Ultralight tag.
 import { tag } from '@kit.ConnectivityKit';
 
 // Obtain the correct MIFARE Ultralight tag by using the tag.TagInfo API in @ohos.nfc.tag.
-let getType : tag.MifareUltralightType = mifareClassic.getType();
+let getType : tag.MifareUltralightType = mifareUltralight.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 

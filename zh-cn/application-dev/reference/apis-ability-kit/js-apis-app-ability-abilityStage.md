@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityStage是一个[Module](../../../application-dev/quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
 
@@ -82,7 +82,7 @@ onAcceptWant(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如Ability名称，Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如Ability名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -125,7 +125,9 @@ onNewProcessRequest(want: Want): string
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：
+- 从API version 12开始，该接口在Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 13开始，该接口在PC/2in1、Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -137,7 +139,7 @@ onNewProcessRequest(want: Want): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回一个由开发者自行决定的进程字符串标识，如果之前此标识对应的进程已被创建，就让ability在此进程中运行，否则创建新的进程。 |
+| string | 返回一个由开发者自行决定的进程字符串标识，如果之前此标识对应的进程已被创建，就让Ability在此进程中运行，否则创建新的进程。 |
 
 **示例：**
 
@@ -195,7 +197,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 > **说明：**
 > 
-> 在onMemoryLevel回调中释放UI组件，可能会阻塞当前进程的主线程任务，因此不建议在该回调中释放UI组件。
+> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +207,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 回调返回内存微调级别，显示当前内存使用状态。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当可用内存下降至1700M~1800M时，会触发取值为0的onMemoryLevel回调。<br>- 当可用内存下降至1600M~1700M时，会触发取值为1的onMemoryLevel回调。<br>- 当可用内存下降至1600M以下时，会触发取值为2的onMemoryLevel回调。|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 
@@ -219,7 +221,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onDestroy<sup>12+<sup>
+### onDestroy<sup>12+</sup>
 
 onDestroy(): void
 
@@ -241,7 +243,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTermination<sup>15+<sup>
+### onPrepareTermination<sup>15+</sup>
 
 onPrepareTermination(): AbilityConstant.PrepareTermination
 
@@ -249,7 +251,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 > **说明：**
 >
-> - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
+> - 仅当应用正常退出（例如，通过任务栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
 >
 > - 当[AbilityStage.onPrepareTerminationAsync](#onprepareterminationasync15)实现时，本回调函数将不执行。
 
@@ -260,8 +262,8 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -282,7 +284,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTerminationAsync<sup>15+<sup>
+### onPrepareTerminationAsync<sup>15+</sup>
 
 onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 
@@ -290,7 +292,7 @@ onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 
 > **说明：**
 >
-> - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
+> - 仅当应用正常退出（例如，通过任务栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
 >
 > - 若异步回调内发生crash，按超时处理，执行等待超过10秒未响应，应用将被强制关闭。
 
@@ -301,8 +303,8 @@ onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -352,12 +354,13 @@ onAcceptWantAsync(want: Want): Promise\<string\>
 **示例：**
 
 ```ts
-import { AbilityStage } from '@kit.AbilityKit';
+import { AbilityStage, Want } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onAcceptWantAsync(): Promise<string> {
+  async onAcceptWantAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
+      console.info(`onAcceptWantAsync, want: ${JSON.stringify(want)}`);
     });
     return 'default';
   }
@@ -380,7 +383,7 @@ onNewProcessRequestAsync(want: Want): Promise\<string\>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -397,14 +400,61 @@ onNewProcessRequestAsync(want: Want): Promise\<string\>
 **示例：**
 
 ```ts
-import { AbilityStage } from '@kit.AbilityKit';
+import { AbilityStage, Want } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onNewProcessRequestAsync(): Promise<string> {
+  async onNewProcessRequestAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
+      console.info(`onNewProcessRequestAsync, want: ${JSON.stringify(want)}`);
     });
     return '';
+  }
+}
+```
+
+### onLaunchFromHyperSnap<sup>24+</sup>
+
+onLaunchFromHyperSnap(): void
+
+当进程从[应用快启](./js-apis-app-ability-hyperSnapManager.md#实现原理)启动时调用。
+
+开发者可以通过重写此方法来处理应用快启启动时的特定逻辑，例如重新初始化某些资源或状态。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onLaunchFromHyperSnap(): void {
+    console.info('Launched from Hyper Snap, reinitializing resources...');
+    // 在此添加快启启动时的初始化逻辑
+  }
+}
+```
+
+### onAboutToCreateAbility<sup>24+</sup>
+
+onAboutToCreateAbility(): void
+
+当AbilityStage即将创建第一个Ability时调用。
+
+开发者可以通过重写此方法来执行在创建第一个Ability之前的准备工作。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onAboutToCreateAbility(): void {
+    console.info('About to create first ability, preparing...');
+    // 在此添加创建第一个Ability前的准备工作
   }
 }
 ```

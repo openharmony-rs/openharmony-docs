@@ -6,15 +6,17 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在受限worker线程中运行。
+IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节码，.abc文件）提供的UI，展示的内容在受限worker线程中运行。
 
-通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
+通常用于有Abc热更新（可动态替换IsolatedComponent加载的Abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块为系统接口。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块为系统接口。
 
 ## 使用约束
 
@@ -22,7 +24,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件�
 
 1、本组件不支持预览。
 
-2、Abc需要[VerifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件。
+2、Abc需要[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件，且需在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
 
 3、不支持构造参数更新，仅首次传入有效。
 
@@ -38,9 +40,9 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件�
 
 **安全约束**
 
-1、独立Abc通过IsolatedComponent组件嵌入式显示在宿主进程，即可说明其Abc内容完全向宿主开放，宿主有权操作独立Abc的内容，对此安全敏感场景禁用。
+1、独立Abc通过IsolatedComponent组件嵌入到宿主进程中显示，即表示其Abc内容完全向宿主开放，宿主有权操作独立Abc的内容，因此本组件禁用于安全敏感场景。
 
-2、独立Abc运行在受限worker可保证相对安全，独立Abc内容不影响主线程。
+2、独立Abc运行在受限worker中可保证相对安全，独立Abc内容不影响主线程。
 
 ## 子组件
 
@@ -52,6 +54,10 @@ IsolatedComponent(options: IsolatedOptions)
 
 创建IsolatedComponent组件，用于显示受限worker运行的Abc。
 
+> **说明：**
+>
+> 不支持构造参数更新，仅首次传入有效。使用前需确保Abc已通过[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验，且已在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -60,11 +66,11 @@ IsolatedComponent(options: IsolatedOptions)
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| options | [IsolatedOptions](#isolatedoptions)                | 是   | 需要传递的构造项。 |
+| options | [IsolatedOptions](#isolatedoptions)                | 是   | 需要传递的构造参数，仅首次传入有效，不支持构造参数更新。 |
 
 ## IsolatedOptions
 
-用于在IsolatedComponent进行构造的时候，传递可选的构造参数。
+用于在IsolatedComponent构造时传递构造参数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -72,7 +78,7 @@ IsolatedComponent(options: IsolatedOptions)
 
 | 名称  | 类型       | 只读 | 可选 | 说明 |
 | ---- | ------------ | ---- | ---- | --------------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 要加载的Abc信息。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | 要加载的Abc信息。Want对象的parameters中需包含以下字段：resourcePath（资源路径，需为.hap文件路径）、abcPath（经[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验后的Abc文件路径，需以'/abcs'开头）、entryPoint（Abc入口，格式为'bundleName/页面路径'）。 |
 | worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | 否 | 否 | 运行Abc的受限worker。 |
 
 ## 属性
@@ -82,15 +88,15 @@ IsolatedComponent(options: IsolatedOptions)
 
 不支持[通用事件](ts-component-general-events.md)。
 
-将事件经过坐标转换后异步传递给受限worker线程处理。
+将事件经过坐标转换后异步传递给受限worker线程处理。不支持线程之间的事件冒泡，线程之间的UI交互存在事件冲突现象。
 
 支持以下事件：
 
 ### onError
 
-onError(callback:ErrorCallback)
+onError(callback: ErrorCallback)
 
-被拉起的Ability扩展在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。
+IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -100,15 +106,15 @@ onError(callback:ErrorCallback)
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)                | 是   | 报错信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)                | 是   | 异常发生时的错误回调，可通过回调参数获取code、name和message错误信息。 |
 
 ## 示例（加载IsolatedComponent）
 
 本示例展示IsolatedComponent组件的基础使用方式，示例应用的bundleName为"com.example.isolateddemo"，并使用本应用的Abc文件和extension页面作为嵌入展示的内容。构建应用项目后，具体测试步骤如下：
-1. 在DevEco Studio上编译构建生成hap包，并安装到设备上；
-2. 将本应用构建生成的modules.abc文件通过DevEco Studio或[hdc工具](../../../dfx/hdc.md)上传至应用沙箱路径`/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files`下；
-3. 打开应用页面，点击"verifyAbc"按钮进行校验，输出"VerifyAbc successfully"日志；
-4. 点击"showIsolatedComponent"按钮，显示IsolatedComponent组件，内容为"Hello World"。
+1. 在DevEco Studio上编译构建生成HAP包，并安装到设备上；
+2. 将本应用构建生成的modules.abc和modules.hap文件通过DevEco Studio或[hdc工具](../../../dfx/hdc.md)上传至应用沙箱路径`/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files`下；
+3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully"日志；
+4. 点击"showIsolatedComponent"按钮后，页面显示IsolatedComponent组件，内容为"Hello World"。
 
 - 受限worker脚本ets/workers/OhCardWorker.ets的内容如下：
   ```ts
@@ -117,33 +123,33 @@ onError(callback:ErrorCallback)
 
   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-  workerPort.onmessage = (e: MessageEvents) => {
-  }
-  workerPort.onmessageerror = (e: MessageEvents) => {
-  }
-  workerPort.onerror = (e: ErrorEvent) => {
-  }
+  workerPort.onmessage = (event: MessageEvents) => {
+  };
+  workerPort.onmessageerror = (event: MessageEvents) => {
+  };
+  workerPort.onerror = (event: ErrorEvent) => {
+  };
   ```
 
-- 示例应用中EntryAbility(UIAbility)加载首页文件ets/pages/Index.ets的内容如下：
+- 示例应用中`EntryAbility`（`UIAbility`）加载首页文件ets/pages/Index.ets的内容如下：
   ```ts
   import { worker } from '@kit.ArkTS';
   import { bundleManager, common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 对abc文件进行校验，并拷贝到指定沙箱路径下
-  function VerifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean) {
+  function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean) {
     try {
       bundleManager.verifyAbc(abcPaths, deleteOriginalFiles, (err) => {
         if (err) {
-          console.error("VerifyAbc failed, error message: " + err.message);
+          console.error(`VerifyAbc failed. Code: ${err.code}, message: ${err.message}`);
         } else {
           console.info("VerifyAbc successfully.");
         }
       });
     } catch (err) {
       let message = (err as BusinessError).message;
-      console.error("VerifyAbc failed, error message: " + message);
+      console.error(`VerifyAbc failed. Code: ${(err as BusinessError).code}, message: ${message}`);
     }
   }
 
@@ -160,7 +166,7 @@ onError(callback:ErrorCallback)
     // abc文件所属应用的bundleName
     private bundleName: string = "com.example.isolateddemo";
     // 受限worker
-    private worker ?: worker.RestrictedWorker = new worker.RestrictedWorker("entry/ets/workers/OhCardWorker.ets");
+    private worker?: worker.RestrictedWorker = new worker.RestrictedWorker("entry/ets/workers/OhCardWorker.ets");
 
     build() {
       Row() {
@@ -169,7 +175,7 @@ onError(callback:ErrorCallback)
           Button("verifyAbc").onClick(() => {
             let abcFilePath = `${this.context.filesDir}/${this.fileName}.abc`;
             console.info("abcFilePath: " + abcFilePath);
-            VerifyAbc([abcFilePath], false);
+            verifyAbc([abcFilePath], false);
           }).height(100).width(100)
 
           // 2.显示IsolatedComponent
@@ -199,7 +205,7 @@ onError(callback:ErrorCallback)
               .width(300)
               .height(300)
               .onError((err) => {
-                console.error("onError : " + JSON.stringify(err));
+                console.error(`IsolatedComponent onError. Code: ${err.code}, message: ${err.message}`);
               })
           }
         }

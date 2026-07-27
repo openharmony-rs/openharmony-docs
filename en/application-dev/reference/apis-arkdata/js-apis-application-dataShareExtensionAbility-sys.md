@@ -5,6 +5,7 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:59.683Z pushedAt=2026-06-29T02:15:43.576Z -->
 
 The **DataShareExtensionAbility** module provides data share services based on the ExtensionAbility.
 
@@ -23,7 +24,9 @@ The **DataShareExtensionAbility** module provides data share services based on t
 import { DataShareExtensionAbility } from '@kit.ArkData';
 ```
 
-## Properties
+## DataShareExtensionAbility
+
+### Properties
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -31,7 +34,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 | -------- | -------- | -------- | -------- | -------- |
 | context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | Yes| No|Context of the DataShare ExtensionAbility.|
 
-## onCreate
+### onCreate
 
 onCreate?(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
@@ -68,7 +71,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       console.info(`getRdbStore done, data : ${data}`);
       rdbStore = data;
       rdbStore.executeSql(DDL_TBL_CREATE, [], (err) => {
-        console.error(`executeSql done, error message : ${err}`);
+        console.error(`Failed to executeSql. Code: ${err.code}, message: ${err.message}`);
       });
       if (callback) {
         callback();
@@ -78,17 +81,9 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## UpdateOperation<sup>12+</sup>
 
-Represents the batch update operation information.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
-
-| Name           | Type                                                        | Mandatory| Description          |
-| --------------- | ------------------------------------------------------------ | ---- | -------------- |
-| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | Yes  | Data to update.|
-
-## insert
+### insert
 
 insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -115,7 +110,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -128,7 +123,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## update
+### update
 
 update?(uri: string, predicates: dataSharePredicates.DataSharePredicates, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -167,7 +162,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchUpdate<sup>12+</sup>
+### batchUpdate<sup>12+</sup>
 
 batchUpdate?( operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt; , callback:  AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void
 
@@ -192,7 +187,7 @@ let TBL_NAME = 'TBL00';
 let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
-  batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+  batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
     let a = Object.entries(recordOps);
@@ -205,7 +200,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
           console.info('Update row count is ' + rows);
           result.push(rows);
         }).catch((err:BusinessError) => {
-          console.info('Update failed, err is ' + JSON.stringify(err));
+          console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
         })
       }
@@ -216,7 +211,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## delete
+### delete
 
 delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;): void
 
@@ -254,7 +249,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## query
+### query
 
 query?(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;Object&gt;): void
 
@@ -296,7 +291,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchInsert
+### batchInsert
 
 batchInsert?(uri: string, valueBuckets: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -323,7 +318,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
@@ -335,7 +330,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## normalizeUri
+### normalizeUri
 
 normalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -371,7 +366,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## denormalizeUri
+### denormalizeUri
 
 denormalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -401,8 +396,17 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       name: key,
       message: key
     };
-      let ret = `denormalize ${uri}`;
-      callback(err, ret);
+    let ret = `denormalize ${uri}`;
+    callback(err, ret);
   }
 };
 ```
+## UpdateOperation<sup>12+</sup>
+
+Represents the batch update operation information.
+
+**System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
+
+| Name           | Type                                                        | Mandatory| Description          |
+| --------------- | ------------------------------------------------------------ | ---- | -------------- |
+| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | Yes  | Data to update.|

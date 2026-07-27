@@ -7,15 +7,15 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，支持证书CMS封装。
+从API version 22开始，支持证书CMS封装。
 
-PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。
+PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic Message Syntax，加密消息语法）作为PKCS #7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。
 
 目前仅支持CMS签名数据和封装数据。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -95,10 +95,10 @@ async function testGetEncryptedContentData() {
 
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-    console.info(`createCmsGenerator success.`);
+    console.info(`createCmsGenerator result: success.`);
     let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
-    console.info(`setRecipientEncryptionAlgorithm success.`);
+    console.info(`setRecipientEncryptionAlgorithm result: success.`);
     let eccCert: cert.CmsKeyAgreeRecipientInfo = {
       cert: eccx509Certcert,
       digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
@@ -111,7 +111,7 @@ async function testGetEncryptedContentData() {
       keyAgreeInfo: eccCert,
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
-    console.info(`addRecipientInfo success.`);
+    console.info(`addRecipientInfo result: success.`);
     let content = new Uint8Array([1, 2, 3, 4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
       contentDataFormat: cert.CmsContentDataFormat.BINARY,
@@ -119,9 +119,9 @@ async function testGetEncryptedContentData() {
       isDetached: true
     };
     let cms = await cmsGenerator.doFinal(content, optionsFinal);
-    console.info(`doFinal success, cms = %s`, cms);
+    console.info(`doFinal result: success, cms = %s`, cms);
     let data = await cmsGenerator.getEncryptedContentData();
-    console.info(`getEncryptedContentData success, data = %s`, data);
+    console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
     console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
   }

@@ -14,15 +14,15 @@
 - DNS策略的配置能力，包括配置禁止/允许解析的域名、解析使用的DNS服务器（主选/备选）（应用级）。
 
 > **说明：**
-> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[API参考](../reference/apis-network-kit/js-apis-net-netfirewall.md)。
+> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.netFirewall (网络防火墙)](../reference/apis-network-kit/js-apis-net-netfirewall.md)。
 
 ## 场景介绍
 
 防火墙的典型场景有：
 - 针对特定IP联网访问控制
 1. 支持限制特定应用访问网络。
-2. 支持限制对特定IP、特定协议、特定端口的网络通信。
-3. 支持限制特定应用对特定IP、特定协议、特定端口的网络通信。
+2. 支持限制对特定IP、特定协议、特定端口、特定物理网卡的网络通信。
+3. 支持限制特定应用对特定IP、特定协议、特定端口、特定物理网卡的网络通信。
 4. 支持拦截规则下发后立即生效（此点针对TCP协议：需断开已有被拦截的TCP连接）。
 - 针对域名联网访问控制支持拦截
 1. 支持限制应用对特定域名的DNS解析能力（仅限制非加密标准DNS协议，不限制加密、私有DNS协议）。
@@ -135,7 +135,8 @@
          startPort: 443,
          endPort: 443
        }] as IpPort[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // 从API版本26.0.0开始支持
    };
    // 添加防火墙规则。
    netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
@@ -205,7 +206,8 @@
        isWildcard: true,
        domain: '*.HarmonyOS.cn'
      }] as domain[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // 从API版本26.0.0开始支持
    };
    
    // 添加防火墙规则。

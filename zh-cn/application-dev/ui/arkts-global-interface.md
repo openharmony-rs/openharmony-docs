@@ -1,8 +1,8 @@
 # 使用UI上下文接口操作界面（UIContext）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -36,7 +36,7 @@
 
 UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识别UI实例的问题。
 
-当前的系统支持两种[应用模型](../application-models/application-models.md)——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
+当前的系统支持两种[应用模型](../application-models/stage-model-development-overview.md)——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
 
 在Stage模型中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
@@ -127,7 +127,7 @@ struct Index {
 
 使用UIContext接口替换：
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->  
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -205,7 +205,7 @@ export default class EntryAbility extends UIAbility {
 ```
 使用UIContext接口替换：
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -278,8 +278,8 @@ export default class EntryAbility extends UIAbility {
 下面举例说明在不同时机使用静态方法替换全局接口的方法。
 
 使用全局接口：
-<!--deprecated_code_no_check-->
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -347,6 +347,7 @@ struct Index {
 
 <!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -441,10 +442,14 @@ struct Index {
 
 [resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->  
 
 ``` TypeScript
-function GetUIContextByAtomicInterface(): UIContext {
+// common/Utils.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -508,11 +513,12 @@ class PixelUtils {
 
 使用UIContext接口替换：
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -545,7 +551,7 @@ export class PixelUtil {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -555,7 +561,7 @@ export class PixelUtil {
   }
 }
 ```
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -621,7 +627,7 @@ export default class EntryAbility extends UIAbility {
 
 使用替换的封装接口时，建议在能够获取UIContext的场景下传入UIContext参数。
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->  
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -654,7 +660,7 @@ struct Index {
 
 无法获取UIContext时，可考虑直接调用。
 
-<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
@@ -672,11 +678,11 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 
 使用UIContext接口替换：
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->  
 
 ``` TypeScript
 // common/WindowUtils.ets
-import { display, window } from '@kit.ArkUI';
+import { display, window, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -721,7 +727,7 @@ export class WindowUIContextUtils {
   }
 }
 ```
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -783,7 +789,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -852,7 +858,7 @@ struct Index {
 
 使用UIContext接口替换：
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->  
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -926,12 +932,12 @@ export class PixelUtils {
 
 使用UIContext接口替换：
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->  
 
 ``` TypeScript
 // Common/UIContext.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display } from '@kit.ArkUI';
+import { display, UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -961,7 +967,7 @@ export class PixelUtils {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -982,7 +988,7 @@ export class PixelUtils {
 | 主窗口创建并调用loadContent或setUIContent后，且传入自定义组件对象。 | 跟踪自定义组件所属的UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
 | 在loadContent或setUIContent后，且在UI的回调函数中。          | 根据UI跟踪的调用域（Scope）找到具体的UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
 | 应用单Ability单窗口的场景，并在loadContent或setUIContent之后，但在非UI的其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，但根据当前单例场景可以确定唯一UI实例，返回该UI实例所属Ability的Context。 | 无                                                           |
-| 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域(Scope)找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，返回该UI实例所属Ability的Context。 | 多实例场景可能与预期不一致。如存在两个Ability时，预期返回第一个创建的Ability的Context，实际返回第二个创建的Ability的Context。 |
+| 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用且未传入自定义组件对象。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，返回该UI实例所属Ability的Context。 | 多实例场景可能与预期不一致。如存在两个Ability时，预期返回第一个创建的Ability的Context，实际返回第二个创建的Ability的Context。 |
 | 所有的窗口销毁，无UI实例后。                                 | 没有合适的UI实例，返回undefined。                            | 无                                                         |
 
 在单Ability场景中，建议直接获取Ability的context属性。
@@ -1026,7 +1032,7 @@ struct GetContextPage {
 
 使用UIContext接口替换：
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->  
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -1049,7 +1055,7 @@ export class ContextUtils {
 
 接口的默认返回值设置为Ability的成员属性context。
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1081,7 +1087,7 @@ export default class EntryAbility extends UIAbility {
 
 在UI界面中，建议传入UIContext，以保证符合预期或直接调用getHostContext。
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->  
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -1109,7 +1115,7 @@ struct Index {
 
 无UI场景直接返回窗口创建时设置的默认返回值。
 
-<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let context = ContextUtils.getContext();
@@ -1155,7 +1161,7 @@ struct LocalStoragePage {
 
 使用UIContext接口替换：
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->  
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -1190,7 +1196,7 @@ struct LocalStoragePage {
 
 使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考[LocalStorage：页面级UI状态存储](./state-management/arkts-localstorage.md)。
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets

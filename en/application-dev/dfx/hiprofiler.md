@@ -41,7 +41,7 @@ Benchmarking with profilers in the industry, hiprofiler provides more capabiliti
 
 5. The PC parses the data, generates lanes, and displays the obtained profiling data.
 
-![en-us_image_0000002381835609](figures/en-us_image_0000002381835609.png)
+![hiprofiler-plugins](figures/hiprofiler-plugins.png)
 
 
 ## Command Syntax
@@ -178,19 +178,19 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 
 The fp stack unwinding and cross-language stack unwinding are enabled (green frames denote JavaScript).
 
-![en-us_image_0000002379700441](figures/en-us_image_0000002379700441.png)
+![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
 
 The dwarf stack unwinding and cross-language stack unwinding are enabled (native ->JS -> native stack frames are displayed).
 
-![en-us_image_0000002346179694](figures/en-us_image_0000002346179694.png)
+![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
 
 Statistics mode is enabled (the stack data is displayed periodically).
 
-![en-us_image_0000002379820229](figures/en-us_image_0000002379820229.png)
+![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
 
 Non-statistics mode is enabled (the stack data is not displayed periodically).
 
-![en-us_image_0000002346019934](figures/en-us_image_0000002346019934.png)
+![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
 
 
 ### ftrace-plugin
@@ -248,7 +248,7 @@ This command reads the kernel **binder_transaction** and **binder_transaction_re
 
 You can click the arrow on the right of **binder transaction** to go to the process or thread on the other end of the binder.
 
-![en-us_image_0000002316248152](figures/en-us_image_0000002316248152.png)
+![hiprofiler-ftrace-binder](figures/hiprofiler-ftrace-binder.png)
 
 
 ### memory-plugin
@@ -357,7 +357,7 @@ This command reads the basic memory statistics of the system. After the command 
 
 Use DevEco Studio to obtain the memory data.
 
-![en-us_image_0000002357083514](figures/en-us_image_0000002357083514.png)
+![hiprofiler-memory-ide](figures/hiprofiler-memory-ide.png)
 
 You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plugin** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
 
@@ -372,7 +372,7 @@ You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **M
 
 **Result analysis**
 
-![en-us_image_0000002346028442](figures/en-us_image_0000002346028442.png)
+![hiprofiler-xpower-energy](figures/hiprofiler-xpower-energy.png)
 
 You can go to **DevEco Studio** -> **Profiler** -> **Realtime Monitor** to obtain the power consumption data of related processes.
 
@@ -811,7 +811,7 @@ CONFIG
 
 "Service not started" is displayed when the **hiprofiler_cmd** command is executed.
 
-![en-us_image_0000002357083914](figures/en-us_image_0000002357083914.png)
+![hiprofiler-service-exception](figures/hiprofiler-service-exception.png)
 
 **Possible Causes and Solution**
 

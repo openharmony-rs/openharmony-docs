@@ -1,8 +1,8 @@
 # 特效绘制合并
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,14 +10,15 @@
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
 
 ## useEffect
 
 useEffect(value: boolean): T
 
-用于对背景模糊等特效进行绘制合并。
+用于控制组件是否继承父级EffectComponent的特效属性参数，对背景模糊等特效进行绘制合并。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -87,20 +88,20 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
-| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板进行定义。 |
-| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板进行定义。 |
+| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板。 |
+| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板。 |
 
 效果模板
 
 |  设备类型    | 模糊半径(单位: px)   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
 | 移动设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
-| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为淡红色的半透明效果。 |
-| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的深红色。 |
+| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为半透明的深灰色。 |
+| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的白色。 |
 | Tablet设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
 
 <!--Del-->
@@ -111,7 +112,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 <!--code_no_check-->
 
 ```ts
-//Index.ets
+// Index.ets
 @Entry
 @Component
 struct Index {
@@ -119,7 +120,7 @@ struct Index {
 
   build() {
     Stack() {
-      Image($r("app.media.mountain"))
+      Image($r('app.media.mountain'))
         .autoResize(true)
       EffectComponent() {
         Column({ space: 20 }) {
@@ -171,5 +172,5 @@ struct Index {
 }
 ```
 
-![zh_image_useeffect_effecttype](figures/zh_image_useeffect_effecttype.png)
+![zh_image_useeffect_effecttype](figures/image-useeffect-effecttype.png)
 <!--DelEnd-->

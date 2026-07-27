@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC2965](https://www.rfc-editor.org/rfc/rfc2965)标准。当前WebCookieManager的获取cookie接口不支持partitioned cookie。
+WebCookieManager是Web组件的cookie管理器，提供对Web组件中cookie的全局管理能力。开发者通过该类可以实现cookie的获取、设置、保存、清除以及权限控制等操作。该类的所有方法均为静态方法，应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。
+
+使用隐私模式浏览网页时，cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。
 
 > **说明：**
 >
@@ -32,11 +34,11 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 
 > **说明：**
 >
-> 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
+> - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
 > 
-> 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
+> - 为了获取可正常使用的cookie值，fetchCookieSync建议传入完整链接。
 > 
-> fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+> - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,8 +46,8 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
-| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。 |
+| url    | string | 是   | 要获取cookie的url，建议使用完整的url。 |
+| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
@@ -91,11 +93,23 @@ struct WebComponent {
 }
 ```
 
-## fetchCookie<sup>11+</sup>
+## fetchCookieSync
 
-static fetchCookie(url: string, callback: AsyncCallback\<string>): void
+static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
 
-异步callback方式获取指定url对应cookie的值。
+获取指定url对应的cookies，可以通过可选参数incognito指定是否获取隐私模式下的cookies，也可以通过可选参数includePartitionedCookies指定是否获取第一方partitioned cookie。
+
+> **说明：**
+>
+> - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
+>
+> - 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
+>
+> - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -104,7 +118,66 @@ static fetchCookie(url: string, callback: AsyncCallback\<string>): void
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
-| callback | AsyncCallback\<string> | 是 | callback回调，用于获取cookie |
+| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
+| includePartitionedCookies | boolean | 否 | true表示允许获取第一方partitioned cookies，false表示不允许获取第一方partitioned cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 指定url对应的cookies。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookieSync')
+        .onClick(() => {
+          try {
+            let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', false, true);
+            console.info("fetchCookieSync cookie = " + value);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchCookie<sup>11+</sup>
+
+static fetchCookie(url: string, callback: AsyncCallback\<string>): void
+
+获取指定url对应cookie的值。使用callback异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                      |
+| ------ | ------ | ---- | :------------------------ |
+| url    | string | 是   | 要获取cookie的url，建议使用完整的url。 |
+| callback | AsyncCallback\<string> | 是 | 回调函数，用于获取cookie。 |
 
 **错误码：**
 
@@ -155,7 +228,7 @@ struct WebComponent {
 
 static fetchCookie(url: string): Promise\<string>
 
-以Promise方式异步获取指定url对应cookie的值。
+获取指定url对应cookie的值。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -163,7 +236,7 @@ static fetchCookie(url: string): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取cookie的url，建议使用完整的url。 |
 
 **返回值：**
 
@@ -218,7 +291,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
-以Promise方式异步获取指定url对应cookie的值。
+获取指定url对应cookie的值。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -226,7 +299,7 @@ static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取cookie的url，建议使用完整的url。 |
 | incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。 |
 
 **返回值：**
@@ -278,6 +351,135 @@ struct WebComponent {
 }
 ```
 
+## fetchCookie
+
+static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
+
+获取指定url对应的cookies，可以通过参数incognito指定是否获取隐私模式下的cookies，也可以通过参数includePartitionedCookies指定是否获取第一方partitioned cookie。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                      |
+| ------ | ------ | ---- | :------------------------ |
+| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。 <br>传入undefined或null会抛出异常错误码401。 |
+| includePartitionedCookies | boolean | 是 | true表示允许获取第一方partitioned cookies，false表示不允许获取第一方partitioned cookies。 <br>传入undefined或null会抛出异常错误码401。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| Promise\<string> | Promise对象，用于获取指定url对应的cookies。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.fetchCookie('https://www.example.com', false, true)
+              .then(cookie => {
+                console.info("fetchCookie cookie = " + cookie);
+              })
+              .catch((error: BusinessError) => {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchAllCookies<sup>23+</sup>
+
+static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
+
+获取所有cookie，使用Promise异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------- | -- | -------------------------------------- |
+| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Config Cookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+        Button('Get All Cookies')
+        .onClick(() => {
+          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
+            for (let i = 0; i < cookies.length; i++) {
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+            }
+          })
+        })
+
+        Web({ src: 'https://www.example.com', controller: this.controller})
+      }
+    }
+  }
+}
+```
+
 ## configCookieSync<sup>11+</sup>
 
 static configCookieSync(url: string, value: string, incognito?: boolean): void
@@ -286,19 +488,19 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 
 > **说明：**
 >
-> configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> 同步cookie的时机建议在Web组件加载之前完成。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
-> 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
->
-> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
-> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
-> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -308,7 +510,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -353,23 +555,21 @@ struct WebComponent {
 
 static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void
 
-为指定url设置cookie的值。
+为指定url设置单个cookie的值。
 
 > **说明：**
 >
-> configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> 同步cookie的时机建议在Web组件加载之前完成。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
-> 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
->
-> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
-> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
-> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -425,7 +625,23 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, callback: AsyncCallback\<void>): void
 
-异步callback方式为指定url设置单个cookie的值。
+为指定url设置单个cookie的值。使用callback异步回调。
+
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -433,9 +649,9 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| callback | AsyncCallback\<void> | 是 | callback回调，用于获取设置cookie的结果 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，用于获取设置cookie的结果。 |
 
 **错误码：**
 
@@ -483,7 +699,23 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-以异步Promise方式为指定url设置单个cookie的值。
+为指定url设置单个cookie的值。使用Promise异步回调。
+
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -491,7 +723,7 @@ static configCookie(url: string, value: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 
 **返回值：**
@@ -548,7 +780,21 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-以异步Promise方式为指定url设置单个cookie的值。
+为指定url设置单个cookie的值。使用Promise异步回调。
+
+> **说明：**
+>
+> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+>
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+>
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
+> 
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+>
+> - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+>
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -556,7 +802,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 | incognito    | boolean | 是   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。 |
 | includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
@@ -621,9 +867,9 @@ static saveCookieSync(): void
 
 > **说明：**
 >
-> saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
+> - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
 >
-> saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
+> - saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
 
 **示例：**
 
@@ -661,7 +907,7 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies。
+> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -669,7 +915,7 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | callback回调，用于获取cookie是否成功保存。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取cookie是否成功保存。 |
 
 **错误码：**
 
@@ -715,7 +961,11 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-将当前可通过fetchCookie获取到的所有需要持久化的cookie以Promise方法异步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookie保存到磁盘中。使用Promise异步回调。
+
+> **说明：**
+>
+> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -779,7 +1029,7 @@ static putAcceptCookieEnabled(accept: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | :----------------------------------- |
-| accept | boolean | 是   | 设置是否拥有发送和接收cookie的权限，默认为true，表示拥有发送和接收cookie的权限。 |
+| accept | boolean | 是   | 设置是否拥有发送和接收cookie的权限，默认为true，表示拥有发送和接收cookie的权限。false表示没有发送和接收cookie的权限。 |
 
 **错误码：**
 
@@ -947,7 +1197,7 @@ struct WebComponent {
 
 static existCookie(incognito?: boolean): boolean
 
-获取是否存在cookie。
+判断是否存在cookie。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -991,7 +1241,7 @@ struct WebComponent {
 
 static clearAllCookiesSync(incognito?: boolean): void
 
-清除所有cookie。
+清除所有cookie（包括会话cookie和持久化cookie）。如需仅清除会话cookie，请使用[clearSessionCookieSync](#clearsessioncookiesync11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1028,7 +1278,7 @@ struct WebComponent {
 
 static clearAllCookies(callback: AsyncCallback\<void>): void
 
-异步callback方式清除所有cookie。
+清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1036,7 +1286,7 @@ static clearAllCookies(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | callback回调，用于获取清除所有cookie是否成功。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有cookie是否成功。 |
 
 **错误码：**
 
@@ -1082,7 +1332,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-异步promise方式清除所有cookie。
+清除所有cookie（包括会话cookie和持久化cookie），使用Promise异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11-1)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1165,7 +1415,7 @@ struct WebComponent {
 
 static clearSessionCookie(callback: AsyncCallback\<void>): void
 
-异步callback方式清除所有会话cookie。
+清除所有会话cookie。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1173,7 +1423,7 @@ static clearSessionCookie(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | callback回调，用于获取清除所有会话cookie是否成功。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有会话cookie是否成功。 |
 
 **错误码：**
 
@@ -1219,7 +1469,7 @@ struct WebComponent {
 
 static clearSessionCookie(): Promise\<void>
 
-异步promise方式清除所有会话cookie。
+清除所有会话cookie。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1279,9 +1529,9 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 
 > **说明：**
 >
-> 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
+> - 该接口是全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
 > 
-> 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+> - 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1317,67 +1567,6 @@ struct WebComponent {
 }
 ```
 
-## fetchAllCookies<sup>23+</sup>
-
-static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
-
-获取所有cookie，使用Promise异步回调。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --------- | ------- | -- | -------------------------------------- |
-| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
-
-**返回值：**
-
-| 类型   | 说明                      |
-| ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
-
-**示例：**
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController()
-
-  build() {
-    Row() {
-      Column() {
-        Button('Config Cookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-        Button('Get All Cookies')
-        .onClick(() => {
-          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
-            for (let i = 0; i < cookies.length; i++) {
-              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
-              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
-            }
-          })
-        })
-
-        Web({ src: 'https://www.example.com', controller: this.controller})
-      }
-    }
-  }
-}
-```
-
 ## getCookie<sup>(deprecated)</sup>
 
 static getCookie(url: string): string
@@ -1386,7 +1575,7 @@ static getCookie(url: string): string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1394,7 +1583,7 @@ static getCookie(url: string): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取cookie的url，建议使用完整的url。 |
 
 **返回值：**
 
@@ -1448,7 +1637,7 @@ static setCookie(url: string, value: string): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1505,7 +1694,7 @@ static deleteEntireCookie(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1540,7 +1729,7 @@ static deleteSessionCookie(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -5,7 +5,7 @@
 <!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
 <!--Designer: @ctw-ian; @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overall Design
 ### Overview
@@ -59,9 +59,11 @@ The Ark Virtual Machine (VM) uses a register-based model with virtual registers.
 A special invisible register called the accumulator (acc) is used in the Ark bytecode. The acc serves as the default target for many instructions and as a default parameter for others, helping to produce more compact bytecode without consuming additional encoding width.<br>
 
 Example:
-```ts
-function foo(): number {
-    return 1;
+<!-- @[registers_accumulator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo0(): number {
+  return 1;
 }
 ```
 Related instructions in the bytecode:
@@ -91,12 +93,14 @@ The Ark bytecode stores offsets for all methods, strings, and literal arrays use
 In [Script](https://262.ecma-international.org/12.0/#sec-ecmascript-language-scripts-and-modules) build mode, global variables are stored in a globally unique mapping, with the variable name as the key and its value as the value. Global variables can be accessed using global-related instructions.<br>
 
 Example:
-```ts
+<!-- @[global_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let a = 1;
 let b = 1;
-function foo(): void {
-    a += 2;
-    b = 5;
+function foo1(): void {
+  a += 2;
+  b = 5;
 }
 ```
 Related instructions in the bytecode:
@@ -135,14 +139,22 @@ Scenarios for generating module instructions include [import](https://262.ecma-i
 > Module-related logic is an internal implementation detail of the compiler. As the ArkCompiler evolves, new scenarios involving module instructions may emerge, and existing ones may change due to evolving requirements or code refactoring.<br>
 
 Example:
-```ts
+<!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_foo.ts) -->  
+
+``` TypeScript
 //module_foo.ts
 export let a: number = 1;
 export let b: number = 2;
+```
+<!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_bar.ts) -->  
 
+``` TypeScript
 //module_bar.ts
 export let c: number = 4;
+```
+<!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_index.ts) -->  
 
+``` TypeScript
 //module_index.ts
 import { a, b } from "./module_foo"
 import * as c from "./module_bar"
@@ -198,13 +210,15 @@ In Ark bytecode, a lexical environment may be considered as an array with multip
 > The logic related to **lexical** is used in the compiler. As the Ark Compiler evolves, new lexical instruction scenarios may emerge. Existing **lexical** instruction scenarios may no longer involve lexical-related instructions due to requirement evolution and code refactoring.
 
 Example:
-```ts
+<!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/index.ts) -->  
+
+``` TypeScript
 // index.ts
 function foo(): void {
-    let a: number = 1;
-    function bar(): number {
-        return a;
-    }
+  let a: number = 1;
+  function bar(): number {
+    return a;
+  }
 }
 ```
 Related instructions in the bytecode:
@@ -236,13 +250,15 @@ Related instructions in the bytecode:
 Shared lexical environments are a special type of lexical environment Unlike regular lexical environments, each lexical variable in a shared lexical environment is a [Sendable object](arkts-sendable.md). The ArkCompiler uses shared lexical environments to enable sharing of lexical variables across multiple threads.
 
 Example:
-```ets
+<!-- @[shared_Lexical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 @Sendable
 class A { }
 
 @Sendable
 class B {
-    u: A = new A()
+  u: A = new A()
 }
 ```
 Related instructions in the bytecode:
@@ -278,11 +294,13 @@ an instruction callruntime.newsendableenv 0x1: creates a shared lexical environm
 The ArkCompiler supports patch mode compilation. When a source file is modified, patch mode compilation generates a patch bytecode that, together with the original bytecode, completes the functional update. During patch mode compilation, patch variables generated by the ArkCompiler are stored in a special patch lexical environment. Instructions in the Ark bytecode use slot numbers from the patch lexical environment to reference patch variables. For example, the instruction *ldpatchvar 0x1* is used to load the patch variable from slot 1.<br>
 
 Example:
-```ts
+<!-- @[patch_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 function bar(): void {} // Add a statement and compile the patch.
 
-function foo(): void {
-    bar(); // Add a statement and compile the patch.
+function foo2(): void {
+  bar(); // Add a statement and compile the patch.
 }
 ```
 Related instructions in the bytecode:
@@ -310,8 +328,10 @@ Related instructions in the bytecode:
 For a method with N formal parameters, the last N+3 registers are used to pass parameters. The first three registers are fixed to represent the function object (FunctionObject), [new.target](https://262.ecma-international.org/12.0/#sec-function-environment-records) (NewTarget), and **this** from the lexical environment where the function resides. The subsequent N registers correspond to the N formal parameters.<br>
 
 Example:
-```ts
-function foo(a: number, b: number): void {}
+<!-- @[function_call_specifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo3(a: number, b: number): void {}
 ```
 Related instructions in the bytecode:
 ```assembly

@@ -85,21 +85,21 @@ Obtains all historical touch points for the current frame. The touch event frequ
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | No| No| Type of the touch event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
 | id      | number                                      | No| No| Unique identifier of a finger.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
-| x       | number                                      | No| No| X-coordinate of the touch point relative to the upper left corner of the event responding component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| y       | number                                      | No| No| Y-coordinate of the touch point relative to the upper left corner of the event responding component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowX<sup>10+</sup>  | number                       | No| No| X coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| windowY<sup>10+</sup>  | number                       | No| No| Y coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| displayX<sup>10+</sup> | number                       | No| No| X coordinate of the touch point relative to the upper left corner of the application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| displayY<sup>10+</sup> | number                       | No| No| Y coordinate of the touch point relative to the upper left corner of the application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| screenX<sup>(deprecated)</sup> | number               | No| No| X coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowX** instead.  |
-| screenY<sup>(deprecated)</sup> | number               | No| No| Y coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowY** instead.  |
+| x       | number                                      | No| No| X coordinate of the touch point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| y       | number                                      | No| No| Y coordinate of the touch point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| windowX<sup>10+</sup>  | number                       | No| No| X coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| windowY<sup>10+</sup>  | number                       | No| No| Y coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| displayX<sup>10+</sup> | number                       | No| No| X coordinate of the touch point in the coordinate system of the current application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| displayY<sup>10+</sup> | number                       | No| No| Y coordinate of the touch point in the coordinate system of the current application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| screenX<sup>(deprecated)</sup> | number               | No| No| X coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowX** instead.  |
+| screenY<sup>(deprecated)</sup> | number               | No| No| Y coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowY** instead.  |
 | pressedTime<sup>15+</sup> | number | No| Yes| Time when the finger is pressed.<br>Unit: ns<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | pressure<sup>15+</sup> | number | No| Yes| Pressure value of finger contact.<br>Value range: [0, 65535), where higher values indicate stronger pressure.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | width<sup>15+</sup> | number | No| Yes| Width of the finger contact area.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | height<sup>15+</sup> | number | No| Yes| Height of the finger contact area.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | No| Yes| Whether the event was triggered by a left-hand or right-hand tap.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| globalDisplayX<sup>20+</sup> | number | No| Yes| X-coordinate of the touch point relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number | No| Yes| Y-coordinate of the touch point relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayX<sup>20+</sup> | number | No| Yes| X coordinate of the touch point in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number | No| Yes| Y coordinate of the touch point in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## HistoricalPoint<sup>10+</sup>
 
@@ -113,7 +113,7 @@ Provides historical touch point information.
 | ----------- | -----------------------------|------ | ----------|------------------------------------------------------------------- |
 | touchObject | [TouchObject](#touchobject)  | No| No| Basic touch event information for the historical point.                                                  |
 | size        | number                              | No| No| Size of the contact area size between the finger and screen in the touch event corresponding to the historical point.<br>Default value: **0**                                    |
-| force       | number                              | No| No| Touch pressure value of the historical point.<br>Default value: **0**.<br>Value range: [0, 65535), where higher values indicate stronger pressure.|
+| force       | number                              | No| No| Touch pressure value of the historical point.<br>Default value: **0**<br>Value range: [0, 65535), where higher values indicate stronger pressure.|
 | timestamp   | number                              | No| No| Timestamp of the touch event corresponding to the historical point, representing the time interval from system boot when the event is triggered.<br>Unit: ns          |
 
 ## Example
@@ -199,3 +199,4 @@ struct TouchExample {
 ```
 
 ![touch](figures/touch.gif)
+<!--no_check-->

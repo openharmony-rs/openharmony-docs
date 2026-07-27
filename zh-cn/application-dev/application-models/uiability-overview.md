@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -57,7 +57,7 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
         "startWindowBackground": "$color:start_window_background", // UIAbility组件启动页面背景颜色资源文件的索引
         // ···
       }
-    ]
+    ],
     // ···
   }
 }

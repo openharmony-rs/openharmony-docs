@@ -1,10 +1,10 @@
 # 使用Node-API进行自定义异步操作相关开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -92,6 +92,8 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     if (funcType == napi_function) {
         napi_make_callback(env, context, recv, func, 1, argv, &result);
     } else {
+        napi_async_destroy(env, context);
+        napi_close_callback_scope(env, scope);
         napi_throw_error(env, nullptr, "Unexpected argument type");
         return nullptr;
     }

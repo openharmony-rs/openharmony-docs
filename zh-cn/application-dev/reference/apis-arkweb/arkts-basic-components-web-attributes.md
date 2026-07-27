@@ -1,18 +1,21 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu ](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)。
+通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)。
 
 > **说明：**
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
+
+## 概述
+Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web组件的网页加载行为、安全策略、运行环境与交互能力，是定制Web组件行为的主要入口。其中通用的样式与布局类属性（如尺寸、边距、背景、可见性等）请参考[尺寸设置](../apis-arkui/arkui-ts/ts-universal-attributes-size.md)，本章仅描述Web组件特有的属性；运行期动态控制类能力（如加载URL、前进后退、注册/反注册JS对象、运行JavaScript、注入CSS等）请配合[WebviewController](./arkts-apis-webview-WebviewController.md)使用。
 
 ## domStorageAccess
 
@@ -26,7 +29,7 @@ domStorageAccess(domStorageAccess: boolean)
 
 | 参数名              | 类型    | 必填   | 说明                                 |
 | ---------------- | ------- | ---- | ------------------------------------ |
-| domStorageAccess | boolean | 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启文档对象模型存储接口权限，false表示不开启文档对象模型存储接口权限。<br>传入undefined或null时为false。 |
+| domStorageAccess | boolean | 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启，false表示不开启。<br>传入undefined或null时为false。 |
 
 > **说明：**
 >
@@ -56,7 +59,7 @@ domStorageAccess(domStorageAccess: boolean)
 
 fileAccess(fileAccess: boolean)
 
-设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md)中的文件不受该属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
+设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md#资源访问)中的文件不受该属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +67,7 @@ fileAccess(fileAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明                   |
 | ---------- | ------- | ---- | ---------------------- |
-| fileAccess | boolean | 是    | 设置是否开启应用中文件系统的访问。<br>true表示开启应用中文件系统的访问。false表示不开启应用中文件系统的访问。<br>同时，当fileAccess为false的时候，仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问，不受fileAccess管控。<br>API version 11及以前，传入undefined或null时为true，API version 12及以后传入undefined或null时为false。 |
+| fileAccess | boolean | 是    | 设置是否开启应用中文件系统的访问。<br>true表示开启，false表示不开启。<br>同时，当fileAccess为false的时候，仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问，不受fileAccess管控。<br>API version 11及以前，传入undefined或null时为true，API version 12及以后传入undefined或null时为false。 |
 
 **示例：**
 
@@ -90,7 +93,7 @@ fileAccess(fileAccess: boolean)
 
 imageAccess(imageAccess: boolean)
 
-设置是否允许自动加载图片资源。当属性没有显式调用时，允许自动加载图片资源。
+设置是否允许自动加载图片资源。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -98,7 +101,7 @@ imageAccess(imageAccess: boolean)
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | boolean | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>传入undefined或null时为false。 |
+| imageAccess | boolean | 是    | 设置是否允许自动加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
   ```ts
@@ -127,7 +130,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 > **说明：**
 >
-> javaScriptProxy接口需要和deleteJavaScriptRegister接口配合使用，防止内存泄漏。
+> javaScriptProxy接口需要和[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 > javaScriptProxy对象的所有参数不支持更新。
 > 注册javaScriptProxy对象时，同步与异步列表请至少选择一项不为空，可同时注册两类方法。
 > 此接口只支持注册一个对象，若需要注册多个对象请使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)。
@@ -200,7 +203,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 javaScriptAccess(javaScriptAccess: boolean)
 
-设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许执行JavaScript脚本。
+设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -208,7 +211,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 | 参数名              | 类型    | 必填   | 说明                |
 | ---------------- | ------- | ---- | ------------------- |
-| javaScriptAccess | boolean | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。<br>传入undefined或null时为false。 |
+| javaScriptAccess | boolean | 是    | 是否允许执行JavaScript脚本。<br>true表示允许，false表示不允许。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -233,7 +236,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 overScrollMode(mode: OverScrollMode)
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
+设置Web过滚动模式。开启时，用户在Web根页面滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -301,7 +304,7 @@ mixedMode(mixedMode: MixedMode)
 
 onlineImageAccess(onlineImageAccess: boolean)
 
-设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。当属性没有显式调用时，默认允许从网络加载图片资源。
+设置是否允许从网络加载图片资源（通过 HTTP 和 HTTPS 访问的资源）。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -309,7 +312,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 | 参数名               | 类型    | 必填   | 说明             |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>传入undefined或null时为false。 |
+| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
@@ -335,7 +338,7 @@ onlineImageAccess(onlineImageAccess: boolean)
 
 zoomAccess(zoomAccess: boolean)
 
-设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
+设置是否支持手势进行缩放。该属性没有显式调用时，默认支持。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -343,7 +346,7 @@ zoomAccess(zoomAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>传入undefined或null时为false。 |
+| zoomAccess | boolean | 是    | 设置是否支持手势进行缩放。<br>true表示支持，false表示不支持。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -379,7 +382,7 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 | 参数名                | 类型    | 必填   | 说明            |
 | ------------------ | ------- | ---- | --------------- |
-| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。<br>传入undefined或null时为false。 |
+| overviewModeAccess | boolean | 是    | 设置是否使用概览模式加载网页。<br>true表示使用，false表示不使用。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -443,7 +446,7 @@ databaseAccess(databaseAccess: boolean)
 
 geolocationAccess(geolocationAccess: boolean)
 
-设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启获取地理位置权限。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
+设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -451,7 +454,7 @@ geolocationAccess(geolocationAccess: boolean)
 
 | 参数名               | 类型    | 必填   | 说明            |
 | ----------------- | ------- | ---- | --------------- |
-| geolocationAccess | boolean | 是    | 设置是否开启获取地理位置权限。<br>true表示设置开启获取地理位置权限，false表示设置不开启获取地理位置权限。<br>传入undefined或null时为false。 |
+| geolocationAccess | boolean | 是    | 设置是否开启获取地理位置权限。<br>true表示开启，false表示不开启。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -477,7 +480,7 @@ geolocationAccess(geolocationAccess: boolean)
 
 mediaPlayGestureAccess(access: boolean)
 
-设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认有声视频的自动播放需要用户手动点击。
+设置有声视频的自动播放是否需要用户手动点击，静音视频播放不受该接口管控。当该属性未显式设置时，默认需要用户手动点击。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -485,7 +488,7 @@ mediaPlayGestureAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明                |
 | ------ | ------- | ---- | ------------------- |
-| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示设置有声视频的自动播放需要用户手动点击，false表示设置有声视频的自动播放不需要用户手动点击，能自动播放。<br>传入undefined或null时为false。 |
+| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true 表示需要用户手动点击，false 表示不需要，能自动播放。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
@@ -531,9 +534,9 @@ mediaPlayGestureAccess(access: boolean)
 
 multiWindowAccess(multiWindow: boolean)
 
-设置是否开启多窗口权限。
+设置是否开启多窗口权限。当属性没有显式调用时，默认不开启。
 
-使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
+使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -541,18 +544,18 @@ multiWindowAccess(multiWindow: boolean)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。<br>默认值：false。 |
+| multiWindow | boolean | 是    | 设置是否开启多窗口权限。<br>true表示开启，false表示不开启。 |
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
 horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
-设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示横向滚动条。
+设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示。
 
 > **说明：**
 >
-> - 通过@State变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
-> - 通过@State变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -560,7 +563,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 | 参数名                 | 类型    | 必填   | 说明         |
 | ------------------- | ------- | ---- | ------------ |
-| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。<br>传入undefined或null时为false。 |
+| horizontalScrollBar | boolean | 是    | 设置是否显示横向滚动条。<br>true表示显示，false表示不显示。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -574,27 +577,27 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button('refresh')
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`Failed to refresh Web. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .horizontalScrollBarAccess(this.isShow)
       }
     }
@@ -629,7 +632,7 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 verticalScrollBarAccess(verticalScrollBar: boolean)
 
-设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示纵向滚动条。
+设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示。
 
 > **说明：**
 >
@@ -642,7 +645,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 | 参数名               | 类型    | 必填   | 说明         |
 | ----------------- | ------- | ---- | ------------ |
-| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。<br>传入undefined或null时为false。 |
+| verticalScrollBar | boolean | 是    | 设置是否显示纵向滚动条。<br>true表示显示，false表示不显示。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -656,27 +659,27 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isShow: boolean = true;
-    @State btnMsg: string ="隐藏滚动条";
+    @State btnMsg: string = '隐藏滚动条';
   
     build() {
       Column() {
         // 通过@State变量改变纵向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效
         Button(this.btnMsg)
           .onClick(() => {
-            if(this.isShow){
+            if (this.isShow) {
               this.isShow = false;
-              this.btnMsg="显示滚动条";
-            }else{
+              this.btnMsg = '显示滚动条';
+            } else {
               this.isShow = true;
-              this.btnMsg="隐藏滚动条";
+              this.btnMsg = '隐藏滚动条';
             }
             try {
               this.controller.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`Failed to refresh Web. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
             }
-          }).height("10%").width("40%")
-        Web({ src: $rawfile('index.html'), controller: this.controller }).height("90%")
+          }).height('10%').width('40%')
+        Web({ src: $rawfile('index.html'), controller: this.controller }).height('90%')
           .verticalScrollBarAccess(this.isShow)
       }
     }
@@ -746,7 +749,11 @@ cacheMode(cacheMode: CacheMode)
 
 copyOptions(value: CopyOptions)
 
-设置剪贴板复制范围选项。该属性没有显式调用时，默认支持复制后在当前设备内所有应用内粘贴。
+设置剪贴板复制范围选项。该属性没有显式调用时，默认支持复制后在当前设备所有应用内粘贴。
+
+> **说明：**
+>
+> 当设置为CopyOptions.None时，[dataDetectorConfig](#datadetectorconfig20)中的enablePreviewMenu配置项无效。当[enableDataDetector](#enabledatadetector20)设置为true且此属性设置为CopyOptions.LocalDevice时，AI菜单功能将被激活。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -788,7 +795,7 @@ textZoomRatio(textZoomRatio: number)
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比。<br>取值为整数，范围为(0, 2147483647]。|
+| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。默认值：100。|
 
 **示例：**
 
@@ -815,7 +822,7 @@ textZoomRatio(textZoomRatio: number)
 
 initialScale(percent: number)
 
-设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
+设置整体页面的缩放百分比。该属性没有显式调用时，默认为100。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1019,7 +1026,7 @@ minLogicalFontSize(size: number)
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>传入null或undefined时为18。 |
+| size | number | 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>传入null或undefined时为8。 |
 
 **示例：**
 
@@ -1058,7 +1065,7 @@ webFixedFont(family: string)
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | 是    | 设置网页的fixed font字体库。<br>传入null或undefined时为monospace。 |
+| family | string | 是    | 设置网页的fixed font字体库，传入值为字体名称字符串，如"monospace"、"Arial"等。<br>传入null或undefined时为monospace。 |
 
 **示例：**
 
@@ -1279,7 +1286,7 @@ webCursiveFont(family: string)
 
 darkMode(mode: WebDarkMode)
 
-设置Web深色模式。当属性没有显式调用时，默认Web深色模式关闭。
+设置Web深色模式。当属性没有显式调用时，默认关闭。
 
 当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合[forceDarkAccess](#forcedarkaccess9)使用。深色模式具体用法可参考[Web深色模式适配](../../web/web-set-dark-mode.md)。
 
@@ -1324,7 +1331,7 @@ forceDarkAccess(access: boolean)
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。<br>传入null或undefined时为false。 |
+| access | boolean | 是    | 设置网页是否开启强制深色模式。<br>true表示开启，false表示设置不开启。<br>传入null或undefined时为false。 |
 
 **示例：**
 
@@ -1428,7 +1435,7 @@ struct NewWebViewComp {
                     }
                 })
                 .onActivateContent(() => {
-                    //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
+                    // 该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
                     console.info("NewWebViewComp onActivateContent")
                 })
         }
@@ -1460,7 +1467,7 @@ struct WebComponent {
                     })
                     this.dialogController.open();
                     // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
                     // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
                     event.handler.setWebController(popController);
                 })
@@ -1545,9 +1552,11 @@ javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
-> - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1625,9 +1634,11 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序。
 >
-> - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1692,8 +1703,6 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentStart](#javascriptondocumentstart11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -1775,8 +1784,6 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentEnd](#javascriptondocumentend11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -1904,13 +1911,17 @@ Hello world!
 
 layoutMode(mode: WebLayoutMode)
 
-设置Web布局模式。当属性没有显式调用时，默认Web布局跟随系统模式。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
-
+设置Web布局模式。当属性没有显式调用时，默认Web布局跟随系统模式（WebLayoutMode.NONE）。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
 > **说明：**
 >
-> 目前只支持两种Web布局模式，分别为Web布局跟随系统（`WebLayoutMode.NONE`）和Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
+> 目前只支持两种Web布局模式，分别为
+> - Web布局跟随系统（`WebLayoutMode.NONE`）
+> - Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
+> - 当layoutMode设置为WebLayoutMode.FIT_CONTENT
+>    - [forceDisplayScrollBar](#forcedisplayscrollbar14)不支持常驻
+>    - [blankScreenDetectionConfig](#blankscreendetectionconfig22)不生效
 > - 如果Web组件宽或长度超过7680px，请在Web组件创建的时候指定`RenderMode.SYNC_RENDER`模式，否则会整个白屏。
 > - Web组件创建后不支持动态切换layoutMode模式。
 > - Web组件宽高规格：指定`RenderMode.ASYNC_RENDER`模式时，分别不超过7680px。
@@ -1925,7 +1936,7 @@ layoutMode(mode: WebLayoutMode)
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置web布局模式，跟随系统或自适应布局。<br>传入null或undefined时为`WebLayoutMode.NONE` |
+| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | 是    | 设置Web布局模式，跟随系统或自适应布局。<br>传入null或undefined时为`WebLayoutMode.NONE` |
 
 **示例：**
 
@@ -2075,6 +2086,48 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
   </html>
   ```
 
+## enableScrollDirectionalLock
+
+enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+
+设置Web组件滑动方向锁定，防止用户在斜向滑动时同时触发水平和垂直滚动，提升滚动体验。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。ALL模式适用于所有需要锁定滑动的场景，NESTED_SCROLL模式仅适用于嵌套滚动场景。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
+| value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
+| type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 在所有场景下支持滑动方向的锁定
+        .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+    }
+  }
+}
+```
+
 ## bypassVsyncCondition<sup>20+</sup>
 
 bypassVsyncCondition(condition: WebBypassVsyncCondition)
@@ -2120,6 +2173,10 @@ enableNativeEmbedMode(enabled: boolean)
 
 设置是否开启同层渲染功能。当该方法没有显式调用时，默认不开启同层渲染功能。
 
+> **说明：**
+>
+> [registerNativeEmbedRule](#registernativeembedrule12)和[nativeEmbedOptions](#nativeembedoptions16)等接口依赖此属性开启时才生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2161,7 +2218,7 @@ forceDisplayScrollBar(enabled: boolean)
 
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>传入undefined或null时属性设置不生效。 |
+| enabled | boolean  | 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>当layoutMode为WebLayoutMode.FIT_CONTENT模式时，enabled参数强制为false，设置true也不生效。<br>传入undefined或null时属性设置不生效。 |
 
 
 **示例：**
@@ -2409,7 +2466,7 @@ metaViewport(enabled: boolean)
 
 > **说明：**
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置metaViewport属性为true来覆盖关闭状态。
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2511,7 +2568,7 @@ enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | enable: 是否开启该功能。<br/> shouldOverlay: 该功能开启后， 应用接管网页视频的播放器画面是否覆盖网页内容。<br>传入undefined或null时为`{enable: false, shouldOverlay: false}`。|
+| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean 类型，是否开启该功能，默认为 false），shouldOverlay（boolean 类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为 false）。<br>传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。|
 
   **示例：**
 
@@ -2630,7 +2687,13 @@ Web组件自定义软件键盘避让模式。
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Web组件自定义文本选择菜单。
+设置Web组件自定义文本选择菜单。
+
+> **说明：**
+> 本接口与bindSelectionMenu功能类似，差异如下：
+> - editMenuOptions：在系统默认菜单风格基础上添加扩展项，触发条件不变。
+> - [bindSelectionMenu](#bindselectionmenu13)：完全自定义菜单风格和触发条件，由开发者定义。
+> 两者不宜同时使用，建议根据自定义程度需求选择。
 
 用户可以通过该属性设置自定义的文本菜单。
 
@@ -2648,7 +2711,7 @@ Web组件自定义文本选择菜单。
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| editMenu | [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) | 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在web中无意义，传入值为-1。|
+| editMenu | [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) | 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。|
 
 **示例**
 
@@ -2701,11 +2764,13 @@ struct WebComponent {
     if (menuItem.id.equals(TextMenuItemId.CUT)) {
       // 用户自定义行为
       console.info("拦截 id：CUT")
-      return true; // 返回true不执行系统回调
+      // 返回true表示拦截此菜单项，不执行系统默认的剪切操作
+      return true;
     } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
       // 用户自定义行为
       console.info("不拦截 id：COPY")
-      return false; // 返回false执行系统回调
+      // 返回false表示不拦截此菜单项，执行系统默认的复制操作
+      return false;
     } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
       // 用户自定义行为
       console.info("拦截 id：customItem1")
@@ -2787,7 +2852,7 @@ enableHapticFeedback(enabled: boolean)
 
 | 参数名     | 类型        | 必填   | 说明 |
 | --------- | ---------   | ------ | ------------- |
-| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>传入undefined或null时属性设置不生效。 |
+| enabled   | boolean | 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>传入undefined或null时保持默认值，即开启振动。 |
 
 **示例：**
 
@@ -2839,7 +2904,7 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 | elementType     | [WebElementType](./arkts-basic-components-web-e.md#webelementtype13)             | 是   | 菜单的类型。   |
 | content      | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)     | 是   | 菜单的内容。   |
 | responseType | [WebResponseType](./arkts-basic-components-web-e.md#webresponsetype13)           | 是   | 菜单的响应类型。 |
-| options      | [SelectionMenuOptionsExt](./arkts-basic-components-web-i.md#selectionmenuoptionsext13)   | 否   | 菜单的选项。|
+| options      | [SelectionMenuOptionsExt](./arkts-basic-components-web-i.md#selectionmenuoptionsext13)   | 否   | 菜单的选项。传入undefined或null时使用默认配置。|
 
 **示例：**
 
@@ -2986,7 +3051,7 @@ struct SelectionMenuLongPress {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`Failed to clear selection. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)
@@ -3044,6 +3109,7 @@ struct SelectionMenuLongPress {
               this.previewImage = event.param.getSourceUrl();
             }
             this.linkURL = event.param.getLinkUrl()
+            // 返回true表示拦截系统默认的上下文菜单，使用自定义菜单
             return true;
           }
           return false;
@@ -3162,7 +3228,7 @@ struct SelectionMenuLongPress {
 
 blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
-设置当软键盘收起时Web元素失焦模式。
+设置当软键盘收起时Web元素失焦模式。当属性没有显式调用时，默认按[BlurOnKeyboardHideMode.SILENT](./arkts-basic-components-web-e.md#bluronkeyboardhidemode14)模式处理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3258,7 +3324,7 @@ optimizeParserBudget(optimizeParserBudget: boolean)
 
 ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免过多占用主线程资源，并使网页具有渐进式加载能力。ArkWeb内核默认使用解析时间作为分段点，当单次解析时间超过阈值时，会中断解析，随后进行布局和渲染操作。
 
-开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP(First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
+开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP（First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
 
 由于页面的FCP触发时会恢复成默认分段解析逻辑，因此分段解析HTML优化仅对每个Web组件加载的首个页面生效。
 
@@ -3397,6 +3463,10 @@ enableDataDetector(enable: boolean)
 
 设置是否识别网页文本特殊实体，如邮件、电话、网址等。该接口依赖设备底层具备文本识别能力，否则设置无效。该属性没有显式调用时，默认不启用。
 
+> **说明：**
+>
+> [dataDetectorConfig](#datadetectorconfig20)和[enableSelectedDataDetector](#enableselecteddatadetector22)等属性依赖此属性开启时才能正常生效。
+
 当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig20)属性时，默认识别所有类型的实体，所识别实体的color和decoration会被更改为如下样式：
 <!--code_no_check-->
 ```ts
@@ -3408,7 +3478,7 @@ decoration:{
 }
 ```
 
-当enableDataDetector设置为true且[copyOptions](#copyoptions11)设置为CopyOptions.LocalDevice时，AI菜单功能将被激活。此时，在网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的url（打开连接）、email（新建邮件）、phoneNumber（呼叫）、address（导航至该位置）、dateTime（新建日程提醒）。
+当enableDataDetector设置为true且[copyOptions](#copyoptions11)设置为CopyOptions.LocalDevice时，AI菜单功能将被激活。此时，在网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address（导航至该位置）、dateTime（新建日程提醒）。
 
 AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
 
@@ -3544,7 +3614,7 @@ enableSelectedDataDetector(enable: boolean)
 
 设置是否启用文本选择的AI菜单功能，启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
 
-AI菜单功能启用时，在网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的url（打开连接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+AI菜单功能启用时，在网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
 
 AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
 
@@ -3602,7 +3672,7 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 
 gestureFocusMode(mode: GestureFocusMode)
 
-设置Web组件手势获焦模式。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
+设置Web组件手势获焦模式，用于控制Web组件的焦点响应行为。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3869,7 +3939,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 enableImageAnalyzer(enable: boolean)
 
-设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显式调用时，该功能默认开启。
 
 > **说明：** 
 >
@@ -3999,6 +4069,103 @@ enableAutoFill(value: boolean)
   </html>
   ```
 
+## enableDefaultContextMenu<sup>24+</sup>
+
+enableDefaultContextMenu(enable: boolean)
+
+设置是否启用默认右键上下文菜单。不调用该方法时，默认不启用。默认菜单仅支持CUT、COPY、PASTE、SELECT_ALL菜单项。
+
+> **说明：**
+>
+> - 当设置了[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)回调并在回调中返回true时，本接口的设置不生效。
+> - 默认菜单项会受[editMenuOptions](#editmenuoptions12)控制，通过该属性可以自定义菜单选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                                    |
+| ------- | ------- | ---- | --------------------------------------- |
+| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。<br>传入undefined或null时为false。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableDefaultContextMenu(true)
+      }
+    }
+  }
+  ```
+
+## enableDrag
+
+enableDrag(value: boolean)
+
+设置是否启用拖拽功能。不调用该属性时，默认启用网页拖拽功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | 是   | 是否启用网页拖拽功能，true表示启用，false表示不启用。传入undefined或null时为true。 |
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+    private controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('test.html'), controller: this.controller })
+          .enableDrag(false)
+      }
+    }
+  }
+  ```
+
+ 加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8"><title>拖拽测试</title></head>
+  <body>
+    <div id="drag" draggable="true" style="width:100px;height:100px;background:red;margin:20px;"></div>
+    <div id="drop" style="width:200px;height:200px;background:gray;margin:20px;"></div>
+    <script>
+      drag.ondragstart=e=>e.dataTransfer.setData('text/plain','');
+      drop.ondragover=e=>e.preventDefault();
+      drop.ondrop=e=>{e.preventDefault(); drop.style.background='green';};
+      drag.ondragend=()=>{drop.style.background='gray';};
+    </script>
+  </body>
+</html>
+```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
@@ -4015,7 +4182,7 @@ password(password: boolean)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| password | boolean | 是   | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。 |
+| password | boolean | 是   | 设置为true时，表示允许Web保存密码。<br>设置为false时，表示不允许Web保存密码。<br>传入undefined或null时为false。 |
 
 ## textZoomAtio<sup>(deprecated)</sup>
 
@@ -4025,7 +4192,7 @@ textZoomAtio(textZoomAtio: number)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4033,7 +4200,7 @@ textZoomAtio(textZoomAtio: number)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为正整数。<br>默认值：100。 |
+| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为(0, 2147483647]。<br>默认值：100。 |
 
 **示例：**
 
@@ -4108,7 +4275,7 @@ tableData(tableData: boolean)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| tableData | boolean | 是   | 设置为true时，表示允许Web保存表单数据。<br>设置为false时，表示不允许Web保存表单数据。 |
+| tableData | boolean | 是   | 设置为true时，表示允许Web保存表单数据。<br>设置为false时，表示不允许Web保存表单数据。<br>传入undefined或null时为true。 |
 
 ## wideViewModeAccess<sup>(deprecated)</sup>
 
@@ -4137,6 +4304,8 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 该接口只支持选中纯文本，当选中内容包含图片及其他非文本内容时，action信息中会显示乱码。
 
 > **说明：**
+>
+> 本接口在与[editMenuOptions](#editmenuoptions12)同时使用时，本接口不生效。
 >
 > 从API version 12开始支持，从API version 20开始废弃。建议使用[editMenuOptions<sup>12+</sup>](#editmenuoptions12)替代。
 
@@ -4205,7 +4374,7 @@ zoomControlAccess(zoomControlAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomControlAccess | boolean | 是    | 设置是否支持组合按键的默认缩放行为。true表示支持，false表示不支持。传入null或undefined时为false。|
+| zoomControlAccess | boolean | 是    | 设置是否允许通过组合按键进行缩放。true表示支持，false表示不支持。传入null或undefined时为false。|
 
 **示例：**
 
@@ -4241,4 +4410,311 @@ zoomControlAccess(zoomControlAccess: boolean)
     <span>You can zoom in/out page when zoomControlAccess is true.</span>
   </body>
   </html>
+  ```
+
+## aiSessionOptions
+
+aiSessionOptions(aiSessions: Array&lt;AISessionEvent&gt;)
+
+自定义Web组件的前端AI会话配置，用于注册多个自定义AI会话。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| aiSessions | Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt; | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持[AISessionType](./arkts-basic-components-web-e.md#aisessiontype)中包含的模型。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct DemoPage {
+  private webController: webview.WebviewController = new webview.WebviewController();
+  sessions: Map<string, string> = new Map<string, string>();
+
+  onCreateAISession = (id: string, params: string, result: OnAISessionCallback): boolean => {
+    this.sessions.set(id, params); // 模拟创建AI会话
+    console.info(`[AISession]onCreateAISession params: ${params}`);
+    // 通知调用方AI会话创建成功
+    result(AISessionResultType.SUCCESS, "AISession created");
+    return true;
+  }
+
+  onExecuteAIAction = (id: string, params: string, result: OnAISessionCallback): void => {
+    this.sessions.get(id); // 模拟取出会话，并执行动作
+    console.info(`[AISession]onExecuteAIAction params: ${params}`);
+    // 模拟流式返回AI执行结果：多次调用RUNNING表示任务执行中、返回数据块，最后返回SUCCESS表示任务完成
+    result(AISessionResultType.RUNNING, "AISession chunk 1\n");
+    result(AISessionResultType.RUNNING, "AISession chunk 2\n");
+    result(AISessionResultType.SUCCESS, "AISession chunk end\n");
+  }
+
+  onDestroyAISession = (id: string): void => {
+    this.sessions.delete(id); // 模拟销毁会话并释放资源
+  }
+
+  @State options: AISessionEvent = {
+    aiSessionType: AISessionType.SUMMARIZER,
+    onCreateAISession: this.onCreateAISession,
+    onExecuteAIAction: this.onExecuteAIAction,
+    onDestroyAISession: this.onDestroyAISession
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.webController })
+        .aiSessionOptions([this.options])
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
+加载的html文件
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Summarizer API Test</title>
+</head>
+<body style="max-width:600px;margin:20px auto;padding:0 16px;">
+  <p id="status">checking...</p>
+  <button id="initBtn" onclick="init()">Create Session</button>
+  <br><br>
+  <textarea id="input" rows="6" style="width:100%;font:inherit" placeholder="paste text to summarize"></textarea>
+  <br><br>
+  <button id="btn" onclick="run()" disabled>Summarize</button>
+  <pre id="result"></pre>
+  <script>
+    let s;
+    (async () => {
+      const d = document.getElementById('status');
+      if (!('Summarizer' in self)) { d.textContent = 'API not supported'; return; }
+      const a = await Summarizer.availability();
+      d.textContent = 'Summarizer: ' + a;
+      if (a === 'unavailable') document.getElementById('initBtn').disabled = true;
+    })();
+
+    async function init() {
+      const d = document.getElementById('status'), ib = document.getElementById('initBtn');
+      ib.disabled = true;
+      d.textContent = 'creating...';
+      try {
+        s = await Summarizer.create({
+          type: 'tldr', length: 'medium', format: 'plain-text',
+          monitor(m) { m.addEventListener('downloadprogress', e => { d.textContent = 'downloading ' + (e.loaded * 100 | 0) + '%' }); }
+        });
+        d.textContent = 'ready';
+        document.getElementById('btn').disabled = false;
+      } catch (e) { d.textContent = 'Error: ' + e.message; ib.disabled = false; }
+    }
+
+    async function run() {
+      const t = document.getElementById('input').value.trim();
+      if (!t || !s) return;
+      const btn = document.getElementById('btn'), r = document.getElementById('result');
+      btn.disabled = true;
+      r.textContent = '...';
+      try { r.textContent = await s.summarize(t); }
+      catch (e) { r.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>
+```
+
+## scrollbarLayoutPolicy
+
+scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
+
+选择Web组件内垂直滚动条的布局方式，用于适配不同语言的书写方向。CONTENT模式适用于需要跟随网页CSS direction属性的场景，SYSTEM模式适用于多语言应用中需要跟随系统语言方向设置的场景，如阿拉伯语、希伯来语等从右到左书写的语言。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型| 必填 | 说明 |
+| ------ | -------------- | ---- | -------------- |
+| policy | [ScrollbarLayoutPolicy](./arkts-basic-components-web-e.md#scrollbarlayoutpolicy) | 是   | 设置Web组件内垂直滚动条布局模式。可选值：CONTENT（跟随网页css的direction属性设置），SYSTEM（根据系统语种的左右书写方向进行布局，对于从右向左书写的语言，滚动条将布局在左侧。对于网页内嵌套的多层滚动条均适用）。|
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```
+
+## keyboardAppearance
+
+keyboardAppearance(mode: WebKeyboardAppearanceMode)
+
+设置键盘外观模式，用于控制Web组件内输入框弹出键盘的外观样式，包括沉浸式和非沉浸式模式。不调用该方法时，默认跟随系统的沉浸式模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | --------- | ---- | ---- |
+| mode | [WebKeyboardAppearanceMode](./arkts-basic-components-web-e.md#webkeyboardappearancemode)| 是   | 键盘外观。传入undefined或null时，跟随系统的沉浸式模式。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State appearanceMode: WebKeyboardAppearanceMode = WebKeyboardAppearanceMode.DARK_IMMERSIVE;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        .keyboardAppearance(this.appearanceMode)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>测试网页</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Text">
+  </body>
+  </html>
+  ```
+
+## enableFullscreenVideoOverlay
+
+enableFullscreenVideoOverlay(enabled: boolean)
+
+设置 Web 组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持H264、H265解码格式的视频。
+> - 只有视频元素发出的全屏请求才会响应。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | boolean  | 是   | 设置 Web 组件是否开启覆盖式全屏播放功能。<br>true 表示开启该功能。<br>false 表示不开启。<br>传入 undefined 或 null 时为 false。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```
+
+## enableMediaNetworkProxy
+
+enableMediaNetworkProxy(enabled: boolean)
+
+设置Web组件是否开启媒体资源网络请求代理功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持HLS流媒体视频。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | boolean  | 是   | 设置Web组件是否开启媒体资源网络请求代理功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableMediaNetworkProxy(true)
+      }
+    }
+  }
   ```

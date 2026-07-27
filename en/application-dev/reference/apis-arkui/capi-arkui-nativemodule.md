@@ -1,14 +1,14 @@
 # ArkUI_NativeModule
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Provides drag and drop APIs of ArkUI on the native side. For details, see [Implementing Unified Drag and Drop](../../ui/ndk-drag-event.md).
+Provides drag and drop APIs of ArkUI on the native side. For details, see [Drag Event](../../ui/ndk-drag-event.md).
 
 Provides the general key event APIs of ArkUI on the native side.
 
@@ -24,6 +24,18 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 
 | Name| Description|
 | -- | -- |
+| [common_attributes.h](capi-common-attributes-h.md) | Defines the types of common attributes and events of **NativeModule**.|
+| [embedded_component.h](capi-embedded-component-h.md) | Defines the structs and APIs of the **EmbeddedComponent** component.|
+| [image.h](capi-image-h.md) | Defines **Image** node types for **NativeNode** APIs.|
+| [image_animator.h](capi-image-animator-h.md) | Defines **ImageAnimator** node types for **NativeNode** APIs.|
+| [layout.h](capi-layout-h.md) | Defines layout-related enumerations and APIs.|
+| [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md) | Declares the custom node events for **NativeNode** APIs.|
+| [grid.h](capi-grid-h.md) | Defines the enumerations and APIs of the **Grid** component.|
+| [list.h](capi-list-h.md) | Defines the enumerations and APIs of the **List** component.|
+| [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations and APIs of the **Navigation** or **Router** component.|
+| [scroll.h](capi-scroll-h.md) | Defines the enumerations related to the **Scroll** component.|
+| [swiper.h](capi-swiper-h.md) | Defines the enumerations and APIs of the **Swiper** component.|
+| [water_flow.h](capi-water-flow-h.md) | Defines the enumerations and APIs of the **WaterFlow** component.|
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**.|
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | Declares the APIs of **NativeDrawableDescriptor**.|
 | [native_animate.h](capi-native-animate-h.md) | Declares a set of animation APIs of ArkUI on the native side.|
@@ -32,7 +44,21 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_interface.h](capi-native-interface-h.md) | Declares a unified entry for the native module APIs.|
 | [native_interface_focus.h](capi-native-interface-focus-h.md) | Declares APIs for focus management, mainly used for actively transferring focus, managing the default focus transfer behavior, and controlling the focus activation state.|
 | [native_key_event.h](capi-native-key-event-h.md) | Declares the APIs of **NativeKeyEvent**.|
+| [native_material.h](capi-native-material-h.md) | Provides immersive material types and API declarations for ArkUI on the native side.|
 | [native_node.h](capi-native-node-h.md) | Declares the APIs of **NativeNode**.|
 | [native_node_napi.h](capi-native-node-napi-h.md) | Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.|
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module.|
+| [text.h](capi-text-h.md) | Defines enumerations and APIs related to **Text**.|
+| [text_common.h](capi-text-common-h.md) | Defines common text enumerations and APIs.|
+| [text_input.h](capi-text-input-h.md) | Defines enumerations and APIs related to **TextInput**.|
+| [text_area.h](capi-text-area-h.md) | Defines enumerations and APIs related to **TextArea**.|
+| [image_span.h](capi-image-span-h.md) | Defines enumerations and APIs related to **ImageSpan**.|
+| [progress.h](capi-progress-h.md) | Defines enumerations and APIs related to **Progress**.|
+| [rich_editor.h](capi-rich-editor-h.md) | Defines enumerations and APIs related to **RichEditor**.|
+| [custom_span.h](capi-custom-span-h.md) | Defines enumerations and APIs related to **CustomSpan**.|
+| [picker.h](capi-picker-h.md) | Defines **Picker** node types for **NativeNode** APIs.|
+| [button.h](capi-button-h.md) | Defines **Button** node types for **NativeNode** APIs.|
+| [checkbox.h](capi-checkbox-h.md) | Defines **Checkbox** node types for **NativeNode** APIs.|
+| [slider.h](capi-slider-h.md) | Defines **Slider** node types for **NativeNode** APIs.|
 | [styled_string.h](capi-styled-string-h.md) | Declares styled string APIs of ArkUI on the native side.|
+| [xcomponent.h](capi-xcomponent-h.md) | Defines the enumerations of the **XComponent** component.|

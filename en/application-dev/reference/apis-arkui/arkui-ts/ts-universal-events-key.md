@@ -113,7 +113,7 @@ If the callback returns **true**, the key event is marked as consumed and will n
 | Name                                   | Type                   | Read-Only   |  Optional  |  Description                        |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
 | type                                  | [KeyType](ts-appendix-enums.md#keytype) |  No |  No    |Key type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
-| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  No       |  No    |Key value.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
+| keyCode | number           |  No       |  No    |Key value. For details about the key values provided by the key-based input devices, see [KeyCode](../../apis-input-kit/js-apis-keycode.md#keycode).<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | keyText                               | string                   |  No  |  No    |Name of the key.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  No|  No    |Type of the input device that triggers the key event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
 | deviceId                              | number                |  No   |  No    |ID of the input device that triggers the key event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
@@ -168,7 +168,7 @@ Intention corresponding to the key.
 
 | Type| Description|
 | ----- | ----------------- |
-| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md) | Intention corresponding to the key.|
+| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | Intention corresponding to the key.|
 
 ## Example
 

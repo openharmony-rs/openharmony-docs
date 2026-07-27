@@ -36,6 +36,8 @@ Enhanced Data Rate，即蓝牙增强数据率。是蓝牙[BR](#br)的增强版�
 ### GATT
 Generic Attribute Profile，即通用属性协议。是[BLE](#ble)的核心协议，定义了基于服务（[Service](#service)）、特征值（[Characteristic](#characteristic)）和描述符（[Descriptor](#descriptor)）进行蓝牙通信和传输数据的机制。
 ## H
+### HADM
+High Accuracy Distance Measurement，即高精度距离测量。基于星闪无线信号进行设备间测距的技术，通过测量信号往返时间或相位差计算设备间距离，可实现厘米级测量精度。
 ### HF
 Hands-Free unit，即[HFP](#hfp)协议中的免提设备。是蓝牙通话音频中的远程控制端‌，提供物理交互界面（如按钮）及音频输入/输出（如麦克风、扬声器）。典型设备如：蓝牙耳机、车载蓝牙等。
 ### HFP
@@ -44,6 +46,12 @@ Hands-Free Profile，即免提协议。用于实现蓝牙设备间的免提通�
 Hands-Free Audio Gateway，即[HFP](#hfp)协议中的音频网关。是蓝牙通话音频中的音频处理中心，负责通话控制（如执行接听/挂断指令）、管理音频输入/输出等功能。典型设备如：手机、平板等。
 ### HID
 Human Interface Device Profile，即人机接口协议，为传统蓝牙设计。可用于实现蓝牙无线人机交互设备连接间的低延迟双向通信。例如：键盘、鼠标、游戏手柄等设备与主机（如手机、平板）间传输数据。该协议定义了2种角色：[HID Host](#hid-host)和[HID Device](#hid-device)。
+
+在HID协议中， 数据传输通道分为2种，分别是中断通道和控制通道。其中中断通道用于传输单向低延迟实时数据；控制通道用于传输双向可靠实时数据，包含以下三种请求：
+- GET_REPORT：表示HID主机发起的数据读取请求，用于获取HID设备的状态信息。
+- SET_REPORT：表示HID主机发起的数据写入请求，用于向HID设备发送控制指令。
+- SET_PROTOCOL：表示HID主机发起的协议模式切换请求。
+
 ### HID Device
 [HID](#hid)设备，是向[HID Host](#hid-host)设备提供人机数据输入/输出的设备。典型设备如：鼠标、键盘等。
 ### HID Host
@@ -68,6 +76,8 @@ Network Access Point，即[PAN](#pan)协议中的网络接入点，充当网关�
 ## O
 ### OPP
 Object Push Profile，即对象推送协议。基于通用对象交换协议（Generic Object Exchange Profile，GOEP）构建，可用于实现设备间数据（如图片、文档等）传输。
+### OOB
+Out of Band，即带外（通信），是指使用独立于主数据通道的其他信道进行信息传输。例如蓝牙设备在配对过程中可以通过WiFi网络或NFC等非蓝牙信道交换安全秘钥，从而提升配对的安全性。
 ## P
 ### PAN
 Personal Area Network，即蓝牙个人局域网协议。支持设备间网络共享。在该协议中，[NAP](#nap)和[PANU](#panu)是两种核心角色。
@@ -89,6 +99,10 @@ Radio Frequency Communication，即无线电频率通信协议。用于模拟传
 ### RSSI
 Received Signal Strength Indicator，是无线通信中用于量化接收端信号强度的指标，单位是dBm。
 ## S
+### SCO
+Synchronous Connection-Oriented，即同步连接链路。主要用于传输对时间敏感的音频数据，如语音通话等场景。
+### SDP
+Service Discovery Protocol，即服务发现协议。用于发现和识别其他蓝牙设备所提供的服务。
 ### Service
 在蓝牙协议中，一般特指[GATT](#gatt)协议中的服务。是一种包含多个特征值和所依赖的其他服务的数据结构，表示[BLE](#ble)设备的一种能力，通过[UUID](#uuid)标识。
 ### SPP

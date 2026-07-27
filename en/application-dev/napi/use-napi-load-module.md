@@ -27,6 +27,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 - Do not use this API in non-main threads.
 - Do not use this API in the **Init()** function.
 - Do not load a file in the callback function of a thread-safe function.
+- Calling this API in the signal function is insecure. Direct calling may cause stack overflow.
 
 You are advised to use [napi_load_module_with_info](use-napi-load-module-with-info.md) to load modules. This API supports more scenarios.
 

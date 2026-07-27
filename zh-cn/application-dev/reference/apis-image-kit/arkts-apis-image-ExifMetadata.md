@@ -1,8 +1,8 @@
-# class (ExifMetadata)
+# Class (ExifMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -24,8 +24,6 @@ import { image } from '@kit.ImageKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 各属性详细取值，请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。
@@ -42,7 +40,7 @@ import { image } from '@kit.ImageKit';
 | imageDescription                    | string                                             | 否   | 是   | 图像描述。                                                   |
 | make                                | string                                             | 否   | 是   | 拍摄设备的品牌制造商名称。                                   |
 | model                               | string                                             | 否   | 是   | 相机型号。                                                   |
-| stripOffsets                        | number[]                                           | 否   | 是   | 图像数据的分块存储偏移量，单位为字节。<br/>为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。<br/>此标签按顺序存储每个条带在文件中的起始位置偏移量。 |
+| stripOffsets                        | number[]                                           | 否   | 是   | 图像数据的分块存储偏移量，单位为字节（Byte）。<br/>为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。<br/>此标签按顺序存储每个条带在文件中的起始位置偏移量。 |
 | orientation                         | [Orientation](arkts-apis-image-e.md#orientation23) | 否   | 是   | 图像方向。                                                   |
 | samplesPerPixel                     | number                                             | 否   | 是   | 记录每个像素的颜色分量数量，适用于RGB（红绿蓝，Red Green Blue）和YCbCr（亮度-蓝色色差-红色色差，Luma-Chrominance）色彩模型。<br/>由于这两种模型都是三分量模型（一个亮度分量加两个色度分量，或三个颜色通道），因此该标签的标准值为3。<br/>对于JPEG压缩图像，此标签将会被对应的JPEG标记替换。 |
 | rowsPerStrip                        | number                                             | 否   | 是   | 每条图像数据的行数。                                         |
@@ -65,7 +63,7 @@ import { image } from '@kit.ImageKit';
 | yCbCrPositioning                    | number                                             | 否   | 是   | 色度分量相对于亮度分量的位置。                               |
 | referenceBlackWhite                 | number[]                                           | 否   | 是   | 参考黑点值和白点值。                                         |
 | copyright                           | string                                             | 否   | 是   | 图像的版权信息。                                             |
-| exposureTime                        | number                                             | 否   | 是   | 曝光时间。                                                   |
+| exposureTime                        | number                                             | 否   | 是   | 曝光时间。单位为秒（s）。                                                   |
 | fNumber                             | number                                             | 否   | 是   | 光圈值，如f/1.8。                                            |
 | exposureProgram                     | number                                             | 否   | 是   | 相机在拍摄照片时用于设置曝光的程序类。                       |
 | spectralSensitivity                 | string                                             | 否   | 是   | 指示相机每个通道的光谱灵敏度。                           |
@@ -106,7 +104,7 @@ import { image } from '@kit.ImageKit';
 | oecf                                | ArrayBuffer                                        | 否   | 是   | ISO 14524中规定的光电转换函数（OECF）。 |
 | sensitivityType                     | number                                             | 否   | 是   | 灵敏度类型。                                                 |
 | standardOutputSensitivity           | number                                             | 否   | 是   | 标准输出灵敏度。                                             |
-| recommendedExposureIndex            | number                                             | 否   | 是   | GPS测量模式。                                                |
+| recommendedExposureIndex            | number                                             | 否   | 是   | 推荐曝光指数。                                                |
 | isoSpeedLatitudeyyy                 | number                                             | 否   | 是   | 表示相机传感器在单次曝光中可记录的最大动态范围。单位为EV。 |
 | isoSpeedLatitudezzz                 | number                                             | 否   | 是   | 表示相机传感器在过曝方向保护高光细节的能力边界。单位为EV。 |
 | exifVersion                         | string                                             | 否   | 是   | 支持的Exif标准的版本。                                       |
@@ -126,7 +124,7 @@ import { image } from '@kit.ImageKit';
 | meteringMode                        | number                                             | 否   | 是   | 测光模式。                                                   |
 | lightSource                         | number                                             | 否   | 是   | 光源。                                                       |
 | flash                               | number                                             | 否   | 是   | 闪光。                                                       |
-| focalLength                         | number                                             | 否   | 是   | 焦距。，单位为毫米。                                                       |
+| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米（mm）。                                                       |
 | subjectArea                         | number[]                                           | 否   | 是   | 用于指示主要对象在整个场景中的位置和区域。                   |
 | makerNote                           | ArrayBuffer                                        | 否   | 是   | Exif/相机文件系统设计规则DCF（Design rule for Camera File system）写入器制造商记录所需信息的标签。                     |
 | userComment                         | string                                             | 否   | 是   | 用户评论。                                                   |
@@ -135,10 +133,10 @@ import { image } from '@kit.ImageKit';
 | subsecTimeDigitized                 | string                                             | 否   | 是   | 记录DateTimeDigitized标记的秒数。              |
 | flashpixVersion                     | string                                             | 否   | 是   | FPXR（FlashPix Extension Resource）支持的FlashPix格式版本，用于增强设备兼容性。 |
 | colorSpace                          | number                                             | 否   | 是   | 颜色空间信息标签，通常记录为颜色空间说明符。                 |
-| pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。           |
-| pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。             |
+| pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。单位为像素（px）。           |
+| pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。单位为像素（px）。              |
 | relatedSoundFile                    | string                                             | 否   | 是   | 与图像数据相关的音频文件的名称。                             |
-| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒(BCPS，Beam Candlepower Seconds)。 |
+| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒（BCPS，Beam Candlepower Seconds）。 |
 | spatialFrequencyResponse            | ArrayBuffer                                        | 否   | 是   | 相机或输入设备空间频率表。                                   |
 | focalPlaneXResolution               | number                                             | 否   | 是   | 传感器物理平面X轴方向上每单位物理长度的像素数量。          |
 | focalPlaneYResolution               | number                                             | 否   | 是   | 传感器物理平面Y轴方向上每单位物理长度的像素数量。          |
@@ -153,7 +151,7 @@ import { image } from '@kit.ImageKit';
 | exposureMode                        | number                                             | 否   | 是   | 曝光模式。                                   |
 | whiteBalance                        | number                                             | 否   | 是   | 白平衡。                                                     |
 | digitalZoomRatio                    | number                                             | 否   | 是   | 拍摄时的数字变焦比。                                         |
-| focalLengthIn35mmFilm               | number                                             | 否   | 是   | 35mm胶片的焦距。                                             |
+| focalLengthIn35mmFilm               | number                                             | 否   | 是   | 换算成35mm等效焦距。单位为毫米（mm）。                                             |
 | sceneCaptureType                    | number                                             | 否   | 是   | 拍摄的场景类型。                                             |
 | gainControl                         | number                                             | 否   | 是   | 整体图像增益调整程度。                                       |
 | contrast                            | number                                             | 否   | 是   | 相机应用的对比度优化策略。例如：标准处理、弱化对比度等。     |
@@ -195,7 +193,7 @@ static createInstance(): ExifMetadata
 async function exifMetadataCreateInstance(context: Context) {
   let exifMetadata = image.ExifMetadata.createInstance();
   if (exifMetadata != undefined) {
-    console.info("createInstance success");
+    console.info("Succeeded in creating an ExifMetadata instance.");
   }
 }
 ```
@@ -236,11 +234,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -251,9 +249,9 @@ async function exifMetadataGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     await metaData.exifMetadata.getProperties(["ImageWidth", "ImageLength"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -297,11 +295,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -316,7 +314,7 @@ async function exifMetadataSetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.exifMetadata.setProperties(setkey).then(async () => {
-      console.info('Set properties success.');
+      console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -346,11 +344,11 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -362,10 +360,9 @@ async function exifMetadataGetAllProperties(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     await metaData.exifMetadata.getAllProperties().then((data) => {
       const count = Object.keys(data).length;
-      console.info('Metadata have ', count, ' properties');
-      console.info(`Get metadata all properties: ${data}`);
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -393,11 +390,11 @@ clone(): Promise\<ExifMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -409,9 +406,9 @@ async function exifMetadataClone(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let new_metadata = await metaData.exifMetadata.clone();
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
-      console.info(`Clone new_metadata and get Properties: ${data1}`);
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -419,7 +416,7 @@ async function exifMetadataClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -438,11 +435,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -454,13 +451,13 @@ async function exifMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let blob = await metaData.exifMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -493,11 +490,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -509,7 +506,7 @@ async function exifMetadataSetBlob(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let blob = await metaData.exifMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.exifMetadata.setBlob(blob);
     }
     let new_blob = metaData.exifMetadata.getBlob();

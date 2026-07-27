@@ -1,7 +1,7 @@
 # @ohos.inputMethod (Input Method Framework) (System API)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -357,6 +357,99 @@ function enableInputMethodSafely() {
 }
 
 enableInputMethodSafely();
+```
+
+### getCursorInfo
+
+getCursorInfo(userId?: number): CursorInfo
+
+Obtains the cursor information of a specified user. If the edit box does not notify the input method service of the cursor information, all attribute values returned are **0**.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | userId |  number | No| User ID.<br>If the caller is not an application of user 0, the value of this parameter is the user ID of the caller by default.<br> If the caller is an application of user 0, the value of this parameter is the foreground user ID of the main screen.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [CursorInfo](js-apis-inputmethod.md#cursorinfo10) | Cursor information of the specified user.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getDefaultInputMethodAbility
+
+getDefaultInputMethodAbility(): InputMethodProperty
+
+Obtains the default input method capabilities. To optimize performance, the returned **InputMethodProperty** object ensures that only the `name` and `id` attributes that uniquely identify the input method capability are correct. Other attributes may be empty.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Default input method attributes. Only the `name` and `id` attributes are guaranteed to be correct. Other attributes may be empty.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+try {
+  const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
+  console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id);
+} catch (err) {
+  console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## InputMethodController

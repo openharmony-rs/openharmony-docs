@@ -14,7 +14,7 @@ Neural Network Runtime作为AI推理引擎和加速芯片的桥梁，为AI推理
 本文以图1展示的`Add`单算子模型为例，介绍Neural Network Runtime的开发流程。`Add`算子包含两个输入、一个参数和一个输出，其中的`activation`参数用于指定`Add`算子中激活函数的类型。
 
 **图1** Add单算子网络示意图
-!["Add单算子网络示意图"](figures/02.png)
+!["Add单算子网络示意图"](figures/neural-network-runtime.png)
 
 ## 环境准备
 

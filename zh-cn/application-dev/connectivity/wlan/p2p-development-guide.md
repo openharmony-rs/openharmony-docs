@@ -48,7 +48,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
-   <!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+   <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
    
    ``` TypeScript
    async createGroup() {
@@ -63,7 +63,10 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
        }
        hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`);
        await wifiManager.createGroup(config);
-       promptAction.showToast({ message : 'createGroup success' });
+       this.promptAction.showToast({
+         message: 'createGroup success',
+         duration: 2000
+       });
      } catch (e) {
        hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`);
      }
@@ -76,7 +79,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
    // 创建群组，将当前设备当作GO使用时，需要该步骤
    // netId：-1表示创建临时组，下次和已连接过的设备连接，需要重新进行GO协商，以及WPS密钥协商;
-   //        -2表示创建永久组，下次和已连接过的设备连接，不需要重新进行GO和WPS密钥协商;
+   // netId：-2表示创建永久组，下次和已连接过的设备连接，不需要重新进行GO和WPS密钥协商;
 
    let recvP2pPersistentGroupChangeFunc = () => {
      console.info("p2p persistent group change receive event");
@@ -122,11 +125,14 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
    
    ``` TypeScript
-   connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
-     promptAction.showToast({ message : 'connect to device' });
+   connectP2p(p2pScanInfo: wifiManager.WifiP2pDevice) {
+     this.promptAction.showToast({
+       message: 'connect to device',
+       duration: 2000
+     });
      hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`);
      hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo));
-     let config: wifi.WifiP2PConfig = {
+     let config: wifiManager.WifiP2PConfig = {
        deviceAddress : p2pScanInfo.deviceAddress,
        netId : - 2 ,
        deviceAddressType: 1,
@@ -134,7 +140,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
        groupName : '' ,
        goBand : 0
      }
-     wifi.p2pConnect(config);
+     wifiManager.p2pConnect(config);
    }
    ```
 5. 开始P2P设备发现。
@@ -143,18 +149,21 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    ``` TypeScript
    aboutToAppear() {
      // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
-     if (!wifi.isWifiActive()) {
-       promptAction.showToast({ message : 'place active wifi' });
+     if (!wifiManager.isWifiActive()) {
+       this.promptAction.showToast({
+         message: 'please active wifi',
+         duration: 2000
+       });
        return;
      }
      this.isSwitchOn = true;
-     wifi.startDiscoverDevices();
+     wifiManager.startDiscoverDevices();
      this.addListener();
    }
    
    aboutToDisappear() {
-     wifi.off('p2pPeerDeviceChange');
-     wifi.off('p2pConnectionChange');
+     wifiManager.off('p2pPeerDeviceChange');
+     wifiManager.off('p2pConnectionChange');
    }
    ```
 6. 示例代码：

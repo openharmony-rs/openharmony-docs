@@ -49,6 +49,7 @@ export default class DemoProcess extends ChildProcess {
 
 Sample code for the main process:
 
+<!--code_no_check-->
 ```ts
 // Call childProcessManager.startArkChildProcess to start the child process.
 // entry/src/main/ets/pages/Index.ets

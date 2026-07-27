@@ -5,7 +5,7 @@
 <!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
 <!--Designer: @ctw-ian; @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The Ark bytecode file is a binary output generated from compiling ArkTS/TS/JS source code. This topic describes the Ark bytecode file format, helping you understand the structure and content of Ark bytecode files, thereby effectively analyzing and modifying bytecode.
 

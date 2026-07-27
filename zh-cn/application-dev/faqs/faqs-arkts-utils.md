@@ -111,13 +111,13 @@ for (let i: number = 0; i < allCount; i++) { // 每次执行3个任务
 
 **参考链接**
 
-1. [Priority](../reference/apis-arkts/js-apis-taskpool.md)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
 
 ## 如何将内存共享的线程模型，转换成在ArkTS的线程模型下（内存隔离）的实现方式？(API 11)
 
 **解决方案**
 
-可以利用TaskPool接口转换，大概可以分为如下五个场景。
+可以利用TaskPool接口转换，可以分为如下五个场景。
 
 场景一：主线程将独立的耗时任务放到子线程执行
 
@@ -344,7 +344,7 @@ mainPort.onmessage = (e: MessageEvents): void => {
 
 同时TaskPool简化开发者开发并发程序，支持优先级和取消，并且通过统一管理节省系统资源优化调度。  
 
-相同点是：在JS相关的线程间交互上，二者本质都是内存隔离模型，参数与范围值的限制是一致的，也有开销。（需注意并发任务粒度）
+相同点是：在JS相关的线程间交互上，二者本质都是内存隔离模型，参数与返回值的限制是一致的，也有开销。（需注意并发任务粒度）
 
 **参考链接**
 
@@ -451,7 +451,7 @@ Worker支持通过PostMessage往父线程抛任务。TaskPool支持往父线程�
 
 **参考链接**
 
-1. [@ohos.taskpool（启动任务池）](../reference/apis-arkts/js-apis-taskpool.md)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
 2. [@ohos.worker (启动一个Worker)](../reference/apis-arkts/js-apis-worker.md)
 
 ## ArkTS是否支持共享内存模型进行多线程开发吗？(API 10)
@@ -481,14 +481,16 @@ Sendable对象需要满足一定的规格：
 6. 不支持#定义私有属性，要用private
 7. 导出Sendable类的文件，不能导出非Sendable属性
 8. 传输方式有如下两种：
+
     8.1 序列化传递：深拷贝到其他线程，非共享模式。
+
     8.2 共享模式：可以跨线程引用传递，多线程可同时读写，开发者需要自行采用同步机制避免多线程竞争。
 
 **参考链接**
 
 1. [多线程并发概述 (TaskPool和Worker)](../arkts-utils/multi-thread-concurrency-overview.md)
 
-## ArkTs类的方法是否支持重载？怎么实现？(API 10)
+## ArkTS类的方法是否支持重载？怎么实现？(API 10)
 
 **解决方案**
 
@@ -562,13 +564,13 @@ ArkTS层接口的异步如果不涉及I/O操作，则异步任务会在主线程
 
 当前不支持关键字修饰的同步机制。后续会支持AsyncLock形式的同步机制，支持将需要同步的代码块放到异步代码块中。
 
-##  在ArkTS的主线程中使用await会堵塞主线程吗？（API 10）
+##  在ArkTS的主线程中使用await会阻塞主线程吗？（API 10）
 
 比如如下代码在主线程中执行：
 
 `const response = await request.buildCall().execute<string>();`
 
-这种写法会导致主线程堵塞吗？
+这种写法会导致主线程阻塞吗？
 
 **解决方案**
 
@@ -604,7 +606,7 @@ ArkTS支持内置的类型转换函数，例如Number(), String(), Boolean()等�
 **解决方案**
 
 1. TaskPool后台线程是根据负载及硬件决定的，无法开放管理，只能支持串行队列，任务组等机制进行任务管控。
-2. I/O任务池有底层进行调度，无法自行管控。
+2. I/O任务池由底层进行调度，无法自行管控。
 
 ## 操作系统对TS文件开发后续还支持吗？（API 10）
 
@@ -739,8 +741,8 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 3. GC状态打印：hdc shell param set persist.ark.properties 0x105e
 4. 多线程检测：hdc shell param set persist.ark.properties 0x107c
 5. 同时开启多线程检测并打印异常栈：hdc shell param set persist.ark.properties 0x127c
-6. 全局对象内存泄露检查：hdc shell param set persist.ark.properties 0x145c
-7. 全局原始值内存泄露检查：hdc shell param set persist.ark.properties 0x185C
+6. 全局对象内存泄漏检查：hdc shell param set persist.ark.properties 0x145c
+7. 全局原始值内存泄漏检查：hdc shell param set persist.ark.properties 0x185C
 8. 打开GC共享堆信息：hdc shell param set persist.ark.properties 0x905c
 9. 微任务打点，包含入队及执行过程：hdc shell param set persist.ark.properties 0x8105c
 10. 增加ArkProperties控制是否启用旧的socket调试器：hdc shell param set persist.ark.properties 0x10105C

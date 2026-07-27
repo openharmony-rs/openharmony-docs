@@ -170,7 +170,7 @@ Updates the data to be verified.
 
 | Type| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_INVALID_PARAMS**: A parameter is invalid.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_INVALID_PARAMS**: A parameter is invalid.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_INVALID_CALL**: Invalid function call. It is supported since API version 26.0.0.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
 
 **Reference**
 
@@ -203,7 +203,7 @@ Verifies the signature of the data.
 
 | Type| Description|
 | -- | -- |
-| bool | **true** if the signature verification is successful; **false** otherwise.|
+| bool | Whether the signature verification is successful. The value **true** indicates that the signature verification is successful, and the value **false** indicates that the signature verification fails.|
 
 **Reference**
 
@@ -236,7 +236,7 @@ Restores the raw signature data.<br> Note: After the use is complete, the memory
 
 | Type| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_INVALID_PARAMS**: A parameter is invalid.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_INVALID_PARAMS**: A parameter is invalid.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_INVALID_CALL**: Invalid function call. It is supported since API version 26.0.0.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
 
 ### OH_CryptoVerify_GetAlgoName()
 
@@ -412,7 +412,7 @@ Updates the data to be signed.
 
 | Type| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_PARAMETER_CHECK_FAILED**: The parameter check failed.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_PARAMETER_CHECK_FAILED**: The parameter check failed.<br>         **CRYPTO_INVALID_CALL**: Invalid function call. It is supported since API version 26.0.0.<br>         **CRYPTO_OPERATION_ERROR**: An error occurs when the API of a third-party algorithm library is called.|
 
 **Reference**
 

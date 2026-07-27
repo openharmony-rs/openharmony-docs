@@ -1,11 +1,11 @@
-# HiDebug接口使用示例(C/C++)
+# HiDebug接口使用示例（C/C++）
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具体调用示例请参考下文。
 
@@ -48,7 +48,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    #endif // MYAPPLICATION_TESTBACKTRACE_H
    ```
 
-3. 编辑“test_backtrace.cpp”文件, 内容如下：
+3. 编辑“test_backtrace.cpp”文件，内容如下：
 
    <!-- @[TestHidebugNdk_Backtrace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_backtrace.cpp) -->
    

@@ -1,18 +1,20 @@
 # @ohos.uiAppearance (UI Appearance) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **uiAppearance** module provides basic capabilities for managing the system appearance. It allows for color mode configuration currently, and will introduce more features over time.
+This module provides basic capabilities for managing system appearance configurations, including color mode (dark/light) settings, font size scale factors, and font weight scale factors.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
 
 
 ## Modules to Import
@@ -32,12 +34,14 @@ Sets the system color mode. This API uses an asynchronous callback to return the
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
 | mode | [DarkMode](js-apis-uiappearance.md#darkmode) | Yes| Color mode to set.|
-| callback | AsyncCallback\<void>| Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void>| Yes| Callback used to return the system color mode result. If the operation is successful, **error** is **undefined**. If the operation fails, **error** is an error object.|
 
 **Error codes**
 
@@ -58,14 +62,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
     if (error) {
-      console.error('Set dark-mode failed, ' + error.message);
-    } else {
-      console.info('Set dark-mode successfully.');
+      console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
+      return;
     }
-  })
+    console.info('Set dark-mode successfully.');
+  });
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Set dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -79,6 +83,8 @@ Sets the system color mode. This API uses a promise to return the result.
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -111,12 +117,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
     console.info('Set dark-mode successfully.');
-  }).catch((error: Error) => {
-    console.error('Set dark-mode failed, ' + error.message);
+  }).catch((error: BusinessError) => {
+    console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Set dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -125,7 +131,7 @@ try {
 
 setFontScale(fontScale: number): Promise\<void>
 
-Sets the system font scale.
+Sets the system font size scale factor.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
@@ -137,7 +143,7 @@ Sets the system font scale.
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| fontScale | number | Yes| Font scale to be set.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
+| fontScale | number | Yes| Font size scale factor.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
 
 **Return value**
 
@@ -166,17 +172,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let fontScale = 10;
+let fontScale = 1.5;
 
 try {
-    uiAppearance.setFontScale(fontScale).then(() => {
-      console.info('Set fontScale successfully.');
-    }).catch((error:Error) => {
-      console.error('Set fontScale failed, ' + error.message);
-    });
+  uiAppearance.setFontScale(fontScale).then(() => {
+    console.info('Set fontScale successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set fontScale failed. Code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set fontScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set fontScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -185,7 +191,7 @@ try {
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
-Sets the system font weight scale.
+Sets the system font weight scale factor.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
@@ -197,7 +203,7 @@ Sets the system font weight scale.
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| fontWeightScale | number | Yes| Font weight scale to set.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
+| fontWeightScale | number | Yes| Font weight scale factor.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
 
 **Return value**
 
@@ -229,13 +235,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fontWeightScale = 1;
 
 try {
-    uiAppearance.setFontWeightScale(fontWeightScale).then(() => {
-      console.info('Set fontWeightScale successfully.');
-    }).catch((error:Error) => {
-      console.error('Set fontWeightScale failed, ' + error.message);
-    });
+  uiAppearance.setFontWeightScale(fontWeightScale).then(() => {
+    console.info('Set fontWeightScale successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set fontWeightScale failed. Code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set fontWeightScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

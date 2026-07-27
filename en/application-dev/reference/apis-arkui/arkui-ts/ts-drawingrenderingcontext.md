@@ -1,24 +1,28 @@
 # DrawingRenderingContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**DrawingRenderingContext** provides a rendering context for drawing rectangles, text, images, and other objects on a canvas.
+After the **DrawingRenderingContext** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 
-## constructor
+## APIs
+
+### constructor
 
 constructor(unit?: LengthMetricsUnit)
 
 Creates a **Canvas** object for drawing operations using the drawing API. Configuration of the unit mode for the **DrawingRenderingContext** object is supported.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Obtains the size of the **DrawingRenderingContext** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -51,6 +57,8 @@ get canvas(): DrawingCanvas
 Obtains the canvas object for drawing content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,21 +76,25 @@ Invalidates the component and triggers re-rendering of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## DrawingCanvas<sup>12+</sup>
 
-type DrawingCanvas = Canvas
+type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas
 
-Defines a canvas object for drawing content on the **XComponent** component.
+Draws content on the **DrawingRenderingContext**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | Canvas object.|
+| import('../api/@ohos.graphics.drawing').default.[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | Canvas object.|
 
 ## Size
 
@@ -90,12 +102,14 @@ Provides size information of the **DrawingRenderingContext** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read Only| Optional| Description|
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.|
-| height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.|
+| width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.<br>The unit can be vp or px.<br>Default unit: vp|
+| height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.<br>The unit can be vp or px.<br>Default unit: vp|
 
 ## Example
 

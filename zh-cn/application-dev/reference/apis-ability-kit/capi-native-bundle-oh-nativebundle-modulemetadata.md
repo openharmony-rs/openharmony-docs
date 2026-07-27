@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct OH_NativeBundle_ModuleMetadata {...} OH_NativeBundle_ModuleMetadata
@@ -28,4 +28,4 @@ typedef struct OH_NativeBundle_ModuleMetadata {...} OH_NativeBundle_ModuleMetada
 | -- | -- |
 | char* moduleName | 模块名称。 |
 | [OH_NativeBundle_Metadata*](capi-native-bundle-oh-nativebundle-metadata.md) metadataArray | 模块的元数据数组。 |
-| size_t metadataArraySize | 模块的元数据数组大小。 |
+| size_t metadataArraySize | 模块的元数据数组大小。需与metadataArray配合使用，应等于metadataArray数组的实际元素数量，设置错误可能导致数组越界或数据访问异常。 |

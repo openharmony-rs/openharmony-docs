@@ -5,6 +5,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:22.690Z pushedAt=2026-06-23T11:21:42.922Z -->
 
 >  **NOTE**
 >
@@ -69,7 +70,6 @@ The [universal methods](js-components-common-methods.md) are supported.
 
 
 ## Example
-
 <!--code_no_check-->
 ```html
 <!-- index.hml -->
@@ -122,4 +122,4 @@ export default {
 }
 ```
 
-![grid](figures/grid.gif)
+![grid-col](figures/grid-col.gif)

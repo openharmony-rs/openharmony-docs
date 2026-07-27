@@ -31,6 +31,9 @@
 | HUKS_AUTH_STORAGE_LEVEL_DE | 0    | 表示密钥仅在开机后可访问。 |
 | HUKS_AUTH_STORAGE_LEVEL_CE | 1    | 表示密钥仅在首次解锁后可访问。 |
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | 表示密钥仅在解锁状态时可访问。 |
+> **说明：**
+>
+>  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 
 ## 支持的算法
 
@@ -61,6 +64,7 @@
 | SM4 | 128 | 9+ | 是 |
 | DES | 64 | 18+ | 是 |
 | 3DES | 128、192 | 18+ | 是 |
+| ML-DSA | 安全参数集支持44、65、87 | 26.0.0+ | 是 |
 
 > **说明：**
 >

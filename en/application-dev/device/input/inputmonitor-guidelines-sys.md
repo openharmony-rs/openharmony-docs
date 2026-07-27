@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:55.552Z pushedAt=2026-06-25T06:58:09.383Z -->
 
 ## When to Use
 
@@ -19,7 +20,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs provided by the **inputMonitor** module. For details, see [ohos.multimodalInput.inputMonitor](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md).
+The following table lists common APIs for input monitor. For details, see [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -70,9 +71,9 @@ struct Index {
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          // Callback triggered when the mouse button is pressed.
+          // Monitor mouse press events. The callback returns true when pressed.
           try {
-            inputMonitor.off('mouse', callback);// Disable listening for mouse events.
+            inputMonitor.off('mouse', callback); // Cancel listening for mouse events.
             console.info(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor off failed, error: ${JSON.stringify(error, ["code", "message"])}`);

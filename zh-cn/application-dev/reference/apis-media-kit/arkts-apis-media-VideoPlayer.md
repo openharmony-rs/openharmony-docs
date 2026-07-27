@@ -1,16 +1,17 @@
 # 废弃的Interface (VideoPlayer, deprecated)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+
+视频播放管理类，用于管理和播放视频媒体。在调用VideoPlayer的方法前，需要先通过[createVideoPlayer()](arkts-apis-media-f.md#mediacreatevideoplayerdeprecated)构建一个VideoPlayer实例。
 
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-apis-media-AVPlayer.md)替代。
 
-视频播放管理类，用于管理和播放视频媒体。在调用VideoPlayer的方法前，需要先通过[createVideoPlayer()](arkts-apis-media-f.md#mediacreatevideoplayerdeprecated)构建一个VideoPlayer实例。
 
 ## 导入模块
 
@@ -24,7 +25,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称                            | 类型                                                   | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>8+</sup>                | string                                                 | 否   | 否   | 视频媒体URL，支持当前主流的视频格式(mp4、mpeg-ts、mkv)。<br>**支持路径示例**：<br>1. fd类型播放：fd://xx<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放: http\://xx<br/>3. https网络播放: https\://xx<br/>4. hls网络播放路径：http\://xx或者https\://xx<br>5. file类型: file\://xx<br/>**说明：**<br>从API version 11开始不支持webm。 |
+| url<sup>8+</sup>                | string                                                 | 否   | 否   | 视频媒体URL，支持当前主流的视频格式(mp4、mpeg-ts、mkv)。<br>**支持路径示例**：<br>1. fd类型播放：fd://xx<br>![](figures/image-url.png)<br>2. http网络播放: http\://xx<br/>3. https网络播放: https\://xx<br/>4. hls网络播放路径：http\://xx或者https\://xx<br>5. file类型: file\://xx<br/>**说明：**<br>从API version 11开始不支持webm。 |
 | fdSrc<sup>9+</sup>              | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                 | 否   | 否   | 视频媒体文件描述，使用场景：应用中的视频资源被连续存储在同一个文件中。<br/>**使用示例**：<br/>假设一个连续存储的音乐文件: <br/>视频1(地址偏移:0，字节长度:100)<br/>视频2(地址偏移:101，字节长度:50)<br/>视频3(地址偏移:151，字节长度:150)<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }<br/>假设是一个独立的视频文件: 请使用src=fd://xx <br/> |
 | loop<sup>8+</sup>               | boolean                                                | 否   | 否   | 视频循环播放属性，设置为'true'表示循环播放。                 |
 | videoScaleType<sup>9+</sup>     | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                     | 否   | 是   | 视频缩放模式。默认值为VIDEO_SCALE_TYPE_FIT。                                               |
@@ -41,10 +42,11 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
 设置SurfaceId。通过回调函数获取返回值。
 
-*注意：SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
-
 > **说明：**
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#属性)替代。
+>
+> - SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
+>
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#属性)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -76,10 +78,13 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 设置SurfaceId。通过Promise获取返回值。
 
-*注意：SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
+
 
 > **说明：**
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#属性)替代。
+>
+> - SetDisplaySurface需要在设置url和Prepare之间，无音频的视频流必须设置Surface否则Prepare失败。
+>
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#属性)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -115,6 +120,7 @@ prepare(callback: AsyncCallback\<void>): void
 准备播放视频。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.prepare](arkts-apis-media-AVPlayer.md#prepare9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -146,6 +152,7 @@ prepare(): Promise\<void>
 准备播放视频。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.prepare](arkts-apis-media-AVPlayer.md#prepare9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -175,6 +182,7 @@ play(callback: AsyncCallback\<void>): void
 开始播放视频。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.play](arkts-apis-media-AVPlayer.md#play9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -206,6 +214,7 @@ play(): Promise\<void>
 开始播放视频。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.play](arkts-apis-media-AVPlayer.md#play9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -235,6 +244,7 @@ pause(callback: AsyncCallback\<void>): void
 通过回调方式暂停播放视频。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.pause](arkts-apis-media-AVPlayer.md#pause9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -266,6 +276,7 @@ pause(): Promise\<void>
 暂停播放视频。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.pause](arkts-apis-media-AVPlayer.md#pause9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -295,6 +306,7 @@ stop(callback: AsyncCallback\<void>): void
 通过回调方式停止播放视频。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.stop](arkts-apis-media-AVPlayer.md#stop9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -326,6 +338,7 @@ stop(): Promise\<void>
 停止播放视频。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.stop](arkts-apis-media-AVPlayer.md#stop9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -355,6 +368,7 @@ reset(callback: AsyncCallback\<void>): void
 重置播放视频。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.reset](arkts-apis-media-AVPlayer.md#reset9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -386,6 +400,7 @@ reset(): Promise\<void>
 重置播放视频。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.reset](arkts-apis-media-AVPlayer.md#reset9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -415,6 +430,7 @@ seek(timeMs: number, callback: AsyncCallback\<number>): void
 跳转到指定播放位置，默认跳转到指定时间点的上一个关键帧。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.seek](arkts-apis-media-AVPlayer.md#seek9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -458,6 +474,7 @@ seek(timeMs: number, mode:SeekMode, callback: AsyncCallback\<number>): void
 跳转到指定播放位置。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.seek](arkts-apis-media-AVPlayer.md#seek9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -503,6 +520,7 @@ seek(timeMs: number, mode?:SeekMode): Promise\<number>
 跳转到指定播放位置，如果没有设置mode则跳转到指定时间点的上一个关键帧。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.seek](arkts-apis-media-AVPlayer.md#seek9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -557,6 +575,7 @@ setVolume(vol: number, callback: AsyncCallback\<void>): void
 设置音量。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.setVolume](arkts-apis-media-AVPlayer.md#setvolume9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -590,6 +609,7 @@ setVolume(vol: number): Promise\<void>
 设置音量。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.setVolume](arkts-apis-media-AVPlayer.md#setvolume9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -626,6 +646,7 @@ release(callback: AsyncCallback\<void>): void
 释放视频资源。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.release](arkts-apis-media-AVPlayer.md#release9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -657,6 +678,7 @@ release(): Promise\<void>
 释放视频资源。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.release](arkts-apis-media-AVPlayer.md#release9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -686,6 +708,7 @@ getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 获取视频轨道信息。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.getTrackDescription](arkts-apis-media-AVPlayer.md#gettrackdescription9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -717,6 +740,7 @@ getTrackDescription(): Promise\<Array\<MediaDescription>>
 获取视频轨道信息。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.getTrackDescription](arkts-apis-media-AVPlayer.md#gettrackdescription9-1)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -750,6 +774,7 @@ setSpeed(speed: number, callback: AsyncCallback\<number>): void
 设置播放速度。通过回调函数获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.setSpeed](arkts-apis-media-AVPlayer.md#setspeed9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -794,6 +819,7 @@ setSpeed(speed: number): Promise\<number>
 设置播放速度。通过Promise获取返回值。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.setSpeed](arkts-apis-media-AVPlayer.md#setspeed9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -829,7 +855,7 @@ if (videoPlayer) {
   (videoPlayer as media.VideoPlayer).setSpeed(speed).then((result: number) => {
     console.info('Succeeded in setting Speed');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to set Speed, error:${error}`);//todo:: error.
+    console.error(`Failed to set Speed, error:${error}`);// todo:: error.
   });
 }
 ```
@@ -841,6 +867,7 @@ on(type: 'playbackCompleted', callback: Callback\<void>): void
 开始监听视频播放完成事件。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('stateChange')](arkts-apis-media-AVPlayer.md#onstatechange9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -867,6 +894,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 开始监听视频缓存更新事件。仅网络播放支持该订阅事件。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('bufferingUpdate')](arkts-apis-media-AVPlayer.md#onbufferingupdate9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -894,6 +922,7 @@ on(type: 'startRenderFrame', callback: Callback\<void>): void
 开始监听视频播放首帧送显上报事件。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('startRenderFrame')](arkts-apis-media-AVPlayer.md#onstartrenderframe9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -920,6 +949,7 @@ on(type: 'videoSizeChanged', callback: (width: number, height: number) => void):
 开始监听视频播放宽高变化事件。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('videoSizeChange')](arkts-apis-media-AVPlayer.md#onvideosizechange9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -946,6 +976,7 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 监听音频焦点变化事件，参考[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
 
 > **说明：**
+>
 > 从API version 9开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('audioInterrupt')](arkts-apis-media-AVPlayer.md#onaudiointerrupt9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -974,6 +1005,7 @@ on(type: 'error', callback: ErrorCallback): void
 开始监听视频播放错误事件，当上报error错误事件后，用户需处理error事件，退出播放操作。
 
 > **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer.on('error')](arkts-apis-media-AVPlayer.md#onerror9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -993,5 +1025,5 @@ import { BusinessError } from '@kit.BasicServicesKit';
 videoPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`video error called, error: ${error}`);
 });
-videoPlayer.url = 'fd://error';  //设置错误的播放地址，触发'error'事件。
+videoPlayer.url = 'fd://error';  // 设置错误的播放地址，触发'error'事件。
 ```

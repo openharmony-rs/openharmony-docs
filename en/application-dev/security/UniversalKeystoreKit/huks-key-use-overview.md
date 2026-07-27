@@ -17,7 +17,7 @@ The key generated or imported can be used to perform the following operations to
 
 - [Key derivation](huks-key-derivation-overview.md)
 
-The common operations provided do not include the secondary identity authentication for key access control. For details, see [HUKS Key Access Control](huks-identity-authentication-overview.md).
+This section provides examples of the preceding common key operations. Secondary access control is not configured in the following examples. For details about how to configure key access control, see [HUKS Access Control Overview](huks-identity-authentication-overview.md).
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 

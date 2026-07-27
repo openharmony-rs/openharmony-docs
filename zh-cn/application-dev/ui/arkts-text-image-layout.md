@@ -10,7 +10,7 @@
 
 ## 使用Span和ImageSpan实现图文混排
 
-通过Text组件设置[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性和ImageSpan设置verticalAlign为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
+通过设置[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性和设置[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)组件[verticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
 
 <!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 
@@ -59,21 +59,9 @@ const BUNDLE = 'Textcomponent_';
 @Entry
 @Component
 struct styled_string_demo {
-  @State message: string = 'Hello World';
   imagePixelMap: image.PixelMap | undefined = undefined;
-  @State imagePixelMap3: image.PixelMap | undefined = undefined;
   mutableStr: MutableStyledString = new MutableStyledString('123');
   controller: TextController = new TextController();
-  mutableStr2: MutableStyledString = new MutableStyledString('This is set decoration line style to the mutableStr2', [{
-    start: 0,
-    length: 15,
-    styledKey: StyledStringKey.DECORATION,
-    styledValue: new DecorationStyle({
-      type: TextDecorationType.Overline,
-      color: Color.Orange,
-      style: TextDecorationStyle.DOUBLE
-    })
-  }]);
 
   async aboutToAppear() {
     hilog.info(DOMAIN, TAG, BUNDLE + 'aboutToAppear initial imagePixelMap');
@@ -82,13 +70,18 @@ struct styled_string_demo {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    try {
+      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      await imageSource.release();
+      return createPixelMap;
+    } catch (error) {
+      hilog.error(DOMAIN, TAG, `Get pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+    }
+    return undefined;
   }
 
   leadingMarginValue: ParagraphStyle = new ParagraphStyle({
@@ -97,11 +90,11 @@ struct styled_string_demo {
     overflow: TextOverflow.Ellipsis,
     textVerticalAlign: TextVerticalAlign.BASELINE
   });
-  //行高样式对象
+  // 行高样式对象
   lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
-  //Bold样式
+  // Bold样式
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
-  //创建含段落样式的对象paragraphStyledString1
+  // 创建含段落样式的对象paragraphStyledString1
   paragraphStyledString1: MutableStyledString =
     // 请将$r('app.string.print_photo')替换为实际资源文件，在本示例中该资源文件的value值为"\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，"
     new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [

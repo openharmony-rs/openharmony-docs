@@ -1,16 +1,18 @@
 # Class (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIContext实例对象。
+UIContext实例对象，用于提供与当前UI实例关联的上下文能力，支持获取UI相关控制器、管理弹窗与动画、查询节点和窗口信息、进行像素单位转换等，适用于在指定UI实例中管理页面、组件和交互行为的场景。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
@@ -30,29 +32,26 @@ import { UIContext } from '@kit.ArkUI';
 struct Index {
   build() {
     Column() {
-      Button("Button")
-          .onClick(()=>{
+      Button('Button')
+          .onClick(() => {
             // 通过自定义组件内置方法获取
-            this.getUIContext()
+            this.getUIContext();
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
-    }  
+    }
   }
 }
 
 // EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
+    windowStage.getMainWindowSync().getUIContext();
     // 其他运行逻辑
   }
 }
@@ -78,7 +77,7 @@ constructor()
 import { UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function GetUIContextByAtomicInterface(): UIContext {
+function getUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -130,9 +129,9 @@ struct Index {
         })
         .onClick(() => {
           let resolvedUIContext = UIContext.resolveUIContext();
-          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          let contextByAtomicInterface = getUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
-            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
         })
     }
@@ -152,7 +151,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 >
 > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +198,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 获取最近一次切换到获焦状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,7 +245,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 获取最近一次切换到前台状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,7 +292,7 @@ static getAllUIContexts(): UIContext[]
 
 获取所有当前有效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,7 +351,7 @@ static resolveUIContext(): ResolvedUIContext
 > 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
 > 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,7 +374,7 @@ struct Index {
     Column() {
       Button('click').onClick(() => {
         let resolvedUIContext = UIContext.resolveUIContext();
-        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}`);
       })
     }
     .width(UIContext.resolveUIContext().px2vp(100))
@@ -403,28 +402,28 @@ isAvailable(): boolean
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct UIContextCompare {
-  @State result1: string = ""
-  @State result2: string = ""
+  @State result1: string = '';
+  @State result2: string = '';
 
   build() {
     Column() {
-      Text("getUIContext() 结果: " + this.result1)
+      Text('getUIContext() 结果: ' + this.result1)
         .fontSize(20)
         .margin(10)
 
-      Text("new UIContext() 结果: " + this.result2)
+      Text('new UIContext() 结果: ' + this.result2)
         .fontSize(20)
         .margin(10)
 
       Divider().margin(20)
 
-      Button("getUIContext()")
-        .width("70%")
+      Button('getUIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -432,14 +431,14 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
-            console.info("getUIContext测试:", available);
-          } catch (e) {
-            this.result1 = "错误: " + (e instanceof Error ? e.message : String(e));
+            console.info('getUIContext测试:', available);
+          } catch (error) {
+            this.result1 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
 
-      Button("new UIContext()")
-        .width("70%")
+      Button('new UIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -447,14 +446,14 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
-            console.info("new UIContext测试:", available);
-          } catch (e) {
-            this.result2 = "错误: " + (e instanceof Error ? e.message : String(e));
+            console.info('new UIContext测试:', available);
+          } catch (error) {
+            this.result2 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .padding(20)
   }
 }
@@ -498,7 +497,7 @@ getComponentUtils(): ComponentUtils
 
 **示例：** 
 
-完整示例请参考[getComponentUtils](js-apis-arkui-componentUtils.md)中的示例。
+完整示例请参考[示例1（获取ComponentUtils对象）](js-apis-arkui-componentUtils.md#示例1获取componentutils对象)。
 
 ## getUIInspector
 
@@ -534,7 +533,7 @@ getUIObserver(): UIObserver
 
 | 类型                          | 说明                 |
 | --------------------------- | ------------------ |
-| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象。 |
+| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象，用于监听UI相关状态变化。 |
 
 **示例：**
 
@@ -588,7 +587,7 @@ struct Index {
 
 getId(): number
 
-获取后端实例唯一标识的ID。
+获取UI实例对象唯一标识，多实例场景下，开发者可使用此唯一标识区分多个UI实例对象，便于管理。UI实例无效或实例ID不存在时，返回-1。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -677,6 +676,28 @@ getPromptAction(): PromptAction
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                            | 说明                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象，可用于管理和展示Dialog。 |
+
+**示例：**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+
 ## getOverlayManager<sup>12+</sup>
 
 getOverlayManager(): OverlayManager
@@ -685,7 +706,7 @@ getOverlayManager(): OverlayManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -705,7 +726,7 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -731,7 +752,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -826,7 +847,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-提供animateTo接口来指定由于闭包代码导致的状态变化插入过渡动效。
+提供animateTo接口，用于为闭包代码中的状态变化添加过渡动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -839,7 +860,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
@@ -994,7 +1015,7 @@ struct SharedLocalStorage {
 
 getHostContext(): Context | undefined
 
-获得当前元能力的Context。
+获得当前组件所在Ability的Context。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1019,13 +1040,13 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
       }
       .width('100%')
@@ -1124,9 +1145,11 @@ struct MyComponent {
 
 getFrameNodeByUniqueId(id: number): FrameNode | null
 
-提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
+通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时，若其有渲染内容，则返回该自定义组件的根节点，类型为__Common__；若其无渲染内容，则返回其第一个子组件的FrameNode。
+2. 当uniqueId对应的是自定义组件时：
+   - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
+   - 若其无渲染内容，或者被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。
 3. 当uniqueId无对应的组件时，返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1171,7 +1194,7 @@ struct MyComponent {
 
 getPageInfoByUniqueId(id: number): PageInfo
 
-提供getPageInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
+通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
 1. 当uniqueId对应的节点在Page节点中，routerPageInfo属性为其对应的Router信息；
 2. 当uniqueId对应的节点在NavDestination节点中，navDestinationInfo属性为其对应的NavDestination信息；
 3. 当uniqueId对应的节点无对应的Router或NavDestination信息时，对应的属性为undefined；
@@ -1645,11 +1668,11 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 createAnimator(options: AnimatorOptions): AnimatorResult
 
-定义Animator类。
+创建Animator动画结果对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1715,7 +1738,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1767,17 +1790,17 @@ export default class EntryAbility extends UIAbility {
 
 runScopedTask(callback: () => void): void
 
-在当前UI上下文执行传入的回调函数。
+在当前UIContext对应的UI实例作用域内执行传入的回调函数，适用于[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)但需要将业务行为绑定到指定UI实例的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| callback | () => void | 是    | 回调函数 |
+| callback | () => void | 是    | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
 
 **示例：**
 
@@ -1785,20 +1808,18 @@ runScopedTask(callback: () => void): void
 @Entry
 @Component
 struct Index {
-  uiContext = this.getUIContext();
+  private selectedDate: Date = new Date('2025-10-01');
 
   build() {
-    Row() {
-      Column() {
-        Button("run task").onClick(()=>{
-          this.uiContext.runScopedTask(()=>{
-            // do something
-          })
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
+    Button('Show CalendarPicker Dialog')
+      .onClick(() => {
+        const uiContext = this.getUIContext();
+        uiContext.runScopedTask(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate
+          });
+        });
+      });
   }
 }
 ```
@@ -1853,6 +1874,10 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 获取虚拟键盘弹出时，页面的避让模式。
 
+> **说明：**
+>
+> 从API version 18开始，getKeyboardAvoidMode接口返回KeyboardAvoidMode枚举值，为整数类型。API version 18之前版本，getKeyboardAvoidMode接口返回字符串类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -1877,8 +1902,8 @@ export default class EntryAbility extends UIAbility{
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-        let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        let currentKeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info("KeyboardAvoidMode:", JSON.stringify(currentKeyboardAvoidMode));
       });
     }
 }
@@ -1898,7 +1923,7 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 | 类型                                              | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServerBar类型，否则返回undefined。 |
+| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServiceBar类型，否则返回undefined。 |
 
 **示例：**
 
@@ -1937,7 +1962,7 @@ getDragController(): DragController
 
 |类型|说明|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| 获取DragController对象。|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| 获取DragController对象。|
 
 **示例：**
 
@@ -2052,6 +2077,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **参数：**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
@@ -2238,7 +2264,7 @@ getCursorController(): CursorController
 
 **示例：**
 
-完整示例请参考[CursorController](arkts-apis-uicontext-contextmenucontroller.md)中的示例。
+完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
 
 ## getContextMenuController<sup>12+</sup>
 
@@ -2255,6 +2281,30 @@ getContextMenuController(): ContextMenuController
 |类型|说明|
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| 获取ContextMenuController对象。|
+
+## getSmartGestureController
+
+getSmartGestureController(): SmartGestureController
+
+获取[SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md)对象，可通过该对象控制智慧手势处理流程。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md) | SmartGestureController对象。 |
+
+**示例：**
+
+参考智慧手势控制器[示例1（启用智慧手势并自定义动作处理）](arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ## getMeasureUtils<sup>12+</sup>
 
@@ -2306,11 +2356,11 @@ vp2px(value : number) : number
 
 转换公式为：px值 = vp值 × 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
-> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2322,13 +2372,13 @@ vp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2364,11 +2414,11 @@ px2vp(value : number) : number
 
 转换公式为：vp值 = px值 ÷ 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
-> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2380,13 +2430,13 @@ px2vp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2422,13 +2472,13 @@ fp2px(value : number) : number
 
 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2438,13 +2488,13 @@ fp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2480,13 +2530,13 @@ px2fp(value : number) : number
 
 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2496,13 +2546,13 @@ px2fp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2540,7 +2590,7 @@ lpx2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2550,13 +2600,13 @@ lpx2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2594,7 +2644,7 @@ px2lpx(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2604,13 +2654,13 @@ px2lpx(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2667,9 +2717,11 @@ struct Index {
   aboutToAppear() {
     const windowName = this.getUIContext().getWindowName();
     console.info('WindowName ' + windowName);
-    const currWindow = window.findWindow(windowName);
-    const windowProperties = currWindow.getWindowProperties();
-    console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    if (windowName) {
+      const currWindow = window.findWindow(windowName);
+      const windowProperties = currWindow.getWindowProperties();
+      console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    }
   }
 
   build() {
@@ -2718,7 +2770,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId ?? -1);
   }
 
   build() {
@@ -2798,7 +2850,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的宽高比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
+| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的高宽比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
 
 **示例：**
 
@@ -2853,7 +2905,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2875,7 +2927,7 @@ struct Index {
     Row() {
       Button('点击触发postFrameCallback')
         .onClick(() => {
-          this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+          this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
         })
     }
   }
@@ -2902,7 +2954,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2924,7 +2976,7 @@ struct Index {
     Row() {
       Button('点击触发postDelayedFrameCallback')
         .onClick(() => {
-          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
         })
     }
   }
@@ -2951,7 +3003,7 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组。 |
+| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组，用于自定义场景相关帧率配置。 |
 
 **示例：**
 
@@ -2961,15 +3013,15 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Entry
 @Component
 struct Frame {
-  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  @State animationFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State gestureFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画"+ JSON.stringify(this.ANIMATION))
-      Text("跟手"+ JSON.stringify(this.GESTURE))
-      Row(){
+      Text("动画" + JSON.stringify(this.animationFrameRateRange))
+      Text("跟手" + JSON.stringify(this.gestureFrameRateRange))
+      Row() {
         Swiper() {
           Text("one")
           Text("two")
@@ -2980,7 +3032,7 @@ struct Frame {
         .id("dynamicSwiper")
         .backgroundColor(Color.Blue)
         .autoPlay(true)
-        .onAppear(()=>{
+        .onAppear(() => {
           this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
         })
       }
@@ -2990,11 +3042,11 @@ struct Frame {
           this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
 
             if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+              scenes.setFrameRateRange(this.animationFrameRateRange);
             }
 
             if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
-              scenes.setFrameRateRange(this.GESTURE);
+              scenes.setFrameRateRange(this.gestureFrameRateRange);
             }
           });
         })
@@ -3649,7 +3701,7 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 
 设置是否支持应用内横向滑动返回上一级。
 
-**原子化服务API:：** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -3686,7 +3738,7 @@ getTextMenuController(): TextMenuController
 
 获取[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)对象，可通过该对象控制文本选择菜单。
 
-**原子化服务API:：** 从API version 16 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3702,7 +3754,7 @@ getTextMenuController(): TextMenuController
 
 ## createUIContextWithoutWindow<sup>17+</sup>
 
-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined
+static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext): UIContext | undefined
 
 创建一个不依赖窗口的UI实例，并返回其UI上下文。该接口所创建的UI实例是单例。
 
@@ -3710,7 +3762,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 >
 > 返回的UI上下文只可用于创建[自定义节点](../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3747,7 +3799,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
   }
 
   // ......
@@ -3760,7 +3812,7 @@ static destroyUIContextWithoutWindow(): void
 
 销毁[createUIContextWithoutWindow](#createuicontextwithoutwindow17)创建的UI实例。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3775,7 +3827,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
     UIContext.destroyUIContextWithoutWindow();
   }
 
@@ -3870,14 +3922,14 @@ setPixelRoundMode(mode: PixelRoundMode): void
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
 
-export default class EntryAbility extends UIAbility{
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
 
-      windowStage.loadContent('pages/Index', (err, data) => {
-        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      });
-    }
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
 }
 ```
 
@@ -3923,7 +3975,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 >  **说明：**
 >
-> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+> 如果缓存上限设置得太大，有内存开销过大的风险，建议合理配置。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -3941,9 +3993,9 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
-| 100101 | The parameter value cannot be less than 0. |
-| 100102 | The parameter value cannot be a floating-point number. |
-| 100103 | The function cannot be called from a non-main thread. |
+| 100101 | The parameter is less than 0. |
+| 100102 | The parameter value cannot be a floating point number. |
+| 100103 | The function cannot be called from a non main thread. |
 
 **示例：**
 
@@ -3978,7 +4030,7 @@ setImageCacheCount(value: number): void
 
 setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife)。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -4085,6 +4137,10 @@ getMagnifier(): Magnifier
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 设置自定义键盘之间切换时，是否接续。
+
+设置为接续，切换输入框时，自定义键盘不会收起和重新拉起。
+
+设置为不接续，切换输入框时，自定义键盘会收起并重新拉起。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -4206,3 +4262,428 @@ struct Index {
 ```
 
 ![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)
+
+## getPageRootNode<sup>24+</sup>
+
+getPageRootNode(): FrameNode | null
+
+获取UIContext对应页面的根节点。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                       | 说明            |
+| ---------------------------------------- | ------------- |
+| [FrameNode](js-apis-arkui-frameNode.md#framenode-1)  \| null | 返回页面的根节点的实体节点或者空节点。<br>若无有效的FrameNode则返回null。<br>若窗口内无加载完成的页面则返回null。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[UI上下文错误码](./errorcode-uicontext.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 120007       | The UIContext is not available.   |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2, 3];
+  @State pageRootNode: FrameNode | null = null;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      PageOne();
+    } else if (name === 'NavDestinationTitle2') {
+      PageTwo();
+    } else if (name === 'NavDestinationTitle3') {
+      PageThree();
+    }
+  }
+
+  onPageShow(): void {
+    setTimeout(() => {
+      this.pageRootNode = this.getUIContext()?.getPageRootNode();
+      console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
+    });
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        Text(`CurrentPageRootNode info: Tag ${this.pageRootNode?.getNodeType()}, NodeId： ${this.pageRootNode?.getUniqueId()}`)
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .margin({ top: 12 })
+      }
+      .title('主标题')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.pageMap)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct PageOne {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  aboutToDisappear(): void {
+    console.info('PageOne', 'aboutToDisappear');
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageOne')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageTwo {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageTwo')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct PageThree {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('PageThree')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
+
+![getCurrentPageRootNode](arkui-ts/figures/getCurrentPageRootNode.jpg)
+
+## isEasySplit<sup>24+</sup>
+
+isEasySplit(): boolean
+
+<!--RP1-->
+获取当前UI实例的兼容模式分栏状态。
+<!--RP1End-->
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+<!--RP2-->
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+<!--RP2End-->
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State isEasySplit: boolean = false;
+
+  build() {
+    Column() {
+      Text(`${this.isEasySplit ? 'current is easy split mode' : 'current is not easy split mode'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check EasySplit')
+        .onClick(() => {
+          this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## enableEventPassthrough
+
+enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                    |
+| --------- | ------------------- | ---- | --------------------------------------- |
+| enabled   | boolean             | 是   |启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通。        |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype)   | 是   | 指定启用或禁用事件直通的原始输入事件类型。            |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## addLocalInputEventMonitor
+
+addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor
+
+注册本地输入事件监听器。
+
+> **说明：**
+>
+> - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。
+> - 该监听器仅在当前UIContext（即当前窗口）内有效，不会响应其他UIContext实例。
+> - 返回值InputEventMonitor对象是系统创建的唯一标识，开发者无法主动构造或伪造此对象，必须保留其引用以用于后续取消注册。
+> - 如果传入无效参数，则返回undefined，表示注册监听器失败。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ---- |
+| eventMask | number | 是 | 事件类型掩码，通过位运算指定要监听的事件类型。取值及对应含义请参考[InputEventSubTypeMask](arkui-ts/ts-appendix-enums.md#inputeventsubtypemask)。 |
+| listener | [InputEventListener](arkui-ts/ts-inputeventmonitor.md#inputeventlistener) | 是 | 事件监听器回调函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ---- |
+| [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 监听器唯一标识对象，用于后续取消注册。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct InputEventMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    // 监听鼠标左键按下事件
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        if (wrapper.isMouseEvent()) {
+          const event = wrapper.asMouseEvent()!;
+          console.info(`Mouse down at (${event.windowX}, ${event.windowY})`);
+          return { action: InputEventInterceptAction.CONTINUE };  // 允许事件继续传递
+        }
+        return { action: InputEventInterceptAction.BLOCK };  // 阻止事件传递
+      }
+    );
+  }
+  aboutToDisappear() {
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Text('Input Event Monitor Sample')
+        .fontSize(20)
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## removeLocalInputEventMonitor
+
+removeLocalInputEventMonitor(monitor: InputEventMonitor): void
+
+移除本地输入事件监听器。
+
+> **说明：**
+>
+> - 只能移除通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回的InputEventMonitor对象。
+> - 无法通过手动构造对象来注销监听器。
+> - 如果传入无效对象，系统会静默忽略。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ---- |
+| monitor | [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 是 | 监听器标识对象，通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct RemoveMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        return { action: InputEventInterceptAction.CONTINUE };
+      }
+    );
+  }
+  aboutToDisappear() {
+    // 组件销毁时移除监听器
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Button('Remove Monitor')
+        .onClick(() => {
+          if (this.monitor && this.uiContext) {
+            this.uiContext.removeLocalInputEventMonitor(this.monitor);
+            this.monitor = null;
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setTextSelectionClearPolicy
+
+setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
+
+设置文本组件的文本选择清除策略。未通过该接口设置时，默认策略为TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                      | 必填 | 说明                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| policy  | [TextSelectionClearPolicy](arkts-apis-uicontext-e.md#textselectionclearpolicy) | 是   | 文本选择清除策略。 |
+
+**示例：**
+
+```ts
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

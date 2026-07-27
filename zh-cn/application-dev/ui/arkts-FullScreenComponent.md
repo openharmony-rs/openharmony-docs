@@ -23,7 +23,7 @@ FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，�
 
 ## 实现原理
 
-FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。需要拉起原子化服务时，拉起方向AMS查询拉起方是否授权使用方可以嵌入式运行原子化服务。已授权时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
+FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。需要拉起原子化服务时，拉起方向AMS查询被拉起方是否授权使用方可以嵌入式运行原子化服务。已授权时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
 
 <!--Del-->全屏嵌入式运行原子化服务是指，通过[UIExtension](./arkts-ui-extension-components-sys.md)封装的组件方式嵌入到使用方的组件树中，拉起EmbeddableUIAbility，展示提供方的应用内容，以实现组件式的交互体验。<!--DelEnd-->
 
@@ -62,11 +62,12 @@ FullScreenLaunchComponent为了实现跨应用的能力共享，存在较开放�
 
 详情如下：
 
+<!--Table: 25%; 10%; 35%; 30%-->
 | 组件                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [FullScreenLaunchComponent (全屏启动原子化服务组件)](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md) | 不支持   | 全屏启动原子化服务组件，当被拉起方授权使用方可以嵌入式运行原子化服务时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。 | 由于是一种跨应用调度的能力，FullScreenLaunchComponent中暂不支持嵌套拉起。  |
 | <!--DelRow-->[PluginComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md) | 不支持   | 用于给插件组件的使用者请求组件和数据，使用者发送组件模板和数据。支撑SystemUI实现插件化方式集成其他业务提供的UI。 | 1、和FullScreenLaunchComponent能力类似，容易出现嵌套，增加复杂度。<br/>2、由于FullScreenLaunchComponent组件的提供方已经在另一个进程中，默认能力下，无法提供访问宿主组件访问的能力。 |
-| <!--DelRow-->[FormComponent（系统接口）](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，FullScreenLaunchComponent中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
+| <!--DelRow-->[FormComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，FullScreenLaunchComponent中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
 | <!--DelRow-->[IsolatedComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) | 不支持   | IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在受限worker线程中运行。 | 由于云卡能力也是一种跨应用调度的能力，FullScreenLaunchComponent中暂不支持拉起云卡。 |
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于是一种跨应用调度的能力，FullScreenLaunchComponent中暂不支持嵌套拉起。  |
 | <!--DelRow-->[RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | 不支持   | 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。 | FullScreenLaunchComponent中的组件已经在另一个进程中，无法影响控制宿主应用的窗口。 |
@@ -90,6 +91,7 @@ Native API接口提供能力，在FullScreenLaunchComponent场景下也需要考
 
 详情如下：
 
+<!--Table: 25%; 10%; 35%; 30%-->
 | 模块                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [页面间转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) | 不支持   | 当路由进行切换时，可以通过在pageTransition函数中自定义页面入场和页面退场的转场动效。 | —                                                            |
@@ -101,7 +103,7 @@ Native API接口提供能力，在FullScreenLaunchComponent场景下也需要考
 | <!--DelRow-->[性能监测](../reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) | 不支持   | 用户操作场景提供性能相关指标监测能力，目前仅包含响应时延、完成时延、丢帧。| —                                                            |
 | [注册自定义字体](../reference/apis-arkui/js-apis-font.md)    | 不支持   | 本模块提供注册自定义字体。                                   | 注册字体存在影响范围的问题，提供方侧无法影响使用方应用的字体。 |
 | [PluginComponentManager](../reference/apis-arkui/js-apis-plugincomponent.md) | 不支持   | 用于给插件组件的使用者请求组件与数据，使用者发送组件模板和数据。 | 依赖获取其他组件的数据，提供方组件在另一个进程中，无法提供访问宿主组件的能力。 |
-| <!--DelRow-->[用户界面外观(系统接口)](../reference/apis-arkui/js-apis-uiappearance-sys.md) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
+| <!--DelRow-->[@ohos.uiAppearance (用户界面外观)(系统接口)](../reference/apis-arkui/js-apis-uiappearance-sys.md) | 不支持   | 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。 | 提供方不能通过该能力影响使用方。                             |
 
 ## 约束与限制
 
@@ -136,6 +138,7 @@ FullScreenLaunchComponent不支持通用事件，会将事件经过坐标转换�
 
 异步处理的事件场景：FullScreenLaunchComponent组件以及宿主应用侧组件可以同时收到事件。需要应用开发者结合应用场景进行处理，如宿主应用侧组件不做事件处理。如果无法避免，建议替换FullScreenLaunchComponent组件来保障交互体验。
 
+<!--Table: 20%; 25%; 10%; 10%; 35%-->
 | 场景     | 分类                       | 是否支持 | 同步/异步（宿主与提供方） | 备注                                                         |
 | -------- | -------------------------- | -------- | ------------------------- | ------------------------------------------------------------ |
 | 通用事件 | 点击事件（Click）          | 支持     | 异步                      | —                                                            |

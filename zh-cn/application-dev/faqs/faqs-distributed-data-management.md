@@ -15,7 +15,7 @@
 
 **参考链接**
 
-[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
+关系型数据库[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
 ## 关系型数据库rdb中使用TRUNCATE TABLE语句无法清空表数据(API 9)
@@ -45,7 +45,7 @@
 通过PersistentStorage类实现管理应用持久化数据，可以将特定标记的持久化数据链接到AppStorage中，并由AppStorage接口访问对应持久化数据。PersistentStorage持久化后的数据会生成本地xml文件保存，文件路径为/data/app/el2/100/base/&lt;bundleName&gt;/haps/&lt;hapName&gt;/files/persistent_storage。
 
 示例：
-
+<!--deprecated_code_no_check-->
 ```ts
 AppStorage.Link('varA')
 PersistentStorage.PersistProp("varA", "111");
@@ -144,7 +144,7 @@ API9版本之前对TEXT文本存储长度限制在1024字节，所以会存在�
 
 1. 使用put操作后，使用flush持久化数据，然后再使用get获取数据。
 
-2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中, 所以需要等待flush操作执行完成后，再执行get操作。
+2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中，所以需要等待flush操作执行完成后，再执行get操作。
 
 
 ## 使用RDB数据库时，能否指定内存数据库模式(API 9)

@@ -33,7 +33,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
     .height(40)
   ```
 
-  ![zh-cn_image_0000001562820757](figures/zh-cn_image_0000001562820757.png)
+  ![button-code](figures/button-code.png)
 
 
 - 通过[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
@@ -56,7 +56,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
   ```
 
-  ![zh-cn_image_0000001511421216](figures/zh-cn_image_0000001511421216.png)
+  ![button-create](figures/button-create.png)
 
 
 ## 设置按钮类型
@@ -77,7 +77,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001511421208](figures/zh-cn_image_0000001511421208.png)
+  ![button-set-type](figures/button-set-type.png)
 
 
 - 圆形按钮。
@@ -93,7 +93,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(90)
   ```
 
-  ![zh-cn_image_0000001511740428](figures/zh-cn_image_0000001511740428.png)
+  ![button-type](figures/button-type.png)
 
 - 普通按钮。
 
@@ -109,7 +109,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001563060641](figures/zh-cn_image_0000001563060641.png)
+  ![button-submit](figures/button-submit.png)
 
 - 圆角矩形按钮。
 
@@ -124,7 +124,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001563060641](figures/zh-cn_image_0000001511421208.png)
+  ![button-set-type](figures/button-set-type.png)
 
 ## 自定义样式
 
@@ -140,7 +140,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001511900392](figures/zh-cn_image_0000001511900392.png)
+  ![button-style](figures/button-style.png)
 
 
 - 设置文本样式。
@@ -156,7 +156,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .fontWeight(800)
   ```
 
-  ![zh-cn_image_0000001511580828](figures/zh-cn_image_0000001511580828.png)
+  ![button-capsule](figures/button-capsule.png)
 
 
 - 设置背景颜色。
@@ -169,7 +169,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   Button('background color').backgroundColor(0xF55A42)
   ```
 
-  ![zh-cn_image_0000001562940477](figures/zh-cn_image_0000001562940477.png)
+  ![button-bgcolor](figures/button-bgcolor.png)
 
 
 - 创建功能型按钮。
@@ -179,12 +179,12 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
-    // 请将$r('app.media.ic_public_delete_filled3')替换为实际资源文件
+    // 请将$r('app.media.ic_public_delete_filled')替换为实际资源文件
     Image($r('app.media.ic_public_delete_filled')).width(30).height(30)
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
 
-  ![zh-cn_image_0000001511740436](figures/zh-cn_image_0000001511740436.png)
+  ![button-round](figures/button-round.png)
 
 
 ## 添加事件
@@ -207,9 +207,11 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
 
-  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
+  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) --> 
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN = 0x0000;
   // xxx.ets
   @Entry
@@ -321,7 +323,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageThree')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
-        /// 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
@@ -332,7 +334,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![zh-cn_image_0000001562700393](figures/zh-cn_image_0000001562940814.gif)
+  ![button-full-example](figures/button-full-example.gif)
 
 
 - 用于提交表单。
@@ -362,7 +364,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![zh-cn_image_0000001562940473](figures/zh-cn_image_0000001562940473.png)
+  ![button-example](figures/button-example.png)
 
 - 悬浮按钮。
 

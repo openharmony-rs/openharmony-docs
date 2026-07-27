@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## hilog日志如何落盘存储(API 9)
 
@@ -17,7 +17,7 @@
 
 参数解释：
 
-```
+```text
 -w 开启日志落盘任务,start表示开始，stop表示停止。
 -f 设置日志文件名
 -l 设置单个日志文件大小，单位可以是：B/K/M/G
@@ -32,11 +32,11 @@
 
 **解决措施**
 
-通过hilog命令行工具来过滤保留当前应用的日志日志。
+通过hilog命令行工具来过滤保留当前应用的日志。
 
 hilog -T xxx 按tag过滤;
 
-hilog –D xxx 按domain过滤;
+hilog -D xxx 按domain过滤;
 
 hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重过滤,组合过滤以及反向过滤。
 
@@ -54,7 +54,7 @@ hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重�
 
 console是对hilog日志系统的封装，其采用默认参数，主要用于应用开发调试阶段。
 
-推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：[hilog日志系统](../reference/apis-performance-analysis-kit/js-apis-hilog.md)
+推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：[@ohos.hilog (HiLog日志打印)](../reference/apis-performance-analysis-kit/js-apis-hilog.md)。
 
 hilog接口参数domain的取值范围0x0~0xFFFF，建议开发者在应用内根据需要自定义划分。
 

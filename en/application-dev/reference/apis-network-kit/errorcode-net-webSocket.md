@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:18.157Z pushedAt=2026-06-26T03:00:41.288Z -->
 
 > **NOTE**
 >
@@ -19,17 +20,27 @@ Websocket connect failed.
 
 **Description**
 
-This error code is reported if the WebSocket connection fails.
+WebSocket connection failed.
 
 **Possible Causes**
 
-1. The server rejects the client connection, the protocol is incorrect, the handshake fails, or the certificate verification fails.
+1. Connection establishment failure: The server may reject the client connection, a protocol issue may cause handshake failure, or the certificate verification may fail.
 
-2. No status code is returned when the client or server is disconnected.
+2. Abnormal link disconnection: No normal status code is returned when the client or server is disconnected.
+
+3. Abnormal header processing during the handshake phase: An error occurs during header addition.
+
+4. Internal system error.
 
 **Solution**
 
-Check whether the protocol is valid and whether the certificate verification is successful. If no, reconnect the client and server.
+1. Check whether the protocol is valid and whether the certificate verification is successful. If not, reconnect.
+
+2. Check whether the network is abnormal, or switch networks and reconnect.
+
+3. Check whether the added headers are correct.
+
+4. If the issue persists, collect complete logs and contact technical support for assistance.
 
 ## 2302001 WebSocket URL Error
 
@@ -39,7 +50,7 @@ Websocket url error.
 
 **Description**
 
-This error code is reported if the WebSocket URL is incorrect.
+The WebSocket URL is incorrect.
 
 **Possible Causes**
 
@@ -59,7 +70,7 @@ Websocket certificate file does not exist.
 
 **Description**
 
-The WebSocket certificate does not exist.
+The WebSocket certificate is not found.
 
 **Possible Causes**
 
@@ -70,7 +81,6 @@ The certificate path is incorrect or no certificate is configured.
 1. Check whether the CA certificate path is valid.
 
 2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
-
 
 ## 2302003 WebSocket Connection Already Exists
 
@@ -102,7 +112,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The IP address in the WebSocketServer server configuration file is invalid.
+The IP address in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
@@ -120,11 +130,29 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The port number in the WebSocketServer server configuration file is invalid.
+The port number in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
 Check whether the port number is valid.
+
+## 2302007 Listening Port Already Occupied
+
+**Error Message**
+
+Websocket port already occupied.
+
+**Description**
+
+This error code is reported if the port listened by the WebSocketServer is occupied.
+
+**Possible Causes**
+
+The specified listening port has been occupied by another process.
+
+**Solution**
+
+Replace the port with an idle one.
 
 ## 2302998 Domain Access Denied
 

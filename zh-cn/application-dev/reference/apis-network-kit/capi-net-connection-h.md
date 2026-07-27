@@ -40,6 +40,8 @@
 | [int32_t OHOS_NetConn_UnregisterDnsResolver(void)](#ohos_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | 注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_UnregisterDnsResolver(void)](#oh_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | 注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_UnregisterCustomDnsResolver(void)](#oh_netconn_unregistercustomdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)](#oh_netconn_bindsocket) | 将套接字绑定到特定的网络。 |
 | [int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)](#oh_netconn_setapphttpproxy) | 为当前应用设置http代理配置信息。 |
 | [int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)](#oh_netconn_registerapphttpproxycallback) | 注册监听应用http代理变化的回调。 |
@@ -47,6 +49,7 @@
 | [int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback,uint32_t timeout, uint32_t *callbackId)](#oh_netconn_registernetconncallback) | 注册监听网络状态变化的回调。 |
 | [int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)](#oh_netconn_registerdefaultnetconncallback) | 注册监听默认网络状态变化的回调。 |
 | [int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)](#oh_netconn_unregisternetconncallback) | 注销监听网络状态变化的回调。 |
+| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | 请求重新认证全局HTTP代理。调用本接口会触发一个异步重新认证请求，在认证完成后触发一次回调用于通知认证结果。<br> 接口返回值为0表示请求已被接受，并不表示重新认证已成功，最终通过回调通知认证结果。若返回非零值，则不会触发回调。 |
 | [NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)](#oh_netconn_setpacurl) | 设置系统级代理自动配置（PAC）脚本地址。 |
 | [NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)](#oh_netconn_getpacurl) | 获取系统级代理自动配置（PAC）脚本地址。 |
 | [int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)](#oh_netconn_queryproberesult) | 查询网络探测结果。 |
@@ -254,7 +257,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 | char *serv | 服务名。 |
 | struct addrinfo *hint | 指向addrinfo结构体的指针。 |
 | struct addrinfo **res | 存放DNS查询结果，以链表形式返回。 |
-| int32_t netId | DNS查询netId为0时，使用默认netid查询。 |
+| int32_t netId | DNS查询netId为0时，使用默认netId查询。 |
 
 **返回：**
 
@@ -383,7 +386,9 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **描述**
 
-注册自定义DNS解析器。
+注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。
+
+建议使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -421,6 +426,60 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+
+### OH_NetConn_RegisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
+```
+
+**描述**
+
+注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。
+
+同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。
+
+作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          401 - 参数错误。<br>         2101008 - 解析器已存在。 |
+
+### OH_NetConn_UnregisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
+```
+
+**描述**
+
+取消注册自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
@@ -526,6 +585,33 @@ void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 | -- | -- |
 | uint32_t callbackId | 需要被注销的回调所对应的id。 |
 
+### OH_NetConn_RefreshGlobalHttpProxyWithCallback()
+
+```c
+int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)
+```
+
+**描述**
+
+请求重新认证全局HTTP代理。调用本接口会触发一个异步重新认证请求，在认证完成后触发一次回调用于通知认证结果。<br> 接口返回值为0表示请求已被接受，并不表示重新认证已成功，最终通过回调通知认证结果。若返回非零值，则不会触发回调。<br>
+
+**需要权限：** ohos.permission.INTERNET
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NetConn_GlobalHttpProxyRefreshCallback](capi-net-connection-type-h.md#oh_netconn_globalhttpproxyrefreshcallback) callback | 用于接收重新认证结果的回调。若为NULL，则接口会返回401。 |
+| void *userContext | 用户自定义数据，会通过回调返回给调用方。系统不会访问、拷贝或释放该数据，可以配置为NULL。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>     201 - 缺少权限。<br>    401 - 参数错误。 |
+
 ### OH_NetConn_RegisterNetConnCallback()
 
 ```c
@@ -609,7 +695,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t callBackId | 需要被注销的回调对应id。 |
+| uint32_t callBackId | 需要被注销的回调对应ID。 |
 
 **返回：**
 

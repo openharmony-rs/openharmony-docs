@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:35.601Z pushedAt=2026-06-26T03:00:41.275Z -->
 
 ## Overview
 
@@ -40,6 +41,8 @@ Provides the C APIs of the network connection module for network management.
 | [int32_t OHOS_NetConn_UnregisterDnsResolver(void)](#ohos_netconn_unregisterdnsresolver) | Unregisters a custom DNS resolver.|
 | [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | Registers a custom DNS resolver.|
 | [int32_t OH_NetConn_UnregisterDnsResolver(void)](#oh_netconn_unregisterdnsresolver) | Unregisters a custom DNS resolver.|
+| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | Registers a custom DNS resolver. |
+| [int32_t OH_NetConn_UnregisterCustomDnsResolver(void)](#oh_netconn_unregistercustomdnsresolver) | Unregisters the custom DNS resolver. |
 | [int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)](#oh_netconn_bindsocket) | Binds a socket to the specified network.|
 | [int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)](#oh_netconn_setapphttpproxy) | Sets an HTTP proxy for the current application.|
 | [int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)](#oh_netconn_registerapphttpproxycallback) | Registers a callback for application-level HTTP proxy changes.|
@@ -52,12 +55,11 @@ Provides the C APIs of the network connection module for network management.
 | [int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)](#oh_netconn_queryproberesult) | Queries network probe results.|
 | [int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option,NetConn_TraceRouteInfo *traceRouteInfo)](#oh_netconn_querytraceroute) | Queries network trace route information.|
 
-
 ## Function Description
 
 ### OH_NetConn_HasDefaultNet()
 
-```
+```c
 int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 ```
 
@@ -70,7 +72,6 @@ Checks whether a default activated data network is available.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -86,7 +87,7 @@ Checks whether a default activated data network is available.
 
 ### OH_NetConn_GetDefaultNet()
 
-```
+```c
 int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 ```
 
@@ -99,7 +100,6 @@ Obtains the default activated data network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -115,7 +115,7 @@ Obtains the default activated data network.
 
 ### OH_NetConn_IsDefaultNetMetered()
 
-```
+```c
 int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 ```
 
@@ -128,7 +128,6 @@ Checks whether metering is enabled for the default data network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -144,7 +143,7 @@ Checks whether metering is enabled for the default data network.
 
 ### OH_NetConn_GetConnectionProperties()
 
-```
+```c
 int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *prop)
 ```
 
@@ -157,7 +156,6 @@ Obtains the link information of a data network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -174,7 +172,7 @@ Obtains the link information of a data network.
 
 ### OH_NetConn_GetNetCapabilities()
 
-```
+```c
 int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)
 ```
 
@@ -187,7 +185,6 @@ Obtains the capabilities of a data network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -204,7 +201,7 @@ Obtains the capabilities of a data network.
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
-```
+```c
 int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
@@ -215,7 +212,6 @@ Obtains the default network proxy.
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -231,7 +227,7 @@ Obtains the default network proxy.
 
 ### OH_NetConn_GetAddrInfo()
 
-```
+```c
 int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, struct addrinfo **res, int32_t netId)
 ```
 
@@ -245,7 +241,6 @@ Obtains the DNS result based on the specified **netId**.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -254,7 +249,7 @@ Obtains the DNS result based on the specified **netId**.
 | char *serv | Service name.|
 | struct addrinfo *hint | Pointer to the addrinfo structure.|
 | struct addrinfo **res | DNS query result, which is in the format of linked lists.|
-| int32_t netId | If **netId** is set to **0**, the default **netid** is used for query.|
+| int32_t netId | When **netId** is **0** for DNS query, the default **netId** is used for the query. |
 
 **Returns**
 
@@ -264,7 +259,7 @@ Obtains the DNS result based on the specified **netId**.
 
 ### OH_NetConn_FreeDnsResult()
 
-```
+```c
 int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 ```
 
@@ -277,7 +272,6 @@ Releases the DNS query result.
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -293,7 +287,7 @@ Releases the DNS query result.
 
 ### OH_NetConn_GetAllNets()
 
-```
+```c
 int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 ```
 
@@ -306,7 +300,6 @@ Obtains all activated data networks.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -322,7 +315,7 @@ Obtains all activated data networks.
 
 ### OHOS_NetConn_RegisterDnsResolver()
 
-```
+```c
 int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
@@ -332,14 +325,11 @@ Registers a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 11
 
 **Deprecated from**: 13
 
 **Substitute**: OH_NetConn_RegisterDnsResolver
-
 
 **Parameters**
 
@@ -351,11 +341,11 @@ Registers a custom DNS resolver.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success. **401**: Parameter error.<br> **2100002**: Service connection failure.  **2100003**: Internal error.|
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
-```
+```c
 int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 ```
 
@@ -364,8 +354,6 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 Unregisters a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
-
-**Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
 
@@ -377,40 +365,39 @@ Unregisters a custom DNS resolver.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success.<br>**2100002**: Service connection failure.<br> **2100003**: Internal error.|
 
 ### OH_NetConn_RegisterDnsResolver()
 
-```
+```c
 int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
 **Description**
 
-Registers a custom DNS resolver.
+Registers a custom DNS resolver. When the custom DNS resolver is no longer needed, call [OH_NetConn_UnregisterDnsResolver](#oh_netconn_unregisterdnsresolver) to unregister it.
+
+It is recommended to use the [OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver) API for registration. When using [OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver), you need to use the [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver) API to unregister the resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| Pointer to the custom DNS resolver.|  |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | Pointer to the custom DNS resolver. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         **NETMANAGER_EXT_SUCCESS**: Operation success.<br>         **NETMANAGER_ERR_PERMISSION_DENIED**: Permission denied.<br>         **NETMANAGER_ERR_PARAMETER_ERROR**: Parameter error. Enter a correct parameter.|
+| int32_t | Result code.<br>         **NETMANAGER_EXT_SUCCESS**: Operation success.<br>         **NETMANAGER_ERR_PARAMETER_ERROR**: Parameter error. Enter a correct parameter.|
 
 ### OH_NetConn_UnregisterDnsResolver()
 
-```
+```c
 int32_t OH_NetConn_UnregisterDnsResolver(void)
 ```
 
@@ -420,19 +407,71 @@ Unregisters a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 13
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success.<br>          **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+
+### OH_NetConn_RegisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
+```
+
+**Description**
+
+Registers a custom DNS resolver. After registration, system DNS resolution requests will preferentially call back this resolver, allowing you to return custom resolution results as needed. If no custom result is returned, the system default DNS resolution rules will continue to be used.
+
+Only one custom DNS resolver can be active globally at a time. To change the resolver, call [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver) to unregister the existing resolver first, and then register a new one.
+
+Scope: Applicable to system DNS queries and DNS queries initiated by applications through the system network library. Not applicable to resolution requests through non-system DNS channels, such as HTTPDNS resolution or encrypted DNS resolution (e.g., DoH/DoT) implemented by the application itself. When the custom DNS resolver is no longer needed, call [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver) to unregister it.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | Pointer to the custom DNS resolver.  |
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | **0** - Success.<br>          **401** - Invalid parameter.<br>         **2101008** - Resolver already exists. |
+
+### OH_NetConn_UnregisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
+```
+
+**Description**
+
+Unregisters the custom DNS resolver.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+**Since:** 26.0.0
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | **0** - Success.<br>          **2100003** - Internal error. |
 
 ### OH_NetConn_BindSocket()
 
-```
+```c
 int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 ```
 
@@ -443,7 +482,6 @@ Binds a socket to the specified network.
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -460,7 +498,7 @@ Binds a socket to the specified network.
 
 ### OH_NetConn_SetAppHttpProxy()
 
-```
+```c
 int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
@@ -471,7 +509,6 @@ Sets an HTTP proxy for the current application.
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -487,7 +524,7 @@ Sets an HTTP proxy for the current application.
 
 ### OH_NetConn_RegisterAppHttpProxyCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)
 ```
 
@@ -498,7 +535,6 @@ Registers a callback for HTTP proxy changes of the application.
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -515,7 +551,7 @@ Registers a callback for HTTP proxy changes of the application.
 
 ### OH_NetConn_UnregisterAppHttpProxyCallback()
 
-```
+```c
 void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 ```
 
@@ -527,7 +563,6 @@ Unregisters the callback for HTTP proxy changes of the application.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -536,7 +571,7 @@ Unregisters the callback for HTTP proxy changes of the application.
 
 ### OH_NetConn_RegisterNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback,uint32_t timeout, uint32_t *callbackId)
 ```
 
@@ -549,7 +584,6 @@ Registers a callback for network status changes.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -568,7 +602,7 @@ Registers a callback for network status changes.
 
 ### OH_NetConn_RegisterDefaultNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)
 ```
 
@@ -581,7 +615,6 @@ Registers a callback for status changes of the default network.
 **Required permissions**: ohos.permission.GET_NETWORK_INFO
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -598,7 +631,7 @@ Registers a callback for status changes of the default network.
 
 ### OH_NetConn_UnregisterNetConnCallback()
 
-```
+```c
 int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 ```
 
@@ -612,12 +645,11 @@ Unregisters the callback for network status changes.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| uint32_t callBackId | ID of the callback to unregister.|
+| uint32_t callBackId | ID of the callback to be unregistered. |
 
 **Returns**
 
@@ -627,7 +659,7 @@ Unregisters the callback for network status changes.
 
 ### OH_NetConn_SetPacUrl()
 
-```
+```c
 NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 ```
 
@@ -638,7 +670,6 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **
 **Required permissions**: ohos.permission.SET_PAC_URL
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -654,7 +685,7 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **
 
 ### OH_NetConn_GetPacUrl()
 
-```
+```c
 NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 ```
 
@@ -663,7 +694,6 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 Obtains the URL of the system-level PAC script.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -679,25 +709,26 @@ Obtains the URL of the system-level PAC script.
 
 ### OH_NetConn_QueryProbeResult()
 
-```
+```c
 int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)
 ```
 
 **Description**
 
-Queries network probe results.
+Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent detection. This API involves network operations. Do not call it in the main process. Otherwise, the UI may freeze.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| char *destination | Destination address.|
-| int32_t duration | Probe duration. in seconds.|
+| char *destination | Target domain name or IP address to be detected. For a domain name, the domain name is resolved to the target IP address before the detection, and then the detection is initiated. The domain name resolution time is not included in the probe duration indicated by duration.|
+| int32_t duration | Probe duration. in seconds. The detection interval is 1 second. Therefore, you can use this field to control the number of detections.|
 | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | Packet loss rate and round-trip time (RTT).|
 
 **Returns**
@@ -708,7 +739,7 @@ Queries network probe results.
 
 ### OH_NetConn_QueryTraceRoute()
 
-```
+```c
 int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option,NetConn_TraceRouteInfo *traceRouteInfo)
 ```
 
@@ -716,10 +747,13 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 Queries network trace route information.
 
+> **NOTE**
+>
+> To call this API, the app needs to apply for the precise location permission. <!--RP1-->According to [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md)<!--RP1End-->, the caller needs to apply for both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION.
+
 **Required permissions**: ohos.permission.INTERNET, ohos.permission.LOCATION, and ohos.permission.ACCESS_NET_TRACE_INFO
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -727,7 +761,7 @@ Queries network trace route information.
 | -- | -- |
 | char *destination | Destination address.|
 | [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | Route options.|
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default.|
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default. If you customize the number of hops, ensure that the array size is the same as the value of **maxJumpNumber** in the **option** field.|
 
 **Returns**
 

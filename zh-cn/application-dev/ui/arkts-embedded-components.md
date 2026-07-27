@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility供给的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
+EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility提供的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
 
 EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面集成，其核心目标是通过模块化设计提升应用的灵活性和用户体验。
 
@@ -20,7 +20,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
-  提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility拉起，并需在多进程权限的场景下使用。
+  提供方应用中定义使用，用于实现跨进程界面嵌入功能，默认仅能被同应用的UIAbility拉起（从API版本26.0.0开始，满足特定权限条件时支持跨应用拉起，详见使用约束-应用范围），并需在多进程权限的场景下使用。
 
 ## 使用约束
 
@@ -30,7 +30,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 应用范围
 
-  EmbeddedComponent组件只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 - 属性限制
 
@@ -38,13 +38,19 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
   
   不支持如下与宽高相关的属性：
   
-  "constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
+  "[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)"、"[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)"、"[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)"、"[flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)"、"[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)"和"[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)"。
 
 - 事件调用
 
   与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被拉起的EmbeddedUIExtensionAbility处理。
 
-  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。
+  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。从API版本26.0.0开始，新增支持[onDrawReady](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
+
+## 获焦能力说明
+
+API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedUIExtensionAbility进程内焦点直接下发到第一个可获焦子节点。从API版本26.0.0开始，
+1. 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
+2. 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 ## 场景示例
 
@@ -82,6 +88,9 @@ export struct Embedded {
               // 失败或异常触发onError回调，文本框显示如下报错内容
               this.message = `Error: code = ${error.code}`;
             })
+            .onDrawReady(() => {
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调
+            })
         }
         .width('100%')
       }
@@ -91,7 +100,7 @@ export struct Embedded {
 }
 ```
 
-在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
+在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionability目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionability/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
 
@@ -141,17 +150,17 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    // 加载 Extension.ets 页面内容
+    // 加载Extension.ets页面内容
     session.loadContent('pages/EmbeddedComponent/Extension', storage);
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s',  `onSessionDestroy`);
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionDestroy`);
   }
 }
 ```
@@ -160,25 +169,25 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - 生命周期阶段
 
-  onCreate → onForeground：组件初始化到可见的完整流程；
+  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：EmbeddedUIExtensionAbility初始化到可见的完整流程；
 
-  onBackground → onForeground：前后台切换时的状态迁移；
+  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：前后台切换时的状态迁移；
 
-  onDestroy：组件被宿主主动销毁时的资源回收点。
+  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：EmbeddedUIExtensionAbility被销毁时的资源回收点。
 
 - 会话管理
 
-  onSessionCreate：创建独立存储上下文并加载UI界面；
+  [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)：创建独立存储上下文并加载UI界面；
 
-  onSessionDestroy：处理会话结束时（如用户主动关闭）的清理操作。
+  [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy)：处理会话结束时（如用户主动关闭）的清理操作。
 
 - 上下文传递
 
-  通过LocalStorage实现UIExtensionContentSession的跨组件传递；
+  通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
 
-  使用loadContent方法绑定ArkTS页面与扩展能力上下文。
+  使用[loadContent](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)方法绑定ArkTS页面与扩展能力上下文。
 
-**入口页面** 
+**入口页面**
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
@@ -187,13 +196,12 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = LocalStorage.getShared();
-
-@Entry(storage)
+@Entry()
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {
@@ -250,13 +258,13 @@ struct Extension {
   "name": "ExampleEmbeddedAbility",
   "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
   "type": "embeddedUI"
-},
+}
 ```
 
 **预期效果**
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
 
-   ![zh-cn_image_0000001502261065](figures/zh-cn_image_0000001502261065.jpg)
+   ![zh-cn_image_0000001502261065](figures/Scenario-Example.jpg)
 
 2. 点击terminateSelfWithResult按钮，提供方内容消失，页面显示onTerminated信息。

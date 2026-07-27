@@ -1,10 +1,10 @@
 # 使用Node-API接口进行线程安全开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ## 场景介绍
@@ -24,22 +24,23 @@
    ``` txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
-   project(NodeAPIAsynchronousTask)
+   project(MyApplication3)
 
    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
    if(DEFINED PACKAGE_FIND_FILE)
        include(${PACKAGE_FIND_FILE})
    endif()
-
+   add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+   add_definitions( "-DLOG_TAG=\"testTag\"" )
    include_directories(${NATIVERENDER_ROOT_PATH}
                        ${NATIVERENDER_ROOT_PATH}/include)
 
    add_library(entry SHARED napi_init.cpp)
-   target_link_libraries(entry PUBLIC libace_napi.z.so)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
-   add_library(entry1 SHARED callback.cpp)
-   target_link_libraries(entry1 PUBLIC libace_napi.z.so)
+   add_library(entry1 SHARED thread_safety.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so libhilog_ndk.z.so)
    ```
 
 2. 定义线程安全函数在Native入口。
@@ -65,7 +66,9 @@
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        std::promise<std::string> promise;
        auto future = promise.get_future();
+       napi_acquire_threadsafe_function(callbackData->tsfn);
        napi_call_threadsafe_function(callbackData->tsfn, &promise, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
        try {
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
@@ -129,6 +132,7 @@
        napi_delete_async_work(env, callbackData->work);
        callbackData->tsfn = nullptr;
        callbackData->work = nullptr;
+       delete callbackData;
    }
    
    static napi_value StartThread(napi_env env, napi_callback_info info)
@@ -218,22 +222,23 @@
    ``` txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
-   project(NodeAPIAsynchronousTask)
+   project(MyApplication3)
 
    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
    if(DEFINED PACKAGE_FIND_FILE)
        include(${PACKAGE_FIND_FILE})
    endif()
-
+   add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+   add_definitions( "-DLOG_TAG=\"testTag\"" )
    include_directories(${NATIVERENDER_ROOT_PATH}
                        ${NATIVERENDER_ROOT_PATH}/include)
 
    add_library(entry SHARED napi_init.cpp)
-   target_link_libraries(entry PUBLIC libace_napi.z.so)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
-   add_library(entry1 SHARED callback.cpp)
-   target_link_libraries(entry1 PUBLIC libace_napi.z.so)
+   add_library(entry1 SHARED thread_safety.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so libhilog_ndk.z.so)
    ```
 
 2. 在Native入口定义线程安全函数并创建子线程。
@@ -391,7 +396,7 @@
    }
    ```
 
-6. ArkTS侧示例代码。
+6. 接口对应的.d.ts描述。
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
@@ -399,17 +404,17 @@
    export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
    ```
 
-   导入头文件
+7. ArkTS侧调用接口。
    ``` ts
    import nativeModule from 'libentry1.so';
    import { worker } from '@kit.ArkTS';
    ```
 
-   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // index.ets
-   const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
+   const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    wk.postMessage('Start');
    wk.onmessage = (msg) => {
      console.info('[Main] Received:', msg.data);

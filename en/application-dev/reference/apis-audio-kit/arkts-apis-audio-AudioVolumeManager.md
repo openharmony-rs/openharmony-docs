@@ -42,13 +42,15 @@ Obtains a VolumeGroupManager instance. This API uses an asynchronous callback to
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
   if (err) {
-    console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 });
 
 ```
@@ -80,11 +82,13 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
-audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
-  console.info('Succeeded in doing getVolumeGroupManager.');
+audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolumeGroupManager) => {
+  console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -93,6 +97,8 @@ audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager:
 getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
 
 Obtains a VolumeGroupManager instance. This API returns the result synchronously.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -124,10 +130,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID);
-  console.info(`Get audioVolumeGroupManager success.`);
+  console.info('Succeeded in getting volume group manager.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get audioVolumeGroupManager, error: ${error}`);
+  console.error(`Failed to get volume group manager. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -135,7 +141,9 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
-Obtains the volume of the application. This API uses a promise to return the result.
+Obtains the volume of the application. (The volume range is 0 to 100.) This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -143,7 +151,7 @@ Obtains the volume of the application. This API uses a promise to return the res
 
 | Type               | Description                |
 | ------------------- |--------------------|
-| Promise&lt;number&gt; | Promise used to return the application volume (ranging from 0 to 100).|
+| Promise&lt;number&gt; | Promise used to return the application volume.|
 
 **Example**
 
@@ -159,7 +167,9 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 
 setAppVolumePercentage(volume: number\): Promise<void\>
 
-Sets the volume for the application. This API uses a promise to return the result.
+Sets the volume (within a range of 0 to 100) for the application. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -201,8 +211,7 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 12 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -239,7 +248,6 @@ off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 12 and deprecated since API version 20. You are advised to use [off('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#offstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -282,7 +290,7 @@ audioVolumeManager.off('volumeChange', volumeChangeCallback);
 
 on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
-Subscribes to the application-level volume change event of the application. This API uses an asynchronous callback to return the result.
+Subscribes to the application-level volume change event of the application (triggered when the application-level volume is changed). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -358,6 +366,8 @@ getVolumeByStream(streamUsage: StreamUsage): number
 
 Obtains the volume of a specified audio stream.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
 **Parameters**
@@ -402,6 +412,8 @@ getMinVolumeByStream(streamUsage: StreamUsage): number
 
 Obtains the minimum volume of a specified audio stream.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
 **Parameters**
@@ -445,6 +457,8 @@ try {
 getMaxVolumeByStream(streamUsage: StreamUsage): number
 
 Obtains the maximum volume of a specified audio stream.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 

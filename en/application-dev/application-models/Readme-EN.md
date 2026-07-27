@@ -21,6 +21,7 @@
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
       - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
+      - [Cross-Device Migration Through Call Invocation](uiability-cross-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
@@ -48,7 +49,7 @@
       - [Hopping Overview](inter-device-interaction-hop-overview.md)
       - [Cross-Device Migration](hop-cross-device-migration.md)
       - [Multi-device Collaboration](hop-multi-device-collaboration.md)
-      <!--DelEnd-->
+    <!--DelEnd-->
     - [Obtaining/Setting Environment Variables](subscribe-system-environment-variable-changes.md)
   - Inter-Application Redirection<!--inter-app-redirection-->
     - [Overview of Application Redirection](link-between-apps-overview.md)
@@ -56,9 +57,7 @@
       - [Overview of Starting a Specified Application](app-startup-overview.md)
       - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
       - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
-      <!--Del-->
       - [Using App Linking for Application Redirection](app-linking-startup.md)
-      <!--DelEnd-->
       - [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md)
       - [Application Link Description](app-uri-config.md)
     - Starting an Application of the Specified Type<!--specified-type-app-redirection-->
@@ -80,7 +79,7 @@
     - [Mission Management and Launch Type (for System Applications Only)](mission-management-launch-type-sys.md)
     - [Page Stack and MissionList (for System Applications Only)](page-mission-stack-sys.md)
     - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](mission-set-icon-name-for-task-snapshot-sys.md)
-    <!--DelEnd-->
+  <!--DelEnd-->
   - [Application Configuration File](config-file-stage.md)
   - InsightIntent Framework Development<!--insight-intent-->
     - [InsightIntent Framework Overview](insight-intent-overview.md)
@@ -133,7 +132,7 @@
   - [Mission Management (for System Applications Only)](mission-management-fa-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-fa.md)
-  <!--Del-->
+<!--Del-->
 - Development of Component Interaction Between the FA Model and Stage Model<!--fa-stage-interaction-->
   - [Component Interaction Between the FA Model and Stage Model](fa-stage-interaction-overview.md)
   - [Starting a UIAbility from the FA Model](start-uiability-from-fa.md)
@@ -166,8 +165,8 @@
     - [resourceManager Switching](resourcemanager-switch.md)
     - [window Switching](window-switch.md)
     - [Storage Switching](storage-switch.md)
-    <!--DelEnd-->
+<!--DelEnd-->
 - Native Child Process Development<!--native-childprocess-development-->
-    - [Creating Native Child Processes](capi_nativechildprocess_development_guideline.md)
+    - [Creating/Terminating Native Child Processes (C/C++)](capi-nativechildprocess-development-guideline.md)
     - [Obtaining Exit Information of Native Child Processes](capi-nativechildprocess-exit-info.md)
 - [Ability Kit Terminology](ability-terminology.md)

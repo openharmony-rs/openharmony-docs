@@ -1,16 +1,16 @@
 # 模块描述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供了以下ArkTS实用工具：
 
 - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)：异步锁。
 - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)：ASON工具。
-- [SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)：SendableLruCache缓冲区。 
+- [ArkTSUtils.SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)：SendableLruCache缓冲区。 
 
 
 >
@@ -23,5 +23,5 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```

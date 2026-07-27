@@ -105,7 +105,7 @@ After the project is created, the **cpp** directory is created in the project di
     napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info);
     napi_value IsRawDir(napi_env env, napi_callback_info info);
     
-    #endif //RAWFILE_HELLO_H
+    #endif // RAWFILE_HELLO_H
     ```
 
 3. Implement the four APIs in the **hello.cpp** file. Obtain the JS **resourceManager** object through the specified **env** and **info**, and convert it into the native **resourceManager** object. Then, you can call the APIs of the native **resourceManager** object to implement resource management. The sample code is as follows:

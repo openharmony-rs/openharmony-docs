@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-从API version 21开始，支持arkTS接口订阅任务执行超时事件。 本文介绍如何使用HiAppEvent提供的ArkTS接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+从API version 21开始，支持ArkTS接口订阅任务执行超时事件。 本文介绍如何使用HiAppEvent提供的ArkTS接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -24,7 +24,7 @@
 
 为确保开发阶段顺利接收事件回调，建议采取以下方案：创建新的Native C++工程，在ArkTS代码中实现订阅，并通过C++代码构造故障注入以触发任务执行超时事件。
 
-1. 新建Native C++工程，目录结构如下：
+1. 在DevEco Studio中，新建Native C++工程，目录结构如下：
 
    ```yml
    entry:
@@ -43,20 +43,20 @@
              - Index.ets
    ```
 
-2. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
+2. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库。
 
    ```cmake
-   # 新增动态库依赖libhilog_ndk.z.so（日志输出）及libohhicollie.so（hicollie检测）
+   # 新增动态库依赖libhilog_ndk.z.so（日志输出）及libohhicollie.so（HiCollie检测）
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so)
    ```
 
-3. 编辑“EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+3. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-4. 订阅系统事件，编辑“EntryAbility.ets”文件，在onCreate函数中添加订阅代码，示例代码如下：
+4. 订阅系统事件，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加订阅代码，示例代码如下：
 
    ```ts
    let watcher: hiAppEvent.Watcher = {
@@ -84,13 +84,14 @@
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uuid']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${eventInfo.params['exception']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${JSON.stringify(eventInfo.params['peer_binder'].length)}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${eventInfo.params['memory']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
          }
        }
      }
@@ -100,7 +101,7 @@
 
 5. 新增TestHiCollieTimerNdk函数。
 
-   编辑“napi_init.cpp”文件，新增TestHiCollieTimerNdk函数，构造任务执行超时事件：
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，新增TestHiCollieTimerNdk函数，构造任务执行超时事件：
 
    ```c++
    // 引入hicollie.h头文件
@@ -131,7 +132,7 @@
 
 6. 将TestHiCollieTimerNdk注册为ArkTS接口。
 
-   编辑“napi_init.cpp”文件，TestHiCollieTimerNdk注册为ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，TestHiCollieTimerNdk注册为ArkTS接口：
 
    ```c++
    EXTERN_C_START
@@ -159,13 +160,13 @@
    }
    ```
 
-   编辑“index.d.ts”文件，定义ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口：
 
    ```typescript
    export const TestHiCollieTimerNdk: () => void;
    ```
 
-7. 编辑“Index.ets”文件，新增按钮触发任务执行超时事件。
+7. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，新增按钮触发任务执行超时事件。
 
    ```typescript
    import testNapi from 'libentry.so';
@@ -181,7 +182,7 @@
            Button("TestHiCollieTimerNdk")
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-             .onClick(testNapi.TestHiCollieTimerNdk);  //添加点击事件，触发TestHiCollieTimerNdk方法。
+             .onClick(testNapi.TestHiCollieTimerNdk);  // 添加点击事件，触发TestHiCollieTimerNdk方法。
          }
          .width('100%')
        }
@@ -213,6 +214,7 @@
    HiAppEvent eventInfo.params.memory={"pss":0,"rss":150748,"sys_avail_mem":5387264,"sys_free_mem":218902,"sys_total_mem":11679236,"vss":38306936}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_HICOLLIE_1754914811140_20317.log"]
    HiAppEvent eventInfo.params.log_over_limit=false
+   HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    ```
 
 ### 移除事件观察者

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
@@ -35,7 +35,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 reloadInModal(customData: CustomData): Promise\<void>
 
-拉起模态页面。使用Promise异步回调。
+重新拉起模态页面。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -80,6 +80,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
+      // 创建LocalStorage并存储自动填充所需的数据
       let storage_fill: LocalStorage = new LocalStorage(
         {
           'session': session,
@@ -133,10 +134,11 @@ struct AccountPage {
           .onClick(() => {
             if (this.viewData != undefined) {
               if (this.context != undefined) {
+                // 调用reloadInModal接口重新触发自动填充，传递自定义数据用于模态页面
                 this.context.reloadInModal({ data: { viewData: 20, text: 'HelloWorld789456' } }).then(() => {
                   console.info('reloadInModal successfully.')
                 }).catch((err: BusinessError) => {
-                  console.error('reloadInModal failed.')
+                  console.error(`reloadInModal failed. Code: ${err.code}, message: ${err.message}`);
                 })
               }
             }

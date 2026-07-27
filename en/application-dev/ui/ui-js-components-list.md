@@ -42,7 +42,7 @@ Create a **&lt;list&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001223287680](figures/en-us_image_0000001223287680.png)
+![list-Component](figures/list-Component.png)
 
 > **NOTE**
 > - **&lt;list-item-group&gt;** is a child component of the **&lt;list&gt;** component and is used to group items in a list. It can have a **&lt;list-item&gt;** nested inside, but not **&lt;list&gt;**.
@@ -86,7 +86,7 @@ To display a scrollbar on the right side of the screen, set **scrollbar** to **o
 }
 ```
 
-![en-us_image_0000001223287684](figures/en-us_image_0000001223287684.gif)
+![Adding-Scrollbar](figures/Adding-Scrollbar.gif)
 
 
 ## Adding a Side Index Bar
@@ -115,7 +115,7 @@ Set a custom **indexer** component to add an index bar at the right boundary of 
 }
 ```
 
-![en-us_image_0000001223127716](figures/en-us_image_0000001223127716.png)
+![Side-Index-Bar](figures/Side-Index-Bar.png)
 
 > **NOTE**
 > - This **indexer** attribute is valid only when **flex-direction** is set to **column** and **columns** is set to **1**.
@@ -198,7 +198,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267887845](figures/en-us_image_0000001267887845.gif)
+![Expanding-List](figures/Expanding-List.gif)
 
 > **NOTE**
 >
@@ -314,4 +314,4 @@ export default {
 ```
 
 
-![en-us_image_0000001267767861](figures/en-us_image_0000001267767861.gif)
+![Example-Scenario-7](figures/Example-Scenario-7.gif)

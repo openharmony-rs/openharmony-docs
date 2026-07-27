@@ -107,7 +107,7 @@ struct WebComponent {
 
 ## 监听页面缩放比例变化
 
-应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。该接口事件对应手势事件(双指缩放)，`event.newScale`对应网页属性`visualViewport.scale`。
+应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
 
 <!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
 
@@ -226,7 +226,7 @@ struct WebComponent {
 factor = 100 * targetFactor / pageFactor
 ```
 
-<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -261,7 +261,7 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          console.error('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

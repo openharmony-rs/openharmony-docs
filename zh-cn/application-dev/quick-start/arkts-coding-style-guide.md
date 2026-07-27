@@ -2,10 +2,10 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yyytiancai-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 目标和适用范围
 
@@ -64,10 +64,13 @@ ArkTS在保持TypeScript基本语法风格的基础上，进一步强化静态�
 **【描述】**
 
 类采用首字母大写的驼峰命名法。
+
 类名通常是名词或名词短语，例如Person、Student、Worker。不应使用动词，也应该避免类似Data、Info这样的模糊词。
 
 **【正例】**
-```
+<!-- @[Upper_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
 // 类名
 class User {
   username: string
@@ -89,11 +92,11 @@ enum UserType {
 
 // 命名空间
 namespace Base64Utils {
-  function encrypt() {
+  export function encrypt() {
     // todo encrypt
   }
 
-  function decrypt() {
+  export function decrypt() {
     // todo decrypt
   }
 };
@@ -106,26 +109,31 @@ namespace Base64Utils {
 **【描述】**
 
 函数的命名通常是动词或动词短语，采用小驼峰命名。示例如下：
-1.   load + 属性名()
-2.   put + 属性名()
-3.   is + 布尔属性名()
-4.   has + 名词/形容词()
-5.   动词()
-6.   动词 + 宾语()
+1. load + 属性名()
+2. put + 属性名()
+3. is + 布尔属性名()
+4. has + 名词/形容词()
+5. 动词()
+6. 动词 + 宾语()
+
 变量名通常是名词或名词短语，采用小驼峰命名，便于理解。
 
 **【正例】**
-```
+<!-- @[lower_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let msg = 'Hello world';
 
 function sendMsg(msg: string) {
   // todo send message
+  // ...
 }
 
 let userName = 'Zhangsan';
 
 function findUser(userName: string) {
   // todo find user by user name
+  // ...
 }
 ```
 
@@ -135,14 +143,16 @@ function findUser(userName: string) {
 
 **【描述】**
 
-常量命名，应该由全大写单词与下划线组成，单词间用下划线分割。常量命名要尽量表达完整的语义。
+常量命名，应该由全大写单词与下划线组成，单词间用下划线分隔。常量命名要尽量表达完整的语义。
 
 **【正例】**
 
-```
+<!-- @[Uppercase_Underline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const MAX_USER_SIZE = 10000;
 
-enum UserType {
+enum UserType1 {
   TEACHER = 0,
   STUDENT = 1
 };
@@ -158,7 +168,9 @@ enum UserType {
 
 **【反例】**
 
-```
+<!-- @[boolean_guide_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let isNoError = true;
 let isNotFound = false;
 
@@ -168,7 +180,9 @@ function next() {}
 
 **【正例】**
 
-```
+<!-- @[boolean_guide_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let isError = false;
 let isFound = true;
 
@@ -187,11 +201,14 @@ function hasNext() {}
 只允许使用空格(space)进行缩进。
 
 建议大部分场景优先使用2个空格，换行导致的缩进优先使用4个空格。
+
 不允许插入制表符Tab。当前几乎所有的集成开发环境（IDE）和代码编辑器都支持配置将Tab键自动扩展为2个空格输入，应在代码编辑器中配置使用空格进行缩进。
 
 **【正例】**
 
-```
+<!-- @[spaces_indentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 class DataSource {
   id: number = 0
   title: string = ''
@@ -237,7 +254,9 @@ function test(dataSource: DataSource[]) {
 代码行宽不宜过长，否则不利于阅读。
 
 控制行宽可以间接引导程序员缩短函数和变量的命名，减少嵌套层数，精炼注释，从而提升代码可读性。
+
 建议每行字符数不超过120个，除非需要显著增加可读性（超过120个），且不会隐藏信息。
+
 例外：如果一行注释包含了超过120个字符的命令或URL，则可以保持一行，以方便复制、粘贴和通过grep查找；预处理的error信息在一行便于阅读和理解，即使超过120个字符。
 
 ### 条件语句和循环语句的实现建议使用大括号
@@ -250,17 +269,21 @@ function test(dataSource: DataSource[]) {
 
 **【反例】**
 
-```
+<!-- @[use_braces_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let condition = true;
-if (condition) 
+if (condition)
   console.info('success');
-for (let idx = 0; idx < 5; ++idx) 
+for (let idx = 0; idx < 5; ++idx)
   console.info('', idx);
 ```
 
 **【正例】**
 
-```
+<!-- @[use_braces_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let condition = true;
 if (condition) {
   console.info('success');
@@ -280,7 +303,9 @@ for (let idx = 0; idx < 5; ++idx) {
 
 **【正例】**
 
-```
+<!-- @[switch_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 switch (condition) {
   case 0: {
     doSomething();
@@ -302,11 +327,14 @@ switch (condition) {
 **【描述】**
 
 当语句过长或可读性不佳时，需要在合适的地方进行换行。
+
 换行时将操作符放在行末，表示“未结束，后续还有”，保持与常用的格式化工具的默认配置一致。
 
 **【正例】**
 
-```
+<!-- @[line_break_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // 假设条件语句超出行宽
 if (userCount > MAX_USER_COUNT ||
   userCount < MIN_USER_COUNT) {
@@ -321,11 +349,12 @@ if (userCount > MAX_USER_COUNT ||
 **【描述】**
 
 每个语句的变量声明都应只声明一个变量。
+
 这种方式更便于添加变量声明，无需考虑将分号改为逗号，以免引入错误。此外，每个语句只声明一个变量，使用调试器逐个调试也很方便，而不是一次跳过所有变量。
 
 **【反例】**
 
-```
+``` TypeScript
 let maxCount = 10, isCompleted = false;
 let pointX, pointY;
 pointX = 10; pointY = 0;
@@ -333,7 +362,9 @@ pointX = 10; pointY = 0;
 
 **【正例】**
 
-```
+<!-- @[variable_definitions_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let maxCount = 10;
 let isCompleted = false;
 let pointX = 0;
@@ -347,40 +378,44 @@ let pointY = 0;
 **【描述】**
 
 空格应该突出关键字和重要信息。总体建议如下：
-1.   `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
-2.   在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
-3.   关键字`else`或`catch`与其之前的大括号`}`之间加空格。
-4.   任何打开大括号(`{`)之前加空格，有两个例外：
-a)   在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
-b)   在模板中，不用加空格，例如：`abc${name}`。
-5.   二元操作符(`+` `-` `*` `=` `<` `>` `<=` `>=` `===` `!==` `&&` `||`)前后加空格；三元操作符(`? :`)符号两侧均加空格。
-6.   数组初始化中的逗号和函数中多个参数之间的逗号后加空格。
-7.   在逗号(`,`)或分号(`;`)之前不加空格。
-8.   数组的中括号(`[]`)内侧不要加空格。
-9.   不要出现多个连续空格。在某行中，多个空格若不是用来作缩进的，通常是个错误。
+1. `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
+2. 在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
+3. 关键字`else`或`catch`与其之前的大括号`}`之间加空格。
+4. 任何打开大括号(`{`)之前加空格，有两个例外：
+    - 在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
+    - 在模板中，不用加空格，例如：`abc${name}`。
+5. 二元操作符(`+` `-` `*` `=` `<` `>` `<=` `>=` `===` `!==` `&&` `||`)前后加空格；三元操作符(`? :`)符号两侧均加空格。
+6. 数组初始化中的逗号和函数中多个参数之间的逗号后加空格。
+7. 在逗号(`,`)或分号(`;`)之前不加空格。
+8. 数组的中括号(`[]`)内侧不要加空格。
+9. 不要出现多个连续空格。在某行中，多个空格若不是用来作缩进的，通常是个错误。
 
 **【反例】**
 
-```
-// if 和左括号 ( 之间没有加空格
-if(isJedi) {
-  fight();
-}
+<!-- @[highlight_keywords_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+  // if 和左括号 ( 之间没有加空格
+  if(isJedi) {
+    fight();
+  }
+  // ...
 // 函数名fight和左括号 ( 之间加了空格
-function fight (): void {
+function fightBad (): void {
   console.info('Swooosh!');
 }
 ```
 
 **【正例】**
 
-```
-// if 和左括号之间加一个空格
-if (isJedi) {
-  fight();
-}
+<!-- @[highlight_keywords_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+  // if 和左括号之间加一个空格
+  if (isJedi) {
+    fight();
+  }
+  // ...
 // 函数名fight和左括号 ( 之间不加空格
 function fight(): void {
   console.info('Swooosh!');
@@ -389,32 +424,38 @@ function fight(): void {
 
 **【反例】**
 
-```
+<!-- @[highlight_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 if (flag) {
   // ...
-}else {  // else 与其前面的大括号 } 之间没有加空格
+}else { // else 与其前面的大括号 } 之间没有加空格
   // ...
 }
 ```
 
 **【正例】**
 
-```
+<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 if (flag) {
   // ...
-} else {  // else 与其前面的大括号 } 之间增加空格
+} else { // else 与其前面的大括号 } 之间增加空格
   // ...
 }
 ```
 
 **【正例】**
 
-```
-function foo() {  // 函数声明时，左大括号 { 之前加个空格
+<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo() { // 函数声明时，左大括号 { 之前加个空格
   // ...
 }
 
-bar('attr', {  // 左大括号前加个空格
+bar('attr', { // 左大括号前加个空格
   age: '1 year',
   sbreed: 'Bernese Mountain Dog',
 });
@@ -422,10 +463,13 @@ bar('attr', {  // 左大括号前加个空格
 
 **【正例】**
 
+<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const arr = [1, 2, 3]; // 数组初始化中的逗号后面加个空格，逗号前面不加空格
+myFunc(bar1, foo1, baz); // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
 ```
-const arr = [1, 2, 3];  // 数组初始化中的逗号后面加个空格，逗号前面不加空格
-myFunc(bar, foo, baz);  // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
-```
+
 
 ### 建议字符串使用单引号
 
@@ -437,16 +481,20 @@ myFunc(bar, foo, baz);  // 函数的多个参数之间的逗号后加个空格�
 
 **【反例】**
 
-```
-let message = "world";
-console.info(message);
+<!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let message1 = "world";
+console.info(message1);
 ```
 
 **【正例】**
 
-```
-let message = 'world';
-console.info(message);
+<!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let message2 = 'world';
+console.info(message2);
 ```
 
 ### 对象字面量属性超过4个，需要都换行
@@ -459,7 +507,9 @@ console.info(message);
 
 **【反例】**
 
-```
+<!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 interface I {
   name: string
   age: number
@@ -469,12 +519,14 @@ interface I {
   bar: boolean
 }
 
-let obj: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
+let obj1: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
 ```
 
 **【正例】**
 
-```
+<!-- @[many_properties_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 interface I {
   name: string
   age: number
@@ -484,7 +536,8 @@ interface I {
   bar: boolean
 }
 
-let obj: I = {
+// ...
+let obj2: I = {
   name: 'tom',
   age: 16,
   value: 1,
@@ -504,7 +557,9 @@ let obj: I = {
 
 **【反例】**
 
-```
+<!-- @[put_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (isOk) {
   doThing1();
   doThing2();
@@ -516,7 +571,9 @@ else {
 
 **【正例】**
 
-```
+<!-- @[put_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (isOk) {
   doThing1();
   doThing2();
@@ -527,7 +584,9 @@ if (isOk) {
 
 **【反例】**
 
-```
+<!-- @[put_catch_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 try {
   doSomething();
 }
@@ -538,7 +597,9 @@ catch (err) {
 
 **【正例】**
 
-```
+<!-- @[put_catch_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 try {
   doSomething();
 } catch (err) {
@@ -556,8 +617,10 @@ try {
 
 **【反例】**
 
-```
-function foo()
+<!-- @[put_brace_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo1()
 {
   // ...
 }
@@ -565,8 +628,10 @@ function foo()
 
 **【正例】**
 
-```
-function foo() {
+<!-- @[put_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo2() {
   // ...
 }
 ```
@@ -583,8 +648,10 @@ ArkTS提供了`private`, `protected`和`public`可访问修饰符。默认情况
 
 **【反例】**
 
-```
-class C {
+<!-- @[accessible_modifiers_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+class C1 {
   count: number = 0
 
   getCount(): number {
@@ -595,8 +662,10 @@ class C {
 
 **【正例】**
 
-```
-class C {
+<!-- @[accessible_modifiers_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+class C2 {
   private count: number = 0
 
   public getCount(): number {
@@ -615,18 +684,22 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 **【反例】**
 
-```
-const num = .5;
-const num = 2.;
-const num = -.7;
+<!-- @[not_omit_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const num1 = .5;
+const num2 = 2.;
+const num3 = -.7;
 ```
 
 **【正例】**
 
-```
-const num = 0.5;
-const num = 2.0;
-const num = -0.7;
+<!-- @[not_omit_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const num4 = 0.5;
+const num5 = 2.0;
+const num6 = -0.7;
 ```
 
 ### 判断变量是否为`Number.NaN`时必须使用`Number.isNaN()`方法
@@ -636,12 +709,16 @@ const num = -0.7;
 **【描述】**
 
 在ArkTS中，`Number.NaN`是`Number`类型的一个特殊值。它被用来表示非数值，这里的数值是指在IEEE浮点数算术标准中定义的双精度64位格式的值。
+
 在ArkTS中，`Number.NaN`的独特之处在于它不等于任何值，包括其本身。与`Number.NaN`进行比较时，结果是令人困惑的：`Number.NaN !== Number.NaN` 和 `Number.NaN != Number.NaN` 的值都是 `true`。
+
 因此，必须使用`Number.isNaN()`函数来测试一个值是否是`Number.NaN`。
 
 **【反例】**
 
-```
+<!-- @[check_NaN_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (foo == Number.NaN) {
   // ...
 }
@@ -653,7 +730,9 @@ if (foo != Number.NaN) {
 
 **【正例】**
 
-```
+<!-- @[check_NaN_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (Number.isNaN(foo)) {
   // ...
 }
@@ -673,21 +752,26 @@ if (!Number.isNaN(foo)) {
 
 **【反例】**
 
-```
+<!-- @[array_methods_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const numbers = [1, 2, 3, 4, 5];
 // 依赖已有数组来创建新的数组时，通过for遍历，生成一个新数组
-const increasedByOne: number[] = [];
+const increasedByOne1: number[] = [];
 for (let i = 0; i < numbers.length; i++) {
-  increasedByOne.push(numbers[i] + 1);
+  increasedByOne1.push(numbers[i] + 1);
 }
 ```
 
 **【正例】**
 
-```
+<!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const numbers = [1, 2, 3, 4, 5];
+// ...
 // better: 使用map方法是更好的方式
-const increasedByOne: number[] = numbers.map(num => num + 1);
+const increasedByOne2: number[] = numbers.map(num => num + 1);
 ```
 
 ### 不要在控制性条件表达式中执行赋值操作
@@ -697,11 +781,14 @@ const increasedByOne: number[] = numbers.map(num => num + 1);
 **【描述】**
 
 控制性条件表达式用于 `if`、`while`、`for` 以及 `?:` 等条件判断语句中。
+
 在控制性条件表达式中执行赋值容易导致意外行为，且降低代码的可读性。
 
 **【反例】**
 
-```
+<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // 在控制性判断中赋值不易理解
 if (isFoo = false) {
   // ...
@@ -710,7 +797,9 @@ if (isFoo = false) {
 
 **【正例】**
 
-```
+<!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const isFoo = false; // 在上面赋值，if条件判断中直接使用
 if (isFoo) {
   // ...
@@ -727,8 +816,10 @@ if (isFoo) {
 
 **【反例】**
 
-```
-function foo() {
+<!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo4() {
   try {
     // ...
     return 1;
@@ -737,14 +828,16 @@ function foo() {
     return 2;
   } finally {
     return 3;
- }
+  }
 }
 ```
 
 **【正例】**
 
-```
-function foo() {
+<!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo5() {
   try {
     // ...
     return 1;
@@ -767,38 +860,53 @@ function foo() {
 
 **【反例】**
 
-```
+<!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+
+``` TypeScript
 // lib.ets
 export interface I {
   sum: number
 }
 
-export function getObject(value: number): I {
+export function getObject1(value: number): I {
   let obj: I = { sum: value };
   return obj
 }
+```
 
-// app.ets
-import { getObject } from 'lib'
-let obj: ESObject = getObject(123);
+<!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+// Index.ets
+import { getObject1 } from './lib';
+// ...
+let obj1: ESObject = getObject1(123);
 ```
 
 **【正例】**
 
-```
+<!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+
+``` TypeScript
 // lib.ets
 export interface I {
   sum: number
 }
 
-export function getObject(value: number): I {
+// ...
+export function getObject2(value: number): I {
   let obj: I = { sum: value };
   return obj
 }
+```
 
-// app.ets
-import { getObject, I } from 'lib'
-let obj: I = getObject(123);
+<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Index.ets
+import { getObject2, I } from './lib';
+// ...
+let obj2: I = getObject2(123);
 ```
 
 ### 使用`T[]`表示数组类型
@@ -811,14 +919,18 @@ ArkTS提供了两种数组类型的表示方式：`T[]`和`Array<T>`。建议所
 
 **【反例】**
 
-```
+<!-- @[use_T_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
+
+``` TypeScript
 let x: Array<number> = [1, 2, 3];
 let y: Array<string> = ['a', 'b', 'c'];
 ```
 
 **【正例】**
 
-```
+<!-- @[use_T_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // 统一使用T[]语法
 let x: number[] = [1, 2, 3];
 let y: string[] = ['a', 'b', 'c'];

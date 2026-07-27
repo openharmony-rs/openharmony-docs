@@ -34,7 +34,7 @@ Create a **\<qrcode>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001229155403](figures/en-us_image_0000001229155403.png)
+![qrcode-Component](figures/qrcode-Component.png)
 
 > **NOTE**
 >
@@ -87,7 +87,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001218439850](figures/en-us_image_0000001218439850.gif)
+![Component-Type](figures/Component-Type.gif)
 
 
 ## Setting Styles
@@ -120,7 +120,7 @@ qrcode{
 }
 ```
 
-![en-us_image_0000001183595750](figures/en-us_image_0000001183595750.png)
+![Setting-Styles](figures/Setting-Styles.png)
 
 > **NOTE**
 > - If the values of **width** and **height** are different, the smaller value is used as the length of the QR code. The generated QR code is center displayed.
@@ -172,4 +172,4 @@ export default{
 }
 ```
 
-![en-us_image_0000001183431656](figures/en-us_image_0000001183431656.gif)
+![Example-Scenarios](figures/Example-Scenarios.gif)

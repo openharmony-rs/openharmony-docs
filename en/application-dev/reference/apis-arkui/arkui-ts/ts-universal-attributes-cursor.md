@@ -57,7 +57,7 @@ Defines the pointer style.
 
 > **NOTE**
 > 
-> Directly using **cursorControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12) API through this object.
+> Directly using **cursorControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then obtain the **cursorControl** bound to the instance using the [getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12) API.
 
 ## Example
 

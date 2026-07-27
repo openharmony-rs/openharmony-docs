@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 提供管理关系数据库（RDB）方法的接口。
@@ -28,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称         | 类型            | 只读       | 可选 | 说明                             |
 | ------------ | ----------- | ---- | -------------------------------- | -------------------------------- |
-| version<sup>10+</sup>  | number | 否 | 否   | 设置和获取数据库版本，值为大于0的正整数。<br>读取和设置version属性会占用数据库连接，避免对该属性进行频繁操作。<br>使用临时变量保存读取到的version值，在数据库变更完成后将其赋值给RdbStore实例的version属性。数据库升级时变更version属性的场景，请参考[开发指南示例代码](../../database/data-persistence-by-rdb-store.md#开发步骤)。 |
+| version<sup>10+</sup>  | number | 否 | 否   | 设置和获取数据库版本，值为正整数。<br>读取和设置version属性会占用数据库连接，避免对该属性进行频繁操作。<br>使用临时变量保存读取到的version值，在数据库变更完成后将其赋值给RdbStore实例的version属性。数据库升级时变更version属性的场景，请参考[开发指南示例代码](../../database/data-persistence-by-rdb-store.md#开发步骤)。 |
 | rebuilt<sup>12+</sup> | [RebuildType](arkts-apis-data-relationalStore-e.md#rebuildtype12) | 是 | 否 | 用于获取数据库是否进行过重建或修复。 |
 
 **错误码：**
@@ -38,19 +38,19 @@ import { relationalStore } from '@kit.ArkData';
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. |
-| 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
+| 801       | Capability not supported.<br>适用版本：12+ |
+| 14800000  | Inner error.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
 
 **示例：**
 
@@ -95,7 +95,15 @@ class EntryAbility extends UIAbility {
 
 insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，使用callback异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -103,9 +111,9 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 
 | 参数名   | 类型                          | 必填 | 说明                                                       |
 | -------- | ----------------------------- | ---- | ---------------------------------------------------------- |
-| table    | string                        | 是   | 指定的目标表名。                                           |
+| table    | string                        | 是   | 指定的目标表名，不能为空字符串。                                           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是   | 表示要插入到表中的数据行。                                 |
-| callback | AsyncCallback&lt;number&gt;   | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
+| callback | AsyncCallback&lt;number&gt;   | 是   | 回调函数。当插入数据成功，err为undefined，data为行ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -115,24 +123,24 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -177,7 +185,15 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -185,10 +201,10 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 
 | 参数名   | 类型                                        | 必填 | 说明                                                       |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| table    | string                                      | 是   | 指定的目标表名。                                           |
+| table    | string                                      | 是   | 指定的目标表名，不能为空字符串。                                           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | 表示要插入到表中的数据行。                                 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。                                         |
-| callback | AsyncCallback&lt;number&gt;                 | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
+| callback | AsyncCallback&lt;number&gt;                 | 是   | 回调函数。当插入数据成功，err为undefined，data为行ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -198,23 +214,23 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 |-----------| ---------------------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
@@ -261,7 +277,15 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
-向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，使用Promise异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -269,14 +293,14 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
 | 参数名 | 类型                          | 必填 | 说明                       |
 | ------ | ----------------------------- | ---- | -------------------------- |
-| table  | string                        | 是   | 指定的目标表名。           |
+| table  | string                        | 是   | 指定的目标表名，不能为空字符串。           |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是   | 表示要插入到表中的数据行。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                              |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
+| Promise&lt;number&gt; | Promise对象。返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -286,24 +310,24 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -348,7 +372,15 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -356,15 +388,15 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 
 | 参数名   | 类型                                        | 必填 | 说明                       |
 | -------- | ------------------------------------------- | ---- | -------------------------- |
-| table    | string                                      | 是   | 指定的目标表名。           |
+| table    | string                                      | 是   | 指定的目标表名，不能为空字符串。           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | 表示要插入到表中的数据行。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。         |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                              |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
+| Promise&lt;number&gt; | Promise对象。返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -374,23 +406,23 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
@@ -436,7 +468,15 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -444,15 +484,15 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| table    | string                                      | 是   | 指定的目标表名。                                             |
+| table    | string                                      | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | 表示要插入到表中的数据行。                                   |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 如果操作成功，返回行ID；否则返回-1。 |
+| number | 返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -523,7 +563,15 @@ if (store != undefined) {
 
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
-传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+传入Sendable数据，向目标表中插入一行数据。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -531,15 +579,15 @@ insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict
 
 | 参数名   | 类型                                                                                           | 必填 | 说明                                                                            |
 | -------- | ---------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
-| table    | string                                                                                         | 是   | 指定的目标表名。                                                                |
+| table    | string                                                                                         | 是   | 指定的目标表名，不能为空字符串。                                                                |
 | values   | [sendableRelationalStore.ValuesBucket](js-apis-data-sendableRelationalStore.md#valuesbucket) | 是   | 表示要插入到表中的可跨线程传递数据。                                            |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)                                                   | 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 如果操作成功，返回行ID；否则返回-1。 |
+| number | 返回插入数据的行ID。 |
 
 **错误码：**
 
@@ -601,7 +649,15 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
-从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
+从API version 20开始，支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -609,9 +665,9 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table    | string                                     | 是   | 指定的目标表名。                                             |
+| table    | string                                     | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。             |
-| callback | AsyncCallback&lt;number&gt;                | 是   | 指定callback回调函数。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| callback | AsyncCallback&lt;number&gt;                | 是   | 回调函数。当批量插入成功，err为undefined，data为插入的数据个数；否则为错误对象。 |
 
 **错误码：**
 
@@ -621,24 +677,24 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -697,7 +753,15 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
-从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
+从API version 20开始，该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -705,14 +769,14 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | 是   | 指定的目标表名。             |
+| table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。|
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                                        |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| Promise&lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -722,24 +786,24 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -798,7 +862,7 @@ if (store != undefined) {
 
 ```ts
 let createSql = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
-await store!.execute(createSql, 0, undefined);  // 创建关系表，第二个参数0表示不开启显示事务，第三个参数undefined表示sql未使用绑定参数化
+await store!.execute(createSql, 0, undefined);  // 创建关系表，第二个参数0表示不开启显式事务，第三个参数undefined表示sql未使用绑定参数化
 let floatVector = Float32Array.from([1.2, 2.3]);
 let valueBucketArray = new Array<relationalStore.ValuesBucket>();
 for (let i = 0; i < 100; i++) { // 构造一个BucketArray用于写入
@@ -821,20 +885,28 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | 是   | 指定的目标表名。             |
+| table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| number | 如果操作成功，返回插入的数据个数，否则返回-1。 |
+| number | 返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -925,21 +997,29 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | 是   | 指定的目标表名。             |
+| table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。 |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。       |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| Promise&lt;number&gt; | Promise对象。返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -1027,21 +1107,29 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | 是   | 指定的目标表名。             |
+| table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。 |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。       |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| number | 如果操作成功，返回插入的数据个数，否则返回-1。 |
+| number | 返回批量插入的数据个数。 |
 
 **错误码：**
 
@@ -1122,17 +1210,25 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 向目标表中插入一组数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。使用Promise异步回调。
 
-单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段总数。
+单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
 
-例如：插入数据的所有字段总数为10，则最多可以插入3276条数据（3276*10=32760）。
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1147,7 +1243,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1184,6 +1280,7 @@ async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStor
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1204,9 +1301,17 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1221,7 +1326,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                               |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | 如果操作成功，返回受影响的数据集。 |
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | 返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1258,6 +1363,7 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1268,7 +1374,15 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
 
 update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1278,7 +1392,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)        | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的更新条件。                    |
-| callback   | AsyncCallback&lt;number&gt;          | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | AsyncCallback&lt;number&gt;          | 是   | 回调函数。当更新数据成功，err为undefined，data为受影响的行数；否则为错误对象。                   |
 
 **错误码：**
 
@@ -1288,24 +1402,24 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -1352,7 +1466,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1363,7 +1485,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)            | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。                                           |
-| callback   | AsyncCallback&lt;number&gt;                 | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | AsyncCallback&lt;number&gt;                 | 是   | 回调函数。当更新数据成功，err为undefined，data为受影响的行数；否则为错误对象。                   |
 
 **错误码：**
 
@@ -1373,23 +1495,23 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
@@ -1437,7 +1559,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1448,11 +1578,11 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 | values       | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)        | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的更新条件。                    |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| Promise&lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1462,24 +1592,24 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -1526,7 +1656,15 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1538,11 +1676,11 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)            | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。                                           |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| Promise&lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1552,23 +1690,23 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
@@ -1616,7 +1754,15 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
 
-根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据。
+
+由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
+
+如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+如需读取超过2MB的数据，请使用[queryByStep](#querybystep)接口。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1628,7 +1774,7 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)             | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
@@ -1709,9 +1855,11 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1726,7 +1874,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1767,6 +1915,7 @@ async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1781,9 +1930,11 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1798,7 +1949,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                               |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | 如果操作成功，返回受影响的数据集。 |
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | 返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1839,6 +1990,7 @@ function updateWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1858,7 +2010,7 @@ delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 | 参数名     | 类型                                 | 必填 | 说明                                      |
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
-| callback   | AsyncCallback&lt;number&gt;          | 是   | 指定callback回调函数。返回受影响的行数量。 |
+| callback   | AsyncCallback&lt;number&gt;          | 是   | 回调函数。当删除数据成功，err为undefined，data为受影响的行数量；否则为错误对象。 |
 
 **错误码：**
 
@@ -1868,24 +2020,24 @@ delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -1917,7 +2069,7 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
@@ -1931,24 +2083,24 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -1980,7 +2132,7 @@ deleteSync(predicates: RdbPredicates):number
 | ---------- | ------------------------------- | ---- | --------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
@@ -2036,7 +2188,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2049,7 +2201,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。返回受影响的数据集。 |
 
 **错误码：**
 
@@ -2087,6 +2239,7 @@ async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2101,7 +2254,7 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2114,7 +2267,7 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 
 | 类型                                                    | 说明                               |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | 如果操作成功，返回受影响的数据集。 |
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | 返回受影响的数据集。 |
 
 **错误码：**
 
@@ -2152,6 +2305,7 @@ function deleteWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2171,7 +2325,7 @@ query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                         | 是   | RdbPredicates的实例对象指定的查询条件。                   |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -2181,8 +2335,8 @@ query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2208,7 +2362,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -2229,7 +2383,7 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                         | 是   | RdbPredicates的实例对象指定的查询条件。                   |
 | columns    | Array&lt;string&gt;                                          | 是   | 表示要查询的列。如果值为空，则查询应用于所有列。            |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -2239,8 +2393,8 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2266,7 +2420,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -2288,11 +2442,11 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
 | columns    | Array&lt;string&gt;                  | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -2302,8 +2456,8 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2327,7 +2481,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
@@ -2351,11 +2505,11 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | 如果操作成功，则返回ResultSet对象。 |
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | 返回ResultSet对象。 |
 
 **错误码：**
 
@@ -2389,7 +2543,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet) {
       resultSet.close();
     }
@@ -2403,7 +2557,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 根据指定条件查询数据库中的数据，查询时不计算行数，性能优于[query](#query-1)接口。使用Promise异步回调。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2414,11 +2568,11 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询该表的所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | 如果操作成功，则返回LiteResultSet对象。 |
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | 返回LiteResultSet对象。 |
 
 **错误码：**
 
@@ -2451,7 +2605,7 @@ async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       if (resultSet != undefined) {
         resultSet.close();
       }
@@ -2466,7 +2620,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 根据指定条件查询数据库中的数据，查询时不计算行数。对queryWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2477,11 +2631,11 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 如果操作成功，则返回LiteResultSet对象。 |
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 返回LiteResultSet对象。 |
 
 **错误码：**
 
@@ -2513,7 +2667,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet != undefined) {
       resultSet.close();
     }
@@ -2527,7 +2681,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql-1)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2535,14 +2689,14 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise对象。返回LiteResultSet对象。 |
 
 **错误码：**
 
@@ -2550,7 +2704,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
@@ -2574,7 +2728,7 @@ async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore)
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       if (resultSet != undefined) {
         resultSet.close();
       }
@@ -2589,7 +2743,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2597,14 +2751,14 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 如果操作成功，则返回LiteResultSet对象。 |
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 返回LiteResultSet对象。 |
 
 **错误码：**
 
@@ -2612,7 +2766,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed. |
 
 **示例：**
@@ -2635,7 +2789,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet != undefined) {
       resultSet.close();
     }
@@ -2659,11 +2813,11 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 
 | 参数名     | 类型                                         | 必填 | 说明                                                      |
 | ---------- | -------------------------------------------- | ---- | --------------------------------------------------------- |
-| device     | string                                       | 是   | 指定的远程设备ID。                                        |
-| table      | string                                       | 是   | 指定的目标表名。                                          |
+| device     | string                                       | 是   | 指定的远程设备ID，不能为空字符串。                                        |
+| table      | string                                       | 是   | 指定的目标表名，不能为空字符串。                                          |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)              | 是   | RdbPredicates的实例对象，指定查询的条件。                 |
 | columns    | Array&lt;string&gt;                          | 是   | 表示要查询的列。如果值为空，则查询应用于所有列。          |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -2674,7 +2828,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2702,7 +2856,11 @@ try {
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.greaterThan("id", 0);
 if (store != undefined && deviceId != undefined) {
-  (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+  (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], async (err, resultSet) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      return;
+    }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
     try {
@@ -2716,11 +2874,9 @@ if (store != undefined && deviceId != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
 }
 ```
@@ -2741,16 +2897,16 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 
 | 参数名     | 类型                                 | 必填 | 说明                                             |
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------ |
-| device     | string                               | 是   | 指定的远程设备ID。                   |
-| table      | string                               | 是   | 指定的目标表名。                                 |
+| device     | string                               | 是   | 指定的远程设备ID，不能为空字符串。                   |
+| table      | string                               | 是   | 指定的目标表名，不能为空字符串。                                 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象，指定查询的条件。      |
 | columns    | Array&lt;string&gt;                  | 是   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                         | 说明                                               |
 | ------------------------------------------------------------ | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -2761,7 +2917,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2803,7 +2959,7 @@ if (store != undefined && deviceId != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
@@ -2818,7 +2974,7 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -2828,8 +2984,8 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
 | 参数名   | 类型                                         | 必填 | 说明                                    |
 | -------- | -------------------------------------------- | ---- |---------------------------------------|
-| sql      | string                                       | 是   | 指定要执行的SQL语句。                          |
-| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| sql      | string                                       | 是   | 指定要执行的SQL语句，不能为空字符串。                          |
+| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -2839,8 +2995,8 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2866,7 +3022,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -2895,7 +3051,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，支持传入SQL语句中参数的值，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -2905,9 +3061,9 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 
 | 参数名   | 类型                                         | 必填 | 说明                                                         |
 | -------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sql      | string                                       | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
-| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。    |
+| sql      | string                                       | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。当查询成功，err为undefined，data为ResultSet对象；否则为错误对象。    |
 
 **错误码：**
 
@@ -2917,8 +3073,8 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2942,7 +3098,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -2955,7 +3111,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -2965,14 +3121,14 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -2982,8 +3138,8 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
 
 **示例：**
 
@@ -3007,7 +3163,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
@@ -3037,14 +3193,14 @@ querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | 如果操作成功，则返回ResultSet对象。 |
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | 返回ResultSet对象。 |
 
 **错误码：**
 
@@ -3076,11 +3232,139 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet) {
       resultSet.close();
     }
   }
+}
+```
+
+## queryByStep
+
+queryByStep(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
+
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符不超过1000个，使用Promise异步回调。该接口按行逐步获取结果，不存在2MB的单条数据大小限制。
+
+聚合函数不支持嵌套使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                 | 必填 | 说明                                                         |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。<br>必须使用有效的SQL语句。否则在使用ResultSet时可能会抛出错误码。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。默认值为空数组。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                                               |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).queryByStep("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'").then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起文件描述符泄漏与内存泄漏。
+      resultSet.close();
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## queryByStep
+
+queryByStep(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
+
+根据指定条件查询数据库中的数据，使用Promise异步回调。该接口按行逐步获取结果，不存在2MB的单条数据大小限制。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                                             |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------ |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
+| columns    | Array&lt;string&gt;                  | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空数组。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                                               |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  (store as relationalStore.RdbStore).queryByStep(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起文件描述符泄漏与内存泄漏。
+      resultSet.close();
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
 }
 ```
 
@@ -3100,8 +3384,8 @@ executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| callback | AsyncCallback&lt;void&gt;            | 是   | 指定callback回调函数。                                       |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| callback | AsyncCallback&lt;void&gt;            | 是   | 回调函数。当执行SQL成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -3110,25 +3394,25 @@ executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>适用版本：12+ |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
@@ -3162,9 +3446,9 @@ executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallbac
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
-| callback | AsyncCallback&lt;void&gt;            | 是   | 指定callback回调函数。                                       |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| callback | AsyncCallback&lt;void&gt;            | 是   | 回调函数。当执行SQL成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -3173,26 +3457,26 @@ executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallbac
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>适用版本：12+ |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -3225,14 +3509,14 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3241,26 +3525,26 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.).<br>适用版本：12+ |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -3299,14 +3583,14 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回sql执行后的结果。 |
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -3395,7 +3679,7 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
 
 此接口不支持执行查询，可以使用[querySql](#querysql10)接口代替。
 
@@ -3409,15 +3693,15 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
+| sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID，如果传0，该语句默认在单独事务内。                                      |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，填null或者填undefined，都认为是sql参数语句完整。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回null。 |
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -3453,8 +3737,8 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -3491,14 +3775,14 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql    | string                               | 是   | 指定要执行的SQL语句。                                        |
-| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
+| sql    | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
+| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整，默认值为空数组。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                |
 | ----------------------- | ------------------- |
-| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回sql执行后的结果 |
+| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回SQL执行后的结果 |
 
 **错误码：**
 
@@ -3525,7 +3809,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | 14800032     | SQLite: Abort due to constraint violation.                   |
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800034     | SQLite: Library used incorrectly.                            |
-| 14800047     | The WAL file size exceeds the default limit.                 |
+| 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
 
@@ -3579,7 +3863,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 | table       | string                                           | 是   | 指定要查询的数据库表的表名。                                 |
 | columnName  | string                                           | 是   | 指定要查询的数据库表的列名。                                 |
 | primaryKeys | [PRIKeyType](arkts-apis-data-relationalStore-t.md#prikeytype10)[]                    | 是   | 指定要查询的行的主键。<br>如果数据库表无主键，参数columnName需传入"rowid"，此时primaryKeys为要查询的数据库表的行号。<br>如果数据库表无主键，参数columnName传入不为"rowid"，返回对应的错误码。 |
-| callback    | AsyncCallback&lt;[ModifyTime](arkts-apis-data-relationalStore-t.md#modifytime10)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ModifyTime对象，表示数据的最后修改时间。 |
+| callback    | AsyncCallback&lt;[ModifyTime](arkts-apis-data-relationalStore-t.md#modifytime10)&gt; | 是   | 回调函数。当获取修改时间成功，err为undefined，data为ModifyTime对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -3590,23 +3874,23 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -3639,7 +3923,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 | columnName  | string                        | 是   | 指定要查询的数据库表的列名。                                 |
 | primaryKeys | [PRIKeyType](arkts-apis-data-relationalStore-t.md#prikeytype10)[] | 是   | 指定要查询的行的主键。<br>如果数据库表无主键，参数columnName需传入"rowid"，此时primaryKeys为要查询的数据库表的行号。<br>如果数据库表无主键，参数columnName传入不为"rowid"，返回对应的错误码。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                       | 说明                                                      |
 | ------------------------------------------ | --------------------------------------------------------- |
@@ -3654,23 +3938,23 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr.3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -3707,24 +3991,24 @@ beginTransaction():void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>适用版本：10+ |
 
 **示例：**
 
@@ -3755,11 +4039,11 @@ beginTrans(): Promise&lt;number&gt;
 
 与[beginTransaction](#begintransaction)的区别在于：该接口会返回事务ID，[execute](#execute12-1)可以指定不同事务ID达到事务隔离目的。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -3777,7 +4061,7 @@ beginTrans(): Promise&lt;number&gt;
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3799,8 +4083,8 @@ beginTrans(): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -3835,9 +4119,9 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 
 | 参数名      | 类型                          | 必填 | 说明                                                         |
 | ----------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | 否   | 表示事务对象的配置信息。                                 |
+| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | 否   | 表示事务对象的配置信息，默认值为DEFERRED。                                 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -3874,6 +4158,7 @@ if (store != undefined) {
       console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
     });
   }).catch((err: BusinessError) => {
+    (store as relationalStore.RdbStore).close();
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   });
 }
@@ -3896,24 +4181,24 @@ commit():void
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800000  | Inner error.<br>适用版本：12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -3942,7 +4227,7 @@ commit(txId : number):Promise&lt;void&gt;
 
 提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3952,11 +4237,11 @@ commit(txId : number):Promise&lt;void&gt;
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3969,7 +4254,7 @@ commit(txId : number):Promise&lt;void&gt;
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3990,8 +4275,8 @@ commit(txId : number):Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -4025,24 +4310,24 @@ rollBack():void
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800000  | Inner error.<br>适用版本：12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4080,7 +4365,7 @@ rollback(txId : number):Promise&lt;void&gt;
 
 回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4090,11 +4375,11 @@ rollback(txId : number):Promise&lt;void&gt;
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4107,7 +4392,7 @@ rollback(txId : number):Promise&lt;void&gt;
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4128,8 +4413,8 @@ rollback(txId : number):Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
-    txId = temTxId;
+  (store as relationalStore.RdbStore).beginTrans().then((tempTxId: number) => {
+    txId = tempTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
         if (txId !== undefined) {
@@ -4152,7 +4437,7 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 
 以指定名称备份数据库，使用callback异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4160,8 +4445,8 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 
 | 参数名   | 类型                      | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| destName | string                    | 是   | 指定数据库的备份文件名。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。   |
+| destName | string                    | 是   | 指定数据库的备份文件名，不能为空字符串。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当备份成功，err为undefined，否则为错误对象。   |
 
 **错误码：**
 
@@ -4171,24 +4456,24 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800010  | Failed to open or delete the database by an invalid database path.<br>适用版本：12+ |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4210,7 +4495,7 @@ backup(destName:string): Promise&lt;void&gt;
 
 以指定名称备份数据库，使用Promise异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4218,13 +4503,13 @@ backup(destName:string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明                     |
 | -------- | ------ | ---- | ------------------------ |
-| destName | string | 是   | 指定数据库的备份文件名。 |
+| destName | string | 是   | 指定数据库的备份文件名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4234,23 +4519,23 @@ backup(destName:string): Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4273,7 +4558,7 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 
 从指定的数据库备份文件恢复数据库，使用callback异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4281,8 +4566,8 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 
 | 参数名   | 类型                      | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| srcName  | string                    | 是   | 指定数据库的备份文件名。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。   |
+| srcName  | string                    | 是   | 指定数据库的备份文件名，不能为空字符串。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当恢复成功，err为undefined，否则为错误对象。   |
 
 **错误码：**
 
@@ -4292,23 +4577,23 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4330,7 +4615,7 @@ restore(srcName:string): Promise&lt;void&gt;
 
 从指定的数据库备份文件恢复数据库，使用Promise异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4338,13 +4623,13 @@ restore(srcName:string): Promise&lt;void&gt;
 
 | 参数名  | 类型   | 必填 | 说明                     |
 | ------- | ------ | ---- | ------------------------ |
-| srcName | string | 是   | 指定数据库的备份文件名。 |
+| srcName | string | 是   | 指定数据库的备份文件名，不能为空字符串。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4354,23 +4639,23 @@ restore(srcName:string): Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+ |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+ |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4402,7 +4687,7 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                      | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
 | tables   | Array&lt;string&gt;       | 是   | 要设置的分布式数据库的表名。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4413,7 +4698,7 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4445,11 +4730,11 @@ if (store != undefined) {
 | ------ | ------------------------ | ---- | ------------------------ |
 | tables | Array&lt;string&gt; | 是   | 要设置的分布式数据库的表名。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4460,7 +4745,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4492,7 +4777,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 | -------- | ------------------------------------- | ---- | ---------------------------- |
 | tables   | Array&lt;string&gt;                   | 是   | 要设置的分布式数据库的表名。  |
 | type     | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10) | 是   | 表的分布式类型。        |
-| callback | AsyncCallback&lt;void&gt;             | 是   | 指定callback回调函数。 |
+| callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4503,7 +4788,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4537,7 +4822,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config:
 | tables   | Array&lt;string&gt;                 | 是   | 要设置的分布式数据库的表名。  |
 | type     | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10) | 是   | 表的分布式类型。        |
 | config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | 是 | 表的分布式配置信息。      |
-| callback | AsyncCallback&lt;void&gt;           | 是   | 指定callback回调函数。 |
+| callback | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4548,7 +4833,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config:
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4583,13 +4868,13 @@ if (store != undefined) {
 | ------ | ----------------------------------------- | ---- |-----------------------------------------------------------------|
 | tables | Array&lt;string&gt;                       | 是   | 要设置的分布式数据库的表名。                                                  |
 | type   | [DistributedType](arkts-apis-data-relationalStore-e.md#distributedtype10)     | 否   | 表的分布式类型。默认值是relationalStore.DistributedType.DISTRIBUTED_DEVICE。 |
-| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | 否   | 表的分布式配置信息。不传入时默认autoSync为false，即只支持手动同步。                        |
+| config | [DistributedConfig](arkts-apis-data-relationalStore-i.md#distributedconfig10) | 否   | 表的分布式配置信息。不传入时默认autoSync为false，需要调用[cloudSync](#cloudsync10-3)接口触发端云同步。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4600,7 +4885,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4637,9 +4922,9 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| device   | string                      | 是   | 远程设备ID 。                                                |
+| device   | string                      | 是   | 远程设备ID，不能为空字符串。                                                |
 | table    | string                      | 是   | 远程设备的本地表名。                                         |
-| callback | AsyncCallback&lt;string&gt; | 是   | 指定的callback回调函数。如果操作成功，返回远程设备的分布式表名。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取分布式表名成功，err为undefined，data为远程设备的分布式表名；否则为错误对象。 |
 
 **错误码：**
 
@@ -4650,7 +4935,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4704,14 +4989,14 @@ if (store != undefined && deviceId != undefined) {
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| device | string | 是   | 远程设备ID。         |
+| device | string | 是   | 远程设备ID，不能为空字符串。         |
 | table  | string | 是   | 远程设备的本地表名。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                                  |
 | --------------------- | ----------------------------------------------------- |
-| Promise&lt;string&gt; | Promise对象。如果操作成功，返回远程设备的分布式表名。 |
+| Promise&lt;string&gt; | Promise对象。返回远程设备的分布式表名。 |
 
 **错误码：**
 
@@ -4722,7 +5007,7 @@ if (store != undefined && deviceId != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4772,7 +5057,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | 是   | 约束同步数据和设备。                                         |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 指定的callback回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -4783,7 +5068,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4839,11 +5124,11 @@ if (store != undefined) {
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 约束同步数据和设备。           |
 
-**返回值**：
+**返回值：**
 
 | 类型                                         | 说明                                                         |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象。返回同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -4854,7 +5139,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -4891,11 +5176,88 @@ if (store != undefined) {
 }
 ```
 
+## syncEx
+
+syncEx(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;SyncResult&gt;&gt;
+
+在设备之间同步数据，使用Promise异步回调，可以返回具体的同步状态信息。
+
+**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                           |
+| ---------- | ------------------------------------ | ---- | ------------------------------ |
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | 是   | 同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。 |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 约束同步数据和设备。           |
+
+**返回值：**
+
+| 类型                                         | 说明                                                         |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| Promise&lt;Array&lt;[SyncResult](arkts-apis-data-relationalStore-i.md#syncresult)&gt;&gt; | Promise对象。返回SyncResult数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 201       | the application does not have permission to call this function. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800014  | The target instance is already closed. |
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceIds: Array<string> = [];
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+  for (let i = 0; i < devices.length; i++) {
+    deviceIds[i] = devices[i].networkId!;
+  }
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error("createDeviceManager errCode:" + code + ",errMessage:" + message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.inDevices(deviceIds);
+store.syncEx(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: relationalStore.SyncResult[]) => {
+  for (let i = 0; i < result.length; i++) {
+    let code = result[i].code;
+    let message = result[i].message;
+    if (code === 0) {
+      console.info(`SyncEx success`);
+    } else {
+      console.error(`SyncEx failed, message: ${message} code : ${code}`);
+    }
+  }
+}).catch((err: Error) => {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error("syncEx errCode:" + code + ",errMessage:" + message);
+});
+```
+
 ## cloudSync<sup>10+</sup>
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-手动执行对所有分布式表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
+主动执行对所有分布式表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4905,7 +5267,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: A
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | mode     | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                                 | 是   | 表示数据库的同步模式。                             |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。             |
-| callback | AsyncCallback&lt;void&gt;                             | 是   | 指定的callback回调函数，用于向调用者发送同步结果。 |
+| callback | AsyncCallback&lt;void&gt;                             | 是   | 回调函数。当同步成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -4915,7 +5277,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: A
 |-----------|-------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. 5. The callback must be a function. |
 | 801       | Capability not supported.       |
-| 14800014  | The target instance is already closed.        |
+| 14800014  | The target instance is already closed.<br>适用版本：12+        |
 
 **示例：**
 
@@ -4937,7 +5299,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对所有分布式表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
+主动执行对所有分布式表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4948,11 +5310,11 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt
 | mode     | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                                 | 是   | 表示数据库的同步模式。                 |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，用于向调用者发送同步结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4962,7 +5324,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt
 |-----------|------------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
 | 801       | Capability not supported.   |
-| 14800014  | The target instance is already closed.           |
+| 14800014  | The target instance is already closed.<br>适用版本：12+           |
 
 **示例：**
 
@@ -4984,7 +5346,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-手动执行对指定表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
+主动执行对指定表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4995,7 +5357,7 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 | mode     | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                                 | 是   | 表示数据库的同步模式。                             |
 | tables   | string[]                                              | 是   | 指定同步的表名。                                   |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。             |
-| callback | AsyncCallback&lt;void&gt;                             | 是   | 指定的callback回调函数，用于向调用者发送同步结果。 |
+| callback | AsyncCallback&lt;void&gt;                             | 是   | 回调函数。当同步成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -5003,9 +5365,9 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 
 | **错误码ID** | **错误信息**                                                                                                                                                                                                                  |
 |-----------|-------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
+| 401       | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.|
 | 801       | Capability not supported.   |
-| 14800014  | The target instance is already closed.   |
+| 14800014  | The target instance is already closed.<br>适用版本：12+   |
 
 **示例：**
 
@@ -5029,7 +5391,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
+主动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5041,11 +5403,11 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 | tables   | string[]                                              | 是   | 指定同步的表名。                       |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，用于向调用者发送同步结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5053,9 +5415,9 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 
 | **错误码ID** | **错误信息**     |
 |-----------|---------------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type |
+| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
 | 801       | Capability not supported.    |
-| 14800014  | The target instance is already closed.  |
+| 14800014  | The target instance is already closed.<br>适用版本：12+  |
 
 **示例：**
 
@@ -5073,6 +5435,125 @@ if (store != undefined) {
     console.error(`cloudSync failed, code is ${err.code},message is ${err.message}`);
   });
 };
+```
+
+## cloudSyncEx
+
+cloudSyncEx(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+
+主动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现云服务功能。
+
+> **说明：**
+>
+> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词：
+> 
+> - [beginWrap](arkts-apis-data-relationalStore-RdbPredicates.md#beginwrap)
+> - [endWrap](arkts-apis-data-relationalStore-RdbPredicates.md#endwrap)
+> - [or](arkts-apis-data-relationalStore-RdbPredicates.md#or)
+> - [and](arkts-apis-data-relationalStore-RdbPredicates.md#and)
+> - 以下谓词的数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数和string：
+>   - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
+>   - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
+>   - [in](arkts-apis-data-relationalStore-RdbPredicates.md#in)
+>   - [notIn](arkts-apis-data-relationalStore-RdbPredicates.md#notin)
+> - 以下谓词的数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数：
+>   - [greaterThan](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthan)
+>   - [lessThan](arkts-apis-data-relationalStore-RdbPredicates.md#lessthan)
+>   - [greaterThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthanorequalto)
+>   - [lessThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#lessthanorequalto)
+> 
+> 谓词中支持使用主键（必填）和资产（可选）作为同步条件：当选择资产作为同步条件时，同步模式需要设置为relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST；指定资产的数量较多时（最多支持指定50个资产），建议谓词中仅使用主键作为同步条件。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| config | [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 |
+| progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.in("id", ["id1", "id2"]);
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true,
+  predicate: predicates
+};
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSyncEx(config, (progressDetails: relationalStore.ProgressDetails) => {
+      console.info(`progress: ${progressDetails.schedule}`);
+  }).then(() => {
+      console.info('cloud sync succeeded');
+  }).catch((err: BusinessError) => {
+      console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## stopCloudSync
+
+stopCloudSync(): Promise&lt;void&gt;
+
+停止与云端的数据同步，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800014  | The target instance is already closed. |
+
+**示例：**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != undefined) {
+  (store as relationalStore.RdbStore).stopCloudSync().then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## on('dataChange')
@@ -5099,7 +5580,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 
 **示例：**
 
@@ -5150,7 +5631,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 
 **示例1：type为SUBSCRIBE_TYPE_REMOTE**
 
@@ -5234,7 +5715,7 @@ on(event: string, interProcess: boolean, observer: Callback\<void>): void
 | ------------ | --------------- | ---- | ------------------------------------------------------------ |
 | event        | string          | 是   | 订阅事件名称，与emit接口触发事件时的名称一致。               |
 | interProcess | boolean         | 是   | 指定是进程间还是本进程订阅。<br/> true：进程间。<br/> false：本进程。 |
-| observer     | Callback\<void> | 是   | 回调函数。                                                   |
+| observer     | Callback\<void> | 是   | 回调函数。当进程间或本进程数据变更时触发回调。                                                   |
 
 **错误码：**
 
@@ -5245,7 +5726,7 @@ on(event: string, interProcess: boolean, observer: Callback\<void>): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.    |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 | 14800050  | Failed to obtain the subscription service.    |
 
 **示例：**
@@ -5281,7 +5762,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 | 参数名       | 类型                              | 必填 | 说明                                |
 | ------------ |---------------------------------| ---- |-----------------------------------|
 | event        | string                          | 是   | 取值为'autoSyncProgress'，表示自动同步进度通知。 |
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 回调函数。                             |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用于返回[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)结果的回调函数。                             |
 
 **错误码：**
 
@@ -5289,9 +5770,9 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. 4. The event must be a not empty string. 5. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The target instance is already closed.     |
+| 14800014  | The target instance is already closed.<br>适用版本：12+     |
 
 **示例：**
 
@@ -5541,7 +6022,7 @@ off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 
 **示例：**
 
@@ -5603,7 +6084,7 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 
 **示例：**
 
@@ -5643,7 +6124,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-取消数据变更的事件监听。
+取消数据库的进程内或者进程间事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5664,7 +6145,7 @@ off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000     | Inner error.                           |
-| 14800014  | The target instance is already closed.    |
+| 14800014  | The target instance is already closed.<br>适用版本：12+    |
 | 14800050     | Failed to obtain the subscription service. |
 
 **示例：**
@@ -5720,7 +6201,7 @@ off(event: 'autoSyncProgress', progress?: Callback&lt;ProgressDetails&gt;): void
 | ------------ |--------------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The target instance is already closed.       |
+| 14800014  | The target instance is already closed.<br>适用版本：12+       |
 
 **示例：**
 
@@ -5895,7 +6376,7 @@ emit(event: string): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.     |
 | 14800000  | Inner error.   |
-| 14800014  | The target instance is already closed.     |
+| 14800014  | The target instance is already closed.<br>适用版本：12+     |
 | 14800050  | Failed to obtain the subscription service.    |
 
 
@@ -5911,7 +6392,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5921,34 +6402,34 @@ cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string                        | 是   | 表示当前数据库的表的名称。                             |
 | cursor    | number                        | 是   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。     |
-| callback  | AsyncCallback&lt;void&gt;     | 是   | 指定的callback回调函数。 |
+| callback  | AsyncCallback&lt;void&gt;     | 是   | 回调函数。当清理成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
-| **错误码ID** | **错误信息**     |
-|-----------|---------------|
+| **错误码ID** | **错误信息**       |
+|-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
-| 801       | Capability not supported. |
-| 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 801       | Capability not supported.    |
+| 14800000  | Inner error.        |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+   |
+| 14800014  | The target instance is already closed.<br>适用版本：12+       |
+| 14800015  | The database does not respond.<br>适用版本：12+      |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+           |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+        |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+  |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+      |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+   |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+  |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+                |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+            |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+             |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+   |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+                  |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+          |
 
 **示例：**
 
@@ -5968,7 +6449,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的所有数据。
+清理云端删除的数据同步到本地后，未自动清理的所有数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5976,35 +6457,34 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
-| table     | string                        | 是   | 表示当前数据库的表的名称。 |
-| callback  | AsyncCallback&lt;void&gt;     | 是   | 指定的callback回调函数。 |
+| table     | string                        | 是   | 表示当前数据库的表的名称。|
+| callback  | AsyncCallback&lt;void&gt;     | 是   | 回调函数。当清理成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
-
 | **错误码ID** | **错误信息**       |
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s). 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. |
 | 801       | Capability not supported.    |
 | 14800000  | Inner error.        |
-| 14800011  | The current operation failed because the database is corrupted.   |
-| 14800014  | The target instance is already closed.       |
-| 14800015  | The database does not respond.      |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.     |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied.           |
-| 14800024  | SQLite: The database file is locked.        |
-| 14800025  | SQLite: A table in the database is locked.  |
-| 14800026  | SQLite: The database is out of memory.      |
-| 14800027  | SQLite: Attempt to write a readonly database.   |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.  |
-| 14800029  | SQLite: The database is full.                |
-| 14800030  | SQLite: Unable to open the database file.            |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.             |
-| 14800032  | SQLite: Abort due to constraint violation.   |
-| 14800033  | SQLite: Data type mismatch.                  |
-| 14800034  | SQLite: Library used incorrectly.          |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+   |
+| 14800014  | The target instance is already closed.<br>适用版本：12+       |
+| 14800015  | The database does not respond.<br>适用版本：12+      |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+           |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+        |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+  |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+      |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+   |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+  |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+                |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+            |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+             |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+   |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+                  |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+          |
 
 **示例：**
 
@@ -6039,7 +6519,7 @@ cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 | 类型     | 说明                                              |
 | -------- | ------------------------------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。        |
+| Promise\<void> | Promise对象，无返回结果。        |
 
 **错误码：**
 
@@ -6050,23 +6530,23 @@ cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.            |
-| 14800011  | The current operation failed because the database is corrupted.   |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.   |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied.          |
-| 14800024  | SQLite: The database file is locked.      |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory.   |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full.   |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+   |
+| 14800014  | The target instance is already closed.<br>适用版本：12+ |
+| 14800015  | The database does not respond.<br>适用版本：12+   |
+| 14800021  | SQLite: Generic error.<br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>适用版本：12+ |
+| 14800023  | SQLite: Access permission denied.<br>适用版本：12+          |
+| 14800024  | SQLite: The database file is locked.<br>适用版本：12+      |
+| 14800025  | SQLite: A table in the database is locked.<br>适用版本：12+ |
+| 14800026  | SQLite: The database is out of memory.<br>适用版本：12+   |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>适用版本：12+ |
+| 14800029  | SQLite: The database is full.<br>适用版本：12+   |
+| 14800030  | SQLite: Unable to open the database file.<br>适用版本：12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>适用版本：12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>适用版本：12+ |
+| 14800033  | SQLite: Data type mismatch.<br>适用版本：12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>适用版本：12+ |
 
 **示例：**
 
@@ -6100,9 +6580,9 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| fullPath | string | 是   | 表示要附加的数据库的路径。 |
-| attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
+| fullPath | string | 是   | 表示要附加的数据库的路径，不能为空字符串，路径长度不超过1024字节。 |
+| attachName | string | 是   | 表示附加后的数据库的别名，不能为空字符串。 |
+| waitTime | number | 否   | 表示附加数据库文件的等待时长，单位：s。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
@@ -6124,7 +6604,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800016  | The database alias already exists.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6174,8 +6654,8 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | ----------- | ------ | --- | ------------ |
 | context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
-| attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
+| attachName | string | 是   | 表示附加后的数据库的别名，不能为空字符串。 |
+| waitTime | number | 否   | 表示附加数据库文件的等待时长，单位：s。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
@@ -6199,7 +6679,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 14800016  | The database alias already exists.                |
 | 14801001  | The operation is supported in the stage model only.                 |
 | 14801002  | Invalid data group ID.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6285,8 +6765,8 @@ detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示分离数据库的等待时长。默认值2s，最小值1s，最大值300s。 |
+| attachName | string | 是   | 表示附加后的数据库的别名，不能为空字符串。 |
+| waitTime | number | 否   | 表示分离数据库的等待时长，单位：s。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
@@ -6305,7 +6785,7 @@ detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 | 14800011  | The current operation failed because the database is corrupted.         |
 | 14800014  | The target instance is already closed.        |
 | 14800015  | The database does not respond.         |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.            |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.       |
 | 14800023  | SQLite: Access permission denied.           |
 | 14800024  | SQLite: The database file is locked.        |
@@ -6354,11 +6834,11 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的锁定条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
-| Promise&lt;void&gt;   | 无返回结果的Promise对象。        |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。        |
 
 **错误码：**
 
@@ -6372,7 +6852,7 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 | 14800014  | The target instance is already closed.                                                                              |
 | 14800015  | The database does not respond.                                                                        |
 | 14800018  | No data meets the condition.                                                                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                                                       |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.                                                 |
 | 14800023  | SQLite: Access permission denied.                                                            |
 | 14800024  | SQLite: The database file is locked.                                                         |
@@ -6423,11 +6903,11 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的锁定条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
-| Promise&lt;void&gt;   | 无返回结果的Promise对象。        |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。        |
 
 **错误码：**
 
@@ -6441,7 +6921,7 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800018  | No data meets the condition.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6487,11 +6967,11 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
 | columns    | Array&lt;string&gt;                  | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -6504,7 +6984,7 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6541,7 +7021,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
@@ -6592,11 +7072,13 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 手动更新加密数据库的密钥。使用Promise异步回调。
 
+从API版本26.0.0开始，支持使用该接口更新向量数据库（创建数据库时配置StoreConfig的vector字段为true）的密钥。
+
+仅支持加密数据库进行密钥更新，不支持非加密数据库变加密数据库及加密数据库变非加密数据库，且需要保持加密参数和密钥生成方式与建库时一致。
+
 不支持对非WAL模式的数据库进行密钥更新。
 
 手动更新密钥时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会引发失败。
-
-仅支持加密数据库进行密钥更新，不支持非加密数据库变加密数据库及加密数据库变非加密数据库，且需要保持加密参数和密钥生成方式与建库时一致。
 
 数据库越大，密钥更新所需的时间越长。
 
@@ -6612,7 +7094,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。  |
+| Promise\<void> | Promise对象，无返回结果。  |
 
 **错误码：**
 
@@ -6621,11 +7103,11 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 | **错误码ID** | **错误信息**                                                            |
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.                   |
 | 14800014     | The target instance is already closed.                           |
 | 14800015     | The database does not respond.                                         |
-| 14800021     | SQLite: Generic error.                                                 |
+| 14800021     | SQLite: Generic error. |
 | 14800023     | SQLite: Access permission denied.                                      |
 | 14800024     | SQLite: The database file is locked.                                   |
 | 14800026     | SQLite: The database is out of memory.                                 |
@@ -6638,6 +7120,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例1：使用默认的加密参数
@@ -6660,20 +7143,23 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam1);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam1);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
 ```
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例2：使用自定义的加密参数
@@ -6710,14 +7196,60 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam2);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam2);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
+    });
+  }
+}
+```
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 示例3：更新向量数据库密钥
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+    };
+    const STORE_CONFIG1: relationalStore.StoreConfig = {
+      name: 'test.db',
+      securityLevel: relationalStore.SecurityLevel.S2,
+      encrypt: true,
+      vector: true,
+      cryptoParam: cryptoParam,
+    };
+
+    relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let newCryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekey(newCryptoParam);
+          console.info('rekey successful');
+        } catch (err) {
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
+        }
+      }
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
@@ -6737,13 +7269,13 @@ setLocale(locale: string) : Promise\<void>
 
 | 参数名 | 类型     | 必填 | 说明                                       |
 | ------ | ------- | ---- | ----------------------------------------- |
-| locale  | string | 是   | 设置自定义排序的语言。该值符合ISO 639标准，如："zh"。|
+| locale  | string | 是   | 设置自定义排序的语言，不能为空字符串。该值符合ISO 639标准，如："zh"。|
 
 **返回值：**
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。  |
+| Promise\<void> | Promise对象，无返回结果。  |
 
 **错误码：**
 
@@ -6752,7 +7284,7 @@ setLocale(locale: string) : Promise\<void>
 | **错误码ID** | **错误信息**                                                            |
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed.                           |
 | 14800024     | SQLite: The database file is locked.                                   |
 | 14800026     | SQLite: The database is out of memory.                                 |
@@ -6811,7 +7343,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise\<void> | 无返回结果的Promise对象。  |
+| Promise\<void> | Promise对象，无返回结果。  |
 
 **错误码：**
 
@@ -6820,10 +7352,10 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
 | 801          | Capability not supported.                                               |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
-| 14800021     | SQLite: Generic error.                                                  |
+| 14800021     | SQLite: Generic error. |
 | 14800023     | SQLite: Access permission denied.                                       |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800026     | SQLite: The database is out of memory.                                  |
@@ -6834,6 +7366,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 **示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6879,6 +7412,7 @@ export default class EntryAbility extends UIAbility {
 **示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6934,6 +7468,7 @@ export default class EntryAbility extends UIAbility {
 **示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6980,6 +7515,7 @@ export default class EntryAbility extends UIAbility {
 **示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7035,6 +7571,7 @@ export default class EntryAbility extends UIAbility {
 **示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7086,6 +7623,7 @@ export default class EntryAbility extends UIAbility {
 **示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

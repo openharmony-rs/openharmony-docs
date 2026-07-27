@@ -1,24 +1,24 @@
-# Account Subsystem ChangeLog
+# Account Subsystem Changelog
 
 ## cl.account_os_account.1 Change of Definition and Return Mode of Error Codes
 
-To solve the issues that error code definitions of the account subsystem APIs were inconsistent and that the return mode of the error codes did not comply with relevant specifications of OpenHarmony, the following changes are made and take effect in API version 9 and later:
+To ensure consistent error codes and normalized return of error codes in the account subsystem APIs, the following changes are made in API version 9:
 
-- Added the following unified error code definitions:
+- Added the following error code definitions:
   - [Account Error Codes](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-account.md)
-  - [App Account Error Codes](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-account.md)
+  - [Application Account Error Codes](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-account.md)
 
-- Returned an error code in either of the following ways, according to the API type:
-  - Asynchronous API: An error message is returned via **AsyncCallback** or the **error** object of **Promise**. An error message related to the parameter type or quantity is returned via an exception.
-  - Synchronous API: An error message is returned via an exception.
+- Changed the error code return modes as follows:
+  - Asynchronous APIs: Return error message in the **error** object of **AsyncCallback** or **Promise**. An error message related to the parameter type or quantity is returned via an exception.
+  - Synchronous APIs: Throw an exception to return an error message.
 
-**Change Impacts**
+**Change Impact**
 
-The application developed based on earlier versions needs to adapt the method for returning API error information. Otherwise, the original service logic will be affected.
+The application developed based on earlier versions needs to adapt the method for returning API error message. Otherwise, the original service logic will be affected.
 
 **Key API/Component Changes**
 
-The mentioned changes involve the following APIs:
+Involved APIs:
   - class AccountManager
     - activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void;
     - removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void;
@@ -63,7 +63,7 @@ The mentioned changes involve the following APIs:
 
 **Adaptation Guide**
 
-The following uses **activateOsAccount** as an example to illustrate the error information processing logic of an asynchronous API:
+The following uses **activateOsAccount** as an example to describe the error message processing logic of an asynchronous API:
 
 ```ts
 import account_osAccount from "@ohos.account.osAccount"
@@ -77,29 +77,29 @@ let callbackFunc = (err) => {
 }
 try {
   accountMgr.activateOsAccount("100", callbackFunc);
-} catch (err) {  // Process the error that is related to the parameter type.
+} catch (err) {  // Handle the error that is related to the parameter type.
   console.log("account_osAccount failed for incorrect parameter type, error: " + JSON.stringify(err));
 }
 try {
   accountMgr.activateOsAccount();
-} catch (err) {  // Process the error that is related to the parameter quantity.
+} catch (err) {  // Handle the error that is related to the parameter quantity.
   console.log("account_osAccount failed for incorrect parameter number, error: " + JSON.stringify(err));
 }
 ```
 
-The following uses **registerInputer** as an example to illustrate the error information processing logic of a synchronous API:
+The following uses **registerInputer** as an example to describe the error message processing logic of a synchronous API:
 
 ```ts
 import account_osAccount from "@ohos.account.osAccount"
 let pinAuth = new account_osAccount.PINAuth()
 try {
     pinAuth.registerInputer({})
-} catch (err) {  // Process the error that is related to the parameter type.
+} catch (err) {  // Handle the error that is related to the parameter type.
   console.log("account_osAccount failed for incorrect parameter type, error: " + JSON.stringify(err));
 }
 try {
     pinAuth.registerInputer()
-} catch (err) {  // Process the error that is related to the parameter quantity.
+} catch (err) {  // Handle the error that is related to the parameter quantity.
   console.log("account_osAccount failed for incorrect parameter number, error: " + JSON.stringify(err));
 }
 ```

@@ -58,7 +58,9 @@ the component is not on tree or does not exist.
 
 **可能原因**
 
-传入id错误、节点已经被销毁等。
+- 传入id错误、节点已经被销毁等。
+
+- 对不具有获焦能力的组件请求焦点。具体组件可查询[组件获焦能力说明](../../ui/arkts-common-events-focus-event.md#组件获焦能力说明)。
 
 **处理步骤**
 

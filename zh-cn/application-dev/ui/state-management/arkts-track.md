@@ -2,12 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Track应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
+[\@Track](../../reference/apis-arkui/arkui-ts/ts-state-management-track.md#track)应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
 
 
 在阅读本文档之前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：[\@State](./arkts-state.md)。
@@ -27,7 +27,7 @@
 
 状态管理V1中\@State等装饰器默认支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，下面的例子就展示了这一限制：
 
-<!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) -->
+<!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -53,22 +53,30 @@ struct Index {
     Column() {
       Text(`name: ${this.info.name}`)
         .fontSize(this.getFontSize(1))
+        .margin(10)
       Text(`age: ${this.info.age}`)
         .fontSize(this.getFontSize(2))
+        .margin(10)
 
       // 点击当前Button，可以发现当前虽然仅改变了name属性
       // 但是依旧会触发两个Text的刷新
       // Text(`age: ${this.info.age}`)是冗余刷新
-      Button('change name').onClick(() => {
-        this.info.name = 'Jane';
-      })
+      Button('change name')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.info.name = 'Jane';
+        })
 
       // 点击当前Button，可以发现当前虽然仅改变了age属性
       // 但是依旧会触发两个Text的刷新
       // Text(`name: ${this.info.name}`)是冗余刷新
-      Button('change age').onClick(() => {
-        this.info.age++;
-      })
+      Button('change age')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.info.age++;
+        })
     }
     .height('100%')
     .width('100%')
@@ -76,6 +84,7 @@ struct Index {
 }
 ```
 
+![track-demo-0](figures/track-demo-0.gif)
 
 > **说明：**
 >
@@ -119,7 +128,7 @@ struct Index {
 
 使用\@Track装饰器可以避免冗余刷新。
 
-<!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) -->
+<!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -152,7 +161,7 @@ struct AddLog {
   @State logTrack: LogTrack = new LogTrack('Hello');
   @State logNotTrack: LogNotTrack = new LogNotTrack('Hello');
 
-  isRender(index: number) {
+  isRender(index: number): number {
     hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
     return 50;
   }
@@ -164,21 +173,29 @@ struct AddLog {
           .id('str1')
           .fontSize(this.isRender(1))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Text(this.logTrack.str2) // Text2
           .fontSize(this.isRender(2))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Button('change logTrack.str1')
           .id('str2')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.logTrack.str1 = 'Bye';
           })
         Text(this.logNotTrack.str1) // Text3
           .fontSize(this.isRender(3))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Text(this.logNotTrack.str2) // Text4
           .fontSize(this.isRender(4))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Button('change logNotTrack.str1')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.logNotTrack.str1 = 'Bye';
           })
@@ -190,8 +207,7 @@ struct AddLog {
 }
 ```
 
-
-
+![track-demo-1](figures/track-demo-1.gif)
 
 在上面的示例中：
 
@@ -200,7 +216,7 @@ struct AddLog {
     Text 1 is rendered
     ```
 
-2. 类logNotTrack中的属性均未被\@Track装饰器装饰，点击按钮"change logNotTrack.str1"，此时Text3、Text4均会刷新，有两条日志输出，存在冗余刷新。
+2. 类LogNotTrack中的属性均未被\@Track装饰器装饰，点击按钮"change logNotTrack.str1"，此时Text3、Text4均会刷新，有两条日志输出，存在冗余刷新。
     ```ts
     Text 3 is rendered
     Text 4 is rendered
@@ -208,9 +224,9 @@ struct AddLog {
 
 ## 限制条件
 
-- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
+- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，从API version 23开始，将返回错误码[140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-在ui中使用非track装饰的属性发生运行时报错)，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
 
-- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[常见场景](./arkts-v1-v2-mixusage.md#observed装饰的class)。
+- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[\@Observed+\@Track装饰的class（V1->V2）](./arkts-v1-v2-mixusage.md#传递class类型v1-v2)、[@Observed+\@Track装饰的class（V2->V1）](./arkts-v1-v2-mixusage.md#传递class类型v2-v1)。
 
 - 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等，容易在UI中误用非\@Track装饰的属性，导致运行时报错。
 
@@ -222,7 +238,7 @@ struct AddLog {
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track装饰的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
 
-<!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) -->
+<!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -276,7 +292,7 @@ struct AddLog {
 }
 ```
 
-
+![track-demo-2](figures/track-demo-2.gif)
 
 处理步骤：
 
@@ -288,7 +304,7 @@ struct AddLog {
 
 ### 在UI中使用非\@Track装饰的属性发生运行时报错
 
-在UI中使用非\@Track装饰的属性，运行时会报错。
+在UI中使用非\@Track装饰的属性，运行时会报错，从API version 23开始，将返回错误码140110。需要给`age`也添加\@Track装饰器。
 
 ```ts
 class Person {
@@ -311,6 +327,8 @@ struct Parent {
   build() {
     // 没有被@Track装饰的属性不可以在UI中使用，运行时会报错
     Text(`Parent id is: ${this.parent.id} and Parent age is: ${this.parent.age}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```

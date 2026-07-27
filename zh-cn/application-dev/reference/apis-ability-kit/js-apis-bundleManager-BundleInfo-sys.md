@@ -3,14 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，应用可以通过[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)获取指定包名的应用包信息，其中入参[bundleFlags](js-apis-bundleManager.md#bundleflag)指定所返回的[BundleInfo](js-apis-bundleManager-bundleInfo.md)中所包含的信息。
 
 > **说明：**
 >
-> 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见（[BundleInfo](js-apis-bundleManager-bundleInfo.md)）。
 
@@ -19,6 +19,23 @@
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 ```
+
+## BundleInfo
+
+应用包信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
+| 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| sandboxCreatorBundleName          | string                                                       | 是   | 是   | 沙箱分身的创建方包名。 |
 
 ## DynamicIconInfo
 
@@ -48,6 +65,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | ------------------- |
 | userId | number         | 否   | 是   | 用户ID。默认为当前调用方所在的用户。             |
 | appIndex | number         | 否   | 是   | 应用分身ID。默认为0，表示主应用。    |
-| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。    |
-| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。    |
-| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。    |
+| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |

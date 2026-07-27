@@ -1,8 +1,8 @@
 # 自定义能力概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,6 +18,7 @@
 ## 自定义能力导览
   上述提到自定义能力层次不同，使用场景也不同。通过以下导览，可快速了解各种自定义能力的说明以及使用场景和建议。
 
+  <!--Table: 20%; 20%; 60%-->
   |自定义层次|自定义能力|能力说明及适用场景 |
   |--|--|--|
   |自定义组合|自定义封装| [@Component](../ui/state-management/arkts-create-custom-components.md#component)装饰器：提供了最基础的组件封装能力，通过组合已有组件封装为新的自定义组件。<br> [@Builder](../ui/state-management/arkts-builder.md)装饰器：提供更轻量的UI封装和复用机制，可以将重复使用的UI结构抽象成一个Builder方法，在组件的build方法中调用。 |

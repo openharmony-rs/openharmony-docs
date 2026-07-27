@@ -9,7 +9,7 @@
 
 ## Overview
 
-HUKS provides the keystore capabilities for applications, including key management and cryptographic operations on keys. Applications can import keys or call HUKS APIs to generate keys.
+HUKS provides the keystore capability for applications, supporting key management and cryptographic operations on keys. Applications can import keys or call HUKS APIs to generate keys.
 
 **Since**: 9
 

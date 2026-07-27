@@ -1,17 +1,17 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
 
 ## Modules to Import
 
@@ -40,7 +40,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -76,7 +76,7 @@ try {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
-    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -102,7 +102,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -133,7 +133,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -165,7 +165,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -192,7 +192,7 @@ let want: Want = {
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
-    console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -219,7 +219,7 @@ Checks whether a widget can be added to the widget host. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -255,7 +255,7 @@ try {
               console.error(`callback error, code: ${error.code}, message: ${error.message})`);
               return;
             }
-            console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+            console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -286,7 +286,7 @@ Checks whether a widget can be added to the widget host. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -314,7 +314,7 @@ try {
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
-          console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+          console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
           console.error(`promise error, code: ${error.code}, message: ${error.message})`);
         });
@@ -354,7 +354,7 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -411,7 +411,7 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -460,7 +460,7 @@ Updates the static configuration information of a specified template widget on t
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | Yes| Static configuration information of a specified template widget.|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo-sys.md#templateformdetailinfo23)&gt; | Yes| Static configuration information of a specified template widget.|
 
 **Return value**
 
@@ -470,7 +470,7 @@ Updates the static configuration information of a specified template widget on t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -523,11 +523,11 @@ Subscribes to controls on cross-bundle widget addition to the home screen. This 
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -570,11 +570,11 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |

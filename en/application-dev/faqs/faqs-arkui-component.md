@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
+<!--deprecated_code_no_check-->
 
 
 ## Can custom dialog boxes be defined and used in .ts files? (API version 9)
@@ -592,7 +593,7 @@ You can use the **stateStyles** attribute to set styles of a component for diffe
 **Code Example**
 
 ``` ts
-//xxx.ts
+// xxx.ts
 @Entry
 @Component
 struct StyleExample {
@@ -669,12 +670,12 @@ class Model {
 @Component
 struct EntryComponent {
   test() {
-    console.log('testTag test in my component');
+    console.info('testTag test in my component');
   }
 
   build() {
     Column() {
-      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) // The defined method is transferred during initialization.
+      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) // Method for transferring definitions during initialization.
     }
   }
 }

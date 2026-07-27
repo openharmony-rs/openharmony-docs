@@ -43,3 +43,5 @@
 - 画布组件<!--js-lite-canvas-comp-->
   - [canvas组件](js-lite-components-canvas-canvas.md)
   - [CanvasRenderingContext2D对象](js-lite-components-canvas-canvasrenderingcontext2d.md)
+- 全局接口<!--js-lite-global-interface-->
+  - [旋转表冠事件监听](js-lite-common-monitorcrownevents.md)

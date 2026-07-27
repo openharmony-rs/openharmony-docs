@@ -20,8 +20,30 @@
 
 
 ## Example
+1. Configure the **CMakeLists.txt** file.
+   ``` txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(MyApplication3)
 
-1. Define a thread-safe function at the native entry.
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+   add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+   add_definitions( "-DLOG_TAG=\"testTag\"" )
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
+
+   add_library(entry SHARED napi_init.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+
+   add_library(entry1 SHARED thread_safety.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+   ```
+
+2. Define a thread-safe function at the native entry.
 
    <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
    
@@ -134,7 +156,7 @@
    }
    ```
 
-2. Module registration.
+3. Module registration.
    ```c++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -160,7 +182,7 @@
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
    ```
 
-3. ArkTS code:
+4. ArkTS code:
 
    <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
@@ -193,16 +215,27 @@
 
 ### C++ and ArkTS Child Thread Interaction Based on [Worker](../../application-dev/arkts-utils/worker-introduction.md)
 
-1. Configure the worker.
+1. Configure the **CMakeLists.txt** file.
+   ``` txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(MyApplication3)
 
-   ``` json5
-   "buildOption": {
-     "sourceOption": {
-       "workers": [
-         "./src/main/ets/worker/worker.ets"
-        ]
-     },
-   }
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+   add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+   add_definitions( "-DLOG_TAG=\"testTag\"" )
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
+
+   add_library(entry SHARED napi_init.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+
+   add_library(entry1 SHARED thread_safety.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so libhilog_ndk.z.so)
    ```
 
 2. Define a thread-safe function and create a child thread at the native entry.
@@ -308,7 +341,7 @@
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
-           {"startWithCallback", nullptr, StartThread, nullptr, nullptr, nullptr, napi_default, nullptr}
+           {"startWithCallback", nullptr, StartWithCallback, nullptr, nullptr, nullptr, napi_default, nullptr}
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
@@ -328,12 +361,23 @@
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
    ```
 
-4. Sample code of the worker thread.
+4. DevEco Studio supports generation of Worker templates with a single click. In the corresponding {moduleName} directory, right-click anywhere and choose **New > Worker** to automatically generate the Worker template files and configuration information. In this example, we will create a Worker named "Worker".
 
-   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/worker/worker.ets) -->
+   ``` json5
+   "buildOption": {
+     "sourceOption": {
+       "workers": [
+         "./src/main/ets/workers/Worker.ets"
+        ]
+     },
+   }
+   ```
+5. Sample code of the worker thread.
+
+   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
    
    ``` TypeScript
-   // entry/src/main/ets/worker/worker.ets
+   // entry/src/main/ets/workers/Worker.ets
    
    import nativeModule from 'libentry1.so';
    import { worker, MessageEvents } from '@kit.ArkTS';
@@ -349,7 +393,7 @@
    }
    ```
 
-5. ArkTS code:
+6. Description of the API in the .d.ts file.
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
@@ -357,22 +401,30 @@
    export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
    ```
 
-   Import the header files.
+7. Call APIs from ArkTS.
    ``` ts
    import nativeModule from 'libentry1.so';
    import { worker } from '@kit.ArkTS';
    ```
 
-   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // index.ets
-   const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
+   const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    wk.postMessage('Start');
    wk.onmessage = (msg) => {
      console.info('[Main] Received:', msg.data);
      wk.terminate();
    }
+   ```
+
+   ``` txt
+   Execution result:
+   Worker thread received:Start
+   [C++ SubThread] Received from Worker: Hello
+   [Worker] Got from native: Echo of Hello from C++!
+   [Main] Received: Echo of Hello from C++
    ```
 
 ### C++ and ArkTS Child Thread Interaction Based on [Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)
@@ -408,4 +460,11 @@
    ``` TypeScript
    // index.ets
    testTaskpool();
+   ```
+
+   ``` txt
+   Execution result:
+   Taskpool thread received:Start
+   [C++ SubThread] Received from Worker: Hello
+   [Taskpool] Got from native: Echo of Hello from C++!
    ```

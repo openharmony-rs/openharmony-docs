@@ -1,26 +1,26 @@
 # 自定义组件的生命周期（推荐）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @xin11112-->
-<!--Designer: @chenbenzhi-->
+<!--Owner: @xin11112-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-自定义组件的生命周期回调函数用于通知用户该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。
+自定义组件的生命周期回调函数用于通知开发者该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。该生命周期机制涵盖了自定义组件的初始化、出现、构建、回收与复用、激活与非激活、销毁等阶段，开发者可在相应阶段的回调中执行状态修改、数据埋点上报、监听注册等操作。此外，开发者还可借助CustomComponentLifecycle对生命周期状态进行监控与观察，适用于需要对组件生命周期进行精细化管理（如组件复用回收、状态埋点、激活控制等）的场景。
+
+开发指南参考：[自定义组件生命周期（推荐）](../../../ui/state-management/arkts-custom-components-new-lifecycle.md)。
 
 >**说明：**
 >
->- 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## \@ComponentInit
 
 ComponentInit: MethodDecorator
 
-\@ComponentInit装饰的函数在自定义组件初始化即将完成时执行。开发者可以在此时注册监听。
-
-> **说明：**
->
-> 在@Component装饰的struct中，\@ComponentInit装饰的函数内不可以更改状态变量，否则会导致运行时crash。
+\@ComponentInit装饰的函数在自定义组件初始化即将完成时执行，先于\@ComponentAppear触发。开发者可以在此时注册生命周期监听器和修改状态变量。与\@ComponentAppear的区别在于：\@ComponentInit侧重于初始化阶段的准备操作（如注册监听），\@ComponentAppear侧重于组件即将展现前的状态变更，两者配合使用可分别承担初始化与显现前的职责。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -52,7 +52,7 @@ ComponentAppear: MethodDecorator
 
 ComponentBuilt: MethodDecorator
 
-\@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
+\@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在此阶段实现埋点数据上报等不影响实际UI的功能。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -68,39 +68,7 @@ ComponentBuilt: MethodDecorator
 
 ComponentDisappear: MethodDecorator
 
-\@ComponentDisappear装饰的函数在自定义组件析构销毁时执行。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**示例：**
-
-参见[生命周期使用示例](#生命周期使用示例)。
-
-## \@ComponentAttach
-
-ComponentAttach: MethodDecorator
-
-\@ComponentAttach装饰的函数在自定义组件完成挂载到主树后执行，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.MOUNTED的阶段触发。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**示例：**
-
-参见[生命周期使用示例](#生命周期使用示例)。
-
-## \@ComponentDetach
-
-ComponentDetach: MethodDecorator
-
-\@ComponentDetach装饰的函数在自定义组件从CustomComponentLifecycleState.MOUNTED状态回到CustomComponentLifecycleState.BUILT状态前触发。开发者可以在此阶段实现一些不影响实际UI的功能，例如修改非状态变量数据。
+@ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -120,9 +88,9 @@ ComponentReuse: MethodDecorator
 
 > **说明：**
 >
-> -  在状态管理V1的组件里，\@ComponentReuse装饰的函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
+> - 在状态管理V1的组件里，\@ComponentReuse装饰的函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
 >
-> -  在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
+> - 在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -134,7 +102,7 @@ ComponentReuse: MethodDecorator
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null\> | 否    | 当params存在时，表示V1组件的复用回调。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
 
 **示例：**
 
@@ -144,7 +112,7 @@ ComponentReuse: MethodDecorator
 
 ComponentRecycle: MethodDecorator
 
-当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用此装饰器装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用\@ComponentRecycle装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -156,6 +124,42 @@ ComponentRecycle: MethodDecorator
 
 参见[生命周期使用示例](#生命周期使用示例)。
 
+## \@ComponentActive
+
+ComponentActive: MethodDecorator
+
+自定义组件由非激活状态转变为激活状态后，调用@ComponentActive装饰的函数。在组件回收复用场景下，当缓存的组件被重新复用（即从复用池重新添加到节点树）时，组件由非激活状态转为激活状态，触发此回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+
+## \@ComponentInactive
+
+ComponentInactive: MethodDecorator
+
+自定义组件由激活状态转变为非激活状态后，调用@ComponentInactive装饰的函数。在组件回收复用场景下，当组件被回收到复用池时，组件由激活状态转为非激活状态，触发此回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+
 ## CustomComponentLifecycle
 
 CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
@@ -164,7 +168,7 @@ CustomComponentLifecycle用于监控自定义组件生命周期的变化，开�
 
 getCurrentState(): CustomComponentLifecycleState
 
-getCurrentState函数用于获得自定义组件当前的生命周期状态。
+getCurrentState函数用于获取自定义组件当前的生命周期状态。调用此方法前，需先通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -187,6 +191,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycle.getCurrentState用于获得自定义组件当前的生命周期状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', UIUtils.getLifecycle(this).getCurrentState());
   }
   build() {
@@ -203,7 +208,9 @@ struct Index {
 
 addObserver(observer: CustomComponentLifecycleObserver): void
 
-addObserver函数用于注册自定义组件生命周期监听器。当自定义组件的生命周期发生变化时，会触发监听器中相应的生命周期回调函数。
+addObserver函数用于注册自定义组件生命周期监听器。调用此方法前，需先通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。当自定义组件的生命周期发生变化时，会触发监听器中相应的生命周期回调函数。
+
+调用addObserver注册监听器后，必须在组件销毁或不再需要监听时调用[removeObserver](#removeobserver)移除监听器，两者需成对使用。若未调用removeObserver移除监听器，可能导致监听器持续触发回调并引发内存泄漏。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -215,13 +222,13 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| observer   | [CustomComponentLifecycleObserver](#customcomponentlifecycleobserver) | 是  | 监听自定义组件的监听器。 |
+| observer   | [CustomComponentLifecycleObserver](#customcomponentlifecycleobserver) | 是  | 自定义组件生命周期的监听器。 |
 
 ### removeObserver
 
 removeObserver(observer: CustomComponentLifecycleObserver): void
 
-removeObserver函数用于移除自定义组件生命周期监听器。解除注册后，即使自定义组件的生命周期状态发生变化，也不会触发监听器中相应的生命周期回调函数。
+removeObserver函数用于移除自定义组件生命周期监听器。调用此方法前，需先通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。解除注册后，即使自定义组件的生命周期状态发生变化，也不会触发监听器中相应的生命周期回调函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -233,17 +240,17 @@ removeObserver函数用于移除自定义组件生命周期监听器。解除注
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| observer   | CustomComponentLifecycleObserver | 是  | 监听自定义组件的监听器。 |
+| observer   | [CustomComponentLifecycleObserver](#customcomponentlifecycleobserver) | 是  | 自定义组件生命周期的监听器。 |
 
 ## CustomComponentLifecycleObserver
 
-用户注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。
+开发者注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。与生命周期装饰器的区别在于：生命周期装饰器由组件自身响应生命周期事件，CustomComponentLifecycleObserver从外部观察组件生命周期事件；若仅需组件自身响应生命周期变化，使用生命周期装饰器即可，若需集中监控多个组件的生命周期，则使用CustomComponentLifecycleObserver。
 
 ### aboutToAppear
 
 aboutToAppear?(): void
 
-aboutToAppear函数在创建自定义组件的新实例后，执行其build()函数之前执行。开发者可以在此阶段修改状态变量。其功能与[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)类似，但是在自定义组件状态机的约束下触发的。
+aboutToAppear函数在创建自定义组件的新实例后、其build()函数执行之前被调用。开发者可以在此阶段修改状态变量，更改将在后续执行build()函数中生效。其功能与[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)类似，受自定义组件状态机约束，在被监听的自定义组件向CustomComponentLifecycleState.APPEARED转变时触发回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -255,7 +262,7 @@ aboutToAppear函数在创建自定义组件的新实例后，执行其build()函
 
 onDidBuild?(): void
 
-onDidBuild函数在自定义组件的新实例构建完成后，执行其build()函数之后执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
+onDidBuild函数在自定义组件的build()函数执行后被调用，受自定义组件状态机约束，在被监听的自定义组件状态向CustomComponentLifecycleState.BUILT转变时触发回调。开发者可以在此阶段实现不影响实际UI的功能，例如事件数据上报。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -267,31 +274,7 @@ onDidBuild函数在自定义组件的新实例构建完成后，执行其build()
 
 aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-### aboutToAttach
-
-aboutToAttach?(): void
-
-aboutToAttach函数在自定义组件被附加到主树时执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-### aboutToDetach
-
-aboutToDetach?(): void
-
-aboutToDetach函数在自定义组件从主树分离时执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
+aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -301,9 +284,15 @@ aboutToDetach函数在自定义组件从主树分离时执行。开发者可以�
 
 ### aboutToReuse
 
-aboutToReuse?(params?: Record<string, Object | undefined | null>): void
+aboutToReuse?(params?: Record\<string, Object \| undefined \| null\>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当params存在时，表示V1组件的复用回调。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发回调。最后，复用会递归遍历所有子组件，对每个完成复用的子组件调用子组件中注册的aboutToReuse函数。在状态管理V1的组件里，该函数允许有一个入参或者无参，当params存在时表示V1组件的复用回调；在状态管理V2的组件里，该函数没有入参。
+
+> **说明：**
+>
+> - 在状态管理V1的组件里，aboutToReuse函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
+>
+> - 在状态管理V2的组件里，aboutToReuse函数没有入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -315,13 +304,13 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null\> | 否    | 当params存在时，表示V1组件的复用回调。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
 
 ### aboutToRecycle
 
 aboutToRecycle?(): void
 
-当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用aboutToRecycle函数。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中注册的aboutToRecycle函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -344,7 +333,7 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State isChildVisible: boolean = true;
 
   build() {
     Column() {
@@ -352,9 +341,9 @@ struct Index {
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.isChildVisible = !this.isChildVisible;
         })
-      if (this.switch) {
+      if (this.isChildVisible) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
         Child({ message: new Message('Child') })
           .reuseId('Child')
@@ -369,7 +358,6 @@ struct Index {
 @Component
 struct Child {
   @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
   @ComponentInit
   myInit(): void {
     registerObserver(UIUtils.getLifecycle(this));
@@ -393,12 +381,6 @@ export class MyObserver implements CustomComponentLifecycleObserver {
   }
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
-  }
-  aboutToAttach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAttach');
-  }
-  aboutToDetach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDetach');
   }
   aboutToReuse(params?: Record<string, Object | undefined | null>) {
     // params存在时，为V1的复用；
@@ -441,9 +423,8 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 | INIT | 0 | 初始化状态。 |
 | APPEARED | 1 | 准备展开状态。 |
 | BUILT | 2 | 已展开状态。 |
-| MOUNTED | 3 | 挂载状态。 |
-| RECYCLED | 4 | 回收状态。 |
-| DISAPPEARED | 5 | 删除状态。 |
+| RECYCLED | 3 | 回收状态。 |
+| DISAPPEARED | 4 | 已销毁状态。 |
 
 **示例：**
 ```ts
@@ -455,7 +436,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
-    hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', CustomComponentLifecycleState.APPEARED);
+    // CustomComponentLifecycleState.BUILT代表自定义组件为已展开状态
+    hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', CustomComponentLifecycleState.BUILT);
   }
   build() {
     Column() {
@@ -471,14 +453,16 @@ struct Index {
 
 本示例展示了生命周期回调函数的部分使用场景：
 
-1. 自定义组件Child的创建触发\@ComponentInit、\@ComponentAppear，Child执行build()后，触发\@ComponentBuilt和\@ComponentAttach。
+1. 启动应用，创建自定义组件Child时触发\@ComponentInit、\@ComponentAppear；Child执行build()后，触发\@ComponentBuilt。
 
-2. 更改this.switch为false，回收Child子组件触发\@ComponentDetach和\@ComponentRecycle；更改this.switch为true，复用Child子组件触发\@ComponentReuse和\@ComponentAttach。
+2. 更改this.switchChild为false，回收Child子组件，触发\@ComponentRecycle。
 
-3. 退出应用，在自定义组件Child销毁前，触发\@ComponentDisappear。
+3. 更改this.switchChild为true，复用Child子组件，触发\@ComponentReuse。
+
+4. 退出应用，在自定义组件Child销毁前，触发\@ComponentDisappear。
 
 ```ts
-import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentAttach, ComponentDetach, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
+import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
@@ -490,16 +474,16 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State switchChild: boolean = true;
   build() {
     Column() {
       Button('Hello')
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.switchChild = !this.switchChild;
         })
-      if (this.switch) {
+      if (this.switchChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
         Child({ message: new Message('Child') })
           .reuseId('Child')
@@ -515,53 +499,94 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
+    // 自定义组件创建完毕后，触发myInit方法
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear
   myAppear() {
-    this.label = 'myAppear'
-    hilog.info(0x0000, 'testTag', 'Child myAppear');
+    this.label = 'myAppear';
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentBuilt
   myBuilt() {
-    this.label = 'myBuilt'
-    hilog.info(0x0000, 'testTag', 'Child myBuilt');
-  }
-  @ComponentAttach
-  myAttach() {
-    this.label = 'myAttach'
-    hilog.info(0x0000, 'testTag', 'Child myAttach');
-  }
-  @ComponentDetach
-  myDetach() {
-    this.label = 'myDetach'
-    hilog.info(0x0000, 'testTag', 'Child myDetach');
+    this.label = 'myBuilt';
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentRecycle
   myRecycle() {
-    this.label = 'myRecycle'
-    hilog.info(0x0000, 'testTag', 'Child myRecycle');
+    this.label = 'myRecycle';
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   @ComponentDisappear
   myDisappear() {
-    this.label = 'myDisappear'
     hilog.info(0x0000, 'testTag', 'Child myDisappear');
   }
   @ComponentReuse
   myReuse() {
-    this.label = 'myReuse'
-    hilog.info(0x0000, 'testTag', 'Child myReuse');
+    this.label = 'myReuse';
+    hilog.info(0x0000, 'testTag', `Child ${this.label}`);
   }
   build() {
     Column() {
       Text(this.message.value)
         .fontSize(30)
     }
-    .borderWidth(1)
     .height(100)
+  }
+}
+```
+
+## 激活和非激活生命周期使用示例
+
+本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况，建议按以下步骤执行：
+
+1. 点击change，Child组件第一次创建。
+
+2. 点击change，Child组件触发回收事件和\@ComponentInactive装饰的函数。
+
+3. 点击change，Child组件触发复用事件和\@ComponentActive装饰的函数。
+
+```ts
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State changeChild: boolean = false;
+
+  build() {
+    Column() {
+      Button('change').onClick(() => {
+        // 切换Child组件的显示状态，触发组件的回收或复用
+        this.changeChild = !this.changeChild;
+      })
+      if (this.changeChild) {
+        Child()
+      }
+    }
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`Child myActive`);
+  }
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`Child myInactive`);
+  }
+
+  build() {
+    Text('Child')
   }
 }
 ```

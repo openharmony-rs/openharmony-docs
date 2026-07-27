@@ -1,8 +1,8 @@
 # @ohos.multimedia.audioHaptic (音振协同)(系统接口)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -88,7 +88,7 @@ const result: boolean = audioHapticPlayerInstance.isHapticsRampSupported();
 
 enableHapticsInSilentMode(enable: boolean): void
 
-静音模式下，音振播放器可以振动。
+设置静音模式下是否开启振动。
 
 > **注意：**
 >
@@ -106,7 +106,7 @@ enableHapticsInSilentMode(enable: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID  | 错误信息                             |
 |---------|-----------------------------------|
@@ -127,7 +127,7 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 > **注意：**
 >
->该方法需在音振播放器释放前调用，且单次播放过程中仅调用一次。
+> 该方法需在音振播放器释放前调用，且每次播放仅支持调用一次。
 
 **系统接口：** 此接口为系统接口。
 
@@ -143,11 +143,11 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -176,8 +176,8 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 > **注意：**
 >
->- 该方法需在音振协同播放器播放前后和销毁前使用。
->- 该方法仅能调用一次。
+> - 该方法需在音振协同播放器播放前/后，以及释放前使用。
+> - 该方法仅能调用一次。
 
 **系统接口：** 此接口为系统接口。
 
@@ -195,11 +195,11 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|

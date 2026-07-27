@@ -34,7 +34,9 @@ The following is an example of generating an XML document using **XmlSerializer*
 
 1. Import the module.
 
-   ```ts
+   <!-- @[xmlSerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
    import { xml, util } from '@kit.ArkTS';
    ```
 
@@ -42,14 +44,18 @@ The following is an example of generating an XML document using **XmlSerializer*
 
    Method 1: Create an XmlSerializer object based on ArrayBuffer.
 
-   ```ts
+   <!-- @[xmlSerializer_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
    let arrayBuffer: ArrayBuffer = new ArrayBuffer(2048); // Create a 2048-byte ArrayBuffer.
    let serializer: xml.XmlSerializer = new xml.XmlSerializer(arrayBuffer); // Create an XmlSerializer object based on the ArrayBuffer.
    ```
 
    Method 2: Create an XmlSerializer object based on DataView.
 
-   ```ts
+   <!-- @[xmlSerializer_differentFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
    let arrayBuffer: ArrayBuffer = new ArrayBuffer(2048); // Create a 2048-byte ArrayBuffer.
    let dataView: DataView = new DataView(arrayBuffer); // Create a DataView.
    let serializer: xml.XmlSerializer = new xml.XmlSerializer(dataView); // Create an XmlSerializer object based on the object of the DataView type.
@@ -57,7 +63,9 @@ The following is an example of generating an XML document using **XmlSerializer*
 
 3. Call the functions to generate XML data.
 
-   ```ts
+   <!-- @[xmlSerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
    serializer.setDeclaration(); // Write the XML declaration.
    serializer.startElement('bookstore'); // Write the start tag of an element.
    serializer.startElement('book'); // Write the start tag of a nested element.
@@ -78,7 +86,9 @@ The following is an example of generating an XML document using **XmlSerializer*
 
 4. Use **Uint8Array** to manipulate the ArrayBuffer, use **TextDecoder** to decode the Uint8Array, and output it.
 
-   ```ts
+   <!-- @[xmlSerializer_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer); // Use Uint8Array to read data from the ArrayBuffer.
    let textDecoder: util.TextDecoder = util.TextDecoder.create(); // Call the TextDecoder class of the util module.
    let result: string = textDecoder.decodeToString(uint8Array); // Decode the Uint8Array.
@@ -101,36 +111,42 @@ The following is an example of generating an XML document using `XmlDynamicSeria
 
 1. Import the module.
 
-   ```ts
+   <!-- @[xmlDySerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   
+   ``` TypeScript
    import { xml, util } from '@kit.ArkTS';
    ```
 
 2. Call the functions to generate XML data.
 
-   ```ts
-   let DySerializer = new xml.XmlDynamicSerializer('utf-8');
-   DySerializer.setDeclaration(); // Write the XML declaration.
-   DySerializer.startElement('bookstore'); // Write the start tag of an element.
-   DySerializer.startElement('book'); // Write the start tag of a nested element.
-   DySerializer.setAttributes('category', 'COOKING'); // Write attributes and attribute values.
-   DySerializer.startElement('title');
-   DySerializer.setAttributes('lang', 'en');
-   DySerializer.setText('Everyday'); // Write the tag value.
-   DySerializer.endElement(); // Write the end flag.
-   DySerializer.startElement('author');
-   DySerializer.setText('Giana');
-   DySerializer.endElement();
-   DySerializer.startElement('year');
-   DySerializer.setText('2005');
-   DySerializer.endElement();
-   DySerializer.endElement();
-   DySerializer.endElement();
-   let arrayBuffer = DySerializer.getOutput();
+   <!-- @[xmlDySerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   
+   ``` TypeScript
+   let dySerializer = new xml.XmlDynamicSerializer('utf-8');
+   dySerializer.setDeclaration(); // Write the XML declaration.
+   dySerializer.startElement('bookstore'); // Write the start tag of an element.
+   dySerializer.startElement('book'); // Write the start tag of a nested element.
+   dySerializer.setAttributes('category', 'COOKING'); // Write attributes and attribute values.
+   dySerializer.startElement('title');
+   dySerializer.setAttributes('lang', 'en');
+   dySerializer.setText('Everyday'); // Write the tag value.
+   dySerializer.endElement(); // Write the end flag.
+   dySerializer.startElement('author');
+   dySerializer.setText('Giana');
+   dySerializer.endElement();
+   dySerializer.startElement('year');
+   dySerializer.setText('2005');
+   dySerializer.endElement();
+   dySerializer.endElement();
+   dySerializer.endElement();
+   let arrayBuffer = dySerializer.getOutput();
    ```
 
 3. Use **Uint8Array** to manipulate the ArrayBuffer, use **TextDecoder** to decode the Uint8Array, and output it.
 
-   ```ts
+   <!-- @[xmlDySerializer_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   
+   ``` TypeScript
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer);
    let result: string = util.TextDecoder.create().decodeToString(uint8Array);
    console.info(result);

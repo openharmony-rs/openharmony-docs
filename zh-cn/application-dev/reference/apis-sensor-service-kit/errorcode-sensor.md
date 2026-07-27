@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
@@ -18,16 +18,16 @@ Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor serv
 
 **错误描述**
 
-当调用sensor模块on、once、off接口时，若hdi服务异常，会报此错误码。
+当调用sensor模块on、once、off接口时，若HDI服务异常，会报此错误码。此错误码表示传感器服务不可用，服务端无法响应传感器相关的操作请求。
 
 **可能原因**
 
-访问hdi服务状态异常。
+访问HDI服务时服务状态异常，无法正常响应请求。
 
 **处理步骤**
 
-1. 定时重试操作，如间隔1s或者按照指数增长间隔重试。
-2. 连续重试3次不可用则停止尝试，期间可优先尝试获取器件列表方式进一步获取设备可用性。
+1. 开发者应定时重试操作，建议间隔1s或按照指数增长间隔重试。
+2. 连续重试3次仍不可用则停止尝试，期间优先尝试获取器件列表方式进一步确认设备可用性。
 
 ## 14500102 设备不支持该传感器
 
@@ -37,7 +37,7 @@ The sensor is not supported by the device.
 
 **错误描述**
 
-当调用GetSingleSensor接口时，若设备不支持该传感器，会报此错误码。
+当调用[getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9)接口时，若设备不支持该传感器，会报此错误码，导致无法获取该传感器信息。此错误码表示请求的传感器类型在当前设备上不存在或未被支持。
 
 **可能原因**
 
@@ -45,4 +45,4 @@ The sensor is not supported by the device.
 
 **处理步骤**
 
-使用GetSingleSensor接口，返回14500102则表示设备不支持该传感器。
+返回14500102表示设备不支持该传感器。请检查设备是否支持该传感器类型，或使用[getsensorlist](js-apis-sensor.md#sensorgetsensorlist9)接口获取设备支持的传感器列表，选择设备支持的传感器类型。

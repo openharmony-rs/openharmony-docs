@@ -6,11 +6,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:06.105Z pushedAt=2026-06-26T03:00:41.292Z -->
 
 The **vpn** module implements virtual private network (VPN) management, such as starting and stopping a VPN.
+
 This module is the built-in VPN function provided by the OS. It allows users to set up VPN connections through the network settings of the OS. Generally, this module provides only limited functions and is subject to strict restrictions.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are system APIs.
 
@@ -293,9 +296,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd, (error: BusinessError) => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
     });
@@ -374,9 +377,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd).then(() => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
         console.error("protect fail" + JSON.stringify(err));
@@ -509,14 +512,15 @@ Defines the VPN configuration.
 
 | Name               | Type                                                          | Read-Only|Optional| Description                               |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
+| vpnId<sup>20+</sup>           | string | No  |Yes| Unique VPN ID.           |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | No  |No| IP address of the vNIC.           |
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | No  |Yes|Route information of the vNIC.           |
-| dnsAddresses        | Array\<string\>                                                | No  |Yes|IP address of the DNS server.               |
-| searchDomains       | Array\<string\>                                                | No  | Yes|List of DNS search domains.                 |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | No  |Yes| Route information of the vNIC.           |
+| dnsAddresses        | Array\<string\>                                                | No  |Yes| IP address of the DNS server.               |
+| searchDomains       | Array\<string\>                                                | No  | Yes| List of DNS search domains.                 |
 | mtu                 | number                                                         | No  |Yes|Maximum transmission unit (MTU), in bytes.    |
-| isIPv4Accepted      | boolean                                                        | No  | Yes| Whether IPv4 is supported. The default value is **true**.     |
-| isIPv6Accepted      | boolean                                                        | No  |Yes|Whether IPv6 is supported. The default value is **false**.    |
-| isLegacy            | boolean                                                        | No  |Yes|Whether the built-in VPN is supported. The default value is **false**.  |
-| isBlocking          | boolean                                                        | No  |Yes|Whether the blocking mode is used. The default value is **false**.      |
-| trustedApplications | Array\<string\>                                                | No  |Yes|List of trusted applications, which are represented by bundle names of the string type. |
-| blockedApplications | Array\<string\>                                                | No  |Yes|List of blocked applications, which are represented by bundle names of the string type. |
+| isIPv4Accepted      | boolean                                                        | No  | Yes| Whether IPv4 is supported. The value **true** indicates that IPv4 is supported, and the value **false** indicates the opposite. Default value: **true**.     |
+| isIPv6Accepted      | boolean                                                        | No  |Yes|Whether IPv6 is supported. The value **true** indicates that IPv6 is supported, and the value **false** indicates the opposite. The default value is **false**.    |
+| isLegacy            | boolean                                                        | No  |Yes|Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.  |
+| isBlocking          | boolean                                                        | No  |Yes|Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.      |
+| trustedApplications | Array\<string\>                                                | No  |Yes| Used to specify that the bundle name of the string type can access the VPN network. |
+| blockedApplications | Array\<string\>                                                | No  |Yes| Used to specify that the bundle name of the string type cannot access the VPN network. |

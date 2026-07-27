@@ -9,7 +9,7 @@
 Gesture conflicts occur when multiple gesture recognizers compete for recognition on the same component or overlapping areas, resulting in unexpected behavior. Common conflict scenarios include:
 - Multiple gestures on the same component (for example, both tap and long-press gestures on a button)
 - Gesture recognizers of the same type on parent and child components
-- Conflicts between system default gestures and custom gestures (for example, conflict between the scroll gesture and the click gesture of a child component)
+- Conflicts between system default gestures and custom gestures (for example, conflict between the [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) gesture and the click gesture of a child component)
 
 Effective conflict resolution involves gesture intervention. Beyond controlling component response regions and hit test modes, there are three primary approaches: [Custom Gesture Judgment](#custom-gesture-judgment), [Parallel Gesture Dynamic Control](#parallel-gesture-dynamic-control), and [Gesture Recognition Prevention](#gesture-recognition-prevention).
 
@@ -63,8 +63,10 @@ In the following example, the **Image** and **Stack** components are located in 
         LongPressGesture()
           .onAction((event: GestureEvent) => {
             // ...
-            /* Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
-               The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response." */
+            /*
+            Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
+            The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response."
+             */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
           .tag('longpress')
@@ -105,8 +107,10 @@ In the following example, the **Image** and **Stack** components are located in 
      build() {
        Scroll(this.scroller) {
          Column({ space: 8 }) {
-           /* Replace $r('app.string.Drag_instructions') with the actual resource file. In this example, the value in the resource file is "Two-layer components: Upper-layer component is bound to a long press gesture,
-              and the lower-layer component is bound to the drag gesture. Allow the drag gesture to work on the lower-half area of the upper-layer component via gesture interception." */
+           /*
+           Replace $r('app.string.Drag_instructions') with the actual resource file. In this example, the value in the resource file is "Two-layer components: Upper-layer component is bound to a long press gesture,
+           and the lower-layer component is bound to the drag gesture. Allow the drag gesture to work on the lower-half area of the upper-layer component via gesture interception."
+            */
            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
@@ -133,8 +137,10 @@ In the following example, the **Image** and **Stack** components are located in 
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
                  .onAction((event: GestureEvent) => {
-                   /* Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
-                      The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response." */
+                   /*
+                   Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
+                   The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response."
+                    */
                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                  })
                  .tag('longpress')

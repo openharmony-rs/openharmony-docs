@@ -2,21 +2,21 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **usbManager** module provides APIs for USB management.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policy is provided by **restrictions**. To disable USB globally, see [@ohos.enterprise.restrictions (restriction policy)](js-apis-enterprise-restrictions.md).
+> The global restriction policy is provided by **restrictions**. To disable USB globally, see [@ohos.enterprise.restrictions (restriction policy)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -32,7 +32,7 @@ Adds allowed USB devices.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
-1. The USB capability of the device has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API.
+1. The USB capability of the device or the USB-to-Serial capability has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API.
 2. The USB storage device access policy has been disabled using the [setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy) API.
 3. Disallowed USB device types have been added using the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) API.
 
@@ -42,6 +42,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -97,6 +98,7 @@ Removes allowed USB devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -217,12 +219,13 @@ A policy conflict is reported if the USB storage device access policy is disable
 
 You can disable a USB storage device by calling this API or [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14). The latter is recommended.
 
-**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB before API version 26.0.0; ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (the application must be [activated as the built-in device administrator application](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)) since API version 26.0.0
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). The strict priority is as follows: disabled > read-only > read and write.
 
 **Parameters**
 
@@ -269,7 +272,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 Obtains the access policy of the USB storage device.
 
-**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB before API version 26.0.0; ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (the application must be [activated as the built-in device administrator application](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)) since API version 26.0.0
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -336,6 +339,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -393,6 +397,7 @@ Removes the disallowed USB device types.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 

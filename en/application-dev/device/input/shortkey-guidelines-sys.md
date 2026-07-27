@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:41:20.072Z pushedAt=2026-06-25T06:58:27.973Z -->
 
 ## When to Use
 
@@ -19,7 +20,7 @@ import { shortKey } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs provided by the **shortKey** module. For details, see [ohos.multimodalInput.shortKey](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
+The following table lists common APIs for event injection. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |

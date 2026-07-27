@@ -1,9 +1,9 @@
 # Transferring Messages to an Application (message Event)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 On the widget page, you can trigger a message event via the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to launch the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md). The FormExtensionAbility then notifies the application through the [onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent) callback. This process enables the functionality of passing messages to the application after a widget is touched. Subsequently, the FormExtensionAbility refreshes the widget content. Below is a simple example.
@@ -76,8 +76,8 @@ On the widget page, you can trigger a message event via the [postCardAction](../
 
 - Import related modules to **EntryFormAbility.ets**.
 
-    ```ets
-    //entry/src/main/ets/entryformability/EntryFormAbility.ts
+    ```TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
     import { Configuration, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -98,10 +98,12 @@ On the widget page, you can trigger a message event via the [postCardAction](../
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+    
         class FormDataClass {
           title: string = 'Title Update.'; // It matches the widget layout.
           detail: string = 'Description update success.'; // It matches the widget layout.
         }
+    
         // Replace it with the actual widget data.
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -114,6 +116,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
     
       // ...
     }
+    
     ```
   
   The figure below shows the effect.

@@ -1,8 +1,8 @@
 # canvas组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -93,9 +93,9 @@ toDataURL(type?: string, quality?: number): string
 
 ```html
 <!-- xxx.hml -->
-<div>
-  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-  <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+<div style="margin: 100; flex-direction: column">
+  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: rgb(213, 213, 213);"></canvas>
+  <input type="button" style="width: 180px; height: 60px; margin: 13;" value="fillStyle" onclick="handleClick" />
 </div>
 ```
 
@@ -110,3 +110,5 @@ export default {
   }
 }
 ```
+
+![image-js-canvas-canvas](figures/image-js-canvas-canvas.png)

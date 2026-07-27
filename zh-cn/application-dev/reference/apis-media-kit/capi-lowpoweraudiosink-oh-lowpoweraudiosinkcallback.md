@@ -1,18 +1,18 @@
 # OH_LowPowerAudioSinkCallback
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_LowPowerAudioSinkCallback OH_LowPowerAudioSinkCallback
+typedef struct OH_LowPowerAudioSinkCallback OH_LowPowerAudioSinkCallback;
 ```
 
 ## 概述
 
-包含了LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)实例中，并对回调上报的信息进行处理，保证LowPowerAudioSink的正常运行。
+包含了OH_LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)实例中，并对回调上报的信息进行处理，保证OH_LowPowerAudioSink的正常运行。
 
 **起始版本：** 20
 

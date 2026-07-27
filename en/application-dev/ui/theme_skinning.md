@@ -1,9 +1,9 @@
 # Configuring In-Application Theme Skinning
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
@@ -34,9 +34,10 @@ To implement theme switching for your application, you must define custom theme 
 
 ## Setting Custom Theme Colors for Application Components
 - When setting custom theme colors at the page entry point, ensure that [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme) is executed before the page is built.
+
   Use the [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback to allow custom components to access the currently active **Theme** object.
 
-    <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
+  <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
     
     ``` TypeScript
     // Index.ets
@@ -214,6 +215,10 @@ To implement theme switching for your application, you must define custom theme 
 ## Setting a Custom Theme Style for Specific Application Pages
 You can use [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md) to apply the color scheme of a custom theme to the default styles of internal components. Within the scope of **WithTheme**, the color scheme of components will be adjusted according to the theme's color scheme.
 
+> **NOTE**
+>
+> When using [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md) in the custom node [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), to ensure the correct display effect, it is necessary to manually pass system environment change events to trigger a full update of the node. For details, see the [BuilderNode system environment change](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) section.
+
 As demonstrated in the example, **WithTheme({ theme: this.CustomTheme })** applies the custom theme styling to all components within its scope. Theme styles can be dynamically updated by modifying **this.CustomTheme**. The [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback allows custom components to access the currently active **Theme** object.
 
   <!-- @[custom_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme2/Theme2.ets) -->
@@ -221,7 +226,7 @@ As demonstrated in the example, **WithTheme({ theme: this.CustomTheme })** appli
   ``` TypeScript
   import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
-  
+  // Replace $r('app.color.xxx') with the actual resource file.
   class AppColors implements CustomColors {
     public fontPrimary: ResourceColor = $r('app.color.brand_purple');
     public backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');
@@ -244,9 +249,8 @@ As demonstrated in the example, **WithTheme({ theme: this.CustomTheme })** appli
   @Component
   struct DisplayPage1 {
     @State customTheme: CustomTheme = new AppTheme();
-    // The value in the 'SetCustomThemeStyle' resource file is 'Set a custom theme style for specific pages'.
-    @State message: string = (this.getUIContext().getHostContext() as common.UIAbilityContext)
-      .resourceManager.getStringByNameSync('SetCustomThemeStyle');
+    // Replace $r('app.string.SetCustomThemeStyle') with the actual resource file. In this example, the value for the resource file is "Set a custom theme style for specific pages".
+    @State message: ResourceStr = $r('app.string.SetCustomThemeStyle');
     count = 0;
   
     build() {
@@ -258,7 +262,7 @@ As demonstrated in the example, **WithTheme({ theme: this.CustomTheme })** appli
               .margin({bottom: 10})
             Text(this.message)
               .margin({bottom: 10})
-            Button('Change Theme').onClick(() => {
+            Button('change theme').onClick(() => {
               this.count++;
               if (this.count > 1) {
                 this.count = 0;
@@ -309,10 +313,11 @@ Example of the **dark.json** file content:
     }
   ```
 
-  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) -->
+  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) --> 
   
   ``` TypeScript
   import { ThemeControl } from '@kit.ArkUI';
+  
   ThemeControl.setDefaultTheme(undefined);
   
   @Entry
@@ -340,6 +345,7 @@ Example of the **dark.json** file content:
         }
         .backgroundColor($r('sys.color.background_primary'))
         .height('100%')
+        // Extend the safe area to implement an immersive effect that adapts to light and dark mode changes.
         .expandSafeArea(
           [SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
       }
@@ -356,7 +362,7 @@ Example of the **dark.json** file content:
 | theme.colors.brand                         | Brand color.|#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
 | theme.colors.warning                       | Alert color.|#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|
 | theme.colors.alert                         | Warning color.|#ffed6f21| ![](figures/ffed6f21.png "#ffed6f21") |#ffdb6b42|![](figures/ffdb6b42.png "#ffdb6b42")|
-| theme.colors.confirm                       | Confirmation color.|#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5ba854|![](figures/ff5ba854.png "#ff5ba854")|
+| theme.colors.confirm                       | Confirmation color.|#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5be854|![](figures/ff5be854.png "#ff5be854")|
 | theme.colors.fontPrimary                   | Primary text color.| #e5000000 | ![](figures/e5000000.png "#e5000000") |#e5ffffff|![](figures/e5ffffff.png "#e5ffffff")|
 | theme.colors.fontSecondary                 | Secondary text color.| #99000000 | ![](figures/99000000.png "#99000000") |#99ffffff|![](figures/99ffffff.png "#99ffffff")|
 | theme.colors.fontTertiary                  | Tertiary text color.| #66000000 | ![](figures/66000000.png "#66000000") |#66ffffff|![](figures/66ffffff.png "#66ffffff")|

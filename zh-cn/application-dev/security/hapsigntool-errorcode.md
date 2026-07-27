@@ -19,11 +19,13 @@ Unknown error.
 
 **可能原因**
 
-签名过程发生了错误，请查看日志中的签名验证失败详情。
+1. 签名过程发生了错误，请查看日志中的签名验证失败详情。
+2. 签名后的应用包大小超过4G，错误提示信息为"uint32 value out of range: xxx"。
 
 **处理步骤**
 
-结合控制台输出的错误日志信息及应用包进一步分析。
+1. 结合控制台输出的错误日志信息及应用包进一步分析。
+2. 减少软件包的大小，重新打包签名。
 
 <!--Del-->
 ## 11011001 不支持当前命令
@@ -225,7 +227,7 @@ Write file failed.
 
 **可能原因**
 
-当前系统用户没有outFile参数指定的输出文件的写权限。
+当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
 
@@ -243,7 +245,7 @@ Read file failed.
 
 **可能原因**
 
-profileFile参数指定的文件不存在，或当前用户没有该的读权限。
+profileFile参数指定的文件不存在，或当前用户没有该文件的读权限。
 
 **处理步骤**
 
@@ -264,6 +266,7 @@ Not support file.
 签名过程输入了不支持的文件后缀。
 
 **处理步骤**
+
 输入正确的文件格式。具体格式如下：
 1. 已签名的profile文件后缀为p7b。
 2. 未签名的profile文件后缀为json。
@@ -316,7 +319,7 @@ issuer或subject参数支持的格式为：X=xx,XX=xxx。示例：C=CN,O=OpenHar
 
 **错误信息**
 
-Certificate format is in correct, please check your appCertFile parameter.
+Certificate format is incorrect, please check your appCertFile parameter.
 
 **错误描述**
 
@@ -446,7 +449,7 @@ generate csr failed.
 
 **错误信息**
 
-key alias not found.
+Key alias not found.
 
 **错误描述**
 
@@ -725,7 +728,7 @@ Write zip file failed.
 
 **可能原因**
 
-当前系统用户没有outFile参数指定的输出文件的写权限。
+当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
 
@@ -767,11 +770,65 @@ Zip format failed
 
 重新打包签名。
 
+## 11017005 签名后的软件包大小超4G
+
+**错误信息**
+
+The size of signed application is out of range
+
+**错误描述**
+
+签名后的HAP/HSP/HNP软件包大小超过4G。
+
+**可能原因**
+
+待签名的HAP/HSP/HNP软件包大小接近4G，写入签名块后软件包大小超过4G。
+
+**处理步骤**
+
+减少软件包的大小，重新打包签名。
+
+## 11018001 应用包完整性验证失败
+
+**错误信息**
+
+Verify input HAP failed
+
+**错误描述**
+
+待重签名的企业应用包验证失败
+
+**可能原因**
+
+待重签名的企业应用包未签名或完整性被破坏。
+
+**处理步骤**
+
+重新打包签名。
+
+## 11018002 不支持的应用分发类型
+
+**错误信息**
+
+Unsupported application distribution type: xxx
+
+**错误描述**
+
+不支持的应用分发类型。
+
+**可能原因**
+
+inFile参数指定的待重签名应用的分发类型不是企业应用。
+
+**处理步骤**
+
+将inFile参数指定的待重签名应用替换为分发类型为enterprise、enterprise_normal、enterprise_mdm的企业应用。
+
 ## 11106001 无效的文件格式
 
 **错误信息**
 
-Invalid File Format.
+Invalid file format.
 
 **错误描述**
 
@@ -789,7 +846,7 @@ Invalid File Format.
 
 **错误信息**
 
-Input Stream Read Error.
+Input stream read error.
 
 **错误描述**
 
@@ -807,7 +864,7 @@ Input Stream Read Error.
 
 **错误信息**
 
-Certificates Error.
+Certificates error.
 
 **错误描述**
 
@@ -829,7 +886,7 @@ Certificates Error.
 
 **错误信息**
 
-Profile Content Error.
+Profile content error.
 
 **错误描述**
 
@@ -859,7 +916,7 @@ Profile内容错误。
 
 **错误信息**
 
-module.json Content Error.
+module.json content error.
 
 **错误描述**
 
@@ -937,7 +994,7 @@ Invalid algorithm.
 
 **错误信息**
 
-Code Sign Internal Error.
+Code sign internal error.
 
 **错误描述**
 

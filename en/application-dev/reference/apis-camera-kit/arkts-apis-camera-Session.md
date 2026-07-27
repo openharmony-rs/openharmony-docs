@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Session implements a session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to take a photo or record a video.
+**Session** implements a session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to take a photo or record a video.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400105                |  Session config locked.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+            |
 
 **Example**
 
@@ -139,7 +139,7 @@ function commitConfig(session: camera.Session): void {
 
 canAddInput(cameraInput: CameraInput): boolean
 
-Checks whether a CameraInput instance can be added to this session. This API must be called after [beginConfig](#beginconfig11) and before [commitConfig](#commitconfig11-1).
+Checks whether a **CameraInput** instance can be added to this session. This API must be called after [beginConfig](#beginconfig11) and before [commitConfig](#commitconfig11-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -149,13 +149,13 @@ Checks whether a CameraInput instance can be added to this session. This API mus
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
 
 **Return value**
 
 | Type           | Description                    |
 | -------------- | ------------------------ |
-| boolean | Check result for adding the CameraInput instance. **true** if it can be added, **false** otherwise.|
+| boolean | Check result for adding the **CameraInput** instance. **true** if it can be added, **false** otherwise.|
 
 **Example**
 
@@ -180,7 +180,7 @@ Adds a [CameraInput](arkts-apis-camera-CameraInput.md) instance to this session.
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to add.|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to add.|
 
 **Error codes**
 
@@ -190,7 +190,8 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                                 |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+                             |
 
 **Example**
 
@@ -222,7 +223,7 @@ Removes a [CameraInput](arkts-apis-camera-CameraInput.md) instance from this ses
 
 | Name       | Type                         | Mandatory| Description                     |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to remove.|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to remove.|
 
 **Error codes**
 
@@ -231,8 +232,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -264,13 +266,13 @@ Determines whether a CameraOutput instance can be added to this session. This AP
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraOutput | [CameraOutput](arkts-apis-camera-CameraOutput.md) | Yes  | CameraOutput instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
+| cameraOutput | [CameraOutput](arkts-apis-camera-CameraOutput.md) | Yes  | **CameraOutput** instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
 
 **Return value**
 
 | Type           | Description                    |
 | -------------- | ------------------------ |
-| boolean | Check result for adding the CameraOutput instance. **true** if it can be added, **false** otherwise.|
+| boolean | Check result for adding the **CameraOutput** instance. **true** if it can be added, **false** otherwise.|
 
 **Example**
 
@@ -295,7 +297,7 @@ Adds a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance to this sessio
 
 | Name          | Type                            | Mandatory| Description                     |
 | ------------- | ------------------------------- | ---- | ------------------------ |
-| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | CameraOutput instance to add.|
+| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | **CameraOutput** instance to add.|
 
 **Error codes**
 
@@ -304,8 +306,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -337,7 +340,7 @@ Removes a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance from this s
 
 | Name          | Type                            | Mandatory| Description                     |
 | ------------- | ------------------------------- | ---- | ------------------------ |
-| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | CameraOutput instance to remove.|
+| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | **CameraOutput** instance to remove.|
 
 **Error codes**
 
@@ -346,8 +349,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -387,7 +391,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -429,7 +433,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 

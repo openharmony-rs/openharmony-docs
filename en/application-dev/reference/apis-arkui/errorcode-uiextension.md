@@ -18,7 +18,7 @@ Failed to start the UIExtension ability.
 
 **Description**
 
-This error code is reported when the UIExtension ability fails to start.
+This error code is reported when the UIExtension ability fails to be started.
 
 **Possible Causes**
 
@@ -111,7 +111,7 @@ Cascading UIExtension components is not allowed.
 
 **Description**
 
-This error code is reported when illegal nesting of UIExtension components is detected.
+This error code is reported when UIExtension components are nested in special scenarios.
 
 **Possible Causes**
 
@@ -188,7 +188,7 @@ This error code is reported when the UIExtension ability fails to start in a sce
 **Possible Causes**
 
 1. The configuration of the **Want** parameter is incorrect.
-2. There is a type mismatch. For details, see [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md#apis).
+2. The type is inconsistent. For details, see [APIs](arkui-ts/ts-container-embedded-component.md#apis) of **EmbeddedComponent**.
 3. The provider application is not installed.
 4. The device type is not supported.
 

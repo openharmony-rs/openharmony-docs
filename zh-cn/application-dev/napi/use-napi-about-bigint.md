@@ -1,10 +1,10 @@
 # 使用Node-API接口操作bigint类型值
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -312,7 +312,7 @@ try {
 
 ### napi_get_value_bigint_words
 
-用于从ArkTS对象中获取其符号位和底层64位无符号整数字数组表示。
+用于从ArkTS对象中获取其符号位和底层64位无符号整数数组表示。
 
 cpp部分代码
 

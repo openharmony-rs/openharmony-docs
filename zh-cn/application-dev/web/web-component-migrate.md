@@ -10,7 +10,7 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 
 Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-defined-node.md)能力实现的。实现的基本原理是：通过[BuilderNode](../ui/arkts-user-defined-arktsNode-builderNode.md)，开发者可创建Web组件的离线节点，并结合[自定义占位节点](../ui/arkts-user-defined-place-holder.md)控制Web节点的挂载与移除。当从一个窗口上移除Web节点，并挂载到另一个窗口中，即完成Web组件在窗口间的迁移。
 
-在以下示例中，主窗Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。
+在以下示例中，主窗口Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。
 
 ![Web组件迁移示例](./figures/web-component-migrate.png)
 
@@ -21,10 +21,8 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
 ``` TypeScript
-// 主窗Ability
+// 主窗口Ability
 import { createNWeb, defaultUrl } from '../pages/common';
-
-// ···
 
 // ...
 
@@ -45,7 +43,9 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-```ts
+<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
+
+``` TypeScript
 // 提供动态挂载Web组件能力
 // pages/common.ets
 import { UIContext, NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
@@ -56,8 +56,8 @@ export const defaultUrl : string = 'https://www.example.com';
 
 // Data为入参封装类
 class Data{
-  url: string = '';
-  webController: webview.WebviewController | null = null;
+  public url: string = '';    
+  public webController: webview.WebviewController | null = null;
 
   constructor(url: string, webController: webview.WebviewController) {
     this.url = url;
@@ -67,15 +67,15 @@ class Data{
 
 // @Builder中为动态组件的具体组件内容
 @Builder
-function WebBuilder(data:Data) {
+function webBuilder(data:Data) {
   Web({ src: data.url, controller: data.webController })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .borderStyle(BorderStyle.Dashed)
     .borderWidth(2)
 }
 
-let wrap = wrapBuilder<[Data]>(WebBuilder);
+let wrap = wrapBuilder<[Data]>(webBuilder);
 
 // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用
 export class MyNodeController extends NodeController {
@@ -89,7 +89,7 @@ export class MyNodeController extends NodeController {
     this.webController = webController;
   }
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
     // 该节点会被挂载在NodeContainer的父节点下
@@ -127,7 +127,7 @@ let webControllerMap : Map<string, webview.WebviewController | undefined> = new 
 // 初始化需要UIContext对象，UIContext对象可通过窗口或自定义组件的getUIContext方法获取
 export const createNWeb = (url: string, uiContext: UIContext) => {
   // 创建WebviewController
-  let webController = new webview.WebviewController() ;
+  let webController = new webview.WebviewController();
   // 创建BuilderNode
   let builderNode : BuilderNode<[Data]> = new BuilderNode(uiContext);
   // 创建动态Web组件
@@ -140,15 +140,15 @@ export const createNWeb = (url: string, uiContext: UIContext) => {
 }
 
 // 自定义获取BuilderNode的接口
-export const getBuilderNode = (url : string) : BuilderNode<[Data]> | undefined => {
+export const getBuilderNode = (url: string) : BuilderNode<[Data]> | undefined => {
   return builderNodeMap.get(url);
 }
 // 自定义获取WebviewController的接口
 export const getWebviewController = (url : string) : webview.WebviewController | undefined => {
   return webControllerMap.get(url);
 }
-
 ```
+
 <!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

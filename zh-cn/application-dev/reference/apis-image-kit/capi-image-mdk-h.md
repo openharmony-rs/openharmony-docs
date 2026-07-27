@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -84,7 +84,7 @@ enum anonymous enum
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | 亮度信息。 |
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | 色度信息。 |
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | 色差值信息。 |
-| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | Jpeg格式。 |
+| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG格式。 |
 
 
 ## 函数说明

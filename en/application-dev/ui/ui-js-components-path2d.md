@@ -82,7 +82,7 @@ export default {
 ```
 
 
-![en-us_image_0000001177930616](figures/en-us_image_0000001177930616.png)
+![Line-Segments](figures/Line-Segments.png)
 
 
 ## Drawing Graphs
@@ -205,4 +205,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001177784684](figures/en-us_image_0000001177784684.gif)
+![Drawing-Graphs](figures/Drawing-Graphs.gif)

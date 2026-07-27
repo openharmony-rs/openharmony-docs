@@ -77,6 +77,8 @@ struct barHeightTest {
 
 该变更为不兼容变更。
 
+通过OH_NativeXComponent_RegisterUIInputEventCallback接口注册监听回调，在轴事件触发此回调时，分发机制变更。
+
 变更前：在多层级组件堆叠场景下，zIndex属性会影响兄弟组件响应轴事件的顺序。堆叠场景下，先绑定挂载轴事件且zIndex大的组件，然后绑定挂载轴事件且zIndex小的组件，轴事件无法正常分发给挂载轴事件且zIndex较大的组件，而会分发给挂载轴事件但zIndex较小的组件。
 
 变更后：在多层级组件堆叠场景下，zIndex属性会影响兄弟组件响应轴事件的顺序。堆叠场景下，先绑定挂载轴事件且zIndex大的组件，然后绑定挂载轴事件且zIndex小的组件，轴事件可以正常分发给挂载轴事件且zIndex较大的组件，挂载轴事件但zIndex较小的组件无法收到事件。
@@ -91,7 +93,7 @@ struct barHeightTest {
 
 **变更的接口/组件**
 
-不涉及
+OH_NativeXComponent_RegisterUIInputEventCallback接口。
 
 **适配指导**
 

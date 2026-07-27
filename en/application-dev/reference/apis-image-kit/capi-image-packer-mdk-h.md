@@ -12,13 +12,13 @@ The file declares the APIs used to pack an image or a PixelMap into a buffer or 
 
 The packing process is as follows:
 
-1. Call **OH_ImagePacker_Create** to create an ImagePacker object.
+Create an encoder object using **OH_ImagePacker_Create**.
 
-2. Call **OH_ImagePacker_InitNative** to convert the ImagePacker object to an ImagePacker_Native object.
+Convert the encoder object to a native encoder object using **OH_ImagePacker_InitNative**.
 
-3. Call **OH_ImagePacker_PackToData** or OH_ImagePacker_PackToFile to pack the source into the target area with the specified packing options.
+Call **OH_ImagePacker_PackToData** or OH_ImagePacker_PackToFile to pack the source into the target area with the specified packing options.
 
-4. Call **OH_ImagePacker_Release** to release an ImagePacker_Native object.
+Release the encoder object using **OH_ImagePacker_Release**.
 
 **File to include**: <multimedia/image_framework/image_packer_mdk.h>
 

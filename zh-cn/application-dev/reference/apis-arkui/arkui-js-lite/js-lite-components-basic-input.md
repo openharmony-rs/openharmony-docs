@@ -1,7 +1,7 @@
 # input
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -22,7 +22,7 @@
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | <br/>button | 否 | input组件类型，可选值为button，checkbox，radio。<br/>button，checkbox，radio不支持动态修改。可选值定义如下：<br/>-&nbsp;button：定义可点击的按钮。<br/>-&nbsp;checkbox：定义多选框。<br/>-&nbsp;radio：定义单选按钮，允许在多个拥有相同name值的选项中选中其中一个。 |
+| type | string | <br/>button | 否 | input组件类型，可选值为button，checkbox，radio，text。<br/>button，checkbox，radio，text不支持动态修改。可选值定义如下：<br/>-&nbsp;button：定义可点击的按钮。<br/>-&nbsp;checkbox：定义多选框。<br/>-&nbsp;radio：定义单选按钮，允许在多个拥有相同name值的选项中选中其中一个。<br/>-&nbsp;text：定义用于文字输入的文本框，仅在支持输入法功能的真机设备上，支持点击拉起文字输入界面，[UI预览](../../../ui/ui-ide-previewer.md)无效果。 |
 | checked | boolean | false | 否 | 当前组件是否选中，true表示选中，false表示未选中。仅type为checkbox和radio生效。 |
 | name | string | - | 否 | input组件的名称。 |
 | value | string | - | 否 | input组件的value值，当类型为radio时必填且相同name值的选项该值唯一。 |
@@ -35,19 +35,19 @@
 ## 事件
 
 - 当input类型为checkbox、radio时，支持如下事件：
-    | 名称 | 参数 | 描述 |
+  | 名称 | 参数 | 描述 |
   | -------- | -------- | -------- |
   | change | {&nbsp;checked:true&nbsp;\|&nbsp;false&nbsp;} | checkbox多选框或radio单选框的checked状态发生变化时触发该事件。 |
   | click | - | 点击动作触发该事件。 |
   | longpress | - | 长按动作触发该事件。 |
-  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 
 - 当input类型为button时，支持如下事件：
-    | 名称 | 参数 | 描述 |
+  | 名称 | 参数 | 描述 |
   | -------- | -------- | -------- |
   | click | - | 点击动作触发该事件。 |
   | longpress | - | 长按动作触发该事件。 |
-  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 
 
 ## 样式
@@ -61,7 +61,7 @@
 | font-family | string | SourceHanSansSC-Regular | 否 | 字体。目前仅支持SourceHanSansSC-Regular&nbsp;字体。 |
 | padding | &lt;length&gt; | 0 | 否 | 使用简写属性设置所有的内边距属性。<br/>&nbsp;&nbsp;该属性可以有1到4个值：<br/>-&nbsp;指定一个值时，该值指定四个边的内边距。<br/>-&nbsp;指定两个值时，第一个值指定上下两边的内边距，第二个指定左右两边的内边距。<br/>-&nbsp;指定三个值时，第一个指定上边的内边距，第二个指定左右两边的内边距，第三个指定下边的内边距。<br/>-&nbsp;指定四个值时分别为上、右、下、左边的内边距（顺时针顺序）。 |
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | 否 | 设置左、上、右、下内边距属性。 |
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 使用简写属性设置所有的外边距属性，该属性可以有1到4个值。<br/>-&nbsp;只有一个值时，这个值会被指定给全部的四个边。<br/>-&nbsp;两个值时，第一个值被匹配给上和下，第二个值被匹配给左和右。<br/>-&nbsp;三个值时，第一个值被匹配给上,&nbsp;第二个值被匹配给左和右，第三个值被匹配给下。<br/>-&nbsp;四个值时，会依次按上、右、下、左的顺序匹配&nbsp;(即顺时针顺序)。 |
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 使用简写属性设置所有的外边距属性，该属性可以有1到4个值。<br/>-&nbsp;只有一个值时，这个值会被指定给全部的四个边。<br/>-&nbsp;两个值时，第一个值被匹配给上和下，第二个值被匹配给左和右。<br/>-&nbsp;三个值时，第一个值被匹配给上，第二个值被匹配给左和右，第三个值被匹配给下。<br/>-&nbsp;四个值时，会依次按上、右、下、左的顺序匹配&nbsp;(即顺时针顺序)。 |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 设置左、上、右、下外边距属性。 |
 | border-width | &lt;length&gt; | 0 | 否 | 使用简写属性设置元素的所有边框宽度。 |
 | border-color | &lt;color&gt; | black | 否 | 使用简写属性设置元素的所有边框颜色。 |

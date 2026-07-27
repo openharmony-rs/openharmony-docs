@@ -1,9 +1,9 @@
 # FormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
@@ -44,13 +44,14 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
+| 16500101 | The application is not a system application. <br/>适用版本：9-11|
 | 16501000 | An internal functional error occurred. |
 
 **参数：**
 
 | 参数名 |                类型               | 必填 |              说明               |
 | ------| --------------------------------- | ---- | -------------------------------------- |
-| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定参数用于拉起Ability。 |
+| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定义参数用于拉起Ability。 |
 | callback| AsyncCallback&lt;void&gt;       | 是  | 回调函数。当拉起一个应用的Ability成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -74,7 +75,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       } else {
         console.info('FormExtensionContext startAbility success');
       }
@@ -99,7 +100,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 参数名 |                类型               | 必填 |              说明               |
 | ------| --------------------------------- | ---- | -------------------------------------- |
-| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定参数用于拉起Ability。 |
+| want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 包含bundleName，abilityName以及用户自定义参数用于拉起Ability。 |
 
 **返回值：**
 
@@ -117,6 +118,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
+| 16500101 | The application is not a system application. <br/>适用版本：9-11|
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
@@ -219,10 +221,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.info('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------');
       },
       onFailed(code) {
-        console.error('----------- onFailed -----------')
+        console.error(`onFailed, code: ${code}`);
       }
     };
 

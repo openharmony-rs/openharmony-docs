@@ -96,4 +96,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001152588538](figures/en-us_image_0000001152588538.png)
+![select](figures/select.png)

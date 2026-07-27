@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -46,8 +46,8 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
   > - 上图中1的详细说明见[开启接管网页媒体播放](#开启接管网页媒体播放)。
   > - 上图中2的详细说明见[创建本地播放器](#创建本地播放器nativemediaplayer)。
   > - 上图中3的详细说明见[绘制本地播放器组件](#绘制本地播放器组件)。
-  > - 上图中4的详细说明见[执行 ArkWeb 内核发送给本地播放器的播控指令](#执行arkweb内核发送给本地播放器的播控指令)。
-  > - 上图中5的详细说明见[将本地播放器的状态信息通知给 ArkWeb 内核](#将本地播放器的状态信息通知给arkweb内核)。
+  > - 上图中4的详细说明见[执行ArkWeb内核发送给本地播放器的播控命令](#执行arkweb内核发送给本地播放器的播控命令)。
+  > - 上图中5的详细说明见[将本地播放器的状态信息通知给ArkWeb内核](#将本地播放器的状态信息通知给arkweb内核)。
 
 ## 开发指导
 
@@ -77,11 +77,11 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
 
-应用则需要调用 `onCreateNativeMediaPlayer` 来注册一个创建本地播放器的回调函数。
+应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
 
 该回调函数需要根据媒体信息来判断是否要创建一个本地播放器来接管当前的网页媒体资源。
 
-  * 如果应用不接管当前的网页媒体资源， 需在回调函数里返回 `null` 。
+  * 如果应用不接管当前的网页媒体资源， 需在回调函数里返回null。
   * 如果应用接管当前的网页媒体资源， 需在回调函数里返回一个本地播放器实例。
 
 本地播放器需要实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，以便ArkWeb内核对本地播放器进行播控操作。
@@ -146,7 +146,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该流程与[同层渲染](web-same-layer.md)绘制一致。
 
-1. 在应用启动阶段，应用应保存UIContext，以便后续的同层渲染绘制流程能够使用该UIContext。
+1. 在应用启动阶段，应用应保存[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)，以便后续的同层渲染绘制流程能够使用该UIContext。
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
    
@@ -248,7 +248,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 动态创建组件并绘制到Surface上的详细介绍见[同层渲染](web-same-layer.md)。
 
-### 执行ArkWeb内核发送给本地播放器的播控指令
+### 执行ArkWeb内核发送给本地播放器的播控命令
 
 为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，并根据每个接口方法的功能对本地播放器进行相应操作。
 
@@ -480,7 +480,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     ]
   ```
 
-- 在应用启动阶段保存UIContext。
+- 在应用启动阶段保存[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)。
 
   ```ts
   // xxxAbility.ets
@@ -549,6 +549,8 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     }
 
     updateRect(x: number, y: number, width: number, height: number): void {
+      // <video> 标签的位置和大小发生了变化。
+      // 根据该信息变化，作出相应的改变。
       let width_in_vp = this.uiContext!.px2vp(width);
       let height_in_vp = this.uiContext!.px2vp(height);
       console.info(`updateRect(${x}, ${y}, ${width}, ${height}), vp:{${width_in_vp}, ${height_in_vp}}`);
@@ -557,29 +559,37 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     }
 
     play() {
+      // 启动本地播放器播放。
       console.info('NativeMediaPlayerImpl.play');
       this.nativePlayer.play();
     }
     pause() {
+      // 暂停本地播放器播放。
       console.info('NativeMediaPlayerImpl.pause');
       this.nativePlayer.pause();
     }
     seek(targetTime: number) {
+      // 本地播放器跳转到指定的时间点。
       console.info(`NativeMediaPlayerImpl.seek(${targetTime})`);
       this.nativePlayer.seek(targetTime);
     }
     setVolume(volume: number) {
+      // ArkWeb 内核要求调整本地播放器的音量。
+      // 设置本地播放器的音量。
       console.info(`NativeMediaPlayerImpl.setVolume(${volume})`);
       this.nativePlayer.setVolume(volume);
     }
     setMuted(muted: boolean) {
+      // 将本地播放器静音或取消静音。
       console.info(`NativeMediaPlayerImpl.setMuted(${muted})`);
     }
     setPlaybackRate(playbackRate: number) {
+      // 调整本地播放器的播放速度。
       console.info(`NativeMediaPlayerImpl.setPlaybackRate(${playbackRate})`);
       this.nativePlayer.setPlaybackRate(playbackRate);
     }
     release() {
+      // 销毁本地播放器。
       console.info('NativeMediaPlayerImpl.release');
       this.nativePlayer?.release();
       this.nativePlayerInfo.show_native_media_player = false;
@@ -588,9 +598,11 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       this.nativePlayerInfo.destroyed();
     }
     enterFullscreen() {
+      // 将本地播放器设置为全屏播放。
       console.info('NativeMediaPlayerImpl.enterFullscreen');
     }
     exitFullscreen() {
+      // 将本地播放器退出全屏播放。
       console.info('NativeMediaPlayerImpl.exitFullscreen');
     }
   }
@@ -605,29 +617,36 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       this.component = component;
     }
     onPlaying() {
+      // 通知ArkWeb内核，本地播放器开始播放
       console.info('AVPlayerListenerImpl.onPlaying');
       this.handler.handleStatusChanged(webview.PlaybackStatus.PLAYING);
     }
     onPaused() {
+      // 通知ArkWeb内核，本地播放器暂停播放
       console.info('AVPlayerListenerImpl.onPaused');
       this.handler.handleStatusChanged(webview.PlaybackStatus.PAUSED);
     }
     onDurationChanged(duration: number) {
+      // 通知ArkWeb内核，本地播放器解析到了新的媒体时长
       console.info(`AVPlayerListenerImpl.onDurationChanged(${duration})`);
       this.handler.handleDurationChanged(duration);
     }
     onBufferedTimeChanged(buffered: number) {
+      // 通知ArkWeb内核，本地播放器的缓存时长变化
       console.info(`AVPlayerListenerImpl.onBufferedTimeChanged(${buffered})`);
       this.handler.handleBufferedEndTimeChanged(buffered);
     }
     onTimeUpdate(time: number) {
+      // 通知ArkWeb内核，本地播放进度发生变化
       this.handler.handleTimeUpdate(time);
     }
     onEnded() {
+      // 通知ArkWeb内核，本地播放器播放完成
       console.info('AVPlayerListenerImpl.onEnded');
       this.handler.handleEnded();
     }
     onError() {
+      // 通知ArkWeb内核，本地播放器出错了
       console.info('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
@@ -635,11 +654,13 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }, 200);
     }
     onVideoSizeChanged(width: number, height: number) {
+      // 通知ArkWeb内核，视频尺寸发生变化
       console.info(`AVPlayerListenerImpl.onVideoSizeChanged(${width}, ${height})`);
       this.handler.handleVideoSizeChanged(width, height);
       this.component.onSizeChanged(width, height);
     }
     onDestroyed(): void {
+      // 播放器销毁
       console.info('AVPlayerListenerImpl.onDestroyed');
     }
   }
@@ -673,6 +694,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     @State has_error: boolean = false;
 
     onSizeChanged(width: number, height: number) {
+      // 更新播放区域比例
       this.video_width = width;
       this.video_height = height;
       let scale: number = this.view_width / width;
@@ -695,6 +717,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
               console.info('NativePlayerComponent.onLoad, params[' + this.params
                 + '], text[' + this.params.text + '], text2[' + this.params.text2
                 + '], web_tab[' + this.params.playerInfo + '], handler[' + this.params.handler + ']');
+              // 设置Surface ID到播放器
               this.params.player.nativePlayer.setSurfaceID(this.mXComponentController.getXComponentSurfaceId());
 
               this.params.player.nativePlayer.avPlayerLiveDemo({
@@ -745,6 +768,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       .width('100%')
       .height('100%')
       .onAreaChange((oldValue: Area, newValue: Area) => {
+        // 当组件区域发生变化时触发
         console.info(`NativePlayerComponent.onAreaChange(${JSON.stringify(oldValue)}, ${JSON.stringify(newValue)})`);
         this.view_width = new Number(newValue.width).valueOf();
         this.view_height = new Number(newValue.height).valueOf();
@@ -852,6 +876,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     }
 
     updateNativePlayerRect(x: number, y: number, width: number, height: number) {
+      // 更新播放器的位置和大小
       this.playerComponent?.updateNativePlayerRect(x, y, width, height);
     }
 
@@ -915,6 +940,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
           Web({ src: this.page_url, controller: this.controller })
             .enableNativeMediaPlayer({ enable: true, shouldOverlay: true })
             .onPageBegin(() => {
+              // 页面开始加载时，注册播放器创建回调
               this.controller.onCreateNativeMediaPlayer((handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo) => {
                 console.info('onCreateNativeMediaPlayer(' + JSON.stringify(mediaInfo) + ')');
                 let nativePlayerInfo = new NativePlayerInfo(this, handler, mediaInfo, this.getUIContext());
@@ -923,11 +949,13 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
               });
             })
             .onNativeEmbedGestureEvent((event)=>{
+              // 处理触摸事件
               if (!event.touchEvent || !event.embedId) {
                 event.result?.setGestureEventResult(false);
                 return;
               }
               console.info(`WebComponent.onNativeEmbedGestureEvent, embedId[${event.embedId}]`);
+              // 查找对应的播放器信息
               let native_player_info = this.getNativePlayerInfoByEmbedId(event.embedId);
               if (!native_player_info) {
                 console.info(`WebComponent.onNativeEmbedGestureEvent, embedId[${event.embedId}], no native_player_info`);
@@ -939,6 +967,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
                 event.result?.setGestureEventResult(false);
                 return;
               }
+              // 将触摸事件传递给NodeController
               let ret = native_player_info.node_controller.postTouchEvent(event.touchEvent);
               console.info(`WebComponent.postTouchEvent, ret[${ret}], touchEvent[${JSON.stringify(event.touchEvent)}]`);
               event.result?.setGestureEventResult(ret);
@@ -1044,7 +1073,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
             break;
           case 'completed': // 播放结束后触发该状态机上报
             console.info('AVPlayer state completed called.');
-            avPlayer.stop(); //调用播放结束接口
+            avPlayer.stop(); // 调用播放结束接口
             break;
           case 'stopped': // stop接口成功调用后触发该状态机上报
             console.info('AVPlayer state stopped called.');
@@ -1095,6 +1124,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       console.info(`AVPlayer url:[${playerParam.url}]`);
     }
 
+    // 按顺序执行待处理的播放控制命令
     schedule() {
       if (!this.avPlayer) {
         return;
@@ -1138,6 +1168,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       return result;
     }
 
+    // 执行播放命令
     play() {
       let commandName = 'play';
       let checkResult = this.checkCommand(commandName, 'pause');
@@ -1157,6 +1188,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }, name: commandName});
       this.schedule();
     }
+    // 执行暂停命令
     pause() {
       let commandName = 'pause';
       let checkResult = this.checkCommand(commandName, 'play');
@@ -1177,6 +1209,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }, name: commandName});
       this.schedule();
     }
+    // 执行资源释放命令
     release() {
       this.commands.push({ func: ()=>{
         console.info('AVPlayer.release()');
@@ -1184,6 +1217,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
+    // 执行跳转命令
     seek(time: number) {
       this.commands.push({ func: ()=>{
         console.info(`AVPlayer.seek(${time})`);
@@ -1191,6 +1225,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
+    // 执行设置音量命令
     setVolume(volume: number) {
       this.commands.push({ func: ()=>{
         console.info(`AVPlayer.setVolume(${volume})`);
@@ -1198,6 +1233,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
+    // 执行设置播放速度命令
     setPlaybackRate(playbackRate: number) {
       let speed = media.PlaybackSpeed.SPEED_FORWARD_1_00_X;
       let delta = 0.05;

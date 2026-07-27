@@ -52,4 +52,4 @@
 ```
 
 
-![zh-cn_image_0000001212053183](figures/zh-cn_image_0000001212053183.png)
+![rect](figures/rect.png)

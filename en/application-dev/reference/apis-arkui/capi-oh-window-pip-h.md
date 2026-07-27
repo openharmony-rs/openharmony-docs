@@ -1,14 +1,14 @@
 # oh_window_pip.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## Overview
 
-The file declares the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings.
+The file declares the APIs related to the Picture in Picture (PiP) feature, including creating and deleting a PiP controller, and starting and stopping PiP. PiP is mainly used in video playback, live streaming, video calls, or video meetings. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets. Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.
 
 **File to include**: <window_manager/oh_window_pip.h>
 
@@ -251,7 +251,7 @@ Defines a callback function for the component click event of the PiP window.
 | Parameter| Description|
 | -- | -- |
 | uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
-|  PictureInPicture_PipControlType controlType | Type of component displayed on the PiP controller.|
+|  PictureInPicture_PipControlType controlType | Type of the component displayed on the PiP controller.|
 | [PictureInPicture_PipControlStatus](#pictureinpicture_pipcontrolstatus) status | Status of the component displayed on the PiP controller.|
 
 ### WebPipResizeCallback()
@@ -571,6 +571,7 @@ Updates the media content size when the media content changes.
 
 **Since**: 20
 
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices, but does not take effect or report errors when being called on other devices.
 
 **Parameters**
 
@@ -1013,7 +1014,7 @@ Before launching PiP, call [OH_PictureInPicture_SetPipMainWindowId()](#oh_pictur
 
 If the main window of PiP changes (for example, if you launch PiP in one tab of a browser and then drag that tab out to create a new window), you must call this API to update the main window ID to the new window ID. This ensures that PiP can be restored to the correct main window.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Since**: 22
 

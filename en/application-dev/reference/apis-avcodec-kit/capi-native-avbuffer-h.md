@@ -6,6 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d2b8e62658bec29d90bb137c6dea1154dffae97d translatedAt=2026-07-21T00:29:31.703Z pushedAt=2026-07-21T02:34:42.299Z -->
 
 ## Overview
 
@@ -30,7 +31,7 @@ The file declares the functions of the media struct AVBuffer.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | Describes a native object for the media memory interface.|
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) | OH_NativeBuffer | Describes a native object for the graphics memory interface.|
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) | OH_NativeBuffer | Describes a native object for the graphics memory interface.|
 
 ### Functions
 
@@ -223,26 +224,6 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 Obtains the virtual address of a data buffer.
 
-The capability to obtain virtual addresses varies in scenarios, as described in the table below.
-
-**Encoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Not supported|
-| Surface| OnNewOutputBuffer output | Supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
-
-**Decoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Supported|
-| Surface| OnNewOutputBuffer output | Not supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
-
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
@@ -312,4 +293,4 @@ Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuff
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|

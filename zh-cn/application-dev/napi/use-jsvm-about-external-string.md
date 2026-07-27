@@ -1,10 +1,10 @@
 # 使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -80,7 +80,7 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ```
 
 ## 预期输出结果
-```
+```txt
 created latin1 string is : hello
 create external string failed: 0
 created utf16 string is : world

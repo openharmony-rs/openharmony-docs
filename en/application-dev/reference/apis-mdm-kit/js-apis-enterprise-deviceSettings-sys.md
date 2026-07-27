@@ -2,21 +2,21 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **deviceSettings** module provides APIs for setting enterprise devices, including obtaining the screen-off time of a device.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
 
 ## Modules to Import
 
@@ -208,7 +208,7 @@ Installs a user certificate. This API uses a callback to return the result.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -252,7 +252,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     }
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -276,7 +276,7 @@ Installs a user certificate. This API uses a promise to return the result.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 
 **Return value**
 
@@ -324,21 +324,10 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
-
-## CertBlob
-
-Represents the certificate information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name        | Type    | Read-Only| Optional| Description                           |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | No| No|Binary content of the certificate.|
-| alias | string | No| No|Certificate alias.|
 
 ## deviceSettings.uninstallUserCertificate
 
@@ -574,6 +563,17 @@ try {
 }
 ```
 
+## CertBlob
+
+Represents the certificate information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | No| No|Binary content of the certificate.|
+| alias | string | No| No|Certificate alias. The value length must be less than 40 characters.|
+
 ## PowerPolicy<sup>11+</sup>
 
 Represents the power policy.
@@ -614,3 +614,4 @@ Enumerates the actions that can be performed to apply the power policy.
 | FORCE_SUSPEND | 2 | Forcibly enter the sleep mode.|
 | HIBERNATE | 3 | Enter the sleep mode. This policy does not take effect currently.|
 | SHUTDOWN | 4 | Shut down the system.|
+<!--no_check-->

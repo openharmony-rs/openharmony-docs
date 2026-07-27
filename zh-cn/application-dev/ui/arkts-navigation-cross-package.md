@@ -1,8 +1,8 @@
 # Navigation跨包路由
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -21,27 +21,13 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 ## 系统路由表
 
-系统路由表是动态路由的一种实现方式。从API version 12开始，Navigation支持使用系统路由表的方式进行动态路由。
+系统路由表是动态路由的一种实现方式。从API version 12开始，Navigation支持使用系统路由表的方式进行动态路由。<!--RP3--><!--RP3End-->
 
 系统路由表支持模拟器但不支持预览器。
 
 要实现系统路由表，各业务模块（[HAP](../quick-start/hap-package.md)、[HSP](../quick-start/in-app-hsp.md)、[HAR](../quick-start/har-package.md)）中需要独立配置router_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。其主要步骤如下：
 
-1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置。
-
-    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-    
-    ``` JSON5
-    {
-      "module": {
-        // ...
-        "routerMap": "$profile:router_map",
-        // ...
-      }
-    }
-    ```
-
-2. 添加完路由配置文件地址后，在工程resources/base/profile路径下创建router_map.json文件。添加如下配置信息，各字段含义详见[routerMap标签](../quick-start/module-configuration-file.md#routermap标签)。
+1. 添加完路由配置文件地址后，在工程resources/base/profile路径下创建router_map.json文件。添加如下配置信息，各字段含义详见[routerMap标签](../quick-start/module-configuration-file.md#routermap标签)。
 
      ```json
      {
@@ -57,6 +43,20 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
        ]
      }
      ```
+
+2. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置。
+
+    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ...
+        "routerMap": "$profile:router_map",
+        // ...
+      }
+    }
+    ```
 
 3. 在跳转目标页面，配置入口Builder函数，函数名称需要和router_map.json配置文件中的buildFunction保持一致，否则在编译时会报错。
 
@@ -97,7 +97,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
      build() {
        Navigation(this.pageStack){
        }.onAppear(() => {
-         this.pageStack.pushPathByName('PageOne', null, false);
+         this.pageStack.pushPathByName('PageOne', undefined, false);
        })
        .hideNavBar(true)
      }
@@ -369,7 +369,7 @@ export struct pageOneTmp {
 
    在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
 
-    ``` json
+    ``` json5
     {
       "name": "entry",
       "version": "1.0.0",

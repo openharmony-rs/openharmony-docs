@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供Ability Kit中常用公共能力的纯类型定义，包含各类上下文对象、回调接口和数据结构。本模块仅导出类型声明，不包含具体实现逻辑或可执行代码。
 
@@ -33,7 +33,7 @@ type UIAbilityContext = _UIAbilityContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIAbilityContext.default](js-apis-inner-application-uiAbilityContext.md) | UIAbilityContext组件上下文。 |
+| [_UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).default | UIAbility组件上下文。 |
 
 ## AbilityStageContext
 
@@ -49,7 +49,7 @@ type AbilityStageContext = _AbilityStageContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityStageContext.default](js-apis-inner-application-abilityStageContext.md) | AbilityStage组件上下文。 |
+| [_AbilityStageContext](js-apis-inner-application-abilityStageContext.md).default | AbilityStage组件上下文。 |
 
 ## ApplicationContext
 
@@ -65,7 +65,7 @@ type ApplicationContext = _ApplicationContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ApplicationContext.default](js-apis-inner-application-applicationContext.md) | 应用上下文。 |
+| [_ApplicationContext](js-apis-inner-application-applicationContext.md).default | 应用上下文。 |
 
 ## BaseContext
 
@@ -81,7 +81,7 @@ type BaseContext = _BaseContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_BaseContext.default](js-apis-inner-application-baseContext.md) | 所有Context的父类。 |
+| [_BaseContext](js-apis-inner-application-baseContext.md).default | 所有Context的父类。 |
 
 ## Context
 
@@ -97,7 +97,7 @@ type Context = _Context.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_Context.default](js-apis-inner-application-context.md) | Stage模型的上下文基类。 |
+| [_Context](js-apis-inner-application-context.md).default | Stage模型的上下文基类。 |
 
 ## ExtensionContext
 
@@ -113,7 +113,7 @@ type ExtensionContext = _ExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ExtensionContext.default](js-apis-inner-application-extensionContext.md) | ExtensionAbility组件上下文。 |
+| [_ExtensionContext](js-apis-inner-application-extensionContext.md).default | ExtensionAbility组件上下文。 |
 
 ## FormExtensionContext
 
@@ -129,9 +129,9 @@ type FormExtensionContext = _FormExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_FormExtensionContext.default](../apis-form-kit/js-apis-inner-application-formExtensionContext.md) | FormExtensionAbility组件上下文。 |
+| [_FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md).default | FormExtensionAbility组件上下文。 |
 
-## VpnExtensionContext<sup>11+<sup>
+## VpnExtensionContext<sup>11+</sup>
 
 type VpnExtensionContext = _VpnExtensionContext.default
 
@@ -143,7 +143,7 @@ type VpnExtensionContext = _VpnExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_VpnExtensionContext.default](../apis-network-kit/js-apis-inner-application-VpnExtensionContext.md) | VpnExtensionAbility组件上下文。 |
+| [_VpnExtensionContext](../apis-network-kit/js-apis-inner-application-VpnExtensionContext.md).default | VpnExtensionAbility组件上下文。 |
 
 ## EventHub
 
@@ -159,7 +159,7 @@ EventHub是系统提供的基于发布-订阅模式实现的事件通信机制�
 
 | 类型 | 说明 |
 | --- | --- |
-| [_EventHub.default](js-apis-inner-application-eventHub.md) | 系统提供的基于发布-订阅模式实现的事件通信机制。 |
+| [_EventHub](js-apis-inner-application-eventHub.md).default | 系统提供的基于发布-订阅模式实现的事件通信机制。 |
 
 ## PacMap
 
@@ -191,7 +191,7 @@ type AbilityResult = _AbilityResult
 | --- | --- |
 | [_AbilityResult](js-apis-inner-ability-abilityResult.md) | 定义Ability被拉起并退出后返回的结果码和数据。 |
 
-## AbilityStartCallback<sup>11+<sup>
+## AbilityStartCallback<sup>11+</sup>
 
 type AbilityStartCallback = _AbilityStartCallback
 
@@ -233,9 +233,9 @@ type UIExtensionContext = _UIExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIExtensionContext.default](js-apis-inner-application-uiExtensionContext.md) | UIExtensionAbility组件上下文。 |
+| [_UIExtensionContext](js-apis-inner-application-uiExtensionContext.md).default | UIExtensionAbility组件上下文。 |
 
-## EmbeddableUIAbilityContext<sup>12+<sup>
+## EmbeddableUIAbilityContext<sup>12+</sup>
 
 type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default
 
@@ -249,9 +249,9 @@ type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_EmbeddableUIAbilityContext.default](js-apis-inner-application-EmbeddableUIAbilityContext.md) | EmbeddableUIAbility组件上下文。 |
+| [_EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md).default | EmbeddableUIAbility组件上下文。 |
 
-## PhotoEditorExtensionContext<sup>12+<sup>
+## PhotoEditorExtensionContext<sup>12+</sup>
 
 type PhotoEditorExtensionContext = _PhotoEditorExtensionContext.default
 
@@ -263,9 +263,9 @@ type PhotoEditorExtensionContext = _PhotoEditorExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_PhotoEditorExtensionContext.default](js-apis-app-ability-photoEditorExtensionContext.md) | PhotoEditorExtensionAbility组件上下文。 |
+| [_PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md).default | PhotoEditorExtensionAbility组件上下文。 |
 
-## UIServiceProxy<sup>14+<sup>
+## UIServiceProxy<sup>14+</sup>
 
 type UIServiceProxy = _UIServiceProxy.default
 
@@ -279,9 +279,9 @@ UIServiceProxy提供了与UIServiceExtensionAbility服务端数据通信的能�
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceProxy.default](js-apis-inner-application-uiserviceproxy.md) | 提供与UIServiceExtensionAbility服务端数据通信的能力。 |
+| [_UIServiceProxy](js-apis-inner-application-uiserviceproxy.md).default | 提供与UIServiceExtensionAbility服务端数据通信的能力。 |
 
-## UIServiceExtensionConnectCallback<sup>14+<sup>
+## UIServiceExtensionConnectCallback<sup>14+</sup>
 
 type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default
 
@@ -295,7 +295,7 @@ type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.defa
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceExtensionConnectCallback.default](js-apis-inner-application-uiServiceExtensionconnectcallback.md) | 提供UIServiceExtensionAbility连接回调数据能力。 |
+| [_UIServiceExtensionConnectCallback](js-apis-inner-application-uiServiceExtensionconnectcallback.md).default | 提供UIServiceExtensionAbility连接回调数据能力。 |
 
 ## AppServiceExtensionContext<sup>20+</sup>
 
@@ -309,7 +309,7 @@ type AppServiceExtensionContext = _AppServiceExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AppServiceExtensionContext.default](js-apis-inner-application-appServiceExtensionContext.md) | AppServiceExtensionAbility组件上下文。 |
+| [_AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md).default | AppServiceExtensionAbility组件上下文。 |
 
 ## FormEditExtensionContext<sup>22+</sup>
 
@@ -325,7 +325,7 @@ type FormEditExtensionContext = _FormEditExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_FormEditExtensionContext.default](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md) | FormEditExtensionAbility组件上下文。 |
+| [_FormEditExtensionContext](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md).default | FormEditExtensionAbility组件上下文。 |
 
 ## LiveFormExtensionContext<sup>22+</sup>
 
@@ -341,7 +341,119 @@ type LiveFormExtensionContext = _LiveFormExtensionContext.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_LiveFormExtensionContext.default](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md) | LiveFormExtensionAbility组件上下文。 |
+| [_LiveFormExtensionContext](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md).default | LiveFormExtensionAbility组件上下文。 |
+
+## AgentCard<sup>24+</sup>
+
+type AgentCard = _AgentCard
+
+[AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md)相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
+
+## AgentProvider<sup>24+</sup>
+
+type AgentProvider = _AgentProvider
+
+[AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider)表示Agent的服务提供商。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider) | Agent的服务提供商。 |
+
+## AgentCapabilities<sup>24+</sup>
+
+type AgentCapabilities = _AgentCapabilities
+
+[AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities)用来定义Agent支持的可选能力。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities) | 定义Agent支持的可选能力。 |
+
+## AgentSkill<sup>24+</sup>
+
+type AgentSkill = _AgentSkill
+
+[AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill)表示Agent可以执行的不同能力或功能。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill) | 表示Agent可以执行的不同能力或功能。 |
+
+## AgentAppInfo<sup>24+</sup>
+
+type AgentAppInfo = _AgentAppInfo
+
+[AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo)表示Agent所属的应用信息。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo) | Agent所属的应用信息。 |
+
+## AgentHostProxy<sup>24+</sup>
+
+type AgentHostProxy = _AgentHostProxy
+
+[AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md)用于从[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端向客户端发送数据或安全认证请求。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md) | 用于从[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端向客户端发送数据或安全认证请求。 |
+
+## AgentExtensionContext<sup>24+</sup>
+
+type AgentExtensionContext = _AgentExtensionContext
+
+[AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)是[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md) | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
 
 **示例：**
 
@@ -369,4 +481,11 @@ let uiServiceExtensionConnectCallback : common.UIServiceExtensionConnectCallback
 let appServiceExtensionContext : common.AppServiceExtensionContext;
 let formEditExtensionContext : common.FormEditExtensionContext;
 let liveFormExtensionContext : common.LiveFormExtensionContext;
+let agentCard: common.AgentCard;
+let agentProvider: common.AgentProvider;
+let agentCapabilities: common.AgentCapabilities;
+let agentSkill: common.AgentSkill;
+let agentAppInfo: common.AgentAppInfo;
+let agentHostProxy: common.AgentHostProxy;
+let agentExtensionContext: common.AgentExtensionContext;
 ```

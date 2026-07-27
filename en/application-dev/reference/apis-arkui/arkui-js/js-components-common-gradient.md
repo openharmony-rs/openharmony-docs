@@ -1,14 +1,13 @@
 # Gradient Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
->
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 Gradient styles are commonly supported and can be set in the **style** attribute or a **.css** file. Gradients enable smooth transition between two or more specified colors.
 
@@ -18,7 +17,7 @@ This framework supports two gradient styles: linear gradient and repeating linea
 
 ## Linear Gradient/Repeating Linear Gradient
 
-To use the gradient style, you need to specify the transition direction and transition color.
+To use the gradient style, you must specify the transition direction and transition color.
 
 
 ### Transition Direction
@@ -37,15 +36,15 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
 ### Transition Color
 
-The color can be specified in any of the following formats: \#ff0000, \#ffff0000, rgb (255, 0, 0), and rgba (255, 0, 0, 1). At least two colors must be specified.
+The color can be specified in any of the following formats: \#ff0000, \#ffff0000, rgb(255, 0, 0), and rgba(255, 0, 0, 1). At least two colors must be specified.
 
 **Parameters**
 
-| Style       | Type                                      | Default Value                         | Mandatory  | Description                                      |
+| Name       | Type                                      | Default Value                         | Mandatory  | Description                                      |
 | --------- | ---------------------------------------- | ---------------------------- | ---- | ---------------------------------------- |
-| direction | to &lt;side-or-corner&gt;  &lt;side-or-corner&gt; = [left \| right] \| [top \| bottom] | to bottom (gradient from top to bottom)| No   | Transition direction, for example, **to left** (gradient from right to left) or<br>**to bottom right** (gradient from the top left to the bottom right).|
+| direction | to&nbsp;&lt;side-or-corner&gt;&nbsp;&nbsp;&lt;side-or-corner&gt;&nbsp;=&nbsp;[left&nbsp;\|&nbsp;right]&nbsp;\|&nbsp;[top&nbsp;\|&nbsp;bottom] | to bottom (gradient from top to bottom)| No   | Transition direction, for example, **to left** (gradient from right to left) or<br>**to bottom right** (gradient from the top left to the bottom right).|
 | angle     | &lt;deg&gt;                              | 180deg                       | No   | Transition direction, which is the angle between the gradient line and the y-axis (in the clockwise direction), with the geometric center of the element being the origin of coordinates and the horizontal axis being the x-axis.|
-| color     | &lt;color&gt; [&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
+| color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
 
 **Example**
 1. Gradient from top to bottom (default)
@@ -60,8 +59,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    ```
 
    
-
-   ![111](figures/111.png)
+   ![Transition-Color01](figures/Transition-Color01.png)
 
 2. Gradient at an angle of 45°
 
@@ -72,7 +70,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    
 
-   ![222](figures/222.png)
+   ![Transition-Color](figures/Transition-Color.png)
 
 3. Gradient from left to right
 
@@ -81,7 +79,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-   ![333](figures/333.png)
+   ![linearGradientHorizontal](figures/linearGradientHorizontal.png)
 
 4. Repeating gradient
 
@@ -90,4 +88,4 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-   ![444](figures/444.png)
+   ![gradient](figures/gradient.png)

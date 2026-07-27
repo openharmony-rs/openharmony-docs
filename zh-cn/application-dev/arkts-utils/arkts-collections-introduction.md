@@ -1,10 +1,10 @@
 # 共享容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## ArkTS容器集
 
@@ -17,15 +17,16 @@ ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败
 ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[Map](../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[Set](../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、TypedArray（[Int8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）、[ArrayBuffer](../reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md)、[BitVector](../reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md)、[ConcatArray](../reference/apis-arkts/arkts-apis-arkts-collections-ConcatArray.md)，具体可见[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)。
 
 容器集使用示例如下：
+<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
 
-```ts
+``` TypeScript
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';
 
 @Concurrent
 async function add(arr: collections.Array<number>, lock: ArkTSUtils.locks.AsyncLock) {
- await lock.lockAsync(() => {  // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
-   arr[0]++;
- })
+  await lock.lockAsync(() => { // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
+    arr[0]++;
+  })
 }
 
 @Entry
@@ -54,8 +55,10 @@ struct Index {
           }
           taskpool.execute(taskGroup).then(() => {
             console.info(`Return success: ${arr[0]} === ${count}`);
+            this.message = 'success';
           }).catch((e: Error) => {
-            console.error("Return error.");
+            console.error('Return error.');
+            this.message = 'failed';
           })
         })
     }
@@ -64,7 +67,6 @@ struct Index {
   }
 }
 ```
-<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) -->
 
 ## 共享容器与原生API方法的行为差异对比
 
@@ -78,13 +80,13 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 
 ### Array
 
-支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将 ArkTS Array容器转换为原生容器Array。
+支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将ArkTS Array容器转换为原生容器Array。
 
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |
 | length: number | readonly length: number | 是 | 为了防止undefined扩散，不允许设置length。 |
-| new(arrayLength ?: number): any[] | static create(arrayLength: number, initialValue: T): Array | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值。 |
-| new &lt;T&gt;(arrayLength: number): T[] | constructor() | 否 | 构造时传入的数据必须为Sendable类型，否则将导致编译错误。 |
+| new(arrayLength?: number): any[] | static create(arrayLength: number, initialValue: T): Array | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值。 |
+| new &lt;T&gt;(arrayLength: number): T[] | constructor() | 是 | 构造时传入的数据必须为Sendable类型，否则将导致编译错误。 |
 | new &lt;T&gt;(...items: T[]): T[] | constructor(first: T, ...left: T[]) | 是 | 为了防止undefined扩散，构造函数中必须提供一个初始值，继承场景下，无法调用该函数进行对象构造。 |
 | from&lt;T&gt;(arrayLike: ArrayLike&lt;T&gt;): T[] | static from&lt;T&gt;(arrayLike: ArrayLike&lt;T&gt;): Array&lt;T&gt; | 否 | / |
 | from&lt;T, U&gt;(iterable: Iterable&lt;T&gt; \| ArrayLike&lt;T&gt;, mapfn: (v: T, k: number) => U, thisArg?: any): U[] | static from&lt;U, T&gt;(arrayLike: ArrayLike&lt;U&gt; \| Iterable&lt;U&gt;, mapFn: ArrayFromMapFn&lt;U, T&gt;): Array&lt;T&gt; | 否 | / |
@@ -158,7 +160,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) =&gt; number, initialValue: number): number | reduce(callbackFn: TypedArrayReduceCallback&lt;number, number, Int8Array&gt;, initialValue: number): number | 否 | / |
 | reduce&lt;U&gt;(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) =&gt; U, initialValue: U): U | reduce&lt;U&gt;(callbackFn: TypedArrayReduceCallback&lt;U, number, Int8Array&gt;, initialValue: U): U | 否 | / |
 | reverse(): Int8Array | reverse(): Int8Array | 否 | / |
-| set(array: ArrayLike&lt;number&gt;, offset?: number): void | set(array: ArrayLike&lt;number&gt;, offset?: number): void | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作否则会抛出异常。 |
+| set(array: ArrayLike&lt;number&gt;, offset?: number): void | set(array: ArrayLike&lt;number&gt;, offset?: number): void | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
 | slice(start?: number, end?: number): Int8Array | slice(start?: number, end?: number): Int8Array | 否 | / |
 | some(predicate: (value: number, index: number, array: Int8Array) =&gt; unknown, thisArg?: any): boolean | some(predicate: TypedArrayPredicateFn&lt;number, Int8Array&gt;): boolean | 是 | ArkTS不支持this，因此不支持thisArg参数。 |
 | sort(compareFn?: (a: number, b: number) =&gt; number): this | sort(compareFn?: TypedArrayCompareFn&lt;number&gt;): Int8Array | 是 | 1. 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。<br/>2. 继承场景下，无法获得实际类型的返回值。 |
@@ -196,13 +198,13 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | entries(): IterableIterator&lt;[K, V]&gt; | entries(): IterableIterator&lt;[K, V]&gt; | 否 | / |
 | keys(): IterableIterator&lt;K&gt; | keys(): IterableIterator&lt;K&gt; | 否 | / |
 | values(): IterableIterator&lt;V&gt; | values(): IterableIterator&lt;V&gt; | 否 | / |
-| new &lt;K, V&gt;(entries?: readonly (readonly [K, V])[] \| null): Map&lt;K, V&gt; | constructor(entries?: readonly (readonly [K, V])[] \| null) | 是 | 构造时传入的k,v键值不能是非Sendable数据，否则编译会报错。 |
+| new &lt;K, V&gt;(entries?: readonly (readonly [K, V])[] \| null): Map&lt;K, V&gt; | constructor(entries?: readonly (readonly [K, V])[] \| null) | 是 | 构造时传入的k,v键值必须均为Sendable数据，否则编译会报错。 |
 
 ### Set
 
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |
-| readonly size: number | readonly size: number | 是 | Sendable类和接口中不允许使用计算属性名称(arkts-sendable-compated-prop-name)。 |
+| readonly size: number | readonly size: number | 是 | Sendable类和接口中不允许使用计算属性名称(arkts-sendable-computed-prop-name)。 |
 | add(value: T): this | add(value: T): Set&lt;T&gt; | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
 | clear(): void | clear(): void | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
 | delete(value: T): boolean | delete(value: T): boolean | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
@@ -210,5 +212,5 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | has(value: T): boolean | has(value: T): boolean | 是 | 不允许在遍历、访问过程中进行元素的增、删、改操作，否则会抛出异常。 |
 | entries(): IterableIterator&lt;[T, T]&gt; | entries(): IterableIterator&lt;[T, T]&gt; | 否 | / |
 | keys(): IterableIterator&lt;T&gt; | keys(): IterableIterator&lt;T&gt; | 否 | / |
-| values(): IterableIterator&lt;T&gt; | values(): IterableIterator&lt;T&gt; | 是 | Sendable类和接口中不允许使用计算属性名称(arkts-sendable-compated-prop-name)。 |
+| values(): IterableIterator&lt;T&gt; | values(): IterableIterator&lt;T&gt; | 是 | Sendable类和接口中不允许使用计算属性名称(arkts-sendable-computed-prop-name)。 |
 | new &lt;T = any&gt;(values?: readonly T[] \| null): Set&lt;T&gt; | constructor(values?: readonly T[] \| null) | 是 | 构造时传入的数据必须为Sendable类型，否则将导致编译错误。 |

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -12,22 +12,32 @@
 
 AppStartup提供了一种简单高效的应用启动方式，可以支持任务的异步启动，加快应用启动速度。同时，通过在一个配置文件中统一设置多个启动任务的执行顺序以及依赖关系，让执行启动任务的代码变得更加简洁清晰、容易维护。
 
+**图1** 启动框架使用场景
+
+![app-startup-intro](figures/app-startup-intro.png)
+
 ## 运行机制
 
-启动框架支持以自动模式或手动模式执行启动任务，默认采用自动模式。在构造[AbilityStage](ability-terminology.md#abilitystage)过程中开始加载开发者配置的启动任务，并执行自动模式的启动任务。开发者也可以在AbilityStage创建完后调用[startupManager.run](../reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md#startupmanagerrun)方法，执行手动模式的启动任务。
+启动框架支持以自动模式或手动模式执行启动任务，默认采用自动模式。在构造[AbilityStage](ability-terminology.md#abilitystage)过程中开始加载开发者配置的启动任务，以自动模式执行启动任务。
 
-**图1** 启动框架执行时机
+**图2** 启动框架自动模式执行时机
 
-![app-startup-procedure](figures/app-startup-procedure.png)
+![app-startup-auto](figures/app-startup-auto.png)
+
+开发者也可以在AbilityStage创建完后调用[startupManager.run](../reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md#startupmanagerrun)方法，执行手动模式的启动任务。
+
+**图3** 启动框架手动模式执行时机
+
+![app-startup-run](figures/app-startup-run.png)
 
 
 ## 支持的范围
 
 - HAP：entry类型的HAP支持以自动和手动模式启动。从API version 20开始，feature类型的HAP支持以自动和手动模式启动。
 
-- HSP/HAR: 从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。
+- HSP/HAR：从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。
 
-- 启动框架从API 18开始支持配置so预加载任务，so文件开发可以参考[Node-API](../napi/use-napi-process.md)创建Native C++工程。
+- 启动框架从API version 18开始支持配置[应用级so](ability-terminology.md#应用级so)预加载任务，so文件开发可以参考[Node-API](../napi/use-napi-process.md)创建Native C++工程。不支持配置[系统级so](ability-terminology.md#系统级so)预加载任务。
 
 
 ## 约束限制
@@ -84,7 +94,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 在启动框架配置文件startup_config.json中，可以添加启动参数的配置信息。
 
-1. 在“ets/startup”路径下，创建启动参数配置文件。本例中的文件名为StartupConfig.ets。
+1. 在工程的“ets”目录下创建“startup”文件夹，并在“ets/startup”路径下创建启动参数配置文件。本例中，启动参数配置文件的文件名为StartupConfig.ets。
 2. 在启动框架配置文件startup_config.json中，添加启动参数配置文件的相关信息。
 
    startup_config.json文件示例如下：
@@ -107,13 +117,13 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 | -------- | -------- | -------- | -------- |
 | startupTasks | 启动任务配置信息，详见[定义启动任务配置](#定义启动任务配置)。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadHintStartupTasks | 预加载so任务配置信息，详见[定义预加载so任务配置](#定义预加载so任务配置)。 | 对象数组 | 该标签可缺省，缺省值为空。 |
-| configEntry | 启动参数配置文件所在路径。详见[设置启动参数](#设置启动参数)。<br/>**说明：**<br/>- HSP、HAR中不允许配置`configEntry`字段。<br/>- 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆原理及功能](../arkts-utils/source-obfuscation.md)的[-keep-file-name](../arkts-utils/source-obfuscation.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
+| configEntry | 启动参数配置文件所在路径。详见[设置启动参数](#设置启动参数)。<br/>**说明：**<br/>- HSP、HAR中不允许配置`configEntry`字段。<br/>- 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation-rule-options.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆保留选项](../arkts-utils/source-obfuscation-keep-options.md)的[-keep-file-name](../arkts-utils/source-obfuscation-keep-options.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
 
 ### 定义启动任务配置
 
 假设当前应用启动框架共包含6个启动任务，任务之间的依赖关系如下图所示。为了便于并发执行启动任务，单个启动任务文件包含的启动任务应尽量单一，本例中每个启动任务对应一个启动任务文件。
 
-**图2** 启动任务依赖关系图
+**图4** 启动任务依赖关系图
 
 ![app-startup-task](figures/app-startup-task.png)
 
@@ -190,7 +200,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | name | 启动任务名称，可自定义，推荐与类名保持一致。 | 字符串 | 该标签不可缺省。 |
-| srcEntry | 启动任务对应的文件路径。<br/>**说明：** <br/> 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆原理及功能](../arkts-utils/source-obfuscation.md)的[-keep-file-name](../arkts-utils/source-obfuscation.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
+| srcEntry | 启动任务对应的文件路径。<br/>**说明：** <br/> 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation-rule-options.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆保留选项](../arkts-utils/source-obfuscation-keep-options.md)的[-keep-file-name](../arkts-utils/source-obfuscation-keep-options.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
 | dependencies | 启动任务依赖的其他启动任务的类名数组。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | excludeFromAutoStart | 是否排除自动模式，详细介绍可以查看[修改启动模式](#修改启动模式)。 <br/>-&nbsp;true：手动模式。 <br/>-&nbsp;false：自动模式。<br/>**说明：**<br/> HSP、HAR中startupTask里的excludeFromAutoStart标签必须配置为true。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | runOnThread | 执行初始化所在的线程。<br/>-&nbsp;`mainThread`：在主线程中执行。<br/>-&nbsp;`taskPool`：在异步线程中执行。 | 字符串 | 该标签可缺省，缺省值为`mainThread`。 |
@@ -202,7 +212,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 假设当前应用启动框架共包含6个so预加载任务，任务之间的依赖关系如下图所示。不建议应用在so文件的加载回调中运行代码逻辑，so文件的加载不宜过长，否则会影响主线程的运行。
 
-**图3** so预加载任务依赖关系图
+**图5** so预加载任务依赖关系图
 
 ![app-startup-so-task](figures/app-startup-so-task.png)
 
@@ -289,7 +299,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
 ``` TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
+import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -314,7 +324,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     };
     return config;
   }
-// ···
+  // ...
 }
 ```
 
@@ -362,26 +372,29 @@ export default class StartupTask_001 extends StartupTask {
 
  通常大型应用会有多个[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)，本节将提供一个应用示例，以展示如何在HSP包和HAR包中使用启动框架。该示例应用包括两个HSP包（hsp1、hsp2）和一个HAR包（har1），并且包含启动任务和so预加载任务。
 
+假设当前应用存在的启动任务与so预加载任务如下表所示。
+
+**表4** 应用启动任务与so预加载任务说明
+
+| 模块  | 启动任务                        | so预加载任务                |
+| ----- | ------------------------------- | --------------------------- |
+| entry | HAP_Task_01                     | libentry_01                 |
+| hsp1  | HSP1_Task_01 <br/> HSP1_Task_02 | libhsp1_01 <br/> libhsp1_02 |
+| hsp2  | HSP2_Task_01                    | libhsp2_01                  |
+| har   | HAR1_Task_01                    | libhar1_01                  |
+
+**图6** 启动任务与so预加载依赖关系图
+
+![app-startup](figures/app-startup-hsp-har.png)
+
+
+
  开发步骤如下：
 
   1. 除[HAP](../quick-start/hap-package.md)外，在HSP包和HAR包的“resources/base/profile”目录下创建启动框架配置文件，不同模块可以使用相同文件名，本文以"startup_config.json"为例。
   
   2. 分别在各个模块的启动框架配置文件startup_config.json中， 添加对应的配置信息。
      
-        假设当前应用存在的启动任务与so预加载任务如下表所示。
-        
-        **表4** 应用启动任务与so预加载任务说明
-        | 模块 | 启动任务 | so预加载任务 |
-        | ------- | -------------------------------- | -------------------------------- |
-        | entry | HAP_Task_01 | libentry_01 |
-        | hsp1 | HSP1_Task_01 <br/> HSP1_Task_02 | libhsp1_01 <br/> libhsp1_02 |
-        | hsp2 | HSP2_Task_01 | libhsp2_01 |
-        | har | HAR1_Task_01 | libhar1_01 |
-        
-        **图4** 启动任务与so预加载依赖关系图
-
-        ![app-startup](figures/hsp-har-startup.png)
-  
         [HAP](../quick-start/hap-package.md)的startup_config.json可参考[定义启动任务配置](#定义启动任务配置)，HSP与HAR的startup_config.json文件无法配置"configEntry"字段，以hsp1包配置文件为例，示例如下：
         
         ```json
@@ -413,7 +426,7 @@ export default class StartupTask_001 extends StartupTask {
           ]
         }
         ```
-
+        
   3. 分别在各个模块的[module.json5配置文件](../quick-start/module-configuration-file.md)的appStartup标签中，添加启动框架配置文件的索引。
 
         hsp1、hsp2以及har1的module.json5示例代码如下。
@@ -445,14 +458,14 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "har1",
             "type": "har",
-            // ···
-            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ...
+            "appStartup": "$profile:startup_config" // 启动框架的配置文件
           }
         }
         ```
@@ -545,6 +558,10 @@ struct Index {
 
 在通过卡片、通知、意图调用等方式拉起某个页面时，为了实现功能服务一步直达，可以通过添加matchRules匹配规则，仅加载与当前场景相关的部分启动任务，无需加载全部默认的自动启动任务，以提高启动性能。
 
+**图7** 启动任务设置匹配规则
+
+![app-startup-matchRules](figures/app-startup-matchRules.png)
+
 可以通过以下两种方式添加匹配规则：
 
 * 通过matchRules中的uris、actions、insightIntents字段，根据UIAbility启动时的uri、action或意图名称，匹配不同场景启动任务及预加载so任务。
@@ -612,20 +629,19 @@ struct Index {
   1. 对[设置启动参数](#设置启动参数)步骤中的MyStartupConfigEntry.ets文件进行修改，新增[onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20)方法。
 
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
-
+     
      ``` TypeScript
-     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
-     // ···
+     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+     // ...
      
      export default class MyStartupConfigEntry extends StartupConfigEntry {
-     // ···
+       // ...
        onRequestCustomMatchRule(want: Want): string {
          if (want?.parameters?.fromType == 'card') {
            return 'ruleCard';
          }
          return '';
        }
-     
      }
      ```
   2. 对[定义启动任务配置](#定义启动任务配置)步骤中的startup_config.json文件进行修改，增加StartupTask_006任务的matchRules配置。预加载so任务不支持customization字段，按任务原有的excludeFromAutoStart配置处理。
@@ -657,6 +673,10 @@ struct Index {
 > **说明：**
 >
 > 由于启动任务在AbilityStage模块加载前被调度执行，改变了原有的执行顺序。如果启动任务依赖于AbilityStage模块的加载，可能会导致运行结果不符合预期，请参考[模块加载副作用及优化](../arkts-utils/arkts-module-side-effects.md)对依赖部分进行适配。
+
+**图8** 设置启动任务提前调度
+
+![app-startup-preAbilityStageLoad](figures/app-startup-preAbilityStageLoad.png)
 
 例如，应用首页需要通过网络请求获取Feed流数据，且希望该任务能在异步线程中与AbilityStage模块加载并发执行。假设网络请求任务为[定义启动任务配置](#定义启动任务配置)步骤中的StartupTask_004，开发步骤如下：
 

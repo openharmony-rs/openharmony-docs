@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-The **Environment** module provides JS APIs for obtaining the root directories of the storage and user files.
+This module provides ArkTS APIs for obtaining the root directories of the storage and public files.
 
 > **NOTE**
 >
@@ -97,7 +97,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getUserDataDir():Promise&lt;string&gt;
 
-Obtains the root directory of user files. This API uses a promise to return the result.
+Obtains the root directory of public files. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.Environment
 
@@ -143,7 +143,7 @@ Obtains the root directory of user files. This API uses an asynchronous callback
 
 | Name  | Type                       | Mandatory| Description                            |
 | -------- | --------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the root directory of user files.|
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the root directory of public files.|
 
 **Error codes**
 

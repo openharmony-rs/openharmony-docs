@@ -1,8 +1,8 @@
 # ArkUI_NumberValue
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef union {...} ArkUI_NumberValue
 
 ## Overview
 
-Provides the number types of ArkUI on the native side.
+Defines a numeric type used by ArkUI on the native side, including floating-point, signed integer, and unsigned integer types.
 
 **Since**: 12
 
@@ -26,6 +26,6 @@ Provides the number types of ArkUI on the native side.
 
 | Name| Description|
 | -- | -- |
-| float f32 | Floating-point number.|
-| int32_t i32 | Signed integer.|
-| uint32_t u32 | Unsigned integer.|
+| float f32 | Variable of floating-point type, used to store floating-point values.|
+| int32_t i32 | Variable of signed integer type, used to store signed integer values.|
+| uint32_t u32 | Variable of unsigned integer type, used to store unsigned integer values.|

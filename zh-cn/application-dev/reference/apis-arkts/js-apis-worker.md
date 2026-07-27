@@ -1,12 +1,12 @@
 # @ohos.worker (启动一个Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-Worker是与主线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker时传入的URL文件在Worker线程中执行，可以处理耗时操作，但不能直接操作UI。
+Worker是与宿主线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker时传入的URL文件在Worker线程中执行，可以处理耗时操作，但不能直接操作UI。
 
 Worker的主要作用是为应用程序提供多线程运行环境，使应用程序在执行过程中与宿主线程分离，在后台线程中运行脚本处理耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。由于Worker一旦创建不会主动销毁，若不处于任务状态会一直运行，造成资源浪费，应及时销毁空闲的Worker。
 
@@ -24,14 +24,14 @@ import { worker } from '@kit.ArkTS';
 ```
 
 
-## 属性
+## 常量
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
-| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | 否   | 否   | Worker线程用于与宿主线程通信的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。                         |
-| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | 否   | 否   | Worker线程用于与宿主线程通信的对象。<br/>此属性从API version 7开始支持，从API version 9开始被废弃。<br/>建议使用workerPort<sup>9+</sup>替代。 |
+| 名称                              | 类型                                                         | 只读 | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | 是   | Worker线程用于与宿主线程通信的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。                         |
+| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | 是   | Worker线程用于与宿主线程通信的对象。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[workerPort](#常量)替代。|
 
 
 ## WorkerOptions
@@ -43,14 +43,14 @@ Worker构造函数的选项，用于为Worker添加其他信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | -------- | ---- | ---- | -------------- |
 | type | 'classic' \| 'module' | 否   | 是 | Worker执行脚本的模式类型，暂不支持module类型，默认值为"classic"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| name | string   | 否   | 是 | Worker的名称，默认值为undefined。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| name | string   | 否   | 是 | Worker的名称。<br/>默认值为undefined，此时线程名称为'WorkerThread'。<br/>非默认值情况下，对应的线程名称带有'WorkerThread_'前缀。比如name为'testName'时，对应的线程名称为'WorkerThread_testName'。<br/>线程名称可通过[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)的threadName获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | shared | boolean | 否   | 是 | 表示Worker共享功能，此接口暂不支持。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | 否   | 是 | 表示Worker线程优先级。默认值为MEDIUM。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 
 ## ThreadWorkerPriority<sup>18+</sup>
 
-Worker线程的优先级枚举，各优先级对应关系请参考[QoS等级定义](../../napi/qos-guidelines.md#qos等级定义)。
+Worker线程的优先级枚举，各优先级对应关系请参考[QoS等级定义](../../kernel-enhance/qos-guidelines.md#qos等级定义)。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -81,7 +81,7 @@ Worker线程的优先级枚举，各优先级对应关系请参考[QoS等级定�
 | onmessage<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。表示宿主线程接收到来自其创建的Worker通过workerPort.[postMessage](#postmessage9-3)或workerPort.[postMessageWithSharedSendable](#postmessagewithsharedsendable12-1)接口发送的消息时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为[MessageEvents](#messageevents9)，表示收到的Worker线程发送的消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
 | onmessageerror<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。用于处理Worker对象接收到的无法被序列化的消息。该处理程序在宿主线程中执行，event类型为[MessageEvents](#messageevents9)，表示收到的Worker消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
 
-使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生jscrash问题。注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。
+使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生崩溃问题。注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。
 
 onAllErrors接口与onerror接口之间的行为差异如下：
 
@@ -120,21 +120,20 @@ ThreadWorker构造函数。
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | 是   | Worker线程文件的路径。<br/>路径规则详细参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。 |
-| options   | [WorkerOptions](#workeroptions) | 否   | Worker构造的选项。                                           |
+| options   | [WorkerOptions](#workeroptions) | 否   | Worker构造的选项。此参数不填时，对应各属性取其默认值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failed. |
 | 10200007 | The worker file path is invalid. |
 
 **示例：**
 
-以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+以下示例展示了在Stage模型的entry模块Index.ets文件中加载Worker线程文件的方法，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
 
 ```ts
 // Index.ets
@@ -159,16 +158,15 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| message  | Object        | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| message  | Object        | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | transfer | ArrayBuffer[] | 是   | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将会变为不可用，仅在Worker线程中可用，数组不可传入null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -260,16 +258,15 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object                                    | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| message | Object                                    | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | options | [PostMessageOptions](#postmessageoptions) | 否   | 当填入该参数时，传输的数据将通过所有权转移的方式发送到Worker线程。这些数据在宿主线程中将变为不可用，仅在Worker线程中可用。<br>若不填入该参数，默认设置为 undefined，数据将通过拷贝的方式传输到Worker线程。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -285,10 +282,7 @@ workerInstance.postMessage("hello world");
 let buffer = new ArrayBuffer(8);
 
 // 填入options参数，buffer的所有权会转移到Worker线程，在宿主线程中将不可用
-workerInstance.postMessage(buffer, [buffer]);
-
-// 未填入options参数，默认值为undefined，通过拷贝数据的方式将buffer发送到Worker线程
-workerInstance.postMessage(buffer);
+workerInstance.postMessage(buffer, {transfer: [buffer]});
 ```
 
 
@@ -306,16 +300,15 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化类型说明](#序列化支持类型)。如果需要共享数据，支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。如果需要共享数据，支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
 | transfer | ArrayBuffer[] | 否 | 可转移的ArrayBuffer实例对象数组。该数组中对象的所有权将转移到Worker线程，在宿主线程中变为不可用，仅在Worker线程中可用，数组不可传入null。默认值为空数组。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -343,7 +336,7 @@ workerInstance.postMessage(object);
 
 @Sendable
 export class SendableObject {
-  a:number = 45;
+  value:number = 45;
 }
 ```
 
@@ -360,7 +353,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
   let obj: SendableObject = e.data;
-  console.info("sendable obj is: " + obj.a);
+  console.info("sendable obj is: " + obj.value);
 }
 ```
 
@@ -384,13 +377,12 @@ on(type: string, listener: WorkerEventListener): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **示例：**
 
@@ -429,13 +421,12 @@ once(type: string, listener: WorkerEventListener): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **示例：**
 
@@ -450,9 +441,6 @@ workerInstance.once("alert", () => {
 })
 
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
-
-// 使用once添加的事件监听在执行一次后自动删除，无法多次执行
-// workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 ```
 
 
@@ -470,18 +458,17 @@ off(type: string, listener?: WorkerEventListener): void
 
 | 参数名   | 类型                                         | 必填 | 说明                         |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | 是   | 需要删除的事件类型。         |
+| type     | string                                       | 是   | 需要删除的事件类型。事件类型通过[on<sup>9+</sup>](#on9)设置。|
 | listener | [WorkerEventListener](#workereventlistener9) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **示例：**
 
@@ -530,16 +517,15 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 
 **示例：**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -575,7 +561,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // 调用方法有入参
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // 异常处理
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -601,12 +587,11 @@ unregisterGlobalCallObject(instanceName?: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 ```ts
@@ -628,7 +613,6 @@ workerInstance.registerGlobalCallObject("myObj", registerObj);
 // 取消对象注册
 workerInstance.unregisterGlobalCallObject("myObj");
 // 取消ThreadWorker实例上的所有对象注册
-//workerInstance.unregisterGlobalCallObject();
 workerInstance.postMessage("start worker");
 ```
 
@@ -636,7 +620,7 @@ workerInstance.postMessage("start worker");
 
 terminate(): void
 
-销毁Worker线程并停止Worker线程接收消息。
+由宿主线程主动销毁Worker线程并停止Worker线程接收消息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -680,13 +664,12 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **示例：**
 
@@ -719,17 +702,16 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 参数名   | 类型                                         | 必填 | 说明                         |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | 是   | 需要删除的监听事件类型。     |
-| callback | [WorkerEventListener](#workereventlistener9) | 否 | 回调函数，删除监听事件后执行。 |
+| type     | string                                       | 是   | 需要删除的监听事件类型。事件类型通过[addEventListener<sup>9+</sup>](#addeventlistener9)设置。 |
+| callback | [WorkerEventListener](#workereventlistener9) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -773,12 +755,11 @@ dispatchEvent(event: Event): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -792,7 +773,7 @@ workerInstance.addEventListener("alert", () => {
   console.info("alert listener callback");
 })
 
-let result: Boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
+let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp暂未支持
 
 console.info("dispatchEvent result is: ", result);
 ```
@@ -816,7 +797,7 @@ removeAllListener(): void
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -854,11 +835,10 @@ addEventListener(type: string, listener: WorkerEventListener): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.              |
 | 10200005 | The called API is not supported in the worker thread. |
 
@@ -892,8 +872,8 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 参数名   | 类型                                         | 必填 | 说明                         |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | 是   | 需要删除的监听事件类型。     |
-| callback | [WorkerEventListener](#workereventlistener9) | 否 | 回调函数，删除监听事件后执行。 |
+| type     | string                                       | 是   | 需要删除的监听事件类型。事件类型通过[addEventListener<sup>9+</sup>](#addeventlistener9-1)设置。     |
+| callback | [WorkerEventListener](#workereventlistener9) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 
@@ -901,7 +881,6 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running. |
 
 **示例：**
@@ -946,11 +925,10 @@ dispatchEvent(event: Event): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running. |
 
 **示例：**
@@ -1019,8 +997,8 @@ Worker线程用于与宿主线程通信的类。ThreadWorkerGlobalScope类继承
 
 | 名称   | 类型                    | 只读 | 可选 | 说明                                                         |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onmessage<sup>9+</sup> | (this: ThreadWorkerGlobalScope, ev: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。表示Worker线程收到来自其宿主线程通过[postMessage](#postmessage9-1)或[postMessageWithSharedSendable](#postmessagewithsharedsendable12)接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[ThreadWorkerGlobalScope](#threadworkerglobalscope9)，ev类型为[MessageEvents](#messageevents9)，表示收到的宿主线程发送的消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
-| onmessageerror<sup>9+</sup> | (this: ThreadWorkerGlobalScope, ev: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。表示当Worker线程的Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[ThreadWorkerGlobalScope](#threadworkerglobalscope9)，ev类型为[MessageEvents](#messageevents9)，表示收到的消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
+| onmessage<sup>9+</sup> | (this: [ThreadWorkerGlobalScope](#threadworkerglobalscope9), ev: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。表示Worker线程收到来自其宿主线程通过[postMessage](#postmessage9-1)或[postMessageWithSharedSendable](#postmessagewithsharedsendable12)接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[ThreadWorkerGlobalScope](#threadworkerglobalscope9)，ev类型为[MessageEvents](#messageevents9)，表示收到的宿主线程发送的消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
+| onmessageerror<sup>9+</sup> | (this: [ThreadWorkerGlobalScope](#threadworkerglobalscope9), ev: [MessageEvents](#messageevents9)) => void | 否 | 是 | 回调函数。表示当Worker线程的Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[ThreadWorkerGlobalScope](#threadworkerglobalscope9)，ev类型为[MessageEvents](#messageevents9)，表示收到的消息数据。默认值为undefined。<br/>**原子化服务API**：从API version 11开始，该属性支持在原子化服务中使用。|
 
 ### postMessage<sup>9+</sup>
 
@@ -1036,16 +1014,15 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| messageObject  | Object        | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| messageObject  | Object        | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | transfer | ArrayBuffer[] | 是   | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1058,7 +1035,7 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
 workerInstance.postMessage("hello world");
 workerInstance.onmessage = (e: MessageEvents): void => {
-    console.info("receive data from worker.ets");
+  console.info("receive data from worker.ets");
 }
 ```
 
@@ -1068,8 +1045,8 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
-    let buffer = new ArrayBuffer(8);
-    workerPort.postMessage(buffer, [buffer]);
+  let buffer = new ArrayBuffer(8);
+  workerPort.postMessage(buffer, [buffer]);
 }
 ```
 
@@ -1087,16 +1064,15 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | options | [PostMessageOptions](#postmessageoptions) | 否   | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将变为不可用，仅在宿主线程中可用。<br/>若不填入该参数，默认设置为 undefined，通过拷贝数据的方式传输信息到宿主线程。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1138,16 +1114,15 @@ Worker线程向宿主线程发送消息，消息中的[Sendable对象](../../ark
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见[序列化类型说明](#序列化支持类型)，共享支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见[序列化支持类型](#序列化支持类型)，共享支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
 | transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1212,7 +1187,7 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | instanceName | string                                    | 是   | 注册对象时使用的键，用于在宿主线程中查找对象。 |
 | methodName | string | 是 | 在已注册对象上调用的方法名。该方法不能使用async修饰，也不能基于底层异步机制返回结果，否则会抛出异常。 |
-| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间，单位为ms，取整数，取值范围为[1-5000]ms。也可取特殊值0，此时表示本次调用等待时间为5000ms。<br>API version 21 之前，在debug模式下受此参数设置的最大等待时间限制。 <br> 从API version 21 开始，在debug模式下不受此参数设置的最大等待时间限制，可一直等待。|
+| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间，单位为ms，取整数，取值范围为[1-5000]ms。超出范围的，则表示本次调用等待时间为5000ms。<br>API version 21 之前，在debug模式下受此参数设置的最大等待时间限制。 <br> 从API version 21 开始，在debug模式下不受此参数设置的最大等待时间限制，可一直等待。|
 | args | Object[] | 否 | 注册对象上所调用方法的参数数组。 |
 
 **返回值：**
@@ -1223,12 +1198,11 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 | 10200019 | The globalCallObject is not registered. |
 | 10200020 | The method to be called is not callable or is an async method or a generator. |
@@ -1236,7 +1210,7 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 **示例：**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -1253,8 +1227,6 @@ let registerObj = new TestObj();
 // 在ThreadWorker实例上注册registerObj
 workerInstance.registerGlobalCallObject("myObj", registerObj);
 workerInstance.postMessage("start worker");
-// 需要在组件生命周期结束时调用：
-// workerInstance.unregisterGlobalCallObject("myObj");
 ```
 
 ```ts
@@ -1274,7 +1246,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // 调用方法有入参
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // 异常处理
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -1320,6 +1292,126 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
+### postMessageAtFront
+
+postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
+
+Worker线程向宿主线程发送插队消息，消息中的[Sendable对象](../../arkts-utils/arkts-sendable.md)通过引用传递，非Sendable对象通过拷贝数据的方式传递。
+
+> **说明：**
+> - 如果是Worker线程向宿主线程发送插队的消息，消息能够插队并且按优先级进行发送。
+> - 如果是Worker线程之间发送插队的消息，消息只能插队，没有优先级。
+> - postMessage和postMessageWithSharedSendable接口向宿主线程发送消息，默认是HIGH优先级，无插队效果。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见[序列化支持类型](#序列化支持类型)，共享支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
+| priority | [Priority](#priority) | 是 | 消息发送的优先级。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | ----------------------------------------- |
+| 10200004 | The Worker instance is not running.           |
+| 10200006 | An exception occurred during serialization. |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+// worker文件路径为：entry/src/main/ets/workers/Worker.ets
+// Worker.ets
+
+import { MessageEvents, ThreadWorkerGlobalScope, worker, Priority } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  workerPort.postMessage("1");
+  workerPort.postMessage("2");
+  // 方式1：使用可选链操作符（推荐，最简洁）
+  workerPort.postMessageAtFront?.("3-idle", Priority.IDLE);
+  workerPort.postMessageAtFront?.("4-immediate", Priority.IMMEDIATE);
+
+  // 方式2：使用非空断言，直接调用（需要确定它一定存在）
+  workerPort.postMessageAtFront!("5-low", Priority.LOW);
+
+  // 方式3：判断方法存在后再使用
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront("6-high", Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable("6-high");
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+// Index.ets
+// 接收Worker线程传递至宿主线程的数据
+
+import { worker, MessageEvents } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
+workerInstance.postMessage("start");
+workerInstance.onmessage = (e: MessageEvents) => {
+  // 模拟耗时操作
+  let start = new Date().getTime();
+  while (new Date().getTime() - start < 1000) {
+    continue;
+  }
+  let res: string = e.data as string;
+  // 执行效果：
+  // result is: 1
+  // result is: 4-immediate
+  // result is: 6-high
+  // result is: 2
+  // result is: 5-low
+  // result is: 3-idle
+  console.info("result is: " + res);
+}
+```
+
+如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
+
+<!--code_no_check-->
+```ts
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';
+
+class ClassA {
+  public obj: string = ""
+}
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  // 使用可选链操作符调用接口，传递字面量对象时会编译报错，需要显式标注对象字面量的类型。
+  // workerPort.postMessageAtFront?.({obj: "obj"}, Priority.HIGH);
+
+  let classAInstance: ClassA = { obj: "obj" };
+  workerPort.postMessageAtFront?.(classAInstance, Priority.HIGH);
+
+  // 使用非空断言，直接调用。可以直接传递对象字面量。
+  workerPort.postMessageAtFront!({ obj: "obj" }, Priority.HIGH);
+  // 判断方法存在后再使用。可以直接传递对象字面量。
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront({ obj: "obj" }, Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable({ obj: "obj" });
+  }
+}
+```
 
 ## WorkerEventListener<sup>9+</sup>
 
@@ -1328,6 +1420,8 @@ workerPort.onmessage = (e: MessageEvents): void => {
 ### (event: Event)<sup>9+</sup>
 
 (event: Event): void | Promise&lt;void&gt;
+
+指定要调用的回调函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1347,13 +1441,12 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.          |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **示例：**
 
@@ -1399,9 +1492,9 @@ Worker线程自身的运行环境，GlobalScope类继承[WorkerEventTarget](#wor
 | ---- | ---- | ---- | ---- | ------------------ |
 | data | any  | 是   | 否   | 线程间传递的数据。 |
 
-## MessageType<sup>7+</sup>
+## MessageType
 
-type MessageType = 'message' | 'messageerror';
+type MessageType = 'message' | 'messageerror'
 
 表示消息类型。预留数据类型，暂未实现。
 
@@ -1428,14 +1521,14 @@ type ErrorCallback = (err: ErrorEvent) => void
 
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| err | ErrorEvent                          | 是   | 错误事件类，表示Worker执行过程中出现的异常信息。 |
+| err | [ErrorEvent](#errorevent)               | 是   | 错误事件类，表示Worker执行过程中出现的异常信息。 |
 
 ## Worker<sup>(deprecated)</sup>
 
 使用以下方法前，均需先构造Worker实例，Worker类继承[EventTarget](#eventtargetdeprecated)。
 
 > **说明：**<br/>
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker<sup>9+</sup>](#threadworker9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker](#threadworker9)替代。
 
 ### 属性
 
@@ -1443,10 +1536,10 @@ type ErrorCallback = (err: ErrorEvent) => void
 
 | 名称   | 类型                    | 只读 | 可选 | 说明                                                         |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onexit<sup>(deprecated)</sup> | (code: number) => void | 否 | 是 | 回调函数。表示Worker销毁时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中code类型为number，异常退出为1，正常退出为0。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onexit](#属性-1)替代。|
-| onerror<sup>(deprecated)</sup> | (err: [ErrorEvent](#errorevent)) => void | 否 | 是 | 回调函数。表示Worker在执行过程中发生异常被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中err类型为[ErrorEvent](#errorevent)，表示收到的异常数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onerror](#属性-1)替代。|
-| onmessage<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数。表示宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onmessage](#属性-1)替代。|
-| onmessageerror<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数。表示当Worker对象接收到一条无法被序列化的消息时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onmessageerror](#属性-1)替代。|
+| onexit<sup>(deprecated)</sup> | (code: number) => void | 否 | 是 | 回调函数。表示Worker销毁时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中code类型为number，异常退出为1，正常退出为0。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onexit](#属性)替代。|
+| onerror<sup>(deprecated)</sup> | (err: [ErrorEvent](#errorevent)) => void | 否 | 是 | 回调函数。表示Worker在执行过程中发生异常被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中err类型为[ErrorEvent](#errorevent)，表示收到的异常数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onerror](#属性)替代。|
+| onmessage<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数。表示宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onmessage](#属性)替代。|
+| onmessageerror<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数。表示当Worker对象接收到一条无法被序列化的消息时被调用的事件处理程序，处理程序在宿主线程中执行。其中回调函数中event类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorker.onmessageerror](#属性)替代。|
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -1468,7 +1561,7 @@ Worker构造函数。
 
 **示例：**
 
-此处以在Stage模型的entry模块Index.ets文件中加载Worker文件为例，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
+此处以在Stage模型的entry模块Index.ets文件中加载Worker线程文件为例，使用Library加载Worker线程文件的场景参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。
 
 ```ts
 // Index.ets
@@ -1493,7 +1586,7 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| message  | Object        | 是   | 发送至Worker的数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| message  | Object        | 是   | 发送至Worker的数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | transfer | ArrayBuffer[] | 是   | 表示可转移的ArrayBuffer实例对象数组，所有权会转移到Worker线程，仅在该线程中可用。数组不可传入null。 |
 
 **示例：**
@@ -1523,7 +1616,7 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object                                    | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| message | Object                                    | 是   | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | options | [PostMessageOptions](#postmessageoptions) | 否   | 当填入该参数时，与传入ArrayBuffer[]的作用一致，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将变为不可用，仅在Worker线程中可用。<br/>若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到Worker线程。 |
 
 **示例：**
@@ -1557,7 +1650,7 @@ on(type: string, listener: EventListener): void
 | 参数名   | 类型                                      | 必填 | 说明             |
 | -------- | ----------------------------------------- | ---- | ---------------- |
 | type     | string                                    | 是   | 监听的事件类型。 |
-| listener | [EventListener](#eventlistenerdeprecated) | 是   | 回调事件。       |
+| listener | [EventListener](#eventlistenerdeprecated) | 是   | 事件触发时的回调函数。 |
 
 **示例：**
 
@@ -1588,7 +1681,7 @@ once(type: string, listener: EventListener): void
 | 参数名   | 类型                                      | 必填 | 说明             |
 | -------- | ----------------------------------------- | ---- | ---------------- |
 | type     | string                                    | 是   | 监听的事件类型。 |
-| listener | [EventListener](#eventlistenerdeprecated) | 是   | 回调事件。       |
+| listener | [EventListener](#eventlistenerdeprecated) | 是   | 事件触发时的回调函数。 |
 
 **示例：**
 
@@ -1618,8 +1711,8 @@ off(type: string, listener?: EventListener): void
 
 | 参数名   | 类型                                      | 必填 | 说明                 |
 | -------- | ----------------------------------------- | ---- | -------------------- |
-| type     | string                                    | 是   | 需要删除的事件类型。 |
-| listener | [EventListener](#eventlistenerdeprecated) | 否   | 移除监听事件后所执行的回调事件。 |
+| type     | string                                    | 是   | 需要删除的事件类型。事件类型通过[on<sup>(deprecated)</sup>](#ondeprecated)设置。 |
+| listener | [EventListener](#eventlistenerdeprecated) | 否   | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **示例：**
 
@@ -1628,7 +1721,7 @@ off(type: string, listener?: EventListener): void
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
-//使用on接口、once接口或addEventListener接口创建“alert”事件，使用off接口删除事件。
+// 使用on接口、once接口或addEventListener接口创建“alert”事件，使用off接口删除事件。
 workerInstance.off("alert");
 ```
 
@@ -1706,8 +1799,8 @@ removeEventListener(type: string, callback?: EventListener): void
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | 是   | 需要移除的事件类型。 |
-| callback | [EventListener](#eventlistenerdeprecated) | 否   | 回调函数，删除监听事件后执行。 |
+| type     | string                                    | 是   | 需要移除的事件类型。事件类型通过[addEventListener<sup>(deprecated)</sup>](#addeventlistenerdeprecated)设置。 |
+| callback | [EventListener](#eventlistenerdeprecated) | 否   | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **示例：**
 
@@ -1729,7 +1822,7 @@ workerPort.removeEventListener('alert');
 
 dispatchEvent(event: Event): boolean
 
-分发定义在Worker的事件。
+分发Worker实例上已注册的事件。
 
 > **说明：**<br/>
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[dispatchEvent<sup>9+</sup>](#dispatchevent9)替代。
@@ -1831,8 +1924,8 @@ Worker线程用于与宿主线程通信的类。DedicatedWorkerGlobalScope类继
 
 | 名称   | 类型                    | 只读 | 可选 | 说明                                                         |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onmessage<sup>(deprecated)</sup> | (this: DedicatedWorkerGlobalScope, ev: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数，表示Worker线程收到来自其宿主线程通过postMessage接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated)，ev类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorkerGlobalScope.onmessage](#属性-2)替代。 |
-| onmessageerror<sup>(deprecated)</sup> | (this: DedicatedWorkerGlobalScope, ev: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数，表示当Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated)，ev类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。从API version 7开始支持，默认值为undefined。<br/>**说明**：从API version 9开始废弃，建议使用[ThreadWorkerGlobalScope.onmessageerror](#属性-2)替代。 |
+| onmessage<sup>(deprecated)</sup> | (this: [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), ev: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数，表示Worker线程收到来自其宿主线程通过postMessage接口发送的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated)，ev类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorkerGlobalScope.onmessage](#属性-2)替代。 |
+| onmessageerror<sup>(deprecated)</sup> | (this: [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), ev: [MessageEvent](#messageeventt)) => void | 否 | 是 | 回调函数，表示当Worker对象接收到一条无法被反序列化的消息时被调用的事件处理程序，处理程序在Worker线程中执行。其中this指调用者对象本身[DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated)，ev类型为[MessageEvent](#messageeventt)，表示收到的Worker消息数据。默认值为undefined。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[ThreadWorkerGlobalScope.onmessageerror](#属性-2)替代。 |
 
 ### postMessage<sup>(deprecated)</sup>
 
@@ -1849,7 +1942,7 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | transfer| Transferable[]                            | 是   | 暂不支持该参数类型。                                         |
 
 ### postMessage<sup>(deprecated)</sup>
@@ -1867,7 +1960,7 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| messageObject  | Object        | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| messageObject  | Object        | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | transfer | ArrayBuffer[] | 是   | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。 |
 
 **示例：**
@@ -1911,7 +2004,7 @@ Worker线程通过转移对象所有权或者拷贝数据的方式向宿主线�
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[其他说明](#序列化支持类型)。 |
+| messageObject | Object                                    | 是   | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。 |
 | options | [PostMessageOptions](#postmessageoptions) | 否   | 当填入该参数时，与传入ArrayBuffer[]的作用一致，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用。<br/>若不填入该参数，默认设置为 undefined，通过拷贝数据的方式传输信息到宿主线程。 |
 
 **示例：**
@@ -1991,8 +2084,8 @@ parentPort.onmessage = (): void => {
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                         |
 | --------- | ------ | ---- | ---- | -------------------------------------------- |
-| type      | string | 是   | 否   | 指定事件的类型。                             |
-| timeStamp | number | 是   | 否   | 事件创建时的时间戳（精度为毫秒），目前不支持。 |
+| type      | string | 是   | 否   | 指定事件的类型。|
+| timeStamp | number | 是   | 否   | 事件创建时的时间戳，单位为ms，目前不支持。 |
 
 
 ## EventListener<sup>(deprecated)</sup>
@@ -2009,7 +2102,7 @@ parentPort.onmessage = (): void => {
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[(event:Event)<sup>9+</sup>](#event-event9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[(event: Event)](#event-event9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2052,7 +2145,7 @@ workerInstance.addEventListener("alert", ()=>{
 | filename | string | 是   | 否   | 出现异常所在的文件。 |
 | lineno   | number | 是   | 否   | 异常所在的行数。     |
 | colno    | number | 是   | 否   | 异常所在的列数。     |
-| error    | Object | 是   | 否   | 异常类型。           |
+| error    | Object | 是   | 否   | 异常对象。           |
 
 
 ## MessageEvent\<T\>
@@ -2083,6 +2176,24 @@ Worker线程自身的运行环境，WorkerGlobalScope类继承[EventTarget](#eve
 | self | [WorkerGlobalScope](#workerglobalscopedeprecated)&nbsp;&amp;&nbsp;typeof&nbsp;globalThis | 是   | 否   | WorkerGlobalScope本身。               |
 | onerror | (ev: [ErrorEvent](#errorevent)) => void | 否 | 是 | Worker在执行过程中发生异常被调用的回调函数，在Worker线程中执行，ev表示收到的异常数据，默认值为undefined。 |
 
+## Priority
+
+表示发送消息时的优先级。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| IMMEDIATE | 1 | 立即执行优先级。表示消息优先于HIGH优先级发送。 |
+| HIGH | 2 | 高优先级。表示消息优先于LOW优先级发送。 |
+| LOW | 3 | 低优先级。表示消息优先于IDLE优先级发送。 |
+| IDLE | 4 | 后台优先级。表示在没有其他优先级消息的情况下，才发送该消息。 |
 
 ## 其他说明
 
@@ -2101,7 +2212,7 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 const workerInstance = new worker.ThreadWorker("workers/worker.ets");
 workerInstance.postMessage("message from main thread to worker");
 workerInstance.onmessage = (d: MessageEvents): void => {
-  // 当Worker线程传递obj2时，data即为obj2。data没有Init、SetName的方法
+  // 当Worker线程传递myModel时，data即为myModel。data没有init的方法
   let data: string  = d.data;
 }
 ```
@@ -2112,7 +2223,7 @@ import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 const workerPort = worker.workerPort;
 class MyModel {
     name = "undefined";
-    Init() {
+    init() {
         this.name = "MyModel";
     }
 }
@@ -2123,8 +2234,8 @@ workerPort.onmessage = (d: MessageEvents): void => {
     console.info("post message is function");
   }
   // workerPort.postMessage(func1); 传递func1发生序列化错误
-  let obj2 = new MyModel();
-  workerPort.postMessage(obj2);     // 传递obj2不会发生序列化错误，obj2中的函数会丢失
+  let myModel = new MyModel();
+  workerPort.postMessage(myModel);     // 传递myModel不会发生序列化错误，myModel中的函数会丢失
 }
 workerPort.onmessageerror = () => {
     console.error("worker.ets onmessageerror");

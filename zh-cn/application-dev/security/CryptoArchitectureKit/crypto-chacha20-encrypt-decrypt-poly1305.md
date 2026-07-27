@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
 对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-sym-encrypt-decrypt-spec.md#chacha20)。
 
@@ -23,13 +23,13 @@
 
 1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'ChaCha20|Poly1305'，创建对称密钥类型为ChaCha20、模式为Poly1305的Cipher实例，用于完成加密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和Poly1305模式对应的加密参数（Poly1305ParamsSpec），初始化加密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和Poly1305模式对应的加密参数（Poly1305ParamsSpec），初始化加密Cipher实例。
 
 3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
 
-    > **说明**
+    > **说明：**
     >
     > 由于已使用update传入数据，此处data传入null。
     >
@@ -43,7 +43,7 @@
 
 1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'ChaCha20|Poly1305'，创建对称密钥类型为ChaCha20、模式为Poly1305的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和Poly1305模式对应的解密参数（Poly1305ParamsSpec），初始化解密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和Poly1305模式对应的解密参数（Poly1305ParamsSpec），初始化解密Cipher实例。
 
 3. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（密文）。
 
@@ -52,18 +52,18 @@
 - 异步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -83,9 +83,9 @@
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // 加密消息。
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -99,19 +99,19 @@
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = await decoder.update(cipherText);
+    let decryptUpdate = await decoder.update(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptUpdate;
   }
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = await chacha20Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   async function main() {
@@ -124,13 +124,13 @@
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
@@ -139,18 +139,18 @@
 - 同步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -170,9 +170,9 @@
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // 加密消息。
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -186,19 +186,19 @@
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = decoder.updateSync(cipherText);
+    let decryptUpdate = decoder.updateSync(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptUpdate;
   }
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = chacha20Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   function main() {
@@ -211,13 +211,13 @@
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

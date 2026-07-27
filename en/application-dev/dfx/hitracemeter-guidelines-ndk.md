@@ -14,7 +14,7 @@ HiTraceMeter provides APIs for system performance tracing. You can call the APIs
 
 ## Available APIs
 
-For details about the APIs, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
+The **HiTraceMeter** module provides APIs for performance tracing. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
 
 | API| Description|
 | -------- | -------- |

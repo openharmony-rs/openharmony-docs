@@ -10,14 +10,16 @@ The module provides common data types in 3D graphics.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
+
 ```ts
 import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
 ```
 
 ## Vec2
+
 A two-dimensional vector used to represent a point or a direction in 2D space. It consists of two components: x and y.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -28,9 +30,11 @@ A two-dimensional vector used to represent a point or a direction in 2D space. I
 | y | number | No| No| Component on the Y axis. The value is a real number.|
 
 ## Vec3
+
 A three-dimensional vector used to represent a point, a direction, or a vector transformation in 3D space. It consists of three components: x, y, and z.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | x | number | No| No| Component on the X axis. The value is a real number.|
@@ -38,9 +42,11 @@ A three-dimensional vector used to represent a point, a direction, or a vector t
 | z | number | No| No| Component on the Z axis. The value is a real number.|
 
 ## Vec4
+
 A four-dimensional vector used to represent a point, a direction, or a vector transformation in 4D space. It consists of four components: x, y, z, and w. The fourth component (w) enhances normalization and convenience for various calculations and transformations.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | x | number | No| No| Component on the X axis. The value is a real number.|
@@ -49,9 +55,11 @@ A four-dimensional vector used to represent a point, a direction, or a vector tr
 | w | number | No| No| Component on the W axis. The value is a real number.|
 
 ## Quaternion
+
 A mathematical notation for representing spatial rotations of elements in 3D space. Compared with Euler angles, a quaternion has advantages in numerical stability and avoiding the gimbal lock problem.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | x | number | No| No| Component on the X axis. The value is a real number.|
@@ -60,18 +68,22 @@ A mathematical notation for representing spatial rotations of elements in 3D spa
 | w | number | No| No| Component on the W axis. The value is a real number.|
 
 ## Aabb
+
 Axis aligned boundary box used to determine whether two objects in space are overlapping.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| aabbMin | [Vec3](#vec3) | No| No| Minimum bounds of the AABB.|
-| aabbMax | [Vec3](#vec3) | No| No| Maximum bounds of the AABB.|
+| aabbMin | [Vec3](#vec3) | No| No| Minimum point of the axis-aligned bounding box, in scene units of the world coordinate system (such as cm, m, km, etc.).|
+| aabbMax | [Vec3](#vec3) | No| No| Maximum point of the axis-aligned bounding box, in scene units of the world coordinate system (such as cm, m, km, etc.).|
 
 ## Color
+
 Color in RGBA format. It consists of four components: red, green, blue, and alpha.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | r | number | No| No| Red component. The value range is [0, 1].|
@@ -80,15 +92,18 @@ Color in RGBA format. It consists of four components: red, green, blue, and alph
 | a | number | No| No| Alpha component. The value range is [0, 1].|
 
 ## Rect
+
 Rectangle in a plane.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | No| No| X coordinate of the lower-left corner of the rectangle, in the units of the coordinate system it belongs to. It can be any real number, with the specific range depending on the scene's coordinate system settings.|
-| y | number | No| No| Y coordinate of the lower-left corner of the rectangle, in the units of the coordinate system it belongs to. It can be any real number, with the specific range depending on the scene's coordinate system settings.|
-| width | number | No| No| Width of the rectangle, in the units of the coordinate system it belongs to. The value must be greater than 0.|
-| height | number | No| No| Height of the rectangle, in the units of the coordinate system it belongs to. The value must be greater than 0.|
+| x | number | No| No| X component of the rectangle's bottom-left corner, in scene units of the world coordinate system (such as cm, m, km, etc.). The value can be any real number, and the specific range depends on the scene coordinate system settings.|
+| y | number | No| No| Y component of the rectangle's bottom-left corner, in scene units of the world coordinate system (such as cm, m, km, etc.). The value can be any real number, and the specific range depends on the scene coordinate system settings.|
+| width | number | No| No| Rectangle width, in scene units of the world coordinate system (such as cm, m, km, etc.). The valid value range is greater than 0.|
+| height | number | No| No| Rectangle height, in scene units of the world coordinate system (such as cm, m, km, etc.). The valid value range is greater than 0.|
+
 ## RenderingPipelineType<sup>21+</sup>
 
 Enumerates the rendering pipeline types.
@@ -115,9 +130,11 @@ Enumerates the geometry types.
 | CYLINDER<sup>23+</sup> | 4 | Cylinder.|
 
 ## GeometryDefinition<sup>18+</sup>
+
 An abstract class used to define the properties of specific geometry types.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | geometryType | [GeometryType](#geometrytype18)| Yes| No| Type of geometry.|
@@ -134,6 +151,7 @@ Enumerates the vertex processing methods.
 | TRIANGLE_STRIP | 1 | Each vertex and the edge of the previous triangle create a new triangle.|
 
 ## CustomGeometry<sup>18+</sup>
+
 A custom geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -148,24 +166,27 @@ A custom geometry type that inherits from [GeometryDefinition](#geometrydefiniti
 | colors | [Color](#color)[] | No| Yes| Array of colors for the vertices. The default value is undefined.|
 
 ## CubeGeometry<sup>18+</sup>
+
 A cube geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec3](#vec3) | No| No| Width, height, and depth of the cube, defining its size.|
+| size | [Vec3](#vec3) | No| No| Width, height, and depth of the cube, indicating the size of the cube. The unit is the scene unit in the world coordinate system (such as cm, m, km, etc.).|
 
 ## PlaneGeometry<sup>18+</sup>
+
 A plane geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec2](#vec2) | No| No| Width and height of the plane, defining its size.|
+| size | [Vec2](#vec2) | No| No| Width and height of the plane, indicating the size of the plane. The unit is the scene unit in the world coordinate system (such as cm, m, km, etc.).|
 
 ## SphereGeometry<sup>18+</sup>
+
 A sphere geometry type that inherits from [GeometryDefinition](#geometrydefinition18).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -173,7 +194,7 @@ A sphere geometry type that inherits from [GeometryDefinition](#geometrydefiniti
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | No| No| Radius of the sphere, measured in the world coordinate system's units (for example, cm, m, or km). The value must be greater than 0.|
-| segmentCount | number | No| No| Number of segments dividing the sphere along latitude and longitude. The value must be greater than 0.|
+| segmentCount | number | No| No| Number of segments divided by longitude and latitude on the sphere. The value range is a positive integer greater than or equal to 3.|
 
 ## CylinderGeometry<sup>23+</sup>
 
@@ -183,8 +204,8 @@ A cylinder geometry type that inherits from [GeometryDefinition](#geometrydefini
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| radius | number | No| No| Base radius of the cylinder. The value must be greater than 0.|
-| height | number | No| No| Height of the cylinder. The value must be greater than 0.|
+| radius | number | No| No| Bottom radius of the cylinder, in scene units of the world coordinate system (such as cm, m, km, etc.). The value range is greater than 0.|
+| height | number | No| No| Height of the cylinder, in scene units of the world coordinate system (such as cm, m, km, etc.). The value range is greater than 0.|
 | segmentCount | number | No| No| Number of segments around the circumference of the cylinder. The value must be an integer greater than or equal to 3. If a floating-point number is provided, it is automatically rounded down. This value directly affects the smoothness of the curved surface. A higher number results in more polygons and a smoother appearance, whereas a lower number results in visible faceting. Note that a very high value can increase the time required to create the geometry and may cause thread blocking.|
 
 > **NOTE**
@@ -196,9 +217,11 @@ For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV lay
 ![cylinder](figures/cylinder.png)
 
 ## Mat4x4<sup>23+</sup>
+
 A camera matrix, which is a mathematical tool for transforming 3D world coordinates into 2D image coordinates.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | x | [Vec4](#vec4) | No| No| The first column of the matrix, represented as a four-dimensional vector.|
@@ -207,6 +230,7 @@ A camera matrix, which is a mathematical tool for transforming 3D world coordina
 | w | [Vec4](#vec4) | No| No| The fourth column of the matrix, represented as a four-dimensional vector.|
 
 ## Position3
+
 type Position3 = Vec3
 
 Position of an object in 3D space. The value is of the [Vec3](#vec3) type.
@@ -215,9 +239,10 @@ Position of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 | Type | Description|
 | ---- | ---- |
-| [Vec3](#vec3) | Any 3D vector.|
+| [Vec3](#vec3) | The type is a three-dimensional vector. The unit is the scene unit in the world coordinate system (such as cm, m, and km). The value can be any value.|
 
 ## Rotation3
+
 type Rotation3 = Vec3
 
 Rotation of an object in 3D space. The value is of the [Vec3](#vec3) type.
@@ -226,9 +251,10 @@ Rotation of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 | Type | Description|
 | ---- | ---- |
-| [Vec3](#vec3) | Any 3D vector.|
+| [Vec3](#vec3) | The type is a three-dimensional vector in the unit of radian (rad). The value can be any value.|
 
 ## Scale3
+
 type Scale3 = Vec3
 
 Scaling of an object in 3D space. The value is of the [Vec3](#vec3) type.

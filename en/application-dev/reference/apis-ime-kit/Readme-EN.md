@@ -1,7 +1,7 @@
 # IME Kit<!--ime-api-->
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -13,11 +13,13 @@
   - [@ohos.InputMethodSubtype (Input Method Subtype)](js-apis-inputmethod-subtype.md)
   <!--Del-->
   - [@ohos.inputMethod (Input Method Framework) (System API)](js-apis-inputmethod-sys.md)
+  - [@ohos.inputMethodEngine (Input Method Service) (System API)](js-apis-inputmethodengine-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (Input Method Framework)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (Input Method Service)](js-apis-inputmethodengine.md)
   - [@ohos.inputMethodList (Input Method List)](js-apis-inputmethodlist.md)
   - [@ohos.inputMethod.ExtraConfig (Input Method Extension Information)](js-apis-inputmethod-extraconfig.md)
+  - [@ohos.inputMethodSystemPanelManager (Input Method System Panel Manager) (System API)](js-apis-inputmethod-system-panel-manager-sys.md)
 - C APIs<!--ime-c-->
   - Modules<!--ime-module-->
     - [InputMethod](capi-inputmethod.md)
@@ -41,4 +43,4 @@
     - [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)
 - Error Codes<!--ime-arkts-errcode-->
   - [Input Method Framework Error Codes](errorcode-inputmethod-framework.md)
-  
+ <!--no_check--> 

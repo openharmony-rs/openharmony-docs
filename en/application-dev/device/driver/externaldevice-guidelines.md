@@ -1,10 +1,11 @@
 # UI-based Driver Development
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:07.289Z pushedAt=2026-06-25T06:57:05.093Z -->
 
 ## When to Use
 
@@ -16,7 +17,7 @@ Before you get started, make necessary preparations by following instructions in
 
 ## Available APIs
 
-The following table describes the basic peripheral management capabilities. For details, see [API Reference](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md).
+The following table describes the basic peripheral management capabilities. For more details, see [@ohos.driver.deviceManager (Peripheral Management)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md).
 
 **Table 1** APIs for basic peripheral management
 
@@ -27,7 +28,7 @@ The following table describes the basic peripheral management capabilities. For 
 | unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a peripheral device. This API uses a promise to return the result. It is supported since API version 18.                      |
 
 <!--Del-->
-The following table lists the APIs for extended peripheral management. For details, see [deviceManager API Reference](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).
+The following table describes the system APIs for peripheral management. For details, see [@ohos.driver.deviceManager (Peripheral Management) (System API)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).
 
 **Table 2** APIs for extended peripheral management
 
@@ -58,7 +59,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    > Write following sample code in the **entry/src/main/ets/pages/Index.ets** file.
 
    <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { deviceManager } from '@kit.DriverDevelopmentKit';
@@ -78,7 +79,7 @@ The following sample code is a demo that illustrates how to develop both the cli
    > The following APIs are defined in **struct Index{}**.
 
    <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    @State message: string = 'Hello';
    private remote: rpc.IRemoteObject | null = null;
@@ -87,7 +88,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 4. Define the **queryDevices** API, and use it to obtain the device ID of the peripheral.
 
    <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    private async queryTargetDeviceId(): Promise<number> {
      try {
@@ -114,7 +115,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 5. Define the **bindDriverWithDeviceId** API, and use it to obtain the remote object.
 
    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
      try {
@@ -133,7 +134,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 6. Defines the **sendMessageRequest** API, and use it to perform IPC with the remote object.
 
    <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    private async communicateWithRemote(): Promise<void> {
      const deviceId: number = await this.queryTargetDeviceId();
@@ -170,7 +171,7 @@ The following sample code is a demo that illustrates how to develop both the cli
 7. Render the UI. For details about UI development, see [UI Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-development).
 
    <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    build() {
      Row() {
@@ -218,5 +219,5 @@ You need to configure a signature file for your application to run on a device. 
       }
       ```
 
-Automatic signing: [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237)
+Automatic signing: For details, see [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237).
 <!--RP1End-->

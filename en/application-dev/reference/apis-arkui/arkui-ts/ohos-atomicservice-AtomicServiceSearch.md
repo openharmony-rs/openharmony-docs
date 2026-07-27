@@ -22,7 +22,7 @@ import { AtomicServiceSearch } from '@kit.ArkUI';
 
 
 ## AtomicServiceSearch
-```ts
+``` ts
 AtomicServiceSearch({
   value?: ResourceStr,
   placeholder?: ResourceStr,
@@ -65,8 +65,8 @@ Provides optional attributes for the selection area.
 | selected                | number| No| Yes| Index of the initially selected item in the drop-down list box. The index of the first item is 0. If this attribute is not set, the default value **-1** is used, indicating that no item is selected.|
 | selectValue             | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text content of the drop-down list button itself. Default value: **undefined**.|
 | onSelect                | [OnSelectCallback](#onselectcallback) | No| Yes| Callback invoked when an item in the drop-down list box is selected. Default value: **undefined**.|
-| menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12) | No| Yes| Content modifier to apply to the drop-down list box. Once it is applied, the drop-down list box content will be fully customizable by developers. Note that default style attributes (such as dividers, background color, and font styles) will no longer take effect.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. Default value: **undefined**.|
-| divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null | No| Yes| Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style. Default value: **{strokeWidth: '1px', color: '#33182431'}**<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| menuItemContentModifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)&lt;[MenuItemConfiguration](ts-basic-components-select.md#menuitemconfiguration12)&gt;| No| Yes|  Content modifier to apply to the drop-down list box. Once it is applied, the drop-down list box content will be fully customizable by developers. Note that default style attributes (such as dividers, background color, and font styles) will no longer take effect.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. Default value: **undefined**.|
+| divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null| No| Yes| Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style. Default value: **{strokeWidth: '1px', color: '#33182431'}**<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 | font                    | [Font](ts-types.md#font) | No| Yes| Text font of the drop-down list button. Default value: **{size: $r('sys.float.ohos_id_text_size_body1')}**|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the selected item in the drop-down list box. Default value: **{fontColor: $r('sys.color.ohos_id_color_text_primary')}**  |
 | selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the selected item in the drop-down list box. Default value: **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**|
@@ -102,8 +102,8 @@ Provides optional attributes for the search area.
 | placeholderFont          | [Font](ts-types.md#font) | No| Yes| Placeholder text style, including the font size, font weight, font family, and font style. Default value: **{size: $r('sys_float.ohos_id_text_size_body1')}**.|
 | textFont                 | [Font](ts-types.md#font) | No| Yes| Style of the text entered in the search box, including the font size, font width, font family, and font style. Currently, only the default font family is supported. Default value: **{size: $r('sys_float.ohos_id_text_size_body1')}**.|
 | textAlign                | [TextAlign](ts-appendix-enums.md#textalign) | No| Yes| Text alignment mode in the search text box. Default value: **TextAlign.Start**.  |
-| copyOptions              | [CopyOptions](ts-appendix-enums.md#copyoptions9) | No| Yes| Whether copy and paste is allowed. Default value: **CopyOptions.LocalDevice**.  |
-| searchIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Yes| Style of the search icon on the left.<br>Default value in light mode: **{size: '16vp', color: '#99182431', src:' '}**.<br>Default value in dark mode: **{size: '16vp', color: '#99ffffff', src:' '}**. |
+| copyOptions              | [CopyOptions](ts-appendix-enums.md#copyoptions9) | No| Yes| Whether the input text can be copied. Default value: **CopyOptions.LocalDevice**.  |
+| searchIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)| No| Yes| Style of the search icon on the left.<br>Default value in light mode: **{size: '16vp', color: '#99182431', src:' '}**.<br>Default value in dark mode: **{size: '16vp', color: '#99ffffff', src:' '}**. |
 | cancelIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10)| No| Yes| Style of the cancel button on the right. Default value: **{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src:' '}}**.<br>When style is set to **CancelButtonStyle.CONSTANT**, the cancel button is displayed in a default style.  |
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | No| Yes|  Font color of the input text. Default value: **$r('sys.color.ohos_id_color_text_secondary')**.|
 | caretStyle               | [CaretStyle](ts-text-common.md#caretstyle10) | No| Yes| Pointer style. Default value: **{width: '1.5vp', color: '#007DFF'}**.  |
@@ -114,7 +114,7 @@ Provides optional attributes for the search area.
 | enterKeyType             | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype)| No| Yes| Type of the Enter key. Default value: **EnterKeyType.Search**.  |
 | decoration               | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | No| Yes|  Text decorative line options. Default value: **{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}**.  |
 | letterSpacing            | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Letter spacing. A positive value causes characters to spread farther apart, and a negative value bring characters closer together. The value for floating point numbers is **0.0**, in units of px. If the input is not a number and cannot be parsed as a number, the default value will be used. |
-| fontFeature              | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Font feature, for example, monospaced digits.<br>Format: normal \| \<feature-tag-value\><br>Syntax for \<feature-tag-value\>: \<string\> \[ \<integer\> \| on \| off ]<br>There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).<br>For example, the input format for monospaced digits is "ss01" on. Default value: **undefined**.  |
+| fontFeature              | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Font feature, for example, monospaced digits.<br>Format: normal \| \<feature-tag-value\><br>Syntax for **\<feature-tag-value\>**: \<string\> \[ \<integer\> \| on \| off ]<br>There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).<br>For example, the input format for monospaced digits is "ss01" on. Default value: **undefined**.  |
 | selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the selected text. By default, a 20% opacity is applied.|
 | inputFilter              | [InputFilterParams](#inputfilterparams) | No| Yes| Regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out. The specified regular expression can match single characters, but not strings. Default value: **undefined**.<br> - **value**: regular expression.<br> - **error**: Filtered-out content to return when regular expression matching fails.|
 | textIndent               | [Dimension](ts-types.md#dimension10) | No| Yes| Indent of the first line text. Default value: **0**.  |
@@ -891,11 +891,15 @@ struct Index {
 This example demonstrates how to use the **editMenuOptions** API to create custom menu extensions for text settings. It includes customizing text content, icons, and callbacks for these extensions.
 
 ```ts
-import { AtomicServiceSearch } from '@kit.ArkUI';
+import { AtomicServiceSearch, TextMenuController } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
+  aboutToAppear(): void {
+    TextMenuController.disableMenuItems([TextMenuItemId.AI_WRITER])
+  }
+
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
     let item1: TextMenuItem = {
       content: 'custom1',
@@ -911,29 +915,27 @@ struct Index {
     menuItems.unshift(item2)
     return menuItems
   }
-
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
-    if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
-      console.info("Intercept id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+    if (menuItem.id.equals(TextMenuItemId.of('custom2'))) {
+      console.info('Intercept id: custom2 start:' + textRange.start + '; end:' + textRange.end)
       return true
     }
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      console.info("Intercept COPY start:" + textRange.start + "; end:" + textRange.end)
+      console.info('Intercept COPY start:' + textRange.start + '; end:' + textRange.end)
       return true
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      console.info("Do not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+      console.info('Do not intercept SELECT_ALL start:' + textRange.start + '; end:' + textRange.end)
       return false
     }
     return false
   }
-
   @State editMenuOptions: EditMenuOptions = {
     onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick
   }
 
   build() {
-    Column({ space : 10 }) {
+    Column({ space: 10 }) {
       Text('Setting custom menu extensions').alignSelf(ItemAlign.Start).decoration({
         type: TextDecorationType.Underline,
         color: Color.Black,
@@ -941,9 +943,9 @@ struct Index {
       }).margin({ top: 20, bottom: 20 })
 
       AtomicServiceSearch({
-        value:'Default input',
+        value: 'Default input',
         search: {
-          editMenuOptions : this.editMenuOptions
+          editMenuOptions: this.editMenuOptions
         }
       })
     }.padding({ left: 16, right: 16 })
@@ -965,11 +967,15 @@ struct Index {
 This example shows how to set the horizontal alignment, caret style, and background color of the selected text using **textAlign**, **caretStyle**, and **selectedBackgroundColor**.
 
 ```ts
-import { AtomicServiceSearch } from '@kit.ArkUI';
+import { AtomicServiceSearch, TextMenuController } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
+  aboutToAppear(): void {
+    TextMenuController.disableMenuItems([TextMenuItemId.AI_WRITER])
+  }
+
   build() {
     Column() {
       Text('Setting horizontal alignment/caret style/background color of selected text').alignSelf(ItemAlign.Start).decoration({
@@ -995,7 +1001,7 @@ struct Index {
 }
 ```
 
-![](figures/AtomicServiceSearchDemo11.gif)
+![](figures/AtomicServiceSearchDemo11.png)
 
 
 

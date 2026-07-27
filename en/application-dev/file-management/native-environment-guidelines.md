@@ -17,7 +17,7 @@ You can use [Environment](../reference/apis-core-file-kit/capi-oh-environment-h.
 
 ## Available APIs
 
-For details about the APIs, see [API Reference](../reference/apis-core-file-kit/capi-oh-environment-h.md).
+For details about the APIs, see [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
 | API| Description|
 | -------- | -------- |

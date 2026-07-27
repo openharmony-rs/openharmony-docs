@@ -20,6 +20,7 @@
     - [Functions](arkts-apis-data-relationalStore-f.md)
     - [Interface (RdbStore)](arkts-apis-data-relationalStore-RdbStore.md)
     - [Interface (ResultSet)](arkts-apis-data-relationalStore-ResultSet.md)
+    - [Class (LiteResultSet)](arkts-apis-data-relationalStore-LiteResultSet.md)
     - [Interface (Transaction)](arkts-apis-data-relationalStore-Transaction.md)
     - [Interfaces (Others)](arkts-apis-data-relationalStore-i.md)
     - [Class (RdbPredicates)](arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -51,7 +52,7 @@
     - [@ohos.data.storage (Lightweight Data Storage)](js-apis-data-storage.md)
     - [@system.storage (Data Storage)](js-apis-system-storage.md)
     - data/rdb<!--data-rdb-->
-      - [resultSet (Result Set)](js-apis-data-resultset.md) 
+      - [resultSet](js-apis-data-resultset.md)
 - ArkTS Components<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (Content Card)](js-apis-data-UdmfComponents.md)
 - C APIs<!--arkdata-c-->
@@ -85,6 +86,7 @@
   - Structs<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)

@@ -42,7 +42,7 @@ setAlwaysOnVpnEnabled(enable: boolean, bundleName: string): Promise\<void>
 | 参数名     | 类型    | 必填 | 说明                                                    |
 | ---------- | ------- | ---- | ------------------------------------------------------- |
 | enable     | boolean | 是   | always on启用或禁用。true：always on启用；false：always on禁用。                                   |
-| bundleName | string  | 是   | 设置了always on vpn的包名，通常指三方应用的bundleName。 |
+| bundleName | string  | 是   | 设置了always on vpn的包名，是指三方应用的bundleName。 |
 
 **返回值：**
 
@@ -73,9 +73,9 @@ let want: Want = {
 };
 
 vpnExtension.setAlwaysOnVpnEnabled(true, want.bundleName).then(() => {
-  console.info('setAlwaysOnVpnEnabled success.');
+  console.info(`setAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 
@@ -128,9 +128,9 @@ let want: Want = {
 };
 
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
-  console.info('isAlwaysOnVpnEnabled success.');
+  console.info(`isAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 

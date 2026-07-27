@@ -35,7 +35,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
 
 1. Create an **InputMethod_TextEditorProxy** instance. The sample code is as follows:
 
-   <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Create an InputMethod_TextEditorProxy instance.
@@ -45,7 +45,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
    
 2. Create an **InputMethod_AttachOptions** instance and set the options for binding the input method. The sample code is as follows:
 
-   <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Create an InputMethod_AttachOptions instance. showKeyboard specifies whether to display the keyboard after the binding is successful. The following uses displaying the target keyboard as an example.
@@ -56,7 +56,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
 
 3. Call **OH_InputMethodController_Attach** to bind the input method service. After the call is successful, you can obtain **InputMethod_InputMethodProxy** used to interact with the input method. The sample code is as follows:
 
-   <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Send a binding request.
@@ -112,7 +112,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 2. Set the implemented response function to [InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md), and then set the response function to the input method framework using [OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach) called when the input method is bound to complete listener registration. The sample code is as follows:
 
-   <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_TextEditorProxy_SetGetTextConfigFunc(textEditorProxy, GetTextConfigFunc);
@@ -138,7 +138,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 When the edit box is out of focus, you need to stop using the input method and unbind the input method framework by calling [OH_InputMethodController_Detach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_detach).
 
 
-   <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Send an unbinding request.
@@ -158,7 +158,7 @@ The entry is the **InputMethodNdkDemo** function.
 >
 > Dependencies of **libohinputmethod.so** and **libhilog_ndk.z.so** should be added to the **CMakeList.txt** file.
 
-   <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -282,7 +282,7 @@ The entry is the **InputMethodNdkDemo** function.
        } else if (direction == InputMethod_Direction::IME_DIRECTION_RIGHT) {
            SetText("The cursor is moving right.");
        } else {
-           SetText("Cursor error.");
+           SetText("An error occurred while moving the cursor.");
        }
    }
    
@@ -351,7 +351,7 @@ The entry is the **InputMethodNdkDemo** function.
    ```
 
 
-   <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    void InputMethodNdkDemo()

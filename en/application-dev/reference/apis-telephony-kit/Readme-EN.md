@@ -14,6 +14,7 @@
   - [@ohos.telephony.radio (Network Search)](js-apis-radio.md)
   - [@ohos.telephony.sim (SIM Management)](js-apis-sim.md)
   - [@ohos.telephony.sms (SMS)](js-apis-sms.md)
+  - [@ohos.telephony.vcard (VCard)](js-apis-vcard.md)
     <!--Del-->
   - [@ohos.telephony.call (Call) (System API)](js-apis-call-sys.md)
   - [@ohos.telephony.data (Cellular Data) (System API)](js-apis-telephony-data-sys.md)
@@ -22,7 +23,6 @@
   - [@ohos.telephony.radio (Network Search) (System API)](js-apis-radio-sys.md)
   - [@ohos.telephony.sim (SIM Management) (System API)](js-apis-sim-sys.md)
   - [@ohos.telephony.sms (SMS) (System API)](js-apis-sms-sys.md)
-  - [@ohos.telephony.vcard (VCard) (System API)](js-apis-vcard-sys.md)
     <!--DelEnd-->
 - C API<!--telephony-c-->
   - Modules<!--telephony-module-->

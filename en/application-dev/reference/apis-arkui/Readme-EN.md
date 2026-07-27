@@ -40,6 +40,7 @@
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
+      - [Class (ResolvedUIContext)](arkts-apis-uicontext-resolveduicontext.md)
       - [Class (UIInspector)](arkts-apis-uicontext-uiinspector.md)
       - [Class (UIObserver)](arkts-apis-uicontext-uiobserver.md)
       - [Interface (AtomicServiceBar)](arkts-apis-uicontext-atomicservicebar.md)
@@ -69,6 +70,7 @@
     - [@ohos.uiExtensionHost (System API)](js-apis-uiExtensionHost-sys.md)
     - [@ohos.arkui.UIContext (UIContext) (System API)](js-apis-arkui-UIContext-sys.md)
     - [@ohos.promptAction (Prompt) (System API)](js-apis-promptAction-sys.md)
+    - [@ohos.arkui.uiMaterial (System Material) (System API)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
     - ArkUI<!--ui-interface-arkui-->
       - [BuilderNode](js-apis-arkui-builderNode.md)
@@ -134,6 +136,7 @@
       - [Focus Event](arkui-ts/ts-universal-focus-event.md)
       - [Hover Event](arkui-ts/ts-universal-events-hover.md)
       - [Component Keyboard Shortcut Event](arkui-ts/ts-universal-events-keyboardshortcut.md)
+      - [Keyboard Determination Event](arkui-ts/ts-universal-events-onneedsoftkeyboard.md)
     - Event Dispatch Control<!--event-dispatch-control-->
       - [Custom Event Interception](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [Custom Event Dispatch](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
@@ -183,6 +186,7 @@
       <!--Del-->
       - [Point Light Style (System API)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [Image Effect (System API)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
+      - [Union Effect (System API)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
       <!--DelEnd-->
     - Interaction Properties<!--interaction-property-->
       - [Enable/Disable](arkui-ts/ts-universal-attributes-enable.md)
@@ -190,6 +194,7 @@
       - [Drag and Drop Control](arkui-ts/ts-universal-attributes-drag-drop.md)
       - [Drag-and-Drop Sorting](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [Hover Effect](arkui-ts/ts-universal-attributes-hover-effect.md)
+      - [Click Sound Effect](arkui-ts/ts-universal-attributes-click-sound.md)
       - Touch Interactions<!--touch-interactions-->
         - [Touch Target](arkui-ts/ts-universal-attributes-touch-target.md)
         - [Hit Test Control](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -200,6 +205,9 @@
       - [Popup Control](arkui-ts/ts-universal-attributes-popup.md)
       - [Tooltip Control](arkui-ts/ts-universal-attributes-tips.md)
       - [Menu Control](arkui-ts/ts-universal-attributes-menu.md)
+      <!--Del-->
+      - [Menu Control (System API)](arkui-ts/ts-universal-attributes-menu-sys.md)
+      <!--DelEnd-->
     - [Accessibility](arkui-ts/ts-universal-attributes-accessibility.md)
     - Transition<!--transition-->
       - [Modal Transition](arkui-ts/ts-universal-attributes-modal-transition.md)
@@ -207,7 +215,7 @@
       <!--Del-->
       - [Sheet Transition (System API)](arkui-ts/ts-universal-attributes-sheet-transition-sys.md)
       <!--DelEnd-->
-    - Modifiers and Custom Property<!--attibute-modifier-property-->
+    - Modifiers and Custom Property<!--attribute-modifier-property-->
       - [Attribute Modifier](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [Gesture Modifier](arkui-ts/ts-universal-attributes-gesture-modifier.md)
       - [Drawing Modifier](arkui-ts/ts-universal-attributes-draw-modifier.md)
@@ -272,6 +280,7 @@
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
     - [Scrollable Component Common APIs](arkui-ts/ts-container-scrollable-common.md)
     <!--Del-->
+    - [Grid (System API)](arkui-ts/ts-container-grid-sys.md)
     - [List (System API)](arkui-ts/ts-container-list-sys.md)
     <!--DelEnd-->
   - Navigation and Switching<!--navigation-and-switching-->
@@ -287,7 +296,7 @@
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
     - [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)
-    - [Picker](arkui-ts/ts-container-picker.md)
+    - [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)
     - [CalendarPicker](arkui-ts/ts-basic-components-calendarpicker.md)
     - [DatePicker](arkui-ts/ts-basic-components-datepicker.md)
     - [TextPicker](arkui-ts/ts-basic-components-textpicker.md)
@@ -295,6 +304,9 @@
     - [Radio](arkui-ts/ts-basic-components-radio.md)
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
+    <!--Del-->    
+    - [Select (System API)](arkui-ts/ts-basic-components-select-sys.md)
+    <!--DelEnd-->
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
@@ -318,6 +330,7 @@
     <!--Del-->
     - [Text Component Common APIs (System API)](arkui-ts/ts-text-common-sys.md)
     - [TextInput (System API)](arkui-ts/ts-basic-components-textinput-sys.md)
+    - [TextArea (System API)](arkui-ts/ts-basic-components-textarea-sys.md)
     - [Styled String (System API)](arkui-ts/ts-universal-styled-string-sys.md)
     - [RichEditor (System API)](arkui-ts/ts-basic-components-richeditor-sys.md)
     <!--DelEnd-->
@@ -418,6 +431,7 @@
     - [SaveButton](arkui-ts/ts-security-components-savebutton.md)
     <!--Del-->
     - [SaveButton (System API)](arkui-ts/ts-security-components-savebutton-sys.md)
+    - [Security Component Universal Attributes (System API)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
   - Themes<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
@@ -429,6 +443,7 @@
     - [InterstitialDialogAction](arkui-ts/ohos-atomicservice-InterstitialDialogAction.md)
     - [HalfScreenLaunchComponent](arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md)
     <!--Del-->
+    - [AtomicServiceMenuBar (System API)](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
     - [InnerFullScreenLaunchComponent (System API)](arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md)
     <!--DelEnd-->
     - [NavPushPathHelper](arkui-ts/ohos-atomicservice-NavPushPathHelper.md)
@@ -437,6 +452,7 @@
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - Custom Components<!--custom-comp-->
     - [Custom Component Lifecycle](arkui-ts/ts-custom-component-lifecycle.md)
+    - [Lifecycle of a Custom Component (Recommended)](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [Custom Component Layout](arkui-ts/ts-custom-component-layout.md)
     - [Custom Component Built-in APIs](arkui-ts/ts-custom-component-api.md)
     - [Custom Component Parameters](arkui-ts/ts-custom-component-parameter.md)
@@ -444,6 +460,7 @@
       - [@AnimatableExtend: Animatable Property Definition](arkui-ts/ts-animatable-extend.md)
       - [@Entry: Page Entry Declaration](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: Global @Builder Encapsulation](arkui-ts/ts-universal-wrapBuilder.md)
+      - [mutableBuilder: Dynamic Update of Global @Builder](arkui-ts/ts-universal-mutableBuilder.md)
   - Component Preview<!--component-preview-->
     - [Component Preview](arkui-ts/ts-universal-component-previewer.md)
   - System Preset UI Component Library<!--system-preset-ui-component-library-->
@@ -477,6 +494,10 @@
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
+    <!--Del-->
+    - [SegmentButton (System API)](arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+    - [SegmentButtonV2 (System API)](arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+    <!--DelEnd-->
   - State Management and Rendering Control<!--state-management-and-rendering-control-->
     - [State Management with Application-level Variables](arkui-ts/ts-state-management.md)
     - [State Management V1 Decorator Parameters](arkui-ts/ts-state-management-v1-parameter.md)
@@ -488,6 +509,8 @@
     <!--Del-->
     - [State Management with Application-level Variables (System API)](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
+  - Responsive Environment Variable <!--responsive-env-system-property-->
+    - [\@Env: Environment Variable](arkui-ts/ts-env-system-property.md)
   - Common Definitions<!--common-definitions-->
     - [Basic Types](arkui-ts/ts-types.md)
     - [Pixel Units](arkui-ts/ts-pixel-units.md)
@@ -503,6 +526,7 @@
     - [RemoteWindow (System API)](arkui-ts/ts-basic-components-remotewindow-sys.md)
     - [PluginComponent (System API)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (System API)](arkui-ts/ts-container-ui-extension-component-sys.md)
+    - [UnionEffectContainer (System API)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
   <!--DelEnd-->
   - Components and APIs No Longer Maintained<!--arkui-declarative-comp-dep-->
     <!--Del-->
@@ -528,6 +552,7 @@
     - [ArkUI_EventModule](capi-arkui-eventmodule.md)
     - [WindowManager](capi-windowmanager.md)
     - [OH_DisplayManager](capi-oh-displaymanager.md)
+    - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - Header Files<!--arkui-headerfile-->
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
@@ -615,7 +640,8 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)
     - [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)
@@ -639,6 +665,7 @@
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
+    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -670,12 +697,17 @@
     - [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)
     - [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)
     - [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)
+    - [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)
     - [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
     - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
+    - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
+    - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
+    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
+    - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
     - [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)
     - [WindowManager_Rect](capi-windowmanager-rect.md)
     - [OH_PixelmapNative](capi-struct.md)
@@ -713,15 +745,28 @@
     - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
     - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
     - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
+    - [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md)
+    - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
+    - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
+    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
+    - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
+    - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
+    - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+    - [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
+    - [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
+    - [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
+    - [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
 - Error Codes<!--arkui-arkts-errcode-->
   - UI<!--arkui-ui-arkts-errcode-->
     - [API Call Error Codes](errorcode-internal.md)
-    - [Popup Window Error Codes](errorcode-promptAction.md)
+    - [promptAction Error Codes](errorcode-promptAction.md)
     - [Router Error Codes](errorcode-router.md)
     - [Drag Event Error Codes](errorcode-drag-event.md)
     - [AI Image Analyzer Error Codes](arkui-ts/errorcode-image-analyzer.md)
     - [Focus Error Codes](errorcode-focus.md)
     - [System Resource Error Codes](errorcode-system-resource.md)
+    - [Auxiliary Node Error Codes](errorcode-adopt.md)
     - [Sheet Error Codes](errorcode-bindSheet.md)
     - [Scrollable Component Error Codes](errorcode-scroll.md)
     - [Snapshot Error Codes](errorcode-snapshot.md)
@@ -739,10 +784,10 @@
     - [State Management Error Codes](errorcode-stateManagement.md)
     - [Render Node Error Codes](errorcode-node-render.md)
     - [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md)
+    - [Environment Variable Error Codes](errorcode-env.md)
     - [Color Inversion Error Codes](errorcode-force-dark.md)
   - Graphics<!--arkui-graphics-images-arkts-errcode-->
     - [Display Error Codes](errorcode-display.md)
     - [Window Error Codes](errorcode-window.md)
   - UI Compilation<!--arkui-compile-arkts-errcode-->
     - [Compilation Error Codes](_ark_ui_compile.md)
-<!--no_check-->

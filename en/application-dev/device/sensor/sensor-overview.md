@@ -1,17 +1,18 @@
 # Sensor Overview
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:27.304Z pushedAt=2026-06-30T02:13:54.442Z -->
 
 ## Sensor Types
 
+Sensors are an abstraction of underlying sensor hardware. Your application can access the underlying sensor hardware via the sensors. Using the [@ohos.sensor (Sensor)](../../reference/apis-sensor-service-kit/js-apis-sensor.md) APIs, you can query sensors on your device, subscribe to sensor data, customize algorithms based on sensor data, and develop various sensor-based applications, such as compass, motion-controlled games, and fitness and health applications.
 
-Sensors are an abstraction of underlying sensor hardware. Your application can access the underlying sensor hardware via the sensors. Using the [Sensor](../../reference/apis-sensor-service-kit/js-apis-sensor.md) APIs, you can query sensors on your device, subscribe to sensor data, customize algorithms based on sensor data, and develop various sensor-based applications, such as compass, motion-controlled games, and fitness and health applications.
-
-| Type                 | Name              | Description                                                        | Usage                                  |
+| Sensor Types                 | Name              | Description                                                        | Usage                                  |
 | --------------------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------ |
 | ACCELEROMETER               | Acceleration sensor      | Measures the acceleration (including the gravity acceleration) applied to a device on three physical axes (X, Y, and Z), in the unit of m/s<sup>2</sup>.| Detecting the motion status                            |
 | ACCELEROMETER_UNCALIBRATED  | Uncalibrated acceleration sensor| Measures the uncalibrated acceleration (including the gravity acceleration) applied to a device on three physical axes (X, Y, and Z), in the unit of m/s<sup>2</sup>.| Measuring the acceleration bias estimation                      |
@@ -35,7 +36,7 @@ Sensors are an abstraction of underlying sensor hardware. Your application can a
 | WEAR_DETECTION              | Wear detection sensor    | Checks whether a user is wearing a wearable device.                                          | Detecting wearables            |
 | HALL                        | Hall effect sensor        | Detects a magnetic field around a device.                              | Smart cover mode of the device                          |
 
-The coordinate system of directional sensors is related to the device's component mounting orientation, and is basically based on the device's natural screen direction. (The natural screen direction may vary according to device models.)<br>Take a common bar phone for example: hold it vertically in front of you, with the screen directly facing you.<br>X-axis: the axis from left to right along the short edge of the screen.<br>Y-axis: the axis from bottom to top along the long edge of the screen.<br>Z-axis: axis perpendicular to the screen, pointing outward from the screen toward the user.<br>You can combine the device's natural screen direction and the current screen direction to determine how to interpret and use these raw data to meet your service demands. For example, a motion-sensing racing game requires the player to tilt the device to control the direction. Regardless of whether the player plays it in portrait or landscape mode, the X-axis and Y-axis data provided by the sensor is always relative to the natural screen direction. You need to determine whether to use the X-axis or Y-axis data to control the racing car's left and right steering based on the current screen direction and the application's UI display requirements, thereby ensuring a consistent user experience.<br>For the orientation sensor, you are advised to call the [display](../../reference/apis-arkui/js-apis-display.md#display) API of the DMS to obtain the screen orientation before starting development.
+The coordinate system of directional sensors is related to the device's component mounting orientation, and is basically based on the device's natural screen direction. (The natural screen direction may vary according to device models.)<br>Take a common bar phone for example: hold it vertically in front of you, with the screen directly facing you.<br>X-axis: the axis from left to right along the short edge of the screen.<br>Y-axis: the axis from bottom to top along the long edge of the screen.<br>Z-axis: axis perpendicular to the screen, pointing outward from the screen toward the user.<br>You can combine the device's natural screen direction and the current screen direction to determine how to interpret and use these raw data to meet your service demands. For example, a motion-sensing racing game requires the player to tilt the device to control the direction. Regardless of whether the player plays it in portrait or landscape mode, the X-axis and Y-axis data provided by the sensor is always relative to the natural screen direction. You need to determine whether to use the X-axis or Y-axis data to control the racing car's left and right steering based on the current screen direction and the application's UI display requirements, thereby ensuring a consistent user experience.<br>For the orientation sensor, you are advised to call the [Display](../../reference/apis-arkui/js-apis-display.md#display) API of the DMS to obtain the screen orientation before starting development.
 
 ## Working Principles
 
@@ -53,7 +54,6 @@ The following modules work cooperatively to implement sensors: Sensor API, Senso
 
 - HDF layer: selects proper policies based on the hardware first in first out (FIFO) and frequency, and adapts to different devices.
 
-
 ## Constraints
 
 1. To obtain data of the following sensors, you must request the required permissions.
@@ -63,6 +63,6 @@ The following modules work cooperatively to implement sensors: Sensor API, Senso
     | Acceleration sensor, uncalibrated acceleration sensor, and linear acceleration sensor| ohos.permission.ACCELEROMETER    | system_grant | The permission allows an application to read data from acceleration sensors, uncalibrated acceleration sensors, and linear acceleration sensors.|
     | Gyroscope sensor and uncalibrated gyroscope sensor                  | ohos.permission.GYROSCOPE        | system_grant | The permission allows an application to read data from gyroscope sensors and uncalibrated gyroscope sensors.|
     | Pedometer sensor                                            | ohos.permission.ACTIVITY_MOTION  | user_grant   | The permission allows an application to read an end user's motion status, for example, to determine whether the user is in motion or to record the number of steps that the user has walked. |
-    | Heart rate sensor                                            | ohos.permission.READ_HEALTH_DATA | user_grant   | The permission allows an application to obtain an end user's health data, such as heart rate data.          |
-    
+    | Heart rate sensor                                             | ohos.permission.READ_HEALTH_DATA | user_grant   | The permission allows an app to read the user's health data, such as heart rate data.           |
+
 2. The APIs for subscribing to and unsubscribing from sensor data work in pairs. If you do not need sensor data, call the unsubscription API to stop sensor data reporting.

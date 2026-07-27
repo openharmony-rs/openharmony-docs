@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9)。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAvailableStatus](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9)。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -34,7 +34,7 @@ obtainingSupported() {
   try {
     // 查询认证能力是否支持
     userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
-    Logger.info('current auth trust level is supported');
+    Logger.info('current auth trust level is supported.');
     return true;
   } catch (error) {
     const err: BusinessError = error as BusinessError;

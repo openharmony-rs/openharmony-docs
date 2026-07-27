@@ -42,7 +42,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     ```javascript
     import { common } from '@kit.AbilityKit';
     import { media } from '@kit.MediaKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
     ```
 
 2. Create the member variable **screenCapture** of the **AVScreenCaptureRecorder** type.
@@ -58,20 +58,20 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("Callback invoked when screen capture starts");
-              	break;
+                console.info("Callback invoked when screen capture starts");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Screen capture is not allowed.");
-              	break;
+                console.info("Screen capture is not allowed.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
-              	break;
+                console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("Screen capture stops due to other interruptions. Underlying capture will stop.");
                 break;
@@ -98,7 +98,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
                 console.info("Underlying capture will stop after the user account is changed.");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {
@@ -119,7 +119,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     ```javascript
     const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let filePath: string = context.filesDir + '/screenCapture.mp4';
-    let captureFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
     if (!captureFile) {
       console.error("Handle exceptions.");
       return;
@@ -141,20 +141,20 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     };
     ```
 
-5. Call **init()** to initialize the screenCapture instance based on the preset screen capture parameters.
+5. Call [init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12) to initialize **screenCapture** based on the preconfigured screen recording parameters.
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
     ```
 
-6. Set the windows that will be skipped during screen capture, by entering the subwindow IDs and main window IDs. For details, see [Window API Reference](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties).
+6. Set the windows that will be skipped during screen capture, by entering the subwindow IDs and main window IDs. For details, see [WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties).
 
     ```javascript
     let windowIDs = [57, 86];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. Call **startRecording()** to start screen capture and listen for state changes using the callback function.
+7. Call [startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12) to start screen capture and use a listener to monitor state change events.
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -162,15 +162,15 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 8. Stop screen capture.
 
-    - When the user touches the stop button in the screen capture capsule to stop screen capture, the screenCapture instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that the screen recording has stopped. The application does not need to call the **stopRecording()** API.
+    - After the user taps the stop button in the screen capture capsule to stop screen capture, the **screenCapture** instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that screen capture has been stopped. You do not need to call the [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) method.
 
-    - The application proactively calls **stopRecording()** to stop screen capture.
+    - The application proactively calls [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) to stop screen capture.
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. Call **release()** to release the instance.
+9. Call [release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12) to release the instance.
 
     ```javascript
     await this.screenCapture.release();
@@ -182,23 +182,23 @@ The following is the complete sample code for capturing a screen and saving the 
 
 ```javascript
 import { media } from '@kit.MediaKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
-  private captureFile: fs.File | undefined = undefined;
+  private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
   private openFile(context: Context): void {
-    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the container format.
-    this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the encapsulation format.
+    this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   }
 
   private closeFile(): void {
     if (!this.captureFile) {
       return;
     }
-    fs.closeSync(this.captureFile);
+    fileIo.closeSync(this.captureFile);
   }
 
   private setConfig(): void {

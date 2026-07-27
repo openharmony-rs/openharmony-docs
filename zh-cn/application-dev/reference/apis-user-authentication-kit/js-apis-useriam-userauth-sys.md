@@ -7,7 +7,18 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-提供用户认证能力，可应用于设备解锁、支付、应用登录等身份认证场景。
+**userAuth**模块是OpenHarmony系统中用于用户身份认证的核心模块，提供了设备解锁、支付验证、应用登录等场景下的身份认证能力。
+
+当前页面仅包含本模块中面向系统应用和认证组件开发者的高级能力。这些API提供了认证组件管理、自定义通知发送、认证结果复用查询、隐私密码认证等系统级功能。
+
+主要用于以下场景：
+
+- 系统应用需要管理自定义认证组件的生命周期。
+- 认证组件需要与认证框架进行双向通信。
+- 需要发送认证组件相关的系统通知。
+- 需要查询可复用的认证结果以实现无感认证。
+- 需要使用隐私密码进行认证。
+- 需要指定特定用户或特定凭据进行认证。
 
 > **说明：**
 >
@@ -23,18 +34,17 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## AuthParam<sup>10+</sup>
 
-用户认证相关参数。
+用户认证相关参数。该接口用于配置用户认证的各项参数。当前文档仅定义系统接口特有的参数，完整参数定义参见[AuthParam](js-apis-useriam-userauth.md#authparam10)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**系统接口**: 此接口为系统接口。|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**系统接口**: 此接口为系统接口。|
-
+| userId<sup>18+</sup> | number | 否   | 是   | 待认证的目标用户ID，用于指定需要认证的用户。当需要认证特定用户而非当前登录用户时传入此参数；若不传入则默认使用当前登录用户的ID。取值为非负整数。<br>**系统接口：** 此接口为系统接口。|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 | 凭据ID列表，用于指定需要认证的凭据。当需要只认证特定凭据而非用户的所有凭据时传入此参数；若不传入或传入空数组，则默认认证该用户的所有凭据。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 ## WindowModeType<sup>10+</sup>
 
-用户认证界面的显示类型。
+用户认证界面的显示类型枚举。该枚举定义了认证界面可使用的显示模式，用于控制系统身份认证组件的窗口样式。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -42,22 +52,23 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| DIALOG_BOX | 1    | 弹框类型。 |
-| FULLSCREEN | 2    | 全屏类型。 |
+| DIALOG_BOX | 1    | 对话框类型。身份认证界面以对话框形式显示，适用于大多数认证场景，用户体验较好。 |
+| FULLSCREEN | 2    | 全屏类型。身份认证界面以全屏形式显示，适用于需要沉浸式认证体验或认证信息较多需要更大展示空间的场景。 |
 
 ## WidgetParam<sup>10+</sup>
 
-用户认证界面配置相关参数。
+用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式。当前文档仅定义系统接口特有的参数，完整参数定义参见[WidgetParam](js-apis-useriam-userauth.md#widgetparam10)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 代表用户认证界面的显示类型，默认值为WindowModeType.DIALOG_BOX。<br>**系统接口**: 此接口为系统接口。 |
+| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 用户认证界面的显示类型。DIALOG_BOX适用于大多数认证场景（用户体验较好），FULLSCREEN适用于需要沉浸式认证体验或认证信息较多的场景。不传入时默认为WindowModeType.DIALOG_BOX。<br>**系统接口：** 此接口为系统接口。 |
+| appWindow          | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略。<br>**起始版本：** 26.0.0<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## NoticeType<sup>10+</sup>
 
-用户身份认证的通知类型。
+用户身份认证的通知类型枚举。该枚举定义了系统支持的通知类型，用于标识通知的来源。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -65,13 +76,13 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称          | 值   | 说明                 |
 | ------------- | ---- | -------------------- |
-| WIDGET_NOTICE | 1    | 表示来自组件的通知。 |
+| WIDGET_NOTICE | 1    | 表示该通知由系统统一身份认证控件发出，用于通知用户认证框架相关事件。 |
 
 ## userAuth.sendNotice<sup>10+</sup>
 
 sendNotice(noticeType: NoticeType, eventData: string): void
 
-在使用统一身份认证控件进行用户身份认证时，用于接收来自统一身份认证控件的通知。
+发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -83,8 +94,8 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 | 参数名     | 类型                        | 必填 | 说明       |
 | ---------- | --------------------------- | ---- | ---------- |
-| noticeType | [NoticeType](#noticetype10) | 是   | 通知类型。 |
-| eventData  | string                | 是   | 事件数据。数据长度限制为0-65536。    |
+| noticeType | [NoticeType](#noticetype10) | 是   | 通知类型。用于标识通知的来源，当前支持WIDGET_NOTICE（1），表示来自身份认证组件的通知。 |
+| eventData  | string                | 是   | 事件数据。JSON格式的字符串，包含通知的具体内容，如认证类型就绪事件等。数据长度范围为(0, 65536)字节。JSON对象应包含widgetContextId（number类型，控件上下文ID）、event（string类型，事件类型）、version（string类型，版本号）、payload（object类型，事件载荷对象）等字段。 |
 
 **错误码：**
 
@@ -107,9 +118,9 @@ interface  EventData {
   widgetContextId: number;
   event: string;
   version: string;
-  payload: PayLoad;
+  payload: Payload;
 }
-interface PayLoad {
+interface Payload {
   type: string[];
 }
 try {
@@ -119,27 +130,27 @@ try {
     version: '1',
     payload: {
       type: ['pin']
-    } as PayLoad,
+    } as Payload,
   };
   const jsonEventData = JSON.stringify(eventData);
   let noticeType = userAuth.NoticeType.WIDGET_NOTICE;
   userAuth.sendNotice(noticeType, jsonEventData);
-  console.info('sendNotice success');
+  console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 ## UserAuthWidgetMgr<sup>10+</sup>
 
-组件管理接口，可将用身份认证控件注册到UserAuthWidgetMgr中，由UserAuthWidgetMgr进行管理、调度。
+身份认证组件管理器。用于将自定义身份认证控件注册到UserAuthWidgetMgr中进行统一管理和调度。自定义身份认证控件可接收来自用户认证框架的命令并执行相应操作。
 
 ### on<sup>10+</sup>
 
 on(type: 'command', callback: IAuthWidgetCallback): void
 
-身份认证控件订阅来自用户认证框架的命令。
+订阅来自用户认证框架的命令事件。身份认证控件通过此接口订阅来自用户认证框架的命令，以便根据命令执行相应的认证操作。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -149,8 +160,8 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | 'command'                                     | 是   | 订阅事件类型，表明该事件用于用户认证框架向身份认证控件发送命令。 |
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 是   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+| type     | 'command'                                     | 是   | 订阅事件类型。值为'command'，表明该事件用于用户认证框架向身份认证控件发送命令。 |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 是   | 回调函数。用于接收来自用户认证框架的命令，身份认证控件需在回调中解析命令并执行相应操作。 |
 
 **错误码：**
 
@@ -170,16 +181,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -187,7 +198,7 @@ try {
 
 off(type: 'command', callback?: IAuthWidgetCallback): void
 
-身份认证控件取消订阅来自用户认证框架的命令。
+取消订阅来自用户认证框架的命令事件。身份认证控件通过此接口取消对用户认证框架命令的订阅。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -197,8 +208,8 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | 'command'                                     | 是   | 订阅事件类型，表明该事件用于用户认证框架向身份认证控件发送命令。 |
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+| type     | 'command'                                     | 是   | 订阅事件类型。值为'command'，表明取消订阅用户认证框架向身份认证控件发送命令的事件。 |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 回调函数。指定取消注册的回调函数，需与on方法注册时传入的回调一致；若不传入此参数，则取消所有已注册的回调。使用前需确保已通过[on](#on10)方法注册过相应回调。 |
 
 **错误码：**
 
@@ -218,16 +229,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.off('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('cancel subscribe authentication event success');
+  console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -235,11 +246,11 @@ try {
 
 getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
-获取UserAuthWidgetMgr对象，用于执行用户身份认证。
+获取身份认证组件管理器对象。用于获取UserAuthWidgetMgr实例，通过该实例可将自定义身份认证控件注册到系统进行统一管理。
 
 > **说明：**
 >
-> 每个UserAuthInstance只能进行一次认证，若需要再次进行认证则需重新获取UserAuthInstance。
+> 每个UserAuthWidgetMgr实例可管理一个身份认证控件，若需要管理多个控件则需获取多个实例。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -251,13 +262,13 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| version | number | 是   | 表示认证组件的版本。 |
+| version | number | 是   | 身份认证组件的版本号。取值原则：目前仅支持版本1。组件版本决定了组件与框架之间的通信协议和功能支持范围。 |
 
 **返回值：**
 
 | 类型                                      | 说明         |
 | ----------------------------------------- | ------------ |
-| [UserAuthWidgetMgr](#userauthwidgetmgr10) | 认证器对象。 |
+| [UserAuthWidgetMgr](#userauthwidgetmgr10) | 身份认证组件管理器对象。可用于订阅和取消订阅来自用户认证框架的命令。 |
 
 **错误码：**
 
@@ -279,22 +290,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 ## IAuthWidgetCallback<sup>10+</sup>
 
-认证组件通过该回调获取用户认证框架发送的命令。
+身份认证组件回调接口。认证组件通过该回调接口获取用户认证框架发送的命令，并根据命令内容执行相应的认证操作。
 
 ### sendCommand<sup>10+</sup>
 
 sendCommand(cmdData: string): void
 
-回调函数，用于用户认证框架向组件发送命令。
+回调函数，用于接收来自用户认证框架的命令。用户认证框架通过此回调向身份认证组件发送命令，控件需解析命令内容并执行相应操作。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -304,7 +315,7 @@ sendCommand(cmdData: string): void
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | ---------------------------------- |
-| cmdData | string | 是   | 用户身份认证框架向控件发送的命令。 |
+| cmdData | string | 是   | 命令数据。JSON格式的字符串，包含用户认证框架向身份认证控件发送的具体命令内容。JSON结构根据不同的命令类型包含相应字段，常见字段包括：commandType（string，命令类型）、authType（array，认证类型列表）、result（number，认证结果码）等。控件需解析此数据并根据命令类型执行相应操作。 |
 
 **示例：**
 
@@ -315,28 +326,28 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
-    sendCommand(cmdData) {
+    sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 ## UserAuthType<sup>8+</sup>
 
-表示身份认证的凭据类型枚举。
+表示身份认证的凭据类型枚举。当前文档仅定义系统接口特有的认证类型，完整类型定义参见[UserAuthType](js-apis-useriam-userauth.md#userauthtype8)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br>**系统接口：** 此接口为系统接口。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私密码。一种特殊的PIN认证类型，一般用于解锁后的用户二次访问控制（即在设备解锁后，用户访问特定应用或内容前需再次进行身份验证）。例如用户可以选择使用隐私密码保护应用锁（应用锁是一种对应用启动进行二次验证的功能，可防止他人打开用户的应用），从而阻止知道锁屏密码的家人访问自己的某些应用。<br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
@@ -361,19 +372,19 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
-    onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+    onResult: (result) => {
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -381,7 +392,7 @@ try {
 
 queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
-查询是否有可复用的身份认证结果。
+查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -393,13 +404,13 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。包含挑战值（challenge）、认证类型列表（authType）、认证信任等级（authTrustLevel）以及认证结果复用配置（reuseUnlockResult）。系统会根据这些参数判断是否存在满足条件的可复用认证结果。|
 
 **返回值：**
 
 | 类型        | 说明                                 |
 | ---------- | ------------------------------------ |
-| Uint8Array | 可复用的AuthToken。最大长度为1024B。|
+| Uint8Array | 可复用的认证令牌（AuthToken）。若存在满足条件的可复用认证结果，返回AuthToken数据，最大长度为1024字节；若不存在，则抛出相应错误码。|
 
 **错误码：**
 
@@ -435,16 +446,16 @@ try {
     reuseUnlockResult: reuseUnlockResult,
   };
   let authToken = userAuth.queryReusableAuthResult(authParam);
-  console.info('query reuse auth result success');
+  console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 ## UserAuthResultCode<sup>9+</sup>
 
-表示返回码的枚举。
+表示返回码的枚举。当前文档仅定义系统接口特有的错误码，完整错误码定义参见[UserAuthResultCode](js-apis-useriam-userauth.md#userauthresultcode9)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -452,6 +463,172 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。|
-| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。|
-| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | AuthToken校验失败。verifyAuthToken系统接口错误码，表示验证的AuthToken完整性校验失败，令牌可能被篡改或损坏。|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | AuthToken已过期。verifyAuthToken系统接口错误码，表示AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长（allowableDuration）。|
+| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | 复用认证结果失败。queryReusableAuthResult系统接口错误码，表示查询可复用的身份认证结果失败，可能原因包括：不存在满足复用条件的认证结果、认证结果已失效或凭据已变更。|
+
+## WidgetParamCallback
+
+type WidgetParamCallback = (challenge: Uint8Array) => WidgetParam
+
+获取远程认证页面参数的回调函数类型。该类型用于远程认证场景，在需要获取远程认证界面的配置参数时，系统会调用此回调函数。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| challenge | Uint8Array | 是 | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。建议使用[加解密算法库框架](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md)生成的随机数作为挑战值，以增强安全性。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [WidgetParam](js-apis-useriam-userauth.md#widgetparam10) | 用户认证界面配置参数。包含认证界面的标题、导航按钮文本等配置信息。 |
+
+## ResultCallback
+
+type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void
+
+返回远程认证结果的回调函数类型。该类型用于远程认证场景，在远程认证完成后，系统会调用此回调函数返回认证结果。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| challenge | Uint8Array | 是 | 挑战值。用于防止重放攻击的一次性随机数，与发起认证时传入的challenge值一致。 |
+| result | [UserAuthResult](js-apis-useriam-userauth.md#userauthresult10) | 是 | 用户认证结果。包含认证结果码、认证令牌等信息。 |
+
+## IRemoteAuthCallback
+
+远程认证回调接口。该接口用于远程认证场景，提供获取远程认证页面参数和返回认证结果的回调能力。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| onGetRemoteAuthWidgetParam | [WidgetParamCallback](#widgetparamcallback) | 否 | 否 | 获取远程认证页面参数的回调函数。在远程设备发起认证请求时，系统会调用此回调获取认证界面配置参数。 |
+| onRemoteAuthResult | [ResultCallback](#resultcallback) | 否 | 否 | 返回远程认证结果的回调函数。在远程认证完成后，系统会调用此回调将认证结果返回给发起方。 |
+
+## userAuth.registerRemoteAuthCallback
+
+registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
+
+注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用[unregisterRemoteAuthCallback](#userauthregisterremoteauthcallback)取消注册，避免回调无法释放。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [IRemoteAuthCallback](#iremoteauthcallback) | 是 | 远程认证回调接口。包含获取认证页面参数和返回认证结果的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. Called by non-system application. |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let remoteAuthCallback: userAuth.IRemoteAuthCallback = {
+  onGetRemoteAuthWidgetParam(challenge: Uint8Array): userAuth.WidgetParam {
+    console.info('Received challenge for remote auth, length: ' + challenge.length);
+    return {
+      title: 'Remote Authentication',
+      navigationButtonText: 'Cancel'
+    } as userAuth.WidgetParam;
+  },
+  onRemoteAuthResult(challenge: Uint8Array, result: userAuth.UserAuthResult): void {
+    console.info('remote auth result, result: ' + result.result + ', authType: ' + result.authType);
+  }
+};
+
+try {
+  userAuth.unregisterRemoteAuthCallback();
+  userAuth.registerRemoteAuthCallback(remoteAuthCallback);
+  console.info('Remote auth callback registered successfully');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`failed to register remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+## userAuth.unregisterRemoteAuthCallback
+
+unregisterRemoteAuthCallback(): void
+
+注销远程认证回调。该接口用于注销已注册的远程认证回调，注销后系统不再接收远程认证的页面参数请求和认证结果通知。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. Called by non-system application. |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  userAuth.unregisterRemoteAuthCallback();
+  console.info('Remote auth callback unregistered successfully');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`failed to unregister remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+}
+```

@@ -50,7 +50,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
    
    - If a small amount of data is to be encrypted, you can use **OH_CryptoSymCipher_Final()** immediately after **OH_CryptoSymCipher_Init()**.
    - If a large amount of data is to be encrypted, you can call **OH_CryptoSymCipher_Update** multiple times to pass in the data by segment.
-   - You can determine the method to use based on the data size. For example, if the data size is greater than 20 bytes, use **OH_CryptoSymCipher_Update**.
+   - You can determine the method to use based on the data size. For example, if the message is greater than 20 bytes, use **Cipher.update**.
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
@@ -61,12 +61,15 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 Call [OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy), [OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy), [OH_CryptoSymKey_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy), and [OH_Crypto_FreeDataBlob](../../reference/apis-crypto-architecture-kit/capi-crypto-common-h.md#oh_crypto_freedatablob) to release the allocated memory and destroy the object.
 
-```c++
+<!-- @[des_crypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/cpp/types/project/des_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestDesEcb()
+OH_Crypto_ErrCode doTestDesEcb()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -78,8 +81,7 @@ static OH_Crypto_ErrCode doTestDesEcb()
     Crypto_DataBlob decData = {.data = nullptr, .len = 0};
 
     // Generate a symmetric key randomly.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("DES64", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("DES64", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -115,7 +117,6 @@ static OH_Crypto_ErrCode doTestDesEcb()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
 end:
     OH_CryptoSymCipher_Destroy(encCtx);
     OH_CryptoSymCipher_Destroy(decCtx);

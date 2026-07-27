@@ -13,7 +13,7 @@ struct WebSocket_Header {...}
 
 ## 概述
 
-websocket客户端增加header头的链表节点。
+websocket客户端增加header的链表节点。
 
 **起始版本：** 11
 
@@ -27,6 +27,6 @@ websocket客户端增加header头的链表节点。
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *fieldName | Header头的字段名。 |
-| const char *fieldValue | Header头的字段内容。 |
-| struct [WebSocket_Header](capi-netstack-websocket-header.md) *next | header头链表的next指针。 |
+| const char *fieldName | header的字段名。 |
+| const char *fieldValue | header的字段内容。 |
+| struct [WebSocket_Header](capi-netstack-websocket-header.md) *next | header链表的next指针。 |

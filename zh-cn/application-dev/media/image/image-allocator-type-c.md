@@ -2,15 +2,15 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-应用在进行图片解码操作时，需要申请解码所需的内存。当前指导将介绍不同的内存类型，以及如何进行申请。
+应用在进行图片解码操作时，需要申请对应内存。内存占用的大小与内存分配类型和像素格式密切相关。当前指导将介绍不同的内存类型、像素格式，以及如何组合使用以达到最优的解码性能。
 
 应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。
 
-当PixelMap占用的内存空间较大且使用共享内存时，RenderScript主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA（Direct Memory Access）内存零拷贝功能，可在绘制图片时避免这一消耗。
+当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。此外，通过设置合适的像素格式（如YUV格式），可进一步降低内存占用。
 
 ## 内存类型介绍
 
@@ -19,7 +19,7 @@
 - SHARE_MEMORY：共享内存。需要进行纹理上传。
 - DMA_ALLOC：DMA内存。无需纹理上传。
 
-系统提供了[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)接口，以便用户能够自定义内存分配类型进行解码。
+系统提供了[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见图片解码接口说明[image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md)。
 
 ### SHARE_MEMORY和DMA_ALLOC的区别
 
@@ -46,26 +46,9 @@
 
   DMA_ALLOC允许GPU直接访问解码后数据，减少了内存复制带来的负载。
 
-## 系统默认的内存分配方式
-
-在使用接口[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)进行解码时，不同场景下会采取不同的内存分配类型。
-
-以下场景将使用DMA_ALLOC。
-
-- 解码HDR图片。
-- 解码HEIF格式图片。
-- 解码JPEG格式图片，原图的宽和高均在1024像素至8192像素之间，[PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时系统并发任务数不超过3个。
-- 解码其他格式图片。要求[desiredSize](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
-
-除上述场景外，其余情况均使用SHARE_MEMORY。
-
-## 自定义内存分配方式
-
-默认场景下，由系统选择性能最优的内存分配方式。特定场景支持应用使用指定的内存分配方式。
-
-开发者使用接口[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)进行解码时，系统会根据传入的[解码参数](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)和[内存申请类型](../../reference/apis-image-kit/capi-image-source-native-h.md#image_allocator_type)，自动选择硬件解码和软件解码。
-
-在创建像素图时，将根据用户指定的分配器类型来决定采用DMA_ALLOC分配机制还是SHARE_MEMORY分配机制。
+> **说明：**
+>
+> 开发者在使用DMA_ALLOC时，必须关注stride（步幅）与图片宽度的差异，并在数据读取、解析、送显前进行对齐处理。  
 
 ### 使用限制
 
@@ -88,14 +71,14 @@ stride（步幅）描述了图片在内存中每一行像素数据的存储宽�
 使用DMA分配机制分配内存时，stride必须满足硬件对齐要求。
 
 - stride值需为硬件平台要求字节数的整数倍。
-- 当stride值不满足对齐要求时，系统会自动补齐填充数据（padding）。
+- 当stride值大于图片宽度时，系统会自动补齐填充数据（padding）。
 
   stride的值可以通过[OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) 接口获取。
 
 1. 调用[OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo)方法，获取 `OH_Pixelmap_ImageInfo` 对象。
 2. 调用[OH_PixelmapImageInfo_GetRowStride](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride)方法，获取stride的值。
 
-C-API 获取和操作stride示例代码如下。在使用下面的示例代码之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_packer.so 以及日志依赖libhilog_ndk.z.so。
+C API 获取和操作stride示例代码如下。在使用下面的示例代码之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so以及日志依赖libhilog_ndk.z.so。
 
 ```txt
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage_packer.so libpixelmap.so)
@@ -121,7 +104,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 获取和操作stride值。
 
-   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->     
+   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->      
    
    ``` C++
    #include <cstring>
@@ -148,8 +131,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
                return 8; // 每通道16位浮点数，共4通道，合计8字节。
            case PIXEL_FORMAT_NV21:
            case PIXEL_FORMAT_NV12:
-               // NV21和NV12格式是YUV 4:2:0半平面格式，返回2作为每像素字节。
-               return 2; // 每像素2字节（简化处理）。
+               // NV21和NV12是YUV 4:2:0半平面格式，不能用整数每像素字节数计算行跨度。
+               return 0;
            case PIXEL_FORMAT_RGBA_1010102:
                return 4; // 每像素4字节。
            case PIXEL_FORMAT_YCBCR_P010:
@@ -190,29 +173,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        return;
    }
    
-   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
-                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   static void CopyPixelRows(void *pixels, void *newPixels, const PixelmapInfo &srcInfo, uint32_t dstRowStride,
+       IMAGE_ALLOCATOR_TYPE allocatorType)
    {
-       PixelmapInfo srcInfo;
-       GetPixelmapInfo(pixelmap, &srcInfo);
-       GetPixelmapAddrInfo(pixelmap, &srcInfo);
-   
-       void *pixels = nullptr;
-       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
-       OH_PixelmapNative *newPixelmap = nullptr;
-       OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
-       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
-       void *newPixels = nullptr;
-       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
        uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
        uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
        uint32_t dstSize = srcInfo.byteCount;
-       uint32_t rowSize;
-       if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) {
-           rowSize = srcInfo.rowStride;
-       } else {
-           rowSize = dstRowStride;
-       }
+       uint32_t rowSize = allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA ? srcInfo.rowStride :
+           dstRowStride;
        for (uint32_t i = 0; i < srcInfo.height; ++i) {
            if (dstSize >= dstRowStride) {
                std::copy(src, src + dstRowStride, dst);
@@ -223,6 +191,41 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            dst += dstRowStride;
            dstSize -= dstRowStride;
        }
+   }
+   
+   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
+                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   {
+       PixelmapInfo srcInfo;
+       GetPixelmapInfo(pixelmap, &srcInfo);
+       GetPixelmapAddrInfo(pixelmap, &srcInfo);
+       void *pixels = nullptr;
+       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
+       OH_PixelmapNative *newPixelmap = nullptr;
+       Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || newPixelmap == nullptr) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           if (newPixelmap != nullptr) {
+               OH_PixelmapNative_Release(newPixelmap);
+           }
+           return;
+       }
+       int32_t pixelBytes = GetPixelFormatBytes(srcInfo.pixelFormat);
+       if (pixelBytes == 0) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           OH_PixelmapNative_Release(newPixelmap);
+           return;
+       }
+       uint32_t dstRowStride = srcInfo.width * pixelBytes;
+       void *newPixels = nullptr;
+       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
+       CopyPixelRows(pixels, newPixels, srcInfo, dstRowStride, allocatorType);
        OH_PixelmapNative_UnaccessPixels(newPixelmap);
        OH_PixelmapNative_UnaccessPixels(pixelmap);
        OH_DecodingOptions_Release(options);
@@ -252,22 +255,140 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
    
        OH_ImageSourceNative* imageSource = nullptr;
        Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
+       if (image_ErrorCode != IMAGE_SUCCESS || imageSource == nullptr) {
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        OH_DecodingOptions *options = nullptr;
-       OH_DecodingOptions_Create(&options);
+       image_ErrorCode = OH_DecodingOptions_Create(&options);
+       if (image_ErrorCode != IMAGE_SUCCESS || options == nullptr) {
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // 使用DMA创建pixelMap。
        OH_PixelmapNative *pixelmap = nullptr;
        image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || pixelmap == nullptr) {
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        DataCopy(pixelmap, imageSource, options, allocatorType);
        return GetJsResult(env, image_ErrorCode);
    }
    ```
+## 像素格式介绍
 
+图片解码后的像素格式直接影响内存占用大小。当前支持的主要像素格式如下。
+
+### RGBA_8888和YUV格式的区别
+
+| 名称 | RGBA_8888 | NV21/NV12（YUV 4:2:0） |
+| -- | -- | -- |
+| 定义 | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位。 | 颜色信息由亮度分量Y和交错排列的色度分量UV组成。Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位。 |
+| 每像素字节数 | 4字节 | 约1.5字节 |
+| 内存占用计算 | width × height × 4 | width × height × 1.5 |
+| 适用场景 | 需要处理Alpha通道的场景，如透明度合成、阴影效果等。 | 图片预览、显示等场景，内存占用小，适合大尺寸图片解码。 |
+| 优势 | 支持完整的Alpha通道操作，兼容性好。 | 内存占用小，JPEG硬件解码可直接输出，避免格式转换开销。 |
+
+### 使用YUV格式的优势
+
+- **显著降低内存占用**
+
+  以4K图片（3840×2160）为例：
+  - RGBA_8888内存占用：3840 × 2160 × 4 ≈ 33.2MB
+  - NV21内存占用：3840 × 2160 × 1.5 ≈ 12.4MB
+  - 内存节省约62.5%，可有效降低应用内存压力。
+
+- **减少格式转换开销**
+
+  JPEG等格式的图片在硬件解码时，解码器可直接输出YUV格式数据，减少格式转换开销。
+
+> **说明：**
+>
+> - SVG格式和TIFF格式的图片不支持解码为YUV像素格式。
+> - YUV格式不含Alpha通道，有透明度需求的图片应使用RGBA_8888格式。
+
+### 设置YUV像素格式
+
+使用YUV格式解码时，需通过OH_DecodingOptions_SetPixelFormat设置像素格式，并推荐配合DMA内存分配使用。
+
+<!-- @[allocator_yuv_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->
+
+``` C++
+napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
+{
+    napi_value argValue[1] = {nullptr};
+    size_t argCount = 1;
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
+        argValue[0] == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmapWithYUV napi_get_cb_info failed!");
+        return GetJsResult(env, IMAGE_BAD_PARAMETER);
+    }
+    const size_t maxPathLength = 1024;
+    char filePath[maxPathLength];
+    size_t pathSize = maxPathLength;
+    napi_get_value_string_utf8(env, argValue[0], filePath, maxPathLength, &pathSize);
+
+    OH_ImageSourceNative* imageSource = nullptr;
+    Image_ErrorCode errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
+    
+    OH_DecodingOptions *options = nullptr;
+    OH_DecodingOptions_Create(&options);
+    // 设置YUV像素格式（NV21或NV12），实现内存优化。
+    OH_DecodingOptions_SetPixelFormat(options, PIXEL_FORMAT_NV21);
+    
+    // 使用DMA内存分配，配合YUV格式实现最优解码性能。
+    IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;
+    OH_PixelmapNative *pixelmap = nullptr;
+    errorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
+    if (errorCode == IMAGE_SUCCESS && pixelmap != nullptr) {
+        // 获取PixelMap信息，验证像素格式。
+        OH_Pixelmap_ImageInfo *imageInfo = nullptr;
+        OH_PixelmapImageInfo_Create(&imageInfo);
+        OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
+        
+        uint32_t width;
+        uint32_t height;
+        uint32_t rowStride;
+        int32_t pixelFormat;
+        OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
+        OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
+        OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
+        OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
+        OH_LOG_INFO(LOG_APP, "YUV PixelMap created: width=%{public}u, height=%{public}u, "
+                    "rowStride=%{public}u, pixelFormat=%{public}d",
+                    width, height, rowStride, pixelFormat);
+        OH_PixelmapImageInfo_Release(imageInfo);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmapWithYUV failed, errorCode=%{public}d", errorCode);
+    }
+    
+    OH_DecodingOptions_Release(options);
+    options = nullptr;
+    OH_ImageSourceNative_Release(imageSource);
+    imageSource = nullptr;
+    return GetJsResult(env, errorCode);
+}
+```
+
+## 系统默认的内存分配方式
+
+在使用[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)接口进行解码时，不同场景下会采取不同的内存分配类型。
+
+以下场景将使用DMA_ALLOC。
+
+- 解码HDR图片。
+- 解码HEIF格式图片。
+- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时硬件不繁忙（并发数为3）。
+- 解码其他格式图片。要求[OH_DecodingOptions](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)中的desiredSize大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
+
+除上述场景外，其余情况均使用SHARE_MEMORY。
 
 ## 解码单张图片的内存限制
 
 为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
 
-图片框架对解码单张图片设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)时及时释放，以避免进程被系统终止。
+图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)时及时释放，以避免进程被系统终止。
 
 应用可使用[onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
 

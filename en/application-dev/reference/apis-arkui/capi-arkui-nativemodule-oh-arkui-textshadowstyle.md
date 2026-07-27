@@ -1,0 +1,21 @@
+# OH_ArkUI_TextShadowStyle
+ <!--Kit: ArkUI-->
+ <!--Subsystem: ArkUI-->
+ <!--Owner: @carnivore233-->
+ <!--Designer: @carnivore233-->
+ <!--Tester: @mateng_Holtens-->
+ <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct OH_ArkUI_TextShadowStyle OH_ArkUI_TextShadowStyle
+```
+
+## Overview
+
+Defines a text shadow style.<br>        [OH_ArkUI_TextShadowStyle_Create](capi-styled-string-h.md#oh_arkui_textshadowstyle_create) can be used to create a text shadow style object.<br>        [OH_ArkUI_TextShadowStyle_Destroy](capi-styled-string-h.md#oh_arkui_textshadowstyle_destroy) can be used to destroy the text shadow style object.<br>        After the object is created, [OH_ArkUI_TextShadowStyle_SetTextShadow](capi-styled-string-h.md#oh_arkui_textshadowstyle_settextshadow) can be used to set a style.
+
+**Since**: 24
+
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Header file**: [styled_string.h](capi-styled-string-h.md)

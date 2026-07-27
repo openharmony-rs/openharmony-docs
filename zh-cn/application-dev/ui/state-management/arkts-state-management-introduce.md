@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -12,7 +12,9 @@
 
 收集依赖是指建立状态变量与组件之间的数据绑定关系。在UI渲染时，状态管理框架会“观察”哪些状态变量被读取了，并记录下这个“依赖关系”。一个UI界面上可能使用了多个状态变量，在修改状态变量时，仅与该状态变量相关的组件进行UI刷新，其他不相关的组件不会刷新。因此，UI刷新时需要明确哪些组件使用了被修改的状态变量，以能够实现这些组件的精准刷新。
 
-```ts
+<!-- @[state_management_introduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateManagementIntroduce.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -79,7 +81,7 @@ UI渲染的流程主要有以下几个步骤：
 2. 刷新脏节点：刷新标脏的自定义组件和系统组件。
 3. 布局：根据标脏局部刷新组件树，触发子树上节点的尺寸测量和位置确认。
 
-同样以上述示例代码为例，使用DevEco Studio的[Profiler工具](../ui-inspector-profiler.md)，点击`Button1`，抓取状态变量的变化打点，trace如下图所示：
+同样以上述示例代码为例，使用DevEco Studio的[Profiler工具](../ui-inspector-profiler.md#状态管理profiler调优能力)，点击`Button1`，抓取状态变量的变化打点，trace如下图所示：
 
 ![statemanagement-trace](./figures/statemanagement-trace.png)
 

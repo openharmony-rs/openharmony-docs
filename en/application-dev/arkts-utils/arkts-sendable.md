@@ -11,7 +11,7 @@ In traditional JS engines, there is only one way to optimize the overhead of con
 
 ArkTS introduces the concept of Sendable objects, which support pass-by-reference during concurrent communication.
 
-Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object contains JS or native content, it can be directly shared. However, if the underlying implementation is native, thread safety must be ensured. The following figure shows the communication process.
+Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object is bound to a native object by calling the N-API, the native object is also shared when the Sendable object is shared. The following figure shows the communication process.
 
 ![sendable](figures/sendable.png)
 
@@ -177,7 +177,7 @@ The shared heap is a process-level heap space. Unlike the local heap of a virtua
 
 **Relationship between the shared heap and local heap**
 
-![image_0000002001521153](figures/image_0000002001521153.png)
+![Sendable-communication-Process](figures/Sendable-communication-Process.png)
 
 The local heap of each concurrent instance is isolated, whereas the shared heap is a process-level heap that can be shared by all concurrent instances. However, the shared heap cannot reference objects in the local heap.
 

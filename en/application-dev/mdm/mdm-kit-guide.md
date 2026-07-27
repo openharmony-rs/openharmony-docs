@@ -8,7 +8,7 @@
 
 ## Introduction
 
-MDM Kit provides capabilities for the device administrator application, including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see <!--RP7-->[API Reference](../reference/apis-mdm-kit/Readme-EN.md)<!--RP7End-->.
+MDM Kit provides capabilities for [MDM applications](./mdm-kit-term.md#mdm-application-device-administrator-application), including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see <!--RP7-->[API Reference](../reference/apis-mdm-kit/Readme-EN.md)<!--RP7End-->.
 
 A device administrator application is an application with the [EnterpriseAdminExtensionAbility](./mdm-kit-admin.md).
 
@@ -98,11 +98,11 @@ The MDM APIs can be called only after the **EnterpriseAdminExtensionAbility** is
 
 ```bash
 # Enable a super administrator application.
-hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility_class_name
 # Enable a BYOD device administrator application.
-hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name -t byod
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility_class_name -t byod
 # Starting from API version 23, this command can enable an application as a regular device administrator application. This command applies to PCs/2-in-1 devices, and an error message will be displayed if it is used on other device types.
-hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name -t da
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility_class_name -t da
 # Disable an EnterpriseAdminExtensionAbility.
 hdc shell edm disable-admin -n Bundle_name
 ```

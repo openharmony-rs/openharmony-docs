@@ -2,12 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
-<!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @shengu_lancer; @rongShao-Z-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
+滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)，提供可视化的滚动指示和控制能力，支持自定义滚动条样式。
 
 >  **说明：**
 >
@@ -44,9 +44,11 @@ ScrollBar(value: ScrollBarOptions)
 
 enableNestedScroll(enabled: Optional\<boolean>)
 
-设置滚动条是否嵌套滚动。
+设置滚动条是否嵌套滚动。用于多层滚动容器、嵌套列表等需要通过滚动条拖动内层可滚动组件并联动父级滚动的场景，仅当ScrollBar通过Scroller与可滚动组件绑定时生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,23 +56,25 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| enabled  | Optional\<boolean> | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否执行嵌套滚动。当需要在多层滚动容器之间传递滚动事件时设置为true；不需要嵌套滚动时设置为false。<br/>默认值：false |
 
 >  **说明：**
 >
-> 滚动条使能嵌套滚动时，滚动条的滚动偏移量会先发送给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
+> 滚动条使能嵌套滚动时，滚动条偏移量会先发送给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
 >
 > WaterFlow组件的布局模式为移动窗口式（[WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)）时，不支持嵌套滚动。
 >
-> 设置嵌套滚动模式为PARALLEL时，父子组件同时滚动，需要开发者在[onScrollFrameBegin](ts-container-scroll.md#onscrollframebegin9)中按照所需逻辑，自行设置父子组件滚动顺序。
+> 设置嵌套滚动模式为[PARALLEL](ts-appendix-enums.md#nestedscrollmode10)时，父子组件同时滚动，需要开发者在[onScrollFrameBegin](ts-container-scroll.md#onscrollframebegin9)中按照所需逻辑，自行设置父子组件滚动顺序。
 
 ### scrollBarColor<sup>20+</sup>
 
 scrollBarColor(color: Optional\<ColorMetrics\>)
 
-设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
+设置滚动条的颜色，仅滚动条不放置子组件时生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,11 +82,18 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色，仅滚动条不放置子组件时生效。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
 
 ## ScrollBarOptions对象说明
 
 滚动条组件参数。
+
+>  **说明：**
+>
+>  - ScrollBar组件用于显示并控制所绑定可滚动组件的滚动位置。设置子组件时，该子组件作为自定义滚动条滑块，并随可滚动组件的滚动位置移动。
+>  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动。一个可滚动组件可以绑定多个ScrollBar组件，一个ScrollBar组件只能绑定一个可滚动组件。
+>  - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
+>  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -90,17 +101,9 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。 |
-| direction | [ScrollBarDirection](#scrollbardirection枚举说明) | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。<br/>默认值：ScrollBarDirection.Vertical |
-| state | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 滚动条状态。<br/>默认值：BarState.Auto |
-
->  **说明：**
->
-> ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
-> 
-> 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动，ScrollBar与可滚动组件仅支持一对一绑定。
->
-> 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定，且仅当ScrollBar与可滚动组件方向相同时才能联动。一个可滚动组件可以绑定多个ScrollBar组件，一个ScrollBar组件只能绑定一个可滚动组件。 |
+| direction | [ScrollBarDirection](#scrollbardirection枚举说明) | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。可滚动内容为纵向布局时设置为ScrollBarDirection.Vertical；可滚动内容为横向布局时设置为ScrollBarDirection.Horizontal。<br/>默认值：ScrollBarDirection.Vertical |
+| state | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 滚动条状态。BarState.Auto表示按需显示，BarState.On表示常驻显示，BarState.Off表示不显示。<br/>默认值：BarState.Auto |
 
 ## ScrollBarDirection枚举说明
 
@@ -110,10 +113,10 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Vertical | 纵向滚动条。 |
-| Horizontal | 横向滚动条。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | -------- |
+| Vertical | 0 | 纵向滚动条。 |
+| Horizontal | 1 | 横向滚动条。 |
 
 
 ## 示例1（设置子节点）
@@ -164,11 +167,11 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
-从API version 20开始，该示例为ScrollBar组件没有子节点时的滚动条样式。
+该示例为ScrollBar组件没有子节点时的滚动条样式。从API version 20开始，可通过[scrollBarColor](#scrollbarcolor20)设置滚动条颜色。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
@@ -211,13 +214,13 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 
-从API version 20开始，该示例通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。
+从API version 14开始，可通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。本示例同时使用从API version 20开始支持的[scrollBarColor](#scrollbarcolor20)属性设置滚动条颜色。
 ```ts
-import { ColorMetrics } from '@kit.ArkUI'
+import { ColorMetrics, EdgeEffect, NestedScrollMode } from '@kit.ArkUI'
 
 @Entry
 @Component

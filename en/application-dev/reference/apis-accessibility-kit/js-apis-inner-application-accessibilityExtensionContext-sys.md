@@ -32,7 +32,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 ## Parameter<sup>20+</sup>
 
-Sets the parameter for a specific operation when the accessibility node element executes this operation. For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
+Sets the parameter for a specific operation when the accessibility node element executes this operation. For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction) (executable actions for accessibility node elements).
 
 **System API**: This is a system API.
 
@@ -47,6 +47,7 @@ Sets the parameter for a specific operation when the accessibility node element 
 | offset              | string | No  | Yes|Cursor offset, for example, **'1'**.   |
 | spanId              | string | No  |Yes|ID of the hyperlink wrapped by the span tag.               |
 | scrollType          | string | No  | Yes|Scroll type of the component. The options are **'fullScreen'** and **'halfScreen'**.|
+| injectActionType    | [InjectActionType](./js-apis-accessibility-sys.md#injectactiontype) | No  | Yes|Injection action.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 For example, if the characters whose indexes range from 0 to 7 in the text input box are selected, the parameters set by the **executeAction(AccessibilityAction.SET_SELECTION, parameter)** method are as follows:
 ```ts
@@ -55,7 +56,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilityGrid<sup>20+</sup>
 
-Defines accessibility grid information. For details, see [AccessibilityElement.currentItem](#accessibilityelement).
+Defines accessibility grid information. For details, see the currentItem attribute in [AccessibilityElement](#accessibilityelement).
 
 **System API**: This is a system API.
 
@@ -69,7 +70,7 @@ Defines accessibility grid information. For details, see [AccessibilityElement.c
 
 ## AccessibilitySpan<sup>20+</sup>
 
-Defines the information about the hyperlink wrapped by the span tag. For details, see [AccessibilityElement.spans](#accessibilityelement).
+Defines the information about the hyperlink wrapped by the span tag. For details, see the spans attribute in [AccessibilityElement](#accessibilityelement).
 
 **System API**: This is a system API.
 
@@ -284,7 +285,7 @@ export default class AccessibilityManager {
     let elementId: number = 10;
 
     this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-      console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+      console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -360,7 +361,7 @@ export default class AccessibilityManager {
     let windowId: number = 10;
 
     this.context.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-      console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+      console.info(`succeeded in getting default focus, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
     });
@@ -768,7 +769,7 @@ export default class AccessibilityManager {
     }
 
     this.context.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-      console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+      console.info(`succeeded in getting accessibility focused element, ${element.bundleName}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -791,7 +792,7 @@ Obtains the root element of an active window. This API uses a promise to return 
 **Parameters**
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowId | number | No| Window ID to be obtained.|
+| windowId | number | No| Window ID to be obtained. If this parameter is not provided, the root element of the current active window is queried by default.|
 
 **Return value**
 | Type                                | Description                   |
@@ -845,7 +846,7 @@ export default class AccessibilityManager {
     let windowId: number = 0;
 
     this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-      console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
+      console.info(`succeeded in getting root inactive window element, ${element.bundleName}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -988,7 +989,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | valueMin<sup>20+</sup>             | number                                                             | No | Yes | Minimum value.<br>Default value: **0**.|
 | valueNow<sup>20+</sup>             | number                                                             | No | Yes | Current value.<br>Default value: **0**.|
 | windowId<sup>20+</sup>             | number                                                             | No | Yes | Window ID.<br>Default value: **-1**.|
-| offset<sup>20+</sup>             | number              | No | Yes | Pixel offset of the content area from the top of a scrollable component (such as **List** and **Grid**).<br>Default value: **0**.|
+| offset<sup>20+</sup>             | number              | No | Yes | Pixel offset of the content area relative to the top coordinate of a scrollable component (such as List and Grid). The unit is pixel (px).<br>Default value: **0**.|
 | textType<sup>20+</sup>             | string                                                             | No | Yes | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
 | accessibilityText<sup>20+</sup> | string                                                  | No | Yes | Accessibility text information of an element.|
 | accessibilityStateDescription<sup>23+</sup> | string                                      | No | Yes | Custom accessibility state broadcast text of an element.<br>**Model restriction**: This API can be used only in the stage model.|
@@ -1009,6 +1010,9 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | clip<sup>20+</sup>  | boolean                                                            | No | Yes | Whether the component needs to be clipped. The value **true** indicates that the component needs to be clipped, and **false** indicates the opposite.|
 | parentId<sup>20+</sup>             | number                                                             | No | Yes | Parent element ID of a component.|
 | childrenIds<sup>20+</sup>             | Array\<number>                                                             | No | Yes | List of child element IDs of a component.|
+| isEssential             | boolean              | No  | Yes  | Whether the element is mandatory for the user. The value **true** indicates that the element is mandatory, and the value **false** indicates that the element is not mandatory. The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| belongTreeId             | number              | No  | Yes  | Component tree ID that the element belongs to. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| childrenTreeId             | number              | No  | Yes  | Child component tree ID of the element. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 **Example**
 ```ts
@@ -1123,11 +1127,11 @@ export default class AccessibilityManager {
       return;
     }
     this.context.getRootInActiveWindow().then((rootElement: AccessibilityElement) => {
-      console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
+      console.info(`succeeded in getting root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
-      console.info(`Succeeded in enableScreenCurtain`);
+      console.info(`Succeeded in enabling screen curtain`);
     }).catch((err: BusinessError) => {
-      console.error(`failed to enableScreenCurtain, Code is ${err.code}, message is ${err.message}`);
+      console.error(`failed to enable screen curtain, Code is ${err.code}, message is ${err.message}`);
     });
   }
 }
@@ -1154,7 +1158,7 @@ Finds the node element of the current active window based on the element ID. Thi
 
 | Type                                 | Description                              |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1175,7 +1179,7 @@ let condition = 10;
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1202,7 +1206,7 @@ Finds all node elements based on the **accessibilityTextHint** text type configu
 
 | Type                                      | Description                           |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1223,7 +1227,7 @@ let condition = 'location';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1252,9 +1256,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.getCursorPosition().then((data: number) => {
-  console.info(`Succeeded in getCursorPosition, ${data}`);
+  console.info(`succeeded in getting cursor position, ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to getCursorPosition, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1282,10 +1286,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 rootElement.getCursorPosition((err: BusinessError, data: number) => {
   if (err && err.code) {
-    console.error(`failed to getCursorPosition, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getCursorPosition, ${data}`);
+  console.info(`succeeded in getting cursor position, ${data}`);
 });
 ```
 
@@ -1333,8 +1337,8 @@ import { AccessibilityAction } from '@kit.AccessibilityKit';
 // rootElement is an instance of AccessibilityElement.
 // An action that does not require any parameter setting is an action without parameters, as specified in the action description.
 try {
-  rootElement.executeAction(AccessibilityAction.CLICK);
-  console.info(`Succeeded in perform action CLICK`);
+  await rootElement.executeAction(AccessibilityAction.CLICK);
+  console.info(`succeeded in performing action CLICK`);
 }catch (error){
   console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
 }
@@ -1354,7 +1358,7 @@ try {
   // rootElement is an instance of AccessibilityElement.
   // Sample code of setSelection
   rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
-  console.info(`Succeeded in perform action SET_SELECTION`);
+  console.info(`succeeded in performing action SET_SELECTION`);
 }catch (error){
   console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
 }
@@ -1370,7 +1374,7 @@ try {
   // rootElement is an instance of AccessibilityElement.
   // Sample code of setCursorPosition
   rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
-  console.info(`Succeeded in perform action SET_CURSOR_POSITION`);
+  console.info(`succeeded in performing action SET_CURSOR_POSITION`);
 }catch (error){
   console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
 }
@@ -1826,3 +1830,13 @@ Provides attribute names and value types of a node element.
 | Name                  | Type                                                             | Read-Only| Optional| Description             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityStateDescription<sup>23+</sup> | string                                      | No  | Yes  | Custom accessibility state broadcast text of an element.<br>**Model restriction**: This API can be used only in the stage model.|
+| isEssential             | boolean              | No  | Yes  | Whether the element is mandatory for the user. The value **true** indicates that the element is mandatory, and the value **false** indicates that the element is not mandatory. The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| belongTreeId             | number              | No  | Yes  | Component tree ID that the element belongs to. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| childrenTreeId             | number              | No  | Yes  | Child component tree ID of the element. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| currentItem             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | No  | Yes  | Position of the current element in the grid.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| span             | [AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)[]              | No  | Yes  | Array of the row and column ranges spanned by the element in the grid layout.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| childrenIds             |      Array&lt;number&gt;         | No  | Yes  | ID of the child component of the element.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| parentId             | number              | No  | Yes  | ID of the parent component of the element. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| mainWindowId             | number              | No  | Yes  | ID of the main window of the element. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| accessibilityVisible             | boolean              | No  | Yes  | Whether the element is accessibility visible. **true** means the element is accessibility visible and **false** means the element is accessibility invisible. The default value is **true**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| navDestinationId             | number              | No  | Yes  | ID of the navigation target associated with the element. The default value is **-1**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|

@@ -1,8 +1,8 @@
 # Interface (AudioRenderer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -807,11 +807,20 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 获取输出音频流时间戳和位置信息，适配倍速接口。使用Promise异步回调。
 
-获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。
+获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。
 
-注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。
+当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。
 
-当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
+该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正开始播放时才会更新。
+> - 播放位置（framePosition）单位为采样数，采样数计算方式为采样率乘以时间（例如，当采样率为48000Hz时，20ms音频数据对应的采样数为48000*0.02，即采样点为960）。
+> - 当调用Flush接口时实际播放位置也会被重置。
+> - 在调用此函数之前，确保音频流处于运行状态，并且至少已成功播放一帧数据。
+> - 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置可能也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。
+> - 该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -941,7 +950,7 @@ getBufferSize(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -972,7 +981,7 @@ getBufferSize(): Promise\<number>
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise对象，返回缓冲区大小。 |
+| Promise\<number> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -1001,7 +1010,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -1031,7 +1040,7 @@ setSpeed(speed: number): void
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值（倍速范围：0.25-4.0）。 |
+| speed | number | 是   | 设置播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **错误码：**
 
@@ -1060,7 +1069,7 @@ getSpeed(): number
 
 | 类型                                              | 说明        |
 | ------------------------------------------------- |-----------|
-| number | 返回播放的倍速值。 |
+| number | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **示例：**
 
@@ -1267,7 +1276,7 @@ getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
+|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1294,7 +1303,7 @@ getMinStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最小音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最小音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1320,7 +1329,7 @@ getMinStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最小音量（音量范围[0, 1]）。|
+| number| 返回音频流最小音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1348,7 +1357,7 @@ getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
+|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1375,7 +1384,7 @@ getMaxStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最大音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最大音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1401,7 +1410,7 @@ getMaxStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最大音量（音量范围[0, 1]）。|
+| number| 返回音频流最大音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1722,7 +1731,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > **说明：**
 >
 > - 本接口仅适用于[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或者VoIP视频通话的场景，支持听筒、扬声器和系统默认设备。
-> - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
+> - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。具体请参阅文档[设置音频默认输出设备](../../media/audio/audio-output-device-switcher.md#设置默认输出设备)。
+> - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -1773,7 +1783,7 @@ on(type: 'audioInterrupt', callback: Callback\<InterruptEvent>): void
 
 AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
 
-调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -2091,7 +2101,7 @@ audioRenderer.on('stateChange', (state: audio.AudioState) => {
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
-取消监听到达标记事件。使用callback异步回调。
+取消监听状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -2099,7 +2109,7 @@ off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 | 参数名 | 类型   | 必填 | 说明                                                |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听到达标记事件时，触发该事件。 |
+| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听状态变化事件时，触发该事件。 |
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 否 | 回调函数，返回当前音频的状态。 |
 
 **错误码：**
@@ -2289,9 +2299,12 @@ audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallba
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
-监听音频数据写入回调事件（当需要写入音频数据时触发），使用 callback 方式返回结果。
+监听音频数据写入回调事件（当需要写入音频数据时触发）。使用callback异步回调。
 
-回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> **说明：**
+>
+> - 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> - 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -2735,10 +2748,50 @@ getLoudnessGain(): number
 
 | 类型    | 说明             |
 |------- |-----------------  |
-| number | 返回播放的响度值。 |
+| number | 返回播放的响度值，单位为分贝。 |
 
 **示例：**
 
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
+```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+设置独立的音频会话策略和行为参数。
+
+> **说明：**
+>
+> 当音频渲染器在运行状态时调用此接口后，必须重新调用接口[start](./arkts-apis-audio-AudioRenderer.md#start8)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**示例：**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```

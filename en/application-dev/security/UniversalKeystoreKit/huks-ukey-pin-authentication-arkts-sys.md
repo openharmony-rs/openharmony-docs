@@ -17,6 +17,8 @@ From API version 22, **huksExternalCrypto** provides the PIN authentication API.
 
 3. Call [authUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto-sys.md#huksexternalcryptoauthukeypin) to verify the PIN.
 
+## Development Cases
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

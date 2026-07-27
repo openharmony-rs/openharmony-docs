@@ -27,7 +27,7 @@ Provides APIs for symmetric keys.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) | OH_CryptoSymKey | Defines a struct for a symmetric key generator.|
+| [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) | OH_CryptoSymKey | Defines a struct for a symmetric key.|
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) | OH_CryptoSymKeyGenerator | Defines a struct for a symmetric key.|
 
 ### Functions

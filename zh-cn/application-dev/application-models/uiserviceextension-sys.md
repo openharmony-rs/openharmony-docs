@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -21,7 +21,7 @@
 
 - [UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)可以通过[startUIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startuiserviceextensionability14)方式拉起或者可以通过[connectUIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)拉起，窗口只会创建一次。
 - [UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)窗口创建失败或销毁时，[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)会自动销毁。
-- 只能在主线程线程中执行start/connect/disconnect操作，不要在Worker、TaskPool等子线程中执行start/connect/disconnect操作。
+- 只能在主线程中执行start/connect/disconnect操作，不要在Worker、TaskPool等子线程中执行start/connect/disconnect操作。
 - 应用需要在前台获焦的情况下才能启动、连接系统提供的[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)。
 
 ## 生命周期
@@ -57,7 +57,7 @@
 
 - **onConnect**
 
-  当另一个组件调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)方法与该服务连接时，触发该回调。此方法中，接收一个调用方远端代理对象（[UIServiceHostProxy](../reference/apis-ability-kit/js-apis-inner-application-uiservicehostproxy-sys.md)），服务端拿到这个对象后可以通过这个对象与客户端进行通信。同一个客户端，want里面的(DeviceId, BundleName,ModuleName,AbilityName)以及callback对象相同情况下去连接，只会在第一次收到[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)，其他情况每次连接都会收到[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)。
+  当另一个组件调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)方法与该服务连接时，触发该回调。此方法中，接收一个调用方远端代理对象（[UIServiceHostProxy](../reference/apis-ability-kit/js-apis-inner-application-uiservicehostproxy-sys.md)），服务端拿到这个对象后可以通过这个对象与客户端进行通信。同一个客户端，want里面的(DeviceId, BundleName,ModuleName,AbilityName)以及callback对象相同情况下去连接，只会在第一次收到[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md#onconnect)，其他情况每次连接都会收到[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md#onconnect)。
 
 - **onData**
 
@@ -65,7 +65,7 @@
 
 - **onDisconnect**
 
-  当连接断开时，将触发该回调。客户端死亡或者调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)方法可以使连接断开。
+  当连接断开时，将触发该回调。客户端退出或者调用[disconnectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)方法可以使连接断开。
 
 - **onDestroy**
   
@@ -87,17 +87,17 @@
 
 在DevEco Studio工程中手动新建一个[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为“uiserviceext”。
 
-2. 在UIServiceExt目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExt.ets。
+2. 在uiserviceext目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExtAbility.ets。
 
     ``` txt
     ├── ets
-    │ ├── UIServiceExt
-    │ │   ├── UIServiceExt.ets
+    │ ├── uiserviceext
+    │ │   ├── UIServiceExtAbility.ets
     ```
     
-3. UIServiceExt.ets文件中，增加导入[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)的依赖包，自定义类继承[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)并实现生命周期回调。
+3. UIServiceExtAbility.ets文件中，增加导入[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)的依赖包，自定义类继承[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)并实现生命周期回调。
 
     ```ts
     import { common, UIServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -178,7 +178,7 @@
             "description": "uiService",
             "type": "uiService",
             "exported": true,
-            "srcEntry": "./ets/UIServiceExtAbility/UIServiceExtAbility.ets"
+            "srcEntry": "./ets/uiserviceext/UIServiceExtAbility.ets"
           }
         ]
       }
@@ -208,8 +208,8 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             let startWant: Want = {
-              bundleName: 'com.acts.uiserviceextensionability',
-              abilityName: 'UiServiceExtAbility',
+              bundleName: 'com.acts.uiserviceextensionability', // 定义目标方应用包名，请开发者替换为实际包名
+              abilityName: 'UIServiceExtAbility',
             };
             try {
               // 启动UIServiceExtensionAbility
@@ -232,9 +232,9 @@ struct Index {
 
 ### 连接UIServiceExtension
 
-应用可以通过[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接一个服务（在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象中指定启动的目标服务），服务的[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)就会被调用，并在该回调方法中接收到调用者传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象，从而建立连接。
+应用可以通过[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接一个服务（在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象中指定启动的目标服务），服务的[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md#onconnect)就会被调用，并在该回调方法中接收到调用者传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象，从而建立连接。
 
-客户端调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接服务端时，会接收并保存服务端返回的[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象，该proxy对象可以用于向服务端发送数据。客户端需要通过保存的[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象来调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)断开与服务端的连接。
+客户端调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接服务端时，会接收并保存服务端返回的[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象，该proxy对象可以用于向服务端发送数据。客户端需要通过保存的[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象来调用[disconnectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)断开与服务端的连接。
 
 - 使用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)建立与[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)的连接。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
     ```ts
@@ -254,8 +254,8 @@ struct Index {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
-              abilityName: ''
+              bundleName: 'com.example.myapplication', // 定义目标方应用包名，请开发者替换为实际包名
+              abilityName: 'UIServiceExtAbility'
             };
             // 定义回调
             const callback: common.UIServiceExtensionConnectCallback = {
@@ -349,8 +349,8 @@ struct Index {
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let startWant: Want = {
-                  bundleName: 'com.acts.uiserviceextensionability',
-                  abilityName: 'UiServiceExtAbility',
+                  bundleName: 'com.acts.uiserviceextensionability', // 定义目标方应用包名，请开发者替换为实际包名
+                  abilityName: 'UIServiceExtAbility',
                 };
                 try {
                   // 连接UIServiceExtensionAbility

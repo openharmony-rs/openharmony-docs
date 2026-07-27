@@ -1,9 +1,9 @@
 # LiveFormExtensionContext (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md).
@@ -38,7 +38,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
     let storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('context', this.context);
     session.loadContent('pages/MyLiveFormPage', storage);
-    session.sendData({['isFormReady']: true});
+    session.sendData({ ['isFormReady']: true });
     console.info("current language is: ", this.context.config.language);
   }
 };
@@ -84,7 +84,7 @@ A successful connection via this API will start the ServiceExtensionAbility. For
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -200,7 +200,7 @@ ServiceExtensionAbility is a special type of [ExtensionAbility](../../applicatio
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

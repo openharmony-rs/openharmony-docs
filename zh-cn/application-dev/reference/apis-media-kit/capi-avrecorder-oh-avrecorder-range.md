@@ -1,8 +1,8 @@
 # OH_AVRecorder_Range
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
 
 ## 概述
 
-表示类型的范围。
+表示AVRecorder相关参数（如比特率、帧率等）的取值范围。
 
 **起始版本：** 18
 

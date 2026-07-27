@@ -1,8 +1,8 @@
 # 设置自定义节点跨语言属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -42,7 +42,7 @@ function insideScroll() {
         .fontSize(30)
         .textAlign(TextAlign.Center)
         .margin({ top: 10 })
-    }, (item: string) => item)
+    }, (item: number) => item.toString())
   }
   .width("100%")
 }
@@ -130,7 +130,7 @@ struct CrossLanguage {
             .fontSize(30)
             .textAlign(TextAlign.Center)
             .margin({ top: 10 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width("100%")
     }
@@ -325,7 +325,7 @@ struct CrossLanguage {
     }
     } // namespace NativeModule
 
-    #endif //MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
+    #endif // MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
     ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
@@ -334,7 +334,6 @@ struct CrossLanguage {
 
 
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "CrossLanguageExample.h"
@@ -403,7 +402,7 @@ struct CrossLanguage {
 
 ## 支持跨语言设置属性的节点类型
 
-仅以下节点类型支持跨语言设置节点属性。
+仅以下节点类型支持跨语言设置节点属性。Native侧需要使用[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)获取待修改属性的节点，不支持对[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)获取的目标节点跨语言设置属性。
 
 | ArkTS侧[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型 | Native侧[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)类型 | ArkTS属性获取接口 | ArkTS控制器获取/绑定接口 |
 | -------- | -------- | -------- | -------- |

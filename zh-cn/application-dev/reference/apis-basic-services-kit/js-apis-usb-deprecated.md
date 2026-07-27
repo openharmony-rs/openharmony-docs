@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供管理USB设备的相关功能，包括查询USB设备列表、批量数据传输、控制命令传输、权限控制等。
 
@@ -523,7 +523,7 @@ USB设备信息。
 | devAddress       | number                               | 是   |设备地址。      |
 | serial           | string                               | 是   |序列号。       |
 | name             | string                               | 是   |设备名字。      |
-| manufacturerName | string                               | 是   |产商信息。      |
+| manufacturerName | string                               | 是   |厂商信息。      |
 | productName      | string                               | 是   |产品信息。      |
 | version          | string                               | 是   |版本。        |
 | vendorId         | number                               | 是   |厂商ID。      |

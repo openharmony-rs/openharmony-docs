@@ -13,7 +13,7 @@ typedef struct OH_Huks_ExternalCryptoParamSet {...} OH_Huks_ExternalCryptoParamS
 
 ## 概述
 
-定义外部加密参数集合的结构。
+定义外部加密参数集合的结构体。
 
 **起始版本：** 22
 

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Repeat](./arkts-new-rendering-control-repeat.md) is a new loop rendering component introduced in ArkUI for API version 12. Compared with [LazyForEach](./arkts-rendering-control-lazyforeach.md), **Repeat** offers a simpler API, enhanced functionality, and improved performance optimization. This topic provides guidance on migrating from **LazyForEach** to **Repeat**.
+[Repeat](./arkts-new-rendering-control-repeat.md) is a loop rendering component introduced in ArkUI since API version 12. Compared with [LazyForEach](./arkts-rendering-control-lazyforeach.md), **Repeat** offers a simpler API, enhanced functionality, and improved performance optimization. This topic provides guidance on migrating from **LazyForEach** to **Repeat**.
 
 ## Migrating Basic Usage
 
@@ -21,7 +21,7 @@ In Example 1, **LazyForEach** is used within a [List](../arkts-layout-developmen
 **Example 1 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -74,7 +74,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
 1. Adopt state management V2 decorators.
 
-   **Repeat** is designed to work with state management V2 decorators. (In [lazy loading](./arkts-new-rendering-control-repeat.md#how-it-works) mode, **Repeat** requires state management V2.) If you are currently using state management V1, migrate to V2.
+   **Repeat** is designed to work with state management V2 decorators. (In [lazy loading](./arkts-new-rendering-control-repeat.md#lazy-loading-capability) mode, **Repeat** requires state management V2.) If you are currently using state management V1, migrate to V2.
 
    ```ts
    // Before migration – LazyForEach
@@ -157,7 +157,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
 4. Configure lazy loading.
 
-   Repeat supports two rendering modes: [lazy loading](./arkts-new-rendering-control-repeat.md#how-it-works) and [full loading](./arkts-new-rendering-control-repeat.md#lazy-loading-disablement).
+   **Repeat** supports two rendering modes: [lazy loading and full loading](./arkts-new-rendering-control-repeat.md#lazy-loading-capability).
    
    - Full loading mode renders all child components (similar to [ForEach](./arkts-rendering-control-foreach.md)).
    - Lazy loading mode dynamically renders only visible and preloaded components (requires container components, similar to **LazyForEach**).
@@ -181,7 +181,8 @@ After the previous migration steps, Example 1 has been successfully converted fr
 
 ```ts
 @Entry
-@ComponentV2 // Using state management V2
+@ComponentV2
+  // Use state management V2.
 struct MyComponent {
   @Local data: Array<string> = []; // Data source is a state management V2 decorated array.
 
@@ -226,7 +227,7 @@ Example 2 demonstrates the primary data operations.
 **Example 2 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -387,21 +388,33 @@ struct MyComponent {
     Column({ space: 3 }) {
       // Add a new item on click.
       Button('Add new item')
-        .onClick(() => { this.data.push(`New item ${this.count++}`); })
+        .onClick(() => {
+          this.data.push(`New item ${this.count++}`);
+        })
       // Delete an item on click.
       Button('Delete item 0')
-        .onClick(() => { this.data.splice(0, 1); })
+        .onClick(() => {
+          this.data.splice(0, 1);
+        })
       // Swap items on click.
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+        })
       // Modify a single item on click.
       Button('Change item 0')
-        .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
+        .onClick(() => {
+          this.data.splice(0, 1, `Changed item ${this.count++}`);
+        })
       // Modify multiple items on click.
       Button('Change all items')
-        .onClick(() => { this.data = this.data.map((item: string) => { return 'Changed ' + item; }); })
+        .onClick(() => {
+          this.data = this.data.map((item: string) => {
+            return 'Changed ' + item;
+          });
+        })
       List({ space: 3 }) {
         Repeat(this.data)
           .each((repeatItem: RepeatItem<string>) => {
@@ -436,7 +449,7 @@ Example 3 demonstrates sub-property observation.
 **Example 3 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -506,7 +519,7 @@ struct ChildComponent {
 
 **Migrating to Repeat**
 
-**Repeat** is designed to work with state management V2, which provides the [@ObserveV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObserveV2 and @Trace respectively.
+**Repeat** is designed to work with state management V2, which provides the [@ObservedV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObservedV2 and @Trace respectively.
 
 The following example demonstrates the implementation after migration:
 
@@ -569,7 +582,7 @@ Example 4 demonstrates how to use the @Local decorator with **LazyForEach** to o
 **Example 4 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -724,7 +737,7 @@ Example 5 demonstrates how to use the @Param decorator with **LazyForEach** to o
 **Example 5 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -862,7 +875,7 @@ Example 6 demonstrates a typical implementation:
 **Example 6 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -990,7 +1003,7 @@ Example 7 demonstrates a typical component reuse scenario:
 **Example 7 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1076,7 +1089,7 @@ struct ChildComponent {
 1. Use the built-in reuse capability of **Repeat**.
 2. Use the reuse capability provided by the @ReusableV2 decorator.
 
-Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the @ReusableV2 decorator. To use @ReusableV2, you must manually disable the built-in reuse capability of **Repeat**. (@ReusableV2 is supported since API version 18, and **Repeat** is supported since API version 19.)
+Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the @ReusableV2 decorator. To use @ReusableV2, you must manually disable the built-in reuse capability of **Repeat**. (Since API version 18, @ReusableV2 is supported and you can [disable the reuse capability of Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).)
 
 **Example 7 – Migration Solution 1: Using the Built-in Reuse Capability of Repeat**
 
@@ -1205,7 +1218,7 @@ Example 8 demonstrates a typical template rendering scenario:
 **Example 8 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1589,8 +1602,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // Method 2: listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 

@@ -1,7 +1,7 @@
 # JSVM_DefineClassOptions
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -27,6 +27,7 @@ Defines the options of a class.
 | Name                                                                           | Description           |
 |-------------------------------------------------------------------------------|---------------|
 | [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | Option ID of a class.|
-| void* ptr   | void* type.     |
-| int num      | Integer type.       |
-| bool boolean   | Boolean type.           |
+| content     | Union of the option value of a class corresponding to the ID.|
+| content.ptr   | Pointer to the class option value.|
+| content.num      | Used to store the class option value of the integer type.|
+| content.boolean   | Used to store the class option value of the Boolean type.|

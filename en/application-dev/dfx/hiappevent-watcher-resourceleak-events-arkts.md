@@ -333,7 +333,7 @@ After receiving the subscribed event, the application should obtain the path of 
 
 Change the extension of the .log file generated after subscription to **.rawheap**, use [rawheap-translator](../tools/rawheap-translator.md) to convert the file to a .heapsnapshot file, and open the file using DevEco Studio or a browser. For details, see [Importing Heap Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
 
-Since API 14, you can change the log file name extension to **.rawheap** and import it to DevEco Studio for display. For details, see [Importing Memory Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
+Since API version 14, you can change the log file name extension to **.rawheap** and import it to DevEco Studio for display. For details, see [Importing Memory Snapshots Offline](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388).
 
 You can select either of the following methods:
 

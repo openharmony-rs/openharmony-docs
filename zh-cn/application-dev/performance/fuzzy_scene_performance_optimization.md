@@ -1,5 +1,12 @@
 # 图像模糊动效优化：静态模糊与动态模糊的性能对比解析
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 模糊效果是一种常见的图像处理技术，它通过减弱图像细节，去除干扰，使焦点更加鲜明。如下图所示，模糊效果不仅能增强界面空间感，还能清晰区分元素层级，是图像处理领域中一项常用且重要的技术手段。但当这一效果融入动态变化，便催生了模糊动效。模糊动效被广泛应用于页面之间的转场、图像元素的缩放等需要突出内容或改变用户关注点的场景中。
@@ -69,7 +76,7 @@ struct Index {
 }
 ```
 
-![fuzzy_scene_performance_optimization_countere](./figures/fuzzy_scene_performance_optimization_motion.gif)
+![fuzzy_scene_performance_optimization_counter](./figures/fuzzy_scene_performance_optimization_motion.gif)
 
 下面是使用静态模糊对图片进行模糊处理的场景示例。主要步骤如下：
 

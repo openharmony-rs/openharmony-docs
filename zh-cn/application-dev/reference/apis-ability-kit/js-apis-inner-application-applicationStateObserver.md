@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 应用状态监听器，可以作为入参传入[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法，监听应用的生命周期变化。
 
@@ -36,7 +36,7 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
-Ability状态发生变化时执行的回调函数。
+[Ability](js-apis-app-ability-ability.md)状态发生变化时执行的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -126,7 +126,7 @@ type ProcessData = _ProcessData.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ProcessData.default](js-apis-inner-application-processData.md) | 进程数据信息。 |
+| _[ProcessData](js-apis-inner-application-processData.md).default | 进程数据信息。 |
 
 **示例：**
 ```ts

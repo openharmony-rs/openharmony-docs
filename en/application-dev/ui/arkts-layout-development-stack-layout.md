@@ -59,7 +59,7 @@ Alignment of elements in the **Stack** component is set through the [alignConten
 
   **Figure 2** Alignment modes in the Stack component 
 
-![en-us_image_0000001562940621](figures/en-us_image_0000001562940621.png)
+![alignment2](figures/alignment2.png)
 
 <!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
 
@@ -105,7 +105,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001511900544](figures/en-us_image_0000001511900544.png)
+![stackLayoutNozIndex](figures/stackLayoutNozIndex.png)
 
 In the preceding figure, the size of the stacked element 3 is greater than that of all the elements before it. Therefore, the first two elements are completely hidden. To show these elements, modify their **zIndex** attribute settings.
 
@@ -131,7 +131,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001563060797](figures/en-us_image_0000001563060797.png)
+![stackLayoutzIndex](figures/stackLayoutzIndex.png)
 
 
 ## Example Scenario
@@ -181,5 +181,5 @@ struct StackSample {
 ```
 
 
-![en-us_image_0000001511421368](figures/en-us_image_0000001511421368.png)
+![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 <!--RP1--><!--RP1End-->

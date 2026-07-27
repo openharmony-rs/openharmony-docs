@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## A
 
@@ -13,13 +13,17 @@
 
 [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器。
 
-### ArkTS子进程
-
-ArkTS子进程是指启动后系统默认创建ArkTS运行时环境的应用子进程。
-
 ### App Linking
 
 App Linking是一种实现应用间跳转的技术，通过系统传入的uri信息（HTTPS链接）将用户引导至目标应用中的特定内容。无论目标应用是否已安装，用户都能够访问链接对应的内容。这种跳转方式相比Deep Linking增加了域名校验机制，可以避免应用被仿冒，更加安全。
+
+### Application Continuation
+
+应用接续（Application Continuation），也称为"跨端迁移"，指当用户在一个设备上操作某个应用时，可以在另一个设备的同一个应用中快速切换，无缝衔接上一个设备的应用体验。具体是指在用户使用过程中，当使用情景发生变化：之前使用的设备不再适合继续当前任务，或者周围有更合适的设备时，用户可以选择使用新的设备来继续当前的任务。接续完成后，之前设备的应用可退出或保留，用户可以将注意力集中在被启动的设备上，继续执行任务。
+
+### ArkTS子进程
+
+ArkTS子进程是指启动后系统默认创建ArkTS运行时环境的应用子进程。
 
 
 ## C
@@ -41,18 +45,34 @@ Context是Stage模型中的上下文基类，它封装了应用程序运行所�
 
 Deep Linking是一种通过链接拉起指定应用的技术，其特点是支持开发者定义任意形式的scheme。然而，由于缺乏对域名的所有权验证机制，存在被其他应用仿冒的风险。这与采用标准HTTPS链接并强制进行域名验证以保障唯一性和安全的App Linking形成显著区别。
 
+### Distributed Ability Manager Service
+
+分布式组件管理服务（Distributed Ability Manager Service，简称DAMS），是OpenHarmony元能力（Ability）子系统的核心系统服务之一。其进程名称为 distributedsched，属于分布式任务调度子系统的核心组成部分；该服务使得本地设备能够访问或控制远程设备上的组件（Ability即应用组件），为分布式场景下的应用接续、应用协同和分布式意图提供底层能力支撑。在OpenHarmony内部，该服务也被称为分布式调度服务（Distributed Scheduler Service）。
+
+### 多实例模式
+
+多实例模式是一种允许同一个应用组件（比如UIAbility）同时存在多个独立运行实例的启动模式。
+
 
 ## F
 
 ### FA模型
 
-FA模型是早期的应用模型，为应用程序提供必备的组件与运行机制。在该模型中每个应用组件独享一个ArkTS引擎实例，适用于简单应用的开发。
+FA模型是早期的应用模型，为应用程序提供必备的组件与运行机制。在该模型中每个应用组件独享一个ArkTS引擎实例，适用于简单应用的开发。目前该模型已不再主推，建议使用新的Stage模型进行开发。
 
 ## I
 
 ### InsightIntentProvider (意图提供方管理能力)
 
 [意图提供方管理能力](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md)指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
+
+
+## K
+
+### 跨端迁移
+
+跨端迁移指在A端运行的UIAbility迁移到B端上，完成迁移后，B端UIAbility继续任务，而A端UIAbility可按需决定是否退出。
+
 
 ## M
 
@@ -86,6 +106,17 @@ Stage模型是当前系统主推的应用模型，为应用程序提供必备的
 Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应用组件间的状态共享与对象调用，可以降低内存开销、提升开发效率，适用于复杂应用的开发。
 
 
+## T
+
+### Taihe
+
+一种跨语言API编程模型，开发者通过编写IDL文件（以`ohidl`为扩展名）定义业务接口，并使用Taihe编译器工具自动生成目标语言的接口胶水层代码，简化开发流程。
+
+### taihec
+
+Taihe的编译器工具，用于解析`ohidl`文件并生成目标代码。
+
+
 ## U
 
 ### UIAbility
@@ -105,25 +136,27 @@ UIAbility生命周期是指一个UIAbility组件从创建到销毁的完整过�
 UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant回调，随后UIAbility进入前台状态并触发onForeground回调。
 
 
-## 多实例模式
+## X
 
-多实例模式是一种允许同一个应用组件（比如UIAbility）同时存在多个独立运行实例的启动模式。
+### 显式Want启动
 
-
-## 跨端迁移
-
-跨端迁移指在A端运行的UIAbility迁移到B端上，完成迁移后，B端UIAbility继续任务，而A端UIAbility可按需决定是否退出。
-
-
-## 显式Want启动
-
-显示Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中指定了abilityName和bundleName，称为显式Want启动。
+显式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中指定了abilityName和bundleName，称为显式Want启动。
 
 当有明确处理请求的对象时，显式Want启动是一种简单有效的启动目标应用组件的方式。
 
+### 系统级so
 
-## 隐式Want启动
+系统提供的so，属于操作系统的一部分，随系统镜像发布。
+
+
+## Y
+
+### 隐式Want启动
 
 隐式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中未指定abilityName，称为隐式Want启动。
 
 当目标处理对象不明确时，可以使用隐式Want启动。它允许当前应用直接调用其他应用提供的某项能力，而无需关心该能力由哪个具体应用提供。
+
+### 应用级so
+
+应用开发者通过[Node-API](../napi/use-napi-process.md)方式自行开发的so，属于应用的一部分，随应用发布。

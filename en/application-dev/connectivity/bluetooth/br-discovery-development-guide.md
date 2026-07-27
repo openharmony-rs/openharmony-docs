@@ -6,6 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:48.039Z pushedAt=2026-06-18T01:10:36.237Z -->
 
 ## Introduction
 This document describes how to implement the Bluetooth device discovery capabilities, such as scanning for nearby devices, setting the Bluetooth scan mode, and retrieving information about paired devices.
@@ -111,14 +112,14 @@ try {
 ```
 
 ### Retrieving Information About Paired Devices
-To streamline device scanning, check if the device is paired before initiating a scan. You can also initiate connection and data transmission processes for paired devices. For details, see [Device Pairing](br-pair-device-development-guide.md) and [SPP-based Data Transmission](spp-development-guide.md).
+To streamline device scanning, check if the device is paired before initiating a scan. You can also initiate connection and data transmission processes for paired devices. For details, see [Device Pairing](br-pair-device-development-guide.md) and [SPP-based Connection and Data Transmission](spp-development-guide.md).
 
 ```ts
 try {
   // Obtain information about the paired devices.
   let devices = connection.getPairedDevices();
   console.info('pairedDevices: ' + JSON.stringify(devices));
-  // If the device address is known, check whether the device has been paired.
+  // If the device address is known, you can actively query whether the device is paired.
   if (devices.length > 0) {
     let pairState = connection.getPairState(devices[0]);
     console.info('device: '+ devices[0] + ' pairState is ' + pairState);
@@ -191,7 +192,7 @@ export class DiscoveryDeviceManager {
       // Obtain information about the paired devices.
       let devices = connection.getPairedDevices();
       console.info('pairedDevices: ' + JSON.stringify(devices));
-      // If the device address is known, check whether the device has been paired.
+      // If the device address is known, you can actively query whether the device is paired.
       if (devices.length > 0) {
         let pairState = connection.getPairState(devices[0]);
         console.info('device: '+ devices[0] + ' pairState is ' + pairState);

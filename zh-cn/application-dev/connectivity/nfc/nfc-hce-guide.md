@@ -26,17 +26,20 @@
 
 ## 接口说明
 
-NFC卡模拟完整的API说明以及实例代码请参考：[NFC卡模拟接口](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md)。
+NFC卡模拟完整的API说明以及实例代码请参考：[@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md)。
 
-完成HCE卡模拟功能，可能使用到下面的接口。
+完成HCE卡模拟功能，需要使用到下面的接口。
 
-| 接口名                             | 功能描述                                                                       |
-| ---------------------------------- | ------------------------------------------------------------------------------ |
-| start(elementName: ElementName, aidList: string[]): void                   | 启动HCE业务功能。包括设置当前应用为前台优先，动态注册AID列表。                                                               |
-| stop(elementName: ElementName): void  | 停止HCE业务功能。包括取消APDU数据接收的订阅、退出当前应用前台优先、释放动态注册的AID列表。                                                     |
-| on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void                | 订阅回调，用于接收对端读卡设备发送的APDU数据。                                                     |
-| transmit(response: number[]): Promise\<void>                  | 发送APDU数据到对端读卡设备。|
-| off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void| 取消APDU数据接收的订阅。|
+| 接口名                      |  支持版本  | 功能描述                                                                       |
+| ---------------------------------- | ------------- | ------------------------------------------------------------------------- |
+| hasHceCapability(): boolean   | 从API version 9开始支持 | 判断设备是否支持HCE卡模拟功能。                 |
+| isDefaultService(elementName: ElementName, type: CardType): boolean   | 从API version 9开始支持  | 判断指定的应用是否为指定业务类型的默认应用。    |
+| start(elementName: ElementName, aidList: string[]): void | 从API version 9开始支持      | 启动HCE业务功能。包括设置当前应用为前台优先，动态注册AID列表。                                                               |
+| stop(elementName: ElementName): void | 从API version 9开始支持   | 停止HCE业务功能。包括取消APDU数据接收的订阅、退出当前应用前台优先、释放动态注册的AID列表。                                                     |
+| on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void  | 从API version 8开始支持     | 订阅回调，用于接收对端读卡设备发送的APDU数据。                                                     |
+| transmit(response: number[]): Promise\<void>  | 从API version 9开始支持     | 发送APDU数据到对端读卡设备。|
+| off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void | 从API version 18开始支持 | 取消APDU数据接收的订阅。|
+
 
 ## 开发准备
 
@@ -44,17 +47,20 @@ NFC卡模拟完整的API说明以及实例代码请参考：[NFC卡模拟接口]
 HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后台刷卡。两种不同的刷卡方式，代码实现上会存在一些差异。
 - HCE应用前台刷卡<br>
 1. 在配置文件module.json5中，不需要静态声明NFC读卡器选择的应用ID（AID，参考ISO/IEC 7816-4规范），而是通过[start](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#start9)来动态注册。
-2. HCE应用的刷卡页面退出时，需要显性调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
+2. HCE应用的刷卡页面退出时，需要显式调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
 - HCE应用后台刷卡<br>
 1. 在配置文件module.json5中，需要静态声明NFC读卡器选择的应用ID（AID）。根据业务选择， 选择声明的AID是属于Payment类型，还是Other类型。
-2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户必须选择该HCE应用作为默认支付应用后，才能实现后台刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
+2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户选择该HCE应用作为默认支付应用后，可实现后台无冲突刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
 3. 如果选择Other类型，该HCE应用不会出现在系统设置页面的NFC"默认付款应用"里，但是多个HCE应用如果都声明了相同的Other类型的AID时，会出现冲突的可能。
 4. HCE应用后台刷卡的实现，不需要调用接口start和stop。
+5. HCE应用后台刷卡建议使用单独专用的HceAbility实现，以减少[onCreate](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)函数耗时。
+6. HceAbility的OnCreate函数中除了[hceService.on](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#on8)外，尽量减少其它操作。
+7. HceAbility的OnCreate函数中hceService.on要同步执行，不能异步执行，以免影响HCE通信时序。
 
 > **注意：**
 >
-> - 从API version 9之后的应用开发新增支持Stage模型，作为目前主推并长期演进的模型。
-> - HCE示例代码的提供，全部按照Stage模型来说明。
+> - 从API version 9之后的应用开发新增支持[Stage模型](../../application-models/ability-terminology.md#stage模型)，作为目前主推并长期演进的模型。
+> - HCE示例代码的提供，全部按照[Stage模型](../../application-models/ability-terminology.md#stage模型)来说明。
 
 ## 开发步骤
 
@@ -70,6 +76,7 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 ```ts
     "abilities": [
       {
+        // 以下使用的变量名若无默认值需先声明定义
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ts",
         "description": "$string:EntryAbility_desc",
@@ -103,7 +110,7 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 ```
 
 ```ts
-import { cardEmulation } from '@kit.ConnectivityKit';
+import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
@@ -137,7 +144,11 @@ export default class EntryAbility extends UIAbility {
 
     // 判断设备是否支持NFC能力和HCE能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
     if (!cardEmulation.hasHceCapability()) {
@@ -197,8 +208,8 @@ export default class EntryAbility extends UIAbility {
 ```ts
     "abilities": [
       {
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ts",
+        "name": "HceUIAbility",
+        "srcEntry": "./ets/hceuiability/HceUIAbility.ts",
         "description": "$string:EntryAbility_desc",
         "icon": "$media:icon",
         "label": "$string:EntryAbility_label",
@@ -242,7 +253,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
-import { cardEmulation } from '@kit.ConnectivityKit';
+import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
@@ -271,22 +282,28 @@ const hceCommandCb: AsyncCallback<number[]> = (error: BusinessError, hceCommand:
   }
 }
 
-export default class EntryAbility extends UIAbility {
+// 使用单独专用的HceAbility实现，以减少OnCreate函数耗时
+export default class HceUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // OnCreate函数中除了hceService.on外，尽量减少其它操作
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
 
     // 判断设备是否支持NFC能力和HCE能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
     if (!cardEmulation.hasHceCapability()) {
       hilog.error(0x0000, 'testTag', 'hce unavailable.');
       return;
     }
-
     // 应用程序被运行到前台时，订阅HCE刷卡数据的接收
     hceService = new cardEmulation.HceService();
+    // hceService.on同步执行，不能异步执行，以免影响HCE通信时序
     hceService.on('hceCmd', hceCommandCb);
   }
 
@@ -336,7 +353,7 @@ export default class EntryAbility extends UIAbility {
               "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
             ]
           }
-        ]
+        ],
         // 根据业务需要至少定义一个Payment类型的AID，可以定义多个
         "metadata": [
           {

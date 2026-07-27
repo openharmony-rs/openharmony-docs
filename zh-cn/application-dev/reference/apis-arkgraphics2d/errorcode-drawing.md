@@ -1,10 +1,12 @@
 # 图形绘制与显示错误码
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+图形绘制与显示错误码定义了图形2D绘制过程中的异常情况，包括参数校验、文件操作等方面的错误标识。开发者可通过这些错误码快速定位和排查绘制相关的问题，提高开发调试效率。适用于使用ArkGraphics 2D进行图形绘制的场景。
 
 > **说明：**
 >
@@ -14,7 +16,7 @@
 
 **错误信息**
 
-The parameter value is out of range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **错误描述**
 
@@ -45,8 +47,8 @@ File not found. The specified file does not exist or the path is incorrect.
 
 **处理步骤**
 
-1. 确保路径正确且文件存在。
-2. 确保文件路径大小写正确。
+1. 检查文件路径格式是否正确，确认文件存在于指定位置。
+2. 核对文件路径与实际文件名的大小写是否完全一致。
 
 ## 25900003 打开文件失败
 
@@ -65,7 +67,7 @@ Failed to open file. The file cannot be opened due to permission or I/O issues.
 
 **处理步骤**
 
-1. 检查文件权限，确保可读。
+1. 验证文件权限设置，确认当前用户对文件具有读取权限。
 2. 确保文件未被其他进程占用。
 
 ## 25900004 文件定位失败
@@ -140,24 +142,26 @@ Empty file. The specified file is empty.
 
 **处理步骤**
 
-确保文件大小大于0字节。
+检查文件大小属性，确认文件内容不为空（大小大于0字节）。
 
 ## 25900008 文件损坏
 
 **错误信息**
 
-Corrupted file. The file content is invalid or damaged and cannot be parsed.
+Corrupted file. The file content is invalid, damaged, or an index out of bounds occurs when accessing TTC/OTC files, making it impossible to parse.
 
 **错误描述**
 
-文件损坏。文件内容无效或损坏，无法解析。
+文件损坏。文件内容无效、损坏或者访问TTC/OTC文件时index越界，无法解析。
 
 **可能原因**
 
 1. 文件格式不正确。
 2. 文件内容损坏。
+3. TTC/OTC文件超出索引。
 
 **处理步骤**
 
 1. 确保文件格式符合预期。
 2. 确保文件内容正常。
+3. 确保index在TTC/OTC支持范围内。

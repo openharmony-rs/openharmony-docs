@@ -1,9 +1,9 @@
 # ArkTS卡片概述
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
@@ -49,7 +49,7 @@ ArkTS卡片分为动态卡片、静态卡片和互动卡片三种类型。
 | ------- | ------ | ------- | ------- | 
 | 静态卡片 | 仅支持UI组件和布局能力。| 主要用于展示静态信息（UI相对固定），仅可以通过FormLink组件跳转到指定的UIAbility。| 功能简单但可以有效控制内存开销。|
 | 动态卡片 | 除了支持UI组件和布局能力，还支持通用事件能力和自定义动效能力。 | 用于有复杂业务逻辑和交互的场景。例如：卡片页面图片的刷新、卡片内容的刷新等。| 功能丰富但内存开销较大。|
-| 互动卡片 | 在动态卡片基础上，额外支持溢出动效能力。 | 用于有复杂业务逻辑和交互，需要执行溢出动效呈现更好视觉体验的场景。例如：桌面卡片游戏等。| 功能丰富但内存开销较大。|
+| 互动卡片 | 在动态卡片基础上，额外支持破框动效能力。 | 用于有复杂业务逻辑和交互，需要执行破框动效呈现更好视觉体验的场景。例如：桌面卡片游戏等。| 功能丰富但内存开销较大。|
 
 ### 动态卡片
 ArkTS卡片中提供了[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口用于卡片Card.ets和FormExtensionAbility之间的交互，当前支持router、message和call三种类型的事件，仅在卡片控件的点击事件中可以调用。
@@ -66,12 +66,14 @@ ArkTS卡片中提供了[postCardAction](../reference/apis-arkui/js-apis-postCard
 ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ### 互动卡片
-从API version 20开始支持互动卡片，互动卡片提供溢出动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。
+从API version 20开始支持互动卡片，互动卡片提供破框动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。
+
+<!--RP1--><!--RP1End-->
 
 ## 约束与限制
 ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加丰富的能力，但也增加了使用卡片进行恶意行为的风险。因为承载ArkTS卡片UI部分的widget.abc代码运行在系统公共的FRS进程内，并最终显示在卡片使用方应用中（一般为桌面应用），为确保系统渲染进程的稳定性、各卡片之间的隔离安全性，以及内存功耗等资源考虑，对ArkTS卡片UI可使用的能力做了以下约束：
 
-- 当前仅支持基于ArkUI开发卡片，不支持跨平台开发。
+- 当前仅支持基于ArkUI框架开发卡片，暂不支持跨平台开发。
 
 - 当导入模块时，仅支持导入标识“支持在ArkTS卡片中使用”的模块。若使用了不支持使用的API，卡片加载显示异常。
 
@@ -79,7 +81,7 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 不支持使用native语言开发，不支持加载native so。
 
-- 针对卡片UI页面开发，ArkTS卡片仅支持[声明式范式](../ui/arkts-ui-development-overview.md)的部分组件、事件、动效、数据管理、状态管理和API能力。对于支持在ArkTS卡片UI页面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。
+- 针对卡片UI页面开发，ArkTS卡片仅支持[声明式开发范式](../ui/arkts-ui-development-overview.md)的部分组件、事件、动效、数据管理、状态管理和API能力。对于支持在ArkTS卡片UI页面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 - 卡片组件内容的事件处理和卡片使用方的事件处理是独立的，为防止手势冲突，卡片内不支持左右滑动的控件。
 
@@ -91,7 +93,7 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 不支持Hot Reload热重载。
 
-- 不支持setTimeOut。
+- 不支持[setTimeout](../reference/common/js-apis-timer.md#settimeout)。
 
 - DevEco Studio的相关约束请参考[使用约束](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-service-widget#section1181172254318)。
 

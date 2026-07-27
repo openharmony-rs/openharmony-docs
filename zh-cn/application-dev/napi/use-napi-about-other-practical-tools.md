@@ -1,10 +1,10 @@
 # 使用Node-API其他实用接口
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -68,8 +68,12 @@ ArkTS侧示例代码
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
-let filename = testNapi.getModuleFileName();
-hilog.info(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name:%{public}s', filename);
+try {
+    let filename = testNapi.getModuleFileName();
+    hilog.info(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name:%{public}s', filename);
+} catch (error) {
+    hilog.error(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name error: %{public}s', error.message);
+}
 ```
 
 ### napi_strict_equals

@@ -28,7 +28,7 @@ Select(options: Array\<SelectOption>)
 
 | Name | Type                                          | Mandatory| Description          |
 | ------- | ---------------------------------------------- | ---- | -------------- |
-| options | Array\<[SelectOption](#selectoption)\> | Yes  | Options of the drop-down menu.|
+| options | [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[SelectOption](#selectoption)\> | Yes  | Options of the drop-down menu.|
 
 ## SelectOption
 
@@ -40,7 +40,7 @@ Provides information about the drop-down menu options.
 | ------ | ----------------------------------- | ---- | -------------- | -------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | No | No| Value of the drop-down menu option.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | icon   | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Icon of the drop-down menu option.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of drop-down menu option.<br>**symbolIcon** takes precedence over **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of the drop-down menu option.<br>**symbolIcon** takes precedence over **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Attributes
 
@@ -76,13 +76,15 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | Yes  | Index of the initially selected option.<br>When **numCount** is set to **undefined**, the first option is selected.|
+| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | Yes  | Index of the initially selected option.<br>When **numCount** is set to **undefined**, the first option is selected.|
 
 ### value
 
@@ -114,13 +116,15 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceStr](ts-types.md#resourcestr)> | Yes  | Text of the drop-down button.<br>If **resStr** is set to **undefined**, the previous value is retained.|
+| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceStr](ts-types.md#resourcestr)> | Yes  | Text of the drop-down button.<br>If **resStr** is set to **undefined**, the previous value is retained.|
 
 ### controlSize<sup>12+</sup>
 
@@ -130,13 +134,15 @@ Sets the size of the **Select** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**.|
+| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**|
 
 The priorities of **controlSize**, **width**, and **height** are as follows:
 
@@ -154,13 +160,15 @@ Sets the size of the **Select** component. Compared with [controlSize](#controls
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ControlSize](ts-basic-components-button.md#controlsize11)> | Yes  | Size of the **Select** component.<br>If **size** is set to **undefined**, the default value **ControlSize.NORMAL** is used.|
+| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ControlSize](ts-basic-components-button.md#controlsize11)> | Yes  | Size of the **Select** component.<br>If **size** is set to **undefined**, the default value **ControlSize.NORMAL** is used.|
 
 The priorities of **controlSize**, **width**, and **height** are as follows:
 
@@ -182,13 +190,15 @@ Creates a content modifier for the drop-down menu. After **menuItemContentModifi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12) | Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[MenuItemConfiguration](#menuitemconfiguration12)>| Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ### menuItemContentModifier<sup>18+</sup>
 
@@ -202,13 +212,15 @@ Creates a content modifier for the drop-down menu. Compared with [menuItemConten
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12)> | Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[MenuItemConfiguration](#menuitemconfiguration12)>> | Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If the **modifier** value is set to **undefined**, no content modifier is applied.|
 
 ### divider<sup>12+</sup>
 
@@ -218,13 +230,15 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| options  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)> \| null | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| options  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)> \| null | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 
 ### dividerStyle<sup>19+</sup>
 
@@ -234,13 +248,16 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null** or **undefined**, the default divider is displayed.<br>3. When **mode** is set to **FLOAT_ABOVE_MENU**, be careful with the **strokeWidth** settings to avoid covering text. The divider extends both upwards and downwards from the bottom of each item. When **mode** is **EMBEDDED_IN_MENU**, the divider expands to fill its own space within the menu.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null** or **undefined**, the default divider is displayed.<br>3. When **mode** is set to **FLOAT_ABOVE_MENU**, be careful with the **strokeWidth** settings to avoid covering text. The divider extends both upwards and downwards from the bottom of each item. When **mode** is **EMBEDDED_IN_MENU**, the divider expands to fill its own space within the menu.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 
 ### font
 
@@ -256,7 +273,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down list button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br>weight:&nbsp;FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases.|
+| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br>weight:&nbsp;FontWeight.Medium<br>} <br>Since API version 12, if [controlSize](#controlsize12) is set to **ControlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the value is **$r('sys.float.ohos_id_text_size_button1')**.|
 
 ### font<sup>18+</sup>
 
@@ -266,13 +283,15 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down list button.<br>If **controlSize** is set to **controlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the default value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down button.<br>If [controlSize](#controlsize12) is set to **ControlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
 
 ### fontColor
 
@@ -298,13 +317,15 @@ Sets the font color of the drop-down button. Compared with [fontColor](#fontcolo
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.<br>If **value** is set to **undefined**, the previous value is retained.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.|
 
 ### selectedOptionBgColor
 
@@ -330,13 +351,15 @@ Sets the background color of the selected option in the drop-down menu. Compared
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the selected option in the drop-down menu.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the selected option in the drop-down menu.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**.|
 
 ### selectedOptionFont
 
@@ -362,13 +385,15 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### selectedOptionFontColor
 
@@ -394,13 +419,15 @@ Sets the font color of the selected option in the drop-down menu. Compared with 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the selected option in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the selected option in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.|
 
 ### optionBgColor
 
@@ -426,13 +453,15 @@ Sets the background color of options in the drop-down menu. Compared with [optio
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of resColor is undefined, the background color of the drop-down menu item is Color.White.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of **resColor** is **undefined**, the background color of the drop-down menu item is **Color.White**.|
 
 ### optionFont
 
@@ -460,13 +489,15 @@ Compared with [optionFont](#optionfont), this API supports the **undefined** typ
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### optionFontColor
 
@@ -492,13 +523,15 @@ Sets the font color of options in the drop-down menu. Compared with [optionFontC
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of options in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary')** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of options in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary')** is used.|
 
 ### space<sup>10+</sup>
 
@@ -508,13 +541,15 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                        | Mandatory| Description                                            |
 | ------ | ---------------------------- | ---- | ------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Spacing between the text and arrow of a drop-down menu option.<br>Default value: **8**<br>Note: For the string type, percentage values are not supported.|
+| value  | [Length](ts-types.md#length) | Yes  | Spacing between the text and arrow of a drop-down menu option.<br>Default value: **8vp**<br>Note: For the string type, percentage values are not supported.|
 
 ### space<sup>18+</sup>
 
@@ -524,13 +559,15 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8** is used.|
+| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8vp** is used.|
 
 ### arrowPosition<sup>10+</sup>
 
@@ -539,6 +576,8 @@ arrowPosition(value: ArrowPosition)
 Sets the alignment between the text and arrow of an option.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -556,13 +595,15 @@ Sets the alignment between the text and arrow of an option. Compared with [arrow
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| position | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ArrowPosition](#arrowposition10)> | Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
+| position | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ArrowPosition](#arrowposition10)> | Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
 
 ### menuAlign<sup>10+</sup>
 
@@ -571,6 +612,8 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 Sets the alignment between the drop-down button and the drop-down menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -589,26 +632,30 @@ Sets the alignment between the drop-down button and the drop-down menu. Compared
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuAlignType](#menualigntype10)> | Yes  | Alignment type.<br>If **alignType** is set to **undefined**, the default value **MenuAlignType.START** is used.|
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuAlignType](#menualigntype10)> | Yes  | Alignment type.<br>If **alignType** is set to **undefined**, the default value **MenuAlignType.START** is used.|
 | offset    | [Offset](ts-types.md#offset)                                 | No  | Offset of the drop-down menu relative to the drop-down button after alignment based on the alignment type.<br> Default value: **{dx: 0, dy: 0}**|
 
 ### optionWidth<sup>11+</sup>
 
 optionWidth(value: Dimension | OptionWidthMode )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
 The **Select** component maintains 16 vp spacing from both left and right screen edges by default. This creates a 32 vp total horizontal margin (16 vp × 2). To prevent horizontal shifting when the drop-down menu is displayed, set the width of the component itself and its menu options to a value less than or equal to **calc(100% - 32 vp)**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,7 +669,7 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 optionWidth(width: Optional\<Dimension | OptionWidthMode> )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -630,25 +677,29 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)> | Yes  | Width of the drop-down menu option.<br>If **width** is set to **undefined**, it has no effect. In this case, the option width uses the default value, which is the width of two columns.|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)> | Yes  | Width of the drop-down menu option.<br>If **width** is set to **undefined**, it has no effect. In this case, the option width uses the default value, which is the width of two columns.|
 
 ### optionHeight<sup>11+</sup>
 
 optionHeight(value: Dimension)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
 
 This attribute has no effect when set to abnormal values or zero.
 
 If the actual height of all drop-down menu options is less than the set height, the menu will automatically adjust to the actual content height.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,7 +713,7 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 optionHeight(height: Optional\<Dimension>)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -670,13 +721,15 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| height | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)> | Yes  | Maximum height of the drop-down menu.<br>If **height** is set to **undefined**, the default value, which is 80% of the available screen height, is used.|
+| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)> | Yes  | Maximum height of the drop-down menu.<br>If **height** is set to **undefined**, the default value, which is 80% of the available screen height, is used.|
 
 ### menuBackgroundColor<sup>11+</sup>
 
@@ -689,6 +742,8 @@ Sets the background color of the drop-down menu.
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -706,13 +761,15 @@ Sets the background color of the drop-down menu. Compared with [menuBackgroundCo
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **Color.Transparent** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **Color.Transparent** is used.|
 
 ### menuBackgroundBlurStyle<sup>11+</sup>
 
@@ -726,13 +783,15 @@ Sets the background blur style of the drop-down menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**.|
+| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**|
 
 ### menuBackgroundBlurStyle<sup>18+</sup>
 
@@ -742,13 +801,15 @@ Sets the background blur style of the drop-down menu. Compared with [menuBackgro
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Background blur style of the drop-down menu.<br>If **style** is set to **undefined**, the default value **BlurStyle.COMPONENT_ULTRA_THICK** is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Background blur style of the drop-down menu.<br>If **style** is set to **undefined**, the default value **BlurStyle.COMPONENT_ULTRA_THICK** is used.|
 
 ### avoidance<sup>19+</sup>
 
@@ -758,13 +819,15 @@ Sets the avoidance mode for the drop-down menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type                                     | Mandatory| Description                                                        |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**.|
+| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**|
 
 ### menuOutline<sup>20+</sup>
 
@@ -773,6 +836,8 @@ menuOutline(outline: MenuOutlineOptions)
 Sets the outline style for the drop-down menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -790,17 +855,19 @@ Sets whether to display the default selection icon.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | Yes  | Whether to display the default selection icon.<br>true: The default icon is displayed. false: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**.<br>When show is set to true and the background color of the selected option is set, the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set using selectedOptionBgColor, the background color is not highlighted and only the icon selected by default is displayed.|
+| show  | boolean | Yes  | Whether to display the default selection icon.<br>**true**: The default icon is displayed. **false**: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**<br>When **show** is set to **true** and the background color of the selected option is set, both the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set via **selectedOptionBgColor**, the background color is not highlighted and only the icon selected by default is displayed.|
 
 ### textModifier<sup>20+</sup>
 
-textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+textModifier(modifier: Optional\<TextModifier>)
 
 Creates a text modifier to customize the text style of the **Select** button. After **textModifier** is applied, the text style of the **Select** button will be completely customized by the developer.
 
@@ -810,13 +877,15 @@ Creates a text modifier to customize the text style of the **Select** button. Af
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Text modifier to apply to the **Select** button for customizing the text style.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)>| Yes  | Text modifier to apply to the **Select** button for customizing the text style.<br> If the **modifier** value is **undefined**, no custom text style is applied.|
 
 ### arrowModifier<sup>20+</sup>
 
@@ -830,21 +899,23 @@ Creates an arrow modifier to customize the drop-down arrow icon style of the **S
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)> | Yes  | Arrow modifier to apply to the **Select** button for customizing the drop-down arrow icon style.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)> | Yes  | Arrow modifier to apply to the **Select** button for customizing the drop-down arrow icon style.<br> When the **modifier** value is **undefined**, no custom drop-down arrow icon style is applied.|
 
 ### optionTextModifier<sup>20+</sup>
 
-optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+optionTextModifier(modifier: Optional\<TextModifier>)
 
 Creates an option text modifier to customize the text style of unselected options in the drop-down menu. After **optionTextModifier** is applied, the unselected option text style will be completely customized by the developer.
 
-If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set, [optionFont](#optionfont) takes precedence. Any unspecified attributes in **optionFont** will use default values.
+If the font of both [optionFont](#optionfont) and **optionTextModifier** is set, [optionFont](#optionfont) takes precedence for styling unselected option text. Any unspecified attributes in **optionFont** will use default values.
 
 > **NOTE**
 >
@@ -852,21 +923,23 @@ If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Option text modifier to apply to the **Select** component for customizing the text style of unselected options in the drop-down menu.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)>| Yes  | Option text modifier to apply to the **Select** component for customizing the text style of unselected options in the drop-down menu.<br> When the **modifier** value is **undefined**, no custom text style is applied to unselected options in the drop-down menu.|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
-selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)>)
 
 Creates a selected-option text modifier to customize the text style of selected options in the drop-down menu. After **selectedOptionTextModifier** is applied, the selected-option text style will be completely customized by the developer.
 
-If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOptionTextModifier** are set, [selectedOptionFont](#selectedoptionfont) takes precedence. If **selectedOptionFont** is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
+If the font of both [selectedOptionFont](#selectedoptionfont) and **selectedOptionTextModifier** is set, [selectedOptionFont](#selectedoptionfont) takes precedence for styling unselected option text. If [selectedOptionFont](#selectedoptionfont) is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
 
 > **NOTE**
 >
@@ -874,21 +947,25 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Selected-option text modifier to apply to the **Select** component for customizing the text style of selected options in the drop-down menu.<br>You can manage and maintain the text style as needed.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)>| Yes  | Selected-option text modifier to apply to the **Select** component for customizing the text style of selected options in the drop-down menu.<br>You can manage and maintain the text style as needed.<br> When the **modifier** value is **undefined**, no custom text style is applied to selected options in the drop-down menu.|
 
 ### showInSubWindow<sup>20+</sup>
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-Sets whether the drop-down menu is displayed in the sub-window.
+Sets whether the drop-down menu is displayed in the subwindow. If this API is not used, the drop-down menu is not displayed in the subwindow by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,13 +973,13 @@ Sets whether the drop-down menu is displayed in the sub-window.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the drop-down menu is displayed in the sub-window.<br>**true** indicates that the drop-down list box is displayed in the sub-window and takes effect only for 2-in-1 devices.<br>**false**: indicates that the drop-down menu is not displayed in the sub-window.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow.<br>**false**: The drop-down menu is not displayed in the subwindow.|
 
 ### keyboardAvoidMode<sup>23+</sup>
 
 keyboardAvoidMode(mode:Optional\<MenuKeyboardAvoidMode>)
 
-Sets whether the drop-down menu avoids the soft keyboard. If this interface is not used, the soft keyboard is not avoided by default.
+Sets whether the drop-down menu avoids the soft keyboard. If this API is not used, the drop-down menu avoids the soft keyboard by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -914,13 +991,13 @@ Sets whether the drop-down menu avoids the soft keyboard. If this interface is n
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23)> | Yes| Whether the drop-down menu avoids the soft keyboard. If the value is undefined, **MenuKeyboardAvoidMode.NONE** is used.|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23)> | Yes| Whether the drop-down menu avoids the soft keyboard. If the value is **undefined**, it is treated as **MenuKeyboardAvoidMode.NONE**.|
 
 ### minKeyboardAvoidDistance<sup>23+</sup>
 
 minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 
-Sets the minimum distance between the Select menu and the soft keyboard. If this API is not used, the minimum distance is 8 vp by default. This member is valid only when [keyboardAvoidMode](#keyboardavoidmode23) is set to disable the soft keyboard.
+Sets the minimum distance for the **Select** component to avoid the soft keyboard. If this API is not used, the minimum distance is 8 vp by default. This API is valid only when [keyboardAvoidMode](#keyboardavoidmode23) is set to avoid the soft keyboard.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -932,13 +1009,75 @@ Sets the minimum distance between the Select menu and the soft keyboard. If this
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes| Sets the minimum distance between the drop-down menu and the soft keyboard. If the value is set to a negative number or undefined, the value is processed as 8vp.|
+| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes| Sets the minimum distance for the drop-down menu to avoid the soft keyboard. If the value is set to a negative number or **undefined**, the value 8 vp will be used.|
+
+### menuBackgroundBlurStyleOptions
+
+menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
+
+Sets the background blur effect of the **Select** component.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| blurStyle  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)> | Yes  | Background blur effect of the **Select** component.|
+
+### menuBackgroundEffect
+
+menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
+
+Set background properties of the **Select** component.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description                                      |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | Yes  | Background properties of the **Select** component, including the blur radius, brightness, saturation, and color.|
+
+### menuSystemMaterial
+
+menuSystemMaterial(material:Optional\<SystemUiMaterial>)
+
+Sets the system material of the drop-down menu. Different system materials correspond to different attribute effects. This API impacts the parameters of the drop-down menu, such as [menuBackgroundColor](#menubackgroundcolor18), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), and [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding API does not take effect.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is applied.|
 
 ## ArrowPosition<sup>10+</sup>
 
 Enumerates arrow positions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -952,6 +1091,8 @@ Enumerates arrow positions.
 Enumerates drop-down menu alignment modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -967,18 +1108,22 @@ Enumerates the drop-down menu avoidance modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Description            |
-| ------------------- | ------------------ |
-| COVER_TARGET        | If there is not enough space below the target component, cover the target component.|
-| AVOID_AROUND_TARGET | If there is not enough space around the target component, compress and display in the largest available space (scrollable).|
+| Name               | Value| Description            |
+| ------------------- | ----- | ------------------ |
+| COVER_TARGET        | 0 | If there is not enough space below the target component, cover the target component.|
+| AVOID_AROUND_TARGET | 1 | If there is not enough space around the target component, compress and display in the largest available space (scrollable).|
 
 ## MenuItemConfiguration<sup>12+</sup>
 
 You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -987,7 +1132,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 | value  | [ResourceStr](ts-types.md#resourcestr) | No | No | Text content of the drop-down menu option.<br>**NOTE**<br>If the length of the text exceeds the width of the menu item text area, the text will be truncated.|
 | icon  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Icon of the drop-down menu option.<br>**NOTE**<br>The string type can be used to load network images and local images.|
 | symbolIcon  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of the drop-down menu option.|
-| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**.|
+| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**|
 | index  | number | No | No | Index of the drop-down menu option. The index is zero-based.|
 | triggerSelect  | (index: number, value: string) :void | No | No | Invoked when a drop-down menu option is selected.<br>**index**: index of the selected option.<br>**value**: text of the selected option.<br>**NOTE**<br>The value of **index** will be assigned to the **index** parameter in the [onSelect](#onselect) callback; the value of **value** will be returned to the **Select** component for display and will also be assigned to the **value** parameter in the [onSelect](#onselect) callback.|
 
@@ -996,6 +1141,8 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 Defines the outline of the drop-down menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1031,13 +1178,15 @@ Triggered when a drop-down menu option is selected. Compared with [onSelect](#on
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnSelectCallback](#onselectcallback18)> | Yes  | Callback invoked when a drop-down menu option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnSelectCallback](#onselectcallback18)> | Yes  | Callback invoked when a drop-down menu option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ## OnSelectCallback<sup>18+</sup>
 
@@ -1046,6 +1195,8 @@ type OnSelectCallback = (index: number, selectStr: string) => void
 Defines the callback invoked when a drop-down menu option is selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1089,13 +1240,21 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Callback triggered when a drop-down menu option is selected.
+         * index: subscript of the selected option.
+         * text: text of the selected option (optional).
+         */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
+          // Update the state for the selected index.
           this.index = index;
+          // Update the text displayed in the selection box if the text value exists.
           if (text) {
             this.text = text;
           }
         })
+        // Overlay the target component when there is no sufficient space below the component.
         .avoidance(AvoidanceMode.COVER_TARGET);
     }.width('100%')
   }
@@ -1144,13 +1303,20 @@ struct SelectExample {
         .space(this.space)
         .arrowPosition(this.arrowPosition)
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
+        /**
+         * Callback triggered when a drop-down menu option is selected.
+         * index: subscript of the selected option.
+         * text: text of the selected option (optional).
+         */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
+          // Update the state for the selected index.
           this.index = index;
           if (text) {
             this.text = text;
           }
         })
+        // Overlay the target component when there is no sufficient space below the component.
         .avoidance(AvoidanceMode.COVER_TARGET);
     }.width('100%')
   }
@@ -1165,6 +1331,11 @@ This example implements a custom drop-down menu, each option of which consists o
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
+/**
+ * Custom content modifier for drop-down menu options
+ * Implement the standard ContentModifier to replace the default item layout of the drop-down panel.
+ * Allow custom text to be appended at the end of each menu item.
+ */
 class MyMenuItemContentModifier implements ContentModifier<MenuItemConfiguration> {
   modifierText: string = "";
 
@@ -1177,19 +1348,27 @@ class MyMenuItemContentModifier implements ContentModifier<MenuItemConfiguration
   }
 }
 
+/**
+ * UI builder for custom drop-down menu items
+ * Fully override the menu item layout: text on the left side, icon, custom text, and outlined triangular shape.
+ * @param configuration Configuration object for menu items, containing value, index, icon, custom content modifier and other related data.
+ */
 @Builder
 function MenuItemBuilder(configuration: MenuItemConfiguration) {
   Row() {
     Text(configuration.value)
     Blank()
+    // Render the system vector symbol icon first.
     if (configuration.symbolIcon) {
       SymbolGlyph().attributeModifier(configuration.symbolIcon).fontSize(24)
     } else if (configuration.icon) {
       Image(configuration.icon).size({ width: 24, height: 24 })
     }
     Blank(30)
+    // Retrieve and display the suffix text passed by the custom content modifier.
     Text((configuration.contentModifier as MyMenuItemContentModifier).modifierText)
     Blank(30)
+    // Draw a custom triangular path shape with only a stroke and no fill color.
     Path()
       .width('100px')
       .height('150px')
@@ -1198,6 +1377,7 @@ function MenuItemBuilder(configuration: MenuItemConfiguration) {
       .stroke(Color.Black)
       .strokeWidth(3)
   }
+  .padding({left: 8, top: 8})
   .onClick(() => {
     configuration.triggerSelect(configuration.index, configuration.value.valueOf().toString());
   })
@@ -1223,6 +1403,7 @@ struct SelectExample {
             console.info('Select index:' + index);
             console.info('Select text:' + text);
           })
+          // Bind the custom menu item modifier to replace the default layout of the drop-down panel.
           .menuItemContentModifier(new MyMenuItemContentModifier("Content Modifier"))
 
       }.alignItems(VerticalAlign.Center).height('50%')
@@ -1261,6 +1442,12 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Custom configuration for dividers between drop-down options
+         * strokeWidth: width of the divider.
+         * color: color of the divider.
+         * startMargin/endMargin: left and right margins of the divider.
+         */
         .divider({
           strokeWidth: 5,
           color: Color.Blue,
@@ -1310,6 +1497,7 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        // Pass null to divider to hide dividers between options.
         .divider(null)
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
@@ -1332,6 +1520,10 @@ This example illustrates how to configure the text and arrow styles of the **Sel
 ```ts
 import { TextModifier, SymbolGlyphModifier } from "@kit.ArkUI";
 
+/**
+ * Use TextModifier to control the text display style of the selection box.
+ * Use SymbolGlyphModifier to customize the size and color of the drop-down arrow icon on the right.
+ */
 @Entry
 @Component
 struct SelectExample {
@@ -1341,6 +1533,7 @@ struct SelectExample {
   symbolGlyphModifier: SymbolGlyphModifier = new SymbolGlyphModifier();
 
   aboutToAppear(): void {
+    // Initialize the global style of the main text.
     this.textModifier
       .maxLines(2)
       .fontSize(18)
@@ -1349,6 +1542,7 @@ struct SelectExample {
       .fontWeight(FontWeight.Medium)
       .textOverflow({overflow:TextOverflow.Clip})
 
+    // Initialize the style of the drop-down arrow icon.
     this.symbolGlyphModifier
       .fontSize(25)
       .fontColor(['#999999'])
@@ -1365,7 +1559,9 @@ struct SelectExample {
       ])
         .selected(this.index)
         .value(this.text)
+        // Bind a custom text modifier to control the text style.
         .textModifier(this.textModifier)
+        // Bind a modifier to customize the drop-down arrow.
         .arrowModifier(this.symbolGlyphModifier)
         .onSelect((index: number, text?: string) => {
           console.info('Select:' + index);
@@ -1399,6 +1595,9 @@ This example demonstrates how to use the [optionTextModifier](#optiontextmodifie
 ```ts
 import { TextModifier } from "@kit.ArkUI";
 
+/**
+ * Use two separate TextModifier instances to individually control the text styles of regular options and selected options in the drop-down panel.
+ */
 @Entry
 @Component
 struct SelectExample {
@@ -1407,6 +1606,7 @@ struct SelectExample {
   optionTextModifier: TextModifier = new TextModifier();
   selectedOptionTextModifier: TextModifier = new TextModifier();
   aboutToAppear(): void {
+    // Initialize the text style for regular drop-down options.
     this.optionTextModifier
       .maxLines(1)
       .fontSize(16)
@@ -1415,6 +1615,7 @@ struct SelectExample {
       .fontWeight(FontWeight.Normal)
       .width(200)
 
+    // Initialize the text style for selected drop-down options (highlighted).
     this.selectedOptionTextModifier
       .maxLines(1)
       .fontSize(18)
@@ -1442,7 +1643,9 @@ struct SelectExample {
             this.text = text;
           }
         })
+        // Bind the text modifier for regular option text.
         .optionTextModifier(this.optionTextModifier)
+        // Bind the text modifier for selected option text to implement highlighted styles for selected items.
         .selectedOptionTextModifier(this.selectedOptionTextModifier)
         .margin({ top: 20,left:30 })
         .borderRadius(12)
@@ -1476,6 +1679,12 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("Select")
+        /**
+         * Complete style customization for dividers between drop-down options
+         * strokeWidth: width of the divider. The unit is vp, which is used for consistent adaptation across different screens.
+         * color: light gray.
+         * mode: EMBEDDED_IN_MENU embedded mode.
+         */
         .dividerStyle({
           strokeWidth: LengthMetrics.vp(5),
           color: '#d5d5d5',
@@ -1519,6 +1728,11 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Outline style configuration for the drop-down menu
+         * width: outline width set to 5 vp.
+         * color: outline color set to blue.
+         */
         .menuOutline({
           width: '5vp',
           color: Color.Blue
@@ -1540,20 +1754,31 @@ struct SelectExample {
 
 ![select-menu-outline](figures/selectMenuOutline.png)
 
-### Example 10: Setting the Pop-up Menu of Select to Avoid the Soft Keyboard
+### Example 10: Setting the Pop-Up Menu of Select to Avoid the Soft Keyboard
 
-In this example, the [keyboardAvoidMode](#keyboardavoidmode23) and [minKeyboardAvoidDistance](#minkeyboardavoiddistance23) APIs are called, allows the drop-down menu to avoid the soft keyboard and customizes the minimum distance for avoiding the soft keyboard.
+This example demonstrates how to configure the drop-down menu to avoid the soft keyboard and customize the minimum distance for avoiding the soft keyboard by calling the [keyboardAvoidMode](#keyboardavoidmode23) and [minKeyboardAvoidDistance](#minkeyboardavoiddistance23) APIs.
 
-Added the keyboardAvoidMode and minKeyboardAvoidDistance APIs since API version 23.
+The **keyboardAvoidMode** and **minKeyboardAvoidDistance** APIs are added since API version 23.
 
 ``` ts
 import { inputMethod } from '@kit.IMEKit';
 import { LengthMetrics } from '@kit.ArkUI';
 
+/**
+ * Sample demonstrating the Select drop-down component with automatic input method attachment
+ * Configure the keyboard avoidance policy for the pop-up menu, triggering input method attachment with a 2-second delay upon the click of the drop-down box.
+ */
 @Entry
 @Component
 struct Index {
-  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+  private inputController: inputMethod.InputMethodController | null = null;
+  onPageShow(): void {
+    try {
+      this.inputController = inputMethod.getController();
+    } catch (err) {
+      console.error("get input method controller fail: ", JSON.stringify(err));
+    }
+  }
 
   build() {
     RelativeContainer() {
@@ -1567,7 +1792,9 @@ struct Index {
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center },
         })
+        // Set the soft keyboard avoidance mode to translate and resize the popup menu to prevent occlusion by the keyboard.
         .keyboardAvoidMode(MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE)
+        // Set the minimum reserved distance of 20 vp between the popup menu and the soft keyboard.
         .minKeyboardAvoidDistance(LengthMetrics.vp(20))
         .onClick(() => {
           setTimeout(() => {
@@ -1579,13 +1806,23 @@ struct Index {
     .width('100%')
   }
 
+  /**
+   * This is an asynchronous method to attach and listen to the input method.
+   * 1. Proactively request focus for the page with Index.
+   * 2. Verify the validity of the input method controller instance.
+   * 3. Attach the input method by configuring the text input type and search enter key.
+   */
   async attachAndListener() {
     focusControl.requestFocus('Index')
+    if (!this.inputController) {
+      console.error('inputController instance is null!');
+      return;
+    }
     try {
       await this.inputController.attach(true, {
         inputAttribute: {
-          textInputType: inputMethod.TextInputType.TEXT,
-          enterKeyType: inputMethod.EnterKeyType.SEARCH
+          textInputType: inputMethod.TextInputType.TEXT, // Regular text input type.
+          enterKeyType: inputMethod.EnterKeyType.SEARCH // Search enter key.
         }
       })
     } catch (err) {
@@ -1595,4 +1832,51 @@ struct Index {
 }
 ```
 
-![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)
+
+### Example 11: Setting System Material for the Select Component and Drop-down Menu
+
+This example uses the [menuSystemMaterial](#menusystemmaterial) API to apply the system material effect to the drop-down menu, and the [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) API to apply the system material effect to the **Select** component.
+
+Since API version 26.0.0, the **menuSystemMaterial** API is added.
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        /**
+         * Configure immersive frosted material for the selection box.
+         * ULTRA_THIN: ultra-thin translucent frosted effect with high transparency, making underlying content more visible.
+         */
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+        /**
+         * Configure immersive frosted material for the drop-down panel.
+         * THICK: thick frosted effect with lower transparency and stronger occlusion.
+         */
+        .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          }))
+    }
+    // Replace $r('app.media.img') with the image resource file you use.
+    .backgroundImage($r('app.media.img'))
+  }
+}
+```
+Menu without system material
+
+![select-without-menu-new-material](figures/selectWithoutNewMaterial.PNG)
+
+Menu with system material
+
+![select-menu-new-material](figures/selectNewMaterial.PNG)

@@ -3,9 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供应用打点和事件订阅能力，包括事件存储、事件订阅、事件清理、打点配置等功能。HiAppEvent将应用运行过程中触发的事件信息统一归纳到[AppEventInfo](#appeventinfo)中，并将事件分为系统事件和应用事件两类。
 
@@ -56,9 +56,9 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
-| 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
-| 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+| 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
+| 11102004 | Invalid size value. Possibly caused by the size value is less than zero. |
+| 11102005 | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 
 > **注意：**
 >
@@ -166,7 +166,7 @@ hiAppEvent.addWatcher({
     for (const eventGroup of appEventGroups) {
       hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
       for (const eventInfo of eventGroup.appEventInfos) {
-        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`, );
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
       }
     }
   }
@@ -246,7 +246,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101004 | Invalid string length of the event parameter. |
@@ -278,9 +278,13 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
-- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
-- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
+- MAIN_THREAD_JANK（参数配置详见[setEventConfig接口参数设置说明](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
+- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
+
+ > **说明：**
+ >
+ > 从API版本26.0.0开始，configEventPolicy已支持本接口所有设置，推荐使用[configEventPolicy](#hiappeventconfigeventpolicy22)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -325,7 +329,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -363,13 +367,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy":{
-    "logType": 1,
-    "sampleInterval": 100,
-    "ignoreStartupTime": 11,
-    "sampleCount": 21,
-    "reportTimesPerApp": 3,
-    "autoStopSampling": true
+  mainThreadJankPolicy:{
+    logType: 1,
+    sampleInterval: 100,
+    ignoreStartupTime: 11,
+    sampleCount: 21,
+    reportTimesPerApp: 3,
+    autoStopSampling: true
   }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -397,7 +401,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 不建议在回调函数中执行[移除观察者](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+> 不建议在回调函数中执行[removeWatcher](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 ## TriggerCondition
 
@@ -464,7 +468,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // 创建订阅数据持有者实例，holder1持有的数据为上述addWatcher中添加的观察者“Watcher1”监听到的事件
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -493,7 +497,7 @@ setSize(size: number): void
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -527,7 +531,7 @@ setRow(size: number): void
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -637,10 +641,10 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -707,10 +711,10 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -784,13 +788,13 @@ addProcessor(processor: Processor): number
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -873,14 +877,14 @@ removeProcessor(id: number): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // 根据添加数据处理者返回的标识id移除特定数据处理者
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // 根据添加数据处理者返回的标识id移除特定数据处理者
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -900,7 +904,7 @@ setUserId(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------  |
 | name      | string                    | 是   | 用户ID的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。   |
-| value     | string                    | 是   | 用户ID的值。长度不超过256，当值为null或空字符串时，则清除用户ID。 |
+| value     | string                    | 是   | 用户ID的值。长度不超过256个字符，当值为null或空字符串时，则清除用户ID。 |
 
 **错误码：**
 
@@ -983,7 +987,7 @@ setUserProperty(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------- |
 | name      | string                    | 是   | 用户属性的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。  |
-| value     | string                    | 是   | 用户属性的值。长度不超过1024，当值为null或空字符串时，则清除用户属性。  |
+| value     | string                    | 是   | 用户属性的值。长度不超过1024个字符，当值为null或空字符串时，则清除用户属性。  |
 
 **错误码：**
 
@@ -1091,7 +1095,7 @@ configure(config: ConfigOption): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11103001 | Invalid max storage quota value. Possible caused by incorrectly formatted. |
+| 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **示例：**
 
@@ -1104,7 +1108,7 @@ hiAppEvent.configure(config1);
 
 // 配置文件目录存储配额为100M
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -1121,21 +1125,23 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | 否 | 是   | 打点功能开关，默认值为false。true：关闭打点功能，false：开启打点功能。 |
-| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10M”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
+| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10MB”。建议配额大小不超过10MB，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
 ## EventPolicy<sup>22+</sup>
 
 提供系统事件配置策略的定义，用于使用[configEventPolicy](#hiappeventconfigeventpolicy22)设置事件配置策略。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1146,14 +1152,15 @@ hiAppEvent.configure(config2);
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| logType | number | 否 | 是   | 采集日志的类型。<br/>logType=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值用户自定义。<br/>logType=2：仅采集trace。 |
-| ignoreStartupTime | number | 否 | 是   | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
-| sampleInterval | number | 否 | 是   | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
-| sampleCount | number | 否 | 是   | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
-| reportTimesPerApp | number | 否 | 是   | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
-| autoStopSampling | boolean | 否 | 是   | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+| logType | number | 否 | 是 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值由用户自定义。<br/>logType=2：仅采集trace。<br>**说明**：<br> - logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。<br> - logType=2时，其他参数均不生效，无需设置。 |
+| ignoreStartupTime | number | 否 | 是 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
+| sampleInterval | number | 否 | 是 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| sampleCount | number | 否 | 是  | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。<br>**说明**：<br/> - 2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。<br/> - 4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。<br/> - 开发者要结合需求场景，进行合理的设置。 |
+| reportTimesPerApp | number | 否 | 是 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
+| autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
 ## CpuUsageHighPolicy<sup>22+</sup>
  
@@ -1163,7 +1170,7 @@ hiAppEvent.configure(config2);
 > 
 > 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
  
-**原子化服务API：** 从API version 22开始，该接口支持在应用中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
  
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
  
@@ -1175,6 +1182,55 @@ hiAppEvent.configure(config2);
 | perfLogCaptureCount | number  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
 | threadLoadInterval | number  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
+## AppCrashPolicy<sup>24+</sup>
+
+提供崩溃事件配置策略的定义。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## AppFreezePolicy<sup>24+</sup>
+
+提供应用冻屏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br/>true：使能应用冻屏事件的页面切换日志。<br/>false：不使能应用冻屏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+提供资源泄漏事件配置策略的定义。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生OOM时，不传递堆快照。<br/>"event_rawheap"：应用发生OOM时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| useRefinedLogFileName    | boolean | 否 | 是   | 是否使能事件日志文件名精细化开关。<br/>true：使能事件日志文件名精细化开关。<br/>false：不使能事件日志文件名精细化开关。<br/>默认值：false。<br>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+提供地址越界事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br/>true：使能地址越界事件的页面切换日志。<br/>false：不使能地址越界事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
 
 ## Processor<sup>11+</sup>
 
@@ -1251,6 +1307,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### 常量
+
 提供领域名称常量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1263,6 +1321,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 
 ## hiAppEvent.event
+
+### 常量
 
 提供事件名称常量。包含系统事件名称常量和应用事件名称常量，其中应用事件名称常量是为开发者在调用[Write](#hiappeventwrite-1)接口进行应用事件打点时预留的可选自定义事件名称。
 
@@ -1286,8 +1346,11 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
+| appFreezeWarning | string | 是 | 应用冻屏告警事件。系统事件名称常量。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
+
+### 常量
 
 提供参数名称常量。
 

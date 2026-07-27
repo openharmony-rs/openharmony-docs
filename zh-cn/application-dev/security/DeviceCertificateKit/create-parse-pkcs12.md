@@ -1,4 +1,4 @@
-# 证书PKCS12的创建和解析
+# 证书PKCS #12的创建和解析
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
@@ -7,15 +7,15 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API 18开始，支持解析PKCS12证书。
+从API version 18开始，支持解析PKCS #12证书。
 
-从API 21开始，支持创建PKCS12证书。
+从API version 21开始，支持创建PKCS #12证书。
 
-PKCS12是一种用于存储和传输用户私钥、证书及其相关证书链的标准格式。该格式通过密码保护，将多个密码学对象打包为一个加密的容器文件，支持存储私钥、公钥证书、证书颁发机构证书以及其他相关的密码学数据。PKCS12广泛应用于数字证书的安全存储、跨平台传输和证书备份场景，是实现证书管理和PKI应用的重要标准之一。
+PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链的标准格式。该格式通过密码保护，将多个密码学对象打包为一个加密的容器文件，支持存储私钥、公钥证书、证书颁发机构证书以及其他相关的密码学数据。PKCS12广泛应用于数字证书的安全存储、跨平台传输和证书备份场景，是实现证书管理和PKI应用的重要标准之一。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -165,9 +165,9 @@ async function doTestCreatePkcs12() {
 
   try {
     let p12 = await cert.createPkcs12(data, config);
-    console.info(`createPkcs12 succeed p12 = ` + p12);
+    console.info(`createPkcs12 result: success, p12 = ` + p12);
     let out: cert.Pkcs12Data = await cert.parsePkcs12(p12, '123456');
-    console.info(`parsePKCS12 succeed.`);
+    console.info(`parsePKCS12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -175,7 +175,7 @@ async function doTestCreatePkcs12() {
       console.info(`cert:` + out.cert.toString());
     }
     if (out.otherCerts && Array.isArray(out.otherCerts)) {
-      console.info(`otherCerts counts:`, out.otherCerts.length);
+      console.info(`otherCerts counts: `, out.otherCerts.length);
       out.otherCerts.forEach((cert, idx) => {
         console.info(`otherCerts[${idx}]:\n${cert.toString()}`);
       });
@@ -329,7 +329,7 @@ async function doTestCreatePkcs12Sync() {
 
   try {
     let p12 = cert.createPkcs12Sync(data, config);
-    console.info(`createPkcs12Sync succeed p12 = ` + p12);
+    console.info(`createPkcs12Sync result: success, p12 = ` + p12);
     let conf: cert.Pkcs12ParsingConfig = {
       password: '123456',
       needsCert: true,
@@ -338,7 +338,7 @@ async function doTestCreatePkcs12Sync() {
       needsOtherCerts: true,
     };
     let out: cert.Pkcs12Data = cert.parsePkcs12(p12, conf);
-    console.info(`parsePKCS12 succeed.`);
+    console.info(`parsePKCS12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }

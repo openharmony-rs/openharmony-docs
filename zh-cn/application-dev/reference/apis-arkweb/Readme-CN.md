@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc-->
-<!--Designer: @ctqctq99-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -22,7 +22,11 @@
     - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
+    - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
+    - [AIPageCommand](arkts-apis-webview-AIPageCommand.md)
+    - [AIPageInteraction](arkts-apis-webview-AIPageInteraction.md)
+    - [AIPageResult](arkts-apis-webview-AIPageResult.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)
     - [Class (WebDownloadDelegate)](arkts-apis-webview-WebDownloadDelegate.md)
@@ -35,6 +39,8 @@
     - [Class (WebSchemeHandlerRequest)](arkts-apis-webview-WebSchemeHandlerRequest.md)
     - [Class (WebSchemeHandlerResponse)](arkts-apis-webview-WebSchemeHandlerResponse.md)
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
+    - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
+    - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
     - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
@@ -76,7 +82,7 @@
     - [Interfaces（其他）](arkts-basic-components-web-i.md)
     - [Enums](arkts-basic-components-web-e.md)
     - [Types](arkts-basic-components-web-t.md)
-    - [废弃的Class (WebController, deprecated)](arkts-basic-components-web-WebController.md)
+    - [Class (WebController)](arkts-basic-components-web-WebController.md)
 - C API<!--arkweb-c-->
   - 模块<!--arkweb-module-->
     - [Web](capi-web.md)

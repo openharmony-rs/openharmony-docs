@@ -42,11 +42,11 @@ libEGL.so
 
 ## 相关参考
 
-针对OpenGL ES的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考:
+针对OpenGL ES的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考：
 
 - [NDK开发参考](../../napi/ndk-development-overview.md)
 
-- [NodeAPI参考](./napi.md)
+- [Node-API参考](./napi.md)
 
 - [XComponentNode参考](../apis-arkui/js-apis-arkui-xcomponentNode.md)
 
@@ -113,13 +113,13 @@ int32_t Init(void *window, int32_t width,  int32_t height)
     EGLint configsNum;
     mEglWindow = reinterpret_cast<EGLNativeWindowType>(window);
     
-    //初始化EGL Display
+    // 初始化EGL Display
     mEGLDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     EGLint eglMajVers;
     EGLint eglMinVers;
     eglInitialize(mEGLDisplay, &eglMajVers, &eglMinVers);
 
-    //配置EGL
+    // 配置EGL
     EGLint attribList[] = {
             EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,
             EGL_RED_SIZE, 8,
@@ -131,19 +131,19 @@ int32_t Init(void *window, int32_t width,  int32_t height)
 
     EGLint winAttribs[] = {EGL_GL_COLORSPACE_KHR, EGL_GL_COLORSPACE_SRGB_KHR, EGL_NONE};
     
-    //创建EGL Surface
+    // 创建EGL Surface
     mEGLSurface = eglCreateWindowSurface(mEGLDisplay, mEGLConfig, mEglWindow, winAttribs);
     
-    //创建EGL Context
+    // 创建EGL Context
     EGLint attrib3_list[] = {
         EGL_CONTEXT_CLIENT_VERSION, 3,
     };
     mEGLContext = eglCreateContext(mEGLDisplay, mEGLConfig, mSharedEGLContext, attrib3_list);
     
-    //绑定EGL Context和Surface
+    // 绑定EGL Context和Surface
     eglMakeCurrent(mEGLDisplay, mEGLSurface, mEGLSurface, mEGLContext);
     
-    // 创建着色点程序
+    // 创建着色器程序
     const char* g_vertexShader =
         "#version 300 es\n"
         "in vec4 a_pos;\n"
@@ -170,19 +170,19 @@ int32_t Init(void *window, int32_t width,  int32_t height)
     glShaderSource(vertexShader, 1, &g_vertexShader, nullptr);
     glCompileShader(vertexShader);
 
-    //创建片段着色器
+    // 创建片段着色器
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &g_fragmentShader, nullptr);
     glCompileShader(fragmentShader);
 
     
-    //创建着色器程序
+    // 创建着色器程序
     mProgramHandle = glCreateProgram();
     glAttachShader(mProgramHandle, vertexShader);
     glAttachShader(mProgramHandle, fragmentShader);
     glLinkProgram(mProgramHandle);
     
-    //使用着色器程序
+    // 使用着色器程序
     glUseProgram(mProgramHandle);
     
     // 清理
@@ -282,7 +282,7 @@ void Update(float angleXOffset, float angleYOffset)
     // 绘制四棱锥
     glDrawArrays(GL_TRIANGLES, 0, TETRAHEDRON_POINT);
     
-    //交换缓冲区
+    // 交换缓冲区
     eglSwapBuffers(mEGLDisplay, mEGLSurface);
 }
 ```
@@ -408,13 +408,13 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
          }
   ```
   
-  如上所示遍历configs每个配置，使用eglGetConfigAttrib查询该配置下特定属性的值，将该值保存在第4个参数中，并判断值是否是自己需要的，如果需要则保存该配置，以待使用。调用成功则返回EGL_TRUE，调用失败则返回EGL_FALSE。 如果返回EGL_FALSE，可以使用eglGetError查询失败的原因，如果返回EGL_BAD ATTRIBUTE则attribute不是有效的属性。
+  如上所示遍历configs每个配置，使用eglGetConfigAttrib查询该配置下特定属性的值，将该值保存在第4个参数中，并判断值是否是自己需要的，如果需要则保存该配置，以待使用。调用成功则返回EGL_TRUE，调用失败则返回EGL_FALSE。 如果返回EGL_FALSE，可以使用eglGetError查询失败的原因，如果返回EGL_BAD_ATTRIBUTE则attribute不是有效的属性。
   
   ```cpp
-  EGLBoolean eglGetConfigAttrib(EGLDisplay display,     //EGL 显示连接句柄，标识了要进行配置选择的显示连接
-                                     EGLConfig config,  //EGLConfig 对象，表示要查询的 EGL 配置
-                                     EGLint attribute,  //EGLint 类型的属性标识符，表示要查询的属性
-                                     EGLint *value);    //指向 EGLint 类型变量的指针，用于存储查询到的属性值。
+  EGLBoolean eglGetConfigAttrib(EGLDisplay display,     // EGL 显示连接句柄，标识了要进行配置选择的显示连接
+                                     EGLConfig config,  // EGLConfig 对象，表示要查询的 EGL 配置
+                                     EGLint attribute,  // EGLint 类型的属性标识符，表示要查询的属性
+                                     EGLint *value);    // 指向 EGLint 类型变量的指针，用于存储查询到的属性值。
   ```
 
 
@@ -521,7 +521,7 @@ if (surface == EGL_NO_SURFACE) {
    }
    ```
 <!--Del-->
-有关ArkTS XComponent 组件的使用，请参考：[ArkTS XComponent组件使用示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/XComponent/README_zh.md#)。
+有关ArkTS XComponent 组件的使用，请参考：[ArkTS XComponent组件使用示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)。
 <!--DelEnd-->
 
 ### 使用eglCreateContext创建渲染上下文 
@@ -537,7 +537,7 @@ EGLContext eglCreateContext(EGLDisplay display,        // EGLDisplay类型，表
 eglCreateContext 的attribList属性列表如下：
 ```cpp
 EGLint attrib3_list[] = {
-    EGL_CONTEXT_CLIENT_VERSION, 3, //指定使用的openglES版本3相关的上下文类型
+    EGL_CONTEXT_CLIENT_VERSION, 3, // 指定使用的openglES版本3相关的上下文类型
     EGL_NONE
 };
 ```
@@ -616,7 +616,7 @@ void glLinkProgram(GLuint program);
 
 glLinkProgram函数用于链接一个着色器程序对象，将附加到该程序对象的着色器链接成一个可执行的渲染管线。
 
-参数program是要链接的着色器程序对象的标识符。链接着色器程序时，OpenGL将会执行以下操作：将各个着色器对象中的代码合并成一个可执行的渲染管线。执行连接器优化，以优化渲染管线的性能。并将Uniform变量和Uniform块的信息进行绑定。
+参数program是要链接的着色器程序对象的标识符。链接着色器程序时，OpenGL将会执行以下操作：将各个着色器对象中的代码合并成一个可执行的渲染管线。执行链接器优化，以优化渲染管线的性能。并将Uniform变量和Uniform块的信息进行绑定。
 
 ```cpp
 void glUseProgram(GLuint program);
@@ -718,13 +718,20 @@ GLint glGetAttribLocation(GLuint program, const GLchar *name);
 
 glGetAttribLocation函数用于获取顶点着色器中某个属性的位置，这个位置在编译链接顶点着色器程序后就已经确定了，它是根据属性的名称来确定的。其中program指要查询的程序对象，name指要查询其位置的属性变量的名称。 
 
-### 使用glGetUniformLocation获取统一变量位置
+### 使用glGetUniformLocation获取uniform变量位置
 
 ```cpp
 GLint glGetUniformLocation(GLuint program, const GLchar *name);
 ```
 
-glGetUniformLocation函数用于查询特定统一变量在程序对象中的位置。其中program指要查询的程序对象，name指要查询其位置的统一变量的名称。 
+glGetUniformLocation函数用于查询特定uniform变量在程序对象中的位置。其中各个参数含义如下：
+
+- program：指要查询的程序对象的标识符。
+- name：指要查询其位置的uniform变量的名称。该名称应与顶点或片段着色器中定义的uniform变量名称一致。
+
+glGetUniformLocation的返回值是要查询的uniform变量的位置（GLint类型）。如果返回-1，则表示未找到指定的uniform变量。需要注意的是，调用此函数之前必须成功链接程序对象（调用glLinkProgram）。此外，如果uniform变量在着色器中被优化掉或不存在，该函数也会返回-1。
+
+通常在获取uniform变量位置后，可以结合glUniformMatrix4fv、glUniform3f等函数向该uniform变量传递数据。
 
 ### 使用glUniformMatrix4fv传递4×4矩阵
 
@@ -732,7 +739,7 @@ glGetUniformLocation函数用于查询特定统一变量在程序对象中的位
 void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 ```
 
-glGetUniformLocation函数用于获取着色器中uniform变量的位置。其中各个参数含义如下：
+glUniformMatrix4fv函数用于向uniform变量传递4×4矩阵数据。其中各个参数含义如下：
 - location：要修改的uniform变量的位置。
 - count：要修改的矩阵的数量。如果目标uniform变量不是数组，则此值应为1；如果是数组，则应大于等于1。
 - transpose：是否转置矩阵。如果是GL_FALSE，则矩阵按列优先(column major)顺序传递；如果是GL_TRUE，则矩阵按行优先(row major)顺序传递。
@@ -781,8 +788,8 @@ void glVertexAttribPointer(GLuint index,         // 指定要修改的顶点数�
                            GLint size,           // 指定每个顶点属性的分量个数
                            GLenum type,          // 指定每个顶点属性分量的类型
                            GLboolean normalized, // 指定在访问顶点数据时是否将其映射到[0, 1]或[-1, 1]范围内
-                           GLsizei stride,       // 指定顶点属性之间的偏移量,如果是精密性排列可以设置为0
-                           const void *offset);  //属性在缓冲区中的偏移量，允许在缓冲区中指定一个位置开始读取数据。
+                           GLsizei stride,       // 指定顶点属性之间的偏移量,如果是紧密排列可以设置为0
+                           const void *offset);  // 属性在缓冲区中的偏移量，允许在缓冲区中指定一个位置开始读取数据。
 ```
 
 ```cpp

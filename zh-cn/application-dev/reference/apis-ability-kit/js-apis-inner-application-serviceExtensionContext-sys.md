@@ -3,12 +3,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-ServiceExtensionContext模块是ServiceExtensionAbility的上下文环境，继承自ExtensionContext。
+ServiceExtensionContext模块是ServiceExtensionAbility（服务扩展能力）的上下文环境，继承自ExtensionContext。
 
-ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、停止、绑定、解绑Ability。
+ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、终止、连接和断开连接Ability（应用组件）。
 
 > **说明：**
 > 
@@ -25,7 +25,7 @@ import { common } from '@kit.AbilityKit';
 
 ## 使用说明
 
-在使用ServiceExtensionContext的功能前，需要通过ServiceExtensionAbility子类实例获取。
+使用ServiceExtensionContext功能前，通过ServiceExtensionAbility子类实例获取ServiceExtensionContext。
 
 **示例：**
 
@@ -56,7 +56,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -65,7 +65,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -76,20 +76,20 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -137,14 +137,14 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -152,7 +152,7 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -163,20 +163,20 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -237,31 +237,31 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
+| 16000002 | Incorrect ability type. <br>适用版本：9-11 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9-11 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -320,7 +320,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -343,18 +343,18 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -411,7 +411,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
@@ -425,26 +425,28 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -505,14 +507,14 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -534,18 +536,18 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -588,7 +590,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -612,14 +614,14 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -659,7 +661,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -675,7 +677,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -688,14 +690,14 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -735,7 +737,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
@@ -753,7 +755,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当启动一个新的ServiceExtensionAbility成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -767,14 +769,14 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -815,7 +817,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -833,13 +835,13 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -852,14 +854,14 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -896,7 +898,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
@@ -940,14 +942,14 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -975,7 +977,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
@@ -1018,14 +1020,14 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1057,7 +1059,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
@@ -1076,13 +1078,13 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1107,14 +1109,14 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1151,7 +1153,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1170,12 +1172,12 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1218,7 +1220,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1242,12 +1244,12 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1290,7 +1292,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
@@ -1307,7 +1309,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | number | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | number | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当使用账户停止同一应用程序内的服务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1321,7 +1323,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1365,7 +1367,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -1382,13 +1384,13 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | number | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | number | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1401,7 +1403,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1464,6 +1466,9 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1503,7 +1508,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1511,6 +1516,9 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1552,14 +1560,14 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回一个number，后续根据这个number去断开连接。 |
+| number | 返回连接标识符，用于后续断开连接。 |
 
 **错误码：**
 
@@ -1570,14 +1578,16 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1643,14 +1653,14 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
-| options | ConnectOptions | 是 | 远端对象实例。 |
+| accountId | number | 是 | 系统账号的账号ID，可通过系统账号管理接口获取。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项，用于返回连接成功、连接中断或连接失败的信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回Ability连接的结果code。 |
+| number | 返回连接标识符，用于后续断开连接。 |
 
 **错误码：**
 
@@ -1662,14 +1672,16 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1717,7 +1729,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
+将一个Ability与连接的服务类型的Ability断开连接，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1728,7 +1740,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | connection | number | 是 | 在connectServiceExtensionAbility中返回的number。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当Ability与绑定服务类型的Ability解绑成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当Ability与连接的服务类型的Ability断开连接成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1777,7 +1789,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
+将一个Ability与连接的服务类型的Ability断开连接。断开连接后，将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1793,7 +1805,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1881,10 +1893,12 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：9 |
 
 **示例：**
 
@@ -1987,8 +2001,8 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2002,14 +2016,14 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2074,10 +2088,11 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
@@ -2087,14 +2102,14 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2152,7 +2167,13 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2160,8 +2181,8 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2175,14 +2196,14 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2246,7 +2267,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的Ability的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地Ability，parameters缺省或为空表示后台启动Ability。 |
-| accountId | number | 是 | 系统账号的账号ID，-1表示当前活动用户。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -2266,7 +2287,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16000005 | Static permission denied. The specified process does not have the permission. |
+| 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
@@ -2316,7 +2337,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
@@ -2336,13 +2357,13 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息，需确保目标应用已完成页面初始化后再调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2350,9 +2371,14 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 
@@ -2393,7 +2419,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
@@ -2422,9 +2448,14 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 
@@ -2465,7 +2496,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.openLink<sup>12+<sup>
+## ServiceExtensionContext.openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
@@ -2491,13 +2522,13 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。 |
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数，可用于设置是否仅启用App Linking。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2510,18 +2541,18 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Failed to start the invisible ability. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>适用版本：23+ |
 
 **示例：**
 
@@ -2565,7 +2596,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.preStartMission<sup>12+<sup>
+## ServiceExtensionContext.preStartMission<sup>12+</sup>
 
 preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise&lt;void&gt;
 
@@ -2592,7 +2623,7 @@ preStartMission(bundleName: string, moduleName: string, abilityName: string, sta
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2650,11 +2681,11 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+<sup>
+## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。使用Promise异步回调。
+启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2667,13 +2698,13 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 **参数：**
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------ | ---- | ---- | -------------------- |
-| want   | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
+| want   | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
 
 **返回值：**
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2688,7 +2719,6 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 16000002 | Incorrect ability type.                             |
 | 16000004 | Cannot start an invisible component.              |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed.              |
 | 16000008 | The crowdtesting application expires.               |
 | 16000011 | The context does not exist.                         |
 | 16000012 | The application is controlled.                      |
@@ -2719,10 +2749,10 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.openAtomicService<sup>18+<sup>
+## ServiceExtensionContext.openAtomicService<sup>18+</sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
-通过应用ID，拉起原子化服务。使用Promise异步回调。
+通过应用ID，拉起原子化服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2743,7 +2773,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;voi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2875,6 +2905,91 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
     } catch (paramError) {
       // 处理入参错误异常
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
+    }
+  }
+}
+```
+## ServiceExtensionContext.requestModalUIExtensionWithAccount
+
+requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+
+请求为指定用户在指定获焦应用上拉起对应类型的UIExtensionAbility。获焦应用通过want.parameters中的bundleName指定，若未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility。拉起的UIExtensionAbility由Want中的bundleName、abilityName和moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置其类型。此操作仅支持在主线程调用，并以Promise形式提供异步回调。
+
+在获焦应用拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败。应用可通过监听页面加载状态判断拉起UIExtensionAbility的时机。
+
+> **说明：**
+>
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。 
+
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**起始版本：**26.0.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。其中获焦应用通过want.parameters中bundleName指定，被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型；需确保获焦应用已完成页面初始化后再调用。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.The logical screen corresponding to the specified accountId is not in the foreground.|
+
+**示例：**
+
+```ts
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ServiceExtension extends ServiceExtensionAbility {
+  onCreate(want: Want) {
+    let pullUIExtWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(pullUIExtWant, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
     }
   }
 }

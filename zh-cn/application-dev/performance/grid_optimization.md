@@ -13,7 +13,7 @@
 
 ## 使用懒加载等方式提升Grid性能
 
-关于懒加载、cachedCount、组件复用的原理机制的介绍请参考[列表场景性能提升实践](./list-perf-improvment.md)。
+关于懒加载、cachedCount、组件复用的原理机制的介绍请参考[列表场景性能提升实践](./list-perf-improvement.md)。
 
 ### 使用场景
 

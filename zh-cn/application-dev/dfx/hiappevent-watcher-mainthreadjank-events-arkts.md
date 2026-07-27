@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -24,12 +24,12 @@
 
 以主线程超时事件订阅为例，说明开发步骤。
 
-1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+1. 在DevEco Studio中，新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
     import { buffer, util } from '@kit.ArkTS'
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等生命周期接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
@@ -85,7 +85,7 @@
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fs.copyFileSync(path.toString(), targetPath.toString());
+            fileIo.copyFileSync(path.toString(), targetPath.toString());
           }
         }
       }
@@ -129,7 +129,7 @@
      import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
      import { BusinessError } from '@kit.BasicServicesKit';
    
-     //模拟超时事件函数定义，示例代码：
+     // 模拟超时事件函数定义，示例代码：
      function wait150ms() {
        let t = Date.now();
        while (Date.now() - t <= 150){
@@ -148,7 +148,7 @@
        build() {
          RelativeContainer() {
            Column() {
-             //自定义设置采样栈参数按钮
+             // 自定义设置采样栈参数按钮
              Button("customSample", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -175,7 +175,7 @@
                    hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
                  });
                })
-             //触发150ms超时事件按钮
+             // 触发150ms超时事件按钮
              Button("timeOut150", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)

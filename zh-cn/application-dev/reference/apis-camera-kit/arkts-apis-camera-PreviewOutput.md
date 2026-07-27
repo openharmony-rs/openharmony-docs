@@ -341,13 +341,15 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-getPreviewRotation(displayRotation: number): ImageRotation
+getPreviewRotation(displayRotation?: number): ImageRotation
 
 获取预览旋转角度。
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section15598121101615)：显示设备的屏幕顺时针旋转角度。
+- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section737072712182)：显示设备的屏幕顺时针旋转角度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -357,7 +359,7 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | 是   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
+| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。<br> 单位为度数（degree），取值范围为[0, 360]。 |
 
 **返回值：**
 
@@ -371,7 +373,7 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -391,43 +393,8 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   }
   return previewRotation;
 }
-```
 
-## getPreviewRotation<sup>23+</sup>
-
-getPreviewRotation(): ImageRotation
-
-获取预览旋转角度。
-
-- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-|      类型      | 说明        |
-| -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回预览旋转角度。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID   | 错误信息                         |
-|---------|------------------------------|
-| 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function testGetPreviewRotation(previewOutput: camera.PreviewOutput): camera.ImageRotation {
+function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput): camera.ImageRotation {
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation();
@@ -435,7 +402,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput): camera.Ima
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
+    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return previewRotation;
 }
@@ -706,6 +673,148 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
     console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
+  }
+}
+```
+## addDeferredSurface<sup>24+</sup>
+
+addDeferredSurface(surfaceId: string): void
+
+配置延迟预览的Surface，可以在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型         | 必填 | 说明                       |
+| -------- | --------------| ---- | ------------------------ |
+| surfaceId | string | 是 | 从[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件获取的surfaceId。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.        |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraInfo);
+  let previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  let session: camera.Session  = cameraManager.createSession(mode);
+  session.beginConfig();
+  session.addInput(cameraInput);
+  session.addOutput(previewOutput);
+  session.addOutput(photoOutput);
+  await session.commitConfig();
+  try {
+    await session.start();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`start session failed. error code: ${err.code}`);
+  }
+  previewOutput.addDeferredSurface(previewSurfaceId);
+}
+```
+
+## isLogViewAssistSupported
+
+isLogViewAssistSupported(): boolean
+
+LOG视频下，查询是否支持辅助监看功能。辅助监看开启后，预览画面还原至原色域，录制出的视频仍然是LOG视频格式。
+
+> **说明：**
+>
+> 辅助监看效果仅支持1080P及以下分辨率。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持辅助监看功能。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+      supported = previewOutput.isLogViewAssistSupported();
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.isLogViewAssistSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+## setLogViewAssistEnable
+
+setLogViewAssistEnable(enable: boolean): void
+
+LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupported](#islogviewassistsupported)查询设备是否支持预览辅助监看。
+
+> **说明：**
+> 
+> - 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用。
+> - 预览辅助监看效果仅支持1080P及以下分辨率。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enable  | boolean | 是  | 是否使能辅助监看。true表示使能，false表示不使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |----------------------------------------------- |
+| 801  | Capability not supported. |
+| 7400103  | Session not config. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
+  try {
+      previewOutput.setLogViewAssistEnable(enable);
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
   }
 }
 ```

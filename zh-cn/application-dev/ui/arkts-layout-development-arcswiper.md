@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArcSwiper是弧形轮播组件，在圆形屏幕场景下使用，提供弧形轮播显示能力。具体用法请参考[ArcSwiper](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md)。
@@ -96,28 +96,30 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
     ArcSwiper,
     ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
     ArcSwiperController,
-  // ···
+    // ...
   } from '@kit.ArkUI';
-  // ···
-  @Entry
+  // ...
+  
+  // 如需作为页面入口，请取消@Entry的注释并删除export关键字
+  // @Entry
   @Component
   export struct ArcSwiperToggle {
     private wearableSwiperController: ArcSwiperController = new ArcSwiperController();
   
     build() {
-      // ···
+      // ...
         Column({ space: 12 }) {
-          // ···
+          // ...
             Stack() {
               ArcSwiper(
                 this.wearableSwiperController
               ) {
-              // ···
+                // ...
               }
               .vertical(true)
               .indicator(false)
   
-              // ···
+              // ...
   
   
               Column() {
@@ -146,9 +148,9 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
                 })
               }.width('100%').height('100%')
             }
-          // ···
+            // ...
         }
-      // ···
+        // ...
     }
   }
   ```
@@ -234,13 +236,11 @@ import { Decimal } from '@kit.ArkTS';
 import {
   ArcSwiper,
   ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
-@Entry
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct ArcSwiperAction {
   private MIN_SCALE: number = 0.1;
@@ -256,9 +256,9 @@ export struct ArcSwiperAction {
   }
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -286,10 +286,10 @@ export struct ArcSwiperAction {
               }
             }
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -298,7 +298,7 @@ export struct ArcSwiperAction {
 
 ## 实现侧滑返回
 
-ArcSwiper的滑动事件会与侧滑返回冲突，可以通过[手势拦截](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)去判断ArcSwiper是否滑动到开头去拦截ArcSwiper的滑动手势，实现再次左滑返回上一页的功能。
+ArcSwiper的滑动事件会与侧滑返回冲突，可以通过[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)去判断ArcSwiper是否滑动到开头去拦截ArcSwiper的滑动手势，实现再次左滑返回上一页的功能。
 
 <!-- @[side_slip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets) -->
 
@@ -306,22 +306,20 @@ ArcSwiper的滑动事件会与侧滑返回冲突，可以通过[手势拦截](..
 import {
   ArcSwiper,
   ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
-@Entry
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct ArcSwiperSideSlip {
   @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
   innerSelectedIndex: number = 0;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -352,10 +350,10 @@ export struct ArcSwiperSideSlip {
             }
             return GestureJudgeResult.CONTINUE;
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```

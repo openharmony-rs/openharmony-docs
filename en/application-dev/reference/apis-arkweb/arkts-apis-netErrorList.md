@@ -136,7 +136,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_AUTHORITY_INVALID | -202 | The CA is not trusted. This may mean: 1. The attacker replaces a real certificate with a certificate that contains its public key and is signed by its cousin. 2. The server operator has a valid certificate from a CA that the local end does not know but should trust. 3. The server provides a self-signed certificate that cannot defend against active attackers.|
 |ERR_CERT_CONTAINS_ERRORS | -203 | The certificate contains errors.|
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |There is no revocation mechanism for this certificate.|
-|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
+|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean that: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
 |ERR_CERT_REVOKED | -206 | The certificate is revoked. The local end can ignore this error, but it should not do this.|
 |ERR_CERT_INVALID | -207 |  The certificate is invalid. |
 |ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signing algorithm.|
@@ -149,7 +149,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | The certificate is used for interception by an entity other than the device owner.|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | The connection uses an outdated version of SSL/TLS or password.|
 |ERR_CERT_END | -219 | This error follows the previous error code.|
-|ERR_INVALID_URL | -300 | The URL is invalid.|
+|ERR_INVALID_URL | -300 | Invalid URL.|
 |ERR_DISALLOWED_URL_SCHEME | -301 |  The URL scheme is not allowed to be used.|
 |ERR_UNKNOWN_URL_SCHEME | -302 | The URL scheme is unknown.|
 |ERR_INVALID_REDIRECT | -303 | The attempt to load a URL causes a redirection to an invalid URL.|

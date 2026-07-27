@@ -1,48 +1,55 @@
 # Animation Overview
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b0e4b19d7f8b7b5ce997c9a9797d470be7afdcb translatedAt=2026-07-25T10:15:28.041Z pushedAt=2026-07-25T10:46:54.788Z -->
 
+The UI (user interface) is the interface through which users interact with devices, consisting of various visual components (such as buttons and lists). Attributes serve as interfaces for controlling component behavior, and changes in attribute values cause UI changes. Animations can add smooth transition effects when the UI changes, allowing attribute values to gradually change from the initial state to the final state, thereby avoiding the abruptness caused by instantaneous changes and maintaining the user's visual focus.
 
-The UI contains various components (such as time and wallpaper) that users interact with on their devices. Attributes are APIs used to control the behavior of components. For example, you can adjust the location of a component on the screen through the location attribute.
+![en-us_image_20230822](figures/Animation-what.gif)
 
+The purposes of animation include:
 
-In most cases, changing attribute values triggers corresponding UI updates. Animations introduce smooth transitions during these updates, preventing abrupt changes that cause visual discontinuity.
+- Making interface transitions natural and smooth.
 
-![en-us_image_20230822](figures/en-us_image_20230822.gif)
+- Enhancing the sense of feedback and interactivity that users perceive from the interface.
 
-Animations enable you to:
+- Increasing user patience during content loading and similar scenarios, alleviating the discomfort caused by waiting.
 
-- Create smooth transitions between states.
-- Provide visual feedback to give users a sense of control.
-- Inform users of the system status, for example, the loading progress, to make them less stressed while waiting.
-- Show users how to interact with the UI.
+- Guiding users to understand and operate the device.
 
+Animations can be used in any scenario where transitions need to be added to UI changes, such as device startup, app startup and exit, and pulling down to access the control center. These animations provide users with feedback on their actions and help keep their attention on the interface.
 
-Smart use of animations can breathe life into the process of interaction. The frequently seen animations include those that play under device startup, application startup or exit, and pull-down-to-access-the-control-panel scenarios. These animations provide effective user feedback and direct the user attention to where it should be focused.
+ArkUI provides a variety of animation interfaces (such as [attribute animation](arkts-attribute-animation-overview.md) and [transition animation](arkts-transition-overview.md)) for driving attribute values to gradually change from their initial values to final values according to the configured animation parameters. Although the parameter values are not absolutely continuous during the change process but rather discrete to some extent, the human eye experiences persistence of vision, so what is ultimately perceived is a "continuous" animation. Each UI change is referred to as an animation frame, which corresponds to one screen refresh. A key metric for determining animation smoothness is the frame rate (FPS), which is the number of animation frames per second — the higher the frame rate, the smoother the animation. In ArkUI, animation parameters include settings such as animation duration and [animation curve](arkts-traditional-curve.md). The animation curve, as a primary factor, determines how attribute values change over time. Taking a linear animation curve as an example, the attribute value changes from the start value to the end value at a constant speed over the animation duration. Changes that are too fast or too slow can result in a poor visual experience and negatively affect user experience. Therefore, animation parameters — especially the animation curve — must be designed and adjusted based on the specific scenario and curve characteristics.
 
-ArkUI provides a wide range of animation APIs (such as [property animation](arkts-attribute-animation-overview.md) and [transition animation](arkts-transition-overview.md)), which you can leverage to cause attributes to gradually change from the start value to the end value based on the specified settings. Although attribute values change discretely rather than continuously, the human eye's persistence of vision creates the illusion of smooth animation. Each UI change represents an animation frame, corresponding to a screen refresh. The frame rate, which indicates frames per second (fps), critically affects animation smoothness. Higher frame rates create smoother animations. In ArkUI, animation parameters include animation duration, animation curve, and more. [Traditional curves](arkts-traditional-curve.md) in particular influence how attribute values change over time. For example, with a linear animation curve, the attribute changes from the start value to the end value at a constant speed over the given duration. If the attribute changes too fast or too slow, the visual experience may suffer. Therefore, animation parameters, especially animation curves, must be well designed and adjusted to suit specific use cases.
+Animation interfaces drive attribute values to transition continuously from the original state to a new state according to the rules determined by animation parameters, thereby producing a continuous visual effect on the UI. This document is organized as follows to provide usage methods and considerations for various animations, helping developers quickly learn animation.
 
+- [Attribute Animation](arkts-attribute-animation-overview.md): The most fundamental animation type, which drives attribute changes frame by frame according to animation parameters to produce frame-by-frame animation effects. Except for custom attribute animation, the animation process is driven by the system, and the app side is unaware of the animation process.
 
-Animation APIs drive attribute values to continuously transit from one state to another according to the rule determined by the animation parameters, and thereby generate a continuous visual effect on the UI. This walkthrough demonstrates the steps and considerations for creating a compelling animation experience.
+- [Transition Animation](arkts-transition-overview.md): Adds transition animations when a component appears or disappears. To ensure animation consistency, some interface animation curves are built-in and do not support developer customization.
 
-- [Property animation](arkts-attribute-animation-overview.md): It is the most basic animation type. It drives property changes frame by frame based on animation parameters to create an animation on a frame-by-frame basis. Except for custom property animations, the system handles the animation process with no application-side awareness of the intermediate states.
+  - It is not recommended to use [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) to combine all pages within an app: UIAbility is a task that is displayed as an independent card in the recent tasks screen. Navigation between UIAbilities is equivalent to navigation between tasks. Taking the in-app image viewing scenario as an example, it is not recommended to call the gallery's UIAbility to open an image for full-screen viewing, because this causes task switching and the gallery's UIAbility will also appear in the recent tasks screen. The correct approach is to build a full-screen image component within the app and invoke it through a modal transition, so that all pages within a task are closed-loop within a single UIAbility.
 
-- [Transition animation](arkts-transition-overview.md): It handles component appearance and disappearance transitions. To maintain animation consistency, some animation curves have been built in and cannot be customized.
-  - Whenever possible, avoid [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) redirection in your application. A UIAbility is a task in effect and is individually displayed on the recent tasks screen. Redirection between UIAbilities is redirection between tasks. In the typical scenario of viewing large images in an application, if you call the gallery UIAbility from the application to open large images, then the gallery UIAbility will appear on the recent tasks screen. This is not recommended. A more recommended practice is as follows: Build a large image component in the application and invoke that component through modal transition. In this way, the entire animation can be completed in one UIAbility.
-  - To implement navigation, use the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component instead of the page+router mode. The latter causes page separation, which complicates transition effect synchronization and hinders one-time development for multi-device deployment.
+  - In navigation transitions, the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component should be used to implement transition animations. The previous page + [router](../reference/apis-arkui/js-apis-router.md) approach has limited linkage animation effects during navigation transitions because pages are independent of each other. This not only tends to cause discontinuity between pages, but also does not support one-time development for multi-device deployment.
 
-- [Particle animation](arkts-particle-animation.md): Enhance visual effects with a multitude of particles based on certain principles.
+- [Particle Animation](arkts-particle-animation.md): Describes the principles and usage of particle animation.
 
-- [Component animation](arkts-component-animation.md): Components provide default animations (such as the scroll animation of the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component) with some supporting customization.
+- [Component Animation](arkts-component-animation.md): Components provide default animation effects (such as the scrolling animation effect of [List](../reference/apis-arkui/arkui-ts/ts-container-list.md)) for developers to use, and some components also support customized animation effects.
 
-- [Animation curve](arkts-traditional-curve.md): You can use traditional and spring curves to control property value changes, creating engaging animation effects.
+- [Animation Curve](arkts-traditional-curve.md): Describes the characteristics and usage of traditional curves and spring curves. Animation curves affect the motion pattern of attribute values, thereby determining the animation effect on the UI.
 
-- [Animation smoothing](arkts-animation-smoothing.md): Ensure natural transitions between animations and between gestures and animations.
+- [Animation Smoothing](arkts-animation-smoothing.md): Describes how to achieve natural transitions between animations and between gestures and animations.
 
-- [Animation effect](arkts-blur-effect.md): Enhance animations with blur, shadow, color gradient, and other sophisticated effects.
+- [Dynamic blur](arkts-blur-effect.md): Describes how to use advanced effect APIs such as blur, large shadows, and color gradients.
 
-- [Frame animation](arkts-animator.md): The system provides interpolated values during the animation process, requiring you to manually update property values each frame to generate animation effects. Compared with the property animation, this type of animation offers the advantage of pause/resume animation control, but with inferior performance.
+- [Frame Animation](arkts-animator.md): The system provides interpolation results during the animation process, and the developer modifies attribute values per frame to produce the animation. Compared with attribute animation, it offers the advantage of pausing, but has lower performance than attribute animation.
+
+## Samples
+
+The following related samples are available for animation development:
+
+- [Animation Effect Sample (ArkTS) (API 9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/Animation)

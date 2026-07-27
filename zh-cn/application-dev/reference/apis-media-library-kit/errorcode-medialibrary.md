@@ -34,7 +34,7 @@ Context is invalid.
 
 **错误信息**
 
-System inner fail.
+MediaLibrary inner fail.
 
 **错误描述**
 
@@ -42,11 +42,43 @@ System inner fail.
 
 **可能原因**
 
-1. 数据库异常。
+1. 创建构造函数引用失败（Failed to create reference）。
 
-2. 文件系统异常。
+2. 实例创建失败（Failed to create instance）。
 
-3. IPC消息超时。
+3. 无法获取undefined值（Failed to get undefined value）。
+
+4. 回调信息获取失败（Failed to get callback info）。
+
+5. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
+
+6. 原生对象解包失败（Failed to unwrap native object）。
+
+7. 布尔值创建失败（Failed to create Boolean value）。
+
+8. int32值获取失败（Failed to get int32 value）。
+
+9. 返回数据初始化失败（Failed to initialize data field）。
+
+10. 返回错误信息初始化失败（Failed to initialize error field）。
+
+11. 获取参数类型失败（Failed to get argument type）。
+
+12. 参数类型校验失败（Failed to check argument type）。
+
+13. 创建PhotoAlbumNapi失败（Failed to create PhotoAlbumNapi）。
+
+14. JS对象添加属性失败（Failed to add property）。
+
+15. 无法获取提取选项（Failed to get fetch option）。
+
+16. 无效的相册列（Invalid fetch columns）。
+
+17. 数组类型校验失败（Failed to check array type）。
+
+18. 获取数组长度失败（Failed to get array length）。
+
+19. 获取数组元素失败（Failed to get array element）。
 
 **处理步骤**
 
@@ -56,7 +88,7 @@ System inner fail.
 
 **错误信息**
 
-Scene parameter validation failed.
+Invalid parameter.
 
 **错误描述**
 
@@ -78,7 +110,7 @@ Scene parameter validation failed.
 
 **错误信息**
 
-The provided member must be a property name of PhotoKey.
+Invalid input parameter.
 
 **错误描述**
 
@@ -93,3 +125,46 @@ The provided member must be a property name of PhotoKey.
 
 检查传入参数是否在PhotoKeys枚举范围之内。
 
+<!--Del-->
+## 23800201 不支持的操作类型
+
+**错误信息**
+
+Unsupported operation type.
+
+**错误描述**
+
+不支持的操作类型。
+
+**可能原因**
+
+1. 当前相册不支持设置传入的[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)。
+
+2. 当前[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)不支持传入的[AlbumOperationType](js-apis-photoAccessHelper-sys.md#albumoperationtype)。
+
+3. 存在其他限制。
+
+**处理步骤**
+
+检查设置相册属性的类型及其适用场景，并结合日志定位具体原因。
+<!--DelEnd-->
+
+## 23800202 非法场景调用错误
+
+**错误信息**
+
+Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.
+
+**错误描述**
+
+非法场景调用错误。
+
+**可能原因**
+
+1. 在非全图浏览场景下调用该接口。
+
+2. 在已经配置[BaseSelectOptions.isMovingPhotoBadgeShown](arkts-apis-photoAccessHelper-class.md#baseselectoptions)为true的情况下调用该接口。
+
+**处理步骤**
+
+检查接口[setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23)的使用场景。

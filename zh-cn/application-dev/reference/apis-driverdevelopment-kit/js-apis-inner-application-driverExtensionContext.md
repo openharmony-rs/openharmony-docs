@@ -1,10 +1,10 @@
 # DriverExtensionContext
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。
 
@@ -18,7 +18,7 @@ DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发
 ## 导入模块
 
 ```ts
-import { common } from '@kit.AbilityKit';
+import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
 ```
 
 ## 使用说明
@@ -26,8 +26,6 @@ import { common } from '@kit.AbilityKit';
 在使用DriverExtensionContext的功能前，需要通过DriverExtensionAbility子类实例获取。
 
 ```ts
-  import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
-
   let context : DriverExtensionContext | undefined;
   class EntryAbility extends DriverExtensionAbility {
     onInit() {

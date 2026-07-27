@@ -1,10 +1,10 @@
 # 使用Node-API调用返回值为promise的ArkTS方法
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 当ArkTS的返回值为Promise时，可以按以下方式在创建的ArkTS运行环境中调用异步接口。
@@ -14,7 +14,7 @@
 
 处理[Promise](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-promise)对象：将Promise与C++回调绑定，处理异步结果。
 
-转换数据类型：在回调中将JavaScript结果转换为c++可用的数据。
+转换数据类型：在回调中将JavaScript结果转换为C++可用的数据。
 
 ### 示例代码
 - 模块注册
@@ -22,7 +22,7 @@
     #include "hilog/log.h"
     #include "napi/native_api.h"
     
-    //解析Promise结果的回调
+    // 解析Promise结果的回调
     static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -35,7 +35,7 @@
         return nullptr;
     }
     
-    //拒绝Promise的回调
+    // 拒绝Promise的回调
     static napi_value RejectedCallback(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -44,9 +44,10 @@
     
         napi_value error = nullptr;
         napi_coerce_to_string(env, args[0], &error);
-        char errorMsg[1024];
-        size_t len;
-        napi_get_value_string_utf8(env, error, errorMsg, sizeof(errorMsg), &len);
+        char errorMsg[1024] = {0};
+        size_t len = 0;
+        napi_get_value_string_utf8(env, error, errorMsg, sizeof(errorMsg) - 1, &len);
+        errorMsg[len] = '\0';
         OH_LOG_ERROR(LOG_APP, "Promise rejected with error:%{public}s", errorMsg);
         return nullptr;
     }
@@ -111,7 +112,7 @@
 - 接口声明
     ```ts
     // index.d.ts
-    export const callArkTSAsync: (func: Function) => object;
+    export const callArkTSAsync: (func: Function) => void;
     ```
 
 - CMakeLists.txt文件需要按照以下配置：

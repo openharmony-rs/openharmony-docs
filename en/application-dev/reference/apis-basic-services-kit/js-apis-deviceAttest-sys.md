@@ -8,6 +8,7 @@
 <!--Adviser: @fang-jinxu-->
 
 The **deviceAttest** module provides attestation of devices in OpenHarmony by comparing the device information with that stored in the cloud.
+
 You can use the APIs provided by the **deviceAttest** module to obtain the device attestation result.
 
 > **NOTE**
@@ -59,7 +60,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }
     })
 } catch (error) {
@@ -103,7 +104,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }).catch((error: BusinessError) => {
         console.error("error code:" + error.code + " message:" + error.message);
     });
@@ -148,7 +149,7 @@ try {
     " patchLevelResult:" + value.softwareResultDetail[1],
     " rootHashResult:" + value.softwareResultDetail[2],
     " PCIDResult:" + value.softwareResultDetail[3],
-    " reserver:" + value.softwareResultDetail[4]);
+    " reserved:" + value.softwareResultDetail[4]);
 } catch (error) {
     let code: number = (error as BusinessError).code;
     let message: string = (error as BusinessError).message;
@@ -171,4 +172,4 @@ Defines the device attestation result information.
 
 > **NOTE**
 >
-> - The attestation result of device hardware and software information can be any of the following:<br>- **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.
+> - The attestation result of device hardware and software information can be any of the following:<br> - **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.

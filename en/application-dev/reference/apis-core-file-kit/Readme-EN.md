@@ -28,13 +28,9 @@
   - [@ohos.file.cloudSync (Device-Cloud Sync) (System API)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (Directory Environment Capability) (System API)](js-apis-file-environment-sys.md)
-  - [@ohos.file.fileAccess (User File Access and Management) (System API)](js-apis-fileAccess-sys.md)
-  - [@ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)](js-apis-fileExtensionInfo-sys.md)
   - [@ohos.file.keyManager (User Key Management) (System API)](js-apis-file-keymanager-sys.md)
-  - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
   - [@ohos.file.picker (Picker) (System API)](js-apis-file-picker-sys.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics) (System API)](js-apis-file-storage-statistics-sys.md)
-  - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
   - [@ohos.file.volumeManager (Volume Management) (System API)](js-apis-file-volumemanager-sys.md)
   - [@ohos.filemanagement.userFileManager (User Data Management) (System API)](js-apis-userFileManager-sys.md)
   - [@ohos.fileshare (File Sharing) (System API)](js-apis-fileShare-sys.md)
@@ -44,6 +40,12 @@
     - [@ohos.fileio (File Management)](js-apis-fileio.md)
     - [@ohos.statfs (statfs)](js-apis-statfs.md)
     - [@system.file (File Storage)](js-apis-system-file.md)
+    <!--Del-->
+    - [@ohos.file.fileAccess (User File Access and Management) (System API)](js-apis-fileAccess-sys.md)
+    - [@ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)](js-apis-fileExtensionInfo-sys.md)
+    - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
+    - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
+    <!--DelEnd-->
 - C APIs<!--core-file-c-->
   - Modules<!--core-file-module-->
     - [Environment](capi-environment.md)
@@ -51,6 +53,7 @@
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
     - [CloudDisk](capi-clouddisk.md)
+    - [Archive](capi-archive.md)
   - Header Files<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
@@ -59,6 +62,8 @@
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
     - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
+    - [oh_archive.h](capi-oh-archive-h.md)
+    - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
   - Structs<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
@@ -70,6 +75,12 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
+    - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
+    - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
   <!--Del-->

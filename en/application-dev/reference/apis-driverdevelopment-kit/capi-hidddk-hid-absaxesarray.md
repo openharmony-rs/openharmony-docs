@@ -1,10 +1,11 @@
 # Hid_AbsAxesArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:40.065Z pushedAt=2026-06-22T11:21:11.374Z -->
 
 ```c
 typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
@@ -27,4 +28,4 @@ Defines an array of absolute coordinates.
 | Name| Description|
 | -- | -- |
 | Hid_AbsAxes* hidAbsAxes | Array of absolute coordinates.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

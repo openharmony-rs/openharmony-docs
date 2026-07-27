@@ -1,21 +1,23 @@
 # Graphics
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-自定义节点相关属性定义的详细信息。
+自定义节点（RenderNode）相关的图形属性定义，提供几何变换（缩放、旋转、平移）、颜色与长度的统一表示、形状定义、图形遮罩与裁剪、模糊效果等能力，适用于需要在自定义节点上进行精细化图形绘制与视觉效果处理的场景。
 
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
 ```ts
-import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4, Rotation, Frame, LengthMetricsUnit } from "@kit.ArkUI";
+import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4, Rotation, Frame, LengthMetricsUnit } from '@kit.ArkUI';
 ```
 
 ## Size
@@ -28,8 +30,8 @@ import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | number | 否   | 否   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
-| height | number | 否   | 否   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| width  | number | 否   | 否   | 组件大小的宽度。<br>单位：vp<br>取值范围：[0, +∞)<br>负数按默认值处理。 |
+| height | number | 否   | 否   | 组件大小的高度。<br>单位：vp<br>取值范围：[0, +∞)<br>负数按默认值处理。 |
 
 ## Position
 
@@ -43,9 +45,9 @@ type Position = Vector2
 
 | 类型                | 说明                                |
 | ------------------- | ----------------------------------- |
-| [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
+| [Vector2](#vector2) | 包含x和y两个值的向量。<br>单位：vp |
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
@@ -57,7 +59,7 @@ type PositionT\<T> = Vector2T\<T>
 
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
-| [Vector2T\<T>](#vector2tt12) | 包含x和y两个值的向量。<br/>单位：vp |
+| [Vector2T\<T>](#vector2tt12) | 包含x和y两个值的向量。<br>单位：vp |
 
 ## Frame
 
@@ -69,10 +71,10 @@ type PositionT\<T> = Vector2T\<T>
 
 | 名称   | 类型   | 只读 | 可选 | 说明                        |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | number | 否   | 否   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| y      | number | 否   | 否   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| width  | number | 否   | 否   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
-| height | number | 否   | 否   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| x      | number | 否   | 否   | 水平方向位置。<br>单位：vp<br>取值范围：(-∞, +∞) |
+| y      | number | 否   | 否   | 垂直方向位置。<br>单位：vp<br>取值范围：(-∞, +∞) |
+| width  | number | 否   | 否   | 组件的宽度。<br>单位：vp<br>取值范围：[0, +∞)<br>负数按默认值处理。   |
+| height | number | 否   | 否   | 组件的高度。<br>单位：vp<br>取值范围：[0, +∞)<br>负数按默认值处理。   |
 
 ## Pivot
 
@@ -86,7 +88,7 @@ type Pivot = Vector2
 
 | 类型                | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| [Vector2](#vector2) | 轴心的x和y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
+| [Vector2](#vector2) | 轴心的x和y轴坐标。该参数为浮点数，默认值为0.5，取值范围为[0.0, 1.0]。超出范围时按默认值0.5处理。 |
 
 ## Scale
 
@@ -114,7 +116,7 @@ type Translation = Vector2
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| [Vector2](#vector2) | x和y轴的平移量。<br/>单位：px |
+| [Vector2](#vector2) | x和y轴的平移量。<br>单位：px |
 
 ## Rotation
 
@@ -128,7 +130,7 @@ type Rotation = Vector3
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| [Vector3](#vector3) | x、y、z轴方向的旋转角度。<br/>单位：度 |
+| [Vector3](#vector3) | x、y、z轴方向的旋转角度。<br>单位：度 |
 
 ## Offset
 
@@ -142,13 +144,13 @@ type Offset = Vector2
 
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
-| [Vector2](#vector2) | x和y轴方向的偏移量。<br/>单位：vp |
+| [Vector2](#vector2) | x和y轴方向的偏移量。<br>单位：vp |
 
 ## Matrix4
 
 type Matrix4 = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
 
-设置四阶矩阵。
+用于设置四阶矩阵。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -156,7 +158,7 @@ type Matrix4 = [number,number,number,number,number,number,number,number,number,n
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number] | 参数为长度为16（4\*4）的number数组。<br/>各number取值范围：(-∞, +∞) |
+| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | 参数为长度为16（4\*4）的number数组。<br>各number取值范围：(-∞, +∞) |
 
 用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，例如：
 ```ts
@@ -165,7 +167,7 @@ const transform: Matrix4 = [
   0, 1,  0, 0,
   0, 0,  1, 0,
   0, 0,  0, 1
-]
+];
 ```
 
 ## Vector2
@@ -178,8 +180,8 @@ const transform: Matrix4 = [
 
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | number | 否   | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
-| y    | number | 否   | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
+| x    | number | 否   | 否   | 向量x轴方向的值。<br>取值范围：(-∞, +∞) |
+| y    | number | 否   | 否   | 向量y轴方向的值。<br>取值范围：(-∞, +∞) |
 
 ## Vector3
 
@@ -191,9 +193,28 @@ const transform: Matrix4 = [
 
 | 名称 | 类型   | 只读 | 可选 | 说明                |
 | ---- | ------ | ---- | ---- | ------------------- |
-| x    | number | 否   | 否   | x轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| y    | number | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| z    | number | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+| x    | number | 否   | 否   | 向量x轴方向的值。<br>取值范围：(-∞, +∞) |
+| y    | number | 否   | 否   | 向量y轴方向的值。<br>取值范围：(-∞, +∞) |
+| z    | number | 否   | 否   | 向量z轴方向的值。<br>取值范围：(-∞, +∞) |
+
+## Vector4
+
+用于表示包含x、y、z、w四个值的向量。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型   | 只读 | 可选 | 说明     |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | 否  | 否   | 向量x轴方向的值。<br>取值范围：(-∞, +∞) |
+| y    | number | 否  | 否   | 向量y轴方向的值。<br>取值范围：(-∞, +∞) |
+| z    | number | 否  | 否   | 向量z轴方向的值。<br>取值范围：(-∞, +∞) |
+| w    | number | 否  | 否   | 向量w轴方向的值。<br>取值范围：(-∞, +∞) |
 
 ## Vector2T\<T><sup>12+</sup>
 
@@ -210,7 +231,7 @@ const transform: Matrix4 = [
 
 ## DrawContext
 
-图形绘制上下文，提供绘制所需的画布宽度和高度。
+图形绘制上下文，提供绘制所需的画布及其宽度和高度。
 
 ### size
 
@@ -263,10 +284,9 @@ get canvas(): drawing.Canvas
 **示例：**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, DrawContext } from "@kit.ArkUI";
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 class MyRenderNode extends RenderNode {
-  flag: boolean = false;
 
   draw(context: DrawContext) {
     const size = context.size;
@@ -277,7 +297,7 @@ class MyRenderNode extends RenderNode {
 
 const renderNode = new MyRenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -306,6 +326,7 @@ struct Index {
   }
 }
 ```
+![](figures/canvas_demo.png)
 
 ## Edges\<T><sup>12+</sup>
 
@@ -332,11 +353,11 @@ struct Index {
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PX | 0 | 长度类型，用于描述以px像素单位为单位的长度。 |
-| VP | 1 | 长度类型，用于描述以vp像素单位为单位的长度。 |
-| FP | 2 | 长度类型，用于描述以fp像素单位为单位的长度。 |
-| PERCENT | 3 | 长度类型，用于描述以%像素单位为单位的长度。 |
-| LPX | 4 | 长度类型，用于描述以lpx像素单位为单位的长度。 |
+| PX | 0 | 长度类型，用于描述以px为单位的长度。 |
+| VP | 1 | 长度类型，用于描述以vp为单位的长度。 |
+| FP | 2 | 长度类型，用于描述以fp为单位的长度。 |
+| PERCENT | 3 | 长度类型，用于描述以%为单位的长度。 |
+| LPX | 4 | 长度类型，用于描述以lpx为单位的长度。 |
 
 ## SizeT\<T><sup>12+</sup>
 
@@ -361,8 +382,8 @@ struct Index {
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 0 | 长度类型，用于描述以默认的vp像素单位为单位的长度。 |
-| PX | 1 | 长度类型，用于描述以px像素单位为单位的长度。 |
+| DEFAULT | 0 | 长度类型，用于描述以默认的vp为单位的长度。 |
+| PX | 1 | 长度类型，用于描述以px为单位的长度。 |
 
 ## LengthMetrics<sup>12+</sup>
 
@@ -376,7 +397,7 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | number | 否   | 否   | 长度属性的值。   |
+| value       | number | 否   | 否   | 长度属性的值。<br>取值范围：(-∞, +∞)。<br>当unit为PERCENT时，value表示百分比（1表示100%），参考尺寸取决于具体使用场景；其余单位表示对应单位的绝对长度。 |
 | unit | [LengthUnit](#lengthunit12)                                   | 否   | 否   | 长度属性的单位，默认为VP。|
 
 ### constructor<sup>12+</sup>
@@ -393,8 +414,8 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
-| unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位。 |
+| value   | number | 是   | 长度属性的值。<br>取值范围：(-∞, +∞) |
+| unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位，默认为VP。 |
 
 ### px<sup>12+</sup>
 
@@ -410,13 +431,13 @@ static px(value: number): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | number | 是   | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | 单位为PX的长度属性对象。 |
 
 ### vp<sup>12+</sup>
 
@@ -432,13 +453,13 @@ static vp(value: number): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | number | 是   | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | 单位为VP的长度属性对象。 |
 
 ### fp<sup>12+</sup>
 
@@ -454,13 +475,13 @@ static fp(value: number): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | number | 是   | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | 单位为FP的长度属性对象。 |
 
 ### percent<sup>12+</sup>
 
@@ -476,13 +497,13 @@ static percent(value: number): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, 1] |
+| value   | number | 是   | 长度属性的值。<br>取值范围：[0, 1]<br>超出范围时按边界值处理。 |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | 单位为PERCENT的长度属性对象，值为1表示100%。 |
 
 ### lpx<sup>12+</sup>
 
@@ -498,13 +519,13 @@ static lpx(value: number): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | number | 是   | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | 单位为LPX的长度属性对象。 |
 
 ### resource<sup>12+</sup>
 
@@ -520,13 +541,13 @@ static resource(value: Resource): LengthMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | Resource | 是   | 长度属性的值。 |
+| value   | [Resource](arkui-ts/ts-types.md#resource) | 是   | 长度属性的值。 |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [LengthMetrics](#lengthmetrics12) | LengthMetrics 类的实例。 |
+| [LengthMetrics](#lengthmetrics12) | Resource类型资源的长度属性对象。 |
 
 **示例：**
 
@@ -565,7 +586,7 @@ struct SizeExample {
         })
         .backgroundColor(Color.White)
       }
-      .backgroundColor("#ff2787d9")
+      .backgroundColor('#ff2787d9')
     }
     .width('100%')
     .margin({ top: 5 })
@@ -574,10 +595,54 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+设置LengthMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resource](#resource12)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。<br>true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | 返回设置自动刷新属性后的LengthMetrics对象。 |
+
+**示例：**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true);
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
-用于混合颜色。
+提供颜色的统一表示与封装，支持颜色混合以及 RGB、Alpha 分量的获取。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,13 +660,13 @@ static numeric(value: number): ColorMetrics
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | HEX格式颜色。<br/>取值范围：支持rgb或者argb |
+| value   | number | 是   | HEX格式颜色，支持RGB或者ARGB。<br>取值范围：[0, 0xffffffff]<br>超出范围时按边界值处理。 |
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | ColorMetrics 类的实例。 |
+| [ColorMetrics](#colormetrics12) | HEX格式颜色对应的颜色对象。 |
 
 ### rgba<sup>12+</sup>
 
@@ -617,22 +682,22 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| red   | number | 是   | 颜色的R分量（红色），值是0~255的整数。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~255的整数。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~255的整数。 |
-| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br/> **说明：** alpha小于0为全透明，大于1为不透明。|
+| red   | number | 是   | 颜色的R分量（红色），值是0~255的整数。超出范围时按边界值处理。 |
+| green | number | 是   | 颜色的G分量（绿色），值是0~255的整数。超出范围时按边界值处理。 |
+| blue  | number | 是   | 颜色的B分量（蓝色），值是0~255的整数。超出范围时按边界值处理。 |
+| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br> **说明：** alpha小于0为全透明，大于1为不透明。|
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | ColorMetrics 类的实例。 |
+| [ColorMetrics](#colormetrics12) | rgb或rgba格式颜色对应的颜色对象。 |
 
 ### colorWithSpace<sup>20+</sup>
 
 static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
-使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)和rgba格式颜色实例化ColorMetrics类。仅部分属性支持在display-p3色彩空间中设置颜色。
+使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)和rgba格式颜色实例化ColorMetrics类。仅red、green、blue属性支持在display-p3色彩空间中设置颜色，alpha属性不受色彩空间影响。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -642,17 +707,17 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 是   | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
-| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮动数值。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮动数值。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
-| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
+| colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 是   | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
+| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮点数。超出范围时按边界值处理。 |
+| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮点数。超出范围时按边界值处理。 |
+| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮点数。超出范围时按边界值处理。 |
+| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br> **说明：** alpha小于0为全透明，大于1为不透明。|
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | ColorMetrics类的实例。|
+| [ColorMetrics](#colormetrics12) | 指定色彩空间下rgba格式颜色对应的颜色对象。|
 
 ### resourceColor<sup>12+</sup>
 
@@ -674,9 +739,9 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| [ColorMetrics](#colormetrics12) | ColorMetrics 类的实例。 |
+| [ColorMetrics](#colormetrics12) | 资源格式颜色对应的颜色对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[系统资源错误码](errorcode-system-resource.md)。
 
@@ -799,7 +864,7 @@ get alpha(): number
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的A分量（透明度），值是0~255的整数。|
+| number | 颜色的A分量（透明度），值是0~255的整数。通过rgba()或colorWithSpace()方法设置时alpha取值范围为0.0~1.0的浮点数，内部会转换为0~255的整数存储。|
 
 **示例：**
 
@@ -810,15 +875,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function getBlendColor(baseColor: ResourceColor): ColorMetrics {
   let sourceColor: ColorMetrics;
   try {
-    //在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
-    //可能返回的arkui子系统错误码有401和180003
+    // 在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
+    // 可能返回的arkui子系统错误码有401和180003
     // 61 157 180
-    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
-    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor('#083d9db4'));
+    console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
   } catch (error) {
-    console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
-    (error as BusinessError).message);
-    sourceColor = ColorMetrics.resourceColor("#19000000");
+    console.error(`getBlendColor failed. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    sourceColor = ColorMetrics.resourceColor('#19000000');
   }
   return sourceColor;
 }
@@ -828,29 +892,29 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
 struct ColorMetricsSample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("ColorMetrics blendColor")
+      Button('ColorMetrics blendColor')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(getBlendColor("#ff3d9db4").color)
+        .backgroundColor(getBlendColor('#ff3d9db4').color)
         .margin(10)
-      Button("ColorMetrics numeric")
+      Button('ColorMetrics numeric')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
         .backgroundColor(ColorMetrics.numeric(0xff707070).color)
         .margin(10)
-      Button("ColorMetrics rgba")
+      Button('ColorMetrics rgba')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 1.0).color)
         .margin(10)
-      Button("ColorMetrics colorWithSpace")
+      Button('ColorMetrics colorWithSpace')
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.4392, 0.4392, 0.4392).color)
         .margin(10)
     }
     .width('100%')
@@ -859,6 +923,53 @@ struct ColorMetricsSample {
 }
 ```
 ![image](figures/colorMetricsDemo.png)
+
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+设置ColorMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resourceColor](#resourcecolor12)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。<br>true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [ColorMetrics](#colormetrics12) | 返回设置自动刷新属性后的ColorMetrics对象。 |
+
+**示例：**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true);
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## Corners\<T><sup>12+</sup>
 
@@ -887,7 +998,7 @@ type CornerRadius = Corners\<Vector2>
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角x轴与y轴的半轴长。 |
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | 四个角的圆角x轴与y轴的半轴长。<br>单位：px |
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -901,7 +1012,7 @@ type BorderRadiuses = Corners\<number>
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | 四个角的圆角半径。 |
+| [Corners](#cornerst12)\<number> | 四个角的圆角半径。<br>单位：vp |
 
 ## Rect<sup>12+</sup>
 
@@ -940,9 +1051,9 @@ type Rect = common2D.Rect
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | 否   | 否   | 圆心x轴的位置，单位为px。 |
-| centerY | number | 否   | 否   | 圆心y轴的位置，单位为px。 |
-| radius  | number | 否   | 否   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
+| centerX | number | 否   | 否   | 圆心x轴的位置，单位为px。<br>取值范围：(-∞, +∞) |
+| centerY | number | 否   | 否   | 圆心y轴的位置，单位为px。<br>取值范围：(-∞, +∞) |
+| radius  | number | 否   | 否   | 圆形的半径，单位为px。<br>取值范围：[0, +∞)<br>负数按默认值处理。   |
 
 ## CommandPath<sup>12+</sup>
 
@@ -954,11 +1065,11 @@ type Rect = common2D.Rect
 
 | 名称                                                         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](./arkui-ts/ts-pixel-units.md)。<br/>单位：px |
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](./arkui-ts/ts-pixel-units.md)。<br>单位：px |
 
 ## ShapeMask<sup>12+</sup>
 
-用于设置图形遮罩。
+用于设置图形遮罩，支持矩形、圆角矩形、圆形、椭圆及自定义路径等多种形状，可作用于RenderNode实现形状遮罩效果。
 
 ### 属性
 
@@ -968,9 +1079,9 @@ type Rect = common2D.Rect
 
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>  通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
-| strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br>取值范围：[0, 0xffffffff]<br>超出范围时按默认值处理。<br> 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。<br>取值范围：[0, 0xffffffff]<br>超出范围时按默认值处理。 <br>  通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
+| strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。<br>取值范围：[0, +∞)<br>负数按默认值处理。   |
 
 ### constructor<sup>12+</sup>
 
@@ -1010,11 +1121,21 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const mask = new ShapeMask();
-    mask.setRectShape({ left: 0, right: uiContext.vp2px(150), top: 0, bottom: uiContext.vp2px(150) });
+    mask.setRectShape({
+      left: 0,
+      right: uiContext.vp2px(150),
+      top: 0,
+      bottom: uiContext.vp2px(150)
+    });
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1039,6 +1160,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRectShape_demo.png)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1059,7 +1181,7 @@ setRoundRectShape(roundRect: RoundRect): void
 **示例：**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask,RoundRect} from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, ShapeMask, RoundRect } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -1076,7 +1198,7 @@ class MyNodeController extends NodeController {
         bottomLeft: { x: 32, y: 32 },
         bottomRight: { x: 32, y: 32 }
       }
-    }
+    };
     mask.setRoundRectShape(roundRect);
     mask.fillColor = 0X55FF0000;
 
@@ -1106,6 +1228,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRoundRectShape_demo.png)
 
 ### setCircleShape<sup>12+</sup>
 
@@ -1139,7 +1262,12 @@ class MyNodeController extends NodeController {
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1164,6 +1292,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCircleShape_demo.png)
 
 ### setOvalShape<sup>12+</sup>
 
@@ -1222,6 +1351,7 @@ struct Index {
   }
 }
 ```
+![](figures/setOvalShape_demo.png)
 
 ### setCommandPath<sup>12+</sup>
 
@@ -1245,11 +1375,16 @@ setCommandPath(path: CommandPath): void
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
 
 const mask = new ShapeMask();
-mask.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+mask.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 mask.fillColor = 0X55FF0000;
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
 
@@ -1281,10 +1416,11 @@ struct Index {
   }
 }
 ```
+![](figures/setCommandPath_demo.png)
 
 ## ShapeClip<sup>12+</sup>
 
-用于设置图形裁剪。
+用于设置图形裁剪，支持矩形、圆角矩形、圆形、椭圆及自定义路径等多种形状，可对RenderNode进行形状裁剪，仅显示裁剪区域内的内容。
 
 ### constructor<sup>12+</sup>
 
@@ -1292,9 +1428,9 @@ constructor()
 
 ShapeClip的构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### setRectShape<sup>12+</sup>
 
@@ -1302,9 +1438,9 @@ setRectShape(rect: Rect): void
 
 用于裁剪矩形。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1318,7 +1454,7 @@ setRectShape(rect: Rect): void
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1327,7 +1463,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.shapeClip = clip;
 const shapeClip = renderNode.shapeClip;
 
@@ -1355,7 +1491,8 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setRectShape")
+        .margin({ bottom: 20 })
+      Button('setRectShape')
         .onClick(() => {
           shapeClip.setRectShape({
             left: 0,
@@ -1365,10 +1502,11 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/setRectShape_demo2.gif)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1376,9 +1514,9 @@ setRoundRectShape(roundRect: RoundRect): void
 
 用于裁剪圆角矩形。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1391,7 +1529,7 @@ setRoundRectShape(roundRect: RoundRect): void
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1427,7 +1565,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setRoundRectShape")
+      Button('setRoundRectShape')
         .onClick(() => {
           renderNode.shapeClip.setRoundRectShape({
             rect: {
@@ -1455,9 +1593,9 @@ setCircleShape(circle: Circle): void
 
 用于裁剪圆形。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1471,7 +1609,7 @@ setCircleShape(circle: Circle): void
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1507,7 +1645,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setCircleShape")
+      Button('setCircleShape')
         .onClick(() => {
           renderNode.shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
 
@@ -1523,9 +1661,9 @@ setOvalShape(oval: Rect): void
 
 用于裁剪椭圆形。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1539,7 +1677,7 @@ setOvalShape(oval: Rect): void
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -1575,7 +1713,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setOvalShape")
+      Button('setOvalShape')
         .onClick(() => {
           renderNode.shapeClip.setOvalShape({
             left: 0,
@@ -1593,11 +1731,11 @@ struct Index {
 
 setCommandPath(path: CommandPath): void
 
-用于裁剪路径绘制指令。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+用于按路径绘制指令进行裁剪。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1611,10 +1749,15 @@ setCommandPath(path: CommandPath): void
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeClip = clip;
 
@@ -1642,9 +1785,9 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setCommandPath")
-        .onClick(()=>{
-          renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+      Button('setCommandPath')
+        .onClick(() => {
+          renderNode.shapeClip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
         })
     }
   }
@@ -1665,13 +1808,13 @@ edgeColors(all: number): Edges\<number>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | 是   | 边框颜色，ARGB格式，示例：0xffff00ff。<br/>取值范围：[0, 0xffffffff] |
+| all    | number | 是   | 边框颜色，ARGB格式，示例：0xffff00ff。<br>取值范围：[0, 0xffffffff]<br>超出范围时按边界值处理。 |
 
 **返回值：**
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框颜色均设置为传入值的边框颜色对象。 |
+| [Edges](#edgest12)\<number> | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
 
@@ -1680,9 +1823,9 @@ import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = edgeColors(0xFF0000FF);
+renderNode.borderColor = edgeColors(0xff519db4);
 
 
 class MyNodeController extends NodeController {
@@ -1708,10 +1851,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeColors_demo.png)
 
 ## edgeWidths<sup>12+</sup>
 
@@ -1727,13 +1871,13 @@ edgeWidths(all: number): Edges\<number>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | 是   | 边框宽度，单位为vp。<br/>取值范围：[0, +∞) |
+| all    | number | 是   | 边框宽度，单位为vp。<br>取值范围：[0, +∞)<br>负数按默认值处理。 |
 
 **返回值：**
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框宽度均设置为传入值的边框宽度对象。 |
+| [Edges](#edgest12)\<number> | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
 
@@ -1741,10 +1885,20 @@ edgeWidths(all: number): Edges\<number>
 import { RenderNode, FrameNode, NodeController, edgeWidths } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = edgeWidths(8);
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 
 
 class MyNodeController extends NodeController {
@@ -1770,10 +1924,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeWidths_demo.png)
 
 ## borderStyles<sup>12+</sup>
 
@@ -1795,7 +1950,7 @@ borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| [Edges](#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
+| [Edges](#edgest12)\<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 边框样式均设置为传入值的边框样式对象。 |
 
 **示例：**
 
@@ -1803,10 +1958,25 @@ borderStyles(all: BorderStyle): Edges\<BorderStyle>
 import { RenderNode, FrameNode, NodeController, borderStyles } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
+renderNode.borderWidth = {
+  left: 8,
+  top: 8,
+  right: 8,
+  bottom: 8
+};
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
 
@@ -1833,10 +2003,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/borderStyles_demo.png)
 
 ## borderRadiuses<sup>12+</sup>
 
@@ -1852,7 +2023,7 @@ borderRadiuses(all: number): BorderRadiuses
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| all    | number | 是   | 边框圆角。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| all    | number | 是   | 边框圆角。<br>单位：vp<br>取值范围：[0, +∞)<br>负数按默认值处理。 |
 
 **返回值：**
 
@@ -1863,11 +2034,16 @@ borderRadiuses(all: number): BorderRadiuses
 **示例：**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, borderRadiuses }  from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, borderRadiuses } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xff519db4;
 renderNode.borderRadius = borderRadiuses(32);
 
 
@@ -1894,7 +2070,58 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+设置背景模糊效果，支持通过模糊半径控制模糊程度，并可通过灰阶参数对图像黑白像素进行色阶调整。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。<br>单位：px<br>取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大背景模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]，超出范围时按默认值处理。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20，20），图片中的黑色像素RGB：[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB：[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ContentBlur
+
+设置内容模糊效果，支持通过模糊半径控制模糊程度，并可通过灰阶参数对图像黑白像素进行色阶调整。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。<br>单位：px<br>取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]，超出范围时按默认值处理。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20，20），图片中的黑色像素RGB：[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB：[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ForegroundBlur
+
+设置前景模糊效果，支持通过模糊半径控制模糊程度。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | 否   | 否   | 模糊半径。<br>单位：px<br>取值范围为[0, +∞)，默认值为0，负数、NaN和Infinity按默认值处理。值越大前景模糊效果越明显，为0时不模糊。 |

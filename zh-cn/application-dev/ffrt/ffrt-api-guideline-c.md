@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## 任务管理
@@ -417,7 +417,7 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 
 **参数**
 
-- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义拓展类型。
+- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义扩展类型。
 - `in_deps`：任务的输入数据依赖。输入数据依赖通常以实际数据的地址表达，也支持`ffrt_task_handle_t`作为一种特殊输入依赖。
 - `out_deps`：任务的输出数据依赖。输出数据依赖通常以实际数据的地址表达，不支持`ffrt_task_handle_t`。
 - `attr`：任务的属性设置。
@@ -605,7 +605,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 **参数**
 
-- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义拓展类型。
+- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义扩展类型。
 - `in_deps`：任务的输入数据依赖。输入数据依赖通常以实际数据的地址表达，也支持`ffrt_task_handle_t`作为一种特殊输入依赖。
 - `out_deps`：任务的输出数据依赖。输出数据依赖通常以实际数据的地址表达，不支持`ffrt_task_handle_t`。
 - `attr`：任务的属性设置。
@@ -1519,11 +1519,11 @@ int ffrt_mutex_destroy(ffrt_mutex_t* mutex);
 
 - 该接口支持在FFRT任务内部调用，也支持在FFRT任务外部调用。
 - 该接口能够避免pthread传统的`pthread_mutex_t`在抢不到锁时陷入内核态的问题，在使用得当的条件下将会有更好的性能。
-- C API中的`ffrt_mutexattr_t`需要用户调用`ffrt_mutexattr_init`和`ffrt_mutexattr_destroy`显示创建和销毁，否则其行为是未定义的。
+- C API中的`ffrt_mutexattr_t`需要用户调用`ffrt_mutexattr_init`和`ffrt_mutexattr_destroy`显式创建和销毁，否则其行为是未定义的。
 - C API中的`ffrt_mutex_t`需要用户调用`ffrt_mutex_init`和`ffrt_mutex_destroy`显式创建和销毁，否则其行为是未定义的。
 - C API中的`ffrt_mutex_t`对象的置空和销毁由用户完成，对同一个`ffrt_mutex_t`仅能调用一次`ffrt_mutex_destroy`，重复对同一个`ffrt_mutex_t`调用`ffrt_mutex_destroy`，其行为是未定义的。
 - C API中的同一个`ffrt_mutexattr_t`只能调用一次`ffrt_mutexattr_init`和`ffrt_mutexattr_destroy`，重复调用其行为是未定义的。
-- 用户需要在调用`ffrt_mutex_init`之后和调用`ffrt_mutex_destroy`之前显示调用`ffrt_mutexattr_destroy`。
+- 用户需要在调用`ffrt_mutex_init`之后和调用`ffrt_mutex_destroy`之前显式调用`ffrt_mutexattr_destroy`。
 - 在`ffrt_mutex_destroy`之后再对`ffrt_mutex_t`进行访问，其行为是未定义的。
 
 **方法**

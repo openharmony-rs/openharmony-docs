@@ -6,10 +6,69 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:15.337Z pushedAt=2026-06-26T03:00:41.286Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+## 2200001 Invalid Parameter Value
+
+**Error Information**
+
+Invalid parameter value.
+
+**Description**
+
+Invalid parameter value.
+
+**Possible Causes**
+
+The input parameter value is not within the valid value range.
+
+**Solution**
+
+Check whether the input parameter value is within the valid value range.
+
+## 2200002 Service Connection Failure
+
+**Error Information**
+
+Failed to connect to the service.
+
+**Description**
+
+This error code is reported if a service connection failure occurs.
+
+**Possible Causes**
+
+A service exception occurred. This includes but is not limited to: database service connection exception and application state management service connection exception.
+
+**Solution**
+
+Check the running status of system services and try again. If the problem persists, collect complete logs and contact technical support for assistance.
+
+## 2200003 System Internal Error
+
+**Error Information**
+
+System internal error.
+
+**Description**
+
+This error code is reported if a system internal error occurs.
+
+**Possible Causes**
+
+1. The memory is abnormal.
+
+2. A null pointer is present.
+
+**Solution**
+
+1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+
+2. System exception. Please try again later or restart the device. If the problem persists, collect complete logs and contact technical support for assistance.
 
 ## 2203001 Failed to Create a VPN
 
@@ -29,12 +88,11 @@ The login user does not have the operation permission. Specifically, the GUEST u
 
 Check the type of the login user.
 
-
 ## 2203002 VPN Already Exists
 
 **Error Information**
 
-VPN exist already, please execute destory first.
+VPN exist already, please execute destroy first.
 
 **Description**
 
@@ -47,7 +105,6 @@ The VPN has been created.
 **Solution**
 
 Call the **destroy** API to destroy the existing VPN, and then call the **setUp** API.
-
 
 ## 2203004 Invalid Descriptor
 

@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 通过DevEco Studio可视化界面查看
 
@@ -159,15 +159,15 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### 各场景trace日志样例
 
-| 打点类型          | 开启HiTraceChain时格式                                       | 未开启HiTraceChain时格式                                     |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 开始同步trace打点 | B\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|M62\|user=root,type=2 | B\|1234\|H:tracename\|M62\|user=root,type=2                  |
-| 结束同步trace打点 | E\|1234\|M62                                                 | E\|1234\|M62                                                 |
-| 开始异步trace打点 | S\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|428\|M62\|appcategory01\|user=root,type=2 | S\|1234\|H:tracename\|428\|M62\|appcategory01\|user=root,type=2 |
-| 结束异步trace打点 | F\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|428\|M62         | F\|1234\|H:tracename\|428\|M62                               |
-| 整数trace打点     | C\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|5678\|M62        | C\|1234\|H:tracename\|5678\|M62                              |
+| 打点类型          | 开启HiTraceChain时格式                                                                     | 未开启HiTraceChain时格式                                     |
+| ----------------- |---------------------------------------------------------------------------------------| ------------------------------------------------------------ |
+| 开始同步trace打点 | B\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|M62\|key1=value1,key2=value2              | B\|1234\|H:tracename\|M62\|key1=value1,key2=value2                  |
+| 结束同步trace打点 | E\|1234\|M62                                                                          | E\|1234\|M62                                                 |
+| 开始异步trace打点 | S\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|428\|M62\|appcategory01\|key1=value1,key2=value2  | S\|1234\|H:tracename\|428\|M62\|appcategory01\|key1=value1,key2=value2  |
+| 结束异步trace打点 | F\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|428\|M62                                  | F\|1234\|H:tracename\|428\|M62                               |
+| 整数trace打点     | C\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|5678\|M62                                 | C\|1234\|H:tracename\|5678\|M62                              |
 
-上述trace日志样例中，进程号均为`1234`，打点内容均为`tracename`，级别均为`M`，代表`COMMERCIAL`级别，所属Tag集合均为`62`，仅包含一个Tag，对应的Tag名称为`app`。在开启HiTraceChain情况下，分布式跟踪链路ID为`[a92ab94c18e1341,0,0]`。同步trace与异步trace跟踪的自定义键值对均为`user=root,type=2`，其中异步trace打点的异步任务ID为`428`，自定义聚类名称为`appcategory01`。整数值跟踪的跟踪值为`5678`。
+上述trace日志样例中，进程号均为`1234`，打点内容均为`tracename`，级别均为`M`，代表`COMMERCIAL`级别，所属Tag集合均为`62`，仅包含一个Tag，对应的Tag名称为`app`。在开启HiTraceChain情况下，分布式跟踪链路ID为`[a92ab94c18e1341,0,0]`。同步trace与异步trace跟踪的自定义键值对均为`key1=value1,key2=value2`，其中异步trace打点的异步任务ID为`428`，自定义聚类名称为`appcategory01`。整数值跟踪的跟踪值为`5678`。
 
 > **说明：**
 >
@@ -219,7 +219,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### HiTraceMeter Tag
 
-以下为HitraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag释义可通过[hitrace](hitrace.md#查看hitrace包含的tag)命令行工具查看，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
+以下为HiTraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag释义可通过[hitrace](hitrace.md#查看hitrace包含的tag)命令行工具查看，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
 
 | Tag名称            | 代码层常量值 | Tag值 |
 | ------------------ | ------------ | ----- |

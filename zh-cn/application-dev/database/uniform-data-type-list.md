@@ -14,7 +14,7 @@
 
 ## 基础类型
 
-基础类型表示通用数据类型，进行跨应用、跨设备设置跨平台交互时，能够被绝大多数应用、设备以及平台识别，标识UTD-ID为general.xxx。当前系统中预定义的通用类型列表如下：
+基础类型表示通用数据类型，进行跨应用、跨设备、跨平台交互时，能够被绝大多数应用、设备以及平台识别，标识UTD-ID为general.xxx。当前系统中预定义的通用类型列表如下：
 
 | **UTD-ID**                          | **BelongingTo类型**         | **后缀名**                | **MIMEType类型**                                                                         | **说明**                             |
 |-------------------------------------|-------------------------------|----------------------------------------|----------------------------------------------------------------------------------------|------------------------------------|
@@ -140,8 +140,8 @@
 | general.pem                         | general.text                  | .pem                                   | application/x-pem-file                                                                 | 增强私隐邮件证书文件类型。                       |
 | general.log                         | general.text                  | .log                                   | text/plain                                                                             | 日志文件类型。                             |
 | general.tel                         | general.text                  | .tel                                   |               -                   | 包含器件封装、网络拓扑、编码信息等的原理图信息文件类型。                             |
-| general.ion                         | general.text                  | .ion                                   | text/plain                                                                             | 文件内容描述类型。                  |
-| general.conf                        | general.text                  | .conf                                  | text/plain                                                                             | 通用配置文件类型。        |
+| general.ion                         | general.text                  | .ion                                   | -                                                                             | 文件内容描述类型。                  |
+| general.conf                        | general.text                  | .conf                                  | -                                                                             | 通用配置文件类型。        |
 | general.calendar                    | general.text                  |                 -                      |                                               -                                        | 所有日程类数据的基类型。                        |
 | general.vcs                         | general.calendar              | .vcs                                   | text/calendar                                                                          | VCalendar日历数据类型。                    |
 | general.ics                         | general.calendar              | .ics                                   | text/calendar                                                                          | ICalendar日历数据类型。                    |
@@ -216,6 +216,8 @@
 | com.apple.iwork.keynote.key                                     |                 general.composite-object,com.apple.iwork                                                            | .key                            |    application/vnd.apple.keynote                   |  iWork Keynote演示文稿文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
 | com.apple.iwork.numbers.numbers                                     |                 general.composite-object,com.apple.iwork                                                            | .numbers                            |    application/vnd.apple.numbers                   |  iWork Numbers电子表格文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  iWork Pages文档文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
+| com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  musiccreate文件格式。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
+| com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF音频数据文件。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
 
 
 ## 系统关联类型

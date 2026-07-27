@@ -2,21 +2,21 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **telephonyManager** module provides the telephony management capability.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policy is provided by **restrictions**. To disable telephony globally, see [@ohos.enterprise.restrictions (Restrictions)](js-apis-enterprise-restrictions.md).
+> The global restriction policy is provided by **restrictions**. To disable telephony globally, see [@ohos.enterprise.restrictions (Restrictions)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -34,6 +34,8 @@ Disables the SIM card in a specified slot.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -59,7 +61,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -83,6 +85,8 @@ Enables the SIM card in a specified slot. After it has been disabled with **setS
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -108,7 +112,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -163,7 +167,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -197,6 +201,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -228,14 +233,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.addOutgoingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -263,6 +268,8 @@ If the device's call capability has been disabled via the [setDisallowedPolicy](
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -294,14 +301,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.removeOutgoingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -359,7 +366,7 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -392,6 +399,8 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                  |
@@ -422,14 +431,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.addIncomingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -457,6 +466,8 @@ A policy conflict is reported when this API is called in the following scenario:
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -488,20 +499,20 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.removeIncomingCallPolicyNumbers(wantTemp, policy, numbers);
   console.info('Succeeded in removing incoming call policy.');
 } catch (err) {
-  console.error(`Failed to add remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -553,7 +564,7 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -592,7 +603,7 @@ For details, see [Enterprise Device Management Error Codes](errorcode-enterprise
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                      |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -603,7 +614,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };

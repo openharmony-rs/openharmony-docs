@@ -17,9 +17,9 @@
 >
 > This component does not work with the [attribute modifier](./ts-universal-attributes-attribute-modifier.md).
 >
-> During the construction of the node tree under this component, the UI instance [UIContext](../arkts-apis-uicontext-uicontext.md) is used. Switching between different UI instances might cause issues due to instance mismatches. As a result, this component currently does not support reusing nodes across multiple instances.
+> A [UIContext](../arkts-apis-uicontext-uicontext.md) instance is used to construct the node tree for this component. During instance switching, the input parameter of the [makeNode](../js-apis-arkui-nodeController.md#makenode) callback method of the bound [NodeController](../js-apis-arkui-nodeController.md) may be **undefined** due to instance mismatch. Therefore, this component does not support cross-instance node reuse.
 >
-> When this component is not destroyed, the unmounting of mounted nodes is not triggered.
+> When this component is not destroyed, the unmounting of its mounted child nodes will not be triggered.
 
 ## Child Components
 

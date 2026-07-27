@@ -1,7 +1,7 @@
 # 使用AVPlayer播放流媒体(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -55,7 +55,7 @@
 
 5. 准备播放：调用prepare()，使AVPlayer进入prepared状态，此时可获取duration，设置缩放模式、音量等。
 
-6. 进行视频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 进行视频播放控制：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
 
 7. （可选）更换资源：调用reset()重置资源，使AVPlayer重新进入idle状态，允许更换资源url。
 
@@ -67,7 +67,7 @@
 
 ### 流媒体缓冲状态
 
-当下载速率低于片源的码率时，会出现卡顿。此时，播放器检测到缓冲区数据不足，会先缓冲一些数据再播放，避免连续卡顿。一次卡顿对应的缓冲事件上报过程为：BUFFERING_START-> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END。CACHED_DURATION在卡顿过程和播放过程中都会持续上报，直至下载至资源末尾。详见[BufferingInfoType缓冲事件类型枚举](../../reference/apis-media-kit/arkts-apis-media-e.md#bufferinginfotype8)。
+当下载速率低于片源的码率时，会出现卡顿。此时，播放器检测到缓冲区数据不足，会先缓冲一些数据再播放，避免连续卡顿。一次卡顿对应的缓冲事件上报过程为：BUFFERING_START-> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END。CACHED_DURATION在卡顿过程和播放过程中都会持续上报，直至下载至资源末尾。详见[BufferingInfoType](../../reference/apis-media-kit/arkts-apis-media-e.md#bufferinginfotype8)缓冲事件类型枚举。
 
 监听当前bufferingUpdate缓冲状态示例代码：
 
@@ -200,7 +200,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 ## 异常场景说明
 
-使用avPlayer播放流媒体过程中断网时，流媒体模块会根据返回的错误码、服务器响应时间和请求次数等因素综合处理。若错误码类型属于不进行请求重试的类型，会向应用上报对应的错误码。如果错误码类型需要进行请求重试，会在30s内进行至多10次的请求重试。如果请求重试次数超过10次，或重试总时长超过30秒，会向应用上报对应的错误码。如果请求重试成功，则继续播放。
+使用AVPlayer播放流媒体过程中断网时，流媒体模块会根据返回的错误码、服务器响应时间和请求次数等因素综合处理。若错误码类型属于不进行请求重试的类型，会向应用上报对应的错误码。如果错误码类型需要进行请求重试，会在30s内进行至多10次的请求重试。如果请求重试次数超过10次，或重试总时长超过30秒，会向应用上报对应的错误码。如果请求重试成功，则继续播放。
 
 ## 运行完整示例
 
@@ -344,7 +344,7 @@ struct Index {
     let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
     // 为avPlayer设置媒体来源和播放策略。
     this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-    * */
+     **/
 
     // 情况五：HLS切码率。
     /*
@@ -359,12 +359,11 @@ struct Index {
     this.avPlayer.on('bitrateDone', (bitrate: number) => {
       console.info('bitrateDone called, and bitrate value is: ' + bitrate);
     })
-    * */
+     **/
 
     // 情况六：DASH切换音视频轨道。
     /*
     this.avPlayer.url = "http://poster-inland.hwcloudtest.cn/AiMaxEngine/ProductionEnvVideo/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3.mpd";
-    //
     this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
@@ -380,7 +379,7 @@ struct Index {
         console.error(`getTrackDescription fail, error:${error}`);
       }
     });
-    * */
+     **/
   }
 
   // HLS切换码率。
@@ -414,7 +413,7 @@ struct Index {
     } catch (error) {
       console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
     }
-    * */
+     **/
   }
 
   avPlay(): void {

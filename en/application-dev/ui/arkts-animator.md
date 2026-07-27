@@ -1,10 +1,12 @@
 # Frame Animation (ohos.animator)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e04af7309600701e46dd8d4785fc2a779865199 translatedAt=2026-07-25T10:14:55.714Z pushedAt=2026-07-25T10:49:07.502Z -->
 
 The frame animation allows you to adjust your animation properties on each frame, thanks to its per-frame callback. By leveraging the **onFrame** callback of [AnimatorResult](../reference/apis-arkui/js-apis-animator.md#animatorresult), you can dynamically set property values on each frame, creating smooth and natural animations. For details about the frame animation APIs, see [@ohos.animator (Animator)](../reference/apis-arkui/js-apis-animator.md).
 
@@ -28,7 +30,7 @@ To create a simple animator and print the current interpolation value in each fr
 1. Import dependencies.
 
    <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
-   
+
    ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
@@ -36,7 +38,7 @@ To create a simple animator and print the current interpolation value in each fr
 2. Create an animator object.
 
    <!-- @[animator_options_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
-   
+
    ``` TypeScript
    // Initial options for creating an animator object
    let options: AnimatorOptions = {
@@ -62,7 +64,7 @@ To create a simple animator and print the current interpolation value in each fr
 3. Play the animation.
 
    <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
-   
+
    ``` TypeScript
    // Play the animation.
    result.play();
@@ -71,19 +73,18 @@ To create a simple animator and print the current interpolation value in each fr
 4. After the animation has finished executing, manually release the **AnimatorResult** object.
 
    <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
-   
+
    ``` TypeScript
    // Release the animation object.
    result = undefined;
    ```
-
 
 ## Using Frame Animation to Implement a Ball's Parabolic Motion
 
 1. Import dependencies.
 
    <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
-   
+
    ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
@@ -91,7 +92,7 @@ To create a simple animator and print the current interpolation value in each fr
 2. Define the component to be animated.
 
    <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
-   
+
    ``` TypeScript
    Button()
      .width(60)
@@ -102,43 +103,43 @@ To create a simple animator and print the current interpolation value in each fr
 3. Create an **AnimatorResult** Object in **onPageShow**.
 
    <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
-   
+
    ``` TypeScript
    onPageShow(): void {
      // Create an animatorResult object.
-     this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
-     this.animatorOptions.onFrame = (progress: number) => {
+     this.animatorResult = this.getUIContext().createAnimator(this.animatorOption);
+     this.animatorResult.onFrame = (progress: number) => {
        this.translateX = progress;
        if (progress > this.topWidth && this.translateY < this.bottomHeight) {
          this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
        }
      }
-     // Invoked when the animation is canceled.
-     this.animatorOptions.onCancel = () => {
+     // Execute the method when the animation is canceled.
+     this.animatorResult.onCancel = () => {
        // Replace $r('app.string.cancel') with the actual resource file. In this example, the value in the resource file is "Canceled."
        this.animatorStatus = $r('app.string.cancel');
      }
-     // Invoked when the animation finishes playing.
-     this.animatorOptions.onFinish = () => {
+     // Execute the method when the animation is complete.
+     this.animatorResult.onFinish = () => {
        // Replace $r('app.string.complete') with the actual resource file. In this example, the value in the resource file is "Finished."
        this.animatorStatus = $r('app.string.complete');
      }
-     // Invoked when the animation repeats.
-     this.animatorOptions.onRepeat = () => {
+     // Execute the method when the animation is played repeatedly.
+     this.animatorResult.onRepeat = () => {
        // The value in the 'repeat' resource file is 'Animation repeating.'
        hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
      }
    }
    ```
 
-4. Define buttons for controlling the animation.
+4. Define buttons for playing, resetting, and pausing animations.
 
    <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
-   
+
    ``` TypeScript
    // Replace $r('app.string.play') with the actual resource file. In this example, the value in the resource file is "Play."
    Button($r('app.string.play')).onClick(() => {
-     this.animatorOptions?.play();
+     this.animatorResult?.play();
      // Replace $r('app.string.playing') with the actual resource file. In this example, the value in the resource file is "Playing."
      this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
@@ -149,23 +150,23 @@ To create a simple animator and print the current interpolation value in each fr
    }).width(80).height(35)
    // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
    Button($r('app.string.pause')).onClick(() => {
-     this.animatorOptions?.pause();
+     this.animatorResult?.pause();
      // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
      this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
 
-5. Destroy the animation in the page's page hiding or destruction lifecycle callback to avoid memory leak.
+5. Release animation objects in the page hide or destroy lifecycle to avoid memory leaks.
 
    <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
-   
+
    ``` TypeScript
    onPageHide(): void {
-     this.animatorOptions = undefined;
+     this.animatorResult = undefined;
    }
    ```
 
-A complete example is as follows:
+A complete example is as follows: 
 
 <!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
 

@@ -24,11 +24,11 @@
 - 以使用callback方式生成3DES密钥为例：
 
   <!-- @[generate_3des_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function genKeyMaterialBlob(): cryptoFramework.DataBlob {
     let arr = [
     0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
@@ -37,7 +37,7 @@
     let keyMaterial = new Uint8Array(arr);
     return { data: keyMaterial };
   }
-
+  
   function testConvertSymKey() {
     // 创建SymKeyGenerator实例
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
@@ -47,17 +47,17 @@
       symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
         if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
           let e: BusinessError = error as BusinessError;
-          console.error(`convertKey error, ${e.code}, ${e.message}`);
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           return;
         }
-        console.info('key algName：' + key.algName);
-        console.info('key format：' + key.format);
+        console.info('key algName: ' + key.algName);
+        console.info('key format: ' + key.format);
         let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节
         console.info('key getEncoded hex: ' + encodedKey.data);
       })
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed, ${e.code}, ${e.message}`);
+      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -66,11 +66,11 @@
 - 同步方法（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
   <!-- @[generate_3des_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function genKeyMaterialBlob(): cryptoFramework.DataBlob {
     let arr = [
     0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
@@ -79,27 +79,21 @@
     let keyMaterial = new Uint8Array(arr);
     return { data: keyMaterial };
   }
-
+  
   function testConvertSymKey() {
     // 创建SymKeyGenerator实例
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
     // 根据指定的数据生成对称密钥
     let keyMaterialBlob = genKeyMaterialBlob();
     try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey error, ${e.code}, ${e.message}`);
-          return;
-        }
-        console.info('key algName：' + key.algName);
-        console.info('key format：' + key.format);
-        let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
+      let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
+      console.info('key algName: ' + key.algName);
+      console.info('key format: ' + key.format);
+      let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，长度为24字节。
+      console.info('key getEncoded length: ' + encodedKey.data.length);
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed, ${e.code}, ${e.message}`);
+      console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -109,9 +103,9 @@
 
 请查看[对称密钥生成和转换规格：HMAC](crypto-sym-key-generation-conversion-spec.md#hmac)。
 
-1. 获取HMAC二进制密钥并封装成DataBlob对象。
+1. 获取HMAC二进制密钥并封装成[DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob)对象。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)，指定字符串参数'HMAC'，创建密钥算法为HMAC、密钥长度为[1, 32768]位的对称密钥生成器（SymKeyGenerator）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)，指定字符串参数'HMAC'，创建密钥算法为HMAC对称密钥生成器（SymKeyGenerator），其支持生成的密钥长度为[1, 4096]字节。
 
 3. 调用[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，根据指定的对称密钥二进制数据，生成对称密钥对象（SymKey）。
 
@@ -120,11 +114,11 @@
 - 以生成HMAC密钥为例，使用await方式：
 
   <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function testConvertHmacKey() {
     // 对称密钥长度为64字节，512比特
     let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
@@ -134,7 +128,7 @@
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let key = await symKeyGenerator.convertKey(keyBlob);
     let encodedKey = key.getEncoded();
-    console.info('key encoded data：' + encodedKey.data);
+    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 
@@ -142,11 +136,11 @@
 - 同步方法（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
   <!-- @[generate_hmac_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function testConvertKeySync() {
     // 对称密钥长度为64字节，512比特
     let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
@@ -156,7 +150,7 @@
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
     let key = symKeyGenerator.convertKeySync(keyBlob);
     let encodedKey = key.getEncoded();
-    console.info('key encoded data：' + encodedKey.data);
+    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 

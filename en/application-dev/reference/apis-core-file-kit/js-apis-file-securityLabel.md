@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-The **securityLabel** module provides APIs for managing data security levels of files, including obtaining and setting file security levels.
+This module provides ArkTS APIs for managing data security levels of files, including obtaining and setting file security levels.
 
 > **NOTE**
 >

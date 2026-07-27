@@ -1,9 +1,9 @@
 # JS卡片开发指导（FA模型）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 FA模型从API version 7开始支持，已经不再主推。该应用模型通过导出匿名对象、固定入口文件的方式指定应用组件，开发者无法进行派生，不利于扩展能力。建议使用新的Stage模型进行开发。
 
@@ -23,18 +23,18 @@ FormAbility生命周期接口如下：
 | onShare?(formId:&nbsp;string):&nbsp;{[key:&nbsp;string]:&nbsp;any} | 卡片提供方接收卡片分享的通知接口。 |
 | onShareForm?(formId:&nbsp;string):&nbsp;Record&lt;string,&nbsp;Object&gt; | 卡片提供方接收卡片分享的通知接口。推荐使用该接口替代onShare接口。如果实现了该接口，onShare将不再被回调。 |
 
-FormProvider类有如下API接口，具体的API介绍详见[接口文档](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
+FormProvider类有如下API接口，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
 
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void; | 设置指定卡片的下一次更新时间，使用callback异步回调。 |
-| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number):&nbsp;Promise&lt;void&gt;; | 设置指定卡片的下一次更新时间，以promise方式返回。 |
+| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void; | 设置指定卡片的下一次刷新时间，使用callback异步回调。 |
+| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number):&nbsp;Promise&lt;void&gt;; | 设置指定卡片的下一次刷新时间，以promise方式返回。 |
 | updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void; | 更新指定的卡片，使用callback异步回调。 |
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;FormBindingData):&nbsp;Promise&lt;void&gt;; | 更新指定的卡片，以promise方式返回。 |
 
 
-FormBindingData类有如下API接口，具体的API介绍详见[接口文档](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)。
+FormBindingData类有如下API接口，具体的API介绍详见[@ohos.app.form.formBindingData (卡片数据绑定类)](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)。
 
 
 | 接口名 | 描述 |
@@ -83,10 +83,10 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
     
     const DATA_STORAGE_PATH: string = 'form_store';
     let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-      // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+      // 此处仅对卡片名：formName， 是否为临时卡片：tempFlag进行了持久化
       let formInfo: Record<string, string | number | boolean> = {
-        'formName': 'formName',
-        'tempFlag': 'tempFlag',
+        'formName': formName,
+        'tempFlag': tempFlag,
         'updateCount': 0
       };
       try {
@@ -119,10 +119,6 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
       onUpdate: (formId: string) => void = (formId) => {
       };
       onVisibilityChange: (newStatus: Record<string, number>) => void = (newStatus) => {
-        let obj: Record<string, number> = {
-          'test': 1
-        };
-        return obj;
       };
       onEvent: (formId: string, message: string) => void = (formId, message) => {
       };
@@ -216,7 +212,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
 卡片需要在应用配置文件config.json中进行配置。
 
 - JS模块，用于对应卡片的JS相关资源，内部字段结构说明：
-    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+  | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
   | -------- | -------- | -------- | -------- |
   | name | 表示JS&nbsp;Component的名字。该标签不可缺省，默认值为default。 | 字符串 | 否 |
   | pages | 表示JS&nbsp;Component的页面用于列举JS&nbsp;Component中每个页面的路由信息[页面路径+页面名称]。该标签不可缺省，取值为数组，数组第一个元素代表JS&nbsp;FA首页。 | 数组 | 否 |
@@ -227,7 +223,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   配置示例如下：
 
   
-  ```json
+  ```json5
   "js": [
     // ...
     {
@@ -238,14 +234,14 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
-    	},
+      },
         "type": "form"
       }
     ]
   ```
   
 - abilities模块，用于对应卡片的FormAbility，内部字段结构说明：
-    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+  | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
   | -------- | -------- | -------- | -------- |
   | name | 表示卡片的类名。字符串最大长度为127字节。 | 字符串 | 否 |
   | description | 表示卡片的描述。取值可以是描述性内容，也可以是对描述性内容的资源索引，以支持多语言。字符串最大长度为255字节。 | 字符串 | 可缺省，缺省为空。 |
@@ -266,7 +262,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   配置示例如下：
 
   
-  ```json
+  ```json5
   "abilities": [
     // ...
     {
@@ -312,10 +308,10 @@ const domain: number = 0xFF00;
 
 const DATA_STORAGE_PATH: string = 'form_store';
 let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-  // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+  // 此处仅对卡片名：formName，是否为临时卡片：tempFlag进行了持久化
   let formInfo: Record<string, string | number | boolean> = {
-    'formName': 'formName',
-    'tempFlag': 'tempFlag',
+    'formName': formName,
+    'tempFlag': tempFlag,
     'updateCount': 0
   };
   try {
@@ -539,8 +535,8 @@ onUpdate(formId: string) {
 
 2. 如何设置router事件：
    - action属性值为"router"；
-   - abilityName为跳转目标的Ability名（支持跳转FA模型的PageAbility组件和Stage模型的UIAbility组件），如目前DevEco创建的FA模型的UIAbility默认名为com.example.entry.EntryAbility；
-   - params为传递给跳转目标Ability的自定义参数，可以按需填写。其值可以在目标Ability启动时的want中的parameters里获取。如FA模型EntryAbility的onCreate生命周期里可以通过featureAbility.getWant()获取到want，然后在其parameters字段下获取到配置的参数；
+   - abilityName为跳转目标的Ability名（支持跳转FA模型的PageAbility组件和Stage模型的UIAbility组件），如目前DevEco创建的Stage模型的UIAbility默认名为com.example.entry.EntryAbility；
+   - params为传递给跳转目标Ability的自定义参数，可以按需填写。其值可以在目标Ability启动时的want中的parameters里获取。如FA模型PageAbility的onCreate生命周期里可以通过featureAbility.getWant()获取到want，然后在其parameters字段下获取到配置的参数；
 
 3. 如何设置message事件：
    - action属性值为"message"；

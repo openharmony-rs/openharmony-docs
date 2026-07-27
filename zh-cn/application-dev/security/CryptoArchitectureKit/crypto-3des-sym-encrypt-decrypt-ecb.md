@@ -78,7 +78,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
     let symKey = await symGenerator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   
@@ -127,7 +127,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
     let symKey = symGenerator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   
@@ -157,7 +157,7 @@
 
   ```ts
   function genIvParamsSpec() {
-    let ivBlob = generateRandom(8); //3DES的 CBC、CFB、OFB、CTR的iv长度为8字节。
+    let ivBlob = generateRandom(8); // 3DES的 CBC、CFB、OFB、CTR的iv长度为8字节。
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
       algName: "IvParamsSpec",
       iv: ivBlob
@@ -167,5 +167,5 @@
   let iv = genIvParamsSpec();
   let cipher = cryptoFramework.createCipher('3DES192|CBC|PKCS7');
   cipher.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
-  // 本段代码只展示CBC、CTR、OFB、CFB分段模式的不同，其他流程请参考开发示例。
+  // 本段代码只展示CBC、CTR、OFB、CFB分组模式的不同，其他流程请参考开发示例。
   ```

@@ -1,9 +1,9 @@
 # FormExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The FormExtensionContext module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides the context environment for the [FormExtensionAbility](js-apis-app-form-formExtensionAbility.md).
@@ -12,8 +12,8 @@ You can use the APIs of this module to start a FormExtensionAbility.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module can be used only in the stage model.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The APIs of this module can be used only in the stage model.
 
 ## How to Use
 FormExtensionContext provides information about a FormExtensionAbility, module, and HAP. You can use the information based on service requirements.
@@ -28,7 +28,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       'temperature': '11c',
       'time': '11:00'
     };
-    console.info("current language is: ", this.context.config.language);
+    console.info("current language is:", this.context.config.language);
     return formBindingData.createFormBindingData(formData);
   }
 };

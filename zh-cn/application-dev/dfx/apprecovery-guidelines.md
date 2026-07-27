@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
@@ -33,7 +33,7 @@ API 10在API 9的基础上新增支持多UIAbility的Stage模型应用开发。�
 | saveAppState(context?: UIAbilityContext): boolean | 主动保存由Context指定的UIAbility状态。 |
 | setRestartWant(want: Want): void | 设置主动调用**restartApp**以及**RestartFlag**不为**NO_RESTART**时重启的UIAbility（want的abilityName属性可设置为UIAbility的名称）。该UIAbility必须在同一个包名下。 |
 
-由于上述接口可能在故障处理时使用，所以不会返回异常，需要开发者熟悉使用的场景。具体其各参数定义详见[参数说明](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)。
+由于上述接口可能在故障处理时使用，所以不会返回异常，需要开发者熟悉使用的场景。具体其各参数定义详见[应用故障恢复](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)。
 
 **enableAppRecovery**：需要在应用初始化阶段调用，比如AbilityStage的onCreate调用。调用该接口后，应用恢复时将按首个支持恢复的UIAbility进行恢复。
 
@@ -45,7 +45,7 @@ API 10在API 9的基础上新增支持多UIAbility的Stage模型应用开发。�
 
 API 9以及未使用**setRestartWant**指定UIAbility的场景，会拉起最后一个支持恢复且在前台的UIAbility，如果当前前台的UIAbility不支持恢复，则应用表现闪退。
 
-如果重启的UIAbility存在已经保存的状态，这些状态数据会在UIAbility的OnCreate生命周期回调的want参数中作为wantParam属性传入。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。自动重启的行为与主动重启一致。
+如果重启的UIAbility存在已经保存的状态，这些状态数据会在UIAbility的onCreate生命周期回调的want参数中作为wantParam属性传入。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。自动重启的行为与主动重启一致。
 
 ### 应用恢复状态管理示意
 
@@ -71,7 +71,7 @@ API 10开始支持应用卡死时的状态保存。JsError故障时，onSaveStat
 
 - 故障监听指的是通过[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)注册[ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md)，监听故障的发生，并通知到监听方。
 
-- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)，及故障发生后，将应用重启恢复到故障之前的状态。
+- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)，即故障发生后，将应用重启恢复到故障之前的状态。
 
 - 故障查询指的是[faultLogger](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)通过其查询接口获取当前的故障信息。
 
@@ -93,9 +93,9 @@ API 10开始支持应用卡死时的状态保存。JsError故障时，onSaveStat
 | -------- | -------- | -------- | -------- | -------- |
 | [JS_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
 | [APP_FREEZE](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
-| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | 不支持 | 支持 |
+| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
 
-这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度的保护用户数据。
+这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度地保护用户数据。
 
 ## 开发步骤
 
@@ -120,7 +120,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 UIAbility的配置清单一般的名字为module.json5。
 
-```json
+```ts
 {
     "abilities": [
       {

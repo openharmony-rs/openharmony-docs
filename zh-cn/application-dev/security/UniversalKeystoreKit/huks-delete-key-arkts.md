@@ -13,7 +13,7 @@
 
 ## 开发步骤
 
-以删除HKDF256密钥为例。
+以删除DH密钥为例。
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
@@ -25,7 +25,7 @@
 
 ``` TypeScript
 /*
- * 以下以HKDF256密钥的Promise操作使用为例
+ * 以下以DH密钥的Promise操作使用为例
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 

@@ -10,6 +10,7 @@
 The **ethernet** module provides wired network capabilities, which allow users to set the IP address, subnet mask, gateway, and Domain Name System (DNS) server, and HTTP proxy of a wired network.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are system APIs.
 
@@ -19,11 +20,11 @@ The **ethernet** module provides wired network capabilities, which allow users t
 import { ethernet } from '@kit.NetworkKit';
 ```
 
-## ethernet.setIfaceConfig<sup>9+</sup>
+## ethernet.setIfaceConfig
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void
 
-Sets the network interface configuration. This API uses an asynchronous callback to return the result.
+Sets the network interface configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -36,7 +37,7 @@ Sets the network interface configuration. This API uses an asynchronous callback
 | Name  | Type                                             | Mandatory| Description                                      |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------ |
 | iface    | string                                            | Yes  | Interface name.                                    |
-| ic       | [InterfaceConfiguration](#interfaceconfiguration9) | Yes  | Network interface configuration to set.                  |
+| ic       | [InterfaceConfiguration](#interfaceconfiguration) | Yes  | Network interface configuration to set.                  |
 | callback | AsyncCallback\<void>                     | Yes  | Callback used to return the result. If the operation is successful, the return result is empty. If the operation fails, an error code is returned.|
 
 **Error codes**
@@ -78,11 +79,11 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
-## ethernet.setIfaceConfig<sup>9+</sup>
+## ethernet.setIfaceConfig
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 
-Sets the network interface configuration. This API uses a promise to return the result.
+Sets the network interface configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -95,7 +96,7 @@ Sets the network interface configuration. This API uses a promise to return the 
 | Name| Type                                             | Mandatory| Description                    |
 | ------ | ------------------------------------------------- | ---- | ------------------------ |
 | iface  | string                                            | Yes  | Interface name.                  |
-| ic     | [InterfaceConfiguration](#interfaceconfiguration9) | Yes  | Network interface configuration to set.|
+| ic     | [InterfaceConfiguration](#interfaceconfiguration) | Yes  | Network interface configuration to set.|
 
 **Return value**
 
@@ -142,11 +143,11 @@ setConfigPromise.then(() => {
 });
 ```
 
-## ethernet.getIfaceConfig<sup>9+</sup>
+## ethernet.getIfaceConfig
 
 getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void
 
-Obtains the configuration of a network interface. This API uses an asynchronous callback to return the result. 
+Obtains the information about a specified network interface. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -159,7 +160,7 @@ Obtains the configuration of a network interface. This API uses an asynchronous 
 | Name  | Type                                           | Mandatory | Description        |
 | -------- | ----------------------------------------------- | ----- | ------------ |
 | iface    | string                                          | Yes   | Network interface.|
-| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration9)> | Yes   | Callback used to return the result. Returns information about the specified network interface.  |
+| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration)> | Yes   | Callback used to return the result. Returns information about the specified network interface.  |
 
 **Error codes**
 
@@ -193,11 +194,11 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 });
 ```
 
-## ethernet.getIfaceConfig<sup>9+</sup>
+## ethernet.getIfaceConfig
 
 getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
-Obtains the configuration of a network interface. This API uses a promise to return the result. 
+Obtains the information about a specified network interface. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -215,7 +216,7 @@ Obtains the configuration of a network interface. This API uses a promise to ret
 
 | Type                             | Description                              |
 | --------------------------------- | ---------------------------------- |
-| Promise\<[InterfaceConfiguration](#interfaceconfiguration9)>   | Promise used to return the result.       |
+| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | Promise used to return the result.       |
 
 **Error codes**
 
@@ -247,11 +248,11 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 });
 ```
 
-## ethernet.isIfaceActive<sup>9+</sup>
+## ethernet.isIfaceActive
 
 isIfaceActive(iface: string, callback: AsyncCallback\<number>): void
 
-Checks whether a network interface is active. This API uses an asynchronous callback to return the result.
+Checks whether the interface is activated. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -293,11 +294,11 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 });
 ```
 
-## ethernet.isIfaceActive<sup>9+</sup>
+## ethernet.isIfaceActive
 
 isIfaceActive(iface: string): Promise\<number>
 
-Checks whether a network interface is active. This API uses a promise to return the result.
+Checks whether the interface is activated. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -342,11 +343,11 @@ ethernet.isIfaceActive("eth0").then((data: number) => {
 });
 ```
 
-## ethernet.getAllActiveIfaces<sup>9+</sup>
+## ethernet.getAllActiveIfaces
 
 getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void
 
-Obtains the list of all active network interfaces. This API uses an asynchronous callback to return the result.
+Obtains the active network interface. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -387,11 +388,11 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
-## ethernet.getAllActiveIfaces<sup>9+</sup>
+## ethernet.getAllActiveIfaces
 
 getAllActiveIfaces(): Promise\<Array\<string>>
 
-Obtains the list of all active network interfaces. This API uses a promise to return the result.
+Obtains the active network interface. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -434,7 +435,7 @@ ethernet.getAllActiveIfaces().then((data: string[]) => {
 
 on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 
-Registers an observer for NIC hot swap events. This API uses an asynchronous callback to return the result.
+Registers the observer for NIC hot swap events. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -547,7 +548,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 });
 ```
 
-## InterfaceConfiguration<sup>9+</sup>
+## InterfaceConfiguration
 
 Defines the network configuration for the Ethernet connection.
 
@@ -557,7 +558,7 @@ Defines the network configuration for the Ethernet connection.
 
 | Name         | Type                   | Read-Only|Optional| Description                                                        |
 | ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
-| mode         | [IPSetMode](#ipsetmode9) | No|No|Configuration mode of the Ethernet connection.|
+| mode         | [IPSetMode](#ipsetmode) | No|No|Configuration mode of the Ethernet connection.|
 | ipAddr       | string                  | No|No|Static IP address of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in Dynamic Host Configuration Protocol (DHCP) mode.|
 | route        | string                  | No|No|Route of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
 | gateway      | string                  | No|No|Gateway of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
@@ -578,7 +579,7 @@ Listens for status changes of an Ethernet NIC.
 | iface        | string                  |  No|No|Name of the Ethernet NIC.                                       |
 | active       | boolean                 |  No|No|Whether the Ethernet NIC is activated. The value **true** indicates that the Ethernet NIC is activated, and the value **false** indicates the opposite.|
 
-## IPSetMode<sup>9+</sup>
+## IPSetMode
 
 Defines the configuration mode of the Ethernet connection.
 

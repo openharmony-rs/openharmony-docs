@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -21,7 +21,7 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
   - The asset encryption/decryption also protects the integrity of the asset owner identity. Even if the owner of the asset is tampered with, attackers cannot obtain data of other services.
 
 - Group-based access control:
-  - You can add multiple applications of the same developer to a group and set the ground ID when adding assets. The applications in the same group can access data with each other.
+  - You can add multiple applications of the same developer to a group and set group sharing when adding assets. The applications in the same group can access data with each other.
   - The group information consists of the developer ID and group ID. The developer ID does not need to be configured. The group ID is configured during application development. For details, see [Tags in the Configuration File](../../quick-start/app-configuration-file.md#tags-in-the-configuration-file). When an application is released, it is signed by a private key to ensure the group ID integrity.
   - You can configure multiple groups for an application and allocate assets to different groups based on their sharing scope. This allows fine-grained group-based access control.
 
@@ -46,7 +46,7 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Alias-based access
 
-  Assets are stored in the ASSET database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
+  Assets are stored in the Asset Store Kit database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
 
 - Batch asset query
 
@@ -54,9 +54,9 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Custom service data storage
 
-  - ASSET provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  - Asset Store Kit provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
 
-  - ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  - Asset Store Kit protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 - Group-based access control
 
@@ -71,6 +71,8 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
      - From API version 20 or earlier: Both non-group and group data stored in ASSET is cleared.
   - When a user is deleted, the asset data of the user will be deleted.
   - When a device is reset to restore factory settings, the asset data will be deleted.
+
+<!--RP1--><!--RP1End-->
 
 ## Relationship with Other Kits
 

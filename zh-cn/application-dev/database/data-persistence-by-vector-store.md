@@ -40,11 +40,12 @@
 | 类型 | 描述 | 是否支持 |
 | -------- | -------- | -------- |
 | NULL | 空值 | 是 |
-| INTEGER | 整形 | 是 |
+| INTEGER | 整型 | 是 |
 | DOUBLE | 浮点类型 | 是 |
 | TEXT | 字符串类型 | 是 |
 | BLOB | 二进制类型 | 是 |
 | FLOATVECTOR | 向量数据类型 | 是 |
+| GEOMETRY (搭载OpenHarmony 7.0.0及以上版本设备支持) | 地理坐标类型 | 是 |
 
 ### 字段约束
 
@@ -125,7 +126,7 @@ SQL语句中的函数，如下所示：
 
 ## 接口说明
 
-以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -250,7 +251,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    // 单表查询
@@ -268,6 +269,17 @@ SQL语句中的函数，如下所示：
      // 不使用参数绑定
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
+     resultSet!.close();
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   }
+   
+   // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
+   try {
+     // 创建第二张表
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+     await store!.execute(CREATE_SQL);
+     let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -348,7 +360,7 @@ SQL语句中的函数，如下所示：
 
    | 类型   | 计算符号 | 备注说明   |
    | ------ | -------- | ---------- |
-   | L2     | <->      | 欧式距离。|
+   | L2     | <->      | 欧氏距离。|
    | COSINE | <=>      | 余弦距离。|
 
    **表3** 扩展语法参数(parameter)

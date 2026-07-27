@@ -99,7 +99,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001174756860](figures/en-us_image_0000001174756860.gif)
+![animationFrame](figures/animationFrame.gif)
 
 > **NOTE**
 >
@@ -189,7 +189,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001220316655](figures/en-us_image_0000001220316655.gif)
+![animationFrame2](figures/animationFrame2.gif)
 
 > **NOTE**
 >

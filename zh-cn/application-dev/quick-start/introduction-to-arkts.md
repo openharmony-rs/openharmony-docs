@@ -2,10 +2,10 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @LeechyLiang-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS是一种设计用于构建高性能应用的编程语言。它在继承TypeScript语法的基础上进行了优化，以提供更高的性能和开发效率。
 
@@ -31,7 +31,9 @@ ArkTS通过声明引入变量、常量、类型和函数。
 
 使用关键字`let`声明的变量可以在程序执行期间具有不同的值。
 
-```typescript
+<!-- @[variable_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let hi: string = 'hello';
 hi = 'hello, world';
 ```
@@ -40,7 +42,9 @@ hi = 'hello, world';
 
 使用关键字`const`声明的常量为只读类型，只能被赋值一次。
 
-```typescript
+<!-- @[const_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 const hello: string = 'hello';
 ```
 
@@ -52,7 +56,9 @@ const hello: string = 'hello';
 
 以下示例中，两条声明语句都是有效的，两个变量都是`string`类型：
 
-```typescript
+<!-- @[type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let hi1: string = 'hello';
 let hi2 = 'hello, world';
 ```
@@ -87,7 +93,9 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 示例：
 
-```typescript
+<!-- @[float_type_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
+
+``` TypeScript
 let n1 = 3.14;
 let n2 = 3.141592;
 let n3 = 0.5;
@@ -97,19 +105,21 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
-
-factorial(n1)  //  7.660344000000002
-factorial(n2)  //  7.680640444893748
-factorial(n3)  //  1
-factorial(n4)  //  9.33262154439441e+157
+  // ...
+  factorial(n1) // 6.719600000000001
+  factorial(n2) // 6.728008294464001
+  factorial(n3) // 1
+  factorial(n4) // 9900
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
+`number`类型在表示大整数（即超过`Number.MIN_SAFE_INTEGER`（-9007199254740991）~`Number.MAX_SAFE_INTEGER`（9007199254740991））时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
 
-```typescript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+<!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
+
+``` TypeScript
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
@@ -119,7 +129,9 @@ console.info('bigInt:' + bigInt.toString());
 
 通常在条件语句中使用`boolean`类型的变量：
 
-```typescript
+<!-- @[bool_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let isDone: boolean = false;
 
 // ...
@@ -135,7 +147,9 @@ if (isDone) {
 
 字符串字面量由单引号（'）或双引号（"）之间括起来的零个或多个字符组成。字符串字面量还有一特殊形式，是用反向单引号（\`）括起来的模板字面量。
 
-```typescript
+<!-- @[string_examples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let s1 = 'Hello, world!\n';
 let s2 = 'this is a string';
 let a = 'Success';
@@ -146,11 +160,13 @@ let s3 = `The result is ${a}`;
 
 `void`类型用于指定函数没有返回值。
 
-此类型只有一个值，同样是`void`。由于`void`是引用类型，因此它可以用于泛型类型参数。
+此类型只有一个值，同样是`void`。`void`可用于泛型类型参数。
 
-```typescript
+<!-- @[generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 class Class<T> {
-  //...
+  // ...
 }
 let instance: Class<void>;
 ```
@@ -161,13 +177,15 @@ let instance: Class<void>;
 
 `object`类型用于表示除基本类型外的类型。
 
-```typescript
+<!-- @[object_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let o1: Object = 'Alice';
 let o2: Object = ['a', 'b'];
 let o3: Object = 1;
 let o4: object = [1, 2, 3];
 ```
-
+ 
 **`array`类型**
 
 `array`类型，即数组，是由可赋值给数组声明中指定的元素类型的数据组成的对象。
@@ -176,7 +194,9 @@ let o4: object = [1, 2, 3];
 
 以下示例将创建包含三个元素的数组：
 
-```typescript
+<!-- @[string_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let names: string[] = ['Alice', 'Bob', 'Carol'];
 ```
 
@@ -186,35 +206,44 @@ let names: string[] = ['Alice', 'Bob', 'Carol'];
 
 使用枚举常量时必须以枚举类型名称为前缀。
 
-```typescript
+<!-- @[enum_color_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
+
+``` TypeScript
 enum ColorSet { Red, Green, Blue }
 let c: ColorSet = ColorSet.Red;
 ```
 
 常量表达式用于显式设置枚举常量的值。
 
-```typescript
+<!-- @[enum_with_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 enum ColorSet { White = 0xFF, Grey = 0x7F, Black = 0x00 }
 let c: ColorSet = ColorSet.Black;
 ```
 
-**`Union`类型**
+**联合类型（Union）**
 
-`Union`类型，即联合类型，是由多个类型组合成的引用类型。联合类型包含了变量可能的所有类型。
+联合类型（Union）是由多个类型组合成的类型。联合类型包含了变量可能的所有类型。
 
-```typescript
+<!-- @[union_type_animal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 class Cat {
-  name: string = 'cat';
+  public name: string = 'cat';
   // ...
 }
+
 class Dog {
-  name: string = 'dog';
+  public name: string = 'dog';
   // ...
 }
+
 class Frog {
-  name: string = 'frog';
+  public name: string = 'frog';
   // ...
 }
+
 type Animal = Cat | Dog | Frog | number | string | null | undefined;
 // Cat、Dog、Frog是一些类型（类或接口）
 
@@ -225,12 +254,14 @@ animal = 'dog';
 animal = undefined;
 // 可以将类型为联合类型的变量赋值为任何组成类型的有效值
 ```
-
+ 
 可以使用不同机制获取联合类型中的特定类型值。
 
 示例：
 
-```typescript
+<!-- @[type_narrowing_animal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 class Cat { sleep () {}; meow () {} }
 class Dog { sleep () {}; bark () {} }
 class Frog { sleep () {}; leap () {} }
@@ -245,11 +276,13 @@ function foo(animal: Animal) {
 }
 ```
 
-**`Aliases`类型**
+**类型别名（Aliases）**
 
-`Aliases`类型为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
+类型别名（Aliases）为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
 
-```typescript
+<!-- @[type_aliases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 // 二维数组类型
 type Matrix = number[][];
 const gameBoard: Matrix = [
@@ -263,14 +296,17 @@ const repeatString: Handler = (str, times) => {
   return str.repeat(times);
 };
 console.info(repeatString('abc', 3)); // 'abcabcabc'
-
+// ...
 // 泛型函数类型
 type Predicate<T> = (x: T) => boolean;
 const isEven: Predicate<number> = (num) => num % 2 === 0;
 
 // 可为空的对象类型
 type NullableObject = Object | null;
-class Cat {}
+
+class Cat {
+}
+
 let animalData: NullableObject = new Cat();
 let emptyData: NullableObject = null;
 ```
@@ -293,15 +329,17 @@ let emptyData: NullableObject = null;
 | -------- | ------------------------------------------------------------ |
 | `===`    | 如果两个操作数严格相等（对于不同类型的操作数认为是不相等的），则返回true。 |
 | `!==`    | 如果两个操作数严格不相等（对于不同类型的操作数认为是不相等的），则返回true。 |
-| `==`     | 如果两个操作数相等，则返回true。 |
-| `!=`     | 如果两个操作数不相等，则返回true。    |
+| `==`     | 如果两个操作数相等，则返回true。建议使用`===`替代。 |
+| `!=`     | 如果两个操作数不相等，则返回true。建议使用`!==`替代。    |
 | `>`      | 如果左操作数大于右操作数，则返回true。 |
 | `>=`     | 如果左操作数大于或等于右操作数，则返回true。 |
 | `<`      | 如果左操作数小于右操作数，则返回true。    |
 | `<=`     | 如果左操作数小于或等于右操作数，则返回true。 |
 
 `===`与`==`的区别：
-```typescript
+<!-- @[comparison_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 // ==只比较目标的值相等
 console.info(String(null == undefined)); // true
 // ===比较目标的值和类型都相等
@@ -359,7 +397,9 @@ obj instanceof className
 
 示例：
 
-```typescript
+<!-- @[instanceof_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 class Person {}
 const person = new Person();
 if ((person instanceof Person)) {
@@ -396,7 +436,9 @@ if (condition1) {
 
 条件表达式可以是任何类型，非`boolean`类型会进行隐式类型转换：
 
-```typescript
+<!-- @[if_else_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let s1 = 'Hello';
 if (s1) {
   console.info(s1); // 打印“Hello”
@@ -414,7 +456,9 @@ if (s2.length != 0) {
 
 `switch`语句如下所示：
 
-```typescript
+<!-- @[switch_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 switch (expression) {
   case label1: // 如果label1匹配，则执行
     // ...
@@ -428,7 +472,7 @@ switch (expression) {
     // ...
     break; // 可省略
   default:
-    // 默认语句
+  // 默认语句
 }
 ```
 
@@ -454,7 +498,9 @@ condition ? expression1 : expression2
 
 示例：
 
-```typescript
+<!-- @[conditional_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
 ```
 
@@ -462,13 +508,15 @@ let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
 
 示例：
 
-```typescript
-    console.info('a' ? 'true' : 'false'); // true
-    console.info('' ? 'true' : 'false'); // false
-    console.info(1 ? 'true' : 'false'); // true
-    console.info(0 ? 'true' : 'false'); // false
-    console.info(null ? 'true' : 'false'); // false
-    console.info(undefined ? 'true' : 'false'); // false
+<!-- @[conditional_expression_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+console.info('a' ? 'true' : 'false'); // true
+console.info('' ? 'true' : 'false'); // false
+console.info(1 ? 'true' : 'false'); // true
+console.info(0 ? 'true' : 'false'); // false
+console.info(null ? 'true' : 'false'); // false
+console.info(undefined ? 'true' : 'false'); // false
 ```
 
 **`for`语句**
@@ -497,7 +545,9 @@ for ([init]; [condition]; [update]) {
 
 示例：
 
-```typescript
+<!-- @[for_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let sum = 0;
 for (let i = 0; i < 10; i += 2) {
   sum += i;
@@ -516,9 +566,12 @@ for (forVar of IterableExpression) {
 
 示例：
 
-```typescript
+<!-- @[for_of_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 for (let ch of 'a string object') {
   console.info(ch);
+  // ...
 }
 ```
 
@@ -534,7 +587,9 @@ while (condition) {
 
 示例：
 
-```typescript
+<!-- @[while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let n = 0;
 let x = 0;
 while (n < 3) {
@@ -555,7 +610,9 @@ do {
 
 示例：
 
-```typescript
+<!-- @[do_while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let i = 0;
 do {
   i += 1;
@@ -568,7 +625,9 @@ do {
 
 示例：
 
-```typescript
+<!-- @[break_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let x = 0;
 while (true) {
   x++;
@@ -582,7 +641,9 @@ while (true) {
 
 示例：
 
-```typescript
+<!-- @[labeled_break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 let x = 1;
 label: while (true) {
   switch (x) {
@@ -599,7 +660,9 @@ label: while (true) {
 
 示例：
 
-```typescript
+<!-- @[continue_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 let sum = 0;
 for (let x = 0; x < 100; x++) {
   if (x % 2 == 0) {
@@ -608,28 +671,36 @@ for (let x = 0; x < 100; x++) {
   sum += x;
 }
 ```
-
+ 
 **`throw`和`try`语句**
 
 `throw`语句用于抛出异常或错误：
 
-```typescript
+<!-- @[throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 throw new Error('this error')
 ```
 
 `try`语句用于捕获和处理异常或错误：
 
-```typescript
+<!-- @[try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
 try {
   // 可能发生异常的语句块
+  // ...
 } catch (e) {
   // 异常处理
+  // ...
 }
 ```
 
 下面的示例中`throw`和`try`语句用于处理除数为0的错误：
 
-```typescript
+<!-- @[error_handling_divide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 class ZeroDivisor extends Error {}
 
 function divide (a: number, b: number): number {
@@ -639,7 +710,7 @@ function divide (a: number, b: number): number {
   return a / b;
 }
 
-function process (a: number, b: number) {
+function process(a: number, b: number) {
   try {
     let res = divide(a, b);
     console.info('result: ' + res);
@@ -651,7 +722,9 @@ function process (a: number, b: number) {
 
 支持`finally`语句：
 
-```typescript
+<!-- @[try_catch_finally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
 function processData(s: string) {
   let error: Error | null = null;
 
@@ -686,7 +759,9 @@ function processData(s: string) {
 
 2.返回值类型：: string 指定函数返回值为字符串类型。
 
-```typescript
+<!-- @[function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function add(x: string, y: string): string {
   let z: string = `${x} ${y}`;
   return z;
@@ -699,7 +774,9 @@ function add(x: string, y: string): string {
 
 可选参数的格式可为`name?: Type`。
 
-```typescript
+<!-- @[optional_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function hello(name?: string) {
   if (name == undefined) {
     console.info('Hello!');
@@ -711,19 +788,24 @@ function hello(name?: string) {
 
 可选参数的另一种形式为设置的参数默认值。如果在函数调用中这个参数被省略了，则会使用此参数的默认值作为实参。
 
-```typescript
+<!-- @[default_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
 function multiply(n: number, coeff: number = 2): number {
   return n * coeff;
 }
-multiply(2);  // 返回2*2
-multiply(2, 3); // 返回2*3
+  // ...
+  multiply(2);  // 返回2*2
+  multiply(2, 3); // 返回2*3
 ```
 
 ### rest参数
 
 函数的最后一个参数可以是rest参数，格式为`...restName: Type[]`。rest参数允许函数接收一个不定长数组，用于处理不定数量的参数输入。
 
-```typescript
+<!-- @[rest_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function sum(...numbers: number[]): number {
   let res = 0;
   for (let n of numbers) {
@@ -731,16 +813,18 @@ function sum(...numbers: number[]): number {
   }
   return res;
 }
-
-sum(); // 返回0
-sum(1, 2, 3); // 返回6
+  // ...
+  sum(); // 返回0
+  sum(1, 2, 3); // 返回6
 ```
 
 ### 返回类型
 
 如果可以从函数体内推断出函数返回类型，则可在函数声明中省略标注返回类型。
 
-```typescript
+<!-- @[return_type_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 // 显式指定返回类型
 function foo(): string { return 'foo'; }
 
@@ -752,7 +836,9 @@ function goo() { return 'goo'; }
 
 以下示例中两种函数声明方式都是有效的：
 
-```typescript
+<!-- @[void_return_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function hi1() { console.info('hi'); }
 function hi2(): void { console.info('hi'); }
 ```
@@ -763,15 +849,17 @@ function hi2(): void { console.info('hi'); }
 
 如果函数中定义的变量与外部作用域中已有实例同名，则函数内的局部变量定义将覆盖外部定义。
 
-```typescript
+<!-- @[variable_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
 let outerVar = 'I am outer ';
 
 function func() {
-    let outerVar = 'I am inside';
-    console.info(outerVar); // 输出: I am inside
+  let outerVar = 'I am inside';
+  console.info(outerVar); // 输出: I am inside
 }
-
-func();
+  // ...
+  func();
 ```
 
 ### 函数调用
@@ -780,7 +868,9 @@ func();
 
 如果函数定义如下：
 
-```typescript
+<!-- @[function_join_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function join(x: string, y: string): string {
   let z: string = `${x} ${y}`;
   return z;
@@ -789,7 +879,9 @@ function join(x: string, y: string): string {
 
 则此函数的调用需要包含两个`string`类型的参数：
 
-```typescript
+<!-- @[function_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 let x = join('hello', 'world');
 console.info(x); // 输出: hello world
 ```
@@ -798,21 +890,25 @@ console.info(x); // 输出: hello world
 
 函数类型通常用于定义回调函数：
 
-```typescript
+<!-- @[function_as_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
 type trigFunc = (x: number) => number // 这是一个函数类型
 
-function do_action(f: trigFunc) {
+function doAction(f: trigFunc) {
   f(3.141592653589); // 调用函数
 }
 
-do_action(Math.sin); // 将函数作为参数传入
+doAction(Math.sin); // 将函数作为参数传入
 ```
 
 ### 箭头函数（又名Lambda函数）
 
 函数可以定义为箭头函数，例如：
 
-```typescript
+<!-- @[arrow_function_full](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
 let sum = (x: number, y: number): number => {
   return x + y;
 }
@@ -822,7 +918,9 @@ let sum = (x: number, y: number): number => {
 
 表达式可以指定为箭头函数，使表达更简短，因此以下两种表达方式是等价的：
 
-```typescript
+<!-- @[arrow_function_short](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
 let sum1 = (x: number, y: number) => { return x + y; }
 let sum2 = (x: number, y: number) => x + y
 ```
@@ -833,30 +931,34 @@ let sum2 = (x: number, y: number) => x + y
 
 在下例中，`f`函数返回了一个闭包，它捕获了`count`变量，每次调用`z`，`count`的值会被保留并递增。
 
-```typescript
+<!-- @[closure_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
 function f(): () => number {
   let count = 0;
   let g = (): number => { count++; return count; };
   return g;
 }
-
-let z = f();
-z(); // 返回：1
-z(); // 返回：2
+  // ...
+  let z = f();
+  z(); // 返回：1
+  z(); // 返回：2
 ```
 
 ### 函数重载
 
 可以通过编写重载，指定函数的不同调用方式。具体方法是，为同一个函数写入多个同名但签名不同的函数头，函数实现紧随其后。
 
-```typescript
-function foo(x: number): void;            /* 第一个函数定义 */
-function foo(x: string): void;            /* 第二个函数定义 */
-function foo(x: number | string): void {  /* 函数实现 */
+<!-- @[function_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
+function foo1(x: number): void;            /* 第一个函数定义 */
+function foo1(x: string): void;            /* 第二个函数定义 */
+function foo1(x: number | string): void {  /* 函数实现 */
 }
 
-foo(123);     //  OK，使用第一个定义
-foo('aa'); // OK，使用第二个定义
+foo1(123);     // OK，使用第一个定义
+foo1('aa'); // OK，使用第二个定义
 ```
 
 不允许重载函数有相同的参数列表，否则将导致编译错误。
@@ -867,10 +969,12 @@ foo('aa'); // OK，使用第二个定义
 
 在以下示例中，定义了`Person`类，该类具有字段`name`和`surname`、构造函数和方法`fullName`：
 
-```typescript
+<!-- @[person_class_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class Person {
-  name: string = '';
-  surname: string = '';
+  public name: string = '';
+  public surname: string = '';
   constructor (n: string, sn: string) {
     this.name = n;
     this.surname = sn;
@@ -883,17 +987,21 @@ class Person {
 
 定义类后，可以使用关键字`new`创建实例：
 
-```typescript
+<!-- @[create_person_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 let p = new Person('John', 'Smith');
 console.info(p.fullName());
 ```
 
 或者，可以使用对象字面量创建实例：
 
-```typescript
+<!-- @[object_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class Point {
-  x: number = 0;
-  y: number = 0;
+  public x: number = 0;
+  public y: number = 0;
 }
 let p: Point = {x: 42, y: 42};
 ```
@@ -910,10 +1018,12 @@ let p: Point = {x: 42, y: 42};
 
 要访问实例字段，需要使用类的实例。
 
-```typescript
-class Person {
-  name: string = '';
-  age: number = 0;
+<!-- @[instance_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
+
+``` TypeScript
+class Person1 {
+  public name: string = '';
+  public age: number = 0;
   constructor(n: string, a: number) {
     this.name = n;
     this.age = a;
@@ -923,11 +1033,11 @@ class Person {
     return this.name;
   }
 }
-
-let p1 = new Person('Alice', 25);
-p1.name; // Alice
-let p2 = new Person('Bob', 28);
-p2.getName(); // Bob
+  // ...
+  let p1 = new Person1('Alice', 25);
+  p1.name; // Alice
+  let p2 = new Person1('Bob', 28);
+  p2.getName(); // Bob
 ```
 
 **静态字段**
@@ -936,17 +1046,19 @@ p2.getName(); // Bob
 
 要访问静态字段，需要使用类名：
 
-```typescript
-class Person {
-  static numberOfPersons = 0;
+<!-- @[static_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class Person2 {
+  public static numberOfPersons = 0;
   constructor() {
-     // ...
-     Person.numberOfPersons++;
-     // ...
+    // ...
+    Person2.numberOfPersons++;
+    // ...
   }
 }
 
-Person.numberOfPersons;
+Person2.numberOfPersons;
 ```
 
 **字段初始化**
@@ -964,8 +1076,8 @@ class Person {
   }
   
   getName(): string {
-    // 开发者使用"string"作为返回类型，这隐藏了name可能为"undefined"的事实。
-    // 更合适的做法是将返回类型标注为"string | undefined"，以告诉开发者这个API所有可能的返回值。
+    // 开发者使用"string"作为返回类型，这隐藏了name可能为"undefined"的事实
+    // 更合适的做法是将返回类型标注为"string | undefined"，以告诉开发者这个API所有可能的返回值
     return this.name;
   }
 }
@@ -977,24 +1089,26 @@ jack.getName().length; // 运行时异常：name is undefined
 
 在ArkTS中，开发者应该这样写代码。
 
-```typescript
-class Person {
-  name: string = '';
-  
+<!-- @[non_nullable_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
+
+``` TypeScript
+class Person3 {
+  public name: string = '';
+
   setName(n: string): void {
     this.name = n;
   }
-  
+
   // 类型为'string'，不可能为"null"或者"undefined"
   getName(): string {
     return this.name;
   }
 }
-  
 
-let jack = new Person();
+
+let jack = new Person3();
 // 假设代码中没有对name赋值，即没有调用"jack.setName('Jack')"
-jack.getName().length; // 0, 没有运行时异常
+jack.getName().length; // 0，没有运行时异常
 ```
 
 接下来的代码示例展示了当`name`的值可能为`undefined`时，如何正确编写代码。
@@ -1032,9 +1146,11 @@ setter和getter可用于提供对类属性的受控访问。
 
 在以下示例中，setter用于禁止将`_age`属性设置为无效值：
 
-```typescript
-class Person {
-  name: string = '';
+<!-- @[getter_setter_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
+
+``` TypeScript
+class Person4 {
+  public name: string = '';
   private _age: number = 0;
   get age(): number { return this._age; }
   set age(x: number) {
@@ -1044,10 +1160,10 @@ class Person {
     this._age = x;
   }
 }
-
-let p = new Person();
-p.age; // 输出0
-p.age = -42; // 设置无效age值会抛出错误
+  // ...
+  let p = new Person4();
+  p.age; // 输出0
+  p.age = -42; // 设置无效age值会抛出错误
 ```
 
 在类中可以定义getter或者setter。
@@ -1062,7 +1178,9 @@ p.age = -42; // 设置无效age值会抛出错误
 
 `calculateArea`方法计算矩形面积：
 
-```typescript
+<!-- @[instance_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class RectangleSize {
   private height: number = 0;
   private width: number = 0;
@@ -1078,7 +1196,9 @@ class RectangleSize {
 
 必须通过类的实例调用实例方法：
 
-```typescript
+<!-- @[instance_method_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 let square = new RectangleSize(10, 10);
 square.calculateArea(); // 输出：100
 ```
@@ -1091,13 +1211,16 @@ square.calculateArea(); // 输出：100
 
 必须通过类名调用静态方法：
 
-```typescript
-class Cl {
-  static staticMethod(): string {
+<!-- @[static_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
+
+``` TypeScript
+class C2 {
+  public static staticMethod(): string {
     return 'this is a static method.';
   }
 }
-console.info(Cl.staticMethod());
+  // ...
+  console.info(C2.staticMethod());
 ```
 
 **继承**
@@ -1116,16 +1239,18 @@ class [extends BaseClassName] [implements listOfInterfaces] {
 
 示例：
 
-```typescript
-class Person {
-  name: string = '';
-  private _age = 0;
+<!-- @[class_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class Person5 {
+  public name: string = '';
+  public _age = 0;
   get age(): number {
     return this._age;
   }
 }
-class Employee extends Person {
-  salary: number = 0;
+class Employee extends Person5 {
+  public salary: number = 0;
   calculateTaxes(): number {
     return this.salary * 0.42;
   }
@@ -1134,7 +1259,9 @@ class Employee extends Person {
 
 包含`implements`子句的类必须实现列出的接口中定义的所有方法，但使用默认实现定义的方法除外。
 
-```typescript
+<!-- @[interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 interface DateInterface {
   now(): string;
 }
@@ -1150,7 +1277,9 @@ class MyDate implements DateInterface {
 
 关键字`super`可用于访问父类的方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
 
-```typescript
+<!-- @[super_call_in_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class RectangleSize {
   protected height: number = 0;
   protected width: number = 0;
@@ -1165,7 +1294,7 @@ class RectangleSize {
   }
 }
 class FilledRectangle extends RectangleSize {
-  color = ''
+  public color = ''
   constructor (h: number, w: number, c: string) {
     super(h, w); // 父类构造函数的调用
     this.color = c;
@@ -1182,7 +1311,9 @@ class FilledRectangle extends RectangleSize {
 
 子类可以重写其父类中定义的方法的实现。重写的方法必须具有与原始方法相同的参数类型和相同或派生的返回类型。
 
-```typescript
+<!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class RectangleSize {
   // ...
   area(): number {
@@ -1202,7 +1333,9 @@ class Square extends RectangleSize {
 
 通过重载签名，指定方法的不同调用。具体方法为，为同一个方法写入多个同名但签名不同的方法头，方法实现紧随其后。
 
-```typescript
+<!-- @[method_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class C {
   foo(x: number): void;            /* 第一个签名 */
   foo(x: string): void;            /* 第二个签名 */
@@ -1230,10 +1363,12 @@ constructor ([parameters]) {
 
 如果未定义构造函数，则会自动创建具有空参数列表的默认构造函数，例如：
 
-```typescript
+<!-- @[default_field_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class Point {
-  x: number = 0;
-  y: number = 0;
+  public x: number = 0;
+  public y: number = 0;
 }
 let p = new Point();
 ```
@@ -1244,7 +1379,9 @@ let p = new Point();
 
 构造函数函数体的第一条语句可以使用关键字`super`来显式调用直接父类的构造函数。
 
-```typescript
+<!-- @[constructor_in_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class RectangleSize {
   constructor(width: number, height: number) {
     // ...
@@ -1261,7 +1398,9 @@ class Square extends RectangleSize {
 
 可以通过编写重载签名，指定构造函数的不同调用方式。具体方法是，为同一个构造函数写入多个同名但签名不同的构造函数头，构造函数实现紧随其后。
 
-```typescript
+<!-- @[constructor_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->  
+
+``` TypeScript
 class C {
   constructor(x: number)             /* 第一个签名 */
   constructor(x: string)             /* 第二个签名 */
@@ -1324,10 +1463,12 @@ class Derived extends Base {
 
 对象字面量的表示方式是：封闭在花括号对({})中的'属性名：值'的列表。
 
-```typescript
+<!-- @[object_literal_as_class_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class C {
-  n: number = 0;
-  s: string = '';
+  public n: number = 0;
+  public s: string = '';
 }
 
 let c: C = {n: 42, s: 'foo'};
@@ -1335,30 +1476,34 @@ let c: C = {n: 42, s: 'foo'};
 
 ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可以推导出该字面量类型的上下文中使用。其他正确的例子如下所示：
 
-```typescript
-class C {
-  n: number = 0;
-  s: string = '';
+<!-- @[structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class C1 {
+  public n: number = 0;
+  public s: string = '';
 }
 
-function foo(c: C) {}
+function foo(c1: C1) {}
 
-let c: C
+let c1: C1
 
-c = {n: 42, s: 'foo'};  // 使用变量的类型
+c1 = {n: 42, s: 'foo'};  // 使用变量的类型
 foo({n: 42, s: 'foo'}); // 使用参数的类型
 
-function bar(): C {
+function bar(): C1 {
   return {n: 42, s: 'foo'}; // 使用返回类型
 }
 ```
 
 也可以在数组元素类型或类字段类型中使用：
 
-```typescript
+<!-- @[class_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 class C {
-  n: number = 0;
-  s: string = '';
+  public n: number = 0;
+  public s: string = '';
 }
 let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
 ```
@@ -1367,18 +1512,22 @@ let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
 
 泛型`Record<K, V>`用于将类型（键类型）的属性映射到另一个类型（值类型）。常用对象字面量来初始化该类型的值：
 
-```typescript
+<!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 let map: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-
-map['John']; // 25
+  // ...
+  map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
 
-```typescript
+<!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 interface PersonInfo {
   age: number;
   salary: number;
@@ -1403,22 +1552,24 @@ abstract class X {
   }
 }
 
-let x = new X(666)  //编译时错误：不能创建抽象类的具体实例
+let x = new X(666)  // 编译时错误：不能创建抽象类的具体实例
 ```
 
 抽象类的子类可以是抽象类也可以是非抽象类。抽象父类的非抽象子类可以实例化。因此，执行抽象类的构造函数和该类非静态字段的字段初始化器：
 
-```typescript
+<!-- @[abstract_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
 abstract class Base {
-  field: number;
-  constructor(p: number) { 
-    this.field = p; 
+  private field: number;
+  constructor(p: number) {
+    this.field = p;
   }
 }
 
 class Derived extends Base {
   constructor(p: number) {
-    super(p); 
+    super(p);
   }
 }
 
@@ -1433,7 +1584,7 @@ let x = new Derived(666);
 
 ```typescript
 class Y {
-  abstract method(p: string)  //编译时错误：抽象方法只能在抽象类内。
+  abstract method(p: string)  // 编译时错误：抽象方法只能在抽象类内
 }
 ```
 
@@ -1447,7 +1598,9 @@ class Y {
 
 示例：
 
-```typescript
+<!-- @[interface_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->    
+
+``` TypeScript
 interface Style {
   color: string; // 属性
 }
@@ -1459,7 +1612,9 @@ interface AreaSize {
 
 实现接口的类示例：
 
-```typescript
+<!-- @[interface_class_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
+
+``` TypeScript
 // 接口：
 interface AreaSize {
   calculateAreaSize(): number; // 方法的声明
@@ -1486,13 +1641,17 @@ class RectangleSize implements AreaSize {
 
 属性字段只是getter/setter对的便捷写法。以下表达方式是等价的：
 
-```typescript
+<!-- @[interface_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
+
+``` TypeScript
 interface Style {
   color: string;
 }
 ```
 
-```typescript
+<!-- @[interface_set_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
+
+``` TypeScript
 interface Style {
   get color(): string;
   set color(x: string);
@@ -1501,17 +1660,21 @@ interface Style {
 
 实现接口的类也可以使用以下两种方式：
 
-```typescript
+<!-- @[interface_class_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
+
+``` TypeScript
 interface Style {
   color: string;
 }
 
 class StyledRectangle implements Style {
-  color: string = '';
+  public color: string = '';
 }
 ```
 
-```typescript
+<!-- @[interface_class_set_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->    
+
+``` TypeScript
 interface Style {
   color: string;
 }
@@ -1522,12 +1685,14 @@ class StyledRectangle implements Style {
   set color(x: string) { this._color = x; }
 }
 ```
-
+ 
 ### 接口继承
 
 接口可以继承其他接口，示例如下：
 
-```typescript
+<!-- @[interface_extends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
+
+``` TypeScript
 interface Style {
   color: string;
 }
@@ -1598,7 +1763,9 @@ interface MyInterface {
 
 类和接口可以定义为泛型，将参数添加到类型定义中。如以下示例中的类型参数`Element`：
 
-```typescript
+<!-- @[generic_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+
+``` TypeScript
 class CustomStack<Element> {
   public push(e: Element):void {
     // ...
@@ -1608,7 +1775,9 @@ class CustomStack<Element> {
 
 要使用类型CustomStack，必须为每个类型参数指定类型实参：
 
-```typescript
+<!-- @[generic_define_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+
+``` TypeScript
 let s = new CustomStack<string>();
 s.push('hello');
 ```
@@ -1624,7 +1793,9 @@ s.push(55); // 将会产生编译时错误
 
 泛型类型的类型参数可以被限制只能取某些特定的值。例如，`MyHashMap<Key, Value>`这个类中的`Key`类型参数必须具有`hash`方法。
 
-```typescript
+<!-- @[generic_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+
+``` TypeScript
 interface Hashable {
   hash(): number;
 }
@@ -1642,16 +1813,21 @@ class MyHashMap<Key extends Hashable, Value> {
 
 使用泛型函数可编写更通用的代码。比如返回数组最后一个元素的函数：
 
-```typescript
+<!-- @[generic_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->    
+
+``` TypeScript
 function last(x: number[]): number {
   return x[x.length - 1];
 }
-last([1, 2, 3]); // 3
+  // ...
+  last([1, 2, 3]); // 3
 ```
 
 如果需要为任何数组定义相同的函数，使用类型参数将该函数定义为泛型：
 
-```typescript
+<!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets) -->   
+
+``` TypeScript
 function last<T>(x: T[]): T {
   return x[x.length - 1];
 }
@@ -1675,7 +1851,9 @@ let res3: number = last([1, 2, 3]);
 
 泛型类型的类型参数可以设置默认值，这样无需指定实际类型实参，直接使用泛型类型名称即可。以下示例展示了类和函数的这一特性。
 
-```typescript
+<!-- @[generic_defaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->
+
+``` TypeScript
 class SomeType {}
 interface Interface <T1 = SomeType> { }
 class Base <T2 = SomeType> { }
@@ -1705,7 +1883,9 @@ let z: number[] = null;  // 编译时错误
 
 可以为空值的变量定义为联合类型`T | null`。
 
-```typescript
+<!-- @[nullSafety_variable_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
+
+``` TypeScript
 let x: number | null = null;
 x = 1;    // ok
 x = null; // ok
@@ -1737,10 +1917,12 @@ function foo(a: A | null) {
 
 在以下示例中，`getNick`方法返回已设置的昵称。如果未设置，则返回空字符串。
 
-```typescript
+<!-- @[nullSafety_ternary](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
+
+``` TypeScript
 class Person {
   // ...
-  nick: string | null = null;
+  public nick: string | null = null;
   getNick(): string {
     return this.nick ?? '';
   }
@@ -1751,10 +1933,12 @@ class Person {
 
 访问对象属性时，如果属性是`undefined`或`null`，可选链运算符返回`undefined`。
 
-```typescript
+<!-- @[nullSafety_optionalChain_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->    
+
+``` TypeScript
 class Person {
-  nick: string | null = null;
-  spouse?: Person
+  public nick: string | null = null;
+  public spouse?: Person
 
   setSpouse(spouse: Person): void {
     this.spouse = spouse;
@@ -1779,10 +1963,12 @@ class Person {
 >
 > 在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
 
-```typescript
+<!-- @[nullSafety_optionalChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
+
+``` TypeScript
 class Person {
-  nick: string | null = null;
-  spouse?: Person;
+  public nick: string | null = null;
+  public spouse?: Person;
 
   constructor(nick: string) {
     this.nick = nick;
@@ -1808,28 +1994,31 @@ p.spouse?.nick; // undefined
 
 未导出的声明名称被视为私有名称，只能在声明该名称的模块中使用。
 
-```typescript
+<!-- @[module_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
 export class Point {
-  x: number = 0;
-  y: number = 0;
+  public x: number = 0;
+  public y: number = 0;
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
-export let Origin = new Point(0, 0);
+export let origin = new Point(0, 0);
 export function Distance(p1: Point, p2: Point): number {
   return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
 }
 ```
 **导出默认导出的对象**
-```typescript
+<!-- @[module_default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
 class Demo{
   constructor(){
   }
 }
 export default new Demo();
-
 ```
 
 ### 导入
@@ -1847,18 +2036,24 @@ export default new Demo();
 
 导入绑定`* as A`表示绑定名称“A”，通过`A.name`可访问从导入路径指定的模块导出的所有实体：
 
-```typescript
-import * as Utils from './utils';
+<!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
+import * as Utils from './Utils';
+// ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
 ```
 
 导入绑定`{ ident1, ..., identN }`表示将导出的实体与指定名称绑定，该名称可以用作简单名称：
 
-```typescript
-import { X, Y } from './utils';
-X // 表示来自utils的X
-Y // 表示来自utils的Y
+<!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
+import { X, Y } from './Utils';
+// ...
+X // 表示来自Utils的X
+Y // 表示来自Utils的Y
 ```
 
 如果标识符列表定义了`ident as alias`，则实体`ident`将绑定在名称`alias`下：
@@ -1878,15 +2073,22 @@ import()语法被称为动态导入（dynamic import），是一种类似函数�
 
 如下例所示，import(modulePath)可以加载模块并返回一个promise，该promise resolve为一个包含其所有导出的模块对象。该表达式可以在代码中的任意位置调用。
 
-```typescript
-// Calc.ts
-export function add(a:number, b:number):number {
+<!-- @[module_dynamic_import_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Calc.ets) -->    
+
+``` TypeScript
+// Calc.ets
+export function add(a: number, b: number): number {
   let c = a + b;
   console.info('Dynamic import, %d + %d = %d', a, b, c);
   return c;
 }
+```
 
+<!-- @[module_dynamic_import_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->    
+
+``` TypeScript
 // Index.ets
+// ESObject是ArkTS跨语言调用场景中用于标注JS/TS对象的类型
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {
@@ -1896,8 +2098,10 @@ import('./Calc').then((obj: ESObject) => {
 
 如果在异步函数中，可以使用let module = await import(modulePath)。
 
-```typescript
-// say.ts
+<!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Say.ets) -->    
+
+``` TypeScript
+// Say.ets
 export function hi() {
   console.info('Hello');
 }
@@ -1908,9 +2112,11 @@ export function bye() {
 
 那么，可以像下面这样进行动态导入：
 
-```typescript
+<!-- @[module_default_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
 async function test() {
-  let ns = await import('./say');
+  let ns = await import('./Say');
   let hi = ns.hi;
   let bye = ns.bye;
   hi();
@@ -1934,9 +2140,11 @@ async function test() {
 
 **示例**
 
-```typescript
+<!-- @[this_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
 class A {
-  count: string = 'a';
+  private count: string = 'a';
   m(i: string): void {
     this.count = i;
   }
@@ -1977,10 +2185,12 @@ function foo(arg1: number) {
 
 **示例：**
 
-```typescript
+<!-- @[annotation_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
+
+``` TypeScript
 // 注解的声明：
 @interface ClassAuthor {
-  authorName: string
+  authorName: string;
 }
 
 // 注解的使用：
@@ -1995,23 +2205,25 @@ class MyClass {
 - 注解必须放置在声明之前。
 - 注解可以包含上述示例中所示的参数。
 
-对于要使用的注解，其名称必须以符号`@`（例如：@MyAnno）为前缀。符号`@`和名称之间不允许有空格和行分隔符。
+对于要使用的注解，其名称必须以符号`@`（例如：@MyAnno）为前缀。
 ```typescript
 ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
-@ ClassAuthor({authorName: "Bob"}) // 编译错误：符号`@`和名称之间不允许有空格和行分隔符
 ```
 如果在使用位置无法访问注解名称，则会发生编译错误。
 
 注解声明可以导出并在其他文件中使用。
 
 多个注解可以应用于同一个声明（注解间的先后顺序不影响使用）。
-```typescript
+<!-- @[annotation_statement_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
+
+``` TypeScript
 @MyAnno()
 @ClassAuthor({authorName: "John Smith"})
-class MyClass {
+class MyClass1 {
   // ...
 }
 ```
+
 注解不是Typescript中的特性，只能在`.ets/.d.ets`文件中使用。
 
 > **注意**
@@ -2037,7 +2249,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持BigInt。
+> - 注解字段类型不支持bigint。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2116,19 +2328,27 @@ class MyClass {
 
 **用户自定义注解的使用**
 注解声明示例如下：
-```typescript
+
+<!-- @[annotation_statement_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
+
+``` TypeScript
 @interface ClassPreamble {
   authorName: string;
   revision: number = 1;
 }
 @interface MyAnno {}
 ```
+
 当前仅允许对`class declarations`和`method declarations`使用注解，对类和方法可以同时使用同一个注解。<br>注解用法示例如下：
-```typescript
+
+<!-- @[annotation_usages_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
+
+``` TypeScript
 @ClassPreamble({authorName: "John", revision: 2})
 class C1 {
   // ...
 }
+
 
 @ClassPreamble({authorName: "Bob"}) // revision的默认值为1
 class C2 {
@@ -2143,12 +2363,18 @@ class C3 {
   static bar() {}
 }
 ```
+
 注解中的字段顺序不影响使用。
-```typescript
-@ClassPreamble({authorName: "John", revision: 2})
+
+<!-- @[annotation_field_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
+
+``` TypeScript
+@ClassPreamble1({authorName: "John", revision: 2})
+// ...
 // the same as:
-@ClassPreamble({revision: 2, authorName: "John"})
+@ClassPreamble1({revision: 2, authorName: "John"})
 ```
+
 使用注解时，必须给所有没有默认值的字段赋值，否则会发生编译错误。
 >**说明：**
 >
@@ -2160,54 +2386,74 @@ class C1 {
 }
 ```
 如果注解中定义了数组类型的字段，则使用数组字面量来设置该字段的值。
-```typescript
-@interface ClassPreamble {
+
+<!-- @[annotation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
+
+``` TypeScript
+@interface ClassPreamble2 {
   authorName: string;
   revision: number = 1;
   reviewers: string[];
 }
 
-@ClassPreamble(
-  {
-    authorName: "Alice",
-    reviewers: ["Bob", "Clara"]
-  }
+@ClassPreamble2(
+{
+  authorName: "Alice",
+  reviewers: ["Bob", "Clara"]
+}
 )
-class C3 {
+class C0 {
   // ...
 }
 ```
+
 如果不需要定义注解字段，可以省略注解名称后的括号。
-```typescript
+
+<!-- @[annotation_omit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
+
+``` TypeScript
 @MyAnno
 class C4 {
   // ...
 }
 ```
 
+
 **导入和导出注解**
 注解也可以被导入导出。针对导出，当前仅支持在定义时的导出，即`export @interface`的形式。<br>
 **示例：**
-```typescript
-export @interface MyAnno {}
+
+<!-- @[annotation_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
+
+``` TypeScript
+export @interface MyAnno1 {}
 ```
+
 针对导入，当前仅支持`import {}`和`import * as`两种方式。<br>
 **示例：**
-```typescript
-// a.ets
-export @interface MyAnno {}
-export @interface ClassAuthor {}
 
-// b.ets
-import { MyAnno } from './a';
-import * as ns from './a';
+<!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
 
-@MyAnno
-@ns.ClassAuthor
+``` TypeScript
+// MyAnno.ets
+export @interface MyAnno2 {}
+export @interface ClassAuthor2 {}
+```
+
+<!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->      
+
+``` TypeScript
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
+// ...
+@MyAnno2
+@ns.ClassAuthor2
 class C {
   // ...
 }
 ```
+
 - 不允许在import中对注解进行重命名。
 ```typescript
 import { MyAnno as Anno } from './a'; // 编译错误：不允许在import中对注解进行重命名
@@ -2219,19 +2465,26 @@ import type { MyAnno } from './a'; // 编译错误：注解不允许使用'type'
 ```
 
 - 如果仅从模块导入注解，则不会触发模块的副作用。
-```typescript
-// a.ets
+<!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+
+``` TypeScript
+// MyAnno.ets
 export @interface Anno {}
 
-export @interface ClassAuthor {}
+export @interface ClassAuthor1 {}
 
 console.info('hello');
+```
 
-// b.ets
-import { Anno } from './a';
-import * as ns from './a';
 
-// 仅引用了Anno注解，不会导致a.ets的console.info执行
+
+<!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
+
+``` TypeScript
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
+// 仅引用了Anno注解，不会导致MyAnno.ets的console.info执行
 class X {
   // ...
 }
@@ -2248,28 +2501,50 @@ ambientAnnotationDeclaration:
 ```
 
 **示例：**
-```typescript
-// a.d.ets
-export declare @interface ClassAuthor {}
+
+<!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
+
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface ClassAuthor3 {}
 ```
+
 上述声明中：
 - 不会引入新的注解定义，而是提供注解的类型信息。
 - 注解需定义在其他源代码文件中。
 - 注解的环境声明和实现需要完全一致，包括字段的类型和默认值。
-```typescript
-// a.d.ets
-export declare @interface NameAnno{name: string = ""}
 
-// a.ets
+<!-- @[annotation_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
+
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface NameAnno{name: string = ""}
+```
+
+
+<!-- @[annotation_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
+
+``` TypeScript
+// MyAnno.ets
 export @interface NameAnno{name: string = ""} // ok
 ```
-环境声明的注解和class类似，也可以被import使用。
-```typescript
-// a.d.ets
-export declare @interface MyAnno {}
 
-// b.ets
-import { MyAnno } from './a';
+
+环境声明的注解和class类似，也可以被import使用。
+
+<!-- @[annotation_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
+
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface MyAnno {}
+```
+
+
+<!-- @[annotation_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets) -->    
+
+``` TypeScript
+// ImportMyAnno.ets
+import { MyAnno } from './NameAnno';
 
 @MyAnno
 class C {
@@ -2277,85 +2552,111 @@ class C {
 }
 ```
 
+
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
 
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
-   ```typescript
-   // a.ets
-   export @interface ClassAuthor {}
 
+   <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
+   
+   ``` TypeScript
+   // MyAnno.ets
+   export @interface ClassAuthor5 {}
+   
    @interface MethodAnno { // 没导出
      data: number;
    }
-
-   // a.d.ets 编译器生成的声明文件
-   export declare @interface ClassAuthor {}
    ```
+   
+   <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
+   
+   ``` TypeScript
+   // NameAnno.d.ets
+   export declare @interface ClassAuthor3 {}
+   ```
+
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。<br>
   2.1 注解的定义被导出（import的注解也算作被导出）。<br>
   2.2 如果实体是类，则类被导出。<br>
   2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
-   ```typescript
-   // a.ets
-   import { ClassAuthor } from './author';
-
-   export @interface MethodAnno {
+   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+   
+   ``` TypeScript
+   // MyAnno.ets
+   import { ClassAuthor4 } from './Author';
+   
+   export @interface MethodAnno4 {
      data: number = 0;
    }
-
-   @ClassAuthor
+   
+   @ClassAuthor4
    class MyClass {
-     @MethodAnno({data: 123})
+     @MethodAnno4({data: 123})
      foo() {}
-
-     @MethodAnno({data: 456})
+   
+     @MethodAnno4({data: 456})
      private bar() {}
    }
-
-   // a.d.ets 编译器生成的声明文件
-   import {ClassAuthor} from "./author";
-
-   export declare @interface MethodAnno {
-     data: number = 0;
-   }
-
-   @ClassAuthor
-   export declare class MyClass {
-     @MethodAnno({data: 123})
-     foo(): void;
-
-     bar; // 私有方法不保留注解
-   }
    ```
+
+
+  <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->  
+  
+  ``` TypeScript
+  // NameAnno.d.ets 编译器生成的声明文件
+  import { ClassAuthor4 } from './Author';
+  
+  export declare @interface MethodAnno4 {
+    data: number = 0;
+  }
+  
+  @ClassAuthor4
+  export declare class MyClass {
+    @MethodAnno4({data: 123})
+    foo(): void;
+  
+    bar; // 私有方法不保留注解
+  }
+  ```
+  
 
 **开发者生成的.d.ets文件**<br>
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。<br>
 **示例：**
-```typescript
-// b.d.ets 开发者生成的声明文件
-@interface ClassAuthor {}
 
-@ClassAuthor // 声明文件中有注解
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
+
+``` TypeScript
+// NameAnno.d.ets 开发者生成的声明文件
+@interface ClassAuthor6 {}
+
+@ClassAuthor6 // 声明文件中有注解
 class C {
   // ...
 }
+```
 
-// b.ets 开发者对声明文件实现的源代码
-@interface ClassAuthor {}
+
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+
+``` TypeScript
+// MyAnno.ets 开发者对声明文件实现的源代码
+@interface ClassAuthor6 {}
 
 // 实现文件中没有注解
 class C {
   // ...
 }
 ```
+
 在最终编译产物中，class C没有注解。
 
 **重复注解和继承**
 同一个实体不能重复使用同一注解，否则会导致编译错误。
 ```typescript
 @MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注释
+@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注解
 class C {
   // ...
 }
@@ -2370,6 +2671,71 @@ abstract class C {
   @MyAnno
   abstract foo(): void; // 编译错误：不允许在抽象类和抽象方法上使用注解
 }
+```
+
+### 源码态注解
+从API version 24开始，支持用户自定义源码态注解。
+
+源码态注解为一类特殊形式的注解。源码态注解的生命周期只在编译期，不会影响编译产物。
+
+开发者可以通过使用ArkTS提供的[Retention](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)接口来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
+- 类
+- 类成员（除构造函数外）
+- 变量声明
+- 接口
+- 接口成员
+- 注解
+- 函数
+- 命名空间
+- 类型别名
+- 枚举
+
+源码态注解的声明和使用示例如下所示：
+
+**示例：**
+
+<!-- @[annotation_source_retention_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets) -->
+
+```ts
+import { Retention, RetentionPolicy } from '@kit.ArkTS';
+
+// 构造用户自定义源码态注解
+@Retention({policy: RetentionPolicy.SOURCE})
+@interface SourceAnnotation {}
+// 源码态注解可以在类和类成员上使用
+@SourceAnnotation
+class C {
+  @SourceAnnotation
+  private name_: string = '';
+  @SourceAnnotation
+  get name(): string {
+    return this.name_;
+  }
+}
+// 源码态注解可以在变量声明上使用
+@SourceAnnotation
+let a = 1;
+// 源码态注解可以在接口和接口成员上使用
+@SourceAnnotation
+interface I {
+  @SourceAnnotation
+  foo(): void
+}
+// 源码态注解可以在注解上使用
+@SourceAnnotation
+@interface Anno {}
+// 源码态注解可以在函数上使用
+@SourceAnnotation
+function func () {}
+// 源码态注解可以在命名空间上使用
+@SourceAnnotation
+namespace ns {}
+// 源码态注解可以在类型别名上使用
+@SourceAnnotation
+type A = number;
+// 源码态注解可以在枚举上使用
+@SourceAnnotation
+enum ColorSet { RED, GREEN, BLUE }
 ```
 
 ## ArkUI支持

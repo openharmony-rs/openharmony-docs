@@ -1,18 +1,20 @@
 # 应用接入数据备份恢复
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
 
-BackupExtensionAbility，是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
+BackupExtensionAbility是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
+
+
 
 ## 接口说明
 
-备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[BackupExtensionAbility API参考](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[BackupExtensionContext API参考](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
+备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[@ohos.application.BackupExtensionAbility (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[@ohos.file.BackupExtensionContext (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |
@@ -28,16 +30,17 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 - 当备份目录时，应用进程必须拥有读取该目录及其所有子目录的权限（DAC中的`r`），否则将导致备份失败。
 - 当备份文件时，应用进程必须拥有搜索该文件所有祖父级目录的权限（DAC中的`x`），否则将导致备份失败。
 - 当备份恢复时，所有待备份恢复的文件及目录不支持相对路径(../)和软链接。
+- 针对BackupExtensionAbility接口调用限制，详情请参考API中的[约束限制](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#约束限制)。
 
 ## 开发步骤
 
 1. 在应用配置文件`module.json5`中注册`extensionAbilities`相关配置
 
-   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.  extension. backup"`的条目。
+   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.extension.backup"`的条目。
 
    BackupExtensionAbility配置文件示例：
 
-   ```json
+   ```json5
    {
        "extensionAbilities": [
            {
@@ -52,9 +55,6 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
                        "resource": "$profile:backup_config"
                    }
                ],
-               // 在BackupExtension.ets文件里自定义继承BackupExtensionAbility，重写其中的onBackup/onBackupEx和
-               // onRestore/onRestoreEx方法，推荐使用onBackupEx/onRestoreEx。
-               // 如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
                "srcEntry": "./ets/BackupExtension/BackupExtension.ets"
            }      
        ]
@@ -88,17 +88,17 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    下面的示例展示了一个空实现的`BackupExtension.ets`文件：
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
     const TAG = `FileBackupExtensionAbility`;
     export default class BackupExtension extends  BackupExtensionAbility {
-      //onBackup
+      // onBackup
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -121,7 +121,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
@@ -202,68 +202,47 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |  
+
 
 **字段说明：**
+
 1. **有关fullBackupOnly字段的说明**
 
-    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-    - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在onRestore/onRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
-    开发者可根据自身的业务场景，选择对应的恢复数据方式。
+   开发者可根据自身的业务场景，选择对应的恢复数据方式。
 
    **示例：**
-假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
-    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
-    - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-2. **有关compatibleDirMapping字段的说明**  
+   假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
+   - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
+   - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-    其内容的数组长度不能超过1000。  
+2. **includes支持的路径清单列表如下：**
 
-    子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
-    
-    子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
-
-    **字段配置示例**：  
-
-    "compatibleDirMapping": [
-    {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
-    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
-]    
-
-    另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
-
-    路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
-
-    **onBackupEx返回值示例**：  
-    {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
-
-
-3. **includes支持的路径清单列表如下：**
-
-    ```json
-    {
-        "includes": [
-            "data/storage/el1/database/",
-            "data/storage/el1/base/files/",
-            "data/storage/el1/base/preferences/",
-            "data/storage/el1/base/haps/*/files/",
-            "data/storage/el1/base/haps/*/preferences/",
-            "data/storage/el2/database/",
-            "data/storage/el2/base/files/",
-            "data/storage/el2/base/preferences/",
-            "data/storage/el2/base/haps/*/files/",
-            "data/storage/el2/base/haps/*/preferences/",
-            "data/storage/el2/distributedfiles/",
-            "data/storage/el5/database/",
-            "data/storage/el5/base/files/",
-            "data/storage/el5/base/preferences/",
-            "data/storage/el5/base/haps/*/files/",
-            "data/storage/el5/base/haps/*/preferences/"
-        ]
-    }
-    ```
+   ```json
+   {
+       "includes": [
+           "data/storage/el1/database/",
+           "data/storage/el1/base/files/",
+           "data/storage/el1/base/preferences/",
+           "data/storage/el1/base/haps/*/files/",
+           "data/storage/el1/base/haps/*/preferences/",
+           "data/storage/el2/database/",
+           "data/storage/el2/base/files/",
+           "data/storage/el2/base/preferences/",
+           "data/storage/el2/base/haps/*/files/",
+           "data/storage/el2/base/haps/*/preferences/",
+           "data/storage/el2/distributedfiles/",
+           "data/storage/el5/database/",
+           "data/storage/el5/base/files/",
+           "data/storage/el5/base/preferences/",
+           "data/storage/el5/base/haps/*/files/",
+           "data/storage/el5/base/haps/*/preferences/"
+       ]
+   }
+   ```
 
 ## 相关实例
 

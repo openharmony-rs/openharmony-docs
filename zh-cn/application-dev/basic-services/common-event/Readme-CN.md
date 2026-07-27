@@ -1,9 +1,9 @@
 # 进程线程通信<!--app-events-->
-<!--Kit: Common-->
-<!--Subsystem: Common-->
-<!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
-<!--Tester: @RayShih-->
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 - 使用公共事件进行进程间通信<!--common-event-communication-->

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供监听指定[UIAbility](js-apis-app-ability-uiAbility.md)生命周期状态变化的能力。开发者可以将AbilityMonitor作为[abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9)的入参来注册监听。
 
@@ -21,7 +21,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## 使用说明
 
-可以作为abilityDelegator中的[addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9)的入参来监听指定Ability的生命周期变化。
+可以作为abilityDelegator中的[addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9)的入参来监听指定UIAbility的生命周期变化。
 
 ## AbilityMonitor
 
@@ -54,14 +54,14 @@ function onAbilityCreateCallback(data: UIAbility) {
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityname',
-  moduleName: "moduleName",
+  moduleName: 'moduleName',
   onAbilityCreate: onAbilityCreateCallback
 }
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   if (error) {
-    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`Failed to add ability monitor. Code: ${error.code}, message: ${error.message}`);
   }
 });
 ```

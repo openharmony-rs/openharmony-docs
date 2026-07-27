@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,7 +18,7 @@
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| samplingRate | [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)          | 否 | 否 | 音频文件的采样率。 |
+| samplingRate | [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate支持number类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。|
 | channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。 |
 | sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)          | 否 | 否 | 音频采样格式。     |
 | encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。     |
@@ -74,6 +74,8 @@
 
 音频会话策略。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 | 名称          | 类型                                              | 只读 | 可选 | 说明             |
@@ -108,7 +110,7 @@
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| streamId           | number                                    | 是   | 否   | 音频流唯一id。                |
+| streamId           | number                                    | 是   | 否   | 音频流唯一ID。                |
 | rendererInfo       | [AudioRendererInfo](#audiorendererinfo8)  | 是   | 否   | 音频渲染器信息。               |
 | deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备描述。|
 
@@ -120,7 +122,7 @@
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| streamId           | number                                    | 是   | 否   | 音频流唯一id。                |
+| streamId           | number                                    | 是   | 否   | 音频流唯一ID。                |
 | capturerInfo       | [AudioCapturerInfo](#audiocapturerinfo8)  | 是   | 否   | 音频采集器信息。               |
 | deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备信息。|
 | muted<sup>11+</sup>  | boolean    | 是   | 是 | 音频采集器是否处于静音状态。true表示静音，false表示非静音。|
@@ -133,7 +135,7 @@
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
 | deviceRole                    | [DeviceRole](arkts-apis-audio-e.md#devicerole)  | 是   | 否   | 设备角色。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备id。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备ID。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -145,6 +147,21 @@
 | model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 
+## AudioDevicePair
+
+描述返听使用的音频设备对，包含输入设备和输出设备。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称              | 类型                                              | 只读 | 可选 | 说明               |
+| :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
+| inputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输入音频设备描述。 |
+| outputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输出音频设备描述。 |
+
 ## VolumeEvent<sup>9+</sup>
 
 音量改变时，应用接收到的事件。
@@ -155,7 +172,7 @@
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频音量类型。                                    |
 | volume     | number                              | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。  |
-| updateUi   | boolean                             | 否 | 否 |  是否在UI中显示音量变化。true表示显示，false表示不显示。             |
+| updateUi   | boolean | 否 | 否 | 标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。 |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。|
 
 
@@ -180,7 +197,7 @@
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
 | streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音量发生变化的音频流。          |
 | volume | number | 否 | 否 | 音量值。          |
-| updateUi | boolean | 否 | 否 | 是否在UI上展示音量变化。true表示展示，false表示不展示。          |
+| updateUi   | boolean | 否 | 否 | 标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。 |
 | previousVolume<sup>23+</sup> | number | 否 | 是 | 变化前的音量值。 |
 
 ## DeviceChangeAction
@@ -198,14 +215,13 @@
 
 流设备变更时，应用接收到的事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 | 名称              | 类型                                                                | 只读 | 可选 | 说明               |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
-| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
-| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。 |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用流设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## CurrentOutputDeviceChangedEvent<sup>20+</sup>
 
@@ -218,6 +234,7 @@
 | devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
 | changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。 |
 | recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | 否 | 否 | 设备变更后推荐的操作。 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用输出设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CurrentInputDeviceChangedEvent<sup>21+</sup>
 
@@ -239,7 +256,7 @@
 | 名称 | 类型 | 只读 | 可选 | 说明                                |
 | ---------| ------ | ---- | ---- |-----------------------------------|
 | framePos | number | 是   | 否   | 当前播放或者录制的数据帧位置。                   |
-| timestamp | number | 是   | 否   | 播放或者录制到当前数据帧位置时对应的时间戳。 |
+| timestamp | number | 是   | 否   | 播放或者录制到当前数据帧位置时对应的时间戳，单位为纳秒。 |
 
 ## AudioCapturerInfo<sup>8+</sup>
 
@@ -261,6 +278,7 @@
 | streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 音频流信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer   |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer        |
 | playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | 否 | 是 | 音频内录的配置信息。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture<br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。  |
+| playbackCaptureMode | [AudioPlaybackCaptureMode](arkts-apis-audio-e.md#audioplaybackcapturemode) | 否 | 是 | 内录模式。可设置为AudioPlaybackCaptureMode中的枚举值或其按位或组合，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
 
 ## AudioInterrupt<sup>(deprecated)</sup>
 
@@ -320,3 +338,17 @@
 | type       | [InterruptType](arkts-apis-audio-e.md#interrupttype)             | 否 | 是 | 打断事件类型。                                               |
 | hint       | [InterruptHint](arkts-apis-audio-e.md#interrupthint)             | 否 | 是 | 打断事件提示。                                               |
 | activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获得/释放失败。 |
+
+## SystemRecordControllerConfig
+
+系统录音控制面板的配置信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :---- | :---- | :---- | :---- | :---- |
+| sourceType | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 应用期望使用的音频源类型。系统会根据该参数确定应用的录音场景，并为用户提供匹配的降噪模式选择能力。支持的音频源类型包括SOURCE_TYPE_MIC、SOURCE_TYPE_CAMCORDER和SOURCE_TYPE_LIVE。 |

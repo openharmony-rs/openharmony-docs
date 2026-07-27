@@ -1,20 +1,24 @@
 # 记忆链接开发指导
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
-<!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
-<!--Tester: @judan-->
+<!--Owner: @codexu62-->
+<!--Designer: @yuxiaoyang-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
 MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/applinking-introduction)，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。
 
-详细的接口介绍请参考[MetadataBinding接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md)。
+详细的接口介绍请参考[@ohos.multimodalAwareness.metadataBinding (记忆链接)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md)。
 
 ## 场景介绍
 
 第三方应用可使用记忆链接功能，将鸿蒙App Linking链接映射到调用接口的系统应用或服务。例如，用户在【电商应用】中浏览某个商品时，截图保存了该商品的图片，系统将记录图片与【电商应用】提供的鸿蒙App Linking链接的映射关系。当用户再次浏览该图片时，系统会提醒用户是否需要返回【电商应用】查看商品详情。
+
+## 演示示例
+
+![记忆链接](figures/metadatabinding.gif)
 
 ## 接口说明
 
@@ -29,62 +33,74 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
   
 ## 约束与限制
 
-  - 鸿蒙App Linking链接的最大字节数为99。
+  - 鸿蒙App Linking链接超过128字节时会编码失败，截图保存原始图像
 
 ## 开发步骤
 
 1. 导入模块。
 
-   ```ts
+   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { Callback } from '@kit.BasicServicesKit';
    ```
-   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义记忆服务回调及包名, 函数接收回传编码的内容。   
 
-   ```
+   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let callback : Callback<number> = (event: number) => {};
    let bundleName: string = '';
    ```
-   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅记忆服务。
 
-   ```
+   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
-      console.info("on succeeded");
+     metadataBinding.on('operationSubmitMetadata', bundleName, callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Register event error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Register event error and err code is ' + error.code);
+     // ...
    }
    ```
-   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 4. 提供鸿蒙App Linking链接。
 
-   ```
-   let metadata: string = "";
+   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let metadata: string = '';
    try {
-      metadataBinding.submitMetadata(metadata);
+     metadataBinding.submitMetadata(metadata);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Submit metadata error and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Submit metadata error and err code is ' + error.code);
+     // ...
    }
    ```
-   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 5. 取消订阅记忆服务。
 
-   ```
+   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
      metadataBinding.off('operationSubmitMetadata', bundleName, callback);
-     console.info("off succeeded");
+     console.info('off succeeded');
+     // ...
    } catch (err) {
      let error = err as BusinessError;
-     console.error("Unregister event error and err code is " + error.code);
+     console.error('Unregister event error and err code is ' + error.code);
+     // ...
    }
    ```
-   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   

@@ -219,11 +219,11 @@ The following describes the development procedure specific to each application s
         uid?: number = 0
       }
 
-let callback = (data: Data) => {
-  console.info('on netStatsChange, data:' + JSON.stringify(data));
-};
-// Subscribe to traffic change events.
-statistics.on('netStatsChange', callback);
+      let callback = (data: Data) => {
+        console.info('on netStatsChange, data:' + JSON.stringify(data));
+      };
+      // Subscribe to traffic change events.
+      statistics.on('netStatsChange', callback);
 
       // Unsubscribe from traffic change events. You can pass the callback of the **on** function if you want to unsubscribe from a certain type of event. If you do not pass the callback, you will unsubscribe from all events.
       statistics.off('netStatsChange', callback);
@@ -235,4 +235,4 @@ statistics.on('netStatsChange', callback);
 
 The following samples are provided to help you better understand how to develop traffic management features:
 
-- [Traffic Management] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)
+- [Traffic Management](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)

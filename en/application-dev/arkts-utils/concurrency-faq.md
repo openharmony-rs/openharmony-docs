@@ -16,7 +16,9 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
 
    If this log is missing, **taskpool.execute** is not actually called. Check whether the service logic preceding this API has been completed.
 
-   ```ts
+   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->  
+   
+   ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    
    @Concurrent
@@ -37,7 +39,7 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
-               console.info("test start");
+               console.info('test start');
                // Other service logic
                // ...
                let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
@@ -53,6 +55,7 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
    
    // If "test start" is printed in the console but the Task Allocation: taskId: log is missing, taskpool.execute is not executed. Check the preceding service logic.
    ```
+
 
 2. Check whether the task in the TaskPool is executed.
 
@@ -89,11 +92,13 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
 
    1. If a JavaScript exception occurs during task execution, the TaskPool catches the JavaScript exception and returns the exception information through **taskpool.execute().catch((e:Error)=>{})**. Review the exception information and rectify the fault.
 
-      ```ts
+      <!-- @[catch_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Index.ets) -->  
+      
+      ``` TypeScript
       import { taskpool } from '@kit.ArkTS';
       
       @Concurrent
-      function createTask(a: number, b:number) {
+      function createTask(a: number, b:number): number {
         let sum = a + b;
         return sum;
       }
@@ -101,7 +106,7 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
       @Entry
       @Component
       struct Index {
-        @State message: string = 'Hello World';
+        @State message: string | ResourceStr = $r('app.string.Button_label');
       
         build() {
           Row() {
@@ -110,18 +115,18 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
                 .fontSize(50)
                 .fontWeight(FontWeight.Bold)
                 .onClick(() => {
-                  console.info("test start");
+                  console.info('test start');
                   // Other service logic
                   // ...
                   let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
                   taskpool.execute(task).then((res: object)=>{
                     // Handle the result after task execution.
+                    this.message = 'Task execution result:' + res;
                     // ...
                   }).catch((e: Error)=>{
                     // Handle the exception after task failure.
                     // ...
                   })
-                  // ...
                 })
             }
             .width('100%')
@@ -129,6 +134,8 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
           .height('100%')
         }
       }
+      
+      // If "test start" is printed in the console but the Task Allocation: taskId: log is missing, taskpool.execute is not executed. Check the preceding service logic.
       ```
 
    2. If the .catch branch does not return any exception information, but the application's functionality implemented through the tasks is malfunctioning, check whether there are blocking operations in the task logic that cause the function exceptions.
@@ -221,7 +228,7 @@ The first execution of TaskPool tasks is slow, with a delay of several hundred m
 
    ```ts
    // Versions earlier than API version 20
-   [ecmascript] Unsupport serialize object type: 
+   [ecmascript] Unsupported serialize object type: 
    [ecmascript] ValueSerialize: serialize data is incomplete
 
    // API version 20 and later
@@ -238,18 +245,24 @@ The input parameters and return value of the concurrent function used by the Tas
 1. The application throws an exception indicating input parameter serialization failure when starting a task because it passes an unsupported object type for inter-thread communication into the concurrent function. 
 **Solution**: Check the input parameters of the concurrent function based on [Inter-thread Communication Objects](../reference/apis-arkts/js-apis-taskpool.md#sequenceable-data-types).
 
-2. The application throws an exception indicating input parameter serialization failure when starting a task, and HiLog prints the error log **Unsupport serialize object type: Proxy**. (For API version 20 and later versions, the error log **Serialize error: Serialize don't support object type: Proxy** is printed.) Based on the error log, the application passes a proxy object into the concurrent function. The parameter uses the @State decorator, causing the original object to become a Proxy object, which is not a supported object type for inter-thread communication. 
+2. The application throws an exception indicating input parameter serialization failure when starting a task, and HiLog prints the error log **Unsupported serialize object type: Proxy**. (For API version 20 and later versions, the error log **Serialize error: Serialize don't support object type: Proxy** is printed.) Based on the error log, the application passes a proxy object into the concurrent function. The parameter uses the @State decorator, causing the original object to become a Proxy object, which is not a supported object type for inter-thread communication. 
 **Solution**: TaskPool does not support complex types decorated with @State and @Prop. For details, see [Precautions for TaskPool](taskpool-introduction.md#precautions-for-taskpool). The application should remove the @State decorator.
 
 3. The application throws an exception indicating return value serialization failure when executing a task. The code check shows that the return value of the concurrent function is an unsupported serialization type.
+
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
    
-   ```ts
+   ``` TypeScript
    // utils.ets
    @Concurrent
    export function printArgs(args: number) {
      return args;
    }
+   ```
 
+   <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->   
+   
+   ``` TypeScript
    // index.ets
    import { taskpool } from '@kit.ArkTS'
    import { BusinessError } from '@kit.BasicServicesKit'
@@ -261,38 +274,44 @@ The input parameters and return value of the concurrent function used by the Tas
      let task1: taskpool.Task = new taskpool.Task(printArgs, sum);
      return task1;
    }
-
+   
    function executeTask() {
      // task
      let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
      taskpool.execute(task).then((res) => {
      }).catch((e: BusinessError) => {
        // Print the error message "Failed to serialize the returned result."
-       console.error("execute task failed " + e.message);
+       console.error('execute task failed ' + e.message);
      })
    }
    ```
 
    **Solution**: Create and execute task 1 within **.then**. Set the return value of the concurrent function to a serializable type.
 
-   ```ts
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
+   
+   ``` TypeScript
    // utils.ets
    @Concurrent
    export function printArgs(args: number) {
      return args;
    }
+   ```
 
+   <!-- @[support_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets) -->   
+   
+   ``` TypeScript
    // index.ets
    import { taskpool } from '@kit.ArkTS'
    import { BusinessError } from '@kit.BasicServicesKit'
    import { printArgs} from './utils'
    @Concurrent
    function createTask(a: number, b:number) {
-     // Supported serialization types
+     // Supported serialization type
      let sum = a + b;
      return sum;
    }
-
+   
    function executeTask() {
      // task
      let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
@@ -300,7 +319,7 @@ The input parameters and return value of the concurrent function used by the Tas
        // task1
        let task1: taskpool.Task = new taskpool.Task(printArgs, res);
      }).catch((e: BusinessError) => {
-       console.error("execute task failed " + e.message);
+       console.error('execute task failed ' + e.message);
      })
    }
    ```
@@ -311,52 +330,60 @@ When using the **instanceof** operator in a child thread, the application needs 
 
 **Code Example**
 
-```ts
+<!-- @[test_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstancof.ets) -->   
+
+``` TypeScript
 // pages/index.ets
 import { worker, ErrorEvent } from '@kit.ArkTS'
-import { A } from './sendable'
+import { A } from './Sendable'
 const workerInstance = new worker.ThreadWorker('../workers/Worker.ets');
 function testInstanceof() {
   let a = new A();
   if (a instanceof A) {
     // Print "test instanceof in main thread success".
-    console.info("test instanceof in main thread success");
+    console.info('test instanceof in main thread success');
   } else {
-    console.info("test instanceof in main thread failed");
+    console.info('test instanceof in main thread failed');
   }
   workerInstance.postMessageWithSharedSendable(a);
   workerInstance.onerror = (err: ErrorEvent) => {
-    console.error("worker err :" + err.message)
+    console.error('worker err :' + err.message)
   }
 }
 
-testInstanceof()
+testInstanceof();
 ```
-```ts
-// pages/sendable.ets
-"use shared"
+
+<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
+
+``` TypeScript
+// pages/Sendable.ets
+'use shared'
 @Sendable
 export class A {
-    name: string = "name";
-    printName(): string {
-        return this.name;
-    }
+  public name: string = 'name';
+  printName(): string {
+    return this.name;
+  }
 }
 ```
-```ts
+
+<!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->  
+
+``` TypeScript
 // workers/Worker.ets
-import { A } from '../pages/sendable'
+import { A } from '../pages/Sendable'
 import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS'
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
-    let a : A = e.data as A;
-    if (a instanceof A) {
-        // Print "test instanceof in worker thread success".
-        console.info("test instanceof in worker thread success");
-    } else {
-        console.info("test instanceof in worker thread failed");
-    }
+  let a : A = e.data as A;
+  if (a instanceof A) {
+    // Print "test instanceof in worker thread success".
+    console.info('test instanceof in worker thread success');
+  } else {
+    console.info('test instanceof in worker thread failed');
+  }
 }
 ```
 
@@ -381,12 +408,14 @@ ArkTS runtime strictly checks type consistency during property assignment. If th
 1. A type mismatch exception is thrown when the application passes an instance of Sendable class A to a child thread. Based on the JavaScript stack, the problem occurs when creating an instance of class A. It is found that when the application is integrated with other modules, the other modules do not use Sendable class B to encapsulate the dataset.  
 **Solution**: Use a Sendable class to re-encapsulate the data passed by other modules into the current module.
 
-   ```ts
+   <!-- @[define_resolveOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeOne.ets) -->  
+   
+   ``` TypeScript
    @Sendable
    export class B {
      constructor() {}
    }
-
+   
    @Sendable
    export class A {
      constructor(b: B) {
@@ -401,31 +430,35 @@ ArkTS runtime strictly checks type consistency during property assignment. If th
 
 3. A custom Sendable class inherits from collections.Array and overrides the constructor. When the slice function is called after the class is instantiated, a type mismatch exception will be thrown. This is because when the slice function is called, collections.Array creates a new SendableArray internally. The input parameter of the constructor is the length of the new array, which is of number type. Since **ans** is of the string type, and the input parameter of the number type is used to assign a value to **ans** in the constructor, assigning a value of number type to a variable of string type is not allowed in the Sendable class. As a result, an exception is thrown.
 
-   ``` ts
-   // Add the following code to Index.ets.
+   <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeTwo.ets) -->   
+   
+   ``` TypeScript
+   // Index.ets
    import { collections } from '@kit.ArkTS'
    
    @Sendable
-   export class collectionsArray extends collections.Array<string> {
-     ans: string = 'test';
+   export class CollectionsArray extends collections.Array<string> {
+     public ans: string = 'test';
      constructor(heldValue: string) {
        super();
        this.ans = heldValue;
      }
-   } 
-   let arr = new collectionsArray("test");
-   arr.slice(1) 
+   }
+   let arr = new CollectionsArray('test');
+   arr.slice(1);
    ```
 
    **Solution**: Use an independent API to assign values to properties.
 
-   ``` ts
-   // Add the following code to Index.ets.
+   <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets) -->  
+   
+   ``` TypeScript
+   // Index.ets
    import { collections } from '@kit.ArkTS'
    
    @Sendable
-   export class collectionsArray extends collections.Array<string> {
-     ans: string = 'test';
+   export class CollectionsArray extends collections.Array<string> {
+     public ans: string = 'test';
      constructor() {
        super();
      }
@@ -433,10 +466,10 @@ ArkTS runtime strictly checks type consistency during property assignment. If th
      set(str: string) {
        this.ans = str;
      }
-   } 
-   let arr = new collectionsArray();
-   arr.slice(1) 
-   arr.set("success")
+   }
+   let arr = new CollectionsArray();
+   arr.slice(1)
+   arr.set('success')
    ```
 
 ### Adding Property Exception
@@ -484,32 +517,36 @@ The execution function (concurrent function) of a TaskPool task can only use loc
 
 2. Returning results in **.then**: The execution result of a TaskPool task can be returned within **.then**. If the data to be saved is only used in the current thread, the execution result can be stored in a custom data structure within **.then**.
 
-   ```ts
+   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
+   
+   ``` TypeScript
    // sendable.ets is in the same directory as Index.ets.
    @Sendable
-   export class testClass {
-     name: string = "test";
+   export class TestClass {
+     public name: string = 'test';
      setName(name: string) {
        this.name = name;
      }
      getName(): string {
        return this.name;
      }
-   }   
-   ```   
+   }
+   ```
 
-   ```ts
+   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
+   
+   ``` TypeScript
    // Index.ets
    import { taskpool } from '@kit.ArkTS'
    import { BusinessError } from '@kit.BasicServicesKit'
-   import { testClass } from './sendable'
+   import { TestClass } from './Sendable'
    
    @Concurrent
    function createTask(a: number): string {
      return `test${a}`;
    }
    function executeTask() {
-     let testObject: testClass = new testClass();
+     let testObject: TestClass = new TestClass();
      let task: taskpool.Task = new taskpool.Task(createTask, 1)
      taskpool.execute(task).then((res) => {
        testObject.setName(res as string);
@@ -570,11 +607,13 @@ The Observed decorator can be used only in the UI thread. It cannot be directly 
 
 After the NormalItem class decorated with Observed is separated to a separate .ets file, and the TaskPool child thread loads the Sendable class SendableItem, the application runs as expected.
 
-```ts
-// Add the following code to Index.ets.
+<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->   
+
+``` TypeScript
+// Index.ets
 import { taskpool } from '@kit.ArkTS'
 import { BusinessError } from '@kit.BasicServicesKit'
-import { SendableItem } from './sendable'
+import { SendableItem } from './Sendable'
 
 @Concurrent
 function createTask() {
@@ -599,12 +638,14 @@ executeTask();
 export class SendableItem {
   name: string = '';
 }
-```
+```  
 
-```ts
+<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
+
+``` TypeScript
 // ui.ets
 @Observed
 export class NormalItem {
-  age: number = 0;
+  public age: number = 0;
 }
 ```

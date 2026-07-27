@@ -142,11 +142,11 @@ This error code is reported if an error occurs while enabling forwarding for net
 
 **Cause**
 
-The Iptables rule setting fails and therefore an error occurs while combining Iptables commands fails.
+The iptables rule setting fails and therefore an error occurs while combining Iptables commands fails.
 
 **Procedure**
 
-Enable the debug log function, and check whether Iptables commands are correctly combined.
+Enable the debug log function, and check whether iptables commands are correctly combined.
 
 ## 2202011 Failed to Obtain the Network Sharing Configuration
 

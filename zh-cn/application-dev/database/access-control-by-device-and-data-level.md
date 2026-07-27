@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 基本概念
@@ -30,7 +30,7 @@
 在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-![zh-cn_image_0000001542496993](figures/zh-cn_image_0000001542496993.png)
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制
@@ -168,7 +168,7 @@
 
 关系型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
-具体接口及功能，可见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+具体接口及功能，可见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines APIs and structs related to the Uniform Type Descriptors (UTDs).
+Defines APIs and structs related to the Uniform Type Descriptors (UTDs). If the parameter type is char*, the string must end with a null character ('\0').
 
 **File to include**: <database/udmf/utd.h>
 
@@ -84,7 +84,7 @@ void OH_Utd_Destroy(OH_Utd* pThis)
 
 **Description**
 
-Destroys an [OH_Utd](capi-udmf-oh-utd.md) instance.
+Destroys an [OH_Utd](capi-udmf-oh-utd.md) instance. After the pointer is destroyed, it becomes invalid and cannot be used again. Otherwise, undefined behavior may occur.
 
 **Since**: 12
 
@@ -213,13 +213,13 @@ Obtains the relationships between the data from an [OH_Utd](capi-udmf-oh-utd.md)
 | Name                         | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
 | [OH_Utd](capi-udmf-oh-utd.md)* pThis | Pointer to the [OH_Utd](capi-udmf-oh-utd.md) instance.|
-| unsigned int* count             | Pointer to the number of data types obtained.          |
+| unsigned int* count             | Pointer to the number of types in the result set. This is an output parameter.          |
 
 **Returns**
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the relationship information obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | Returns a pointer to the relationship information obtained if the operation is successful; returns **nullptr** otherwise.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_GetFilenameExtensions()
 
@@ -245,7 +245,7 @@ Obtains the file name extensions associated with an [OH_Utd](capi-udmf-oh-utd.md
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the file name extensions obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | Returns a pointer to the file name extensions obtained if the operation is successful; returns **nullptr** otherwise.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_GetMimeTypes()
 
@@ -271,7 +271,7 @@ Obtains the MIME types associated with an [OH_Utd](capi-udmf-oh-utd.md) instance
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the MIME types obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | Returns a pointer to the MIME types obtained if the operation is successful; returns **nullptr** otherwise.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_GetTypesByFilenameExtension()
 
@@ -297,7 +297,7 @@ Obtains the UTDs based on the file name extensions.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | Returns a pointer to the UTDs obtained if the operation is successful; returns **nullptr** otherwise.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_GetTypesByMimeType()
 
@@ -323,7 +323,7 @@ Obtains the UTDs based on the MIME types.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a double pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | Returns a pointer to the UTDs obtained if the operation is successful; returns **nullptr** otherwise.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_BelongsTo()
 
@@ -437,7 +437,7 @@ void OH_Utd_DestroyStringList(const char** list, unsigned int count)
 
 **Description**
 
-Destroys a UTD list.
+Destroys a UTD list. After the list is destroyed, it becomes invalid and cannot be used again. Otherwise, undefined behavior may occur.
 
 **Since**: 12
 

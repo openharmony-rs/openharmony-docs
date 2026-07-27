@@ -1,18 +1,20 @@
 # SubHeader
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
+子标题组件，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。支持多种样式配置，包括图标、主副标题、下拉选择器和操作按钮等，可满足不同场景下的内容分区和导航需求，提升界面的信息层次感和用户体验。适用于列表分组、内容分类展示、表单分区等场景。
 
 
 > **说明：**
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 >
 > - 如果SubHeader设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
@@ -30,34 +32,35 @@ import { SubHeader } from '@kit.ArkUI';
 
 > **说明：**
 >
-> 不支持设置文本相关。
+> 不支持设置文本类型的子组件。
 
 ## SubHeader
 
-SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding})
+SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding, titleId?: string })
 
 **装饰器类型：**\@Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 该接口在Wearable设备上不支持。应用程序调用该接口时会运行异常，错误信息提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 必填 | 装饰器类型         | 说明 |
 | -------- | -------- | -------- |---------------| -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 图标设置项。<br/>当使用secondaryTitle属性时，设置icon属性才会生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | 否 | -             | icon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 标题内容。<br />当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 副标题内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| select | [SelectOptions](#selectoptions) | 否 | -             | select内容以及事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 图标资源。<br/>默认值：undefined，表示不显示图标。<br/>当使用secondaryTitle属性时，设置icon属性才会生效。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | 否 | -             | icon为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 主标题内容。<br/>默认值：undefined，表示不显示标题。<br/>当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 副标题内容。<br/>默认值：undefined，表示不显示副标题。当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| select | [SelectOptions](#selectoptions) | 否 | -             | 下拉框内容和事件。<br/>默认值：undefined，表示不显示下拉框。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | operationType | [OperationType](#operationtype) | 否 | \@Prop        | 操作区（右侧）元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | 否 | -             | 操作区（右侧）的设置项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | 否 | -             | operationType为OperationType.ICON_GROUP，<br/>operationItem设置多个图标，图标为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| titleBuilder<sup>12+</sup> | () => void | 否 | @BuilderParam | 自定义标题区内容<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | 否 | -             | 操作区（右侧）的设置项。当operationType为OperationType.ICON_GROUP时，最多支持配置三个图标项。<br/>默认值：undefined，表示不显示操作区。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | 否 | -             | operationType为OperationType.ICON_GROUP，<br/>operationItem设置多个图标，图标为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>默认值：undefined，表示不设置Symbol图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**说明：** 只有primaryTitle生效时，该参数才会生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，表示使用系统默认样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| titleBuilder<sup>12+</sup> | () => void | 否 | @BuilderParam | 自定义标题区内容。使用titleBuilder时，primaryTitle、secondaryTitle、icon等标题参数不生效。<br/>默认值：undefined，表示不使用自定义标题。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | @Prop         | 子标题外边距，不支持设置负数。<br />默认值：<br /> `{start: LengthMetrics.resource(` <br /> `$r('sys.float.margin_left'))`, <br /> `end: LengthMetrics.resource(` <br /> `$r('sys.float.margin_right'))}`<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | @Prop         | 子标题内边距。<br />默认值：<br />左侧为副标题或副标题加图标时：<br /> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否 | -             | 设置标题自定义朗读内容。<br/>默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
+| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | @Prop         | 子标题内边距，不支持设置负数。<br />默认值：<br />左侧为副标题或副标题加图标时：<br /> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 设置标题自定义朗读内容。<br/>默认值：undefined，表示不设置自定义朗读内容，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
+| titleId<sup>24+</sup>  | string | 否 | @Prop         | 标题标识符。需要为标题设置id时使用此参数。<br/>默认值：undefined，表示不设置标题标识。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。   |
 
 ## OperationType
 
@@ -74,7 +77,7 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 | TEXT_ARROW |  0  | 文本按钮（带右箭头）。 |
 | BUTTON |  1  |  文本按钮（不带右箭头）。 |
 | ICON_GROUP |  2  |  图标按钮（最多支持配置三张图标）。 |
-| LOADING |  3  |  加载动画。 |
+| LOADING |  3  |  加载动画。当operationType为LOADING时，无需配置operationItem。 |
 
 ## SelectOptions
 
@@ -86,9 +89,10 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 | -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption对象说明)&gt; | 否 | 否 | 下拉选项内容。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                 |
 | selected | number | 否 | 是 | 设置下拉菜单初始选项的索引。<br/>取值范围：大于等于-1。<br/>第一项的索引为0。<br/>当不设置selected属性时，默认选择值为-1，菜单项不选中。<br/>若设置数值小于-1，按不选中处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置下拉按钮本身的文本内容。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                       |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置下拉按钮本身的文本内容。<br/>默认值：空字符串。<br/>**说明**：文本超过列宽时会被截断。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                       |
 | onSelect | (index:&nbsp;number,&nbsp;value?:&nbsp;string)&nbsp;=&gt;&nbsp;void | 否 | 是 | 下拉菜单选中某一项的回调。<br/>-&nbsp;index：选中项的索引。<br/>-&nbsp;value：选中项的值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                           |
 | defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                 |
+| id<sup>24+</sup> | string | 否 | 是 | 下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置下拉按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。      |
 
 ## OperationOption
 
@@ -98,12 +102,14 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                                       |
 | -------- | -------- |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 文本内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                  |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 操作区元素内容。当operationType为TEXT_ARROW或BUTTON时，value为文本内容；当operationType为ICON_GROUP时，value为图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | action | ()=&gt;void | 否 | 是 | 子标题右侧按钮点击事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                    |
-| accessibilityLevel<sup>18+<sup>       | string  | 否 | 是 | 子标题右侧按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| accessibilityText<sup>18+<sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：类型为TEXT_ARROW和BUTTON时默认值为当前项value属性内容，其他类型默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>18+<sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值：类型为LOADING时，默认值为“正在加载”，其他类型默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 子标题右侧按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：类型为TEXT_ARROW和BUTTON时默认值为当前项value属性内容，其他类型默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值：类型为LOADING时，默认值为“正在加载”，其他类型默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                            |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br/>默认值：undefined，表示不设置子标题右侧按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。      |
+
 ## SymbolOptions<sup>12+</sup>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -151,7 +157,7 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example01](figures/zh-cn_image_subheader_example01.png)
+![zh-cn_image_subheader_example01](figures/image-subheader-example01.png)
 
 ### 示例2（双行文本内容型子标题）
 该示例主要演示子标题左侧为primaryTitle、secondaryTitle，右侧operationType类型为TEXT_ARROW。
@@ -180,7 +186,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题2](figures/zh-cn_image_subheader_example02.png)
+![子标题2](figures/image-subheader-example02.png)
 
 ### 示例3（spinner型内容型子标题）
 该示例主要演示子标题左侧为select，右侧operationType类型为ICON_GROUP。
@@ -208,7 +214,7 @@ struct SubHeaderExample {
         operationItem: [{
           value: $r('sys.media.ohos_ic_public_email'),
           action: () => {
-            Prompt.showToast({ message: 'demo' })
+            Prompt.showToast({ message: 'demo' });
           }
         }, {
           value: $r('sys.media.ohos_ic_public_email'),
@@ -227,7 +233,7 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example03](figures/zh-cn_image_subheader_example03.png)
+![zh-cn_image_subheader_example03](figures/image-subheader-example03.png)
 
 ### 示例4（设置左侧symbol图标）
 该示例主要演示子标题左侧icon设置symbol图标。
@@ -261,7 +267,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题4](figures/zh-cn_image_subheader_example04.gif)
+![子标题4](figures/image-subheader-example04.gif)
 
 ### 示例5（设置右侧symbol图标）
 该示例主要演示子标题operationType设置为OperationType.ICON_GROUP，operationItem的value设置为symbol图标。
@@ -318,10 +324,10 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example05](figures/zh-cn_image_subheader_example05.png)
+![zh-cn_image_subheader_example05](figures/image-subheader-example05.png)
 
 ### 示例6（自定义标题内容）
- 该示例主要演示SubHeader设置titleBuilder自定义标题内容的效果。
+ 该示例主要演示SubHeader设置titleBuilder自定义标题内容的效果。设置titleBuilder后，primaryTitle、secondaryTitle属性将不生效。
 
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
@@ -360,7 +366,7 @@ struct SubHeaderExample {
   }
 }
 ```
-![zh-cn_image_subheader_example06](figures/zh-cn_image_subheader_example06.png)
+![zh-cn_image_subheader_example06](figures/image-subheader-example06.png)
 
 ### 示例7（自定义标题样式）
 该示例主要演示SubHeader设置标题和副标题字体样式以及标题内外边距的效果。
@@ -398,7 +404,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题7](figures/zh-cn_image_subheader_example07.png)
+![子标题7](figures/image-subheader-example07.png)
 
 
 ### 示例8（右侧按钮自定义播报）
@@ -420,7 +426,7 @@ struct SubHeaderExample {
         operationItem: [{
           value: '操作',
           action: () => {
-            Prompt.showToast({ message: 'demo' })
+            Prompt.showToast({ message: 'demo' });
           }
         }]
       })
@@ -433,13 +439,13 @@ struct SubHeaderExample {
         operationItem: [{
           value: '更多',
           action: () => {
-            Prompt.showToast({ message: 'demo' })
+            Prompt.showToast({ message: 'demo' });
           }
         }]
       })
       Divider().color('grey').width('100%').height('2vp')
       SubHeader({
-        //左侧select 右侧是icon_(依次获焦)
+        // 左侧select 右侧是icon_(依次获焦)
         select: {
           options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
           value: 'selectDemo',
@@ -468,10 +474,12 @@ struct SubHeaderExample {
   }
 }
 ```
-![figures/zh-cn_image_subheader_example08](figures/zh-cn_image_subheader_example08.png)
+![figures/zh-cn_image_subheader_example08](figures/image-subheader-example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
-从API version 18开始，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+在获焦状态下，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+
+从API version 18开始，在[OperationOption](#operationoption)中新增defaultFocus接口。
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 
@@ -489,7 +497,7 @@ struct SubHeaderExample {
           value: '操作',
           defaultFocus: true,
           action: () => {
-            Prompt.showToast({ message: 'demo' })
+            Prompt.showToast({ message: 'demo' });
           }
         }]
       })

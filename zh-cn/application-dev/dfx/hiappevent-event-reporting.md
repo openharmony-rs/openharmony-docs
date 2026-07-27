@@ -3,15 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiAppEvent提供接口用于处理上报事件。
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[应用事件打点API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 **数据处理者接口功能介绍：**
 
@@ -172,7 +172,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      })
    ```
 
-5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者(第二步已完成数据处理者添加)。完整示例代码如下：
+5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者（第二步已完成数据处理者添加）。完整示例代码如下：
 
    <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
@@ -193,7 +193,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中依次点击按钮“addProcessorTest”、“userIdTest”、“userPropertyTest”、“writeTest”、“removeProcessorTest”，则成功通过数据处理者进行一次事件上报。
 
-   最终，事件处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
+   最终，数据处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
 
    ```text
    HiAppEvent success to write event

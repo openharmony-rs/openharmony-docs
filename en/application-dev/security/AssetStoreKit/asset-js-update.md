@@ -2,22 +2,22 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## Available APIs
 
-You can use [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate), an asynchronous API, or [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12), a synchronous API, to update an asset.
+You can use [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate) (asynchronous API) or [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12) (synchronous API) to update an asset.
 
 The following table describes the attributes of **AssetMap** for updating an asset.
 
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ALIAS** and those containing **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
-- Attributes of **AssetMap** in **query**:
+- Attributes in **query**:
 
   | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                            |
   | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
@@ -42,11 +42,11 @@ The following table describes the attributes of **AssetMap** for updating an ass
   | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to update the encrypted data of service customized supplementary information. The value **true** means to update the encrypted data of service customized supplementary information; the value **false** means to update the non-encrypted data of service customized supplementary information. Default value: **false**.|
   | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be updated belongs. By default, this parameter is not specified.|
 
-- Attributes of **AssetMap** in **attributesToUpdate**:
+- Attributes in **attributesToUpdate**:
 
   | Attribute Name (Tag)       | Value                     | Mandatory | Description                                                        |
   | --------------------- | -------------------------------| -------- | ------------------------------- |
-  | SECRET                | Type: Uint8Array<br>Length: 1-1024 bytes                          | No    | New asset in plaintext.                                                |
+  | SECRET                | Type: Uint8Array<br>Length: 1-1024 bytes                          | No    | Asset in plaintext.                                                |
   | DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
@@ -60,7 +60,7 @@ The following table describes the attributes of **AssetMap** for updating an ass
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for updating an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to update an asset in a group, see [Updating an asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
 >

@@ -232,7 +232,7 @@ You can subscribe to environment variable changes in the following ways:
     
       // Page display.
       build() {
-        //...
+        // ...
       }
     }
     ```
@@ -268,7 +268,7 @@ You can subscribe to environment variable changes in the following ways:
     
       // Page display.
       build() {
-        //...
+        // ...
       }
     }
     ```

@@ -1,10 +1,10 @@
 # @ohos.util.PlainArray (非线性容器PlainArray)  
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 PlainArray可用于存储具有关联关系的key-value键值对集合，其中key值唯一且类型为number，每个key对应一个value。
 
@@ -14,8 +14,8 @@ PlainArray和[LightWeightMap](js-apis-lightweightmap.md)都是用来存储键值
 
 **推荐使用场景：** 当需要存储key值为number类型的键值对时，可以使用PlainArray。
 
-文档中使用了泛型，涉及以下泛型标记符：
-- T：Type，类
+文档中使用了泛型，涉及以下泛型类型参数：
+- T：Type，泛型类型参数，可以是任意类型
 
 > **说明：**
 >
@@ -96,9 +96,9 @@ isEmpty(): boolean
 **示例：**
 
 ```ts
-const plainArray = new PlainArray<string>();
+let plainArray = new PlainArray<string>();
 let result = plainArray.isEmpty();
-console.info("result = ", result); // result =  true
+console.info("result:", result); // result: true
 ```
 
 
@@ -116,7 +116,7 @@ has(key: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 指定key。需要小于等于int32_max即2147483647。 |
+| key | number | 是 | 指定key。取值范围为[-2147483648, 2147483647]，即int32范围。 |
 
 **返回值：**
 
@@ -126,11 +126,10 @@ has(key: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The has method cannot be bound. |
 
 **示例：**
@@ -139,7 +138,7 @@ has(key: number): boolean
 let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 let result = plainArray.has(1);
-console.info("result = ", result); // result = true
+console.info("result:", result); // result: true
 ```
 
 
@@ -157,7 +156,7 @@ get(key: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 查找的指定key。需要小于等于int32_max即2147483647。 |
+| key | number | 是 | 查找的指定key。取值范围为[-2147483648, 2147483647]，即int32范围。 |
 
 **返回值：**
 
@@ -167,11 +166,10 @@ get(key: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The get method cannot be bound. |
 
 **示例：**
@@ -209,11 +207,10 @@ getIndexOfKey(key: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getIndexOfKey method cannot be bound. |
 
 **示例：**
@@ -223,7 +220,7 @@ let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getIndexOfKey(2);
-console.info("result = ", result); // result = 1
+console.info("result:", result); // result: 1
 ```
 
 
@@ -288,15 +285,14 @@ getKeyAt(index: number): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回该下标元素键值对中的key值，失败返回-1。 |
+| number | 返回该下标元素键值对中的key值，失败返回undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getKeyAt method cannot be bound. |
 
 **示例：**
@@ -306,14 +302,14 @@ let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getKeyAt(1);
-console.info("result = ", result); // result = 2
+console.info("result:", result); // result: 2
 ```
 
 ### getValueAt
 
 getValueAt(index: number): T
 
-查找指定下标元素键值对中的Value值，失败则返回undefined。
+查找指定下标元素键值对中的value值，失败则返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -333,11 +329,10 @@ getValueAt(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getValueAt method cannot be bound. |
 
@@ -365,7 +360,7 @@ clone(): PlainArray&lt;T&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| PlainArray&lt;T&gt; | 返回新的对象实例。 |
+| PlainArray&lt;T&gt; | 返回新的对象的克隆实例。 |
 
 **错误码：**
 
@@ -390,7 +385,7 @@ console.info("result:", newPlainArray.get(1));  // result: squirrel
 
 add(key: number, value: T): void
 
-向容器中添加一组数据。
+向容器中添加一组数据。若指定的key不存在，则新增键值对，且length增加；若指定的key存在，则替换该key对应的value值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -400,16 +395,15 @@ add(key: number, value: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 添加成员数据的键名。需要小于等于int32_max即2147483647。 |
+| key | number | 是 | 添加成员数据的键名。取值范围为[-2147483648, 2147483647]，即int32范围。 |
 | value | T | 是 | 添加成员数据的值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The add method cannot be bound. |
 
 **示例：**
@@ -425,7 +419,7 @@ console.info("result:", plainArray.get(1));  // result: squirrel
 
 remove(key: number): T
 
-删除指定key对应的键值对。
+删除指定key对应的键值对。指定key不存在时，返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -441,15 +435,14 @@ remove(key: number): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回所删除的键值对中的Value值。 |
+| T | 返回所删除的键值对中的value值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The remove method cannot be bound. |
 
 **示例：**
@@ -467,7 +460,7 @@ console.info("result:", result);  // result: sparrow
 
 removeAt(index: number): T
 
-删除指定下标对应的元素。
+删除指定下标对应的元素。指定[0, PlainArray.length-1]以外的值时会返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -487,11 +480,10 @@ removeAt(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **示例：**
@@ -519,8 +511,8 @@ removeRangeFrom(index: number, size: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 删除元素的起始下标。需要小于等于int32_max即2147483647。 |
-| size | number | 是 | 期望删除元素个数。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 删除元素的起始下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
+| size | number | 是 | 期望删除元素个数。需要大于0，小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -530,11 +522,10 @@ removeRangeFrom(index: number, size: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeRangeFrom method cannot be bound. |
 
@@ -544,6 +535,7 @@ removeRangeFrom(index: number, size: number): number
 let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
+// 从下标1开始删除元素
 let result = plainArray.removeRangeFrom(1, 3);
 console.info("result:", result);  // result: 1
 ```
@@ -553,7 +545,7 @@ console.info("result:", result);  // result: 1
 
 setValueAt(index: number, value: T): void
 
-替换容器中指定下标对应键值对中的键值。
+替换容器中指定下标对应键值对中的value值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -563,16 +555,15 @@ setValueAt(index: number, value: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定替换数据下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定替换数据下标。取值范围为[0, PlainArray.length-1]，且需要小于等于int32_max即2147483647。 |
 | value | T | 是 | 替换键值对中的值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
@@ -582,7 +573,9 @@ setValueAt(index: number, value: T): void
 let plainArray = new PlainArray<string | number>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
+// 替换plainArray中下标为1的键值对中的value值为3546
 plainArray.setValueAt(1, 3546);
+// 获取并打印plainArray中下标为1的键值对中的value值
 let result = plainArray.getValueAt(1);
 console.info("result:", result);  // result: 3546
 ```
@@ -679,11 +672,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -700,13 +692,13 @@ plainArray.forEach((value: string, index: number) => {
 ```
 
 ```ts
-// 不建议在forEach中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在forEach中使用add、remove、removeAt方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let plainArray = new PlainArray<string>();
-for(let i = 0; i < 10; i++) {
-  plainArray.add(i,"123");
+for (let i = 0; i < 10; i++) {
+  plainArray.add(i, "123");
 }
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   plainArray.remove(i);
 }
 ```

@@ -1,21 +1,23 @@
 # USBSerialDDK
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:13.423Z pushedAt=2026-06-22T11:21:11.419Z -->
 
 ## Overview
 
-Provides USB SERIAL DDK APIs as well as the enum types and data structs used by them. Serial port communication is often used in industrial scenarios and some legacy devices, such as card issuers and ID card readers. The open APIs of USB SERIAL DDK can be used to develop drivers for non-standard USB peripherals that use USB serial ports.
+Provides USB Serial DDK APIs as well as the enum types and data structs used by them. Serial port communication is often used in industrial scenarios and some legacy devices, such as card issuers and ID card readers. The open APIs of the USB Serial DDK can be used to develop drivers for non-standard USB peripherals that use USB serial ports.
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Since**: 18
+
 ## Files
 
 | Name| Description|
 | -- | -- |
-| [usb_serial_api.h](capi-usb-serial-api-h.md) | Declares the USB SERIAL DDK APIs used by the host to access the serial port device.|
-| [usb_serial_types.h](capi-usb-serial-types-h.md) | Provides the enumerated variables, structures, and macros used in USB SERIAL DDK APIs.|
+| [usb_serial_api.h](capi-usb-serial-api-h.md) | Declares the USB Serial DDK APIs used by the host to access the serial port device.|
+| [usb_serial_types.h](capi-usb-serial-types-h.md) | Provides the enum variables, structures, and macros used in USB Serial DDK APIs.|

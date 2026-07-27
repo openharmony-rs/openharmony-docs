@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 
 
@@ -37,7 +39,7 @@ ImageAnimator()
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，否则可能导致显示错乱、帧切换异常或内存上涨等问题（该属性按非动态更新设计，运行时修改不保证生效）。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -67,13 +69,13 @@ state(value: AnimationStatus)
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | 是   | 默认为初始状态，用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
+| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | 是   | 用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
 
 ### duration
 
 duration(value: number)
 
-设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
+设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -85,7 +87,7 @@ duration(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
+| value  | number | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/>设置为负数时，取默认值1000毫秒。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000 |
 
 ### reverse
 
@@ -103,7 +105,7 @@ reverse(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>默认值：false |
+| value  | boolean | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>动画结束后保留哪一帧还与[fillMode](#fillmode)属性有关，详见fillMode说明。<br/>默认值：false |
 
 ### fixedSize
 
@@ -139,7 +141,7 @@ preDecode(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前页时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
+| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
 
 ### fillMode
 
@@ -165,6 +167,8 @@ iterations(value: number)
 
 设置播放次数。
 
+**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -173,7 +177,7 @@ iterations(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | 是   | 默认播放一次，设置为-1时表示无限次播放，设置为小于-1的负数时取默认值。设置为浮点数时，数值向下取整。<br/>默认值：1 |
+| value  | number | 是   | 默认播放一次；-1表示无限次播放，小于-1的负数取默认值1；浮点数向下取整。<br/>默认值：1 |
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -183,13 +187,16 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
+<!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
+| monitorInvisibleArea  | boolean | 是 | true时，组件基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定控制暂停和播放；当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定不可见则自动暂停，若判定可见则自动恢复播放。false时，组件的暂停和播放不受onVisibleAreaChange影响。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
 
 ## ImageFrameInfo对象说明
 
@@ -201,12 +208,12 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | -------------- | -------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。<br/>**string格式说明：**<br/>- 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。resources目录下的文件不支持通过相对路径访问，需使用[Resource](ts-types.md#resource)类型（如\$r或$rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>- 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。<br/>- 支持`file://`路径前缀的字符串，应用沙箱URI为`file://\<bundleName>/\<sandboxPath>`。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>- 支持`Base64`字符串。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
 | width    | number&nbsp;\|&nbsp;string | 否 | 是 | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
 | height   | number&nbsp;\|&nbsp;string | 否 | 是 | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
 | top      | number&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
 | left     | number&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
-| duration | number          | 否    | 是    | 每帧图片的播放时长，单位毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
+| duration | number          | 否    | 是    | 每帧图片的播放时长，单位：毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
 
 ## 事件
 
@@ -254,6 +261,8 @@ onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 状态回调，动画重复播放时触发。
 
+**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -268,7 +277,7 @@ onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-状态回调，动画返回最初状态时触发。
+状态回调，动画取消时触发。当state被设置为[AnimationStatus.Initial](ts-appendix-enums.md#animationstatus)时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。与[onFinish](#onfinish)的区别在于：onCancel对应回到Initial初始状态，onFinish对应动画自然结束或停止（Stopped）状态。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -281,13 +290,13 @@ onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画返回最初状态时触发。 |
+| event | () => void                               | 是    | 状态回调，动画取消时触发。当state被设置为AnimationStatus.Initial时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。 |
 
 ### onFinish
 
 onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-状态回调，动画播放完成时或者停止播放时触发。 
+状态回调，动画播放完成时（iterations设置的轮次全部播完且动画自然结束）或者停止播放时（state被切换为[AnimationStatus.Stopped](ts-appendix-enums.md#animationstatus)）触发。当动画处于[AnimationStatus.Initial](ts-appendix-enums.md#animationstatus)状态时返回初始状态不会触发该事件，对应触发的是onCancel。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -299,7 +308,7 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | 是    | 状态回调，动画播放完成时或者停止播放时触发。 |
+| event | () => void                               | 是    | 状态回调，动画播放完成时（iterations轮次全部播完且动画自然结束）或者停止播放时（state被切换为AnimationStatus.Stopped）触发。 |
 
 ## 示例
 
@@ -478,13 +487,20 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    // 获取资源文件的内容数据
+    let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    // 根据二进制数据创建图像源
+    let imageSource = image.createImageSource(uint8Array?.buffer.slice(0, uint8Array.buffer.byteLength));
+    try {
+      // 从图像源创建PixelMap对象，指定像素格式为RGBA_8888
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      return createPixelMap;
+    } finally {
+      // 释放图像源资源
+      await imageSource.release();
+    }
   }
 }
 ```
@@ -566,7 +582,7 @@ struct ImageAnimatorAutoPauseTest {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向

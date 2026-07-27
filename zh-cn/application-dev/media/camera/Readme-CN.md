@@ -34,7 +34,8 @@
   - [压力管控(ArkTS)](camera-system-pressure.md)
   - [相机控制器(ArkTS)](camera-control-center.md)
   - [微距能力设置(ArkTS)](camera-macro.md)
-  - [多摄同开(ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
+  - [多摄同开(ArkTS)](camera-concurrent-open.md)
+  - [YUV拍照(ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
   - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
@@ -57,4 +58,12 @@
   - [手电筒使用(C/C++)](native-camera-torch-use.md)
   - [压力管控(C/C++)](native-camera-system-pressure.md)
   - [微距能力设置(C/C++)](native-camera-macro.md)
-  - [多摄同开(C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->
+  - [多摄同开(C/C++)](native-camera-concurrent-open.md)
+  - [YUV拍照(C/C++)](native-camera-yuv-shooting.md)<!--RP2--><!--RP2End-->
+- Camera Kit常见问题<!--camera-dev-faq-->
+  - 相机无法启动<!--camera-dev-faq-start-->
+    - [相机API调用时序问题](camera-api-faq.md)
+    - [相机预览流启动问题](camera-previewoutput-faq.md)
+    - [会话配置问题](camera-sessionconfig-faq.md)
+  - [相机预览画面旋转异常问题](camera-rotation-faq.md)
+  - [白平衡相关问题](camera-whitebalance-faq.md)

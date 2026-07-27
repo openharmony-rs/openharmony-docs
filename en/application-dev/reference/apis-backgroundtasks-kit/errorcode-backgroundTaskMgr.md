@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -45,7 +45,8 @@ When an API related to a continuous task is called, the read or write operation 
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 
@@ -77,7 +78,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to a continuous task is called, the client process fails to obtain the system service.
+When an API related to a continuous task is called, the client process fails to request the system service.
 
 **Possible Causes**
 
@@ -115,6 +116,7 @@ This error code is reported when continuous task verification fails.
 13. The application has not obtained ACL authorization when requesting the **TASK_KEEPING** continuous task.
 14. The data transmission type does not support updating the continuous task type via the update API.
 15. A new continuous task type (other than audio playback) is requested in the background.
+16. The application has not obtained ACL authorization when requesting a continuous task of the [MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21) type.
 
 **Solution**
 
@@ -133,6 +135,7 @@ This error code is reported when continuous task verification fails.
 13. When applying for the **TASK_KEEPING** continuous task, verify whether the ACL authorization for [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) has been obtained.
 14. When updating the continuous task, check whether either the original type or the new type includes the data transmission type.
 15. Check if any background continuous tasks are being requested, other than audio playback or continuous tasks that have already been requested in the foreground.
+16. Check whether the application has obtained the [ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario) or [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) ACL authorization when requesting a continuous task of the [MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21) type.
 
 ## 9800006 Notification Verification Failure for a Continuous Task
 
@@ -151,7 +154,7 @@ This error code is reported when notification verification in a continuous task 
 
 **Solution**
 
-1. Check for the continuous task resources **ohos.backgroundtaskmgr.resources**.
+1. Check whether the continuous task resource **ohos.backgroundtaskmgr.resources** exists.
 2. Try again later or restart the device.
 
 ## 9800007 Continuous Task Storage Failure
@@ -187,8 +190,8 @@ This error code is reported when caller information verification in a transient 
 
 **Possible Causes**
 
-1. Failed to obtain the UID or PID of the caller.
-2. Failed to obtain the bundle name of the caller.
+1. The UID or PID of the caller fails to be obtained. As a result, the verification fails.
+2. The bundle name of the caller fails to be obtained. As a result, the verification fails.
 3. The request ID passed in the API used to cancel the transient task is invalid.
 
 **Solution**
@@ -234,7 +237,8 @@ When an API related to a transient task is called, the read or write operation f
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 
@@ -248,7 +252,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to a transient task is called, the client process fails to obtain the system service.
+When an API related to a transient task is called, the client process fails to request the system service.
 
 **Possible Causes**
 
@@ -292,7 +296,8 @@ When an API related to efficiency resources is called, the read or write operati
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 
@@ -306,7 +311,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to efficiency resources is called, the client process fails to obtain the system service.
+When an API related to efficiency resources is called, the client process fails to request the system service.
 
 **Possible Causes**
 

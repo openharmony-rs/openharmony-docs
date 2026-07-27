@@ -11,6 +11,8 @@ The continueManager module provides capabilities for managing cross-device appli
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -27,6 +29,8 @@ Registers a callback to obtain the quick start result when an application is lau
 > **NOTE**
 >
 > The quick start feature allows the application to start concurrently while the user triggers migration and waits for the migration data to return, reducing wait time. To enable the quick start feature, add the suffix **_ContinueQuickStart** to the **continueType** value in the [module.json5](../../quick-start/module-configuration-file.md) file of the source application.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -93,6 +97,8 @@ Unregisters the callback used to obtain the quick start result when an applicati
 >
 > The quick start feature allows the application to start concurrently while the user triggers migration and waits for the migration data to return, reducing wait time. To enable the quick start feature, add the suffix **_ContinueQuickStart** to the **continueType** value in the [module.json5](../../quick-start/module-configuration-file.md) file of the source application.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **Parameters**
@@ -156,8 +162,8 @@ Describes the quick start result returned by the callback.
 
 | Name| Type                                                                           | Read-Only| Optional| Description      |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | No | No | Status code of the operation result.|
-| resultInfo | string                                                                        | No | Yes | Description of the operation result.|
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | No | No | Status code of the operation result.<br>**Model constraint**: This API can be used only in the stage model.|
+| resultInfo | string                                                                        | No | Yes | Description of the operation result.<br>**Model constraint**: This API can be used only in the stage model.|
 
 ## ContinueStateCode
 
@@ -167,5 +173,5 @@ Enumerates the status codes of the quick start result.
 
 | Name| Value | Description   | 
 | -------- |----|-------|
-| SUCCESS  | 0  | Operation succeeded.| 
-| SYSTEM_ERROR | Others| Operation failed.| 
+| SUCCESS  | 0  | Operation succeeded.<br>**Model constraint**: This API can be used only in the stage model.| 
+| SYSTEM_ERROR | 1 | Operation failed.<br>**Model constraint**: This API can be used only in the stage model.| 

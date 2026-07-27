@@ -4,7 +4,7 @@
 <!--Owner: @hello_harmony-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块实现故障的延迟通知功能。
 
@@ -18,7 +18,9 @@
 >
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
-> - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](#附录)。
+
+## 约束限制
+为保障系统安全性和稳定性，防止FaultLogExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
 
 ## 导入模块
 
@@ -30,7 +32,7 @@ import { FaultLogExtensionAbility } from '@kit.PerformanceAnalysisKit';
 
 应用接入故障延迟通知需要通过FaultLogExtensionAbility实现，开发者可以在[onFaultReportReady](#onfaultreportready)中订阅并处理故障事件。
 
-> **注意:**
+> **注意：**
 >
 > - FaultLogExtensionAbility被拉起后只有很短的时间完成故障处理，建议处理时间不要超过10秒。超时没有处理完成可以在[onDisconnect](#ondisconnect)中保存状态。
 > - 从开机或上次拉起FaultLogExtensionAbility后，应用首次触发崩溃或冻屏开始计时。在拉起FaultLogExtensionAbility前反复触发崩溃或冻屏事件均不会重新计时。
@@ -109,7 +111,7 @@ FaultLogExtensionAbility回调。系统服务通知FaultLogExtensionAbility可�
   ```
 
 ## 附录
-本模块不允许调用的API名单如下。
+FaultLogExtensionAbility不支持以下模块的引用。
 | Kit名称 | 模块名称 |
 | ------- | ------- |
 | AVSessionKit | [@ohos.multimedia.avsession (媒体会话管理)](../apis-avsession-kit/arkts-apis-avsession.md) |

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
-<!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -22,7 +22,7 @@ ArkUI提供了[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)容�
 Grid组件为网格容器，其中容器内各条目对应一个GridItem组件，如下图所示。
 
   **图1** Grid与GridItem组件关系  
-![zh-cn_image_0000001511900472](figures/zh-cn_image_0000001511900472.png)
+![grid](figures/grid.png)
 
 >**说明：**
 >
@@ -31,7 +31,7 @@ Grid组件为网格容器，其中容器内各条目对应一个GridItem组件�
 网格布局是一种二维布局。Grid组件支持自定义行列数和每行每列尺寸占比、设置子组件横跨几行或者几列，同时提供了垂直和水平布局能力。当网格容器组件尺寸发生变化时，所有子组件以及间距会等比例调整，从而实现网格布局的自适应能力。根据Grid的这些布局能力，可以构建出不同样式的网格布局，如下图所示。
 
   **图2** 网格布局  
-![zh-cn_image_0000001562700473](figures/zh-cn_image_0000001562700473.png)
+![grid2](figures/grid2.png)
 
 如果Grid组件设置了宽高属性，则其尺寸为设置值。如果没有设置宽高属性，Grid组件的尺寸默认适应其父组件的尺寸。
 
@@ -54,7 +54,7 @@ Grid组件根据行列数量与占比属性的设置，可以分为三种布局�
 rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的行或列数，fr前面的数值大小，用于计算该行或列在网格布局宽度上的占比，最终决定该行或列宽度。
 
   **图3** 行列数量占比示例  
-![zh-cn_image_0000001562820833](figures/zh-cn_image_0000001562820833.png)
+![grid3](figures/grid3.png)
 
 如上图所示，构建的是一个三行三列的网格布局，其在垂直方向上分为三等份，每行占一份；在水平方向上分为四等份，第一列占一份，第二列占两份，第三列占一份。
 
@@ -81,13 +81,13 @@ Grid() {
 
   **图4** 不均匀网格布局 
 
-![zh-cn_image_0000001511900480](figures/zh-cn_image_0000001511900480.png)
+![grid4](figures/grid4.png)
 
 例如计算器的按键布局就是常见的不均匀网格布局场景。如下图，计算器中的按键“0”和“=”，按键“0”横跨第一、二两列，按键“=”横跨第五、六两行。使用Grid构建的网格布局，其行列标号从0开始，依次编号。
 
   **图5** 计算器  
 
-![zh-cn_image_0000001511421292](figures/zh-cn_image_0000001511421292.png)
+![grid5](figures/grid5.png)
 
 在网格中，可以通过onGetRectByIndex返回的[rowStart,columnStart,rowSpan,columnSpan]来实现跨行跨列布局，其中rowStart和columnStart属性表示指定当前元素起始行号和起始列号，rowSpan和columnSpan属性表示指定当前元素的占用行数和占用列数。
 
@@ -123,7 +123,7 @@ Grid(undefined, this.layoutOptions) {
 
   **图6** 主轴方向示意图  
 
-![zh-cn_image_0000001562700469](figures/zh-cn_image_0000001562700469.png)
+![grid6](figures/grid6.png)
 
 当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，如上图所示。此时，将maxCount属性设为3，表示主轴方向上最大显示的网格单元数量为3。
 
@@ -150,7 +150,7 @@ Grid() {
 
 **图7** 通用办公服务  
 
-![zh-cn_image_0000001563060729](figures/zh-cn_image_0000001563060729.png)
+![grid7](figures/grid7.png)
 
 Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
@@ -161,28 +161,28 @@ Grid() {
   GridItem() {
     // app.string.Meeting资源文件中的value值为‘会议’
     Text($r('app.string.Meeting'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     Text($r('app.string.Check_in'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     Text($r('app.string.Voting'))
-    // ···
+    // ...
   }
 
   GridItem() {
     // app.string.Printing资源文件中的value值为‘打印’
     Text($r('app.string.Printing'))
-    // ···
+    // ...
   }
 }
-// ···
+// ...
 .rowsTemplate('1fr 1fr')
 .columnsTemplate('1fr 1fr')
 ```
@@ -196,37 +196,37 @@ Grid() {
 @Entry
 @Component
 export struct DataInGrid {
-// ···
+  // ...
 
   @State services: Array<string> = [
     // app.string.Meeting资源文件中的value值为‘会议’
     this.context!.resourceManager.getStringSync($r('app.string.Meeting').id),
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     this.context!.resourceManager.getStringSync($r('app.string.Check_in').id),
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     this.context!.resourceManager.getStringSync($r('app.string.Voting').id),
     // app.string.Printing资源文件中的value值为‘打印’
     this.context!.resourceManager.getStringSync($r('app.string.Printing').id)
   ];
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
       Column() {
-        // ···
+        // ...
           Grid() {
             ForEach(this.services, (service: string) => {
               GridItem() {
                 Text(service)
               }
-            // ···
+              // ...
             }, (service: string): string => service)
           }
           .rowsTemplate(('1fr 1fr') as string)
           .columnsTemplate(('1fr 1fr') as string)
-        // ···
+          // ...
       }
-    // ···
+      // ...
   }
 }
 ```
@@ -238,7 +238,7 @@ export struct DataInGrid {
 
 **图8** 网格的行列间距  
 
-![zh-cn_image_0000001511580908](figures/zh-cn_image_0000001511580908.png)
+![grid8](figures/grid8.png)
 
 通过Grid的[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap)可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
 
@@ -310,7 +310,7 @@ export struct ScrollableGrid {
 
   **图10** 日历翻页  
 
-![zh-cn_image_0000001562940549](figures/zh-cn_image_0000001562940549.gif)
+![grid10](figures/grid10.gif)
 
 Grid组件初始化时，可以绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，用于进行滚动控制，例如通过Scroller对象的[scrollPage](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollpage9)方法进行翻页。
 
@@ -391,6 +391,54 @@ private scroller: Scroller = new Scroller();
 >- 滚动条组件[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)，还可配合其他可滚动组件使用，如[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。
 >- 在圆形屏幕设备上，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)可以与弧形滚动条组件[ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md)配合使用为网格添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
 
+## 手指滑动多选
+
+从API版本26.0.0开始，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以通过手指滑动经过多个[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)，批量选择或取消选择网格项。应用可以在GridItem上设置是否允许被选择，并根据回调记录已选择的网格项。该能力适用于相册、文件管理、视频列表等需要连续批量选择网格项的场景。
+
+**Grid手指滑动多选示例效果图**
+
+![gridSwipeSelect](figures/gridSwipeSelect.gif)
+
+### 设置编辑模式
+
+通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+
+通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
+<!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+
+``` TypeScript
+Grid() {
+  // ...
+}
+.enableEditMode(this.enableEditMode)
+.onEditModeChange((enabled: boolean) => {
+  this.setEditMode(enabled);
+})
+.editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+```
+
+### 记录网格项选择结果
+
+在GridItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#onselect8)。selectable用于设置网格项是否允许被选择，selected用于设置网格项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个网格项的最新选择结果。
+<!-- @[Add_grid_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+
+``` TypeScript
+GridItem() {
+  this.GridCard(item, index)
+}
+.selectable(true)
+.selected(this.isSelected(item.id))
+.onSelect((selected: boolean) => {
+  this.updateSelected(item.id, selected);
+})
+```
+
+>**说明：**
+>
+>- 建议使用网格项数据中不会随位置变化的唯一标识（例如文件ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
+>- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)回调中保存选择结果。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
+
 ## 性能优化
 
 与[长列表的处理](arkts-layout-development-create-list.md#长列表的处理)类似，[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)适用于数据量较小的布局场景，当构建具有大量网格项的可滚动网格布局时，推荐使用[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)方式实现按需迭代加载数据，从而提升网格性能。
@@ -417,6 +465,7 @@ Grid() {
 >
 >cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
 
+<!--RP1-->
 ## 相关实例
 
 针对网格开发，有以下相关实例可供参考：
@@ -424,4 +473,4 @@ Grid() {
 - [游戏2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
 
 - [分布式计算器](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
-<!--RP1--><!--RP1End-->
+<!--RP1End-->

@@ -1,16 +1,17 @@
 # Module Description
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:49.333Z pushedAt=2026-06-23T06:12:23.666Z -->
+
+The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
 This subsystem offers the following audio and video services:
 

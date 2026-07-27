@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
@@ -43,5 +43,8 @@
   - [@ohos.enterprise.usbManager (USB Management) (System API)](js-apis-enterprise-usbManager-sys.md)
   - [@ohos.enterprise.wifiManager (Wi-Fi Management) (System API)](js-apis-enterprise-wifiManager-sys.md)
   <!--DelEnd-->
+  - application<!--mdm-arkts-application-->
+    - [EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md)
 - Error Codes<!--mdm-arkts-errcode-->
   - [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md)
+<!--no_check-->
