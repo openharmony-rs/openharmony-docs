@@ -185,7 +185,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback
 
 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。
 
-需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息以及device。
+需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息列表。
 
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19)替代。
@@ -245,7 +245,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, ca
 
 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。
 
-需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息以及device。
+需要调用[deviceManager.queryDevices()](#devicemanagerquerydevices)获取设备信息列表。
 
 > **说明**
 > 从API version 11开始支持，从API version 19开始废弃。建议使用[deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19)替代。
@@ -300,7 +300,7 @@ bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise
 
 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。使用Promise异步回调。
 
-需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息以及device。
+需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息列表。
 
 > **说明**
 > 从API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19)替代。
@@ -359,7 +359,7 @@ bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): P
 
 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。使用Promise异步回调。
 
-需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息以及device。
+需要调用[deviceManager.queryDevices](#devicemanagerquerydevices)获取设备信息列表。
 
 > **说明**
 > 从API version 11开始支持，从API version 19开始废弃。建议使用[deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19)替代。
@@ -557,4 +557,4 @@ USB设备信息，继承自[Device](#device)。
 | 名称      | 类型   | 只读 | 可选 | 说明                |
 | --------- | ------ | ---- | ---- | ------------------- |
 | deviceId<sup>11+</sup>  | number | 否   | 否   | 设备ID。  |
-| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 否   | 否   | 远程驱动程序对象。 |
+| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 否   | 否   | 远程驱动通信对象。 |

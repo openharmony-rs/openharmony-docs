@@ -27,7 +27,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 
 ### 属性
 
-DriverExtensionAbility类，包含驱动生命周期回调的定义。
+DriverExtensionAbility类，包含驱动扩展的上下文环境定义。
 
 **模型约束**：此接口仅在Stage模型下使用。
 
@@ -116,7 +116,7 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
   import { rpc } from '@kit.IPCKit';
   import { Want } from '@kit.AbilityKit';
 
-  class StubTest extends rpc.RemoteObject{
+  class StubTest extends rpc.RemoteObject {
       constructor(des : string) {
           super(des);
       }
@@ -140,7 +140,7 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
   import { rpc } from '@kit.IPCKit';
   import { Want } from '@kit.AbilityKit';
   
-  class StubTest extends rpc.RemoteObject{
+  class StubTest extends rpc.RemoteObject {
       constructor(des : string) {
           super(des);
       }
@@ -151,7 +151,7 @@ Extension生命周期回调，会在[onCreate](../apis-ability-kit/js-apis-app-a
   }
   async function getDescriptor() {
       // 调用异步函数...
-      return "asyncTest";
+      return 'asyncTest';
   }
   class DriverExt extends DriverExtensionAbility {
     async onConnect(want : Want) {
