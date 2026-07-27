@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-request模块给应用提供上传下载文件、后台代理传输的基础功能。
+request模块给应用提供上传下载文件、后台代理传输的基础功能，支持HTTP/HTTPS协议，提供任务进度监控、断点续传、后台任务管理、网络类型选择等能力，适用于应用内文件上传下载、后台持续传输等场景。
 
 - request暂不支持在Extension中调用。
 
@@ -34,11 +34,11 @@ import request from '@ohos.request';
 
 > **说明：**
 >
-> **网络类型**：下载支持自定义网络类型，可以在[DownloadConfig](#downloadconfig)中通过networkType配置成以下网络类型。<br/>
+> **网络类型**：下载支持自定义网络类型，可以在[DownloadConfig](#downloadconfig)中通过networkType配置成以下网络类型。<br>
 >
-> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br/>
+> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br>
 >
-> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br/>
+> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br>
 >
 > **下载任务状态码**：下载相关[getTaskInfo](#gettaskinfo9)返回值的status字段取值。
 
@@ -166,9 +166,9 @@ ArkTS-Dyn示例：
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig).then((data: request.UploadTask) => {
@@ -258,9 +258,9 @@ ArkTS-Dyn示例：
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig, (err: BusinessError, data: request.UploadTask) => {
@@ -322,7 +322,7 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -351,15 +351,15 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig).then((data: request.UploadTask) => {
     uploadTask = data;
   }).catch((err: BusinessError) => {
     console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
   ```
 
 
@@ -381,7 +381,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -405,9 +405,9 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
     if (err) {
@@ -420,7 +420,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 ## UploadTask
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，Promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
 
 
 
@@ -620,7 +620,7 @@ onHeaderReceive(callback: UploadHeaderReceiveCallback): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。| 
+  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。|
   | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | 是 | 上传任务完成或失败的回调函数。返回上传任务的任务状态信息。 |
 
 
@@ -7804,7 +7804,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause((err: BusinessError) => {
       if (err) {
@@ -7928,7 +7928,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause().then(() => {
       console.info(`Succeeded in pausing a download task. `);
@@ -8051,12 +8051,12 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume((err: BusinessError) => {
       if (err) {
@@ -8184,12 +8184,12 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume().then(() => {
       console.info(`Succeeded in resuming a download task. `);
@@ -8311,7 +8311,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop((err: BusinessError) => {
       if (err) {
@@ -8437,7 +8437,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop().then(() => {
       console.info(`Succeeded in stopping a download task. `);
@@ -8548,7 +8548,7 @@ ArkTS-Dyn示例：
     task.setMaxSpeed(10 * 1024 * 1024).then(() => {
       console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
+      console.error(`Failed to set the max speed of the task. Code: ${err.code}, message: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
     console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
@@ -8584,7 +8584,7 @@ ArkTS-Sta示例：
 
 create(context: BaseContext, config: Config, callback: AsyncCallback&lt;Task&gt;): void
 
-创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。
+创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。创建任务后，需要调用[start](#start10)方法启动任务，任务才会开始运行。
 
 
 **需要权限**：ohos.permission.INTERNET
@@ -8722,7 +8722,7 @@ ArkTS-Sta示例：
 
 create(context: BaseContext, config: Config): Promise&lt;Task&gt;
 
-创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。
+创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。创建任务后，需要调用[start](#start10)方法启动任务，任务才会开始运行。
 
 
 **需要权限**：ohos.permission.INTERNET
@@ -8750,7 +8750,7 @@ create(context: BaseContext, config: Config): Promise&lt;Task&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回Task对象的Promise对象。 |
 
 **错误码：**
 
@@ -8805,12 +8805,12 @@ ArkTS-Dyn示例：
     token: "it is a secret"
   };
   request.agent.create(context, config).then(async (task: request.agent.Task) => {
-    console.info(`Succeeded in creating a download task. result: ${task.config}`);
+    console.info(`Succeeded in creating an upload task. result: ${task.config}`);
     await task.start();
     // 用户需要手动调用remove从而结束task对象的生命周期
     request.agent.remove(task.tid);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to create an upload task, Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -8879,7 +8879,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
   | id | string | 是 | 任务id。 |
-  | token | string | 否 | 任务查询token。默认值为空。 |
+  | token | string | 否 | 任务查询token。当任务创建时设置了token，查询该任务需提供对应token，否则无法查询到指定任务。默认值为空（不传入时仅可查询未设置token的任务）。 |
 
 **返回值：** 
 
@@ -8907,7 +8907,7 @@ ArkTS-Dyn示例：
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  request.agent.getTask(context, "123456").then((task: request.agent.Task) => {
+  request.agent.getTask(context, '123456').then((task: request.agent.Task) => {
     console.info(`Succeeded in querying a task. result: ${task.tid}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query a task, Code: ${err.code}, message: ${err.message}`);
@@ -8967,7 +8967,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456", (err: BusinessError) => {
+  request.agent.remove('123456', (err: BusinessError) => {
     if (err) {
       console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9034,7 +9034,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456").then(() => {
+  request.agent.remove('123456').then(() => {
     console.info(`Succeeded in removing a download task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
@@ -9090,7 +9090,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456', (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9155,7 +9155,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456').then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in showing a upload task.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9212,7 +9212,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9278,7 +9278,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token").then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in touching a upload task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9392,7 +9392,7 @@ ArkTS-Dyn示例：
   let filter: request.agent.Filter = {
     action: request.agent.Action.UPLOAD,
     mode: request.agent.Mode.BACKGROUND
-  }
+  };
   request.agent.search(filter, (err: BusinessError, data: Array<string>) => {
     if (err) {
       console.error(`Failed to search a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9492,7 +9492,7 @@ ArkTS-Sta示例：
 
 createGroup(config: GroupConfig): Promise\<string\>
 
-根据[GroupConfig](#requestagentgroupconfig15)分组条件创建分组，并返回分组id。使用Promise异步回调。
+根据[GroupConfig](#requestagentgroupconfig15)分组条件创建分组，并返回分组id。适用于需要将多个下载任务的通知合并展示、统一管理任务进度通知的场景。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9561,9 +9561,9 @@ ArkTS-Sta示例：
 
 attachGroup(gid: string, tids: string[]): Promise\<void\>
 
-向指定分组id中绑定多个下载任务id。使用Promise异步回调。
+向指定分组id中绑定多个下载任务id，用于将多个下载任务归入同一分组以统一管理通知展示。使用Promise异步回调。
 
-如果任意一个任务id不满足添加条件，则所有列表中的任务都不会添加到分组中。
+如果任意一个任务id不满足添加条件（如任务不存在、任务状态不匹配、任务模式不匹配等），则所有列表中的任务都不会添加到分组中。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9605,8 +9605,8 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id和任务id列表。
-  let groupId: string = "123456789";
-  let taskIds: string[] = ["1111", "2222", "3333", "4444"];
+  let groupId: string = '123456789';
+  let taskIds: string[] = ['1111', '2222', '3333', '4444'];
   // 调用 attachGroup 接口向分组中添加任务id列表。
   request.agent.attachGroup(groupId, taskIds).then(() => {
     console.info(`Succeeded in attaching tasks to the download task group.`);
@@ -9675,7 +9675,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id。
-  let groupId: string = "123456789";
+  let groupId: string = '123456789';
   
   // 调用 deleteGroup 接口移除分组。
   request.agent.deleteGroup(groupId).then(() => {
