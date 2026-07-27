@@ -24,7 +24,7 @@ import { manager } from '@kit.ConnectivityKit';
 ```
 
 
-## enable
+## manager.enable
 
 enable(): void
 
@@ -42,7 +42,7 @@ enable(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -64,7 +64,7 @@ try {
 }
 ```
 
-## disable
+## manager.disable
 
 disable(): void
 
@@ -82,7 +82,7 @@ disable(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-## getLocalAddress
+## manager.getLocalAddress
 
 getLocalAddress(): string
 
@@ -127,7 +127,7 @@ getLocalAddress(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -150,7 +150,7 @@ try {
 }
 ```
 
-## factoryReset
+## manager.factoryReset
 
 factoryReset(): Promise&lt;void&gt;
 
@@ -174,12 +174,12 @@ factoryReset(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 202 | System API is not allowed to be called by non-system applications. |
+| 202 | Non-system applications are not allowed to use system APIs. |
 | 801 | Capability not supported because the chip does not support it. |
 | 36100099 | Operation failed. |
 
@@ -216,7 +216,7 @@ try {
 | SLE_MODE_UNCONNECTABLE | 0 | 表示该设备不可连接。 |
 | SLE_MODE_CONNECTABLE | 1 | 表示该设备可连接。 |
 
-## setConnectionMode
+## manager.setConnectionMode
 
 setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
@@ -247,7 +247,7 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

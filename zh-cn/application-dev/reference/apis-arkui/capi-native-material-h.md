@@ -223,7 +223,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
-| [ArkUI_ImmersiveStyle](#arkui_immersivestyle) style | 指向用于接收材质样式的变量的指针。 |
+| [ArkUI_ImmersiveStyle](#arkui_immersivestyle)* style | 指向用于接收材质样式的变量的指针。 |
 
 **返回：**
 

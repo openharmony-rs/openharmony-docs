@@ -312,7 +312,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 ```ts
 inputMethodEngine.getInputMethodEngine()
   .off('inputStart',
-    (_kbController: inputMethodEngine.KeyboardController, _textClient: inputMethodEngine.TextInputClient) => {
+    (kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.TextInputClient) => {
       console.info('delete inputStart notification.');
     });
 ```
@@ -805,7 +805,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------------- | ---- |
+| -------- | ---------------------------------------------- |
 | 801 | capability not supported. |
 
 **示例：**
@@ -1725,8 +1725,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt; ): voi
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| width | number | 是   | 目标面板的宽度，单位为vp。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
-| height | number | 是   | 目标面板的高度，单位为vp。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
+| width | number | 是   | 目标面板的宽度，单位为px。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
+| height | number | 是   | 目标面板的高度，单位为px。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
 | callback | AsyncCallback&lt;void&gt;  | 是   | 回调函数。当面板大小改变成功，err为undefined，否则err为错误对象。 |
 
 **错误码：**
@@ -1770,8 +1770,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| width | number | 是   | 目标面板的宽度，单位为vp。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
-| height | number | 是   | 目标面板的高度，单位为vp。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
+| width | number | 是   | 目标面板的宽度，单位为px。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
+| height | number | 是   | 目标面板的高度，单位为px。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
 
 **返回值：**
 
@@ -2903,7 +2903,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise&lt;SystemPanelInsets&gt;
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ------------------------------------------------------- | ---- |
+| -------- | ------------------------------------------------------- |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. Possible causes: 1. Current panel's type is not SOFT_KEYBOARD.  2. Panel's flag is not FLG_FIXED or FLG_FLOATING. |
 | 12800022 | invalid displayId. |
@@ -3185,7 +3185,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 输入法的安全模式，如BASIC或FULL。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称  | 值   | 说明                                         |
 | ----- | ---- | -------------------------------------------- |
@@ -3196,7 +3196,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 编辑框中文本的扩展编辑操作类型，如剪切、复制等。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -3209,7 +3209,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 光标的移动方向。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |

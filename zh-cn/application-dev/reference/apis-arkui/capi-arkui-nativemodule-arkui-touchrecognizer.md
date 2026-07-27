@@ -12,7 +12,7 @@ typedef struct ArkUI_TouchRecognizer ArkUI_TouchRecognizer
 
 ## 概述
 
-定义触摸识别器。触摸识别器是底层触摸事件的识别单元，负责检测和处理触摸按下、移动、抬起等原始触摸事件。
+定义触摸识别器。触摸识别器用于表示手势打断或手势收集拦截信息中返回的触摸事件处理对象，可通过相关接口获取其节点句柄或取消触摸事件。具体接口请参见[native_gesture.h](capi-native-gesture-h.md)。
 
 **起始版本：** 15
 

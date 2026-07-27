@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:14.315Z pushedAt=2026-06-30T08:25:45.872Z -->
+<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:25.575Z pushedAt=2026-07-24T03:22:59.502Z -->
 
 This topic provides migration guidance for component state variables across different scenarios.
 
@@ -15,8 +15,8 @@ This topic provides migration guidance for component state variables across diff
 | [\@State](./arkts-state.md)                 | No external initialization: [\@Local](./arkts-new-local.md)<br>One-time external initialization: [\@Param](./arkts-new-param.md) or [\@Once](./arkts-new-once.md)|
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
 | [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)    |
-|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)                   |
-|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
+|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)                   |
+|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                |
 | [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
 | No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-computed.md)                |
@@ -55,7 +55,12 @@ struct Child {
   @State val: number = INITIAL_VALUE;
 
   build() {
-    Text(this.val.toString())
+    Column() {
+      Text(this.val.toString())
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
   }
 }
 ```
@@ -74,10 +79,19 @@ struct Child {
   @Local val: number = INITIAL_VALUE;
 
   build() {
-    Text(this.val.toString())
+    Column() {
+      Text(this.val.toString())
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![state-easy](figures/migration-state-easy.png)
 
 **Complex Types**
 
@@ -97,17 +111,22 @@ class Child {
 @Component
 @Entry
 struct Example {
+  // @State can observe first-level changes.
   @State child: Child = new Child();
 
   build() {
     Column() {
       Text(this.child.value.toString())
-      // @State can observe the top-level changes.
+        .fontSize(20)
+        .margin(10)
       Button('value+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.child.value++;
+          this.child.value++; // Modify the object property to trigger UI re-rendering.
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -133,14 +152,23 @@ struct Example {
   build() {
     Column() {
       Text(this.child.value.toString())
+        .fontSize(20)
+        .margin(10)
       Button('value+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.child.value++;
+          this.child.value++; // Modify the object property to trigger a UI refresh.
         })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![state-complex](figures/migration-state-complex.gif)
 
 **External Initialization**
 
@@ -157,6 +185,8 @@ struct Child {
 
   build() {
     Text(this.value.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -168,6 +198,7 @@ struct Parent {
       // @State supports external initialization.
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
@@ -183,6 +214,8 @@ struct Child {
 
   build() {
     Text(this.value.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -194,92 +227,14 @@ struct Parent {
       // @Local does not support external initialization. Use @Param and @Once instead.
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
 
-### \@Link -> \@Param/\@Event
+Example effect:
 
-**Migration Rules**
-
-In V1, \@Link allows two-way binding between parent and child components. For migration to V2, you can use \@Param and \@Event to simulate two-way synchronization: \@Param for one-way, parent-to-child data flow, and \@Event callbacks for child-triggered parent updates.
-
-**Example**
-
-V1:
-
-<!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
-
-``` TypeScript
-const INITIAL_MYVAL = 10;
-
-@Component
-struct Child {
-  // @Link enables two-way data synchronization.
-  @Link val: number;
-
-  build() {
-    Column() {
-      Text('child: ' + this.val.toString())
-      Button('+1')
-        .onClick(() => {
-          this.val++;
-        })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State myVal: number = INITIAL_MYVAL;
-
-  build() {
-    Column() {
-      Text('parent: ' + this.myVal.toString())
-      Child({ val: this.myVal })
-    }
-  }
-}
-```
-
-V2 migration policy: Use \@Param and \@Event.
-
-<!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
-
-``` TypeScript
-const INITIAL_MYVAL = 10;
-
-@ComponentV2
-struct Child {
-  // Combining @Param with @Event enables two-way data synchronization.
-  @Param val: number = 0;
-  @Event addOne: () => void;
-
-  build() {
-    Column() {
-      Text('child: ' + this.val.toString())
-      Button('+1')
-        .onClick(() => {
-          this.addOne();
-        })
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct Parent {
-  @Local myVal: number = INITIAL_MYVAL;
-
-  build() {
-    Column() {
-      Text('parent: ' + this.myVal.toString())
-      Child({ val: this.myVal, addOne: () => this.myVal++ })
-    }
-  }
-}
-```
+![state-external-init](figures/migration-state-external-init.png)
 
 ### \@Prop -> \@Param
 
@@ -311,6 +266,8 @@ struct Child {
 
   build() {
     Text(this.value.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -321,13 +278,14 @@ struct Parent {
     Column() {
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
 
 V2:
 
-<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) --> 
+<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
 
 ``` TypeScript
 @ComponentV2
@@ -337,6 +295,8 @@ struct Child {
 
   build() {
     Text(this.value.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -347,9 +307,14 @@ struct Parent {
     Column() {
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![prop-easy](figures/migration-prop-easy.png)
 
 **Complex Types**
 
@@ -376,16 +341,25 @@ struct Child {
   build() {
     Column() {
       Text('child apple: ' + this.fruit.apple.toString())
+        .fontSize(20)
+        .margin(10)
       Text('child orange: ' + this.fruit.orange.toString())
+        .fontSize(20)
+        .margin(10)
       Button('apple+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.fruit.apple++;
+          this.fruit.apple++; // Modify the child component's @Prop object. The parent component is not affected.
         })
       Button('orange+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.fruit.orange++;
         })
     }
+    .width('100%')
   }
 }
 
@@ -397,16 +371,21 @@ struct Parent {
   build() {
     Column() {
       Text('parent apple: ' + this.parentFruit.apple.toString())
+        .fontSize(20)
+        .margin(10)
       Text('parent orange: ' + this.parentFruit.orange.toString())
+        .fontSize(20)
+        .margin(10)
       Child({ fruit: this.parentFruit })
     }
+    .width('100%')
   }
 }
 ```
 
 V2:
 
-<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) --> 
+<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->
 
 ``` TypeScript
 const APPLE_INITIAL_COUNT = 5;
@@ -432,18 +411,26 @@ struct Child {
 
   build() {
     Column() {
-      Text('child')
-      Text(this.fruit.apple.toString())
-      Text(this.fruit.orange.toString())
+      Text('child apple: ' + this.fruit.apple.toString())
+        .fontSize(20)
+        .margin(10)
+      Text('child orange: ' + this.fruit.orange.toString())
+        .fontSize(20)
+        .margin(10)
       Button('apple+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.fruit.apple++;
+          this.fruit.apple++; // Modify the deep copy object. The parent component is not affected.
         })
       Button('orange+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.fruit.orange++;
         })
     }
+    .width('100%')
   }
 }
 
@@ -454,14 +441,22 @@ struct Parent {
 
   build() {
     Column() {
-      Text('parent')
-      Text(this.parentFruit.apple.toString())
-      Text(this.parentFruit.orange.toString())
+      Text('parent apple: ' + this.parentFruit.apple.toString())
+        .fontSize(20)
+        .margin(10)
+      Text('parent orange: ' + this.parentFruit.orange.toString())
+        .fontSize(20)
+        .margin(10)
       Child({ fruit: this.parentFruit.clone() })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![prop-complex](figures/migration-prop-complex.gif)
 
 **Variable Modification in Child Components**
 
@@ -480,11 +475,16 @@ struct Child {
   build() {
     Column() {
       Text(this.value.toString())
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.value++;
+          this.value++; // Local modification. Will not be synced back to the parent component.
         })
     }
+    .width('100%')
   }
 }
 
@@ -495,6 +495,7 @@ struct Parent {
     Column() {
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
@@ -512,11 +513,16 @@ struct Child {
   build() {
     Column() {
       Text(this.value.toString())
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.value++;
+          this.value++; // Local modification; not synced back to the parent component.
         })
     }
+    .width('100%')
   }
 }
 
@@ -527,9 +533,14 @@ struct Parent {
     Column() {
       Child({ value: 30 })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![prop-update-var](figures/migration-prop-update-var.gif)
 
 In V1, a child component can modify its @Prop decorated variables. These changes are applied locally and are not synced to the parent component. When the parent's data source updates, the child component receives the update and its local \@Prop values are overwritten.
 
@@ -550,13 +561,18 @@ struct Child {
 
   build() {
     Column() {
-      Text(`${this.localValue}`).fontSize(25)
+      Text(`${this.localValue}`)
+        .fontSize(20)
+        .margin(10)
       Button('Child +100')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // Changes to localValue are not synchronized to Parent.
           this.localValue += 100;
         })
     }
+    .width('100%')
   }
 }
 
@@ -568,12 +584,15 @@ struct Parent {
   build() {
     Column() {
       Button('Parent +1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // When value is updated, Child is notified.
           this.value += 1;
         })
       Child({ localValue: this.value })
     }
+    .width('100%')
   }
 }
 ```
@@ -598,8 +617,8 @@ const PARENT_INITIAL_LOCAL_VALUE = 10;
 
 @ComponentV2
 struct Child {
-  @Local localValue: number = 0;
   @Param value: number = 0;
+  @Local localValue: number = this.value;
 
   @Monitor('value')
   onValueChange(mon: IMonitor) {
@@ -610,13 +629,18 @@ struct Child {
 
   build() {
     Column() {
-      Text(`${this.localValue}`).fontSize(25)
+      Text(`${this.localValue}`)
+        .fontSize(20)
+        .margin(10)
       Button('Child +100')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // Changes to localValue are not synchronized to Parent.
           this.localValue += 100;
         })
     }
+    .width('100%')
   }
 }
 
@@ -628,15 +652,259 @@ struct Parent {
   build() {
     Column() {
       Button('Parent +1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // When value is updated, Child is notified.
           this.value += 1;
         })
       Child({ value: this.value })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![prop-update-var-local](figures/migration-prop-update-var-local.gif)
+
+### \@Link -> \@Param/\@Event
+
+**Migration Rules**
+
+In V1, \@Link enables two-way data binding between parent and child components. When migrating to V2, you can use \@Param and \@Event to simulate two-way synchronization. \@Param implements one-way data transfer from parent to child, and the child component then triggers state updates in the parent component through an \@Event callback function.
+
+**Example**
+
+V1 implementation:
+
+<!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
+@Component
+struct Child {
+  // @Link enables bidirectional data synchronization.
+  @Link val: number;
+
+  build() {
+    Column() {
+      Text('child: ' + this.val.toString())
+        .fontSize(20)
+        .margin(10)
+      Button('+1')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.val++; // The child component modifies val, and both parent and child components refresh synchronously.
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State myVal: number = INITIAL_MYVAL;
+
+  build() {
+    Column() {
+      Text('parent: ' + this.myVal.toString())
+        .fontSize(20)
+        .margin(10)
+      Child({ val: this.myVal }) // Establish parent-child bidirectional synchronization through @Link.
+    }
+    .width('100%')
+  }
+}
+```
+
+V2 migration strategy: Use \@Param and \@Event.
+
+<!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
+
+``` TypeScript
+const INITIAL_MYVAL = 10;
+
+@ComponentV2
+struct Child {
+  // @Param works with the @Event callback to implement bidirectional data synchronization.
+  @Param val: number = 0;
+  @Event addOne: () => void;
+
+  build() {
+    Column() {
+      Text('child: ' + this.val.toString())
+        .fontSize(20)
+        .margin(10)
+      Button('+1')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.addOne(); // Notify the parent component to update through the @Event callback.
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent {
+  @Local myVal: number = INITIAL_MYVAL;
+
+  build() {
+    Column() {
+      Text('parent: ' + this.myVal.toString())
+        .fontSize(20)
+        .margin(10)
+      Child({ val: this.myVal, addOne: () => this.myVal++ }) // @Param passes data, and @Event passes the callback to implement bidirectional synchronization.
+    }
+    .width('100%')
+  }
+}
+```
+
+Example effect:
+
+![link](figures/migration-link.gif)
+
+### \@ObjectLink -> \@Param
+
+**Migration Rules**
+
+In V1, \@ObjectLink is used to receive \@Observed-decorated class objects passed from the parent component, enabling synchronization of nested objects. When the parent component performs a full reassignment, the change is unidirectionally synced to the child component. The child component is not allowed to perform full reassignment, but can modify object properties, and property changes are bidirectionally synced between the parent and child components.
+
+When migrating to V2, the child component uses \@Param to receive the object, and the synchronization behavior is consistent with \@ObjectLink.
+
+**Example**
+
+V1 implementation:
+
+<!-- @[Parent23_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ObjectLinkMigrationV1.ets) -->
+
+``` TypeScript
+@Observed
+class Person {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Component
+struct Child {
+  // @ObjectLink receives class objects decorated by @Observed, with bidirectional synchronization of property changes.
+  @ObjectLink person: Person;
+
+  build() {
+    Column() {
+      Text(`Child name: ${this.person.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`Child age: ${this.person.age}`)
+        .fontSize(20)
+        .margin(10)
+      Button('age+1')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.person.age++; // The child component modifies object properties, and both parent and child components refresh synchronously.
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State person: Person = new Person('Alice', 20);
+
+  build() {
+    Column() {
+      Text(`Parent name: ${this.person.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`Parent age: ${this.person.age}`)
+        .fontSize(20)
+        .margin(10)
+      Child({ person: this.person }) // Pass the object to the child component.
+    }
+    .width('100%')
+  }
+}
+```
+
+V2 migration strategy: Use \@Param to receive the object.
+
+<!-- @[Parent24_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ObjectLinkMigrationV2.ets) -->
+
+``` TypeScript
+@ObservedV2
+class Person {
+  @Trace public name: string;
+  @Trace public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@ComponentV2
+struct Child {
+  // @Param receives class objects, with bidirectional synchronization of property changes.
+  @Param person: Person = new Person('', 0);
+
+  build() {
+    Column() {
+      Text(`Child name: ${this.person.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`Child age: ${this.person.age}`)
+        .fontSize(20)
+        .margin(10)
+      Button('age+1')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.person.age++; // The child component modifies object properties, and both parent and child components refresh synchronously.
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent {
+  @Local person: Person = new Person('Alice', 20);
+
+  build() {
+    Column() {
+      Text(`Parent name: ${this.person.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`Parent age: ${this.person.age}`)
+        .fontSize(20)
+        .margin(10)
+      Child({ person: this.person }) // Pass the object to the child component.
+    }
+    .width('100%')
+  }
+}
+```
+
+Example effect:
+
+![objectlink](figures/migration-objectlink.gif)
 
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
 
@@ -676,8 +944,13 @@ struct Child {
   build() {
     Column() {
       Text(this.childMessage)
-      Text(this.message) // The value of Text is "Hello World."
+        .fontSize(20)
+        .margin(10)
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -690,41 +963,52 @@ struct Parent {
     Column() {
       Child()
     }
+    .width('100%')
   }
 }
 ```
 
-V2: For V2 migration, make sure aliases match. If you do not specify an alias, the system matches by variable name.
+For V2 migration, make sure aliases match. If you do not specify an alias, the system matches by variable name.
 
 <!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
 
 ``` TypeScript
 @ComponentV2
 struct Child {
-  // The alias is the exclusive matching key. If the alias exists, the variable name cannot be used for matching.
-  @Consumer('text') childMessage: string = 'default';
-  @Consumer() message: string = 'default';
+  @Consumer('text') childMessage: string = 'default'; // When alias is specified, matching is performed by alias.
+  @Consumer() message: string = 'default'; // When alias is not specified, matching is performed by property name.
 
   build() {
     Column() {
       Text(this.childMessage)
-      Text(this.message) // The value of Text is "default."
+        .fontSize(20)
+        .margin(10)
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
 @Entry
 @ComponentV2
 struct Parent {
-  @Provider('text') message: string = 'Hello World';
+  @Provider('text') parentMessage: string = 'Hello World';
+  @Provider() message: string = 'Hello World';
 
   build() {
     Column() {
       Child()
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![provide-alias](figures/migration-provide-alias.png)
 
 **Local Initialization**
 
@@ -742,6 +1026,8 @@ struct Child {
 
   build() {
     Text(this.message)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -754,6 +1040,7 @@ struct Parent {
     Column() {
       Child()
     }
+    .width('100%')
   }
 }
 ```
@@ -770,6 +1057,8 @@ struct Child {
 
   build() {
     Text(this.message)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -780,9 +1069,14 @@ struct Parent {
     Column() {
       Child()
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![provide-no-init](figures/migration-provide-no-init.png)
 
 **Initialization from the Parent Component**
 
@@ -805,6 +1099,7 @@ struct Parent {
       // @Provide supports initialization from the parent component.
       Child({ childValue: this.parentValue })
     }
+    .width('100%')
   }
 }
 
@@ -815,7 +1110,10 @@ struct Child {
   build() {
     Column() {
       Text(this.childValue.toString())
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -837,6 +1135,7 @@ struct Parent {
       // @Provider prohibits localization from the parent component. To work around this, you can use @Param to receive the initial value and then assign it to @Provider.
       Child({ initialValue: this.parentValue })
     }
+    .width('100%')
   }
 }
 
@@ -848,10 +1147,17 @@ struct Child {
   build() {
     Column() {
       Text(this.childValue.toString())
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![provide-parent-init](figures/migration-provide-parent-init.png)
 
 **Overriding Support**
 
@@ -874,6 +1180,7 @@ struct GrandParent {
     Column() {
       Parent()
     }
+    .width('100%')
   }
 }
 
@@ -892,7 +1199,9 @@ struct Child {
   @Consume('reviewVotes') reviewVotes: number;
 
   build() {
-    Text(this.reviewVotes.toString ()) // The value of Text is 20.
+    Text(this.reviewVotes.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
@@ -914,6 +1223,7 @@ struct GrandParent {
     Column() {
       Parent()
     }
+    .width('100%')
   }
 }
 
@@ -932,10 +1242,16 @@ struct Child {
   @Consumer() reviewVotes: number = 0;
 
   build() {
-    Text(this.reviewVotes.toString ()) // The value of Text is 20.
+    Text(this.reviewVotes.toString())
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
+
+Example effect:
+
+![provide-override](figures/migration-provide-override.png)
 
 ### \@Watch -> \@Monitor
 
@@ -975,12 +1291,17 @@ struct WatchExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+        .fontSize(20)
+        .margin(10)
       // Tap the button to increment apple, triggering a UI refresh.
       Button('add apple')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.apple++;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -1008,15 +1329,24 @@ struct MonitorExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+        .fontSize(20)
+        .margin(10)
       // Tap the button to increment apple, triggering a UI refresh.
       Button('add apple')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.apple++;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![watch-single](figures/migration-watch-single.gif)
 
 **Multi-Variable Listening**
 
@@ -1038,7 +1368,7 @@ struct WatchExample {
   @State @Watch('onAppleChange') apple: number = 0;
   @State @Watch('onOrangeChange') orange: number = 0;
 
-  // @Watch callback, which is used to listen for only a single variable but cannot obtain the value before change.
+  // The @Watch callback can only listen to a single variable and cannot obtain the value before the change.
   onAppleChange(): void {
     hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
   }
@@ -1050,16 +1380,25 @@ struct WatchExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+        .fontSize(20)
+        .margin(10)
       Text(`orange count: ${this.orange}`)
+        .fontSize(20)
+        .margin(10)
       Button('add apple')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.apple++;
+          this.apple++; // Click to trigger the onAppleChange callback.
         })
       Button('add orange')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.orange++;
+          this.orange++; // Click to trigger the onOrangeChange callback.
         })
     }
+    .width('100%')
   }
 }
 
@@ -1092,19 +1431,32 @@ struct MonitorExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+        .fontSize(20)
+        .margin(10)
       Text(`orange count: ${this.orange}`)
+        .fontSize(20)
+        .margin(10)
       Button('add apple')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.apple++;
+          this.apple++; // Click to trigger the onFruitChange callback.
         })
       Button('add orange')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.orange++;
+          this.orange++; // Click to trigger the onFruitChange callback.
         })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![watch-multi](figures/migration-watch-multi.gif)
 
 ### Repeated Calculation -> \@Computed Property
 
@@ -1127,14 +1479,21 @@ struct Index {
 
   build() {
     Column() {
-      Text(this.lastName + ' ' + this.firstName)
-      Text(this.lastName + ' ' + this.firstName)
+      Text(this.firstName + ' ' + this.lastName)
+        .fontSize(20)
+        .margin(10)
+      Text(this.firstName + ' ' + this.lastName)
+        .fontSize(20)
+        .margin(10)
       // Each change to lastName triggers a refresh of the Text component.
-      Button('changed lastName').onClick(() => {
-        this.lastName += 'a';
-      })
-
+      Button('changed lastName')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.lastName += 'a';
+        })
     }
+    .width('100%')
   }
 }
 ```
@@ -1161,14 +1520,26 @@ struct Index {
   build() {
     Column() {
       Text(this.fullName)
+        .fontSize(20)
+        .margin(10)
       Text(this.fullName)
-      Button('changed lastName').onClick(() => {
-        this.lastName += 'a';
-      })
+        .fontSize(20)
+        .margin(10)
+      Button('changed lastName')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.lastName += 'a';
+        })
     }
+    .width('100%')
   }
 }
 ```
+
+Example effect:
+
+![computed](figures/migration-computed.gif)
 
 ### Two-way Binding Migration from $$ to !!
 
@@ -1196,6 +1567,8 @@ struct TextInputExample {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+        .fontSize(20)
+        .margin(10)
       // The $$ operator provides a reference to a TS variable for system components, keeping the TS variable synchronized with the internal state of the system component.
       TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
@@ -1224,6 +1597,8 @@ struct TextInputExampleV2 {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+        .fontSize(20)
+        .margin(10)
       // Use !! to replace $$ in V2.
       TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
@@ -1237,3 +1612,9 @@ struct TextInputExampleV2 {
   }
 }
 ```
+
+Example effect:
+
+![sync](figures/migration-sync.gif)
+
+<!--no_check-->

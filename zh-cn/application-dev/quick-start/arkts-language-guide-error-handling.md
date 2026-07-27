@@ -532,7 +532,7 @@ nestedErrorHandling();
 // 外层try
 // 内层try
 // 内层catch: 内层错误
-// 外层catch: 内层错误
+// 外层try继续
 ```
 
 ## 抛出错误（throw语句）
@@ -617,7 +617,7 @@ TypeScript允许抛出任意类型的值，但ArkTS中应抛出`Error`体系对�
 <!-- @[ts_throw_non_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
 
 ``` TypeScript
-// TypeScript允许抛出任意类型，ArkTS应抛出Error体系对象
+// TypeScript允许抛出任意类型，ArkTS只能抛出Error
 throw 'Something went wrong';
 ```
 
@@ -985,7 +985,7 @@ serialErrorHandling();
 
 ### 全局异步错误的监听
 
-通过unhandledrejection事件捕获未处理的Promise rejection。
+通过`unhandledRejection`事件捕获未处理的Promise rejection。
 
 <!-- @[unhandled_rejection_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UnhandledRejectionHandler.ets) -->
 
@@ -1376,11 +1376,9 @@ function afIsString(val: Object): boolean {
 }
 
 function afProcess(value: string | number): void {
-  let v: string = afAssertDefined(typeof value === 'string' ? value : null);
-  console.info(`${v.toUpperCase()}`);
-
-  if (afIsString(value) && typeof value === 'string') {
-    console.info(`${value.toUpperCase()}`);
+  if (typeof value === 'string') {
+    let v: string = afAssertDefined(value);
+    console.info(`${v.toUpperCase()}`);
   } else {
     console.info(`${value.toString()}`);
   }

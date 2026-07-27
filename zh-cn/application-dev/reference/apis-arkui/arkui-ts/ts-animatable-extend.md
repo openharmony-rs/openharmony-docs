@@ -46,7 +46,7 @@
 
 plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
-定义数据类型的加法运算规则。
+定义该数据类型的加法运算规则。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
