@@ -82,17 +82,17 @@
     #include <arkui/native_interface.h>
     #include <arkui/styled_string.h>
     #include <hilog/log.h>
-
+    
     #define CUSTOM_LOG_TAG "manager"
     #define LOG_ERROR(...) OH_LOG_Print(LOG_APP, LOG_ERROR, 0xD001400, CUSTOM_LOG_TAG, __VA_ARGS__)
     #define LOG_INFO(...) OH_LOG_Print(LOG_APP, LOG_INFO, 0xD001400, CUSTOM_LOG_TAG, __VA_ARGS__)
-
+    
     namespace ConstIde {
     const uint32_t NUMBER_0 = 0;
     const uint32_t NUMBER_1 = 1;
     constexpr const char *K_LOG_DOMAIN = "Manager";
     } // namespace ConstIde
-
+    
     Manager Manager::manager_;
     ArkUI_NativeNodeAPI_1 *Manager::nodeAPI_ = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
@@ -100,13 +100,13 @@
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s BEGIN", who);
-
+    
         if ((env == nullptr) || (info == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s env or info is null",
                          who);
             return nullptr;
         }
-
+        
         size_t argc = ConstIde::NUMBER_1;
         napi_value args[ConstIde::NUMBER_1] = {nullptr};
         napi_status st = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -115,7 +115,7 @@
                          who);
             return nullptr;
         }
-
+    
         ArkUI_NodeContentHandle nodeContentHandle = nullptr;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[ConstIde::NUMBER_0], &nodeContentHandle);
         if (nodeContentHandle == nullptr) {
@@ -123,15 +123,15 @@
                          "%{public}s nodeContentHandle is null", who);
             return nullptr;
         }
-
+    
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s after GetNodeContent", who);
-
-        // 可选：保留对 nodeAPI_ 的健壮性检查（与你现有代码一致）
+    
+        // 可选：保留对 nodeAPI_ 的健壮性检查（与现有代码一致）
         if (Manager::nodeAPI_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s nodeAPI_ is null", who);
             return nullptr;
         }
-
+    
         // 构建具体节点 & 挂载
         ArkUI_NodeHandle page = makeNodeFn();
         if (page == nullptr) {
@@ -139,15 +139,15 @@
                          who);
             return nullptr;
         }
-
+    
         OH_ArkUI_NodeContent_AddNode(nodeContentHandle, page);
         return nullptr;
     }
-
+    
     constexpr int32_t NUM_10 = 10;
     constexpr int32_t NUM_28 = 28;
     constexpr int32_t NUM_400 = 400;
-
+    
     napi_value Manager::CreateTextAreaNativeNode(napi_env__* env, napi_callback_info__* info)
     {
         return CreateNativeNode(env, info, "CreateTextAreaNativeNode",
@@ -157,7 +157,7 @@
     ArkUI_NodeHandle Manager::CreateTextAreaNativeNode()
     {
         ArkUI_NativeNodeAPI_1 *nodeApi = Manager::nodeAPI_;
-
+        
         ArkUI_NodeHandle column = nodeApi->createNode(ARKUI_NODE_COLUMN);
         ArkUI_NumberValue colWidth[] = {{.f32 = 300}};
         ArkUI_AttributeItem widthItem = {.value = colWidth, .size = 1};
