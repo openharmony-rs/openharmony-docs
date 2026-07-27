@@ -219,7 +219,7 @@ export default class MainUIAbility extends UIAbility {
 off(type: 'release', callback: OnReleaseCallback): void
 ```
 
-取消注册Callee UIAbility断开通知的监听，与[on('release')](Caller.on)是反向操作，当前暂未支持。
+取消注册Callee UIAbility断开通知的监听，与on('release')是反向操作，当前暂未支持。
 
 **起始版本：** 9
 
@@ -281,7 +281,7 @@ export default class MainUIAbility extends UIAbility {
 off(type: 'release'): void
 ```
 
-取消注册Callee UIAbility断开通知的监听，与[Caller.on('release')](Caller.on)是反向操作，当前暂未支持。
+取消注册Callee UIAbility断开通知的监听，与Caller.on('release')是反向操作，当前暂未支持。
 
 **起始版本：** 9
 

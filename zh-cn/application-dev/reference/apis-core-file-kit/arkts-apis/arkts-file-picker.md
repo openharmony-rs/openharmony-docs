@@ -32,7 +32,7 @@ import { picker } from '@kit.CoreFileKit';
 | [PhotoSaveOptions](arkts-corefile-picker-photosaveoptions-c.md) | 图片或视频的保存选项。 |
 | [PhotoSelectOptions](arkts-corefile-picker-photoselectoptions-c.md) | 图库选择选项。 |
 | [PhotoSelectResult](arkts-corefile-picker-photoselectresult-c.md) | 返回图库选择后的结果集。 |
-| [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md) | 图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用[PhotoAccessHelper的PhotoViewPicker](@ohos.file.photoAccessHelper:photoAccessHelper)。在使用前，需要先创建PhotoViewPicker实例。 |
+| [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md) | 图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用PhotoAccessHelper的PhotoViewPicker。在使用前，需要先创建PhotoViewPicker实例。 |
 
 <!--Del-->
 ### 类（系统接口）

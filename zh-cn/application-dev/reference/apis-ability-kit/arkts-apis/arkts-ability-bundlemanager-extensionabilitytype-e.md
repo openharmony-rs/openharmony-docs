@@ -18,7 +18,7 @@
 FORM = 0
 ```
 
-[FormExtensionAbility](@ohos.app.form.FormExtensionAbility)：卡片扩展能力，提供卡片开发能力。
+FormExtensionAbility：卡片扩展能力，提供卡片开发能力。
 
 **起始版本：** 9
 
@@ -328,7 +328,7 @@ InsightIntentUIExtensionAbility：为开发者提供能被小艺意图调用，�
 FENCE = 24
 ```
 
-[FenceExtensionAbility](@ohos.app.ability.FenceExtensionAbility:FenceExtensionAbility)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。
+FenceExtensionAbility：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。
 
 **起始版本：** 18
 
@@ -370,7 +370,7 @@ AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设�
 FORM_EDIT = 27
 ```
 
-[FormEditExtensionAbility](@ohos.app.form.FormEditExtensionAbility:FormEditExtensionAbility)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。
+FormEditExtensionAbility：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。
 
 **起始版本：** 18
 
@@ -412,7 +412,7 @@ APP_SERVICE = 29
 LIVE_FORM = 30
 ```
 
-[LiveFormExtensionAbility](@ohos.app.form.LiveFormExtensionAbility)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。
+LiveFormExtensionAbility：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。
 
 **起始版本：** 20
 
@@ -446,7 +446,7 @@ SelectionExtensionAbility：为开发者提供划词弹窗能力的ExtensionAbil
 WEB_NATIVE_MESSAGING = 32
 ```
 
-[WebNativeMessagingExtensionAbility](@ohos.web.WebNativeMessagingExtensionAbility)：为开发者提供Web原生消息通信能力的ExtensionAbility。
+WebNativeMessagingExtensionAbility：为开发者提供Web原生消息通信能力的ExtensionAbility。
 
 **起始版本：** 21
 
@@ -502,7 +502,7 @@ CRYPTO = 35
 PARTNER_AGENT = 36
 ```
 
-[PartnerAgentExtensionAbility](@ohos.FusionConnectivity.PartnerAgentExtensionAbility)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。
+PartnerAgentExtensionAbility：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

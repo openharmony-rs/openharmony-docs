@@ -4,7 +4,7 @@
 type OnSuperResolutionChanged = (enabled: boolean) => void
 ```
 
-视频超分开关事件回调方法。若通过[PlaybackStrategy](@ohos.multimedia.media:media.PlaybackStrategy)正确使能超分，超分算法状态变化时会通过此回调上报，视频起播时也会上报超分初始开启/关闭状态。若未使能超分，不会触发该回调。
+视频超分开关事件回调方法。若通过PlaybackStrategy正确使能超分，超分算法状态变化时会通过此回调上报，视频起播时也会上报超分初始开启/关闭状态。若未使能超分，不会触发该回调。
 
 出现以下两种情况，超分算法会自动关闭。
 

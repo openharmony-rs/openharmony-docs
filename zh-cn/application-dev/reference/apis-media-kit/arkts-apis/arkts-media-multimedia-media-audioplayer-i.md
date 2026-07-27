@@ -86,7 +86,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 开始订阅音频缓存更新事件。仅网络播放支持该订阅事件。
 > **说明：**  
 > > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('bufferingUpdate')](@ohos.multimedia.media:media.AVPlayer.on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler))  
+> AVPlayer.on('bufferingUpdate'))  
 > 替代。
 
 **起始版本：** 8
@@ -104,7 +104,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 音频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。<br>[BufferingInfoType](@ohos.multimedia.media:media.BufferingInfoType)value值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。<br>BufferingInfoTypevalue值固定为0。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
@@ -115,7 +115,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -132,7 +132,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -144,7 +144,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -161,7 +161,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -173,7 +173,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -190,7 +190,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -202,7 +202,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -219,7 +219,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -231,7 +231,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -248,7 +248,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -260,7 +260,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -277,7 +277,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
@@ -289,7 +289,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 开始订阅音频播放事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 6
@@ -306,7 +306,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop()调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on('timeUpdate')
@@ -318,7 +318,7 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 开始订阅音频播放时间更新事件。处于播放状态时，每隔1s上报一次该事件。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('timeUpdate')](@ohos.multimedia.media:media.AVPlayer.on(type: 'timeUpdate', callback: Callback&lt;int&gt;))  
+> AVPlayer.on('timeUpdate'))  
 > 替代。
 
 **起始版本：** 6
@@ -347,7 +347,7 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 监听音频焦点变化事件，参考[audio.InterruptEvent](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptevent-i.md)。
 > **说明：**  
 > > 从API version 9开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('audioInterrupt')](@ohos.multimedia.media:media.AVPlayer.on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;))  
+> AVPlayer.on('audioInterrupt'))  
 > 替代。
 
 **起始版本：** 9
@@ -376,7 +376,7 @@ on(type: 'error', callback: ErrorCallback): void
 开始订阅音频播放错误事件，当上报error错误事件后，用户需处理error事件，退出播放操作。
 > **说明：**  
 > > 从API version 6开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('error')](@ohos.multimedia.media:media.AVPlayer.on(type: 'error', callback: ErrorCallback))替  
+> AVPlayer.on('error'))替  
 > 代。
 
 **起始版本：** 6

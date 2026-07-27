@@ -68,7 +68,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVMimeTypes](arkts-media-multimedia-media-avmimetypes-e.md) | 媒体MIME类型，通过[setMimeType](@ohos.multimedia.media:media.MediaSource.setMimeType)设置。 |
+| [AVMimeTypes](arkts-media-multimedia-media-avmimetypes-e.md) | 媒体MIME类型，通过setMimeType设置。 |
 | [AVScreenCaptureFillMode](arkts-media-multimedia-media-avscreencapturefillmode-e.md) | 进行屏幕录制时视频填充模式的枚举。 |
 | [AVScreenCaptureRecordPreset](arkts-media-multimedia-media-avscreencapturerecordpreset-e.md) | 进行屏幕录制时的编码、封装格式参数的枚举。 |
 | [AVScreenCaptureStateCode](arkts-media-multimedia-media-avscreencapturestatecode-e.md) | 屏幕录制的状态回调。 |
@@ -113,7 +113,7 @@ import { media } from '@kit.MediaKit';
 | [PlaybackMetrics](arkts-media-playbackmetrics-t.md) | 提供播放器指标信息键值对的容器定义。 |
 | [SourceCloseCallback](arkts-media-sourceclosecallback-t.md) | 由应用实现此回调函数，应用应释放相关资源。 > **注意：**  >  > 客户端在处理完请求后应立刻返回。 |
 | [SourceOpenCallback](arkts-media-sourceopencallback-t.md) | 由应用实现此回调函数，应用需处理传入的资源打开请求，并返回所打开资源对应的唯一句柄。 > **注意：**  >  > 客户端在处理完请求后应立刻返回。 |
-| [SourceReadCallback](arkts-media-sourcereadcallback-t.md) | 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的[respondData](@ohos.multimedia.media:media.MediaSourceLoadingRequest.respondData(uuid: number, offset: number, buffer: ArrayBuffer))方法推送数据。 > **注意：**  >  > 客户端在处理完请求后应立刻返回。 |
+| [SourceReadCallback](arkts-media-sourcereadcallback-t.md) | 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的respondData)方法推送数据。 > **注意：**  >  > 客户端在处理完请求后应立刻返回。 |
 | [VideoPlayState](arkts-media-videoplaystate-t.md) | 视频播放的状态机，可通过state属性获取当前状态。 |
 
 <!--Del-->
