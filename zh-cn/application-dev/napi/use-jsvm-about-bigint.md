@@ -47,6 +47,7 @@ cpp部分代码：
 #include "ark_runtime/jsvm.h"
 #include <cstdlib>
 // ...
+
 // OH_JSVM_GetValueBigintWords的样例方法
 static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -58,7 +59,7 @@ static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info)
     uint64_t* words{nullptr};
     // 调用OH_JSVM_GetValueBigintWords接口获取wordCount
     JSVM_Status status = OH_JSVM_GetValueBigintWords(env, args[0], nullptr, &wordCount, nullptr);
-    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}d.", wordCount);
+    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}zu.", wordCount);
     if (wordCount == 0 || wordCount > MAX_MALLOC_SIZE) {
         OH_LOG_ERROR(LOG_APP, "Invalid wordCount: %{public}zu", wordCount);
         return nullptr;

@@ -44,6 +44,7 @@ cpp部分代码
 ``` C++
 #include <string>
 // ...
+
 std::string ToString(JSVM_Env env, JSVM_Value val)
 {
     JSVM_Value jsonString = nullptr;
@@ -71,7 +72,7 @@ static JSVM_Value NewInstance(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_CALL(OH_JSVM_NewInstance(env, args[0], 1, &args[1], &result));
     std::string str = ToString(env, result);
     OH_LOG_INFO(LOG_APP, "NewInstance:%{public}s", str.c_str());
-    return nullptr;
+    return result;
 }
 
 // 通过给定的构造函数，构建一个实例。
