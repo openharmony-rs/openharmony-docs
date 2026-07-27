@@ -29201,6 +29201,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"wrapbuilder_as_field",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -40015,6 +40025,41 @@
 						"end_line":99,
 						"name":"ComponentReuseDifference",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-mutableBuilder.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderDynamic.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"mutable_builder_dynamic",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderContextMenu.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"mutable_builder_context_menu",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderBinding.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"mutable_builder_binding",
+						"start_line":15
 					}
 				]
 			}
