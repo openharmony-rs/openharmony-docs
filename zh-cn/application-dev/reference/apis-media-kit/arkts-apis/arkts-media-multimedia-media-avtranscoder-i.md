@@ -65,7 +65,7 @@ cancel(): Promise<void>
 
 取消视频转码。使用Promise异步回调。
 
-需要在[prepare()](media.AVTranscoder.prepare)、[start()](media.AVTranscoder.start)、[pause()](media.AVTranscoder.pause)或[resume()](media.AVTranscoder.resume)事件成功触发后，才能调用cancel方法。
+需要在prepare()、start()、pause()或resume()事件成功触发后，才能调用cancel方法。
 
 **起始版本：** 12
 
@@ -166,7 +166,7 @@ on(type:'complete', callback: Callback<void>):void
 
 注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。使用callback异步回调。
 
-当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](media.AVTranscoder.release)退出转码操作。
+当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过release()退出转码操作。
 
 **起始版本：** 12
 
@@ -189,7 +189,7 @@ on(type:'complete', callback: Callback<void>):void
 on(type:'error', callback: ErrorCallback):void
 ```
 
-注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](media.AVTranscoder.release)退出转码操作。使用callback异步回调。
+注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过release()退出转码操作。使用callback异步回调。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
 
@@ -252,7 +252,7 @@ pause(): Promise<void>
 
 暂停视频转码。使用Promise异步回调。
 
-需要[start()](media.AVTranscoder.start)事件成功触发后，才能调用pause方法，可以通过调用[resume()](media.AVTranscoder.resume)接口来恢复转码。
+需要start()事件成功触发后，才能调用pause方法，可以通过调用resume()接口来恢复转码。
 
 **起始版本：** 12
 
@@ -353,7 +353,7 @@ resume(): Promise<void>
 
 恢复视频转码。使用Promise异步回调。
 
-需要在[pause()](media.AVTranscoder.pause)事件成功触发后，才能调用resume方法。
+需要在pause()事件成功触发后，才能调用resume方法。
 
 **起始版本：** 12
 
@@ -385,7 +385,7 @@ start(): Promise<void>
 
 开始视频转码。使用Promise异步回调。
 
-需要[prepare()](media.AVTranscoder.prepare)事件成功触发后，才能调用start方法。
+需要prepare()事件成功触发后，才能调用start方法。
 
 **起始版本：** 12
 

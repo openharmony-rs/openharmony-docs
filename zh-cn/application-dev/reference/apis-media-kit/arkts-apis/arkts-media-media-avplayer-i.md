@@ -115,7 +115,7 @@ deselectTrack(index: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 多音视频资源的轨道索引，来自[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)接口所获取的轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)。 |
+| index | number | 是 | 多音视频资源的轨道索引，来自[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)接口所获取的轨道信息MediaDescription。 |
 
 **返回值：**
 
@@ -665,7 +665,7 @@ seek(timeMs: number, mode?: SeekMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为0, [duration]。<br>当模式为[SEEK_CONTINUOUS](@ohos.multimedia.media:media.SeekMode)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
+| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为0, [duration]。<br>当模式为SEEK_CONTINUOUS时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | [SeekMode](arkts-media-multimedia-media-seekmode-e.md) | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 ## seekToDefaultPosition
@@ -712,7 +712,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)接口返回的音视频轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](@ohos.multimedia.media:media.MediaDescriptionKey)对应Key值的说明。 |
+| index | number | 是 | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)接口返回的音视频轨道信息MediaDescription中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考MediaDescriptionKey对应Key值的说明。 |
 | mode | [SwitchMode](arkts-media-multimedia-media-switchmode-e.md) | 否 | 切换轨道的模式。<br>取值约束：该模式仅适用于视频轨道的切换。<br>默认值：SMOOTH模式，在片段末尾进行切换，以确保视频播放的连续性。**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。<br>**起始版本：** 26.0.0 |
 
 **返回值：**

@@ -94,7 +94,7 @@ hideStartWindow?: boolean
 maxWindowHeight?: number
 ```
 
-窗口最大的高度，单位为vp，可以通过[getWindowLimitsVP](@ohos.window.d.ts:window.getWindowLimitsVP)获得当前窗口的尺寸限制。
+窗口最大的高度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。
 
 **约束：**
 
@@ -116,7 +116,7 @@ maxWindowHeight?: number
 maxWindowWidth?: number
 ```
 
-窗口最大的宽度，单位为vp，可以通过[getWindowLimitsVP](@ohos.window.d.ts:window.getWindowLimitsVP)获得当前窗口的尺寸限制。
+窗口最大的宽度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。
 
 **约束：**
 
@@ -138,7 +138,7 @@ maxWindowWidth?: number
 minWindowHeight?: number
 ```
 
-窗口最小的高度，单位为vp，可以通过[getWindowLimitsVP](@ohos.window.d.ts:window.getWindowLimitsVP)获得当前窗口的尺寸限制。
+窗口最小的高度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。
 
 **约束：**
 
@@ -160,7 +160,7 @@ minWindowHeight?: number
 minWindowWidth?: number
 ```
 
-窗口最小的宽度，单位为vp，可以通过[getWindowLimitsVP](@ohos.window.d.ts:window.getWindowLimitsVP)获得当前窗口的尺寸限制。
+窗口最小的宽度，单位为vp，可以通过getWindowLimitsVP获得当前窗口的尺寸限制。
 
 **约束：**
 

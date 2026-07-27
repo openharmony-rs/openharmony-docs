@@ -3193,7 +3193,7 @@ Scrolls the page to the specified absolute position within a specified period.
 searchAllAsync(searchString: string): void
 ```
 
-异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过[onSearchResultReceive](@ohos.web.WebAttribute#onsearchresultreceive)异步返回。
+异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过onSearchResultReceive异步返回。
 
 **起始版本：** 9
 
@@ -3852,7 +3852,7 @@ static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 >  
 > - 根据滚动条模式，改变当前应用所有web滚动条模式为常驻滚动条或非常驻滚动条。  
 >  
-> - 若[forceDisplayScrollBar](@ohos.web.WebAttribute#forcedisplayscrollbar)  
+> - 若forceDisplayScrollBar  
 > 接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。  
 >  
 > - 该接口需要在WebViewController绑定Web组件之前调用。
@@ -4595,7 +4595,7 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): vo
 zoom(factor: number): void
 ```
 
-调整当前网页的缩放比例，[zoomAccess](@ohos.web.WebAttribute#zoomAccess)需为true.
+调整当前网页的缩放比例，zoomAccess需为true.
 
 **起始版本：** 9
 

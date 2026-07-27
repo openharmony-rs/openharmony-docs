@@ -104,7 +104,7 @@ off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 否 | 状态切换事件回调方法，AVScreenCaptureStateCode表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 ## off('error')
 
@@ -146,7 +146,7 @@ on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态切换事件回调类型，支持的事件：'stateChange'。 |
-| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，[AVScreenCaptureStateCode](@ohos.multimedia.media:media.AVScreenCaptureStateCode)表示切换到的状态。 |
+| callback | Callback&lt;AVScreenCaptureStateCode&gt; | 是 | 状态切换事件回调方法，AVScreenCaptureStateCode表示切换到的状态。 |
 
 ## on('error')
 
@@ -405,7 +405,7 @@ skipPrivacyMode(windowIDs: Array<number>): Promise<void>
 startRecording(): Promise<void>
 ```
 
-开始录屏，在使用前需要先调用[init](@ohos.multimedia.media:media.AVScreenCaptureRecorder.init)接口。使用Promise异步回调。
+开始录屏，在使用前需要先调用init接口。使用Promise异步回调。
 
 **起始版本：** 12
 

@@ -339,7 +339,7 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 instanceId: number
 ```
 
-意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult接口](@ohos.app.ability.insightIntentProvider:insightIntentProvider.sendExecuteResult) 和[insightIntentProvider.sendIntentResult接口](@ohos.app.ability.insightIntentProvider:insightIntentProvider.sendIntentResult)返回指定意图的执行结果。
+意图实例唯一ID。用于通过insightIntentProvider.sendExecuteResult接口 和insightIntentProvider.sendIntentResult接口返回指定意图的执行结果。
 
 **类型：** number
 

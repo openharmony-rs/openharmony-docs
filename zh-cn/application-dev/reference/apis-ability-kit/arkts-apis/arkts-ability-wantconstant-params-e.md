@@ -352,7 +352,7 @@ APP_LAUNCH_TRUSTLIST = 'ohos.params.appLaunchTrustList'
 
 表示隐式启动时的应用过滤列表。
 
-隐式启动时仅匹配列表中的应用，值为string类型的[AppIdentifier](./bundleManager/BundleInfo:BundleInfo.AppIdentifier)数组，过滤列表最多支持50个应用，传入空数组不生效。
+隐式启动时仅匹配列表中的应用，值为string类型的AppIdentifier数组，过滤列表最多支持50个应用，传入空数组不生效。
 
 **起始版本：** 17
 

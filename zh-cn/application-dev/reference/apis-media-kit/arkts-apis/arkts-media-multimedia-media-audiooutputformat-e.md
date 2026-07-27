@@ -1,7 +1,7 @@
 # AudioOutputFormat
 
 > **说明：**  
-> > 从API version 6开始支持，从API version 8 开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)替代。
+> > 从API version 6开始支持，从API version 8 开始废弃，建议使用ContainerFormatType替代。
 
 表示音频封装格式的枚举。
 
@@ -25,7 +25,7 @@ DEFAULT = 0
 
 仅做接口定义，暂不支持使用。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议根据具体情况选择[ContainerFormatType](media.ContainerFormatType)中的一项替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议根据具体情况选择ContainerFormatType中的一项替代。
 
 **起始版本：** 6
 
@@ -43,7 +43,7 @@ MPEG_4 = 2
 
 封装为MPEG-4格式。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)中的CFT_MPEG_4替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用ContainerFormatType中的CFT_MPEG_4替代。
 
 **起始版本：** 6
 
@@ -65,7 +65,7 @@ AMR_NB = 3
 
 仅做接口定义，暂不支持使用。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)中的CFT_AMR，编码格式使用[CodecMimeType](media.CodecMimeType)中的AUDIO_AMR_NB替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用ContainerFormatType中的CFT_AMR，编码格式使用CodecMimeType中的AUDIO_AMR_NB替代。
 
 **起始版本：** 6
 
@@ -87,7 +87,7 @@ AMR_WB = 4
 
 仅做接口定义，暂不支持使用。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)中的CFT_AMR，编码格式使用[CodecMimeType](media.CodecMimeType)中的AUDIO_AMR_WB替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用ContainerFormatType中的CFT_AMR，编码格式使用CodecMimeType中的AUDIO_AMR_WB替代。
 
 **起始版本：** 6
 
@@ -107,7 +107,7 @@ AAC_ADTS = 6
 
 封装为ADTS（Audio Data Transport Stream）格式，是AAC音频的传输流格式。
 
-**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](media.ContainerFormatType)中的CFT_AAC替代。
+**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用ContainerFormatType中的CFT_AAC替代。
 
 **起始版本：** 6
 

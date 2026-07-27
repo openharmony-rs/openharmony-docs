@@ -46,7 +46,7 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040
 ```
 
-表示该URI可被接收方持久化。目标应用可以通过[fileShare.persistPermission](./@ohos.fileshare:fileShare.persistPermission)接口进行权限持久化。
+表示该URI可被接收方持久化。目标应用可以通过fileShare.persistPermission接口进行权限持久化。
 
 **起始版本：** 12
 

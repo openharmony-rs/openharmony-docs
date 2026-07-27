@@ -11,12 +11,12 @@
 > 示意图展示了字符串为" a b "的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
+> zh-ch_image_TypographicBounds.png  
 >  
 > 示意图展示了字符串为"j"或"E"的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds_Character.png](../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
+> zh-ch_image_TypographicBounds_Character.png
 
 **起始版本：** 18
 

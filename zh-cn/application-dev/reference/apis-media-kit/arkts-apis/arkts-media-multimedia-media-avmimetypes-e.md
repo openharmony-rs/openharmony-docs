@@ -1,6 +1,6 @@
 # AVMimeTypes
 
-媒体MIME类型，通过[setMimeType](@ohos.multimedia.media:media.MediaSource.setMimeType)设置。
+媒体MIME类型，通过setMimeType设置。
 
 **起始版本：** 12
 

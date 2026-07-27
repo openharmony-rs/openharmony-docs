@@ -88,7 +88,7 @@ on(type: 'playbackCompleted', callback: Callback<void>): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('stateChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle))  
+> AVPlayer.on('stateChange'))  
 > 替代。
 
 **起始版本：** 8
@@ -118,7 +118,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('bufferingUpdate')](@ohos.multimedia.media:media.AVPlayer.on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler))  
+> AVPlayer.on('bufferingUpdate'))  
 > 替代。
 
 **起始版本：** 8
@@ -136,7 +136,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 视频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 视频缓存事件回调方法。<br>[BufferingInfoType](@ohos.multimedia.media:media.BufferingInfoType)value值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 视频缓存事件回调方法。<br>BufferingInfoTypevalue值固定为0。 |
 
 ## on('startRenderFrame')
 
@@ -148,7 +148,7 @@ on(type: 'startRenderFrame', callback: Callback<void>): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('startRenderFrame')](@ohos.multimedia.media:media.AVPlayer.on(type: 'startRenderFrame', callback: Callback&lt;void&gt;))  
+> AVPlayer.on('startRenderFrame'))  
 > 替代。
 
 **起始版本：** 8
@@ -178,7 +178,7 @@ on(type: 'videoSizeChanged', callback: (width: number, height: number) => void):
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('videoSizeChange')](@ohos.multimedia.media:media.AVPlayer.on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler))  
+> AVPlayer.on('videoSizeChange'))  
 > 替代。
 
 **起始版本：** 8
@@ -208,7 +208,7 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 > **说明：**  
 >  
 > 从API version 9开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('audioInterrupt')](@ohos.multimedia.media:media.AVPlayer.on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;))  
+> AVPlayer.on('audioInterrupt'))  
 > 替代。
 
 **起始版本：** 9
@@ -238,7 +238,7 @@ on(type: 'error', callback: ErrorCallback): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.on('error')](@ohos.multimedia.media:media.AVPlayer.on(type: 'error', callback: ErrorCallback))替  
+> AVPlayer.on('error'))替  
 > 代。
 
 **起始版本：** 8
@@ -706,7 +706,7 @@ setSpeed(speed: number, callback: AsyncCallback<number>): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.setSpeed](@ohos.multimedia.media:media.AVPlayer.setSpeed)替代。
+> AVPlayer.setSpeed替代。
 
 **起始版本：** 8
 
@@ -722,7 +722,7 @@ setSpeed(speed: number, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | number | 是 | 指定播放视频速度，具体见[PlaybackSpeed](@ohos.multimedia.media:media.PlaybackSpeed)。 |
+| speed | number | 是 | 指定播放视频速度，具体见PlaybackSpeed。 |
 | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。设置播放速度成功时，err为undefined，data为设置的播放速度，否则为错误对象。 |
 
 ## setSpeed
@@ -735,7 +735,7 @@ setSpeed(speed: number): Promise<number>
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.setSpeed](@ohos.multimedia.media:media.AVPlayer.setSpeed)替代。
+> AVPlayer.setSpeed替代。
 
 **起始版本：** 8
 
@@ -751,13 +751,13 @@ setSpeed(speed: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | number | 是 | 指定播放视频速度，具体见[PlaybackSpeed](@ohos.multimedia.media:media.PlaybackSpeed)。 |
+| speed | number | 是 | 指定播放视频速度，具体见PlaybackSpeed。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回设置的播放速度，具体见[PlaybackSpeed](@ohos.multimedia.media:media.PlaybackSpeed)。 |
+| Promise&lt;number&gt; | Promise对象，返回设置的播放速度，具体见PlaybackSpeed。 |
 
 ## setVolume
 

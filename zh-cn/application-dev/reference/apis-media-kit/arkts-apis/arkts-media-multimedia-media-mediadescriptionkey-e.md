@@ -30,7 +30,7 @@ MD_KEY_TRACK_INDEX = 'track_index'
 MD_KEY_TRACK_TYPE = 'track_type'
 ```
 
-表示轨道类型，其对应键值类型为number，参考[MediaType](media.MediaType)。
+表示轨道类型，其对应键值类型为number，参考MediaType。
 
 **起始版本：** 8
 

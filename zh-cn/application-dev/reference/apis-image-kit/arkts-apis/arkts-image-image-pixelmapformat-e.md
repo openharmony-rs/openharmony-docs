@@ -64,7 +64,7 @@ RGB_565 = 2
 RGBA_8888 = 3
 ```
 
-颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](@ohos.multimedia.camera:camera.CameraFormat)。
+颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888。
 
 **起始版本：** 7
 
@@ -154,7 +154,7 @@ RGBA_F16 = 7
 NV21 = 8
 ```
 
-YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](@ohos.multimedia.camera:camera.CameraFormat)。
+YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP。
 
 **起始版本：** 9
 
@@ -204,7 +204,7 @@ RGBA_1010102 = 10
 YCBCR_P010 = 11
 ```
 
-颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](@ohos.multimedia.camera:camera.CameraFormat)。
+颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010。
 
 **起始版本：** 12
 
@@ -218,7 +218,7 @@ YCBCR_P010 = 11
 YCRCB_P010 = 12
 ```
 
-颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](@ohos.multimedia.camera:camera.CameraFormat)。
+颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010。
 
 **起始版本：** 12
 
