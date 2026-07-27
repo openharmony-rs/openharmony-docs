@@ -8175,6 +8175,68 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### setCameraEditData
+
+setCameraEditData(editData: MediaAssetEditData): void
+
+保存资产的相机编辑数据。
+
+**起始版本**：26.1.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| editData | [MediaAssetEditData](#mediaasseteditdata11) | 是   | 待保存的资产相机编辑数据。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202        |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setCameraEditDataDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+
+  let assetEditData: photoAccessHelper.MediaAssetEditData = new photoAccessHelper.MediaAssetEditData('system', '1.0');
+  // 当前仅为示意，使用时请替换为实际应用沙箱资源，需要确保fileUri对应的资源存在。
+  let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+  assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, fileUri);
+  assetEditData.data = '123456';
+  assetChangeRequest.setCameraEditData(assetEditData);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setCameraEditData successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setCameraEditData failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
 ### addResource<sup>11+</sup>
 
 addResource(type: ResourceType, proxy: PhotoProxy): void
