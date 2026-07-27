@@ -12,7 +12,7 @@
 
 应用需要控制AVPlayer实例数量，播放结束后应及时调用release()释放资源。建议同时持有的AVPlayer实例数量不超过合理范围，避免内存消耗过大触发系统保护机制终止应用。
 
-音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和状态转换[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
+音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
 > **说明：**
 >
