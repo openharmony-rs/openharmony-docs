@@ -41,7 +41,7 @@
 | [OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)](#oh_avrecorder_setstatecallback) | 设置状态变化回调函数，以便应用能够响应AVRecorder生成的状态变化事件。<br>需在IDLE/PREPARED状态下调用。<br>用户只能设置一个状态变化回调函数，当用户重复设置时，以最后一次设置的回调函数为准。 |
 | [OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)](#oh_avrecorder_seterrorcallback) | 设置错误回调函数，以便应用能够响应AVRecorder生成的错误事件。<br>需在IDLE/PREPARED状态下调用。<br>用户只能设置一个错误回调函数，当用户重复设置时，以最后一次设置的回调函数为准。 |
 | [OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)](#oh_avrecorder_seturicallback) | 设置URI回调函数，当[OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode)枚举设置为系统创建媒体文件时，会在[OH_AVRecorder_Stop](#oh_avrecorder_stop)操作结束后把[OH_MediaAsset](../apis-media-library-kit/capi-mediaassetmanager-oh-mediaasset.md)对象回调给应用。典型使用场景包括：录制完成后获取输出文件的URI路径用于文件分享或展示、根据URI更新应用内的文件列表等。<br>需在IDLE/PREPARED状态下调用。<br>用户只能设置一个URI回调函数，当用户重复设置时，以最后一次设置的回调函数为准。 |
-| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。<br>需在IDLE状态下调用。 |
+| [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。<br>需在IDLE状态下调用。 |
 | [OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t *amplitude)](#oh_avrecorder_getaudiocapturermaxamplitude) | 获取当前音频最大振幅，典型使用场景包括：音频录制时实时显示音量级别、音频波形可视化、检测录制是否处于静音状态等。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该接口，那么返回值是1s到2s之间的最大振幅值。<br>需在PREPARED/STARTED/PAUSED状态下调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。典型使用场景包括：在录制的视频或音频文件中添加作者信息、版权信息、地理位置、录制时间等自定义元数据。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br>需在PREPARED/STARTED/PAUSED状态下调用。 |
 
@@ -465,7 +465,7 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 
 **描述**
 
-设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。此接口必须在[OH_AVRecorder_Prepare](#oh_avrecorder_prepare)接口之前调用。<br>需在IDLE状态下调用。
+设置是否开启静音打断模式，用于控制音频流被打断时的处理行为。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制，默认值为false。<br>需在IDLE状态下调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -483,7 +483,7 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的recorder为nullptr。<br>AV_ERR_INVALID_STATE（8）：函数不支持在当前状态下调用，应当在准备状态之前调用。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的recorder为nullptr。<br>AV_ERR_INVALID_STATE（8）：函数不支持在当前状态下调用，应当在IDLE状态下调用。 |
 
 ### OH_AVRecorder_GetAudioCapturerMaxAmplitude()
 
@@ -510,7 +510,7 @@ OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE（8）：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>AV_ERR_NO_MEMORY（1）：内存不足，请释放资源后重试。<br>AV_ERR_UNKNOWN（6）：未知错误，请查看日志获取详细信息。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的参数recorder或amplitude为nullptr。<br>         AV_ERR_INVALID_STATE（8）：不支持在当前状态下调用，应当在PREPARED/STARTED/PAUSED状态下调用此接口。<br>AV_ERR_NO_MEMORY（1）：内存不足，请释放资源后重试。<br>AV_ERR_UNKNOWN（6）：未知错误，请查看日志获取详细信息。 |
 
 ### OH_AVRecorder_SetMetadata()
 
@@ -537,6 +537,6 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>AV_ERR_INVALID_STATE（8）：不支持在当前状态下调用，应当在OH_AVRecorder_Prepare之后和OH_AVRecorder_Stop之前调用此接口。<br>AV_ERR_NO_MEMORY（1）：内存不足，请释放资源后重试。<br>AV_ERR_UNKNOWN（6）：未知错误，请查看日志获取详细信息。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK（0）：执行成功。<br>AV_ERR_INVALID_VAL（3）：输入的参数recorder或metadata为nullptr，或者metadata中的值长度超过256字节。<br>AV_ERR_INVALID_STATE（8）：不支持在当前状态下调用，应当在PREPARED/STARTED/PAUSED状态下调用此接口。<br>AV_ERR_NO_MEMORY（1）：内存不足，请释放资源后重试。<br>AV_ERR_UNKNOWN（6）：未知错误，请查看日志获取详细信息。 |
 
 
