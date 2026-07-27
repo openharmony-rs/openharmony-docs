@@ -111,7 +111,7 @@ PanelInfo参数使用建议：
 
 输入法面板类型枚举。定义面板的类别，决定面板是软键盘还是状态栏。
 
-**系统能力**：SystemCapability.MiscServices.InputMethodFramework
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称          | 值   | 说明         | 使用场景 |
 | ------------- | ---- | ------------ | -------- |
@@ -132,7 +132,7 @@ PanelType使用建议：
 >
 >目前仅用于SOFT_KEYBOARD类型的面板。对STATUS_BAR类型的面板设置PanelFlag不产生实际效果。
 
-**系统能力**：SystemCapability.MiscServices.InputMethodFramework
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称           | 值   | 说明                                                         | 使用场景 | 使用后效果 |
 | -------------- | ---- | ------------------------------------------------------------ | -------- | -------- |

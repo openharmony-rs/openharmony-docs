@@ -31,7 +31,7 @@
 
     // 设定字幕。
     let fileDescriptorSub = await this.context?.resourceManager.getRawFd('xxx.srt');
-    this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
+    this.avPlayer.addSubtitleFromFd(fileDescriptorSub?.fd, fileDescriptorSub?.offset, fileDescriptorSub?.length);
    ```
 
 2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
@@ -59,7 +59,7 @@
     });
    ```
 
-3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
+3. （可选）当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
 
    ```ts
     import { media } from '@kit.MediaKit';

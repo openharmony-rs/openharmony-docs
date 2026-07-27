@@ -260,7 +260,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to destroy context, err code = ${err.code}`);
     });
-}
+  }
 }
 ```
 

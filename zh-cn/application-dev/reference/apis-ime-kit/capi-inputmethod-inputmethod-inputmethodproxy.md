@@ -45,7 +45,7 @@ InputMethod_InputMethodProxy是应用端与输入法服务交互的核心代理�
 | 函数 | 描述 |
 | -- | -- |
 | [OH_InputMethodProxy_ShowKeyboard](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showkeyboard) | 显示键盘。 |
-| [OH_InputMethodProxy_ShowTextInput](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showtextinput) | 显示文本输入框（since 15）。 |
+| [OH_InputMethodProxy_ShowTextInput](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_showtextinput) | 显示文本输入框。 |
 | [OH_InputMethodProxy_HideKeyboard](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_hidekeyboard) | 隐藏键盘。 |
 | [OH_InputMethodProxy_NotifySelectionChange](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_notifyselectionchange) | 通知文本框选区变化。 |
 | [OH_InputMethodProxy_NotifyConfigurationChange](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_notifyconfigurationchange) | 通知输入框配置变化。 |

@@ -45,7 +45,7 @@ TextEditorProxy采用回调函数机制实现输入法应用与编辑器之间�
 - 所有Set*Func接口必须在Attach之前调用，Attach后设置的回调函数将不会被输入法调用。
 - 回调函数中的指针参数具有临时性，回调返回后不可再访问，必须在回调内部完成数据处理。
 - 建议至少注册GetTextConfigFunc和InsertTextFunc两个核心回调，否则输入法可能无法正常工作。
-- 非线程安全，不建议在多线程环境下同时操作同一个TextEditorProxy对象。可通过[OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread)（since 22）将回调切换到主线程执行以避免多线程并发问题。
+- 非线程安全，不建议在多线程环境下同时操作同一个TextEditorProxy对象。可通过[OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread)将回调切换到主线程执行以避免多线程并发问题。
 - 此对象为不透明类型，不可直接访问内部成员或进行内存操作。
 
 相关函数：
@@ -101,7 +101,7 @@ TextEditorProxy采用回调函数机制实现输入法应用与编辑器之间�
 
 | 函数 | 描述 |
 | -- | -- |
-| [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread) | 配置回调函数的执行线程策略（since 22）。 |
+| [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread) | 配置回调函数的执行线程策略。 |
 
 关联关系：
 
