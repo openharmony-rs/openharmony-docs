@@ -326,6 +326,8 @@ struct ReusableComponent { // 复用组件
 4. 当第二个（最后一个）实例被销毁时，复用池也被销毁。其中的所有回收组件被删除。
 5. 如果稍后创建拥有组件的新实例，则会创建新的复用池。
 
+具体`shared`复用池示例代码，参考使用场景：[多个父组件间共享复用池](#多个父组件间共享复用池)。
+
 > **说明：**
 >
 > `shared`所有权与`static`类属性不同。全局复用池有跨实例的引用计数，而非永久单例。
@@ -334,6 +336,8 @@ struct ReusableComponent { // 复用组件
 **ArkTS-Sta:** **`ReusePoolOwnership.PER_INSTANCE`**：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。复用池的生命周期与其拥有组件实例的生命周期相同。当拥有组件被销毁时，其复用池和其中的所有回收组件也被销毁。
 
 ![](./figures/arkts-global-reuse-reusable-perinstance.png)
+
+具体`perInstance`复用池示例代码，参考使用场景：[使用@Provider/@Consumer的独立复用池](#使用providerconsumer的独立复用池)。
 
 **ArkTS-Sta:** **`ReusePoolOwnership.OFF`**: 关闭@Component/@ComponentV2组件上的全局复用功能，在静态ArkTS中是reusePool参数的默认值。
 **ArkTS-Dyn:** 动态ArkTS无需设置OFF，@Component/@ComponentV2不设置reusePool参数就可以关闭全局复用能力。
