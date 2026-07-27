@@ -26,7 +26,7 @@ import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevel
 在使用DriverExtensionContext的功能前，需要通过DriverExtensionAbility子类实例获取。
 
 ```ts
-  let context : DriverExtensionContext | undefined;
+  let context: DriverExtensionContext | undefined;
   class EntryAbility extends DriverExtensionAbility {
     onInit() {
       context = this.context; // 获取DriverExtensionContext
