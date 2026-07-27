@@ -280,7 +280,7 @@ async function test(){
 
 getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
-获取播放器当前配置的轨道选择过滤器。可以在prepared/playing/paused状态下调用。使用Promise异步回调。
+获取播放器当前配置的轨道选择过滤器。可以在prepared、playing或paused状态下调用。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -2113,7 +2113,7 @@ async function test(){
 
 getPlaybackRate(): Promise\<number\>
 
-获取当前播放器的播放速率。可以在任意状态下调用。使用Promise异步回调。
+获取当前播放器的播放速率。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
