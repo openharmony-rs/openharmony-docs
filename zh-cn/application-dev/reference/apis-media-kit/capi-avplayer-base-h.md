@@ -117,7 +117,7 @@ enum AVPlayerState
 
 **描述**
 
-播放状态。![播放状态转换图](../../media/media/figures/video-playback-status-change.png)。
+播放状态。
 
 **起始版本：** 11
 
