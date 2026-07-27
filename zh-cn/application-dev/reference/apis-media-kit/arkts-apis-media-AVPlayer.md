@@ -739,7 +739,7 @@ async function test() {
 
 getCurrentMediaSource(): MediaSource | undefined;
 
-获取当前正在播放的媒体源对象，可以在prepared/playing/paused/completed状态调用。
+获取当前正在播放的媒体源对象，可以在prepared、playing、paused或completed状态调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1041,7 +1041,7 @@ ArkTS-Dyn: setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekM
 
 ArkTS-Sta: setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise\<void>
 
-设置播放区间，并通过指定的[SeekMode](arkts-apis-media-e.md#seekmode8)跳转到区间开始位置。设置之后，只播放音视频文件设定区间内的内容。使用Promise异步回调。可在**initialized**/**prepared**/**paused**/**stopped**/**completed**状态下使用。
+设置播放区间，并通过指定的[SeekMode](arkts-apis-media-e.md#seekmode8)跳转到区间开始位置。设置之后，只播放音视频文件设定区间内的内容。使用Promise异步回调。可在initialized、prepared、paused、stopped或completed状态下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -1189,7 +1189,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
 设置音频静音/取消音频静音，从API版本20开始，增加支持设置画面显示/不显示。使用Promise异步回调。
 
-只能在prepared/playing/paused/completed状态下调用。
+只能在prepared、playing、paused或completed状态下调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -1243,7 +1243,7 @@ async function  test(){
 
 play(callback: AsyncCallback\<void>): void
 
-开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback异步回调。
+开始播放音视频资源，只能在prepared、paused或completed状态调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1274,7 +1274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、paused或completed状态后才能调用。
   avPlayer.play((err: BusinessError) => {
     if (err) {
       console.error(`Failed to play.Code:${err.code},message:${err.message}`);
@@ -1289,7 +1289,7 @@ async function  test(){
 
 play(): Promise\<void>
 
-开始播放音视频资源，只能在prepared/paused/completed状态调用。使用Promise异步回调。
+开始播放音视频资源，只能在prepared、paused或completed状态调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1320,7 +1320,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、paused或completed状态后才能调用。
   avPlayer.play().then(() => {
     console.info('Succeeded in playing');
   }, (err: BusinessError) => {
@@ -1423,7 +1423,7 @@ async function  test(){
 
 stop(callback: AsyncCallback\<void>): void
 
-停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback异步回调。
+停止播放音视频资源，只能在prepared、playing、paused或completed状态调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1454,7 +1454,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.stop((err: BusinessError) => {
     if (err) {
       console.error(`Failed to stop.Code:${err.code},message:${err.message}`);
@@ -1469,7 +1469,7 @@ async function  test(){
 
 stop(): Promise\<void>
 
-停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用Promise异步回调。
+停止播放音视频资源，只能在prepared、playing、paused或completed状态调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1500,7 +1500,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.stop().then(() => {
     console.info('Succeeded in stopping');
   }, (err: BusinessError) => {
@@ -1513,7 +1513,7 @@ async function  test(){
 
 reset(callback: AsyncCallback\<void>): void
 
-重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback异步回调。
+重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized、prepared、playing、paused、completed或stopped状态调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1544,7 +1544,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized、prepared、playing、paused、completed或stopped状态后才能调用。
   avPlayer.reset((err: BusinessError) => {
     if (err) {
       console.error(`Failed to reset.Code:${err.code},message:${err.message}`);
@@ -1559,7 +1559,7 @@ async function  test(){
 
 reset(): Promise\<void\>
 
-重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。
+重置播放，将播放器恢复到idle状态并清除已设置的媒体资源，只能在initialized、prepared、playing、paused、completed或stopped状态调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1590,7 +1590,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized、prepared、playing、paused、completed或stopped状态后才能调用。
   avPlayer.reset().then(() => {
     console.info('Succeeded in resetting');
   }, (err: BusinessError) => {
@@ -1693,7 +1693,7 @@ async function  test(){
 
 getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 
-获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback异步回调。
+获取音视频轨道信息，可以在prepared、playing或paused状态调用。获取所有音视频轨道信息，应在数据加载回调后调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1724,7 +1724,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing或paused状态后才能调用。
   avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
     if (error) {
       console.error(`Failed to do getTrackDescription, error:${error}`);
@@ -1739,7 +1739,7 @@ async function  test(){
 
 getTrackDescription(): Promise\<Array\<MediaDescription>>
 
-获取音视频轨道信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。
+获取音视频轨道信息，可以在prepared、playing或paused状态调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1770,7 +1770,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing或paused状态后才能调用。
   avPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
     console.info('Succeeded in getting TrackDescription');
   }).catch((error: BusinessError) => {
@@ -1785,7 +1785,7 @@ ArkTS-Dyn: getSelectedTracks(): Promise\<Array\<number>>
 
 ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
-获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。
+获取已选择的音视频轨道索引，可以在prepared、playing或paused状态调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -1816,7 +1816,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing或paused状态后才能调用。
   avPlayer.getSelectedTracks().then((arrList: Array<number>) => {
     console.info('Succeeded in getting SelectedTracks');
   }).catch((error: BusinessError) => {
@@ -1829,7 +1829,7 @@ async function  test(){
 
 getPlaybackInfo(): Promise\<PlaybackInfo\>
 
-获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。
+获取播放过程信息，可以在prepared、playing或paused状态调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1874,7 +1874,7 @@ ArkTS-Dyn: getPlaybackPosition(): number
 
 ArkTS-Sta: getPlaybackPosition(): int
 
-获取当前播放位置，可以在prepared/playing/paused/completed状态调用。返回值单位为毫秒（ms），适合大多数播放进度查询场景。
+获取当前播放位置，可以在prepared、playing、paused或completed状态调用。返回值单位为毫秒（ms），适合大多数播放进度查询场景。
 
 与getCurrentPresentationTimestamp的区别：本方法返回毫秒精度，getCurrentPresentationTimestamp返回微秒精度。建议：一般播放进度查询使用本方法；需要高精度时间戳时请使用getCurrentPresentationTimestamp。
 
@@ -1907,7 +1907,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.prepare().then(() => {
     console.info('Succeeded in preparing');
     let playbackPosition: number = avPlayer.getPlaybackPosition();
@@ -1970,7 +1970,7 @@ ArkTS-Dyn: selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 ArkTS-Sta: selectTrack(index: int, mode?: SwitchMode): Promise\<void>
 
-使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。可以在prepared/playing/paused状态下调用。使用Promise异步回调。
+使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。可以在prepared、playing或paused状态下调用。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2038,7 +2038,7 @@ ArkTS-Dyn: deselectTrack(index: number): Promise\<void>
 
 ArkTS-Sta: deselectTrack(index: int): Promise\<void>
 
-使用AVPlayer播放多音轨视频时取消指定音视频轨道播放。可以在prepared/playing/paused状态下调用。使用Promise异步回调。
+使用AVPlayer播放多音轨视频时取消指定音视频轨道播放。可以在prepared、playing或paused状态下调用。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -2191,7 +2191,7 @@ ArkTS-Dyn: seek(timeMs: number, mode?:SeekMode): void
 
 ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 
-跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[on('seekDone')](#onseekdone9)事件确认是否生效。
+跳转到指定播放位置，只能在prepared、playing、paused或completed状态调用，可以通过[on('seekDone')](#onseekdone9)事件确认是否生效。
 
 > **注意：**
 >
@@ -2220,7 +2220,7 @@ ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 async function  test(){
   let avPlayer = await media.createAVPlayer();
   let seekTime: number = 1000;
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC);
 }
 ```
@@ -2230,7 +2230,7 @@ async function  test(){
   // SEEK_CONTINUOUS 可以结合Slider的onChange回调方法进行对应处理，当slideMode为Moving时，触发拖动过程的SeekContinuous。
   let avPlayer = await media.createAVPlayer();
   let slideMovingTime: number = 2000;
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.seek(slideMovingTime, media.SeekMode.SEEK_CONTINUOUS);
 
   // 当slideMode为End时，调用seek(-1, media.SeekMode.SEEK_CONTINUOUS)结束seek。
@@ -2242,7 +2242,7 @@ async function  test(){
 
 isSeekContinuousSupported() : boolean
 
-查询媒体源是否支持以SEEK_CONTINUOUS模式[SeekMode](arkts-apis-media-e.md#seekmode8)进行[seek](#seek9)，在prepared/playing/paused/completed状态调用返回实际值，其余状态调用返回false。对于不支持SEEK_CONTINUOUS模式进行seek的设备，返回false。
+查询媒体源是否支持以SEEK_CONTINUOUS模式[SeekMode](arkts-apis-media-e.md#seekmode8)进行[seek](#seek9)，在prepared、playing、paused或completed状态调用返回实际值，其余状态调用返回false。对于不支持SEEK_CONTINUOUS模式进行seek的设备，返回false。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
 
@@ -2263,7 +2263,7 @@ isSeekContinuousSupported() : boolean
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   let isSupported = avPlayer.isSeekContinuousSupported();
 }
 ```
@@ -2394,7 +2394,7 @@ avPlayer.offSeekDone();
 
 setSpeed(speed: PlaybackSpeed): void
 
-设置倍速模式，只能在prepared/playing/paused/completed状态调用，可以通过[on('speedDone')](#onspeeddone9)事件确认是否生效。
+设置倍速模式，只能在prepared、playing、paused或completed状态调用，可以通过[on('speedDone')](#onspeeddone9)事件确认是否生效。
 
 setSpeed使用固定的枚举倍速值，适合标准倍速场景；setPlaybackRate支持任意倍速值且取值范围更大，适合自定义倍速场景。两者功能相同。API版本9-19使用setSpeed；API版本20及以上且需要精确倍速控制，使用setPlaybackRate。
 
@@ -2421,7 +2421,7 @@ setSpeed使用固定的枚举倍速值，适合标准倍速场景；setPlaybackR
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
 }
 ```
@@ -2588,7 +2588,7 @@ ArkTS-Sta: setPlaybackRate(rate: double): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.setPlaybackRate(2.0);
 }
 ```
@@ -2744,7 +2744,7 @@ async function test(){
 
 getLoadedTimeRanges(): Promise\<Array\<Range\>>
 
-获取已加载的时间区间段的列表。可以在prepared/playing/paused/completed状态调用。使用Promise异步回调。
+获取已加载的时间区间段的列表。可以在prepared、playing、paused或completed状态调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2784,7 +2784,7 @@ async function test(){
 
 getSeekableTimeRanges(): Promise\<Array\<Range\>>
 
-获取可跳转的时间区间段的列表。可以在prepared/playing/paused/completed状态调用。使用Promise异步回调。
+获取可跳转的时间区间段的列表。可以在prepared、playing、paused或completed状态调用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2824,7 +2824,7 @@ async function test(){
 
 seekToDefaultPosition(): void
 
-跳转到播放源的默认接入点，只能在prepared/playing/paused/completed状态调用。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。
+跳转到播放源的默认接入点，只能在prepared、playing、paused或completed状态调用。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2864,7 +2864,7 @@ ArkTS-Dyn: setBitrate(bitrate: number): void
 
 ArkTS-Sta: setBitrate(bitrate: int): void
 
-设置比特率，以播放所指定比特率的流媒体资源，当前仅对**HLS/DASH协议网络流**有效。默认情况下，AVPlayer会根据网络连接速度选择合适的比特率。只能在prepared/playing/paused/completed状态调用，可以通过[bitrateDone](#onbitratedone9)事件确认是否生效。
+设置比特率，以播放所指定比特率的流媒体资源，当前仅对**HLS/DASH协议网络流**有效。默认情况下，AVPlayer会根据网络连接速度选择合适的比特率。只能在prepared、playing、paused或completed状态调用，可以通过[bitrateDone](#onbitratedone9)事件确认是否生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -2886,7 +2886,7 @@ ArkTS-Sta: setBitrate(bitrate: int): void
 async function  test(){
   let avPlayer = await media.createAVPlayer();
   let bitrate: number = 96000;
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.setBitrate(bitrate);
 }
 ```
@@ -3225,7 +3225,7 @@ ArkTS-Sta: setLoudnessGain(loudnessGain: double): Promise\<void>
 
 > **说明：**
 >
-> - 当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。
+> - 当播放处于prepared、playing、paused、completed或stopped状态时，可调用该接口。
 > - 调用此接口时，需确保已设置音频渲染信息AVPlayer.audioRendererInfo，audioRendererInfo的usage参数必须是[STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)其中之一。
 > - 该接口不支持高清通路的响度设置。
 > - 音频流的时延模式必须是普通时延。
@@ -3268,7 +3268,7 @@ ArkTS-Dyn: setVolume(volume: number): void
 
 ArkTS-Sta: setVolume(volume: double): void
 
-设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
+设置媒体播放音量，只能在prepared、playing、paused或completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -3674,7 +3674,7 @@ async function test() {
 
   // 3.模拟seek操作。
   let seekTime: number = 1000;
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing、paused或completed状态后才能调用。
   avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC); // 单位为毫秒（ms）。
   isSeeking = true; // 标记正在seek。
 }
@@ -5009,7 +5009,7 @@ async function test(){
       enableSuperResolution: true
   };
   await avPlayer.setPlaybackStrategy(playStrategy);
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized、prepared、playing、paused、completed或stopped状态后才能调用。
   await avPlayer.setSuperResolution(true);
 }
 ```
@@ -5070,7 +5070,7 @@ async function test(){
   };
   await avPlayer.setPlaybackStrategy(playStrategy);
   await avPlayer.setSuperResolution(true);
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized、prepared、playing、paused、completed或stopped状态后才能调用。
   await avPlayer.setVideoWindowSize(1920, 1080);
 }
 ```
@@ -5859,7 +5859,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared、playing或paused状态后才能调用。
   let myTrackId : number;
   let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
   avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
