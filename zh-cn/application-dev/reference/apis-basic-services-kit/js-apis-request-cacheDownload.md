@@ -10,7 +10,7 @@ request部件主要给应用提供上传下载文件、后台传输代理的基�
 
 - request的cacheDownload子组件主要给应用提供应用资源提前缓存的基础能力。
 
-- cacheDownload组件使用HTTP协议进行数据下载，并将数据资源缓存至应用内存或应用沙箱目录的指定文件中。
+- cacheDownload组件使用HTTP和HTTPS协议进行数据下载，并将数据资源缓存至应用内存或应用沙箱目录的指定文件中。
 
 - 这些缓存数据可以被特定的ArkUI组件（例如：Image组件）使用，从而提升资源加载效率。请查看ArkUI组件文档确定组件是否支持该功能。
 
@@ -91,8 +91,8 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称         | 类型       | 只读 | 可选 | 说明                |
 |------------|----------|----|----|-------------------|
-| dnsServers | string[] | 是  | 否  | 下载资源时使用的dns服务器列表。 |
-| ip<sup>23+</sup> | string | 是  | 是  | 下载资源时url的ip地址。当dns解析失败时，ip为undefined。 |
+| dnsServers | string[] | 是  | 否  | 下载资源时使用的DNS服务器列表。 |
+| ip<sup>23+</sup> | string | 是  | 是  | 下载资源时url的IP地址。当DNS解析失败时，IP为undefined。 |
 
 ## PerformanceInfo<sup>20+</sup>
 
@@ -102,9 +102,9 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称               | 类型     | 只读 | 可选 | 说明                            |
 |------------------|--------|----|----|-------------------------------|
-| dnsTime          | number | 是  | 否  | 从启动到dns解析完成所需的时间，单位：毫秒（ms）。   |
-| connectTime      | number | 是  | 否  | 从启动到tcp连接完成所需的时间，单位：毫秒（ms）。   |
-| tlsTime          | number | 是  | 否  | 从启动到tls连接完成所需的时间，单位：毫秒（ms）。   |
+| dnsTime          | number | 是  | 否  | 从启动到DNS解析完成所需的时间，单位：毫秒（ms）。   |
+| connectTime      | number | 是  | 否  | 从启动到TCP连接完成所需的时间，单位：毫秒（ms）。   |
+| tlsTime          | number | 是  | 否  | 从启动到TLS连接完成所需的时间，单位：毫秒（ms）。   |
 | firstSendTime    | number | 是  | 否  | 从启动到开始发送第一个字节所需的时间，单位：毫秒（ms）。 |
 | firstReceiveTime | number | 是  | 否  | 从启动到接收第一个字节所需的时间，单位：毫秒（ms）。   |
 | totalTime        | number | 是  | 否  | 从启动到完成请求所需的时间，单位：毫秒（ms）。      |
@@ -141,7 +141,7 @@ download(url: string, options: CacheDownloadOptions): void
 
 - 目标资源经过HTTP传输自动解压后的大小不能超过20971520B（即20MB），否则不会保存到内存缓存或文件缓存中。
 
-- 在缓存下载数据时，如果在该url下已存在缓存内容，新的缓存内容会覆盖旧缓存内容。
+- 在缓存下载数据时，缓存刷新行为由cacheStrategy决定：使用FORCE（默认）策略时，如果在该url下已存在缓存内容，新的缓存内容会覆盖旧缓存内容；使用LAZY策略时，仅当缓存不存在时才会更新缓存。
 
 - 目标资源在存储到内存缓存或文件缓存中时，依照缓存下载组件的各类型缓存大小上限决定文件是否存储到指定位置，并默认使用“LRU”（最近最少使用）方式替换已有缓存内容。
 
@@ -248,7 +248,7 @@ setMemoryCacheSize(bytes: number): void
 
 设置缓存下载组件能够保存的内存缓存上限。
 
-- 使用该接口调整缓存大小时，默认使用“LRU”（最近最少使用）方式清除多余的已缓存的内存缓存内容。
+- 使用该接口调整缓存大小时，默认使用"LRU"（最近最少使用）方式清除多余的已缓存的内存缓存内容。使用该接口时，若bytes设置为0，将清除所有已缓存的内存缓存内容。
 
 - 该方法为同步方法，不阻塞调用线程。
 
@@ -258,7 +258,7 @@ setMemoryCacheSize(bytes: number): void
 
 | 参数名   | 类型     | 必填 | 说明                                      |
 |-------|--------|----|-----------------------------------------|
-| bytes | number | 是  | 设置的缓存上限。默认值为0B，最大值不超过1073741824B（即1GB）。 |
+| bytes | number | 是  | 设置的缓存上限。默认值为0B，最小值为0，最大值不超过1073741824B（即1GB）。若bytes设置为0，将清除所有已缓存的内存缓存内容。 |
 
 **错误码：**
 
@@ -300,7 +300,7 @@ setFileCacheSize(bytes: number): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 |-------|--------|----|------------------------------------------------------------|
-| bytes | number | 是  | 设置的缓存上限。默认值为104857600B（即100MB），最大值不超过4294967296B（即4GB）。 |
+| bytes | number | 是  | 设置的缓存上限。默认值为104857600B（即100MB），最小值为0，最大值不超过4294967296B（即4GB）。 |
 
 **错误码：**
 
@@ -340,7 +340,7 @@ setDownloadInfoListSize(size: number): void
 
 - 下载信息和url一一对应，每次预下载都会生成一个下载信息，相同url下只会保存最新的下载信息。
 
-- 使用该接口调整列表大小时，size更新增大，列表中原有的信息不变，更新减小，默认使用“LRU”（最近最少使用）方式清除多余的已缓存信息。
+- 使用该接口调整列表大小时，若size增大，列表中原有的信息不变；若size减小，默认使用"LRU"（最近最少使用）方式清除多余的已缓存信息。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -348,7 +348,7 @@ setDownloadInfoListSize(size: number): void
 
 | 参数名  | 类型     | 必填 | 说明                                            |
 |------|--------|----|-----------------------------------------------|
-| size | number | 是  | 设置的下载信息列表大小。取值范围：[0, 8192]，默认为0，表示不会存储任何下载信息。 |
+| size | number | 是  | 设置的下载信息列表大小。取值范围：[0, 8192]，默认为0，表示不会存储任何下载信息。超出取值范围时抛出异常。 |
 
 **示例：**
 
@@ -368,7 +368,7 @@ setDownloadInfoListSize(size: number): void
 
 getDownloadInfo(url: string): DownloadInfo | undefined
 
-基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。
+基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。需先调用[setDownloadInfoListSize](#cachedownloadsetdownloadinfolistsize20)设置列表大小（大于0）后，预下载信息才会被存储到列表中，否则列表默认大小为0，不存储任何下载信息，getDownloadInfo将返回undefined。
 
 - 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo](#downloadinfo20)。
 
@@ -386,7 +386,7 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待查询的url，最大长度为8192字节。 |
+| url | string | 是  | 待查询的url，支持HTTP和HTTPS协议，最大长度为8192字节，超出长度限制时抛出异常。 |
 
 **返回值：**
 
@@ -476,7 +476,7 @@ cacheDownload.clearFileCache();
 
 onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
 
-订阅预下载的完成事件。使用callback异步回调。
+订阅预下载的完成事件。使用callback异步回调。与offDownloadSuccess()方法配合使用，在不再需要接收完成事件时应调用offDownloadSuccess()取消订阅，以避免不必要的回调开销。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -484,8 +484,8 @@ onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待注册回调的url，url字符串的最大长度为8192字节。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数。 |
+| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，url字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
+| callback | Callback&lt;void&gt; | 是 | 下载成功时触发的回调函数，无回调参数。 |
 
 **示例：**
 
@@ -497,10 +497,11 @@ onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
       console.info("Succeeded in getting callback from cacheDownload");
     };
     // 订阅预下载的完成事件，当下载完成时执行回调
-    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
+    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -509,7 +510,7 @@ onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
 
 onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
-订阅预下载的错误事件。使用callback异步回调。
+订阅预下载的错误事件。使用callback异步回调。与offDownloadError()方法配合使用，在不再需要接收错误事件时应调用offDownloadError()取消订阅，以避免不必要的回调开销。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -517,7 +518,7 @@ onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待注册回调的url，URL字符串的最大长度为8192字节。 |
+| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，url字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
 | callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 是 | 回调函数，返回预下载的错误信息。 |
 
 **示例：**
@@ -527,13 +528,14 @@ onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.error(`Error callback from cacheDownload. error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // 订阅预下载的错误事件，当下载错误时执行回调，返回错误信息
-    cacheDownload.onDownloadError("https://www.example.com", errorCallback)
+    cacheDownload.onDownloadError("https://www.example.com", errorCallback);
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -542,7 +544,7 @@ onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
 offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
-取消订阅预下载的完成事件。使用callback异步回调。
+取消订阅预下载的完成事件。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -550,8 +552,8 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待注册回调的url，url字符串的最大长度为8192字节。 |
-| callback | Callback&lt;void&gt; | 否 | 回调函数。若不填该参数，表示url下的所有完成回调函数。 |
+| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，url字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
+| callback | Callback&lt;void&gt; | 否 | 需要取消订阅的回调函数。若不填该参数，表示取消该url下的所有完成回调函数。 |
 
 **示例：**
 
@@ -568,7 +570,8 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
     cacheDownload.offDownloadSuccess("https://www.example.com", successCallback);
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -577,7 +580,7 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
 offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
 
-取消订阅预下载的错误事件。使用callback异步回调。
+取消订阅预下载的错误事件。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -585,8 +588,8 @@ offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
 
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
-| url | string | 是  | 待注册回调的url，url字符串最大长度为8192字节。 |
-| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 否 | 回调函数，返回预下载的错误信息。若不填该参数，表示url下的所有错误回调函数。 |
+| url | string | 是  | 待注册回调的url，支持HTTP和HTTPS协议，url字符串的最大长度为8192字节，超出长度限制时抛出异常。 |
+| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 否 | 需要取消订阅的回调函数。若不填该参数，表示取消该url下的所有错误回调函数。 |
 
 **示例：**
 
@@ -595,7 +598,7 @@ offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.error(`Error callback from cacheDownload. error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // 订阅预下载的错误事件，当下载错误时执行回调，返回错误信息
     cacheDownload.onDownloadError("https://www.example.com", errorCallback);
@@ -603,7 +606,8 @@ offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
     cacheDownload.offDownloadError("https://www.example.com", errorCallback);
     // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
