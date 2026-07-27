@@ -129,7 +129,7 @@ typedef void(*GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEve
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const struct GamePad_ButtonEvent\* buttonEvent | 输出参数，手柄按键事件[GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)。 |
+| const struct GamePad_ButtonEvent* buttonEvent | 输入参数，手柄按键事件[GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md)。 |
 
 ### GamePad_AxisInputMonitorCallback()
 
@@ -149,7 +149,7 @@ typedef void(*GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const struct GamePad_AxisEvent\* axisEvent | 输出参数，手柄轴事件[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)。 |
+| const struct GamePad_AxisEvent* axisEvent | 输入参数，手柄轴事件[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)。 |
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
