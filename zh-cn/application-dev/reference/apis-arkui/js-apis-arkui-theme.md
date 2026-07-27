@@ -107,7 +107,7 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 | 名称                           | 类型                                                 | 只读  | 可选  | 说明         |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
 | colors | [CustomColors](#customcolors) | 否   | 是   | 自定义浅色主题颜色资源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | 否   | 是   | 自定义深色主题颜色资源。<br/>**说明**：如果未设置darkColors，颜色值将与浅色模式下的colors配置相同，并且不会随着颜色模式的变化而变化，除非该颜色是通过dark目录下的资源进行设置的。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | 否   | 是   | 自定义深色主题颜色资源。<br/>**说明**：如果未设置darkColors，则使用浅色模式下的colors配置，并且不会随着系统深浅色模式的切换而变化；如果对应颜色通过dark目录下的资源进行设置，则会优先使用dark目录下的资源。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## CustomColors
 
@@ -149,7 +149,7 @@ ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随
 
 setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
-将用户自定义Theme设置应用级默认主题，以实现应用风格跟随Theme切换。若在页面中使用此接口设置应用级默认主题，需确保该接口在页面build前执行。若在UIAbility中使用此接口设置应用级默认主题，需确保该接口在onWindowStageCreate阶段里windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)接口调用完成的回调函数中执行。详细代码可参考[设置应用内组件自定义主题色](../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
+将用户自定义Theme设置为应用级默认主题，以实现应用风格跟随Theme切换。若在页面中使用此接口设置应用级默认主题，需确保该接口在页面build前执行。若在UIAbility中使用此接口设置应用级默认主题，需确保该接口在onWindowStageCreate阶段里windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)接口调用完成的回调函数中执行。详细代码可参考[设置应用内组件自定义主题色](../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -159,7 +159,7 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
 | 参数名       | 类型                           | 必填 | 说明             |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | 是    | 表示设置的自定义主题风格。 |
+| theme | [CustomTheme](#customtheme)  | 是    | 自定义主题风格对象。 |
 
 ## 示例
 
@@ -171,9 +171,9 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = "#FF707070";
-  backgroundPrimary = "#FF2787D9";
-  brand = "#FFEEAAFF"; // 品牌色
+  fontPrimary = '#FF707070'; // 一级文本字体颜色
+  backgroundPrimary = '#FF2787D9'; // 一级背景颜色
+  brand = '#FFEEAAFF'; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -184,9 +184,9 @@ class PageCustomTheme implements CustomTheme {
   }
 }
 // 创建实例
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
-// 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为BlueColorsTheme。
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
+// 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为blueColorsTheme。
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @Component
@@ -244,11 +244,11 @@ class AppColors implements CustomColors {
   }
 }
 
-@Entry({ routeName: "text" })
+@Entry({ routeName: 'text' })
 @Component
 struct TextPage {
   @State appColors: AppColors = new AppColors(
-    "#ff0000", "#0000ff", "#00ff00", "#ff00ff"
+    '#ff0000', '#0000ff', '#00ff00', '#ff00ff'
   );
   controller: TextClockController = new TextClockController();
   @State accumulateTime: number = 0;
