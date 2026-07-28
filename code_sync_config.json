@@ -43101,7 +43101,7 @@
 					{
 						"end_line":290,
 						"name":"exception_handling_batter",
-						"start_line":278
+						"start_line":271
 					}
 				]
 			}
@@ -43379,9 +43379,9 @@
 						"start_line":20
 					},
 					{
-						"end_line":428,
+						"end_line":429,
 						"name":"ts_no_standalone_this",
-						"start_line":421
+						"start_line":422
 					},
 					{
 						"end_line":438,
