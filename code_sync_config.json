@@ -64802,5 +64802,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/usb/usb-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"head",
+						"start_line":16
+					},
+					{
+						"end_line":101,
+						"name":"getDevices",
+						"start_line":32
+					},
+					{
+						"end_line":121,
+						"name":"requestRight",
+						"start_line":105
+					},
+					{
+						"end_line":159,
+						"name":"connectDevice",
+						"start_line":125
+					},
+					{
+						"end_line":208,
+						"name":"bulkTransfer",
+						"start_line":163
+					},
+					{
+						"end_line":238,
+						"name":"controlTransfer",
+						"start_line":212
+					},
+					{
+						"end_line":503,
+						"name":"closePipe",
+						"start_line":483
+					}
+				]
+			}
+		]
 	}
 ]
