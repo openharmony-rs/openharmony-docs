@@ -70,6 +70,8 @@
 
 - 人脸+指纹+自定义导航按键<sup>18+</sup>
 
+<!--RP3--><!--RP3End-->
+
 ## 开发步骤
 
 1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
