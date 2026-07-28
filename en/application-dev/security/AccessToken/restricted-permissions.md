@@ -1500,7 +1500,7 @@ Allows an application to generate, use, and delete secure element keys.
 
 Allows an application to be set as the user's default browser.
 
-<!--RP101--><!--RP101End-->
+<!--RP103--><!--RP103End-->
 
 **Permission level**: system_basic
 
