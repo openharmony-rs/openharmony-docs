@@ -7,11 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API版本22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[PIN码认证介绍及规格](huks-extension-ability-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
+1. 通过[获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)中的证书管理途径获取resourceId，并通过[打开资源](huks-open-close-resource-arkts.md#打开资源)。
 
 2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
 
