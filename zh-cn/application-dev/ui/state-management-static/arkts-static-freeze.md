@@ -756,11 +756,6 @@ class TestDataSource extends BasicDataSource<string> {
 3. 点击`change desc`，触发`Page`的成员变量`desc`的变化：
     - `desc`是[\@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state-static.md)装饰的，其变化会通知给其子组件`ChildComponent`[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link-static.md)装饰的`desc`。
     - 非可视区域内的`ChildComponent`是inactive状态，且开启了组件冻结，所以这次变化只触发可视区域内的15个节点的`@Watch('descChange')`回调，并只刷新对应可视区域内的15个节点。LazyForEach和复用池中的节点并不会刷新，也不会触发\@Watch回调。
-    
-
-图示如下：
-
-![freeze](../state-management/figures/freezeResuable.png)
 
 ## 组件混用
 
