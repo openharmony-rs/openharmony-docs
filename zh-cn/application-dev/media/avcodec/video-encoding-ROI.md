@@ -486,11 +486,11 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
 6. 在编码输入Buffer回调中配置ROI信息。
 
-   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调将Buffer入队。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
+   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调，回调中将Buffer入队供消费线程处理。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
 
-   `OnNeedInputBuffer`回调将Buffer入队供消费线程处理：
+   `OnNeedInputBuffer`回调将Buffer入队,供消费线程处理过程如下：
 
-   <!-- @[roi_buffer_mode_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
+   <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
    
    ``` C++
    void CodecCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
@@ -505,7 +505,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    }
    ```
 
-   Buffer模式消费线程从队列取出Buffer并调用`FillBufferModeInput`填充帧数据和ROI：
+   Buffer模式消费线程从队列取出Buffer并调用`FillBufferModeInput`填充帧数据和ROI示例如下：
 
    <!-- @[roi_buffer_mode_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
    
@@ -513,18 +513,21 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    void Recorder::VideoEncBufferInputThread()
    {
        while (isStarted_) {
+           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
            std::unique_lock<std::mutex> lock(encContext_->inputMutex);
-           encContext_->inputCond.wait_for(lock, std::chrono::seconds(THREAD_WAIT_TIMEOUT_SEC),
+           bool condRet = encContext_->inputCond.wait_for(
+               lock, std::chrono::seconds(THREAD_WAIT_TIMEOUT_SEC),
                [this]() { return !isStarted_ || !encContext_->inputBufferInfoQueue.empty(); });
-           if (!isStarted_) { break; }
-           if (encContext_->inputBufferInfoQueue.empty()) { continue; }
-
+           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
+           CHECK_AND_CONTINUE_LOG(!encContext_->inputBufferInfoQueue.empty(),
+                "Buffer queue is empty, continue, cond ret: %{public}d", condRet);
+   
            CodecBufferInfo bufferInfo = encContext_->inputBufferInfoQueue.front();
            encContext_->inputBufferInfoQueue.pop();
            lock.unlock();
-
+   
            OH_AVBuffer *buffer = reinterpret_cast<OH_AVBuffer *>(bufferInfo.buffer);
-           FillBufferModeInput(videoEncoder_->GetCodec(), bufferInfo.bufferIndex, buffer, encContext_);
+           FillBufferModeInput(bufferInfo.bufferIndex, buffer);
        }
    }
    ```
