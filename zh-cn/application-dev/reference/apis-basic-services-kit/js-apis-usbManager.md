@@ -1085,7 +1085,7 @@ async function usbCancelTransfer() {
     usbManager.usbCancelTransfer(transferParams);
     console.info('USB transfer request submitted.');
   } catch (error) {
-    console.error('USB transfer failed:', error);
+    console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
   }
   ret = usbManager.releaseInterface(devicePipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -1497,7 +1497,7 @@ async function resetUsbDevice() {
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err: BusinessError) {
+  } catch (err) {
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicePipe);
