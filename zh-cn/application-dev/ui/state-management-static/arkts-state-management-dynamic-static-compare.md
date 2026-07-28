@@ -22,43 +22,46 @@
 例如：
 
 <!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->  
-  ```typescript
-  'use static'
 
-  import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
+``` TypeScript
+import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
 
-  @Builder
-  function textBuilder(p: { text: string }) {
-    Text(p.text)
-  }
+interface textParam {
+  text: string
+}
 
-  @Builder
-  function buttonBuilder(p: { text: string }) {
-    Button(p.text)
-  }
+@Builder
+function textBuilder(p: textParam) {
+  Text(p.text)
+}
 
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local useText: boolean = true;
-    @Local message: string = 'init';
+@Builder
+function buttonBuilder(p: textParam) {
+  Button(p.text)
+}
 
-    build() {
-      Column() {
-        // 直接通过条件判断切换@Builder
-        if (this.useText) {
-          textBuilder({ text: this.message })
-        } else {
-          buttonBuilder({ text: this.message })
-        }
-        Button('Switch Builder')
-          .onClick(() => {
-            this.useText = !this.useText;
-          })
+@Entry
+@ComponentV2
+struct Index {
+  @Local useText: boolean = true;
+  @Local message: string = 'init';
+
+  build() {
+    Column() {
+      // 直接通过条件判断切换@Builder
+      if (this.useText) {
+        textBuilder({ text: this.message })
+      } else {
+        buttonBuilder({ text: this.message })
       }
+      Button('Switch Builder')
+        .onClick(() => {
+          this.useText = !this.useText;
+        })
     }
   }
-  ```
+}
+```
 
 ## 双向绑定语法差异
 
