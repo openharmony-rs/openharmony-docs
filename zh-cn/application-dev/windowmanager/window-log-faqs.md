@@ -152,7 +152,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | Focusable | 是否可获焦      | true：表示窗口可以获焦；false：表示窗口不可获焦。                                                                                                       |
 | DecoStatus | 装饰状态       | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。                                                                                                |
 | IsPrivacyMode | 是否隐私模式     | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。                                |
-| isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容。                                                                                            |
+| isSnapshotSkip | 截屏时是否跳过该窗口 | 截屏跳过标识。0：表示截屏时不跳过该窗口（显示窗口内容）；1：表示截屏时跳过该窗口（不显示窗口内容）。 |
 | WindowRect | 窗口矩形区域     | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。                                              |
 | TouchHotAreas | 触摸热区       | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。                                                                                      |
 <!--RP1End-->
@@ -203,7 +203,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
    <!--Del-->
    - VisibilityState：确认窗口是否显示
    <!--DelEnd-->
-   - ZOrder：确认层级关系
+   - ZOrd：确认层级关系
    - WindowRect：确认窗口大小和位置
 
 > **说明：**
