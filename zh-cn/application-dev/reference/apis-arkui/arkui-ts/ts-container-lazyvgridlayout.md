@@ -276,6 +276,8 @@ MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源
 
 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -432,6 +434,166 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, WaterFlow, LazyVGridLayout, LazyForEach, LengthMetrics, Color, TextAlign } from '@ohos.arkui.component';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutSample1 {
+  private arr1:MyDataSource<number> = new MyDataSource<number>();
+  private arr2:MyDataSource<number> = new MyDataSource<number>();
+  build() {
+    Column() {
+      WaterFlow() {
+        // 第一个LazyVGridLayout：单列布局
+        LazyVGridLayout() {
+          LazyForEach(this.arr1, (item:number, index:int)=>{
+            Text('item' + item.toString())
+              .height(64)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          }, (item: number, index: int): string => item.toString())
+        }
+        .columnsTemplate('1fr') // 单列布局
+        .rowsGap(LengthMetrics.vp(10)) // 行间距10vp
+        // 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
+        .onVisibleIndexesChange((start: int, end: int): void => {
+          console.info('visible indexes: start: ' + start + ', end: ' + end);
+        })
+
+        // 第二个LazyVGridLayout：双列布局
+        LazyVGridLayout() {
+          LazyForEach(this.arr2, (item:number, index:int)=>{
+            Text('item' + item.toString())
+              .height(128)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          }, (item: number, index: int): string => item.toString())
+        }
+        .columnsTemplate('1fr 1fr') // 双列布局，两列等宽
+        .rowsGap(LengthMetrics.vp(10)) // 行间距10vp
+        .columnsGap(LengthMetrics.vp(10)) // 列间距10vp
+      }.padding(10)
+      .rowsGap(10)
+    }
+    .width('100%').height('100%')
+    .backgroundColor('#DCDCDC')
+  }
+
+  // 初始化数据源
+  aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.arr1.pushData(i);
+    }
+    for (let i = 0; i < 100; i++) {
+      this.arr2.pushData(i);
+    }
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+// MyDataSource.ets
+import { IDataSource, DataChangeListener, DataOperation } from '@ohos.arkui.component';
+
+export class BasicDataSource<T> implements IDataSource<T> {
+  private listeners: Array<DataChangeListener> = [];
+  protected dataArray: Array<T> = [];
+
+  public totalCount(): int {
+    return this.dataArray.length;
+  }
+
+  public getData(index: int): T {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  notifyDataAdd(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  notifyDataChange(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  notifyDataMove(from: int, to: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  notifyDatasetChange(operations: Array<DataOperation>): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    })
+  }
+}
+
+export class MyDataSource<T> extends BasicDataSource<T> {
+  public shiftData(): void {
+    this.dataArray.shift();
+    this.notifyDataDelete(0);
+  }
+  public unshiftData(data: T): void {
+    this.dataArray.unshift(data);
+    this.notifyDataAdd(0);
+  }
+  public pushData(data: T): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+  public popData(): void {
+    this.dataArray.pop();
+    this.notifyDataDelete(this.dataArray.length);
+  }
+  public clearData(): void {
+    this.dataArray = new Array<T>();
+    this.notifyDataReload();
+  }
+}
+```
+
 ![](figures/image-lazyvgridlayout1.gif)
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
@@ -439,6 +601,8 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 该示例通过[WaterFlow](ts-container-waterflow.md)嵌套LazyVGridLayout，并通过[header](#header)、[footer](#footer)、[sticky](#sticky)实现网格顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
 
 从API版本26.0.0开始，新增支持header、footer和sticky属性。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -512,6 +676,81 @@ struct LazyVGridLayoutStickyDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, WaterFlow, LazyVGridLayout, LazyForEach, LengthMetrics, Color, FlexAlign, StickyStyle, TextAlign, Builder } from '@ohos.arkui.component';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutStickyDemo {
+  private arr:MyDataSource<number> = new MyDataSource<number>();
+
+  // 构建头部组件
+  @Builder
+  HeaderBuilder() {
+    Column() {
+      Text('Header')
+        .fontSize(16)
+    }
+    .width('100%')
+    .height(64)
+    .borderRadius(5)
+    .backgroundColor(Color.White)
+    .justifyContent(FlexAlign.Center)
+  }
+
+  @Builder
+  FooterBuilder() {
+    Column() {
+      Text('Footer')
+        .fontSize(16)
+    }
+    .width('100%')
+    .height(64)
+    .borderRadius(5)
+    .backgroundColor(Color.White)
+    .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Column() {
+      WaterFlow() {
+        LazyVGridLayout() {
+          LazyForEach(this.arr, (item:number, index:int)=>{
+            Text('item' + item.toString())
+              .height(128)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          }, (item: number, index: int): string => item.toString())
+        }
+        .columnsTemplate('1fr 1fr')
+        .rowsGap(LengthMetrics.vp(10))
+        .columnsGap(LengthMetrics.vp(10))
+        .header(this.HeaderBuilder)
+        .footer(this.FooterBuilder)
+        // 设置头部和尾部同时吸附
+        .sticky(StickyStyle.BOTH)
+      }.padding(10)
+      .rowsGap(10)
+    }
+    .width('100%').height('100%')
+    .backgroundColor('#DCDCDC')
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.arr.pushData(i);
+    }
+  }
+}
+```
 ![](figures/scroll_lazyvgridlayout_header_footer.gif)
 
 ### 示例3（设置自适应列数）
@@ -519,6 +758,8 @@ struct LazyVGridLayoutStickyDemo {
 该示例通过设置[columnsTemplate](#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
 
 从API version 19开始，新增[columnsTemplate](#columnstemplate)接口。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -643,6 +884,136 @@ struct LazyVGridLayoutColumnsTemplateDemo {
     .width('100%')
     .height('100%')
     .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, Scroll, LazyVGridLayout, LazyForEach, LengthMetrics, ScrollDirection, HorizontalAlign, FontWeight, TextAlign, Padding, BorderOptions, Builder } from '@ohos.arkui.component';
+import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutColumnsTemplateDemo {
+  private autoFillData: MyDataSource<number> = new MyDataSource<number>();
+  private autoFitData: MyDataSource<number> = new MyDataSource<number>();
+  private autoStretchData: MyDataSource<number> = new MyDataSource<number>();
+
+  aboutToAppear(): void {
+    // 初始化固定数量的数据，不进行滚动触底加载
+    for (let i = 0; i < 12; i++) {
+      this.autoFillData.pushData(i);
+      this.autoFitData.pushData(i);
+      this.autoStretchData.pushData(i);
+    }
+  }
+
+  @Builder
+  ModeTitle(title: string, description: string) {
+    Column() {
+      Text(title)
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+      Text(description)
+        .fontSize(12)
+        .fontColor('#667085')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 } as Padding)
+  }
+
+  @Builder
+  AutoFillHeader() {
+    this.ModeTitle('auto-fill', '固定列宽为96vp，自动计算列数，剩余空间保留在行尾')
+  }
+
+  @Builder
+  AutoFitHeader() {
+    this.ModeTitle('auto-fit', '以96vp为最小列宽，剩余空间均分到每一列，列宽会被拉伸')
+  }
+
+  @Builder
+  AutoStretchHeader() {
+    this.ModeTitle('auto-stretch', '固定列宽为96vp，剩余空间均分到列间距中，列间距会被拉伸')
+  }
+
+  @Builder
+  GridItemBuilder(item: number, backgroundColor: string) {
+    Text(item.toString())
+      .height(56)
+      .width('100%')
+      .borderRadius(6)
+      .backgroundColor(backgroundColor)
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          // auto-fill：固定列宽为96vp，根据可用宽度自动计算列数
+          LazyVGridLayout() {
+            LazyForEach(this.autoFillData, (item: number, index: int) => {
+              this.GridItemBuilder(item, '#CDE7FF')
+            }, (item: number, index: int): string => item.toString())
+          }
+          .columnsTemplate('repeat(auto-fill, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoFillHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' } as BorderOptions)
+          .borderRadius(8)
+
+          // auto-fit：以96vp为最小列宽，剩余空间均分到每一列
+          LazyVGridLayout() {
+            LazyForEach(this.autoFitData, (item: number, index: int) => {
+              this.GridItemBuilder(item, '#D8F5D0')
+            }, (item: number, index: int): string => item.toString())
+          }
+          .columnsTemplate('repeat(auto-fit, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoFitHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' } as BorderOptions)
+          .borderRadius(8)
+
+          // auto-stretch：固定列宽为96vp，剩余空间均分到列间距中
+          LazyVGridLayout() {
+            LazyForEach(this.autoStretchData, (item: number, index: int) => {
+              this.GridItemBuilder(item, '#FFE6A8')
+            }, (item: number, index: int): string => item.toString())
+          }
+          .columnsTemplate('repeat(auto-stretch, 96)')
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.AutoStretchHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' } as BorderOptions)
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 } as Padding)
   }
 }
 ```

@@ -994,6 +994,8 @@ WaterFlowDataSource实现了[LazyForEach](../../../ui/rendering-control/arkts-re
 
 当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知[DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener)，例如调用[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)或[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // WaterFlowDataSource.ets
@@ -1284,12 +1286,310 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// WaterFlowDataSource.ets
+
+import { IDataSource, DataChangeListener, DataOperation } from '@ohos.arkui.component';
+
+// 实现IDataSource接口的对象，用于瀑布流组件加载数据
+export class WaterFlowDataSource implements IDataSource<number> {
+  private dataArray: Array<number> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor() {
+    for (let i = 0; i < 100; i++) {
+      this.dataArray.push(i);
+    }
+  }
+
+  // 获取索引对应的数据
+  public getData(index: int): number {
+    return this.dataArray[index];
+  }
+
+  // 通知控制器数据重新加载
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知控制器数据增加
+  notifyDataAdd(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知控制器数据变化
+  notifyDataChange(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知控制器数据删除
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: int, to: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 通知控制器数据批量修改
+  notifyDatasetChange(operations: Array<DataOperation>): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    })
+  }
+
+  // 获取数据总数
+  public totalCount(): int {
+    return this.dataArray.length;
+  }
+
+  // 注册改变数据的控制器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销改变数据的控制器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 增加数据
+  public add1stItem(): void {
+    this.dataArray.splice(0, 0, this.dataArray.length);
+    this.notifyDataAdd(0);
+  }
+
+  // 在数据尾部增加一个元素
+  public addLastItem(): void {
+    this.dataArray.splice(this.dataArray.length, 0, this.dataArray.length);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+
+  // 在指定索引位置增加一个元素
+  public addItem(index: int): void {
+    this.dataArray.splice(index, 0, this.dataArray.length);
+    this.notifyDataAdd(index);
+  }
+
+  // 删除第一个元素
+  public delete1stItem(): void {
+    this.dataArray.splice(0, 1);
+    this.notifyDataDelete(0);
+  }
+
+  // 删除第二个元素
+  public delete2ndItem(): void {
+    this.dataArray.splice(1, 1);
+    this.notifyDataDelete(1);
+  }
+
+  // 删除最后一个元素
+  public deleteLastItem(): void {
+    this.dataArray.splice(-1, 1);
+    this.notifyDataDelete(this.dataArray.length);
+  }
+
+  // 在指定索引位置删除一个元素
+  public deleteItem(index: int): void {
+    this.dataArray.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  // 重新加载数据
+  public reload(): void {
+    this.dataArray.splice(1, 1);
+    this.dataArray.splice(3, 2);
+    this.notifyDataReload();
+  }
+
+  // 在数据尾部增加count个元素
+  public addNewItems(count: number): void {
+    let len = this.dataArray.length;
+    for (let i = 0; i < count; i++) {
+      this.dataArray.push(this.dataArray[len - 1] + i + 1);
+      this.notifyDataAdd(this.dataArray.length - 1);
+    }
+  }
+
+  // 刷新所有元素
+  public refreshItems(): void {
+    let newDataArray: Array<number> = [];
+    for (let i = 0; i < 100; i++) {
+      newDataArray.push(this.dataArray[0] + i + 1000);
+    }
+    this.dataArray = newDataArray;
+    this.notifyDataReload();
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, Image, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, Margin, ConstraintSizeOptions, ScrollState, Scroller, Alignment, ImageFit, Color, OnScrollFrameBeginHandlerResult, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+enum FooterState {
+  Loading = 0,
+  End = 1
+}
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State footerState: FooterState = FooterState.Loading;
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  @Builder
+  itemFoot() {
+    // 注意：不要直接用IfElse节点作为footer的根节点
+    // 必须在外面使用(Column/Row/Stack等)容器包裹，确保布局正确
+    Column() {
+      if (this.footerState == FooterState.Loading) {
+        Text(`加载中...`)
+          .fontSize(10)
+          .backgroundColor(Color.Red)
+          .width(50)
+          .height(50)
+          .align(Alignment.Center)
+          .margin({ top: 2 } as Margin)
+      } else if (this.footerState == FooterState.End) {
+        Text(`到底啦...`)
+          .fontSize(10)
+          .backgroundColor(Color.Red)
+          .width(50)
+          .height(50)
+          .align(Alignment.Center)
+          .margin({ top: 2 } as Margin)
+      } else {
+        Text(`Footer`)
+          .fontSize(10)
+          .backgroundColor(Color.Red)
+          .width(50)
+          .height(50)
+          .align(Alignment.Center)
+          .margin({ top: 2 } as Margin)
+      }
+    }
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      WaterFlow({ footer: this.itemFoot } as WaterFlowOptions) {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+              // 注意：需要确保对应的jpg文件存在才会正常显示
+              Image('res/waterFlowTest(' + item % 5 + ').jpg')
+                .objectFit(ImageFit.Fill)
+                .width('100%')
+                .layoutWeight(1)
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % this.colors.length])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')    // 设置2列等宽布局
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('100%')
+      .itemConstraintSize({ minWidth: 80, maxWidth: 180, minHeight: 80, maxHeight: 180 } as ConstraintSizeOptions)
+      // 触底加载数据：滚动到底部时触发分页加载
+      .onReachEnd((): void => {
+        console.info('onReachEnd')
+
+        // 模拟分页加载：当数据超过200条时停止加载
+        if (this.dataSource.totalCount() > 200) {
+          this.footerState = FooterState.End;
+          return;
+        }
+        setTimeout((): void => {
+          for (let i = 0; i < 100; i++) {
+            this.dataSource.addLastItem();
+          }
+        }, 1000)
+      })
+      .onReachStart((): void => {
+        // 滚动到顶部时触发
+        console.info('waterFlow reach start');
+      })
+      .onScrollStart((): void => {
+        // 开始滚动时触发
+        console.info('waterFlow scroll start');
+      })
+      .onScrollStop((): void => {
+        // 停止滚动时触发
+        console.info('waterFlow scroll stop');
+      })
+      .onScrollFrameBegin((offset: double, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+        // 滚动帧开始时触发：可以控制滚动行为
+        // offset：滚动偏移量，state：滚动状态
+        console.info('waterFlow scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+        return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;  // 返回开发者期望的实际滚动偏移量
+      })
+    }
+  }
+}
+```
+
 ![zh-cn_image_WaterFlow.gif](figures/waterflow-perf-demo.gif)
 
 ### 示例2（自动计算列数）
 该示例通过auto-fill实现了自动计算列数的效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1356,6 +1656,75 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, Image, WaterFlow, FlowItem, LazyForEach, ColumnOptions, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+              // 存在对应的jpg文件才会显示图片
+              Image('res/waterFlowTest(' + item % 5 + ').jpg')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % this.colors.length])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      // auto-fill自动计算列数
+      // 'repeat(auto-fill,80)' 表示：根据容器宽度自动计算能放下多少个80px宽的列
+      // 例如：容器宽度400px，则自动计算为5列（400÷80=5）
+      .columnsTemplate('repeat(auto-fill,80)')
+      .columnsGap(10)
+      .rowsGap(5)
+      .padding({ left: 5 } as Padding)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
 ![waterflow_auto-fill.png](figures/waterflow_auto-fill.png)
 
 
@@ -1365,6 +1734,8 @@ struct WaterFlowDemo {
 如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1424,7 +1795,7 @@ struct WaterFlowDemo {
     rowsGap: 10,
     margin: this.sectionMargin,
     // 回调函数：动态设置每个item的高度
-    onGetItemMainSizeByIndex: (index: number) => {
+    onGetItemMainSizeByIndex: (index: int) => {
       return this.itemHeightArray[index % 100];
     }
   };
@@ -1434,7 +1805,7 @@ struct WaterFlowDemo {
     itemsCount: 2,                     // 该分组包含2个FlowItem
     crossCount: 2,                     // 使用2列布局
     // 回调函数：固定高度100px
-    onGetItemMainSizeByIndex: (index: number) => {
+    onGetItemMainSizeByIndex: (index: int) => {
       return 100;
     }
   };
@@ -1444,7 +1815,7 @@ struct WaterFlowDemo {
     itemsCount: 20,                    // 该分组包含20个FlowItem
     crossCount: 2,                     // 使用2列布局
     // 回调函数：使用随机高度
-    onGetItemMainSizeByIndex: (index: number) => {
+    onGetItemMainSizeByIndex: (index: int) => {
       return this.itemHeightArray[index % 100];
     }
   };
@@ -1504,7 +1875,7 @@ struct WaterFlowDemo {
             let newSection: SectionOptions = {
               itemsCount: totalCount,
               crossCount: 2,
-              onGetItemMainSizeByIndex: (index: number) => {
+              onGetItemMainSizeByIndex: (index: int) => {
                 return this.itemHeightArray[index % 100];
               }
             };
@@ -1614,12 +1985,270 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Reusable, Column, Row, Image, Button, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, Margin, SectionOptions, WaterFlowSections, Alignment, ImageFit, Scroller, OverlayOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+interface ReusableFlowItemParams {
+  item: number;
+}
+
+// 可复用组件：优化性能，减少组件创建销毁开销
+@Reusable
+@Component
+struct ReusableFlowItem {
+  @State item: number = 0;
+
+  // 组件复用生命周期：从复用缓存中取出时调用
+  // 用于更新组件状态，显示新的内容
+  aboutToReuse(params: ReusableFlowItemParams) {
+    this.item = params.item;
+    console.info('Reuse item:' + this.item);
+  }
+
+  // 组件生命周期：初始化尺寸数组和分组配置
+  aboutToAppear(): void {
+    console.info('new item:' + this.item);
+  }
+
+  build() {
+    Column() {
+      // 注意：需要确保对应的jpg文件存在才会正常显示
+      Image('res/waterFlowTest(' + this.item % 5 + ').jpg')
+        .overlay('N' + this.item, { align: Alignment.Top } as OverlayOptions)
+        .objectFit(ImageFit.Fill)
+        .width('100%')
+        .layoutWeight(1)
+    }
+  }
+}
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  dataCount: int = this.dataSource.totalCount();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+  // 分组管理：WaterFlow的核心特性，支持不同区域使用不同列数
+  @State sections: WaterFlowSections = new WaterFlowSections();
+  // 分组边距配置：统一的外边距设置
+  sectionMargin: Margin = { top: 10, left: 5, bottom: 10, right: 5 } as Margin;
+
+  oneColumnSection: SectionOptions = {
+    itemsCount: 4,                     // 该分组包含4个FlowItem
+    crossCount: 1,                     // 使用1列布局
+    columnsGap: '5vp',
+    rowsGap: 10,
+    margin: this.sectionMargin,
+    // 回调函数：动态设置每个item的高度
+    onGetItemMainSizeByIndex: (index: int): number => {
+      return this.itemHeightArray[index % 100];
+    }
+  };
+
+  // 第二种分组：双列布局，适合展示列表内容
+  twoColumnSection: SectionOptions = {
+    itemsCount: 2,                     // 该分组包含2个FlowItem
+    crossCount: 2,                     // 使用2列布局
+    // 回调函数：固定高度100px
+    onGetItemMainSizeByIndex: (index: int): number => {
+      return 100;
+    }
+  };
+
+  // 最后一个分组：用于处理剩余数据
+  lastSection: SectionOptions = {
+    itemsCount: 20,                    // 该分组包含20个FlowItem
+    crossCount: 2,                     // 使用2列布局
+    // 回调函数：使用随机高度
+    onGetItemMainSizeByIndex: (index: int): number => {
+      return this.itemHeightArray[index % 100];
+    }
+  };
+
+  // 计算FlowItem高度
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的高度数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：初始化尺寸数组和分组信息
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+
+    // 初始化瀑布流分组信息：交替使用单列和双列布局
+    let sectionOptions: SectionOptions[] = [];
+    let count = 0;                     // 已分配的FlowItem数量计数
+    let oneOrTwo = 0;                  // 用于交替选择分组类型
+
+    while (count < this.dataCount) {
+      // 剩余数据不足20个时，使用最后一个分组处理
+      if (this.dataCount - count < 20) {
+        this.lastSection.itemsCount = this.dataCount - count;
+        sectionOptions.push(this.lastSection);
+        break;
+      }
+
+      // 交替使用单列和双列布局
+      if (oneOrTwo++ % 2 == 0) {
+        sectionOptions.push(this.oneColumnSection);
+        count += this.oneColumnSection.itemsCount;
+      } else {
+        sectionOptions.push(this.twoColumnSection);
+        count += this.twoColumnSection.itemsCount;
+      }
+    }
+
+    // 将配置好的分组添加到WaterFlow中
+    this.sections.splice(0, 0, sectionOptions);
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      Row() {
+        Button('splice')
+          .height('5%')
+          .onClick((): void => {
+            // 重要：必须保证LazyForEach中数据数量和新分组itemsCount累计总数保持一致
+            let totalCount: int = this.dataSource.totalCount();
+            let newSection: SectionOptions = {
+              itemsCount: totalCount,
+              crossCount: 2,
+              onGetItemMainSizeByIndex: (index: int): number => {
+                return this.itemHeightArray[index % 100];
+              }
+            };
+            let oldLength: int = this.sections.length();
+            this.sections.splice(0, oldLength, [newSection]);  // 替换所有分组
+          })
+          .margin({ top: 10, left: 20 } as Margin)
+
+        Button('update')
+          .height('5%')
+          .onClick((): void => {
+            // 在第一个分组中增加4个FlowItem
+            // 重要：必须保证数据源和分组itemsCount同步更新
+            const sections: Array<SectionOptions> = this.sections.values();
+            let newSection: SectionOptions = sections[0];
+
+            // 先在数据源中添加4个新数据
+            this.dataSource.addItem(this.oneColumnSection.itemsCount);
+            this.dataSource.addItem(this.oneColumnSection.itemsCount + 1);
+            this.dataSource.addItem(this.oneColumnSection.itemsCount + 2);
+            this.dataSource.addItem(this.oneColumnSection.itemsCount + 3);
+
+            // 然后更新分组的itemsCount
+            newSection.itemsCount += 4;
+            const result: boolean = this.sections.update(0, newSection);
+            console.info('update:' + result);
+          })
+          .margin({ top: 10, left: 20 } as Margin)
+      }.margin({ bottom: 20 } as Margin)
+
+      Row() {
+        Button('delete')
+          .height('5%')
+          .onClick((): void => {
+            // 在第一个分组中减少4个FlowItem
+            // 重要：必须保证数据源和分组itemsCount同步更新
+            const sections: Array<SectionOptions> = this.sections.values();
+            let newSection: SectionOptions = sections[0];
+
+            // 检查是否有足够的item可以删除
+            if (newSection.itemsCount < 4) {
+              return;
+            }
+
+            // 先从数据源中删除4条数据
+            this.dataSource.deleteItem(this.oneColumnSection.itemsCount - 1);
+            this.dataSource.deleteItem(this.oneColumnSection.itemsCount - 2);
+            this.dataSource.deleteItem(this.oneColumnSection.itemsCount - 3);
+            this.dataSource.deleteItem(this.oneColumnSection.itemsCount - 4);
+
+            // 更新分组的itemsCount
+            newSection.itemsCount -= 4;
+            this.sections.update(0, newSection);
+          })
+          .margin({ top: 10, left: 20 } as Margin)
+
+        Button('values')
+          .height('5%')
+          .onClick((): void => {
+            const sections: Array<SectionOptions> = this.sections.values();
+            for (const value of sections) {
+              console.info(JSON.stringify(value));
+            }
+            console.info('count:' + this.sections.length());
+          })
+          .margin({ top: 10, left: 20 } as Margin)
+      }
+
+      WaterFlow({ scroller: this.scroller, sections: this.sections } as WaterFlowOptions) {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            // 使用可复用组件，提升性能
+            ReusableFlowItem({ item: item })
+          }
+          .width('100%')
+          // 注意：同时设置onGetItemMainSizeByIndex和height属性时，
+          // 主轴大小以onGetItemMainSizeByIndex返回结果为准
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % this.colors.length])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('100%')
+      .layoutWeight(1)
+      .onScrollIndex((first: int, last: int): void => {
+        // 滚动监听：即将触底时提前加载更多数据
+        if (last + 20 >= this.dataSource.totalCount()) {
+          // 添加100个新数据到数据源
+          for (let i = 0; i < 100; i++) {
+            this.dataSource.addLastItem();
+          }
+
+          // 重要：更新数据源后必须同步更新sections
+          // 修改最后一个section的FlowItem数量
+          const sections: Array<SectionOptions> = this.sections.values();
+          let newSection: SectionOptions = sections[this.sections.length() - 1];
+          newSection.itemsCount += 100;
+          this.sections.update(-1, newSection);  // -1表示最后一个分组
+        }
+      })
+    }
+  }
+}
+```
+
 ![waterflowSections.png](figures/waterflowSections.png)
 
 ### 示例4（双指缩放改变列数）
 该示例通过[priorityGesture](ts-gesture-settings.md#prioritygesture)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1814,12 +2443,216 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Reusable, Column, Row, Text, Image, Stack, WaterFlow, FlowItem, LazyForEach, ColumnOptions, Margin, ScaleOptions, Alignment, ImageFit, GestureEvent, PinchGesture } from '@ohos.arkui.component';
+import { State, AppStorage } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+interface ReusableFlowItemParams {
+  item: number;
+}
+
+// 可复用组件：优化性能，减少组件创建销毁开销
+@Reusable
+@Component
+struct ReusableFlowItem {
+  @State item: number = 0;
+
+  // 从复用缓存中加入到组件树之前调用，可在此处更新组件的状态变量以展示正确的内容
+  aboutToReuse(params: ReusableFlowItemParams) {
+    this.item = params.item;
+  }
+
+  build() {
+    Column() {
+      Text('N' + this.item).fontSize(12).height('16')
+      // 注意：需要确保对应的jpg文件存在才会正常显示
+      Image('res/waterFlow(' + this.item % 5 + ').jpg')
+        .objectFit(ImageFit.Fill)
+        .width('100%')
+        .layoutWeight(1)
+    }
+  }
+}
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+  @State columns: int = 2;
+  @State waterFlowScale: number = 1;
+  @State imageScale: number = 1;
+  @State waterFlowOpacity: number = 1;
+  @State waterFlowSnapshot: image.PixelMap | undefined = undefined;
+  private columnChanged: boolean = false;
+  private oldColumn: int = this.columns;
+  private pinchTime: number = 0;
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：初始化数据和恢复上次的列数设置
+  aboutToAppear(): void {
+    // 读取上次最后切换到的列数
+    let lastCount = AppStorage.get<int>('columnsCount');
+    if (lastCount != undefined) {
+      this.columns = lastCount!;
+    }
+    this.setItemSizeArray();
+  }
+
+  // 根据缩放阈值改变列数，触发WaterFlow重新布局
+  changeColumns(scale: number) {
+    if (scale > (this.columns / (this.columns - 0.5)) && this.columns > 1) {
+      this.columns--;
+      this.columnChanged = true;
+    } else if (scale < 1 && this.columns < 4) {
+      this.columns++;
+      this.columnChanged = true;
+    }
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      Row() {
+        Text('双指缩放改变列数')
+          .height('5%')
+          .margin({ top: 10, left: 20 } as Margin)
+      }
+
+      Stack() {
+        // 用于展示缩放前的WaterFlow截图
+        Image(this.waterFlowSnapshot)
+          .width('100%')
+          .height('100%')
+          .scale({
+            x: this.imageScale,
+            y: this.imageScale,
+            centerX: 0,
+            centerY: 0
+          } as ScaleOptions)
+
+        WaterFlow() {
+          LazyForEach(this.dataSource, (item: number, index: int) => {
+            FlowItem() {
+              // 使用可复用组件，提升性能
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[index % 100] / this.itemWidthArray[index % 100])
+            .backgroundColor(this.colors[index % this.colors.length])
+          // LazyForEach的key生成函数需显式指定返回类型string。
+          }, (item: number, index: int): string => item.toString())
+        }
+        .id('waterflow') // 设置id用于截图
+        .columnsTemplate('1fr '.repeat(this.columns))  // 动态生成列模板，如：'1fr 1fr 1fr'表示3列等宽
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        .opacity(this.waterFlowOpacity)
+        .scale({
+          x: this.waterFlowScale,
+          y: this.waterFlowScale,
+          centerX: 0,
+          centerY: 0
+        } as ScaleOptions)
+        .priorityGesture(
+          PinchGesture()
+            .onActionStart((event: GestureEvent): void => {
+              // 双指捏合手势识别成功时截图
+              this.pinchTime = event.timestamp;
+              this.columnChanged = false;
+              this.oldColumn = this.columns;
+              this.getUIContext()?.getComponentSnapshot().get('waterflow', (error, pixmap): void => {
+                if (pixmap) {
+                  this.waterFlowSnapshot = pixmap;
+                } else {
+                  console.info('error:' + JSON.stringify(error));
+                }
+              })
+            })
+            .onActionUpdate((event: GestureEvent): void => {
+              // 手势更新：处理缩放逻辑和视觉效果
+              // 边界限制：防止超出列数范围时继续缩放
+              if ((this.oldColumn === 1 && event.scale > 1) || (this.oldColumn === 4 && event.scale < 1)) {
+                return;
+              }
+
+              // 节流处理：避免过于频繁的更新，提升性能
+              if (event.timestamp - this.pinchTime < 10000000) {
+                return;
+              }
+              this.pinchTime = event.timestamp;
+
+              this.waterFlowScale = event.scale;
+              this.imageScale = event.scale;
+              // 根据缩放比例设置WaterFlow透明度
+              this.waterFlowOpacity = (this.waterFlowScale > 1) ? (this.waterFlowScale - 1) : (1 - this.waterFlowScale);
+              this.waterFlowOpacity *= 3;
+              if (!this.columnChanged) {
+                this.changeColumns(event.scale);
+              }
+
+              // 列数改变后的缩放比例调整：避免出现空白区域
+              if (this.columnChanged) {
+                this.waterFlowScale = this.imageScale * this.columns / this.oldColumn;
+
+                // 限制缩放范围，确保视觉效果自然
+                if (event.scale < 1) {
+                  this.waterFlowScale = this.waterFlowScale > 1 ? this.waterFlowScale : 1;
+                } else {
+                  this.waterFlowScale = this.waterFlowScale < 1 ? this.waterFlowScale : 1;
+                }
+              }
+            })
+            .onActionEnd((event: GestureEvent): void => {
+              // 手势结束：执行归位动画并保存状态
+              // 执行归位动画：平滑过渡到正常状态
+              this.getUIContext()?.animateTo({ duration: 300 }, (): void => {
+                this.waterFlowScale = 1;
+                this.waterFlowOpacity = 1;
+              })
+
+              // 持久化保存当前列数：下次启动时恢复
+              AppStorage.setOrCreate<number>('columnsCount', this.columns);
+            })
+        )
+      }
+    }
+  }
+}
+```
+
 ![pinch](figures/waterflow-pinch.gif)
 
 ### 示例5（设置边缘渐隐效果）
 该示例通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)实现了WaterFlow组件开启边缘渐隐效果，并通过fadingEdgeLength参数设置边缘渐隐长度。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1887,6 +2720,67 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, BarState, LengthMetrics, Scroller } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  scroller: Scroller = new Scroller();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      WaterFlow({ scroller: this.scroller } as WaterFlowOptions) {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % 5])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .columnsTemplate('repeat(auto-fill,80)')
+      .columnsGap(10)
+      .rowsGap(5)
+      .height('90%')
+      .scrollBar(BarState.On)
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+    }
+  }
+}
+```
+
 ![fadingEdge_waterFlow](figures/fadingEdge_waterFlow.gif)
 
 ### 示例6（单边边缘效果）
@@ -1894,6 +2788,8 @@ struct WaterFlowDemo {
 该示例通过[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)接口，实现了WaterFlow组件设置单边边缘效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -1961,6 +2857,66 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, EdgeEffect, EffectEdge, Scroller } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  scroller: Scroller = new Scroller();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      WaterFlow({ scroller: this.scroller } as WaterFlowOptions) {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % 5])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .columnsTemplate('repeat(auto-fill,80)')
+      .columnsGap(10)
+      .rowsGap(5)
+      .height('90%')
+      .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+    }
+  }
+}
+```
+
 ![edgeEffect_waterFlow](figures/edgeEffect_waterflow.gif)
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
@@ -1968,6 +2924,8 @@ struct WaterFlowDemo {
 从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2073,6 +3031,103 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Row, Button, Text, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, Margin, ClickEvent, FlexAlign, HorizontalAlign, FontWeight, Color, wrapBuilder, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+class Params {
+  text: string = '';
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+      .margin(20)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message1: string = '已经到底了';
+  @State message2: string = '加载更多';
+  colors: int[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+
+  context: UIContext = this.getUIContext();
+
+  footerContent: ComponentContent<Params> = new ComponentContent<Params>(
+    this.context,
+    wrapBuilder(buildText),
+    new Params(this.message1)
+  );
+
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('更新footer').width('90%').margin(20)
+          .onClick((event?: ClickEvent): void => {
+            this.footerContent.update(new Params(this.message2));
+          })
+        WaterFlow({ footerContent: this.footerContent } as WaterFlowOptions) {
+          LazyForEach(this.dataSource, (item: number, index: int) => {
+            FlowItem() {
+              Column() {
+                Text('N' + item).fontSize(12).height('16')
+              }
+              .width('100%')
+              .height(this.itemHeightArray[index % 100])
+              .backgroundColor(this.colors[index % 3])
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+            }
+          // LazyForEach的key生成函数需显式指定返回类型string。
+          }, (item: number, index: int): string => item.toString())
+        }
+        .columnsTemplate('1fr')
+        .height('90%')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![waterFlow_footerContent](figures/waterFlow_footerContent.gif)
 
 ### 示例8（WaterFlow组件实现下拉刷新）
@@ -2080,6 +3135,8 @@ struct Index {
 该示例通过[Refresh](ts-container-refresh.md)组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2165,11 +3222,91 @@ struct WaterFlowDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, Refresh, RefreshOptions, ColumnOptions, EdgeEffect, RefreshStatus, Scroller } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State isRefreshing: boolean = false;
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  scroller: Scroller = new Scroller();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+        Refresh({ refreshing: this.isRefreshing } as RefreshOptions) {
+          WaterFlow({ scroller: this.scroller } as WaterFlowOptions) {
+            LazyForEach(this.dataSource, (item: number, index: int) => {
+            FlowItem() {
+              Column() {
+                Text('N' + item).fontSize(12).height('16')
+              }
+            }
+            .width('100%')
+            .height(this.itemHeightArray[index % 100])
+            .backgroundColor(this.colors[index % this.colors.length])
+          // LazyForEach的key生成函数需显式指定返回类型string。
+          }, (item: number, index: int): string => item.toString())
+        }
+        .columnsTemplate('repeat(auto-fill,80)')
+        .columnsGap(10)
+        .rowsGap(5)
+        .height('90%')
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })
+        .onReachEnd((): void => {
+          setTimeout((): void => {
+            this.dataSource.addNewItems(100);
+          }, 1000)
+        })
+      }
+      .onStateChange((refreshStatus: RefreshStatus): void => {
+        if (refreshStatus === RefreshStatus.Done) {
+          this.dataSource.refreshItems();
+        }
+      })
+      .onRefreshing((): void => {
+        setTimeout((): void => {
+          this.isRefreshing = false;
+        }, 1000)
+      })
+    }
+  }
+}
+```
+
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
 
 ### 示例9（WaterFlow组件基于断点配置列数）
 
 从API version 22开始，该示例展示了WaterFlow组件支持基于断点配置列数效果。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2235,6 +3372,71 @@ struct WaterFlowDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, Image, WaterFlow, FlowItem, LazyForEach, ColumnOptions, PresetFillType, ImageFit } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+              Image('res/waterFlowTest(' + item % 5 + ').jpg')
+                .objectFit(ImageFit.Fill)
+                .width('100%')
+                .layoutWeight(1)
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % this.colors.length])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .key('waterFlow')
+      .columnsTemplate({fillType:PresetFillType.BREAKPOINT_SM2MD3LG5})
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .margin('20vp')
+      .width('100%')
+      .height('30%')
+    }
+  }
+}
+```
+
 WaterFlow宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
@@ -2253,6 +3455,8 @@ WaterFlow宽度属于lg及更大的断点区间时显示5列。
 从API version 22 开始，该示例通过WaterFlow组件，实现了获取内容高度。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2352,6 +3556,100 @@ struct WaterFlowContentSizeDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, Text, WaterFlow, WaterFlowOptions, FlowItem, LazyForEach, ColumnOptions, Margin, Color, Scroller, Alignment, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowContentSizeDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear(): void {
+    this.setItemSizeArray();
+  }
+
+  @Builder
+  itemFoot() {
+    Column() {
+      Text(`到底啦...`)
+        .fontSize(10)
+        .backgroundColor(Color.Red)
+        .width(50)
+        .height(50)
+        .align(Alignment.Center)
+        .margin({ top: 2 } as Margin)
+    }
+  }
+
+  build() {
+    Column({ space: 2 } as ColumnOptions) {
+      Button('GetContentSize')
+        .onClick((): void => {
+          try {
+            this.contentWidth = this.scroller.contentSize().width;
+            this.contentHeight = this.scroller.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the waterFlow, code=${err.code}, message=${err.message}`);
+          }
+        }).margin(5)
+      Text('Width:' + this.contentWidth)
+        .fontColor(Color.Red)
+        .height(30)
+      Text('Height:' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(30)
+
+      WaterFlow({ scroller: this.scroller, footer: this.itemFoot } as WaterFlowOptions) {
+        LazyForEach(this.dataSource, (item: number, index: int) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[index % 100])
+          .backgroundColor(this.colors[index % this.colors.length])
+        // LazyForEach的key生成函数需显式指定返回类型string。
+        }, (item: number, index: int): string => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('80%')
+    }
+  }
+}
+```
+
 ![waterFlow_refresh](figures/waterFlow_contentsize.gif)
 
 ### 示例11（设置滚动事件）
@@ -2359,6 +3657,8 @@ struct WaterFlowContentSizeDemo {
 该示例通过typeNode中的[getEvent('WaterFlow')](../js-apis-arkui-typeNode.md#geteventwaterflow19)获取[UIWaterFlowEvent](#uiwaterflowevent19)，并为WaterFlow设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIWaterFlowEvent接口。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2453,6 +3753,110 @@ struct Index {
           }
           .width('100%')
         }, (day: string, index: number) => index.toString() + day)
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .enableScrollInteraction(true)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      NodeContainer(this.myNodeController)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, Text, WaterFlow, FlowItem, ForEach, FrameNode, UIWaterFlowEvent, ScrollState, ScrollSource, TextAlign, NodeContainer, OnScrollFrameBeginHandlerResult } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { NodeController, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode!.commonAttribute.width(100);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode): void {
+    let waterFlowEvent: UIWaterFlowEvent | undefined = typeNode.getWaterFlowEvent(frameNode);
+
+    waterFlowEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource): void => {
+      console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
+    });
+
+    waterFlowEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState): void => {
+      console.info(`onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}`);
+    });
+
+    waterFlowEvent?.setOnReachStart((): void => {
+      console.info('onReachStart');
+    });
+
+    waterFlowEvent?.setOnReachEnd((): void => {
+      console.info('onReachEnd');
+    });
+
+    waterFlowEvent?.setOnScrollStart((): void => {
+      console.info('onScrollStart');
+    });
+
+    waterFlowEvent?.setOnScrollStop((): void => {
+      console.info('onScrollStop');
+    });
+
+    waterFlowEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+      console.info(`onScrollFrameBegin offset = ${offset}, state = ${state}`);
+      return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;
+    });
+
+    waterFlowEvent?.setOnScrollIndex((first: int, last: int): void => {
+      console.info(`onScrollIndex start = ${first}, end = ${last}`);
+    });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State index: number = 0;
+  private myNodeController: MyNodeController = new MyNodeController();
+  numbers: string[] = [];
+  heights: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 30; i++) {
+      this.numbers.push(`${i+1}`);
+      this.heights.push(70 + Math.floor(Math.random() * 60));
+    }
+  }
+
+  build() {
+    Column() {
+      Button('add CommonEvent to WaterFlow')
+        .onClick((): void => {
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
+        })
+      WaterFlow() {
+        ForEach(this.numbers, (day: string, index: int) => {
+          FlowItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(this.heights[index])
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string, index: int): string => index.toString() + day)
       }
       .columnsTemplate('1fr 1fr')
       .columnsGap(10)

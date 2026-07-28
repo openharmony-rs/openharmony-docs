@@ -2007,6 +2007,8 @@ List组件可见区域item变化事件的回调类型。
 
 ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。 
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // ListDataSource.ets
@@ -2130,6 +2132,133 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// ListDataSource.ets
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+export class ListDataSource implements IDataSource<number> {
+  private list: Array<number> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor(list: Array<number>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  // 通知控制器数据删除
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  // 通知控制器添加数据
+  notifyDataAdd(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  // 在指定索引位置删除一个元素
+  public deleteItem(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  // 在指定索引位置插入一个元素
+  public insertItem(index: int, data: number): void {
+    this.list.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, ListDividerOptions, Axis, BarState, EdgeEffect, TextAlign, Padding, ScrollState, VisibleListContentInfo } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .listDirection(Axis.Vertical) // 排列方向
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 } as ListDividerOptions) // 每行之间的分界线
+      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+      .onScrollIndex((firstIndex: int, lastIndex: int, centerIndex: int): void => {
+        console.info('first' + firstIndex);
+        console.info('last' + lastIndex);
+        console.info('center' + centerIndex);
+      })
+      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo): void => {
+        console.info(' start index: ' + start.index +
+                    ' start item group area: ' + start.itemGroupArea +
+                    ' start index in group: ' + start.itemIndexInGroup);
+        console.info(' end index: ' + end.index +
+                    ' end item group area: ' + end.itemGroupArea +
+                    ' end index in group: ' + end.itemIndexInGroup);
+      })
+      .onDidScroll((scrollOffset: double, scrollState: ScrollState): void => {
+        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset);
+      })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list1](figures/list1.gif)
 
 
@@ -2137,6 +2266,8 @@ struct ListExample {
 该示例展示了不同ListItemAlign枚举值下，List组件交叉轴方向子元素对齐效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2187,6 +2318,57 @@ struct ListLanesExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, Button, ListOptions, ListItemAlign, BarState, Color, TextAlign, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListLanesExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+  @State alignListItem: ListItemAlign = ListItemAlign.Start;
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .border({ width: 2, color: Color.Green })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .height(300)
+      .width('90%')
+      .friction(0.6)
+      .border({ width: 3, color: Color.Red })
+      .lanes({ minLength: 40, maxLength: 40 })
+      .alignListItem(this.alignListItem)
+      .scrollBar(BarState.Off)
+
+      Button('点击更改alignListItem:' + this.alignListItem).onClick((): void => {
+        if (this.alignListItem == ListItemAlign.Start) {
+          this.alignListItem = ListItemAlign.Center;
+        } else if (this.alignListItem == ListItemAlign.Center) {
+          this.alignListItem = ListItemAlign.End;
+        } else {
+          this.alignListItem = ListItemAlign.Start;
+        }
+      })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list](figures/list-alignListItem.gif)
 
 
@@ -2194,6 +2376,8 @@ struct ListLanesExample {
 该示例展示了如何设置当前List组件是否处于可编辑模式。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2252,12 +2436,71 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, StackOptions, Column, List, ListOptions, ListItem, LazyForEach, Flex, FlexOptions, FlexDirection, ItemAlign, Text, Button, BarState, TextAlign, Alignment, Padding, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State editFlag: boolean = false;
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart } as StackOptions) {
+      Column() {
+        List({ space: 20, initialIndex: 0 } as ListOptions) {
+          LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center } as FlexOptions) {
+                Text('' + item)
+                  .width('100%')
+                  .height(80)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
+                  .flexShrink(1)
+                if (this.editFlag) {
+                  Button() {
+                    Text('delete').fontSize(16)
+                  }.width('30%').height(40)
+                  .onClick((): void => {
+                    console.info(this.arr.getData(index) + 'Delete');
+                    this.arr.deleteItem(index);
+                    this.arr.reloadData();
+                    console.info(JSON.stringify(this.arr));
+                    this.editFlag = false;
+                  }).stateEffect(true)
+                }
+              }
+            }
+          }, (item: number, index: int) => item.toString() + index.toString())
+        }.width('90%')
+        .scrollBar(BarState.Off)
+        .friction(0.6)
+      }.width('100%')
+
+      Button('edit list')
+        .onClick((): void => {
+          this.editFlag = !this.editFlag;
+        }).margin({ top: 5, left: 20 } as Margin)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list](figures/list3.gif)
 
 ### 示例4（设置限位对齐）
 该示例展示了List组件设置居中限位的实现效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2309,7 +2552,60 @@ struct ListExample {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Row, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, EdgeEffect, Axis, ScrollSnapAlign, Padding } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  private scrollerForList: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 0; i < 20; i++) {
+      list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        List({ space: 20, initialIndex: 3, scroller: this.scrollerForList } as ListOptions) {
+          LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%').height(100).fontSize(16)
+                .textAlign(TextAlign.Center)
+            }
+            .borderRadius(10).backgroundColor(0xFFFFFF)
+            .width('60%')
+            .height('80%')
+          }, (item: number, index: int): string => item.toString())
+        }
+        .chainAnimation(true)
+        .edgeEffect(EdgeEffect.Spring)
+        .listDirection(Axis.Horizontal)
+        .height('100%')
+        .width('100%')
+        .scrollSnapAlign(ScrollSnapAlign.CENTER)
+        .borderRadius(10)
+        .backgroundColor(0xDCDCDC)
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xDCDCDC)
+      .padding({ top: 10 } as Padding)
+    }
+  }
+}
 ```
 
 ![list](figures/list4.gif)
@@ -2320,6 +2616,8 @@ struct ListExample {
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2387,13 +2685,86 @@ struct ListExample {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Row, List, ListItem, LazyForEach, Text, Button, ListOptions, RowOptions, ListScroller, ChildrenMainSize, BarState, ListItemAlign, Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  private scroller: ListScroller = new ListScroller();
+  @State listSpace: number = 10;
+  @State listChildrenSize: ChildrenMainSize = new ChildrenMainSize(100);
+  aboutToAppear(): void {
+    // 初始化数据源。
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+      list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+    // 前5个item的主轴大小不是默认大小100，因此需要通过ChildrenMainSize通知List。
+    try {
+      this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: this.listSpace, initialIndex: 4, scroller: this.scroller } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('item-' + item)
+              .height( item < 5 ? 300 : this.listChildrenSize.childDefaultSize)
+              .width('90%')
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .backgroundColor(Color.Gray)
+      .layoutWeight(1)
+      .scrollBar(BarState.On)
+      .childrenMainSize(this.listChildrenSize)
+      .alignListItem(ListItemAlign.Center)
+      Row({ space: 18 } as RowOptions) {
+        Button() { Text('item size + 50') }.onClick((): void => {
+          this.listChildrenSize.childDefaultSize += 50;
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+        Button() { Text('item size - 50') }.onClick((): void => {
+          if (this.listChildrenSize.childDefaultSize === 0) {
+            return;
+          }
+          this.listChildrenSize.childDefaultSize -= 50;
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+        Button() { Text('scrollTo (0, 310)') }.onClick((): void => {
+          // 310: 跳转到item 1顶部与List顶部平齐的位置。
+          // 如果不设置childrenMainSize，item高度不一致时scrollTo会不准确。
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
+      }.height('20%')
+    }
+  }
+}
 ```
 
 ![list](figures/list5.gif)
 
 ### 示例6（获得子组件索引信息）
 该示例展示了含有group时，获得List组件的Item索引相关信息。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class TimeTableDataSource implements IDataSource {
@@ -2465,13 +2836,14 @@ struct ListItemGroupExample {
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
   @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
+  private headerText: string = '';
   @Builder
-  itemHead(text: string) {
-    Text(text)
+  itemHead() {
+    Text(this.headerText)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor('#fff1f3f5')
       .width('100%')
-      .padding(10)
+      .padding(5)
   }
 
   @Builder
@@ -2545,7 +2917,176 @@ interface TimeTable {
   title: string;
   projects: string[];
 }
+```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ListItemGroup, LazyForEach, Text, ListOptions, ListItemGroupOptions, ListScroller, BarState, Color, TextAlign, StickyStyle, Padding, IDataSource, DataChangeListener, GestureEvent, PanGesture, TapGesture, VisibleListContentInfo, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class TimeTableDataSource implements IDataSource<TimeTable> {
+  private list: Array<TimeTable> = [];
+
+  constructor(list: Array<TimeTable>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): TimeTable {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+class ProjectsDataSource implements IDataSource<string> {
+  private list: Array<string> = [];
+
+  constructor(list: Array<string>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  private timeTable: TimeTable[] = [
+    {
+      title: '星期一',
+      projects: ['语文', '数学', '英语']
+    },
+    {
+      title: '星期二',
+      projects: ['物理', '化学', '生物']
+    },
+    {
+      title: '星期三',
+      projects: ['历史', '地理', '政治']
+    },
+    {
+      title: '星期四',
+      projects: ['美术', '音乐', '体育']
+    }
+  ];
+  private scroller: ListScroller = new ListScroller();
+  private headerText: string = '';
+  private footerNum: int = 0;
+  @State listIndexInfo: VisibleListContentInfo = { index: -1 } as VisibleListContentInfo;
+  @State mess: string = 'null';
+  itemBackgroundColorArr: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false];
+  @Builder
+  itemHead() {
+    Text(this.headerText)
+      .fontSize(20)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(10)
+  }
+
+  @Builder
+  itemFoot() {
+    Text('共' + this.footerNum + '节课')
+      .fontSize(16)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    Column() {
+      List({ space: 20, scroller: this.scroller } as ListOptions) {
+        LazyForEach(new TimeTableDataSource(this.timeTable), (item: TimeTable, index: int) => {
+          this.headerText = item.title;
+          this.footerNum = item.projects.length;
+          ListItemGroup({ header: this.itemHead, footer: this.itemFoot } as ListItemGroupOptions) {
+            LazyForEach(new ProjectsDataSource(item.projects), (project: string, subIndex: int) => {
+              ListItem() {
+                Text(project)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(this.itemBackgroundColorArr[index * 3 + subIndex] ? 0x68B4FF : 0xFFFFFF)
+              }
+            }, (item: string, index: int): string => item)
+          }
+          .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
+        }, (item: TimeTable, index: int): string => item.title)
+      }
+      .width('90%')
+      .sticky(StickyStyle.BOTH)
+      .scrollBar(BarState.Off)
+      .gesture(
+        PanGesture()
+          .onActionUpdate((event: GestureEvent): void => {
+            let finger = event.fingerList[0];
+            if (finger != undefined) {
+              let localX = finger.localX;
+              let localY = finger.localY;
+              if (localX != undefined && localY != undefined) {
+                try {
+                  this.listIndexInfo =
+                    this.scroller.getVisibleListContentInfo(localX, localY);
+                } catch (error) {
+                  console.info('Failed to get visible list content info:', error);
+                }
+                let itemIndex: string = 'undefined';
+                let itemIndexInGroup = this.listIndexInfo.itemIndexInGroup;
+                let index = this.listIndexInfo.index;
+                if (itemIndexInGroup != undefined) {
+                  itemIndex = itemIndexInGroup.toString();
+                  if (index != undefined && index >= 0 && itemIndexInGroup >= 0) {
+                    this.itemBackgroundColorArr[index * 3 + itemIndexInGroup] = true;
+                  }
+                }
+                this.mess = 'index:' + (index != undefined ? index.toString() : 'undefined') + ' itemIndex:' + itemIndex;
+              }
+            }
+          }))
+      .gesture(
+        TapGesture({ count: 1 })
+          .onAction((event: GestureEvent): void => {
+            if (event) {
+              for (let i = 0; i < this.itemBackgroundColorArr.length; i++) {
+                this.itemBackgroundColorArr[i] = false;
+              }
+            }
+          })
+      )
+      Text('您当前位置Item索引为' + this.mess)
+        .fontColor(Color.Red)
+        .height(50)
+    }.width('100%').height('90%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+
+interface TimeTable {
+  title: string;
+  projects: string[];
+}
 ```
 
 ![list](figures/getItemIndex_listGroup.gif)
@@ -2554,6 +3095,8 @@ interface TimeTable {
 该示例实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2587,6 +3130,40 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, LengthMetrics } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
 ### 示例8（单边边缘效果）
@@ -2594,6 +3171,8 @@ struct ListExample {
 该示例通过edgeEffect接口，实现了List组件设置单边边缘效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2627,11 +3206,48 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, EdgeEffect, EffectEdge } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      .width('90%').height('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![edgeEffect_list](figures/edgeEffect_list.gif)
 
 ### 示例9（设置折行走焦）
 
 从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -2674,6 +3290,53 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Stack, StackOptions, Column, List, ListItem, ForEach, Flex, FlexOptions, Text, ListOptions, Alignment, FlexDirection, ItemAlign, BarState, FocusWrapMode, ListItemAlign, TextAlign, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListExample {
+  arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart } as StackOptions) {
+      Column() {
+        List({ space: 40, initialIndex: 0 } as ListOptions) {
+          ForEach(this.arr, (item: number, index?: int) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center } as FlexOptions) {
+                Text('' + item)
+                  .width(150)
+                  .height(93)
+                  .fontSize(30)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
+                  .flexShrink(1)
+                  .focusable(true)
+                  .offset({ left: 5 })
+              }
+            }
+          }, (item: number, index?: int) => item.toString())
+        }
+        .lanes(2)
+        .contentStartOffset(20)
+        .contentEndOffset(20)
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .friction(0.6)
+        .focusWrapMode(FocusWrapMode.WRAP_WITH_ARROW)
+        .alignListItem(ListItemAlign.Center)
+        .offset({ left: 20 })
+      }.width('90%')
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![edgeEffect_list](figures/focusWrapMode_list.gif)
 
 ### 示例10（设置显示区域外插入数据时，保持显示内容不变）
@@ -2681,6 +3344,8 @@ struct ListExample {
 该示例通过maintainVisibleContentPosition接口，实现了上滑无限加载历史消息场景。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2721,11 +3386,56 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, TextAlign } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([990, 991, 992, 993, 994, 995, 996, 997, 998, 999]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 9 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('message:' + item)
+              .width('100%').height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .maintainVisibleContentPosition(true)
+      .onScrollIndex((start: int): void => {
+        if (start < 5) {
+          for (let i = 0; i < 10; i++) {
+            this.arr.insertItem(0, this.arr.getData(0) - 1);
+          }
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding(12)
+  }
+}
+```
+
 ![edgeEffect_list](figures/list_maintainvisiblecontentposition.gif)
 
 ### 示例11（设置滚动条的边距）
 
 从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2765,11 +3475,53 @@ struct ListScrollBarMarginExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ForEach, Text, ListOptions, BarState, TextAlign, Padding, LengthMetrics } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListScrollBarMarginExample {
+  arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  build() {
+    Column() {
+        List({ space: 40, initialIndex: 0 } as ListOptions) {
+          ForEach(this.arr, (item: number, index?: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number, index?: int) => item.toString())
+      }
+      .contentStartOffset(20)
+      .contentEndOffset(20)
+      .scrollBar(BarState.On)
+      .scrollBarMargin({ start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list_contentStartOffset](figures/list_contentStartOffset.gif)
 
 ### 示例12（使用OnMove进行拖拽）
 
 从API version 12开始，该示例展示了使用ForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到List边缘时触发List的自动滚动。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -2809,6 +3561,50 @@ struct ForEachSort {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Row, List, ListItem, ForEach, Text, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ForEachSort {
+  @State arr: Array<string> = new Array<string>();
+
+  build() {
+    Row() {
+      List() {
+        ForEach(this.arr, (item: string) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .size({ height: 100, width: '100%' })
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor('#FFFFFFFF')
+        }, (item: string) => item)
+          .onMove((from: int, to: int): void => {
+            let tmp = this.arr.splice(from, 1);
+            this.arr.splice(to, 0, tmp[0]);
+          })
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#FFDCDCDC')
+    }
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.arr.push(i.toString());
+    }
+  }
+}
+```
+
 ![list_onMove](figures/list_onMove.gif)
 
 ### 示例13（基于断点配置lanes）
@@ -2816,6 +3612,8 @@ struct ForEachSort {
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -2850,6 +3648,41 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, Scroller, TextAlign, Padding, PresetFillType } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }
+      .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5 }, 10)
+      .width('90%').height(600)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 List宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_list](figures/list_itemFillPolicy_SM.png)
@@ -2865,6 +3698,8 @@ List宽度属于lg及更大的断点区间时显示5列。
 ### 示例14（获取内容总大小）
 
 从API version 22 开始，该示例实现了List组件获取内容总大小的功能。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2922,11 +3757,73 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, ForEach, Text, Button, ListOptions, Scroller, Color, TextAlign, Padding } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  scrollerForList: Scroller = new Scroller()
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList } as ListOptions) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .width('90%').height('90%')
+
+      // 点击按钮来调用contentSize函数获取内容尺寸
+      Button('GetContentSize')
+        .onClick((): void => {
+          // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          try {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
+        })
+      // 将获取到的内容尺寸信息通过文本进行呈现
+      Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![list_contentStartOffset](figures/listContentSize.gif)
 
 ### 示例15（在两个列表之间实现拖拽功能）
 
 该示例通过OnItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3042,11 +3939,132 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, List, ListItem, ForEach, Stack, Row, Text, ListOptions, Scroller, ItemDragInfo, SizeOptions, Color, ComponentV2, Builder } from '@ohos.arkui.component';
+import { ObservedV2, Trace, Param, Local, Require } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller } as ListOptions) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: int) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data!, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo): void => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: int, insertIndex: int): void => {
+      if (this.lastInsertIndex != insertIndex) {
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: int): void => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: int, insertIndex: int, isSuccess: boolean): void => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions): void => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
 ![OnItemDrag](figures/listOnItemDrag.gif)
 
 ### 示例16（实现ListItemGroup中点击项的居中效果）
 
 该示例使用[scrollToItemInGroup](#scrolltoitemingroup11)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+
+ArkTS-Dyn示例：
 
 ``` ts
 import { util } from '@kit.ArkTS';
@@ -3082,7 +4100,7 @@ struct ContactsList {
         // ...
       ],
       key: util.generateRandomUUID(true)
-    } as ContactsGroup,
+    },
     {
       title: 'B',
       contacts: [
@@ -3091,7 +4109,7 @@ struct ContactsList {
         // ...
       ],
       key: util.generateRandomUUID(true)
-    } as ContactsGroup,
+    },
     // ...
   ]
 
@@ -3146,6 +4164,107 @@ struct ContactsList {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, List, ListItem, ListItemGroup, ForEach, Row, Image, Text, ListScroller, ListOptions, ListItemGroupOptions, ListDividerOptions, ScrollAlign, ScrollState, FlexAlign, GestureEvent, TapGesture, Color, Resource, $r, OnScrollFrameBeginHandlerResult, Builder } from '@ohos.arkui.component';
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+interface ContactsGroup {
+  title: string;
+  contacts: Array<Contact>;
+  key: string;
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('艾佳', $r('app.media.icon')),
+        new Contact('安安', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+      ],
+      key: util.generateRandomUUID(true)
+    },
+    {
+      title: 'B',
+      contacts: [
+        new Contact('白叶', $r('app.media.icon')),
+        new Contact('伯明', $r('app.media.icon'))
+      ],
+      key: util.generateRandomUUID(true)
+    },
+  ]
+  private headerText: string = '';
+
+  @Builder
+  itemHead() {
+    Text(this.headerText)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller } as ListOptions) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: int) => {
+        this.headerText = item.title;
+        ListItemGroup({ header: this.itemHead } as ListItemGroupOptions) {
+          ForEach(item.contacts, (contact: Contact, subIndex: int) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent): void => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('第' + (index + 1) + '个ListItemGroup的第' + (subIndex + 1) + '个ListItem的 x:' + itemRect.x +
+                      ' y:' + itemRect.y + ' width:' + itemRect.width + ' height:' + itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact, subIndex: int): string => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 } as ListDividerOptions)
+        .width('100%')
+      }, (item: ContactsGroup, index: int): string => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: double, state: ScrollState): OnScrollFrameBeginHandlerResult => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult;
+    })
+  }
+}
+```
+
 ![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
 
 ### 示例17（设置多选聚拢动画）
@@ -3155,6 +4274,8 @@ struct ContactsList {
 从API version 23开始，List组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3246,6 +4367,84 @@ struct ListExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, ColumnOptions, List, ListItem, LazyForEach, Text, Flex, FlexOptions, Divider, ListOptions, Color, BarState, TextAlign, ResponseType, MenuPreviewMode, HapticFeedbackMode, FlexDirection, FlexAlign, ItemAlign, Margin, Builder } from '@ohos.arkui.component';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  isSelected: boolean[] = [];
+  selectedCount: int = 0;
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 10; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center } as FlexOptions) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Text(item.toString())
+                .fontSize(16)
+                .backgroundColor(Color.White)
+                .width('100%')
+                .height(50)
+                .textAlign(TextAlign.Center)
+            }
+            .selected(this.isSelected[index])
+            .opacity(this.isSelected[index] ? 0.4 : 1.0)
+            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+            .onClick((): void => {
+              this.isSelected[index] = !this.isSelected[index];
+              console.info(`item:${item}, this.isSelected[index]:${this.isSelected[index]}`)
+              if (this.isSelected[index]) {
+                ++this.selectedCount;
+              } else {
+                --this.selectedCount;
+              }
+            })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: (): int => {
+          return this.selectedCount;
+        }
+      })
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').margin({ top: 5 } as Margin).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
 ![listMultiselectAnimation](figures/listMultiselectAnimation.gif)
 
 ### 示例18（设置滑动多选）
@@ -3255,6 +4454,8 @@ struct ListExample {
 从API版本26.0.0开始，List组件新增enableEditMode接口和onEditModeChange事件。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3320,6 +4521,77 @@ struct ListExample {
       })
       .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
     }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, List, ListItem, LazyForEach, Text, ListOptions, ColumnOptions, Color, BarState, TextAlign, Padding } from '@ohos.arkui.component';
+import { State, Watch } from '@ohos.arkui.stateManagement';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  isSelected: boolean[] = [];
+  selectedIndexes: number[] = [];
+
+  onEditModeChanged(propName: string): void {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+        list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .backgroundColor(Color.White)
+              .width('100%')
+              .height(50)
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean): void => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
+        }, (item: number, index: int): string => item.toString())
+      }
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean): void => {
+        // 在此处也可实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+    }.width('100%').padding({ top: 10 } as Padding).backgroundColor('#FFDCDCDC')
   }
 }
 ```
