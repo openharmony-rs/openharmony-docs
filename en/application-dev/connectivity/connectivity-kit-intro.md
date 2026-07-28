@@ -6,7 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:23.440Z pushedAt=2026-06-18T07:14:00.555Z -->
+<!-- md-trans-meta sourceCommit=caf68b250cfd940a1ec05de03c506dce62c7d685 translatedAt=2026-07-28T06:43:43.757Z pushedAt=2026-07-28T07:12:43.653Z -->
 
 ## Overview
 
@@ -104,6 +104,10 @@ The converged short-range communication service provides unified management of s
 
 Provides interconnection services between partner devices and OpenHarmony devices. Within the module, interconnection services such as media control, phone call reverse control, and health monitoring can be implemented. For details, see [@ohos.FusionConnectivity.partnerAgent (Device Status Notification Module)](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md).
 
+- **Fusion connectivity module**<br/>
+
+  Provides the NearLink [HADM](terminology.md#high-accuracy-distance-measurement-hadm) ranging service. Within the module, the NearLink HADM ranging capability can be used. For details, see [@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md).
+
 ### Working Principles
 
 Connectivity Kit provides basic communication services for applications. Before a communication service is used by an application, the related feature must be enabled or a connection must be set up. When the service ends, the connection must be closed actively.
@@ -111,3 +115,9 @@ Connectivity Kit provides basic communication services for applications. Before 
 ### Constraints
 
 Device capabilities can be used only after the related switch is enabled after user authorization. Otherwise, the system does not provide services for third-party applications.
+
+### 相关实例
+
+针对蓝牙相关的业务，有以下相关实例可供参考：
+
+- [bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)

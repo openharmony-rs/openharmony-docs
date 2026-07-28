@@ -3,10 +3,10 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:24.878Z pushedAt=2026-06-17T07:25:45.354Z -->
+<!-- md-trans-meta sourceCommit=0300dd4ca80ef25fe2012a7043565b34d915bfc9 translatedAt=2026-07-28T06:43:39.030Z pushedAt=2026-07-28T07:08:31.706Z -->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.
 
@@ -43,9 +43,9 @@ The table below lists the main APIs used for calendar management. For details ab
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
-2. Apply for the required permission. When using Calendar Kit, declare the **ohos.permission.READ_CALENDAR** and **ohos.permission.WRITE_CALENDAR** permissions in the **module.json5** file .for reading and writing calendar events. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+2. Apply for the required permission. When using Calendar Kit, declare the **ohos.permission.READ_CALENDAR** and **ohos.permission.WRITE_CALENDAR** permissions in the **module.json5** file for reading and writing calendar events. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform managements in the **EntryAbility.ets** file.
+3. Obtain the **calendarMgr** object based on the context to manage calendar accounts. You are advised to perform management operations in the **EntryAbility.ets** file.
 
     <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -105,7 +105,7 @@ The table below lists the main APIs used for calendar management. For details ab
 
 4. Create a **Calendar** object based on the calendar account information.
 
-   Before creating a calendar account, query the account information first. If the account does not exist, an exception is thrown. Create the calendar account after catching the exception. Otherwise, duplicate accounts may be created.
+   Before creating a calendar account, query the account information first. If the account does not exist, throw an exception. Create the calendar account after catching the exception. Otherwise, duplicate accounts may be created.
 
     <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
 
