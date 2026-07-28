@@ -158,8 +158,8 @@ GNSS围栏信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| gnssFenceType | number | 否 | 否 | GNSS围栏类型。可参考GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;。支持多类型GNSS围栏，比如3，代表包含圆形、多边形两种围栏。<br/>**系统接口**：此接口为系统接口。 |
-| circularFence | Geofence&lt;[Geofence](#geofence)&gt; | 否 | 是 | 表示圆形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择CIRCULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| gnssFenceType | number | 否 | 否 | 表示GNSS围栏类型。可参考GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;。支持多类型GNSS围栏，比如3，代表包含圆形、多边形两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| circularFence | Geofence&lt;[Geofence](js-apis-geoLocationManager.md#geofence)&gt; | 否 | 是 | 表示圆形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择CIRCULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
 | polygon | Array&lt;[Point](#point)&gt; | 否 | 是 | 表示多边形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择POLYGON，则为必填<br/>**系统接口**：此接口为系统接口。 |
 
 
