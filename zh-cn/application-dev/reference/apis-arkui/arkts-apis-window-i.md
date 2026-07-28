@@ -579,7 +579,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 窗口显示方向的执行结果枚举，用于表示设置窗口显示方向的操作结果，例如生效、不生效、挂起等。|
+| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 窗口显示方向的执行结果枚举，表示设置窗口显示方向的操作结果，例如生效、不生效、挂起等。|
 
 ## SubWindowOptions<sup>11+</sup>
 

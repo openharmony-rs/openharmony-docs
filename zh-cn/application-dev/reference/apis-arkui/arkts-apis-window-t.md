@@ -94,7 +94,7 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值，旋转后的窗口位置。 |
+| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值，应用指定旋转后的窗口位置。 |
 
 ## WindowEventListener
 
