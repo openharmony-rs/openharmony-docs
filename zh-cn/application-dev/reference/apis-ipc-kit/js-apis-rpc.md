@@ -3959,7 +3959,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
   | 参数名   | 类型                     | 必填 | 说明                   |
   | -------- | ----------------------- | ---- | ------------------------|
-  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。)  |
+  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。）  |
 
 **返回值：**
 
