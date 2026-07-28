@@ -1467,7 +1467,6 @@ sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 801      | capability not supported.                 |
 | 35000003 | Template listener not registered.         |
 | 35000005 | AVMusicTemplate does not exist.           |
 | 35000006 | AVMusicTemplateController does not exist. |
