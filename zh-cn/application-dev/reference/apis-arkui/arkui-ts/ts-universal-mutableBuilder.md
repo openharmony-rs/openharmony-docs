@@ -1,4 +1,4 @@
-# mutableBuilder
+# mutableBuilder: 实现全局@Builder动态更新
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
@@ -22,7 +22,7 @@ mutableBuilder&lt;Args extends Object[]&gt;(builder: BuilderCallback): MutableBu
 
 `mutableBuilder`是一个泛型函数，它返回一个`MutableBuilder`对象，只接受一个全局的`@Builder`函数作为其参数。
 
-`mutableBuilder`函数返回的[MutableBuilder](#mutablebuilder-2)对象，其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。
+`mutableBuilder`函数返回的[MutableBuilder](#mutablebuilder-1)对象，其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -38,7 +38,7 @@ mutableBuilder&lt;Args extends Object[]&gt;(builder: BuilderCallback): MutableBu
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [MutableBuilder&lt;Args&gt;](#mutablebuilder-2) | `MutableBuilder&lt;Args&gt;`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件内部使用。 |
+| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | `MutableBuilder&lt;Args&gt;`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件内部使用。 |
 
 **示例：**
 
@@ -97,7 +97,7 @@ class MutableBuilder&lt;Args extends Object[]&gt; extends WrappedBuilder&lt;Args
 
 ## BuilderCallback
 
-type BuilderCallback = (...args: Args) => void
+type BuilderCallback<Args extends Object[] = any[]> = (...args: Args) => void
 
 `BuilderCallback`是全局`@Builder`函数的类型别名，作为`mutableBuilder`函数的入参类型，用于指定待封装的全局`@Builder`函数。
 
