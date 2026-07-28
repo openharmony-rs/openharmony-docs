@@ -1089,7 +1089,7 @@ struct DocSampleArrayOfArrays {
       // 当topArray[1]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
       Button('topArray[1].push')
         .onClick(() => {
-          if (this.topArray.length > 1 && this.topArray[1] instanceof Array<Person>) {
+          if (this.topArray.length > 1 && this.topArray[1] instanceof Array) {
             this.topArray[1].push(new Person());
           }
         })
