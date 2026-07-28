@@ -25,7 +25,7 @@ FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 ## 使用说明
-FormExtensionContext主要用于查询所属FormExtensionAbility的信息、Module的配置信息以及HAP包的信息，开发者可根据自身业务需求使用对应的信息。常见使用场景包括：桌面卡片开发中获取卡片配置信息、动态卡片数据更新时查询当前卡片状态、天气卡片应用中获取多语言配置等。
+FormExtensionContext主要用于查询所属FormExtensionAbility的信息、Module的配置信息以及HAP包的信息，开发者可根据自身业务需求使用对应的信息。
 ```ts
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -34,12 +34,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
     console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let formData: Record<string, string> = {
-      'temperature': '11°C',
+      'temperature': '11c',
       'time': '11:00'
     };
-    // this.context继承自FormExtensionAbility，可直接使用
-    // this.context继承自FormExtensionAbility，可直接使用
-    console.info('current language is:', this.context.config.language);
     console.info("current language is:", this.context.config.language);
     return formBindingData.createFormBindingData(formData);
   }

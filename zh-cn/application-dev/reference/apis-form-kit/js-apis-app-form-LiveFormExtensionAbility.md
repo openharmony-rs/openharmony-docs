@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-LiveFormExtensionAbility(互动卡片扩展能力)模块提供互动卡片功能，包括接收创建和销毁互动卡片的通知等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。该模块主要实现可拖动、可交互的动态卡片功能，支持手势拖动、数据更新、实时交互等特性，常用于天气卡片、音乐控制卡片、实时数据展示卡片等需要用户直接交互的场景，能够提升用户体验和增强应用交互性。
+LiveFormExtensionAbility(互动卡片扩展能力)模块提供互动卡片功能，包括接收创建和销毁互动卡片的通知等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
 
 > **说明：**
 >
@@ -25,16 +25,8 @@ import { LiveFormExtensionAbility } from '@kit.FormKit';
 互动卡片扩展类，用于实现互动卡片的提供方功能。包含互动卡片提供方接收创建和销毁互动卡片的通知接口，开发者可在这些回调中实现卡片的初始化、数据绑定、资源清理等逻辑。onLiveFormCreate在添加卡片时触发，用于初始化和数据绑定；onLiveFormDestroy在移除卡片时触发，用于资源清理。两者形成完整的生命周期管理，应确保在create中分配的资源在destroy中正确释放。
 
 ### 属性
-### 属性
-**模型约束：** 此接口仅可在Stage模型下使用。
-> **说明：**
->
-> 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](js-apis-app-form-LiveFormExtensionAbility.md#附录)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-> **说明：**
->
-> 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见[附录](#附录)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,16 +36,7 @@ import { LiveFormExtensionAbility } from '@kit.FormKit';
 
 | 名称 | 类型    | 只读 | 可选  |说明|
 | ------ | ------ | ---- | ---- | ---- |
-**返回值：**
 | context |  [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md) | 否   | 否 |LiveFormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
 
 ### onLiveFormCreate
 
@@ -72,35 +55,20 @@ onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-UIExtensionContentSession对象，用于管理互动卡片的界面内容。
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识需要创建的互动卡片，包括卡片id等信息。|
 | session      | [UIExtensionContentSession](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md) | 是 | LiveFormExtensionAbility的界面会话对象，用于管理与卡片的交互会话。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
-
 **示例：**
-**返回值：**
 
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
 
 const TAG: string = '[testTag] LiveFormExtAbility';
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
@@ -118,7 +86,7 @@ LiveFormExtensionAbility生命周期回调，在销毁时回调，执行资源�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
-| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识需要销毁的互动卡片，包括卡片id等信息。|
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -126,12 +94,6 @@ LiveFormExtensionAbility生命周期回调，在销毁时回调，执行资源�
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识需要销毁的互动卡片，包括卡片id等信息。|
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| void | 无返回值。 |
 
 **示例：**
 
@@ -147,7 +109,6 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
 }
 ```
 ## LiveFormInfo
-| borderRadius | number | 否 | 否 | 卡片圆角半径信息。取值范围[0, +∞)，单位vp。 |
 互动卡片信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -160,7 +121,7 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
 | ------ | ------ | ---- | ---- | -------- |
 | formId | string | 否 | 否 | 卡片id。 |
 | rect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | 否 | 否 | 卡片位置和大小信息。 |
-| borderRadius | number | 否 | 否 | 卡片圆角半径信息，取值范围[0, +∞)，单位vp。传入负数时自动修正为0。 |
+| borderRadius | number | 否 | 否 | 卡片圆角半径信息。取值大于等于0，单位vp。 |
 
 ## 附录
 

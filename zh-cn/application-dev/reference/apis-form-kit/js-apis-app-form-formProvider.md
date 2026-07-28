@@ -6,8 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-formProvider模块提供了获取卡片信息、更新卡片、设置卡片刷新时间等能力。该模块作为卡片提供方与卡片管理服务的桥梁，通过IPC机制与FormExtension进行通信，实现卡片的更新、信息获取等操作。适用于卡片提供方需要主动更新卡片内容、管理卡片生命周期、获取卡片运行状态等场景，帮助开发者实现卡片的动态更新和状态管理。详细设计请参见[卡片开发指导](../../form/arkts-ui-widget-configuration.md)。
-formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力，适用于卡片提供方需要主动更新卡片内容、管理卡片生命周期、获取卡片运行状态等场景，帮助开发者实现卡片的动态更新和状态管理。
+formProvider模块提供了获取卡片信息、更新卡片、设置卡片刷新时间等能力。该模块作为卡片提供方与卡片管理服务的桥梁，通过IPC机制与FormExtension进行通信，实现卡片的更新、信息获取等操作。适用于卡片提供方需要主动更新卡片内容、管理卡片生命周期、获取卡片运行状态等场景，帮助开发者实现卡片的动态更新和状态管理。
 
 > **说明：**
 >
@@ -23,7 +22,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次更新时间，使用callback异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据更新、定时任务等。
+设置指定卡片的下一次刷新时间，使用callback异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据刷新、定时任务等。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -34,8 +33,8 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。超出范围时返回错误码401。     |
-| callback | AsyncCallback<void> | 是 | 回调函数。设置结果的回调，成功时error为undefined。 |
+| minute | number | 是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。  |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。设置结果的回调，成功时error为undefined。 |
 
 **错误码：**
 
@@ -43,13 +42,13 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. Possible causes: 1. IPC communication channel is not established or disconnected; 2. Related service process is abnormal or not running. Suggestion: Check if the related service is running normally, or try restarting the application. |
-| 16500060 | Service connection error. Possible causes: 1. Service process not started or abnormally exited; 2. Network connection issue; 3. Service configuration error. Suggestion: Check if the related service is running, verify network connection, and check service configuration. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
-| 16501001 | The ID of the form to be operated does not exist. |
-| 16501002 | The number of forms exceeds the maximum allowed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |	 
+| 16500050 | IPC connection error. |	 
+| 16500060 | Service connection error. |	 
+| 16500100 | Failed to obtain the configuration information. |	 
+| 16501000 | An internal functional error occurred. |	 
+| 16501001 | The ID of the form to be operated does not exist. |	 
+| 16501002 | The number of forms exceeds the maximum allowed. |	 
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
@@ -76,7 +75,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次刷新时间，使用Promise异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据更新、定时任务等。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据刷新、定时任务等。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -87,7 +86,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。超出范围时返回错误码401。     |
+| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。 |
 
 **返回值：**
 
@@ -147,7 +146,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | 是   | 请求更新的卡片标识。 |
 | formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。具体限制请参考上方说明。    |
-| callback | AsyncCallback<void> | 是 | 回调函数。更新结果的回调，成功时error为undefined。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。更新结果的回调，成功时error为undefined。 |
 
 **错误码：**
 
@@ -265,7 +264,7 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | 是 | 回调函数。返回查询到的卡片信息。 |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | 是 | 回调函数。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -300,7 +299,7 @@ try {
 
 getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上当前应用的卡片信息，并筛选符合条件的信息，使用callback异步回调。
+获取设备上当前应用程序的卡片信息，并筛选符合条件的信息，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -405,23 +404,14 @@ try {
 
 openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): void
 
-打开卡片编辑页。
 打开卡片编辑页。适用于需要用户配置卡片参数的场景，例如设置卡片显示内容、选择数据源、配置更新频率等。
-**模型约束：** 此接口仅可在Stage模型下使用。
-**模型约束：** 此接口仅可在Stage模型下使用。
-**系统能力：** SystemCapability.Ability.Form
 
-**模型约束：** 此接口仅可在Stage模型下使用。
 **系统能力：** SystemCapability.Ability.Form
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                 |
 | ------ | ------ |----|----------------------------------------------------|
-| isMainPage | boolean | 否  | 是否为主编辑页。<br/>-&nbsp;true：表示是主编辑页，适合首次配置卡片基本信息的场景。<br/>-&nbsp;false：表示不是主编辑页，适合进行卡片细节调整或高级配置的场景。<br/>默认值：true（通常首次编辑卡片时使用默认值即可）。 |
 | formId | string | 是  | 卡片标识。                                              |
 | isMainPage | boolean | 否  | 是否为主编辑页。<br>-&nbsp;true：表示是主编辑页，适合首次配置卡片基本信息的场景。<br>-&nbsp;false：表示不是主编辑页，适合进行卡片细节调整或高级配置的场景。<br>默认值：true（通常首次编辑卡片时使用默认值即可）。 |
 
@@ -487,7 +477,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 **参数：**
 
-| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页。<br/>-&nbsp;true：关闭一级编辑页，适合在一级编辑页完成配置后关闭的场景。<br/>-&nbsp;false：关闭非一级编辑页，适合在多级编辑页场景下关闭当前非一级编辑页的场景。<br/>默认值：true（通常关闭当前编辑页时使用默认值即可）。 |
+| 参数名 | 类型    | 必填 | 说明                                                 |
 | ------ | ------ |----|----------------------------------------------------|
 | isMainPage | boolean | 否  | 是否关闭主编辑页。<br>-&nbsp;true：关闭主编辑页，适合在主编辑页完成配置后关闭的场景。<br>-&nbsp;false：关闭非主编辑页，适合在多级编辑页场景下关闭当前非主编辑页的场景。<br>默认值：true（通常关闭当前编辑页时使用默认值即可）。 |
 
@@ -547,7 +537,7 @@ struct Page {
 
 openFormManager(want: Want): void
 
-打开当前应用的卡片管理页面。适用于卡片管理场景，例如查看已添加的卡片、管理卡片配置、删除或调整卡片等。
+打开当前应用的卡片管理页面。适用于卡片管理场景，例如预览当前应用所有可以加桌的卡片、添加卡片到负一屏或桌面等。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -564,19 +554,12 @@ openFormManager(want: Want): void
 >
 > 如果parameters参数没有填完整或者指定的卡片不存在，就会默认展示[form_config.json](../../form/arkts-ui-widget-configuration.md#卡片配置)中配置的默认卡片。
 
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
 **错误码：**
 
 以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -605,10 +588,8 @@ try {
 ```
 
 ## formProvider.getPublishedFormInfoById<sup>(deprecated)</sup>
-获取设备上当前应用程序已添加到桌面的指定卡片信息，使用Promise异步回调。
-getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
-获取设备上当前应用已添加到桌面的指定卡片信息，使用Promise异步回调。
+获取设备上当前应用程序已添加到桌面的指定卡片信息，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -629,12 +610,6 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 | 类型                                                                | 说明                                |
 |-------------------------------------------------------------------| ---------------------------------- |
 | Promise&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | Promise对象。返回查询到符合条件的卡片信息。 |
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
 
 **错误码：**
 
@@ -665,7 +640,7 @@ try {
 }
 ```
 
-获取设备上当前应用所有已经加桌的卡片信息，使用Promise异步回调。
+## formProvider.getPublishedFormInfos<sup>(deprecated)</sup>
 
 getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -691,8 +666,6 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -706,22 +679,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
     console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
-## formProvider.requestOverflow<sup>20+</sup>
   }).catch((error: BusinessError) => {
-requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise<void>
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
   });
-**相关方法：**
-- cancelOverflow()：取消互动卡片动效请求，用于取消已发起的动效
-## formProvider.requestOverflow<sup>20+</sup>
-
-requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise<void>
-
-卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
-
-**相关方法：**
-- cancelOverflow()：取消互动卡片动效请求，用于取消已发起的动效
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -745,17 +705,6 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 **设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
 
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 |   Capability not supported.function requestOverflow can not work correctly due to limited device capabilities. |
-| 16500050 | IPC connection error. |
-| 16500060 | Service connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
-| 16501001 | The ID of the form to be operated does not exist. |
-| 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
 **系统能力：** SystemCapability.Ability.Form
 
 **参数：**
@@ -777,7 +726,6 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 |   Capability not supported.function requestOverflow can not work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -786,8 +734,6 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
 | 16501011 | The form can not support this operation. |
-
-**示例：**
 
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
@@ -799,52 +745,17 @@ let overflowInfo: formInfo.OverflowInfo = {
     left: -10,
     top: -10,
     width: 180,
-卡片提供方发起取消互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
-> **说明：**
->
-> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
-> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
     height: 180
   },
   duration: 1000,
   useDefaultAnimation: false,
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+};
 
 try {
   formProvider.requestOverflow(formId, overflowInfo).then(() => {
     console.info('requestOverflow succeed.');
-cancelOverflow(formId: string): Promise<void>
-
-卡片提供方发起取消互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
-
-> **说明：**
->
-> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
-> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
-
-**系统能力：** SystemCapability.Ability.Form
   }).catch((error: BusinessError) => {
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 | Capability not supported.function cancelOverflow can not work correctly due to limited device capabilities. |
-| 16500050 | IPC connection error. |
-| 16500060 | Service connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
-| 16501001 | The ID of the form to be operated does not exist. |
-| 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-卡片提供方发起取消互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
-> **说明：**
->
-> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
-> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -886,7 +797,6 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported.function cancelOverflow can not work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -895,18 +805,8 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
 | 16501011 | The form can not support this operation. |
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
-| 16500050 | IPC connection error. |
-| 16500060 | Service connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
-| 16501001 | The ID of the form to be operated does not exist. |
-| 16501003 | The form cannot be operated by the current application. |
 
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+**示例：**
 
 ```ts
 import { formProvider } from '@kit.FormKit';
@@ -914,7 +814,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
-查询卡片位置、尺寸，使用Promise异步回调。适用于需要获取卡片在屏幕上的位置和尺寸信息的场景，例如卡片动效、位置校准、布局计算等。
+try {
   formProvider.cancelOverflow(formId).then(() => {
     console.info('cancelOverflow succeed.');
   }).catch((error: BusinessError) => {
@@ -953,31 +853,22 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
-| 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
-| 16501001  | The ID of the form to be operated does not exist. |
-| 16501003  | The form cannot be operated by the current application. |
 | 16501003 | The form cannot be operated by the current application. |
 
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+**示例：**
 
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
-获取当前应用已加桌卡片中指定的卡片信息，使用Promise异步回调。适用于卡片管理、状态查询、调试等场景，例如查看指定卡片的运行状态和配置信息。
+
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
     console.info(`getFormRect succeed, data: ${JSON.stringify(data)}`);
@@ -993,7 +884,7 @@ try {
 
 getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
-获取当前应用已加桌且正在运行的指定卡片信息，使用Promise异步回调。适用于卡片管理、状态查询、调试等场景，例如查看指定卡片的运行状态和配置信息。
+获取当前应用已加桌的指定卡片信息，使用Promise异步回调。适用于卡片管理、调试等场景，例如查看指定卡片的位置信息和尺寸信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1017,21 +908,19 @@ getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningForm
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501001  | The ID of the form to be operated does not exist. |
 | 16501003  | The form cannot be operated by the current application. |
 
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 **示例：**
 
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-获取所有已加桌的卡片信息，使用Promise异步回调。适用于卡片管理、批量操作、统计等场景，例如查看应用所有已添加到桌面的卡片信息、批量更新卡片状态等。
+const formId: string = '388344236';
 
 try {
   formProvider.getPublishedRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
@@ -1056,8 +945,6 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **返回值：**
 
-| moduleName | string | 是   | 指定卡片的moduleName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的module名称一致。   |
-| abilityName | string | 是 | 指定卡片的abilityName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的ability名称一致。  |
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
 | Promise&lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo.md#runningforminfo20)&gt;&gt; | Promise对象。返回符合条件的卡片信息。 |
@@ -1068,21 +955,15 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+| 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16501000 | An internal functional error occurred. |
 | 16501000 | An internal functional error occurred. |
 
-对于当前应用中moduleName、abilityName、formName相同的卡片,每次加桌会分配不同的卡片ID。卡片提供方可通过本接口批量更新这些卡片。本接口在应用主进程中调用,通知FormExtension进程进行批量更新,仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用。
+**示例：**
 
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
-卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。与reloadAllForms相比，本接口可精确指定更新特定配置的卡片，适用于仅需更新特定卡片场景；reloadAllForms更新当前应用所有已加桌卡片，适用于全局刷新场景。
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
@@ -1092,11 +973,9 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-| moduleName | string | 是   | 指定卡片的moduleName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的module名称一致。   |
-| abilityName | string | 是 | 指定卡片的abilityName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的ability名称一致。  |
 }
 ```
-指定卡片的moduleName。需与abilityName、formName配合使用，三者必须同时匹配才能定位到对应卡片。
+
 ## formProvider.reloadForms<sup>22+</sup>
 
 reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
@@ -1130,17 +1009,12 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16501000 | An internal functional error occurred. |
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
 
 ```ts
-console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
@@ -1160,6 +1034,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
 ## formProvider.reloadAllForms<sup>22+</sup>
 
 reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
@@ -1190,7 +1065,6 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
