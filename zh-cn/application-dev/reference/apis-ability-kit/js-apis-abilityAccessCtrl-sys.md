@@ -472,7 +472,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | 12100003 | The specified permission does not exist. |
-| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**起始版本：** 26.1.0 |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>适用版本：26.1.0+ |
 | 12100007 | Service exception. |
 | 12100009 | Common inner error. A database error occurs. |
 
@@ -588,7 +588,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | 12100003 | The specified permission does not exist. |
-| 12100004 | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12).<br>**起始版本：** 26.1.0 |
+| 12100004 | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus12).<br>适用版本：26.1.0+ |
 | 12100007 | Service exception. |
 
 **示例：**

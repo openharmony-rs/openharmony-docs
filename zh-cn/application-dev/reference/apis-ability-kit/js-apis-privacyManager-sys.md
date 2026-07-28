@@ -437,7 +437,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>**起始版本：** 26.1.0 |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>适用版本：26.1.0+ |
 | 12100007 | Service exception. |
 | 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
 
@@ -538,7 +538,7 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
-| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>**起始版本：** 26.1.0 |
+| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>适用版本：26.1.0+ |
 | 12100007 | Service exception. |
 
 **示例：**
