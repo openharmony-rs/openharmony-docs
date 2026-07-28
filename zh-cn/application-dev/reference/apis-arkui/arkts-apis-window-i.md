@@ -562,7 +562,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型，用于指定窗口举行区域使用的坐标系，如屏幕坐标系、父窗口坐标系等。 |
+| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型，用于指定窗口矩形区域使用的坐标系，如屏幕坐标系、父窗口坐标系等。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
 
 ## OrientationResult
