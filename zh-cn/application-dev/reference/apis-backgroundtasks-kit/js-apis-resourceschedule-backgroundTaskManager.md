@@ -913,7 +913,7 @@ export default class EntryAbility extends UIAbility {
       // 必须先执行startBackgroundRunning，才能调用updateBackgroundRunning，这里假设已经申请过
       let list: Array<string> = ['audioPlayback'];
       backgroundTaskManager.updateBackgroundRunning(this.context, list).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-         console.info('Operation updateBackgroundRunning succeeded. Data: ' + JSON.stringify(res));
+        console.info('Operation updateBackgroundRunning succeeded. Data: ' + JSON.stringify(res));
       }).catch((error: BusinessError) => {
         console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
@@ -1012,7 +1012,7 @@ export default class EntryAbility extends UIAbility {
           continuousTaskRequest.combinedTaskNotification = false;
           continuousTaskRequest.continuousTaskId = this.continuousTaskId; // 对于更新接口，长时任务ID必须要传且为存在的ID，否则更新失败
           backgroundTaskManager.updateBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-             console.info('Operation updateBackgroundRunning succeeded. Data: ' + JSON.stringify(res));
+            console.info('Operation updateBackgroundRunning succeeded. Data: ' + JSON.stringify(res));
             this.notificationId = res.notificationId;
           }).catch((error: BusinessError) => {
             console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
