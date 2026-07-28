@@ -378,7 +378,7 @@ import { Button, Column, ComponentV2, DatePicker, Entry, Local, Row } from '@kit
 struct DatePickerExample {
   @Local selectedDate: Date = new Date('2021-08-08'); // 使用@Local装饰Date类型变量
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
