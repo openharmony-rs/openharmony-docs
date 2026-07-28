@@ -13,7 +13,7 @@
 > - `command`必须为JSON对象字符串。
 > - `method`字段取值区分大小写，需使用[命令总览](#命令总览)中列出的取值。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
-> - 当网页不可用、命令无法执行或无结果返回时，接口返回空字符串。
+> - 不同命令的返回格式不同。命令无法分发或无结果返回时，接口可能返回空字符串。
 
 ## 命令总览
 
@@ -21,6 +21,12 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。适用于需要完整层级结构的场景。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [getUrlHistory](#geturlhistory) | 获取URL历史 | [GetUrlHistoryCommand](#geturlhistorycommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 获取当前Web组件的URL历史列表、当前历史项位置和前进后退状态。 |
+| [goBack](#goback) | 后退 | [GoBackCommand](#gobackcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 返回上一个历史页面。 |
+| [goForward](#goforward) | 前进 | [GoForwardCommand](#goforwardcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 前进到下一个历史页面。 |
+| [navigate](#navigate) | 导航到指定URL | [NavigateCommand](#navigatecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 打开指定URL。 |
+| [addPageAnnotation](#addpageannotation) | 添加页面标注 | [AddPageAnnotationCommand](#addpageannotationcommand) | [PageAnnotationResult](#pageannotationresult) | 清理已有页面标注后，根据节点标识在顶层页面当前视口绘制标注框和数字标签。 |
+| [removePageAnnotation](#removepageannotation) | 清理页面标注 | [RemovePageAnnotationCommand](#removepageannotationcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 清理当前页面的标注层。 |
 | [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | JSON字符串 | 返回JSON字符串，图片数据为Base64编码。支持获取当前网页视口截图或视口内目标元素截图。 |
 | [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
@@ -32,6 +38,12 @@
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称。支持的取值请参见[命令总览](#命令总览)。 |
 | params | - | - | Object | 否 | 命令参数。不同`method`对应的`params`格式不同。不传入时具体行为由各命令定义。 |
+
+## 通用执行结果
+
+`getUrlHistory`、`goBack`、`goForward`、`navigate`和`removePageAnnotation`返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)格式。`goBack`、`goForward`、`navigate`和`removePageAnnotation`成功时返回`{"code":10,"message":"success"}`；`getUrlHistory`成功时在此基础上追加`result`字段；命令级失败时返回`{"code":错误码,"message":"错误描述"}`。
+
+`addPageAnnotation`返回[PageAnnotationResult](#pageannotationresult)格式。
 
 ## getFullDom
 
@@ -252,7 +264,6 @@
     "wants": [
       "id",
       "tag",
-      "text",
       "rect",
       "clickable",
       "xpath",
@@ -294,7 +305,7 @@
 | ---- | ---- | ---- | ---- |
 | id | id | string | 请求返回ArkWeb生成的节点标识，不表示按HTML `id`属性筛选节点。该值由frame标识、文档作用域标识和DOM节点标识组合编码，用于区分返回结果中的节点；页面重新加载、frame重建或DOM重建后可能变化。仅在可生成节点标识时返回。如需读取HTML `id`属性，请在`wants`中通过`attributes`对象项请求`id`属性，并查看返回节点的`attributes.id`。 |
 | tag | tag | string | 节点标签名。返回小写HTML标签名。 |
-| text | text | string | 节点文本内容。字段值为空时不返回该字段。 |
+| text | text | string | 节点文本内容。`getLiteDom`只返回元素节点，当前元素节点文本为空时不返回该字段。 |
 | title | title | string | 节点`title`属性值。字段值为空时不返回该字段。 |
 | aria-label | aria-label | string | 节点`aria-label`属性值。字段值为空时不返回该字段。 |
 | role | role | string | 节点语义角色。字段值为空时不返回该字段。 |
@@ -335,7 +346,7 @@
 | nodes | - | - | Array\<Object> | 符合筛选规则的节点列表。 |
 | nodes | - | id | string | ArkWeb生成的节点标识，不是HTML `id`属性。仅在`wants`中包含`id`且可生成节点标识时返回。 |
 | nodes | - | tag | string | 节点标签名。 |
-| nodes | - | text | string | 节点文本内容。 |
+| nodes | - | text | string | 节点文本内容。`getLiteDom`只返回元素节点，当前元素节点文本为空时不返回该字段。 |
 | nodes | - | title | string | 节点`title`属性值。 |
 | nodes | - | aria-label | string | 节点`aria-label`属性值。 |
 | nodes | - | role | string | 节点语义角色。 |
@@ -404,7 +415,6 @@
     "wants": [
       "id",
       "tag",
-      "text",
       "rect",
       "clickable",
       "xpath",
@@ -443,6 +453,427 @@
 }
 ```
 
+## getUrlHistory
+
+获取当前Web组件的URL历史列表，以及当前历史项位置和前进后退状态。
+
+### GetUrlHistoryCommand
+
+```json
+{
+  "method": "getUrlHistory",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`getUrlHistory`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回说明
+
+成功时返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)，并在`result`中携带以下字段。
+
+| 字段 | 子字段 | 类型 | 说明 |
+| ---- | ---- | ---- | ---- |
+| result | currentIndex | number | 当前历史项在URL历史列表中的索引。未找到当前历史项时为`-1`。 |
+| result | canGoBack | boolean | 当前页面是否可后退。 |
+| result | canGoForward | boolean | 当前页面是否可前进。 |
+| result | entries | Array\<Object> | 历史项列表。 |
+| result.entries | index | number | 该历史项在URL历史列表中的索引。当前历史项的该字段值与`currentIndex`相同。 |
+| result.entries | url | string | 历史项URL。 |
+| result.entries | title | string | 历史项标题。 |
+
+失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 132 | browser或browser host为空。 |
+
+### 请求示例
+
+```json
+{
+  "method": "getUrlHistory",
+  "params": {}
+}
+```
+
+### 返回示例
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "result": {
+    "currentIndex": 1,
+    "canGoBack": true,
+    "canGoForward": false,
+    "entries": [
+      {
+        "index": 0,
+        "url": "https://www.example.com/",
+        "title": "Example"
+      },
+      {
+        "index": 1,
+        "url": "https://www.example.com/form",
+        "title": "Form"
+      }
+    ]
+  }
+}
+```
+
+## goBack
+
+返回上一个历史页面。
+
+### GoBackCommand
+
+```json
+{
+  "method": "goBack",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`goBack`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面没有可后退的历史项。 |
+| 132 | browser为空。 |
+
+### 返回示例
+
+可后退时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+不可后退时返回：
+
+```json
+{
+  "code": 11,
+  "message": "Cannot go back"
+}
+```
+
+## goForward
+
+前进到下一个历史页面。
+
+### GoForwardCommand
+
+```json
+{
+  "method": "goForward",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`goForward`。 |
+| params | - | - | Object | 否 | 命令参数。当前无子字段，可传入`{}`或省略。 |
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面没有可前进的历史项。 |
+| 132 | browser为空。 |
+
+### 返回示例
+
+可前进时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+不可前进时返回：
+
+```json
+{
+  "code": 11,
+  "message": "Cannot go forward"
+}
+```
+
+## navigate
+
+打开指定URL。
+
+### NavigateCommand
+
+```json
+{
+  "method": "navigate",
+  "params": {
+    "url": "https://www.example.com/"
+  }
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`navigate`。 |
+| params | - | - | Object | 是 | 命令参数。 |
+| params | url | - | string | 是 | 目标URL。支持`http`、`https`、`file`和`about`协议。 |
+
+> **说明：**
+>
+> - `params.url`缺失或为空字符串时，返回`{"code":391,"message":"params.url is required"}`。
+> - `params.url`不是string、不是合法URL，或使用不支持的协议时，返回`{"code":392,"message":"params.url is invalid"}`。
+> - `resource`、`javascript`、`data`和`ftp`协议不支持。
+
+### 返回说明
+
+命令执行成功时返回`{"code":10,"message":"success"}`。
+
+失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 132 | browser为空。 |
+| 160 | browser存在，但main frame为空。 |
+| 391 | `params`缺失或不是Object，或者`url`缺失或为空字符串。 |
+| 392 | `url`已传入但不是string，或者是非空字符串但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
+
+### 请求示例
+
+```json
+{
+  "method": "navigate",
+  "params": {
+    "url": "about:blank"
+  }
+}
+```
+
+### 返回示例
+
+成功时返回：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+URL不合法时返回：
+
+```json
+{
+  "code": 392,
+  "message": "params.url is invalid"
+}
+```
+
+## addPageAnnotation
+
+清理已有页面标注后，根据`elementList`中的节点标识获取元素位置，并在顶层页面当前视口绘制固定定位的标注框和数字标签。
+
+> **说明：**
+>
+> - 节点标识可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取，格式为`frameToken|documentScopeToken|domNodeId`。
+> - 标注只反映调用时的当前视口位置。页面滚动后标注不会自动重新计算位置，如需更新位置，应重新获取节点标识并再次调用该命令。
+> - 标注层采用固定定位，显示在页面内容上方，且不拦截页面输入事件。
+
+### AddPageAnnotationCommand
+
+```json
+{
+  "method": "addPageAnnotation",
+  "params": {
+    "elementList": ["frameToken|documentScopeToken|12"],
+    "style": {
+      "maxMarks": 350,
+      "border": {
+        "color": "#dc2626",
+        "width": 1
+      },
+      "label": {
+        "fontSize": 11,
+        "fontColor": "#ffffff",
+        "backgroundColor": "#dc2626",
+        "avoidCover": false
+      }
+    }
+  }
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`addPageAnnotation`。 |
+| params | - | - | Object | 是 | 命令参数。缺失或不是Object时返回`{"code":110,"message":"params is invalid"}`。 |
+| params | - | elementList | Array\<string> | 是 | 需要标注的节点标识列表，必须为非空字符串数组。缺失时返回`{"code":391,"message":"missing elementList"}`；不是数组、为空数组、数组项不是字符串或为空字符串时返回`{"code":392,"message":"invalid elementList"}`。 |
+| params | - | style | Object | 否 | 标注样式。未传入或字段无效时使用默认值。 |
+| style | - | maxMarks | number | 否 | 最大标注矩形数量，默认值为`350`，上限为`1000`。取值小于或等于`0`或不是number时使用默认值；取值大于或等于`1000`时按`1000`生效；正数小数向下取整，取整后小于`1`时按`1`生效。 |
+| style | border | color | string | 否 | 标注框颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式，默认值为`#dc2626`。 |
+| style | border | width | number | 否 | 标注框线宽，默认值为`1`，取值范围为`1`到`8`。超出范围时裁剪到边界值，不是number时使用默认值。 |
+| style | label | fontSize | number | 否 | 数字标签字号，默认值为`11`，取值范围为`8`到`32`。超出范围时裁剪到边界值，不是number时使用默认值。 |
+| style | label | fontColor | string | 否 | 数字标签文字颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式，默认值为`#ffffff`。 |
+| style | label | backgroundColor | string | 否 | 数字标签背景颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式。未设置时跟随标注框颜色，默认标注框颜色为`#dc2626`。 |
+| style | label | avoidCover | boolean | 否 | 数字标签是否尽量避开标注框和已放置标签，默认值为`false`。 |
+
+### 执行规则
+
+- 标注时会获取元素在当前视口中的一个或多个布局矩形；当元素没有正面积布局矩形时，会尝试使用元素边界矩形。
+- 命中检测使用矩形水平中心点和高度`3/5`处的采样点。采样点命中的元素必须是目标元素或其后代，否则该矩形不绘制。
+- 内嵌框架中的元素会折算到顶层页面视口坐标后绘制。
+- 矩形会裁剪到当前视口；完全不在视口内、裁剪后总可见面积小于`20px²`、被遮挡、找不到元素或无法折算坐标时，该元素不绘制，并计入`missingElementIds`。
+- 一个元素可能对应多个矩形，标注框按矩形绘制；数字标签按元素绘制，文本为实际绘制顺序，从`1`开始。
+- `maxMarks`限制的是矩形数量，不是元素数量。达到上限后返回`truncated`为`true`，未继续处理的元素不保证计入`missingElementIds`。
+
+### PageAnnotationResult
+
+命令执行成功时返回如下JSON字符串：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 1,
+  "truncated": false,
+  "missingElementIds": [],
+  "invalidElementIds": []
+}
+```
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。`10`表示命令执行成功。其他取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`。 |
+| renderedCount | number | 实际绘制出至少一个有效矩形的元素数量。 |
+| truncated | boolean | 是否因达到`maxMarks`限制而截断。 |
+| missingElementIds | Array\<string> | 格式正确但未绘制成功的节点标识列表。 |
+| invalidElementIds | Array\<string> | 格式非法的节点标识列表。 |
+
+> **说明：**
+>
+> `missingElementIds`和`invalidElementIds`为诊断字段。存在未绘制元素或非法节点标识时，命令整体仍可返回`{"code":10,"message":"success"}`。
+
+### 常见返回示例
+
+部分节点未绘制成功：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 2,
+  "truncated": false,
+  "missingElementIds": ["frameToken|documentScopeToken|404"],
+  "invalidElementIds": []
+}
+```
+
+节点标识格式非法：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "renderedCount": 0,
+  "truncated": false,
+  "missingElementIds": [],
+  "invalidElementIds": ["invalidNodeId"]
+}
+```
+
+参数错误：
+
+```json
+{
+  "code": 392,
+  "message": "invalid elementList"
+}
+```
+
+常见失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 标注命令执行失败。 |
+| 110 | `params`缺失或不是Object。 |
+| 130 | 标注命令执行超时。 |
+| 132 | 浏览器、主页面框架或ArkWeb页面框架为空。 |
+| 391 | `elementList`缺失。 |
+| 392 | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
+
+## removePageAnnotation
+
+清理当前页面的标注层。
+
+### RemovePageAnnotationCommand
+
+```json
+{
+  "method": "removePageAnnotation"
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`removePageAnnotation`。 |
+
+### 返回说明
+
+命令执行成功时返回如下JSON字符串：
+
+```json
+{
+  "code": 10,
+  "message": "success"
+}
+```
+
+常见失败结果如下：
+
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面不存在可清理的标注层，或清理标注命令执行失败。 |
+| 130 | 清理标注命令执行超时。 |
+| 132 | 浏览器、主页面框架或ArkWeb页面框架为空。 |
 ## screenCapture
 
 获取当前网页视口截图或视口内目标元素截图或视口内目标区域截图，返回Base64编码的图片数据。
