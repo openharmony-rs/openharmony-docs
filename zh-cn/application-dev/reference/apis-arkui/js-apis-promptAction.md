@@ -424,7 +424,7 @@ ArkTS-Dyn: static clamp(order: number): LevelOrder
 
 ArkTS-Sta: static clamp(order: double): LevelOrder
 
-创建指定顺序的弹窗层级。
+创建指定顺序的弹窗层级，数值越大弹窗显示越上层。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
