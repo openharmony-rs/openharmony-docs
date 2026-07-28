@@ -812,7 +812,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
 
@@ -840,8 +840,8 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
-// 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
-// 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后,再调用该接口。
 async function bulkTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -869,7 +869,7 @@ async function bulkTransfer() {
         console.error(`claim interface failed`);
         continue;
       }
-      let buffer =  new Uint8Array(128);
+      let buffer = new Uint8Array(128);
       usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
         ret = usbManager.releaseInterface(devicePipe, interfaces);
@@ -948,9 +948,9 @@ async function usbSubmitTransfer() {
   }
   // 获取endpoint端点地址
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
-  })
-  // 获取设备的第一个id。
+    return value.direction === 0 && value.type === 2;
+  });
+  // 声明接口控制权，force参数为true表示强制获取
   let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
@@ -977,15 +977,15 @@ async function usbSubmitTransfer() {
       console.info(`releaseInterface = ${relIntfRet}`);
       usbManager.closePipe(devicePipe);
       if (err) {
-        console.error('USB transfer failed:', err);
+        console.error(`USB transfer failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('callbackData =' +JSON.stringify(callbackData));
+      console.info('callbackData =' + JSON.stringify(callbackData));
     };
     usbManager.usbSubmitTransfer(transferParams); 
     console.info('USB transfer request submitted.');
   } catch (error) {
-    console.error('USB transfer failed:', error);
+    console.error(`USB transfer failed. Code: ${error.code}, message: ${error.message}`);
   }
 }
 ```
@@ -994,11 +994,11 @@ async function usbSubmitTransfer() {
 
 usbCancelTransfer(transfer: UsbDataTransferParams): void
 
-取消异步传输请求。
+取消异步传输请求。适用于需要主动终止未完成USB数据传输的场景，如用户手动取消长时间数据传输、传输超时后的错误恢复、应用切换时中止当前传输等。
 
 > **说明：**
 >
-> 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
+> 主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
 > 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -1057,7 +1057,7 @@ async function usbCancelTransfer() {
     console.info(`invalid endpoint`);
     return;
   }
-  // 获取设备的第一个id。
+  // 声明接口控制权，force参数为true表示强制获取。
   let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
@@ -1078,8 +1078,8 @@ async function usbCancelTransfer() {
   };
   try {
     transferParams.endpoint = endpoint?.address as number;
-    transferParams.callback = (err, callBackData: usbManager.SubmitTransferCallback)=>{
-      console.info('callBackData =' +JSON.stringify(callBackData));
+    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callbackData =' + JSON.stringify(callbackData));
     };
     usbManager.usbSubmitTransfer(transferParams);
     usbManager.usbCancelTransfer(transferParams);
@@ -1097,7 +1097,7 @@ async function usbCancelTransfer() {
 
 closePipe(pipe: USBDevicePipe): number
 
-关闭设备消息控制通道。
+关闭设备消息传输通道。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限；
@@ -1109,13 +1109,13 @@ closePipe(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息传输通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
+| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。可能原因：1.USB服务未正常运行；2.设备消息控制通道状态异常。 |
 
 **错误码：**
 
@@ -1189,11 +1189,11 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 ```ts
 try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.hasAccessoryRight(accList?.[0])
-  console.info(`hasAccessoryRight success, ret:${flag}`)
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+  let flag = usbManager.hasAccessoryRight(accList?.[0]);
+  console.info(`hasAccessoryRight success, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1236,11 +1236,11 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 ```ts
 async function requestAccessoryRight() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
-    console.info(`requestAccessoryRight success, ret:${flag}`)
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
+    console.info(`requestAccessoryRight success, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`)
+    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1279,15 +1279,15 @@ cancelAccessoryRight(accessory: USBAccessory): void
 ```ts
 async function cancelAccessoryRight() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    usbManager.cancelAccessoryRight(accList?.[0])
-    console.info(`cancelAccessoryRight success`)
+    usbManager.cancelAccessoryRight(accList?.[0]);
+    console.info(`cancelAccessoryRight success`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`)
+    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1319,10 +1319,10 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 ```ts
 try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`)
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`)
+  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -1332,7 +1332,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](#usbmanagercloseaccessory14)接口关闭文件描述符。
 
-需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。调用前需先调用[usbManager.requestAccessoryRight](#usbmanagerrequestaccessoryright14)请求访问配件权限，权限申请成功（返回true）后方可调用本接口打开配件。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1369,19 +1369,19 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 import { fileIo } from '@kit.CoreFileKit';
 async function openAccessory() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    let handle = usbManager.openAccessory(accList?.[0])
-    console.info(`openAccessory success`)
+    let handle = usbManager.openAccessory(accList?.[0]);
+    console.info(`openAccessory success`);
     let arrayBuffer = new ArrayBuffer(4096);
     let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
     console.info('readSync ret: ' + readLength.toString(10));
-    usbManager.closeAccessory(handle)
+    usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`)
+    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1392,7 +1392,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 关闭配件文件描述符。
 
-需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.requestAccessoryRight](#usbmanagerrequestaccessoryright14)请求访问配件权限，权限申请成功后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1418,16 +1418,16 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 ```ts
 async function closeAccessory() {
   try {
-    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+    let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     if (!flag) {
-      return
+      return;
     }
-    let handle = usbManager.openAccessory(accList?.[0])
-    usbManager.closeAccessory(handle)
-    console.info(`closeAccessory success`)
+    let handle = usbManager.openAccessory(accList?.[0]);
+    usbManager.closeAccessory(handle);
+    console.info(`closeAccessory success`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`)
+    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -1436,7 +1436,7 @@ async function closeAccessory() {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB外设。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
+重置USB设备。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1528,7 +1528,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -1545,7 +1545,7 @@ import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
-  target:0,
+  target: 0,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
@@ -1584,7 +1584,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 
 >**说明：**
 >
-> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用宽带预留调度，适合音视频等实时数据流。
+> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用带宽共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用带宽预留调度，适合音视频等实时数据流。
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
@@ -1593,11 +1593,11 @@ graph LR
     A[端点类型] --> B[批量端点 bulk]
     A --> C[中断端点 interrupt]
     A --> D[实时端点 isochronous]
-    B --> B1[宽带共享调度]
+    B --> B1[带宽共享调度]
     B1 --> B2[适合大量数据非实时传输]
     C --> C1[固定轮询调度]
     C1 --> C2[适合小数据量实时传输]
-    D --> D1[宽带预留调度]
+    D --> D1[带宽预留调度]
     D1 --> D2[适合音视频等实时数据流]
 ```
 
@@ -1656,8 +1656,8 @@ USB设备信息。
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
 | busNum           | number                               | 否 | 否 |总线地址。      |
 | devAddress       | number                               | 否 | 否 |设备地址。      |
-| serial           | string                               | 否 | 否 |序列号。       |
-| name             | string                               | 否 | 否 |设备名字。      |
+| serial           | string                               | 否 | 否 |序列号。三方应用无法获取此字段的设备序列号信息（该字段对三方应用不可用），如需获取序列号需在申请设备访问权限后自行发起控制传输。|
+| name             | string                               | 否 | 否 |设备名称。      |
 | manufacturerName | string                               | 否 | 否 |设备厂商名称。      |
 | productName      | string                               | 否 | 否 |设备产品名称。      |
 | version          | string                               | 否 | 否 |设备版本号。        |
@@ -1690,7 +1690,7 @@ USB设备消息传输通道，用于确定总线地址和设备地址。
 | bmRequestType | number                                    | 否 | 否   |请求控制类型，用于指定控制传输的方向和类型，取值需遵循USB协议规范，常见取值示例：0x00（标准请求，主机向设备）、0x20（类请求，主机向设备）、0x40（厂商请求，主机向设备）、0x80（标准请求，设备向主机）。|
 | bRequest  | number                                        | 否 | 否   |请求类型，用于指定具体的USB控制请求命令（如获取描述符，设置地址等）。          |
 | wValue | number                                           | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。          |
-| wIndex   | number                                         | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点索引。            |
+| wIndex   | number                                         | 否 | 否   |请求参数的索引值，与wValue配合使用，用于指定控制请求的目标接口或端点索引。            |
 | wLength   | number                                        | 否 | 否   |请求数据的长度，用于指定控制传输中期望接收或发送的数据字节数。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区，数组长度对应wLength参数指定的数据字节数。用于控制传输时发送或接收数据。 |
 
@@ -1709,7 +1709,7 @@ USB设备消息传输通道，用于确定总线地址和设备地址。
 
 ## USBControlRequestType
 
-控制请求类型。
+控制请求类型，用于指定具体的USB控制请求命令（如获取描述符、设置地址等）。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1763,7 +1763,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动传输）、3（传输增加一个额外的数据包）。 |
+| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
 | timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
@@ -1788,7 +1788,7 @@ USB传输标志。
 
 ## UsbEndpointTransferType<sup>18+</sup>
 
-Usb传输类型。
+USB传输类型。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1800,7 +1800,7 @@ Usb传输类型。
 
 ## SubmitTransferCallback<sup>18+</sup>
 
-Usb异步传输回调。
+USB异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1850,9 +1850,9 @@ Usb异步传输回调。
 
 | 名称      | 类型                                            | 只读  | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| request | number                                          | 否 | 否   |请求类型。            |
+| request | number                                          | 否 | 否   |请求类型，用于指定具体的USB控制请求命令。            |
 | target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
 | reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
-| value   | number                                          | 否 | 否   |请求参数。            |
-| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
+| value   | number                                          | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。            |
+| index   | number                                          | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
