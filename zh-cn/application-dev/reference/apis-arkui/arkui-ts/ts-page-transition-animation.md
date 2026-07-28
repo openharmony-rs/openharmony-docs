@@ -16,6 +16,10 @@
 
 ## PageTransitionEnter
 
+定义PageTransitionEnter组件。
+
+### PageTransitionEnter
+
 PageTransitionEnter(value: PageTransitionOptions)
 
 设置当前页面的自定义入场动效。继承自[CommonTransition](#commontransition)。
@@ -60,6 +64,10 @@ onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
 ## PageTransitionExit
 
+定义PageTransitionExit组件。
+
+### PageTransitionExit
+
 PageTransitionExit(value: PageTransitionOptions)
 
 设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)。
@@ -78,7 +86,7 @@ PageTransitionExit(value: PageTransitionOptions)
 
 onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
-逐帧回调，直到出场动画结束，progress从0变化到1。
+逐帧回调，直到退场动画结束，progress从0变化到1。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +96,7 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 | 参数名 | 类型                                                               | 必填 | 说明                                                |
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------    |
-| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 出场动画的逐帧回调直到出场动画结束，progress从0变化到1。 |
+| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 退场动画的逐帧回调直到退场动画结束，progress从0变化到1。 |
 
 **示例：**
 

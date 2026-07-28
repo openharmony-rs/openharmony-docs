@@ -1,4 +1,4 @@
-# 透明度设置
+# 不透明度设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的透明度。
+设置组件的不透明度。
 
 >  **说明：**
 >

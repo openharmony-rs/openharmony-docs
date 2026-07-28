@@ -129,7 +129,7 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 | event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。 |
 | current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将响应的识别器对象。 |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。未传入时，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。|
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的触摸识别器对象。未传入时，表示在当前手势绑定组件及其子孙组件没有可响应的触摸识别器。|
 
 **返回值：**
 
@@ -225,7 +225,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上组件的手势识别器对象。 |
-| touchRecognizers | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否 | 响应链上组件的触摸识别器对象。<br/>默认值为null，表示响应链上没有触摸识别器对象。 |
+| touchRecognizers | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否 | 响应链上组件的触摸识别器对象。<br>默认值为null，表示响应链上没有触摸识别器对象。 |
 
 **返回值：**
 
@@ -504,7 +504,7 @@ struct Index {
               Column().width('100%').height('100%').backgroundColor(Color.Pink)
             }.tabBar(new SubTabBarStyle('pink'))
           }
-          .onAnimationStart((index: number, targetIndex: number) => {
+          .onAnimationStart((_index: number, targetIndex: number) => {
             console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`);
             this.innerSelectedIndex = targetIndex;
           })
@@ -534,7 +534,7 @@ struct Index {
           Column().width('100%').height('100%').backgroundColor(Color.Brown)
         }.tabBar(this.tabBuilder(2, 'brown'))
       }
-      .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+      .onAnimationStart((_index: number, targetIndex: number, _event: TabsAnimationEvent) => {
         // 切换动画开始时触发该回调。目标页签显示下划线。
         this.selectedIndex = targetIndex;
       })
@@ -731,7 +731,7 @@ struct FatherControlChild {
       })
       .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
         others: Array<GestureRecognizer>,
-        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，查找子组件Touch识别器并取消其Touch事件
+        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，查找子组件触摸识别器并取消其Touch事件
         if (current && touchRecognizers) {
           let target = current.getEventTargetInfo();
           if (target) {
@@ -797,7 +797,7 @@ struct FatherControlChild {
                 this.currentRecognizer.setEnabled(false)
               }
             }
-            this.lastOffset = event.offsetY
+            this.lastOffset = event.offsetY;
           })
       )
 

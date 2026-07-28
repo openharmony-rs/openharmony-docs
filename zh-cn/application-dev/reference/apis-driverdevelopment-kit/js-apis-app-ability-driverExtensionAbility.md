@@ -335,7 +335,7 @@ DriverExtensionAbility不支持以下模块的引用。
 | Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md)  |
 | Location Kit | [@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)  |
 | MDM Kit（企业设备管理服务）| [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md)  |
-|<!--DelRow-->MDM Kit（企业设备管理服务） | [@ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
+|<!--DelRow-->MDM Kit（企业设备管理服务） | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
 | MDM Kit（企业设备管理服务） | [@ohos.enterprise.deviceInfo（设备信息管理）](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
 |<!--DelRow-->Media Kit（媒体服务）| [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md)  |
 | MultimediaKit | @ohos.multimedia.mediaLibrary (媒体库管理) |

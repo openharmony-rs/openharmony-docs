@@ -6,6 +6,8 @@
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
+fileuri继承自[uri](../apis-arkts/js-apis-uri.md)。
+
 该模块提供通过路径获取文件统一资源标识符（Uniform Resource Identifier，URI）的能力，支持URI与应用沙箱路径之间的转换。后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行open、read、write等操作，实现文件分享。
 
 > **说明：**
@@ -78,29 +80,6 @@ constructor是FileUri的构造函数。传入路径时，可通过应用上下�
   let uri = fileUri.getUriFromPath(path);  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
   let fileUriObject = new fileUri.FileUri(uri);
   console.info(`The name of FileUri is ${fileUriObject.name}`);
-  ```
-
-### toString<sup>10+</sup>
-
-toString(): string
-
-**系统能力**：SystemCapability.FileManagement.AppFileService
-
-返回字符串类型URI。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| string | 返回字符串类型URI。 |
-
-**示例：**
-
-  ```ts
-  let pathDir = this.context.filesDir; // 获取应用沙箱路径。
-  let path = pathDir + '/test';
-  let fileUriObject = new fileUri.FileUri(path);
-  console.info(`The URI of FileUri is ${fileUriObject.toString()}`);
   ```
 
 ### getFullDirectoryUri<sup>11+</sup>

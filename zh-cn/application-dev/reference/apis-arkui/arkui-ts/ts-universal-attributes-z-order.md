@@ -85,14 +85,14 @@ Stack容器子组件设置zIndex后的效果。
 @Entry
 @Component
 struct ZIndexExample {
-  @State zIndex_: number = 0;
+  @State zIndexValue: number = 0;
 
   build() {
     Column() {
       // 点击Button改变zIndex后，在点击Button前的层级顺序上根据zIndex进行稳定排序。
       Button('change Text2 zIndex')
         .onClick(() => {
-          this.zIndex_ = (this.zIndex_ + 1) % 3;
+          this.zIndexValue = (this.zIndexValue + 1) % 3;
         })
       Stack() {
         // Text1设置zIndex值为1
@@ -100,9 +100,9 @@ struct ZIndexExample {
           .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
           .zIndex(1)
         // Text2设置zIndex默认值为0
-        Text('2, default zIndex(0), now zIndex:' + this.zIndex_)
+        Text('2, default zIndex(0), now zIndex:' + this.zIndexValue)
           .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
-          .zIndex(this.zIndex_)
+          .zIndex(this.zIndexValue)
       }.width('100%').height(200)
     }.width('100%').height(200)
   }
