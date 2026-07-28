@@ -494,7 +494,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue(const struct GamePad
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -521,7 +521,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue(const struct GamePad
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -548,7 +548,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue(const struct GamePad
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -575,7 +575,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue(const struct GamePa
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -602,7 +602,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue(const struct Game
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -629,7 +629,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue(const struct Game
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -656,7 +656,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue(const struct Gam
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
@@ -683,7 +683,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue(const struct GameP
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | 指针指向[GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)实例，不能为空。 |
-| double* axisValue | 输出参数，轴值。取值范围为[-1.0到1.0]。 |
+| double* axisValue | 输出参数，轴值。取值范围为[-1.0, 1.0]。 |
 
 **返回：**
 
