@@ -1,10 +1,13 @@
 # drawing_text_declaration.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=051dc5b230f1915c55622033b7f8aea9bdbe1e06 translatedAt=2026-07-25T01:59:44.619Z pushedAt=2026-07-25T08:40:47.849Z -->
+
 ## Overview
 
 Provides declarations of data structures related to 2D text drawing.
@@ -32,13 +35,13 @@ Provides declarations of data structures related to 2D text drawing.
 | [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md) | OH_Drawing_LineTypography | Defines a struct used to extract a single line of data from a piece of text for typography.|
 | [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) | OH_Drawing_TypographyCreate | Creates an [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object.|
 | [OH_Drawing_TextBox](capi-drawing-oh-drawing-textbox.md) | OH_Drawing_TextBox | Defines a struct for a text box, which is used to receive the rectangle size, direction, and quantity.|
-| [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) | OH_Drawing_PositionAndAffinity | Defines a struct used to receive the position and affinity of a glyph.|
-| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) | OH_Drawing_Range | Defines a struct used to receive the start position and end position of a glyph.|
+| [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) | OH_Drawing_PositionAndAffinity | Receives the text position and cursor affinity. |
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) | OH_Drawing_Range | Receives the start position and end position of text. |
 | [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md) | OH_Drawing_TextShadow | Defines a struct used to manage text shadows.|
-| [OH_Drawing_FontParser](capi-drawing-oh-drawing-fontparser.md) | OH_Drawing_FontParser | Defines a struct used to parse system font files.|
+| [OH_Drawing_FontParser](capi-drawing-oh-drawing-fontparser.md) | OH_Drawing_FontParser | Parses system font files. |
 | [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md) | OH_Drawing_TextTab | Defines a struct used to manage text tabs.|
 | [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) | OH_Drawing_TextLine | Defines a struct used to manage text lines.|
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) | OH_Drawing_Run | Defines a struct used to manage runs.|
-| [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | Defines a struct used to describe detailed information about a font, that is, the font descriptor.|
+| [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | Describes detailed information about a font. |
 | [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md) | OH_Drawing_FontVariationAxis | Describes the variable axis of the font.|
 | [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md) | OH_Drawing_FontVariationInstance | Describes a variable font instance and stores the preset variable font style information.|
