@@ -139,7 +139,7 @@ export class LazyColumnLayoutAlgorithm extends LazyCustomLayoutAlgorithm {
 
   // === 锚点信息（滚动时保持稳定） ===
   private anchorChildIndex: int = -1;                 // 锚点元素的索引
-  private anchorChildRelativePos: double = 0;         // 锚点距离可视区域边缘的距离
+  private anchorChildRelativePos: double = 0;         // 锚点位置（正向距内容顶部，反向距内容底部）
 ```
 
 定义内边距变量用于存储容器的内边距信息。通过[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)方法获取用户设置的padding属性值，该方法返回的[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)类型需要转换为像素值。
@@ -429,7 +429,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
         ArkTS-Sta示例：
 
         <!-- @[lazy_custom_layout_save_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         /**
          * saveAnchorInfo - 保存锚点信息
@@ -447,13 +447,13 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
         private saveAnchorInfo(helper: LazyLayoutHelper, prevTotalHeight: double): void {
           this.anchorChildIndex = -1;
           this.anchorChildRelativePos = 0;
-
+        
           if (helper.getLazyLayoutDirection() === LazyLayoutDirection.FORWARD) {
             if (this.startIndex > 0 && this.startIndex < this.childCnt) {
               this.anchorChildIndex = this.startIndex;
               const arrayIndex = this.anchorChildIndex - this.itemArrStartIndex;
               if (arrayIndex >= 0 && arrayIndex < this.itemArr.length) {
-                this.anchorChildRelativePos = this.itemArr[arrayIndex].start;
+                this.anchorChildRelativePos = this.itemArr[arrayIndex].start; // 锚点子组件距离总高度顶部的位置
               }
             }
           } else {
@@ -515,7 +515,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
         ArkTS-Sta示例：
 
         <!-- @[lazy_custom_layout_algorithm_adjust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         /**
          * adjustAnchorPosition - 调整锚点位置保持滚动稳定
@@ -527,7 +527,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
             if (helper.getLazyLayoutDirection() === LazyLayoutDirection.FORWARD) {
               const arrayIndex = this.anchorChildIndex - this.itemArrStartIndex;
               if (arrayIndex >= 0 && arrayIndex < this.itemArr.length) {
-                let newPos = this.itemArr[arrayIndex].start;
+                let newPos = this.itemArr[arrayIndex].start; // 锚点子组件重新测量后距离总高度顶部的位置
                 if (newPos !== this.anchorChildRelativePos) {
                   helper.setAdjustedOffset(Math.round(this.anchorChildRelativePos - newPos).toInt());
                 }
@@ -841,7 +841,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
     ArkTS-Sta示例：
 
     <!-- @[lazy_custom_layout_recycle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+    
     ``` TypeScript
     /**
      * recycleChildren - 回收不再可见的元素
@@ -849,8 +849,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
      * 作用：释放滚动后离开可视区域的元素，节省内存
      *
      * 回收范围：
-     * - 向前滚动：回收 this.prevStartIndex -> this.startIndex 之间的元素
-     * - 向后滚动：回收 this.endIndex -> this.prevEndIndex 之间的元素
+     * - 向前滚动：回收 [this.prevStartIndex, this.startIndex) 范围内的元素
+     * - 向后滚动：回收 (this.endIndex, this.prevEndIndex] 范围内的元素
      */
     private recycleChildren(helper: LazyLayoutHelper): void {
       let recycleList: Array<int> = new Array<int>();
@@ -1010,9 +1010,15 @@ ArkTS-Sta示例：
 ``` TypeScript
 @Component
 export struct CustomLazyColumnLayoutSample {
+  // ...
 
   aboutToAppear(): void {
-    this.lazyAlgorithm.setRowGap(this.getUIContext().vp2px(this.rowGap));
+    const uiContext = this.getUIContext();
+    if (!uiContext) {
+      return;
+    }
+    this.lazyAlgorithm.setUIContext(uiContext);
+    this.lazyAlgorithm.setRowGap(uiContext.vp2px(this.rowGap));
     for (let i = 0; i < 50; i++) {
       this.arr.pushData(`Item ${i}`);
     }
@@ -1023,6 +1029,7 @@ export struct CustomLazyColumnLayoutSample {
       Stack({ alignContent: Alignment.Bottom } as StackOptions) {
         List({} as ListOptions) {
           LazyDynamicLayout(this.lazyAlgorithm) {
+            // ...
           }
           .onVisibleIndexesChange((child: Array<int>) => {
             console.info(`onVisibleIndexesChange: ${child}`);
@@ -1085,7 +1092,11 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 onRowGapChange(): void {
-  this.lazyAlgorithm.setRowGap(this.getUIContext().vp2px(this.rowGap));
+  const uiContext = this.getUIContext();
+  if (!uiContext) {
+    return;
+  }
+  this.lazyAlgorithm.setRowGap(uiContext.vp2px(this.rowGap));
 }
 ```
 
