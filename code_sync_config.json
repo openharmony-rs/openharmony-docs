@@ -40295,5 +40295,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/background-recording.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets",
+				"functions":[
+					{
+						"end_line":220,
+						"name":"background_task",
+						"start_line":20
+					},
+					{
+						"end_line":231,
+						"name":"background_task_cancel",
+						"start_line":222
+					}
+				]
+			}
+		]
 	}
 ]
