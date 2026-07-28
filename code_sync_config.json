@@ -64742,5 +64742,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/tool-disassembler.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Disassembler.ts",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"disassembler_source",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
