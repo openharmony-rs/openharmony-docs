@@ -1,4 +1,4 @@
-# UKey PIN码认证介绍及规格
+# PIN码认证介绍及规格
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,15 +7,15 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-PIN（Personal Identification Number）码是UKey设备的安全访问凭证，采用“硬件设备+PIN码”的双因子认证模式。用户必须同时拥有物理UKey设备和正确的PIN码才能访问设备内的密钥材料。
+PIN（Personal Identification Number）码是密钥管理扩展服务中的安全访问凭证，服务实现方可以采用"凭证+PIN码"的双因子认证模式：用户必须同时拥有有效的凭证（如物理设备、虚拟服务会话等）和正确的PIN码，才能访问服务内的密钥材料。
 
 PIN码作用如下：
 
-1. 防暴力破解：连续错误输入达到一定次数（与驱动应用实现的外部密钥管理扩展能力相关）后自动锁定。
+1. 防暴力破解：连续错误输入达到一定次数（与密钥管理扩展服务实现相关）后自动锁定。
 
-2. 硬件级安全：PIN码验证在UKey硬件内完成，敏感信息不出硬件。
+2. 硬件级安全：PIN码验证在密钥管理扩展服务内完成，敏感信息不离开服务。
 
-UKey使用resourceId标识UKey资源，生态应用打开资源之后，如需要操作resourceId对应的私钥执行签名操作，则需要先验证PIN码。
+密钥管理扩展服务使用resourceId标识资源，生态应用打开资源之后，如需要操作resourceId对应的私钥执行签名操作，则需要先验证PIN码。
 
 ## PIN码认证状态管理
 
@@ -32,7 +32,7 @@ HUKS提供以下PIN码认证状态管理能力：
 - 应用退出或切换用户时，清除认证状态。
 - 认证状态异常时，重置认证状态。
 
-具体开发示例请参考[清除UKey PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)。
+具体开发示例可参考[查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)、[查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)、[清除PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)。
 
 > **说明：**
 >
