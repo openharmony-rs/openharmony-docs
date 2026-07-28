@@ -45,4 +45,4 @@
 
 申请后AGC的审核时长：预计3个工作日内反馈审核结果。
 
-权限授权后，在配置文件中声明权限：https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions
+权限授权后，在配置文件中[声明权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions)
