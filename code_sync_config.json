@@ -59398,6 +59398,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets",
 				"functions":[
 					{
 						"end_line":37,
@@ -59415,19 +59419,19 @@
 						"start_line":75
 					},
 					{
-						"end_line":158,
+						"end_line":160,
 						"name":"start_recorder",
-						"start_line":156
+						"start_line":158
 					},
 					{
-						"end_line":171,
+						"end_line":173,
 						"name":"pause_recorder",
-						"start_line":169
+						"start_line":171
 					},
 					{
-						"end_line":184,
+						"end_line":186,
 						"name":"resume_recorder",
-						"start_line":182
+						"start_line":184
 					},
 					{
 						"end_line":200,
@@ -59435,14 +59439,14 @@
 						"start_line":197
 					},
 					{
-						"end_line":209,
+						"end_line":213,
 						"name":"reset_recorder",
-						"start_line":207
+						"start_line":211
 					},
 					{
-						"end_line":222,
+						"end_line":226,
 						"name":"release_recorder",
-						"start_line":220
+						"start_line":224
 					},
 					{
 						"end_line":246,
@@ -59458,79 +59462,83 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVRecorderNDK/entry/src/main/cpp/avrecorder_ndk.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"include_avrecorder_h",
-						"start_line":25
+						"start_line":26
 					},
 					{
-						"end_line":49,
+						"end_line":54,
 						"name":"declare_avrecorder",
-						"start_line":47
+						"start_line":52
 					},
 					{
-						"end_line":189,
+						"end_line":193,
 						"name":"create_avrecorder",
-						"start_line":187
+						"start_line":191
 					},
 					{
-						"end_line":240,
+						"end_line":243,
 						"name":"set_onstatechange_callback",
-						"start_line":237
+						"start_line":241
 					},
 					{
-						"end_line":285,
+						"end_line":287,
 						"name":"set_onerror_callback",
-						"start_line":282
+						"start_line":285
 					},
 					{
-						"end_line":125,
+						"end_line":128,
 						"name":"define_onstatechange_callback",
-						"start_line":95
+						"start_line":100
 					},
 					{
-						"end_line":148,
+						"end_line":151,
 						"name":"define_onerror_callback",
-						"start_line":127
+						"start_line":130
 					},
 					{
 						"end_line":349,
 						"name":"prepare_audio_recorder",
-						"start_line":307
+						"start_line":308
 					},
 					{
-						"end_line":446,
+						"end_line":437,
 						"name":"start_recorder",
-						"start_line":444
+						"start_line":435
 					},
 					{
-						"end_line":456,
+						"end_line":447,
 						"name":"pause_recorder",
-						"start_line":454
+						"start_line":445
 					},
 					{
-						"end_line":466,
+						"end_line":457,
 						"name":"resume_recorder",
-						"start_line":464
+						"start_line":455
 					},
 					{
-						"end_line":476,
+						"end_line":467,
 						"name":"stop_recorder",
-						"start_line":474
+						"start_line":465
 					},
 					{
-						"end_line":490,
+						"end_line":481,
 						"name":"reset_recorder",
-						"start_line":488
+						"start_line":479
 					},
 					{
-						"end_line":522,
+						"end_line":513,
 						"name":"release_recorder",
-						"start_line":520
+						"start_line":511
 					},
 					{
-						"end_line":534,
+						"end_line":525,
 						"name":"full_audio_recorder",
 						"start_line":16
 					}
@@ -59543,94 +59551,98 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVRecorderNDK/entry/src/main/cpp/avrecorder_ndk.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"include_avrecorder_h",
-						"start_line":25
+						"start_line":26
 					},
 					{
-						"end_line":49,
+						"end_line":54,
 						"name":"declare_avrecorder",
-						"start_line":47
+						"start_line":52
 					},
 					{
-						"end_line":189,
+						"end_line":193,
 						"name":"create_avrecorder",
-						"start_line":187
+						"start_line":191
 					},
 					{
-						"end_line":240,
+						"end_line":243,
 						"name":"set_onstatechange_callback",
-						"start_line":237
+						"start_line":241
 					},
 					{
-						"end_line":285,
+						"end_line":287,
 						"name":"set_onerror_callback",
-						"start_line":282
+						"start_line":285
 					},
 					{
-						"end_line":299,
+						"end_line":300,
 						"name":"set_onuri_callback",
-						"start_line":296
+						"start_line":298
 					},
 					{
-						"end_line":125,
+						"end_line":128,
 						"name":"define_onstatechange_callback",
-						"start_line":95
+						"start_line":100
 					},
 					{
-						"end_line":148,
+						"end_line":151,
 						"name":"define_onerror_callback",
-						"start_line":127
+						"start_line":130
 					},
 					{
-						"end_line":177,
+						"end_line":181,
 						"name":"define_onuri_callback",
-						"start_line":151
+						"start_line":154
 					},
 					{
-						"end_line":404,
+						"end_line":400,
 						"name":"prepare_video_recorder",
 						"start_line":353
 					},
 					{
-						"end_line":430,
+						"end_line":421,
 						"name":"get_input_surface_id",
-						"start_line":406
+						"start_line":402
 					},
 					{
-						"end_line":446,
+						"end_line":437,
 						"name":"start_recorder",
-						"start_line":444
+						"start_line":435
 					},
 					{
-						"end_line":456,
+						"end_line":447,
 						"name":"pause_recorder",
-						"start_line":454
+						"start_line":445
 					},
 					{
-						"end_line":466,
+						"end_line":457,
 						"name":"resume_recorder",
-						"start_line":464
+						"start_line":455
 					},
 					{
-						"end_line":476,
+						"end_line":467,
 						"name":"stop_recorder",
-						"start_line":474
+						"start_line":465
 					},
 					{
-						"end_line":490,
+						"end_line":481,
 						"name":"reset_recorder",
-						"start_line":488
+						"start_line":479
 					},
 					{
-						"end_line":522,
+						"end_line":513,
 						"name":"release_recorder",
-						"start_line":520
+						"start_line":511
 					},
 					{
-						"end_line":535,
+						"end_line":526,
 						"name":"full_video_recorder",
 						"start_line":17
 					}
@@ -59643,6 +59655,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets",
 				"functions":[
 					{
 						"end_line":37,
@@ -59660,24 +59676,24 @@
 						"start_line":107
 					},
 					{
-						"end_line":148,
+						"end_line":150,
 						"name":"get_input_surface",
-						"start_line":140
+						"start_line":142
 					},
 					{
-						"end_line":158,
+						"end_line":160,
 						"name":"start_recorder",
-						"start_line":156
+						"start_line":158
 					},
 					{
-						"end_line":171,
+						"end_line":173,
 						"name":"pause_recorder",
-						"start_line":169
+						"start_line":171
 					},
 					{
-						"end_line":184,
+						"end_line":186,
 						"name":"resume_recorder",
-						"start_line":182
+						"start_line":184
 					},
 					{
 						"end_line":200,
@@ -59685,14 +59701,14 @@
 						"start_line":197
 					},
 					{
-						"end_line":209,
+						"end_line":213,
 						"name":"reset_recorder",
-						"start_line":207
+						"start_line":211
 					},
 					{
-						"end_line":222,
+						"end_line":226,
 						"name":"release_recorder",
-						"start_line":220
+						"start_line":224
 					},
 					{
 						"end_line":247,
