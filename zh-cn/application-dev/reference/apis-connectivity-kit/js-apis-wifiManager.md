@@ -1702,7 +1702,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | connState | [ConnState](#connstate) | 否 | 否 | WLAN连接状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 当前设备连接Wi-Fi后支持的最高协议版本。 | **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 当前设备连接Wi-Fi后支持的最高协议版本。 **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true:支持，&nbsp;false:不支持。 **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。 **ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23|
 
