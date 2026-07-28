@@ -22,7 +22,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次刷新时间，使用callback异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据刷新、定时任务等。
+设置指定卡片的下一次刷新时间，使用callback异步回调。适用于需要精确控制卡片刷新时机的场景，例如定时任务等。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -42,13 +42,13 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |	 
-| 16500050 | IPC connection error. |	 
-| 16500060 | Service connection error. |	 
-| 16500100 | Failed to obtain the configuration information. |	 
-| 16501000 | An internal functional error occurred. |	 
-| 16501001 | The ID of the form to be operated does not exist. |	 
-| 16501002 | The number of forms exceeds the maximum allowed. |	 
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. | 
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16500100 | Failed to obtain the configuration information. |
+| 16501000 | An internal functional error occurred. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501002 | The number of forms exceeds the maximum allowed. |
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
@@ -75,7 +75,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次刷新时间，使用Promise异步回调。适用于需要精确控制卡片刷新时机的场景，例如实时数据刷新、定时任务等。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。适用于需要精确控制卡片刷新时机的场景，例如定时任务等。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -412,6 +412,7 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 
 | 参数名 | 类型    | 必填 | 说明                                                 |
 | ------ | ------ |----|----------------------------------------------------|
+| abilityName | string | 是  | 编辑页的ability名称。                                     |
 | formId | string | 是  | 卡片标识。                                              |
 | isMainPage | boolean | 否  | 是否为主编辑页。<br>-&nbsp;true：表示是主编辑页，适合首次配置卡片基本信息的场景。<br>-&nbsp;false：表示不是主编辑页，适合进行卡片细节调整或高级配置的场景。<br>默认值：true（通常首次编辑卡片时使用默认值即可）。 |
 
@@ -589,6 +590,8 @@ try {
 
 ## formProvider.getPublishedFormInfoById<sup>(deprecated)</sup>
 
+getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
+
 获取设备上当前应用程序已添加到桌面的指定卡片信息，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -617,7 +620,6 @@ try {
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -694,7 +696,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
 
 **相关方法：**
-- cancelOverflow()：取消互动卡片动效请求，用于取消已发起的动效
+- [cancelOverflow()](#formprovidercanceloverflow20)：取消互动卡片动效请求，用于取消已发起的动效。
 
 > **说明：**
 >

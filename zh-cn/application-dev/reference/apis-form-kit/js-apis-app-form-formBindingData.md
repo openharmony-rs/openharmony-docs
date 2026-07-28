@@ -45,7 +45,7 @@ FormBindingData对象的属性定义。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
 | data | Object | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
-| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，配置后会订阅代理刷新消息。默认为空数组，表示不订阅代理刷新消息。当需要使用卡片代理刷新功能时传入此参数，不传入时默认为空数组（不使用代理刷新）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
+| proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，配置后会订阅代理刷新消息。默认为空数组，表示不订阅代理刷新消息。当需要使用卡片代理刷新功能时传入此参数，不传入时默认为空数组（不使用代理刷新）。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## formBindingData.createFormBindingData
 
@@ -59,7 +59,7 @@ createFormBindingData(obj?: Object | string): FormBindingData
 
 **参数：**
 
- | 参数名 | 类型           | 必填 | 说明                                                         |
+| 参数名 | 类型           | 必填 | 说明                                                         |
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
 | obj    | Object \| string | 否   | 卡片要展示的数据，用于绑定卡片UI显示的内容。当需要向卡片传递数据时传入此参数，可以是包含若干键值对的Object或者JSON格式的字符串。不传入时创建一个空的FormBindingData对象，卡片将显示默认内容。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对`{'formImages': {'key1': fd1, 'key2': fd2}}`。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过[@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop)接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。 |
 

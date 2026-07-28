@@ -51,9 +51,9 @@ onAddForm(want: Want): formBindingData.FormBindingData
 卡片提供方接收创建卡片的通知接口。需要注意：FormExtensionAbility创建后10秒内无操作将会被清理，请避免在回调中执行耗时操作。
 
 **配合使用：**
-- 必须调用formBindingData.createFormBindingData()创建卡片数据对象
-- 调用顺序：先创建数据对象（如dataObj1），再调用formBindingData.createFormBindingData(dataObj1)创建FormBindingData对象
-- 返回要求：必须返回FormBindingData对象，卡片要显示的数据通过参数传入
+- 必须调用[formBindingData.createFormBindingData()](./js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdata)创建卡片数据对象。
+- 调用顺序：先创建数据对象（如dataObj1），再调用formBindingData.createFormBindingData(dataObj1)创建FormBindingData对象。
+- 返回要求：必须返回FormBindingData对象，卡片要显示的数据通过参数传入。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,9 +97,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onCastToNormalForm(formId: string): void
 
-卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。仅当FormExtensionAbility存活时才会触发该回调。
-
-卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。临时卡片、常态卡片是卡片使用方的概念，其中：临时卡片是短期存在的，在特定事件或用户行为后显示，完成后自动消失。常态卡片是持久存在的，在用户未进行清除或更改的情况下，会一直存在，平时开发的功能卡片属于常态卡片。在当前版本，卡片使用方不使用临时卡片。
+卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。临时卡片、常态卡片是卡片使用方的概念，其中：临时卡片是短期存在的，在特定事件或用户行为后显示，完成后自动消失。常态卡片具有持久性，在用户主动清除或更改前将一直保留；日常开发的功能卡片均归属此类。在当前版本，卡片使用方不使用临时卡片。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -225,7 +223,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onFormEvent(formId: string, message: string): void
 
-卡片提供方接收处理卡片事件的通知接口，例如卡片使用方触发的自定义事件。message参数为事件携带的消息内容，由卡片使用方定义。
+卡片提供方接收处理卡片事件的通知接口，例如卡片使用方触发的自定义事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -319,7 +317,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onAcquireFormState?(want: Want): formInfo.FormState
 
-卡片提供方接收查询卡片状态通知接口。当卡片使用方（如桌面）需要获取卡片当前状态（如卡片是否可用、是否需要更新等）时，会调用此方法。开发者可以重写此方法以返回更准确的卡片状态信息。默认返回卡片初始状态（该方法可以选择性重写）。
+卡片提供方接收查询卡片状态通知接口。当卡片使用方（如桌面）需要获取卡片当前状态（如卡片是否可用、是否需要更新等）时，会调用此方法，该方法可重写。默认返回卡片初始状态（该方法可以选择性重写）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -337,7 +335,7 @@ onAcquireFormState?(want: Want): formInfo.FormState
 
 | 类型                                                         | 说明                                                        |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| [formInfo.FormState](js-apis-app-form-formInfo.md#formstate) | formInfo.FormState枚举，表示卡片当前的状态。<br>- UNKNOWN：值为-1，表示未知状态。<br>- DEFAULT：值为0，表示默认状态。<br>- READY：值为1，表示就绪状态。 |
+| [formInfo.FormState](js-apis-app-form-formInfo.md#formstate) | formInfo.FormState枚举，表示卡片当前的状态。 |
 
 **示例：**
 
