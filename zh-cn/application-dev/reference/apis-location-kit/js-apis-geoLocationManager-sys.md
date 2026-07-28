@@ -129,7 +129,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | GNSS    | 1 | 表示GNSS围栏。<br/>**系统接口**：此接口为系统接口。 |
-| CELLULAR    | 2 | 表示WELL围栏。<br/>**系统接口**：此接口为系统接口。 |
+| CELLULAR    | 2 | 表示CELLULAR围栏。<br/>**系统接口**：此接口为系统接口。 |
 | WIFI    | 4 | 表示WIFI围栏。<br/>**系统接口**：此接口为系统接口。 |
 | BLUETOOTH    | 8 | 表示蓝牙围栏。<br/>**系统接口**：此接口为系统接口。 |
 
