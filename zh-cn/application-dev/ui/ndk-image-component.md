@@ -174,6 +174,7 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 <!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
+// 设置缩放类型
 ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
 ArkUI_AttributeItem fitItem = {fitValue, 1};
 nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
@@ -186,6 +187,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
+// 设置插值效果
 ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
 ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
 nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
@@ -209,6 +211,7 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 <!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
+// 设置填充颜色（蓝色）
 ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
 ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
 nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
@@ -232,6 +235,7 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 <!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
+// 设置解码尺寸
 ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
 ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
 nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
