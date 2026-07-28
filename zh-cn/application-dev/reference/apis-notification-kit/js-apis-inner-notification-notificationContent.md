@@ -173,7 +173,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 | 名称  | 类型                                                   | 只读 | 可选 | 说明             |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
-| names | Array\<string\>                                       | 否  |  是 | 按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
+| names | Array\<string\>                                       | 否  |  是 | 按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。<br>每个名称的大小不超过202字节，超出部分会被截断。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
 | icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图标列表，与names一一对应，每个图标显示在对应按钮上。最多支持3个。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。默认为空。该属性与iconsResource互斥，只使用其中一个即可。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | 否  |  是 | 按钮图标资源列表，与names一一对应，使用Resource资源引用图标。最多支持3个。默认为空。与icons互斥，只使用其中一个即可。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23   |
 
