@@ -1631,7 +1631,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
 
 removeFusionFence(identifier: string): Promise<void>;
 
-删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
+删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
 **起始版本：** 26.0.0
 
