@@ -61,7 +61,7 @@ ArkTS-Dyn: getLineNumber(): number
 
 ArkTS-Sta: getLineNumber(): int
 
-获取ConsoleMessage的行号。
+获取控制台输出在网页源文件中的行号。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -73,13 +73,13 @@ ArkTS-Sta: getLineNumber(): int
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回ConsoleMessage的行号。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回控制台输出在网页源文件中的行号。 |
 
 ## getMessage
 
 getMessage(): string
 
-获取ConsoleMessage的日志信息。
+获取控制台输出的日志信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -91,7 +91,7 @@ getMessage(): string
 
 | 类型     | 说明                     |
 | ------ | ---------------------- |
-| string | 返回ConsoleMessage的日志信息。 |
+| string | 返回控制台输出的日志信息。 |
 
 ## getMessageLevel
 

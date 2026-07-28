@@ -106,7 +106,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 > **说明：**
 >
-> 此接口设置的域名不会持久化，应用重启需要重新设置。
+> - 此接口设置的域名不会持久化，应用重启需要重新设置。
 >
 > - 广告过滤特性会使用后缀匹配的方式判断domainSuffix和当前站点的url是否能匹配，例如，当前Web组件打开的网站是https://www.example.com，设置的DisallowedList中有'example.com'或者'www.example.com'，后缀匹配成功，此网站将禁用广告过滤，访问'https://m.example.com'也将禁用广告过滤。
 >
@@ -382,9 +382,9 @@ static clearAdsBlockDisallowedList(): void
 
 > **说明：**
 >
-> AdsBlockManager的DisallowedList不会持久化，应用重启需要重新设置。
+> - AdsBlockManager的DisallowedList不会持久化，应用重启需要重新设置。
 >
-> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
+> - 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -625,61 +625,6 @@ struct WebComponent {
           Button("addAdsBlockAllowedList")
           .onClick(() => {
             // 演示AllowedList优先级：先禁用example.com所有子域名，再重新启用news.example.com
-            let arrDisallowDomainSuffixes = new Array<string>();
-            arrDisallowDomainSuffixes.push('example.com');
-            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
-
-            let arrAllowedDomainSuffixes = new Array<string>();
-            arrAllowedDomainSuffixes.push('news.example.com');
-            webview.AdsBlockManager.addAdsBlockAllowedList(arrAllowedDomainSuffixes);
-          })
-        }
-      }
-      Web({ src: this.main_url, controller: this.controller })
-        .onControllerAttached(()=>{
-          this.controller.enableAdsBlock(true);
-        })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-// 演示通过一个按钮的点击向Web组件设置广告过滤的域名策略
-@Entry
-@Component
-struct WebComponent {
-  main_url: string = 'https://www.example.com';
-  text_input_controller: TextInputController = new TextInputController();
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State input_text: string = 'https://www.example.com';
-
-  build() {
-    Column() {
-      Row() {
-        Flex() {
-          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
-            .id("input_url")
-            .height(40)
-            .margin(5)
-            .borderColor(Color.Blue)
-            .onChange((value: string) => {
-              this.input_text = value;
-            })
-
-          Button("Go")
-          .onClick(() => {
-            this.controller.loadUrl(this.input_text);
-          })
-
-          Button("addAdsBlockAllowedList")
-          .onClick(() => {
             let arrDisallowDomainSuffixes = new Array<string>();
             arrDisallowDomainSuffixes.push('example.com');
             webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);

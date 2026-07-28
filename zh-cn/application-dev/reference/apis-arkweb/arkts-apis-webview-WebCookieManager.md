@@ -1533,7 +1533,7 @@ struct WebComponent {
           try {
             webview.WebCookieManager.saveCookieAsync()
               .then(() => {
-                console.info("saveCookieAsyncCallback success!");
+                console.info("saveCookieAsync success!");
               })
               .catch((error: BusinessError) => {
                 console.error("error: " + error);
@@ -1749,7 +1749,7 @@ static putAcceptThirdPartyCookieEnabled(accept: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| accept | boolean | 是   | 是否允许设置、获取第三方cookies。<br>true表示允许设置、获取第三方cookies，false表示不允许设置、获取第三方cookies。 |
+| accept | boolean | 是   | 是否允许发送和接收第三方cookies。<br>true表示允许，false表示不允许。 |
 
 **错误码：**
 

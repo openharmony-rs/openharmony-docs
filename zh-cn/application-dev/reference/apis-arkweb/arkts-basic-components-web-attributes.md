@@ -217,7 +217,7 @@ ArkTS-Dyn: javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined)
 
-将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
+将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
 
 > **说明：**
 >
@@ -353,7 +353,7 @@ struct WebComponent {
 
 ## javaScriptAccess
 
-javaScriptAccess(javaScriptAccess: boolean)
+ArkTS-Dyn: javaScriptAccess(javaScriptAccess: boolean)
 
 ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined)
 
