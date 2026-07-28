@@ -65,8 +65,8 @@ try {
     }
     console.info(`Succeeded in getting currentTime: ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -114,8 +114,8 @@ try {
     }
     console.info(`Succeeded in getting currentTime : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -140,7 +140,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                     |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br/>默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br>默认值为false。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -167,8 +167,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -193,7 +193,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明   |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，不包括深度睡眠时间。 |
 
 **错误码：**
@@ -217,8 +217,8 @@ try {
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -266,8 +266,8 @@ try {
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -292,7 +292,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -319,8 +319,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -345,7 +345,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明   |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。   |
 
 **错误码：**
@@ -369,8 +369,8 @@ try {
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -418,8 +418,8 @@ try {
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -444,7 +444,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br/>默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数，默认值为false。<br>默认值为false。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -471,8 +471,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -485,7 +485,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用`new Date()`方法替代（详见“如何将时间格式的字符串string转换为Date对象“文档）。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -520,8 +520,8 @@ try {
     }
     console.info(`Succeeded in getting date : ${date}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -534,7 +534,7 @@ getDate(): Promise&lt;Date&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用`new Date()`方法替代（详见“如何将时间格式的字符串string转换为Date对象“文档）。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -567,8 +567,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -616,8 +616,8 @@ try {
     }
     console.info(`Succeeded in getting timezone : ${data}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -663,8 +663,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -717,8 +717,8 @@ try {
     }
     console.info(`Succeeded in setting time`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -774,8 +774,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -827,8 +827,8 @@ try {
     }
     console.info(`Succeeded in setting date.`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -883,8 +883,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -935,8 +935,8 @@ try {
     }
     console.info(`Succeeded in setting timezone.`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -990,8 +990,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -1008,20 +1008,20 @@ try {
 | America/Noronha                | -2                    |
 | America/St_Johns               | -3                    |
 | Africa/Kinshasa                | 1                     |
-| America/Santiago               | -3                    |
+| America/Santiago               | -4                    |
 | Asia/Shanghai                  | 8                     |
 | Asia/Nicosia                   | 3                     |
 | Europe/Berlin                  | 2                     |
 | America/Guayaquil              | -5                    |
 | Europe/Madrid                  | 2                     |
 | Pacific/Pohnpei                | 11                    |
-| America/Godthab                | -2                    |
+| America/Godthab                | -1                    |
 | Asia/Jakarta                   | 7                     |
 | Pacific/Tarawa                 | 12                    |
 | Asia/Almaty                    | 6                     |
 | Pacific/Majuro                 | 12                    |
 | Asia/Ulaanbaatar               | 8                     |
-| America/Mexico_City            | -5                    |
+| America/Mexico_City            | -6                    |
 | Asia/Kuala_Lumpur              | 8                     |
 | Pacific/Auckland               | 12                    |
 | Pacific/Tahiti                 | -10                   |
