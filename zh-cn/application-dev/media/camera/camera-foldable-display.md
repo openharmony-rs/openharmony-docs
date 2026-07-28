@@ -538,7 +538,7 @@ struct Index {
 
 ## 常见问题
 
-### 折叠状态改变时，相机画面可能会出现拉伸变形，如何处理
+### 折叠状态改变时，如何处理相机画面可能出现的拉伸变形问题
 
 折叠状态发生变化导致镜头切换后，可能出现图像分辨率与XComponent的宽高比不匹配的情况，应用可通过[Window.on('windowSizeChange')](../../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7)监听窗口的变化，根据屏幕旋转角度（[Display.rotation](../../reference/apis-arkui/js-apis-display.md#属性)）与相机镜头角度的（[CameraDevice.cameraOrientation](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice)）之间的关系来确定布局的宽高比，以确保XComponent的宽高比能跟随窗口实时调整。
 
