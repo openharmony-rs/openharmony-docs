@@ -2,7 +2,7 @@
 
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
-<!--Owner: @liule_123-->
+<!--Owner: @OningO-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
@@ -106,7 +106,7 @@ Exceeded the maximum number of installed files.
 
 **错误信息**
 
-The system ability works abnormally.
+Other error.
 
 **错误描述**
 
@@ -160,7 +160,7 @@ Failed to delete the font file.
 
 **错误信息**
 
-The system ability works abnormally.
+Other error.
 
 **错误描述**
 
@@ -178,7 +178,7 @@ The system ability works abnormally.
 
 **错误信息**
 
-Call failed due to system error.
+System error.
 
 **错误描述**
 
@@ -209,3 +209,57 @@ Data migration is in progress.
 **处理步骤**
 
 不可重复启动迁移任务，请等待当前任务执行完毕。
+
+## 31100501 字体观察者已注册
+
+**错误信息**
+
+Font observer already registered.
+
+**错误描述**
+
+字体服务死亡观察者已注册，不可重复注册。
+
+**可能原因**
+
+同一应用重复调用onFontObserver注册观察者。
+
+**处理步骤**
+
+无需重复注册，如需更新观察者，请先调用offFontObserver注销后再重新注册。
+
+## 31100502 超过字体观察者最大数量
+
+**错误信息**
+
+Exceeded maximum number of font observers.
+
+**错误描述**
+
+同一用户下注册的字体观察者数量超过最大限制（5个）。
+
+**可能原因**
+
+同一用户下已有5个不同应用注册了字体观察者。
+
+**处理步骤**
+
+请等待其他应用注销观察者后再重试。
+
+## 31100503 字体观察者未注册
+
+**错误信息**
+
+Font observer not registered, please register first.
+
+**错误描述**
+
+注销字体服务死亡观察者时，该观察者未注册。
+
+**可能原因**
+
+应用未先调用onFontObserver注册观察者，或已注销。
+
+**处理步骤**
+
+请先调用onFontObserver注册观察者后再执行注销操作。
