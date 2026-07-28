@@ -488,7 +488,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调，回调中将Buffer入队供消费线程处理。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
 
-   `OnNeedInputBuffer`回调将Buffer入队,供消费线程处理过程如下：
+   `OnNeedInputBuffer`回调将Buffer入队，供消费线程处理过程如下：
 
    <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
    
