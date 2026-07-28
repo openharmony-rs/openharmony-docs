@@ -43,9 +43,9 @@ onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession)
 LiveFormExtensionAbility实例创建完成的回调。当用户切换到互动卡片激活态时，系统会自动调用此回调，开发者可在此回调中进行卡片初始化、数据绑定等操作。
 
 **配对调用：**
-- 与onLiveFormDestroy()方法成对使用，构成完整的互动卡片生命周期
-- 当互动卡片切换为非激活态时，系统会自动调用onLiveFormDestroy()进行资源清理
-- 开发者应确保在onLiveFormCreate中申请的资源在onLiveFormDestroy中正确释放，避免内存泄漏
+- 与onLiveFormDestroy()方法成对使用，构成完整的互动卡片生命周期。
+- 当互动卡片切换为非激活态时，系统会自动调用onLiveFormDestroy()进行资源清理。
+- 开发者应确保在onLiveFormCreate中申请的资源在onLiveFormDestroy中正确释放，避免内存泄漏。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
