@@ -875,7 +875,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 更新长时任务类型，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
 
-可用于应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
+可用于如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
 
 更新长时任务前，可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20)接口获取当前所有长时任务信息，如果当前没有已经存在的长时任务，会更新失败。</br>调用本接口前，必须先申请长时任务，该接口仅支持更新如下三个接口申请的长时任务：</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void](#backgroundtaskmanagerstartbackgroundrunning)</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](#backgroundtaskmanagerstartbackgroundrunning-1)</br>[startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning12)
 
@@ -944,7 +944,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 更新长时任务，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
 
-可用于应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
+可用于如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
 
 更新长时任务还存在如下约束限制：
 1. 本接口仅支持更新如下接口申请的长时任务：[startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21)。
