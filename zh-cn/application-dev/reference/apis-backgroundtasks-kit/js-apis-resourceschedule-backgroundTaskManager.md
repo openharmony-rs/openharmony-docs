@@ -26,9 +26,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspendInfo
 
-申请短时任务。
-
-可用于应用即将退至后台、需要短暂延迟挂起以便完成关键操作（如保存数据、上传进度等）等情况。
+申请短时任务。适用于应用即将退至后台、需要短暂延迟挂起以便完成关键操作（如保存数据、上传进度等）等场景。
 
 >  **说明：**
 >
@@ -239,9 +237,7 @@ ArkTS-Dyn: cancelSuspendDelay(requestId: number): void
 
 ArkTS-Sta: cancelSuspendDelay(requestId: int): void
 
-取消短时任务。
-
-可用于应用任务已完成、需要提前释放后台资源等情况。
+取消短时任务。适用于应用任务已完成、需要提前释放后台资源等场景。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
@@ -1001,9 +997,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): void
 
-取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
-
-可用于应用功能已完成、应用即将退出等情况。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1094,9 +1088,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
-取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
-
-可用于应用功能已完成、应用即将退出等情况。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1186,9 +1178,7 @@ ArkTS-Dyn: stopBackgroundRunning(context: Context, continuousTaskId: number): Pr
 
 ArkTS-Sta: stopBackgroundRunning(context: Context, continuousTaskId: int): Promise&lt;void&gt;
 
-取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。
-
-可用于应用功能已完成、应用即将退出等情况。
+取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1275,9 +1265,7 @@ export default class EntryAbility extends UIAbility {
 
 updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;ContinuousTaskNotification&gt;
 
-更新长时任务类型，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
-
-可用于如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
+更新长时任务类型，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。适用于例如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务等场景。
 
 更新长时任务前，可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20)接口获取当前所有长时任务信息，如果当前没有已经存在的长时任务，会更新失败。</br>调用本接口前，必须先申请长时任务，该接口仅支持更新如下三个接口申请的长时任务：</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void](#backgroundtaskmanagerstartbackgroundrunning)</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](#backgroundtaskmanagerstartbackgroundrunning-1)</br>[startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning12)
 
@@ -1378,9 +1366,7 @@ export default class EntryAbility extends UIAbility {
 
 updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
 
-更新长时任务，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
-
-可用于如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务需求。
+更新长时任务，使用Promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。适用于例如应用功能从音视频播放切换到录音、需要调整长时任务类型以匹配新的业务等场景。
 
 更新长时任务还存在如下约束限制：
 1. 本接口仅支持更新如下接口申请的长时任务：[startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21)。
