@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=adc4fccab9ce2d6d069c4d6bc57fbeca9e96cecb translatedAt=2026-07-28T09:24:41.357Z pushedAt=2026-07-29T01:14:59.525Z -->
+<!-- md-trans-meta sourceCommit=adc4fccab9ce2d6d069c4d6bc57fbeca9e96cecb translatedAt=2026-07-28T09:24:41.357Z pushedAt=2026-07-29T02:03:51.264Z -->
 
 ## Overview
 
@@ -1037,7 +1037,7 @@ Starting from API version 24, when an application exits due to a SIGPIPE excepti
 
 > **NOTE**
 >
-> This feature can be enabled only for [apps of the debug version](performance-analysis-kit-terminology.md#apps-of-the-debug-version).
+> This feature can be enabled only for [apps of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).
 
 The key log for SIGPIPE exception exit is as follows:
 
@@ -1118,3 +1118,5 @@ App bundle name with pid xxxx exit with signal:13
 
 <!--RP10-->
 <!--RP10End-->
+
+<!--no_check-->
