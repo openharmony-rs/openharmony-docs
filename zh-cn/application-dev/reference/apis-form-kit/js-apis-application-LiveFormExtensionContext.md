@@ -116,7 +116,7 @@ struct MyLiveFormPage {
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
-   private startAbilityByLiveForm(): void {
+  private startAbilityByLiveForm(): void {
     try {
       // 请开发者替换为实际的want信息
       this.liveFormContext?.startAbilityByLiveForm({

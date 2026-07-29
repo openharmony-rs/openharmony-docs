@@ -34,6 +34,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-  | 名称 | 类型 | 只读 | 可选 | 说明 |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ---- |
 | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 | FormEditExtensionAbility的上下文环境，[FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md)继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1)。提供拉起编辑页面的能力。|

@@ -86,6 +86,78 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import { LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
+
+const TAG: string = '[testTag] LiveFormExtAbility';
+
+export default class LiveFormExtAbility extends LiveFormExtensionAbility {
+  onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
+    console.info(TAG, `onLiveFormCreate, formId: ${liveFormInfo.formId}`);
+  }
+}
+```
+
+### onLiveFormDestroy
+
+onLiveFormDestroy(liveFormInfo: LiveFormInfo): void
+
+LiveFormExtensionAbility生命周期回调，在销毁时回调，执行资源清理等操作。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| liveFormInfo | [LiveFormInfo](#liveforminfo) | 是 | 互动卡片信息，用于标识处于非激活态的互动卡片，包括卡片id等信息。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
+
+const TAG: string = '[testTag] LiveFormExtAbility';
+
+export default class LiveFormExtAbility extends LiveFormExtensionAbility {
+  onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
+    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${liveFormInfo.formId}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
+
+const TAG: string = '[testTag] LiveFormExtAbility';
+
+export default class LiveFormExtAbility extends LiveFormExtensionAbility {
+  onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
+    console.info(TAG, `onLiveFormDestroy, formId: ${liveFormInfo.formId}`);
+  }
+}
+```
+
 ## LiveFormInfo
 互动卡片信息。
 

@@ -286,7 +286,7 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
-更新指定的卡片，使用Promise异步回调。
+更新指定的卡片，使用Promise异步回调。适用于卡片数据变化时主动更新卡片内容的场景，例如天气数据变化、股票价格更新、任务进度更新等。
 > **说明：**
 >
 > 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
@@ -1037,6 +1037,10 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
+
+**相关方法：**
+- [cancelOverflow()](#formprovidercanceloverflow20)：取消互动卡片动效请求，用于取消已发起的动效。
+
 > **说明：**
 >
 > 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
@@ -1150,6 +1154,11 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 卡片提供方发起取消互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
 
+> **说明：**
+>
+> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
+> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
@@ -1235,7 +1244,7 @@ try {
 
 getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
-查询卡片位置、尺寸，使用Promise异步回调。
+查询卡片位置、尺寸，使用Promise异步回调。适用于需要获取卡片在屏幕上的位置和尺寸信息的场景，例如卡片动效、位置校准、布局计算等。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1318,7 +1327,7 @@ try {
 
 getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
-获取当前应用已加桌卡片中指定的卡片信息，使用Promise异步回调。
+获取当前应用已加桌的指定卡片信息，使用Promise异步回调。适用于卡片管理、调试等场景，例如查看指定卡片的位置信息和尺寸信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1399,7 +1408,7 @@ try {
 
 getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
-获取所有已加桌的卡片信息，使用Promise异步回调。
+获取所有已加桌的卡片信息，使用Promise异步回调。适用于卡片管理、批量操作、统计等场景，例如查看应用所有已添加到桌面的卡片信息、批量更新卡片状态等。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
