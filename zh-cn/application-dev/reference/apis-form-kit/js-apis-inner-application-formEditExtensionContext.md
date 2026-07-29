@@ -23,7 +23,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 
 ## FormEditExtensionContext
 
-FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资源的能力，
+FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资源的能力。
 
 ### startSecondPage
 
