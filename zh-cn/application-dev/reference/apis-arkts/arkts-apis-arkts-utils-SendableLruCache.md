@@ -1,4 +1,4 @@
-# SendableLruCache<K, V>
+# Class (SendableLruCache)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
