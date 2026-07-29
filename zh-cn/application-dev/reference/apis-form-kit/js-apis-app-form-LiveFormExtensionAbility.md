@@ -18,7 +18,7 @@ LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁�
 
 ## 约束限制
 
-为保障系统安全性和稳定性，防止 LiveFormExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](js-apis-app-form-LiveFormExtensionAbility.md#附录)。
+为保障系统安全性和稳定性，防止LiveFormExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](js-apis-app-form-LiveFormExtensionAbility.md#附录)。
 
 ## 导入模块
 
