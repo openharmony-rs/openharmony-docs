@@ -63,7 +63,7 @@ kernel/liteos_m/arch          # 不同版本路径有差异。
 
 编译框架搭建完成后，需要将芯片厂商的SDK加入OpenHarmony编译框架，从而可以编译出带SDK的烧录文件（此时编译出的是不带系统的裸机工程），以便OpenHarmony可以调用SDK中的接口。通过以下步骤将厂商SDK加入OpenHarmony编译框架中：
 
-1. 将芯片厂商sdk置于device目录下合适的位置，SDK的编译脚本/镜像打包脚本整合进编译框架中。
+1. 将芯片厂商sdk置于device目录下，SDK的编译脚本/镜像打包脚本整合进编译框架中。
    
    参考编译脚本：“device/board/MyDeviceCompany/MyBoard/BUILD.gn”
 
@@ -87,9 +87,9 @@ kernel/liteos_m/arch          # 不同版本路径有差异。
    }
    ```
 
-2. 自定义芯片厂“target_config.h”文件。
+2. 自定义芯片厂商“target_config.h”文件。
 
-   厂商应在“device/board/MyDeviceCompany/MyBoard”下合适位置创建内核配置文件“target_config.h”，并根据芯片的硬件资源修改参数（具体参数介绍详见表2target_config.h文件主要配置项）。
+   厂商应在“device/board/MyDeviceCompany/MyBoard”下依据当前适配内核类型（liteos_a 或 liteos_m）选择对应子目录创建内核配置文件“target_config.h”，并根据芯片的硬件资源修改参数（具体参数介绍详见表2target_config.h文件主要配置项）。
 
    参考文件路径：“device/soc/hisilicon/hi3861v100/sdk_liteos/platform/os/Huawei_LiteOS/targets/hi3861v100/include/target_config.h”
 
@@ -351,5 +351,5 @@ kernel/liteos_m/arch          # 不同版本路径有差异。
    ```
 
    > <img src="public_sys-resources/icon-note.gif" alt="说明"/> <b>说明：</b>
-   > 1. 内核特性开关通过修改"vendor/MyVendorCompany/MyProduct/kernel_configs/"目录下的.config文件配置。
+   > 1. 内核特性开关通过修改"vendor/MyVendorCompany/MyProduct/kernel_configs/"目录下的debug.config文件配置。
    > 2. 更多Kconfig配置项可查看"kernel/liteos_m/Kconfig"及其子目录中的Kconfig文件。
