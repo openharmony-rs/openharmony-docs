@@ -89,7 +89,7 @@ struct WebComponent {
               }
             })
           } catch (err) {
-            console.error('DocumentViewPicker.select failed with err:' + err);
+            console.error(`DocumentViewPicker.select failed, Error code: ${err.code}, message: ${err.message}`);
           }
         })
       }
@@ -270,13 +270,15 @@ static clearAdsBlockDisallowedList(): void
 
 清空AdsBlockManager的DisallowedList。
 
+> **说明：**
+>
+> AdsBlockManager的DisallowedList不会持久化，应用重启需要重新设置。
+>
+> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **错误码：**
-
-> **说明：**
->
-> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -399,6 +401,7 @@ struct WebComponent {
 
           Button({type: ButtonType.Capsule}) { Text("addAdsBlockAllowedList") }
           .onClick(() => {
+            // 演示AllowedList优先级：先禁用example.com所有子域名，再重新启用news.example.com
             let arrDisallowDomainSuffixes = new Array<string>();
             arrDisallowDomainSuffixes.push('example.com');
             webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
@@ -506,13 +509,15 @@ static clearAdsBlockAllowedList(): void
 
 清空AdsBlockManager的AllowedList。
 
+> **说明：**
+>
+> AdsBlockManager的AllowedList不会持久化，应用重启需要重新设置。
+>
+> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **错误码：**
-
-> **说明：**
->
-> 从API version 18开始，在不支持广告过滤功能的设备上调用该API会抛出801异常。
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 

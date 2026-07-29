@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的通用属性样式集合。
+定义ArkUI在Native侧可以设置的通用属性样式集合。适用于需要在Native侧动态设置或获取组件样式信息的场景，便于开发者通过C API统一管控组件外观。该枚举值作为属性操作接口的attribute参数，用于指定需要设置、重置或获取的具体属性类型，配合ArkUI_AttributeItem结构体传递属性数据。相关属性操作接口请参见[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)、[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)、[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)。
 
 **起始版本：** 12
 
@@ -95,7 +95,7 @@ NODE_BACKGROUND_COLOR = 2
 NODE_BACKGROUND_IMAGE = 3
 ```
 
-背景图片属性，支持属性设置，属性重置和属性获取接口。<br>
+背景图片属性，支持属性设置，属性重置和属性获取接口。属性重置后恢复为默认状态，默认无背景图片。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -104,14 +104,14 @@ NODE_BACKGROUND_IMAGE = 3
 
 | 参数项 | 描述 |
 | -- | -- |
-| .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)资源，不支持[svg](arkui-js/js-components-svg.md)图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
+| .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址和Base64格式图片地址，不支持[svg](arkui-js/js-components-svg.md)图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
 | .value[0]?.i32 | 可选值，repeat参数，类型为[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE。 |
-| .object | PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br>.object参数和.string参数二选一，不可同时设置。 |
+| .object | PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br>.object参数和.string参数二选一，不可同时设置。若同时设置，仅其中一个参数生效。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
+| .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址和Base64格式图片地址，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
 | .value[0].i32 | repeat参数，类型为[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)。 |
-| .object | PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 |
+| .object | PixelMap 图片数据，类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br>.object参数和.string互斥，仅其中一个有值。 |

@@ -72,8 +72,8 @@ visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | number | 是  | 当前可见区域中第一项数据的索引值。 |
-| maxVisible | number | 是  | 当前可见区域中最后一项数据的索引值。 |
+| minVisible | number | 是  | 当前可见区域中第一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
+| maxVisible | number | 是  | 当前可见区域中最后一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
 
 ```typescript
 class MyPrefetcher implements IPrefetcher {
@@ -141,8 +141,8 @@ visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | number | 是  | 当前可见区域中第一项数据的索引值。 |
-| maxVisible | number | 是  | 当前可见区域中最后一项数据的索引值。 |
+| minVisible | number | 是  | 当前可见区域中第一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
+| maxVisible | number | 是  | 当前可见区域中最后一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
 
 ## IDataSourcePrefetching
 

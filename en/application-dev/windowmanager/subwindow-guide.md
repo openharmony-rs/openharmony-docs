@@ -1,4 +1,4 @@
-# Subwindow Development Guide
+# Subwindow Development
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

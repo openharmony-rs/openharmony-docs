@@ -25,6 +25,6 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 |---------------------------------------------------------------------------------|------|
 | [OH_ArkUI_NodeUtils_AddCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_addcustomproperty) | 添加组件的自定义属性。 |
 | [OH_ArkUI_NodeUtils_RemoveCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_removecustomproperty) | 移除组件已设置的自定义属性。 |
-| [OH_ArkUI_NodeUtils_GetCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_getcustomproperty) | 获取组件的自定义属性的值。 |
+| [OH_ArkUI_NodeUtils_GetCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_getcustomproperty) | 获取组件的自定义属性，并通过handle返回ArkUI_CustomProperty实例。 |
 | [OH_ArkUI_CustomProperty_Destroy](capi-native-type-h.md#oh_arkui_customproperty_destroy) | 销毁 ArkUI_CustomProperty 实例。 |
 | [OH_ArkUI_CustomProperty_GetStringValue](capi-native-type-h.md#oh_arkui_customproperty_getstringvalue) | 获取自定义属性的字符串值。 |

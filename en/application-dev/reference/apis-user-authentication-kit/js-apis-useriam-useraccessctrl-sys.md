@@ -6,16 +6,17 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:47:20.894Z pushedAt=2026-07-27T08:45:08.372Z -->
 
 The **userAccessCtrl** module is a core component of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to the verification and management of authentication tokens. This module provides APIs for verifying authentication tokens (**AuthToken**). It can parse and verify user authentication results and return detailed authentication information.
 
 This module applies to the following scenarios:
-- System-level applications need to verify the validity of user authentication tokens.
-- Detailed information about the authentication token needs to be obtained, such as the authentication type, trust level, and user ID.
-- Access control decisions need to be made based on the authentication result.
 
+- System-level applications need to verify the validity of user authentication tokens to ensure access security.
+
+- Detailed information about the authentication token needs to be obtained, such as the authentication type, trust level, and user ID, for precise user identity identification.
+
+- Access control decisions need to be made based on the authentication result to implement fine-grained permission management.
 
 > **NOTE**
 >
@@ -55,9 +56,9 @@ let allowableDuration = 3600000; // 1 hour.
 let parsedToken = await userAccessCtrl.verifyAuthToken(authToken, allowableDuration);
 
 // 4. Perform subsequent processing based on the returned AuthToken information.
-// - Check authTrustLevel to determine the trust level.
+// - Check authTrustLevel to determine the authentication trust level.
 // - Check authType to determine the authentication mode.
-// - Check tokenType to determine the token type.
+// - Check tokenType to determine the authentication token type.
 // - Use userId to perform user-related operations.
 ```
 
@@ -83,30 +84,31 @@ Enumerates the authentication token types. They are used to identify the source 
 
 ## AuthToken
 
-Authentication token data. It indicates the parsed **AuthToken** data returned after the verification is successful, including detailed authentication information such as the challenge value, authentication trust level, authentication type, and user ID.
+Defines the authentication token data. It indicates the parsed **AuthToken** data returned after the verification is successful, including detailed authentication information such as the challenge value, authentication trust level, authentication type, and user ID.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
 **System API**: This is a system API.
 
-| Name          | Type                              | Read Only| Optional| Description                                      |
+| Name          | Type                              | Read-only| Optional| Description                                      |
 | -------------- | ---------------------------------- | ----- | ----- |------------------------------------------------------------ |
 | challenge | Uint8Array | No| No| Random challenge value for the authentication. It is used to prevent replay attacks. The challenge value passed during authentication is included in the **AuthToken**. The service can verify this field to confirm the validity of the authentication result.|
-| authTrustLevel | [userAuth.AuthTrustLevel](js-apis-useriam-userauth.md#authtrustlevel8) | No| No| Authentication trust level. It indicates the security strength level of the current authentication. The value can be **ATL1(10000)**, **ATL2(20000)**, **ATL3(30000)**, or **ATL4(40000)**. A higher level indicates a stronger liveness detection capability and more accurate identity recognition.|
-| authType | [userAuth.UserAuthType](js-apis-useriam-userauth.md#userauthtype8) | No| No | Credential type for the identity authentication. It indicates the authentication mode used for the current authentication, such as **PIN(1)**, **FACE(2)**, and **FINGERPRINT(4)**.|
-| tokenType | [AuthTokenType](#authtokentype) | No| No| Enumerates the authentication token types. It identifies the source of the token, such as local authentication, reuse authentication, or collaborative authentication.|
-| userId | number | No| No | User ID. It indicates the ID of the user who has completed authentication. The value is a positive integer greater than or equal to 0.|
+| authTrustLevel | [userAuth.AuthTrustLevel](js-apis-useriam-userauth.md#authtrustlevel8) | No | No | Authentication trust level. It indicates the security strength level of the current authentication. The value can be **ATL1 (10000)**, **ATL2 (20000)**, **ATL3 (30000)**, or **ATL4 (40000)**. A higher level indicates a stronger liveness detection capability and more accurate identity recognition.|
+| authType | [userAuth.UserAuthType](js-apis-useriam-userauth.md#userauthtype8) | No | No | 	Credential type for the identity authentication. It indicates the authentication mode used for the current authentication, such as **PIN (1)**, **FACE (2)**, and **FINGERPRINT (4)**.|
+| tokenType | [AuthTokenType](#authtokentype) | No| No| Authentication token type. It identifies the source of the token, such as local authentication, reuse authentication, or collaborative authentication.|
+| userId | number | No | No | User ID. It indicates the ID of the user who has completed authentication. The value is a non-negative integer.|
 | timeInterval | bigint | No | No | Time elapsed since the **AuthToken** was issued, in milliseconds.|
 | secureUid | bigint    | No | Yes | Secure user ID. It indicates the security ID of a user, which is used internally by the system and returned only in specific authentication scenarios.|
 | enrolledId | bigint   | No | Yes | Credential enrollment ID. It indicates the original value of **credentialDigest** in **enrolledState**, which reflects the credential change.|
 | credentialId | bigint | No | Yes | Credential ID. It indicates the ID of the credential that is successfully matched in the current authentication. It is used to associate with the specific authentication credential.|
-
 
 ## userAccessCtrl.verifyAuthToken
 
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
 Verifies an authentication token. This API is used to verify the validity of an **AuthToken**, including the integrity and validity check. After the verification is successful, the detailed information about the parsed **AuthToken** is returned. This API uses a promise to return the result.
+
+The integrity check verifies the digital signature of the **AuthToken** to ensure that the token has not been tampered with. The validity check compares the issuance time of the **AuthToken** with the current time and determines whether the token is within the validity period based on the **allowableDuration** parameter.
 
 **Required permissions**: ohos.permission.USE_USER_ACCESS_MANAGER
 
@@ -154,14 +156,14 @@ try {
   const len: number = 16;
   let randData: Uint8Array | null = null;
   let retryCount = 0;
-  while(retryCount < 3){
+  while (retryCount < 3) {
     randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
+    if (randData) {
       break;
     }
     retryCount++;
   }
-  if(!randData){
+  if (!randData) {
     return;
   }
   const authParam: userAuth.AuthParam = {
@@ -177,7 +179,7 @@ try {
   console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult() only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
-    onResult (result) {
+    onResult: (result) => {
         if (!result.token) {
             console.error('userAuthInstance callback result.token is null');
             return;

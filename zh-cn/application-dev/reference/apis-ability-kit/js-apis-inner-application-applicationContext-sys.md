@@ -35,7 +35,7 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
-支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
+支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从onCreate继续完成UIExtensionAbility的生命周期。
 
 **系统接口**：此接口为系统接口。
 
@@ -67,7 +67,7 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16200011 | The context does not exist. |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -198,7 +198,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ApplicationContext.unregisterAbilityLifecycleCallback<sup>(deprecated)</sup>
 
-unregisterAbilityLifecycleCallback(callbackId: number,  callback: AsyncCallback\<void>): void
+unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback\<void>): void
 
 取消监听应用内UIAbility的生命周期。使用callback异步回调。仅支持主线程调用。
 
@@ -325,7 +325,7 @@ registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.registerEnvironmentCallback](#applicationcontextregisterenvironmentcallbackdeprecated)方法中取消注册对应的callback。 |
+| number | 返回此次注册的callbackID，该ID用于在[ApplicationContext.unregisterEnvironmentCallback](#applicationcontextunregisterenvironmentcallbackdeprecated)方法中取消注册对应的callback。 |
 
 **示例：**
 
@@ -362,7 +362,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ApplicationContext.unregisterEnvironmentCallback<sup>(deprecated)</sup>
 
-unregisterEnvironmentCallback(callbackId: number,  envcallback: AsyncCallback\<void>): void
+unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback\<void>): void
 
 取消对系统环境变化的监听。使用callback异步回调。仅支持主线程调用。
 

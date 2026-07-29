@@ -4605,7 +4605,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | 是   | 表示用于验签的公钥对象。                                       |
-| callback | AsyncCallback\<void> | 是   | 回调函数,使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
 
 **错误码：**
 
@@ -5193,7 +5193,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 | ------------ | ------ | ---- | -------------- |
 | serialNumber | number | 是   | 表示证书序列号。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                   | 说明                   |
 | ---------------------- | --------------------- |
@@ -5274,7 +5274,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 | ------ | --------------------- | ---- | ------------ |
 | cert   | [X509Cert](#x509cert) | 是   | 表示证书对象。 |
 
-**返回值**:
+**返回值**：
 
 | 类型         | 说明                  |
 | ------------ | -------------------- |
@@ -5459,7 +5459,7 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                                           | 说明                   |
 | ---------------------------------------------- | ---------------------- |
@@ -5530,7 +5530,7 @@ getTbsInfo() : DataBlob
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
@@ -6205,7 +6205,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | 是   | 表示用于验签的公钥对象。                                       |
-| callback | AsyncCallback\<void>                                        | 是   | 回调函数,使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
+| callback | AsyncCallback\<void>                                        | 是   | 回调函数，使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
 
 **错误码：**
 
@@ -6868,7 +6868,7 @@ getRevokedCert(serialNumber : bigint) : X509CRLEntry
 | ------------ | ------ | ---- | -------------- |
 | serialNumber | bigint | 是   | 表示证书序列号。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                            | 说明                   |
 | ------------------------------- | ---------------------- |
@@ -6947,7 +6947,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 | ------ | --------------------- | ---- | ------------ |
 | cert   | [X509Cert](#x509cert) | 是   | 表示证书对象。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                            | 说明                   |
 | ------------------------------- | ---------------------- |
@@ -7128,7 +7128,7 @@ getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                                             | 说明                   |
 | ------------------------------------------------ | ---------------------- |
@@ -7486,7 +7486,7 @@ getTBSInfo() : DataBlob
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |

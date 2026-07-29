@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明ArkWeb网络协议栈错误码。
+声明ArkWeb网络协议栈错误码。该枚举定义了ArkWeb网络协议栈中可能出现的各种错误类型，覆盖网络连接、SSL/TLS、证书验证、HTTP/2、QUIC、缓存等多个方面的错误场景。开发者可以通过这些错误码快速定位网络请求失败的原因，便于进行故障诊断和错误处理。
 
 **引用文件：** <web/arkweb_net_error_list.h>
 
@@ -46,7 +46,7 @@ enum ArkWeb_NetError
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKWEB_NET_OK = 0 | 正常。 |
+| ARKWEB_NET_OK = 0 | 正常。|
 | ARKWEB_ERR_IO_PENDING = -1 | 异步IO操作尚未完成。这通常并不表示致命错误。通常，这个错误将作为通知生成，以等待某个外部通知，表明IO操作最终已完成。 |
 | ARKWEB_ERR_FAILED = -2 | 发生了通用故障。 |
 | ARKWEB_ERR_ABORTED = -3 | 操作被中止（由于用户操作）。 |

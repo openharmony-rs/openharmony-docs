@@ -37,7 +37,7 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。<br> - fingers：触发长按的最少手指数，最小值为1，&nbsp;最大值为10。<br/>默认值：1 <br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。<br/>默认值：false <br> - duration：触发长按的最短时间，单位为毫秒（ms）。<br/>默认值：500 |
+| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。当需要自定义长按手势的触发手指数、是否连续触发回调或最短长按时间时传入；不传入时，使用默认配置创建长按手势。<br> - fingers：触发长按的最少手指数，最小值为1，最大值为10，超出范围时使用默认值；当需要多指长按触发时设置为大于1的值，默认值：1。<br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，适用于长按期间需要持续响应的场景；false表示不连续触发事件回调，适用于仅需响应一次长按识别成功的场景，默认值：false。<br> - duration：触发长按的最短时间，单位为毫秒（ms），取值范围为[0, +∞)，当设置值小于0时使用默认值。当需要调整长按识别灵敏度时设置，默认值：500。 |
 
 ### LongPressGesture<sup>15+</sup>
 

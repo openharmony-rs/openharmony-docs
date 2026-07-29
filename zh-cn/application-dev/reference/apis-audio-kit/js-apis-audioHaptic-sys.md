@@ -88,7 +88,7 @@ const result: boolean = audioHapticPlayerInstance.isHapticsRampSupported();
 
 enableHapticsInSilentMode(enable: boolean): void
 
-静音模式下，音振播放器可以振动。
+设置静音模式下是否开启振动。
 
 > **注意：**
 >
@@ -127,7 +127,7 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 > **注意：**
 >
->该方法需在音振播放器释放前调用，且单次播放过程中仅调用一次。
+> 该方法需在音振播放器释放前调用，且每次播放仅支持调用一次。
 
 **系统接口：** 此接口为系统接口。
 
@@ -176,8 +176,8 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 > **注意：**
 >
->- 该方法需在音振协同播放器播放前后和销毁前使用。
->- 该方法仅能调用一次。
+> - 该方法需在音振协同播放器播放前/后，以及释放前使用。
+> - 该方法仅能调用一次。
 
 **系统接口：** 此接口为系统接口。
 

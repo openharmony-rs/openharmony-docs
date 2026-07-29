@@ -651,6 +651,12 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 
 将传入的content对象进行截图。与createFromBuilder传入CustomBuilder由系统离屏构建不同，createFromComponent传入的是已构建的ComponentContent对象，适用于已经通过ComponentContent管理组件内容的场景（如弹窗、节点管理等）。使用Promise异步回调。
 
+> **说明：**
+>
+> - 由于需要等待组件构建、渲染成功，截图的返回有一定的延迟，不适宜使用在对性能敏感的场景。
+>
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -668,7 +674,7 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象，返回组件截图对象。 |
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;  | Promise对象，返回组件截图对象。 |
 
 **错误码：**
 

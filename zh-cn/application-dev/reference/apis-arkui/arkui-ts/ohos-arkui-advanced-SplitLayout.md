@@ -32,9 +32,9 @@ import { SplitLayout } from '@kit.ArkUI';
 
 ## SplitLayout
 
-SplitLayout是分栏布局组件，支持自适应布局能力，在不同宽度下显示不同的布局样式。
-
 SplitLayout({mainImage: ResourceStr, primaryText: ResourceStr, secondaryText?: ResourceStr, tertiaryText?: ResourceStr, container: ()&nbsp;=&gt;&nbsp;void })
+
+SplitLayout是分栏布局组件，支持自适应布局能力，在不同宽度下显示不同的布局样式。
 
 **装饰器类型：**@Component
 

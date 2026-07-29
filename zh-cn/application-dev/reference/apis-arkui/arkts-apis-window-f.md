@@ -26,7 +26,7 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
-自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
@@ -100,7 +100,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
-自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
+自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，创建后为沉浸式布局；参数decorEnabled为true，创建后为非沉浸式布局。
 
 全局悬浮窗口、模态窗口或系统窗口创建后默认是非沉浸式布局。
 
@@ -845,7 +845,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = window.getVisibleWindowInfo();
   promise.then((data) => {
-    data.forEach(windowInfo=>{
+    data.forEach((windowInfo) => {
       console.info(`left:${windowInfo.rect.left}`);
       console.info(`top:${windowInfo.rect.top}`);
       console.info(`width:${windowInfo.rect.width}`);
@@ -858,7 +858,7 @@ try {
       console.info(`displayId:${windowInfo.displayId}`);
       console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
       console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
-    })
+    });
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
   });
@@ -1072,7 +1072,7 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Succeeded in loading the content');
@@ -1082,10 +1082,10 @@ export default class EntryAbility extends UIAbility {
       windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
         console.info('Get all main window info success.');
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1158,7 +1158,7 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');
@@ -1179,13 +1179,13 @@ export default class EntryAbility extends UIAbility {
             console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
           }
         }).catch((err: BusinessError) => {
-          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+          console.error(`Get main window snapshot failed. Cause code: ${err.code}, message: ${err.message}`);
         });
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1453,7 +1453,7 @@ promise.then((data) => {
 
 find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 
-查找id所对应的窗口，使用callback异步回调。
+根据窗口名称查找对应的窗口，使用callback异步回调。
 
 > **说明：**
 >
@@ -1489,7 +1489,7 @@ window.find('test', (err: BusinessError, data) => {
 
 find(id: string): Promise&lt;Window&gt;
 
-查找id所对应的窗口，使用Promise异步回调。
+根据窗口名称查找对应的窗口，使用Promise异步回调。
 
 > **说明：**
 >

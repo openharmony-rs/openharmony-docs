@@ -96,7 +96,7 @@
    ``` C++
    // case1: 获取排版后最长行行宽
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f", longestLine);
+   DRAWING_LOGI("longestLine: %{public}f", longestLine);
    
    // case2:获取排版后段落行数
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
@@ -120,7 +120,7 @@
    OH_Drawing_Font_Metrics fontMetrics;
    // 获取文本字体属性
    bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
-   DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f", result, fontMetrics.ascent);
+   DRAWING_LOGI("result: %{public}d, fontMetrics ascent: %{public}f", result, fontMetrics.ascent);
    // 获取排版对象的指定行位置信息，该接口需要在OH_Drawing_TypographyLayout接口调用之后调用
    OH_Drawing_LineMetrics lineMetric;
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);

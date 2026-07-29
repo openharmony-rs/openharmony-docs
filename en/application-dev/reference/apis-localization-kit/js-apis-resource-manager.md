@@ -7,9 +7,14 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
-The **resourceManager** module provides the resource management functionality. It allows an application to obtain the best matched application resources or system resources based on the specified [configuration](#configuration). For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
+This module provides the capabilities to access application resources and system resources. It allows applications to obtain the best-matching application or system resources based on the current [configuration](#configuration), supporting internationalization resource matching and multi-device adaptation. For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
 
-The configuration includes language, region, screen orientation, mobile country code (MCC), mobile network code (MNC), device capability, and density.
+The configuration includes language, script, country/region, orientation, color mode, Mobile Country Code (MCC), Mobile Network Code (MNC), device type, and screen density.
+
+**Use scenarios**
+- Application internationalization: Automatically obtains matching string resources based on the user's language and region.
+- Multi-device adaptation: Obtains appropriate media resources based on device type and screen density.
+- Dynamic resource configuration: Obtains resources corresponding to the current device state, such as orientation and color mode.
 
 > **NOTE**
 >
@@ -23,29 +28,27 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 ## How to Use
 
-Since API version 9, the stage model allows an application to obtain a **ResourceManager** object via **Context**. You do not need to import the module.
+- In the FA model, you need to import the module and then call [getResourceManager](#resourcemanagergetresourcemanager) to obtain a **ResourceManager** object.
 
-In the FA model, you need to import the module and then call [getResourceManager](#resourcemanagergetresourcemanager) to obtain a **ResourceManager** object.
+- Since API version 9, in the stage model, the stage model allows you to obtain the **resourceManager** object through context without importing any module. For details about the context, see [application context](../../application-models/application-context-stage.md).
 
-For details about how to reference context in the stage model, see [Context in the Stage Model](../../application-models/application-context-stage.md).
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let context = this.context;
-    let resourceManager = context.resourceManager;
-  }
-}
-```
+   ```ts
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window } from '@kit.ArkUI';
+   
+   export default class EntryAbility extends UIAbility {
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       let context = this.context;
+       let resourceManager = context.resourceManager;
+     }
+   }
+   ```
 
 ## resourceManager.getResourceManager
 
 getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 
-Obtains the **ResourceManager** object of this application. This API uses an asynchronous callback to return the result.
+Obtains the **ResourceManager** object of the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -134,7 +137,7 @@ export default {
 
 getResourceManager(): Promise&lt;ResourceManager&gt;
 
-Obtains the **ResourceManager** object of this application. This API uses a promise to return the result.
+Obtains the **ResourceManager** object of the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -221,7 +224,7 @@ export default {
 
 getSysResourceManager(): ResourceManager
 
-Obtains a **ResourceManager** object.
+Obtains a system resource management object for accessing preset system resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -361,6 +364,8 @@ Defines the device capability.
 
 type RawFileDescriptor = _RawFileDescriptor
 
+Describes the file descriptor information of the HAP where the rawfile is located.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Global.ResourceManager
@@ -373,6 +378,8 @@ type RawFileDescriptor = _RawFileDescriptor
 
 type Resource = _Resource
 
+Describes the resource information, including the application package name, application module name, resource ID, resource type, and formatting parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Global.ResourceManager
@@ -383,7 +390,7 @@ type Resource = _Resource
 
 ## ResourceManager
 
-Provides APIs for accessing application resources and system resources.
+Provides the capability of accessing application resources and system resources. The accessible resources include the resources in the HAP/HSP module corresponding to the current context and all system resources.
 
 > **NOTE**
 >
@@ -391,7 +398,7 @@ Provides APIs for accessing application resources and system resources.
 >
 > - Resource files are defined in the **resources** directory of the project. You can obtain resource values such as strings, string arrays, and colors based on the specified **resName**, **resId**, or **Resource** object. **resName** indicates the resource name, **resId** indicates the resource ID, which can be obtained through `$r(*resource-address*).id`, for example, `$r('app.string.test').id`.
 >
-> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
+> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
 > - In API version 22 and earlier versions, an exception is thrown due to an invalid ID when the intermediate-code HAR or bytecode HAR accesses resources through resource ID-related APIs. From API version 23, the intermediate-code HAR or bytecode HAR can properly access resources through resource ID-related APIs. For details, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
@@ -401,7 +408,7 @@ Provides APIs for accessing application resources and system resources.
 
 getStringSync(resId: number): string
 
-Obtains a string based on the specified resource ID. This API returns the result synchronously.
+Obtains the string corresponding to the specified resource ID. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -425,7 +432,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -466,7 +473,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringSync(resId: number, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource ID and formats the string based on **args**. This API returns the result synchronously.
+Obtains the string corresponding to the specified resource ID, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -477,7 +484,7 @@ Obtains a string based on the specified resource ID and formats the string based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| ...args | Array<string \| number> | No| Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No| Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>**NOTE**<br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`.<br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on.|
 
 **Return value**
 
@@ -491,7 +498,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                               |
 | 9001002  | No matching resource is found based on the resource ID.                 |
 | 9001006  | The resource is referenced cyclically.                    |
@@ -533,7 +540,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string): string
 
-Obtains a string based on the specified resource name. This API returns the result synchronously.
+Obtains the string corresponding to the specified resource name. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -557,7 +564,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -598,7 +605,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource name and formats the string based on **args**. This API returns the result synchronously.
+Obtains the string corresponding to the specified resource name, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -609,7 +616,7 @@ Obtains a string based on the specified resource name and formats the string bas
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
 | resName | string | Yes   | Resource name.|
-| ...args | Array<string \| number> | No   | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No   | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code1838334844812">%d</idp:inline>, <idp:inline displayname="code" id="code133838480482">%f</idp:inline>, <idp:inline displayname="code" id="code103831948134810">%s</idp:inline>, <idp:inline displayname="code" id="code538314481483">%%</idp:inline>, <idp:inline displayname="code" id="code153831348124817">%number$d</idp:inline>, <idp:inline displayname="code" id="code1438316485482">%number$f</idp:inline>, and <idp:inline displayname="code" id="code238320488485">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code161801302493">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code12180030104917">%</idp:inline>. For example, <idp:inline displayname="code" id="code201801530154920">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code118093018496">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code88311411145016">%number$d</idp:inline>, <idp:inline displayname="code" id="code583117117508">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code48312011185017">1</idp:inline>. For example, <idp:inline displayname="code" id="code154621837115013">%1$d</idp:inline> uses <idp:inline displayname="code" id="code1846293717507">args[0]</idp:inline> for formatting, <idp:inline displayname="code" id="code18462337195016">%2$d</idp:inline> uses <idp:inline displayname="code" id="code13462103715501">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -623,11 +630,11 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
-| 9001008  | Failed to format the resource obtained based on the resource Name. |
+| 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **Example**
 ```json5
@@ -665,7 +672,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains a string based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the string corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -684,7 +691,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -724,7 +731,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringValue(resId: number): Promise&lt;string&gt;
 
-Obtains a string based on the specified resource ID. This API uses a promise to return the result.
+Obtains the string corresponding to the specified resource ID. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -748,7 +755,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -786,7 +793,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains a string based on the specified resource name. This API uses an asynchronous callback to return the result.
+Obtains the string corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -797,7 +804,7 @@ Obtains a string based on the specified resource name. This API uses an asynchro
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | Yes   | Resource name.           |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the obtained string.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes |Callback used to return the obtained string.|
 
 **Error codes**
 
@@ -805,7 +812,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -845,7 +852,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByName(resName: string): Promise&lt;string&gt;
 
-Obtains a string based on the specified resource name. This API uses a promise to return the result.
+Obtains the string corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -869,7 +876,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -907,7 +914,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayValueSync(resId: number): Array&lt;string&gt;
 
-Obtains a string array based on the specified resource ID. This API returns the result synchronously.
+Obtains the string array corresponding to the specified resource ID. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -931,7 +938,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -976,7 +983,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 
-Obtains a string array based on the specified resource name. This API returns the result synchronously.
+Obtains the string array corresponding to the specified resource name. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1000,7 +1007,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1045,7 +1052,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains a string array based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the string array corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1064,7 +1071,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1109,7 +1116,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a string array based on the specified resource ID. This API uses a promise to return the result.
+Obtains the string array corresponding to the specified resource ID. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1133,7 +1140,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1177,7 +1184,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains a string array based on the specified resource name. This API uses an asynchronous callback to return the result.
+Obtains the string array corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1196,7 +1203,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1241,7 +1248,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a string array based on the specified resource name. This API uses a promise to return the result.
+Obtains the string array corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1265,7 +1272,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1309,7 +1316,7 @@ export default class EntryAbility extends UIAbility {
 
 getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource ID and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource ID, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -1327,7 +1334,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resId   | number                  | Yes  | Resource ID.                                                  |
 | num     | number                  | Yes  | Integer number used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code143841048144819">%d</idp:inline>, <idp:inline displayname="code" id="code17384124804811">%f</idp:inline>, <idp:inline displayname="code" id="code1738484812488">%s</idp:inline>, <idp:inline displayname="code" id="code538418489484">%%</idp:inline>, <idp:inline displayname="code" id="code133848486485">%number$d</idp:inline>, <idp:inline displayname="code" id="code12384124815483">%number$f</idp:inline>, and <idp:inline displayname="code" id="code638413480483">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code10182123094913">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code1218293014492">%</idp:inline>. For example, <idp:inline displayname="code" id="code818213010494">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code12182153010496">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code383331116504">%number$d</idp:inline>, <idp:inline displayname="code" id="code1683381116500">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code2833201114507">1</idp:inline>. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on.|
 
 **Return value**
 
@@ -1393,7 +1400,7 @@ export default class EntryAbility extends UIAbility {
 
 getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource name and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource name, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -1411,7 +1418,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resName | string                  | Yes  | Resource name.                                                  |
 | num     | number                  | Yes  | Integer number used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code18385184834818">%d</idp:inline>, <idp:inline displayname="code" id="code19385194864811">%f</idp:inline>, <idp:inline displayname="code" id="code16385548194819">%s</idp:inline>, <idp:inline displayname="code" id="code16385144864819">%%</idp:inline>, <idp:inline displayname="code" id="code163851484481">%number$d</idp:inline>, <idp:inline displayname="code" id="code14385348164813">%number$f</idp:inline>, and <idp:inline displayname="code" id="code113859486484">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code18183130174912">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code19183630104917">%</idp:inline>. For example, <idp:inline displayname="code" id="code718312302496">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code618333034911">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code1683541105013">%number$d</idp:inline>, <idp:inline displayname="code" id="code1283551155010">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code12835171165017">1</idp:inline>. For example, <idp:inline displayname="code" id="code112941126133916">%1$d</idp:inline> uses <idp:inline displayname="code" id="code142941526193917">args[0]</idp:inline> for formatting, <idp:inline displayname="code" id="code10294726193914">%2$d</idp:inline> uses <idp:inline displayname="code" id="code19294122620392">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -1477,7 +1484,7 @@ export default class EntryAbility extends UIAbility {
 
 getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource ID and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource ID, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -1495,7 +1502,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resId   | number                  | Yes  | Resource ID.                                                  |
 | num     | number                  | Yes  | Quantity value (a floating point number), used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code638716482487">%d</idp:inline>, <idp:inline displayname="code" id="code143871048184818">%f</idp:inline>, <idp:inline displayname="code" id="code19387124810487">%s</idp:inline>, <idp:inline displayname="code" id="code4387144824819">%%</idp:inline>, <idp:inline displayname="code" id="code17387104819482">%number$d</idp:inline>, <idp:inline displayname="code" id="code138734810489">%number$f</idp:inline>, and <idp:inline displayname="code" id="code1387114812488">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code1518363034918">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code201838308498">%</idp:inline>. For example, <idp:inline displayname="code" id="code171831130154915">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code01831307499">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code2836111125010">%number$d</idp:inline>, <idp:inline displayname="code" id="code208361911165010">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code183691125012">1</idp:inline>. For example, <idp:inline displayname="code" id="code112951426103911">%1$d</idp:inline> uses <idp:inline displayname="code" id="code15295226103911">args[0]</idp:inline> for formatting, <idp:inline displayname="code" id="code62951226193915">%2$d</idp:inline> uses <idp:inline displayname="code" id="code629552620396">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -1561,7 +1568,7 @@ export default class EntryAbility extends UIAbility {
 
 getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource name and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource name, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -1579,7 +1586,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resName | string                  | Yes  | Resource name.                                                  |
 | num     | number                  | Yes  | Quantity value (a floating point number), used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code1138813487483">%d</idp:inline>, <idp:inline displayname="code" id="code103881448184815">%f</idp:inline>, <idp:inline displayname="code" id="code138894804816">%s</idp:inline>, <idp:inline displayname="code" id="code93883486485">%%</idp:inline>, <idp:inline displayname="code" id="code1338812484489">%number$d</idp:inline>, <idp:inline displayname="code" id="code238874814816">%number$f</idp:inline>, and <idp:inline displayname="code" id="code5388184874816">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code1318353018497">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code91835303495">%</idp:inline>. For example, <idp:inline displayname="code" id="code191835301493">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code12183113064919">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code15837131145015">%number$d</idp:inline>, <idp:inline displayname="code" id="code1883711125016">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code188378115502">1</idp:inline>. For example, <idp:inline displayname="code" id="code13295826133916">%1$d</idp:inline> uses <idp:inline displayname="code" id="code12295926123916">args[0]</idp:inline> for formatting, <idp:inline displayname="code" id="code18295112673913">%2$d</idp:inline> uses <idp:inline displayname="code" id="code15295102619399">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -1656,7 +1663,7 @@ Obtains the media file content for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
@@ -1670,7 +1677,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1717,7 +1724,7 @@ Obtains the media file content for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resName | string | Yes   | Resource name.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
@@ -1731,7 +1738,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -1767,7 +1774,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains media file content based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1786,7 +1793,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.              | 
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              | 
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1831,7 +1838,7 @@ Obtains the media file content for the specified screen density based on the spe
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resId    | number                          | Yes   | Resource ID.             |
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | Yes   | Callback used to return the media file content.|
 
 **Error codes**
@@ -1840,7 +1847,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1873,7 +1880,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number): Promise&lt;Uint8Array&gt;
 
-Obtains media file content based on the specified resource ID. This API uses a promise to return the result.
+Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1897,7 +1904,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1939,7 +1946,7 @@ Obtains the media file content for the specified screen density based on the spe
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
@@ -1953,7 +1960,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1984,7 +1991,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains media file content based on the specified resource name. This API uses an asynchronous callback to return the result.
+Obtains the content of the media file corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2003,7 +2010,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2047,7 +2054,7 @@ Obtains the media file content for the specified screen density based on the spe
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resName  | string                          | Yes   | Resource name.              |
-| [density](#screendensity)  | number        | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number        | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | Yes   | Callback used to return the media file content.|
 
 **Error codes**
@@ -2056,7 +2063,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2089,7 +2096,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 
-Obtains media file content based on the specified resource name. This API uses a promise to return the result.
+Obtains the content of the media file corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2113,7 +2120,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2155,7 +2162,7 @@ Obtains the media file content for the specified screen density based on the spe
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
 | resName | string | Yes   | Resource name.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
@@ -2169,7 +2176,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2200,7 +2207,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64Sync(resId: number, density?: number): string
 
-Obtains an image's Base64 code for the default or specified screen density based on the specified resource ID. This API returns the result synchronously.
+Obtains an image's Base64 encoding for the default or specified screen density based on the specified resource ID. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2211,13 +2218,13 @@ Obtains an image's Base64 code for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
 | Type                   | Description         |
 | -------- | ----------- |
-| string   | Base64 code of the image corresponding to the specified resource ID.|
+| string   | Base64 encoding of the image corresponding to the specified resource ID.|
 
 **Error codes**
 
@@ -2225,7 +2232,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2261,7 +2268,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByNameSync(resName: string, density?: number): string
 
-Obtains an image's Base64 code for the default or specified screen density based on the specified resource name. This API returns the result synchronously.
+Obtains an image's Base64 encoding for the default or specified screen density based on the specified resource name. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2272,13 +2279,13 @@ Obtains an image's Base64 code for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resName | string | Yes   | Resource name.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
 | Type                   | Description         |
 | --------------------- | ----------- |
-| string | Base64 code of the image corresponding to the specified resource name.|
+| string | Base64 encoding of the image corresponding to the specified resource name.|
 
 **Error codes**
 
@@ -2286,7 +2293,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -2322,7 +2329,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2333,7 +2340,7 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resId    | number                      | Yes   | Resource ID.                   |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2341,7 +2348,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2374,7 +2381,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2385,8 +2392,8 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resId    | number                      | Yes   | Resource ID.                   |
-| [density](#screendensity)  | number        | Yes   | Screen density. The value **0** indicates the default screen density.   |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| density  | number        | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2394,7 +2401,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2427,7 +2434,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number): Promise&lt;string&gt;
 
-Obtains an image's Base64 code based on the specified resource ID. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2443,7 +2450,7 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 
 | Type                   | Description                  |
 | --------------------- | -------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2451,7 +2458,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2482,7 +2489,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource ID. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2493,13 +2500,13 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
 | Type                   | Description                  |
 | --------------------- | -------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2507,7 +2514,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2538,7 +2545,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code based on the specified resource name. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2549,7 +2556,7 @@ Obtains an image's Base64 code based on the specified resource name. This API us
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resName  | string                      | Yes   | Resource name.                    |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2557,7 +2564,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2590,11 +2597,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource name. This API uses an asynchronous callback to return the result.
-
-> **NOTE**
->
-> You are advised to use [getMediaBase64ByName](#getmediacontentbase6410) or [getMediaContentBase64](#getmediacontentbase6410). For details, see [ResourceManager](#resourcemanager).
+Obtains the Base64 encoding of the image resource for the specified screen density corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2605,8 +2608,8 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resName  | string                      | Yes   | Resource name.                    |
-| [density](#screendensity)  | number        | Yes   | Screen density. The value **0** indicates the default screen density.   |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| density  | number        | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2614,7 +2617,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2647,7 +2650,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 
-Obtains an image's Base64 code based on the specified resource name. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2663,7 +2666,7 @@ Obtains an image's Base64 code based on the specified resource name. This API us
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2671,7 +2674,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2702,7 +2705,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource name. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource for the specified screen density corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2713,13 +2716,13 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
 | resName | string | Yes   | Resource name.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -2727,7 +2730,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2758,7 +2761,7 @@ export default class EntryAbility extends UIAbility {
 
 getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableDescriptor
 
-Obtains a **DrawableDescriptor** object for icon display based on the specified resource ID. This API returns the result synchronously.
+Obtains the **DrawableDescriptor** object for icon display corresponding to the specified resource ID. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2769,8 +2772,8 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
-| type<sup>11+</sup> | number | No   | - **1**: Layered icon resource of the application in the theme resource package.<br> - **0** or default value: Icon resource of the application.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
+| type<sup>11+</sup> | number | No   | Icon type. The default value is **0**.<br>**0**: Icon resource of the application.<br>**1**: Layered icon resource of the application in the theme resource package.|
 
 **Return value**
 
@@ -2784,7 +2787,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2828,7 +2831,7 @@ export default class EntryAbility extends UIAbility {
 
 getDrawableDescriptorByName(resName: string, density?: number, type?: number): DrawableDescriptor
 
-Obtains a **DrawableDescriptor** object for icon display based on the specified resource name. This API returns the result synchronously.
+Obtains the **DrawableDescriptor** object for icon display corresponding to the specified resource name. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2839,8 +2842,8 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
 | resName | string | Yes   | Resource name.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
-| type<sup>11+</sup> | number | No   | - **1**: Layered icon resource of the application in the theme resource package.<br> - **0** or default value: Icon resource of the application.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
+| type<sup>11+</sup> | number | No   | Icon type. The default value is **0**.<br>**0**: Icon resource of the application.<br>**1**: Layered icon resource of the application in the theme resource package.|
 
 **Return value**
 
@@ -2854,7 +2857,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2922,7 +2925,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -2987,7 +2990,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3044,7 +3047,7 @@ Obtains an integer or float number based on the specified resource ID. This API 
 
 | Type    | Description        |
 | ------ | ---------- | 
-| number | Integer or float value corresponding to the specified resource ID.<br>An integer indicates the original value, and a float number without a unit indicates the original value and a float number with the unit of vp or fp indicates the px value. For details, see the sample code.|
+| number | Integer or float value corresponding to the specified resource ID.<br>For resources of the integer type, the original value defined in the resource file is returned.<br>For resources of the float type, the original value defined in the resource file is returned if no unit is specified. If the unit is vp or fp, the converted pixel (px) value is returned. The conversion formula is: Pixel value = Original value × `densityPixels`.|
 
 **Error codes**
 
@@ -3052,7 +3055,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3136,7 +3139,7 @@ Obtains an integer or float number based on the specified resource name. This AP
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Integer or float value corresponding to the specified resource name.<br>An integer indicates the original value, and a float number without a unit indicates the original value and a float number with the unit of vp or fp indicates the px value.|
+| number | Integer or float value corresponding to the specified resource name.<br>For resources of the integer type, the original value defined in the resource file is returned.<br>For resources of the float type, the original value defined in the resource file is returned if no unit is specified. If the unit is vp or fp, the converted pixel (px) value is returned. The conversion formula is: Pixel value = Original value × `densityPixels`.|
 
 **Error codes**
 
@@ -3144,7 +3147,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3235,7 +3238,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3301,7 +3304,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3342,7 +3345,7 @@ export default class EntryAbility extends UIAbility {
 
 getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 
-Obtains a color value based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the color value corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3361,7 +3364,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -3401,7 +3404,7 @@ export default class EntryAbility extends UIAbility {
 
 getColor(resId: number): Promise&lt;number&gt;
 
-Obtains a color value based on the specified resource ID. This API uses a promise to return the result.
+Obtains the color value corresponding to the specified resource ID. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3425,7 +3428,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3466,7 +3469,7 @@ export default class EntryAbility extends UIAbility {
 
 getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 
-Obtains a color value based on the specified resource name. This API uses an asynchronous callback to return the result.
+Obtains the color value corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3485,7 +3488,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3525,7 +3528,7 @@ export default class EntryAbility extends UIAbility {
 
 getColorByName(resName: string): Promise&lt;number&gt;
 
-Obtains a color value based on the specified resource name. This API uses a promise to return the result.
+Obtains the color value corresponding to the specified resource name. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3549,7 +3552,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3599,7 +3602,7 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | Yes   | Path of the rawfile.            |
+| path     | string                          | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).            |
 
 **Return value**
 
@@ -3613,7 +3616,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -3639,7 +3642,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3649,7 +3652,7 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | Yes   | Path of the rawfile.            |
+| path     | string                          | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).            |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | Yes   | Callback used to return the content of the rawfile.|
 
 **Error codes**
@@ -3658,7 +3661,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -3690,7 +3693,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
-Obtains the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3700,7 +3703,7 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -3714,7 +3717,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -3744,7 +3747,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileListSync(path: string): Array\<string>
 
-Obtains the list of folders and files in the **resources/rawfile** directory. This API returns the result synchronously.
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API returns the result synchronously.
 
 >**NOTE**
 >
@@ -3758,7 +3761,7 @@ Obtains the list of folders and files in the **resources/rawfile** directory. Th
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | Yes   | **rawfile** directory.            |
+| path     | string                          | Yes   | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained.|
 
 **Return value**
 
@@ -3772,7 +3775,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.       |
 
 **Example**
@@ -3801,7 +3804,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): void
 
-Obtains the list of folders and files in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses an asynchronous callback to return the result.
 
 >**NOTE**
 >
@@ -3815,8 +3818,8 @@ Obtains the list of folders and files in the **resources/rawfile** directory. Th
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | Yes   | **rawfile** directory.            |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Array\<string\>&gt; | Yes| Callback used to return the list of folders and files.|
+| path     | string                          | Yes   | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Array\<string\>&gt; | Yes| Callback used to return the list of directories and files in a rawfile subdirectory.|
 
 **Error codes**
 
@@ -3824,7 +3827,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.       |
 
 **Example**
@@ -3852,7 +3855,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 
-Obtains the list of folders and files in the **resources/rawfile** directory. This API uses a promise to return the result.
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses a promise to return the result.
 
 >**NOTE**
 >
@@ -3866,13 +3869,13 @@ Obtains the list of folders and files in the **resources/rawfile** directory. Th
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | **rawfile** directory.|
+| path | string | Yes   | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained.|
 
 **Return value**
 
 | Type                       | Description         |
 | ------------------------- | ----------- |
-| Promise&lt;Array\<string\>&gt; | Promise used to return the list of folders and files.|
+| Promise&lt;Array\<string\>&gt; | Promise used to return the list of directories and files in a rawfile subdirectory.|
 
 **Error codes**
 
@@ -3880,7 +3883,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -3922,7 +3925,7 @@ Obtains the file descriptor (fd) of the HAP where the rawfile file in the resour
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | Yes   | Path of the rawfile.                    |
+| path     | string                                   | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).                    |
 
 **Return value**
 
@@ -3936,7 +3939,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -3962,7 +3965,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
+Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3976,7 +3979,7 @@ Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** 
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | Yes   | Path of the rawfile.                     |
+| path     | string                                   | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).                     |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | Yes   | Callback used to return the fd of the HAP.|
 
 **Error codes**
@@ -3985,7 +3988,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4020,7 +4023,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
+Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -4034,7 +4037,7 @@ Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -4048,7 +4051,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4091,7 +4094,7 @@ Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **r
 
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | Yes   | Path of the rawfile.|
+| path     | string                    | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Error codes**
 
@@ -4099,7 +4102,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4129,7 +4132,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
-Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
+Closes the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4139,7 +4142,7 @@ Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** d
 
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | Yes   | Path of the rawfile.|
+| path     | string                    | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -4148,7 +4151,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4182,7 +4185,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFd(path: string): Promise&lt;void&gt;
 
-Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
+Closes the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4192,7 +4195,7 @@ Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** d
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -4206,7 +4209,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4268,7 +4271,7 @@ export default class EntryAbility extends UIAbility {
 
 getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
-Obtains the device configuration. This API uses an asynchronous callback to return the result.
+Obtains the configuration of a device. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4289,12 +4292,12 @@ import { resourceManager } from '@kit.LocalizationKit';
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
-            this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
+            this.context.resourceManager.getConfiguration((error: BusinessError, config: resourceManager.Configuration) => {
                 if (error != null) {
                     console.error("getConfiguration callback error is " + error);
                 } else {
-                    let direction = value.direction;
-                    let locale = value.locale;
+                    let direction = config.direction;
+                    let locale = config.locale;
                 }
             });
         } catch (error) {
@@ -4308,7 +4311,7 @@ export default class EntryAbility extends UIAbility {
 
 getConfiguration(): Promise&lt;Configuration&gt;
 
-Obtains the device configuration. This API uses a promise to return the result.
+Obtains the configuration of a device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4329,9 +4332,9 @@ import { resourceManager } from '@kit.LocalizationKit';
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
-            this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
-                let direction = value.direction;
-                let locale = value.locale;
+            this.context.resourceManager.getConfiguration().then((config: resourceManager.Configuration) => {
+                let direction = config.direction;
+                let locale = config.locale;
             }).catch((error: BusinessError) => {
                 console.error("getConfiguration promise error is " + error);
             });
@@ -4379,7 +4382,7 @@ export default class EntryAbility extends UIAbility {
 
 getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
-Obtains the device capability. This API uses an asynchronous callback to return the result.
+Obtains the device capabilities of a device. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4419,7 +4422,7 @@ export default class EntryAbility extends UIAbility {
 
 getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
-Obtains the device capability. This API uses a promise to return the result.
+Obtains the device capabilities of a device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4457,7 +4460,7 @@ export default class EntryAbility extends UIAbility {
 
 addResource(path: string): void
 
-Loads resources from the specified path.
+Loads the specified overlay resource during application runtime to implement theme switching or resource overriding.
 
 > **NOTE**
 >
@@ -4471,7 +4474,7 @@ Loads resources from the specified path.
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
-| path | string | Yes   | Resource path.|
+| path | string | Yes   | Absolute path of the HSP or HAP resource package to be loaded.|
 
 **Error codes**
 
@@ -4479,7 +4482,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001010  | Invalid overlay path.            |
 
 **Example**
@@ -4506,7 +4509,7 @@ export default class EntryAbility extends UIAbility {
 
 removeResource(path: string): void
 
-Removes the resources loaded from the specified path to restore the original resources.
+Removes the specified overlay resource during application runtime and restores the original resource before the override.
 
 > **NOTE**
 >
@@ -4520,7 +4523,7 @@ Removes the resources loaded from the specified path to restore the original res
 
 | Name     | Type           | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
-| path | string | Yes   | Resource path.|
+| path | string | Yes   | Absolute path of the HSP or HAP resource package to be removed.|
 
 **Error codes**
 
@@ -4528,7 +4531,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001010  | Invalid overlay path.            |
 
 **Example**
@@ -4579,7 +4582,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **Example**
 ```ts
@@ -4644,7 +4647,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4699,7 +4702,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4739,7 +4742,7 @@ Checks whether a path is a subdirectory in the **rawfile** directory. This API r
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
-| path | string | Yes   | Path of a rawfile.|
+| path | string | Yes   | rawfile or subdirectory path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -4753,7 +4756,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **Example**
@@ -4770,7 +4773,7 @@ export default class EntryAbility extends UIAbility {
             // Print the output result: sub isRawDir, result: true
             console.info(`sub isRawDir, result: ${isRawDir}`);
 
-            // If the test.txt file exists in the root directory, the value of isRawDir is false.
+            // If the test.txt file exists in the rawfile root directory, the value of isRawDir is false.
             // Replace "test.txt" with the actual resource.
             isRawDir = this.context.resourceManager.isRawDir("test.txt");
             // Print the output result: test.txt isRawDir, result: false
@@ -4806,7 +4809,7 @@ The resource configuration (including the language, color mode, resolution, and 
 
 | Type           | Description                              |
 | --------------- | ---------------------------------- |
-| ResourceManager | **ResourceManager** object for loading differentiated resources.|
+| [ResourceManager](#resourcemanager) | **ResourceManager** object for loading differentiated resources.|
 
 **Error codes**
 
@@ -4814,7 +4817,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **Example**
 
@@ -4843,7 +4846,9 @@ export default class EntryAbility extends UIAbility {
 
 getOverrideConfiguration(): Configuration
 
-Obtains the configuration of differentiated resources. This API returns the result synchronously. This API allows a common **ResourceManager** object and a **ResourceManager** object obtained through [getOverrideResourceManager](#getoverrideresourcemanager12) to obtain the configuration of differentiated resources.
+Obtains the configuration of differentiated resources. This API returns the result synchronously.
+
+For both the common resource management object and the differentiated resource management object obtained through the [getOverrideResourceManager](#getoverrideresourcemanager12) API, this API returns the same configuration information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4882,7 +4887,9 @@ export default class EntryAbility extends UIAbility {
 
 updateOverrideConfiguration(configuration: Configuration): void
 
-Updated configuration of differentiated resources. This API allows a common **ResourceManager** object and a **ResourceManager** object obtained through [getOverrideResourceManager](#getoverrideresourcemanager12) to update the configuration of differentiated resources.
+Updates the configuration of a differentiated resource management object.
+
+This API updates the configuration of the differentiated resource management object, regardless of whether it is called on the common resource management object or on the differentiated one obtained via [getOverrideResourceManager](#getoverrideresourcemanager12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4900,7 +4907,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **Example**
 
@@ -4929,7 +4936,7 @@ export default class EntryAbility extends UIAbility {
 
 getResourceName(resId: number): string
 
-Obtains the resource name corresponding to a specified resource ID.
+Obtains the resource name corresponding to the specified resource ID.
 
 **Since**: 26.0.0
 
@@ -4995,7 +5002,7 @@ export default class EntryAbility extends UIAbility {
 
 release()
 
-Releases a **ResourceManager** object. This API is not supported currently.
+Releases an **resourceManager **object. This API is not supported currently. Calling this API does not have any effect.
 
 > **NOTE**
 >
@@ -5018,7 +5025,7 @@ try {
 
 getString(resId: number, callback: AsyncCallback&lt;string&gt;): void
 
-Obtains a string based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the string corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -5051,7 +5058,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getString(resId: number): Promise&lt;string&gt;
 
-Obtains a string based on the specified resource ID. This API uses a promise to return the result.
+Obtains the string corresponding to the specified resource ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -5091,7 +5098,7 @@ Obtains a string based on the specified resource object. This API returns the re
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getStringByNameSync](#getstringbynamesync9) or [getStringSync](#getstringsync9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getStringSync](#getstringsync9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5117,7 +5124,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5158,11 +5165,11 @@ try {
 
 getStringSync(resource: Resource, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource object and formats the string based on **args**. This API returns the result synchronously.
+Obtains the string corresponding to the specified resource object, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getStringByNameSync](#getstringbynamesync10) or [getStringSync](#getstringsync10) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getStringSync](#getstringsync10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5175,7 +5182,7 @@ Obtains a string based on the specified resource object and formats the string b
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| ...args | Array<string \| number> | No   | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args | Array<string \| number> | No   | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code5389114815481">%d</idp:inline>, <idp:inline displayname="code" id="code1389164844819">%f</idp:inline>, <idp:inline displayname="code" id="code83892048184815">%s</idp:inline>, <idp:inline displayname="code" id="code43892048204820">%%</idp:inline>, <idp:inline displayname="code" id="code938917484484">%number$d</idp:inline>, <idp:inline displayname="code" id="code15389184894814">%number$f</idp:inline>, and <idp:inline displayname="code" id="code23891248144810">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code11186193054917">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code3186203024911">%</idp:inline>. For example, <idp:inline displayname="code" id="code3186173054912">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code21861330104919">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code18401111185014">%number$d</idp:inline>, <idp:inline displayname="code" id="code1584061155018">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code2840311115020">1</idp:inline>. For example, <idp:inline displayname="code" id="code184661137125016">%1$d</idp:inline> uses <idp:inline displayname="code" id="code19466237165011">args[0]</idp:inline> for formatting, <idp:inline displayname="code" id="code24665370504">%2$d</idp:inline> uses <idp:inline displayname="code" id="code74661237145011">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -5189,7 +5196,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5230,11 +5237,11 @@ try {
 
 getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains a string based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the string corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getStringByName](#getstringbyname9) or [getStringValue](#getstringvalue9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getStringValue](#getstringvalue9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5255,7 +5262,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5295,11 +5302,11 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 getStringValue(resource: Resource): Promise&lt;string&gt;
 
-Obtains a string based on the specified resource object. This API uses a promise to return the result.
+Obtains the string corresponding to the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getStringByName](#getstringbyname9-1) or [getStringValue](#getstringvalue9-1) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getStringValue](#getstringvalue9-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5325,7 +5332,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5354,7 +5361,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 getStringArray(resId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains a string array based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the string array corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -5387,7 +5394,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getStringArray(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a string array based on the specified resource ID. This API uses a promise to return the result.
+Obtains the string array corresponding to the specified resource ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -5428,7 +5435,7 @@ Obtains a string array based on the specified resource object. This API returns 
 
 > **NOTE**
 >
-> This method is supported since API version 10 and is deprecated since API version 20. You are advised to use [getStringArrayByNameSync](#getstringarraybynamesync10) or [getStringArrayValueSync](#getstringarrayvaluesync10) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getStringArrayValueSync](#getstringarrayvaluesync10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5454,7 +5461,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5498,11 +5505,11 @@ try {
 
 getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains a string array based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the string array corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This method is supported since API version 9 and is deprecated since API version 20. You are advised to use [getStringArrayByName](#getstringarraybyname9) or [getStringArrayValue](#getstringarrayvalue9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getStringArrayValue](#getstringarrayvalue9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5523,7 +5530,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5567,11 +5574,11 @@ this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError
 
 getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a string array based on the specified resource object. This API uses a promise to return the result.
+Obtains the string array corresponding to the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This method is supported since API version 9 and is deprecated since API version 20. You are advised to use [getStringArrayByName](#getstringarraybyname9-1) or [getStringArrayValue](#getstringarrayvalue9-1) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getStringArrayValue](#getstringarrayvalue9-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5597,7 +5604,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5641,7 +5648,7 @@ this.context.resourceManager.getStringArrayValue(resource)
 
 getMedia(resId: number, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains media file content based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -5673,7 +5680,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getMedia(resId: number): Promise&lt;Uint8Array&gt;
 
-Obtains media file content based on the specified resource ID. This API uses a promise to return the result.
+Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -5714,7 +5721,7 @@ Obtains the media file content for the default or specified screen density based
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaByNameSync](#getmediabynamesync10) or [getMediaContentSync](#getmediacontentsync10) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMediaContentSync](#getmediacontentsync10) instead.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -5728,7 +5735,7 @@ Obtains the media file content for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
@@ -5742,7 +5749,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5777,11 +5784,11 @@ try {
 
 getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains media file content based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the content of the media file corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaByName](#getmediabyname9) or [getMediaContent](#getmediacontent9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMediaContent](#getmediacontent9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5802,7 +5809,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5835,11 +5842,11 @@ try {
 
 getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains media file content for the specified screen density based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the media file content for the specified screen density based on the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This method is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaByName](#getmediabyname10) or [getMediaContent](#getmediacontent10) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMediaContent](#getmediacontent10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5852,7 +5859,7 @@ Obtains media file content for the specified screen density based on the specifi
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resource | [Resource](#resource9)          | Yes   | Resource object.              |
-| [density](#screendensity)  | number        | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number        | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | Yes   | Callback used to return the media file content.|
 
 **Error codes**
@@ -5861,7 +5868,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5894,11 +5901,11 @@ try {
 
 getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 
-Obtains media file content based on the specified resource object. This API uses a promise to return the result.
+Obtains the content of the media file corresponding to the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaByName](#getmediabyname9-1) or [getMediaContent](#getmediacontent9-1) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMediaContent](#getmediacontent9-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5924,7 +5931,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5955,11 +5962,11 @@ try {
 
 getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 
-Obtains media file content for the specified screen density based on the specified resource object. This API uses a promise to return the result.
+Obtains the media file content for the specified screen density based on the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaByName](#getmediabyname10-1) or [getMediaContent](#getmediacontent10-1) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMediaContent](#getmediacontent10-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5972,7 +5979,7 @@ Obtains media file content for the specified screen density based on the specifi
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
@@ -5986,7 +5993,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6017,7 +6024,7 @@ try {
 
 getMediaBase64(resId: number, callback: AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code based on the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -6030,7 +6037,7 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resId    | number                      | Yes   | Resource ID.                   |
-| callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Example**
 ```ts
@@ -6050,7 +6057,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getMediaBase64(resId: number): Promise&lt;string&gt;
 
-Obtains an image's Base64 code based on the specified resource ID. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -6068,7 +6075,7 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 
 | Type                   | Description                  |
 | --------------------- | -------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Example**
 ```ts
@@ -6086,11 +6093,11 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getMediaContentBase64Sync(resource: Resource, density?: number): string
 
-Obtains an image's Base64 code for the default or specified screen density based on the specified resource object. This API returns the result synchronously.
+Obtains an image's Base64 encoding for the default or specified screen density based on the specified resource object. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaBase64ByNameSync](#getmediabase64bynamesync10) or [getMediaContentBase64Sync](#getmediacontentbase64sync10) instead.
+> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMediaContentBase64Sync](#getmediacontentbase64sync10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6103,13 +6110,13 @@ Obtains an image's Base64 code for the default or specified screen density based
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
 
 **Return value**
 
 | Type                   | Description         |
 | --------------------- | ----------- |
-| string | Base64 code of the image corresponding to the specified resource object.|
+| string | Base64 encoding of the image corresponding to the specified resource object.|
 
 **Error codes**
 
@@ -6117,7 +6124,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6151,11 +6158,11 @@ try {
 
 getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaBase64ByName](#getmediabase64byname9) or [getMediaContentBase64](#getmediacontentbase649) instead.
+> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaContentBase64](#getmediacontentbase649).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6168,7 +6175,7 @@ Obtains an image's Base64 code based on the specified resource object. This API 
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resource | [Resource](#resource9)      | Yes   | Resource object.                    |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -6176,7 +6183,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6209,11 +6216,11 @@ try {
 
 getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource object and the specified screen density. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaBase64ByName](#getmediabase64byname10) or [getMediaContentBase64](#getmediacontentbase6410) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaContentBase64](#getmediacontentbase6410).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6226,8 +6233,8 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resource | [Resource](#resource9)      | Yes   | Resource object.                    |
-| [density](#screendensity)  | number        | Yes   | Screen density. The value **0** indicates the default screen density.   |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
+| density  | number        | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   | Callback used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -6235,7 +6242,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6268,11 +6275,11 @@ try {
 
 getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 
-Obtains an image's Base64 code based on the specified resource object. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaBase64ByName](#getmediabase64byname9-1) or [getMediaContentBase64](#getmediacontentbase649-1).
+> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getMediaContentBase64](#getmediacontentbase649-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6290,7 +6297,7 @@ Obtains an image's Base64 code based on the specified resource object. This API 
 
 | Type                   | Description                       |
 | --------------------- | ------------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -6298,7 +6305,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6329,11 +6336,11 @@ try {
 
 getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt;
 
-Obtains an image's Base64 code for the specified screen density based on the specified resource object. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource object and the specified screen density. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Supports versions from API version 10 and is deprecated in API version 20. You are advised to use [getMediaBase64ByName](#getmediabase64byname10-1) or [getMediaContentBase64](#getmediacontentbase6410-1) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getMediaContentBase64](#getmediacontentbase6410-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6346,13 +6353,13 @@ Obtains an image's Base64 code for the specified screen density based on the spe
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| [density](#screendensity)  | number                          | Yes   | Screen density. The value **0** indicates the default screen density.   |
+| density  | number                          | Yes   | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).   |
 
 **Return value**
 
 | Type                   | Description                       |
 | --------------------- | ------------------------- |
-| Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image.|
 
 **Error codes**
 
@@ -6360,7 +6367,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6394,7 +6401,7 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor](#getdrawabledescriptor10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptor](#getdrawabledescriptor10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6407,8 +6414,8 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | Yes   | Resource object.|
-| [density](#screendensity) | number | No   | Screen density. The default value or value **0** indicates the default screen density.|
-| type<sup>11+</sup> | number | No   | - **1**: Layered icon resource of the application in the theme resource package.<br> - **0** or default value: Icon resource of the application.|
+| density | number | No   | Screen density. The default value or value **0** indicates the default screen density. For details about the values, see [ScreenDensity](#screendensity).|
+| type<sup>11+</sup> | number | No   | Icon type. The default value is **0**.<br>**0**: Icon resource of the application.<br>**1**: Layered icon resource of the application in the theme resource package.|
 
 **Return value**
 
@@ -6422,7 +6429,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6464,11 +6471,11 @@ try {
 
 getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource object and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource object, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - This API is supported since API version 18 and is deprecated since API version 20. You are advised to use [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) or [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> - This API is supported since API version 18 and deprecated since API version 20. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
 >
 > - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 
@@ -6484,7 +6491,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)  | Yes  | Resource object.                                                  |
 | num      | number                  | Yes  | Integer number used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args  | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args  | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code153918489487">%d</idp:inline>, <idp:inline displayname="code" id="code9391104814812">%f</idp:inline>, <idp:inline displayname="code" id="code1439144804811">%s</idp:inline>, <idp:inline displayname="code" id="code8391164818485">%%</idp:inline>, <idp:inline displayname="code" id="code239117481483">%number$d</idp:inline>, <idp:inline displayname="code" id="code19391948124816">%number$f</idp:inline>, and <idp:inline displayname="code" id="code6391848164813">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code8188123019496">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code121889305493">%</idp:inline>. For example, <idp:inline displayname="code" id="code718853044912">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code41881430144917">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code18841101110503">%number$d</idp:inline>, <idp:inline displayname="code" id="code88421311155020">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code14842411115017">1</idp:inline>. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on.|
 
 **Return value**
 
@@ -6551,11 +6558,11 @@ try {
 
 getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 
-Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) string based on the specified resource object and formats the string based on the **args** parameter. This API returns the result synchronously.
+Obtains the [plural](../../internationalization/l10n-singular-plural.md) string corresponding to the specified resource object, and replaces the format placeholders in the string in sequence using the **args** parameters. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - This API is supported since API version 18 and is deprecated since API version 20. You are advised to use [getDoublePluralStringByNameSync](#getdoublepluralstringbynamesync18) or [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync18) instead.
+> - This API is supported since API version 18 and deprecated since API version 20. You are advised to use [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync18) instead.
 >
 > - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 
@@ -6571,7 +6578,7 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)  | Yes  | Resource object.                                                  |
 | num      | number                  | Yes  | Quantity value (a floating point number), used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
-| ...args  | Array<string \| number> | No  | Arguments for formatting strings.<br>Supported value types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`.<br>Note: `%%` is converted to `%`. **number** in `%number$d` indicates the sequence number of the parameter in **args**.<br>For example, `%%d` is converted to `%d` after formatting, and `%1$d` indicates that the first parameter is used.|
+| args  | Array<string \| number> | No  | Arguments for formatting strings. Supported parameter types include <idp:inline displayname="code" id="code7392748174819">%d</idp:inline>, <idp:inline displayname="code" id="code73921748144814">%f</idp:inline>, <idp:inline displayname="code" id="code2392164884812">%s</idp:inline>, <idp:inline displayname="code" id="code139214481483">%%</idp:inline>, <idp:inline displayname="code" id="code33927482484">%number$d</idp:inline>, <idp:inline displayname="code" id="code839210484482">%number$f</idp:inline>, and <idp:inline displayname="code" id="code1939244811483">%number$s</idp:inline>.<br>**NOTE**<br>- <idp:inline displayname="code" id="code1618810307493">%%</idp:inline> is escaped as <idp:inline displayname="code" id="code11188193014499">%</idp:inline>. For example, <idp:inline displayname="code" id="code1318893014910">%%d</idp:inline> is formatted as <idp:inline displayname="code" id="code21881930154912">%d</idp:inline>.<br>- In <idp:inline displayname="code" id="code1984231115012">%number$d</idp:inline>, <idp:inline displayname="code" id="code158421011205017">number</idp:inline> indicates the parameter index, starting from <idp:inline displayname="code" id="code1384241115013">1</idp:inline>. For example, <idp:inline displayname="code" id="code1811681611171">%1$d</idp:inline> uses `args[0]` for formatting, <idp:inline displayname="code" id="code81166161175">%2$d</idp:inline> uses <idp:inline displayname="code" id="code211621641715">args[1]</idp:inline>, and so on.|
 
 **Return value**
 
@@ -6655,7 +6662,7 @@ Obtains singular/plural strings based on the specified resource ID and quantity.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | resId  | number | Yes  | Resource ID.                                                  |
-| num    | number | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num    | number | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -6669,7 +6676,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6721,7 +6728,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
+> This API is supported since API version 10 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6734,7 +6741,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9) | Yes  | Resource object.                                                  |
-| num      | number                 | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                 | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -6748,7 +6755,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6817,7 +6824,7 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
 | resName | string | Yes  | Resource name.                                                  |
-| num     | number | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num     | number | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -6831,7 +6838,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6877,7 +6884,7 @@ try {
 
 getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains singular/plural strings based on the specified quantity and resource ID. This API uses an asynchronous callback to return the result.
+Obtains the plural string based on the specified resource ID and the specified resource quantity. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -6894,7 +6901,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resId    | number                      | Yes  | Resource ID.                                                  |
-| num      | number                      | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                      | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes  | Callback used to return the obtained singular/plural string.          |
 
 **Error codes**
@@ -6903,7 +6910,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6949,7 +6956,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
 
 getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 
-Obtains singular/plural strings based on the specified quantity and resource ID. This API uses a promise to return the result.
+Obtains the plural string based on the specified resource ID and the specified resource quantity. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -6966,7 +6973,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | resId  | number | Yes  | Resource ID.                                                  |
-| num    | number | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num    | number | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -6980,7 +6987,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7025,13 +7032,13 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
 
 getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains singular/plural strings based on the specified quantity and resource object. This API uses an asynchronous callback to return the result.
+Obtains the plural string based on the specified resource information and the specified resource quantity. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
+> This API is supported since API version 9 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7044,7 +7051,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)      | Yes  | Resource object.                                                  |
-| num      | number                      | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                      | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes  | Callback used to return the obtained singular/plural string.      |
 
 **Error codes**
@@ -7053,7 +7060,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7105,13 +7112,13 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
 
 getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 
-Obtains singular/plural strings based on the specified quantity and resource object. This API uses a promise to return the result.
+Obtains the plural string based on the specified resource information and the specified resource quantity. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
+> This API is supported since API version 9 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7124,7 +7131,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9) | Yes  | Resource object.                                                  |
-| num      | number                 | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                 | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -7138,7 +7145,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7189,7 +7196,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
 
 getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-Obtains singular/plural strings based on the specified quantity and resource name. This API uses an asynchronous callback to return the result.
+Obtains the plural string based on the specified resource name and the specified resource quantity. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -7206,7 +7213,7 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resName  | string                      | Yes  | Resource name.                                                  |
-| num      | number                      | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                      | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes  | Callback used to return the obtained singular/plural string.            |
 
 **Error codes**
@@ -7215,7 +7222,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7260,7 +7267,7 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
 
 getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 
-Obtains singular/plural strings based on the specified quantity and resource name. This API uses a promise to return the result.
+Obtains the plural string based on the specified resource name and the specified resource quantity. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7277,7 +7284,7 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
 | resName | string | Yes  | Resource name.                                                  |
-| num     | number | Yes  | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num     | number | Yes  | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -7291,7 +7298,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7336,7 +7343,7 @@ this.context.resourceManager.getPluralStringByName("test", 1)
 
 getPluralString(resId: number, num: number): Promise&lt;string&gt;
 
-Obtains singular/plural strings based on the specified quantity and resource ID. This API uses a promise to return the result.
+Obtains the plural string based on the specified resource ID and the specified resource quantity. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7351,7 +7358,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
 | resId | number | Yes   | Resource ID.|
-| num   | number | Yes   | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num   | number | Yes   | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 
 **Return value**
 
@@ -7378,7 +7385,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt;): void
 
-Obtains singular/plural strings based on the specified quantity and resource ID. This API uses an asynchronous callback to return the result.
+Obtains the plural string based on the specified resource ID and the specified resource quantity. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -7393,7 +7400,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 | Name     | Type                         | Mandatory  | Description                             |
 | -------- | --------------------------- | ---- | ------------------------------- |
 | resId    | number                      | Yes   | Resource ID.                          |
-| num      | number                      | Yes   | Quantity value, which is used to obtain the corresponding string representation based on the current language's plural rules. For details about the plural rules of a language, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
+| num      | number                      | Yes   | Quantity value, used to obtain the corresponding string representation based on the current language's [plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).|
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | Yes   | Callback used to return the obtained singular/plural string.|
 
 **Example**
@@ -7419,7 +7426,7 @@ Obtains a Boolean value based on the specified resource object. This API returns
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getBooleanByName](#getbooleanbyname9) or [getBoolean](#getboolean9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getBoolean](#getboolean9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7445,7 +7452,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7489,7 +7496,7 @@ Obtains an integer or float number based on the specified resource object. This 
 
 > **NOTE**
 >
-> This API is supported since API version 9 and is deprecated since API version 20. You are advised to use [getNumberByName](#getnumberbyname9) or [getNumber](#getnumber9) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getNumber](#getnumber9) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7507,7 +7514,7 @@ Obtains an integer or float number based on the specified resource object. This 
 
 | Type    | Description             |
 | ------ | --------------- |
-| number | Integer or float number.<br>An integer indicates the original value, and a float number without a unit indicates the original value and a float number with the unit of vp or fp indicates the px value.|
+| number | Integer or float number.<br>For resources of the integer type, the original value defined in the resource file is returned.<br>For resources of the float type, the original value defined in the resource file is returned if no unit is specified. If the unit is vp or fp, the converted pixel (px) value is returned. The conversion formula is: Pixel value = Original value × `densityPixels`.|
 
 **Error codes**
 
@@ -7515,7 +7522,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7561,7 +7568,7 @@ Obtains a color value based on the specified resource object. This API returns t
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByNameSync](#getcolorbynamesync10) or [getColorSync](#getcolorsync10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorSync](#getcolorsync10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7587,7 +7594,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7627,11 +7634,11 @@ try {
 
 getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 
-Obtains a color value based on the specified resource object. This API uses an asynchronous callback to return the result.
+Obtains the color value corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName](#getcolorbyname10) or [getColor](#getcolor10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColor](#getcolor10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7652,7 +7659,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7692,11 +7699,11 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
 
 getColor(resource: Resource): Promise&lt;number&gt;
 
-Obtains a color value based on the specified resource object. This API uses a promise to return the result.
+Obtains the color value corresponding to the specified resource object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName](#getcolorbyname10-1) or [getColor](#getcolor10-1) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColor](#getcolor10-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7722,7 +7729,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7764,7 +7771,7 @@ Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/desig
 
 > **NOTE**
 >
-> This API is supported since API version 11 and is deprecated since API version 20. You are advised to use [getSymbolByName](#getsymbolbyname11) or [getSymbol](#getsymbol11) instead.
+> This API is supported since API version 11 and is deprecated since API version 20. You are advised to use [getSymbol](#getsymbol11) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7790,7 +7797,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7820,7 +7827,7 @@ try {
 
 getRawFile(path: string, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -7832,7 +7839,7 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | Yes   | Path of the rawfile.            |
+| path     | string                          | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).            |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | Yes   | Callback used to return the rawfile content.|
 
 **Example**
@@ -7855,7 +7862,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFile(path: string): Promise&lt;Uint8Array&gt;
 
-Obtains the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7867,7 +7874,7 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -7893,7 +7900,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFileDescriptor(path: string, callback: AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-Obtains the fd of the rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -7905,7 +7912,7 @@ Obtains the fd of the rawfile in the **resources/rawfile** directory. This API u
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | Yes   | Path of the rawfile.                     |
+| path     | string                                   | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).                     |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | Yes   | Callback used to return the obtained fd.|
 
 **Example**
@@ -7929,7 +7936,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFileDescriptor(path: string): Promise&lt;RawFileDescriptor&gt;
 
-Obtains the fd of the rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7941,7 +7948,7 @@ Obtains the fd of the rawfile in the **resources/rawfile** directory. This API u
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -7968,7 +7975,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 closeRawFileDescriptor(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Closes the fd of the rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -7980,7 +7987,7 @@ Closes the fd of the rawfile in the **resources/rawfile** directory. This API us
 
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | Yes   | Path of the rawfile.|
+| path     | string                    | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -8000,7 +8007,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 closeRawFileDescriptor(path: string): Promise&lt;void&gt;
 
-Closes the fd of the rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -8012,7 +8019,7 @@ Closes the fd of the rawfile in the **resources/rawfile** directory. This API us
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| path | string | Yes   | Path of the rawfile.|
+| path | string | Yes   | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/).|
 
 **Return value**
 
@@ -8033,12 +8040,11 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getSystemResourceManager(): ResourceManager
 
-Obtains a **ResourceManager** object.
+Obtains a system resource management object for accessing preset system resources.
 
 > **NOTE**
 >
-> The **Configuration** field in the **ResourceManager** object obtained via this API uses the default value, which is as follows:
-> {"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}.
+> The **Configuration** parameter in the **ResourceManager** object obtained via this API uses the default value. The default value is **{"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}**.
 > 
 > This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [resourceManager.getSysResourceManager](#resourcemanagergetsysresourcemanager20) instead.
 
@@ -8244,3 +8250,4 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
     ]
   }
   ```
+<!--no_check-->

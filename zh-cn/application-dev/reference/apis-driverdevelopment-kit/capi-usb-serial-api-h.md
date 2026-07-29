@@ -218,7 +218,7 @@ int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)
 | 参数项 | 描述 |
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
-| uint32_t baudRate | USB串口设备的波特率。 |
+| uint32_t baudRate | USB串口设备的波特率，单位：波特。 |
 
 **返回：**
 

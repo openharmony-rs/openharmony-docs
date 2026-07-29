@@ -126,7 +126,7 @@ When a specified application package is removed by a specified user on the devic
 
 ### COMMON_EVENT_BUNDLE_REMOVED
 
-Indicates that an installed bundle has been uninstalled from the device.
+(Reserved, not supported yet) Indicates that an installed bundle has been uninstalled from the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -186,7 +186,7 @@ When the cache of an application package installed on the device is cleared, the
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
 
-Indicates that application packages have been suspended.
+(Reserved, not supported yet) Indicates that the package has been suspended.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -197,7 +197,7 @@ Indicates that application packages have been suspended.
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
-Indicates that application packages have been suspended by the system.
+(Reserved, not supported yet) Indicates that application packages have been suspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -208,7 +208,7 @@ Indicates that application packages have been suspended by the system.
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
-Indicates that application packages have been unsuspended by the system.
+(Reserved, not supported yet) Indicates that application packages have been unsuspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -611,7 +611,7 @@ When the battery level drops to lower than the low battery level set for the dev
 
 Indicates that the battery level is normal.
 
-When the battery level changes from the low level to normal level, the event notification service is triggered to publish this event.
+When the battery level increases from a low level to a level higher than the low level, the event notification service is triggered to publish this event.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -1336,8 +1336,10 @@ When the signal information of the device is updated, the event notification ser
 This topic lists the common system events provided by the AppGallery Kit to applications.
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
+
 Indicates the privacy state has been changed.
-When a user clicks **Agree** in a privacy dialog box, the event notification service is triggered to publish this event.
+
+When a user taps the agree button in the privacy statement dialog box, the event notification service is triggered to publish this event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

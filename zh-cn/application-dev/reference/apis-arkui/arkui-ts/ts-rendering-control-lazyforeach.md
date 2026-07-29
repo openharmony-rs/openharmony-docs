@@ -107,7 +107,7 @@ getData(index:&nbsp;number): any
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| index  | number | 是   | 获取数据对应的索引值。取值范围是[0, 数据源长度-1]。 |
+| index  | number | 是   | 获取数据对应的索引值。取值范围是[0, 数据源长度-1]。超出取值范围时行为由数据源实现决定，建议开发者做边界检查。 |
 
 **返回值：**
 
@@ -412,7 +412,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | type   | [DataOperationType](#dataoperationtype12).ADD     | 否 | 否   | 数据添加类型。         |
 | index  | number                    | 否 | 否   | 添加数据索引值。取值范围是[0, 数据源长度]。超出取值范围时渲染异常。 |
 | count  | number                    | 否 | 是   | 添加数量，必须是正整数（大于0），默认为1。传入0或负数时可能导致渲染效果异常。   |
-| key    | string \| Array\<string\> | 否 | 是   | 为添加的数据分配键值，默认使用原键值。 |
+| key    | string \| Array\<string\> | 否 | 是   | 为添加的数据分配键值，默认使用原键值。键值支持string或Array\<string\>类型；当键值为数组且长度大于count时报参数无效错误。 |
 
 ### DataDeleteOperation<sup>12+</sup>
 
@@ -428,7 +428,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | ------ | ------------------------- | ---- | ---- | -------------------- |
 | type   | [DataOperationType](#dataoperationtype12).DELETE     | 否 | 否   | 数据删除类型。         |
 | index  | number                    | 否 | 否   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。超出取值范围时渲染异常。|
-| count  | number                    | 否 | 是   | 删除数据数量，必须是正整数（大于0），且index与count之和不超过数据源长度，默认为1。传入0或负数时可能导致渲染效果异常。    |
+| count  | number                    | 否 | 是   | 删除数据数量，必须是正整数（大于0），且index与count之和不超过数据源长度，默认为1。传入负数时该操作会被忽略；传入0时会异常地将index处的数据项标记删除。index与count之和超过数据源长度时可能导致渲染异常。    |
 
 ### DataChangeOperation<sup>12+</sup>
 

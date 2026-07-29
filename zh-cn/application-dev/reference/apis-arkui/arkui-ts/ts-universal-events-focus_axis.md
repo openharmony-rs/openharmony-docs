@@ -18,7 +18,7 @@
 
 onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
-给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的摇杆、十字键等的操作会触发该回调。若组件默认不可获焦，需要先将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
+给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的操作杆、十字按键等的操作会触发该回调。若组件默认不可获焦，需要先将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

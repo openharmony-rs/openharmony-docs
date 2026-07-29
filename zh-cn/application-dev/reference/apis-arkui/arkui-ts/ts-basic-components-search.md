@@ -1052,7 +1052,7 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | --------- | ------------------------------------------ | ---- | ---- | ---------------- |
 | fontSize  | [Length](ts-types.md#length)               | 否   | 是 | 文本按钮字体大小，不传入单位时默认单位为vp，不支持百分比。传入百分比时，不生效。<br>默认值：跟随主题。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 文本按钮字体颜色。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| autoDisable<sup>18+</sup>  | boolean                   | 否   | 是 | Search无文本内容时按钮置灰且不可点击。<br>默认值：false <br>true表示开启按钮置灰功能，false表示不开启。 <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| autoDisable<sup>18+</sup>  | Boolean                   | 否   | 是 | Search无文本内容时按钮置灰且不可点击。<br>默认值：false <br>true表示开启按钮置灰功能，false表示不开启。 <br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## CancelButtonStyle<sup>10+</sup>枚举说明
 
