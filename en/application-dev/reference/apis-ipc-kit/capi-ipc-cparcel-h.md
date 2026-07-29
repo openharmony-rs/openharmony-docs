@@ -119,7 +119,7 @@ OHIPCParcel* OH_IPCParcel_Create(void)
 Creates an **OHIPCParcel** object for data serialization in IPC communication.
 
 When this function is called:
-- An **OHIPCParcell** object is allocated and initialized in memory.
+- An **OHIPCParcel** object is allocated and initialized in memory.
 - The object is initially empty, and its serializable size must not exceed 204800 bytes.
 - The returned object pointer can be used for subsequent data read and write operations.
 - Concurrent access to the same object from multiple threads is not supported.
