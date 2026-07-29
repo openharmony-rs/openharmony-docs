@@ -1569,11 +1569,6 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
   };
   let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
   // 构造围栏请求参数fenceRequestParams
-
-
-| expirationMs | number | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
-| fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | 否 | 否 | 表示用于接收围栏事件的回调函数。<br/>**系统接口**：此接口为系统接口。 |
-
   let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
     // 融合围栏唯一标识
     identifier: "123456789",
