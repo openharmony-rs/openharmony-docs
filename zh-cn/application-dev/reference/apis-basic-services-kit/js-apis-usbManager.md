@@ -150,7 +150,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备消连接通道对象，用于后续的数据传输和设备控制操作。 |
+| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备连接通道对象，用于后续的数据传输和设备控制操作。 |
 
 **错误码：**
 
