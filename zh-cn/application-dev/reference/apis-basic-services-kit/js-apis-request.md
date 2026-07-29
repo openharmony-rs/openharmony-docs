@@ -4073,7 +4073,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent<sup>10+</sup>
+## agent<sup>10+</sup>
 
 ### 常量
 
