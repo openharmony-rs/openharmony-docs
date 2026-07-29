@@ -143,7 +143,9 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 >
 > - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -174,6 +176,7 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -196,6 +199,36 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static';
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('fetchCookieSync')
+        .onClick(() => {
+          try {
+            let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', false, true);
+            console.info("fetchCookieSync cookie = " + value);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller})
     }
   }
 }
@@ -513,7 +546,9 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 获取指定url对应的cookies，可以通过参数incognito指定是否获取隐私模式下的cookies，也可以通过参数includePartitionedCookies指定是否获取第一方partitioned cookie。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -544,6 +579,7 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -571,6 +607,40 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static';
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('fetchCookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.fetchCookie('https://www.example.com', false, true)
+              .then(cookie => {
+                console.info("fetchCookie cookie = " + cookie);
+              })
+              .catch((error: Error) => {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller})
     }
   }
 }
