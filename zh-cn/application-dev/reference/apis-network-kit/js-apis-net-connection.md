@@ -2774,7 +2774,7 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to getRTT: ${data.rtt}`);
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to get RTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
     console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
@@ -3124,7 +3124,7 @@ netCon.register((error: BusinessError) => {
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to unregister. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3191,7 +3191,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error(`Failed to bind.Code:${error.code}, message:${error.message}`);
+        console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -3746,7 +3746,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
+   console.error(`Failed to register. Code:${error.code}, message:${error.message}`);
  });
 });
 ```
