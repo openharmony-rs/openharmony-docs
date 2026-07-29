@@ -1525,48 +1525,59 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
   // 创建围栏请求信息
   let latitude = 30.07;
   let longitude = 119.98;
-  // 创建GNSS围栏请求信息
+  // 多边形围栏位置信息
   let point: geoLocationManager.Point = {
     latitude:latitude,
     longitude:longitude
   }
+  // 圆形围栏信息，包括经纬度、半径、存活时间
   let geofence: geoLocationManager.Geofence = {
     "latitude": latitude, "longitude": longitude, "radius": 2000, "expiration": 500000000
   }
+  // 多边形围栏位置信息集合
   let polygon: Array<geoLocationManager.Point> = [point];
+  // GNSS围栏请求信息
   let gnssFence: geoLocationManager.GnssFence = {
     gnssFenceType: geoLocationManager.GnssFenceType.CIRCULAR, // GnssFenceType
     circularFence: geofence,
     polygon: polygon
   }
+  // GNSS围栏请求信息集合
   let gnssFences: Array<geoLocationManager.GnssFence> = [gnssFence];
-
+  // CELL围栏信息扩展字段
   let additionsMap: Map<string, string> = new Map<string, string>([
     ['key1', 'value1'],
     ['key2', 'value2'],
   ]);
-  // 创建CELL围栏请求信息
+  // CELL信息
   let cellInfo: geoLocationManager.CellInfo = {
     timeSinceBoot:1781062881671, cellId:9999, lac:1024, mcc: 460, mnc: 1, rat: 13, signalIntensity: -75, arfcn: 1850, pci: 256, tac: 888,
     additionsMap: additionsMap
   }
+  // CELL信息集合
   let cellInfos: Array<geoLocationManager.CellInfo> = [cellInfo];
+  // CELL围栏请求信息
   let cellFence: geoLocationManager.CellFence = {
     cellInfos: cellInfos,
   };
+  // CELL围栏请求信息集合
   let cellFences: Array<geoLocationManager.CellFence> = [cellFence];
-  // 创建WiFi围栏请求信息
+  // MAC地址
   let mac: Array<string> = ["FA:C4:D0:0E:BF:DF"];
+  // WiFi指纹信息
   let wifiFeature: geoLocationManager.WirelessSignalFeature = {
     rssiAvg: 1,
     rssiStandardDeviation:2.0,
     mac:mac
   };
+  // WiFi指纹信息集合
   let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
+  // WiFi围栏请求信息
   let wifiFence: geoLocationManager.WifiFence = {
     type: geoLocationManager.WifiFingerprintType.LOCATION,
     wifiFeatures:wifiFeatures
   };
+  // WiFi围栏请求信息集合
   let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
   // 构造围栏请求参数fenceRequestParams
   let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
