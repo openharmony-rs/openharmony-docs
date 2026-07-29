@@ -86,7 +86,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'，当接收到对端设备发送的图片时触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 回调函数，用于接收图片接收事件信息。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 回调函数，用于接收图片传输事件信息。    |
 
 **错误码：**
 

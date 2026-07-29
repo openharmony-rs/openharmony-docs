@@ -1,12 +1,11 @@
 # \@BuilderParam Decorator: Referencing the \@Builder Function
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:00:14.298Z pushedAt=2026-07-22T03:40:07.033Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:56:39.016Z pushedAt=2026-07-25T09:19:19.486Z -->
 
 When a developer creates a [custom component](./arkts-create-custom-components.md) and needs to add specific functions (such as [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)) to it, embedding event methods directly in the component causes all instances of that custom component to include this function. To address this issue, ArkUI introduces the [\@BuilderParam](../../reference/apis-arkui/arkui-ts/ts-universal-builderparam-dynamic.md#builderparam) decorator. \@BuilderParam is used to decorate variables that point to \@Builder methods. When initializing a custom component, you can use different methods (such as parameter modification, trailing closure, borrowing arrow functions, etc.) to pass parameters and assign values to the custom builder function decorated by \@BuilderParam. Inside the custom component, the specific function is added by calling \@BuilderParam.
 
@@ -20,7 +19,9 @@ Before reading this topic, you are advised to read [\@Builder](./arkts-builder.m
 >
 > This decorator can be used in atomic services since API version 11.
 
+
 ## How to Use
+
 
 ### Initializing \@BuilderParam Decorated Methods
 
@@ -50,6 +51,7 @@ An \@BuilderParam decorated method can be initialized only by an \@Builder funct
     }
   }
   ```
+
 
 - Initialization from the parent component
 
@@ -91,6 +93,7 @@ An \@BuilderParam decorated method can be initialized only by an \@Builder funct
 Effect
 
 ![builderparam-demo1](figures/builderparam-demo1.png)
+
 
 - **this** in the function body must point to the correct object.
 
@@ -153,6 +156,7 @@ Effect
 Effect
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
+
 
 ## Constraints
 
@@ -222,10 +226,10 @@ struct Parent {
   }
 }
 ```
-
 Effect
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
+
 
 ### Component Initialization Through Trailing Closure
 
@@ -295,7 +299,6 @@ struct CustomContainerUser {
   }
 }
 ```
-
 Effect
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
@@ -373,7 +376,6 @@ struct ParentPage {
   }
 }
 ```
-
 Effect
 
 ![builderparam-demo8](figures/builderparam-demo8.png)
@@ -469,6 +471,7 @@ struct ChildPage_BuilderParam {
 }
 ```
 
+
 <!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
 
 ``` TypeScript
@@ -497,9 +500,9 @@ struct HelloWorldPage {
 }
 ```
 
+
 **router_map.json**
 This file is stored in the **resources/base/profile** directory of the project.
-
 ```ts
 {
   "routerMap": [
@@ -511,7 +514,6 @@ This file is stored in the **resources/base/profile** directory of the project.
   ]
 }
 ```
-
 **module.json5**
 This file is located in the root directory of the application module, for example, **entry/src/main/module.json5**.
 
@@ -611,7 +613,6 @@ struct ParentPage {
   }
 }
 ```
-
 Effect
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
@@ -699,10 +700,10 @@ struct ParentPage {
   }
 }
 ```
-
 Effect
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
+
 
 ## FAQs
 
@@ -834,7 +835,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
-      // Since no value has been assigned to the ChildBuilder variable decorated with @Require, an error will be thrown at this point both during compilation and editing.
+      // The @Require decorated variable ChildBuilder is not assigned, causing compilation and editing errors.
       ChildPage()
     }
   }

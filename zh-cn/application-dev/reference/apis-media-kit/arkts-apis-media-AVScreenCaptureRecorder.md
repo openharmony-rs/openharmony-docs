@@ -34,7 +34,7 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。关键配置项包括：fd（文件描述符）、frameWidth（视频宽度）、frameHeight（视频高度）等。详细配置说明请参考[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)。 |
+| config | [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) | 是   | 配置屏幕录制的相关参数。关键配置项包括：fd（文件描述符）、frameWidth（视频宽度）、frameHeight（视频高度）等。详细配置说明请参考[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)。文件（通常是MP4）需要先由开发者创建，并赋予写权限，再将文件fd传给此参数。 |
 
 **返回值：**
 
@@ -48,9 +48,9 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. |
-| 5400103  | IO error. Return by promise.                   |
-| 5400105  | Service died. Return by promise.               |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. Suggestion: Please check that all required parameters are correctly passed and their types conform to the interface requirements. |
+| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.                  |
+| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
 
 **示例：**
 
@@ -182,7 +182,7 @@ async function testStopRecording() {
 
 pauseRecording(): Promise\<void>
 
-暂停录屏。使用Promise异步回调。
+暂停录屏。使用Promise异步回调。在录制过程中需要临时中断录制时调用此接口，例如用户临时离开或需要切换应用时。
 
 在使用前需要先调用[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口且录屏需处于录制状态。
 
@@ -204,9 +204,9 @@ pauseRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not be permitted. Return by promise. |
-| 5400103  | IO error. Return by promise.     |
-| 5400105  | Service died. Return by promise. |
+| 5400102  | Operation not allowed. Return by promise. Possible cause: This operation is not allowed in the current state (e.g., pausing before initialization). Suggestion: Please ensure the interfaces are called in the correct sequence. |
+| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.    |
+| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
 
 **示例：**
 
@@ -257,9 +257,9 @@ resumeRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not be permitted. Return by promise. |
-| 5400103  | IO error. Return by promise.     |
-| 5400105  | Service died. Return by promise. |
+| 5400102  | Operation not allowed. Return by promise. Possible cause: This operation is not allowed in the current state (e.g., pausing before pauseRecording). Suggestion: Please ensure the interfaces are called in the correct sequence. |
+| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.     |
+| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
 
 **示例：**
 
@@ -307,13 +307,13 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
 | watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像，取值原则：PixelMap对象不能为空。支持透明度设置。图像格式和尺寸要求请参考[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
-| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。 |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。需在调用startRecording接口前设置。 |
 
 **返回值：**
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<number> | Promise对象，返回所添加水印的编号ID。 |
+| Promise\<number> | Promise对象，返回所添加水印的编号ID表示添加水印成功，失败时返回错误码。 |
 
 **错误码：**
 
@@ -321,10 +321,10 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise.  |
-| 5400103  | IO error. Return by promise.    |
-| 5400105  | Service died. Return by promise. |
-| 5400108  | The parameter check failed, parameter value out of range.     |
+| 5400102  | Operation not allowed. Return by promise. Possible cause: Called before startRecording or exceeded 5 watermarks. Suggestion: Please ensure proper timing of the call, and keep watermark count within 5. |
+| 5400103  | IO error. Return by promise. Possible cause: Watermark image resource unavailable or insufficient storage space. Suggestion: Please check watermark image validity and storage space.    |
+| 5400105  | Service died. Return by promise. Possible cause: System service terminated abnormally. Suggestion: Please release resources and retry. If the problem persists, restart the application. |
+| 5400108  | The parameter check failed, parameter value out of range. Possible cause: Watermark configuration parameters out of valid range. Suggestion: Please check if top, left, width, height parameter values are valid.    |
 
 **示例：**
 
@@ -471,7 +471,12 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 设置Picker显示模式，在下一次显示Picker时生效。使用Promise异步回调。
 
-可根据录制需求选择不同模式，如仅录制指定窗口或录制整屏内容。
+可根据录制需求选择不同模式。
+
+- SCREEN_ONLY适用于只需要录制整个屏幕的场景。
+- WINDOW_ONLY适用于只需要录制特定应用窗口的场景。
+- SCREEN_AND_WINDOW适用于需要让用户自由选择录制屏幕或窗口的场景。
+
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -796,9 +801,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 201      | permission denied.     |
-| 5400103  | IO error. Return by ErrorCallback. |
-| 5400105  | Service died. Return by ErrorCallback. |
+| 201      | permission denied. Possible cause: Missing required permissions. Suggestion: Please check and apply for the necessary permissions.     |
+| 5400103  | IO error. Return by ErrorCallback. Possible cause: System I/O operation failed. Suggestion: Please retry the operation. If the issue persists, restart the application. |
+| 5400105  | Service died. Return by ErrorCallback. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
 
 **示例：**
 

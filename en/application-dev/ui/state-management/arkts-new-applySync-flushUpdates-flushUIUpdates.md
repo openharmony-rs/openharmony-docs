@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:04:27.661Z pushedAt=2026-07-24T01:15:09.129Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:55:59.936Z pushedAt=2026-07-25T09:19:44.342Z -->
 
 To synchronize the update of state management V2 and animation effects such as [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto), you can use the [applySync](../../reference/apis-arkui/js-apis-stateManagement.md#applysync22), [flushUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushupdates22), or [flushUIUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushuiupdates22) API.
 
@@ -177,6 +177,14 @@ import { UIUtils } from '@kit.ArkUI';
     }
   }
   ```
+
+- The following table compares the flush scopes of the three synchronous flush APIs:
+
+| API            | Flush Scope                          | @Computed              | @Monitor               |
+| -------------- | ------------------------------------ | ---------------------- | ---------------------- |
+| applySync      | Only modifications within the closure | Synchronous execution  | Synchronous execution  |
+| flushUpdates   | All pending modifications            | Synchronous execution  | Synchronous execution  |
+| flushUIUpdates | All pending modifications            | Asynchronous execution | Asynchronous execution |
 
 ## Constraints
 

@@ -32,7 +32,7 @@ import { audio } from '@kit.AudioKit';
 | 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。<br>当loop为浮点数时只截取整数部分。                   |
-| rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
+| rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：RENDER_RATE_NORMAL，对应枚举值0。 |
 | leftVolume  | number | 否 | 是  | 设置左声道音量。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。                       |
 | rightVolume | number  | 否 | 是  | 设置右声道音量（当前不支持左右分别设置，将以左声道音量为准）。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。 |
 | priority  | number  | 否 | 是  | 音频流播放的优先级。0为最低优先级，数值越大优先级越高。<br> 通过相互比较数值大小确定播放优先级，设置范围为大于等于0的整数。默认值为0。 <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
@@ -287,12 +287,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
-    let uri: string = "";
     // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize, (error: BusinessError, soundId_: number) => {
         if (error) {
           console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
@@ -406,12 +404,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
-    let uri: string = "";
     // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
@@ -852,7 +848,7 @@ setLoop(streamID: number, loop: number): Promise\<void>
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。|
+| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>当loop为浮点数时只截取整数部分。|
 
 **返回值：**
 
@@ -1294,7 +1290,9 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
 // 创建soundPool实例。
 let soundPool: media.SoundPool;
