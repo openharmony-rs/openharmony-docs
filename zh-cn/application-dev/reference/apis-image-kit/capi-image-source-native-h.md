@@ -1397,7 +1397,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1435,7 +1435,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNati
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1473,7 +1473,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceN
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**
@@ -1511,7 +1511,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**
