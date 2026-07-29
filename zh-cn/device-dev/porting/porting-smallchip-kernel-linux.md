@@ -79,7 +79,7 @@ Linux内核移植主要涉及基于Linux内核基线合入三方芯片补丁后�
 
    - 组件配置
 
-     产品组件配置文件`vendor/{company}/{product}/config.json`需配置启动恢复子系统(startup)的`init`组件和内核子系统的`linux`组件。
+     产品组件配置文件`vendor/{company}/{product}/config.json`需配置启动恢复子系统(startup)的`init`组件和内核子系统的`Linux`组件。
 
    - 系统服务配置
 
