@@ -6,11 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3954e7d5e89f0089dd7203a7a61b834cd964636d translatedAt=2026-07-29T03:49:53.443Z pushedAt=2026-07-29T03:52:40.895Z -->
+<!-- md-trans-meta sourceCommit=3954e7d5e89f0089dd7203a7a61b834cd964636d translatedAt=2026-07-29T03:49:53.443Z pushedAt=2026-07-29T03:56:23.470Z -->
 
 Crypto Architecture Kit provides cryptographic functionalities, such as encryption and decryption, signing and signature verification, message authentication code (MAC) generation, hash computation, random number generation, and key derivation.
 
-By invoking Crypto Architecture Kit services, developers can abstract away the differences between underlying third-party cryptographic algorithm libraries, enabling rapid development.
+By invoking Crypto Architecture Kit services, you can abstract away the differences between underlying third-party cryptographic algorithm libraries, enabling rapid development.
 
 ## Constraints
 
