@@ -36,15 +36,19 @@ Manager::nodeAPI_->setAttribute(text, NODE_HEIGHT, &textHeightItem);
 
 ### 设置文本内容
 
-通过[NODE_TEXT_CONTENT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
+- 通过[NODE_TEXT_CONTENT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
 
-<!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
+  <!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
-``` C++
-const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
-ArkUI_AttributeItem contentItem = {.string = textContent};
-Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
-```
+  ``` C++
+  const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
+  ArkUI_AttributeItem contentItem = {.string = textContent};
+  Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
+  ```
+
+- 通过[NODE_TEXT_CONTENT_WITH_STYLED_STRING](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)属性设置文本内容。
+
+  StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考[使用属性字符串](./ndk-styled-string.md)文档。
 
 ## 设置文本样式
 
@@ -168,7 +172,7 @@ Manager::nodeAPI_->setAttribute(text3, NODE_TEXT_WORD_BREAK, &wordBreakItem);
 
 从API version 22开始，Text组件支持使用倍数模式设置行高。
 
-**表5** 行高属性
+**表4** 行高属性
 
 | 属性 | 说明 |
 |------|------|
@@ -198,7 +202,7 @@ Manager::nodeAPI_->setAttribute(text3, NODE_TEXT_WORD_BREAK, &wordBreakItem);
 
 通过如下属性设置文本溢出时的省略模式。
 
-**表6** 文本省略属性
+**表5** 文本省略属性
 
 | 属性 | 说明 |
 |------|------|
@@ -229,7 +233,7 @@ Manager::nodeAPI_->setAttribute(text20, NODE_TEXT_ELLIPSIS_MODE, &ellipsisModeIt
 
 通过如下属性设置每行结尾空格是否优化。从API version 20开始，Text组件支持设置每行结尾空格是否优化处理。
 
-**表8** 每行结尾空格处理属性
+**表6** 每行结尾空格处理属性
 
 | 属性 | 说明 |
 |------|------|
@@ -272,6 +276,24 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
   Manager::nodeAPI_->setAttribute(text11, NODE_TEXT_COMPRESS_LEADING_PUNCTUATION, &item0);
   ```
 
+### 设置文本尾部缩进
+
+通过如下属性设置文本尾部缩进。从API版本26.0.0开始，Text组件支持设置文本尾部缩进。
+
+**表8** 文本尾部缩进属性
+
+| 属性 | 说明 |
+|------|------|
+| [NODE_TEXT_TAIL_INDENTS](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_tail_indents) | 设置文本尾部缩进。 |
+
+<!-- @[text_tail_indents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
+
+``` C++
+ArkUI_NumberValue multiValues[] = { { .f32 = 0.0f }, { .f32 = 50.0f }, { .f32 = 100.0f } };
+ArkUI_AttributeItem tailIndentItem2 = { .value = multiValues, .size = 3 };
+Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_TAIL_INDENTS, &tailIndentItem2);
+```
+
 ## 添加子组件
 
 Text组件支持添加多种子组件，实现图文混排等复杂效果。
@@ -303,7 +325,7 @@ if (span != nullptr) {
     // 文本基线的偏移量属性
     ArkUI_NumberValue baselineOffsetVal = {.f32 = VALUE_10};
     ArkUI_AttributeItem baselineOffsetItem = {&baselineOffsetVal, VALUE_1};
-    Manager::nodeAPI_->setAttribute(text, NODE_SPAN_BASELINE_OFFSET, &baselineOffsetItem);
+    Manager::nodeAPI_->setAttribute(span, NODE_SPAN_BASELINE_OFFSET, &baselineOffsetItem);
     // 设置字体粗细
     ArkUI_NumberValue fontWeight = {.i32 = ARKUI_FONT_WEIGHT_W500};
     ArkUI_AttributeItem fontWeightItem = {&fontWeight, VALUE_1};
@@ -354,10 +376,6 @@ void setText6(ArkUI_NodeHandle &text6)
 }
 ```
 
-### 使用StyledString
-
-StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考[使用属性字符串](./ndk-styled-string.md)文档。
-
 ## 设置高级文本效果
 
 Text组件支持多种高级文本效果，如渐变、跑马灯等。
@@ -388,7 +406,6 @@ ArkUI_NumberValue linearGradient[] = {
 ArkUI_AttributeItem linearGradientItem = {
     linearGradient, sizeof(linearGradient) / sizeof(ArkUI_NumberValue)};
 linearGradientItem.object = reinterpret_cast<void *>(colorStopPtr);
-linearGradientItem.size = sizeof(linearGradientItem) / sizeof(ArkUI_NumberValue);
 Manager::nodeAPI_->setAttribute(text5, NODE_TEXT_LINEAR_GRADIENT, &linearGradientItem);
 ```
 
@@ -413,6 +430,7 @@ ArkUI_AttributeItem marqueeOptions_item = {
     .object = marqueeOptions
 };
 Manager::nodeAPI_->setAttribute(text18, NODE_TEXT_MARQUEE_OPTIONS, &marqueeOptions_item);
+OH_ArkUI_TextMarqueeOptions_Dispose(marqueeOptions);
 ```
 
 ### 设置文本方向

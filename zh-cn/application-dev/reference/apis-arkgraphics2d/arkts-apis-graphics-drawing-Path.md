@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。
+Path是Drawing模块提供的复合几何路径类，由直线、圆弧、圆锥曲线、二阶贝塞尔、三阶贝塞尔等基本图元组成，支持路径的构造、变换、布尔运算、SVG路径解析与转换、测量与片段截取等能力。未设置填充类型时，默认填充类型为WINDING，可通过[setFillType](#setfilltype12)修改。
 
 > **说明：**
 >
@@ -77,14 +77,14 @@ path.moveTo(0.0, 0.0);
 path.lineTo(0.0, 700.0);
 path.lineTo(700.0, 0.0);
 path.close();
-let path1: drawing.Path =  new drawing.Path(path);
+let path1: drawing.Path = new drawing.Path(path);
 ```
 
 ## set<sup>20+</sup>
 
 set(src: Path): void
 
-使用另一个路径对当前路径进行更新。
+使用指定路径替换当前路径的内容，使当前路径与指定路径完全一致。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -98,7 +98,7 @@ set(src: Path): void
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| src | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 用于更新的路径。                 |
+| src | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 用于替换当前路径内容的源路径对象。                 |
 
 **示例：**
 
@@ -119,7 +119,7 @@ ArkTS-Dyn: moveTo(x: number, y: number) : void
 
 ArkTS-Sta: moveTo(x: double, y: double) : void
 
-设置自定义路径的起始点位置。
+设置自定义路径的起始点位置。与[rMoveTo](#rmoveto12)使用相对坐标不同，moveTo使用绝对坐标设置起始点。当路径起点固定时，推荐使用moveTo；当路径需要基于当前位置动态构建时，推荐使用[rMoveTo](#rmoveto12)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -150,7 +150,7 @@ ArkTS-Sta: moveTo(x: double, y: double) : void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 ```
 
 ## lineTo
@@ -159,7 +159,7 @@ ArkTS-Dyn: lineTo(x: number, y: number) : void
 
 ArkTS-Sta: lineTo(x: double, y: double) : void
 
-添加一条从路径的最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。
+添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -190,7 +190,7 @@ ArkTS-Sta: lineTo(x: double, y: double) : void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 path.lineTo(10.0, 15.0);
 ```
 
@@ -200,7 +200,7 @@ ArkTS-Dyn: arcTo(x1: number, y1: number, x2: number, y2: number, startDeg: numbe
 
 ArkTS-Sta: arcTo(x1: double, y1: double, x2: double, y2: double, startDeg: double, sweepDeg: double): void
 
-给路径添加一段弧线，绘制弧线的方式为角度弧，该方式首先会指定一个矩形边框，取其内切椭圆，然后会指定一个起始角度和扫描度数，从起始角度扫描截取的椭圆周长一部分即为绘制的弧线。另外会默认添加一条从路径的最后点位置到弧线起始点位置的线段。
+给路径添加一段弧线。绘制弧线的方式为角度弧：首先指定一个矩形边界，取其内切椭圆；然后指定起始角度和扫描度数；最后从起始角度扫描截取椭圆周长的一部分，即为绘制的弧线。另外会默认添加一条从路径最后点位置（若路径没有内容则默认值为 (0, 0)）到弧线起始点位置的线段。若不需要自动添加连接线段，请使用[addArc](#addarc12)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -235,7 +235,7 @@ ArkTS-Sta: arcTo(x1: double, y1: double, x2: double, y2: double, startDeg: doubl
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 path.arcTo(10.0, 15.0, 10.0, 10.0, 10.0, 10.0);
 ```
 
@@ -245,7 +245,7 @@ ArkTS-Dyn: quadTo(ctrlX: number, ctrlY: number, endX: number, endY: number): voi
 
 ArkTS-Sta: quadTo(ctrlX: double, ctrlY: double, endX: double, endY: double): void
 
-添加从路径最后点位置（若路径没有内容则为 (0, 0)）到目标点位置的二阶贝塞尔曲线。
+添加从路径最后点位置（若路径没有内容则默认值为 (0, 0)）到目标点位置的二阶贝塞尔曲线。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -278,7 +278,7 @@ ArkTS-Sta: quadTo(ctrlX: double, ctrlY: double, endX: double, endY: double): voi
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 path.quadTo(10.0, 15.0, 10.0, 10.0);
 ```
 
@@ -288,7 +288,7 @@ ArkTS-Dyn: conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, wei
 
 ArkTS-Sta: conicTo(ctrlX: double, ctrlY: double, endX: double, endY: double, weight: double): void
 
-在当前路径上添加一条路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线，其控制点为 (ctrlX, ctrlY)，结束点为 (endX, endY)。
+在当前路径上添加一条路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线，其控制点为 (ctrlX, ctrlY)，目标点为 (endX, endY)。与[quadTo](#quadto)相比，conicTo通过权重参数可更灵活地控制曲线形状：权重为1时效果与quadTo相同，权重不为1时可精确表示圆弧、椭圆弧等圆锥曲线段。仅需标准二次贝塞尔曲线时推荐使用quadTo，需要精确表示圆弧或灵活控制曲线形状时推荐使用conicTo。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +331,7 @@ ArkTS-Dyn: cubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: numbe
 
 ArkTS-Sta: cubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: double, endX: double, endY: double): void
 
-添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔圆滑曲线。
+添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔曲线。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -366,7 +366,7 @@ ArkTS-Sta: cubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: doubl
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 path.cubicTo(100.0, 100.0, 80.0, 150.0, 300.0, 150.0);
 ```
 
@@ -376,7 +376,7 @@ ArkTS-Dyn: rMoveTo(dx: number, dy: number): void
 
 ArkTS-Sta: rMoveTo(dx: double, dy: double): void
 
-设置一个相对于当前路径终点（若路径没有内容则默认为 (0, 0)）的路径起始点位置。
+设置一个相对于当前路径最后点位置（若路径没有内容则默认为 (0, 0)）的路径起始点位置。与[moveTo](#moveto)使用绝对坐标不同，rMoveTo使用相对于当前路径最后点位置的偏移量。当路径需要基于当前位置动态构建时，推荐使用相对坐标方法（如rMoveTo、rLineTo等）；当路径起点固定时，推荐使用绝对坐标方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -390,8 +390,8 @@ ArkTS-Sta: rMoveTo(dx: double, dy: double): void
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| dx     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 路径新起始点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 路径新起始点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 路径新起始点相对于当前路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 路径新起始点相对于当前路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -416,7 +416,7 @@ ArkTS-Dyn: rLineTo(dx: number, dy: number): void
 
 ArkTS-Sta: rLineTo(dx: double, dy: double): void
 
-使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。
+使用相对位置添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。与[lineTo](#lineto)使用绝对坐标不同，rLineTo使用相对于当前路径最后点位置的偏移量来指定目标点。当路径需要基于当前位置动态构建时，推荐使用相对坐标方法；当目标点位置固定时，推荐使用绝对坐标方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -430,8 +430,8 @@ ArkTS-Sta: rLineTo(dx: double, dy: double): void
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| dx     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于当前路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于当前路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -456,7 +456,7 @@ ArkTS-Dyn: rQuadTo(dx1: number, dy1: number, dx2: number, dy2: number): void
 
 ArkTS-Sta: rQuadTo(dx1: double, dy1: double, dx2: double, dy2: double): void
 
-使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的二阶贝塞尔曲线。
+使用相对位置添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的二阶贝塞尔曲线。与[quadTo](#quadto)使用绝对坐标不同，rQuadTo使用相对于当前路径最后点位置的偏移量在当前路径上添加二阶贝塞尔曲线。当路径需要基于当前位置动态构建时，推荐使用相对坐标方法；当路径目标点固定时，推荐使用绝对坐标方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -470,10 +470,10 @@ ArkTS-Sta: rQuadTo(dx1: double, dy1: double, dx2: double, dy2: double): void
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| dx1  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy1  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| dx2   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy2   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx1  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy1  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dx2   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy2   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -498,7 +498,7 @@ ArkTS-Dyn: rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, we
 
 ArkTS-Sta: rConicTo(ctrlX: double, ctrlY: double, endX: double, endY: double, weight: double): void
 
-使用相对位置在当前路径上添加一条路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线。
+使用相对位置添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线。与[conicTo](#conicto12)使用绝对坐标不同，rConicTo使用相对于当前路径最后点位置的偏移量在当前路径上添加圆锥曲线。当路径需要基于当前位置动态构建时，推荐使用相对坐标方法；当路径目标点固定时，推荐使用绝对坐标方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -512,11 +512,11 @@ ArkTS-Sta: rConicTo(ctrlX: double, ctrlY: double, endX: double, endY: double, we
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| ctrlX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| endX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| endY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| weight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示曲线的权重，决定了曲线的形状，越大越接近控制点。若小于等于0则等同于使用[rLineTo](#rlineto12)添加一条到结束点的线段，若为1则等同于[rQuadTo](#rquadto12)，该参数为浮点数。 |
+| ctrlX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 控制点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| weight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示曲线权重，决定了曲线的形状，越大越接近控制点。若小于等于0则等同于使用[rLineTo](#rlineto12)添加一条到结束点的线段，若为1则等同于[rQuadTo](#rquadto12)，该参数为浮点数。 |
 
 **错误码：**
 
@@ -541,7 +541,7 @@ ArkTS-Dyn: rCubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: numb
 
 ArkTS-Sta: rCubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: double, endX: double, endY: double): void
 
-使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔曲线。
+使用相对位置添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔曲线。与[cubicTo](#cubicto)使用绝对坐标不同，rCubicTo使用相对于当前路径最后点位置的偏移量在当前路径上添加三阶贝塞尔曲线。当路径需要基于当前位置动态构建时，推荐使用相对坐标方法；当路径目标点固定时，推荐使用绝对坐标方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -555,12 +555,12 @@ ArkTS-Sta: rCubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: doub
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| ctrlX1 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第一个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY1 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第一个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| ctrlX2 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第二个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY2 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第二个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| endX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| endY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| ctrlX1 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第一个控制点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY1 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第一个控制点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlX2 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第二个控制点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY2 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第二个控制点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 目标点相对于路径最后点位置的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -585,15 +585,7 @@ ArkTS-Dyn: addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): 
 
 ArkTS-Sta: addArc(rect: common2D.Rect, startAngle: double, sweepAngle: double): void
 
-向路径添加一段圆弧。
-
-当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧:
-
-1. startAngle对90取余接近于0；
-
-2. sweepAngle不在(-360, 360)区间内。
-
-其余情况sweepAngle会对360取余后添加圆弧。
+向路径添加一段圆弧。与[arcTo](#arcto)相比，addArc不会自动添加从路径最后点到弧线起点的连接线段，且通过common2D.Rect对象指定矩形边界。若需要自动连接弧线起点，请使用arcTo；若仅需添加独立弧线，可使用addArc。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -606,8 +598,8 @@ ArkTS-Sta: addArc(rect: common2D.Rect, startAngle: double, sweepAngle: double): 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 包含弧的椭圆的矩形边界。      |
-| startAngle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的起始角度，单位为度，0度为x轴正方向，该参数为浮点数。 |
-| sweepAngle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 扫描角度，单位为度。正数表示顺时针方向，负数表示逆时针方向，该参数为浮点数。 |
+| startAngle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的起始角度，单位为度，0°为x轴正方向，该参数为浮点数。当对90取余接近于0且sweepAngle不在(-360, 360)区间内时，将添加整个椭圆而非圆弧。 |
+| sweepAngle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 扫描角度，单位为度。正数表示顺时针方向，负数表示逆时针方向。当参数不在(-360, 360)区间内且startAngle对90取余接近于0时，将添加整个椭圆而非圆弧；其余情况下实际扫描角度为该入参对360取余的结果。该参数为浮点数。 |
 
 **错误码：**
 
@@ -645,9 +637,9 @@ ArkTS-Sta: addCircle(x: double, y: double, radius: double, pathDirection?: PathD
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
-| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
-| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
+| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。单位为物理像素px。 |
 | pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
@@ -724,7 +716,7 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 向路径中添加的矩形轮廓。      |
+| rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 向路径中添加的矩形轮廓，rect参数需为有效的common2D.Rect对象，left需小于right、top需小于bottom。      |
 | pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
@@ -761,7 +753,7 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| roundRect        | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是    | 圆角矩形对象。      |
+| roundRect        | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是    | 向路径中添加的圆角矩形对象，需为有效的RoundRect对象。      |
 | pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
@@ -799,7 +791,7 @@ addPath(path: Path, matrix?: Matrix | null): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| path        | [Path](arkts-apis-graphics-drawing-Path.md) | 是    | 表示源路径对象。      |
+| path        | [Path](arkts-apis-graphics-drawing-Path.md) | 是    | 要添加到当前路径的源路径对象，经过矩阵变换后将被追加到当前路径中。      |
 | matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)\|null  | 否   | ArkTS-Dyn: 表示矩阵对象。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为单位矩阵。<br/>ArkTS-Sta: 表示矩阵对象。当不传该参数，或者matrix传入undefined时，默认为单位矩阵。 |
 
 **错误码：**
@@ -840,7 +832,7 @@ transform(matrix: Matrix): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)  | 是   | 表示矩阵对象。 |
+| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)  | 是   | 表示对路径进行矩阵变换所使用的矩阵对象，该矩阵定义了变换的具体参数（如缩放比例、旋转角度、平移距离等），路径中的所有点将按照该矩阵进行变换。 |
 
 **错误码：**
 
@@ -870,7 +862,7 @@ ArkTS-Dyn: contains(x: number, y: number): boolean
 
 ArkTS-Sta: contains(x: double, y: double): boolean
 
-判断指定坐标点是否被路径包含，判定是否被路径包含的规则参考[PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)。
+判断指定坐标点是否被路径包含，判定规则参考[PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -882,8 +874,8 @@ ArkTS-Sta: contains(x: double, y: double): boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴上坐标点，该参数必须为浮点数。 |
-| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴上坐标点，该参数必须为浮点数。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴上坐标点，该参数为浮点数。单位为物理像素px。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴上坐标点，该参数为浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -917,7 +909,7 @@ ArkTS-Dyn: setLastPoint(x: number, y: number): void
 
 ArkTS-Sta: setLastPoint(x: double, y: double): void
 
-修改路径的最后一个点。
+修改路径最后点位置。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -952,7 +944,7 @@ console.info('isEmpty:', isEmpty);
 
 setFillType(pathFillType: PathFillType): void
 
-设置路径的填充类型，决定路径内部区域的定义方式。例如，使用Winding填充类型时，路径内部区域由路径环绕的次数决定，而使用EvenOdd填充类型时，路径内部区域由路径环绕的次数是否为奇数决定。
+设置路径的填充类型，决定路径内部区域的定义方式。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -964,7 +956,7 @@ setFillType(pathFillType: PathFillType): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| pathFillType   | [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)  | 是   | 表示路径填充规则。 |
+| pathFillType   | [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)  | 是   | 表示路径填充类型，决定路径内部区域的定义方式。 |
 
 **错误码：**
 
@@ -1001,7 +993,7 @@ ArkTS-Sta: getFillType(): PathFillType | undefined
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| ArkTS-Dyn: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)<br/>ArkTS-Sta: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12) \| undefined | 路径填充类型。 |
+| ArkTS-Dyn: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)<br/>ArkTS-Sta: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12) \| undefined | 路径填充类型，决定路径内部区域的定义方式。 |
 
 **示例：**
 
@@ -1010,7 +1002,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 const path = new drawing.Path();
 path.setFillType(drawing.PathFillType.WINDING);
 let type = path.getFillType();
-console.info("type :" + type);
+console.info('type :' + type);
 ```
 
 ## getBounds<sup>12+</sup>
@@ -1040,13 +1032,13 @@ ArkTS-Dyn示例：
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 const path = new drawing.Path();
-path.lineTo(50, 40)
+path.lineTo(50, 40);
 let rect : common2D.Rect = {left: 0, top: 0, right: 0, bottom: 0};
 rect = path.getBounds();
-console.info("test rect.left: " + rect.left);
-console.info("test rect.top: " + rect.top);
-console.info("test rect.right: " + rect.right);
-console.info("test rect.bottom: " + rect.bottom);
+console.info('test rect.left: ' + rect.left);
+console.info('test rect.top: ' + rect.top);
+console.info('test rect.right: ' + rect.right);
+console.info('test rect.bottom: ' + rect.bottom);
 ```
 
 ArkTS-Sta示例：
@@ -1079,7 +1071,7 @@ addPolygon(points: Array\<common2D.Point>, close: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>   | 是   | 坐标点数组。 |
+| points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>   | 是   | 多边形各顶点的坐标点数组，按数组顺序依次连接各点形成连续线段。 |
 | close  | boolean                                                        | 是   | 表示是否将路径闭合，即是否添加路径起始点到终点的连线。true表示将路径闭合，false表示不将路径闭合。 |
 
 **错误码：**
@@ -1114,7 +1106,7 @@ ArkTS-Dyn: offset(dx: number, dy: number): Path
 
 ArkTS-Sta: offset(dx: double, dy: double): Path | undefined
 
-将路径沿着x轴和y轴方向偏移一定距离并保存在返回的路径对象中。
+将路径沿x轴方向偏移dx距离、沿y轴方向偏移dy距离，并保存在返回的路径对象中。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1151,14 +1143,14 @@ import { drawing } from '@kit.ArkGraphics2D';
 const path = new drawing.Path();
 path.moveTo(200, 200);
 path.lineTo(300, 300);
-const dst = path.offset(200, 200);
+const dstPath = path.offset(200, 200);
 ```
 
 ## op<sup>12+</sup>
 
 op(path: Path, pathOp: PathOp): boolean
 
-将当前路径置为和path按照指定的路径操作类型合并后的结果。
+将当前路径与path按照指定的路径操作类型进行合并，并将合并结果保存在当前路径中。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1171,7 +1163,7 @@ op(path: Path, pathOp: PathOp): boolean
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
 | path    | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 路径对象，用于与当前路径合并。 |
-| pathOp  | [PathOp](arkts-apis-graphics-drawing-e.md#pathop12)   | 是    | 路径操作类型枚举。    |
+| pathOp  | [PathOp](arkts-apis-graphics-drawing-e.md#pathop12)   | 是    | 路径操作类型枚举，用于指定两条路径的布尔运算方式。    |
 
 **返回值：**
 
@@ -1202,7 +1194,7 @@ console.info("get pathOp: ", path2.op(path, drawing.PathOp.DIFFERENCE));
 
 close(): void
 
-闭合路径，会添加一条从路径起点位置到最后点位置的线段。
+闭合路径，会添加一条从路径最后点位置到起始点位置的线段。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1216,7 +1208,7 @@ close(): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path = new drawing.Path();
-path.moveTo(10.0,10.0);
+path.moveTo(10.0, 10.0);
 path.cubicTo(10.0, 10.0, 10.0, 10.0, 15.0, 15.0);
 path.close();
 ```
@@ -1313,7 +1305,7 @@ isRect(rect: common2D.Rect | null): boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect)\| null | 是   | 矩形对象，作为出参使用，路径构成矩形时，会被改写为路径表示的矩形，否则不会改变。可以为null，表示无需获取路径表示的矩形。 |
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null | 是   | 矩形对象，作为出参使用，路径构成矩形时，会被改写为路径表示的矩形，否则不会改变。可以为null，表示无需获取路径表示的矩形。 |
 
 **返回值：**
 
@@ -1373,7 +1365,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let path = new drawing.Path();
 path.arcTo(20.0, 20.0, 180.0, 180.0, 180.0, 90.0);
 let len = path.getLength(false);
-console.info("path length = " + len);
+console.info('path length = ' + len);
 ```
 
 ## getPositionAndTangent<sup>12+</sup>
@@ -1403,7 +1395,7 @@ ArkTS-Sta: getPositionAndTangent(forceClosed: boolean, distance: double, positio
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| boolean |表示是否成功获取距离路径起始点distance处的点的坐标和正切值的结果。true表示获取成功，false表示获取失败，position和tangent不会被改变。 |
+| boolean |表示是否成功获取距离路径起始点distance处的点的坐标和切线值的结果。true表示获取成功，false表示获取失败，position和tangent不会被改变。 |
 
 **错误码：**
 
@@ -1425,10 +1417,10 @@ path.lineTo(700.0, 0.0);
 let position: common2D.Point = { x: 0.0, y: 0.0 };
 let tangent: common2D.Point = { x: 0.0, y: 0.0 };
 if (path.getPositionAndTangent(false, 0.1, position, tangent)) {
-  console.info("getPositionAndTangent-----position:  "+ position.x);
-  console.info("getPositionAndTangent-----position:  "+ position.y);
-  console.info("getPositionAndTangent-----tangent:  "+ tangent.x);
-  console.info("getPositionAndTangent-----tangent:  "+ tangent.y);
+  console.info('getPositionAndTangent-----position:  ' + position.x);
+  console.info('getPositionAndTangent-----position:  ' + position.y);
+  console.info('getPositionAndTangent-----tangent:  ' + tangent.x);
+  console.info('getPositionAndTangent-----tangent:  ' + tangent.y);
 }
 ```
 
@@ -1451,9 +1443,9 @@ ArkTS-Sta: getSegment(forceClosed: boolean, start: double, stop: double, startWi
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | 是   | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。                 |
-| start | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，距离路径起始点start距离的位置即为截取路径片段的起始点，小于0时会被视作0，大于等于stop时会截取失败。该参数为浮点数。               |
-| stop | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，距离路径起始点stop距离的位置即为截取路径片段的终点，小于等于start时会截取失败，大于路径长度时会被视作路径长度。该参数为浮点数。                  |
-| startWithMoveTo | boolean | 是   | 表示是否在目标路径执行[moveTo](#moveto)移动到截取路径片段的起始点位置。true表示执行，false表示不执行。                |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，距离路径起始点start距离的位置即为截取路径片段的起始点，小于0时会被视作0，大于等于stop时会截取失败。该参数为浮点数。单位为物理像素px。               |
+| stop | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，距离路径起始点stop距离的位置即为截取路径片段的终点，小于等于start时会截取失败，大于路径长度时会被视作路径长度。该参数为浮点数。单位为物理像素px。                  |
+| startWithMoveTo | boolean | 是   | 表示是否在目标路径执行[moveTo](#moveto)移动到截取路径片段的起始点位置。true表示执行moveTo；false表示不执行moveTo。                |
 | dst | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 目标路径，截取成功时会将得到的路径片段追加到目标路径上，截取失败时不做改变。               |
 
 **返回值：**
@@ -1472,7 +1464,7 @@ path.moveTo(0.0, 0.0);
 path.lineTo(0.0, 700.0);
 path.lineTo(700.0, 0.0);
 let dstPath: drawing.Path = new drawing.Path();
-console.info("getSegment-----result:  "+ path.getSegment(true, 10.0, 20.0, true, dstPath));
+console.info('getSegment-----result:  ' + path.getSegment(true, 10.0, 20.0, true, dstPath));
 ```
 
 ## isClosed<sup>12+</sup>
@@ -1502,9 +1494,9 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(0.0, 0.0);
 path.lineTo(0.0, 700.0);
 if (path.isClosed()) {
-  console.info("path is closed.");
+  console.info('path is closed.');
 } else {
-  console.info("path is not closed.");
+  console.info('path is not closed.');
 }
 ```
 
@@ -1514,7 +1506,7 @@ ArkTS-Dyn: getMatrix(forceClosed: boolean, distance: number, matrix: Matrix, fla
 
 ArkTS-Sta: getMatrix(forceClosed: boolean, distance: double, matrix: Matrix, flags: PathMeasureMatrixFlags): boolean
 
-在路径上的某个位置，获取一个变换矩阵，用于表示该点的坐标和朝向。
+在路径上距离起始点distance处，获取一个变换矩阵，用于表示该点的坐标和朝向。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1527,9 +1519,9 @@ ArkTS-Sta: getMatrix(forceClosed: boolean, distance: double, matrix: Matrix, fla
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | 是   | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。                  |
-| distance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。                  |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 矩阵对象，用于存储得到的矩阵。                  |
-| flags | [PathMeasureMatrixFlags](arkts-apis-graphics-drawing-e.md#pathmeasurematrixflags12) | 是   | 矩阵信息维度枚举。                  |
+| distance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。单位为物理像素px。                  |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 用于存储获取到的变换矩阵的矩阵对象，该矩阵表示路径上指定距离处的坐标位置和朝向信息。                  |
+| flags | [PathMeasureMatrixFlags](arkts-apis-graphics-drawing-e.md#pathmeasurematrixflags12) | 是   | 矩阵信息维度枚举，用于指定获取的矩阵包含哪些维度信息。                  |
 
 **返回值：**
 
@@ -1551,11 +1543,13 @@ ArkTS-Sta: getMatrix(forceClosed: boolean, distance: double, matrix: Matrix, fla
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(0, 700);
 let matrix = new drawing.Matrix();
 if(path.getMatrix(false, 10.0, matrix, drawing.PathMeasureMatrixFlags.GET_TANGENT_MATRIX)) {
   console.info("path.getMatrix return true");
 } else {
-  console.info("path.getMatrix return false");
+  console.info('path.getMatrix return false');
 }
 ```
 
@@ -1563,7 +1557,7 @@ if(path.getMatrix(false, 10.0, matrix, drawing.PathMeasureMatrixFlags.GET_TANGEN
 
 buildFromSvgString(str: string): boolean
 
-解析SVG字符串表示的路径。
+解析SVG字符串表示的路径。支持标准SVG路径数据命令（如M、L、C、Q、A、Z及其相对坐标形式等），解析失败时返回false。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1575,7 +1569,7 @@ buildFromSvgString(str: string): boolean
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| str | string | 是   | SVG格式的字符串，用于描述绘制路径。                 |
+| str | string | 是   | SVG路径数据格式的字符串，用于描述绘制路径。支持M/m、L/l、H/h、V/v、C/c、S/s、Q/q、T/t、A/a、Z/z等SVG路径命令，具体语法请参考SVG路径数据规范。传入不符合SVG路径格式的字符串时，解析失败，接口返回false。                 |
 
 **返回值：**
 
@@ -1597,11 +1591,11 @@ buildFromSvgString(str: string): boolean
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path: drawing.Path = new drawing.Path();
-let svgStr: string =  "M150 100 L75 300 L225 300 Z";
-if(path.buildFromSvgString(svgStr)) {
-  console.info("buildFromSvgString return true");
+let svgString: string = "M150 100 L75 300 L225 300 Z";
+if (path.buildFromSvgString(svgString)) {
+  console.info('buildFromSvgString return true');
 } else {
-  console.info("buildFromSvgString return false");
+  console.info('buildFromSvgString return false');
 }
 ```
 
@@ -1609,7 +1603,7 @@ if(path.buildFromSvgString(svgStr)) {
 
 convertToSvgString(): string
 
-将路径转换为SVG字符串。
+将路径转换为SVG字符串。输出的字符串遵循SVG路径数据规范映射。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1623,7 +1617,7 @@ convertToSvgString(): string
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| string | 转换后的SVG字符串结果。 |
+| string | 转换后的SVG字符串，以SVG路径格式描述当前路径的几何形状。 |
 
 **示例：**
 
@@ -1635,16 +1629,16 @@ path.moveTo(0, 0);
 path.lineTo(0, 700);
 path.close();
 let svgString = path.convertToSvgString();
-console.info("svgString: ", svgString);
+console.info('svgString: ', svgString);
 ```
 
 ## getPointData
 
-getPointData(): Array<common2D.Point>
+getPointData(): Array\<common2D.Point>
 
 获取路径点数据。
 
-在路径（path）图元中，点数据以数值序列的形式存在，与动词verb指令一一对应，用来精确指定绘图操作的几何坐标位置。
+在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。
 
 点数据的主要类型包括：
 
@@ -1666,7 +1660,7 @@ getPointData(): Array<common2D.Point>
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-|  Array\<[common2D.Point]( js-apis-graphics-common2D.md#point12)> | 类型为浮点数。理论取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。|
+|  Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 返回路径的点数据数组，每个元素为common2D.Point对象，其x、y坐标为浮点数。理论取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。|
 
 **示例：**
 ```ts
@@ -1678,9 +1672,9 @@ path.moveTo(0, 0);
 path.lineTo(100, 100);
 path.quadTo(150, 150, 200, 100);
 let pointData: Array<common2D.Point> = path.getPointData();
-console.info("pointData size: ", pointData.length);
-console.info("pointData[0].x: ", pointData[0].x);
-console.info("pointData[0].y: ", pointData[0].y);
+console.info('pointData size: ', pointData.length);
+console.info('pointData[0].x: ', pointData[0].x);
+console.info('pointData[0].y: ', pointData[0].y);
 ```
 
 ## getVerbData
@@ -1711,7 +1705,7 @@ getVerbData(): Array\<PathIteratorVerb\>
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-|Array\<[PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18)>| 类型为浮点数。理论上取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。|
+|Array\<[PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18)>| 返回路径的指令数据数组，每个数组元素对应为路径中的基本绘图动作类型，与点数据一一对应。|
 
 **示例：**
 
@@ -1723,9 +1717,9 @@ path.moveTo(0, 0);
 path.lineTo(100, 100);
 path.close();
 let verbData: Array<drawing.PathIteratorVerb> = path.getVerbData();
-console.info("verbData size: ", verbData.length);
-console.info("verbData[0]: ", verbData[0]);
-console.info("verbData[1]: ", verbData[1]);
+console.info('verbData size: ', verbData.length);
+console.info('verbData[0]: ', verbData[0]);
+console.info('verbData[1]: ', verbData[1]);
 ```
 
 ## getConicWeightData
@@ -1759,7 +1753,7 @@ ArkTS-Sta: getConicWeightData(): Array\<double\>
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<double\> | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。|
+| ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<double\> | 类型为浮点数，取值范围≥0。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。|
 
 **示例：**
 
@@ -1772,8 +1766,8 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(0, 0);
 path.conicTo(100, 100, 200, 0, 0.5);
 let conicWeightData: Array<number> = path.getConicWeightData();
-console.info("conicWeightData size: ", conicWeightData.length);
-console.info("conicWeightData[0]: ", conicWeightData[0]);
+console.info('conicWeightData size: ', conicWeightData.length);
+console.info('conicWeightData[0]: ', conicWeightData[0]);
 ```
 
 ArkTS-Sta示例：
@@ -1810,7 +1804,7 @@ ArkTS-Sta: getPathIterator(): PathIterator | undefined
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [PathIterator](arkts-apis-graphics-drawing-PathIterator.md)<br/>ArkTS-Sta: [PathIterator](arkts-apis-graphics-drawing-PathIterator.md) \| undefined | 该路径的迭代器对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [PathIterator](arkts-apis-graphics-drawing-PathIterator.md)<br/>ArkTS-Sta: [PathIterator](arkts-apis-graphics-drawing-PathIterator.md) \| undefined | 该路径的迭代器对象，用于遍历路径中的绘图指令和点数据，可通过迭代器逐条获取路径的verb指令及对应的坐标点。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -1832,7 +1826,7 @@ ArkTS-Sta: approximate(acceptableError: double): Array\<double> | undefined
 > **说明：**
 >
 > - 当acceptableError为0时，曲线路径被极度细分，会严重影响性能和内存消耗，不建议设置误差值为0。
-> - 当acceptableError特别大时，路径会极度简化，保留少量关键点，可能会丢失原有形状。
+> - 当acceptableError远大于路径尺寸时，路径会极度简化，仅保留路径的起止点等少量关键点，可能会丢失原有形状。
 > - 对于椭圆等曲线，当acceptableError过大时，拟合结果通常只包含椭圆的分段贝塞尔曲线的起止点，椭圆形会被极度简化为多边形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1845,7 +1839,7 @@ ArkTS-Sta: approximate(acceptableError: double): Array\<double> | undefined
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| acceptableError | ArkTS-Dyn: number<br/>ArkTS-Sta:double | 是 | 表示路径上每条线段的可接受误差。该参数为浮点数，不应小于0，当参数小于0时报错。 |
+| acceptableError | ArkTS-Dyn: number<br/>ArkTS-Sta:double | 是 | 表示路径上每条线段的可接受误差，取值范围≥0，该参数为浮点数，小于0时报错。单位为物理像素px |
 
 **返回值：**
 
@@ -1855,7 +1849,7 @@ ArkTS-Sta: approximate(acceptableError: double): Array\<double> | undefined
 
 **错误码：**
 
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1873,7 +1867,7 @@ path.moveTo(100, 100);
 path.lineTo(500, 500);
 let points: number[] = path.approximate(0.5);
 for (let i = 0; i < points.length; i += 3) {
-  console.info("PathApproximate Fraction =" + points[i] + ", X =" + points[i + 1] + ", Y =" + points[i + 2] + "\n");
+  console.info('PathApproximate Fraction =' + points[i] + ', X =' + points[i + 1] + ', Y =' + points[i + 2] + '\n');
 }
 ```
 
@@ -1901,7 +1895,7 @@ ArkTS-Dyn: interpolate(other: Path, weight: number, interpolatedPath: Path): boo
 
 ArkTS-Sta: interpolate(other: Path, weight: double, interpolatedPath: Path): boolean
 
-根据给定的权重，在当前路径和另一条路径之间进行插值，并将结果存储在目标路径对象中。两条路径点数相同即可插值成功，目标路径按照当前路径的结构进行创建。
+根据给定的权重，在当前路径和另一条路径之间进行插值，并将结果存储在目标路径对象中。两条路径点数相同即可插值成功，目标路径按照当前路径的指令结构进行创建。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1914,7 +1908,7 @@ ArkTS-Sta: interpolate(other: Path, weight: double, interpolatedPath: Path): boo
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | other | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 表示另一条路径对象。 |
-| weight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示插值权重，必须在[0.0, 1.0]范围内。该参数为浮点数。 |
+| weight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示插值权重，取值范围为[0.0, 1.0]。该参数为浮点数。 |
 | interpolatedPath | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 表示用于存储插值结果的目标路径对象。 |
 
 **返回值：**
@@ -1925,7 +1919,7 @@ ArkTS-Sta: interpolate(other: Path, weight: double, interpolatedPath: Path): boo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|

@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-定义启动Ability参数，可以作为入参，调用[startAbility](js-apis-ability-featureAbility.md#featureabilitystartability)启动指定的Ability。
+StartAbilityParameter定义启动Ability的参数，可以作为入参调用[startAbility](js-apis-ability-featureAbility.md#featureabilitystartability)启动指定的Ability。其中，want用于指定启动目标，abilityStartSettings用于配置窗口模式、显示ID、abilityBounds等特殊启动属性。
 
 > **说明：**
 >
@@ -30,8 +30,8 @@ import ability from '@ohos.ability.ability';
 | 名称               |   类型   | 只读  | 可选   | 说明                                 |
 | ----------------- | -------- | ---- | ---- | -------------------------------------- |
 | want                | [Want](js-apis-app-ability-want.md)| 否  | 否  | 启动Ability的want信息。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 6 |
-| abilityStartSetting | { [key: string]: any } | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
-| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | 否  | 是  | 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。推荐使用该属性替代abilityStartSetting，设置该属性后，abilityStartSetting不再生效。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
+| abilityStartSetting | { [key: string]: any } | 否  | 是  | 启动Ability的特殊属性，用于配置窗口显示等相关参数。不配置时不应用特殊启动属性。支持abilityBounds、windowMode、displayId等配置项。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
+| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | 否  | 是  | 启动Ability的特殊属性（如abilityBounds、windowMode、displayId等）。不配置时不应用特殊启动属性。推荐使用该属性替代abilityStartSetting，设置该属性后，abilityStartSetting不再生效。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
 
 **示例：**
 
@@ -58,6 +58,7 @@ let startAbilityParameter: ability.StartAbilityParameter = {
 };
 
 try {
+    // 启动指定的Ability
     featureAbility.startAbility(startAbilityParameter, (error, data) => {
         if (error && error.code !== 0) {
             console.error(`startAbility fail, error: ${JSON.stringify(error)}`);

@@ -4800,24 +4800,27 @@ let bleScanner: ble.BleScanner = ble.createBleScanner();
 function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('BLE scan device find result = '+ JSON.stringify(scanReport));
 }
-try {
-    bleScanner.on("BLEDeviceFind", onReceiveEvent);
-    let scanFilter: ble.ScanFilter = {
+async function startscan() {
+    try {
+        bleScanner.on("BLEDeviceFind", onReceiveEvent);
+        let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
             serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
         };
-    let scanOptions: ble.ScanOptions = {
-        interval: 500,
-        dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
-        matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
-        reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        let scanOptions: ble.ScanOptions = {
+            interval: 500,
+            dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
+            matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
+            reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        }
+        await bleScanner.startScan([scanFilter],scanOptions);
+        console.info('startScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
-    bleScanner.startScan([scanFilter],scanOptions);
-    console.info('startScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
+startscan();
 ```
 
 ### stopScan<sup>15+</sup>
@@ -4858,12 +4861,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
-try {
-    bleScanner.stopScan();
-    console.info('stopScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+async function stopScan() {
+    try {
+        await bleScanner.stopScan();
+        console.info('stopScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
 }
+stopScan();
 ```
 
 ### on('BLEDeviceFind')<sup>15+</sup>

@@ -69,7 +69,7 @@ type CompatibleUpdateCallback = (component: ESValue) => void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|component   |ESValue   |是   |在ArkTS-Dyn上下文创建的自定义组件对象。    |
+|component   |[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)   |是   |在ArkTS-Dyn上下文创建的自定义组件对象。    |
 
 
 
@@ -88,6 +88,6 @@ type CompatibleUpdateCallback = (component: ESValue) => void
 |名称   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
 |name     |string   |是   |在ArkTS-Dyn中创建的自定义组件对象的名称。    |
-|component   |ESValue   |是   |在ArkTS-Dyn中创建的自定义组件对象。    |
+|component   |[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)   |是   |在ArkTS-Dyn中创建的自定义组件对象。    |
 
 

@@ -8,6 +8,49 @@
 
 Web组件数据库管理对象。
 
+## 概述
+
+WebDataBase是Web组件提供的数据库管理类，用于管理Web组件中的HTTP身份验证凭据，包括凭据的保存、查询和删除操作。
+
+### 基本概念
+
+- **HTTP身份验证凭据**：包含用户名和密码的认证信息，用于访问受保护的HTTP资源。
+- **主机和域**：凭据应用的目标主机和认证域。
+- **同步方法**：WebDataBase提供的所有方法均为同步方法，调用后立即返回结果。
+
+### 关键设计
+
+WebDataBase采用静态类设计：
+1. 提供静态方法管理HTTP身份验证凭据。
+2. 支持凭据的保存、查询和删除操作。
+3. 所有方法都需要先加载Web组件才能使用。
+
+### 主要方法
+| 方法名 | 说明 |
+|--------|------|
+| [getHttpAuthCredentials](#gethttpauthcredentials) | 检索给定主机和域的HTTP身份验证凭据。 |
+| [saveHttpAuthCredentials](#savehttpauthcredentials) | 保存给定主机和域的HTTP身份验证凭据。 |
+| [existHttpAuthCredentials](#existhttpauthcredentials) | 判断是否存在任何已保存的HTTP身份验证凭据。 |
+| [deleteHttpAuthCredentials](#deletehttpauthcredentials) | 清除所有已保存的HTTP身份验证凭据。 |
+
+### 使用示例
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+// 保存HTTP身份验证凭据
+webview.WebDataBase.saveHttpAuthCredentials('www.example.com', 'protected', 'username', 'password');
+
+// 检索凭据
+let credentials = webview.WebDataBase.getHttpAuthCredentials('www.example.com', 'protected');
+
+// 检查是否存在凭据
+let exists = webview.WebDataBase.existHttpAuthCredentials();
+
+// 删除所有凭据
+webview.WebDataBase.deleteHttpAuthCredentials();
+```
+
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。

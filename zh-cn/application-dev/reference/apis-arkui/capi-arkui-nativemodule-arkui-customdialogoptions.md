@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
 
 ## 概述
 
-定义自定义弹窗的内容对象。
+定义自定义弹窗的选项对象。
 
 **起始版本：** 19
 

@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL客户端证书请求事件的处理对象。示例代码参考[onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)事件。
+ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求的类。当服务器请求客户端证书进行TLS双向认证时，该处理器通过`onClientAuthenticationRequest`事件回调提供给应用，允许应用选择合适的证书凭据进行响应。示例代码参考[onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)事件。
 
 > **说明：**
+>
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,6 +26,10 @@ ClientAuthenticationHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## confirm<sup>9+</sup>
 
 confirm(priKeyFile : string, certChainFile : string): void
@@ -31,6 +37,10 @@ confirm(priKeyFile : string, certChainFile : string): void
 通知Web组件使用指定的私钥和客户端证书链。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -50,6 +60,10 @@ confirm(authUri : string): void
 > 需要配置权限：ohos.permission.ACCESS_CERT_MANAGER。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -78,6 +92,10 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明    |
@@ -101,6 +119,10 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## ignore<sup>9+</sup>
 
 ignore(): void
@@ -108,3 +130,7 @@ ignore(): void
 通知Web组件忽略本次请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23

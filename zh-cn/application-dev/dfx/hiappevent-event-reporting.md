@@ -17,8 +17,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 | 接口名                                    | 描述                                             |
 | ----------------------------------------- | ------------------------------------------------ |
-| addProcessor(processor: Processor): number | 添加数据处理者，以通过预置的处理者进行事件上报。 |
-| removeProcessor(id: number): void          | 移除数据处理者，以移除预置的处理者。             |
+| ArkTS-Dyn: addProcessor(processor: Processor): number<br>ArkTS-Sta: addProcessor(processor: Processor): long | 添加数据处理者，以通过预置的处理者进行事件上报。 |
+| ArkTS-Dyn: removeProcessor(id: number): void<br>ArkTS-Sta: removeProcessor(id: long): void          | 移除数据处理者，以移除预置的处理者。    |
 
 **用户ID接口功能介绍：**
 
@@ -40,7 +40,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考[《HiAppEvent数据处理者lib库概述》](../../device-dev/subsystems/subsys-dfx-hiappevent-extend-so.md)<!--DelEnd-->。完整示例代码如下：
 
-   <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
+   ArkTS-Dyn：
+   <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->   
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -50,6 +51,60 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    @Component
    struct Index {
      processorId: number = -1; // 初始化processorId为-1
+   
+     build() {
+       Row() {
+         Column() {
+           Button('addProcessorTest')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .backgroundColor('#0D9FFB')
+             .width('50%')
+             .height('5%')
+             .onClick(() => {
+               // 在按钮点击函数中进行数据处理者添加
+               let eventConfig: hiAppEvent.AppEventReportConfig = {
+                 domain: 'button',
+                 name: 'click',
+                 isRealTime: true
+               };
+               let processor: hiAppEvent.Processor = {
+                 name: 'analytics_demo',
+                 debugMode: true,
+                 routeInfo: 'CN',
+                 onStartReport: true,
+                 onBackgroundReport: true,
+                 periodReport: 10,
+                 batchReport: 5,
+                 userIds: ['testUserIdName'],
+                 userProperties: ['testUserPropertyName'],
+                 eventConfigs: [eventConfig]
+               };
+               this.processorId = hiAppEvent.addProcessor(processor);
+             })
+           // ...
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
+   ArkTS-Sta：
+   <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc_Sta/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   import { Entry, Text, Column, Component, Button, ClickEvent, ButtonType, Row } from '@ohos.arkui.component';
+   import { State } from '@ohos.arkui.stateManagement';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     processorId: long = -1; // 初始化processorId为-1
    
      build() {
        Row() {
@@ -140,6 +195,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 4. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中进行事件打点，以记录按钮点击事件。完整示例代码如下：
 
+   ArkTS-Dyn：
    <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
@@ -171,8 +227,41 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
        });
      })
    ```
+   ArkTS-Sta：
+   <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc_Sta/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   Button('writeTest')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('40%')
+     .height('5%')
+     .onClick(() => {
+       // 在按钮点击函数中进行事件打点，以记录按钮点击事件
+       let eventParams: Record<string, int> = { 'click_time': 100 };
+       let eventInfo: hiAppEvent.AppEventInfo = {
+         // 事件领域定义
+         domain: "button",
+         // 事件名称定义
+         name: "click",
+         // 事件类型定义
+         eventType: hiAppEvent.EventType.BEHAVIOR,
+         // 事件参数定义
+         params: eventParams,
+       };
+       hiAppEvent.write(eventInfo).then(() => {
+         hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`)
+       }).catch((err: Error) => {
+         const bErr = err as BusinessError;
+         hilog.error(0x0000, 'hiAppEvent', `code: ${bErr.code}, message: ${bErr.message}`);
+       });
+     })
+   ```
 
-5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者(第二步已完成数据处理者添加)。完整示例代码如下：
+5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者（第二步已完成数据处理者添加）。完整示例代码如下：
 
    <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
@@ -193,7 +282,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中依次点击按钮“addProcessorTest”、“userIdTest”、“userPropertyTest”、“writeTest”、“removeProcessorTest”，则成功通过数据处理者进行一次事件上报。
 
-   最终，事件处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
+   最终，数据处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
 
    ```text
    HiAppEvent success to write event

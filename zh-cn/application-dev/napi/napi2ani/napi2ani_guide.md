@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 背景知识
 在之前的章节中，我们已经初步了解了Node-API与ANI的基本概念和设计理念的差别，并体验了如何将一个简单的Node-API模块迁移成ANI（ArkTS Native Interface）模块。

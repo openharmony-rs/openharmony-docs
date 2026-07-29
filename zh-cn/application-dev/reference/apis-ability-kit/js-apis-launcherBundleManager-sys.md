@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
@@ -109,9 +109,9 @@ try {
 
 ## launcherBundleManager.getLauncherAbilityInfo
 
-ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number): Promise\<Array\<LauncherAbilityInfo\>\>
 
-ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int): Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -230,7 +230,7 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array
 | 801 | Capability not support. |
 | 17700004 | The specified user ID is not found.      |
 
-示例：
+**示例：**
 
 ArkTS-Dyn示例:
 ```ts
@@ -277,9 +277,9 @@ try {
 
 ## launcherBundleManager.getAllLauncherAbilityInfo
 
-ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number): Promise\<Array\<LauncherAbilityInfo\>\>
 
-ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int): Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -361,7 +361,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfo
 
-getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
+getShortcutInfo(bundleName: string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>): void
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
 
@@ -445,7 +445,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfo
 
-getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
+getShortcutInfo(bundleName: string): Promise\<Array\<ShortcutInfo\>\>
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
 
@@ -530,7 +530,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfoSync<sup>10+</sup>
 
-getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
+getShortcutInfoSync(bundleName: string): Array\<ShortcutInfo\>
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
@@ -744,8 +744,8 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundle-ShortcutInfo.md) | 是   | 应用的快捷方式信息。 |
-| startReason  | string   | 是   | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| startReason  | string   | 是   | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**

@@ -22,13 +22,13 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 
 > **说明：**
 >
-> - RenderNode中获取的子树结构由开发通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
+> - RenderNode中获取的子树结构由开发者通过RenderNode的[appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)接口传入的参数构建。
 >
 > - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
 ArkTS-Dyn示例：
 
-<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
+<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -44,7 +44,7 @@ renderNode.frame = {
   width: 200,
   height: 350
 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xfff5f5f5;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
   // 设置node节点的Frame大小
@@ -55,7 +55,7 @@ for (let i = 0; i < 5; i++) {
     height: 50
   };
   // 设置node节点的背景颜色
-  node.backgroundColor = 0xff00ff00;
+  node.backgroundColor = 0xff00bfff;
   // 将新增节点挂载在renderNode上
   renderNode.appendChild(node);
 }
@@ -90,16 +90,21 @@ export struct OperationNodeTree {
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
-            const nextSibling = child!.getNextSibling()
-            if (child === null || nextSibling === null) {
-              hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
-              this.myLog = 'the child or nextChild is null';
-            } else {
-              // 获取子节点的位置信息
-              hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
-              this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+            if (child === null) {
+              hilog.info(DOMAIN, TEST_TAG, ' the child is null');
+              this.myLog = 'the child is null';
+            } else{
+              const nextSibling = child!.getNextSibling()
+              if (nextSibling === null) {
+                hilog.info(DOMAIN, TEST_TAG, ' the nextSibling is null');
+                this.myLog = 'the nextSibling is null';
+              } else {
+                // 获取子节点的位置信息
+                hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+                this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+              }
             }
           });
       }.width(300).margin({ left: 20 });
@@ -110,7 +115,7 @@ export struct OperationNodeTree {
 ```
 ArkTS-Sta示例：
 
-<!-- @[operation_node_tree_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/OperationNodeTree.ets) -->
+<!-- @[operation_node_tree_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/OperationNodeTree.ets) --> 
 
 ``` TypeScript
 import {
@@ -123,7 +128,10 @@ import {
   NodeController,
   RenderNode,
   Row,
-  UIContext
+  UIContext,
+  Column,
+  Text,
+  State
 } from '@kit.ArkUI';
 
 const TEST_TAG: string = 'RenderNode';
@@ -134,7 +142,7 @@ renderNode.frame = {
   width: 200,
   height: 350
 };
-renderNode.backgroundColor = 0xffff0000.toInt();
+renderNode.backgroundColor = 0xfff5f5f5.toInt();
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
   // 设置node节点的Frame大小
@@ -145,7 +153,7 @@ for (let i = 0; i < 5; i++) {
     height: 50
   };
   // 设置node节点的背景颜色
-  node.backgroundColor = 0xff00ff00.toInt();
+  node.backgroundColor = 0xff00bfff.toInt();
   // 将新增节点挂载在renderNode上
   renderNode.appendChild(node);
 }
@@ -168,12 +176,14 @@ export class MyNodeController extends NodeController {
 @Component
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
+  @State myLog: string = '';
 
   build(): void {
-    Row() {
+    Column() {
       NodeContainer(this.myNodeController)
         .width(200)
         .height(350)
+        Text(this.myLog).width(300).height(40).margin({ top: 20, left: 20, bottom: 20 });
       Button('getNextSibling')
         .onClick((event: ClickEvent) => {
           const child = renderNode.getChild(1);
@@ -184,14 +194,16 @@ struct Index {
             // 获取子节点的位置信息
             console.info(`${TEST_TAG} the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
               `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+              `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
           }
         })
-    }
+    }.width(300).margin({ left: 20 });
   }
 }
 ```
 
-![](figures/operation_node_tree.png)
+![](figures/operation-node-tree.png)
 
 ## 设置和获取渲染相关属性
 
@@ -416,7 +428,7 @@ export struct RenderingProperties {
 
 ArkTS-Sta示例：
 
-<!-- @[rendering_properties_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/RenderingProperties.ets) -->
+<!-- @[rendering_properties_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/RenderingProperties.ets) --> 
 
 ``` TypeScript
 import {
@@ -448,15 +460,15 @@ mask.setRectShape({
   top: 0,
   bottom: 150
 });
-mask.fillColor = 0X55FF0000.toInt();
-mask.strokeColor = 0XFFFF0000.toInt();
+mask.fillColor = 0x55ff0000.toInt();
+mask.strokeColor = 0xffff0000.toInt();
 mask.strokeWidth = 24;
 
 const clip = new ShapeClip();
 clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000.toInt();
+renderNode.backgroundColor = 0xff519db4.toInt();
 renderNode.size = { width: 100, height: 100 };
 
 export class MyNodeController extends NodeController {
@@ -484,114 +496,132 @@ struct Index {
       Column() {
         NodeContainer(this.myNodeController)
       }
+      .height(300)
 
-      Button('position')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.position = { x: 10, y: 10 };
-          console.info(TEST_TAG + ' position:' + JSON.stringify(renderNode.position));
-        })
-      Button('pivot')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.pivot = { x: 0.5, y: 0.6 };
-          console.info(TEST_TAG + ' pivot:' + JSON.stringify(renderNode.pivot));
-        })
-      Button('scale')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.scale = { x: 0.5, y: 1 };
-          console.info(TEST_TAG + ' scale:' + JSON.stringify(renderNode.scale));
-        })
-      Button('translation')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.translation = { x: 100, y: 0 };
-          console.info(TEST_TAG + ' translation:' + JSON.stringify(renderNode.translation));
-        })
-      Button('rotation')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.rotation = { x: 45, y: 0, z: 0 };
-          console.info(TEST_TAG + ' rotation:' + JSON.stringify(renderNode.rotation));
-        })
-      Button('transform')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.transform = [
-            1, 0, 0, 0,
-            0, 2, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1
-          ];
-          console.info(TEST_TAG + ' transform:' + JSON.stringify(renderNode.transform));
-        })
-      Button('shadow')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.shadowElevation = 10;
-          renderNode.shadowColor = 0XFF00FF00.toInt();
-          renderNode.shadowOffset = { x: 10, y: 10 };
-          renderNode.shadowAlpha = 0.1;
-          console.info(TEST_TAG + ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
-          console.info(TEST_TAG + ' shadowColor:' + JSON.stringify(renderNode.shadowColor));
-          console.info(TEST_TAG + ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
-          console.info(TEST_TAG + ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
-        })
-      Button('shadowRadius')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.shadowOffset = { x: 10, y: 10 };
-          renderNode.shadowAlpha = 0.7
-          renderNode.shadowRadius = 30;
-          console.info(TEST_TAG + ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
-          console.info(TEST_TAG + ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
-          console.info(TEST_TAG + ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
-        })
-      Button('border')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.borderWidth = {
-            left: 8,
-            top: 8,
-            right: 8,
-            bottom: 8
-          };
-          renderNode.borderStyle = {
-            left: BorderStyle.Solid,
-            top: BorderStyle.Dotted,
-            right: BorderStyle.Dashed,
-            bottom: BorderStyle.Solid
-          }
-          renderNode.borderColor = {
-            left: 0xFF0000FF.toInt(),
-            top: 0xFF0000FF.toInt(),
-            right: 0xFF0000FF.toInt(),
-            bottom: 0xFF0000FF.toInt()
-          };
-          renderNode.borderRadius = {
-            topLeft: 32,
-            topRight: 32,
-            bottomLeft: 32,
-            bottomRight: 32
-          };
-          console.info(TEST_TAG + ' borderWidth:' + JSON.stringify(renderNode.borderWidth));
-          console.info(TEST_TAG + ' borderStyle:' + JSON.stringify(renderNode.borderStyle));
-          console.info(TEST_TAG + ' borderColor:' + JSON.stringify(renderNode.borderColor));
-          console.info(TEST_TAG + ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
-        })
-      Button('shapeMask')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.shapeMask = mask;
-          console.info(TEST_TAG + ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
-        })
-      Button('shapeClip')
-        .width(300)
-        .onClick((event: ClickEvent) => {
-          renderNode.shapeClip = clip;
-          console.info(TEST_TAG + ' shapeClip:' + JSON.stringify(renderNode.shapeClip));
-        })
+      Flex() {
+        Button('position')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.position = { x: 10, y: 10 };
+            console.info(TEST_TAG + ' position:' + JSON.stringify(renderNode.position));
+          })
+        Button('pivot')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.pivot = { x: 0.5, y: 0.6 };
+            console.info(TEST_TAG + ' pivot:' + JSON.stringify(renderNode.pivot));
+          })
+      }
+
+      Flex() {
+        Button('scale')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.scale = { x: 0.5, y: 1 };
+            console.info(TEST_TAG + ' scale:' + JSON.stringify(renderNode.scale));
+          })
+        Button('translation')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.translation = { x: 100, y: 0 };
+            console.info(TEST_TAG + ' translation:' + JSON.stringify(renderNode.translation));
+          })
+      }
+
+      Flex() {
+        Button('rotation')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.rotation = { x: 135, y: 0, z: 0 };
+            console.info(TEST_TAG + ' rotation:' + JSON.stringify(renderNode.rotation));
+          })
+        Button('transform')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.transform = [
+              1, 0, 0, 0,
+              0, 2, 0, 0,
+              0, 0, 1, 0,
+              0, 0, 0, 1
+            ];
+            console.info(TEST_TAG + ' transform:' + JSON.stringify(renderNode.transform));
+          })
+      }
+
+      Flex() {
+        Button('shadow')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.shadowElevation = 10;
+            renderNode.shadowColor = 0xff2787d9.toInt();
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.1;
+            console.info(TEST_TAG + ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
+            console.info(TEST_TAG + ' shadowColor:' + JSON.stringify(renderNode.shadowColor));
+            console.info(TEST_TAG + ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            console.info(TEST_TAG + ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+          })
+        Button('shadowRadius')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.7
+            renderNode.shadowRadius = 30;
+            console.info(TEST_TAG + ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            console.info(TEST_TAG + ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+            console.info(TEST_TAG + ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
+          })
+      }
+
+      Flex() {
+        Button('border')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.borderWidth = {
+              left: 8,
+              top: 8,
+              right: 8,
+              bottom: 8
+            };
+            renderNode.borderStyle = {
+              left: BorderStyle.Solid,
+              top: BorderStyle.Dotted,
+              right: BorderStyle.Dashed,
+              bottom: BorderStyle.Solid
+            }
+            renderNode.borderColor = {
+              left: 0xffd5d5d5.toInt(),
+              top: 0xffd5d5d5.toInt(),
+              right: 0xffd5d5d5.toInt(),
+              bottom: 0xffd5d5d5.toInt()
+            };
+            renderNode.borderRadius = {
+              topLeft: 32,
+              topRight: 32,
+              bottomLeft: 32,
+              bottomRight: 32
+            };
+            console.info(TEST_TAG + ' borderWidth:' + JSON.stringify(renderNode.borderWidth));
+            console.info(TEST_TAG + ' borderStyle:' + JSON.stringify(renderNode.borderStyle));
+            console.info(TEST_TAG + ' borderColor:' + JSON.stringify(renderNode.borderColor));
+            console.info(TEST_TAG + ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
+          })
+        Button('shapeMask')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.shapeMask = mask;
+            console.info(TEST_TAG + ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
+          })
+      }
+
+      Flex() {
+        Button('shapeClip')
+          .width(300)
+          .onClick((event: ClickEvent) => {
+            renderNode.shapeClip = clip;
+            console.info(TEST_TAG + ' shapeClip:' + JSON.stringify(renderNode.shapeClip));
+          })
+      }
     }
     .padding({
       left: 35,
@@ -605,7 +635,7 @@ struct Index {
 }
 ```
 
-![](figures/rendering_properties.gif)
+![](figures/rendering-properties.gif)
 
 ## 自定义绘制
 
@@ -646,7 +676,7 @@ class MyRenderNode extends RenderNode {
       blue: 180
     });
     canvas.attachBrush(brush);
-    // 绘制矩阵
+    // 绘制矩形
     canvas.drawRect({
       left: 0,
       right: this.width,
@@ -715,7 +745,7 @@ export struct CustomDraw {
 
 ArkTS-Sta示例：
 
-<!-- @[custom_draw_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDraw.ets) -->
+<!-- @[custom_draw_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDraw.ets) --> 
 
 ``` TypeScript
 import {
@@ -731,6 +761,7 @@ import {
   RenderNode,
   UIContext
 } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
 
 export class MyRenderNode extends RenderNode {
   width: number = 200;
@@ -738,6 +769,14 @@ export class MyRenderNode extends RenderNode {
   draw(context: DrawContext): void {
     // 获取canvas对象
     const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 81,
+      green: 157,
+      blue: 180
+    })
+    canvas.attachBrush(brush);
     // 绘制矩阵
     canvas.drawRect({
       left: 0,
@@ -745,6 +784,7 @@ export class MyRenderNode extends RenderNode {
       top: 0,
       bottom: 200
     });
+    canvas.detachBrush();
   }
 }
 
@@ -755,7 +795,7 @@ renderNode.frame = {
   width: 300,
   height: 300
 };
-renderNode.backgroundColor = 0xff0000ff.toInt();
+renderNode.backgroundColor = 0xffd5d5d5.toInt();
 renderNode.opacity = 0.5;
 
 class MyNodeController extends NodeController {
@@ -788,6 +828,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .width('100%')
+        .height(320)
       Button('Invalidate')
         .onClick((event: ClickEvent) => {
           // 同步调用多次，仅触发一次重绘，draw回调中的日志仅打印一次
@@ -962,7 +1003,7 @@ export struct CustomDrawCanvas {
 
 ArkTS-Sta示例：
 
-<!-- @[custom_draw_canvas_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDrawCanvas.ets) -->
+<!-- @[custom_draw_canvas_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDrawCanvas.ets) --> 
 
 ``` TypeScript
 import {
@@ -1001,6 +1042,12 @@ function drawImage(canvas: DrawingCanvas) {
     green: 74,
     blue: 175
   });
+  canvas.drawColor({
+    alpha:255,
+    red:60,
+    green:138,
+    blue:216
+  })
   canvas.attachBrush(brush);
   canvas.drawRect({
     left: 10,
@@ -1041,6 +1088,12 @@ function drawImage1(canvas: DrawingCanvas) {
     right: 110,
     bottom: 60
   });
+  canvas.drawColor({
+    alpha:255,
+    red:60,
+    green:138,
+    blue:216
+  })
   canvas.detachPen();
 }
 
@@ -1098,7 +1151,6 @@ export struct CustomDrawCanvas {
 
   build(): void {
     Column() {
-      Text('调整自定义绘制Canvas的变换矩阵')
       Row() {
         Column() {
           NodeContainer(this.myNodeController)
@@ -1182,6 +1234,9 @@ static napi_value OnDraw(napi_env env, napi_callback_info info)
     OH_Drawing_CanvasAttachPen(canvas, pen);
 
     OH_Drawing_CanvasDrawPath(canvas, path);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_PathDestroy(path);
 
     return nullptr;
 }
@@ -1240,7 +1295,7 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 ArkTS侧代码：
 
-<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
+<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) --> 
 
 ``` TypeScript
 import bridge from 'libentry.so'; // 该 so 由 Node-API 编写并生成
@@ -1256,8 +1311,8 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // 需要将 context 中的宽度和高度从vp转换为px
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
-      this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width),
+      this.uiContext.vp2px(context.size.height));
   }
 }
 
@@ -1292,6 +1347,8 @@ export struct CustomDrawCanvasNative {
   }
 }
 ```
+
+![RenderNode-NodeAPI](./figures/renderNode-NodeAPI.png)
 
 ## 设置标签
 
@@ -1352,7 +1409,7 @@ export struct SetLabel {
 
 ArkTS-Sta示例：
 
-<!-- @[set_label_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/SetLabel.ets) -->
+<!-- @[set_label_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/SetLabel.ets) --> 
 
 ``` TypeScript
 import {
@@ -1381,7 +1438,7 @@ export class MyNodeController extends NodeController {
         width: 100,
         height: 100
       };
-      renderChildNode.backgroundColor = 0xffff0000.toInt();
+      renderChildNode.backgroundColor = 0xff519db4.toInt();
       renderChildNode.label = 'customRenderChildNode';
       console.info('label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
@@ -1401,7 +1458,7 @@ struct Index {
       NodeContainer(this.myNodeController)
         .width(300)
         .height(700)
-        .backgroundColor(Color.Gray)
+        .backgroundColor(0xffd5d5d5.toInt())
     }
   }
 }
@@ -1414,6 +1471,8 @@ struct Index {
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。在ArkUI框架中，前端节点是在ArkTS代码层面创建的节点，负责与开发者交互；后端节点是在ArkUI框架底层维护的实体节点，负责具体逻辑的处理。
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
+
+ArkTS-Dyn示例：
 
 <!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
 
@@ -1503,7 +1562,8 @@ import {
   RenderNode,
   State,
   Text,
-  UIContext
+  UIContext,
+  ColumnOptions
 } from '@kit.ArkUI';
 
 export class MyNodeController extends NodeController {
@@ -1541,12 +1601,12 @@ export class MyNodeController extends NodeController {
 
 @Entry
 @Component
-export struct CheckRanderNodeDisposed {
+export struct CheckRenderNodeDisposed {
   @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
   build(): void {
-    Column() {
+    Column({ space: 4 } as ColumnOptions) {
       NodeContainer(this.myNodeController);
       Button('RenderNode dispose')
         .onClick(() => {

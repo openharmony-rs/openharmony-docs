@@ -68,20 +68,21 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 **示例：**
 
 ```ts
+import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
-    typeDescriptor.typeId = 'com.example.myHap.image';
-    typeDescriptor.belongingToTypes = ['general.image'];
-    typeDescriptor.filenameExtensions = ['.myImage'];
-    typeDescriptor.mimeTypes = ['application/myImage'];
-    typeDescriptor.description = 'myHap defined image type';
-    await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
-    console.info('Type descriptors registered successfully.');
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
+  const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
+  typeDescriptor.typeId = 'com.example.myHap.image';
+  typeDescriptor.belongingToTypes = ['general.image'];
+  typeDescriptor.filenameExtensions = ['.myImage'];
+  typeDescriptor.mimeTypes = ['application/myImage'];
+  typeDescriptor.description = 'myHap defined image type';
+  await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
+  console.info('Type descriptors registered successfully.');
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -131,11 +132,11 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeIds = ['com.example.myHap.image'];
-    await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
-    console.info('Type descriptors unregistered successfully.');
+  const typeIds = ['com.example.myHap.image'];
+  await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
+  console.info('Type descriptors unregistered successfully.');
 } catch (e) {
-    const error: BusinessError = e as BusinessError;
-    console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
+  const error: BusinessError = e as BusinessError;
+  console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```

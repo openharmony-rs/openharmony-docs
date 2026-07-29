@@ -1,10 +1,10 @@
 # jsvm.h
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
@@ -165,7 +165,7 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectfreeze) | 冻结指定的对象，防止为其添加新的属性、删除现有属性、更改现有属性的可枚举性/可配置性/可写性、更改现有属性的值、改变对象原型等操作。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectseal) | 封装指定的对象，防止为其添加新的属性并将所有现有属性标记为不可配置。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_Value func,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_callfunction) | 支持从native代码调用JavaScript函数对象，这是从native代码回调到JavaScript的主要机制。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback cb,JSVM_Value* result)](#oh_jsvm_createfunction) | 支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显示设置属性，才能从脚本访问该函数。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback cb,JSVM_Value* result)](#oh_jsvm_createfunction) | 支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显式设置属性，才能从脚本访问该函数。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env,JSVM_CallbackInfo cbinfo,size_t* argc,JSVM_Value* argv,JSVM_Value* thisArg,void** data)](#oh_jsvm_getcbinfo) | 此方法在回调函数中用于检索有关调用的详细信息，例如来自给定回调信息的参数和this指针。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env,JSVM_CallbackInfo cbinfo,JSVM_Value* result)](#oh_jsvm_getnewtarget) | 返回构造函数调用的new target。如果当前回调不是构造函数调用，结果为NULL。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_newinstance) | 使用给定的JSVM_Value表示的构造函数来实例化新的JavaScript值。 |
@@ -264,7 +264,7 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | 从传入的 object 上删除 private key 对应的 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | 创建一个对于给定 JSVM_Data 对象的引用，初始的引用计数为传入的 initialRefcount。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | 如果引用仍然有效，通过 result 参数返回对应的 JSVM_Data，表示与 JSVM_Ref 关联的 JavaScript 值。否则结果将为空。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | 在线程池中反序列化 JSVM_CodeCache，通过 OH_JSVM_ReleaseDeserializeResult 接口释放 JSVM_DeserializeResult。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|
 ## 函数说明
 
@@ -752,7 +752,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数无效。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
 
 ### OH_JSVM_CreateCodeCache()
 
@@ -2403,7 +2403,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2431,7 +2431,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2460,7 +2460,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
 
 ### OH_JSVM_GetValueExternal()
 
@@ -3140,7 +3140,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arrayb
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分析的ArrayBuffer。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分离的ArrayBuffer。 |
 
 ### OH_JSVM_IsDetachedArraybuffer()
 
@@ -3680,7 +3680,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name
 
 **描述**
 
-支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显示设置属性，才能从脚本访问该函数。
+支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显式设置属性，才能从脚本访问该函数。
 
 **起始版本：** 11
 
@@ -4109,7 +4109,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferr
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | 一个新创建的延迟对象，后续可以传递给OH_JSVM_ResolveDeferred()或OH_JSVM_RejectDeferred()以解析resp。或拒绝相关的Promise。 |
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | 一个新创建的延迟对象，后续可以传递给OH_JSVM_ResolveDeferred()或OH_JSVM_RejectDeferred()以解析或拒绝相关的Promise。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* promise | 与延迟对象关联的JavaScript Promise。 |
 
 **返回：**
@@ -5115,7 +5115,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BitInt。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BigInt。 |
 
 ### OH_JSVM_IsRegExp()
 
@@ -5940,13 +5940,13 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 | 参数项 | 描述 |
 | -- | -- |
 | [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 输出流回调函数，实现接收 Trace 数据功能。 |
-| void* streamData | 的输出流指针，用于辅助输出流回调函数进行数据输出。 |
+| void* streamData | 输出流指针，用于辅助输出流回调函数进行数据输出。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。 。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
 
 ### OH_JSVM_AddHandlerForGC()
 
@@ -6130,7 +6130,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* 
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | 调用JSVM-API的环境。 |
 | const char* utf8name                                                              | JavaScript构造函数的名称，建议在包装C++类时使用C++类名。 |
 | size_t length                                                                     | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback。callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
 | size_t propertyCount                                                              | properties数组参数中的项目数量。 |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 类的属性描述符，用于定义类的属性和方法。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | 当前所定义的class的父类class。 |
@@ -6379,7 +6379,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache
 
 **描述**
 
-在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。
+在线程池中反序列化 JSVM_CodeCache，通过 OH_JSVM_ReleaseDeserializeResult 接口释放 JSVM_DeserializeResult。
 
 **起始版本：** 24
 
@@ -6405,7 +6405,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 **描述**
 
-当 *JSVM_DeserializeResult* 不再被使用时进行释放。
+当 JSVM_DeserializeResult 不再被使用时进行释放。
 
 **起始版本：** 24
 
@@ -6413,7 +6413,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 需要进行释放的后台反序列化结果。 |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) result | 需要进行释放的后台反序列化结果。 |
 
 **返回：**
 

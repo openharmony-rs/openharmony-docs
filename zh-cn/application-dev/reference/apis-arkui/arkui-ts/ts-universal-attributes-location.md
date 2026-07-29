@@ -585,7 +585,7 @@ struct PositionExample1 {
   build() {
     Column() {
       Column({ space: 10 }) {
-        // 元素内容<元素宽高，设置内容在与元素内的对齐方式
+        // 元素内容 < 元素宽高，设置内容在元素内的对齐方式
         Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Stack() {
           Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)

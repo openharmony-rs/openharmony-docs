@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用信息查询能力，支持[BundleInfo](js-apis-bundleManager-bundleInfo.md)、[ApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md)、[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[应用程序包管理模块](js-apis-bundleManager.md)。
 
@@ -22,18 +22,20 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-## BundleFlag
+## BundleFlag<sup>12+</sup>
 
 包信息标志，指示需要获取的包信息的内容，当前页面仅包含本模块的系统接口，其他公开类型参见[BundleFlag](./js-apis-bundleManager.md#bundleflag)。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-| 名称                                          | 值         | 说明                                                         |
-| --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| 名称                                         | 值         | 说明                                                         |
+| -------------------------------------------- | ---------- | ------------------------------------------------------------ |
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY   | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_OF_ANY_USER                  | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_EXCLUDE_CLONE                | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 
 ## ApplicationFlag
 
@@ -64,14 +66,14 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
 | GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 12 |
 
 ## ExtensionAbilityFlag
 
@@ -93,22 +95,22 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 标识配置文件类型。
 
- **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
- **系统接口：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE | 1    | 意图框架配置文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## AppDistributionType<sup>12+</sup>
 
 标识应用[HarmonyAppProvision配置文件说明](../../security/app-provision-structure.md)。
 
- **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
- **系统接口：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -876,6 +878,10 @@ ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, callback: AsyncCallba
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
@@ -1112,7 +1118,7 @@ ArkTS-Sta: queryAbilityInfoSync(want: Want, abilityFlags: int, userId?: int): Ar
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | Array\<AbilityInfo>信息。 |
+| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | 返回查询到的Ability信息列表。 |
 
 **错误码：**
 
@@ -1199,7 +1205,7 @@ ArkTS-Sta: queryAbilityInfo(wants: Array\<Want>, abilityFlags: int, userId?: int
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
+| wants         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
 | abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
 | userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
@@ -1625,7 +1631,7 @@ ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Exten
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | Array\<ExtensionAbilityInfo>信息。 |
+| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | 返回查询到的ExtensionAbility信息列表。 |
 
 **错误码：**
 
@@ -1867,7 +1873,7 @@ ArkTS-Sta: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bund
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回BundleInfo对象。 |
+| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回查询到的应用包信息。 |
 
 **错误码：**
 
@@ -3991,7 +3997,7 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回Array\<PermissionDef>对象。 |
+| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回查询到的权限结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4070,7 +4076,7 @@ getPermissionDefSync(permissionName: string): PermissionDef;
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | PermissionDef对象。 |
+|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | 返回查询到的权限定义结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4092,8 +4098,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let permissionName = "ohos.permission.GET_BUNDLE_INFO";
 try {
-  let PermissionDef = bundleManager.getPermissionDefSync(permissionName);
-  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(PermissionDef));
+  let permissionDef = bundleManager.getPermissionDefSync(permissionName);
+  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(permissionDef));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getPermissionDefSync failed. Cause: %{public}s', message);
@@ -4333,9 +4339,9 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number) : ApplicationInfo
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number): ApplicationInfo
 
-ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int, userId: int) : ApplicationInfo
+ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int, userId: int): ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags和userId获取ApplicationInfo。
 
@@ -4400,9 +4406,9 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number) : ApplicationInfo
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number): ApplicationInfo
 
-ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int) : ApplicationInfo
+ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int): ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags获取ApplicationInfo。
 
@@ -4532,7 +4538,7 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4670,7 +4676,7 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 获取所有的共享包信息。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4868,7 +4874,7 @@ ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId?: int): Promise\<AppPr
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4982,7 +4988,7 @@ ArkTS-Sta: getAppProvisionInfoSync(bundleName: string, userId?: int): AppProvisi
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -5502,7 +5508,7 @@ ArkTS-Sta: getJsonProfile(profileType: ProfileType, bundleName: string, moduleNa
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.       |
 | 17700002 | The specified moduleName is not found.       |
-| 17700004 | The specified user ID is not found.      |
+| 17700004 | The specified user ID is not found.<br>**适用版本：** 12 |
 | 17700024 | Failed to get the profile because the specified profile is not found in the HAP. |
 | 17700026 | The specified bundle is disabled.            |
 
@@ -6351,7 +6357,7 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 | 17700001 | The specified bundleName is not found. |
 | 17700002 | The specified moduleName is not found. |
 | 17700304 | Failed to enable the dynamic icon. |
-| 17700307 | Dynamic icons cannot take effect due to existing custom themes. |
+| 17700307 | Dynamic icons cannot take effect due to existing custom themes.<br>**适用版本：** 20 |
 
 **示例：**
 
@@ -6801,7 +6807,7 @@ ArkTS-Sta: getSandboxDataDir(bundleName: string, appIndex: int): string
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 | bundleName | string |  是  |   表示要查询的应用包名。当前用户下有此应用或者分身才可查询，否则返回错误码17700001。   |
-| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |   表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |   应用索引，用于标识不同的应用实例。取值为整数。<br/>取值范围：<br/>- 0：主应用<br> - [1, 5]：分身应用<br/>- [2000, 3000]：沙箱应用（API版本26.0.0支持）   |
 
 **返回值：**
 
@@ -6845,7 +6851,7 @@ ArkTS-Dyn: getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFla
 
 ArkTS-Sta: getAppCloneBundleInfo(bundleName: string, appIndex: int, bundleFlags: int, userId?: int): Promise\<BundleInfo>
 
-根据bundleName、分身索引、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用或分身应用的BundleInfo。使用Promise异步回调。
+根据bundleName、分身索引、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用或分身应用或沙箱应用的BundleInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -6864,7 +6870,7 @@ ArkTS-Sta: getAppCloneBundleInfo(bundleName: string, appIndex: int, bundleFlags:
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 |    bundleName     | string |  是  |       表示要查询的应用Bundle名称。      |
-|    appIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       表示要查询的分身应用索引。<br>appIndex为0时，表示查询主应用信息。appIndex大于0时，表示查询指定分身应用信息。      |
+|    appIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       应用索引，用于标识不同的应用实例。取值为整数。<br/>取值范围：<br/>- 0：主应用<br> - [1, 5]：分身应用<br/>- [2000, 3000]：沙箱应用（API版本26.0.0支持）      |
 |    bundleFlags     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
 |    userId     |ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |       表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。      |
 
@@ -7038,6 +7044,138 @@ try {
 }
 ```
 
+## bundleManager.getAppClonePreference
+
+getAppClonePreference(bundleName: string): Promise\<AppClonePreference>;
+
+根据给定的bundleName查询应用分身偏好设置。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string |  是  | 表示目标应用的bundleName。   |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<[AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference)> | Promise对象，返回应用的分身偏好设置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700095 | The specified bundle not found app clone preference. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  bundleManager.getAppClonePreference(bundleName).then((res: bundleManager.AppClonePreference) => {
+    hilog.info(0x0000, 'testTag', 'getAppClonePreference res: AppClonePreference = %{public}s',
+      JSON.stringify(res));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppClonePreference failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppClonePreference failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAppClonePreference
+
+setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference): Promise\<void>;
+
+根据给定的bundleName设置应用分身偏好设置。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string |  是  | 表示目标应用的bundleName。   |
+| appClonePreference | [AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference) |  是  | 表示要设置的应用分身偏好设置。   |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700026 | The specified bundle is disabled. |
+| 17700061 | The specified app index is invalid. |
+| 17700094 | The specified bundle did not create a clone. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let appClonePreference: bundleManager.AppClonePreference = {
+  mode: bundleManager.AppClonePreferenceMode.CLONE_APP,
+  appIndex: 1
+};
+
+try {
+  bundleManager.setAppClonePreference(bundleName, appClonePreference).then(() => {
+    hilog.info(0x0000, 'testTag', 'setAppClonePreference successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'setAppClonePreference failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAppClonePreference failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.verifyAbc<sup>11+</sup>
 
 verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean, callback: AsyncCallback\<void>): void
@@ -7069,7 +7207,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean, callback: Asyn
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>**适用版本：** 12 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700201 | Failed to verify the abc file. |
 
@@ -7230,7 +7368,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>**适用版本：** 12 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700201 | Failed to verify the abc file. |
 
@@ -7312,7 +7450,7 @@ deleteAbc(abcPath: string): Promise\<void>
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>**适用版本：** 12 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700202 | Failed to delete the abc file. |
 
@@ -7544,6 +7682,10 @@ setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: A
 
 **设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回201错误码。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
@@ -7586,7 +7728,9 @@ try {
 
 ## bundleManager.recoverBackupBundleData<sup>21+</sup>
 
-recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+ArkTS-Dyn: recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+
+ArkTS-Sta: recoverBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise\<void>
 
 恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
@@ -7596,13 +7740,17 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 要恢复备份的应用包名。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
-| appIndex    | number |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
 
 **返回值：**
 
@@ -7624,6 +7772,7 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7645,10 +7794,36 @@ try {
   hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名、用户ID和应用索引
+let bundleName: string = 'com.ohos.demo';
+let userId: int = 100;
+let appIndex: int = 0;
+
+try {
+  bundleManager.recoverBackupBundleData(bundleName, userId, appIndex).then(() => {
+    hilog.info(0x0000, 'testTag', 'recoverBackupBundleData successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.removeBackupBundleData<sup>21+</sup>
 
-removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+ArkTS-Dyn: removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+
+ArkTS-Sta: removeBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise\<void>
 
 删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
@@ -7658,13 +7833,17 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 要删除备份的应用包名。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
-| appIndex    | number |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
 
 **返回值：**
 
@@ -7686,6 +7865,7 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7701,6 +7881,30 @@ try {
     hilog.info(0x0000, 'testTag', 'removeBackupBundleData successfully');
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名、用户ID和应用索引
+let bundleName: string = 'com.ohos.demo';
+let userId: int = 100;
+let appIndex: int = 0;
+
+try {
+  bundleManager.removeBackupBundleData(bundleName, userId, appIndex).then(() => {
+    hilog.info(0x0000, 'testTag', 'removeBackupBundleData successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -7973,7 +8177,7 @@ try {
 }
 ```
 
-## bundleManager.getAbilityIcon<sup>deprecated</sup>
+## bundleManager.getAbilityIcon<sup>(deprecated)</sup>
 
 getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise\<image.PixelMap>
 
@@ -8015,7 +8219,7 @@ getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Pro
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 801 | Capability not supported. |
 | 17700001 | The specified bundle is not found. |
 | 17700002 | The specified module is not found. |
@@ -8047,7 +8251,7 @@ try {
 }
 ```
 
-## bundle.getAbilityIcon<sup>deprecated</sup>
+## bundleManager.getAbilityIcon<sup>(deprecated)</sup>
 
 getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 
@@ -8085,7 +8289,7 @@ getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, call
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 801 | Capability not supported. |
 | 17700001 | The specified bundle is not found. |
 | 17700002 | The specified module is not found. |
@@ -8307,3 +8511,41 @@ ArkTS-Sta: type BundleOptions = _BundleOptions
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | ArkTS-Dyn: [_BundleInfo.BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)<br>ArkTS-Sta: [_BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions) |应用包选项，用于设置或查询应用相关信息。 |
+
+## AppClonePreferenceMode
+
+type AppClonePreferenceMode = _AppClonePreferenceMode
+
+应用分身偏好设置的模式。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_AppClonePreferenceMode](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreferencemode) |应用分身偏好设置的模式枚举，定义了应用启动时在主应用与分身应用之间的选择策略，包括每次询问、默认主应用、默认分身应用三种取值。 |
+
+## AppClonePreference
+
+ArkTS-Dyn: type AppClonePreference = _BundleInfo.AppClonePreference
+
+ArkTS-Sta: type AppClonePreference = _AppClonePreference
+
+应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+|  ArkTS-Dyn: [_BundleInfo.AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference)<br>ArkTS-Sta: [_AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|

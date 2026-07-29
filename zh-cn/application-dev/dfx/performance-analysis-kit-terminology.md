@@ -148,3 +148,7 @@ RSS（Resident Set Size）指的是进程中实际驻留在物理内存中的大
 ### NMD
 
 NMD（Native Malloc Detail）指的是进程的jemalloc快照详细信息。
+
+### minidump
+
+minidump（Mini Dump）指的是进程崩溃时生成的微型转储文件，包含了进程崩溃时的寄存器、线程、栈内存等信息。当前系统侧最大支持回溯400个线程。

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -61,7 +61,7 @@ scrollBarColor(color: Color | number | string): T
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#182431'（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>儿童智能表的默认值颜色为'\#ffffff'，表示白色（100%不透明度）。其他设备默认值为'\#182431'，表示深蓝灰色（40%不透明度）。<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
 **返回值：**
 
@@ -91,7 +91,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#182431'（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色默认颜色。 |
+| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>儿童智能表的默认值颜色为'\#ffffff'，表示白色（100%不透明度）。其他设备默认值为'\#182431'，表示深蓝灰色（40%不透明度）。<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
 ### scrollBarWidth<sup>11+</sup>
 
@@ -115,7 +115,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值处理，儿童智能表则恢复至默认值5vp。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarWidth
 
@@ -141,13 +141,49 @@ ArkTS-Sta: scrollBarWidth(value: Resource | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按4vp处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理，儿童智能表则恢复至5vp。设置为0时，不显示滚动条。<br/>取值为undefined时，按4vp处理。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
 | ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
+
+### scrollBarHeight
+
+ArkTS-Dyn: scrollBarHeight(height: LengthMetrics | undefined): T
+
+ArkTS-Sta: scrollBarHeight(height: LengthMetrics | undefined): this
+
+设置滚动条滑轨高度。
+
+未设置该接口时，滚动条滑轨高度默认自适应滚动组件高度，儿童智能表的默认值高度为37vp。
+
+> **说明：**
+>
+> 推荐scrollBarHeight与[scrollBarMargin](#scrollbarmargin20)的设定值之和不超过滚动组件高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)\|&nbsp;undefined | 是 | 滚动条滑轨高度。<br/>值必须大于等于0。设置为undefined或小于0时，自适应滚动组件高度，儿童智能表则恢复至默认值37vp。设置为0时，不显示滚动条。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this  | 返回当前滚动组件。|
 
 ### edgeEffect<sup>11+</sup>
 
@@ -172,7 +208,7 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect)&nbsp;\|&nbsp;undefined     | 是   | 滚动组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：Grid、Scroll、WaterFlow组件默认EdgeEffect.None，List组件默认EdgeEffect.Spring。<br/>取值为undefined时，按默认值处理。|
-| options | [EdgeEffectOptions](#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时是否开启滑动效果，以及设置边缘效果生效的边缘。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：<br/>List、Grid、WaterFlow组件默认{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END }，Scroll组件默认{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END }。|
+| options | [EdgeEffectOptions](#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时是否开启滑动效果，以及设置边缘效果生效的边缘。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：<br/>List、Grid、WaterFlow组件默认{ alwaysEnabled: false, effectEdge: EffectEdge.START \| EffectEdge.END }，Scroll组件默认{ alwaysEnabled: true, effectEdge: EffectEdge.START \| EffectEdge.END }。|
 
 ### nestedScroll<sup>11+</sup>
 
@@ -294,6 +330,8 @@ ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions)
 >
 > fadingEdge生效时，建议不在设置fadingEdge属性的组件上设置[background](ts-universal-attributes-background.md#background10)相关属性，会影响渐隐的显示效果。
 >
+> fadingEdge生效时，建议不在设置fadingEdge属性的组件以及其子组件上设置[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)相关属性，会影响系统材质的显示效果，导致材质效果与预期效果不一致。
+>
 > fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
@@ -387,7 +425,7 @@ ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| margin  | ArkTS-Dyn: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)<br/>ArkTS-Sta: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)&nbsp;\|&nbsp;undefined  | 是   |滚动条起始、末尾边距。<br/>默认值：{start: LengthMetrics.vp(0), end: LengthMetrics.vp(0)} <br/>取值为undefined时，滚动条起始、末尾边距默认为0。 |
+| margin  | ArkTS-Dyn: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)<br/>ArkTS-Sta: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)&nbsp;\|&nbsp;undefined  | 是   |滚动条起始、末尾边距。<br/>儿童智能表默认值：{start: LengthMetrics.vp(42), end: LengthMetrics.vp(0)}<br/>其他设备默认值：{start: LengthMetrics.vp(0), end: LengthMetrics.vp(0)} <br/>取值为undefined时，滚动条起始、末尾边距默认为0。 |
 
 ### autoAdjustScrollBarMargin
 
@@ -401,7 +439,7 @@ ArkTS-Sta: autoAdjustScrollBarMargin(enable: boolean | undefined): this
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -515,7 +553,7 @@ ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -626,7 +664,7 @@ ArkTS-Dyn: onScrollStop(event: () => void)
 
 ArkTS-Sta: onScrollStop(event: (() => void) | undefined)
 
-滚动停止时触发。手拖动滚动组件或拖动滚动组件的滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
+滚动停止时触发。手指拖动滚动组件或拖动滚动组件的滚动条触发的滚动，手指离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
 
 触发该事件的条件：
 
@@ -810,7 +848,7 @@ ArkTS-Dyn: onDidStopDragging(handler: OnDidStopDraggingCallback)
 
 ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined)
 
-滚动组件结束拖拽时触发。
+滚动组件结束拖动时触发。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 

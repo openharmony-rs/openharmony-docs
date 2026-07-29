@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -79,7 +79,7 @@ ArcList(options?: ArkListOptions)
 
 ## 属性
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性（不支持[滚动组件通用属性](ts-container-scrollable-common.md#属性)）：
 
 ### digitalCrownSensitivity
 
@@ -180,8 +180,6 @@ ArkTS-Sta: chainAnimation(enable: boolean | undefined)
 设置当前ArcList是否启用链式联动动效，开启后列表滑动以及顶部和底部拖拽时会有链式联动的效果。
 
 链式联动效果：ArcList内的ArcListItem间隔一定距离，在基本的滑动交互行为下，主动对象驱动从动对象进行联动，驱动效果遵循弹簧物理动效。
-
-链式动效生效需要满足前提条件：ArcList边缘效果为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -428,7 +426,7 @@ ArkTS-Sta: onReachEnd(handler: VoidCallback | undefined)
 
 列表到达末尾位置时触发。
 
-ArcList边缘效果为弹簧效果时，划动经过末尾位置时触发一次该事件，回弹回末尾位置时再触发一次该事件。
+ArcList边缘效果为弹簧效果时，滑动经过末尾位置时触发一次该事件，回弹回末尾位置时再触发一次该事件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 

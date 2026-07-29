@@ -283,6 +283,8 @@ antiAlias(value: boolean)
 
 通过fillOpacity、stroke属性分别绘制椭圆的透明度、边框颜色。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -304,11 +306,36 @@ struct EllipseExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Ellipse, Color, ColumnOptions, EllipseOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct EllipseExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Ellipse({ width: 150, height: 80 } as EllipseOptions)
+      Ellipse()
+        .width(150)
+        .height(100)
+        .fillOpacity(0)
+        .stroke(Color.Blue)
+        .strokeWidth(3)
+    }.width('100%')
+  }
+}
+```
+
 ![ellipse](figures/ellipse.png)
 
 ### 示例2（宽和高使用不同参数类型绘制椭圆）
 
 width、height属性分别使用不同的长度类型绘制椭圆。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -328,11 +355,32 @@ struct EllipseTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Ellipse, ColumnOptions, EllipseOptions, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct EllipseTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Ellipse({ width: '150', height: '80' } as EllipseOptions)
+      Ellipse({ width: 80, height: 150 } as EllipseOptions)
+      Ellipse({ width: $r('app.string.EllipseWidth'), height: $r('app.string.EllipseHeight') } as EllipseOptions)
+    }.width('100%')
+  }
+}
+```
+
 ![ellipseDemo2](figures/ellipseDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Ellipse组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Ellipse组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -359,6 +407,42 @@ struct EllipseModifierDemo {
   build() {
     Column() {
       Ellipse({ width: 150, height: 80 })
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Ellipse, EllipseAttribute, AttributeModifier, LineCapStyle, EllipseOptions, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyEllipseModifier implements AttributeModifier<EllipseAttribute> {
+  applyNormalAttribute(instance: EllipseAttribute): void {
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct EllipseModifierDemo {
+  @State modifier: MyEllipseModifier = new MyEllipseModifier()
+
+  build() {
+    Column() {
+      Ellipse({ width: 150, height: 80 } as EllipseOptions)
         .attributeModifier(this.modifier)
         .offset({ x: 20, y: 20 })
     }

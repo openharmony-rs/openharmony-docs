@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。
 
@@ -90,7 +90,7 @@ Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
-// libentry.so对应的index.d.ts
+// libentry.so对应的Index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 

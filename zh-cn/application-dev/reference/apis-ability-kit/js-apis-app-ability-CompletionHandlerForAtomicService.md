@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-CompletionHandlerForAtomicService作为[AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md)的可选参数，用于接收打开原子化服务请求的结果。
+CompletionHandlerForAtomicService作为[AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md)的可选参数，用于接收打开原子化服务请求的结果。开发者可通过该回调函数获取打开原子化服务的执行状态和相关信息，从而在成功时进行后续操作，在失败时进行错误处理。
 
 
 > **说明：**
@@ -114,13 +114,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let completionHandler: CompletionHandlerForAtomicService = {
+      // 定义原子化服务请求成功的回调函数
       onAtomicServiceRequestSuccess(appId: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}`);
       },
+      // 定义原子化服务请求失败的回调函数
       onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
       }
     };
+    // 创建原子化服务对象
     let options: AtomicServiceOptions = {
       completionHandlerForAtomicService: completionHandler
     };

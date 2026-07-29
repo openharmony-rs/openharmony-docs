@@ -591,7 +591,7 @@ try {
 3. 调用restore接口恢复数据。
 
     ArkTS-Dyn示例：
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->  
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
@@ -610,7 +610,7 @@ try {
       let backupFilePath = context.databaseDir + '/rdb/Backup.db';
       const backupExist: boolean = await fileIo.access(backupFilePath);
       if (!backupExist) {
-        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup does not exist.');
         // todo 开库建表
         // todo 自行生成数据
         return;

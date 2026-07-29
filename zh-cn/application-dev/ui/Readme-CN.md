@@ -25,11 +25,11 @@
       - 自定义组件复用<!--arkts-component-reusable-->
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md)
-        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)
+        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）（ArkTS-Dyn）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V1）（ArkTS-Sta）](../ui/state-management-static/arkts-static-freeze.md)
-        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)
+        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
         - [自定义组件冻结（V2）（ArkTS-Sta）](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - UI装饰器<!--arkts-ui-decorators-->
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
@@ -107,6 +107,7 @@
         - [组件复用迁移](state-management/arkts-v1-v2-migration-reusable.md)
         - [循环渲染迁移](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [内置对象的迁移](state-management/arkts-v1-v2-migration-inner-object.md)
+        - [卡片状态变量迁移](state-management/arkts-v1-v2-migration-card.md)
         - [AnimateTo使用迁移](state-management/arkts-v1-v2-migration-animateTo.md)
       - 状态管理V1和V2混合使用<!--arkts-state-management-v1-v2-migration-->
         - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
@@ -196,15 +197,16 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
-      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
-      - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)<!--RP1-->
+      - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
-    - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
-    - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
-    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
+    - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
+    - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
+    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)<!--RP4--><!--RP4End-->
+    - [创建懒加载自定义布局 (LazyDynamicLayout)](arkts-layout-development-create-lazy-custom-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -213,12 +215,12 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
-    - [管理软键盘](arkts-manage-keyboard.md)
+    - [管理软键盘](arkts-manage-keyboard.md)<!--RP5--><!--RP5End-->
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
-    - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
+    - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）<!--RP14--><!--RP14End-->
   - 按钮与选择<!--arkts-form-selection-->
     - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
@@ -253,7 +255,7 @@
         - [绑定半模态页面 (bindSheet)](arkts-sheet-page.md)
         - [绑定全模态页面 (bindContentCover)](arkts-contentcover-page.md)
      - [即时反馈 (Toast)](arkts-create-toast.md)
-     - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)
+     - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
@@ -288,7 +290,7 @@
       - [出现/消失转场](arkts-enter-exit-transition.md)
       - [模态转场](arkts-modal-transition.md)
       - [共享元素转场 (一镜到底)](arkts-shared-element-transition.md)
-      - [旋转屏动画](arkts-rotation-transition-animation.md)    
+      - [旋转屏动画](arkts-rotation-transition-animation.md)
       - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)
     - [粒子动画](arkts-particle-animation.md)
     - [组件动画](arkts-component-animation.md)
@@ -298,10 +300,11 @@
       - [弹簧曲线](arkts-spring-curve.md)
     - [动画衔接](arkts-animation-smoothing.md)
     - 动画效果<!--arkts-animation-effects-->
-      - [模糊](arkts-blur-effect.md)
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
-    - [帧动画（ohos.animator）](arkts-animator.md)
+      - 模糊<!--arkts-blur-->
+        - [动态模糊](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
@@ -312,7 +315,7 @@
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
       - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
-      - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)
+      - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)<!--RP3--><!--RP3End-->
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
       - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
@@ -330,7 +333,7 @@
     - [设置应用内主题换肤](theme_skinning.md)
   - UI系统场景化能力<!--arkts-ui-system-scenarization-capability-->
     - [使用UI上下文接口操作界面（UIContext）](arkts-global-interface.md)
-    - [使用组件截图（ComponentSnapshot）](arkts-uicontext-component-snapshot.md)
+    - [使用组件截图（ComponentSnapshot）](arkts-uicontext-component-snapshot.md)<!--RP15--><!--RP15End-->
     - [感知组件可见性](arkts-manage-components-visibility.md)
     - [检查页面布局](arkts-inspector-overview.md)
     - [媒体查询 (@ohos.mediaquery)](arkts-layout-development-media-query.md)
@@ -353,6 +356,7 @@
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
       - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
       - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
+      - [UI组件适配（特殊场景）](arkts-sta-deprecated-special-scene.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - [UI互操作概述](arkts-dyn-sta-ui-interop.md)
     - [UI互操作声明文件规范](arkts-ui-interop-declaration-spec.md)
@@ -525,7 +529,7 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

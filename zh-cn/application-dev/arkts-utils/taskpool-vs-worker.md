@@ -1,12 +1,13 @@
-# TaskPool和Worker的对比 (TaskPool和Worker)
+# TaskPool和Worker的对比
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
+<!--RP1-->
 TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于处理耗时计算任务或其他密集型任务，避免任务阻塞宿主线程，提高系统性能和资源利用率。
 
 
@@ -83,3 +84,4 @@ Worker适用于需要长时间占据线程，并由开发者主动管理线程�
   例如大型应用中的多个模块包含多个耗时任务，不建议使用Worker进行负载管理，推荐使用TaskPool。
 
   场景示例可参考[批量数据写数据库场景](batch-database-operations-guide.md)。
+<!--RP1End-->

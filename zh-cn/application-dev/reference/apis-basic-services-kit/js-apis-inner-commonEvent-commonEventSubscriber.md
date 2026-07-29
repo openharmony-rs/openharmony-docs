@@ -13,7 +13,7 @@
 
 ## CommonEventSubscriber
 
-表示公共事件的订阅者。
+表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性公共事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -25,7 +25,7 @@
 
 ### 使用说明
 
-在使用CommonEventSubscriber的功能前，需要通过commonEventManager.createSubscriber获取subscriber对象。
+在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)获取subscriber对象。
 
 <!--code_no_check-->
 ```ts
@@ -54,7 +54,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callba
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -64,7 +64,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callba
 
 | 参数名   | 类型                   | 必填 | 说明               |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<int\>| 是   | 回调函数。返回有序公共事件传递的数据。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<int\>| 是   | 回调函数。当获取有序公共事件传递的数据成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callba
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -114,7 +114,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用Promis
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -145,8 +145,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getCode().then((code: int) => {
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get code. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -156,13 +157,13 @@ ArkTS-Dyn: getCodeSync(): number
 
 ArkTS-Sta: getCodeSync(): int
 
-ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。
+ArkTS-Dyn: 同步获取有序公共事件传递的数据（number类型）。
 
-ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。
+ArkTS-Sta: 同步获取有序公共事件传递的数据（int类型）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -205,7 +206,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callba
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -224,7 +225,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callba
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -266,7 +267,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promis
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -290,7 +291,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promis
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -311,8 +312,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCode(1).then(() => {
   console.info(`Succeeded in setting code.`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to set code. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set code. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -322,13 +324,13 @@ ArkTS-Dyn: setCodeSync(code: number): void
 
 ArkTS-Sta: setCodeSync(code: int): void
 
-ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。
+ArkTS-Dyn: 同步设置有序公共事件传递的数据（number类型）。
 
-ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
+ArkTS-Sta: 同步设置有序公共事件传递的数据（int类型）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -346,7 +348,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -365,11 +367,11 @@ try {
 
 getData(callback: AsyncCallback\<string>): void
 
-获取有序公共事件传递的数据（string类型）。使用callback异步回调。
+获取有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -379,7 +381,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | 是   | 回调函数。返回有序公共事件传递的数据（string类型）。 |
+| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -387,7 +389,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -395,7 +397,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-// 获取有序公共事件传递的数据（string类型）回调
+// 获取有序公共事件传递的数据回调
 subscriber.getData((err: BusinessError, data: string) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -409,7 +411,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-// 获取有序公共事件传递的数据（string类型）回调
+// 获取有序公共事件传递的数据回调
 subscriber.getData((err: BusinessError | null, data: string | undefined | null) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -423,11 +425,11 @@ subscriber.getData((err: BusinessError | null, data: string | undefined | null) 
 
 getData(): Promise\<string>
 
-获取有序公共事件传递的数据（string类型）。使用Promise异步回调。
+获取有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -437,7 +439,7 @@ getData(): Promise\<string>
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise对象。返回有序公共事件传递的数据（string类型）。 |
+| Promise\<string> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -458,8 +460,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getData().then((data: string) => {
   console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -467,11 +470,11 @@ subscriber.getData().then((data: string) => {
 
 getDataSync(): string
 
-获取有序公共事件传递的数据（string类型）。
+同步获取有序公共事件传递的数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -481,7 +484,7 @@ getDataSync(): string
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| string | 有序公共事件传递的数据（string类型）。 |
+| string | 有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -496,11 +499,11 @@ console.info(`Succeeded in getting data, data is ${data}`);
 
 setData(data: string, callback: AsyncCallback\<void>): void
 
-设置有序公共事件传递的数据（string类型）。使用callback异步回调。
+设置有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -510,8 +513,8 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                 |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（string类型）成功时，err为undefined，否则为错误对象。 |
+| data     | string               | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。   |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -519,7 +522,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -553,11 +556,11 @@ subscriber.setData('publish_data_changed', (err: BusinessError | null) => {
 
 setData(data: string): Promise\<void>
 
-设置有序公共事件传递的数据（string类型）。使用Promise异步回调。
+设置有序公共事件传递的数据。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -567,7 +570,7 @@ setData(data: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **返回值：**
 
@@ -581,7 +584,7 @@ setData(data: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -602,8 +605,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setData('publish_data_changed').then(() => {
   console.info(`Succeeded in setting data.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -611,11 +615,11 @@ subscriber.setData('publish_data_changed').then(() => {
 
 setDataSync(data: string): void
 
-设置有序公共事件传递的数据（string类型）。
+同步设置有序公共事件传递的数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -625,7 +629,7 @@ setDataSync(data: string): void
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -633,7 +637,7 @@ setDataSync(data: string): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -654,11 +658,11 @@ ArkTS-Dyn: setCodeAndData(code: number, data: string, callback:AsyncCallback\<vo
 
 ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>): void
 
-设置有序公共事件数据。使用callback异步回调。
+设置有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -669,7 +673,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。   |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
+| data     | string               | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -678,7 +682,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -718,7 +722,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -729,7 +733,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **返回值：**
 
@@ -743,7 +747,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -762,8 +766,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
   console.info(`Succeeded in setting code and data.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to set code and data. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set code and data. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -773,11 +778,11 @@ ArkTS-Dyn: setCodeAndDataSync(code: number, data: string): void
 
 ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
-设置有序公共事件传递的数据。
+同步设置有序公共事件传递的数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -788,7 +793,7 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据，长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -796,7 +801,7 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.                    | 
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.                    |
 
 **示例：**
 
@@ -818,7 +823,7 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 查询当前公共事件是否为有序公共事件。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -828,7 +833,7 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示有序公共事件；返回false表示无序公共事件。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。当查询成功时，err为undefined，data为true表示有序公共事件，data为false表示不是有序公共事件；否则err为错误对象。 |
 
 **错误码：**
 
@@ -836,7 +841,7 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -844,7 +849,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered: boolean) => {
   if (err) {
     console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -872,7 +877,7 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 查询当前公共事件是否为有序公共事件。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -890,7 +895,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
 }).catch((err: BusinessError) => {
   console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -903,8 +908,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isOrderedCommonEvent failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -912,9 +918,9 @@ subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
 
 isOrderedCommonEventSync(): boolean
 
-查询当前公共事件是否为有序公共事件。
+同步查询当前公共事件是否为有序公共事件。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -939,9 +945,9 @@ console.info(`isOrderedCommonEventSync ${JSON.stringify(isOrdered)}`);
 
 isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
-检查当前公共事件是否为一个粘性事件。使用callback异步回调。
+查询当前公共事件是否为一个粘性事件。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -951,7 +957,7 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。当查询成功时，err为undefined，data为true表示是粘性公共事件，data为false表示不是粘性公共事件；否则err为错误对象。 |
 
 **错误码：**
 
@@ -959,7 +965,7 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -967,7 +973,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent((err: BusinessError, isSticky:boolean) => {
+subscriber.isStickyCommonEvent((err: BusinessError, isSticky: boolean) => {
   if (err) {
     console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -993,9 +999,9 @@ subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky: boolean | u
 
 isStickyCommonEvent(): Promise\<boolean>
 
-检查当前公共事件是否为一个粘性事件。使用Promise异步回调。
+查询当前公共事件是否为一个粘性公共事件。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1013,7 +1019,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
 }).catch((err: BusinessError) => {
   console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -1026,8 +1032,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
-}).catch((err: BusinessError): void => {
-  console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isStickyCommonEvent failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1035,9 +1042,9 @@ subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
 
 isStickyCommonEventSync(): boolean
 
-检查当前公共事件是否为一个粘性事件。
+同步检查当前公共事件是否为一个粘性事件。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1064,7 +1071,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1082,7 +1089,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1130,7 +1137,7 @@ abortCommonEvent(): Promise\<void>
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1166,13 +1173,15 @@ ArkTS-Sta示例：
 ```ts
 subscriber.abortCommonEvent().then(() => {
   console.info(`Succeeded in aborting common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1180,9 +1189,9 @@ subscriber.finishCommonEvent().then(() => {
 
 abortCommonEventSync(): void
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1209,8 +1218,9 @@ ArkTS-Sta示例：
 subscriber.abortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1220,7 +1230,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1238,7 +1248,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1288,7 +1298,7 @@ clearAbortCommonEvent(): Promise\<void>
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1324,13 +1334,15 @@ ArkTS-Sta示例：
 ```ts
 subscriber.clearAbortCommonEvent().then(() => {
   console.info(`Succeeded in clearing abort common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to clear abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to clear abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1338,9 +1350,9 @@ subscriber.finishCommonEvent().then(() => {
 
 clearAbortCommonEventSync(): void
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
+同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1367,8 +1379,9 @@ ArkTS-Sta示例：
 subscriber.clearAbortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1378,7 +1391,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 获取当前有序公共事件是否处于中止状态。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1388,7 +1401,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| callback | AsyncCallback\<boolean> | 是   | 当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件未处于中止状态；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1396,7 +1409,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1432,7 +1445,7 @@ getAbortCommonEvent(): Promise\<boolean>
 
 获取当前有序公共事件是否处于中止状态。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1442,7 +1455,7 @@ getAbortCommonEvent(): Promise\<boolean>
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| Promise\<boolean> | Promise对象。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
 
 **示例：**
 
@@ -1463,8 +1476,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1472,9 +1486,9 @@ subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
 
 getAbortCommonEventSync(): boolean
 
-获取当前有序公共事件是否处于中止状态。
+同步获取当前有序公共事件是否处于中止状态。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1484,7 +1498,7 @@ getAbortCommonEventSync(): boolean
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| boolean |返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| boolean |返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件未处于中止状态。 |
 
 **示例：**
 
@@ -1503,7 +1517,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1513,7 +1527,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | 是   | 回调函数。返回订阅者的订阅信息。 |
+| callback | AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | 是   | 回调函数。当获取成功时，err为undefined，data为订阅者的订阅信息；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1521,7 +1535,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1561,7 +1575,7 @@ ArkTS-Sta: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
 
@@ -1603,11 +1617,11 @@ ArkTS-Dyn: getSubscribeInfoSync(): CommonEventSubscribeInfo
 
 ArkTS-Sta: getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
-获取订阅者的订阅信息。
+同步获取订阅者的订阅信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1643,7 +1657,7 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 用于订阅者结束对当前有序公共事件的处理。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：9
 
@@ -1661,7 +1675,7 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 
 **示例：**
 
@@ -1697,7 +1711,7 @@ finishCommonEvent(): Promise\<void>
 
 用于订阅者结束对当前有序公共事件的处理。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：9
 
@@ -1728,8 +1742,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError): void => {
-  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to finish common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1755,10 +1770,15 @@ ArkTS-Dyn中使用ArkTS-Sta的CommonEventSubscriber对象。
   try {
     subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
     let dynamicHandler = transfer.transferDynamic(subscriber, 'CommonEventManager.CommonEventSubscriber');
-    CommonEventSubscriberStaticToDynamic(dynamicHandler);
+    CommonEventSubscriberStaticToDynamic(dynamicHandler as commonEventManager.CommonEventSubscriber);
   } catch (err) {
     console.error('transferDynamic catch error：-----------' + err.message);
   }
+  ```
+
+- 在`library/src/index.ets`文件中导出依赖CommonEventSubscriberStaticToDynamic。
+  ```TypeScript
+  export { CommonEventSubscriberStaticToDynamic } from './src/main/ets/components/MainPage';
   ```
 
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
@@ -1800,14 +1820,20 @@ ArkTS-Sta中使用ArkTS-Dyn的CommonEventSubscriber对象。
   }
   ```
 
+- 在`library/src/index.ets`文件中导出依赖CommonEventSubscriberDynamicToStatic。
+  ```TypeScript
+  export { CommonEventSubscriberDynamicToStatic } from './src/main/ets/components/MainPage';
+  ```
+
 - 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
 
   ArkTS-Sta示例：
   ```TypeScript
   'use static'
+  import { transfer } from '@kit.ArkTS';
   import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
 
-  export function CommonEventSubscriberDynamicToStatic(dynObject: Object | undefined | null) {
+  export function CommonEventSubscriberDynamicToStatic(dynObject: Object | undefined | null) :void {
     try {
       let staticSubscriber: commonEventManager.CommonEventSubscriber = transfer.transferStatic(dynObject, 'CommonEventManager.CommonEventSubscriber') as commonEventManager.CommonEventSubscriber;
       let subscribeInfo = staticSubscriber.getSubscribeInfoSync();

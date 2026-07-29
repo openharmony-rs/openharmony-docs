@@ -96,14 +96,14 @@ struct Index {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      console.error(`Init data error`);
     }
   }
 
@@ -120,7 +120,7 @@ struct Index {
           formWidth: 110,
           formHeight: 50,
           handleOnClick: () => {
-            console.info("Clicked card");
+            console.info(`Clicked card`);
           }
         })
       }

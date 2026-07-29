@@ -68,6 +68,8 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。 |
+| render3DScale | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
+| colorSpace | ArkTS-Dyn: import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)</br>ArkTS-Sta: colorSpaceManager.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 渲染表面的色域。设置时作为色域信息应用到底层渲染表面；未设置时不应用色域信息，渲染表面保持默认色域。默认值：colorSpaceManager.ColorSpace.SRGB。 |
 
 ## DepthSpaceType
 
@@ -449,13 +451,17 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct DepthComponentInstanceExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.background'), {
+        colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3
+      }) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
@@ -517,10 +523,12 @@ import {
   Text,
   DepthComponent,
   $r,
+  DepthComponentOptions,
   DepthComponentCompleteEvent,
   DepthComponentErrorEvent
 } from '@ohos.arkui.component';
 import { BusinessError } from '@ohos.base';
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 @Entry
 @Component
@@ -528,7 +536,9 @@ struct DepthComponentStaticExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.background'), {
+        colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3
+      } as DepthComponentOptions) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
@@ -710,8 +720,8 @@ struct DepthComponentInstanceExample {
           zNear: 0.1,
           zFar: 100,
           cameraBufferCrop: {
-            bufferWidth: 1262,       // 背景图 background 宽度
-            bufferHeight: 2560,      // 背景图 background 高度
+            bufferWidth: 1262,       // 基准图宽度
+            bufferHeight: 2560,      // 基准图高度
             cropOffset: { x: 100.0, y: 100.0 },
             cropScale: 0.65
           }

@@ -62,6 +62,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -127,6 +128,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -141,7 +144,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // 供后续函数入参使用。
 
-          avSession.createAVSession(context, tag, "audio", async (data: avSession.AVSession) => {
+          avSession.createAVSession(context, tag, "audio", async (err: BusinessError, data: avSession.AVSession) => {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
@@ -160,7 +163,7 @@ getAVSession(context: Context): Promise\<AVSession>
 
 获取会话对象。使用Promise异步回调。
 
-该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
+该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -195,6 +198,7 @@ getAVSession(context: Context): Promise\<AVSession>
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -324,6 +328,7 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -382,6 +387,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {

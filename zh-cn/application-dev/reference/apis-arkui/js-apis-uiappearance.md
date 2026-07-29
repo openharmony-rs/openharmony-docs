@@ -6,13 +6,13 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用户界面外观提供获取系统外观的一些基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
+用户界面外观提供获取系统外观的基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
 
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -34,8 +34,8 @@ import { uiAppearance } from '@kit.ArkUI';
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
-| ALWAYS_DARK | 0 | 系统始终为深色。  |
-| ALWAYS_LIGHT | 1 | 系统始终为浅色。 |
+| ALWAYS_DARK | 0 | 表示系统始终为深色模式。 |
+| ALWAYS_LIGHT | 1 | 表示系统始终为浅色模式。 |
 
 ## uiAppearance.getDarkMode
 
@@ -59,7 +59,7 @@ getDarkMode(): DarkMode
 
 | 类型 | 说明 |
 | -- | -- |
-|[DarkMode](#darkmode) | 系统当前的深色模式配置。 |
+|[DarkMode](#darkmode) | 系统当前的深色模式配置。具体取值请参见[DarkMode](#darkmode)。 |
 
 **错误码：**
 
@@ -79,8 +79,8 @@ try {
   let darkMode = uiAppearance.getDarkMode();
   console.info('Get dark-mode ' + darkMode);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -129,8 +129,8 @@ try {
   let fontScale = uiAppearance.getFontScale();
   console.info('Get fontScale ' + fontScale);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get fontScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get fontScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -179,7 +179,7 @@ try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
   console.info('Get fontWeightScale ' + fontWeightScale);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get fontWeightScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

@@ -1,8 +1,8 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @mayaolll; @hehongyang3-->
-<!--Designer: @piggyguy; @hehongyang3; @jiangdayuan-->
+<!--Owner: @yihao-lin; @huangxiaolinabc; @hehongyang3-->
+<!--Designer: @piggyguy; @hehongyang3; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -28,7 +28,7 @@
 
 **参考链接**
 
-[容器嵌套滚动样例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
+容器嵌套滚动[示例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
 
 
 ## 如何实现一个组件不停地旋转(API 9)
@@ -149,7 +149,7 @@ struct Index {
 
 **解决措施**
 
-可以使用pageTransition函数来实现页面转场效果，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果，将其slide属性设置为SlideEffect.Bottom，则页面入场时从下边划入，出场时滑出到下边，即可实现上下切换效果。
+可以使用pageTransition函数来实现页面转场效果，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果，将其slide属性设置为SlideEffect.Bottom，则页面入场时从下边滑入，出场时滑出到下边，即可实现上下切换效果。
 
 **代码示例**
 <!--deprecated_code_no_check-->
@@ -296,7 +296,7 @@ struct ComponentChild2 {
 
 **参考链接**
 
-1.[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)
+1.[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
 
 2.[自定义事件分发](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md)
 

@@ -78,7 +78,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 2. onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
 ArkTS-Dyn示例：
-<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -100,7 +100,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -108,7 +108,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -119,7 +119,7 @@ struct WebComponent {
         .onBlur(() => {
           this.webBorderColor = Color.Red;
         })
-        // ···
+        // ...
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
@@ -142,11 +142,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Button, Color, Column, Component, Entry, Row, Web } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import webview from '@ohos.web.webview';
@@ -187,9 +185,7 @@ struct WebComponent {
         .onBlur(() => {
           this.webBorderColor = Color.Red;
         })
-        // [StartExclude WebFocusManagement]
-        .id('web1')
-        // [EndExclude WebFocusManagement]
+        // ...
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
@@ -238,7 +234,7 @@ onblur = (event) => {};
 **示例：**
 
 ArkTS-Dyn示例：
-<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -257,10 +253,9 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) --> 
 
 ``` TypeScript
-'use static'
 
 import { $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
@@ -280,7 +275,6 @@ struct WebComponent {
 
 加载的html文件。
 ```html
-// test.html
 <!-- test.html -->
 <!DOCTYPE html>
 <html>

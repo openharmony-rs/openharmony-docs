@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 共享模块是进程内只会加载一次的模块，使用"use shared"这一指令来标记一个模块是否为共享模块。
 
@@ -13,14 +13,14 @@
 
 ## 约束限制
 
-- "use shared"需要与"use strict"一样写在ArkTS文件顶层，写在import语句之后其他语句之前。
+- "use shared"需要写在ArkTS文件顶层，即写在import语句之后其他语句之前。
 
   共享属性不具备传递性。非共享模块A即使引入了共享模块B，也不会因此变成共享模块。
 
 
 - 共享模块只支持ets文件。
 
-- 共享模块内不允许使用side-effects-import。
+- 共享模块内不允许使用[side-effects-import](arkts-module-side-effects.md)。
 
   共享模块在同一进程内仅加载一次，可在不同线程间共享。<br/>
   共享模块加载时，导入的非共享模块不会立即加载。在共享模块内访问依赖的非共享模块导出变量时，当前线程会懒加载对应的非共享模块。非共享模块在线程间隔离，不同线程访问时会进行一次懒加载。<br/>
@@ -55,7 +55,7 @@
   // 共享模块
   'use shared'
   export * from './test'; // 编译报错
-  export {num, str} from './test'; // 产生运行时报错
+  export {num, str} from './test'; // 可能导致运行时的未知异常
   ```
 
 
@@ -80,7 +80,7 @@
 ## 使用示例
 
 1. 共享模块导出Sendable对象。
-   <!-- @[export_sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/sharedModule.ets) --> 
+   <!-- @[export_sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/sharedModule.ets) --> 
    
    ``` TypeScript
    // 共享模块
@@ -112,7 +112,7 @@
    ```
 
 2. 在多个线程中操作共享模块导出的对象。
-   <!-- @[multi_thread_operate_exported_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets) --> 
+   <!-- @[multi_thread_operate_exported_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets) --> 
    
    ``` TypeScript
    import { ArkTSUtils, taskpool } from '@kit.ArkTS';

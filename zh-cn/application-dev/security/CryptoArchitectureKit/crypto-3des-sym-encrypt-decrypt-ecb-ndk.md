@@ -50,7 +50,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
    
    - 当数据量较小时，可以在init完成后直接调用final。
    - 当数据量较大时，可以多次调用update，即分段解密。
-   - 用户可以根据数据量大小自行决定操作方式。例如，当数据量超过20时，使用 update。
+   - 用户可以根据数据量大小自行决定操作方式。例如，当数据量超过1KB时，使用 update。
 
 4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密数据。
 

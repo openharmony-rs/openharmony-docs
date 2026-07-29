@@ -9,7 +9,7 @@
 
 ## 概述
 
-在应用的开发过程中，经常需要设计复杂界面，此时涉及到多个相同或不同组件之间的嵌套。如果布局组件嵌套深度过深，或者嵌套组件数过多，会带来额外的开销。如果在布局的方式上进行优化，就可以有效的提升性能，减少时间开销。<!--Del-->请参考[优化布局时间](../performance/reduce-view-nesting-levels.md#优化布局时间)了解RelativeContainer相对于List，在布局时间上的性能提升。<!--DelEnd-->
+在应用的开发过程中，经常需要设计复杂界面，此时涉及到多个相同或不同组件之间的嵌套。如果布局组件嵌套深度过深，或者嵌套组件数过多，会带来额外的开销。如果在布局的方式上进行优化，就可以有效地提升性能，减少时间开销。<!--Del-->请参考[优化布局时间](../performance/reduce-view-nesting-levels.md#优化布局时间)了解RelativeContainer相对于List，在布局时间上的性能提升。<!--DelEnd-->
 
 RelativeContainer是一种采用相对布局的容器，支持容器内部的子元素设置相对位置关系，适用于处理界面复杂的场景，对多个子元素进行对齐和排列。子元素可以指定兄弟元素或父容器作为锚点，基于锚点进行相对位置布局。在使用锚点时，需注意子元素的相对位置关系，以避免出现错位或遮挡的情况。下图展示了一个 RelativeContainer的概念图，图中的虚线表示位置的依赖关系。
 
@@ -78,7 +78,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
   let marginLeft: Record<string, number> = { 'left': 20 }
-  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -106,7 +106,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft)
-      .border(bwc)
+      .border(borderWidth)
     }
   }
   ```
@@ -139,7 +139,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     right: { anchor: '__container__', align: HorizontalAlign.End }
   } as AlignRuleOption
   let marginLeft: Margin = { left: 20 }
-  let bwc: BorderOptions = { width: 2, color: '#6699FF' }
+  let borderWidth: BorderOptions = { width: 2, color: '#6699FF' }
   
   @Entry
   @Component
@@ -167,7 +167,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft)
-      .border(bwc)
+      .border(borderWidth)
     }
   }
   ```
@@ -191,7 +191,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
   let marginLeft001: Record<string, number> = { 'left': 20 }
-  let bwc001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -219,7 +219,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft001)
-      .border(bwc001)
+      .border(borderWidth001)
     }
   }
   ```
@@ -252,7 +252,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     left: { anchor: 'row1', align: HorizontalAlign.Start }
   } as AlignRuleOption
   let marginLeft001: Margin = { left: 20 }
-  let bwc001: BorderOptions = { width: 2, color: '#6699FF' } as BorderOptions
+  let borderWidth001: BorderOptions = { width: 2, color: '#6699FF' } as BorderOptions
   
   @Entry
   @Component
@@ -280,7 +280,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft001)
-      .border(bwc001)
+      .border(borderWidth001)
     }
   }
   ```
@@ -383,45 +383,60 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     build() {
       Row() {
         RelativeContainer() {
-          Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+          Row() {
+            Text('row1')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
+          .height(100)
           .backgroundColor('#a3cf62')
           .alignRules({
-            top: {anchor: '__container__', align: VerticalAlign.Top},
-            left: {anchor: '__container__', align: HorizontalAlign.Start}
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
           .id('row1')
-  
-          Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+
+          Row() {
+            Text('row2')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
           .backgroundColor('#00ae9d')
           .alignRules({
-            top: {anchor: '__container__', align: VerticalAlign.Top},
-            right: {anchor: '__container__', align: HorizontalAlign.End},
-            bottom: {anchor: 'row1', align: VerticalAlign.Center},
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
           .id('row2')
-  
-          Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+
+          Row() {
+            Text('row3')
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(100)
           .backgroundColor('#0a59f7')
           .alignRules({
-            top: {anchor: 'row1', align: VerticalAlign.Bottom},
-            left: {anchor: 'row1', align: HorizontalAlign.Start},
-            right: {anchor: 'row2', align: HorizontalAlign.Start}
+            top: { anchor: 'row1', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Start },
+            right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
           .id('row3')
-  
-          Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+
+          Row() {
+            Text('row4')
+          }.justifyContent(FlexAlign.Center)
           .backgroundColor('#2ca9e0')
           .alignRules({
-            top: {anchor: 'row3', align: VerticalAlign.Bottom},
-            left: {anchor: 'row1', align: HorizontalAlign.Center},
-            right: {anchor: 'row2', align: HorizontalAlign.End},
-            bottom: {anchor: '__container__', align: VerticalAlign.Bottom}
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Center },
+            right: { anchor: 'row2', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom }
           })
           .id('row4')
         }
         .width(300).height(300)
-        .margin({left: 50})
-        .border({width:2, color: '#6699FF'})
+        .margin({ left: 50 })
+        .border({ width: 2, color: '#6699FF' })
       }
       .height('100%')
     }
@@ -806,8 +821,6 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   @Entry
   @Component
   struct RelativeContainerExample {
-    @State value: number = 0
-  
     build() {
       Row() {
   
@@ -849,7 +862,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
           .id('row3')
   
           Stack({ alignContent: Alignment.Bottom }) {
-            Text('First child, show in bottom').width('90%').height('100%').backgroundColor('#a3cf62').align(Alignment.Top)
+            Text('First child, show in bottom')
+              .width('90%')
+              .height('100%')
+              .backgroundColor('#a3cf62')
+              .align(Alignment.Top)
             Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
           }
           .margin({ top: 5 })

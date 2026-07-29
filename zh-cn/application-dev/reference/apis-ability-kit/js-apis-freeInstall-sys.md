@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。
@@ -32,6 +32,13 @@ import { freeInstall } from '@kit.AbilityKit';
 权限等级参考[权限APL等级说明](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 ## UpgradeFlag
 
+应用模块升级策略的标志。
+
+> 
+> **说明：**
+> 
+> 不支持组合使用，如：let flag = UpgradeFlag.NOT_UPGRADE | UpgradeFlag.SINGLE_UPGRADE，只支持单个枚举类型传入。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -48,6 +55,13 @@ import { freeInstall } from '@kit.AbilityKit';
 
 ## BundlePackFlag
 
+应用包pack.info的信息标志。
+
+> 
+> **说明：**
+> 
+> 不支持组合使用，如：let flag = BundlePackFlag.GET_PACKAGES | BundlePackFlag.GET_BUNDLE_SUMMARY，只支持单个枚举类型传入。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -63,7 +77,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | GET_BUNDLE_SUMMARY | 0x00000002 | 获取应用包pack.info的bundle摘要信息。  |
 | GET_MODULE_SUMMARY | 0x00000004 | 获取应用包pack.info的module摘要信息。  |
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback\<void>):void
 
@@ -85,7 +99,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 | ----------- | --------------------------- | ---- | ---------------------------- |
 | bundleName  | string                      | 是   | 应用Bundle名称。     |
 | moduleName  | string                      | 是   | 应用程序模块名称。           |
-| upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 仅供内部系统使用标志位。       |
+| upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 设置模块升级策略的标志位。       |
 | callback    | AsyncCallback\<void>        | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -122,7 +136,7 @@ try {
 }
 ```
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag): Promise\<void>
 
@@ -144,7 +158,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 | ----------- | --------------------------- | ---- | ---------------------- |
 | bundleName  | string                      | 是   | 应用Bundle名称。 |
 | moduleName  | string                      | 是   | 应用程序模块名称。     |
-| upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 仅供内部系统使用标志位。|
+| upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 设置模块升级策略的标志位。|
 
 **返回值：**
 
@@ -206,7 +220,7 @@ try {
 }
 ```
 
-## isHapModuleRemovable
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCallback\<boolean>): void
 
@@ -263,7 +277,7 @@ try {
 }
 ```
 
-## isHapModuleRemovable
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
@@ -344,9 +358,9 @@ try {
 }
 ```
 
-## getBundlePackInfo
+## freeInstall.getBundlePackInfo
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
 
 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。
 
@@ -399,9 +413,9 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
-## getBundlePackInfo
+## freeInstall.getBundlePackInfo
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\<BundlePackInfo>
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag): Promise\<BundlePackInfo>
 
 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。
 
@@ -479,7 +493,7 @@ try {
 }
 ```
 
-## getDispatchInfo
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
@@ -529,7 +543,7 @@ try {
 }
 ```
 
-## getDispatchInfo
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(): Promise\<DispatchInfo>
 

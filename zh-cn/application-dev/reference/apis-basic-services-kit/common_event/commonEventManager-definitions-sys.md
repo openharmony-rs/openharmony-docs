@@ -1,4 +1,4 @@
-# 系统定义的公共事件(系统接口)
+# 系统定义的公共事件（系统接口）
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -8,7 +8,7 @@
 
 本文档提供了系统定义的公共事件清单。
 
-公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
+公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager-sys.md#support)中。
 
 > **说明：**
 >
@@ -66,6 +66,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -182,6 +186,44 @@
 **取值：** "usual.event.APP_FIRST_LAUNCH"
 
 
+### COMMON_EVENT_SANDBOX_BUNDLE_ADDED
+
+表示设备上已安装新的沙箱应用的公共事件。
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+ 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_ADDED"
+
+
+### COMMON_EVENT_SANDBOX_BUNDLE_REMOVED
+
+表示设备上安装的沙箱应用被卸载的公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SANDBOX_BUNDLE_REMOVED"
+
+
 ## Background Tasks Kit 
 
 ### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
@@ -274,6 +316,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用
 
@@ -605,6 +651,24 @@
 **取值：** "usual.event.data.VOLUME_EJECT"
 
 
+### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE
+
+表示系统数据盘卷状态发生变化的公共事件。
+
+当系统数据盘卷在格式化或修复等操作过程中状态发生变化（如操作开始、成功或失败）时，会发送此公共事件。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.DISK_VOLUME_STATE_CHANGE"
+
 ### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
 表示某个应用开始恢复的公共事件。
@@ -694,6 +758,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -789,7 +857,7 @@
 
 **ArkTS-Dyn起始版本**: 10
 
-**ArkTS-Sta起始版本**: 20
+**ArkTS-Sta起始版本**: 23
 
 **订阅者所需权限：** 无
 

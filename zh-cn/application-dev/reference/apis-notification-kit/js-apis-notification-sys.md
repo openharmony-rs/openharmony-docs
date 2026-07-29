@@ -430,7 +430,7 @@ Notification.subscribe(subscriber).then(() => {
 
 unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
-取消订阅（callbcak形式）。
+取消订阅（callback形式）。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -710,12 +710,6 @@ isNotificationEnabled(): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
-
-**参数：**
-
-| 参数名   | 类型         | 必填 | 说明       |
-| ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 

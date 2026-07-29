@@ -13,8 +13,6 @@
 >
 > 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 该组件不支持在Wearable设备上使用。
->
 > 如果需要在该组件中实现可嵌入式运行的原子化服务，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。否则，系统无法保证原子化服务功能正常。
 
 
@@ -67,6 +65,13 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 本示例展示组件使用方法和扩展的原子化服务。实际运行时请使用开发者自己的原子化服务appId。
 
 FullScreenLaunchComponent组件需要由使用方调用。在提供方完成本地的安装后，即可实现在使用方应用或者元服务中全屏嵌入式拉起提供方的效果。
+
+> **说明：**
+>
+>由于嵌入式原子化服务运行在独立进程，其崩溃异常不会直接暴露在宿主的日志中。本地调试时可通过以下方式查看真实报错栈：  
+>1. 打开DevEco Studio的HiLog面板。  
+>2. 将左上角的模式切换为User logs of selected app。  
+>3. 在右侧进程列表中，选择被拉起的原子化服务进程（被拉起原子化服务的包名，且后缀带有embeddable字样）。
 
 **使用方**
 

@@ -4982,6 +4982,7 @@ IP多媒体系统调用模式。
 | numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
 | xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本：** 26.0.0|
+| isCustomAccessibility  | boolean              | 否 | 应用是否支持自定义无障碍功能，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 

@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
+该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原文件下载功能。适用于图库、文件管理等系统应用同步本地与云端文件、监听同步或下载进度、管理云文件缓存和优化本地存储空间的场景。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 ## GallerySync
 
-云图同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。
+图库媒体资源同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -52,7 +52,7 @@ let gallerySync = new cloudSync.GallerySync()
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-云图同步对象添加同步过程事件监听。
+图库媒体资源同步对象添加同步过程事件监听。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -71,7 +71,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
 
 **错误码：**
 
@@ -82,7 +82,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -149,7 +149,7 @@ try {
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-云图同步对象移除'progress'类型中指定的callback回调。
+图库媒体资源同步对象移除'progress'类型中指定的callback回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -168,7 +168,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](js-apis-file-cloudsync.md#syncprogress12)，返回值为void。需传入已通过on('progress')注册的回调函数。|
 
 **错误码：**
 
@@ -179,7 +179,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -245,7 +245,7 @@ gallerySync.offProgress(callback);
 
 off(evt: 'progress'): void
 
-云图同步对象移除'progress'类型的所有回调。
+图库媒体资源同步对象移除'progress'类型的所有回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -274,7 +274,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -331,7 +331,7 @@ gallerySync.offProgress();
 
 start(): Promise&lt;void&gt;
 
-启动端云同步。使用Promise异步回调。
+启动端云同步，适用于需要主动触发图库媒体资源端云同步的场景。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -357,7 +357,7 @@ start(): Promise&lt;void&gt;
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -378,7 +378,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 gallerySync.start().then(() => {
   console.info("start sync successfully");
 }).catch((err: BusinessError) => {
-  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -445,7 +445,7 @@ let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.start((err: BusinessError) => {
   if (err) {
-    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("start sync successfully");
   }
@@ -501,7 +501,7 @@ stop(): Promise&lt;void&gt;
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -579,7 +579,7 @@ let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.stop((err: BusinessError) => {
   if (err) {
-    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`stop sync failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("stop sync successfully");
   }
@@ -603,7 +603,7 @@ gallerySync.stop((err: BusinessError<void> | null): void => {
 
 ## Download
 
-云文件下载对象，用来支撑图库应用原图文件下载流程。在使用前，需要先创建Download实例。
+云文件下载对象，用来支撑图库应用原文件下载流程。在使用前，需要先创建Download实例。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -663,7 +663,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -724,7 +724,7 @@ download.onProgress(callback);
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-云图下载对象移除'progress'类型中指定的callback回调。
+云文件下载对象移除'progress'类型中指定的callback回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -754,7 +754,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -820,7 +820,7 @@ download.offProgress(callback);
 
 off(evt: 'progress'): void
 
-云图下载对象移除'progress'类型的所有回调。
+云文件下载对象移除'progress'类型的所有回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -849,7 +849,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -906,7 +906,7 @@ download.offProgress();
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云文件下载。使用Promise异步回调。
+异步方法启动云文件下载，适用于需要下载指定云文件到本地的场景。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -922,7 +922,7 @@ start(uri: string): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待下载云文件的URI。 |
 
 **返回值：**
 
@@ -959,7 +959,7 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 download.start(uri).then(() => {
   console.info("start download successfully");
 }).catch((err: BusinessError) => {
-  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -1001,7 +1001,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待下载云文件的URI。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
@@ -1028,7 +1028,7 @@ let uri: string = "file:///media/Photo/1";
 
 download.start(uri, (err: BusinessError) => {
   if (err) {
-    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("start download successfully");
   }
@@ -1055,7 +1055,7 @@ download.start(uri, (err: BusinessError<void> | null): void => {
 
 stop(uri: string): Promise&lt;void&gt;
 
-异步方法停止云文件下载。使用Promise异步回调。
+异步方法停止云文件下载，适用于用户取消下载或需要释放下载任务资源的场景。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1075,7 +1075,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待停止下载的云文件URI。 |
 
 **返回值：**
 
@@ -1106,7 +1106,7 @@ let uri: string = "file:///media/Photo/1";
 download.stop(uri).then(() => {
   console.info("stop download successfully");
 }).catch((err: BusinessError) => {
-  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`stop download failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -1148,7 +1148,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待停止下载的云文件URI。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
@@ -1173,7 +1173,7 @@ let uri: string = "file:///media/Photo/1";
 
 download.stop(uri, (err: BusinessError) => {
   if (err) {
-    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`stop download failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("stop download successfully");
   }
@@ -1198,7 +1198,7 @@ download.stop(uri, (err: BusinessError<void> | null): void => {
 
 ## FileSync<sup>12+</sup>
 
-云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
+云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例，可用于监听上传进度、暂停或恢复上传以及查询文件同步状态。
 
 **ArkTS-Dyn起始版本**：12
 
@@ -1243,7 +1243,7 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo")
 
 registerUploadProgress(callback: Callback&lt;UploadProgress&gt;): void
 
-注册上传进度回调函数，用于监听文件上传进度变化。使用callback异步回调。
+注册上传进度回调函数，用于监听文件上传进度变化。注册后可通过[unregisterUploadProgress](#unregisteruploadprogress)取消注册。使用callback异步回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1272,7 +1272,7 @@ registerUploadProgress(callback: Callback&lt;UploadProgress&gt;): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
 
 **示例：**
 
@@ -1285,14 +1285,14 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo");
 
 try {
   fileSync.registerUploadProgress((progress: cloudSync.UploadProgress) => {
-    console.info("upload progress - uri: " + progress.uri + ", state: " + progress.state);
-    console.info("processed: " + progress.processed + ", size: " + progress.size);
-    console.info("error: " + progress.error);
+    console.info(`upload progress - uri: ${progress.uri}, state: ${progress.state}`);
+    console.info(`processed: ${progress.processed}, size: ${progress.size}`);
+    console.info(`error: ${progress.error}`);
   });
   console.info("register upload progress successfully");
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error("register upload progress failed with error message: " + error.message + ", error code: " + error.code);
+  console.error(`register upload progress failed with error message: ${error.message}, error code: ${error.code}`);
 }
 ```
 
@@ -1320,7 +1320,7 @@ try {
 
 unregisterUploadProgress(): void
 
-取消注册上传进度回调函数。
+取消注册上传进度回调函数。使用前需先调用[registerUploadProgress](#registeruploadprogress)注册上传进度回调。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -1417,7 +1417,7 @@ getUploadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;UploadProgress&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1612,7 +1612,7 @@ try {
 
 ## CloudFileCache<sup>11+</sup>
 
-云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
+云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。在使用前，需要先创建CloudFileCache实例。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1624,7 +1624,7 @@ try {
 
 constructor(bundleName: string)
 
-端云同步流程的构造函数，用于获取CloudFileCache类的实例。
+云盘文件缓存流程的构造函数，用于获取CloudFileCache类的实例。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1660,7 +1660,7 @@ let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 
 cleanCache(uri: string): void
 
-同步方法删除文件缓存。
+同步方法删除文件缓存，适用于需要释放指定文件本地缓存空间的场景。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -1687,7 +1687,7 @@ cleanCache(uri: string): void
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid URI. |
 
@@ -1699,15 +1699,15 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.cleanCache(uri);
 } catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
+  let error: BusinessError = err as BusinessError;
+  console.error(`clean cache failed with error message: ${error.message}, error code: ${error.code}`);
 } 
 
 ```
@@ -1767,7 +1767,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1851,7 +1851,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri。 |
+| uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri数组。数组长度取值范围[1, 100]。 |
 
 **返回值：**
 
@@ -1868,7 +1868,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid URI. |
 
@@ -1885,7 +1885,7 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
     console.info("get file sync state successfully" + syncStates[i]);
   }
 }).catch((err: BusinessError) => {
-  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`get file sync state failed with error message: ${err.message}, error code: ${err.code}`);
 });
 
 ```
@@ -1925,7 +1925,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri。 |
+| uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri数组。数组长度取值范围[1, 100]。 |
 | callback | AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt; | 是   | 回调函数。异步获取文件状态。|
 
 **错误码：**
@@ -1937,7 +1937,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid URI. |
 
@@ -1951,7 +1951,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let uris: Array<string> = ["file://uri"];
 cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
   if (err) {
-    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
+    console.error(`get file sync state with error message: ${err.message}, error code: ${err.code}`);
   } else {
     for(let i = 0, len = syncStates.length; i < len; i++){
       console.info("get file sync state successfully" + syncStates[i]);
@@ -1999,7 +1999,7 @@ getFileSyncState(uri: string): FileSyncState
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待获取同步状态的文件uri。 |
 
 **返回值：**
 
@@ -2103,8 +2103,8 @@ optimizeStorage(): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. 2.Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900042  | Unknown error. |
 
 **示例：**
@@ -2117,7 +2117,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 cloudSync.optimizeStorage().then(() => {
   console.info("optimize storage successfully");   // 前台UX按需阻塞等待
 }).catch((err: BusinessError) => {
-  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`optimize storage failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -2156,7 +2156,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | optimizePara | [OptimizeSpaceParam](#optimizespaceparam17) | 是   | 优化参数。 |
-| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
+| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 回调函数。返回优化进度。缺省情况下返回401错误，不执行清理任务。 |
 
 **返回值：**
 
@@ -2173,7 +2173,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400005  | Inner error. |
 | 22400006  | The same task is already in progress. |
 
@@ -2197,7 +2197,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
 cloudSync.startOptimizeSpace(para, callback).then(() => {
   console.info("start optimize space");
 }).catch((err: BusinessError) => {
-  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`start optimize space failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
 
@@ -2227,7 +2227,7 @@ cloudSync.startOptimizeSpace(para, callback).then<void>((): void => {
 
 stopOptimizeSpace(): void
 
-同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。
+同步方法停止图库媒体资源空间优化，和startOptimizeSpace配对使用。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -2247,7 +2247,7 @@ stopOptimizeSpace(): void
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400005  | Inner error. |
 
 **示例：**
@@ -2359,7 +2359,7 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 | processed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 已上传数据大小，取值范围[0, 9223372036854775807]，单位：Byte。|
 | size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 当前文件总大小，取值范围[0, 9223372036854775807]，单位：Byte。|
 | uri | string | 否   | 否   | 当前文件的URI。|
-| error | [ErrorType](./js-apis-file-cloudsync.md#errortype12) | 否   | 否   | 上传的错误类型。|
+| error | [ErrorType](js-apis-file-cloudsync.md#errortype12) | 否   | 否   | 上传的错误类型。|
 
 ## UploadState
 

@@ -35,9 +35,9 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 预加载指定UIExtensionAbility实例。使用Promise异步回调。
 
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的OnCreate生命周期，然后等待被当前应用正式加载。
+被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
-支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
+支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从onCreate继续完成UIExtensionAbility的生命周期。
 
 **系统接口**：此接口为系统接口。
 
@@ -73,7 +73,7 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16200011 | The context does not exist. |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -86,6 +86,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    // 构造预加载UIExtensionAbility的want参数
     let want: Want = {
       bundleName: 'com.ohos.uiextensionprovider',
       abilityName: 'UIExtensionProvider',
@@ -96,14 +97,16 @@ export default class EntryAbility extends UIAbility {
       }
     };
     try {
+      // 获取ApplicationContext实例
       let applicationContext = this.context.getApplicationContext();
+      // 预加载UIExtensionAbility
       applicationContext.preloadUIExtensionAbility(want)
         .then(() => {
-          // 执行正常业务
+          // 预加载成功处理
           console.info('preloadUIExtensionAbility succeed');
         })
         .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
+          // 预加载失败处理
           console.error('preloadUIExtensionAbility failed');
         });
     } catch (err) {
@@ -145,13 +148,13 @@ export default class EntryAbility extends UIAbility {
           // 处理业务逻辑错误
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          console.error('preloadUIExtensionAbility failed. code: $\{code}, message: $\{message}');
+          console.error(`preloadUIExtensionAbility failed 1. code: ${code}, message: ${message}`);
         });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`preloadUIExtensionAbility failed. code: ${code}, message: ${message}`);
+      console.error(`preloadUIExtensionAbility failed 2. code: ${code}, message: ${message}`);
     }
   }
 }

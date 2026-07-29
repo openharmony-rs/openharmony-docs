@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 线程安全容器用于在多个线程间并发读写集合数据。ArkTS-Sta提供[ConcurrentHashMap (并发哈希表)](../reference/apis-arkts/arkts-sta-concurrenthashmap.md)和[ConcurrentSet (并发集合)](../reference/apis-arkts/arkts-sta-concurrentset.md)，分别适用于键值缓存、索引表、去重集合或访问标记集合等场景。
 

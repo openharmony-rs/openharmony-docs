@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
@@ -28,8 +28,8 @@ Memory operation failed.
 
 **处理步骤**
 
-1. 内存不足，请释放内存。
-2. 请检查是否内存泄漏。
+1. 请检查应用代码是否存在内存泄漏问题，如未释放的对象、循环引用等。
+2. 检查应用内存使用情况，释放不必要的内存资源。
 
 ## 9700002 Parcel读写操作失败
 
@@ -58,7 +58,7 @@ System service operation failed.
 
 **错误描述**
 
-客户端进程请求服务进程时，请求系统服务操作失败。
+客户端进程请求系统服务时操作失败。
 
 **可能原因**
 
@@ -86,7 +86,8 @@ Check on workInfo failed.
 
 **处理步骤**
 
-请检查workInfo参数。
+1. 请检查workInfo中的bundleName是否与应用uid匹配。
+2. 如取消或查询延迟任务时出现此错误，请确认该延迟任务已正确创建。
 
 ## 9700005 StartWork失败
 
@@ -106,5 +107,7 @@ Calling startWork failed.
 
 **处理步骤**
 
-请检查输入的参数和代码逻辑。
+1. 如提示任务已存在，请避免重复创建相同任务。
+2. 请检查当前应用已创建的延迟任务数量是否超过10个。
+3. 请检查重复任务的重复时间设置是否满足20分钟的要求。
 

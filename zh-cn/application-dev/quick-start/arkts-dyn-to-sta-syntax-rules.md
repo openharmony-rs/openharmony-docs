@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta在引入了静态类型系统、增强的并发能力的同时，也引入了与ArkTS-Dyn在语法和语义上的一部分差异。本文罗列了所有在ArkTS-Sta中限制使用的ArkTS-Dyn特性，并提供了重构代码的建议。
 
@@ -3347,6 +3347,8 @@ let b = [1, undefined, undefined, 2];
 
 **示例：**
 
+场景1：
+
 ArkTS-Dyn示例：
 
 ```typescript
@@ -3362,20 +3364,20 @@ let globalA: A | null = new A();
 
 function fun1() {
   if (globalA != null) {
-    globalA.a = 2.0; // smart type，全局变量a的类型收窄为A
+    globalA.a = 2.0; // smart type，全局变量globalA的类型收窄为A
   }
 }
 
 function fun2() {
   let aObj: A | null = new A();
   if (aObj != null) {
-    aObj.a = 2.0; // smart type，局部变量a的类型收窄为A
+    aObj.a = 2.0; // smart type，局部变量aObj的类型收窄为A
   }
 }
 
 function fun3(aObj: A | null) {
   if (aObj != null) {
-    aObj.a = 2.0; // smart type，函数参数a的类型收窄为A
+    aObj.a = 2.0; // smart type，函数参数aObj的类型收窄为A
   }
 }
 
@@ -3389,13 +3391,13 @@ function fun4() {
 function fun5() {
   let aObj: A | null = new A();
   if (aObj instanceof A) {
-    aObj.a = 2.0; // smart type，基于instanceof的局部变量a的类型收窄为A
+    aObj.a = 2.0; // smart type，基于instanceof的局部变量aObj的类型收窄为A
   }
 }
 
 function fun6(aObj: string | null) {
   if (typeof aObj === 'string') {
-    aObj = '2.0'; // smart type，基于typeof的函数参数a的类型收窄为A
+    aObj = '2.0'; // smart type，基于typeof的函数参数aObj的类型收窄为A
   }
 }
 ```
@@ -3420,13 +3422,13 @@ function fun1() {
 function fun2() {
   let aObj: A | null = new A();
   if (aObj != null) {
-    aObj.a = 2.0; // smart type，局部变量a的类型收窄为A
+    aObj.a = 2.0; // smart type，局部变量aObj的类型收窄为A
   }
 }
 
 function fun3(aObj: A | null) {
   if (aObj != null) {
-    aObj.a = 2.0; // smart type，函数参数a的类型收窄为A
+    aObj.a = 2.0; // smart type，函数参数aObj的类型收窄为A
   }
 }
 
@@ -3438,7 +3440,7 @@ function fun4() {
 function fun5() {
   let aObj: A | null = new A();
   if (aObj instanceof A) {
-    aObj.a = 2.0; // smart type，基于instanceof的局部变量a的类型收窄为A
+    aObj.a = 2.0; // smart type，基于instanceof的局部变量aObj的类型收窄为A
   }
 }
 
@@ -3447,6 +3449,62 @@ function fun6(aObj: string | null) {
     aObj = '2.0'; // 将typeof类型操作符改为instanceof操作符
   }
 }
+```
+
+场景2：
+
+ArkTS-Dyn示例：
+
+```typescript
+class Base {
+    pick(p: Object): string {
+        return "base"
+    }
+}
+
+class Derived extends Base {
+    pick(p: number): string {
+        return "derived"
+    }
+}
+
+function foo() {
+    let b = new Derived()
+    let d: Base = b
+    console.info(d.pick(1)) // 智能类型转换，打印 "derived"
+}
+foo()
+
+let b = new Derived()
+let d: Base = b
+console.info(d.pick(1)) // 智能类型转换，打印 "derived"
+```
+
+ArkTS-Sta示例：
+
+```typescript
+class Base {
+    pick(p: Object): string {
+        return "base"
+    }
+}
+
+class Derived extends Base {
+    pick(p: number): string {
+        return "derived"
+    }
+}
+
+function foo() {
+    let b = new Derived()
+    let d: Base = b
+    console.info(d.pick(1)) // 智能类型转换，打印 "derived"
+}
+foo()
+
+let b = new Derived()
+let d: Base = b
+console.info(d.pick(1)) // 全局变量无智能类型转换，打印 "base"
 ```
 
 ## 数组/元组类型在继承关系中遵循不变性原则

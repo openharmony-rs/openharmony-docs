@@ -73,7 +73,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -181,7 +181,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -282,7 +282,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                  |
+| 15500000 | Inner error. <br>适用版本：11+                  |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -397,7 +397,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -509,7 +509,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
 
@@ -578,7 +578,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 
 **示例：**
@@ -682,7 +682,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 
 **示例：**
@@ -778,7 +778,7 @@ deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId. |
@@ -888,7 +888,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId. |
@@ -989,7 +989,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1093,7 +1093,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1187,7 +1187,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1251,7 +1251,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -1360,7 +1360,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -1459,7 +1459,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
 
@@ -1567,9 +1567,9 @@ Preferences实例配置选项。
 
 | 名称        | 类型   | 只读 | 可选| 说明                                                         |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                   |
-| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23                                   |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
 
 
 ## Preferences
@@ -1608,7 +1608,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1674,7 +1674,7 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1736,7 +1736,7 @@ getSync(key: string, defValue: ValueType): ValueType
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1779,7 +1779,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1848,7 +1848,7 @@ getAll(): Promise&lt;Object&gt;
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1912,7 +1912,7 @@ getAllSync(): Object
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -1975,7 +1975,7 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2048,7 +2048,7 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2111,7 +2111,7 @@ putSync(key: string, value: ValueType): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2156,7 +2156,7 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2230,7 +2230,7 @@ has(key: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2300,7 +2300,7 @@ hasSync(key: string): boolean
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2355,7 +2355,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2421,7 +2421,7 @@ delete(key: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2477,7 +2477,7 @@ deleteSync(key: string): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2526,7 +2526,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Mandatory parameters are left unspecified.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2590,7 +2590,7 @@ flush(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2685,7 +2685,7 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Mandatory parameters are left unspecified.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2743,7 +2743,7 @@ clear(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2840,7 +2840,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -2941,7 +2941,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+| callback | Callback&lt;string&gt; | 是   | 多进程间数据变更时触发的回调函数，回调参数为发生变更的Key字符串。                         |
 
 **错误码：**
 
@@ -2950,7 +2950,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息                                |
 | -------- | -------------------------------------- |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                           |
+| 15500000 | Inner error. <br>适用版本：11+                           |
 | 15500019 | Failed to obtain the subscription service. |
 
 **示例：**
@@ -2998,7 +2998,7 @@ onMultiProcessChange(callback: Callback&lt;string&gt;): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+| callback | Callback&lt;string&gt; | 是   | 多进程间数据变更时触发的回调函数，回调参数为发生变更的Key字符串。                         |
 
 **错误码：**
 
@@ -3054,7 +3054,7 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
 | keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的Key集合。                                          |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，类型为string；值为变更后的数据，类型为[ValueType](#valuetype)。 |
 
 **错误码：**
 
@@ -3112,7 +3112,7 @@ onDataChange(keys: Array&lt;string&gt;, callback: Callback&lt;Record&lt;string, 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，类型为string；值为变更后的数据，类型为[ValueType](#valuetype)。 |
 
 **错误码：**
 
@@ -3176,7 +3176,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 
@@ -3278,7 +3278,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
 

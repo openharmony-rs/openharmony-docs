@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -252,8 +252,8 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | 是   | 预加载的ListItem的数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。设置为true时显示预加载的ListItem，设置为false时不显示预加载的ListItem。 <br/> 默认值：false |
+| count  | number | 是   | 列表的预加载行数。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。 <br/> 默认值：false |
 
 ### cachedCount<sup>22+</sup>
 
@@ -292,8 +292,8 @@ ArkTS-Sta: cachedCount(count: int | CacheCountInfo | undefined, show: boolean | 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | ArkTS-Dyn: number&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)&nbsp;\|&nbsp;undefined | 是   | 当参数类型为number时，表示预加载的ListItem的数量。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。<br/>取值为undefined时，按默认行为处理。|
-| show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的ListItem是否需要显示。<br/>true：显示预加载的ListItem。<br/>false：不显示预加载的ListItem。<br/>取值为undefined时，不显示预加载的ListItem。 |
+| count  | ArkTS-Dyn: number&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[CacheCountInfo](ts-types.md#cachecountinfo22对象说明)&nbsp;\|&nbsp;undefined | 是   | 当参数类型为number时，表示列表的预加载行数。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。<br/>取值为undefined时，按默认行为处理。|
+| show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。<br/>true：显示预加载的ListItem/ListItemGroup。<br/>false：不显示预加载的ListItem/ListItemGroup。<br/>取值为undefined时，不显示预加载的ListItem/ListItemGroup。 |
 
 ### edgeEffect
 
@@ -1017,7 +1017,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     |  值  | 说明                                     |
 | ------ | ------ | ---------------------------------------- |
-| NONE   | 0 | 默认无项目滚动对齐效果。            |
+| NONE   | 0 | 默认无列表项滚动结束对齐效果。            |
 | START  | 1 | 视图中的第一项将在列表的开头对齐。<br/>**说明：**<br/>当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。 |
 | CENTER | 2 | 视图中的中间项将在列表中心对齐。<br/>**说明：**<br/>顶端和末尾的item都可以在列表中心对齐，列表显示可能露出空白。 |
 | END    | 3 | 视图中的最后一项将在列表末尾对齐。<br/>**说明：**<br/>当列表位移至顶端，需要将顶端的item完整显示，可能出现末尾不对齐的情况。 |
@@ -1260,7 +1260,7 @@ onScrollStart(event: () => void)
 
 onScrollStop(event: () => void)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -1356,7 +1356,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明           |
 | ------ | --------------------------------------------------------- | ---- | -------------- |
-| event  | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
+| event  | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void<br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明)) => void) \| undefined | 是   | 拖拽进入列表范围时触发的回调。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragMove<sup>8+</sup>
 
@@ -2152,7 +2152,7 @@ struct ListLanesExample {
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: string) => {
+        LazyForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -2163,7 +2163,7 @@ struct ListLanesExample {
               .backgroundColor(0xFFFFFF)
           }
           .border({ width: 2, color: Color.Green })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .height(300)
       .width('90%')
@@ -2361,7 +2361,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .backgroundColor(Color.Gray)
       .layoutWeight(1)
@@ -2614,7 +2614,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .edgeEffect(EdgeEffect.Spring, {alwaysEnabled: true, effectEdge: EffectEdge.START})
       .width('90%').height('90%')
@@ -2657,7 +2657,7 @@ struct ListExample {
                   .offset({ left: 5 })
               }
             }
-          }, (item: string, index?: number) => item)
+          }, (item: number, index?: number) => item.toString())
         }
         .lanes(2)
         .contentStartOffset(20)
@@ -2749,7 +2749,7 @@ struct ListScrollBarMarginExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string, index?: number) => item)
+        }, (item: number, index?: number) => item.toString())
       }
       .contentStartOffset(20)
       .contentEndOffset(20)
@@ -2837,7 +2837,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5}, 10)
       .width('90%').height(600)
@@ -2891,7 +2891,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width('90%').height('90%')
 
@@ -3278,7 +3278,7 @@ struct ListExample {
   }
 
   aboutToAppear() {
-    let list: string[] = [];
+    let list: number[] = [];
     for (let i = 0; i < 10; i++) {
         list.push(i);
     }
@@ -3288,7 +3288,7 @@ struct ListExample {
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
-        LazyForEach(this.arr, (item: number) => {
+        LazyForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text(item.toString())
               .fontSize(16)
@@ -3298,6 +3298,16 @@ struct ListExample {
               .textAlign(TextAlign.Center)
           }
           .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean) => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
         }, (item: number) => item.toString())
       }
       .width('90%')

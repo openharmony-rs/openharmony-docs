@@ -39,7 +39,7 @@ import { InsightIntentEntryExecutor } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode) | 否 | 否 | 表示意图执行模式。即拉起绑定的Ability组件时支持的执行模式。 |
+| executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | 否 | 否 | 表示意图执行模式。即拉起绑定的Ability组件时支持的执行模式。 |
 | context | [InsightIntentContext](./js-apis-app-ability-insightIntentContext.md) | 否 | 否 | 表示意图执行上下文。 |
 | windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 否 | 是 | 表示windowStage实例对象，和[onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate)接口的windowStage实例是同一个，可用于加载意图执行的页面。仅当executeMode字段取值为UI_ABILITY_FOREGROUND（即意图执行需要将UIAbility显示在前台时），该属性生效。 |
 | uiExtensionSession | [UIExtensionContentSession](./js-apis-app-ability-uiExtensionContentSession.md) | 否 | 是 | 表示UIExtensionContentSession实例对象，和[onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)接口的UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。仅当executeMode字段取值为UI_EXTENSION_ABILITY（即意图执行需要拉起UIExtensionAbility时），该属性生效。 |
@@ -48,7 +48,7 @@ import { InsightIntentEntryExecutor } from '@kit.AbilityKit';
 
 onExecute(): Promise\<insightIntent.IntentResult\<T>>
 
-当AI入口触发意图执行时，系统将会拉起该类绑定的Ability组件，并触发该回调，开发者可以在该回调中实现需要执行的意图操作。使用Promise异步回调。
+当AI入口触发意图执行时，系统拉起绑定的Ability组件，触发回调，开发者在此实现意图操作。使用Promise异步回调。
 
 该接口的调用时机与意图执行模式的对应关系如下：
 
@@ -126,7 +126,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
     let result: insightIntent.IntentResult<string> = {
       code: 123,
       result: 'result'
-    }
+    };
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
     // 以Promise的方式返回意图执行结果
     return Promise.reject(result);

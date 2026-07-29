@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-可以通过该类提供的接口对代理进行配置。
+ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[ProxyController](./arkts-apis-webview-ProxyController.md)实现对应用中所有Web组件网络请求的代理控制。通过ProxyConfig，开发者可以灵活定义多种代理规则：指定特定URL使用特定代理服务器、指定某些URL直连服务器、定义绕过代理的规则等。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -41,6 +43,10 @@ host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
@@ -68,6 +74,10 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
@@ -93,6 +103,10 @@ insertBypassRule(bypassRule: string): void
 插入一条bypass规则，指明哪些URL应该绕过代理并直接连接到服务器。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -120,6 +134,10 @@ bypassHostnamesWithoutPeriod(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
@@ -132,6 +150,10 @@ clearImplicitRules(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
@@ -143,6 +165,10 @@ enableReverseBypass(reverse: boolean): void
 反转bypass规则。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -170,6 +196,10 @@ getBypassRules(): Array\<string\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -188,6 +218,10 @@ getProxyRules(): Array\<ProxyRule\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -205,6 +239,10 @@ isReverseBypassEnabled(): boolean
 获取[enableReverseBypass](#enablereversebypass15)的参数值，详见[enableReverseBypass](#enablereversebypass15)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

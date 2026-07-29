@@ -272,7 +272,7 @@
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
   
   ``` TypeScript
-  Flex({ wrap: FlexWrap.WrapReverse}) {
+  Flex({ wrap: FlexWrap.WrapReverse }) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
     Text('2').width('50%').height(50).backgroundColor('#D2B48C')
     Text('3').width('50%').height(50).backgroundColor('#F5DEB3')
@@ -287,7 +287,7 @@
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
   
   ``` TypeScript
-  Flex({ wrap: FlexWrap.WrapReverse}) {
+  Flex({ wrap: FlexWrap.WrapReverse }) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
     Text('2').width('50%').height(50).backgroundColor('#D2B48C')
     Text('3').width('50%').height(50).backgroundColor('#F5DEB3')
@@ -1018,7 +1018,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
   ![flexAlignCenterFlexAlignSpaceAround](figures/flexAlignCenterFlexAlignSpaceAround.png)
 
-- FlexAlign.SpaceEvenly:  子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
+- FlexAlign.SpaceEvenly：子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
 
   ArkTS-Dyn示例：
@@ -1159,13 +1159,13 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   
   ``` TypeScript
   Flex() {
-    Text('flexGrow(2)')
-      .flexGrow(2)
+    Text('flexGrow(1)')
+      .flexGrow(1)
       .width(100)
       .height(100)
       .backgroundColor('#F5DEB3')
-    Text('flexGrow(3)')
-      .flexGrow(3)
+    Text('flexGrow(4)')
+      .flexGrow(4)
       .width(100)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -1174,7 +1174,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .width(100)
       .height(100)
       .backgroundColor('#F5DEB3')
-  }.width(420).height(120).padding(10).backgroundColor('#AFEEEE')
+  }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
   
@@ -1184,7 +1184,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   
   第一个元素以及第二个元素以1:4分配剩下的40vp。第一个元素为100vp+40vp * 1/5=108vp，第二个元素为100vp+40vp * 4/5=132vp。
   
-- [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink): 当父容器空间不足时，子元素的压缩比例。
+- [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)：当父容器空间不足时，子元素的压缩比例。
 
 
   ArkTS-Dyn示例：
@@ -1200,6 +1200,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
   
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -1225,6 +1226,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
   
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')

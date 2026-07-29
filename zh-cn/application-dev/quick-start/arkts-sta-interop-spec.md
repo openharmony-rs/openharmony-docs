@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 背景
 
@@ -207,6 +207,10 @@ let module = ESValue.load('dynHar/src/main/ets/pages/dynModule2'); // 使用ESVa
 
 - 实现应提供对应的`.d.ts`文件级别类型信息，详见[ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](./arkts-sta-declgen-spec.md)。
 
+> **说明：**
+>
+> 当ArkTS-Sta侧导入ArkTS-Dyn中使用`let`关键字定义的变量时，ArkTS-Sta侧仅支持读取该变量的值，无法对其进行修改。
+
 ## 类型系统映射规范
 
 ### 基本类型
@@ -260,6 +264,10 @@ ArkTS-Dyn映射到ArkTS-Sta时分为两层语义：
 | undefined | undefined |
 | enum string | enum string |
 | enum int | enum int |
+
+> **说明：**
+>
+> 当ArkTS-Dyn侧向ArkTS-Sta侧传递数值时，若该数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），由于ArkTS-Dyn侧`Number`类型本身的精度限制，会导致进入ArkTS-Sta侧时出现精度损失或数值错误。
 
 ### 工具类型
 
@@ -469,6 +477,10 @@ ArkTS-Sta（静态类型）与ArkTS-Dyn（动态类型）支持互操作，但�
 | 重载 函数/构造函数/实例方法/静态方法 | foo(arg: number): void; foo(arg: string): void | foo(arg: number): void; foo(arg: string): void |
 | 普通Lambda表达式 | let foo: Any = (arg: string) => arg | let foo: ESObject |
 
+> **说明**
+> 
+> ArkTS-Sta方法映射到ArkTS-Dyn上下文时，对于ArkTS-Sta的基本数值类型入参（`byte`、`short`、`int`、`long`、`float`、`double`），ArkTS-Dyn侧统一传入`number`，运行时自动完成向目标类型的窄化转换。
+
 **ArkTS-Dyn方法映射到ArkTS-Sta上下文**
 
 | 类别 | ArkTS-Dyn类型 | ArkTS-Sta类型 |
@@ -516,6 +528,10 @@ ArkTS-Sta类/对象暴露到ArkTS-Dyn分为两种：
 | 继承方法 | 继承方法 | 
 | 接口字段 | 接口字段 | 
 | 接口方法 | 接口方法 | 
+
+> **说明：**
+>
+> ArkTS-Sta侧定义类时，不应声明名为`name`和`length`的静态属性。由于ArkTS-Dyn侧的类底层已内置对应的静态属性，ArkTS-Sta类中若定义同名的静态属性，在ArkTS-Dyn侧访问该类时会因属性冲突而产生运行崩溃。
 
 **ArkTS-Dyn接口和类在ArkTS-Sta上下文中的映射**
 
@@ -590,7 +606,6 @@ ArkTS-Sta与ArkTS-Dyn之间通过Promise进行异步交互的行为如下所示�
 | Promise.any() | 同 Promise.resolve() | Promise.any([dynPromise, staPromise]) |
 | Promise.race() | 同 Promise.resolve() | Promise.race([dynPromise, staPromise]) |
 | Promise.allSettled() | 不支持 | // 不支持的跨上下文Promise使用方式<br>Promise.allSettled([dynPromise, staPromise]) |
-
 
 **其它接口**
 
@@ -688,12 +703,13 @@ ArkTS-Sta映射到ArkTS-Dyn上下文以及ArkTS-Dyn映射到ArkTS-Sta上下文�
 
 | 调用方向 | 支持范围与能力 | 限制说明 |
 |----------|---------------|----------|
-| ArkTS-Sta重载映射到ArkTS-Dyn上下文 | 1.自动识别基础类型重载（数值、字符串、布尔）。<br>2.支持数值精细匹配（由窄到宽优先级，无损优先）。<br>3.支持基于继承关系的“遮蔽”规则（子类优先）。<br>4.采取首次匹配策略，重载方法按定义顺序按序进行匹配，返回首次成功匹配的结果。 | 1.不支持Any, Array, Promise, Function等参与重载匹配。<br>2.基本类型不匹配Object签名。<br>3.不支持带有联合类型、默认参数、可选参数以及剩余参数的重载方法调用。 |
+| ArkTS-Sta重载映射到ArkTS-Dyn上下文 | 1.自动识别基础类型重载（数值、字符串、布尔）。<br>2.采取**首次匹配**策略，重载方法按定义顺序按序进行匹配，返回首次成功匹配的结果。<br>3.支持基于继承关系的“遮蔽”规则（子类优先）。<br>4.支持数值精细匹配（由窄到宽优先级，无损优先）。| 1.不支持Any, Array, Promise, Function等参与重载匹配。<br>2.基本类型不匹配Object签名。<br>3.不支持带有联合类型、默认参数、可选参数以及剩余参数的重载方法调用。 |
 | ArkTS-Dyn重载映射到ArkTS-Sta上下文 | 1.支持ArkTS-Sta重载签名映射到同一ArkTS-Dyn函数。<br>2.支持变长参数的展开传递。<br>3. 支持通过特殊语义方法（Getter/Setter/Index）访问ArkTS-Dyn属性。 | 1.调用决策完全在编译期完成，ArkTS-Dyn侧仅执行单一函数逻辑分发。|
 
 > **说明：**
 > 
 > - 此处重载分析的对象包含普通函数、构造函数、静态方法以及实例方法。
+> - ArkTS-Sta重载映射到ArkTS-Dyn上下文时，对于入参为`undefined`的类型，会匹配入参为object类型的方法。
 > - 使用ArkTS-Sta的类型重载方法映射到ArkTS-Dyn上下文时相较于无重载场景存在参数匹配分发的**额外耗时开销**，建议开发者在非必要场景可以采取无重载策略。
 
 **ArkTS-Dyn重载映射到ArkTS-Sta上下文**
@@ -786,16 +802,18 @@ ArkTS-Dyn侧定义的重载方法，实际仅存在唯一入口，Interop层负�
     ```typescript
     // ArkTS-Sta
     'use static'
-    class A {
-        foo(a: number) { console.info('call number'); }
-        foo(a: string) { console.info('call string'); }
+    export class A {
+      foo(a: number): void { console.info('call number'); }
+      foo(a: string): void { console.info('call string'); }
+      foo(a: object): void { console.info('call object'); }
     }
-    export let instanceA = new A();
+    export let instanceA: A = new A();
 
     // ArkTS-Dyn
     import { instanceA } from 'static'
     instanceA.foo(1);        // 'call number'
     instanceA.foo('AAA');    // 'call string'
+    instanceA.foo(undefined);    // 'call object'
     ```
 
     当多个重载签名的参数类型为数值类型时，参数转换基于类型范围由窄到宽的原则按以下优先级顺序匹配：
@@ -807,8 +825,6 @@ ArkTS-Dyn侧定义的重载方法，实际仅存在唯一入口，Interop层负�
     - float
     - double（最宽）
     
-    匹配规则：优先选择能无损容纳入参值的最窄类型。
-
     ```typescript
     // ArkTS-Sta
     'use static'
@@ -826,7 +842,21 @@ ArkTS-Dyn侧定义的重载方法，实际仅存在唯一入口，Interop层负�
     instanceA.foo(1.1);         // 'call double'
     ```
 
-    在运行时，入参类型和声明类型采取最佳匹配原则进行匹配分发。
+    当多个重载签名的参数类型为数值类型时，且较宽的数值类型声明定义在较窄的数值类型声明前，则参数转换基于首次匹配原则进行匹配，优先选择定义顺序在前的方法：
+
+    ```ts
+    // ArkTS-Sta
+    'use static'
+    class A {
+        foo(a: int) { console.info('call int'); }
+        foo(a: byte) { console.info('call byte'); }
+    }
+    export let instanceA = new A();
+
+    // ArkTS-Dyn
+    import { instanceA } from 'static'
+    instanceA.foo(1);           // 'call int'
+    ```
 
 ## Interop的逻辑运算
 
@@ -928,13 +958,52 @@ worker2.run<void>(() => {
 worker2.join().Await();
 ```
 
+### 序列化
+
+**总原则**
+
+跨动静态类型上下文使用`JSON.stringify`进行序列化时，需要遵循以下原则：
+
+- 序列化的对象及其嵌套属性的类型必须包含在[类型系统映射规范](#类型系统映射规范)支持的类型范围内。
+- ArkTS-Sta对象在ArkTS-Dyn上下文中直接使用ArkTS-Dyn内置的`JSON.stringify`序列化ArkTS-Sta对象时，序列化结果预期为在ArkTS-Sta上下文中序列化ArkTS-Sta对象的结果。
+- ArkTS-Dyn对象在ArkTS-Sta上下文中为动态类型引用，直接使用ArkTS-Sta的`JSON.stringify`序列化ArkTS-Dyn对象时，序列化结果取决于该对象在ArkTS-Sta上下文中的类型映射表现。
+- 包含动静态混合类型的对象图在任一侧上下文中直接调用`JSON.stringify`时，可能导致跨类型属性丢失、解析异常或触发不可预期的行为。此类场景应明确对象属性的纯粹性后再进行序列化。
+
+> **说明：**
+>
+> - ArkTS-Sta的`BigInt`或`long`类型值经类型映射进入ArkTS-Dyn上下文后，若其数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），使用ArkTS-Dyn内置`JSON.stringify`序列化时该值将转换为字符串形式输出，以保证数值精度不被丢失。
+> - ArkTS-Sta的`char`类型值经类型映射进入ArkTS-Dyn上下文后，若该字符为Unicode控制字符（U+0000至U+001F），使用ArkTS-Dyn内置`JSON.stringify`序列化时将按JSON规范对其添加`\`进行转义处理，序列化结果为对应的转义编码形式（如`\\u0000`）。
+> - ArkTS-Dyn上下文中若需获取ArkTS-Sta对象的JSON字符串，也可通过STValue显式调用ArkTS-Sta侧的`JSON.stringify`方法，具体方式参见[如何通过STValue调用ArkTS-Sta内的JSON.stringify()方法](./arkts-sta-interop-interface.md#常见问题)。
+
+示例：在ArkTS-Dyn上下文直接序列化ArkTS-Sta对象。
+
+```ts
+// ArkTS-Sta
+export let staCla: StaClass = new StaClass();
+export class StaClass {
+    public big: BigInt = 12345678901234567890n; // 超出序列化范围的bigint类型会转换成字符串类型 
+    public safe: BigInt = 1234567890n;
+    public value: char = c'\u0000';  // Unicode控制字符会添加'\'进行转义，序列化结果为"\\u0000"
+    public small: int = 42;
+    public name: string = "hello";
+}
+
+// ArkTS-Dyn
+import { staCla } from "./static"; // 导入ArkTS-Sta对象
+
+function test(): void {
+    let json = JSON.stringify(staCla);
+    console.info(json); // {"big":"12345678901234567890","safe":1234567890,"value":"\\u0000","small":42,"name":"hello"}
+}
+```
+
 ## 线程和上下文规范
 
 ArkTS-Dyn的类型对象访问只能在自身线程上下文内，而ArkTS-Sta的类型对象访问是在进程上下文内，支持跨线程访问。
 
 ArkTS-Dyn上下文使用ArkTS-Sta类型对象是不涉及多线程访问约束，在跨线程通信API中，直接传递引用（类ArkTS-Dyn的Sendable）。
 
-本章节主要介绍ArkTS-Sta上下文访问ArkTS-Dyn类型对象的规格行为描述。
+本章节主要介绍跨上下文的跨线程规格行为描述。
 
 ### ArkTS-Dyn的Owner Context
 
@@ -997,7 +1066,7 @@ ArkTS-Dyn上下文使用ArkTS-Sta类型对象是不涉及多线程访问约束�
 规则：
 
 - 裸ArkTS-Dyn对象禁止在不同ArkTS-Sta线程间直接解引用。
-- worker.postMessage(...)、taskPool.submit(...)、并发worker函数调用参数传递等跨线程消息边界，必须按Structured Clone语义处理输入参数。
+- worker.postMessage(...)、taskPool.execute(...)、并发worker函数调用参数传递等跨线程消息边界，必须按Structured Clone语义处理输入参数。
 - Structured Clone仅用于跨线程消息传递，不自动改变原对象的Owner Context。
 
 ### ArkTS-Dyn对象的Structured Clone规则
@@ -1056,6 +1125,50 @@ msg2.sendToTarget();
 2. 传递按Structured Clone生成的快照值。
 3. 直接传递ArkTS-Sta对象引用。
 4. 传递明确支持共享语义的受控对象。
+
+### 跨上下文共享修改
+
+对于单侧上下文内的共享修改（仅在ArkTS-Dyn或ArkTS-Sta侧），开发者可直接使用当前上下文的锁机制进行线程同步。
+
+对于跨上下文的共享修改（同时涉及ArkTS-Dyn和ArkTS-Sta侧线程），由于锁对象具有上下文隔离性，严禁跨边界物理传递锁或在双侧创建同名锁，必须统一在持有共享资源的一侧编写加锁修改逻辑，另一侧通过跨上下文函数调用来间接触发，以此确保所有并发线程在底层竞争同一把锁。
+
+此外，由于跨上下文调用存在跨运行时切换的性能开销，锁内的临界区代码应保持轻量，且严禁在临界区内反向同步等待另一侧的信号，以防触发跨运行时死锁。
+
+以下示例展示了如何在ArkTS-Sta侧定义统一的加锁函数，并分别由ArkTS-Dyn侧的Taskpool线程与ArkTS-Sta侧的EAWorker线程共同调用，从而安全地修改同一个静态资源：
+
+```ts
+// ArkTS-Sta
+const lockSta = AsyncLock.request('sta_lock');
+export async function safeModify(): Promise<void> {
+    await lockSta.lockAsync(() => {
+        // 共享修改同一个静态对象
+    })
+}
+
+export async function safeModifyInStaEAWorker(): Promise<void> {
+    let eaworker = new EAWorker();
+    eaworker.start();
+    await eaworker.run<Promise<void>>(async () => {
+        await lockSta.lockAsync(() => {
+            // 共享修改同一个静态对象
+        })
+    }).Await();
+    eaworker.join();
+}
+
+// ArkTS-Dyn
+import { safeModify, safeModifyInStaEAWorker } from "./Static"; // 静态文件的路径
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+async function safeModifyInDyn(): Promise<void> {
+    await safeModify();
+}
+async function modifyAll(): Promise<void> {
+    taskpool.execute(safeModifyInDyn); // 在动态子线程修改静态对象
+    safeModifyInStaEAWorker(); // 在静态子线程修改静态对象
+}
+```
 
 ## 附录 
 

@@ -35,7 +35,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 - HAP：entry类型的HAP支持以自动和手动模式启动。从API version 20开始，feature类型的HAP支持以自动和手动模式启动。
 
-- HSP/HAR: 从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。
+- HSP/HAR：从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。
 
 - 启动框架从API version 18开始支持配置[应用级so](ability-terminology.md#应用级so)预加载任务，so文件开发可以参考[Node-API](../napi/use-napi-process.md)创建Native C++工程。不支持配置[系统级so](ability-terminology.md#系统级so)预加载任务。
 
@@ -117,7 +117,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 | -------- | -------- | -------- | -------- |
 | startupTasks | 启动任务配置信息，详见[定义启动任务配置](#定义启动任务配置)。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadHintStartupTasks | 预加载so任务配置信息，详见[定义预加载so任务配置](#定义预加载so任务配置)。 | 对象数组 | 该标签可缺省，缺省值为空。 |
-| configEntry | 启动参数配置文件所在路径。详见[设置启动参数](#设置启动参数)。<br/>**说明：**<br/>- HSP、HAR中不允许配置`configEntry`字段。<br/>- 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆原理及功能](../arkts-utils/source-obfuscation.md)的[-keep-file-name](../arkts-utils/source-obfuscation.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
+| configEntry | 启动参数配置文件所在路径。详见[设置启动参数](#设置启动参数)。<br/>**说明：**<br/>- HSP、HAR中不允许配置`configEntry`字段。<br/>- 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation-rule-options.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆保留选项](../arkts-utils/source-obfuscation-keep-options.md)的[-keep-file-name](../arkts-utils/source-obfuscation-keep-options.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
 
 ### 定义启动任务配置
 
@@ -200,7 +200,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | name | 启动任务名称，可自定义，推荐与类名保持一致。 | 字符串 | 该标签不可缺省。 |
-| srcEntry | 启动任务对应的文件路径。<br/>**说明：** <br/> 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆原理及功能](../arkts-utils/source-obfuscation.md)的[-keep-file-name](../arkts-utils/source-obfuscation.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
+| srcEntry | 启动任务对应的文件路径。<br/>**说明：** <br/> 如果应用开启了[文件名混淆](../arkts-utils/source-obfuscation-rule-options.md#-enable-filename-obfuscation)，则需要将文件路径添加到保留白名单中。具体操作详见[ArkGuard混淆保留选项](../arkts-utils/source-obfuscation-keep-options.md)的[-keep-file-name](../arkts-utils/source-obfuscation-keep-options.md#-keep-file-name)部分。 | 字符串 | 该标签不可缺省。 |
 | dependencies | 启动任务依赖的其他启动任务的类名数组。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | excludeFromAutoStart | 是否排除自动模式，详细介绍可以查看[修改启动模式](#修改启动模式)。 <br/>-&nbsp;true：手动模式。 <br/>-&nbsp;false：自动模式。<br/>**说明：**<br/> HSP、HAR中startupTask里的excludeFromAutoStart标签必须配置为true。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | runOnThread | 执行初始化所在的线程。<br/>-&nbsp;`mainThread`：在主线程中执行。<br/>-&nbsp;`taskPool`：在异步线程中执行。 | 字符串 | 该标签可缺省，缺省值为`mainThread`。 |
@@ -300,7 +300,7 @@ ArkTS-Dyn示例：
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
 ``` TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
+import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -325,7 +325,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     };
     return config;
   }
-// ···
+  // ...
 }
 ```
 
@@ -517,14 +517,14 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "har1",
             "type": "har",
-            // ···
-            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ...
+            "appStartup": "$profile:startup_config" // 启动框架的配置文件
           }
         }
         ```
@@ -763,20 +763,19 @@ struct Index {
 
      ArkTS-Dyn示例：
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
-
+     
      ``` TypeScript
-     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
-     // ···
+     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+     // ...
      
      export default class MyStartupConfigEntry extends StartupConfigEntry {
-     // ···
+       // ...
        onRequestCustomMatchRule(want: Want): string {
          if (want?.parameters?.fromType == 'card') {
            return 'ruleCard';
          }
          return '';
        }
-     
      }
      ```
 

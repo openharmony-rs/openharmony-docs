@@ -21,14 +21,13 @@ API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../re
 本示例展示OH_ArkUI_RunTaskInScope接口的基础使用方式，OH_ArkUI_NodeUtils_GetAttachedNodeHandleById用于获取前置实例页面内的组件，相关使用请参考[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)，此处userData传入的数据类型为最终要设置的组件指针，便于设置对应组件属性。
 
 
-<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 const uint32_t VALUE_2 = 250;
-const uint32_t VALUE_3 = 480;
 ```
 
-<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 //page1
@@ -41,7 +40,7 @@ nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
 nodeAPI->addChild(textContainer, button);
 ```
 
-<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 //page2
@@ -61,7 +60,7 @@ OH_ArkUI_RunTaskInScope(uiContext, pageOneButton, [](void *userData) {
     auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto pageOneButton = (ArkUI_NodeHandle)userData;
-    ArkUI_NumberValue value[] = {VALUE_3};
+    ArkUI_NumberValue value[1] = {};
     ArkUI_AttributeItem LABEL_Item = {.string = "success"};
     value[0].f32 = VALUE_2;
     ArkUI_AttributeItem button_Item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};

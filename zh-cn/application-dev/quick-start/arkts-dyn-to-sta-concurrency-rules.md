@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本指南旨在介绍ArkTS-Sta新的并发特性和使用方法。
 
@@ -1089,6 +1089,101 @@ function testWithThreeParams(a: number, b: string, c: number): string {
   return b;
 }
 let task: taskpool.Task = new taskpool.Task(testWithThreeParams, 100, "test", 100);
+```
+
+## 通过Function间接调用传参不支持隐式类型转换
+
+**规则：** `arkts-function-indirect-call-no-implicit-type-conversion`
+
+**规则解释：**
+
+ArkTS-Sta中，通过Function类型间接调用函数并传参时，实参类型必须与函数形参类型严格一致，不支持隐式类型转换（如int到double）。类型不匹配会在运行时直接抛出ClassCastException。
+
+并发组件中，以下接口受到影响：
+
+| 组件 | 接口 |
+|------|------|
+| taskpool.Task | `constructor(name: string, func: Function, ...args: FixedArray<Any>)` |
+| taskpool.Task | `constructor(func: Function, ...args: FixedArray<Any>)` |
+| taskpool | `execute(func: Function, ...args: FixedArray<Any>): Promise<Any>` |
+| taskpool.TaskGroup | `addTask(func: Function, ...args: FixedArray<Any>): void` |
+| taskpool.Task | `static sendData(...args: FixedArray<Any>): void`<br> 发送的数据传递给onReceiveData注册的回调，回调参数类型需与sendData传参类型一致 |
+| EAWorker | `run<R>(task: Function, ...args: FixedArray<Any>): Job<R>` |
+| EAWorker | `static postToMain<R>(coroFun: Function, ...args: FixedArray<Any>): Job<R>` |
+| Timer | `setTimeout(func: Function, delayMs: int \| null \| undefined, ...args: FixedArray<Any>): int` |
+| Timer | `setInterval(func: Function, delayMs: int \| null \| undefined, ...args: FixedArray<Any>): int` |
+
+**变更原因：**
+
+直接调用函数时，编译器能够根据函数签名自动插入类型转换代码；而上述接口内部通过Function类型间接调用目标函数，参数在传入接口时已装箱为具体类型，运行时类型检查仅做匹配校验不做转换，也不会自动拆箱转换再重新装箱。
+
+**适配建议：**
+
+确保通过上述接口传参时实参类型与函数形参类型严格一致。例如，函数参数声明为number（对应double）时，传入double字面量（如1.0而非1）；或将函数参数类型改为int以匹配int实参。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+@Concurrent
+function testSendData(): void {
+  taskpool.Task.sendData(1, 2);
+  return;
+}
+
+async function test(): Promise<void> {
+  // taskpool
+  let task = new taskpool.Task(add, 1, 2);
+  let res = await taskpool.execute(task);
+  console.info(res);
+
+  // setTimeout
+  setTimeout(add, 1000, 1, 2);
+
+  // sendData
+  let task2 = new taskpool.Task(testSendData);
+  task2.onReceiveData(add);
+  taskpool.execute(task2);
+}
+```
+
+ArkTS-Sta
+
+```typescript
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+async function test(): Promise<void> {
+  // taskpool：使用1.0替代1，2.0替代2，确保实参为double类型，和number匹配
+  let task = new taskpool.Task(add, 1.0, 2.0);
+  let res = await taskpool.execute(task);
+  console.info(res);
+
+  // setTimeout：使用1.0替代1，2.0替代2，确保实参为double类型，和number匹配
+  setTimeout(add, 1000, 1.0, 2.0);
+
+  // EAWorker：使用1.0替代1，2.0替代2，确保实参为double类型，和number匹配
+  let eaw = new EAWorker("worker");
+  eaw.start();
+  let job = eaw.run<number>(add, 1.0, 2.0);
+  console.info(job.Await());
+
+  // sendData + onReceiveData：sendData传参类型需与回调参数类型一致
+  let task2 = new taskpool.Task((): void => {
+    taskpool.Task.sendData(1.0, 2.0);
+  });
+  task2.onReceiveData(add);
+  taskpool.execute(task2);
+}
 ```
 
 ## 不支持在全局空间直接或间接调用async函数

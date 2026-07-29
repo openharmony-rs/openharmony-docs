@@ -427,7 +427,7 @@ struct DrawModifierExample {
   build(): void {
     Column() {
       Row() {
-        // $r('app.string.Modifier')需要替换为开发者所需的资源文件
+        // $r('app.string.app_name')需要替换为开发者所需的资源文件
         Text($r('app.string.app_name'))
           .width(100)
           .height(100)
@@ -607,7 +607,7 @@ struct DrawModifierExample {
 
   build(): void {
     Column() {
-      // $r('app.string.TestNode')需要替换为开发者所需的资源文件。
+      // $r('app.string.app_name')需要替换为开发者所需的资源文件。
       Text($r('app.string.app_name'))
         .fontSize(36)
         .width('100%')
@@ -638,7 +638,7 @@ struct DrawModifierExample {
 > 
 > - 如果开发者希望这个画布进行一个预期的变换，应该使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
-**ArkTS接口调用示例：**
+ArkTS-Dyn示例：
 
 <!-- @[Canvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets) -->
 
@@ -727,6 +727,141 @@ class MyDrawModifier extends DrawModifier {
 struct Index {
   myDrawModifier: MyDrawModifier = new MyDrawModifier();
   myDrawModifier1: MyDrawModifier = new MyDrawModifier1();
+
+  build() {
+    Row() {
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+    }.height('100%')
+    .width('100%').position({ x: 10, y: 10 })
+
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/Canvas.ets) --> 
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  DrawingCanvas,
+  DrawModifier,
+  Row,
+  Stack,
+  DrawContext
+} from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+
+  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
+  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+class MyDrawModifier1 extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage1(drawContext.canvas)
+  }
+}
+
+class MyDrawModifier extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage(drawContext.canvas)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myDrawModifier: MyDrawModifier = new MyDrawModifier();
+  myDrawModifier1: MyDrawModifier1 = new MyDrawModifier1();
 
   build() {
     Row() {

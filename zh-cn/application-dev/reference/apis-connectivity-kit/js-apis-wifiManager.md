@@ -543,7 +543,7 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 | WIFI_STANDARD_11N | 4 | 802.11n WiFi标准类型。 |
 | WIFI_STANDARD_11AC | 5 | 802.11ac WiFi标准类型。 |
 | WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 |
-| WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 |
+| WIFI_STANDARD_11BE | 7 | 802.11be WiFi标准类型。 |
 
 ## WifiInfoElem
 
@@ -665,7 +665,7 @@ Wi-Fi功能。
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1701,8 +1701,8 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | connState | [ConnState](#connstate) | 否 | 否 | WLAN连接状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前连接热点的Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
+| wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 当前设备连接Wi-Fi后支持的最高协议版本。 **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true:支持，&nbsp;false:不支持。 **ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。 **ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23|
 
@@ -4656,6 +4656,8 @@ isWlanSupported(): boolean
 
 查询是否可用Wi-Fi网络。
 
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -4670,6 +4672,6 @@ isWlanSupported(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-  | 错误码 | 错误信息 |
+  | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 2501000  | Operation failed. |
+  | 2401000  | Operation failed. |

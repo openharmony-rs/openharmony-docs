@@ -437,7 +437,7 @@
 
 
     ArkTS-Dyn示例：
-   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -468,6 +468,7 @@
    
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       // 更新卡片数据
        formProvider.updateForm(formId, formInfo).then(() => {
          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
        }).catch((error: BusinessError) => {
@@ -570,7 +571,7 @@
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
 
     ArkTS-Dyn示例：
-   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
@@ -589,14 +590,14 @@
                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                let moduleName: string = 'entry';
                let abilityName: string = 'EntryFormAbility';
-               let formName: string = 'reloadByUIAbilityCard';
+               let formName: string = 'ReloadByUIAbility';
                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
                  console.info(`reloadForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
          Button('reloadAllForms')
@@ -606,10 +607,10 @@
                formProvider.reloadAllForms(context).then((reloadNum: number) => {
                  console.info(`reloadAllForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
-               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
              }
            })
        }
@@ -729,7 +730,7 @@
 由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
 ArkTS-Dyn示例：
-<!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { formHost } from '@kit.FormKit';

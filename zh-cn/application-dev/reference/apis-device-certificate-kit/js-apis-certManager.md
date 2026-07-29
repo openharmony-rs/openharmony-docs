@@ -175,7 +175,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
-| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CMHandle
 
@@ -201,9 +201,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据，最大长度为8196字节。 |
+| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。当certFormat传入PEM_DER，最大长度为8KB。当certFormat传入P7B，最大长度为300KB。 |
 | certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。默认值：PEM_DER。 |
 | certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。默认值：CURRENT_USER。 |
 
@@ -222,7 +224,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。该模式下CA证书安装操作受限。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB Key服务失败。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
@@ -340,6 +342,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
@@ -759,15 +763,17 @@ try {
 
 installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
-安装用户CA证书。当入参certificate.certFormat为P7B时，输入的P7B证书文件中最多只能包含20本证书。使用Promise异步回调。
+安装用户CA证书。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1225,7 +1231,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-完成验签的操作，使用Callback回调异步返回结果。
+完成验签的操作，是验签流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1357,7 +1363,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-中止签名、验签的操作，使用Callback异步回调。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1409,7 +1415,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-中止签名、验签的操作。使用Promise异步回调。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1896,7 +1902,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **设备行为差异：**
-- 从API版本26.0.0开始，该接口在所有设备上无行为差异。
+- 从API版本26.0.0开始，该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
 - 在API版本22-24，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
@@ -1922,7 +1928,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 | 801      | Capability not supported. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | Indicates that the certificate does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
 **示例**：
@@ -1937,13 +1943,13 @@ let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此�
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
     let list = cmResult.credentialDetailList;
-    console.info('Succeeded in getting detail of USB key certificate.');
+    console.info('Succeeded in getting detail of USB Key certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get detail of USB Key certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get detail of USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1961,7 +1967,9 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1985,7 +1993,7 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
 | 801         | Capability not supported. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
-| 17500010    | Indicates that access USB key service failed. |
+| 17500010    | Indicates that access USB Key service failed. |
 | 17500011    | Parameter verification failed. Possible causes: the ukeyInfo parameter is invalid. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -2001,13 +2009,13 @@ let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此�
 try {
   certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
     let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-    console.info('Succeeded in getting USB key certificate list.');
+    console.info('Succeeded in getting USB Key certificate list.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get USB Key certificate list. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get USB Key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2025,15 +2033,17 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| keyUri | string | 是 | 表示USB key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
+| keyUri | string | 是 | 表示USB Key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB Key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值**：
 
@@ -2050,8 +2060,8 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate identified by keyuri does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500002 | The certificate identified by keyUri does not exist. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -2061,7 +2071,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 /* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
-let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
+let keyUri: string = 'test'; /* USB Key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
   0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
@@ -2070,12 +2080,12 @@ let ukeyInfo: certificateManager.UkeyInfo = {
 };
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
-    console.info('Succeeded in importing USB key certificate.');
+    console.info('Succeeded in importing USB Key certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to import USB Key certificate. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to import USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制，或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
+当组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制，或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由的组件绘制。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ ArkTS-Sta: drawModifier(modifier: DrawModifier | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**组件支持范围:**
+**组件支持范围：**
 
 [AlphabetIndexer](ts-container-alphabet-indexer.md)、[Badge](ts-container-badge.md)、[Blank](ts-basic-components-blank.md)、[Button](ts-basic-components-button.md)、[CalendarPicker](ts-basic-components-calendarpicker.md)、[Checkbox](ts-basic-components-checkbox.md)、[CheckboxGroup](ts-basic-components-checkboxgroup.md)、[Circle](ts-drawing-components-circle.md)、[Column](ts-container-column.md)、[ColumnSplit](ts-container-columnsplit.md)、[Counter](ts-container-counter.md)、[DataPanel](ts-basic-components-datapanel.md)、[DatePicker](ts-basic-components-datepicker.md)、[Ellipse](ts-drawing-components-ellipse.md)、[Flex](ts-container-flex.md)、[FlowItem](ts-container-flowitem.md)、[FolderStack](ts-container-folderstack.md)、[FormLink](ts-container-formlink.md)、[Gauge](ts-basic-components-gauge.md)、[Grid](ts-container-grid.md)、[GridCol](ts-container-gridcol.md)、[GridItem](ts-container-griditem.md)、[GridRow](ts-container-gridrow.md)、[Hyperlink](ts-container-hyperlink.md)、[Image](ts-basic-components-image.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[ImageSpan](ts-basic-components-imagespan.md)、[Line](ts-drawing-components-line.md)、[List](ts-container-list.md)、[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[Marquee](ts-basic-components-marquee.md)、[Menu](ts-basic-components-menu.md)、[MenuItem](ts-basic-components-menuitem.md)、[MenuItemGroup](ts-basic-components-menuitemgroup.md)、[NavDestination](ts-basic-components-navdestination.md)、[Navigation](ts-basic-components-navigation.md)、[Navigator](ts-container-navigator.md)、[NavRouter](ts-basic-components-navrouter.md)、[NodeContainer](ts-basic-components-nodecontainer.md)、[Path](ts-drawing-components-path.md)、[PatternLock](ts-basic-components-patternlock.md)、[Polygon](ts-drawing-components-polygon.md)、[Polyline](ts-drawing-components-polyline.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[Radio](ts-basic-components-radio.md)、[Rating](ts-basic-components-rating.md)、[Rect](ts-drawing-components-rect.md)、[Refresh](ts-container-refresh.md)、[RelativeContainer](ts-container-relativecontainer.md)、[RichEditor](ts-basic-components-richeditor.md)、[Row](ts-container-row.md)、[RowSplit](ts-container-rowsplit.md)、[Scroll](ts-container-scroll.md)、[ScrollBar](ts-basic-components-scrollbar.md)、[Search](ts-basic-components-search.md)、[Select](ts-basic-components-select.md)、[Shape](ts-drawing-components-shape.md)、[SideBarContainer](ts-container-sidebarcontainer.md)、[Slider](ts-basic-components-slider.md)、[Stack](ts-container-stack.md)、[Stepper](ts-basic-components-stepper.md)、[StepperItem](ts-basic-components-stepperitem.md)、[Swiper](ts-container-swiper.md)、[SymbolGlyph](ts-basic-components-symbolGlyph.md)、[TabContent](ts-container-tabcontent.md)、[Tabs](ts-container-tabs.md)、[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextClock](ts-basic-components-textclock.md)、[TextInput](ts-basic-components-textinput.md)、[TextPicker](ts-basic-components-textpicker.md)、[TextTimer](ts-basic-components-texttimer.md)、[TimePicker](ts-basic-components-timepicker.md)、[Toggle](ts-basic-components-toggle.md)、[WaterFlow](ts-container-waterflow.md)、[XComponent](ts-basic-components-xcomponent.md)
 
@@ -44,13 +44,13 @@ ArkTS-Sta: drawModifier(modifier: DrawModifier | undefined): this
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | 是   | 自定义绘制修改器，其中定义了自定义绘制的逻辑。 <br> 默认值：undefined <br/>**说明：** <br/> 每个自定义修改器只对当前绑定组件的[FrameNode](../js-apis-arkui-frameNode.md)生效，对其子节点不生效。 |
+| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | 是   | 自定义绘制修改器，其中定义了自定义绘制的逻辑。 <br> 默认值：undefined，未设置自定义绘制修改器时，组件使用原有默认绘制行为，不进行自定义绘制。 <br>**说明：** <br> 每个自定义绘制修改器只对当前绑定组件的[FrameNode](../js-apis-arkui-frameNode.md)生效，对其子节点不生效。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件，用于链式调用。 |
 
 ## DrawModifier
 
@@ -58,7 +58,7 @@ DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground�
 
 自定义层级示例图
 
-![drawModifier.gif](figures/drawModifier.png)
+![drawModifier.png](figures/drawModifier.png)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ ArkTS-Sta: drawFront(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文，提供canvas（画布对象）和size（绘制区域尺寸）等属性，用于在自定义绘制方法中执行具体的绘制操作。 |
 
 **示例：**
 
@@ -116,7 +116,7 @@ ArkTS-Sta: drawContent(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文，提供canvas（画布对象）和size（绘制区域尺寸）等属性，用于在自定义绘制方法中执行具体的绘制操作。 |
 
 **示例：**
 
@@ -142,7 +142,7 @@ ArkTS-Sta: drawBehind(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文，提供canvas（画布对象）和size（绘制区域尺寸）等属性，用于在自定义绘制方法中执行具体的绘制操作。 |
 
 **示例：**
 
@@ -152,7 +152,7 @@ ArkTS-Sta: drawBehind(drawContext: DrawContext): void
 
 drawForeground(drawContext: DrawContext): void
 
-自定义绘制前景的接口，若重载该方法则可进行前景的自定义绘制。需要对其组件的前景层进行绘制时重载该方法。
+自定义绘制前景的接口，若重载该方法则可进行前景的自定义绘制。与[drawFront](#drawfront)（内容前景）相比，drawForeground位于更高层级，绘制在内容前景之上、遮罩层之下。drawFront适用于绘制组件内容自身的前景效果，drawForeground适用于需要在内容前景之上添加额外前景效果的场景。该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -166,7 +166,7 @@ drawForeground(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文，提供canvas（画布对象）和size（绘制区域尺寸）等属性，用于在自定义绘制方法中执行具体的绘制操作。 |
 
 **示例：**
 
@@ -190,7 +190,7 @@ drawOverlay(drawContext: DrawContext): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文。 |
+| drawContext | [DrawContext](#drawcontext) | 是   | 图形绘制上下文，提供canvas（画布对象）和size（绘制区域尺寸）等属性，用于在自定义绘制方法中执行具体的绘制操作。 |
 
 **示例：**
 
@@ -199,7 +199,7 @@ drawOverlay(drawContext: DrawContext): void
 // test.ets
 import { drawing } from '@kit.ArkGraphics2D';
 
-class MyForegroundDrawModifier extends DrawModifier {
+class MyOverlayDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
   uiContext: UIContext;
@@ -209,7 +209,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
-  // 重载drawOverlay方法，实现自定义绘制遮罩层前景
+  // 重载drawOverlay方法，实现自定义绘制遮罩层
   drawOverlay(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -233,8 +233,8 @@ class MyForegroundDrawModifier extends DrawModifier {
 @Entry
 @Component
 struct DrawModifierExample {
-  // 将自定义绘制遮罩层前景的类实例化，传入UIContext实例
-  private overlayModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+  // 将自定义绘制遮罩层的类实例化，传入UIContext实例
+  private overlayModifier: MyOverlayDrawModifier = new MyOverlayDrawModifier(this.getUIContext());
 
   build() {
     Column() {
@@ -248,7 +248,7 @@ struct DrawModifierExample {
     .width(280)
     .height(300)
     .backgroundColor(0x87CEEB)
-    // 调用此接口并传入自定义绘制前景的类实例，即可实现自定义绘制前景
+    // 调用此接口并传入自定义绘制遮罩层的类实例，即可实现自定义绘制遮罩层
     .drawModifier(this.overlayModifier)
   }
 }
@@ -258,7 +258,7 @@ struct DrawModifierExample {
 
 invalidate(): void
 
-主动触发重绘的接口，开发者无需也无法重载，调用会触发所绑定组件的重绘。
+主动触发重绘的接口，开发者无需也无法重载，调用会触发所绑定组件的重绘。当自定义绘制所依赖的属性（如尺寸、颜色、位置等）发生变化时（例如在动画过程中动态更新绘制参数），需要调用该方法使最新的绘制效果生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -272,7 +272,7 @@ invalidate(): void
 
 请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
-### DrawContext
+## DrawContext
 
 ArkTS-Dyn: type DrawContext = import('../api/arkui/Graphics').DrawContext
 

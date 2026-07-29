@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -240,7 +240,7 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 ## GridItemOptions<sup>11+</sup>对象说明
 
-GridItem样式对象。
+GridItem可选参数对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -301,7 +301,7 @@ GridItem元素被鼠标框选的状态改变时触发回调。
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean | 是   | 进入鼠标框选范围即被选中返回true，移出鼠标框选范围即未被选中返回false。 |
+| event | ArkTS-Dyn: (isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void</br>ArkTS-Sta: ((isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) \| undefined | 是   | 鼠标框选的状态改变时触发的回调。<br/>undefined：不使用该回调函数。isSelected在进入鼠标框选范围即被选中时为true，移出鼠标框选范围即未被选中时为false。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -384,7 +384,7 @@ struct GridItemExample {
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: String[] = ['0', '1', '2'];
+  @State numbers: string[] = ['0', '1', '2'];
 
   build() {
     Column({ space: 5 }) {

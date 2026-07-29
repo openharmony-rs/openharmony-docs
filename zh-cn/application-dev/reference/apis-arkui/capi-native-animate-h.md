@@ -62,8 +62,8 @@
 | [void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setiterations) | 设置动画播放次数。 |
 | [void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_AnimationPlayMode value)](#oh_arkui_animateoption_setplaymode) | 设置动画播放模式。 |
 | [void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animateoption_setexpectedframeraterange) | 设置动画的期望帧率。 |
-| [void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)](#oh_arkui_animateoption_seticurve) | 设置动画的动画曲线。 |
-| [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | 获取动画的动画曲线。 |
+| [void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)](#oh_arkui_animateoption_seticurve) | 设置动画的插值曲线。 |
+| [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | 获取动画的插值曲线。 |
 | [ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)](#oh_arkui_keyframeanimateoption_create) | 创建关键帧动画参数。 |
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
@@ -131,6 +131,7 @@
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateRotationTransitionEffect(ArkUI_RotationOptions* rotate)](#oh_arkui_createrotationtransitioneffect) | 创建组件转场时的旋转效果对象。 |
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_TransitionEdge edge)](#oh_arkui_createmovementtransitioneffect) | 创建组件平移效果对象。 |
 | [ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_TransitionEffect* appear, ArkUI_TransitionEffect* disappear)](#oh_arkui_createasymmetrictransitioneffect) | 创建非对称的转场效果对象。 |
+| [ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)](#oh_arkui_createidentitytransitioneffect) | 创建无转场效果对象。 |
 | [void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)](#oh_arkui_transitioneffect_dispose) | 销毁转场效果对象。 |
 | [int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, ArkUI_TransitionEffect* secondEffect)](#oh_arkui_transitioneffect_combine) | 设置转场效果链式组合，以形成包含多种转场效果的TransitionEffect。 |
 | [int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, ArkUI_AnimateOption* animation)](#oh_arkui_transitioneffect_setanimation) | 设置转场效果动画参数。 |
@@ -516,7 +517,7 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 **描述：**
 
 
-设置动画的动画曲线。
+设置动画的插值曲线。
 
 > **说明：**
 >
@@ -541,7 +542,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 **描述：**
 
 
-获取动画的动画曲线。
+获取动画的插值曲线。
 
 **起始版本：** 12
 
@@ -556,7 +557,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画的动画曲线。参数option异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画的插值曲线。参数option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
@@ -1550,7 +1551,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-获取animator动画关键帧时间，单位为ms（毫秒）。
+获取animator动画关键帧时间，取值范围[0, 1]，为归一化时间比例。
 
 **起始版本：** 12
 
@@ -1566,7 +1567,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 关键帧时间，单位为ms（毫秒）。 |
+| float | 关键帧时间，取值范围[0, 1]，为归一化时间比例。 |
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeValue()
 
@@ -2382,6 +2383,26 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_Transiti
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | 非对称的转场效果对象。如果参数异常返回NULL。 |
+
+### OH_ArkUI_CreateIdentityTransitionEffect()
+
+```c
+ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)
+```
+
+**描述：**
+
+
+创建无转场效果对象。
+
+**起始版本：** 26.0.0
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* | 创建的无转场效果对象指针。调用者需要调用[OH_ArkUI_TransitionEffect_Dispose](#oh_arkui_transitioneffect_dispose)释放该对象。 |
 
 ### OH_ArkUI_TransitionEffect_Dispose()
 

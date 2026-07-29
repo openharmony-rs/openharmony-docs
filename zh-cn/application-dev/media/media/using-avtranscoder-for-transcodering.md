@@ -1,4 +1,4 @@
-# 使用AVTranscoder实现视频转码(ArkTS)
+# 使用AVTranscoder实现音视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanzhengshi-->
@@ -88,9 +88,17 @@
        if (this.avTranscoder != undefined) {
          // 1.释放转码实例。
          await this.avTranscoder.release();
+         let lastFdDst = this.avTranscoder.fdDst;
+         let lastFdSrc = this.avTranscoder.fdSrc;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fileIo.closeSync(this.avTranscoder!.fdDst);
+         if (lastFdDst != undefined) {
+           fs.closeSync(lastFdDst);
+         }
+         // 3.关闭转码源文件fd。
+         if (lastFdSrc != undefined) {
+           fs.closeSync(lastFdSrc.fd);
+         }
        }
      }
    }
@@ -301,7 +309,7 @@
    this.avTranscoder!!.fdDst = this.file.fd;
    ```
 
-5. 配置视频转码参数，调用prepare()接口。
+5. 配置音视频转码参数，调用prepare()接口。
 
    > **说明：**
    >

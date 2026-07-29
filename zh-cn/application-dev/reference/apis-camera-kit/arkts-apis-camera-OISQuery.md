@@ -41,7 +41,7 @@ isOISModeSupported(mode: OISMode): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 当前设备是否支持指定的OIS模式。返回true表示支持指，返回false表示不支持。 |
+| boolean    | 当前设备是否支持指定的OIS模式。返回true表示支持，返回false表示不支持。 |
 
 **错误码：**
 

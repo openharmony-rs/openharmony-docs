@@ -45,7 +45,7 @@ animateToImmediately(value: AnimateParam , event: () => void): void
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是       | 设置动画效果相关参数。                                       |
-| event  | () => void                                                   | 是       | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| event  | () => void                                                   | 是       | 指定显式动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ## animateToImmediately<sup>23+</sup>
 
@@ -66,7 +66,7 @@ animateToImmediately(value: AnimateParam, processor: VoidCallback): void
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是       | 设置动画效果相关参数。                                       |
-| processor  |     [VoidCallback](ts-types.md#voidcallback12)    | 是       | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor  |     [VoidCallback](ts-types.md#voidcallback12)    | 是       | 指定显式动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ```ts
 // xxx.ets

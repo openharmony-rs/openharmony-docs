@@ -259,7 +259,7 @@ TabContent页面的切换信息。
 | index        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
 | id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                          |
 | uniqueId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                       |
-| lastIndex<sup>22+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23    |
+| lastIndex<sup>22+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 是   | 最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23    |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -655,7 +655,6 @@ offScrollEvent(callback?: Callback\<ScrollEventInfo\>): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
 | callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | 否   | 回调函数。返回滚动事件的信息。                                           |
 
 **示例：**
@@ -738,7 +737,6 @@ offScrollEvent(options: ObserverOptions, callback?: Callback\<ScrollEventInfo\>)
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
 | options  | [ObserverOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
 | callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | 否   | 回调函数。返回滚动事件的信息。                                            |
 
@@ -768,7 +766,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -1075,7 +1073,7 @@ offDensityUpdate(context: UIContext, callback?: Callback\<DensityInfo\>): void
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component

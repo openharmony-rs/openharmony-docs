@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-autoFillManager模块提供账号密码保存等功能。
+autoFillManager模块提供自动填充及账号密码保存等功能。
 
 不同于页面切换时触发的系统自动保存功能，该功能需要由用户手动触发。例如用户在网站上输入了账号密码，并点击“保存”按钮，才能触发相应的自动保存操作。
 
@@ -43,7 +43,7 @@ type UpdateRequest = _AutoFillRequest.UpdateRequest
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | 表示自动填充的更新信息。 |
+| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | 表示自动填充的更新信息，用于传递需要更新的自动填充数据内容。 |
 
 ## UpdateRequest<sup>23+</sup>
 
@@ -109,7 +109,7 @@ type FillResponse = _FillResponse
 
 type FillRequestCallback = _AutoFillRequest.FillRequestCallback
 
-自动填充或者生成密码时的回调对象，可以通过此回调通知客户端成功或者失败。
+自动填充或者生成密码时的回调对象，用于通知客户端成功或者失败。
 
 **系统接口**：此接口为系统接口。
 
@@ -149,7 +149,7 @@ type FillRequestCallback = _FillRequestCallback
 
 type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback
 
-自动保存或者手动保存请求的回调对象。
+自动保存或者手动保存请求的回调对象。用于在保存操作完成后通知应用保存结果，包含保存成功或失败的状态信息。
 
 **系统接口**：此接口为系统接口。
 

@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)支持通过taskpool.cancel取消已提交的任务。取消等待中或延时未触发的任务时，任务不会继续执行；取消已经运行的任务时，运行时不会强制中断线程，任务函数需要通过taskpool.Task.isCanceled()或taskpool.Task.checkCancellation()感知取消状态并主动返回。
 

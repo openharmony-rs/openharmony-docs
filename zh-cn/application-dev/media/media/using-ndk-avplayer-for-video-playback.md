@@ -12,10 +12,10 @@
 
 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback)主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
 
-**图1** 播放状态变化示意图  
+ **播放状态变化示意图：**
 ![Playback status change](figures/playback-status-change-ndk.png)
 
-状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
+状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)。当播放处于AV_PREPARED/AV_PLAYING/AV_PAUSED/AV_COMPLETED状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
 
 ## 开发建议
 
@@ -54,11 +54,11 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 1. 创建AVPlayer实例：调用[OH_AVPlayer_Create()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_create)，AVPlayer初始化为[AV_IDLE](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)状态。
 
-2. 设置回调监听函数：使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，搭配全流程场景使用。支持的监听事件包括：
-   | 事件类型 | 说明 |
+2. 设置回调监听函数：使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，搭配全流程场景使用。支持的监听回调函数包括：
+   | 回调函数类型 | 说明 |
    | -------- | -------- |
-   | OH_AVPlayerOnInfoCallback | 必要事件，监听播放器的过程信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听，若在调用设置资源接口后再设置监听，可能导致无法收到资源设置过程中上报的OH_AVPlayerOnInfoCallback事件。 |
-   | OH_AVPlayerOnErrorCallback | 必要事件，监听播放器的错误信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听，若在调用设置资源接口后再设置监听，可能导致无法收到资源设置过程中上报的OH_AVPlayerOnErrorCallback事件。 |
+   | OH_AVPlayerOnInfoCallback | 必要回调函数，监听播放器的过程信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听，若在调用设置资源接口后再设置监听，可能导致无法收到资源设置过程中上报的信息事件。 |
+   | OH_AVPlayerOnErrorCallback | 必要回调函数，监听播放器的错误信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听，若在调用设置资源接口后再设置监听，可能导致无法收到资源设置过程中上报的信息事件。 |
 
     应用使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，可以获取更多信息，还可以通过设置 userData 区分不同播放实例。
 
@@ -68,7 +68,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 5. （可选）设置音频打断模式：调用[OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)，设置AVPlayer音频流打断模式。
 
-6. 设置播放画面窗口：调用[OH_AVPlayer_SetVideoSurface()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setvideosurface)设置播放画面窗口。此函数必须在SetSource之后，Prepare之前调用。
+6. 设置播放画面窗口：调用[OH_AVPlayer_SetVideoSurface()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setvideosurface)设置播放画面窗口。此函数必须在OH_AVPlayer_SetURLSource()之后，OH_AVPlayer_Prepare()之前调用。
 
 7. 准备播放：调用[OH_AVPlayer_Prepare()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_prepare)，AVPlayer进入[AV_PREPARED](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)状态，此时可以获取时长，设置音量。
 

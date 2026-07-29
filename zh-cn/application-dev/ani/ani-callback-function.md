@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS函数对象传入native后，可以通过`FunctionalObject_Call`从C++侧回调。这个能力适合native侧需要立即调用ArkTS回调函数或lambda函数对象的场景。
 

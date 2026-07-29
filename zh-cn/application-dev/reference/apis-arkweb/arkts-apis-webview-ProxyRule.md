@@ -6,9 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[insertProxyRule](./arkts-apis-webview-ProxyConfig.md#insertproxyrule15)中使用的代理规则。
+ProxyRule是ArkWeb框架中用于表示代理规则只读信息的类，通过[getProxyRules](./arkts-apis-webview-ProxyConfig.md#getproxyrules15)方法获取。当开发者通过ProxyConfig配置了代理规则后，可通过getProxyRules获取已配置的规则列表，每条规则对应一个ProxyRule对象，用于查询规则的详细信息。
+
+ProxyRule提供两个方法：getSchemeFilter用于获取该代理规则对应的协议过滤器（如MATCH_ALL_SCHEMES、MATCH_HTTP、MATCH_HTTPS等），getUrl用于获取该代理规则中指定的代理服务器URL信息。ProxyRule对象为只读，由系统在配置代理规则时创建，应用只能查询其内容而不能修改。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -23,6 +27,10 @@ getSchemeFilter(): ProxySchemeFilter
 获取代理规则中的ProxySchemeFilter信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -41,6 +49,10 @@ getUrl(): string
 获取代理规则中的代理的URL信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

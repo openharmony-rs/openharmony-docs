@@ -169,11 +169,11 @@ ArkTS-Sta: copyOptions(value: CopyOptions | undefined)
 
 从API version 20开始，RichEditor组件在执行复制或剪切操作时，会将HTML格式的内容添加到剪贴板中。
 
-- 仅支持TextSpan和ImageSpan向剪贴板中添加HTML内容，其他Span类型（如BuilderSpan、SymbolSpan、CustomSpan）则不能添加。
+- 仅支持[TextSpan](#richeditortextspanoptions)和[ImageSpan](#richeditorimagespanoptions)向剪贴板中添加HTML内容，其他Span类型（如[BuilderSpan](#richeditorbuilderspanoptions11)、[SymbolSpan](#richeditorsymbolspanoptions11)、[CustomSpan](ts-universal-styled-string.md#customspan)）则不能添加。
 
 - 设置RichEditor组件的属性字符串时，请参考属性字符串[toHtml](ts-universal-styled-string.md#tohtml14)接口文档，以了解支持转换为HTML的范围。
 
-copyOptions不为CopyOptions.None时，长按组件内容，会弹出文本选择菜单。如果通过bindSelectionMenu等方式自定义文本选择菜单，则会弹出自定义的菜单。
+copyOptions不为CopyOptions.None时，长按组件内容，会弹出文本选择菜单。如果通过[bindSelectionMenu](#bindselectionmenu)等方式自定义文本选择菜单，则会弹出自定义的菜单。
 
 设置copyOptions为CopyOptions.None时，禁用复制、剪切、翻译、分享、搜索、帮写功能，且不支持拖拽操作。
 
@@ -289,7 +289,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 是否启用选择文本识别。<br/>true表示启用选择文本识别；false表示不启用选择文本识别。<br/>传入undefined或null时属性重置为启用选择文本识别。 |
+| enable | boolean \| undefined | 是 | 是否启用选择文本识别，true表示启用，false表示不启用。<br>默认值：true。<br>设置为undefined或null时，取默认值。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -539,7 +539,7 @@ ArkTS-Sta: maxLines(maxLines: int | undefined)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 设置富文本可显示的最大行数。<br/>maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。<br/>同时设置组件高度和最大行数，组件高度优先生效。<br/>取值为undefined时，按照默认值处理。<br/>默认值：Infinity，可以无限输入。 <br/>取值范围：(0, +∞) |
+| maxLines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br>默认值：UINT32_MAX，可以无限输入，支持undefined类型。<br>取值范围：(0, UINT32_MAX]。传入≤0的值时，取默认值UINT32_MAX；设置为undefined或null时，取默认值。 |
 
 ### enableHapticFeedback<sup>13+</sup>
 
@@ -587,7 +587,7 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\><br/>ArkTS-Sta: [KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明) \| undefined | 是   | 键盘外观。<br/>取值为undefined时，按照默认值处理。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
+| appearance | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\><br/>ArkTS-Sta: [KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明) \| undefined | 是   | 键盘外观。<br>默认值：KeyboardAppearance.NONE_IMMERSIVE。<br>各枚举值适用场景请参考KeyboardAppearance枚举说明。<br>设置为undefined或null时，取默认值。 |
 
 ### stopBackPress<sup>18+</sup>
 
@@ -632,7 +632,7 @@ ArkTS-Sta: undoStyle(style: UndoStyle | undefined)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[UndoStyle](#undostyle20-1)&gt;<br/>ArkTS-Sta: [UndoStyle](#undostyle20-1) \| undefined  | 是   | 撤销还原是否保留原样式选项。取值为undefined时，按照UndoStyle.CLEAR_STYLE处理，撤销还原内容不保留原样式。 |
+| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[UndoStyle](#undostyle20-1)&gt;<br/>ArkTS-Sta: [UndoStyle](#undostyle20-1) \| undefined  | 是   | 撤销还原是否保留原样式选项。<br>默认值：UndoStyle.CLEAR_STYLE。<br>设置为undefined或null时，取默认值。 |
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -698,7 +698,7 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>设置为undefined时，首行和尾行不增加间距。 |
+| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br>true表示在首行和尾行增加间距，false表示在首行和尾行不增加间距。<br>默认值：false。<br>设置为undefined或null时，取默认值。 |
 
 ### fallbackLineSpacing<sup>23+</sup>
 
@@ -722,7 +722,7 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>设置为undefined时，行高不基于文字实际高度自适应。 |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 行高是否基于文字实际高度自适应。<br>true表示行高基于文字实际高度自适应，false表示行高不基于文字实际高度自适应。<br>默认值：false。<br>设置为undefined或null时，取默认值。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -750,7 +750,7 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。<br/>设置为undefined时，不开启行首标点符号压缩。 |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否开启行首标点符号压缩。<br>true表示开启行首标点符号压缩，false表示不开启行首标点符号压缩。<br>默认值：false。<br>设置为undefined或null时，取默认值。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -1295,7 +1295,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | ------------ | ------ | ---- | ----|------ |
 | insertOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否| 否    | 插入的文本偏移位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | insertValue  | string | 否| 否    | 插入的文本内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23  |
-| previewText<sup>12+</sup> | string | 否| 是    | 插入的预上屏文本内容。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12  <br/>**ArkTS-Sta起始版本：** 23|
+| previewText<sup>12+</sup> | string | 否| 是    | 插入的预上屏文本内容。<br>默认值：空字符串。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12  <br/>**ArkTS-Sta起始版本：** 23|
 
 
 ## RichEditorDeleteValue
@@ -2587,7 +2587,7 @@ SymbolSpan样式选项。
 | fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
@@ -4277,7 +4277,8 @@ class LeadingMarginCreator {
 
     return fontSizeLevel;
   }
-  // 获得字体字号级别，分别是从0到4级
+
+  // 获得外边距比例级别
   public getmarginLevel(Width: number) {
     let marginlevel: number = 1;
     if (Width == 40) {
@@ -4500,7 +4501,7 @@ struct Index {
 ![UpdateParagraphAndTypingStyle](figures/richEditorUpdateParagraphAndTypingStyle.gif)
 
 ### 示例8（设置文本字重与阴影）
-通过[updateParagraphStyle](#updateparagraphstyle11)接口设置文本字重与阴影。
+通过[updateSpanStyle](#updatespanstyle)接口设置文本字重与阴影。
 
 ``` ts
 @Entry
@@ -4628,7 +4629,7 @@ struct Index {
     Column() {
       Column({ space: 5 }) {
         Text('direction:Row').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row }) { // 子组件在容器主抽上行布局
+        Flex({ direction: FlexDirection.Row }) { // 子组件在容器主轴上行布局
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -4640,7 +4641,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:RowReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.RowReverse }) { // 子组件在容器主抽上反向行布局
+        Flex({ direction: FlexDirection.RowReverse }) { // 子组件在容器主轴上反向行布局
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -4652,7 +4653,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Column }) { // 子组件在容器主抽上列布局
+        Flex({ direction: FlexDirection.Column }) { // 子组件在容器主轴上列布局
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -4664,7 +4665,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:ColumnReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.ColumnReverse }) { // 子组件在容器主抽上反向列布局
+        Flex({ direction: FlexDirection.ColumnReverse }) { // 子组件在容器主轴上反向列布局
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -5625,7 +5626,6 @@ struct RichEditorExample {
 struct RichEditor_onEditingChange {
   controller: RichEditorController = new RichEditorController();
   @State controllerIsEditing: boolean = false;
-  @Builder
 
   build() {
     Column() {
@@ -5663,15 +5663,25 @@ struct RichEditor_onEditingChange {
 @Component
 struct RichEditorExample {
   controller: RichEditorController = new RichEditorController();
+  scroll: Scroller = new Scroller();
+  @State logContent: string = '';
+
   build() {
     Column() {
+      Scroll(this.scroll) {
+        Text(this.logContent).fontSize(15)
+      }
+      .height(300)
+      .scrollable(ScrollDirection.FREE)
+      .border({ color: Color.Red, width: 1 })
+
       RichEditor({ controller: this.controller })
-        .height(200)
+        .height(50)
         .borderWidth(1)
         .borderColor(Color.Red)
         .width("100%")
         .onReady(() => {
-          this.controller.addTextSpan('测试文字TestWord', { style: { fontColor: Color.Orange, fontSize: 30 } })
+          this.controller.addTextSpan('测试文字TestWord', { style: { fontColor: Color.Orange, fontSize: 30 } });
           this.controller.updateSpanStyle({
             start: -1,
             end: -1,
@@ -5679,67 +5689,76 @@ struct RichEditorExample {
             {
               fontWeight: FontWeight.Bolder
             }
-          })
+          });
         })
         .onWillChange((value: RichEditorChangeValue) => {
-          console.info('测试log: onWillChange');
-          console.info('rangeBefore: ' + JSON.stringify(value.rangeBefore));
-          console.info('print replacedSpans');
-          value.replacedSpans.forEach((item: RichEditorTextSpanResult) => {
-            console.info('spanPosition:' + JSON.stringify(item.spanPosition));
-            console.info('value:' + item.value);
-            console.info('textStyle:' + JSON.stringify(item.textStyle));
-            console.info('offsetInSpan:' + item.offsetInSpan);
-            console.info('valueResource:' + item.valueResource);
-            console.info('paragraphStyle:' + JSON.stringify(item.paragraphStyle));
-          })
-          console.info('print replacedImageSpans');
+          this.logContent += '\n测试log: onWillChange';
+          this.logContent += '\n  rangeBefore: ' + JSON.stringify(value.rangeBefore);
+          this.logContent += '\n  print replacedSpans';
+          value.replacedSpans.forEach((item: RichEditorTextSpanResult, index: number) => {
+            this.logContent += '\n    spanPosition:' + JSON.stringify(item.spanPosition);
+            this.logContent += '\n    value:' + item.value;
+            this.logContent += '\n    textStyle:' + JSON.stringify(item.textStyle);
+            this.logContent += '\n    offsetInSpan:' + item.offsetInSpan;
+            this.logContent += '\n    valueResource:' + item.valueResource;
+            this.logContent += '\n    paragraphStyle:' + JSON.stringify(item.paragraphStyle);
+          });
+          this.logContent += '\n  print replacedImageSpans';
           value.replacedImageSpans.forEach((item: RichEditorImageSpanResult) => {
-            console.info('spanPosition:' + JSON.stringify(item.spanPosition));
-            console.info('valuePixelMap:' + JSON.stringify(item.valuePixelMap));
-            console.info('valueResourceStr:' + item.valueResourceStr);
-            console.info('imageStyle:' + JSON.stringify(item.imageStyle));
-            console.info('offsetInSpan:' + item.offsetInSpan);
-          })
-          console.info('print replacedSymbolSpans');
+            this.logContent += '\n    spanPosition:' + JSON.stringify(item.spanPosition);
+            this.logContent += '\n    valuePixelMap:' + JSON.stringify(item.valuePixelMap);
+            this.logContent += '\n    valueResourceStr:' + item.valueResourceStr;
+            this.logContent += '\n    imageStyle:' + JSON.stringify(item.imageStyle);
+            this.logContent += '\n    offsetInSpan:' + item.offsetInSpan;
+          });
+          this.logContent += '\n  print replacedSymbolSpans';
           value.replacedSymbolSpans.forEach((item: RichEditorTextSpanResult) => {
-            console.info('spanPosition:' + JSON.stringify(item.spanPosition));
-            console.info('value:' + item.value);
-            console.info('offsetInSpan:' + item.offsetInSpan);
-            console.info('symbolSpanStyle:' + JSON.stringify(item.symbolSpanStyle));
-            console.info('valueResource:' + item.valueResource);
-            console.info('paragraphStyle:' + JSON.stringify(item.paragraphStyle));
-          })
+            this.logContent += '\n    spanPosition:' + JSON.stringify(item.spanPosition);
+            this.logContent += '\n    value:' + item.value;
+            this.logContent += '\n    offsetInSpan:' + item.offsetInSpan;
+            this.logContent += '\n    symbolSpanStyle:' + JSON.stringify(item.symbolSpanStyle);
+            this.logContent += '\n    valueResource:' + item.valueResource;
+            this.logContent += '\n    paragraphStyle:' + JSON.stringify(item.paragraphStyle);
+          });
+          this.logContent += '\n  ===========================================';
           return true;
         })
         .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-          console.info('测试log: onDidChange');
-          console.info('rangeBefore:' + JSON.stringify(rangeBefore));
-          console.info('rangeAfter:' + JSON.stringify(rangeAfter));
+          this.logContent += '\n测试log: onDidChange';
+          this.logContent += '\n  rangeBefore: ' + JSON.stringify(rangeBefore);
+          this.logContent += '\n  rangeAfter: ' + JSON.stringify(rangeAfter);
+          this.logContent += '\n  ===========================================';
+          setTimeout(() => {
+            this.scroll.scrollEdge(Edge.Bottom);
+          }, 100);
         })
-        .onCut((event:CutEvent) => {
-          event.preventDefault!()
+        .onCut((event: CutEvent) => {
+          event.preventDefault?.();
           console.info('测试log：onCut');
         })
-        .onCopy((event:CopyEvent) => {
-          event.preventDefault!()
+        .onCopy((event: CopyEvent) => {
+          event.preventDefault!();
           console.info('测试log：onCopy');
         })
-        .onPaste(()=>{
+        .onPaste(() => {
           console.info('测试log：onPaste');
         })
+
       Text('测试文字Hello')
         .lineHeight(50)
         .fontSize(24)
         .draggable(true)
-        .onDragStart(()=>{})
-      TextInput({text:'测试文字NiHao'})
+        .onDragStart(() => {
+        })
+      TextInput({ text: '测试文字NiHao' })
         .draggable(true)
         .margin(20)
     }
   }
 }
 ```
+![richEditorOnWillChange](figures/richEditorOnWillChange.gif)
+
 ### 示例19（配置输入法enter键功能）
 通过[enterKeyType](#enterkeytype12)属性设置软键盘输入法回车键类型。
 
@@ -6057,7 +6076,7 @@ struct Index {
 ```ts
 @Entry
 @Component
-export struct Index {
+struct Index {
   @State lineCount: string = ""
   @State glyphPositionAtCoordinate: string = ""
   @State lineMetrics: string = ""
@@ -7057,6 +7076,7 @@ struct RichEditorExample {
   }
 }
 ```
+ ![richEditorSetTypingParagraphStyle](figures/richEditorSetTypingParagraphStyle.gif)
 
 ### 示例30（设置装饰线粗细和多装饰线）
 从API version 20开始，该示例通过[DecorationStyle](ts-universal-styled-string.md#decorationstyle)中的thicknessScale设置装饰线粗细，通过[enableMultiType](ts-universal-styled-string.md#decorationoptions20)设置多装饰线。
@@ -8393,19 +8413,12 @@ struct ShaderColorStyle {
     };
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  controller1: RichEditorController = new RichEditorController();
-  options1: RichEditorOptions = { controller: this.controller1 };
+  secondaryController: RichEditorController = new RichEditorController();
+  secondaryOptions: RichEditorOptions = { controller: this.secondaryController };
   controller2: RichEditorController = new RichEditorController();
   options2: RichEditorOptions = { controller: this.controller2 };
   controller3: RichEditorController = new RichEditorController();
   options3: RichEditorOptions = { controller: this.controller3 };
-
-  aboutToAppear() {
-    this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } })
-    this.controller1.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } })
-    this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } })
-    this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } })
-  }
 
   build() {
     Column({ space: 5 }) {
@@ -8415,11 +8428,15 @@ struct ShaderColorStyle {
         .width('80%')
         .margin({ top: 10 })
         .onReady(() => {
+          this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } });
           let spans: Array<RichEditorImageSpanResult | RichEditorTextSpanResult> =
-              this.controller.getSpans();
+            this.controller.getSpans();
           if (spans.length > 0 && (spans[0] as RichEditorTextSpanResult).paragraphStyle) {
             let shaderStyle: ShaderStyle | undefined =
               (spans[0] as RichEditorTextSpanResult).paragraphStyle?.shaderStyle;
+            if (!shaderStyle) {
+              return;
+            }
             if (typeof (shaderStyle as ColorShaderStyle)['color'] != 'undefined') {
               console.info(' color shaderStyle : ' + JSON.stringify(shaderStyle));
             } else if (typeof (shaderStyle as RadialGradientStyle)['options']['center'] != 'undefined') {
@@ -8431,22 +8448,32 @@ struct ShaderColorStyle {
         }).borderWidth(1)
       Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
-      RichEditor(this.options1)
+      RichEditor(this.secondaryOptions)
         .width('80%')
         .margin({ top: 10 })
         .borderWidth(1)
+        .onReady(() => {
+          this.secondaryController.addTextSpan(this.message,
+            { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } });
+        })
       Text('径向渐变').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.options2)
         .width('80%')
         .margin({ top: 10 })
         .borderWidth(1)
+        .onReady(() => {
+          this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } });
+        })
       Text('纯色').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.options3)
         .width('80%')
         .margin({ top: 10 })
         .borderWidth(1)
+        .onReady(() => {
+          this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } });
+        })
     }
   }
 }

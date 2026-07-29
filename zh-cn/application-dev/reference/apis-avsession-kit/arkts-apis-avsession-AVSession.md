@@ -135,6 +135,8 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let metadata: avSession.AVMetadata = {
   assetId: "121278",
   title: "lose yourself",
@@ -156,7 +158,11 @@ let metadata: avSession.AVMetadata = {
   previousAssetId: "121277",
   nextAssetId: "121279"
 };
-currentAVSession.setAVMetadata(metadata, () => {
+currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVMetadata, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVMetadata.');
 });
 ```
@@ -198,9 +204,11 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 **示例：**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -220,18 +228,21 @@ class CallManager {
   private currentAVSession: avSession.AVSession | null = null;
 
   async setCallMetadata() {
-    try {
-      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-      let imageSource = await image.createImageSource(value.buffer);
-      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-      let calldata: avSession.CallMetadata = {
-        name: "xiaoming",
-        phoneNumber: "111xxxxxxxx",
-        avatar: imagePixel
-      };
-      await this.currentAVSession?.setCallMetadata(calldata);
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
       console.info('Succeeded in setting call metadata.');
-    }
+    });
   }
 }
 ```
@@ -268,6 +279,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { avSession } from '@kit.AVSessionKit';
@@ -290,19 +302,21 @@ class CallManager {
   private currentAVSession: avSession.AVSession | null = null;
 
   async setCallMetadata() {
-    try {
-      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-      let imageSource = await image.createImageSource(value.buffer);
-      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-      let calldata: avSession.CallMetadata = {
-        name: "xiaoming",
-        phoneNumber: "111xxxxxxxx",
-        avatar: imagePixel
-      };
-      this.currentAVSession?.setCallMetadata(calldata, () => {
-        console.info('Succeeded in setting call metadata.');
-      });
-    }
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in setting call metadata.');
+    });
   }
 }
 ```
@@ -385,11 +399,17 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let avcalldata: avSession.AVCallState = {
   state: avSession.CallState.CALL_STATE_ACTIVE,
   muted: false
 };
-currentAVSession.setAVCallState(avcalldata, () => {
+currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVCallState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVCallState.');
 });
 ```
@@ -478,6 +498,8 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let PlaybackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
   speed: 1.0,
@@ -486,7 +508,11 @@ let PlaybackState: avSession.AVPlaybackState = {
   loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
   isFavorite:true
 };
-currentAVSession.setAVPlaybackState(PlaybackState, () => {
+currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVPlaybackState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
@@ -604,6 +630,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // WantAgentInfo对象。
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -634,7 +661,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 }
 
 wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
-  currentAVSession.setLaunchAbility(agent, () => {
+  currentAVSession.setLaunchAbility(agent, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to set launch ability, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
     console.info('Succeeded in setting launch ability.');
   });
 });
@@ -666,7 +697,8 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Pr
 | args | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的会话事件内容。 |
 
 > **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
 
@@ -687,36 +719,10 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Pr
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              let eventName = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+let eventName = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+  console.info('Succeeded in dispatching session event.');
+});
 ```
 
 ## dispatchSessionEvent<sup>10+</sup>
@@ -746,8 +752,8 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>, cal
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当会话事件设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当会话事件设置成功，err为null，否则返回错误对象。 |
 
 > **说明：**
-
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
@@ -762,36 +768,166 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>, cal
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              let eventName: string = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, () => {
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+let eventName: string = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to dispatch session event, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in dispatching session event.');
+});
+```
+
+## setAVQueueItems<sup>10+</sup>
+
+setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
+
+设置媒体播放列表名称。结果通过Promise异步回调方式返回。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| items  | Array\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 播放列表单项的队列，用以表示播放列表。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当播放列表设置成功，无返回结果，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 6600101  | Session service exception.|
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage : imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+} as avSession.AVQueueItem;
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+} as avSession.AVQueueItem;
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+  console.info('Succeeded in setting AVQueueItems.');
+});
+```
+
+## setAVQueueItems<sup>10+</sup>
+
+setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): void
+
+设置媒体播放列表名称。结果通过callback异步回调方式返回。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明     |
+| -------- | --------------------- | ---- | ----------------------------|
+| items    | Array\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 播放列表单项的队列，用以表示播放列表。 |
+| callback | AsyncCallback\<void>  | 是   | 回调函数。<br>ArkTS-Dyn：当播放列表设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当播放列表设置成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 6600101  | Session service exception.|
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+};
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+};
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting AVQueueItems.');
+});
 ```
 
 ## setAVQueueTitle<sup>10+</sup>
@@ -833,60 +969,10 @@ setAVQueueTitle(title: string): Promise\<void>
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-import { resourceManager } from '@kit.LocalizationKit';
-import { avSession } from '@kit.AVSessionKit';
-
-interface ExtrasType {
-  extras: string;
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-    }
-  }
-}
-
-let currentAVSession: avSession.AVSession;
-
-async function setAVQueueItems() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let queueItemDescription_1: avSession.AVMediaDescription = {
-      assetId: '001',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage : imagePixel,
-      extras: {extras:'any'}
-    };
-    let queueItem_1: avSession.AVQueueItem = {
-      itemId: 1,
-      description: queueItemDescription_1
-    } as avSession.AVQueueItem;
-    let queueItemDescription_2: avSession.AVMediaDescription = {
-      assetId: '002',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage: imagePixel,
-      extras: {extras:'any'}
-    };
-    let queueItem_2: avSession.AVQueueItem = {
-      itemId: 2,
-      description: queueItemDescription_2
-    } as avSession.AVQueueItem;
-    let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-    currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-      console.info('Succeeded in setting AVQueueItems.');
-    });
-  }
-}
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle).then(() => {
+  console.info('Succeeded in setting AVQueueTitle.');
+});
 ```
 
 ## setAVQueueTitle<sup>10+</sup>
@@ -921,8 +1007,14 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let queueTitle = 'QUEUE_TITLE';
-currentAVSession.setAVQueueTitle(queueTitle).then(() => {
+currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueTitle, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
@@ -950,8 +1042,8 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 | extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
 
 > **说明：**
-
-> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
 
@@ -972,34 +1064,9 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(() => {
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-(currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                  console.info('Succeeded in setting extras.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => {
+  console.info('Succeeded in setting extras.');
+});
 ```
 
 ## setExtras<sup>10+</sup>
@@ -1026,8 +1093,8 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<vo
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当自定义媒体数据包设置成功，err为null，否则返回错误对象。 |
 
 > **说明：**
-
-> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
@@ -1040,35 +1107,17 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<vo
 | 6600102  | The session does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, () => {
-                  console.info('Succeeded in setting extras.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+currentAVSession.setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in setting extras.');
+})
 ```
 
 ## setDesktopLyricVisible<sup>23+</sup>
@@ -1111,35 +1160,9 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).setDesktopLyricVisible(true).then(() => {
-              console.info('setDesktopLyricVisible successfully');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setDesktopLyricVisible(true).then(() => {
+  console.info('Succeeded in setting desktop lyric visible.');
+});
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1175,34 +1198,9 @@ isDesktopLyricVisible(): Promise\<boolean>
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
-              console.info(`isDesktopLyricVisible: ${visible}`);
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.isDesktopLyricVisible().then((visible: boolean) => {
+  console.info(`isDesktopLyricVisible: ${visible}`);
+});
 ```
 
 ## onDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1236,36 +1234,10 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
-                console.info(`desktop lyric visible state: ${visible}`);
-              });
-            } catch (err) {
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
+    console.info(`desktop lyric visible state: ${visible}`);
+  });
 }
 ```
 
@@ -1302,34 +1274,8 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
-            } catch (err) {
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
 }
 ```
 
@@ -1349,8 +1295,8 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明       |
-| ------ | ------ | ---- | ---------- |
+| 参数名  | 类型                                          | 必填 | 说明     |
+| ------- | --------------| ---- | ----------------------------|
 | state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | 是   | 桌面歌词状态。 |
 
 **返回值：**
@@ -1373,38 +1319,12 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            let state: avSession.DesktopLyricState = {
-              isLocked: true,
-            };
-            (currentAVSession as avSession.AVSession).setDesktopLyricState(state).then(() => {
-              console.info('setDesktopLyricState successfully');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+currentAVSession.setDesktopLyricState(state).then(() => {
+  console.info('setDesktopLyricState successfully');
+});
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1416,6 +1336,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -1441,36 +1362,11 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).getDesktopLyricState()
-              .then((state: avSession.DesktopLyricState) => {
-                console.info(`getDesktopLyricState: ${state.isLocked}`);
-              })
-              
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).getDesktopLyricState()
+    .then((state: avSession.DesktopLyricState) => {
+    console.info(`getDesktopLyricState: ${state.isLocked}`);
+  })
 }
 ```
 
@@ -1505,37 +1401,12 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-                console.info(`desktop lyric isLocked : ${state.isLocked}`);
-              })
-            } catch (err) {
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+try {
+  currentAVSession.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+    console.info(`desktop lyric isLocked : ${state.isLocked}`);
+  });
+} catch (err) {
+  console.error(`Failed to register desktop lyric state changed, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1572,34 +1443,10 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
-            } catch (err) {
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+try {
+  currentAVSession.offDesktopLyricStateChanged();
+} catch (err) {
+  console.error(`Failed to unregister desktop lyric state changed, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1641,34 +1488,9 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-            });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
-                console.info('Succeeded in sending custom data.');
-            })
-            }
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
+  console.info('Succeeded in sending custom data.');
+});
 ```
 
 ## enableDesktopLyric<sup>23+</sup>
@@ -1710,35 +1532,9 @@ enableDesktopLyric(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
-              console.info('Succeeded in enabling desktop lyric.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.enableDesktopLyric(true).then(() => {
+    console.info('Succeeded in enabling desktop lyric.');
+});
 ```
 
 ## setDesktopLyricVisible<sup>23+</sup>
@@ -1781,35 +1577,9 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).setDesktopLyricVisible(true).then(() => {
-              console.info('Succeeded in setting desktop lyric visible.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setDesktopLyricVisible(true).then(() => {
+  console.info('Succeeded in setting desktop lyric visible.');
+});
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1846,34 +1616,9 @@ isDesktopLyricVisible(): Promise\<boolean>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
-              console.info(`isDesktopLyricVisible: ${visible}`);
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.isDesktopLyricVisible().then((visible: boolean) => {
+  console.info(`isDesktopLyricVisible: ${visible}`);
+});
 ```
 
 ## onDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1908,34 +1653,9 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
-              console.info(`desktop lyric visible state: ${visible}`);
-            });
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.onDesktopLyricVisibilityChanged((visible: boolean) => {
+  console.info(`desktop lyric visible state: ${visible}`);
+});
 ```
 
 ## offDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1970,33 +1690,9 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 | 6600102  | The session does not exist. |
 
 **示例：**
-
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
 }
 ```
 
@@ -2040,38 +1736,12 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            let state: avSession.DesktopLyricState = {
-              isLocked: true,
-            };
-            (currentAVSession as avSession.AVSession).setDesktopLyricState(state).then(() => {
-              console.info('Succeeded in setting desktop lyric state.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+currentAVSession.setDesktopLyricState(state).then(() => {
+  console.info('setDesktopLyricState successfully');
+});
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -2108,36 +1778,10 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).getDesktopLyricState()
-              .then((state: avSession.DesktopLyricState) => {
-                console.info(`getDesktopLyricState: ${state.isLocked}`);
-              })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.getDesktopLyricState()
+    .then((state: avSession.DesktopLyricState) => {
+    console.info(`getDesktopLyricState: ${state.isLocked}`);
+});
 ```
 
 ## onDesktopLyricStateChanged<sup>23+</sup>
@@ -2170,36 +1814,11 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 | 6600102  | The session does not exist. |
 
 **示例：**
-
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-              console.info(`desktop lyric isLocked : ${state.isLocked}`);
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+    console.info(`desktop lyric isLocked : ${state.isLocked}`);
+  })
 }
 ```
 
@@ -2223,7 +1842,7 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 | 参数名 | 类型                   | 必填 | 说明                            |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
 
 **错误码：**
 
@@ -2235,33 +1854,9 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 | 6600102  | The session does not exist. |
 
 **示例：**
-
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
 }
 ```
 
@@ -2489,29 +2084,9 @@ getController(): Promise\<AVSessionController>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async ()=>{
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avSessionController: avSession.AVSessionController;
-          currentAVSession.getController().then((avController: avSession.AVSessionController) => {
-            avSessionController = avController;
-            console.info(`Succeeded in getting controller, sessionid: ${avSessionController.sessionId}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.getController().then((avcontroller: avSession.AVSessionController) => {
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
 ```
 
 ## getController<sup>10+</sup>
@@ -2544,30 +2119,13 @@ getController(callback: AsyncCallback\<AVSessionController>): void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController((avcontroller: avSession.AVSessionController) => {
-            avsessionController = avcontroller;
-            console.info(`Succeeded in getting controller, sessionid: ${avsessionController.sessionId}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
+currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+  if (err) {
+    console.error(`Failed to get controller, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
 ```
 
 ## getAVCastController<sup>10+</sup>
@@ -2647,8 +2205,14 @@ ArkTS-Sta: getAVCastController(callback: AsyncCallback<AVCastController | undefi
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let avCastController: avSession.AVCastController;
-currentAVSession.getAVCastController((avcontroller: avSession.AVCastController) => {
+currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+  if (err) {
+    console.error(`Failed to get AV cast controller, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   avCastController = avcontroller;
   console.info('Succeeded in getting AV cast controller.');
 });
@@ -2721,7 +2285,13 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.getOutputDevice((outputDeviceInfo: avSession.OutputDeviceInfo) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  if (err) {
+    console.error(`Failed to get output device, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 });
 ```
@@ -2755,6 +2325,13 @@ activate(): Promise\<void>
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
+**示例：**
+
+```ts
+currentAVSession.activate().then(() => {
+  console.info('Succeeded in activating.');
+});
+```
 
 ## activate<sup>10+</sup>
 
@@ -2786,7 +2363,13 @@ activate(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-currentAVSession.activate(() => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.activate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to activate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in activating.');
 });
 ```
@@ -2862,7 +2445,13 @@ deactivate(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-currentAVSession.deactivate().then(() => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.deactivate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to deactivate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in deactivating.');
 });
 ```
@@ -2934,7 +2523,13 @@ destroy(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-currentAVSession.destroy(() => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.destroy((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to destroy, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in destroying.');
 });
 ```
@@ -3532,7 +3127,7 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playWithAssetId'`，当指定资源id进行播放时，触发该事件回调。 |
-| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体id。      |
+| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体ID。      |
 
 **错误码：**
 
@@ -3570,7 +3165,7 @@ onPlayWithAssetId(callback: Callback\<string>): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体id。      |
+| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体ID。      |
 
 **错误码：**
 
@@ -3612,8 +3207,8 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'playWithAssetId'`。 |
-| callback | Callback\<string> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体id。 |
+| type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
+| callback | Callback\<string> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -3652,7 +3247,7 @@ offPlayWithAssetId(callback?: Callback\<string>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | Callback\<string> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体id。 |
+| callback | Callback\<string> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -4232,7 +3827,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 注册播放设备变化的事件监听。使用callback异步回调。
 
-应用接入[multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+应用接入[@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -4275,7 +3870,7 @@ onOutputDeviceChange(callback: ConnectionEvent): void
 
 注册播放设备变化的事件监听。使用callback异步回调。
 
-应用接入[multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+应用接入[@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4344,34 +3939,9 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-            });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
-                console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-            });
-            }
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.on('commonCommand', (commonCommand, args) => {
+  console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+});
 ```
 
 ## onCommonCommand<sup>23+</sup>
@@ -4406,34 +3976,9 @@ onCommonCommand(callback: EventProcess): void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err | null, data: avSession.AVSession | undefined) => {
-            currentAVSession = data;
-            });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).onCommonCommand((commonCommand, args) => {
-                console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-            });
-            }
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.onCommonCommand((commonCommand, args) => {
+  console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+});
 ```
 
 ## off('play')<sup>10+</sup>
@@ -5596,6 +5141,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | -------- | --------- | ---- | ----------------------|
 | type     | string    | 是   | 取消对应的事件监听，支持事件`'commonCommand'`。    |
 | callback |(command: string, args:{[key: string]: Object}) => void | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。|
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
@@ -5706,7 +5252,7 @@ onAnswer(callback: NoParamCallback): void
 
 | 参数名   | 类型   |  必填 | 说明     |
 | -------- | --------- | ---- | --------- |
-| callback | NoParamCallback                                               | 是   | 回调函数。                      |
+| callback | NoParamCallback  | 是   | 回调函数。|
 
 **错误码：**
 
@@ -6141,11 +5687,12 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 ```ts
 let castDisplay: avSession.CastDisplayInfo;
 currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) => {
-    if (display.state === avSession.CastDisplayState.STATE_ON) {
-        castDisplay = display;
-        console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
-    } else if (display.state === avSession.CastDisplayState.STATE_OFF){
-        console.info(`Succeeded in castDisplayChange display : ${display.id} OFF`);
+  if (display.state === avSession.CastDisplayState.STATE_ON) {
+    castDisplay = display;
+    console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
+  } else if (display.state === avSession.CastDisplayState.STATE_OFF){
+    console.info(`Succeeded in castDisplayChange display : ${display.id} OFF`);
+  }
 });
 ```
 
@@ -6183,11 +5730,12 @@ onCastDisplayChange(callback: Callback\<CastDisplayInfo>): void
 ```ts
 let castDisplay: avSession.CastDisplayInfo;
 currentAVSession.onCastDisplayChange((display: avSession.CastDisplayInfo) => {
-    if (display.state === avSession.CastDisplayState.STATE_ON) {
-        castDisplay = display;
-        console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
-    } else if (display.state === avSession.CastDisplayState.STATE_OFF){
-        console.info(`Succeeded in castDisplayChange display : ${display.id} OFF`);
+  if (display.state === avSession.CastDisplayState.STATE_ON) {
+    castDisplay = display;
+    console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
+  } else if (display.state === avSession.CastDisplayState.STATE_OFF){
+    console.info(`Succeeded in castDisplayChange display : ${display.id} OFF`);
+  }
 });
 ```
 
@@ -6330,10 +5878,10 @@ stopCasting(): Promise\<void>
 **示例：**
 
 ```ts
-currentAVSession.stopCasting().then(() => { 
+currentAVSession.stopCasting().then(() => {
   console.info('Succeeded in stopping casting.');
 });
- ```
+```
 
 ## getOutputDeviceSync<sup>10+</sup>
 
@@ -6404,21 +5952,21 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 ```ts
 let castDisplay: avSession.CastDisplayInfo;
 currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
-    if (data.length >= 1) {
-       castDisplay = data[0];
-     }
-    });
+  if (data.length >= 1) {
+    castDisplay = data[0];
+  }
+});
 ```
 
 ## on('playFromAssetId')<sup>(deprecated)</sup>
 
 on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
-注册媒体id播放事件监听。使用callback异步回调。
+设置媒体ID播放监听事件。
 
 > **说明：**
 > 
-> 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[on('playWithAssetId')](#onplaywithassetid20)设置媒体id播放事件监听。
+> 从API version 11开始支持，从API version 20开始废弃。建议使用[on('playWithAssetId')](#onplaywithassetid20)设置媒体ID播放事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6432,8 +5980,8 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| type     | string               | 是   | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体id播放时，触发该事件回调。 |
-| callback | (assetId: number) => void | 是   | 回调函数。参数assetId是媒体id。      |
+| type     | string               | 是   | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体ID播放时，触发该事件回调。 |
+| callback | (assetId: number) => void | 是   | 回调函数。参数assetId是媒体ID。      |
 
 **错误码：**
 
@@ -6457,11 +6005,11 @@ currentAVSession.on('playFromAssetId', (assetId: number) => {
 
 off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
-注销媒体id播放事件监听，关闭后，不再进行该事件回调。
+取消媒体ID播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 > **说明：**
 >
-> 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[off('playWithAssetId')](#offplaywithassetid20)取消媒体id播放事件监听。
+> 从API version 11开始支持，从API version 20开始废弃。建议使用[off('playWithAssetId')](#offplaywithassetid20)取消媒体ID播放事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6476,7 +6024,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的事件监听，支持的事件是`'playFromAssetId'`。 |
-| callback | (assetId: number) => void | 否   | 回调函数。<br>ArkTS-Dyn：当事件监听取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体id。 |
+| callback | (assetId: number) => void | 否   | 回调函数。<br>ArkTS-Dyn：当事件监听取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当事件监听取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
 
 **错误码：**
 
@@ -6529,8 +6077,9 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-currentAVSession.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+currentAVSession.on('customDataChange', (callback) =>
+{
+  console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
 ```
 
@@ -6566,8 +6115,9 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-currentAVSession.onCustomDataChange(callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+currentAVSession.onCustomDataChange((callback) =>
+{
+  console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
 ```
 

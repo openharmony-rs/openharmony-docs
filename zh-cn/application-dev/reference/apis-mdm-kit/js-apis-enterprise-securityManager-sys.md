@@ -24,11 +24,15 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-## securityManager.getSecurityPatchTag
+## securityManager.getSecurityPatchTag<sup>(deprecated)</sup>
 
 getSecurityPatchTag(admin: Want): string
 
 查询设备安全补丁Tag。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getSecurityStatus](./js-apis-enterprise-securityManager.md#securitymanagergetsecuritystatus)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -81,11 +85,15 @@ try {
   console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-## securityManager.getDeviceEncryptionStatus
+## securityManager.getDeviceEncryptionStatus<sup>(deprecated)</sup>
 
 getDeviceEncryptionStatus(admin: Want): DeviceEncryptionStatus
 
 查询设备文件系统加密状态。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getSecurityStatus](./js-apis-enterprise-securityManager.md#securitymanagergetsecuritystatus)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 

@@ -6,9 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-此类用于为应用程序设置代理。
+ProxyController是ArkWeb框架中用于管理应用中所有Web组件代理设置的静态类。通过ProxyController，开发者可以统一为应用中的所有Web请求设置或移除代理配置，适用于需要将Web流量路由到特定代理服务器的场景（如企业网络环境、内容过滤、流量监控等）。
+
+ProxyController提供两个核心方法：applyProxyOverride用于应用代理配置，接受一个[ProxyConfig](./arkts-apis-webview-ProxyConfig.md)对象和代理设置成功的回调函数；removeProxyOverride用于移除当前代理配置，恢复为默认网络连接方式。需要注意的是，代理设置或移除后不会立即生效，在加载页面之前需等待监听器触发，该监听器会在UI线程上被调用。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -29,6 +33,10 @@ static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChang
 设置应用中所有Web使用的代理配置，与[insertBypassRule](./arkts-apis-webview-ProxyConfig.md#insertbypassrule15)中插入的bypass规则匹配的URL将不会使用代理，而是直接向URL指定的源地址发起请求。代理设置成功后，不保证网络连接后会立即使用新的代理设置，在加载页面之前请等待监听器触发，这个监听器将在UI线程上被调用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -57,6 +65,10 @@ static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
@@ -73,6 +85,7 @@ static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -155,4 +168,87 @@ struct WebComponent {
   }
 }
 
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { State, Entry, Column, Component, Web, Button, Row } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  proxyRules: webview.ProxyRule[] = [];
+
+  build() {
+    Row() {
+      Column() {
+        Button("applyProxyOverride").onClick(()=>{
+          let proxyConfig:webview.ProxyConfig = new webview.ProxyConfig();
+          try {
+            proxyConfig.insertProxyRule("https://proxy.XXX.com", webview.ProxySchemeFilter.MATCH_ALL_SCHEMES);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+          try {
+            proxyConfig.insertDirectRule(webview.ProxySchemeFilter.MATCH_HTTP);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+          try {
+            proxyConfig.insertBypassRule("*.example.com");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+          proxyConfig.clearImplicitRules();
+          proxyConfig.bypassHostnamesWithoutPeriod();
+          try {
+            proxyConfig.enableReverseBypass(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+          let bypassRules = proxyConfig.getBypassRules();
+          for (let i: int = 0; i < bypassRules.length; i++) {
+            console.info("bypassRules: " + bypassRules[i]);
+          }
+          this.proxyRules = proxyConfig.getProxyRules();
+          for (let i: int = 0; i < this.proxyRules.length; i++) {
+            console.info("SchemeFilter: " + this.proxyRules[i].getSchemeFilter());
+            console.info("Url: " + this.proxyRules[i].getUrl());
+          }
+          let isReverseBypassRule = proxyConfig.isReverseBypassEnabled();
+          console.info("isReverseBypassRules: " + isReverseBypassRule);
+          try {
+            webview.ProxyController.applyProxyOverride(proxyConfig, () => {
+              console.info("PROXYCONTROLLER proxy changed");
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+        })
+        Button("loadUrl-https").onClick(()=>{
+          this.controller.loadUrl("https://www.example.com")
+        })
+        Button("loadUrl-http").onClick(()=>{
+          this.controller.loadUrl("http://www.example.com")
+        })
+        Button("removeProxyOverride").onClick(()=>{
+          try {
+          webview.ProxyController.removeProxyOverride(() => {
+            console.info("PROXYCONTROLLER proxy changed");
+          });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
+          }
+        })
+        Web({ src: 'www.example.com', controller: this.controller})
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

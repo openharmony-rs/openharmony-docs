@@ -145,7 +145,7 @@ ArkTS-Sta: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions | und
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
-关于区域变化相关的参数。
+关于可见区域变化相关的参数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

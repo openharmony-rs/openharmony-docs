@@ -280,7 +280,7 @@ writeInterfaceToken(token: string): void
 
   | 参数名 | 类型   | 必填 | 说明               |
   | ------ | ------ | ---- | ------------------ |
-  | token  | string | 是   | 字符串类型描述符，其长度应小于40960字节。 |
+  | token  | string | 是   | 字符串类型描述符，其长度应小于40960。 |
 
 **错误码：**
 
@@ -288,7 +288,7 @@ writeInterfaceToken(token: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length is greater than or equal to 40960 bytes;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length is greater than or equal to 40960;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -1001,6 +1001,7 @@ ArkTS-Sta: writeInt(val: int): void
 **示例：**
 
 ```ts
+// 在原子化服务中，本示例仅用于说明writeInt()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1048,6 +1049,7 @@ ArkTS-Sta: readInt(): int
 **示例：**
 
 ```ts
+// 在原子化服务中，本示例仅用于说明readInt()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1543,7 +1545,7 @@ writeString(val: string): void
 
   | 参数名 | 类型   | 必填 | 说明                                      |
   | ------ | ------ | ---- | ----------------------------------------- |
-  | val    | string | 是   | 要写入的字符串值，其长度应小于40960字节。 |
+  | val    | string | 是   | 要写入的字符串值，其长度应小于40960。 |
 
 **错误码：**
 
@@ -1551,12 +1553,13 @@ writeString(val: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
 
 ```ts
+// 在原子化服务中，本示例仅用于说明writeString()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1602,6 +1605,7 @@ readString(): string
 **示例：**
 
 ```ts
+// 在原子化服务中，本示例仅用于说明readString()接口的使用方法，示例中rpc.MessageSequence.create()暂不支持在原子化服务中调用。
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2327,6 +2331,7 @@ try {
   data.writeLongArray([1111, 1112, 1113]);
   let array: Array<number> = new Array(3);
   data.readLongArray(array);
+  hilog.info(0x0000, 'testTag', 'readLongArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -2488,6 +2493,7 @@ try {
   data.writeFloatArray([1.2, 1.3, 1.4]);
   let array: Array<number> = new Array(3);
   data.readFloatArray(array);
+  hilog.info(0x0000, 'testTag', 'readFloatArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -3037,7 +3043,7 @@ writeStringArray(stringArray: string[]): void
 
   | 参数名      | 类型     | 必填 | 说明                                                    |
   | ----------- | -------- | ---- | ------------------------------------------------------- |
-  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960字节。 |
+  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960。 |
 
 **错误码：**
 
@@ -3045,7 +3051,7 @@ writeStringArray(stringArray: string[]): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length is greater than or equal to 40960 bytes; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length is greater than or equal to 40960; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -4267,7 +4273,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
   | 参数名    | 类型                      | 必填 | 说明                        |
   | --------- | ------------------------- | ---- | --------------------------- |
   | buf       | ArrayBuffer               | 是   | 要写入的ArrayBuffer数据。   |
-  | typeCode  | [TypeCode](#typecode12)   | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作(会根据业务传递的类型枚举值去决定底层的写入方式，需要业务正确传递枚举值。) |
+  | typeCode  | [TypeCode](#typecode12)   | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的写入方式，需要业务正确传递枚举值。） |
 
 **错误码：**
 
@@ -4317,7 +4323,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
   | 参数名   | 类型                     | 必填 | 说明                   |
   | -------- | ----------------------- | ---- | ------------------------|
-  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作(会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。)  |
+  | typeCode | [TypeCode](#typecode12) | 是   | ArrayBuffer数据具体是以哪一种TypedArray来访问和操作（会根据业务传递的类型枚举值去决定底层的读取方式，需要业务正确传递枚举值，读写枚举值不匹配会导致数据异常。）  |
 
 **返回值：**
 
@@ -4570,7 +4576,7 @@ writeInterfaceToken(token: string): boolean
 
   | 参数名 | 类型   | 必填 | 说明               |
   | ------ | ------ | ---- | ------------------ |
-  | token  | string | 是   | 字符串类型描述符，其长度应小于40960字节。 |
+  | token  | string | 是   | 字符串类型描述符，其长度应小于40960。 |
 
 **返回值：**
 
@@ -5741,7 +5747,7 @@ writeString(val: string): boolean
 
   | 参数名 | 类型   | 必填 | 说明                                      |
   | ------ | ------ | ---- | ----------------------------------------- |
-  | val    | string | 是   | 要写入的字符串值，其长度应小于40960字节。 |
+  | val    | string | 是   | 要写入的字符串值，其长度应小于40960。 |
 
 **返回值：**
 
@@ -6958,7 +6964,7 @@ writeStringArray(stringArray: string[]): boolean
 
   | 参数名      | 类型     | 必填 | 说明             |
   | ----------- | -------- | ---- | ---------------- |
-  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960字节。 |
+  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960。 |
 
 **返回值：**
 
@@ -8463,7 +8469,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 ### queryLocalInterface<sup>(deprecated)</sup>
 
@@ -10062,8 +10068,39 @@ if (proxy != undefined) {
   | TF_SYNC       | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 同步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
   | TF_ASYNC      | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 异步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
   | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示[sendMessageRequest](#sendmessagerequest9-2)接口可以传递文件描述符。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间(单位：秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间（单位：秒），IPC场景下无效。默认等待为8秒（不建议修改等待时间）。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
+### constructor<sup>9+</sup>
+
+constructor(async?: boolean)
+
+MessageOption构造函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| async  | boolean | 否   | true：表示异步调用标志，false：表示同步调用标志。默认同步调用。 |
+
+**示例：**
+
+```ts
+import { rpc } from '@kit.IPCKit';
+
+class TestRemoteObject extends rpc.MessageOption {
+  constructor(async: boolean) {
+    super(async);
+  }
+}
+```
 
 ### constructor
 
@@ -10098,38 +10135,6 @@ class TestRemoteObject extends rpc.MessageOption {
 }
 ```
 
-### constructor<sup>9+</sup>
-
-constructor(async?: boolean)
-
-MessageOption构造函数。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Communication.IPC.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**参数：**
-
-| 参数名 | 类型    | 必填 | 说明                                                         |
-| ------ | ------- | ---- | ------------------------------------------------------------ |
-| async  | boolean | 否   | true：表示异步调用标志，false：表示同步调用标志。默认同步调用。 |
-
-**示例：**
-
-```ts
-import { rpc } from '@kit.IPCKit';
-
-class TestRemoteObject extends rpc.MessageOption {
-  constructor(async: boolean) {
-    super(async);
-  }
-}
-```
-
 ### constructor<sup>23+</sup>
 
 constructor(isAsync: boolean)
@@ -10151,6 +10156,7 @@ MessageOption构造函数。
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import rpc from '@ohos.rpc';
 import hilog from 'ohos.hilog';
 import { BusinessError } from '@ohos.base';
@@ -10177,6 +10183,7 @@ MessageOption构造函数。
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import { rpc } from '@kit.IPCKit';
 
 class TestRemoteObject extends rpc.MessageOption {
@@ -10207,6 +10214,7 @@ MessageOption构造函数。
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import { rpc } from '@kit.IPCKit';
 
 class TestRemoteObject extends rpc.MessageOption {
@@ -10238,6 +10246,7 @@ MessageOption构造函数。
 **示例：**
 
 ```ts
+// ArkTS-Sta示例
 import rpc from '@ohos.rpc';
 import hilog from 'ohos.hilog';
 import { BusinessError } from '@ohos.base';
@@ -10990,7 +10999,7 @@ static restoreCallingIdentity(identity: string): void
 
   | 参数名   | 类型   | 必填 | 说明                                                               |
   | -------- | ------ | ---- | ------------------------------------------------------------------ |
-  | identity | string | 是   | 标识表示包含远程用户UID和PID的字符串，其长度应小于40960字节。由resetCallingIdentity返回。 |
+  | identity | string | 是   | 标识表示包含远程用户UID和PID的字符串，其长度应小于40960。由resetCallingIdentity返回。 |
 
 **错误码：**
 
@@ -10998,7 +11007,7 @@ static restoreCallingIdentity(identity: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -11098,7 +11107,7 @@ RemoteObject构造函数。
 
   | 参数名     | 类型   | 必填 | 说明         |
   | ---------- | ------ | ---- | ------------ |
-  | descriptor | string | 是   | 接口描述符，其长度应小于40960字节。 |
+  | descriptor | string | 是   | 接口描述符，其长度应小于40960。 |
 
 **示例：**
 
@@ -11281,30 +11290,30 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-let testRemoteObject = new TestRemoteObject("testObject");
-let option = new rpc.MessageOption();
-let data = rpc.MessageSequence.create();
-let reply = rpc.MessageSequence.create();
-data.writeInt(1);
-data.writeString("hello");
-testRemoteObject.sendMessageRequest(1, data, reply, option)
-  .then((result: rpc.RequestResult) => {
-    if (result.errCode === 0) {
-      hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
-      let num = result.reply.readInt();
-      let msg = result.reply.readString();
-      hilog.info(0x0000, 'testTag', 'reply num: ' + num);
-      hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
-    } else {
-      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
-    }
-  }).catch((e: Error) => {
-    hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
-  }).finally (() => {
-    hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
-    data.reclaim();
-    reply.reclaim();
-  });
+  let testRemoteObject = new TestRemoteObject("testObject");
+  let option = new rpc.MessageOption();
+  let data = rpc.MessageSequence.create();
+  let reply = rpc.MessageSequence.create();
+  data.writeInt(1);
+  data.writeString("hello");
+  testRemoteObject.sendMessageRequest(1, data, reply, option)
+    .then((result: rpc.RequestResult) => {
+      if (result.errCode === 0) {
+        hilog.info(0x0000, 'testTag', 'sendMessageRequest got result');
+        let num = result.reply.readInt();
+        let msg = result.reply.readString();
+        hilog.info(0x0000, 'testTag', 'reply num: ' + num);
+        hilog.info(0x0000, 'testTag', 'reply msg: ' + msg);
+      } else {
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
+      }
+    }).catch((e: Error) => {
+      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
+    }).finally (() => {
+      hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
+      data.reclaim();
+      reply.reclaim();
+    });
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
 }
@@ -11456,9 +11465,10 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 
 > **说明：**
 >
-> 开发者应优先选择重写带有CallingInfo参数的onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
-> 开发者同时重写带有和不带CallingInfo参数的onRemoteMessageRequest方法时，仅前者生效。
+> ArkTS-Sta开发者应优先选择重写带有CallingInfo参数的onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
+> ArkTS-Sta开发者同时重写带有和不带CallingInfo参数的onRemoteMessageRequest方法时，仅前者生效。
 > ArkTS-Dyn不支持函数重写，无法同时实现带有和不带CallingInfo参数的onRemoteMessageRequest方法。
+> ArkTS-Dyn开发者同时重写onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -11569,26 +11579,13 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 ArkTS-Dyn示例：
 ```ts
-// 同时重写带有CallingInfo和不带CallingInfo的onRemoteMessageRequest方法及onRemoteRequest方法同步处理请求
+// 同时重写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class TestRemoteObject extends rpc.RemoteObject {
   constructor(descriptor: string) {
     super(descriptor);
-  }
-  // 同时调用仅会执行该onRemoteMessageRequest
-  // 静态语言中不支持重写onRemoteMessageRequest，此处只提供带有CallingInfo的示例
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      let pid = callingInfo?.callerPid;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    return true;
   }
 
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
@@ -11599,6 +11596,19 @@ class TestRemoteObject extends rpc.RemoteObject {
         hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
         return false;
      }
+  }
+  // 同时调用仅会执行onRemoteMessageRequest
+  // 动态语言中不支持重写onRemoteMessageRequest，此处只提供带有CallingInfo的示例
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean {
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      let pid = callingInfo?.callerPid;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
+    return true;
   }
 }
 ```
@@ -11654,8 +11664,8 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 
 > **说明：**
 >
->* 开发者应优先选择重写onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
->* 开发者同时重写onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
+> 开发者应优先选择重写onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
+> 开发者同时重写onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -11683,6 +11693,7 @@ sendMessageRequest请求的响应处理函数，服务端在该函数里同步�
 ArkTS-Dyn示例：
 ```ts
 // 重写onRemoteMessageRequest方法同步处理请求
+import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class TestRemoteObject extends rpc.RemoteObject {
@@ -11691,7 +11702,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
+    option: rpc.MessageOption): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
       return true;
@@ -11733,6 +11744,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 ArkTS-Dyn示例：
 ```ts
 // 重写onRemoteMessageRequest方法异步处理请求
+import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class TestRemoteObject extends rpc.RemoteObject {
@@ -11790,6 +11802,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 ArkTS-Dyn示例：
 ```ts
 // 同时重写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
+import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class TestRemoteObject extends rpc.RemoteObject {
@@ -11911,7 +11924,6 @@ class TestRemoteObject extends rpc.RemoteObject {
     return true;
   }
 }
-
 try {
   let testRemoteObject = new TestRemoteObject("testObject");
   hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
@@ -11937,10 +11949,9 @@ class TestRemoteObject extends rpc.RemoteObject {
     return true;
   }
 }
-
 try {
   let testRemoteObject = new TestRemoteObject("testObject");
-  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
+  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid: ' + testRemoteObject.getCallingPid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
@@ -11987,7 +11998,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let testRemoteObject = new TestRemoteObject("testObject");
-  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
+  hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid: ' + testRemoteObject.getCallingPid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
@@ -12035,7 +12046,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 参数名     | 类型   | 必填 | 说明                 |
   | ---------- | ------ | ---- | -------------------- |
-  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960字节。 |
+  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960。 |
 
 **返回值：**
 
@@ -12049,7 +12060,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -12255,7 +12266,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 | 参数名         | 类型                            | 必填 | 说明                                  |
 | -------------- | ------------------------------- | ---- | ------------------------------------- |
 | localInterface | [IRemoteBroker](#iremotebroker) | 是   | 将与描述符绑定的IRemoteBroker对象。   |
-| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960字节。 |
+| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960。 |
 
 **错误码：**
 
@@ -12263,7 +12274,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -12352,7 +12363,9 @@ let testRemoteObject = new TestRemoteObject("testObject");
 
 ## Ashmem<sup>8+</sup>
 
-提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。共享内存只适用与本设备内跨进程通信。
+提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
+
+共享内存只适用与本设备内跨进程通信。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

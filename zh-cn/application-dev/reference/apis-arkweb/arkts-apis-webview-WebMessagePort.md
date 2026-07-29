@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebMessagePort可以进行消息的发送以及接收，发送[WebMessageType](./arkts-apis-webview-e.md#webmessagetype10)/[WebMessage](./arkts-apis-webview-t.md#webmessage)类型消息给HTML5侧。
+WebMessagePort是Web组件中用于应用侧（ArkTS）与HTML5侧（JavaScript）之间双向通信的消息端口接口。通过createWebMessagePorts创建一对关联的端口，将一个端口发送到HTML5侧，另一个保留在应用侧，实现跨运行时消息传递。WebMessagePort支持两种消息协议：基础协议使用WebMessage作为消息载体（postMessageEvent/onMessageEvent），扩展协议使用WebMessageExt支持更丰富的数据类型（postMessageEventExt/onMessageEventExt）。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -26,6 +28,10 @@ import { webview } from '@kit.ArkWeb';
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型   | 只读 | 可选 | 说明                                              |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------|
 | isExtentionType<sup>10+</sup> | boolean | 否   | 是 | 创建WebMessagePort时是否指定使用扩展增强接口，[postMessageEventExt](#postmessageeventext10)、[onMessageEventExt](#onmessageeventext10)。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。   |
@@ -37,6 +43,10 @@ postMessageEvent(message: WebMessage): void
 发送[WebMessage](./arkts-apis-webview-t.md#webmessage)类型消息给HTML5侧，必须先调用[onMessageEvent](#onmessageevent)，否则会发送失败。完整示例代码参考[postMessage](./arkts-apis-webview-WebviewController.md#postmessage)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -55,6 +65,7 @@ postMessageEvent(message: WebMessage): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -97,13 +108,59 @@ struct WebComponent {
 }
 ```
 
-## onMessageEvent
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  ports: webview.WebMessagePort[] = [];
+
+  build() {
+    Column() {
+      Button('postMessageEvent')
+        .onClick(() => {
+          try {
+            this.ports = this.controller.createWebMessagePorts();
+            this.ports[1].onMessageEvent((msg) => {
+                if (typeof (msg) == "string") {
+                    console.info("received string message from HTML5, string is:" + msg);
+                } else if (typeof (msg) == "object") {
+                    if (msg instanceof ArrayBuffer) {
+                        console.info("received arraybuffer from HTML5, length is:" + msg.byteLength);
+                    } else {
+                        console.info("not support");
+                    }
+                } else {
+                    console.info("not support");
+                }
+            })
+            this.controller.postMessage('__init_port__', [this.ports[0]], '*');
+            this.ports[1].postMessageEvent("post message from ETS to HTML5");
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```## onMessageEvent
 
 onMessageEvent(callback: (result: WebMessage) => void): void
 
 在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessage](./arkts-apis-webview-t.md#webmessage)类型消息。完整示例代码参考[postMessage](./arkts-apis-webview-WebviewController.md#postmessage)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -122,6 +179,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -162,6 +220,48 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  ports: webview.WebMessagePort[] = [];
+
+  build() {
+    Column() {
+      Button('onMessageEvent')
+        .onClick(() => {
+          try {
+            this.ports = this.controller.createWebMessagePorts();
+            this.ports[1].onMessageEvent((msg) => {
+              if (typeof (msg) == "string") {
+                console.info("received string message from html5, string is:" + msg);
+              } else if (typeof (msg) == "object") {
+                if (msg instanceof ArrayBuffer) {
+                  console.info("received arraybuffer from html5, length is:" + msg.byteLength);
+                } else {
+                  console.info("not support");
+                }
+              } else {
+                console.info("not support");
+              }
+            })
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## postMessageEventExt<sup>10+</sup>
 
 postMessageEventExt(message: WebMessageExt): void
@@ -169,6 +269,10 @@ postMessageEventExt(message: WebMessageExt): void
 发送[WebMessageType](./arkts-apis-webview-e.md#webmessagetype10)类型消息给HTML5侧，必须先调用[onMessageEventExt](#onmessageeventext10)，否则会发送失败。完整示例代码参考[onMessageEventExt](#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -193,6 +297,10 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -210,6 +318,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -412,6 +521,199 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { State, Entry, Column, Component, Web, Button, Text, $rawfile } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+class TestObj {
+  test(str: string): ArrayBuffer {
+    let buf = new ArrayBuffer(str.length);
+    let buff = new Uint8Array(buf);
+
+    for (let i = 0; i < str.length; i++) {
+      buff[i] = str.charCodeAt(i);
+    }
+    return buf;
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  ports: webview.WebMessagePort[] = [];
+  nativePort: webview.WebMessagePort | null = null;
+  @State msg1: string = "";
+  @State msg2: string = "";
+  message: webview.WebMessageExt = new webview.WebMessageExt();
+  @State testObjtest: TestObj = new TestObj();
+
+  build() {
+    Column() {
+      Text(this.msg1).fontSize(16)
+      Text(this.msg2).fontSize(16)
+      Button('SendToH5 setString').margin({
+        right: 800,
+      })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.STRING);
+              this.message.setString("helloFromEts");
+              this.nativePort.postMessageEventExt(this.message);
+            }
+          }
+          catch (error) {
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+        Button('SendToH5 setNumber').margin({
+          top: 10,
+          right: 800,
+        })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.NUMBER);
+              this.message.setNumber(12345);
+              this.nativePort.postMessageEventExt(this.message);
+            }
+          }
+          catch (error) {
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('SendToH5 setBoolean').margin({
+        top: -90,
+      })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.BOOLEAN);
+              this.message.setBoolean(true);
+              this.nativePort.postMessageEventExt(this.message);
+            }
+          }
+          catch (error) {
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('SendToH5 setArrayBuffer').margin({
+        top: 10,
+      })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.ARRAY_BUFFER);
+              this.message.setArrayBuffer(this.testObjtest.test("Name=test&Password=test"));
+              this.nativePort.postMessageEventExt(this.message);
+            }
+          }
+          catch (error) {
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('SendToH5 setArray').margin({
+        top: -90,
+        left: 800,
+      })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.ARRAY);
+              this.message.setArray(['1', '2', '3']);
+              this.nativePort.postMessageEventExt(this.message);
+            }
+          }
+          catch (error) {
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('SendToH5 setError').margin({
+        top: 10,
+        left: 800,
+      })
+        .onClick(() => {
+          try {
+            console.info("In ArkTS side send true start");
+            throw new ReferenceError("ReferenceError");
+          }
+          catch (error) {
+            if (this.nativePort) {
+              this.message.setType(webview.WebMessageType.ERROR);
+              this.message.setError(error);
+              this.nativePort.postMessageEventExt(this.message);
+            }
+            console.error(`In ArkTS side send message catch error, ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPageEnd(() => {
+          console.info("In ArkTS side message onPageEnd init message channel");
+          this.ports = this.controller.createWebMessagePorts(true);
+          this.controller.postMessage("init_web_messageport", [this.ports[1]], "*");
+          this.nativePort = this.ports[0];
+          this.nativePort.onMessageEventExt((result) => {
+            console.info("In ArkTS side got message");
+            try {
+              let type = result.getType();
+              console.info("In ArkTS side getType:" + type);
+              switch (type) {
+                case webview.WebMessageType.STRING: {
+                  this.msg1 = "result type:" + typeof (result.getString());
+                  this.msg2 = "result getString:" + ((result.getString()));
+                  break;
+                }
+                case webview.WebMessageType.NUMBER: {
+                  this.msg1 = "result type:" + typeof (result.getNumber());
+                  this.msg2 = "result getNumber:" + ((result.getNumber()));
+                  break;
+                }
+                case webview.WebMessageType.BOOLEAN: {
+                  this.msg1 = "result type:" + typeof (result.getBoolean());
+                  this.msg2 = "result getBoolean:" + ((result.getBoolean()));
+                  break;
+                }
+                case webview.WebMessageType.ARRAY_BUFFER: {
+                  this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                  this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                  break;
+                }
+                case webview.WebMessageType.ARRAY: {
+                  this.msg1 = "result type:" + typeof (result.getArray());
+                  this.msg2 = "result getArray:" + result.getArray();
+                  break;
+                }
+                case webview.WebMessageType.ERROR: {
+                  this.msg1 = "result type:" + typeof (result.getError());
+                  this.msg2 = "result getError:" + result.getError();
+                  break;
+                }
+                default: {
+                  this.msg1 = "default break, type:" + type;
+                  break;
+                }
+              }
+            }
+            catch (error) {
+              console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            }
+          });
+        })
+    }
+  }
+}
+```
+
 加载的html文件。
 ```html
 <!--index.html-->
@@ -506,8 +808,13 @@ close(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -542,6 +849,49 @@ struct WebComponent {
             }
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  msgPort: webview.WebMessagePort[] = [];
+
+  build() {
+    Column() {
+      Button('createWebMessagePorts')
+        .onClick(() => {
+          try {
+            this.msgPort = this.controller.createWebMessagePorts();
+            console.info("createWebMessagePorts size:" + this.msgPort.length)
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('close')
+        .onClick(() => {
+          try {
+            if (this.msgPort && this.msgPort.length == 2) {
+              this.msgPort[1].close();
+              this.msgPort = [];
+            } else {
+              console.error("msgPort is null, Please initialize first");
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })

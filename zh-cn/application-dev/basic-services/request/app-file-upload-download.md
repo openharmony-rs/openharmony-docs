@@ -283,6 +283,8 @@ async requestAgentUpload(fileName: string, callback: (progress: int, isSucceed: 
 > 从API version 20开始支持下载网络资源文件到用户文件。
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
 
@@ -460,6 +462,8 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: i
 > **说明：**
 >
 > 从API version 20开始支持下载网络资源文件到用户文件。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 ### 下载文档类文件
 
@@ -1119,7 +1123,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: int
 
 ### HTTP拦截
 
-开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)，了解需要配置的具体参数。
+开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration)，了解需要配置的具体参数。
 
 参考配置文件如下所示：
 

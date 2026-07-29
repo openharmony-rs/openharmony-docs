@@ -12,7 +12,7 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 ## 概述
 
-定义USB Serial DDK使用的USB串口参数。
+定义USB Serial DDK使用的USB串口参数。用于USB转串口设备的通信参数配置，常见于工业控制设备、调试工具、传感器数据采集等需要通过USB串口与设备通信的场景。
 
 **起始版本：** 18
 
@@ -29,6 +29,6 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 | uint32_t baudRate | 波特率，单位为波特。 |
 | uint8_t nDataBits | 数据位比特数。 |
 | uint8_t nStopBits | 停止位比特数。 |
-| uint8_t parity | 校验参数设置（0：无校验；1：奇校验；2：偶校验；）。 |
+| uint8_t parity | 校验参数设置（0：无校验；1：奇校验；2：偶校验）。 |
 
 

@@ -1,8 +1,8 @@
 # UI组件适配（滚动与滑动）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Hu_ZeQi; @yylong; @zcdqs-->
-<!--Designer: @fangzhiyuan1; @yylong; @zcdqs-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta; @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 

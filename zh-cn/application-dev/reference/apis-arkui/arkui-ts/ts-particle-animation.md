@@ -19,7 +19,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - Particle在息屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
+> - Particle在熄屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
 
 
 ## 子组件
@@ -94,7 +94,7 @@ emitter(value: Array&lt;EmitterProperty&gt;)
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| value  | Array<[EmitterProperty](#emitterproperty12)> | 是   | 需要更新的emitter参数数组 |
+| value  | Array<[EmitterProperty](#emitterproperty12)> | 是   | 需要更新的发射器参数数组。 |
 
 ### rippleFields<sup>22+</sup>
 rippleFields(fields: Array&lt;RippleFieldOptions&gt;\|undefined)
@@ -225,7 +225,8 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
-| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。<br/>默认值：0，小于0时取默认值0。 |
+| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。<br/>默认值：0，小于0时取默认值0。</br>取值范围：[0, +∞) |
+
 
 ## ImageParticleParameters
 
@@ -259,7 +260,7 @@ interface ParticleColorPropertyOptions<UPDATER extends ParticleUpdater> {
 | -------- | -------- | ---- | ---- | -------- |
 | range | [ParticleTuple](#particletuple18)<[ResourceColor](ts-types.md#resourcecolor), [ResourceColor](ts-types.md#resourcecolor)> | 否 | 否 | 粒子初始颜色区间，粒子发射器生成粒子的初始颜色在range区间随机取值。<br>默认值：range:[Color.White,Color.White] <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | distributionType<sup>12+<sup> | [DistributionType](#distributiontype12) | 否 | 是 | 粒子初始颜色随机值分布，允许用户选择颜色随机值生成的分布类型，支持均匀分布或正态（高斯）分布。<br>默认值：DistributionType.UNIFORM<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| updater | [ParticleColorUpdaterOptions](#particlecolorupdateroptions18)<[UPDATER](#particleupdater)> | 否 | 是 | 颜色属性变化配置。颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。<br>默认值：type默认为 ParticleUpdater.NONE。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期外，以range中的颜色配置来变化。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| updater | [ParticleColorUpdaterOptions](#particlecolorupdateroptions18)<[UPDATER](#particleupdater)> | 否 | 是 | 颜色属性变化配置。颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机均匀变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。<br>默认值：type默认为 ParticleUpdater.NONE。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期外，以range中的颜色配置来变化。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## ParticleColorPropertyUpdaterConfigs
@@ -294,10 +295,10 @@ interface ParticlePropertyOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | range | [ParticleTuple](#particletuple18)<TYPE, TYPE> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。|
-| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, [UPDATER](#particleupdater)> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
+| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, [UPDATER](#particleupdater)> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机均匀变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
 
 
-## ParticlePropertyUpdaterConfigs
+## ParticlePropertyUpdaterConfigs\<T>
 ```typescript
 interface ParticlePropertyUpdaterConfigs<T> {
     [ParticleUpdater.NONE]: void;
@@ -395,9 +396,9 @@ interface ParticlePropertyAnimation<T> {
 
 | 名称  |  值  | 说明 |
 | -------- | -------- | -------- | 
-|NONE | 'none' | 无变化|
-|RANDOM | 'random' | 随机变化|
-|CURVE | 'curve' | 动画曲线变化|
+|NONE | 'none' | 无变化。|
+|RANDOM | 'random' | 随机均匀变化。|
+|CURVE | 'curve' | 动画曲线变化。|
 
 ## DisturbanceFieldOptions<sup>12+</sup>
 
@@ -411,7 +412,7 @@ interface ParticlePropertyAnimation<T> {
 | ------ | ------- | ---- | ------- | --------------------- |
 | strength  | number | 否 | 是   |场强，表示场从中心向外的排斥力的强度，默认值0。正数表示排斥力方向朝外，负数表示吸引力，方向朝内。<br/>取值范围：(-∞, +∞)。 |
 | shape  |   [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是   | 场的形状。<br/>默认为DisturbanceFieldShape.RECT。 |
-| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
+| size  | [SizeT](#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
 | position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是   |场的位置。<br/>默认值{x:0，y:0}。<br/>x、y的取值范围：(-∞, +∞)。 |
 | feather  | number | 否 | 是   |羽化值，表示场从中心点到场边缘的衰减程度，取值范围0到100的整数，如果0则表示场是一个刚体，所有范围内的粒子都被排斥在外。羽化值越大场的缓和程度越大，场范围内出现越多靠近中心点的粒子。<br/>默认值为0。 |
 | noiseScale  | number | 否 | 是   |噪声尺度，用于控制噪声图案的整体大小，取值大于等于0。<br/>默认值1。 |
@@ -420,7 +421,7 @@ interface ParticlePropertyAnimation<T> {
 
 ## DisturbanceFieldShape<sup>12+</sup>
 
-粒子形状。
+扰动场形状。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -428,7 +429,7 @@ interface ParticlePropertyAnimation<T> {
 
 | 名称    | 值    | 说明   |
 | --------| ---- | ------|
-| RECT    | 0 | 长方形。   |
+| RECT    | 0 | 矩形。   |
 | CIRCLE  | 1 | 圆。       |
 | ELLIPSE | 2 | 椭圆。     |
 
@@ -449,7 +450,7 @@ interface ParticlePropertyAnimation<T> {
 ## ParticleTuple<sup>18+</sup>
 
 ```typescript
-declare type ParticleTuple<T1, T2> = [T1, T2];
+type ParticleTuple<T1, T2> = [T1, T2]
 ```
 
 粒子元组，表示定义一些动画参数的类型。
@@ -598,7 +599,7 @@ interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称    | 类型                                                | 只读 | 可选 | 说明                                                       |
 | ------ | ----------------------------------- | ---------------- | ---- | --------------------------------------------------------- |
 | type<sup>10+</sup>  | [UPDATER](#particleupdater)  | 否 | 否   | 表示颜色属性变化类型。 <br>默认值：type默认为ParticleUpdater.NONE。    **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)\<TYPE>[[UPDATER](#particleupdater)] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE]。 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)\<TYPE>[[UPDATER](#particleupdater)] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE]。 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleColorUpdaterOptions<sup>18+</sup>
 
@@ -622,7 +623,7 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 | 名称    | 类型                                                | 只读 | 可选 | 说明                                                       |
 | ------ | --------------------------------------------------- | ---- | ---------- | ----------------------------------------------- |
 | type<sup>10+</sup>  | [UPDATER](#particleupdater)  | 否 | 否   | 表示颜色属性变化类型。<br>默认值：type默认为 ParticleUpdater.NONE。     <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| config<sup>10+</sup>  | [ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[[UPDATER](#particleupdater)]  | 否 | 否   | 颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期外，以range中的颜色配置来变化。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| config<sup>10+</sup>  | [ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[[UPDATER](#particleupdater)]  | 否 | 否   | 颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机均匀变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期外，以range中的颜色配置来变化。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleColorOptions<sup>18+</sup>
 
@@ -690,7 +691,7 @@ type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 ## PositionT\<T><sup>12+</sup>
 
-type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
+type PositionT\<T> = import('../api/arkui/Graphics').PositionT\<T>
 
 用于设置或返回组件的位置。
 
@@ -887,7 +888,7 @@ struct ParticleExample {
               speed: {
                 range: [3, 9],
                 updater: {
-                  type: ParticleUpdater.RANDOM, // Speed的变化方式是随机变化
+                  type: ParticleUpdater.RANDOM, // Speed的变化方式是随机均匀变化
                   config: [1, 20]
                 }
               },
@@ -908,7 +909,7 @@ struct ParticleExample {
 
 ### 示例2（图片初始化粒子）
 
-描述粒子动画基础用法，通过图片初始化粒子。
+描述粒子动画基础用法，通过图片初始化粒子。该示例同时配置两种不同的图片粒子，展示多粒子类型组合效果。
 
 ```ts
 @Entry
@@ -918,376 +919,90 @@ struct ParticleExample {
   myCount: number = 100
   flag: boolean = false;
 
+  // 通过参数化配置减少重复代码，imageSrc为图片资源，scaleTo为缩放目标值，durationMs为动画持续时长
+  private createImageParticle(imageSrc: ResourceStr, scaleTo: number, durationMs: number)
+    : ParticleOptions<ParticleType.IMAGE, ParticleUpdater.CURVE, ParticleUpdater.CURVE,
+  ParticleUpdater.CURVE, ParticleUpdater.CURVE, ParticleUpdater.CURVE, ParticleUpdater.CURVE>
+  {
+    return {
+      emitter: {
+        particle: {
+          type: ParticleType.IMAGE,
+          config: {
+            src: imageSrc,
+            size: [10, 10]
+          },
+          count: this.myCount,
+          lifetime: 10000,
+          lifetimeRange: 100
+        },
+        emitRate: 3,
+        shape: ParticleEmitterShape.CIRCLE
+      },
+      color: {
+        range: [Color.White, Color.White]
+      },
+      opacity: {
+        range: [1.0, 1.0],
+        updater: {
+          type: ParticleUpdater.CURVE,
+          config: [
+            { from: 0, to: 1.0, startMillis: 0, endMillis: 6000 },
+            { from: 1.0, to: 0, startMillis: 6000, endMillis: 10000 }
+          ]
+        }
+      },
+      scale: {
+        range: [0.1, 1.0],
+        updater: {
+          type: ParticleUpdater.CURVE,
+          config: [
+            { from: 0, to: scaleTo, startMillis: 0, endMillis: durationMs, curve: Curve.EaseIn }
+          ]
+        }
+      },
+      acceleration: {
+        speed: {
+          range: [3, 9],
+          updater: {
+            type: ParticleUpdater.CURVE,
+            config: [
+              { from: 10, to: 20, startMillis: 0, endMillis: 3000, curve: Curve.EaseIn },
+              { from: 10, to: 2, startMillis: 3000, endMillis: 8000, curve: Curve.EaseIn }
+            ]
+          }
+        },
+        angle: {
+          range: [0, 180],
+          updater: {
+            type: ParticleUpdater.CURVE,
+            config: [
+              { from: 1, to: 2, startMillis: 0, endMillis: 1000, curve: Curve.EaseIn },
+              { from: 50, to: -50, startMillis: 1000, endMillis: 3000, curve: Curve.EaseIn },
+              { from: 3, to: 5, startMillis: 3000, endMillis: durationMs, curve: Curve.EaseIn }
+            ]
+          }
+        }
+      },
+      spin: {
+        range: [0.1, 1.0],
+        updater: {
+          type: ParticleUpdater.CURVE,
+          config: [
+            { from: 0, to: 360, startMillis: 0, endMillis: durationMs, curve: Curve.EaseIn }
+          ]
+        }
+      },
+    }
+  }
+
   build() {
     Column() {
       Stack() {
         Particle({
           particles: [
-            {
-              emitter: {
-                particle: {
-                  type: ParticleType.IMAGE,
-                  config: {
-                    src: $r("app.media.book"),
-                    size: [10, 10]
-                  },
-                  count: this.myCount,
-                  lifetime: 10000,
-                  lifetimeRange: 100
-                },
-                emitRate: 3,
-                shape: ParticleEmitterShape.CIRCLE
-              },
-              color: {
-                range: [Color.White, Color.White]
-              },
-              opacity: {
-                range: [1.0, 1.0],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [
-                    {
-                      from: 0,
-                      to: 1.0,
-                      startMillis: 0,
-                      endMillis: 6000
-                    },
-                    {
-                      from: 1.0,
-                      to: 0,
-                      startMillis: 6000,
-                      endMillis: 10000
-                    }
-                  ]
-                }
-              },
-              scale: {
-                range: [0.1, 1.0],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [
-                    {
-                      from: 0,
-                      to: 1.5,
-                      startMillis: 0,
-                      endMillis: 8000,
-                      curve: Curve.EaseIn
-                    }
-
-                  ]
-                }
-              },
-              acceleration: {
-                speed: {
-                  range: [3, 9],
-                  updater: {
-                    type: ParticleUpdater.CURVE,
-                    config: [
-                      {
-                        from: 10,
-                        to: 20,
-                        startMillis: 0,
-                        endMillis: 3000,
-                        curve: Curve.EaseIn
-                      },
-                      {
-                        from: 10,
-                        to: 2,
-                        startMillis: 3000,
-                        endMillis: 8000,
-                        curve: Curve.EaseIn
-                      }
-                    ]
-                  }
-                },
-                angle: {
-                  range: [0, 180],
-                  updater: {
-                    type: ParticleUpdater.CURVE,
-                    config: [{
-                      from: 1,
-                      to: 2,
-                      startMillis: 0,
-                      endMillis: 1000,
-                      curve: Curve.EaseIn
-                    },
-                      {
-                        from: 50,
-                        to: -50,
-                        startMillis: 1000,
-                        endMillis: 3000,
-                        curve: Curve.EaseIn
-                      },
-                      {
-                        from: 3,
-                        to: 5,
-                        startMillis: 3000,
-                        endMillis: 8000,
-                        curve: Curve.EaseIn
-                      }
-                    ]
-                  }
-                }
-              },
-              spin: {
-                range: [0.1, 1.0],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [
-                    {
-                      from: 0,
-                      to: 360,
-                      startMillis: 0,
-                      endMillis: 8000,
-                      curve: Curve.EaseIn
-                    }
-                  ]
-                }
-              },
-            }
-            , {
-            emitter: {
-              particle: {
-                type: ParticleType.IMAGE,
-                config: {
-                  src: $r('app.media.heart'),
-                  size: [10, 10]
-                },
-                count: this.myCount,
-                lifetime: 10000,
-                lifetimeRange: 100
-              },
-              emitRate: 3,
-              shape: ParticleEmitterShape.CIRCLE
-            },
-            color: {
-              range: [Color.White, Color.White]
-            },
-            opacity: {
-              range: [1.0, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 1.0,
-                    startMillis: 0,
-                    endMillis: 6000
-                  },
-                  {
-                    from: 1.0,
-                    to: 0,
-                    startMillis: 6000,
-                    endMillis: 10000
-                  }
-                ]
-              }
-            },
-            scale: {
-              range: [0.1, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 2.0,
-                    startMillis: 0,
-                    endMillis: 10000,
-                    curve: Curve.EaseIn
-                  }
-
-                ]
-              }
-            },
-            acceleration: {
-              speed: {
-                range: [3, 9],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [
-                    {
-                      from: 10,
-                      to: 20,
-                      startMillis: 0,
-                      endMillis: 3000,
-                      curve: Curve.EaseIn
-                    },
-                    {
-                      from: 10,
-                      to: 2,
-                      startMillis: 3000,
-                      endMillis: 8000,
-                      curve: Curve.EaseIn
-                    }
-                  ]
-                }
-              },
-              angle: {
-                range: [0, 180],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [{
-                    from: 1,
-                    to: 2,
-                    startMillis: 0,
-                    endMillis: 1000,
-                    curve: Curve.EaseIn
-                  },
-                    {
-                      from: 50,
-                      to: -50,
-                      startMillis: 1000,
-                      endMillis: 3000,
-                      curve: Curve.EaseIn
-                    },
-                    {
-                      from: 3,
-                      to: 5,
-                      startMillis: 3000,
-                      endMillis: 10000,
-                      curve: Curve.EaseIn
-                    }
-                  ]
-                }
-              }
-            },
-            spin: {
-              range: [0.1, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 360,
-                    startMillis: 0,
-                    endMillis: 10000,
-                    curve: Curve.EaseIn
-                  }
-                ]
-              }
-            },
-          }, {
-            emitter: {
-              particle: {
-                type: ParticleType.IMAGE,
-                config: {
-                  src: $r('app.media.sun'),
-                  size: [10, 10]
-                },
-                count: this.myCount,
-                lifetime: 10000,
-                lifetimeRange: 100
-              },
-              emitRate: 3,
-              shape: ParticleEmitterShape.CIRCLE
-            },
-            color: {
-              range: [Color.White, Color.White]
-            },
-            opacity: {
-              range: [1.0, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 1.0,
-                    startMillis: 0,
-                    endMillis: 6000
-                  },
-                  {
-                    from: 1.0,
-                    to: 0,
-                    startMillis: 6000,
-                    endMillis: 10000
-                  }
-                ]
-              }
-            },
-            scale: {
-              range: [0.1, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 2.0,
-                    startMillis: 0,
-                    endMillis: 10000,
-                    curve: Curve.EaseIn
-                  }
-
-                ]
-              }
-            },
-            acceleration: {
-              speed: {
-                range: [3, 9],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [
-                    {
-                      from: 10,
-                      to: 20,
-                      startMillis: 0,
-                      endMillis: 3000,
-                      curve: Curve.EaseIn
-                    },
-                    {
-                      from: 10,
-                      to: 2,
-                      startMillis: 3000,
-                      endMillis: 8000,
-                      curve: Curve.EaseIn
-                    }
-                  ]
-                }
-              },
-              angle: {
-                range: [0, 180],
-                updater: {
-                  type: ParticleUpdater.CURVE,
-                  config: [{
-                    from: 1,
-                    to: 2,
-                    startMillis: 0,
-                    endMillis: 1000,
-                    curve: Curve.EaseIn
-                  },
-                    {
-                      from: 50,
-                      to: -50,
-                      startMillis: 1000,
-                      endMillis: 3000,
-                      curve: Curve.EaseIn
-                    },
-                    {
-                      from: 3,
-                      to: 5,
-                      startMillis: 3000,
-                      endMillis: 8000,
-                      curve: Curve.EaseIn
-                    }
-                  ]
-                }
-              }
-            },
-            spin: {
-              range: [0.1, 1.0],
-              updater: {
-                type: ParticleUpdater.CURVE,
-                config: [
-                  {
-                    from: 0,
-                    to: 360,
-                    startMillis: 0,
-                    endMillis: 10000,
-                    curve: Curve.EaseIn
-                  }
-                ]
-              }
-            },
-          }
+            this.createImageParticle($r("app.media.book"), 1.5, 8000),   // book粒子：缩放至1.5倍，持续8000ms
+            this.createImageParticle($r('app.media.heart'), 2.0, 10000),  // heart粒子：缩放至2.0倍，持续10000ms
           ]
         }).width(300).height(300)
 

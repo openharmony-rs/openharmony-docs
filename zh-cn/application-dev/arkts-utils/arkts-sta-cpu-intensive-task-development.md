@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 CPU密集型任务是指需要占用较多CPU资源进行大量计算的任务，例如图像处理、视频编码、数据分析、模型训练和预测等。这类任务不适合在UI主线程中执行。ArkTS-Sta中，独立、短时或可拆分的CPU密集型任务推荐使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)；需要长期保留计算上下文、模型状态或固定线程语义时，推荐使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)。
 

@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件获取资源请求对象。示例代码参考[onErrorReceive事件](./arkts-basic-components-web-events.md#onerrorreceive)。
+WebResourceRequest是Web组件中表示网络资源请求的类，提供了关于请求资源的详细元数据。该对象在`onErrorReceive`、`onHttpErrorReceive`以及请求拦截等事件回调中使用。示例代码参考[onErrorReceive事件](./arkts-basic-components-web-events.md#onerrorreceive)。
 
 > **说明：**
+>
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,6 +26,10 @@ WebResourceRequest的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 ## getRequestHeader
 
 getRequestHeader(): Array\<Header\>
@@ -31,6 +37,10 @@ getRequestHeader(): Array\<Header\>
 获取资源请求头信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -46,6 +56,10 @@ getRequestUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -59,6 +73,10 @@ isMainFrame(): boolean
 判断资源请求是否为主frame。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -74,6 +92,10 @@ isRedirect(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明               |
@@ -88,6 +110,10 @@ isRequestGesture(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明                   |
@@ -101,6 +127,10 @@ getRequestMethod(): string
 获取请求方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

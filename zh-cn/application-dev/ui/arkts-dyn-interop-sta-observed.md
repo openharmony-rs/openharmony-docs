@@ -23,7 +23,7 @@ ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层
 
 - 不能在非UI线程中直接修改ArkTS-Dyn组件中使用的ArkTS-Sta @Observed装饰的数据成员的值，否则会运行异常；
 
-- 遵循ArkTS-Sta互操作规范，如不支持ArkTS-Sta对象继承ArkTS-Dyn对象。
+- 遵循[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)规范，如不支持ArkTS-Sta对象继承ArkTS-Dyn对象。
 
 
 ## 使用场景

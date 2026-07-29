@@ -2,12 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用来展示列表具体子组件，必须配合[ArcList](ts-container-arclist.md)来使用。
+用来展示弧形列表具体子组件，必须配合[ArcList](ts-container-arclist.md)来使用。
 
 > **说明：**
 >

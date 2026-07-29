@@ -27,7 +27,7 @@
 
 | 实例名            | 接口名                                                       | 描述                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br/>-`config`：创建窗口时的参数。     |
+| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br>-`config`：创建窗口时的参数。     |
 | Window            | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
 | Window            | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口位置。                                           |
 | Window            | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | 根据当前工程中某个页面的路径为窗口加载具体的页面内容。<br>其中path为要加载到窗口中的页面内容的路径，在Stage模型下该路径需添加到工程的main_pages.json文件中。                                     |
@@ -262,8 +262,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // xxx.ets 实现子窗口的属性设置
-import { window, router } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -294,9 +293,8 @@ struct transferCtrlSubWindow {
 
 ```ts
 // xxx.ets 实现子窗口的创建以及显示、隐藏窗口时的动效操作
-import { window, router } from '@kit.ArkUI';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { AnimationConfig } from '../entryability/AnimationConfig';
 
 @Entry
@@ -325,7 +323,7 @@ struct Index {
     promise.then(async(subWin: window.Window) => {
       this.subWindow_ = subWin;
       AppStorage.setOrCreate<window.Window>("systemTypeWindow", subWin);
-      await subWin.setUIContent("pages/transferCtrlSubWindow",()=>{});
+      await subWin.setUIContent("pages/transferCtrlSubWindow");
       await subWin.moveWindowTo(100,100);
       await subWin.resize(200,200);
     }).catch((err:Error)=>{

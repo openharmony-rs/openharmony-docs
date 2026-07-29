@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-画笔对象，描述所绘制图形形状的轮廓信息。
+画笔对象，用于描述所绘制图形形状的轮廓信息，支持设置颜色、线宽、抗锯齿、透明度、混合模式、转角样式、线帽样式，以及颜色滤波器、蒙版滤波器、路径效果、着色器、阴影层等绘制效果。
 
 > **说明：**
 >
@@ -89,7 +89,7 @@ ArkTS-Dyn: setMiterLimit(miter: number): void
 
 ArkTS-Sta: setMiterLimit(miter: double): void
 
-设置折线尖角长度与线宽的最大比值，当画笔绘制一条折线，并且[JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12)为MITER_JOIN时，若尖角长度与线宽的比值大于限制值，则该折角使用BEVEL_JOIN绘制。
+设置折线尖角长度与线宽的最大比值。当画笔绘制一条折线，并且[JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12)为MITER_JOIN时，若尖角长度与线宽的比值大于该最大比值，则该转角使用BEVEL_JOIN绘制。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -101,7 +101,7 @@ ArkTS-Sta: setMiterLimit(miter: double): void
 
 | 参数名 | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| miter  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 折线尖角长度与线宽的最大比值，负数在绘制时会被视作4.0处理，非负数正常生效，该参数为浮点数。 |
+| miter  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 折线尖角长度与线宽的最大比值，负数在绘制时会被视作4.0处理，非负数按实际传入值生效，该参数为浮点数。 |
 
 **错误码：**
 
@@ -126,7 +126,7 @@ ArkTS-Dyn: getMiterLimit(): number
 
 ArkTS-Sta: getMiterLimit(): double
 
-获取折线尖角的限制值。
+获取折线尖角长度与线宽的最大比值。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -151,7 +151,7 @@ let miter = pen.getMiterLimit();
 
 ## setImageFilter<sup>12+</sup>
 
-setImageFilter(filter: ImageFilter | null): void
+setImageFilter(filter: ImageFilter \| null): void
 
 设置画笔的图像滤波器。
 
@@ -219,17 +219,17 @@ ArkTS-Sta: getColorFilter(): ColorFilter | undefined
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。获取失败时返回undefined。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。获取失败时返回undefined。 |
 
 **示例：**
 
 ArkTS-Dyn示例：
-```ts 
+```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 let pen = new drawing.Pen();
-let colorfilter = drawing.ColorFilter.createLumaColorFilter();
-pen.setColorFilter(colorfilter);
+let colorFilter = drawing.ColorFilter.createLumaColorFilter();
+pen.setColorFilter(colorFilter);
 let filter = pen.getColorFilter();
 ```
 
@@ -299,10 +299,10 @@ ArkTS-Sta: setColor(alpha: int, red: int, green: int, blue: int): void
 
 | 参数名 | 类型    | 必填 | 说明                                                |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| alpha  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的透明度通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| red    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
-| green  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
-| blue   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
+| alpha  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的透明度通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。 |
+| red    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的红色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。   |
+| green  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的绿色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。   |
+| blue   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的蓝色通道值，该参数取值范围是[0, 255]，传入范围内的浮点数会向下取整，超出范围的值会被截断到0或255。   |
 
 **错误码：**
 
@@ -339,7 +339,7 @@ ArkTS-Sta: setColor(color: int): void
 
 | 参数名 | 类型                                 | 必填 | 说明                   |
 | ------ | ------------------------------------ | ---- | ---------------------- |
-| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 16进制ARGB格式的颜色。 |
+| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 16进制ARGB格式的颜色，格式为0xAARRGGBB，其中AA表示透明度通道，RR表示红色通道，GG表示绿色通道，BB表示蓝色通道，各通道取值范围为00-FF，取值范围为[0x00000000, 0xFFFFFFFF]。超出有效范围的值会被截断处理。 |
 
 **示例：**
 
@@ -363,9 +363,9 @@ pen.setColor((0xffff0000).toInt());
 
 ## setColor4f<sup>20+</sup>
 
-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
+setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager \| null): void
 
-设置画笔的颜色以及标准色域，与[setColor](#setcolor)区别在于可以单独设置色域，适用于需要单独设置色域的场景。
+设置画笔的颜色以及标准色域，与[setColor](#setcolor)的区别在于可以单独设置色域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -377,7 +377,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | 是   | ARGB格式的颜色，每个颜色通道的值是0.0-1.0之间的浮点数，大于1.0时，取1.0，小于0.0时，取0.0。|
+| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | 是   | ARGB格式的颜色，浮点数，每个颜色通道值的范围为[0.0, 1.0]，超出范围的值会被截断到0.0或1.0。|
 | colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | 是   | 标准色域对象，null表示使用SRGB色域。|
 
 **示例：**
@@ -387,7 +387,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1.0, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
 pen.setColor4f(color4f, colorSpace);
 ```
 
@@ -409,7 +409,7 @@ ArkTS-Sta: getColor(): common2D.Color | undefined
 
 | 类型           | 说明            |
 | -------------- | -------------- |
-| ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color)<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| undefined | 返回画笔的颜色。获取失败时返回undefined。 |
+| ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color)<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| undefined | 返回画笔当前设置的颜色。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -428,7 +428,7 @@ ArkTS-Dyn: getColor4f(): common2D.Color4f
 
 ArkTS-Sta: getColor4f(): common2D.Color4f | undefined
 
-获取画笔的颜色，与[getColor](#getcolor12)的区别在于返回值类型为浮点数，适用于需要浮点数类型的场景。
+获取画笔的颜色，与[getColor](#getcolor12)的区别在于返回值类型为[common2D.Color4f](js-apis-graphics-common2D.md#color4f20)，颜色通道值为浮点数，适用于需要浮点数类型的场景。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -440,7 +440,7 @@ ArkTS-Sta: getColor4f(): common2D.Color4f | undefined
 
 | 类型           | 说明            |
 | -------------- | -------------- |
-|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>ArkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔的颜色。获取失败时返回undefined。 |
+|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>ArkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔当前设置的颜色，为ARGB格式的浮点数表示，每个颜色通道的取值范围为[0.0, 1.0]。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -449,7 +449,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1.0, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
 pen.setColor4f(color4f, colorSpace);
 let color = pen.getColor4f();
 ```
@@ -504,7 +504,7 @@ ArkTS-Sta: setStrokeWidth(width: double) : void
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示线宽，该参数为浮点数。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示线宽，该参数为浮点数，单位为物理像素px。 |
 
 **错误码：**
 
@@ -556,7 +556,7 @@ let width = pen.getWidth();
 
 setAntiAlias(aa: boolean) : void
 
-设置画笔是否开启抗锯齿。开启后，可以使得图形的边缘在显示时更平滑。未调用此接口设置时，系统默认关闭抗锯齿。
+设置画笔是否开启抗锯齿。开启后，使图形边缘在显示时更平滑。未调用此接口设置时，系统默认关闭抗锯齿。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -632,7 +632,7 @@ ArkTS-Sta: setAlpha(alpha: int) : void
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| alpha  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用于表示透明度的[0, 255]区间内的整数值，传入浮点类型时向下取整。 |
+| alpha  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示透明度，取值范围为[0, 255]，传入浮点类型时向下取整。 |
 
 **错误码：**
 
@@ -682,7 +682,7 @@ let alpha = pen.getAlpha();
 
 ## setColorFilter
 
-setColorFilter(filter: ColorFilter | null) : void
+setColorFilter(filter: ColorFilter \| null) : void
 
 给画笔添加额外的颜色滤波器。
 
@@ -731,7 +731,7 @@ pen.setColorFilter(null);
 
 ## setMaskFilter<sup>12+</sup>
 
-setMaskFilter(filter: MaskFilter | null): void
+setMaskFilter(filter: MaskFilter \| null): void
 
 给画笔添加额外的蒙版滤镜。
 
@@ -797,7 +797,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setPathEffect<sup>12+</sup>
 
-setPathEffect(effect: PathEffect | null): void
+setPathEffect(effect: PathEffect \| null): void
 
 设置画笔路径效果。
 
@@ -811,7 +811,7 @@ setPathEffect(effect: PathEffect | null): void
 
 | 参数名  | 类型                       | 必填 | 说明         |
 | ------- | ------------------------- | ---- | ------------ |
-| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| null | 是   | 路径效果对象。null表示清空路径效果。 |
+| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| null | 是   | 路径效果对象，用于设置虚线、转角等路径绘制样式。null表示清空路径效果。 |
 
 **错误码：**
 
@@ -863,7 +863,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setShaderEffect<sup>12+</sup>
 
-setShaderEffect(shaderEffect: ShaderEffect | null): void
+setShaderEffect(shaderEffect: ShaderEffect \| null): void
 
 设置画笔着色器效果。
 
@@ -877,7 +877,7 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 | 参数名  | 类型                       | 必填 | 说明         |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | 是   | 着色器对象。null表示清空着色器效果。 |
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | 是   | 着色器效果对象。null表示清空着色器效果。 |
 
 **错误码：**
 
@@ -912,7 +912,7 @@ pen.setShaderEffect(null);
 
 ## setShadowLayer<sup>12+</sup>
 
-setShadowLayer(shadowLayer: ShadowLayer | null): void
+setShadowLayer(shadowLayer: ShadowLayer \| null): void
 
 设置画笔阴影层效果。当前仅在绘制文字时生效。
 
@@ -1115,7 +1115,7 @@ getJoinStyle(): JoinStyle
 
 | 类型          | 说明                    |
 | ------------- | ---------------------- |
-| JoinStyle | 返回折线转角的样式。         |
+| [JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12) | 返回折线转角的样式。         |
 
 **示例：**
 
@@ -1229,7 +1229,7 @@ getCapStyle(): CapStyle
 
 | 类型         | 说明                |
 | ------------ | ------------------ |
-| CapStyle     | 返回画笔的线帽样式。 |
+| [CapStyle](arkts-apis-graphics-drawing-e.md#capstyle12)     | 返回画笔的线帽样式。 |
 
 **示例：**
 
@@ -1271,7 +1271,7 @@ class DrawingRenderNode extends RenderNode {
 
 setDither(dither: boolean) : void
 
-开启画笔的抖动绘制效果。抖动绘制可以使得绘制出的颜色更加真实。
+设置画笔是否开启抖动绘制效果。抖动绘制使颜色更真实。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1318,8 +1318,8 @@ getFillPath(src: Path, dst: Path): boolean
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| src | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 源路径对象。                 |
-| dst     | [Path](arkts-apis-graphics-drawing-Path.md)                | 是   | 目标路径对象。 |
+| src | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 待提取轮廓的源路径对象。 |
+| dst     | [Path](arkts-apis-graphics-drawing-Path.md)                | 是   | 目标路径对象，用于存储根据画笔属性从src路径计算得到的轮廓结果。 |
 
 **返回值：**
 

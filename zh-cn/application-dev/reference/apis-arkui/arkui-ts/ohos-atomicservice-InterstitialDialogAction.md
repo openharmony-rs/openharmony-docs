@@ -27,6 +27,10 @@ import { InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from
 
 不支持[通用属性](ts-component-general-attributes.md)
 
+## 事件
+
+不支持[通用事件](ts-component-general-events.md)
+
 ## InterstitialDialogAction
 
 对自定义弹框进行封装，用于在保持当前的上下文环境时，临时展示用户需关注的信息或待处理的操作。使用示例参见[示例](#示例)。
@@ -69,11 +73,11 @@ closeDialog(): void
 
 ## DialogOptions
 
+设置弹框特有的属性以及提供给用户自定义的点击触发动作。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-设置弹框特有的属性以及提供给用户自定义的点击触发动作。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
@@ -85,18 +89,18 @@ closeDialog(): void
 | subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | 否 | 是 | 弹框副标题文本颜色。默认为$r('sys.color.ohos_id_color_text_secondary_contrary')。 |
 | backgroundImage | [Resource](ts-types.md#resource) | 否 | 是 | 弹框背景图片。默认为纯色背景，颜色值为#EBEEF5。 |
 | foregroundImage | [Resource](ts-types.md#resource) | 否 | 是 | 弹框前景图片。默认为空，即不显示前景图片。 |
-| iconStyle | [IconStyle](#iconstyle) | 否 | 是 | 关闭按钮图标的样式（亮调或者暗调）。<br>默认值：[IconStyle](#iconstyle).Light |
-| titlePosition | [TitlePosition](#titleposition) | 否 | 是 | 标题在弹框中的位置，在副标题的上方或者在副标题的下方。<br>默认值：[TitlePosition](#titleposition).Top |
+| iconStyle | [IconStyle](#iconstyle) | 否 | 是 | 关闭按钮图标的样式（亮调或者暗调）。<br>默认值：[IconStyle](#iconstyle).LIGHT |
+| titlePosition | [TitlePosition](#titleposition) | 否 | 是 | 标题在弹框中的位置，在副标题的上方或者在副标题的下方。<br>默认值：[TitlePosition](#titleposition).TOP |
 | onDialogClick | Callback\<void\> | 否 | 是 | 点击弹框任意位置后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
 | onDialogClose | Callback\<void\> | 否 | 是 | 点击关闭按钮后触发的用户自定义动作。默认为“执行关闭弹框的函数”，即仅关闭弹框。 |
 
 ## IconStyle
 
+设置关闭按钮的色调样式，默认设置关闭按钮为亮色调。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-设置关闭按钮的色调样式，默认设置关闭按钮为亮色调。
 
 | 名称 | 值 | 说明 |
 | - | - | - |
@@ -105,11 +109,11 @@ closeDialog(): void
 
 ## TitlePosition
 
+设置主副标题之间的上下相对位置，默认设置为主标题在副标题之上。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-设置主副标题之间的上下相对位置，默认设置为主标题在副标题之上。
 
 | 名称 | 值 | 说明 |
 | - | - | - |
@@ -118,19 +122,16 @@ closeDialog(): void
 
 ## BottomOffset
 
+设置不同情景模式下弹框距离底部的距离，判断依据为是否存在菜单栏，默认显示为不存在菜单栏情况下的距离。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-设置不同情景模式下弹框距离底部的距离，判断依据为是否存在菜单栏，默认显示为不存在菜单栏情况下的距离。
-
 | 名称 | 值 | 说明 |
 | - | - | - |
-| OFFSET_FOR_BAR | 0 | 存在菜单栏情况下与窗口底部的距离。<br>默认值，设置后弹框距离底部88vp。 |
-| OFFSET_FOR_NONE | 1 | 不存在菜单栏情况下与窗口底部的距离。<br>设置后弹框距离底部44vp。 |
-
-## 事件
-不支持[通用事件](ts-component-general-events.md)
+| OFFSET_FOR_BAR | 0 | 存在菜单栏情况下与窗口底部的距离。<br>设置后弹框距离底部88vp。 |
+| OFFSET_FOR_NONE | 1 | 不存在菜单栏情况下与窗口底部的距离。<br>默认值，设置后弹框距离底部44vp。 |
 
 ## 示例
 

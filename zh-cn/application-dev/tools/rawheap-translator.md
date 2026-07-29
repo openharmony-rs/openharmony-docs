@@ -1,14 +1,16 @@
 # rawheap-translator工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @wanghuan2025-->
-<!--Designer: @wanghuan2025-->
-<!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Owner: @wanghuan2022-->
+<!--Designer: @wanghuan2022-->
+<!--Tester: @m30041553; @zsw_zhushiwei-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 使用场景
 
 为方便开发者定位问题，应用在ArkTS内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。开发者可使用rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的[Heap Snapshot离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)或Chrome浏览器的开发者工具中的内存工具导入并查看。
+
+ArkTS-Dyn和ArkTS-Sta混合的场景下，如果已获取ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件，可使用双文件混合模式解析并合并生成一个.heapsnapshot文件。
 
 ## 使用指导
 
@@ -66,14 +68,23 @@
 
 ### 解析命令
 ```bash
-rawheap_translator [rawheap_file] [heapsnapshot_file]
+# 单文件模式
+rawheap_translator <rawheap_file> [heapsnapshot_file]
+
+# 双文件混合模式
+rawheap_translator <dynamic_rawheap_file> <static_rawheap_file> [heapsnapshot_file]
 ```
+
+单文件模式下，输入的.rawheap文件会被解析并转换为.heapsnapshot文件。双文件混合模式下，ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件会被解析并合并生成一个.heapsnapshot文件。
+
 ### 参数列表
 
-| 选项 | 必选 | 描述 |
-| -------- | --- | ----------------- |
-| [rawheap_file] | 是 | 需要解析的应用OOM时生成的.rawheap文件路径。 |
-| [heapsnapshot_file] | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。|
+| 选项 | 单文件模式必选 | 双文件混合模式必选 | 描述 |
+| -------- | --- | --- | ----------------- |
+| [rawheap_file] | 是 | 否 | 单文件模式下，需要解析的应用OOM时生成的.rawheap文件路径。 |
+| [dynamic_rawheap_file] | 否 | 是 | 双文件混合模式下，ArkTS-Dyn对应的.rawheap文件路径。 |
+| [static_rawheap_file] | 否 | 是 | 双文件混合模式下，ArkTS-Sta对应的.rawheap文件路径。 |
+| [heapsnapshot_file] | 否 | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。 |
 
 ## 解析命令示例
 
@@ -86,11 +97,23 @@ OHOS设备内工具路径：/bin/rawheap_translator，推荐指定生成heapsnap
 ```bash
 > /bin/rawheap_translator /data/log/reliability/resource_leak/memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap /data/local/tmp/myapplication-7979-7979.heapsnapshot
 ```
+
+ArkTS-Dyn和ArkTS-Sta混合场景中，可同时指定ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件，生成一个合并后的.heapsnapshot文件。
+
+```bash
+> /bin/rawheap_translator /data/log/reliability/resource_leak/memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap /data/log/reliability/resource_leak/memory_leak/memleak-static_js-com.example.myapplication-7979-7979-20241215191332.rawheap /data/local/tmp/myapplication-7979-7979.heapsnapshot
+```
 Windows系统中解析示例
 
 打开cmd并进入rawheap文件路径，调用解析工具命令，指定在当前路径下生成heapsnapshot文件。
 ```bash
 > rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
+```
+
+ArkTS-Dyn和ArkTS-Sta混合场景中，可传入ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件，生成一个合并后的.heapsnapshot文件。
+
+```bash
+> rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap memleak-static_js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 Linux系统中解析示例
 
@@ -98,11 +121,23 @@ Linux系统中解析示例
 ```bash
 > ./rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
+
+ArkTS-Dyn和ArkTS-Sta混合场景中，可传入ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件，生成一个合并后的.heapsnapshot文件。
+
+```bash
+> ./rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap memory_leak/memleak-static_js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
+```
 MacOS系统中解析示例
 
 打开终端并进入rawheap文件路径，调用解析工具命令，指定在当前路径下生成heapsnapshot文件。
 ```bash
 > rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
+```
+
+ArkTS-Dyn和ArkTS-Sta混合场景中，可传入ArkTS-Dyn和ArkTS-Sta对应的.rawheap文件，生成一个合并后的.heapsnapshot文件。
+
+```bash
+> rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap memory_leak/memleak-static_js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 参考输出
 ```bash
@@ -127,7 +162,7 @@ MacOS系统中解析示例
 
 rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件](../dfx/hiappevent-watcher-resourceleak-events.md)，自定义事件处理逻辑。
 
-从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[设置当前进程转储虚拟机原始堆快照的裁剪级别](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)。
+从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)接口设置当前进程转储虚拟机原始堆快照的裁剪级别。
 
 从API version 22开始，TRIM_LEVEL_1模式新增对象属性名解析能力，生成的rawheap文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
 | 规格 | 特点 |
@@ -190,3 +225,25 @@ rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对�
 指定的生成文件路径没有写入权限。<br>
 **解决措施**<br>
 更改到有写权限的路径可以解决。
+
+### 文件解析失败
+**问题现象**<br>
+工具解析完成，进行转换时失败，未生成heapsnapshot文件。
+```bash
+[INFO ] ParseVersion            current metadata version is 1.0.0
+[INFO ] ParseTypeEnums          total JSType count 214
+[INFO ] ParseTypeList           total metadata count 220
+[INFO ] SetBitField             set BitField offset 8
+[INFO ] SetBitField             set BindingSize offset 32
+[INFO ] SetBitField             set Length offset 8
+[INFO ] SetBitField             set Data offset 16
+[INFO ] ReadVersion             current rawheap version is 1.0.0
+[INFO ] RawHeap                 start to translate rawheap
+[INFO ] ReadRootTable           root node count 6244
+[INFO ] ReadStringTable         string table count 11208
+[INFO ] ReadObjTable            section objects count 96432
+```
+**原因**<br>
+解析工具版本过低。<br>
+**解决措施**<br>
+使用[DevEco Studio 6.1.1 Release](https://developer.huawei.com/consumer/cn/download/deveco-studio)及以上版本的工具。

@@ -2428,7 +2428,7 @@ wifi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2452,7 +2452,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2477,7 +2477,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
-| 2601000  | Operation failed. |
+| 2501000  | Operation failed. |
 
 **示例：**
 ```ts
@@ -2497,7 +2497,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
 
-**系统能力：** SystemCapability.Communication.WiFi.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -2527,7 +2527,7 @@ getWifiCapability(capability: WifiCapability): boolean
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
-| 2601000  | Operation failed. |
+| 2501000  | Operation failed. |
 
 **示例：**
 ```ts

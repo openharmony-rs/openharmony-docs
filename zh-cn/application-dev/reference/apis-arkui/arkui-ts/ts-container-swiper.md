@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-滑块视图容器，提供子组件滑动轮播显示的能力。 
+滑块视图容器，提供子组件滑动轮播显示的能力。适用于轮播图展示、图片浏览、引导页、卡片轮播等场景。 
 
 > **说明：**
 >
@@ -99,7 +99,7 @@ ArkTS-Sta: autoPlay(value: boolean | undefined)
 
 设置子组件是否自动播放。轮播方向为索引从小到大。
 
-[loop](#loop)为false时，自动轮播到最后一页时停止轮播。手势切换后不是最后一页时继续播放。当Swiper不可见时会停止轮播。
+[loop](#loop)为false时，自动轮播到最后一页时停止轮播。手势切换完成后，如果当前页面不是最后一页，自动轮播将继续播放。当Swiper不可见时会停止轮播。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -123,7 +123,7 @@ ArkTS-Dyn: autoPlay(autoPlay: boolean, options: AutoPlayOptions)
 
 ArkTS-Sta: autoPlay(autoPlay: boolean | undefined, options: AutoPlayOptions | undefined)
 
-设置子组件是否自动播放。options入参控制手指或者鼠标等按下屏幕时子组件是否停止自动播放。
+设置子组件是否自动播放。options入参控制手指或鼠标按下屏幕时子组件是否停止自动播放。
 
 当[loop](#loop)设置为false时，自动轮播将在到达最后一页时停止。在通过手势切换且未处于最后一页的情况下，轮播将继续进行。Swiper在不可见时，轮播也将停止。
 
@@ -226,7 +226,7 @@ ArkTS-Dyn: nestedScroll(value: SwiperNestedScrollMode)
 
 ArkTS-Sta: nestedScroll(value: SwiperNestedScrollMode | undefined)
 
-设置Swiper组件和父组件的嵌套滚动模式。[loop](#loop)为true时Swiper组件没有边缘，不会触发父组件嵌套滚动。
+设置Swiper组件和父组件的嵌套滚动模式。当Swiper嵌套在滚动容器（如List、Scroll）中时，需要根据业务需求选择合适的嵌套滚动模式。[loop](#loop)为true时Swiper组件没有边缘，不会触发父组件嵌套滚动。
 
 > **说明：**
 >
@@ -254,7 +254,7 @@ ArkTS-Dyn: loop(value: boolean)
 
 ArkTS-Sta: loop(value: boolean | undefined)
 
-设置是否开启循环。在LazyForEach懒循环加载模式下，加载的组件数量建议大于5个。
+设置是否开启循环。在LazyForEach懒循环加载模式下，加载的组件数量建议大于5个。预加载的组件数量不足时，可能会导致快速切换时出现空白或卡顿。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -426,7 +426,7 @@ ArkTS-Dyn: cachedCount(value: number)
 
 ArkTS-Sta: cachedCount(value: int | undefined)
 
-设置预加载子组件个数，以当前页面为基准，加载当前显示页面的前后个数。前面item删除，后面会向前补位。例如cachedCount=1时，会将当前显示的页面的前面一页和后面一页的子组件都预加载。如果设置为按组翻页，即displayCount的swipeByGroup参数设为true，预加载时会以组为基本单位。例如cachedCount=1，swipeByGroup=true时，会将当前组的前面一组和后面一组的子组件都预加载。
+设置预加载子组件个数，以当前页面为基准，加载当前显示页面的前后个数。前面item删除，后面会向前补位。例如cachedCount=1时，会将当前显示页面在索引序号上相邻的前一页和后一页的子组件都预加载。如果设置为按组翻页，即displayCount的swipeByGroup参数设为true，预加载时会以组为基本单位。例如cachedCount=1，swipeByGroup=true时，会将当前组的前面一组和后面一组的子组件都预加载。
 
 >  **说明：**
 >
@@ -459,6 +459,8 @@ ArkTS-Sta: cachedCount(count: int | undefined, isShown: boolean | undefined)
 设置预加载子组件个数。
 
 >  **说明：** 
+>
+>  - 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，生效后超出缓存范围的子节点会被释放。
 >
 >  - isShown值为true，且设置的count过大时，如果前后预加载范围内可加载的节点不足，循环场景下同一个可加载节点只会布局在一侧。
 
@@ -520,7 +522,7 @@ ArkTS-Dyn: disableSwipe(value: boolean)
 
 ArkTS-Sta: disableSwipe(value: boolean | undefined)
 
-设置禁用组件滑动切换功能。
+设置禁用组件滑动切换功能。适用于仅通过按钮或导航点控制翻页的场景，或需要限制用户滑动操作的场景。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -773,7 +775,7 @@ ArkTS-Sta: nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefin
 
 | 参数名 | 类型                         | 必填 | 说明                   |
 | ------ | ---------------------------- | ---- | ---------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 后边距。不支持设置百分比。<br/>默认值：0<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 后边距。不支持设置百分比。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值为undefined时，按默认值处理。 |
 | ignoreBlank<sup>12+</sup>  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 非loop场景下尾页不显示nextMargin。<br/>true：尾页不显示空白的nextMargin，尾页的右边缘与Swiper视窗右边缘对齐；false：尾页显示空白nextMargin，尾页的右边缘与Swiper视窗右边缘的距离为nextMargin。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 <br/>**说明：**<br/>尾页场景下，prevMargin和nextMargin的值相加作为左边边距显示前一个页面。 |
 
 ### prevMargin<sup>10+</sup>
@@ -808,7 +810,7 @@ ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefin
 
 | 参数名 | 类型                         | 必填 | 说明                   |
 | ------ | ---------------------------- | ---- | ---------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 前边距。不支持设置百分比。<br/>默认值：0<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 前边距。不支持设置百分比。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值为undefined时，按默认值处理。 |
 | ignoreBlank<sup>12+</sup>  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 非loop场景下首页不显示prevMargin。<br/>true：首页不显示空白的prevMargin，首页的左边缘与Swiper视窗左边缘对齐；false：首页显示空白prevMargin，首页的左边缘与Swiper视窗左边缘的距离为prevMargin。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 <br/>**说明：**<br/>首页场景下，prevMargin和nextMargin的值相加作为右边边距显示后一个页面。|
 
 ### indicatorInteractive<sup>12+</sup>
@@ -817,7 +819,7 @@ ArkTS-Dyn: indicatorInteractive(value: boolean)
 
 ArkTS-Sta: indicatorInteractive(value: boolean | undefined)
 
-设置禁用组件导航点交互功能。设置为true时表示导航点可交互。
+设置导航点是否可交互。适用于需要通过其他方式（如按钮）控制翻页，或需要禁止用户通过导航点点击翻页的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -917,7 +919,7 @@ indicatorStyle(value?: IndicatorStyle)
 
 > **说明：** 
 >
-> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator](#indicator)替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -940,10 +942,10 @@ Swiper在主轴上的尺寸大小模式枚举。
 <!--Table: 30%; 10%; 60%-->
 | 名称                               |  值 |说明                                                         |
 | ---------------------------------- | -- |------------------------------------------------------------ |
-| Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
-| AutoLinear<sup>(deprecated)</sup>  | 1 |Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用AUTO_LINEAR替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>**说明：**从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| AutoLinear<sup>(deprecated)</sup>  | 1 |Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>**说明：**从API version 7开始支持，从API version 10开始废弃，建议使用AUTO_LINEAR替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
 | STRETCH<sup>10+</sup>              | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| AUTO_LINEAR<sup>(deprecated)</sup> | 0| Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>**说明**：从API version 10开始支持，从API version 12开始废弃，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| AUTO_LINEAR<sup>(deprecated)</sup> | 1 | Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>**说明：**从API version 10开始支持，从API version 12开始废弃，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 
 ## SwiperNestedScrollMode<sup>11+</sup>枚举说明
 
@@ -1034,7 +1036,11 @@ ArkTS-Sta: showPrevious(): void
 
 changeIndex(index: number, useAnimation?: boolean)
 
-翻至指定页面。
+翻至指定页面。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
+
+> **说明：**
+>
+> 该接口本身提供了不带动画跳转页面的能力（useAnimation设置为false），不建议使用changeIndex接口启动动画后，直接使用finishAnimation接口打断来实现页面不带动画跳转。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1221,7 +1227,7 @@ ArkTS-Sta: fakeDragBy(offset: float): boolean
 
 | 参数名   | 类型   | 必填   | 说明                                                  |
 | -----  | ------ | ---- | -------------------------------------------------------- |
-| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: float | 是   | 需要模拟拖拽的拖拽距离。<br/>正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。<br/>单位：vp|
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: float | 是   | 需要模拟拖拽的拖拽距离。<br/>正数表示向主轴起点方向拖拽（横向布局时向左，纵向布局时向上）；负数表示向主轴终点方向拖拽（横向布局时向右，纵向布局时向下）。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -1305,7 +1311,7 @@ Swiper组件翻页至指定页面的动效模式。
 
 ## Indicator<sup>10+</sup>
 
-设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
+设置导航点与Swiper组件的距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1343,13 +1349,13 @@ ArkTS-Sta: left(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点左侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br/>设置为0时：按照0位置布局计算。<br/>优先级：高于right属性。<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点左侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br/>设置为0时：按照0位置布局计算。<br/>优先级：高于right属性。<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。 |
 
 **返回值：**
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### top
 
@@ -1375,13 +1381,13 @@ ArkTS-Sta: top(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  |ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点顶部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：高于bottom属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
+| value  |ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点顶部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：高于bottom属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。 |
 
 **返回值：**
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### right
 
@@ -1407,13 +1413,13 @@ ArkTS-Sta: right(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于left属性。<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围 时，取最近的边界值。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于left属性。<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围 时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。 |
 
 **返回值：**
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### bottom
 
@@ -1439,13 +1445,13 @@ ArkTS-Sta: bottom(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。 |
 
 **返回值：**
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### bottom<sup>19+</sup>
 
@@ -1472,14 +1478,14 @@ ArkTS-Sta: bottom(bottom: LengthMetrics | Length | undefined, ignoreSize: boolea
 <!--Table: 15%; 25%; 10%; 50%-->
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| bottom  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length) \| undefined| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
-| ignoreSize  | boolean | 是   | 设置是否忽略导航点本身大小，默认false。<br/>true表示可以将导航点更靠近Swiper底部；false表示忽略导航点本身大小。<br/>使用方法可以参考[示例9](#示例9演示导航点space与bottom)演示导航点space与bottom。<br/> 说明：当导航点为[DigitIndicator](#digitindicator10)的类型时，不生效的场景如下：<br/> &bull;  当[vertical](#vertical) 设置为false，且bottom > 0。<br/>  &bull;  当[vertical](#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。|
+| bottom  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length) \| undefined| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。 |
+| ignoreSize  | boolean | 是   | 设置是否忽略导航点本身大小，默认false。<br/>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考[示例9](#示例9演示导航点space与bottom)演示导航点space与bottom。<br/> 说明：当导航点为[DigitIndicator](#digitindicator10)的类型时，不生效的场景如下：<br/> &bull;  当[vertical](#vertical) 设置为false，且bottom > 0。<br/>  &bull;  当[vertical](#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。|
 
 **返回值：**
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### start<sup>12+</sup>
 
@@ -1511,7 +1517,7 @@ ArkTS-Sta: start(value: LengthMetrics | undefined): this
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### end<sup>12+</sup>
 
@@ -1543,7 +1549,7 @@ ArkTS-Sta: end(value: LengthMetrics | undefined): this
 
 | 类型 | 说明               |
 | --- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
 
 ### dot
 
@@ -1567,7 +1573,7 @@ static dot(): DotIndicator
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| [DotIndicator](#dotindicator10) | 圆点指示器。 |
+| [DotIndicator](#dotindicator10) | 圆点指示器对象，用于设置Swiper组件的圆点导航样式。 |
 
 ### digit
 
@@ -1591,7 +1597,7 @@ static digit(): DigitIndicator
 
 | 类型                                | 说明         |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | 数字指示器。 |
+| [DigitIndicator](#digitindicator10) | 数字指示器对象，用于设置Swiper组件的数字导航样式。 |
 
 ## DotIndicator<sup>10+</sup>
 
@@ -1657,13 +1663,13 @@ Swiper组件圆点导航指示器的宽。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined| 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined| 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)，超出范围时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### itemHeight
 
@@ -1689,13 +1695,13 @@ Swiper组件圆点导航指示器的高。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)，超出范围时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### selectedItemWidth
 
@@ -1721,13 +1727,13 @@ ArkTS-Sta: selectedItemWidth(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined  | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined  | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)，超出范围时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### selectedItemHeight
 
@@ -1753,13 +1759,13 @@ ArkTS-Sta: selectedItemHeight(value: Length | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  |ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined| 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value  |ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined| 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞)，超出范围时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 | 
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### mask
 
@@ -1791,7 +1797,7 @@ ArkTS-Sta: mask(value: boolean | undefined): this
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### color
 
@@ -1823,7 +1829,7 @@ Swiper组件圆点导航指示器的颜色。
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### selectedColor
 
@@ -1855,7 +1861,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined): this
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### maxDisplayCount<sup>12+</sup>
 
@@ -1879,13 +1885,13 @@ ArkTS-Sta: maxDisplayCount(maxDisplayCount: int | undefined): this
 
 | 参数名          | 类型   | 必填 | 说明                                                         |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| maxDisplayCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined| 是   | 设置圆点导航点指示器样式下，导航点显示个数最大值，当实际导航点个数大于最大导航点个数时，会生效超长效果样式，样式如[示例5](#示例5设置圆点导航点超长显示)所示。<br/>取值范围：[6, 9]<br/>**说明：** <br/>1、超长显示场景，目前暂时不支持交互功能（包括：手指点击拖拽、鼠标操作等）。<br/>2、在超长显示场景下，中间页面对应的选中导航点的位置，并不是完全固定的，取决于之前的翻页操作序列。<br/>3、当前仅支持displayCount为1的场景。<br/>取值为undefined时，等同于没有超长显示效果。 |
+| maxDisplayCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined| 是   | 设置圆点导航点指示器样式下，导航点显示个数最大值，当实际导航点个数大于最大导航点个数时，会生效超长效果样式，样式如[示例5](#示例5设置圆点导航点超长显示)所示。<br/>取值范围：[6, 9]，超出范围时等同于没有超长显示效果。<br/>**说明：** <br/>1、超长显示场景，API版本26.0.0之前不支持交互功能（包括：手指点击拖拽、鼠标操作），从API版本26.0.0开始支持手指点击拖拽的交互功能，不支持鼠标操作的交互功能。<br/>2、在超长显示场景下，中间页面对应的选中导航点的位置，并不是完全固定的，取决于之前的翻页操作序列。<br/>3、当前仅支持displayCount为1的场景。<br/>取值为undefined时，等同于没有超长显示效果。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### space<sup>19+</sup>
 
@@ -1911,13 +1917,13 @@ ArkTS-Sta: space(space: LengthMetrics | undefined): this
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| space  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞)，设置小于0的值时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：** 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ### indicatorIcon
 
@@ -1949,7 +1955,7 @@ ArkTS-Sta: indicatorIcon(iconList: Array&lt;IndicatorIconInfo&gt; | undefined): 
 
 | 类型                            | 说明         |
 | ------------------------------- | ------------ |
-| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器，用于支持链式调用配置其他圆点样式属性。 |
 
 ## DigitIndicator<sup>10+</sup>
 
@@ -2023,7 +2029,7 @@ Swiper组件数字导航点的字体颜色。
 
 | 类型                                | 说明         |
 | ----------------------------------- | ------------ |
-| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器。 |
+| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器，用于支持链式调用配置其他数字样式属性。 |
 
 ### selectedFontColor
 
@@ -2055,7 +2061,7 @@ ArkTS-Sta: selectedFontColor(value: ResourceColor | undefined): this
 
 | 类型                                | 说明         |
 | ----------------------------------- | ------------ |
-| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器。 |
+| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器，用于支持链式调用配置其他数字样式属性。 |
 
 ### digitFont
 
@@ -2087,7 +2093,7 @@ Swiper组件数字导航点的字体样式。
 
 | 类型                                | 说明         |
 | ----------------------------------- | ------------ |
-| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器。 |
+| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器，用于支持链式调用配置其他数字样式属性。 |
 
 ### selectedDigitFont
 
@@ -2123,7 +2129,7 @@ ArkTS-Sta: selectedDigitFont(value: Font | undefined): this
 
 | 类型                                | 说明         |
 | ----------------------------------- | ------------ |
-| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器。 |
+| ArkTS-Dyn: [DigitIndicator](#digitindicator10)<br/>ArkTS-Sta: this | 返回当前数字指示器，用于支持链式调用配置其他数字样式属性。 |
 
 ## ArrowStyle<sup>10+</sup>对象说明
 
@@ -2166,7 +2172,7 @@ ArkTS-Sta: selectedDigitFont(value: Font | undefined): this
 
 | 名称  | 类型             | 只读 | 可选 | 说明                             |
 | ------- | -------------------- | ------ | ------ | ------------------------------------ |
-| minSize | [VP](ts-types.md#vp10) | 否  | 否     | 设置元素显示最小宽度。<br/>默认值：0 |
+| minSize | [VP](ts-types.md#vp10) | 否  | 否     | 设置元素显示最小宽度，用于根据Swiper当前宽度和minSize值自动计算并更改一页内元素显示个数。<br/>默认值：0<br/>取值范围：(0, +∞)，设置小于等于0的值时，Swiper显示1列。 |
 
 ## AutoPlayOptions<sup>18+</sup>对象说明
 
@@ -2350,7 +2356,7 @@ ArkTS-Sta: onGestureSwipe(event: OnSwiperGestureSwipeCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18)<br/>ArkTS-Sta: [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) \| undefined  | 是   | 在页面跟手滑动过程中，逐帧触发的回调。onGestureSwipe回调触发时机在onTouch之后，如果需要在离手后执行操作建议使用[onAnimationStart](#onanimationstart9)。<br/>取值为undefined时，不使用回调函数。 |
+| event  | ArkTS-Dyn: [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18)<br/>ArkTS-Sta: [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) \| undefined  | 是   | 在页面跟手滑动过程中，逐帧触发的回调。onGestureSwipe回调触发时机在onTouch之后，如果需要在手指离开屏幕后动画开始时执行操作，建议使用[onAnimationStart](#onanimationstart9)。<br/>取值为undefined时，不使用回调函数。 |
 
 ### customContentTransition<sup>12+</sup>
 
@@ -2362,7 +2368,7 @@ ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition |
 
 使用说明：
 
-1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper前后端显示同一页面时，该接口不生效。<br>2、在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。<br>3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调，若同组所有页面均不在视窗内时，则会一起下渲染树。<br>4、在页面跟手滑动和离手后执行切换动画的过程中，默认动画（页面滑动）依然会发生，若希望页面不滑动，可以设置主轴方向上负的位移（translate属性）来抵消页面滑动。例如：当displayCount属性值为2，视窗内有下标为0、1的两个页面时，页面水平滑动过程中，可以逐帧设置第0页的translate属性在x轴上的值为-position * mainAxisLength来抵消第0页的位移，设置第1页的translate属性在x轴上的值为-(position - 1) * mainAxisLength来抵消第1页的位移。
+1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper视窗的前后两端区域显示同一页面时，该接口不生效。<br>2、在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。<br>3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调，若同组所有页面均不在视窗内时，则会一起下渲染树。<br>4、在页面跟手滑动和离手后执行切换动画的过程中，默认动画（页面滑动）依然会发生，若希望页面不滑动，可以设置主轴方向上负的位移（translate属性）来抵消页面滑动。例如：当displayCount属性值为2，视窗内有下标为0、1的两个页面时，页面水平滑动过程中，可以逐帧设置第0页的translate属性在x轴上的值为-position * mainAxisLength来抵消第0页的位移，设置第1页的translate属性在x轴上的值为-(position - 1) * mainAxisLength来抵消第1页的位移。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
@@ -2392,7 +2398,7 @@ ArkTS-Sta: onContentDidScroll(handler: ContentDidScrollCallback | undefined)
 
 使用说明：
 
-1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper前后端显示同一页面时，该接口不生效。<br>2、在页面滑动过程中，会对视窗内所有页面逐帧触发[ContentDidScrollCallback](#contentdidscrollcallback12)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。<br>3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调。
+1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper视窗的前后两端区域显示同一页面时，该接口不生效。<br>2、在页面滑动过程中，会对视窗内所有页面逐帧触发[ContentDidScrollCallback](#contentdidscrollcallback12)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。<br>3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2687,7 +2693,7 @@ Swiper即将滑动前触发的回调，返回值表示是否允许此次滑动�
 | ------ | ---- | ---- | ---- | ---- |
 | currentIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 当前页面对应的index。在一次跟手滑动过程中，只要手指未离开屏幕，该值将保持不变，即使该页面已完全移出视窗，如在涉及多个页面的场景中。 |
 | comingIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 滑动方向上即将显示的页面index。 |
-| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 此次滑动的位移，带有符号，正负分别指示不同的翻页方向。正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。<br>在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。 |
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 此次滑动的位移，带有符号，正负分别指示不同的翻页方向。单位：vp<br>正数表示从index=1向index=0翻页，负数表示从index=0向index=1翻页。<br>在手指滑动的场景中，该值为滑动事件中每帧传递下来的偏移量。在滚动鼠标滚轮和使用键盘方向键导航的场景中，该值代表即将翻页的距离。 |
 
 ## SwiperAnimationEvent<sup>10+</sup>对象说明
 
@@ -2705,9 +2711,9 @@ Swiper组件动画相关信息集合。
 
 | 名称            | 类型       | 只读 | 可选 | 说明                                       |
 | ------------- | ----------- | ---- | ---- |------------------------------- |
-| currentOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | Swiper当前显示元素在主轴方向上，相对于Swiper起始位置的位移。<br/>单位：vp<br/>默认值：0|
-| targetOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | Swiper动画目标元素在主轴方向上，相对于Swiper起始位置的位移。<br/>单位：vp<br/>默认值：0|
-| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否 | 否 | Swiper离手动画开始时的离手速度。<br/>单位：vp<br/>默认值：0|
+| currentOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | Swiper当前显示元素在主轴方向上，相对于Swiper起始位置的位移。单位vp，默认值为0。|
+| targetOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | Swiper动画目标元素在主轴方向上，相对于Swiper起始位置的位移。单位vp，默认值为0。|
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否 | 否 | Swiper离手动画开始时的离手速度。单位vp/s，默认值为0。|
 
 ## SwiperContentAnimatedTransition<sup>12+</sup>
 
@@ -2727,7 +2733,7 @@ Swiper自定义切换动画相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 是 | Swiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)的finishTransition接口通知Swiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即将该页面节点下渲染树。单位：ms<br/>默认值：0<br/>取值为undefined时，按默认值处理。 |
+| timeout | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 是 | Swiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)的finishTransition接口通知Swiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即将该页面节点下渲染树。单位：ms<br/>默认值：0<br/>取值范围：[0, +∞)，设置小于0的值时按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
 | transition | Callback<[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## SwiperContentTransitionProxy<sup>12+</sup>
@@ -2823,6 +2829,8 @@ finishTransition(): void
 
 从API version 20开始，新增onScrollStateChanged事件。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyDataSource implements IDataSource {
@@ -2864,14 +2872,14 @@ struct SwiperExample {
   build() {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .width('90%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(1)
@@ -2904,22 +2912,22 @@ struct SwiperExample {
         console.info(index.toString());
       })
       .onScrollStateChanged((event: ScrollState) => {
-        console.info("event: " + event);
+        console.info('event: ' + event);
       })
       .onGestureSwipe((index: number, extraInfo: SwiperAnimationEvent) => {
-        console.info("index: " + index);
-        console.info("current offset: " + extraInfo.currentOffset);
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
       })
       .onAnimationStart((index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => {
-        console.info("index: " + index);
-        console.info("targetIndex: " + targetIndex);
-        console.info("current offset: " + extraInfo.currentOffset);
-        console.info("target offset: " + extraInfo.targetOffset);
-        console.info("velocity: " + extraInfo.velocity);
+        console.info('index: ' + index);
+        console.info('targetIndex: ' + targetIndex);
+        console.info('current offset: ' + extraInfo.currentOffset);
+        console.info('target offset: ' + extraInfo.targetOffset);
+        console.info('velocity: ' + extraInfo.velocity);
       })
       .onAnimationEnd((index: number, extraInfo: SwiperAnimationEvent) => {
-        console.info("index: " + index);
-        console.info("current offset: " + extraInfo.currentOffset);
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
       })
 
       Row({ space: 12 }) {
@@ -2933,6 +2941,187 @@ struct SwiperExample {
           })
       }.margin(5)
       Row({ space: 5 }) {
+        Button('FAST 0')
+          .onClick(() => {
+            // 控制器：跳转到索引0，使用快速动画模式
+            this.swiperController.changeIndex(0, SwiperAnimationMode.FAST_ANIMATION);
+          })
+        Button('FAST 3')
+          .onClick(() => {
+            // 控制器：跳转到索引3，使用快速动画模式
+            this.swiperController.changeIndex(3, SwiperAnimationMode.FAST_ANIMATION);
+          })
+        Button('FAST ' + 9)
+          .onClick(() => {
+            // 控制器：跳转到索引9，使用快速动画模式
+            this.swiperController.changeIndex(9, SwiperAnimationMode.FAST_ANIMATION);
+          })
+      }.margin(5)
+    }.width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  IDataSource,
+  DataChangeListener,
+  SwiperController,
+  ColumnOptions,
+  TextAlign,
+  Row,
+  RowOptions,
+  LazyForEach,
+  Color,
+  DotIndicator,
+  Curve,
+  Swiper,
+  ScrollState,
+  SwiperAnimationEvent,
+  SwiperAnimationMode,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+export class MyDataSource implements IDataSource<string> {
+  private list: string[] = [];
+  private listener?: DataChangeListener = undefined
+
+  constructor(list: string[]) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index as int];
+  }
+
+  public addData(index: int, data: string): void {
+    this.list.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public deleteData(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  notifyDataAdd(index: int): void {
+    this.listener!.onDataAdd(index)
+  }
+
+  notifyDataDelete(index: int): void {
+    this.listener!.onDataDelete(index);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+  private data: MyDataSource = new MyDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i: number = 1; i <= 10; i++) {
+      list.push(i.toString());
+    }
+    this.data = new MyDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Swiper(this.swiperController) {
+        LazyForEach(this.data, (item: string) => {
+          Text(item)
+            .width('90%')
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        })
+      }
+      .cachedCount(2)
+      .index(1)
+      .autoPlay(true)
+      .interval(4000)
+      .loop(true)
+      .indicatorInteractive(true)
+      .duration(1000)
+      .itemSpace(5)
+      .prevMargin(35)
+      .nextMargin(35)
+      .indicator( // 设置圆点导航点样式
+        new DotIndicator()
+          .itemWidth(15)
+          .itemHeight(15)
+          .selectedItemWidth(15)
+          .selectedItemHeight(15)
+          .color(Color.Gray)
+          .selectedColor(Color.Blue))
+      .displayArrow({
+        // 设置导航点箭头样式
+        showBackground: true,
+        isSidebarMiddle: true,
+        backgroundSize: 24,
+        backgroundColor: Color.White,
+        arrowSize: 18,
+        arrowColor: Color.Blue
+      }, false)
+      .curve(Curve.Linear)
+      .onChange((index: int) => {
+        console.info(index.toString());
+      })
+      .onScrollStateChanged((event: ScrollState) => {
+        console.info('event: ' + event);
+      })
+      .onGestureSwipe((index: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
+      })
+      .onAnimationStart((index: int, targetIndex: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('targetIndex: ' + targetIndex);
+        console.info('current offset: ' + extraInfo.currentOffset);
+        console.info('target offset: ' + extraInfo.targetOffset);
+        console.info('velocity: ' + extraInfo.velocity);
+      })
+      .onAnimationEnd((index: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
+      })
+
+      Row({ space: 12 } as RowOptions) {
+        Button('showPrevious')
+          .onClick(() => {
+            this.swiperController.showPrevious();
+          })
+        Button('showNext')
+          .onClick(() => {
+            this.swiperController.showNext();
+          })
+      }.margin(5)
+
+      Row({ space: 5 } as RowOptions) {
         Button('FAST 0')
           .onClick(() => {
             // 控制器：跳转到索引0，使用快速动画模式
@@ -3002,14 +3191,14 @@ struct SwiperExample {
   build() {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .width('90%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(1)
@@ -3090,14 +3279,14 @@ struct SwiperExample {
   build() {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .width('90%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .displayCount(3, true) // 开启按组翻页：每页显示3个轮播项，且翻页时整组切换
       .cachedCount(1, { independent: true }) // 从API version 24开始，新增CachedCountOptions.independent参数。在显示区域外各缓存一个子节点，和displayCount的按组显示数量解耦
@@ -3265,7 +3454,7 @@ struct SwiperCustomAnimationExample {
       })
       .onContentDidScroll((selectedIndex: number, index: number, position: number, mainAxisLength: number) => {
         // 监听Swiper页面滑动事件，在该回调中可以实现自定义导航点切换动画等
-        console.info("onContentDidScroll selectedIndex: " + selectedIndex + ", index: " + index + ", position: " + position + ", mainAxisLength: " + mainAxisLength);
+        console.info('onContentDidScroll selectedIndex: ' + selectedIndex + ', index: ' + index + ', position: ' + position + ', mainAxisLength: ' + mainAxisLength);
       })
     }.width('100%')
   }
@@ -3317,14 +3506,14 @@ struct Index {
   build() {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .width('90%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(5)
@@ -3406,10 +3595,10 @@ struct SwiperPreloadItems {
                 console.info('preloadItems [2, 3] success.');
               })
               .catch((error: BusinessError) => {
-                console.error('preloadItems [2, 3] failed, error code: ' + error.code + ', error message: ' + error.message);
+                console.error(`Failed to preload items [2, 3]. Code: ${error.code}, message: ${error.message}`);
               })
           } catch (error) {
-            console.error('preloadItems [2, 3] failed, error code: ' + error.code + ', error message: ' + error.message);
+            console.error(`Failed to preload items [2, 3]. Code: ${error.code}, message: ${error.message}`);
           }
 
         })
@@ -3505,7 +3694,7 @@ struct TabsSwiperExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
-        ForEach(this.list, (index: number) =>{
+        ForEach(this.list, (index: number) => {
           TabContent().tabBar(this.tabBuilder(index, '页签 ' + this.list[index]))
         })
       }
@@ -3519,7 +3708,7 @@ struct TabsSwiperExample {
       .width('100%')
 
       Swiper(this.swiperController) {
-        LazyForEach(this.swiperData, (item: string) => {
+        LazyForEach(this.swiperData, (item: number) => {
           Text(item.toString())
             .onAppear(()=>{
               console.info('onAppear ' + item.toString());
@@ -3532,12 +3721,12 @@ struct TabsSwiperExample {
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .loop(false)
       // 选中/切换轮播项时触发
       .onSelected((index: number) => {
-        console.info("onSelected:" + index);
+        console.info('onSelected:' + index);
         // 同步选中索引到currentIndex（更新页签选中态）
         this.currentIndex = index;
         // 控制Tabs切换到对应索引页签
@@ -3595,14 +3784,14 @@ struct SwiperExample {
   build() {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .width('90%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .index(this.currentIndex)
       .loop(false)
@@ -3695,14 +3884,14 @@ struct SwiperExample {
     Scroll() {
       Column({ space: 20 }) {
         Swiper(this.swiperController1) {
-          LazyForEach(this.data1, (item: string) => {
+        LazyForEach(this.data1, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(120)
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
               .fontSize(30)
-          }, (item: string) => item)
+        }, (item: number) => item.toString())
         }
         .indicator(new DotIndicator()
           .space(this.space) // 控制导航点之间的间距
@@ -3785,13 +3974,13 @@ struct SwiperExample {
   build() {
     Column() {
       Swiper() {
-        LazyForEach(this.data, (item: string) => {
+        LazyForEach(this.data, (item: number) => {
           Text(item.toString())
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width('100%')
       .displayCount({fillType:PresetFillType.BREAKPOINT_SM1MD2LG3}) // 按断点设置视窗内元素显示个数

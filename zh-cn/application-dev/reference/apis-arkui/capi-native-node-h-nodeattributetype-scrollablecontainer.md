@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（滚动容器类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @shengu_lancer; @yangcan18-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,7 +60,7 @@ NODE_SCROLL_BAR_WIDTH = 1002001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
+| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：[0, +∞)。设置为小于0的值时，按默认值处理，儿童智能表则恢复至默认值5vp。设置为0时，不显示滚动条。 |
 
 **返回：**
 
@@ -84,7 +84,7 @@ NODE_SCROLL_BAR_COLOR = 1002002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。默认值：0x66182431。 |
+| .data[0].u32 | 滚动条颜色，0xargb类型。儿童智能表的默认值颜色：0xffffffff，表示白色（100%不透明度）。其他设备默认值：0x66182431，表示深蓝灰色（40%不透明度）。 |
 
 **返回：**
 
@@ -209,8 +209,8 @@ NODE_SCROLL_SNAP = 1002007
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].i32 | Scroll组件限位滚动时的对齐方式，数据类型[ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign)，默认值[ARKUI_SCROLL_SNAP_ALIGN_NONE](capi-native-type-h.md#arkui_scrollsnapalign)。 |
-| .value[1].i32 | 在Scroll组件限位滚动模式下，该参数设置为true后，不允许Scroll在开头和第一页间自由滑动，设置为false后，允许Scroll在开头和第一页间自由滑动，默认值true。该参数仅在限位点为多个时生效。 |
-| .value[2].i32 | 在Scroll组件限位滚动模式下，该参数设置为true后，不允许Scroll在最后一页和末尾间自由滑动，设置为false后，允许Scroll在最后一页和末尾间自由滑动，默认值true。该参数仅在限位点为多个时生效。 |
+| .value[1].i32 | 在Scroll组件限位滚动模式下，该参数设置为1后，不允许Scroll在开头和第一页间自由滑动，设置为0后，允许Scroll在开头和第一页间自由滑动，默认值1。该参数仅在限位点为多个时生效。 |
+| .value[2].i32 | 在Scroll组件限位滚动模式下，该参数设置为1后，不允许Scroll在最后一页和末尾间自由滑动，设置为0后，允许Scroll在最后一页和末尾间自由滑动，默认值1。该参数仅在限位点为多个时生效。 |
 | .value[3...].f32 | Scroll组件限位滚动时的限位点，限位点即为Scroll组件能滑动停靠的偏移量。可以1个或多个。 |
 
 **返回：**
@@ -218,8 +218,8 @@ NODE_SCROLL_SNAP = 1002007
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | Scroll组件限位滚动时的对齐方式，数据类型[ArkUI_ScrollSnapAlign](capi-native-type-h.md#arkui_scrollsnapalign)。 |
-| .value[1].i32 | 在Scroll组件限位滚动模式下，该参数设置为true后，不允许Scroll在开头和第一页间自由滑动，设置为false后，允许Scroll在开头和第一页间自由滑动，默认值true。该参数仅在限位点为多个时生效。 |
-| .value[2].i32 | 在Scroll组件限位滚动模式下，该参数设置为true后，不允许Scroll在最后一页和末尾间自由滑动，设置为false后，允许Scroll在最后一页和末尾间自由滑动，默认值true。该参数仅在限位点为多个时生效。 |
+| .value[1].i32 | 在Scroll组件限位滚动模式下，该参数设置为1后，不允许Scroll在开头和第一页间自由滑动，设置为0后，允许Scroll在开头和第一页间自由滑动，默认值1。该参数仅在限位点为多个时生效。 |
+| .value[2].i32 | 在Scroll组件限位滚动模式下，该参数设置为1后，不允许Scroll在最后一页和末尾间自由滑动，设置为0后，允许Scroll在最后一页和末尾间自由滑动，默认值1。该参数仅在限位点为多个时生效。 |
 | .value[3...].f32 | Scroll组件限位滚动时的限位点，限位点即为Scroll组件能滑动停靠的偏移量。 |
 
 ## NODE_SCROLL_NESTED_SCROLL
@@ -564,7 +564,7 @@ NODE_SCROLL_BAR_MARGIN = 1002022
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 设置滚动条起始边距，默认值为0，单位：vp。 |
+| .value[0].f32 | 设置滚动条起始边距，儿童智能表默认值为42，其他设备默认值为0，单位：vp。 |
 | .value[1].f32 | 设置滚动条末尾边距，默认值为0，单位：vp。 |
 
 **返回：**
@@ -717,6 +717,29 @@ NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
+
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+定义滚动条滑轨高度。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。默认值：自适应滚动组件高度。<br>取值范围：值必须大于等于0。设置为小于0时使用默认值，儿童智能表则恢复至默认值37vp。设置为0时不显示滚动条。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
 
 ## NODE_LIST_DIRECTION
 
@@ -1104,7 +1127,7 @@ List组件走焦换行模式，支持属性设置，属性重置和属性获取�
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | List组件走焦换行模式，参数类型[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)。默认值：ARKUI_FOCUS_WRAP_MODE_DEFAULT。 |
+| .value[0].i32 | List组件走焦换行模式，参数取值为[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)下的枚举，默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。 |
 
 **返回：**
 
@@ -1376,13 +1399,13 @@ NODE_REFRESH_REFRESHING = MAX_NODE_SCOPE_NUM * ARKUI_NODE_REFRESH = 1009000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型为1或者0，1表示正在刷新，0表示不在刷新。默认值：0。 |
+| .value[0].i32 | 参数值为1或者0，1表示正在刷新，0表示不在刷新。默认值：0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型为1或者0，1表示正在刷新，0表示不在刷新。 |
+| .value[0].i32 | 参数值为1或者0，1表示正在刷新，0表示不在刷新。 |
 
 ## NODE_REFRESH_CONTENT
 
@@ -2044,7 +2067,7 @@ NODE_GRID_FOCUS_WRAP_MODE = 1013006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | Grid组件走焦换行模式，参数类型[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)。默认值：[FOCUS_WRAP_MODE_DEFAULT](capi-native-type-h.md#arkui_focuswrapmode)。 |
+| .value[0].i32 | Grid组件走焦换行模式，参数取值为[ArkUI_FocusWrapMode](capi-native-type-h.md#arkui_focuswrapmode)下的枚举，默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。 |
 
 **返回：**
 
@@ -2092,7 +2115,7 @@ NODE_GRID_ALIGN_ITEMS = 1013008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | Grid中GridItem的对齐方式，参数类型[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)。默认值：[GRID_ITEM_ALIGNMENT_DEFAULT](capi-native-type-h.md#arkui_griditemalignment)。 |
+| .value[0].i32 | Grid中GridItem的对齐方式，参数取值为[ArkUI_GridItemAlignment](capi-native-type-h.md#arkui_griditemalignment)下的枚举，默认值为ARKUI_GRID_ITEM_ALIGNMENT_DEFAULT。 |
 
 **返回：**
 
@@ -2285,7 +2308,7 @@ NODE_GRID_ITEM_STYLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID_ITEM = 1014000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | GridItem样式，参数类型[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)。默认值：[GRID_ITEM_STYLE_NONE](capi-native-type-h.md#arkui_griditemstyle)。 |
+| .value[0].i32 | GridItem样式，参数取值为[ArkUI_GridItemStyle](capi-native-type-h.md#arkui_griditemstyle)下的枚举，默认值为ARKUI_GRID_ITEM_STYLE_NONE。 |
 
 **返回：**
 

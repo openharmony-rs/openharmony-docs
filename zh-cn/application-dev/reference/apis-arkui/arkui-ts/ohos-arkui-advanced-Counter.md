@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Counter组件用于精确调节数值。
@@ -109,8 +109,8 @@ CounterOptions定义Counter类型及样式。
 | type | [CounterType](#countertype) | 否  | 否   | 指定当前Counter的类型。<br>默认值：CounterType.LIST<br>不支持设置undefined。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)| 否  | 是 | 布局方向。<br>默认值：Direction.Auto。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否  | 是 | 列表型和紧凑型Counter的样式。<br>默认值：显示计数器为0的列表型或紧凑型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 普通数字内联调节型Counter的样式。<br>默认值：显示计数器为0的普通数字内联调节型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期型内联型Counter的样式。<br>默认值：显示0001/01/01的日期型内联型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 数值内联型Counter的样式。<br>默认值：显示计数器为0的数值内联型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期内联型Counter的样式。<br>默认值：显示0001/01/01的日期内联型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 选择不同的Counter类型，需要选择对应的Counter样式。
 
@@ -137,7 +137,7 @@ CounterType指定Counter类型。
 | ----------- | ---- | --------------------------- |
 | LIST        | 0    | 列表型Counter。             |
 | COMPACT     | 1    | 紧凑型Counter。             |
-| INLINE      | 2    | 普通数字内联调节型Counter。 |
+| INLINE      | 2    | 数值内联型Counter。 |
 | INLINE_DATE | 3    | 日期内联型Counter。       |
 
 ## CommonOptions
@@ -176,8 +176,8 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                   |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------ |
 | value     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的初始值。<br>默认值：0。 <br>取值范围：[min, max]内的整数，其中min和max分别对应下述Counter的最小值和最大值。 <br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。                  |
-| min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：(-∞, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
-| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：(-∞, +∞)内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
+| min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
+| max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
 | textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否  | 是 | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)。 <br>单位：vp。  <br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。  |
 | onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange23) | 否  | 是 | 当数值改变时，返回当前值。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。 <br>值为undefined时，按默认值处理。 |
 
@@ -356,7 +356,7 @@ import { CounterType, CounterComponent } from '@kit.ArkUI';
 struct ListCounterExample {
   build() {
     Column() {
-      //列表型Counter
+      // 列表型Counter
       CounterComponent({
         options: {
           type: CounterType.LIST,
@@ -422,7 +422,7 @@ import { CounterType, CounterComponent } from '@kit.ArkUI';
 struct CompactCounterExample {
   build() {
     Column() {
-      //紧凑型Counter
+      // 紧凑型Counter
       CounterComponent({
         options: {
           type: CounterType.COMPACT,
@@ -491,7 +491,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct NumberStyleExample {
   build() {
     Column() {
-      //数值内联型Counter
+      // 数值内联型Counter
       CounterComponent({
         options: {
           type: CounterType.INLINE,
@@ -567,7 +567,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct DataStyleExample {
   build() {
     Column() {
-      //日期内联型counter
+      // 日期内联型Counter
       CounterComponent({
         options: {
           type: CounterType.INLINE_DATE,
@@ -639,7 +639,7 @@ struct CounterPage {
   build() {
     Column({}) {
 
-      //列表型Counter
+      // 列表型Counter
       CounterComponent({
         options: {
           direction: this.currentDirection,
@@ -654,7 +654,7 @@ struct CounterPage {
       })
         .width('80%')
 
-      //数值型Counter
+      // 紧凑型Counter
       CounterComponent({
         options: {
           direction: this.currentDirection,
@@ -669,7 +669,7 @@ struct CounterPage {
         }
       }).margin({ top: 20 })
 
-      //数值内联型Counter
+      // 数值内联型Counter
       CounterComponent({
         options: {
           type: CounterType.INLINE,
@@ -686,7 +686,8 @@ struct CounterPage {
           }
         }
       }).margin({ top: 20 })
-      //日期内联型counter
+      
+      // 日期内联型Counter
       CounterComponent({
         options: {
           direction: this.currentDirection,

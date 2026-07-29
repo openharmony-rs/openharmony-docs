@@ -12,7 +12,7 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
+参考[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioRenderer的[属性](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#属性)state：
 
@@ -62,7 +62,7 @@
 <!--Del-->
 > **说明：**
 > 
-> 对于标记为系统接口（system api）的音频流变化信息需要系统级别应用才可查看，若应用不是系统应用，将无法获取准确信息。
+> 对于涉及系统接口（system api）的音频流变化信息，需要系统级别应用才可查看，若应用不是系统应用，将无法获取准确信息。
 <!--DelEnd-->
 
 如下为音频流管理调用关系图：
@@ -119,11 +119,11 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
- 
+   <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
+   
    ``` TypeScript
    audioStreamManager.off('audioRendererChange');
-   console.info('RendererChange Off is called ');
+   console.info('Succeeded in using off function.');
    ```
 
    ArkTS-Sta示例：
@@ -139,11 +139,11 @@
 
    > **说明：**
    >
-   > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
+   > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md) ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
 
    ArkTS-Dyn示例：
 
-   <!-- @[get_allstreaminfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   <!-- @[get_allstreaminfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';

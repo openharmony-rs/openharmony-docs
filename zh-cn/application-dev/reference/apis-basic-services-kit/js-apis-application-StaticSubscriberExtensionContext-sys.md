@@ -12,11 +12,13 @@ StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具�
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口均为系统接口。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
@@ -26,7 +28,7 @@ import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 
 ## 使用说明
 
-在使用StaticSubscriberExtensionContext的功能前，需要通过StaticSubscriberExtensionAbility获取。
+在使用StaticSubscriberExtensionContext的功能前，需要通过StaticSubscriberExtensionAbility获取该上下文。
 
 ```ts
 import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
@@ -36,11 +38,7 @@ import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } fr
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-拉起一个静态订阅所属的同应用的Ability。使用callback异步回调。
-
-使用规则：
- - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限
- - 跨应用场景下，目标Ability的visible属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限
+拉起与静态订阅同属一个应用的Ability。使用callback异步回调。
 
 **需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -48,12 +46,16 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-wantAgent.md) | 是   | 启动Ability的want信息。    |
-| callback | AsyncCallback&lt;void&gt;           | 是   | callback形式返回启动结果。 |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。    |
+| callback | AsyncCallback&lt;void&gt;           | 是   | 回调函数，用于接收启动结果。 |
 
 **错误码：**
 
@@ -117,11 +119,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 startAbility(want: Want): Promise&lt;void&gt;
 
-拉起一个静态订阅所属的同应用的Ability。使用Promise异步回调。
-
-使用规则：
- - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限
- - 跨应用场景下，目标Ability的visible属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限
+拉起与静态订阅同属一个应用的Ability。使用Promise异步回调。
 
 **需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -129,11 +127,15 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                    |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-wantAgent.md) | 是   | 启动Ability的want信息。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。 |
 
 **返回值：**
 
@@ -166,6 +168,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
@@ -194,6 +197,174 @@ startAbility(want: Want): Promise&lt;void&gt;
         let message = (paramError as BusinessError).message;
         console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
       }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
+
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        this.context.startAbility(want)
+          .then(() => {
+            // 执行正常业务
+            console.info('startAbility succeed');
+          })
+          .catch((error) => {
+            // 处理业务逻辑错误
+            console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+          });
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
+    }
+  }
+  ```
+
+## 使用@ohos.transfer进行StaticSubscriberExtensionContext类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的StaticSubscriberExtensionContext对象。
+
+**示例：**
+
+- 在ArkTS-Sta模块中将ArkTS-Sta StaticSubscriberExtensionContext转换成ArkTS-Dyn StaticSubscriberExtensionContext，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { transfer } from '@kit.ArkTS';
+  import { StaticSubscriberExtensionContextStaticToDynamic } from 'library';
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
+
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        let dynamicContext = transfer.transferDynamic(this.context, 'CommonEventManager.StaticSubscriberExtensionContext');
+        StaticSubscriberExtensionContextStaticToDynamic(dynamicContext as StaticSubscriberExtensionContext);
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
+    }
+  }
+  ```
+
+- 在`library/src/index.ets`文件中导出依赖StaticSubscriberExtensionContextStaticToDynamic。
+  ```TypeScript
+  export { StaticSubscriberExtensionContextStaticToDynamic } from './src/main/ets/components/MainPage';
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn StaticSubscriberExtensionContext的方法。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { BusinessError, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
+  export function StaticSubscriberExtensionContextStaticToDynamic(context_: StaticSubscriberExtensionContext) {
+    try {
+      let context: StaticSubscriberExtensionContext = context_ as StaticSubscriberExtensionContext;
+      context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((err:Error) => {
+          let error: BusinessError = err as BusinessError;
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的StaticSubscriberExtensionContext对象。
+
+**示例：**
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn StaticSubscriberExtensionContext对象，传到ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
+  import { StaticSubscriberExtensionContextDynamicToStatic } from 'library';
+
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        StaticSubscriberExtensionContextDynamicToStatic(this.context);
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
+    }
+  }
+  ```
+
+- 在`library/src/index.ets`文件中导出依赖StaticSubscriberExtensionContextDynamicToStatic。
+  ```TypeScript
+  export { StaticSubscriberExtensionContextDynamicToStatic } from './src/main/ets/components/MainPage';
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn StaticSubscriberExtensionContext的方法。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { BusinessError, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+  import { transfer } from '@kit.ArkTS';
+
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
+  export function StaticSubscriberExtensionContextDynamicToStatic(dynObject: Object | undefined | null) :void {
+    try {
+      let staticContext: StaticSubscriberExtensionContext = transfer.transferStatic(dynObject, 'CommonEventManager.StaticSubscriberExtensionContext') as StaticSubscriberExtensionContext;
+      staticContext.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((err: Error) => {
+          let error: BusinessError = err as BusinessError;
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
     }
   }
   ```

@@ -71,8 +71,8 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | message                               | string                                                       | 否  | 否  | 气泡信息内容。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23                                              |
-| primaryButton                         | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 第一个按钮。默认无此按钮。取值为undefined时，按默认值处理。<br/>value：气泡里主按钮的文本。<br/>action：点击主按钮的回调函数。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| secondaryButton                       | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 第二个按钮。默认无此按钮。取值为undefined时，按默认值处理。<br/>value：气泡里辅助按钮的文本。<br/>action：点击辅助按钮的回调函数。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| primaryButton                         | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 主按钮。默认无此按钮。取值为undefined时，按默认值处理。<br/>value：气泡里主按钮的文本。<br/>action：点击主按钮的回调函数。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| secondaryButton                       | {<br/>value:&nbsp;string,<br/>action:&nbsp;()&nbsp;=&gt;&nbsp;void<br/>} | 否   | 是  | 辅助按钮。默认无此按钮。取值为undefined时，按默认值处理。<br/>value：气泡里辅助按钮的文本。<br/>action：点击辅助按钮的回调函数。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
 | onStateChange                         | (event:&nbsp;{&nbsp;isVisible:&nbsp;boolean&nbsp;})&nbsp;=&gt;&nbsp;void | 否   | 是  | 气泡状态变化事件回调，参数isVisible为气泡的显示状态。返回true时，表示气泡从关闭到打开，返回false时，表示气泡从打开到关闭。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23   |
 | showInSubWindow<sup>9+</sup>          | boolean                                                      | 否   | 是  | 气泡是否显示在创建的子窗里。<br/>true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。<br />默认值：false<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23                       |
 | mask<sup>10+</sup>                    | boolean&nbsp;&#124;&nbsp;{ color : [ResourceColor](ts-types.md#resourcecolor) }| 否   | 是  | 设置气泡是否有遮罩层及遮罩颜色。<br/>true：显示透明色遮罩层；false：不显示遮罩层。<br/>Color：显示指定颜色的遮罩层。<br/>默认值：true<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -108,7 +108,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -159,7 +159,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | 名称          | 值   | 说明                                                       |
 | ------------- | ---- | ------------------------------------------------------------ |
 | PRESS_BACK    | 0    | 点击三键back、侧滑（左滑/右滑）、键盘ESC。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| TOUCH_OUTSIDE | 1    | 点击遮障层时。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TOUCH_OUTSIDE | 1    | 点击遮罩层时。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | CLOSE_BUTTON  | 2    | 点击关闭按钮。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | SLIDE_DOWN    | 3    | 下拉关闭。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | SLIDE<sup>20+</sup>    | 4    | 侧滑（左滑/右滑）关闭。默认表示向右滑动关闭，镜像场景表示向左滑动关闭，不支持选择向左或向右滑动。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -209,7 +209,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupCommonOptions<sup>18+</sup>类型说明
 
@@ -254,7 +254,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| levelMode | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否 | 是 | 设置气泡的显示层级模式。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupStateChangeParam<sup>18+</sup>类型说明
 
@@ -379,7 +379,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -414,7 +414,7 @@ struct PopupExample {
         .position({ x: 100, y: 150 })
 
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -748,7 +748,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -771,7 +771,7 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 })
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -904,6 +904,10 @@ struct PopupExample {
               this.handlePopup = false;
             }
           },
+          /**
+           * 气泡即将关闭前拦截回调
+           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
               console.info("dismissReason:" + JSON.stringify(dismissPopupAction.reason));
@@ -956,6 +960,10 @@ struct PopupExample {
               this.handlePopup = false;
             }
           },
+          /**
+           * 气泡即将关闭前拦截回调
+           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
               console.info("dismissReason:" + JSON.stringify(dismissPopupAction.reason));
@@ -985,6 +993,7 @@ ArkTS-Dyn示例：
 @Component
 struct PopupExample {
   @State handlePopup: boolean = false;
+  private timer: number = -1;
 
   build() {
     Column() {
@@ -1005,16 +1014,22 @@ struct PopupExample {
           placement: Placement.Bottom,
           enableArrow: false,
           targetSpace: '15vp',
+          // 气泡跟随按钮的平移、缩放等变换同步变动
           followTransformOfTarget: true,
           onStateChange: (e) => {
-            let timer = setTimeout(() => {
+            if (e.isVisible) {
+              this.timer = setTimeout(() => {
+                this.handlePopup = false;
+              }, 6000);
+            } else {
               this.handlePopup = false;
-            }, 6000);
-            if (!e.isVisible) {
-              this.handlePopup = false;
-              clearTimeout(timer);
+              if (this.timer !== -1) {
+                clearTimeout(this.timer);
+                this.timer = -1;
+              }
             }
           },
+          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
           onWillDismiss: false
         })
     }.margin(20)
@@ -1056,6 +1071,7 @@ struct PopupExample {
           placement: Placement.Bottom,
           enableArrow: false,
           targetSpace: '15vp',
+          // 气泡跟随按钮的平移、缩放等变换同步变动
           followTransformOfTarget: true,
           onStateChange: (e: PopupStateChangeParam) => {
             let timer = setTimeout(() => {
@@ -1066,6 +1082,7 @@ struct PopupExample {
               clearTimeout(timer);
             }
           },
+          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
           onWillDismiss: false
         } as PopupOptions)
     }.margin(20)
@@ -1096,15 +1113,25 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 为按钮绑定气泡
+         * 第一个参数：气泡显隐控制变量
+         * message：气泡内部展示文本
+         * placement.Top：气泡从按钮上方弹出
+         * outlineWidth：外描边线宽度1vp
+         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * borderWidth：弹窗内部边框宽度1vp
+         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          outlineWidth: 1,
+          outlineWidth: 1, // 设置外描边宽度为1vp
           outlineLinearGradient: {
             direction: GradientDirection.Top,
             colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
           },
-          borderWidth: 1,
+          borderWidth: 1, // 设置内描边宽度为1vp
           borderLinearGradient: {
             direction: GradientDirection.Bottom,
             colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
@@ -1134,15 +1161,25 @@ struct MyStateSample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 为按钮绑定气泡
+         * 第一个参数：气泡显隐控制变量
+         * message：气泡内部展示文本
+         * placement.Top：气泡从按钮上方弹出
+         * outlineWidth：外描边线宽度1vp
+         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * borderWidth：弹窗内部边框宽度1vp
+         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         */
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          outlineWidth: 1,
+          outlineWidth: 1, // 设置外描边宽度为1vp
           outlineLinearGradient: {
             direction: GradientDirection.Top,
             colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
           },
-          borderWidth: 1,
+          borderWidth: 1, // 设置内描边宽度为1vp
           borderLinearGradient: {
             direction: GradientDirection.Bottom,
             colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
@@ -1180,6 +1217,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
+          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         })
         .position({ x: 100, y: 150 })
@@ -1210,6 +1248,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
+          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
@@ -1241,6 +1280,15 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用系统标准化磨砂模糊样式
+         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
+         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         * colorMode.LIGHT：浅色主题调色模式
+         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         * scale：磨砂通透缩放系数0.5
+         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
           backgroundBlurStyleOptions: {
@@ -1256,6 +1304,14 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用完全自定义混合背景特效
+         * radius：背景模糊半径60，模糊程度更高
+         * saturation：饱和度0，画面去色黑白化
+         * brightness：亮度1，保持原始亮度不变
+         * color：叠加粉色底色
+         * blurOptions.grayscale：灰度滤镜参数
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
           backgroundEffect: {
@@ -1293,6 +1349,15 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用系统标准化磨砂模糊样式
+         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
+         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         * colorMode.LIGHT：浅色主题调色模式
+         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         * scale：磨砂通透缩放系数0.5
+         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         */
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(20),
           backgroundBlurStyleOptions: {
@@ -1308,6 +1373,14 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用完全自定义混合背景特效
+         * radius：背景模糊半径60，模糊程度更高
+         * saturation：饱和度0，画面去色黑白化
+         * brightness：亮度1，保持原始亮度不变
+         * color：叠加粉色底色
+         * blurOptions.grayscale：灰度滤镜参数
+         */
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(20),
           backgroundEffect: {
@@ -1350,18 +1423,41 @@ struct PopupExample {
       Button('PopupOptions EMBEDDED')
         .id('targetButton')
         .onClick(() => {
+          // 切换气泡显示/隐藏状态
           this.handlePopup = !this.handlePopup;
           setTimeout(() => {
-            // pages/PageTwo 需要开发者替换为实际路由名称
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'})
+            // pages/PageTwo需要开发者替换为实际路由名称
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
+              console.error("route to PageTwo error!")
+            })
           }, 500)
         })
+        /**
+         * 绑定气泡到当前按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is an embedded popup',
           levelMode: LevelMode.EMBEDDED,
         })
         .position({ x: 60, y: 300 })
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+PageTwo页面：
+``` ts
+@Entry
+@Component
+struct PageTwo {
+  build() {
+    Column() {
+      Text("This is next page")
+    }
+    .position({ x: 120, y: 300 })
   }
 }
 ```
@@ -1382,18 +1478,44 @@ struct PopupExample {
       Button('PopupOptions EMBEDDED')
         .id('targetButton')
         .onClick(() => {
+          // 切换气泡显示/隐藏状态
           this.handlePopup = !this.handlePopup;
           setTimeout(() => {
-            // pages/PageTwo 需要开发者替换为实际路由名称
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'})
+            // pages/PageTwo需要开发者替换为实际路由名称
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
+              console.error("route to PageTwo error!")
+            })
           }, 500)
         })
+        /**
+         * 绑定气泡到当前按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is an embedded popup',
           levelMode: LevelMode.EMBEDDED,
         })
         .position({ x: 60, y: 300 })
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+PageTwo页面：
+``` ts
+'use static'
+import { Entry, Component, Column, Text, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PageTwo {
+  build() {
+    Column() {
+      Text("This is next page")
+    }
+    .position({ x: 120, y: 300 })
   }
 }
 ```

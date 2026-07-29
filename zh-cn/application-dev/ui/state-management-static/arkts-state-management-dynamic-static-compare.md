@@ -21,44 +21,47 @@
 
 例如：
 
-<!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->
-  ```typescript
-  'use static'
+<!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->  
 
-  import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
+``` TypeScript
+import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
 
-  @Builder
-  function textBuilder(p: { text: string }) {
-    Text(p.text)
-  }
+interface textParam {
+  text: string
+}
 
-  @Builder
-  function buttonBuilder(p: { text: string }) {
-    Button(p.text)
-  }
+@Builder
+function textBuilder(p: textParam) {
+  Text(p.text)
+}
 
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local useText: boolean = true;
-    @Local message: string = 'init';
+@Builder
+function buttonBuilder(p: textParam) {
+  Button(p.text)
+}
 
-    build() {
-      Column() {
-        // 直接通过条件判断切换@Builder
-        if (this.useText) {
-          textBuilder({ text: this.message })
-        } else {
-          buttonBuilder({ text: this.message })
-        }
-        Button('Switch Builder')
-          .onClick(() => {
-            this.useText = !this.useText;
-          })
+@Entry
+@ComponentV2
+struct Index {
+  @Local useText: boolean = true;
+  @Local message: string = 'init';
+
+  build() {
+    Column() {
+      // 直接通过条件判断切换@Builder
+      if (this.useText) {
+        textBuilder({ text: this.message })
+      } else {
+        buttonBuilder({ text: this.message })
       }
+      Button('Switch Builder')
+        .onClick(() => {
+          this.useText = !this.useText;
+        })
     }
   }
-  ```
+}
+```
 
 ## 双向绑定语法差异
 
@@ -484,120 +487,6 @@ struct Index {
   build() {
     Column() {
       Text(this.customVarName)
-    }
-  }
-}
-```
-
-## 静态@CustomEnv装饰器不支持与其他装饰器连用
-
-在ArkTS-Dyn中，[@Component](../state-management/arkts-create-custom-components.md#component)里支持[@Watch](../state-management/arkts-watch.md)和@CustomEnv搭配使用，实现监听功能。
-
-而在ArkTS-Sta中，[@CustomEnv](./arkts-static-custom-env-property.md)不支持与状态变量、[@Watch](./arkts-static-watch.md)等其他装饰器连用，可以在[@Component](./arkts-static-create-component.md)里使用[addMonitor](./arkts-static-new-addmonitor-clearmonitor.md)监听变量变化。
-
-ArkTS-Dyn示例：
-
-```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const custom: CustomEnvKey<number> = CustomEnvKey.create<number>();
-
-@Entry
-@Component
-struct Index {
-  @State message: number = 1;
-
-  build() {
-    Column() {
-      Button('update').onClick(() => {
-        this.message++;
-      })
-
-      WithEnv() {
-        Child()
-      }.customEnv(custom, this.message)
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-
-@Component
-struct Child {
-  @CustomEnv(custom) @Watch('onParentValChanged') parentVal: number = 100;
-
-  // Watch回调
-  onParentValChanged() {
-    hilog.info(0x0000, 'testTag', '@Watch message update');
-  }
-
-  build() {
-    Column() {
-      Text('parentVal is: ' + this.parentVal)
-        .fontSize(22);
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-'use static'
-
-import { Entry, Row, ComponentV2, Column, Text, Button, CustomEnv, CustomEnvKey, UIUtils, IMonitorDecoratedVariable, IMonitor } from '@kit.ArkUI';
-import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
-
-const custom = CustomEnvKey.create<string>();
-
-@Entry
-@Component
-struct Test {
-  @State defaultMessage: string = 'the nearest WithEnv'
-
-  build() {
-    Row() {
-      Column() {
-        Text(`Index message is : ${this.defaultMessage}`)
-        WithEnv() {
-          Child()
-        }.customEnv(custom, this.defaultMessage)
-
-        Button('change')
-          .onClick(() => {
-            this.defaultMessage = 'Hello World';
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Entry
-@Component
-struct Child {
-  @CustomEnv('custom') message: string = 'Hello';
-  valueMonitor?: IMonitorDecoratedVariable;
-
-  onChange(m: IMonitor) {
-    m.dirty.forEach((path: string) => {
-      console.info(`[CustomEnv] value ${path} has changed from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
-    })
-  }
-
-  aboutToAppear() {
-    this.valueMonitor = UIUtils.addMonitor(() => this.message, this.onChange);
-  }
-
-  build() {
-    Column() {
-      Text(`Child message is : ${this.message}`)
     }
   }
 }

@@ -113,7 +113,7 @@ Wearable设备上默认字体大小为18fp。
 | 参数名 | 类型                                                  | 必填 | 说明                         |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: string \| undefined    | 是   | 搜索框末尾搜索按钮文本内容。 <br>从API version 20开始，支持Resource类型。<br/>默认值：''。设置undefined时按默认值处理。|
-| option | ArkTS-Dyn: [SearchButtonOptions](#searchbuttonoptions10对象说明)<br/>ArkTS-Sta: [SearchButtonOptions](#searchbuttonoptions10对象说明) \| undefined | 否   | 配置搜索框末尾搜索按钮文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}  <br/>设置undefined时按默认值处理。       |
+| option | ArkTS-Dyn: [SearchButtonOptions](#searchbuttonoptions10对象说明)<br/>ArkTS-Sta: [SearchButtonOptions](#searchbuttonoptions10对象说明) \| undefined | 否   | 配置搜索框末尾搜索按钮样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}  <br/>设置undefined时按默认值处理。       |
 
 ### placeholderColor
 
@@ -611,7 +611,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br>值为undefined时，开启选中词文本识别。 |
+| enable  | boolean \| undefined | 是   | 开启选中文本实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br>值为undefined时，开启选中文本实体识别。 |
 
 ### lineHeight<sup>12+</sup>
 
@@ -1014,9 +1014,9 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
@@ -1352,11 +1352,11 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                    | 说明        |
-| ----------------------- | ---------------- |
-| CONSTANT  | 清除按钮常显样式。 |
-| INVISIBLE | 清除按钮常隐样式。 |
-| INPUT     | 清除按钮输入样式。 |
+| 名称                    | 值 | 说明        |
+| ----------------------- | ---- | ---------------- |
+| CONSTANT  | - | 清除按钮常显样式。 |
+| INVISIBLE | - | 清除按钮常隐样式。 |
+| INPUT     | - | 清除按钮输入样式。 |
 
 ## SearchType<sup>11+</sup>枚举说明
 

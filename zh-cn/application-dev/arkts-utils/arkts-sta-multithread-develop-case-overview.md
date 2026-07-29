@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta应用多线程开发实践案例用于说明如何将动态ArkTS中的TaskPool、Worker、Sendable等并发场景迁移到静态并发模型。ArkTS-Sta基于任务调度能力和共享内存模型实现，并发任务主要通过[TaskPool简介 (ArkTS-Sta)](arkts-sta-taskpool-introduction.md)和[EAWorker简介 (ArkTS-Sta)](eaworker-introduction.md)承载。
 

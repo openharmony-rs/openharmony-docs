@@ -6,14 +6,33 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
+@ohos.sensor 模块是鸿蒙操作系统提供的传感器服务模块，属于 SensorServiceKit。该模块为开发者提供了统一的传感器数据访问能力，涵盖设备上各类物理传感器的数据订阅、查询以及传感器算法计算。
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+sensor 模块是传感器数据访问的统一接口，定义了设备上各类物理传感器的订阅、查询和算法计算能力。
+
+当应用需要感知设备运动状态（如摇一摇、翻转）、检测环境条件（如自动调节屏幕亮度、测量气压估算海拔）、获取设备方向（如指南针导航）、监测健康数据（如心率计步）时，应使用本模块订阅对应传感器数据。当需要进行传感器数据相关的数学变换和计算时，应使用传感器算法接口。
+
+> **说明**：
 >
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，订阅传感器数据时确保on订阅和off取消订阅成对出现。
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见[getSingleSensor](#sensorgetsinglesensor9)错误码说明，具体使用方法可参考[指南开发步骤](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#开发步骤)；订阅传感器数据时确保on订阅和off取消订阅成对出现。
 
+sensor模块提供传感器数据订阅与查询能力，核心使用流程如下：
+
+1. 使用[sensor.getSingleSensor](#sensorgetsinglesensor9)或[sensor.getSensorListSync](#sensorgetsensorlistsync12)查询传感器信息，确认设备支持目标传感器。
+2. 使用sensor.on接口订阅传感器数据，持续接收数据回调。
+3. 使用sensor.once接口获取一次传感器数据，适用于无需持续监听的场景。
+4. 使用sensor.off接口取消订阅，确保on和off成对调用。
+
+sensor.on与sensor.once的区别：
+
+- sensor.on持续订阅传感器数据，通过callback反复上报，适用于需要实时监测的场景。
+- sensor.once仅获取一次传感器数据，callback只触发一次后自动取消订阅，适用于单次采集的场景。
+
+注意事项：
+
+- 订阅前建议先使用getSingleSensor确认设备支持该传感器。
+- on订阅和off取消订阅必须成对出现，避免资源泄漏。
+- 对于需要权限的传感器（加速度、陀螺仪、心率、计步等），须先申请相应权限。
 
 ## 导入模块
 
@@ -25,7 +44,7 @@ import { sensor } from '@kit.SensorServiceKit';
 
 on(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options): void
 
-订阅加速度传感器数据。
+订阅加速度传感器数据。加速度传感器用于测量设备在X、Y、Z三个方向上的加速度，包含重力加速度分量。适用于需要感知设备运动状态、实现屏幕旋转、游戏操控、计步等场景的场景。调用后，系统会按设定频率通过callback持续上报加速度数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -45,7 +64,7 @@ on(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).ACCELEROMETER                         | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER。              |
 | callback | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -83,7 +102,7 @@ try {
 
 onAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;, options?: Options): void
 
-订阅加速度传感器数据。
+订阅加速度传感器数据。加速度传感器用于测量设备在X、Y、Z三个方向上的加速度，包含重力加速度分量。适用于需要感知设备运动状态、实现屏幕旋转、游戏操控、计步等场景的场景。调用后，系统会按设定频率通过callback持续上报加速度数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -100,7 +119,7 @@ onAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;, options?:
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -138,7 +157,7 @@ try {
 
 on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
 
-订阅融合压力传感器数据。
+订阅融合压力传感器数据。融合压力传感器用于获取经融合算法处理的压力数据，仅适用于智能手表设备。适用于需要获取手腕压力数据的健康监测场景。调用后，系统会按设定频率通过callback持续上报融合压力数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -154,7 +173,7 @@ on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
 | callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -189,7 +208,7 @@ try {
 
 onFusionPressureChange(callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
 
-订阅融合压力传感器数据。
+订阅融合压力传感器数据。融合压力传感器用于获取经融合算法处理的压力数据，仅适用于智能手表设备。适用于需要获取手腕压力数据的健康监测场景。调用后，系统会按设定频率通过callback持续上报融合压力数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -204,7 +223,7 @@ onFusionPressureChange(callback: Callback&lt;FusionPressureResponse&gt;, options
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -239,7 +258,7 @@ try {
 
 on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准加速度传感器数据。
+订阅未校准加速度传感器数据。未校准加速度传感器与加速度传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始加速度数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -257,7 +276,7 @@ on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;Acceleromete
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).ACCELEROMETER_UNCALIBRATED            | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER_UNCALIBRATED。  |
 | callback | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AccelerometerUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -298,7 +317,7 @@ try {
 
 onAccelerometerUncalibratedChange(callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准加速度传感器数据。
+订阅未校准加速度传感器数据。未校准加速度传感器与加速度传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始加速度数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -315,7 +334,7 @@ onAccelerometerUncalibratedChange(callback: Callback&lt;AccelerometerUncalibrate
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AccelerometerUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -356,7 +375,7 @@ try {
 
 on(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
-订阅环境光传感器数据。
+订阅环境光传感器数据。环境光传感器用于测量周围环境的光照强度，适用于自动调节屏幕亮度、判断环境明暗等场景。调用后，系统会按设定频率通过callback持续上报环境光强度数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -372,7 +391,7 @@ on(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, option
 | -------- | ----------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).AMBIENT_LIGHT            | 是   | 传感器类型，该值固定为SensorId.AMBIENT_LIGHT。              |
 | callback | Callback&lt;[LightResponse](#lightresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为LightResponse。         |
-| options  | [Options](#options)                             | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                             | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -407,7 +426,7 @@ try {
 
 onAmbientLightChange(callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
-订阅环境光传感器数据。
+订阅环境光传感器数据。环境光传感器用于测量周围环境的光照强度，适用于自动调节屏幕亮度、判断环境明暗等场景。调用后，系统会按设定频率通过callback持续上报环境光强度数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -457,7 +476,7 @@ try {
 
 on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options): void
 
-订阅温度传感器数据。
+订阅环境温度传感器数据。温度传感器用于测量设备周围的环境温度，适用于环境温度监测、温度补偿等场景。调用后，系统会按设定频率通过callback持续上报温度数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -473,7 +492,7 @@ on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureR
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).AMBIENT_TEMPERATURE                   | 是   | 传感器类型，该值固定为SensorId.AMBIENT_TEMPERATURE。         |
 | callback | Callback&lt;[AmbientTemperatureResponse](#ambienttemperatureresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AmbientTemperatureResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -508,7 +527,7 @@ try {
 
 onAmbientTemperatureChange(callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options): void
 
-订阅温度传感器数据。
+订阅环境温度传感器数据。温度传感器用于测量设备周围的环境温度，适用于环境温度监测、温度补偿等场景。调用后，系统会按设定频率通过callback持续上报温度数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -523,7 +542,7 @@ onAmbientTemperatureChange(callback: Callback&lt;AmbientTemperatureResponse&gt;,
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[AmbientTemperatureResponse](#ambienttemperatureresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为AmbientTemperatureResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -558,7 +577,7 @@ try {
 
 on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options): void
 
-订阅气压计传感器数据。
+订阅气压计传感器数据。气压计传感器用于测量大气压强，适用于海拔估算、天气预报辅助等场景。调用后，系统会按设定频率通过callback持续上报气压数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -574,7 +593,7 @@ on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).BAROMETER                        | 是   | 传感器类型，该值固定为SensorId.BAROMETER。                  |
 | callback | Callback&lt;[BarometerResponse](#barometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为BarometerResponse。     |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -609,7 +628,7 @@ try {
 
 onBarometerChange(callback: Callback&lt;BarometerResponse&gt;, options?: Options): void
 
-订阅气压计传感器数据。
+订阅气压计传感器数据。气压计传感器用于测量大气压强，适用于海拔估算、天气预报辅助等场景。调用后，系统会按设定频率通过callback持续上报气压数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -624,7 +643,7 @@ onBarometerChange(callback: Callback&lt;BarometerResponse&gt;, options?: Options
 | 参数名   | 类型                                                    | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[BarometerResponse](#barometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为BarometerResponse。     |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -659,7 +678,7 @@ try {
 
 on(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options): void
 
-订阅重力传感器数据。
+订阅重力传感器数据。重力传感器用于测量设备在X、Y、Z三个方向上受到的重力加速度分量，适用于需要分离重力分量进行运动分析的的场景，如游戏操控、运动检测。调用后，系统会按设定频率通过callback持续上报重力分量数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -675,7 +694,7 @@ on(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: 
 | -------- | --------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).GRAVITY                      | 是   | 传感器类型，该值固定为SensorId.GRAVITY。                    |
 | callback | Callback&lt;[GravityResponse](#gravityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为GravityResponse。       |
-| options  | [Options](#options)                                 | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                 | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -712,7 +731,7 @@ try {
 
 onGravityChange(callback: Callback&lt;GravityResponse&gt;, options?: Options): void
 
-订阅重力传感器数据。
+订阅重力传感器数据。重力传感器用于测量设备在X、Y、Z三个方向上受到的重力加速度分量，适用于需要分离重力分量进行运动分析的的场景，如游戏操控、运动检测。调用后，系统会按设定频率通过callback持续上报重力分量数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -764,7 +783,7 @@ try {
 
 on(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
-订阅校准的陀螺仪传感器数据。
+订阅校准的陀螺仪传感器数据。陀螺仪传感器用于测量设备绕X、Y、Z轴的旋转角速度，适用于设备旋转检测、姿态跟踪、游戏操控等场景。调用后，系统会按设定频率通过callback持续上报角速度数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -784,7 +803,7 @@ on(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).GYROSCOPE                        | 是   | 传感器类型，该值固定为SensorId.GYROSCOPE。                  |
 | callback | Callback&lt;[GyroscopeResponse](#gyroscoperesponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为GyroscopeResponse。     |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -822,7 +841,7 @@ try {
 
 onGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
-订阅校准的陀螺仪传感器数据。
+订阅校准的陀螺仪传感器数据。陀螺仪传感器用于测量设备绕X、Y、Z轴的旋转角速度，适用于设备旋转检测、姿态跟踪、游戏操控等场景。调用后，系统会按设定频率通过callback持续上报角速度数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -839,7 +858,7 @@ onGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;, options?: Options
 | 参数名   | 类型                                                    | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[GyroscopeResponse](#gyroscoperesponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为GyroscopeResponse。     |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -877,7 +896,7 @@ try {
 
 on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准陀螺仪传感器数据。
+订阅未校准陀螺仪传感器数据。未校准陀螺仪传感器与陀螺仪传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始陀螺仪数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -895,7 +914,7 @@ on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalib
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).GYROSCOPE_UNCALIBRATED                | 是   | 传感器类型，该值固定为SensorId.GYROSCOPE_UNCALIBRATED。      |
 | callback | Callback&lt;[GyroscopeUncalibratedResponse](#gyroscopeuncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为GyroscopeUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -937,7 +956,7 @@ try {
 
 onGyroscopeUncalibratedChange(callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准陀螺仪传感器数据。
+订阅未校准陀螺仪传感器数据。未校准陀螺仪传感器与陀螺仪传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始陀螺仪数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -954,7 +973,7 @@ onGyroscopeUncalibratedChange(callback: Callback&lt;GyroscopeUncalibratedRespons
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[GyroscopeUncalibratedResponse](#gyroscopeuncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为GyroscopeUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -995,7 +1014,7 @@ try {
 
 on(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
-订阅霍尔传感器数据。
+订阅霍尔传感器数据。霍尔传感器用于检测磁场变化，常用于检测翻盖手机或皮套的开合状态。当霍尔事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报霍尔状态数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1011,7 +1030,7 @@ on(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Option
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).HALL                   | 是   | 传感器类型，该值固定为SensorId.HALL。                        |
 | callback | Callback&lt;[HallResponse](#hallresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为HallResponse。           |
-| options  | [Options](#options)                           | 否   | 可选参数列表，默认值为200000000ns。当霍尔事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                           | 否   | 可选参数列表，当霍尔事件被触发的很频繁时，用于设置传感器上报频率，默认值为200000000ns。 |
 
 **错误码**：
 
@@ -1047,7 +1066,7 @@ try {
 
 onHallChange(callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
-订阅霍尔传感器数据。
+订阅霍尔传感器数据。霍尔传感器用于检测磁场变化，常用于检测翻盖手机或皮套的开合状态。当霍尔事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报霍尔状态数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1097,7 +1116,7 @@ try {
 
 on(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
-订阅心率传感器数据。
+订阅心率传感器数据。心率传感器用于测量用户的心率值，适用于健康监测、运动辅助等场景。调用后，系统会按设定频率通过callback持续上报心率数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1151,7 +1170,7 @@ try {
 
 onHeartRateChange(callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
-订阅心率传感器数据。
+订阅心率传感器数据。心率传感器用于测量用户的心率值，适用于健康监测、运动辅助等场景。调用后，系统会按设定频率通过callback持续上报心率数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1204,7 +1223,7 @@ try {
 
 on(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options): void
 
-订阅湿度传感器数据。
+订阅湿度传感器数据。湿度传感器用于测量周围环境的相对湿度，适用于环境湿度监测、智能家居联动等场景。调用后，系统会按设定频率通过callback持续上报湿度数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1220,7 +1239,7 @@ on(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?
 | -------- | ----------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).HUMIDITY                       | 是   | 传感器类型，该值固定为SensorId.HUMIDITY。                   |
 | callback | Callback&lt;[HumidityResponse](#humidityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为HumidityResponse。      |
-| options  | [Options](#options)                                   | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                   | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -1255,7 +1274,7 @@ try {
 
 onHumidityChange(callback: Callback&lt;HumidityResponse&gt;, options?: Options): void
 
-订阅湿度传感器数据。
+订阅湿度传感器数据。湿度传感器用于测量周围环境的相对湿度，适用于环境湿度监测、智能家居联动等场景。调用后，系统会按设定频率通过callback持续上报湿度数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1305,7 +1324,7 @@ try {
 
 on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
-订阅线性加速度传感器数据。
+订阅线性加速度传感器数据。线性加速度传感器用于测量设备在X、Y、Z三个方向上的加速度（不含重力加速度分量），适用于需要感知设备纯粹运动加速度的场景，如运动追踪、碰撞检测。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1323,7 +1342,7 @@ on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAcceleromete
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELEROMETER。        |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为LinearAccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1361,7 +1380,7 @@ try {
 
 onLinearAccelerometerChange(callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
-订阅线性加速度传感器数据。
+订阅线性加速度传感器数据。线性加速度传感器用于测量设备在X、Y、Z三个方向上的加速度（不含重力加速度分量），适用于需要感知设备纯粹运动加速度的场景，如运动追踪、碰撞检测。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1378,7 +1397,7 @@ onLinearAccelerometerChange(callback: Callback&lt;LinearAccelerometerResponse&gt
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为LinearAccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1416,7 +1435,7 @@ try {
 
 on(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options): void
 
-订阅地磁传感器数据。
+订阅地磁传感器数据。地磁传感器用于测量设备周围的磁场强度在X、Y、Z三个方向上的分量，适用于指南针、方向检测、金属检测等场景。调用后，系统会按设定频率通过callback持续上报磁场分量数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1432,7 +1451,7 @@ on(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).MAGNETIC_FIELD                        | 是   | 传感器类型，该值固定为SensorId.MAGNETIC_FIELD。             |
 | callback | Callback&lt;[MagneticFieldResponse](#magneticfieldresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为MagneticFieldResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -1469,7 +1488,7 @@ try {
 
 onMagneticFieldChange(callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options): void
 
-订阅地磁传感器数据。
+订阅地磁传感器数据。地磁传感器用于测量设备周围的磁场强度在X、Y、Z三个方向上的分量，适用于指南针、方向检测、金属检测等场景。调用后，系统会按设定频率通过callback持续上报磁场分量数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1484,7 +1503,7 @@ onMagneticFieldChange(callback: Callback&lt;MagneticFieldResponse&gt;, options?:
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[MagneticFieldResponse](#magneticfieldresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为MagneticFieldResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码**：
 
@@ -1521,7 +1540,7 @@ try {
 
 on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准地磁传感器数据。
+订阅未校准地磁传感器数据。未校准地磁传感器与地磁传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始磁场数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1537,7 +1556,7 @@ on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFie
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).MAGNETIC_FIELD_UNCALIBRATED           | 是   | 传感器类型，该值固定为SensorId.MAGNETIC_FIELD_UNCALIBRATED。 |
 | callback | Callback&lt;[MagneticFieldUncalibratedResponse](#magneticfielduncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为MagneticFieldUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1577,7 +1596,7 @@ try {
 
 onMagneticFieldUncalibratedChange(callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
-订阅未校准地磁传感器数据。
+订阅未校准地磁传感器数据。未校准地磁传感器与地磁传感器的区别在于，其上报的偏移值(biasX/biasY/biasZ)未经系统校准补偿，适用于需要获取原始磁场数据或自行实现校准算法的场景。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1592,7 +1611,7 @@ onMagneticFieldUncalibratedChange(callback: Callback&lt;MagneticFieldUncalibrate
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[MagneticFieldUncalibratedResponse](#magneticfielduncalibratedresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为MagneticFieldUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1632,7 +1651,7 @@ try {
 
 on(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
-订阅方向传感器数据。
+订阅方向传感器数据。方向传感器用于测量设备绕Z轴旋转的角度(alpha)、绕X轴旋转的角度(beta)和绕Y轴旋转的角度(gamma)，适用于屏幕旋转、指南针、姿态感知等场景。调用后，系统会按设定频率通过callback持续上报方向数据。调用本接口的应用或服务可以通过提示用户使用8字校准法来提高应用获取的方向传感器的精度，此传感器理论误差正负5度，具体的精度根据不同的驱动及算法实现可能存在差异。
 
 > **说明：**
 > 
@@ -1663,7 +1682,7 @@ on(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, op
 | -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).ORIENTATION                          | 是   | 传感器类型，该值固定为SensorId.ORIENTATION。                |
 | callback | Callback&lt;[OrientationResponse](#orientationresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为OrientationResponse。   |
-| options  | [Options](#options)                                         | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                         | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **示例**：
 
@@ -1691,7 +1710,7 @@ try {
 
 onOrientationChange(callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
-订阅方向传感器数据。
+订阅方向传感器数据。方向传感器用于测量设备绕Z轴旋转的角度(alpha)、绕X轴旋转的角度(beta)和绕Y轴旋转的角度(gamma)，适用于屏幕旋转、指南针、姿态感知等场景。调用后，系统会按设定频率通过callback持续上报方向数据。调用本接口的应用或服务可以通过提示用户使用8字校准法来提高应用获取的方向传感器的精度，此传感器理论误差正负5度，具体的精度根据不同的驱动及算法实现可能存在差异。
 
 > **说明：**
 > 
@@ -1747,7 +1766,7 @@ try {
 
 on(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
-订阅计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。
+订阅计步器传感器数据。计步器传感器用于统计用户的步行步数，适用于运动追踪、健康管理等场景。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。调用后，系统会按设定频率通过callback持续上报步数数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1801,7 +1820,7 @@ try {
 
 onPedometerChange(callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
-订阅计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。
+订阅计步器传感器数据。计步器传感器用于统计用户的步行步数，适用于运动追踪、健康管理等场景。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。调用后，系统会按设定频率通过callback持续上报步数数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1854,7 +1873,7 @@ try {
 
 on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
-订阅计步检测器传感器数据。
+订阅计步检测器传感器数据。计步检测器传感器用于检测用户是否发生了计步事件（如迈步动作），适用于需要实时检测步行状态的场景。与sensor.on('SensorId.PEDOMETER')相比，本接口上报的是计步事件标量而非累计步数，适用于需要检测单步事件的场景。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1872,7 +1891,7 @@ on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionR
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).PEDOMETER_DETECTION                   | 是   | 传感器类型，该值固定为SensorId.PEDOMETER_DETECTION。         |
 | callback | Callback&lt;[PedometerDetectionResponse](#pedometerdetectionresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为PedometerDetectionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1908,7 +1927,7 @@ try {
 
 onPedometerDetectionChange(callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
-订阅计步检测器传感器数据。
+订阅计步检测器传感器数据。计步检测器传感器用于检测用户是否发生了计步事件（如迈步动作），适用于需要实时检测步行状态的场景。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -1925,7 +1944,7 @@ onPedometerDetectionChange(callback: Callback&lt;PedometerDetectionResponse&gt;,
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[PedometerDetectionResponse](#pedometerdetectionresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为PedometerDetectionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -1961,7 +1980,7 @@ try {
 
 on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options): void
 
-订阅接近光传感器数据。
+订阅接近光传感器数据。接近光传感器用于检测物体与设备的距离状态，常用于通话时自动关闭屏幕以防止误触。当接近光事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报接近状态数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1977,7 +1996,7 @@ on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).PROXIMITY                        | 是   | 传感器类型，该值固定为SensorId.PROXIMITY。                   |
 | callback | Callback&lt;[ProximityResponse](#proximityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为ProximityResponse。      |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
 
 **错误码**：
 
@@ -2012,7 +2031,7 @@ try {
 
 onProximityChange(callback: Callback&lt;ProximityResponse&gt;, options?: Options): void
 
-订阅接近光传感器数据。
+订阅接近光传感器数据。接近光传感器用于检测物体与设备的距离状态，常用于通话时自动关闭屏幕以防止误触。当接近光事件被触发得较为频繁时，可通过options参数限定事件上报频率。调用后，系统会通过callback持续上报接近状态数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2062,7 +2081,7 @@ try {
 
 on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
-订阅旋转矢量传感器数据。
+订阅旋转矢量传感器数据。旋转矢量传感器用于表示设备的姿态旋转，数据由X、Y、Z分量和标量W组成，可用于设备姿态估计、AR/VR场景等。调用后，系统会按设定频率通过callback持续上报旋转矢量数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2078,7 +2097,7 @@ on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).ROTATION_VECTOR                       | 是   | 传感器类型，该值固定为SensorId.ROTATION_VECTOR。             |
 | callback | Callback&lt;[RotationVectorResponse](#rotationvectorresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为RotationVectorResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -2116,7 +2135,7 @@ try {
 
 onRotationVectorChange(callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
-订阅旋转矢量传感器数据。
+订阅旋转矢量传感器数据。旋转矢量传感器用于表示设备的姿态旋转，数据由X、Y、Z分量和标量W组成，可用于设备姿态估计、AR/VR场景等。调用后，系统会按设定频率通过callback持续上报旋转矢量数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2131,7 +2150,7 @@ onRotationVectorChange(callback: Callback&lt;RotationVectorResponse&gt;, options
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[RotationVectorResponse](#rotationvectorresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为RotationVectorResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -2169,7 +2188,7 @@ try {
 
 on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
-订阅有效运动传感器数据。
+订阅有效运动传感器数据，用于检测用户拿起设备、明显移动或剧烈摇晃等有效运动事件。适用于需要根据用户活动状态唤醒设备、启动应用或切换模式的场景。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2185,7 +2204,7 @@ on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionRes
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).SIGNIFICANT_MOTION                    | 是   | 传感器类型，该值固定为SensorId.SIGNIFICANT_MOTION。          |
 | callback | Callback&lt;[SignificantMotionResponse](#significantmotionresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为SignificantMotionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -2220,7 +2239,7 @@ try {
 
 onSignificantMotionChange(callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
-订阅有效运动传感器数据。
+订阅有效运动传感器数据，用于检测用户拿起设备、明显移动或剧烈摇晃等有效运动事件。适用于需要根据用户活动状态唤醒设备、启动应用或切换模式的场景。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2235,7 +2254,7 @@ onSignificantMotionChange(callback: Callback&lt;SignificantMotionResponse&gt;, o
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[SignificantMotionResponse](#significantmotionresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为SignificantMotionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **错误码**：
 
@@ -2270,7 +2289,7 @@ try {
 
 on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
-订阅佩戴检测传感器数据。
+订阅佩戴检测传感器数据。佩戴检测传感器用于检测设备是否被用户佩戴，适用于智能手表等可穿戴设备的佩戴状态检测，以便自动切换工作模式。调用后，系统会按设定频率通过callback持续上报佩戴状态数据。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2321,7 +2340,7 @@ try {
 
 onWearDetectionChange(callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
-订阅佩戴检测传感器数据。
+订阅佩戴检测传感器数据。佩戴检测传感器用于检测设备是否被用户佩戴，适用于智能手表等可穿戴设备的佩戴状态检测，以便自动切换工作模式。调用后，系统会按设定频率通过callback持续上报佩戴状态数据。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2371,7 +2390,7 @@ try {
 
 on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void
 
-监听传感器上线下线状态的变化，callback返回传感器状态事件数据。
+监听传感器上线下线状态的变化，callback返回传感器状态事件数据。适用于需要感知传感器设备动态上下线的场景，如远程传感器连接或断开时自动更新传感器列表或订阅状态。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2385,12 +2404,12 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange', 状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2420,7 +2439,7 @@ try {
 
 onSensorStatusChange(callback: Callback&lt;SensorStatusEvent&gt;): void
 
-监听传感器上线下线状态的变化，callback返回传感器状态事件数据。
+监听传感器上线下线状态的变化，callback返回传感器状态事件数据。适用于需要感知传感器设备动态上下线的场景，如远程传感器连接或断开时自动更新传感器列表或订阅状态。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2469,7 +2488,7 @@ try {
 
 once(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
-获取一次加速度传感器数据。
+获取一次加速度传感器数据。适用于无需持续监听、仅需一次性获取当前加速度数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2521,7 +2540,7 @@ try {
 
 onceAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;): void
 
-获取一次加速度传感器数据。
+获取一次加速度传感器数据。适用于无需持续监听、仅需一次性获取当前加速度数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2572,7 +2591,7 @@ try {
 
 once(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-获取一次未校准加速度传感器数据。
+获取一次未校准加速度传感器数据。适用于仅需一次性获取原始加速度及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2627,7 +2646,7 @@ try {
 
 onceAccelerometerUncalibratedChange(callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-获取一次未校准加速度传感器数据。
+获取一次未校准加速度传感器数据。适用于仅需一次性获取原始加速度及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2681,7 +2700,7 @@ try {
 
 once(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
-获取一次环境光传感器数据。
+获取一次环境光传感器数据。适用于仅需一次性获取当前环境光强度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2728,7 +2747,7 @@ try {
 
 onceAmbientLightChange(callback: Callback&lt;LightResponse&gt;): void
 
-获取一次环境光传感器数据。
+获取一次环境光传感器数据。适用于仅需一次性获取当前环境光强度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2774,7 +2793,7 @@ try {
 
 once(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-获取一次温度传感器数据。
+获取一次温度传感器数据。适用于仅需一次性获取当前环境温度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2821,7 +2840,7 @@ try {
 
 onceAmbientTemperatureChange(callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-获取一次温度传感器数据。
+获取一次温度传感器数据。适用于仅需一次性获取当前环境温度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2867,7 +2886,7 @@ try {
 
 once(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
-获取一次气压计传感器数据。
+获取一次气压计传感器数据。适用于仅需一次性获取当前气压值的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2914,7 +2933,7 @@ try {
 
 onceBarometerChange(callback: Callback&lt;BarometerResponse&gt;): void
 
-获取一次气压计传感器数据。
+获取一次气压计传感器数据。适用于仅需一次性获取当前气压值的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -2960,7 +2979,7 @@ try {
 
 once(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
-获取一次重力传感器数据。
+获取一次重力传感器数据。适用于仅需一次性获取当前重力分量的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3009,7 +3028,7 @@ try {
 
 onceGravityChange(callback: Callback&lt;GravityResponse&gt;): void
 
-获取一次重力传感器数据。
+获取一次重力传感器数据。适用于仅需一次性获取当前重力分量的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3057,7 +3076,7 @@ try {
 
 once(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
-获取一次陀螺仪传感器数据。
+获取一次陀螺仪传感器数据。适用于仅需一次性获取当前旋转角速度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3109,7 +3128,7 @@ try {
 
 onceGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;): void
 
-获取一次陀螺仪传感器数据。
+获取一次陀螺仪传感器数据。适用于仅需一次性获取当前旋转角速度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3160,7 +3179,7 @@ try {
 
 once(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-获取一次未校准陀螺仪传感器数据。
+获取一次未校准陀螺仪传感器数据。适用于仅需一次性获取原始角速度及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3215,7 +3234,7 @@ try {
 
 onceGyroscopeUncalibratedChange(callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-获取一次未校准陀螺仪传感器数据。
+获取一次未校准陀螺仪传感器数据。适用于仅需一次性获取原始角速度及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3269,7 +3288,7 @@ try {
 
 once(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;): void
 
-获取一次霍尔传感器数据。
+获取一次霍尔传感器数据。适用于仅需一次性检测当前霍尔状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3316,7 +3335,7 @@ try {
 
 onceHallChange(callback: Callback&lt;HallResponse&gt;): void
 
-获取一次霍尔传感器数据。
+获取一次霍尔传感器数据。适用于仅需一次性检测当前霍尔状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3362,7 +3381,7 @@ try {
 
 once(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
-获取一次心率传感器数据。
+获取一次心率传感器数据。适用于仅需一次性获取当前心率值的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3412,7 +3431,7 @@ try {
 
 onceHeartRateChange(callback: Callback&lt;HeartRateResponse&gt;): void
 
-获取一次心率传感器数据。
+获取一次心率传感器数据。适用于仅需一次性获取当前心率值的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3461,7 +3480,7 @@ try {
 
 once(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
-获取一次湿度传感器数据。
+获取一次湿度传感器数据。适用于仅需一次性获取当前环境湿度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3508,7 +3527,7 @@ try {
 
 onceHumidityChange(callback: Callback&lt;HumidityResponse&gt;): void
 
-获取一次湿度传感器数据。
+获取一次湿度传感器数据。适用于仅需一次性获取当前环境湿度的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3554,7 +3573,7 @@ try {
 
 once(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-获取一次线性加速度传感器数据。
+获取一次线性加速度传感器数据。适用于仅需一次性获取当前线性加速度（不含重力分量）的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3606,7 +3625,7 @@ try {
 
 onceLinearAccelerometerChange(callback: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-获取一次线性加速度传感器数据。
+获取一次线性加速度传感器数据。适用于仅需一次性获取当前线性加速度（不含重力分量）的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3657,7 +3676,7 @@ try {
 
 once(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
-获取一次磁场传感器数据。
+获取一次磁场传感器数据。适用于仅需一次性获取当前磁场分量的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3706,7 +3725,7 @@ try {
 
 onceMagneticFieldChange(callback: Callback&lt;MagneticFieldResponse&gt;): void
 
-获取一次磁场传感器数据。
+获取一次磁场传感器数据。适用于仅需一次性获取当前磁场分量的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3754,7 +3773,7 @@ try {
 
 once(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-获取一次未经校准的磁场传感器数据。
+获取一次未经校准的磁场传感器数据。适用于仅需一次性获取原始磁场及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3806,7 +3825,7 @@ try {
 
 onceMagneticFieldUncalibratedChange(callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-获取一次未经校准的磁场传感器数据。
+获取一次未经校准的磁场传感器数据。适用于仅需一次性获取原始磁场及偏移数据的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3857,7 +3876,7 @@ try {
 
 once(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
-获取一次方向传感器数据。
+获取一次方向传感器数据。适用于仅需一次性获取当前设备方向的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -3906,7 +3925,7 @@ try {
 
 onceOrientationChange(callback: Callback&lt;OrientationResponse&gt;): void
 
-获取一次方向传感器数据。
+获取一次方向传感器数据。适用于仅需一次性获取当前设备方向的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -3954,7 +3973,7 @@ try {
 
 once(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
-获取一次计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。
+获取一次计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。适用于仅需一次性获取当前步数的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4004,7 +4023,7 @@ try {
 
 oncePedometerChange(callback: Callback&lt;PedometerResponse&gt;): void
 
-获取一次计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。
+获取一次计步器传感器数据。计步传感器数据上报有一定延迟，延迟时间由具体的实现产品决定。适用于仅需一次性获取当前步数的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4053,7 +4072,7 @@ try {
 
 once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
-获取一次计步检测器传感器数据。
+获取一次计步检测器传感器数据。适用于仅需一次性检测计步事件的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4103,7 +4122,7 @@ try {
 
 oncePedometerDetectionChange(callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
-获取一次计步检测器传感器数据。
+获取一次计步检测器传感器数据。适用于仅需一次性检测计步事件的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4152,7 +4171,7 @@ try {
 
 once(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
-获取一次接近光传感器数据。
+获取一次接近光传感器数据。适用于仅需一次性检测当前接近状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4199,7 +4218,7 @@ try {
 
 onceProximityChange(callback: Callback&lt;ProximityResponse&gt;): void
 
-获取一次接近光传感器数据。
+获取一次接近光传感器数据。适用于仅需一次性检测当前接近状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4245,7 +4264,7 @@ try {
 
 once(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
-获取一次旋转矢量传感器数据。
+获取一次旋转矢量传感器数据。适用于仅需一次性获取当前设备姿态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4295,7 +4314,7 @@ try {
 
 onceRotationVectorChange(callback: Callback&lt;RotationVectorResponse&gt;): void
 
-获取一次旋转矢量传感器数据。
+获取一次旋转矢量传感器数据。适用于仅需一次性获取当前设备姿态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4344,7 +4363,7 @@ try {
 
 once(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;): void
 
-获取一次有效运动传感器数据。
+获取一次有效运动传感器数据。适用于仅需一次性检测有效运动的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4391,7 +4410,7 @@ try {
 
 onceSignificantMotionChange(callback: Callback&lt;SignificantMotionResponse&gt;): void
 
-获取一次有效运动传感器数据。
+获取一次有效运动传感器数据。适用于仅需一次性检测有效运动的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4437,7 +4456,7 @@ try {
 
 once(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
-获取一次佩戴检测传感器数据。
+获取一次佩戴检测传感器数据。适用于仅需一次性检测佩戴状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4484,7 +4503,7 @@ try {
 
 onceWearDetectionChange(callback: Callback&lt;WearDetectionResponse&gt;): void
 
-获取一次佩戴检测传感器数据。
+获取一次佩戴检测传感器数据。适用于仅需一次性检测佩戴状态的场景。调用后，callback仅触发一次，自动取消订阅。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4530,7 +4549,7 @@ try {
 
 off(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
-取消订阅加速度传感器数据。
+取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4590,7 +4609,7 @@ try {
 
 off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
-取消订阅加速度传感器数据。
+取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4609,7 +4628,7 @@ off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 |--------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type               | [SensorId](#sensorid9).ACCELEROMETER                         | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER。               |
-| sensorInfoParam    | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam    | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback           | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -4685,7 +4704,7 @@ function sensorUnsubscribe(): Ret {
 
 offAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
-取消订阅加速度传感器数据。
+取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4701,7 +4720,7 @@ offAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -4760,7 +4779,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
 
-取消订阅融合压力传感器数据。
+取消订阅融合压力传感器数据。当不再需要接收融合压力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4775,7 +4794,7 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -4851,7 +4870,7 @@ function sensorUnsubscribe(): Ret {
 
 offFusionPressureChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
 
-取消订阅融合压力传感器数据。
+取消订阅融合压力传感器数据。当不再需要接收融合压力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -4865,7 +4884,7 @@ offFusionPressureChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -4923,7 +4942,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-取消订阅未校准加速度传感器数据。
+取消订阅未校准加速度传感器数据。当不再需要接收未校准加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4981,7 +5000,7 @@ try {
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-取消订阅未校准加速度传感器数据。
+取消订阅未校准加速度传感器数据。当不再需要接收未校准加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4998,7 +5017,7 @@ off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).ACCELEROMETER_UNCALIBRATED            | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER_UNCALIBRATED。  |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5074,7 +5093,7 @@ function sensorUnsubscribe(): Ret {
 
 offAccelerometerUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-取消订阅未校准加速度传感器数据。
+取消订阅未校准加速度传感器数据。当不再需要接收未校准加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -5090,12 +5109,12 @@ offAccelerometerUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?:
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5149,7 +5168,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
-取消订阅环境光传感器数据。
+取消订阅环境光传感器数据。当不再需要接收环境光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5204,7 +5223,7 @@ try {
 
 off(type: SensorId.AMBIENT_LIGHT, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LightResponse&gt;): void
 
-取消订阅环境光传感器数据。
+取消订阅环境光传感器数据。当不再需要接收环境光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5219,7 +5238,7 @@ off(type: SensorId.AMBIENT_LIGHT, sensorInfoParam?: SensorInfoParam, callback?: 
 | 参数名              | 类型                                            | 必填 | 说明                                                         |
 |------------------| ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).AMBIENT_LIGHT            | 是   | 传感器类型，该值固定为SensorId.AMBIENT_LIGHT。               |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[LightResponse](#lightresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5294,7 +5313,7 @@ function sensorUnsubscribe(): Ret {
 
 offAmbientLightChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LightResponse&gt;): void
 
-取消订阅环境光传感器数据。
+取消订阅环境光传感器数据。当不再需要接收环境光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -5308,12 +5327,12 @@ offAmbientLightChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;
 
 | 参数名              | 类型                                            | 必填 | 说明                                                         |
 |------------------| ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[LightResponse](#lightresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5366,7 +5385,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-取消订阅温度传感器数据。
+取消订阅温度传感器数据。当不再需要接收温度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5421,7 +5440,7 @@ try {
 
 off(type: SensorId.AMBIENT_TEMPERATURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-取消订阅温度传感器数据。
+取消订阅温度传感器数据。当不再需要接收温度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5436,7 +5455,7 @@ off(type: SensorId.AMBIENT_TEMPERATURE, sensorInfoParam?: SensorInfoParam, callb
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).AMBIENT_TEMPERATURE                   | 是   | 传感器类型，该值固定为SensorId.AMBIENT_TEMPERATURE。         |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[AmbientTemperatureResponse](#ambienttemperatureresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5511,7 +5530,7 @@ function sensorUnsubscribe(): Ret {
 
 offAmbientTemperatureChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-取消订阅温度传感器数据。
+取消订阅温度传感器数据。当不再需要接收温度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -5525,12 +5544,12 @@ offAmbientTemperatureChange(sensorInfoParam?: SensorInfoParam, callback?: Callba
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[AmbientTemperatureResponse](#ambienttemperatureresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5583,7 +5602,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
-取消订阅气压计传感器数据。
+取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5638,7 +5657,7 @@ try {
 
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
-取消订阅气压计传感器数据。
+取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5653,7 +5672,7 @@ off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Call
 | 参数名              | 类型                                                    | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).BAROMETER                        | 是   | 传感器类型，该值固定为SensorId.BAROMETER。                   |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[BarometerResponse](#barometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5728,7 +5747,7 @@ function sensorUnsubscribe(): Ret {
 
 offBarometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
-取消订阅气压计传感器数据。
+取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -5742,7 +5761,7 @@ offBarometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Bar
 
 | 参数名              | 类型                                                    | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[BarometerResponse](#barometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5800,7 +5819,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
-取消订阅重力传感器数据。
+取消订阅重力传感器数据。当不再需要接收重力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5856,7 +5875,7 @@ try {
 
 off(type: SensorId.GRAVITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GravityResponse&gt;): void
 
-取消订阅重力传感器数据。
+取消订阅重力传感器数据。当不再需要接收重力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -5871,7 +5890,7 @@ off(type: SensorId.GRAVITY, sensorInfoParam?: SensorInfoParam, callback?: Callba
 | 参数名              | 类型                                                | 必填 | 说明                                                         |
 |------------------| --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).GRAVITY                      | 是   | 传感器类型，该值固定为SensorId.GRAVITY。                     |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GravityResponse](#gravityresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5946,7 +5965,7 @@ function sensorUnsubscribe(): Ret {
 
 offGravityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GravityResponse&gt;): void
 
-取消订阅重力传感器数据。
+取消订阅重力传感器数据。当不再需要接收重力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -5960,12 +5979,12 @@ offGravityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gravi
 
 | 参数名              | 类型                                                | 必填 | 说明                                                         |
 |------------------| --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GravityResponse](#gravityresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6018,7 +6037,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
-取消订阅陀螺仪传感器数据。
+取消订阅陀螺仪传感器数据。当不再需要接收陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6078,7 +6097,7 @@ try {
 
 off(type: SensorId.GYROSCOPE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
-取消订阅陀螺仪传感器数据。
+取消订阅陀螺仪传感器数据。当不再需要接收陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6097,7 +6116,7 @@ off(type: SensorId.GYROSCOPE, sensorInfoParam?: SensorInfoParam, callback?: Call
 | 参数名              | 类型                                                    | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).GYROSCOPE                        | 是   | 传感器类型，该值固定为SensorId.GYROSCOPE。                   |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GyroscopeResponse](#gyroscoperesponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -6173,7 +6192,7 @@ function sensorUnsubscribe(): Ret {
 
 offGyroscopeChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
-取消订阅陀螺仪传感器数据。
+取消订阅陀螺仪传感器数据。当不再需要接收陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -6189,12 +6208,12 @@ offGyroscopeChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gyr
 
 | 参数名              | 类型                                                    | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GyroscopeResponse](#gyroscoperesponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6248,7 +6267,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
- 取消订阅未校准陀螺仪传感器数据。
+取消订阅未校准陀螺仪传感器数据。当不再需要接收未校准陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6306,7 +6325,7 @@ try {
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-取消订阅未校准陀螺仪传感器数据。
+取消订阅未校准陀螺仪传感器数据。当不再需要接收未校准陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6323,7 +6342,7 @@ off(type: SensorId.GYROSCOPE_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, ca
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).GYROSCOPE_UNCALIBRATED                | 是   | 传感器类型，该值固定为SensorId.GYROSCOPE_UNCALIBRATED。      |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GyroscopeUncalibratedResponse](#gyroscopeuncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -6399,7 +6418,7 @@ function sensorUnsubscribe(): Ret {
 
 offGyroscopeUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-取消订阅未校准陀螺仪传感器数据。
+取消订阅未校准陀螺仪传感器数据。当不再需要接收未校准陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -6415,12 +6434,12 @@ offGyroscopeUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?: Cal
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[GyroscopeUncalibratedResponse](#gyroscopeuncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6474,7 +6493,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;): void
 
-取消订阅霍尔传感器数据。
+取消订阅霍尔传感器数据。当不再需要接收霍尔传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6529,7 +6548,7 @@ try {
 
 off(type: SensorId.HALL, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResponse&gt;): void
 
-取消订阅霍尔传感器数据。
+取消订阅霍尔传感器数据。当不再需要接收霍尔传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6544,7 +6563,7 @@ off(type: SensorId.HALL, sensorInfoParam?: SensorInfoParam, callback?: Callback&
 | 参数名              | 类型                                          | 必填 | 说明                                                         |
 |------------------| --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).HALL                   | 是   | 传感器类型，该值固定为SensorId.HALL。                        |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[HallResponse](#hallresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -6619,7 +6638,7 @@ function sensorUnsubscribe(): Ret {
 
 offHallChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResponse&gt;): void
 
-取消订阅霍尔传感器数据。
+取消订阅霍尔传感器数据。当不再需要接收霍尔传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -6633,12 +6652,12 @@ offHallChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResp
 
 | 参数名              | 类型                                          | 必填 | 说明                                                         |
 |------------------| --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[HallResponse](#hallresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6691,7 +6710,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
-取消订阅心率传感器数据。
+取消订阅心率传感器数据。当不再需要接收心率传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6749,7 +6768,7 @@ try {
 
 off(type: SensorId.HEART_RATE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HeartRateResponse&gt;): void
 
-取消订阅心率传感器数据。
+取消订阅心率传感器数据。当不再需要接收心率传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6766,7 +6785,7 @@ off(type: SensorId.HEART_RATE, sensorInfoParam?: SensorInfoParam, callback?: Cal
 | 参数名              | 类型                                                    | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).HEART_RATE                       | 是   | 传感器类型，该值固定为SensorId.HEART_RATE。                  |
-| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback         | Callback&lt;[HeartRateResponse](#heartrateresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -6842,7 +6861,7 @@ function sensorUnsubscribe(): Ret {
 
 offHeartRateChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HeartRateResponse&gt;): void
 
-取消订阅心率传感器数据。
+取消订阅心率传感器数据。当不再需要接收心率传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -6863,7 +6882,7 @@ offHeartRateChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Hea
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6917,7 +6936,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
-取消订阅湿度传感器数据。
+取消订阅湿度传感器数据。当不再需要接收湿度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6972,7 +6991,7 @@ try {
 
 off(type: SensorId.HUMIDITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HumidityResponse&gt;): void
 
-取消订阅湿度传感器数据。
+取消订阅湿度传感器数据。当不再需要接收湿度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7062,7 +7081,7 @@ function sensorUnsubscribe(): Ret {
 
 offHumidityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HumidityResponse&gt;): void
 
-取消订阅湿度传感器数据。
+取消订阅湿度传感器数据。当不再需要接收湿度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -7081,7 +7100,7 @@ offHumidityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Humi
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7134,7 +7153,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-取消订阅线性加速度传感器数据。
+取消订阅线性加速度传感器数据。当不再需要接收线性加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7148,7 +7167,7 @@ off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerome
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELERATION。         |
+| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELEROMETER。         |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -7192,7 +7211,7 @@ try {
 
 off(type: SensorId.LINEAR_ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-取消订阅线性加速度传感器数据。
+取消订阅线性加速度传感器数据。当不再需要接收线性加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7285,7 +7304,7 @@ function sensorUnsubscribe(): Ret {
 
 offLinearAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-取消订阅线性加速度传感器数据。
+取消订阅线性加速度传感器数据。当不再需要接收线性加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -7360,7 +7379,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
-取消订阅磁场传感器数据。
+取消订阅磁场传感器数据。当不再需要接收磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7415,7 +7434,7 @@ try {
 
 off(type: SensorId.MAGNETIC_FIELD, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
-取消订阅磁场传感器数据。
+取消订阅磁场传感器数据。当不再需要接收磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7505,7 +7524,7 @@ function sensorUnsubscribe(): Ret {
 
 offMagneticFieldChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
-取消订阅磁场传感器数据。
+取消订阅磁场传感器数据。当不再需要接收磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -7524,7 +7543,7 @@ offMagneticFieldChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7577,7 +7596,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-取消订阅未校准的磁场传感器数据。
+取消订阅未校准的磁场传感器数据。当不再需要接收未校准磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7632,7 +7651,7 @@ try {
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-取消订阅未校准的磁场传感器数据。
+取消订阅未校准的磁场传感器数据。当不再需要接收未校准磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7652,7 +7671,7 @@ off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, sensorInfoParam?: SensorInfoPara
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7722,7 +7741,7 @@ function sensorUnsubscribe(): Ret {
 
 offMagneticFieldUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-取消订阅未校准的磁场传感器数据。
+取消订阅未校准的磁场传感器数据。当不再需要接收未校准磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -7741,7 +7760,7 @@ offMagneticFieldUncalibratedChange(sensorInfoParam?: SensorInfoParam, callback?:
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7794,7 +7813,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
-取消订阅方向传感器数据。
+取消订阅方向传感器数据。当不再需要接收方向传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7851,7 +7870,7 @@ try {
 
 off(type: SensorId.ORIENTATION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;OrientationResponse&gt;): void
 
-取消订阅方向传感器数据。
+取消订阅方向传感器数据。当不再需要接收方向传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7868,7 +7887,7 @@ off(type: SensorId.ORIENTATION, sensorInfoParam?: SensorInfoParam, callback?: Ca
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).ORIENTATION                          | 是   | 传感器类型，该值固定为SensorId.ORIENTATION。                 |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex，用于取消指定设备上指定传感器的订阅。不传入时默认取消本地设备该类型所有传感器的订阅。|
 | callback | Callback&lt;[OrientationResponse](#orientationresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -7943,7 +7962,7 @@ function sensorUnsubscribe(): Ret {
 
 offOrientationChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;OrientationResponse&gt;): void
 
-取消订阅方向传感器数据。
+取消订阅方向传感器数据。当不再需要接收方向传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -7962,7 +7981,7 @@ offOrientationChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;O
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8015,7 +8034,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
-取消订阅计步器传感器数据。
+取消订阅计步器传感器数据。当不再需要接收计步器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8073,7 +8092,7 @@ try {
 
 off(type: SensorId.PEDOMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerResponse&gt;): void
 
-取消订阅计步器传感器数据。
+取消订阅计步器传感器数据。当不再需要接收计步器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8166,7 +8185,7 @@ function sensorUnsubscribe(): Ret {
 
 offPedometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerResponse&gt;): void
 
-取消订阅计步器传感器数据。
+取消订阅计步器传感器数据。当不再需要接收计步器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -8187,7 +8206,7 @@ offPedometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Ped
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8241,7 +8260,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
-取消订阅计步检测器传感器数据。
+取消订阅计步检测器传感器数据。当不再需要接收计步检测器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8299,7 +8318,7 @@ try {
 
 off(type: SensorId.PEDOMETER_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
-取消订阅计步检测器传感器数据。
+取消订阅计步检测器传感器数据。当不再需要接收计步检测器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8321,7 +8340,7 @@ off(type: SensorId.PEDOMETER_DETECTION, sensorInfoParam?: SensorInfoParam, callb
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8392,7 +8411,7 @@ function sensorUnsubscribe(): Ret {
 
 offPedometerDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
-取消订阅计步检测器传感器数据。
+取消订阅计步检测器传感器数据。当不再需要接收计步检测器传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -8413,7 +8432,7 @@ offPedometerDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callba
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8467,7 +8486,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
-取消订阅接近光传感器数据。
+取消订阅接近光传感器数据。当不再需要接收接近光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8522,7 +8541,7 @@ try {
 
 off(type: SensorId.PROXIMITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ProximityResponse&gt;): void
 
-取消订阅接近光传感器数据。
+取消订阅接近光传感器数据。当不再需要接收接近光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8612,7 +8631,7 @@ function sensorUnsubscribe(): Ret {
 
 offProximityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ProximityResponse&gt;): void
 
-取消订阅接近光传感器数据。
+取消订阅接近光传感器数据。当不再需要接收接近光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -8631,7 +8650,7 @@ offProximityChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Pro
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8684,7 +8703,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
-取消订阅旋转矢量传感器数据。
+取消订阅旋转矢量传感器数据。当不再需要接收旋转矢量传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8739,7 +8758,7 @@ try {
 
 off(type: SensorId.ROTATION_VECTOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
-取消订阅旋转矢量传感器数据。
+取消订阅旋转矢量传感器数据。当不再需要接收旋转矢量传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8829,7 +8848,7 @@ function sensorUnsubscribe(): Ret {
 
 offRotationVectorChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
-取消订阅旋转矢量传感器数据。
+取消订阅旋转矢量传感器数据。当不再需要接收旋转矢量传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -8848,7 +8867,7 @@ offRotationVectorChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8901,7 +8920,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-取消订阅有效运动传感器数据。
+取消订阅有效运动传感器数据。当不再需要接收有效运动传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -8956,13 +8975,13 @@ try {
 
 off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-取消订阅有效运动传感器数据。
+取消订阅有效运动传感器数据。当不再需要接收有效运动传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offSignificantMotionChange](#sensoroffsignificantmotionchange23)
 
-**系统能力**:SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -9046,7 +9065,7 @@ function sensorUnsubscribe(): Ret {
 
 offSignificantMotionChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-取消订阅有效运动传感器数据。
+取消订阅有效运动传感器数据。当不再需要接收有效运动传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -9065,7 +9084,7 @@ offSignificantMotionChange(sensorInfoParam?: SensorInfoParam, callback?: Callbac
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9118,7 +9137,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
-取消订阅佩戴检测传感器数据。
+取消订阅佩戴检测传感器数据。当不再需要接收佩戴检测传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -9173,7 +9192,7 @@ try {
 
 off(type: SensorId.WEAR_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
-取消订阅佩戴检测传感器数据。
+取消订阅佩戴检测传感器数据。当不再需要接收佩戴检测传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -9263,7 +9282,7 @@ function sensorUnsubscribe(): Ret {
 
 offWearDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
-取消订阅佩戴检测传感器数据。
+取消订阅佩戴检测传感器数据。当不再需要接收佩戴检测传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
@@ -9282,7 +9301,7 @@ offWearDetectionChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9335,7 +9354,7 @@ function sensorUnsubscribe(): Ret {
 
 off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void
 
-取消监听传感器变化。
+取消监听传感器上线下线状态的变化。当不再需要感知传感器上下线状态时调用此接口取消监听。off取消监听必须与on监听成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -9354,7 +9373,7 @@ off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): v
 
 **错误码**：
 
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9396,7 +9415,7 @@ try {
 
 offSensorStatusChange(callback?: Callback&lt;SensorStatusEvent&gt;): void
 
-取消监听传感器变化。
+取消监听传感器上线下线状态的变化。当不再需要感知传感器上下线状态时调用此接口取消监听。off取消监听必须与on监听成对出现。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -9414,7 +9433,7 @@ offSensorStatusChange(callback?: Callback&lt;SensorStatusEvent&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9458,7 +9477,7 @@ ArkTS-Dyn: getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt;
 
 ArkTS-Sta: getSensorListByDeviceSync(deviceId?: int): Array&lt;Sensor&gt; 
 
-同步获取设备的所有传感器信息。
+获取设备上的所有传感器信息，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9505,7 +9524,7 @@ ArkTS-Dyn: getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array
 
 ArkTS-Sta: getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array&lt;Sensor&gt;
 
-同步获取指定设备和类型的传感器信息。
+同步获取指定设备和类型的传感器信息，使用同步方式返回结果。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -10747,7 +10766,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 
 | 类型                               | 说明         |
 | ---------------------------------- | ------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise，使用异步方式对象返归一化回四元数。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise对象，使用异步方式返回归一化四元数。 |
 
 **错误码**：
 
@@ -11088,7 +11107,7 @@ ArkTS-Sta: getRotationMatrix(gravity: Array&lt;double&gt;, geomagnetic: Array&lt
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| Promise&lt;[RotationMatrixResponse](#rotationmatrixresponse)&gt; | Promise对象，使用异步方式返回旋转矩阵。 |
+| Promise&lt;[RotationMatrixResponse](#rotationmatrixresponse)&gt; | Promise对象，使用异步方式返回旋转矩阵。RotationMatrixResponse对象包含设备的旋转矩阵和倾斜矩阵，可用于计算设备的姿态和方向信息。 |
 
 **错误码**：
 
@@ -11211,7 +11230,7 @@ getSensorList(): Promise&lt;Array&lt;Sensor&gt;&gt;
 
 | 类型                                     | 说明             |
 | ---------------------------------------- | ---------------- |
-| Promise&lt;Array&lt;[Sensor](#sensor9)&gt;&gt; | Promise对象，使用异步方式返回传感器属性列表。 |
+| Promise&lt;Array&lt;[Sensor](#sensor9)&gt;&gt; | Promise对象，使用异步方式返回传感器属性列表。每个Sensor对象包含传感器的类型ID、名称、版本、厂商、最大范围、分辨率、功率等属性信息。 |
 
 **错误码**：
 
@@ -11303,7 +11322,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 
 | 参数名   | 类型                                    | 必填 | 说明             |
 | -------- | --------------------------------------- | ---- | ---------------- |
-| type     | [SensorId](#sensorid9)                  | 是   | 指定传感器类型。     |
+| type     | [SensorId](#sensorid9).WEAR_DETECTION                        | 是   | 传感器类型，该值固定为SensorId.WEAR_DETECTION。                          |
 | callback | AsyncCallback&lt;[Sensor](#sensor9)&gt; | 是   | 回调函数，异步返回指定传感器的属性信息。 |
 
 **错误码**：
@@ -11314,7 +11333,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -11377,7 +11396,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -11460,28 +11479,28 @@ try {
 
 | 名称                        | 值   | 说明                                                         |
 | --------------------------- | ---- | ------------------------------------------------------------ |
-| ACCELEROMETER               | 1    | 加速度传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| GYROSCOPE                   | 2    | 陀螺仪传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| AMBIENT_LIGHT               | 5    | 环境光传感器。                                               |
-| MAGNETIC_FIELD              | 6    | 磁场传感器。                                                 |
-| BAROMETER                   | 8    | 气压计传感器。                                               |
-| HALL                        | 10   | 霍尔传感器。                                                 |
-| PROXIMITY                   | 12   | 接近光传感器。                                               |
-| HUMIDITY                    | 13   | 湿度传感器。                                                 |
-| ORIENTATION                 | 256  | 方向传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| GRAVITY                     | 257  | 重力传感器。                                                 |
-| LINEAR_ACCELEROMETER        | 258  | 线性加速度传感器。                                           |
-| ROTATION_VECTOR             | 259  | 旋转矢量传感器。                                             |
-| AMBIENT_TEMPERATURE         | 260  | 环境温度传感器。                                             |
-| MAGNETIC_FIELD_UNCALIBRATED | 261  | 未校准磁场传感器。                                           |
-| GYROSCOPE_UNCALIBRATED      | 263  | 未校准陀螺仪传感器。                                         |
-| SIGNIFICANT_MOTION          | 264  | 有效运动传感器。                                             |
-| PEDOMETER_DETECTION         | 265  | 计步检测传感器。                                             |
-| PEDOMETER                   | 266  | 计步传感器。                                                 |
-| HEART_RATE                  | 278  | 心率传感器。                                                 |
-| WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
-| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
-| FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23                        |
+| ACCELEROMETER               | 1    | 加速度传感器类型，用于测量设备的加速度。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| GYROSCOPE                   | 2    | 陀螺仪传感器类型，用于测量设备的旋转角速度。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| AMBIENT_LIGHT               | 5    | 环境光传感器类型，用于测量环境光照强度。                                               |
+| MAGNETIC_FIELD              | 6    | 磁场传感器类型，用于测量设备周围的环境磁场强度。                                                 |
+| BAROMETER                   | 8    | 气压计传感器类型，用于测量大气压力。                                               |
+| HALL                        | 10   | 霍尔传感器类型，用于检测设备周围是否存在磁力吸引。                                                 |
+| PROXIMITY                   | 12   | 接近光传感器类型，用于检测物体与设备显示器的接近程度。                                               |
+| HUMIDITY                    | 13   | 湿度传感器类型，用于测量环境的相对湿度。                                               |
+| ORIENTATION                 | 256  | 方向传感器类型，用于测量设备的旋转方向角度。<br/>**原子化服务API**：从API version 11开始，该接口在支持原子化服务中使用。 |
+| GRAVITY                     | 257  | 重力传感器类型，用于测量设备的重力加速度。                                                 |
+| LINEAR_ACCELEROMETER        | 258  | 线性加速度传感器类型，用于测量设备排除重力后的线性加速度。                                           |
+| ROTATION_VECTOR             | 259  | 旋转矢量传感器类型，用于描述设备相对于参考方向的旋转状态。                                             |
+| AMBIENT_TEMPERATURE         | 260  | 环境温度传感器类型，用于测量环境的温度。                                             |
+| MAGNETIC_FIELD_UNCALIBRATED | 261  | 未校准磁场传感器类型，用于测量未校准的环境磁场强度及其偏量。                                           |
+| GYROSCOPE_UNCALIBRATED      | 263  | 未校准陀螺仪传感器类型，用于测量未校准的设备旋转角速度及其偏量。                                         |
+| SIGNIFICANT_MOTION          | 264  | 有效运动传感器类型，用于检测设备是否存在大幅度运动。                                             |
+| PEDOMETER_DETECTION         | 265  | 计步检测传感器类型，用于检测用户的计步动作。                                         |
+| PEDOMETER                   | 266  | 计步传感器类型，用于统计用户的行走步数。                                                 |
+| HEART_RATE                  | 278  | 心率传感器类型，用于测量用户的心率数值。                                                 |
+| WEAR_DETECTION              | 280  | 佩戴检测传感器类型，用于检测设备是否被佩戴。                                               |
+| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度传感器类型，用于测量未校准的设备加速度及其偏量。                                       |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器类型，用于测量融合压力值。仅智能表有该传感器。                        |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -11503,7 +11522,7 @@ try {
 
 ## SensorStatusEvent<sup>19+</sup>
 
-设备状态变化事件数据。
+设备状态变化事件数据，用于描述传感器上下线事件的信息。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11513,16 +11532,16 @@ try {
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 事件发生的时间戳，单位ms。                   |
-| sensorId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器ID。                      |
-| sensorIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器索引。                      |
-| isSensorOnline | boolean | 否  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
-| deviceId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备ID。                       |
-| deviceName     | string  | 否  | 否  | 设备名称。                       |
+| timestamp      | number  | 否  | 否  | 事件发生的时间戳。从设备开机开始计时到事件发生的时间。单位：ms（毫秒）。                   |
+| sensorId       | number  | 否  | 否  | 传感器类型ID，对应[SensorId](#sensorid9)枚举值。                      |
+| sensorIndex    | number  | 否  | 否  | 传感器索引，同一类型传感器可能有多个实例，通过sensorIndex区分。                      |
+| isSensorOnline | boolean | 否  | 否  | 传感器是否上线。true表示传感器上线，false表示传感器下线。 |
+| deviceId       | number  | 否  | 否  | 设备ID。-1表示本地设备，其它值表示远程设备。                       |
+| deviceName     | string  | 否  | 否  | 设备名称，标识传感器的来源设备。                       |
 
 ## SensorAccuracy<sup>11+</sup>
 
-传感器数据的精度。
+传感器数据的精度挡位。
 
 **原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -11534,14 +11553,14 @@ try {
 
 | 名称    | 值 | 说明                     |
 | --------- | ---- | ------------------------ |
-| ACCURACY_UNRELIABLE | 0   | 传感器数据不可信。 |
-| ACCURACY_LOW | 1   | 传感器低挡位精度。 |
-| ACCURACY_MEDIUM | 2   | 传感器中挡位精度。 |
-| ACCURACY_HIGH | 3   | 传感器高挡位精度。 |
+| ACCURACY_UNRELIABLE | 0   | 传感器数据不可信，精度挡位最低，数据可靠性无法保证。 |
+| ACCURACY_LOW | 1   | 传感器低挡位精度，数据精度较低，仅适用于粗略估算场景。 |
+| ACCURACY_MEDIUM | 2   | 传感器中挡位精度，数据精度中等，适用于一般应用场景。 |
+| ACCURACY_HIGH | 3   | 传感器高挡位精度，数据精度较高，适用于对精度要求严格的场景。 |
 
 ## Response
 
-传感器数据的时间戳。
+传感器数据的时间戳与精度信息基类，所有传感器Response类型均继承于此。
 
 **原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -11553,8 +11572,8 @@ try {
 
 | 名称      | 类型   | 只读 | 可选 | 说明                     |
 | --------- | ------ | ---- | ---- | ------------------------ |
-| timestamp | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否   | 否   | 传感器数据上报的时间戳。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | 否   | 否   | 传感器数据上报的精度挡位值。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| timestamp | number | 否   | 否   | 传感器数据上报的时间戳。从设备开机开始计时到上报数据的时间，单位：ns（纳秒）。 |
+| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | 否   | 否   | 传感器数据上报的精度挡位值，表示当前上报数据的可信程度。 |
 
 ## Sensor<sup>9+</sup>
 
@@ -11568,21 +11587,21 @@ try {
 
 | 名称                          | 类型      | 只读 | 可选 | 说明               |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | 否  | 否  | 传感器名称。|
-| vendorName                  | string  | 否  | 否  | 传感器供应商。         |
-| firmwareVersion             | string  | 否  | 否  | 传感器固件版本。  |
-| hardwareVersion             | string  | 否  | 否  | 传感器硬件版本。   |
-| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 传感器类型id。   |
-| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器测量范围的最大值。    |
-| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最小采样周期。  |
-| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最大采样周期。     |
-| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器精度。  |
-| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器功率的估计值，单位：mA。 |
-| sensorIndex<sup>19+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 传感器索引。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23           |
-| deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
-| deviceName<sup>19+</sup>    | string  | 否  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
-| isLocalSensor<sup>19+</sup> | boolean | 否  | 是  | 是否本地传感器，true为本地传感器，false为非本地传感器。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23         |
-| isMockSensor<sup>23+</sup> | boolean | 否  | 是  | 是否mock传感器，true为mock传感器，false为非mock传感器。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23        |
+| sensorName                  | string  | 否  | 否  | 传感器名称，标识传感器的类型和型号。           |
+| vendorName                  | string  | 否  | 否  | 传感器厂商名称，标识传感器的制造商。          |
+| firmwareVersion             | string  | 否  | 否  | 传感器固件版本号，标识传感器固件的当前版本。         |
+| hardwareVersion             | string  | 否  | 否  | 传感器硬件版本号，标识传感器硬件的当前版本。         |
+| sensorId                    | number  | 否  | 否  | 传感器类型ID，对应[SensorId](#sensorid9)枚举值。         |
+| maxRange                    | number  | 否  | 否  | 传感器最大测量范围。单位：取决于具体传感器类型（如加速度传感器为m/s²）。     |
+| minSamplePeriod             | number  | 否  | 否  | 传感器最小采样周期。单位：ns（纳秒）。       |
+| maxSamplePeriod             | number  | 否  | 否  | 传感器最大采样周期。单位：ns（纳秒）。       |
+| precision                   | number  | 否  | 否  | 传感器精度。单位：取决于具体传感器类型。           |
+| power                       | number  | 否  | 否  | 传感器估计功耗。单位：mA（毫安）。 |
+| sensorIndex<sup>19+</sup>   | number  | 否  | 是  | 传感器索引，同一类型传感器可能有多个实例，通过sensorIndex区分。默认值：0。           |
+| deviceId<sup>19+</sup>      | number  | 否  | 是  | 设备ID，-1表示本地设备。默认值：-1。            |
+| deviceName<sup>19+</sup>    | string  | 否  | 是  | 设备名称，标识传感器的来源设备。            |
+| isLocalSensor<sup>19+</sup> | boolean | 否  | 是  | 是否为本地传感器。true表示本地传感器，false表示非本地传感器（即远程设备上的传感器）。默认值：true。|
+| isMockSensor<sup>23+</sup> | boolean | 否  | 是  | 是否为模拟传感器。true表示模拟传感器，false表示真实传感器。默认值：false。|
 
 ## AccelerometerResponse
 
@@ -11599,9 +11618,9 @@ try {
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| x    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备x轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
-| y    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备y轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
-| z    | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 施加在设备z轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| x    | number | 否   | 否   | x坐标方向，用于指定旋转矩阵变换在x轴的方向。 |
+| y    | number | 否   | 否   | y坐标方向，用于指定旋转矩阵变换在y轴的方向。 |
+| z    | number | 否   | 否   | z轴方向的环境磁场强度。单位：μT（微特斯拉）。 |
 
 
 ## LinearAccelerometerResponse
@@ -11654,7 +11673,7 @@ try {
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                           |
 | -------------- | ------ | ---- | ---- | ---------------------------------------------- |
-| fusionPressure | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否   | 否   | 施加在融合压力传感器上的压力值百分比，单位 : %     |
+| fusionPressure | number | 否   | 否   | 融合压力值，表示施加在融合压力传感器上的压力值百分比。单位：%（百分比）。     |
 
 
 ## GravityResponse
@@ -11784,7 +11803,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| distance | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 可见物体与设备显示器的接近程度。0表示接近，大于0表示远离。 |
+| distance | number | 否   | 否   | 可见物体与设备显示器的接近程度。取值范围：0表示接近（物体靠近设备），大于0表示远离（物体远离设备）。 |
 
 
 ## LightResponse
@@ -11800,9 +11819,9 @@ try {
 
 | 名称                            | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| intensity                       | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 光强（单位：勒克斯）。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                                       |
-| colorTemperature<sup>12+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 色温（单位：开尔文），可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| infraredLuminance<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 红外亮度（单位：cd/m²），可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| intensity                       | number | 否   | 否   | 环境光强度。单位：lux（勒克斯）。                                       |
+| colorTemperature<sup>12+</sup>  | number | 否   | 是   | 色温。单位：K（开尔文）。可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。 |
+| infraredLuminance<sup>12+</sup> | number | 否   | 是   | 红外亮度。单位：cd/m²（坎德拉每平方米）。可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。 |
 
 
 ## HallResponse
@@ -11873,7 +11892,7 @@ try {
 
 | 名称  | 类型   | 只读 | 可选 | 说明             |
 | ----- | ------ | ---- | ---- | ---------------- |
-| steps | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 用户的行走步数。 |
+| steps | number | 否   | 否   | 用户的行走步数。单位：步。 |
 
 
 ## HumidityResponse
@@ -11921,7 +11940,7 @@ try {
 
 | 名称        | 类型   | 只读 | 可选 | 说明                       |
 | ----------- | ------ | ---- | ---- | -------------------------- |
-| temperature | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 环境温度（单位：摄氏度）。 |
+| temperature | number | 否   | 否   | 环境温度。单位：℃（摄氏度）。 |
 
 
 ## BarometerResponse
@@ -11937,7 +11956,7 @@ try {
 
 | 名称     | 类型   | 只读 | 可选 | 说明                   |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 压力值（单位：百帕）。 |
+| pressure | number | 否   | 否   | 大气压力值。单位：hPa（百帕）。 |
 
 
 ## HeartRateResponse
@@ -11953,7 +11972,7 @@ try {
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                    |
 | --------- | ------ | ---- | ---- | --------------------------------------- |
-| heartRate | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 心率值。测量用户的心率数值，单位：bpm。 |
+| heartRate | number | 否   | 否   | 用户的心率数值。单位：bpm（beats per minute，每分钟心跳次数）。 |
 
 
 ## WearDetectionResponse
@@ -11974,7 +11993,7 @@ try {
 
 ## Options
 
-设置传感器上报频率。
+设置传感器上报频率及传感器选择参数。
 
 **原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -11986,14 +12005,14 @@ try {
 
 | 名称     | 类型                                                        | 只读 | 可选 | 说明                                                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------|
-| interval | ArkTS-Dyn: number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> <br> ArkTS-Sta: long\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | 否   | 是   | 表示传感器的上报频率，默认值为200000000ns。该属性有最小值和最大值的限制，由硬件支持的上报频率决定，当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 否 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                                                         |
+| interval | number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | 否   | 是   | 用于设置传感器数据上报的时间间隔。默认值：200000000ns（即200ms）。单位：ns（纳秒）。取值范围需参考各传感器的minSamplePeriod和maxSamplePeriod，可通过[getSingleSensor](#sensorgetsinglesensor9)查询。建议根据实际业务需求设置合理的上报频率，取值越小上报越频繁。当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。 |
+| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 否 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex，用于多传感器场景下选择目标传感器。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。                                                         |
 
 ## SensorFrequency<sup>11+</sup>
 
 type SensorFrequency = 'game' | 'ui' | 'normal'
 
-传感器上报频率模式。
+传感器上报频率模式，提供预定义的频率档位，方便开发者快速设置常用的上报频率。
 
 **原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -12005,13 +12024,13 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 类型     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
-| 'game'   | 用于指定传感器上报频率，频率值为20000000ns，该频率被设置在硬件支持的频率范围内时会生效，值固定为'game'字符串。 |
-| 'ui'     | 用于指定传感器上报频率，频率值为60000000ns，该频率被设置在硬件支持的频率范围内时会生效，值固定为'ui'字符串。 |
-| 'normal' | 用于指定传感器上报频率，频率值为200000000ns，该频率被设置在硬件支持的频率范围内时会生效，值固定为'normal'字符串。 |
+| 'game'   | 游戏模式，用于指定传感器上报频率。频率值：20000000ns（即20ms），适用于对数据延迟敏感的游戏类应用。该频率被设置在硬件支持的频率范围内时会生效，值固定为'game'字符串。 |
+| 'ui'     | UI模式，用于指定传感器上报频率。频率值：60000000ns（即60ms），适用于对数据更新有中等要求的UI交互类应用。该频率被设置在硬件支持的频率范围内时会生效，值固定为'ui'字符串。 |
+| 'normal' | 普通模式，用于指定传感器上报频率。频率值：200000000ns（即200ms），适用于对数据更新频率要求不高的常规应用。该频率被设置在硬件支持的频率范围内时会生效，值固定为'normal'字符串。 |
 
 ## RotationMatrixResponse
 
-设置旋转矩阵响应对象。
+设置旋转矩阵响应对象，用于描述旋转矩阵和倾斜矩阵的计算结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12021,13 +12040,13 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称        | 类型                | 只读 | 可选 | 说明       |
 | ----------- | ------------------- | ---- | ---- | ---------- |
-| rotation    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 否   | 否   | 旋转矩阵。 |
-| inclination | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 否   | 否   | 倾斜矩阵。 |
+| rotation    | Array&lt;number&gt; | 否   | 否   | 旋转矩阵，长度为9的一维数组，表示设备在三维空间中的旋转状态。 |
+| inclination | Array&lt;number&gt; | 否   | 否   | 倾斜矩阵，长度为9的一维数组，表示地磁倾斜变换矩阵。 |
 
 
 ## CoordinatesOptions
 
-设置坐标选项对象。
+设置坐标选项对象，用于指定坐标系的变换方向。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12043,7 +12062,7 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 ## GeomagneticResponse
 
-设置地磁响应对象。
+设置地磁响应对象，用于描述指定地理位置的地磁场信息。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12053,17 +12072,17 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的北分量，单位nT。                                   |
-| y               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的东分量，单位nT。                                   |
-| z               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的垂直分量，单位nT。                                 |
-| geomagneticDip  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角，单位度（°）。             |
-| deflectionAngle | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度，单位度（°）。 |
-| levelIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的水平强度，单位nT。                                 |
-| totalIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的总强度，单位nT。                                   |
+| x               | number | 否   | 否   | 地磁场X方向分量（北分量）。单位：nT（纳特斯拉）。                                   |
+| y               | number | 否   | 否   | 地磁场Y方向分量（东分量）。单位：nT（纳特斯拉）。                                   |
+| z               | number | 否   | 否   | 地磁场Z方向分量（垂直分量）。单位：nT（纳特斯拉）。                                 |
+| geomagneticDip  | number | 否   | 否   | 磁倾角，即地球磁场线与水平面的夹角。单位：degree（度）。             |
+| deflectionAngle | number | 否   | 否   | 磁偏角，即地磁北方向与正北方向在水平面上的角度。单位：degree（度）。 |
+| levelIntensity  | number | 否   | 否   | 水平磁场强度，即地磁场在水平面上的总强度。单位：nT（纳特斯拉）。                                 |
+| totalIntensity  | number | 否   | 否   | 总磁场强度，即地磁场三维空间的总强度。单位：nT（纳特斯拉）。                                   |
 
 ## LocationOptions
 
-指示地理位置。
+指示地理位置，用于传入经纬度和海拔信息以计算地磁场。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12073,17 +12092,16 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 纬度，单位度（°）。     |
-| longitude | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 经度，单位度（°）。     |
-| altitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 海拔高度，单位m。 |
-
+| latitude  | number | 否   | 否   | 纬度。取值范围：[-90, 90]。单位：degree（度）。     |
+| longitude | number | 否   | 否   | 经度。取值范围：[-180, 180]。单位：degree（度）。     |
+| altitude  | number | 否   | 否   | 海拔高度。单位：m（米）。 |
 ## sensor.on<sup>(deprecated)</sup>
 
 ### ACCELEROMETER<sup>(deprecated)</sup>
 
 on(type:  SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;,options?: Options): void
 
-监听加速度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听加速度传感器的数据变化。适用于需要感知设备运动状态、实现屏幕旋转或游戏操控的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12101,7 +12119,7 @@ on(type:  SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;Acceler
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_ACCELEROMETER | 是   | 要订阅的加速度传感器类型为SENSOR_TYPE_ID_ACCELEROMETER。     |
 | callback | Callback&lt;[AccelerometerResponse](#accelerometerresponse)&gt; | 是   | 注册加速度传感器的回调函数，上报的数据类型为AccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12121,7 +12139,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accelero
 
 on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
-监听线性加速度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听线性加速度传感器的数据变化。适用于需要获取排除重力影响的线性加速度数据的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12139,7 +12157,7 @@ on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Line
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_LINEAR_ACCELERATION | 是   | 要订阅的线性加速度传感器类型为SENSOR_TYPE_ID_LINEAR_ACCELERATION。 |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 是   | 注册线性加速度传感器的回调函数，上报的数据类型为LinearAccelerometerResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 ### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
 
@@ -12149,7 +12167,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -12163,7 +12181,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED | 是   | 要订阅的未校准加速度计传感器类型为SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED。 |
 | callback | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 是   | 注册未校准加速度计传感器的回调函数，上报的数据类型为AccelerometerUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12187,7 +12205,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: se
 
 on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;,options?: Options): void
 
-监听重力传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听重力传感器的数据变化。适用于需要感知设备重力方向的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12203,7 +12221,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityRespons
 | -------- | ---------------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_GRAVITY | 是   | 要订阅的重力传感器类型为SENSOR_TYPE_ID_GRAVITY。            |
 | callback | Callback&lt;[GravityResponse](#gravityresponse)&gt;        | 是   | 注册重力传感器的回调函数，上报的数据类型为GravityResponse。 |
-| options  | [Options](#options)                                        | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](#options)                                        | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **示例**：
 
@@ -12223,7 +12241,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespons
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
-监听陀螺仪传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听陀螺仪传感器的数据变化。适用于需要感知设备旋转角速度的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12241,7 +12259,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeRes
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_GYROSCOPE | 是   | 要订阅的陀螺仪传感器类型为SENSOR_TYPE_ID_GYROSCOPE。         |
 | callback | Callback&lt;[GyroscopeResponse](#gyroscoperesponse)&gt;      | 是   | 注册陀螺仪传感器的回调函数，上报的数据类型为GyroscopeResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12261,7 +12279,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeRes
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
-监听未校准陀螺仪传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听未校准陀螺仪传感器的数据变化。适用于需要获取包含偏差校准数据的陀螺仪原始数据的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12279,7 +12297,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;G
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED | 是   | 要订阅的未校准陀螺仪传感器类型为SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED。 |
 | callback | Callback&lt;[GyroscopeUncalibratedResponse](#gyroscopeuncalibratedresponse)&gt; | 是   | 注册未校准陀螺仪传感器的回调函数，上报的数据类型为GyroscopeUncalibratedResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12302,7 +12320,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor
 
 on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
-监听有效运动传感器数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听有效运动传感器数据变化。适用于需要检测设备是否有显著运动的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12318,7 +12336,7 @@ on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;Sig
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_SIGNIFICANT_MOTION | 是   | 要订阅的有效运动传感器类型为SENSOR_TYPE_ID_SIGNIFICANT_MOTION。 |
 | callback | Callback&lt;[SignificantMotionResponse](#significantmotionresponse)&gt; | 是   | 注册有效运动传感器的回调函数，上报的数据类型为SignificantMotionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12336,7 +12354,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.Sig
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
-监听计步检测传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听计步检测传感器的数据变化。适用于需要检测用户是否在行走的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12354,7 +12372,7 @@ on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;Pe
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_PEDOMETER_DETECTION | 是   | 要订阅的计步检测传感器类型为SENSOR_TYPE_ID_PEDOMETER_DETECTION。 |
 | callback | Callback&lt;[PedometerDetectionResponse](#pedometerdetectionresponse)&gt; | 是   | 注册计步检测传感器的回调函数，上报的数据类型为PedometerDetectionResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                          | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12372,7 +12390,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.Pe
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
-监听计步传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听计步传感器的数据变化。适用于需要获取用户步数数据的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12408,7 +12426,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerRes
 
 on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback:Callback&lt;AmbientTemperatureResponse&gt;,  options?: Options): void
 
-监听环境温度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听环境温度传感器的数据变化。适用于需要感知环境温度的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12442,7 +12460,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.Am
 
 on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;,options?: Options): void
 
-监听磁场传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听磁场传感器的数据变化。适用于需要感知设备周围磁场强度与方向的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12478,7 +12496,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magneti
 
 on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
-监听未校准磁场传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听未校准磁场传感器的数据变化。适用于需要获取包含偏差校准数据的磁场原始数据的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12517,7 +12535,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: s
 
 on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;,options?: Options): void
 
-监听接近光传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听接近光传感器的数据变化。适用于需要感知设备前方是否有物体靠近的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12533,7 +12551,7 @@ on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityRes
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_PROXIMITY | 是   | 要订阅的接近光传感器类型为SENSOR_TYPE_ID_PROXIMITY。         |
 | callback | Callback&lt;[ProximityResponse](#proximityresponse)&gt;      | 是   | 注册接近光传感器的回调函数，上报的数据类型为ProximityResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，当接近光事件被触发的很频繁时，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **示例**：
 
@@ -12551,7 +12569,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityRes
 
 on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;,options?: Options): void
 
-监听湿度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听湿度传感器的数据变化。适用于需要感知环境湿度的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12567,7 +12585,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityRespo
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_HUMIDITY | 是   | 要订阅的湿度传感器类型为SENSOR_TYPE_ID_HUMIDITY。            |
 | callback | Callback&lt;[HumidityResponse](#humidityresponse)&gt;       | 是   | 注册湿度传感器的回调函数，上报的数据类型为HumidityResponse。 |
-| options  | [Options](#options)                                         | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+| options  | [Options](#options)                                         | 否   | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。  |
 
 **示例**：
 
@@ -12585,7 +12603,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRespo
 
 on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;,options?: Options): void
 
-监听气压计传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听气压计传感器的数据变化。适用于需要感知环境气压的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12619,7 +12637,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerRes
 
 on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
-监听霍尔传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听霍尔传感器的数据变化。适用于需要检测设备翻盖或磁铁状态的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12635,7 +12653,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;,
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_HALL | 是   | 要订阅的霍尔传感器类型为SENSOR_TYPE_ID_HALL。                |
 | callback | Callback&lt;[HallResponse](#hallresponse)&gt;           | 是   | 注册霍尔传感器的回调函数，上报的数据类型为&nbsp;HallResponse。 |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，默认值为200000000ns。当霍尔事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，当霍尔事件被触发的很频繁时，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **示例**：
 
@@ -12653,7 +12671,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => 
 
 on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
-监听环境光传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听环境光传感器的数据变化。适用于需要感知环境光照强度的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12687,7 +12705,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightRes
 
 on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
-监听方向传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听方向传感器的数据变化。适用于需要感知设备姿态方向的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12723,7 +12741,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientatio
 
 on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
-监听心率传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听心率传感器的数据变化。适用于需要获取用户心率数据的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12747,7 +12765,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateRe
 
 on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,callback: Callback&lt;RotationVectorResponse&gt;,options?: Options): void
 
-监听旋转矢量传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听旋转矢量传感器的数据变化。适用于需要感知设备三维空间旋转状态的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12784,7 +12802,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rotati
 
 on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,options?: Options): void
 
-监听所佩戴的检测传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听所佩戴的检测传感器的数据变化。适用于需要检测设备是否被佩戴的场景。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -12820,7 +12838,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearDet
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
-监听加速度传感器的数据变化一次。
+监听加速度传感器的数据变化一次。适用于仅需一次性获取当前加速度数据的场景。
 
 > **说明**：
 >
@@ -12855,7 +12873,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 
 once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
-监听线性加速度传感器数据变化一次。
+监听线性加速度传感器数据变化一次。适用于仅需一次性获取当前线性加速度数据的场景。
 
 > **说明**：
 >
@@ -12878,7 +12896,7 @@ once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Li
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-监听未校准加速度传感器的数据变化一次。
+监听未校准加速度传感器的数据变化一次。适用于仅需一次性获取当前未校准加速度数据的场景。
 
 > **说明**：
 >
@@ -12916,7 +12934,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: 
 
 once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
-监听重力传感器的数据变化一次。
+监听重力传感器的数据变化一次。适用于仅需一次性获取当前重力数据的场景。
 
 > **说明**：
 >
@@ -12949,7 +12967,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespo
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
-监听陀螺仪传感器的数据变化一次。
+监听陀螺仪传感器的数据变化一次。适用于仅需一次性获取当前陀螺仪数据的场景。
 
 > **说明**：
 >
@@ -12984,7 +13002,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeR
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-监听未校准陀螺仪传感器的数据变化一次。
+监听未校准陀螺仪传感器的数据变化一次。适用于仅需一次性获取当前未校准陀螺仪数据的场景。
 
 > **说明**：
 >
@@ -13023,7 +13041,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sens
 
 once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION,callback: Callback&lt;SignificantMotionResponse&gt;): void
 
-监听有效运动传感器的数据变化一次。
+监听有效运动传感器的数据变化一次。适用于仅需一次性获取当前有效运动数据的场景。
 
 > **说明**：
 >
@@ -13054,7 +13072,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.S
 
 once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION,callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
-监听计步检测传感器数据变化一次。
+监听计步检测传感器数据变化一次。适用于仅需一次性获取当前计步检测数据的场景。
 
 > **说明**：
 >
@@ -13087,7 +13105,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.
 
 once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
-监听计步器传感器数据变化一次。
+监听计步器传感器数据变化一次。适用于仅需一次性获取当前计步数据的场景。
 
 > **说明**：
 >
@@ -13120,7 +13138,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerR
 
 once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-监听环境温度传感器数据变化一次。
+监听环境温度传感器数据变化一次。适用于仅需一次性获取当前环境温度数据的场景。
 
 > **说明**：
 >
@@ -13151,7 +13169,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.
 
 once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
-监听磁场传感器数据变化一次。
+监听磁场传感器数据变化一次。适用于仅需一次性获取当前磁场数据的场景。
 
 > **说明**：
 >
@@ -13184,7 +13202,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magne
 
 once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-监听未校准磁场传感器数据变化一次。
+监听未校准磁场传感器数据变化一次。适用于仅需一次性获取当前未校准磁场数据的场景。
 
 > **说明**：
 >
@@ -13220,7 +13238,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data:
 
 once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
-监听接近光传感器数据变化一次。
+监听接近光传感器数据变化一次。适用于仅需一次性获取当前接近光数据的场景。
 
 > **说明**：
 >
@@ -13252,7 +13270,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityR
 
 once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
-监听湿度传感器数据变化一次。
+监听湿度传感器数据变化一次。适用于仅需一次性获取当前湿度数据的场景。
 
 > **说明**：
 >
@@ -13283,7 +13301,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRes
 
 once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
-监听气压计传感器数据变化一次。
+监听气压计传感器数据变化一次。适用于仅需一次性获取当前气压数据的场景。
 
 > **说明**：
 >
@@ -13314,7 +13332,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerR
 
 once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;): void
 
-监听霍尔传感器数据变化一次。
+监听霍尔传感器数据变化一次。适用于仅需一次性获取当前霍尔数据的场景。
 
 > **说明**：
 >
@@ -13345,7 +13363,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) =
 
 once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
-监听环境光传感器数据变化一次。
+监听环境光传感器数据变化一次。适用于仅需一次性获取当前环境光数据的场景。
 
 > **说明**：
 >
@@ -13368,7 +13386,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 import { sensor } from '@kit.SensorServiceKit';
 
 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightResponse) => {
-  console.info('Succeeded in invoking once. invoking once. Illumination: ' + data.intensity);
+  console.info('Succeeded in invoking once. Illumination: ' + data.intensity);
 });
 ```
 
@@ -13376,7 +13394,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightR
 
 once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
-监听方向传感器数据变化一次。
+监听方向传感器数据变化一次。适用于仅需一次性获取当前方向数据的场景。
 
 > **说明**：
 >
@@ -13409,7 +13427,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientat
 
 once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
-监听旋转矢量传感器数据变化一次。
+监听旋转矢量传感器数据变化一次。适用于仅需一次性获取当前旋转矢量数据的场景。
 
 > **说明**：
 >
@@ -13443,7 +13461,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rota
 
 once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
-监听心率传感器数据变化一次。
+监听心率传感器数据变化一次。适用于仅需一次性获取当前心率数据的场景。
 
 > **说明**：
 >
@@ -13477,7 +13495,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (data: sensor.HeartRate
 
 once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
-监听所佩戴的检测传感器的数据变化一次。
+监听所佩戴的检测传感器的数据变化一次。适用于仅需一次性获取当前佩戴检测数据的场景。
 
 > **说明**：
 >
@@ -13511,7 +13529,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearD
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13548,7 +13566,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅未校准加速度传感器数据。当不再需要接收未校准加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13588,7 +13606,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅环境光传感器数据。当不再需要接收环境光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13621,7 +13639,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅环境温度传感器数据。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13654,7 +13672,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13687,7 +13705,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅重力传感器数据。当不再需要接收重力传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13722,7 +13740,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅陀螺仪传感器数据。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13759,7 +13777,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅未校准陀螺仪传感器数据。当不再需要接收未校准陀螺仪传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13796,7 +13814,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback&lt;HallResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅霍尔传感器数据。当不再需要接收霍尔传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13829,7 +13847,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅心率传感器数据。当不再需要接收心率传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13864,7 +13882,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅湿度传感器数据。当不再需要接收湿度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13897,7 +13915,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅线性加速度传感器数据。当不再需要接收线性加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13934,7 +13952,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅磁场传感器数据。当不再需要接收磁场传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -13969,7 +13987,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅未校准磁场传感器数据。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14007,7 +14025,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 
  off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅方向传感器数据。当不再需要接收方向传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14042,7 +14060,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅计步传感器数据。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14077,7 +14095,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅计步检测传感器数据。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14112,7 +14130,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅接近光传感器数据。当不再需要接收接近光传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14145,7 +14163,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅旋转矢量传感器数据。当不再需要接收旋转矢量传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14181,7 +14199,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-取消订阅有效运动传感器数据。
+取消订阅有效运动传感器数据。当不再需要接收有效运动传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14214,7 +14232,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
-取消订阅传感器数据。
+取消订阅佩戴检测传感器数据。当不再需要接收佩戴检测传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 > **说明**：
 >
@@ -14346,7 +14364,7 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number, callba
 | 参数名          | 类型                                                         | 必填 | 说明                               |
 | --------------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | locationOptions | [LocationOptions](#locationoptions)                          | 是   | 地理位置。                         |
-| timeMillis      | number                                                       | 是   | 表示获取磁偏角的时间，单位为毫秒。 |
+| timeMillis      | number                                                       | 是   | 获取磁偏角的时间，unix时间戳。单位：ms（毫秒）。取值范围：正整数。 |
 | callback        | AsyncCallback&lt;[GeomagneticResponse](#geomagneticresponse)&gt; | 是   | 异步返回磁场信息。                 |
 
 **示例**：
@@ -14385,7 +14403,7 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number): Promi
 | 参数名             | 类型                                  | 必填   | 说明                |
 | --------------- | ----------------------------------- | ---- | ----------------- |
 | locationOptions | [LocationOptions](#locationoptions) | 是    | 地理位置。             |
-| timeMillis      | number                              | 是    | 表示获取磁偏角的时间，单位为毫秒。 |
+| timeMillis      | number                              | 是   | 获取磁偏角的时间，unix时间戳。单位：ms（毫秒）。取值范围：正整数。 |
 
 **返回值**：
 
@@ -14778,7 +14796,7 @@ createQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;numbe
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9-1)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -14886,7 +14904,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const promise = sensor.getDirection([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting sensor_getAltitude_Promise', data);
+  console.info('Succeeded in getting sensor_getDirection_Promise', data);
   for (let i = 1; i < data.length; i++) {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }

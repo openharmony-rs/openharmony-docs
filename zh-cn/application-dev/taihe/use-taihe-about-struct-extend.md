@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -13,7 +13,7 @@ Taihe支持struct继承struct，@class struct继承struct，@class struct继承@
 ## 基本概念
 
 以下述代码为例，其中包含：
-- struct继承struct，：G继承F；
+- struct继承struct：G继承F；
 - @class struct继承struct：H继承G；
 - @class struct继承@class struct：I继承H。
 

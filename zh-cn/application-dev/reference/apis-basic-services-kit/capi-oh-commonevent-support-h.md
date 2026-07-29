@@ -26,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | 表示设备正在关闭并将继续直至最终关闭的公共事件。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
+| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | 表示设备正在关闭并将继续直至最终关闭的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_CHANGED = "usual.event.BATTERY_CHANGED" | 表示电池充电状态、电平和其他信息发生变化的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_LOW = "usual.event.BATTERY_LOW" | 表示电池电量低的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_BATTERY_OKAY = "usual.event.BATTERY_OKAY" | 表示电池退出低电平状态的公共事件。<br>**起始版本：** 12 |
@@ -45,7 +45,7 @@
 | static const char * const COMMON_EVENT_BUNDLE_REMOVED = "usual.event.BUNDLE_REMOVED" | 表示已从设备中卸载已安装的捆绑包，但应用程序数据仍保留的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_PACKAGE_FULLY_REMOVED = "usual.event.PACKAGE_FULLY_REMOVED" | 表示已从设备中完全卸载已安装的应用程序（包括应用程序数据和代码）的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_PACKAGE_CHANGED = "usual.event.PACKAGE_CHANGED" | 表示应用包已更改的公共事件（例如，包中的组件已启用或禁用）。<br>**起始版本：** 12 |
-| static const char * const COMMON_EVENT_PACKAGE_RESTARTED = "usual.event.PACKAGE_RESTARTED" | 表示用户重启应用包并杀死其所有进程的普通事件的动作。<br>**起始版本：** 12 |
+| static const char * const COMMON_EVENT_PACKAGE_RESTARTED = "usual.event.PACKAGE_RESTARTED" | 表示用户重启应用包并杀死其所有进程的公共事件的动作。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_PACKAGE_DATA_CLEARED = "usual.event.PACKAGE_DATA_CLEARED" | 表示用户清除应用包数据的公共事件的动作。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_PACKAGE_CACHE_CLEARED = "usual.event.PACKAGE_CACHE_CLEARED" | 表示用户清除应用包缓存数据的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_PACKAGES_SUSPENDED = "usual.event.PACKAGES_SUSPENDED" | 表示应用包已挂起的公共事件。<br>**起始版本：** 12 |

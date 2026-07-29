@@ -29,12 +29,12 @@
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
-     //以动态弹窗的方式向用户申请授权
+     // 以动态弹窗的方式向用户申请授权
      atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
        console.info(`request permission result: ${JSON.stringify(result)}`);
      }).catch((err: BusinessError) => {
@@ -130,7 +130,7 @@
    设备B主动向设备A发起建链，建链成功后设备B可在分布式目录下读取测试文件。
    > **说明：**
    >
-   > 这里通过分布式设备管理的接口获取设备networkId，详见[设备管理接口](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md)。
+   > 这里通过分布式设备管理的接口获取设备networkId，详见[@ohos.distributedDeviceManager (设备管理)](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md)。
 
    ArkTS-Dyn示例：
 
@@ -141,7 +141,7 @@
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
@@ -191,7 +191,7 @@
        });
      }
    } catch (error) {
-        console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
 
@@ -259,7 +259,7 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { fileIo } from '@kit.CoreFileKit';
    ```
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->  
    
    ``` TypeScript
    // 获取设备A的networkId
@@ -278,7 +278,7 @@
        })
      }
    } catch (error) {
-        console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
 

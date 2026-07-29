@@ -28,6 +28,7 @@
 
 1. 导入模块。
 
+   ArkTS-Dyn示例：
    <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
@@ -39,9 +40,22 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 构造NotificationRequest对象，并发布通知。
    - 普通文本类型通知由标题、文本内容和附加信息三个字段组成。详情请参考[NotificationBasicContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
 
+     ArkTS-Dyn示例：
      <!-- @[pub_plaintext_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
      
      ``` TypeScript
@@ -66,8 +80,34 @@
      });
      ```
      
+     ArkTS-Sta示例：
+     <!-- @[pub_plaintext_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+     
+     ``` TypeScript
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 1,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT, // 普通文本类型通知
+         normal: {
+           title: 'test_title',
+           text: 'test_text',
+           additionalText: 'test_additionalText',
+         }
+       }
+     };
+     notificationManager.publish(notificationRequest, (err) => {
+       if (err && err.code !== 0) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```
+     
    - 多行文本类型通知继承了普通文本类型的字段，同时新增了多行文本内容、内容概要和通知展开时的标题。详情请参考[NotificationMultiLineContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)。
 
+     ArkTS-Dyn示例：
      <!-- @[pub_multi_line_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
      
      ``` TypeScript
@@ -94,4 +134,33 @@
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
      });
      ```
-        
+     
+     ArkTS-Sta示例：
+     <!-- @[pub_multi_line_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
+     
+     ``` TypeScript
+     let linesData: Array<string> =  ['line_01', 'line_02', 'line_03']
+     let multiLineData: notificationManager.NotificationMultiLineContent = {
+       title: 'test_multi_line_title',
+       text: 'test_text',
+       briefText: 'test_briefText',
+       longTitle: 'test_longTitle',
+       lines:linesData
+     }
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 3,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE, // 多行文本类型通知
+         multiLine: multiLineData
+       }
+     };
+     // 发布通知
+     notificationManager.publish(notificationRequest, (err) => {
+       if (err && err.code !== 0) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```

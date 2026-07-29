@@ -43,7 +43,7 @@
                 this.uiContext.showAlertDialog({
                   title: 'Warning',
                   message: event.message,
-                  confirm:{
+                  confirm: {
                     value: 'confirm',
                     action: () => {
                       console.info('Alert confirmed.');
@@ -63,7 +63,8 @@
     ```
 
     ArkTS-Sta示例：
-    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) --> 
+    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import {
@@ -84,14 +85,14 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct Index {
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
@@ -134,7 +135,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -152,10 +153,10 @@
   </html>
   ```
 
-- 用[CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
 
     ArkTS-Dyn示例：
-    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
     
     ``` TypeScript
     import { AlertDialog } from '@kit.ArkUI';
@@ -208,7 +209,8 @@
     ```
 
     ArkTS-Sta示例：
-    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
+    
     ``` TypeScript
     import { AlertDialog } from '@ohos.arkui.advanced.Dialog';
     import {
@@ -229,7 +231,7 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct AlertDialogPage {
@@ -257,7 +259,7 @@
           this.dialogControllerAlert.close();
         }
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('alert.html'), controller: this.webviewController })
@@ -289,7 +291,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -322,7 +324,7 @@
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
 
     ArkTS-Dyn示例：
-    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
+    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -369,7 +371,8 @@
     ```
 
     ArkTS-Sta示例：
-    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
+    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import {
@@ -383,14 +386,14 @@
       AlertDialogParamWithButtons
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
-
+    
     @Entry
     @Component
     struct Index {
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
@@ -438,7 +441,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -459,10 +462,10 @@
   </html>
   ```
 
-- 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
-    <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
+- 用[ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
 
     ArkTS-Dyn示例：
+    <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) --> 
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -476,7 +479,7 @@
       @State result: JsResult | null = null;
       webviewController: webview.WebviewController = new webview.WebviewController();
       isChecked = false;
-      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+      dialogControllerConfirmDialog: CustomDialogController = new CustomDialogController({
         builder: ConfirmDialog({
           title: this.title,
           content: this.message,
@@ -505,7 +508,7 @@
         }),
         onWillDismiss: () => {
           this.result?.handleCancel();
-          this.dialogControllerCheckBox.close();
+          this.dialogControllerConfirmDialog.close();
         },
         autoCancel: true
       })
@@ -523,7 +526,7 @@
                   this.title = 'Confirm';
                   this.message = event.message;
                   this.result = event.result;
-                  this.dialogControllerCheckBox.open();
+                  this.dialogControllerConfirmDialog.open();
                 }
               }
               return true;
@@ -535,6 +538,7 @@
 
     ArkTS-Sta示例：
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { ConfirmDialog } from '@ohos.arkui.advanced.Dialog';
@@ -549,7 +553,7 @@
       CustomDialogController
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
-
+    
     @Entry
     @Component
     struct DialogConfirmDialog {
@@ -558,7 +562,7 @@
       @State result: JsResult | null = null;
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       isChecked: boolean = false;
-      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+      dialogControllerConfirmDialog: CustomDialogController = new CustomDialogController({
         builder: ConfirmDialog({
           title: this.title,
           content: this.message,
@@ -587,11 +591,11 @@
         }),
         onWillDismiss: () => {
           this.result?.handleCancel();
-          this.dialogControllerCheckBox.close();
+          this.dialogControllerConfirmDialog.close();
         },
         autoCancel: true
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('confirm.html'), controller: this.webviewController })
@@ -605,7 +609,7 @@
                   this.title = 'Confirm';
                   this.message = event.message;
                   this.result = event.result;
-                  this.dialogControllerCheckBox.open();
+                  this.dialogControllerConfirmDialog.open();
                 }
               }
               return true;
@@ -627,7 +631,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -653,7 +657,7 @@
 ## 实现Prompt弹框
 
 `window.prompt()`用于显示一个对话框，并等待用户提交文本或取消对话框。用户需要输入某个值，然后点击确认或取消按钮。点击确认返回输入的值，点击取消返回`null`。
-- 可选参数`message`向用户显示的一串文本。如果在提示窗口中没有什么可显示的，可以省略。
+- 可选参数`message`是要向用户显示的一串文本。如果在提示窗口中没有什么可显示的，可以省略。
 - 可选参数`defaultValue`是一个字符串，包含文本输入字段中显示的默认值。
 - 返回值为用户输入文本的字符串，或`null`。
 
@@ -661,10 +665,10 @@
 
 应用可以通过[onPrompt](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprompt9)事件监听网页`prompt`方法，并创建合适的弹框。
 
-- 用[CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)创建弹框。
+- 用[CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)创建弹框。
 
     ArkTS-Dyn示例：
-    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
+    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
     
     ``` TypeScript
     import { CustomContentDialog } from '@kit.ArkUI';
@@ -744,8 +748,10 @@
     ```
 
     ArkTS-Sta示例：
-    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
+    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
+    
     ``` TypeScript
+    
     import { CustomContentDialog } from '@ohos.arkui.advanced.Dialog';
     import {
       Entry,
@@ -764,7 +770,7 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct PromptDialog {
@@ -773,7 +779,7 @@
       @State result: JsResult | null = null;
       promptResult: string = '';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
-
+    
       // 自定义弹出框的内容区
       @Builder
       buildContent(): void {
@@ -816,7 +822,7 @@
           this.dialogController.close();
         }
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
@@ -850,7 +856,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>

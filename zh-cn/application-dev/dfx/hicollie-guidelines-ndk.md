@@ -1,7 +1,7 @@
 # 使用HiCollie检测业务线程卡死卡顿问题（C/C++）
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -46,9 +46,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 ## 开发步骤
 
-下文将展示如何在应用内增加一个按钮，并单击该按钮以调用HiCollie Ndk接口。
+下文将展示如何在应用内增加一个按钮，并单击该按钮以调用HiCollie NDK接口。
 
-1. 新建Native C++工程，目录结构如下：
+1. 在DevEco Studio中，新建Native C++工程，目录结构如下：
 
    ```yml
    entry:
@@ -67,14 +67,14 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
              - Index.ets
    ```
 
-2. 编辑“CMakeLists.txt”文件，添加源文件及动态库：
+2. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库：
 
    ```cmake
    # 新增动态库依赖libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so)
    ```
 
-3. 编辑“napi_init.cpp”文件，导入依赖的文件，定义LOG_TAG，下述代码步骤用于模拟卡死卡顿场景，具体使用请结合业务需要。示例代码如下：
+3. 编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，导入依赖的文件，定义LOG_TAG，下述代码步骤用于模拟卡死卡顿场景，具体使用请结合业务需要。示例代码如下：
 
    - 从API version 12开始，支持**应用线程卡顿检测**：OH_HiCollie_Init_JankDetection，示例代码如下：
 
@@ -567,40 +567,40 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    ```
 
-4. 将TestHiCollieNdk注册为ArkTS接口。
+4. 编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口。
    
-   - OH_HiCollie_Init_JankDetection示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   - OH_HiCollie_Init_JankDetection示例：
 
    ```ts
    export const testHiCollieJankNdk: () => void;
    ```
 
-   - OH_HiCollie_Init_StuckDetection示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   - OH_HiCollie_Init_StuckDetection示例：
 
    ```ts
    export const testHiCollieStuckNdk: () => void;
    ```
 
-   - OH_HiCollie_Init_StuckDetectionWithTimeout示例，编辑“index.d.ts”文件，定义ArkTS接口：
+   - OH_HiCollie_Init_StuckDetectionWithTimeout示例：
 
    ```ts
    export const testHiCollieStuckWithTimeoutNdk: () => void;
    ```
 
-    - OH_HiCollie_ReportInputBlock示例，编辑“index.d.ts”文件，定义ArkTS接口：
+    - OH_HiCollie_ReportInputBlock示例：
 
    ```ts
    export const testHiCollieStuckNdk: () => void;
    export const testHiCollieInputBlock: () => void;
    ```
 
-    - OH_HiCollie_SetFreezeCallbac、OH_HiCollie_AssociateProcessReport示例，编辑“index.d.ts”文件，定义ArkTS接口：
+    - OH_HiCollie_SetFreezeCallback、OH_HiCollie_AssociateProcessReport示例：
 
    ```ts
    export const testHiCollieSetFreezeCallback: () => void;
    export const testHiCollieAssociateProcessReport: () => void;
    ```
-5. 编辑“Index.ets”文件：
+5. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件：
 
    ```ts
    import testNapi from 'libentry.so'

@@ -1,10 +1,10 @@
 # 共享容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## ArkTS容器集
 
@@ -17,16 +17,16 @@ ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败
 ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[Map](../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[Set](../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、TypedArray（[Int8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](../reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](../reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md)）、[ArrayBuffer](../reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md)、[BitVector](../reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md)、[ConcatArray](../reference/apis-arkts/arkts-apis-arkts-collections-ConcatArray.md)，具体可见[@arkts.collections (ArkTS容器集)](../reference/apis-arkts/arkts-apis-arkts-collections.md)。
 
 容器集使用示例如下：
-<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) -->
+<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
 
-```ts
+``` TypeScript
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';
 
 @Concurrent
 async function add(arr: collections.Array<number>, lock: ArkTSUtils.locks.AsyncLock) {
- await lock.lockAsync(() => {  // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
-   arr[0]++;
- })
+  await lock.lockAsync(() => { // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
+    arr[0]++;
+  })
 }
 
 @Entry
@@ -55,8 +55,10 @@ struct Index {
           }
           taskpool.execute(taskGroup).then(() => {
             console.info(`Return success: ${arr[0]} === ${count}`);
+            this.message = 'success';
           }).catch((e: Error) => {
-            console.error("Return error.");
+            console.error('Return error.');
+            this.message = 'failed';
           })
         })
     }
@@ -78,7 +80,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 
 ### Array
 
-支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将 ArkTS Array容器转换为原生容器Array。
+支持通过[collections.Array.from](../reference/apis-arkts/arkts-apis-arkts-collections-Array.md#from)方法将原生容器Array转换为ArkTS Array容器；支持通过原生容器Array的from方法将ArkTS Array容器转换为原生容器Array。
 
 | 原生API方法 | ArkTS容器集方法 | 是否有行为差异 | 在ArkTS容器中的差异表现 |
 | -------- | -------- | -------- | -------- |
@@ -196,7 +198,7 @@ ArkTS提供了Sendable数据相关的共享容器集，接口行为与原生API�
 | entries(): IterableIterator&lt;[K, V]&gt; | entries(): IterableIterator&lt;[K, V]&gt; | 否 | / |
 | keys(): IterableIterator&lt;K&gt; | keys(): IterableIterator&lt;K&gt; | 否 | / |
 | values(): IterableIterator&lt;V&gt; | values(): IterableIterator&lt;V&gt; | 否 | / |
-| new &lt;K, V&gt;(entries?: readonly (readonly [K, V])[] \| null): Map&lt;K, V&gt; | constructor(entries?: readonly (readonly [K, V])[] \| null) | 是 | 构造时传入的k,v键值不能是非Sendable数据，否则编译会报错。 |
+| new &lt;K, V&gt;(entries?: readonly (readonly [K, V])[] \| null): Map&lt;K, V&gt; | constructor(entries?: readonly (readonly [K, V])[] \| null) | 是 | 构造时传入的k,v键值必须均为Sendable数据，否则编译会报错。 |
 
 ### Set
 

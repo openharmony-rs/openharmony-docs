@@ -2,10 +2,10 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @jokerxd-liu-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 字节码生成流程
 
@@ -15,11 +15,11 @@
 
 本FAQ汇总了字节码生成在实际编译中常见的异常场景，并提供原因分析与排查方式，帮助开发者更高效定位字节码编译阶段的问题。
 
-## 编译时报owns a higher api version错误
+## 编译时报owns a higher api version or sdkReleaseType错误
 
 **问题现象**
 
-编译时报owns a higher api version错误
+编译过程中，es2abc提示引用的字节码文件（*.abc）具有比当前编译更高的API版本或SDK发布类型。
 
 ```txt
 > hvigor ERROR: ArkTS:ERROR Failed to execute es2abc.
@@ -31,13 +31,13 @@ The size of programs is expected to be 434, but is 432
 
 **可能原因**
 
-字节码har打包的兼容版本高于工程的兼容版本。
+字节码HAR打包的兼容版本高于工程的兼容版本。
 
 **解决措施**
 
-查看工程和har包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于har包中的版本。
+查看工程和HAR包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于HAR包中的版本。参考[build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)中对compatibleSdkVersionStage字段的说明。
 
-## 编译时报Field {&harname/Index&1.0.0.moduleRecordIdx} has different value错误
+## 编译时报Field 'xxx' has different value错误
 
 **问题现象**
 
@@ -65,7 +65,7 @@ GenerateProgram Failed!
 
    若HAR中Record与工程实际依赖不一致，也会触发冲突。
 
-2. ohpm缓存或编译缓存没有清除干净，导致同一Har包存在两个不同版本。
+2. ohpm缓存或编译缓存没有清除干净，导致同一HAR包存在两个不同版本。
 
    缓存中遗留了旧版本的HAR、ABC信息，使es2abc的Record索引校验失败。
 
@@ -74,7 +74,7 @@ GenerateProgram Failed!
 1. 使用跨模块导入方式时，build-profile.json5文件中的useNormalizedOHMUrl需配置为false。
 
 2. 清除ohpm和编译缓存，下载ohpm包并重新编译，操作如下：
-   - 点击菜单Build->Clean Project，或在控制台执行[ohpm clear](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-clean)。
+   - 点击菜单Build->Clean Project，或在控制台执行[ohpm clean](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-clean)。
    - 点击菜单File->Invalidate Caches...，弹窗选项全选执行并重启。
    - 在控制台执行[ohpm install](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-install)。
    - 点击菜单Build->Rebuild Project即可。

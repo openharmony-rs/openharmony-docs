@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
+**相关示例：** <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
 
 ## 汇总
 
@@ -267,7 +267,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | ArkUI_NodeEvent节点对象。 |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | ArkUI_NodeEvent事件指针。 |
 
 **返回：**
 
@@ -321,7 +321,7 @@ int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | 角标显示状态的类型。 |
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | 数据处理方式。 |
 
 **返回：**
 
@@ -539,7 +539,7 @@ int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOp
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | 数据的处理方式. |
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | 数据的处理方式。 |
 
 **返回：**
 
@@ -842,7 +842,7 @@ int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t
 **描述：**
 
 
-获取功能键按压状态。
+获取修饰键按压状态。
 
 **起始版本：** 12
 
@@ -1570,7 +1570,7 @@ int32_t OH_ArkUI_DragAction_SetData(ArkUI_DragAction* dragAction, OH_UdmfData* d
 ### OH_ArkUI_DragAction_SetDataLoadParams()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction,OH_UdmfDataLoadParams* dataLoadParams)
+ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction, OH_UdmfDataLoadParams* dataLoadParams)
 ```
 
 **描述：**
@@ -1624,7 +1624,7 @@ int32_t OH_ArkUI_DragAction_SetDragPreviewOption(ArkUI_DragAction* dragAction, A
 ### OH_ArkUI_DragAction_RegisterStatusListener()
 
 ```c
-int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))
+int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData, void(*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))
 ```
 
 **描述：**
@@ -1959,7 +1959,7 @@ float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回拖拽跟手点相对于全局Display的x轴坐标，单位为px，传入参数无效时返回默认值0。 |
+| float | float 返回拖拽跟手点相对于全局屏幕的x轴坐标，单位为px，传入参数无效时返回默认值0。 |
 
 ### OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay()
 
@@ -1985,7 +1985,7 @@ float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回拖拽跟手点相对于全局Display的y轴坐标，单位为px，传入参数无效时返回默认值0。 |
+| float | float 返回拖拽跟手点相对于全局屏幕的y轴坐标，单位为px，传入参数无效时返回默认值0。 |
 
 ### OH_ArkUI_DragEvent_GetDragSource()
 

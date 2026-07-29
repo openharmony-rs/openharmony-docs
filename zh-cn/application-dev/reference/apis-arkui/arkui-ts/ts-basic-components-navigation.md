@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,6 +60,8 @@ Navigation(pathInfos: NavPathStack)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[Navigation](#navigation23)。
@@ -76,11 +78,13 @@ Navigation(pathInfos: NavPathStack)
 
 Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
-绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航页）](#示例16navigation使用navdestination作为导航页)。
+绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16](#示例16navigation使用navdestination作为导航页)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -113,6 +117,7 @@ Navigation(pathInfos?: NavPathStack)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[Navigation](#navigation-1)和[Navigation](#navigation10)。
@@ -132,6 +137,8 @@ Navigation(pathInfos?: NavPathStack, homeDestination?: HomePathInfo)
 绑定导航控制器到Navigation组件，并设置自定义首页，适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性进行页面路由。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -175,7 +182,7 @@ ArkTS-Sta: title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | Na
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup><br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9) \| undefined | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。<br/>取值为undefined时，无标题。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> \| undefined | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。                                                 |
+| options<sup>11+</sup> | ArkTS-Dyn: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> \| undefined | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### menus
 
@@ -213,6 +220,8 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[menus](#menus23)。
@@ -233,6 +242,8 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined, option
 设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -289,6 +300,8 @@ ArkTS-Sta: toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -335,6 +348,8 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -379,6 +394,8 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -523,6 +540,8 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[backButtonIcon](#backbuttonicon23)。
@@ -547,6 +566,8 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier | undefi
 > 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -597,6 +618,8 @@ ArkTS-Sta: navDestination(builder: PageMapBuilder | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -629,6 +652,8 @@ ArkTS-Sta: navBarWidthRange(value: [Dimension, Dimension] | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -650,6 +675,8 @@ ArkTS-Sta: minContentWidth(value: Dimension | undefined)
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -681,6 +708,8 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -719,6 +748,8 @@ ArkTS-Sta: systemBarStyle(style: SystemBarStyle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -746,6 +777,8 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -767,6 +800,8 @@ ArkTS-Sta: enableDragBar(isEnabled: boolean | undefined)
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -790,6 +825,8 @@ ArkTS-Sta: enableModeChangeAnimation(isEnabled: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 23
@@ -811,6 +848,8 @@ ArkTS-Sta: enableToolBarAdaptation(enable: boolean | undefined)
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -836,6 +875,7 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 24
@@ -857,6 +897,7 @@ divider(style: NavigationDividerStyle | null)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -886,6 +927,7 @@ ArkTS-Sta: enableVisibilityLifecycleWithContentCover(isEnabled: boolean | undefi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+
 **ArkTS-Dyn起始版本：** 21
 
 **ArkTS-Sta起始版本：** 24
@@ -903,6 +945,8 @@ attributeModifier(modifier: AttributeModifier\<NavigationAttribute> | AttributeM
 动态设置Navigation组件的属性方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1046,6 +1090,8 @@ ArkTS-Sta: onNavigationModeChange(callback: ((mode: NavigationMode) => void) | u
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1072,6 +1118,8 @@ ArkTS-Sta: customNavContentTransition(delegate:((from: NavContentInfo, to: NavCo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1091,6 +1139,8 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1115,6 +1165,8 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1128,6 +1180,8 @@ pushPath(info: NavPathInfo, animated?: boolean): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1149,6 +1203,8 @@ pushPath(info: NavPathInfo, options?: NavigationOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1173,6 +1229,8 @@ ArkTS-Sta: pushPathByName(name: string, param: Object | null | undefined, animat
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1194,6 +1252,8 @@ pushPathByName(name: string, param: Object, onPop: import('../api/@ohos.base').C
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1226,6 +1286,8 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1241,7 +1303,7 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异步返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1268,6 +1330,8 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1283,7 +1347,7 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1310,6 +1374,8 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1326,7 +1392,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1353,6 +1419,8 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1370,7 +1438,7 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1393,6 +1461,8 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1414,6 +1484,8 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1434,6 +1506,8 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1457,6 +1531,8 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -1472,7 +1548,7 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;v
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1496,6 +1572,8 @@ ArkTS-Sta: removeByIndexes(indexes: Array<int\>): int
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1525,6 +1603,8 @@ ArkTS-Sta: removeByName(name: string): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1550,6 +1630,8 @@ removeByNavDestinationId(navDestinationId: string): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1589,6 +1671,8 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1627,6 +1711,8 @@ pop(result: Object, animated?: boolean): NavPathInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1656,6 +1742,8 @@ ArkTS-Sta: popToName(name: string, animated?: boolean): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1684,6 +1772,8 @@ ArkTS-Sta: popToName(name: string, result: Object, animated?: boolean): int
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1715,6 +1805,8 @@ ArkTS-Sta: popToIndex(index: int, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1737,6 +1829,8 @@ ArkTS-Sta: popToIndex(index: int, result: Object, animated?: boolean): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1761,6 +1855,8 @@ ArkTS-Sta: moveToTop(name: string, animated?: boolean): int
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1791,6 +1887,8 @@ ArkTS-Sta: moveIndexToTop(index: int, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1812,6 +1910,8 @@ clear(animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1831,6 +1931,8 @@ getAllPathName(): Array<string\>
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1853,6 +1955,8 @@ ArkTS-Sta: getParamByIndex(index: int): Object | null | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1882,6 +1986,8 @@ ArkTS-Sta: getParamByName(name: string): Array\<Object | null | undefined>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1909,6 +2015,8 @@ ArkTS-Sta: getIndexByName(name: string): Array<int\>
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1938,6 +2046,8 @@ ArkTS-Sta: size(): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1957,6 +2067,8 @@ disableAnimation(value: boolean): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1978,6 +2090,8 @@ getParent(): NavPathStack | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -1998,6 +2112,8 @@ setInterception(interception: NavigationInterception): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2017,6 +2133,8 @@ getPathStack(): Array\<NavPathInfo\>
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -2043,6 +2161,8 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -2071,6 +2191,8 @@ ArkTS-Sta: constructor(name: string, param: Object | null | undefined, onPop?: C
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -2088,6 +2210,8 @@ ArkTS-Sta: constructor(name: string, param: Object | null | undefined, onPop?: C
 ### 属性
 
 NavPathInfo参数信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2109,6 +2233,8 @@ get name(): string
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2148,6 +2274,8 @@ get param(): Object | null | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -2185,6 +2313,8 @@ get onPop(): Callback\<PopInfo> | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2224,6 +2354,8 @@ get isEntry(): boolean | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -2262,6 +2394,8 @@ get navDestinationId(): string | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -2280,6 +2414,8 @@ get navDestinationId(): string | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -2297,6 +2433,8 @@ get navDestinationId(): string | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称  | 类型  | 只读 | 可选 | 说明  |
 |-------|-------|------|------|-------|
 | name | string | 否 | 是 | NavDestination名称，如果为根视图(NavBar)，则返回值为undefined。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
@@ -2312,6 +2450,8 @@ get navDestinationId(): string | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|-----|-----|-----|------|
@@ -2336,6 +2476,8 @@ NavigationTransitionProxy参数信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型  | 只读 | 可选 | 说明  |
@@ -2354,6 +2496,8 @@ finishTransition(): void;
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2369,6 +2513,8 @@ cancelTransition?(): void;
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2388,6 +2534,8 @@ updateTransition?(progress: number): void;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 12
@@ -2404,13 +2552,15 @@ Navigation跳转拦截对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称    | 类型     | 只读 | 可选 | 说明    |
 | ---- | ----- | ----- | ----- | ----   |
 | willShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 是 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面会被创建。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | didShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 是 | 页面跳转后回调。在该回调中操作栈在下一次跳转中刷新。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | 否 | 是 | Navigation单双栏显示状态发生变更时触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | 否 | 是 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面不会被创建。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24|
+| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | 否 | 是 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面不会被创建。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24|
 
 ### InterceptionShowCallback<sup>12+</sup>
 
@@ -2421,6 +2571,8 @@ Navigation页面跳转前和页面跳转后的拦截回调。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2445,6 +2597,8 @@ Navigation单双栏显示状态发生变更时的拦截回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2464,6 +2618,8 @@ Navigation页面跳转前的拦截回调。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -2487,6 +2643,8 @@ type UpdateTransitionCallback = (progress: double) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -2507,6 +2665,8 @@ Navigation首页名字。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2526,15 +2686,17 @@ Navigation首页名字。
 | ------ | ------------- | ---- | ---- | --------------- |
 | value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ToolbarItem<sup>10+</sup>
 
 工具栏可配置参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                       | 只读 | 可选 | 说明                                       |
@@ -2554,6 +2716,8 @@ Navigation首页名字。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -2616,7 +2780,7 @@ Navigation自定义标题。
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否    | 设置标题栏内容。 |
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否    | 设置标题栏高度。 |
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否    | 设置标题栏高度。<br/>取值范围：[0, +∞)<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
 
 ## NavigationDividerStyle<sup>23+</sup>
 
@@ -2626,6 +2790,8 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -2633,8 +2799,8 @@ Navigation分割线颜色及上下边距。
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33000000，灰色。  |
-| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
-| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
+| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值范围：[0, +∞) |
+| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值范围：[0, +∞) |
 
 ## NavBarPosition<sup>9+</sup>枚举说明
 
@@ -2648,10 +2814,10 @@ Navigation分割线颜色及上下边距。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称  | 说明                             |
-| ----- | -------------------------------- |
-| Start | 双栏显示时，主列在主轴方向首部。 |
-| End   | 双栏显示时，主列在主轴方向尾部。 |
+| 名称  | 值 |说明                             |
+| ----- | ---- |-------------------------------- |
+| Start | 0 | 双栏显示时，主列在主轴方向首部。 |
+| End   | 1 | 双栏显示时，主列在主轴方向尾部。 |
 
 ## NavigationMode<sup>9+</sup>枚举说明
 
@@ -2690,6 +2856,8 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -2706,6 +2874,8 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称    | 值 | 说明 |
 |---------| --- |------|
 |STANDARD | 0 | 指定该模式的标题栏或工具栏与内容区采用上下布局。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
@@ -2717,6 +2887,8 @@ Navigation分割线颜色及上下边距。
 标题栏选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
@@ -2738,6 +2910,8 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
@@ -2757,6 +2931,8 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 19
 
 **ArkTS-Sta起始版本：** 23
@@ -2772,6 +2948,8 @@ Navigation分割线颜色及上下边距。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2791,6 +2969,8 @@ Navigation分割线颜色及上下边距。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2827,6 +3007,8 @@ Navigation配置项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 19
 
 **ArkTS-Sta起始版本：** 23
@@ -2849,6 +3031,8 @@ ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2864,6 +3048,8 @@ ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -3073,6 +3259,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 class TmpClass {
@@ -3172,6 +3359,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 @Builder
@@ -3228,6 +3416,7 @@ export struct PageTwo {
 ```
 
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -3247,6 +3436,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigation.gif](figures/navigation.gif)
 
 ### 示例3（设置可交互转场动画）
@@ -3570,6 +3760,7 @@ export struct PageTwo {
   }
 }
 ```
+
 ```ts
 // src/main/pages/CustomNavigationUtils.ets
 // 自定义接口，用来保存某个页面相关的转场动画回调和参数
@@ -3709,7 +3900,9 @@ export class CustomTransition {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -3729,6 +3922,7 @@ export class CustomTransition {
   ]
 }
 ```
+
 ![navigation_interactive_transition](figures/navigation_interactive_transition.gif)
 
 ### 示例4（Navigation带参返回）
@@ -3757,6 +3951,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3872,7 +4067,7 @@ export struct PageOne {
           .margin(10)
           .onClick(() => {
             let tmp = new TmpClass();
-            // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param。
             this.pageInfo.pushDestination({ name: 'pageTwo', param: new ParamWithOp() })
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
@@ -3914,6 +4109,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 class resultClass {
@@ -3950,7 +4146,7 @@ export struct PageTwo {
           .margin(20)
           .onClick(() => {
             this.pathStack.popToName('pageOne',
-              new resultClass(11)); // 将第一个名为name的NavDestination页面移到栈顶，将处理结果传入push的onPop回调中。
+              new resultClass(11)); // 回退路由栈到第一个名为name的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
@@ -3958,7 +4154,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.popToIndex(0, new resultClass(111)); // 将index指定的NavDestination页面移到栈顶，将处理结果传入push的onPop回调中。
+            this.pathStack.popToIndex(0, new resultClass(111)); // 回退路由栈到index指定的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popWithoutResult', { stateEffect: true, type: ButtonType.Capsule })
@@ -3995,7 +4191,9 @@ export struct PageTwo {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4015,6 +4213,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigationWithOnPop.gif](figures/navigationWithOnPop.gif)
 
 ### 示例5（设置背景颜色和模糊效果）
@@ -4156,6 +4355,7 @@ export struct BackComponent {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import {
@@ -4317,6 +4517,8 @@ export const EFFECT_OPTION_2: BackgroundEffectOptions = {
 
 该示例主要演示在嵌套Navigation场景下，如何获取父[NavPathStack](#navpathstack10)。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -4353,6 +4555,7 @@ struct NavigationExample1 {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 @Builder
@@ -4363,7 +4566,119 @@ export function PageOneBuilder(name: string) {
   .title(name)
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Alignment,
+  Color,
+  BarMode,
+  Row,
+  Tabs,
+  TabContent,
+  ButtonOptions,
+  SubTabBarStyle,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+
+  build() {
+    Column(undefined) {
+      Row(undefined) {
+        Button('文本增加 ')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text += '文本增加';
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('文本重置')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text = '文本';
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Row() {
+        Button('BarMode.Fixed')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Fixed;
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('BarMode.Scrollable')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Scrollable;
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Tabs() {
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar(SubTabBarStyle.of(this.text))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(this.barMode)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+import { NavDestination, Text, Builder, ComponentV2, Param } from '@kit.ArkUI';
+
+@Builder
+export function PageOneBuilder(name: string): void {
+  PageOne({ name: name })
+}
+
+@ComponentV2
+struct PageOne {
+  @Param name: string = '';
+
+  build() {
+    NavDestination() {
+      Text("this is " + this.name)
+    }
+    .title(this.name)
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4378,6 +4693,7 @@ export function PageOneBuilder(name: string) {
   ]
 }
 ```
+
 ![navPathStackGetParent.gif](figures/navPathStackGetParent.gif)
 
 ### 示例7（通过onReady获取栈）
@@ -4387,6 +4703,8 @@ export function PageOneBuilder(name: string) {
 1. [NavPathStack](#navpathstack10)无需声明为状态变量，也可以实现路由栈操作功能。
 
 2. [NavDestination](ts-basic-components-navdestination.md)通过[onReady](ts-basic-components-navdestination.md#onready11)事件能够拿到对应的[NavPathInfo](#navpathinfo10)和所属的[NavPathStack](#navpathstack10)。
+
+ArkTS-Dyn示例：
 
 ```ts
 class PageParam {
@@ -4473,7 +4791,119 @@ struct NavigationExample2 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog'
+
+class PageParam {
+  constructor(num_: number) {
+    this.num = num_;
+  }
+
+  num: number = 0;
+}
+
+@Builder
+export function PageOneBuilder(name: string, param: Object): void {
+  PageOne();
+}
+
+@Component
+struct PageOne {
+  private stack: NavPathStack | null = null;
+  private name: string = "";
+  private paramNum: number = 0;
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Text("NavPathInfo: name: " + this.name + ", paramNum: " + this.paramNum)
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            if (this.stack) {
+              let p = new PageParam(this.paramNum + 1);
+              this.stack?.pushPath(new NavPathInfo("pageOne", p));
+            }
+          })
+        Button('pop', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack?.pop();
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
+    .onReady((ctx: NavDestinationContext) => {
+      // 在NavDestination中能够拿到传来的NavPathInfo和当前所处的NavPathStack
+      try {
+        this.name = ctx?.pathInfo?.name;
+        this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
+        this.stack = ctx.pathStack;
+      } catch (e) {
+        console.error(`testTag onReady catch exception: ${JSON.stringify(e)}`);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct NavigationExample2 {
+  private stack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.stack) {
+      Stack({ alignContent: Alignment.Center } as StackOptions) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            let p = new PageParam(1);
+            this.stack.pushPath(new NavPathInfo("pageOne", p));
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('Navigation')
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4488,11 +4918,14 @@ struct NavigationExample2 {
   ]
 }
 ```
+
 ![navigationOnReady1.gif](figures/navigationOnReady1.gif)
 
 ### 示例8（NavDestination生命周期时序）
 
 该示例演示[NavDestination](ts-basic-components-navdestination.md)的[onAppear](ts-universal-events-show-hide.md#onappear)，[onDisAppear](ts-universal-events-show-hide.md#ondisappear)，[onShown](ts-basic-components-navdestination.md#onshown10)，[onHidden](ts-basic-components-navdestination.md#onhidden10)，[onWillAppear](ts-basic-components-navdestination.md#onwillappear12)，[onWillDisappear](ts-basic-components-navdestination.md#onwilldisappear12)，[onWillShow](ts-basic-components-navdestination.md#onwillshow12)，[onWillHide](ts-basic-components-navdestination.md#onwillhide12)接口的生命周期时序。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Builder
@@ -4591,7 +5024,131 @@ struct NavigationExample3 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Builder
+export function PageOneBuilder(name: string, param: Object): void {
+  PageOneComponent();
+}
+
+@Component
+struct PageOneComponent {
+  private stack: NavPathStack | null = null;
+  @State eventStr: string = "";
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Text("event: " + this.eventStr)
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            if (this.stack) {
+              this.stack?.pushPath(new NavPathInfo("pageOne", undefined));
+            }
+          })
+        Button('pop', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack?.pop();
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
+    .onAppear(() => {
+      this.eventStr += "<onAppear>";
+    })
+    .onDisAppear(() => {
+      this.eventStr += "<onDisAppear>";
+    })
+    .onShown(() => {
+      this.eventStr += "<onShown>";
+    })
+    .onHidden(() => {
+      this.eventStr += "<onHidden>";
+    })
+    .onWillAppear(() => {
+      this.eventStr += "<onWillAppear>";
+    })
+    .onWillDisappear(() => {
+      this.eventStr += "<onWillDisappear>";
+    })
+    .onWillShow(() => {
+      this.eventStr += "<onWillShow>";
+    })
+    .onWillHide(() => {
+      this.eventStr += "<onWillHide>";
+    })
+    // onReady会在onAppear之前调用
+    .onReady((ctx: NavDestinationContext) => {
+      try {
+        this.eventStr += "<onReady>";
+        this.stack = ctx.pathStack;
+      } catch (e) {
+        console.error(`testTag onReady catch exception: ${JSON.stringify(e)}`);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct NavigationExample3 {
+  private stack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.stack) {
+      Stack({ alignContent: Alignment.Center } as StackOptions) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack.pushPath(new NavPathInfo("pageOne", undefined));
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('Navigation')
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4606,12 +5163,15 @@ struct NavigationExample3 {
   ]
 }
 ```
+
 ![navigationOnReady2.gif](figures/navigationOnReady2.gif)
 
 
 ### 示例9（标题栏布局效果）
 
 该示例演示Navigation标题栏STACK布局效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -4678,12 +5238,105 @@ struct NavigationExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  Text,
+  Scroller,
+  $r,
+  BarStyle,
+  Scroll,
+  Image,
+  ForEach,
+  ListItem,
+  BlurStyle,
+  NavigationTitleMode,
+  TextAlign,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct NavigationExample {
+  private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  private scrollerForScroll: Scroller = new Scroller();
+  @State barStyle: BarStyle = BarStyle.STANDARD;
+
+  build() {
+    Column() {
+      Navigation() {
+        Column(undefined) {
+          Scroll(this.scrollerForScroll) {
+            Column(undefined) {
+              // $r('app.media.image_1')需要替换为开发者所需的资源文件
+              Image($r('app.media.blueTooth'))// 设置与标题栏高度一致，以便观察STACK效果
+                .height(138)
+                .width('100%')
+              Button('BarStyle.STANDARD')
+                .height('50vp')
+                .onClick(() => {
+                  this.barStyle = BarStyle.STANDARD;
+                })
+              Button('BarStyle.STACK')
+                .height('50vp')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.barStyle = BarStyle.STACK;
+                })
+
+              ForEach(this.arr, (item: int) => {
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Orange)
+                    .margin({ top: 12 })
+                }
+              })
+            }
+          }
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xDCDCDC)
+      }
+      .title(
+        {
+          main: 'NavTitle',
+          sub: 'subtitle'
+        },
+        {
+          backgroundBlurStyle: BlurStyle.COMPONENT_THICK,
+          barStyle: this.barStyle,
+        }
+      )
+      .titleMode(NavigationTitleMode.Free)
+      .hideTitleBar(false)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ![titlebar_stack.gif](figures/titlebar_stack.gif)
 
 
 ### 示例10（定义导航控制器派生类）
 
 该示例主要演示如何定义[NavPathStack](#navpathstack10)的派生类和派生类在Navigation中的基本用法。
+
+ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
@@ -4711,6 +5364,7 @@ struct Index {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { DerivedNavPathStack, NewParam } from './Utils';
@@ -4811,6 +5465,174 @@ export class NewParam {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+import { DerivedNavPathStack, NewParam } from './Utils';
+import { Entry, Component, Button, NavPathStack, Navigation, NavPathInfo } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  derivedStack: DerivedNavPathStack = new DerivedNavPathStack();
+
+  aboutToAppear(): void {
+    this.derivedStack.setId('origin stack');
+  }
+
+  build() {
+    Navigation(this.derivedStack) {
+      Button('to Page One').margin(20).onClick(() => {
+        this.derivedStack.pushPath(new NavPathInfo(
+          'pageOne',
+          new NewParam('push pageOne in homePage when stack size: ' + this.derivedStack.size())
+        ));
+      })
+    }
+    .title('Home Page')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+
+import { DerivedNavPathStack, NewParam } from './Utils';
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  FontWeight,
+  TextAlign,
+  State
+} from '@kit.ArkUI';
+
+
+@Builder
+export function pageMap(name: string): void {
+  PageOne();
+}
+
+@Component
+struct PageOne {
+  derivedStack: DerivedNavPathStack = new DerivedNavPathStack();
+  curStringifyParam: string = "NA";
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Text(this.derivedStack.getInfo())
+          .margin(10)
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Start)
+        Text('current page param info:')
+          .margin(10)
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Start)
+        Text(this.curStringifyParam)
+          .margin(20)
+          .fontSize(20)
+          .textAlign(TextAlign.Start)
+      }.backgroundColor(Color.Pink)
+
+      Button('to Page One').margin(20).onClick(() => {
+        this.derivedStack.pushPath(new NavPathInfo(
+          'pageOne',
+          new NewParam('push pageOne in pageOne when stack size: ' + this.derivedStack.size())
+        ));
+      })
+    }.title('Page One')
+    .onReady((context: NavDestinationContext) => {
+      console.info('[derive-test] reached PageOne\'s onReady');
+      // 从navdestinationContext获取派生堆栈
+      this.derivedStack = context.pathStack as DerivedNavPathStack;
+      console.info('[derive-test] -- got derivedStack: ' + this.derivedStack.id);
+      this.curStringifyParam = JSON.stringify(context.pathInfo.param);
+      console.info('[derive-test] -- got param: ' + this.curStringifyParam);
+    })
+  }
+}
+```
+
+```ts
+// Utils.ets
+
+import { NavPathStack, NavPathInfo, NavigationOptions } from '@kit.ArkUI';
+
+export class DerivedNavPathStack extends NavPathStack {
+  // 用户定义的属性'id'
+  id: string = "__default__";
+
+  // 派生类中的新功能
+  setId(id: string): void {
+    this.id = id;
+  }
+
+  // 派生类中的新功能
+  getInfo(): string {
+    return "this page used Derived NavPathStack, id: " + this.id;
+  }
+
+  // 重载NavPathStack的功能
+  pushPath(info: NavPathInfo, animated?: boolean): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    super.pushPath(info, animated);
+  }
+
+  pushPath(info: NavPathInfo, options?: NavigationOptions): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    super.pushPath(info, options);
+  }
+
+  pushPath(info: NavPathInfo, secArg?: boolean | NavigationOptions): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    if (typeof secArg === 'boolean') {
+      super.pushPath(info, secArg as boolean);
+    } else {
+      super.pushPath(info, secArg as NavigationOptions | undefined);
+    }
+  }
+
+  // 重写和重载NavPathStack的函数
+  pop(animated?: boolean | undefined): NavPathInfo | undefined {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
+    return super.pop(animated);
+  }
+
+  pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
+    return super.pop(result, animated);
+  }
+
+  // 基类的其他功能...
+}
+
+export class NewParam {
+  info: string = "__default_param__";
+
+  constructor(info: string) {
+    this.info = info;
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
 
 ```json
@@ -4833,6 +5655,8 @@ export class NewParam {
 ### 示例11（使用Symbol组件）
 
 该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何使用Symbol组件。
+
+ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
@@ -4907,6 +5731,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -4946,6 +5771,175 @@ export struct NavigationMenu {
     NavDestination() {
       Row() {
         Column() {
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+    .hideTitleBar(false)
+    .title('NavDestination title')
+    .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+      .fontColor([Color.Blue]))
+    .menus(this.menuItems)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  $r,
+  NavigationTitleMode,
+  SymbolGlyphModifier,
+  NavigationMenuItem,
+  ToolbarItem,
+  ToolbarItemStatus,
+  SymbolRenderingStrategy,
+  NavPathStack,
+  State,
+  Provide
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide({ alias: 'navPathStack' }) navPathStack: NavPathStack = new NavPathStack();
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem1',
+      icon: 'resources/base/media/ic_public_ok.svg' // 图标资源路径
+    } as NavigationMenuItem,
+    {
+      // resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem2',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red, Color.Green])
+        .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+    } as NavigationMenuItem,
+  ];
+  @State toolItems: Array<ToolbarItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'toolItem1',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeSymbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red,
+        Color.Green]).renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      // 'resources/base/media/ic_public_more.svg'需要替换为开发者所需的资源文件
+      value: 'toolItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeIcon: 'resources/base/media/ic_public_more.svg', // 图标资源路径
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeSymbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      action: () => {
+      }
+    } as ToolbarItem
+  ];
+
+  build() {
+    Navigation(this.navPathStack) {
+      Column(undefined) {
+        Button('跳转').onClick(() => {
+          this.navPathStack.pushPathByName('NavigationMenu', null);
+        })
+      }
+    }
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
+    .titleMode(NavigationTitleMode.Mini)
+    .menus(this.menuItems)
+    .toolbarConfiguration(this.toolItems)
+    .title('一级页面')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  Text,
+  $r,
+  NavigationTitleMode,
+  SymbolGlyphModifier,
+  NavigationMenuItem,
+  ToolbarItem,
+  ToolbarItemStatus,
+  SymbolRenderingStrategy,
+  NavDestination,
+  NavPathStack,
+  Row,
+  State,
+  Consume
+} from '@kit.ArkUI';
+
+@Builder
+export function myRouter(name: string, param?: Object): void {
+  NavigationMenu();
+}
+
+@Component
+export struct NavigationMenu {
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem1',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      action: () => {
+      }
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red, Color.Green])
+        .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+      action: () => {
+      }
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.repeat_1')),
+      action: () => {
+      }
+    } as NavigationMenuItem,
+  ];
+
+  build(): void {
+    NavDestination() {
+      Row(undefined) {
+        Column(undefined) {
         }
         .width('100%')
       }
@@ -5069,6 +6063,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -5158,6 +6153,7 @@ export struct NavDestinationExample {
   }
 }
 ```
+
 ```ts
 // Utils.ets
 import { TextModifier } from '@kit.ArkUI';
@@ -5230,6 +6226,8 @@ export class SubTitleTextModifier extends TextModifier {
 ### 示例13（自定义转场动画）
 
 该示例主要实现Navigation简单的自定义转场动画。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -5313,7 +6311,6 @@ struct NavigationCustomTransitionExample {
     })
   }
 }
-
 
 // PageOne
 @Builder
@@ -5401,6 +6398,7 @@ export struct PageContainer {
   }
 }
 ```
+
 ```ts
 // src/main/pages/CustomTransitionUtils.ts 工具类，用来管理所有页面的自定义动画参数注册和获取等
 // 自定义接口，用来保存某个页面相关的转场动画回调和参数
@@ -5450,7 +6448,254 @@ export class CustomTransition {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+import { AnimateCallback, CustomTransition } from './CustomTransitionUtils';
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  NavContentInfo,
+  NavigationOperation,
+  NavigationAnimatedTransition,
+  NavigationTransitionProxy,
+  Curve,
+  NavDestinationContext,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationCustomTransitionExample {
+  pageInfos: NavPathStack = new NavPathStack();
+
+  aboutToAppear() {
+    this.pageInfos.pushPath(new NavPathInfo("PageOne", undefined), false);
+  }
+
+  build() {
+    Navigation(this.pageInfos) {
+    }
+    .hideNavBar(true)
+    .customNavContentTransition((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => {
+      // 首页不进行自定义动画
+      if (from.index === -1 || to.index === -1) {
+        return undefined;
+      }
+
+      let customAnimation: NavigationAnimatedTransition = {
+        timeout: 2000,
+        // 转场开始时系统调用该方法，并传入转场上下文代理对象
+        transition: (transitionProxy: NavigationTransitionProxy) => {
+          if (!from.navDestinationId || !to.navDestinationId) {
+            return;
+          }
+          // 从封装类CustomTransition中根据子页面的序列获取对应的转场动画回调
+          let fromParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(from.navDestinationId!);
+          let toParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(to.navDestinationId!);
+          // Push动画
+          if (operation == NavigationOperation.PUSH) {
+            if (fromParam.start && toParam.start) {
+              // 设置Push转场的两个页面的动画起点
+              fromParam.start!(true, true);
+              toParam.start!(true, false);
+            }
+            this.getUIContext()?.animateTo({
+              duration: 500, curve: Curve.Friction, onFinish: () => {
+                // 动画结束后需要手动调用finishTransition，否则在timeout时间后由系统调用
+                transitionProxy.finishTransition();
+              }
+            }, () => {
+              if (fromParam.finish && toParam.finish) {
+                // 设置Push转场的两个页面的动画终点
+                fromParam.finish!(true, true);
+                toParam.finish!(true, false);
+              }
+
+            })
+          } else if (operation == NavigationOperation.POP) {
+            // Pop动画
+            if (fromParam.start && toParam.start) {
+              // 设置Pop转场的两个页面的动画起点
+              fromParam.start!(false, true);
+              toParam.start!(false, false);
+            }
+            this.getUIContext()?.animateTo({
+              duration: 500, curve: Curve.Friction, onFinish: () => {
+                // 动画结束后需要手动调用finishTransition，否则在timeout时间后由系统调用
+                transitionProxy.finishTransition();
+              }
+            }, () => {
+              if (fromParam.finish && toParam.finish) {
+                // 设置Pop转场的两个页面的动画终点
+                fromParam.finish!(false, true);
+                toParam.finish!(false, false);
+              }
+            })
+          } else {
+            // Replace不做动画
+          }
+        }
+      };
+      return customAnimation;
+    })
+  }
+}
+
+// PageOne
+@Builder
+export function PageOneBuilder(): void {
+  PageContainer({ title: "PageOne" });
+}
+
+// PageTwo
+@Builder
+export function PageTwoBuilder(): void {
+  PageContainer({ title: "PageTwo" });
+}
+
+@Component
+export struct PageContainer {
+  pageInfos: NavPathStack = new NavPathStack();
+  @State translateY: string = '0';
+  pageId: string = '';
+  title: string = ''
+
+  registerCallback(): void {
+    CustomTransition.getInstance().registerNavParam(this.pageId,
+      // 设置转场动画起点，根据不同的转场类型分别设置
+      (isPush: boolean, isExit: boolean) => {
+        if (isPush) {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '100%';
+          }
+        } else {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '0';
+          }
+        }
+      },
+      // 设置转场动画终点，根据不同的转场类型分别设置
+      (isPush: boolean, isExit: boolean) => {
+        if (isPush) {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '0';
+          }
+        } else {
+          if (isExit) {
+            this.translateY = '100%';
+          } else {
+            this.translateY = '0';
+          }
+        }
+      });
+  }
+
+  build(): void {
+    NavDestination() {
+      Column(undefined) {
+        Button('push next page', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath(new NavPathInfo(this.title == 'PageOne' ? "PageTwo" : "PageOne", undefined));
+          })
+      }
+      .size({ width: '100%', height: '100%' })
+    }
+    .title(this.title)
+    .onDisAppear(() => {
+      // 页面销毁时解注册自定义转场动画参数
+      CustomTransition.getInstance().unRegisterNavParam(this.pageId);
+    })
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      if (context.navDestinationId) {
+        this.pageId = context.navDestinationId!;
+        // 页面创建时注册自定义转场动画参数
+        this.registerCallback();
+      }
+    })
+    .translate({ y: this.translateY })
+    .backgroundColor(this.title == 'PageOne' ? '#F1F3F5' : '#ff11dee5')
+  }
+}
+```
+
+```ts
+// CustomTransitionUtils.ets 
+export interface AnimateCallback {
+  start: ((isPush: boolean, isExit: boolean) => void | undefined) | undefined;
+  finish: ((isPush: boolean, isExit: boolean) => void | undefined) | undefined;
+}
+
+const customTransitionMap: Map<string, AnimateCallback> = new Map<string, AnimateCallback>();
+
+export class CustomTransition {
+  static delegate: CustomTransition = new CustomTransition();
+
+  static getInstance(): CustomTransition {
+    return CustomTransition.delegate;
+  }
+
+  // 注册某个页面的动画回调
+  // name: 注册页面的唯一id
+  // startCallback：用来设置动画开始时页面的状态
+  // endCallback：用来设置动画结束时页面的状态
+  registerNavParam(name: string, startCallback: (isPush: boolean, isExit: boolean) => void,
+    endCallback: (isPush: boolean, isExit: boolean) => void): void {
+    if (customTransitionMap.has(name)) {
+      let param = customTransitionMap.get(name);
+      if (param != undefined) {
+        param.start = startCallback;
+        param.finish = endCallback;
+        return;
+      }
+    }
+    let params: AnimateCallback = { start: startCallback, finish: endCallback };
+    customTransitionMap.set(name, params);
+  }
+
+  unRegisterNavParam(name: string): void {
+    customTransitionMap.delete(name);
+  }
+
+  getAnimateParam(name: string): AnimateCallback {
+    let result: AnimateCallback = {
+      start: customTransitionMap.get(name)?.start,
+      finish: customTransitionMap.get(name)?.finish
+    };
+    return result;
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -5470,6 +6715,7 @@ export class CustomTransition {
   ]
 }
 ```
+
 ![navigationCustomTransition.gif](figures/navigationCustomTransition.gif)
 
 ### 示例14（设置Navigation双栏模式）
@@ -5479,6 +6725,8 @@ export class CustomTransition {
 从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
 
 此示例在运行前需要在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -5606,6 +6854,167 @@ struct NavigationExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  ComponentContent,
+  Dimension,
+  wrapBuilder,
+  HorizontalAlign,
+  List,
+  TextInput,
+  ForEach,
+  ListItem,
+  TextAlign,
+  NavigationTitleMode,
+  NavigationMode,
+  Row,
+  ToolbarItem,
+  $r,
+  Image,
+  State,
+  ComponentContent
+} from '@kit.ArkUI';
+
+@Builder
+function PlaceholderPage(): void {
+  Column() {
+    Text('分栏模式占位页')
+      .fontSize(28)
+      .fontWeight(700)
+      .margin({ top: 200 })
+  }.width('100%')
+  .height('100%')
+}
+
+@Entry
+@Component
+struct NavigationExample {
+  @State minContentWidth: Dimension | undefined = undefined;
+  private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State currentIndex: int = 0;
+  placeholder: ComponentContent = new ComponentContent(this.getUIContext(), wrapBuilder(PlaceholderPage))
+
+  @Builder
+  NavigationTitle(): void {
+    Column() {
+      Text('Title')
+        .fontColor('#182431')
+        .fontSize(30)
+        .lineHeight(41)
+        .fontWeight(700)
+      Text('subtitle')
+        .fontColor('#182431')
+        .fontSize(14)
+        .lineHeight(19)
+        .opacity(0.4)
+        .margin({ top: 2, bottom: 20 })
+    }.alignItems(HorizontalAlign.Start)
+  }
+
+  @Builder
+  NavigationMenus(): void {
+    Row(undefined) {
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
+        .width(24)
+        .height(24)
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
+        .width(24)
+        .height(24)
+        .margin({ left: 24 })
+      // $r('sys.media.ohos_ic_public_more')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_more'))
+        .width(24)
+        .height(24)
+        .margin({ left: 24 })
+    }.margin({ top: 30 })
+  }
+
+  build() {
+    Column(undefined) {
+      Navigation() {
+        TextInput({ placeholder: 'search...' })
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+          .margin({ top: 8 })
+
+        List({ space: 12, initialIndex: 0 }) {
+          ForEach(this.arr, (item: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('90%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+            }
+          })
+        }
+        .height(324)
+        .width('100%')
+        .margin({ top: 12, left: '10%' })
+      }
+      .title(this.NavigationTitle)
+      .padding({ left: 12 })
+      .menus(this.NavigationMenus)
+      .titleMode(NavigationTitleMode.Full)
+      .toolbarConfiguration([
+        {
+          // $r('app.string.navigation_toolbar_add')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem,
+        {
+          // $r('app.string.navigation_toolbar_app')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem,
+        {
+          // $r('app.string.navigation_toolbar_collect')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem
+      ] as Array<ToolbarItem>)
+      .mode(NavigationMode.Split) // 设置Navigation模式为Split
+      .minContentWidth(this.minContentWidth)
+      .hideTitleBar(false)
+      .hideToolBar(false)
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
+        console.info('titleMode' + titleModel)
+      })
+      // .splitPlaceholder(this.placeholder)
+      .divider({ startMargin: 20, endMargin: 20, color: Color.Red }) // 从API version 23开始，新增divider属性。
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
 
 ### 示例15（Navigation工具栏自适应）
@@ -5615,6 +7024,9 @@ struct NavigationExample {
 从API version 19开始，新增了enableToolBarAdaptation属性。
 
 在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "landscape"（该工程配置仅方便演示在横屏模式下的Navigation工具栏自适应能力，实际配置可自行设置为"auto_rotation"）。
+
+ArkTS-Dyn示例：
+
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -5663,6 +7075,94 @@ struct NavigationExample {
           this.enable = !this.enable;
         })
         Text("启用自适应能力：" + this.enable)
+      }
+    }
+    .mode(NavigationMode.Stack)
+    .enableToolBarAdaptation(this.enable) // 是否启用工具栏自适应能力
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
+    .titleMode(NavigationTitleMode.Mini)
+    .menus(this.menuItems)
+    .toolbarConfiguration(this.toolItems)
+    .title('一级页面')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Color,
+  NavigationMenuItem,
+  ToolbarItem,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  NavigationTitleMode,
+  $r,
+  NavigationMode,
+  State,
+  Provide
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide({ alias: 'navPathStack' }) navPathStack: NavPathStack = new NavPathStack();
+  @State enable: boolean = false
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      value: 'menuItem1',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_writer')),
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+    } as NavigationMenuItem,
+  ]
+  @State toolItems: Array<ToolbarItem> = [
+    {
+      value: 'toolItem1',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_migration')),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      action: () => {
+      }
+    } as ToolbarItem
+  ]
+
+  build() {
+    Navigation(this.navPathStack) {
+      Column() {
+        Button('启用/关闭自适应').onClick(() => {
+          this.enable = !this.enable;
+        })
+        Text('启用自适应能力：' + this.enable)
       }
     }
     .mode(NavigationMode.Stack)
@@ -5737,7 +7237,9 @@ struct Index {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -5852,6 +7354,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 class TmpClass {
@@ -5954,6 +7457,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 @Builder
@@ -6028,6 +7532,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigation_interception.gif](figures/navigation_interception.gif)
 
 ### 示例18（设置Navigation可恢复）
@@ -6111,6 +7616,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -6192,7 +7698,7 @@ export struct NavigationMenu {
 >
 > 1. 工程运行成功后点击跳转按钮。
 >
-> 2. 应用上划回退到后台，开启命令行窗口。
+> 2. 应用上滑回退到后台，开启命令行窗口。
 >
 > 3. 输入"hdc shell"，回车后输入"pidof 工程包名"，查询pid值。
 >

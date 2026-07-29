@@ -672,7 +672,7 @@ divider(value: DividerOptions | null)
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| value | [DividerOptions](#divideroptions12对象说明) \| null | 是   | 默认值：<br/>{<br/>strokeWidth: '2px', <br/>startMargin: 0, <br/>endMargin: 0, <br/>color: '#33000000'<br/>}<br/>1. 当textDivider设置为有效的[DividerOptions](#divideroptions12对象说明)时，按设置的样式显示分割线。<br/>2. 当textDivider设置为null时，不显示分割线。 |
+| value | [DividerOptions](#divideroptions12对象说明) \| null | 是   | 默认值：<br/>{<br/>strokeWidth: '2px', <br/>startMargin: 0, <br/>endMargin: 0, <br/>color: '#33000000'<br/>}<br/>1. 当value设置为有效的[DividerOptions](#divideroptions12对象说明)时，按设置的样式显示分割线。<br/>2. 当value设置为null时，不显示分割线。 |
 
 ### divider<sup>18+</sup>
 

@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-可以通过该类提供的接口配置UserAgentMetadata。
+UserAgentMetadata是ArkWeb框架中用于配置User-Agent Client Hints（UA客户端提示）完整元数据的类。User-Agent Client Hints是一种现代化的HTTP请求标头机制，通过一组Sec-CH-UA系列标头向服务器报告客户端信息，替代传统User-Agent字符串实现更安全、更细粒度的浏览器身份标识。通过UserAgentMetadata，应用可以自定义Web组件向服务器报告的所有客户端信息字段。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,6 +26,10 @@ setBrandVersionList(brandVersionList: Array\<UserAgentBrandVersion>): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
@@ -34,7 +40,9 @@ setBrandVersionList(brandVersionList: Array\<UserAgentBrandVersion>): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getBrandVersionList
 
@@ -43,6 +51,10 @@ getBrandVersionList(): Array\<UserAgentBrandVersion>
 获取品牌和版本信息列表。不调用对应的[setBrandVersionList](#setbrandversionlist)进行设置时，列表默认值：[{"brand":"Chromium","version":[ChromeCompatibleVersion](../../web/web-default-userAgent.md#默认user-agent结构)}, {"brand":"ArkWeb","version":[OSVersion](../../web/web-default-userAgent.md#默认user-agent结构)}]。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +66,9 @@ getBrandVersionList(): Array\<UserAgentBrandVersion>
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setArchitecture
 
@@ -63,6 +77,10 @@ setArchitecture(arch: string): void
 设置平台的架构类型。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,7 +92,9 @@ setArchitecture(arch: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getArchitecture
 
@@ -83,6 +103,10 @@ getArchitecture(): string
 获取平台的架构类型。不调用对应的[setArchitecture](#setarchitecture)设置时，架构类型默认值：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,7 +118,9 @@ getArchitecture(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setBitness
 
@@ -103,6 +129,10 @@ setBitness(bitness: string): void
 设置平台的位数类型。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +144,9 @@ setBitness(bitness: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getBitness
 
@@ -123,6 +155,10 @@ getBitness(): string
 获取平台的位数类型。不调用对应的[setBitness](#setbitness)设置时，位数类型默认值：Desktop："64"，其他设备：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,7 +170,9 @@ getBitness(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setFormFactors
 
@@ -143,6 +181,10 @@ setFormFactors(formFactors: Array\<UserAgentFormFactor>): void
 设置设备形态信息，如手机、平板等。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,7 +196,9 @@ setFormFactors(formFactors: Array\<UserAgentFormFactor>): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getFormFactors
 
@@ -163,6 +207,10 @@ getFormFactors(): Array\<UserAgentFormFactor>
 获取设备形态信息，如手机、平板等。不调用对应的[setFormFactors](#setformfactors)进行设置时，形态信息默认值：手机："Mobile"，手表："Watch"，车机："Automotive"，PC："Desktop"，平板："Tablet"。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -174,7 +222,9 @@ getFormFactors(): Array\<UserAgentFormFactor>
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setFullVersion
 
@@ -183,6 +233,10 @@ setFullVersion(fullVersion: string): void
 设置完整版本号。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,7 +248,9 @@ setFullVersion(fullVersion: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getFullVersion
 
@@ -203,6 +259,10 @@ getFullVersion(): string
 获取完整版本号。不调用对应的[setFullVersion](#setfullversion)设置时，版本号默认值：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -214,7 +274,9 @@ getFullVersion(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setMobile
 
@@ -224,17 +286,23 @@ setMobile(isMobile: boolean): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| isMobile | boolean | 是   | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。默认值为true。 |
+| isMobile | boolean | 是   | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。|
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getMobile
 
@@ -243,6 +311,10 @@ getMobile(): boolean
 获取是否为移动设备。不调用对应的[setMobile](#setmobile)设置时，默认值：手机: true，手表、车机、平板、大屏: false。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -254,7 +326,9 @@ getMobile(): boolean
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setModel
 
@@ -263,6 +337,10 @@ setModel(model: string): void
 设置设备型号。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,7 +352,9 @@ setModel(model: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getModel
 
@@ -283,6 +363,10 @@ getModel(): string
 获取设备型号。不调用对应的[setModel](#setmodel)设置时，型号默认值：手机根据const.product.model取设备型号，手表、大屏、车机、PC、平板：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -294,7 +378,9 @@ getModel(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setPlatform
 
@@ -303,6 +389,10 @@ setPlatform(platform: string): void
 设置操作系统名称。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -314,7 +404,9 @@ setPlatform(platform: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getPlatform
 
@@ -323,6 +415,10 @@ getPlatform(): string
 获取操作系统名称。不调用对应的[setPlatform](#setplatform)设置时，名称默认值："OpenHarmony" 。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -334,7 +430,9 @@ getPlatform(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setPlatformVersion
 
@@ -343,6 +441,10 @@ setPlatformVersion(platformVersion: string): void
 设置操作系统版本号。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -354,7 +456,9 @@ setPlatformVersion(platformVersion: string): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getPlatformVersion
 
@@ -363,6 +467,10 @@ getPlatformVersion(): string
 获取操作系统版本号。不调用对应的[setPlatformVersion](#setplatformversion)设置时，版本号默认值：按OpenHarmony平台版本号规则，同const.product.os.dist.version。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -374,7 +482,9 @@ getPlatformVersion(): string
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## setWow64
 
@@ -383,6 +493,10 @@ setWow64(isWow64: boolean): void
 设置二进制文件是否在64位Windows上以32位模式运行。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -394,7 +508,9 @@ setWow64(isWow64: boolean): void
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。
 
 ## getWow64
 
@@ -403,6 +519,10 @@ getWow64(): boolean
 获取二进制文件是否是在64位Windows上以32位模式运行。不调用对应的[setWow64](#setwow64)设置时，默认值为false。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -414,5 +534,6 @@ getWow64(): boolean
 
 **示例：**
 
-完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
+ArkTS-Dyn的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24)。
 
+ArkTS-Sta的完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled24-1)。

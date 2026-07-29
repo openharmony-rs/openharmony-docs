@@ -258,7 +258,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **权限级别**：system_basic
 
-**授权方式**：用户授权（user_grant）
+**授权方式**：系统授权（system_grant）
 
 **起始版本**：12
 
@@ -352,7 +352,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许系统JS引擎申请带MAP_FORT标识的匿名可执行内存。
 
-应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高与形式执行效率。
+应用申请此权限后，系统引擎可申请带MAP_FORT的匿名可执行内存，做即时编译，提高运行时执行效率。
 
 <!--RP13--><!--RP13End-->
 
@@ -614,6 +614,27 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
+
+USB串口DDK API可用于开发以下类型的外设扩展驱动：
+
+外设以USB总线接入主机，且满足：
+
+1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
+2. 外设支持通过USB接口模拟传统的串行通信。
+
+<!--RP101--><!--RP101End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备：** PC/2in1 | Tablet
+
+**起始版本**：18
+
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 允许主体应用安装插件。
@@ -702,9 +723,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
+
+**变更信息**：从API版本26.0.0开始，增加支持在PC/2in1上申请。
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
@@ -1161,3 +1184,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：24
+
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+允许应用管理沙箱应用。
+
+<!--RP97--><!--RP97End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0

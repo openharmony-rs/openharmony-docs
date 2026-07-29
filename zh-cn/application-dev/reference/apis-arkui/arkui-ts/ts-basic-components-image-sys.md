@@ -48,7 +48,7 @@ ArkTS-Dyn: edgeAntialiasing(value: number)
 
 ArkTS-Sta: edgeAntialiasing(value: double | undefined)
 
-设置SVG图源抗锯齿效果，仅对SVG图源生效。取值范围为$(0.333, 1.333]$，有效数字保留小数点后3位。
+设置SVG图源边缘抗锯齿效果，仅对SVG图源生效。取值范围为$(0.333, 1.333]$，有效数字保留小数点后3位。
 
 适用于超低分辨率设备（PPI低于200的设备）的SVG图源的锯齿优化，存在一定的性能影响，请谨慎使用。
 
@@ -66,7 +66,7 @@ ArkTS-Sta: edgeAntialiasing(value: double | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                |
 | ------ | ------ | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | SVG图源抗锯齿效果。<br/>设置undefined时，按默认值处理。<br/>默认值：0.0 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | SVG图源边缘抗锯齿效果。<br/>设置undefined时，按默认值处理。<br/>默认值：0.0 |
 
 ### pointLight<sup>11+</sup>
 
@@ -98,9 +98,9 @@ ArkTS-Dyn: enhancedImageQuality(imageQuality: ResolutionQuality)
 
 ArkTS-Sta: enhancedImageQuality(imageQuality: ResolutionQuality | undefined)
 
-设置图像解码时的图像解码分辨率选项。
+设置增强的图像解码分辨率选项。画质等级越高，解码耗时与内存占用越大，请按显示需求选择：Low 解码速度快、内存占用低，适合列表缩略图等低内存场景；Medium 平衡画质与性能；High 画质最佳但解码耗时与内存占用更高，适合全屏高清展示。
 
-该属性不支持 svg、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
+该属性不支持 SVG、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
 
 **系统接口：** 此接口为系统接口。
 
@@ -116,7 +116,7 @@ ArkTS-Sta: enhancedImageQuality(imageQuality: ResolutionQuality | undefined)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| imageQuality | ArkTS-Dyn: [ResolutionQuality](#resolutionquality12)<br/>ArkTS-Sta: [ResolutionQuality](#resolutionquality12) \| undefined | 是   | 图像解码分辨率质量。<br/>设置undefined时，按默认值处理。<br/>默认值：ResolutionQuality.Low |
+| imageQuality | ArkTS-Dyn: [ResolutionQuality](#resolutionquality12)<br/>ArkTS-Sta: [ResolutionQuality](#resolutionquality12) \| undefined | 是   | 图像解码分辨率质量。<br/>设置undefined时，按默认值处理。<br/>默认值：ResolutionQuality.Low，即默认采用低分辨率解码以降低内存占用并提升解码性能。 |
 
 ## ResolutionQuality<sup>12+</sup>
 
@@ -124,7 +124,7 @@ ArkTS-Dyn: type ResolutionQuality = import('../api/@ohos.multimedia.image').defa
 
 ArkTS-Sta: type ResolutionQuality = image.ResolutionQuality;
 
-画质效果等级类型。
+分辨率质量等级类型。
 
 **系统接口：** 此接口为系统接口。
 
@@ -138,4 +138,4 @@ ArkTS-Sta: type ResolutionQuality = image.ResolutionQuality;
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12)<br/>ArkTS-Sta: image.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 画质效果等级类型。 |
+| ArkTS-Dyn: import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12)<br/>ArkTS-Sta: image.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 分辨率质量等级类型。 |

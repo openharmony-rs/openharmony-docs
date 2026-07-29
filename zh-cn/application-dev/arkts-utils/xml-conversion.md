@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 > **说明：**
 >
@@ -76,8 +76,6 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
      elementsKey: '_elements'
    }
    ```
-
-   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
 
 3. 调用fastConvertToJSObject函数并打印结果。
 

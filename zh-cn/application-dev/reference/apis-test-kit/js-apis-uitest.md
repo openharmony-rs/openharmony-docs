@@ -7,14 +7,14 @@
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要支持如点击、双击、长按、滑动等UI操作能力。
+UiTest提供UI自动化测试能力，供开发者在测试场景使用，主要支持控件查找与操作、坐标点击/滑动、按键注入、截图、窗口管理、多指操作、鼠标/手写笔/触摸板操作等能力。
 
 该模块提供以下功能：
 
 - [On<sup>9+</sup>](#on9)：提供控件特征描述能力，用于控件筛选匹配查找。
 - [Component<sup>9+</sup>](#component9)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。
 - [Driver<sup>9+</sup>](#driver9)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
-- [UiWindow<sup>9+</sup>](#uiwindow9)：入口类，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
+- [UiWindow<sup>9+</sup>](#uiwindow9)：代表UI界面上的窗口对象，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
 - [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
 - [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
@@ -29,7 +29,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 ArkTS-Dyn：
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 ```
 
 
@@ -87,9 +87,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 <!--Table: 10%; 10%; 10%; 70%-->
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
-| y    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
-| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
+| x    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| y    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## Rect<sup>9+</sup>
 
@@ -102,15 +102,15 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 <!--Table: 20%; 10%; 10%; 60%-->
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| top    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
-| right  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
-| bottom | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| left   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| top    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| right  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| bottom | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于等于0的整数，单位：px。<br/> **说明：** 从API version 20开始，该属性不再为只读属性。<br/> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
 | displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br/>ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23  |
 
 ## WindowMode<sup>9+</sup>
 
-窗口的窗口模式。
+窗口模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -129,7 +129,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 ## DisplayRotation<sup>9+</sup>
 
-设备的显示方向。
+设备显示器的显示方向。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -258,7 +258,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。传入不在范围内的值抛出错误码。 |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -276,7 +276,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。传入不在范围内的值抛出错误码。 |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br/>**说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
@@ -293,11 +293,11 @@ UI事件的相关信息。
 | bundleName | string | 是   | 否   | 应用包名。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23   |
 | type       | string | 是   | 否   | 控件/窗口类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23    |
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
-| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
-| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回[WindowChangeType](#windowchangetype22).WINDOW_UNDEFINED。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回[ComponentEventType](#componenteventtype22).COMPONENT_UNDEFINED。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
+| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 是   | 控件所属窗口id，若非窗口变化事件或非控件操作事件则返回-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
 | componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
-| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的[Rect](#rect9)对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -315,7 +315,7 @@ UI事件的相关信息。
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
-| speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。   |
+| speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。 |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -367,9 +367,9 @@ UI事件的相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| speed | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
-| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
-| pressure | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| speed | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。取值为超出取值范围的非负数或为null/undefined时按照默认值600处理，为负数时抛出17000007错误码。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
+| pressure | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 是  | 触摸的压力值，取值范围为[0, 1]，包含0和1，默认值为0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出17000007错误码。 |
 
 ## PenKey
 
@@ -777,7 +777,7 @@ scrollable(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                        |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | 否   | 控件可滑动状态。true：可滑动。false：不可滑动。默认为true。<!--RP2--><!--RP2End-->  |
+| b      | boolean | 否   | 指定控件可滑动状态。true：可滑动。false：不可滑动。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -863,7 +863,7 @@ focused(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                  |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | 否   | 控件获焦状态。true：获焦。false：未获焦。默认为true。<!--RP2--><!--RP2End-->  |
+| b      | boolean | 否   | 指定控件获焦状态。true：获焦。false：未获焦。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -1061,9 +1061,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
-### isBefore
+### beforeComponent
 
-isBefore(com: Component): On
+beforeComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之前，返回On对象自身。
 
@@ -1089,7 +1089,7 @@ isBefore(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1102,9 +1102,9 @@ isBefore(com: Component): On
 import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
-  let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isBefore(com); // 查找第一个Text组件之前的text为123的组件
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').beforeComponent(component); // 查找第一个Text组件之前的text为123的组件
 }
 ```
 
@@ -1152,9 +1152,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找text为123之后的第一个Text组件
 ```
 
-### isAfter
+### afterComponent
 
-isAfter(com: Component): On
+afterComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之后，返回On对象自身。
 
@@ -1180,7 +1180,7 @@ isAfter(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1193,9 +1193,9 @@ isAfter(com: Component): On
 import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
-  let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isAfter(com); // 查找第一个Text组件之后的text为123的组件
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').afterComponent(component); // 查找第一个Text组件之后的text为123的组件
 }
 ```
 
@@ -1243,9 +1243,9 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的text为java的子组件
 ```
 
-### within
+### withinComponent
 
-within(com: Component): On
+withinComponent(com: Component): On
 
 指定目标控件位于给出的特征控件之内，返回On对象自身。
 
@@ -1271,7 +1271,7 @@ within(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1284,9 +1284,9 @@ within(com: Component): On
 import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
-  let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').within(com); // 查找第一个Text组件内部的text为123的组件
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').withinComponent(component); // 查找第一个Text组件内部的text为123的组件
 }
 ```
 
@@ -1381,7 +1381,7 @@ let on: On = ON.description('123'); // 使用静态构造器ON创建On对象，�
 
 hint(val: string, pattern?: MatchPattern): On
 
-获取指定提示文本的控件对象，返回On对象自身。
+指定目标控件的提示文本属性，返回On对象自身。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1402,7 +1402,7 @@ hint(val: string, pattern?: MatchPattern): On
 
 | 类型       | 说明                                     |
 | ---------- | ---------------------------------------- |
-| [On](#on9) | 返回指定提示文本控件的On对象。 |
+| [On](#on9) | 返回指定目标控件hint属性的On对象。 |
 
 **错误码：**
 
@@ -1427,7 +1427,7 @@ ArkTS-Dyn: belongingDisplay(displayId: number): On
 
 ArkTS-Sta: belongingDisplay(displayId: int): On
 
-获取指定屏幕内的控件对象，返回On对象自身。
+指定目标控件所属的屏幕，返回On对象自身。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1451,7 +1451,7 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1499,7 +1499,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1516,9 +1516,9 @@ let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，
 
 ## Component<sup>9+</sup>
 
-UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+UiTest框架从API version 9开始，Component类代表UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 
-该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
+该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### click<sup>9+</sup>
 
@@ -1538,11 +1538,11 @@ click(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1582,11 +1582,11 @@ doubleClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1626,11 +1626,11 @@ longClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1674,7 +1674,7 @@ getId(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1722,7 +1722,7 @@ getText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1766,7 +1766,7 @@ getType(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1810,7 +1810,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1854,7 +1854,7 @@ getBoundsCenter(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1898,7 +1898,7 @@ isClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1944,7 +1944,7 @@ isLongClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1990,7 +1990,7 @@ isChecked(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2032,11 +2032,11 @@ isCheckable(): Promise\<boolean>
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise对象，返回控件对象能否可被勾选属性。true：可被勾选。false：不可被勾选。 |
+| Promise\<boolean> | Promise对象，返回控件对象能否被勾选属性。true：可被勾选。false：不可被勾选。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2082,7 +2082,7 @@ isScrollable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2129,7 +2129,7 @@ isEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2175,7 +2175,7 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2221,7 +2221,7 @@ isSelected(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2259,21 +2259,21 @@ inputText(text: string): Promise\<void>
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                           |
+| ------ | ------ | ---- | ---------------------------------------------- |
+| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
+
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                     |
-| ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2315,17 +2315,17 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
 | text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br/>**说明：** InputTextMode.addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
+| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** [InputTextMode](#inputtextmode20).addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。<br/> 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论[InputTextMode](#inputtextmode20).paste取值为何，均以复制粘贴方式输入。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2367,10 +2367,10 @@ clearText(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2422,7 +2422,7 @@ scrollSearch(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2470,7 +2470,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 |------------------------| ---------- | ---- |-----------------------------------|
 | on                     | [On](#on9) | 是   | 目标控件的属性要求。                        |
 | vertical |    boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
-| offset   | number| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
+| offset   | number| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。为负数时抛出401错误码。    |
 
 **返回值：**
 
@@ -2480,7 +2480,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2538,7 +2538,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component \| nu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2585,11 +2585,11 @@ ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2638,11 +2638,11 @@ ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2669,7 +2669,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-将控件拖拽至目标控件处。使用Promise异步回调。
+将控件拖拽至目标控件处。仅针对支持拖拽的控件生效。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2691,11 +2691,11 @@ dragTo(target: Component): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2739,7 +2739,7 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定放大的比例。取值范围大于1。 |
+| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定放大的比例。取值范围大于1。传入小于等于1的值时抛出401错误码。 |
 
 **返回值：**
 
@@ -2749,7 +2749,7 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2792,7 +2792,7 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定缩小的比例。取值范围为0~1。 |
+| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定缩小的比例。取值范围为(0, 1]，不包含0，包含1。传入0或负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -2802,7 +2802,7 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2847,7 +2847,7 @@ getDescription(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2890,7 +2890,7 @@ getHint(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2935,7 +2935,7 @@ ArkTS-Sta: getDisplayId(): Promise\<int>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2979,7 +2979,7 @@ getOriginalText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3003,9 +3003,9 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
+Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。
 
-该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
+该类提供的所有方法均为异步方法（使用Promise方式），需使用await方式调用。Driver.create()和Driver.createUIEventObserver()为同步方法除外。
 
 ### create<sup>9+</sup>
 
@@ -3029,7 +3029,7 @@ static create(): Driver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3052,7 +3052,7 @@ ArkTS-Dyn: delayMs(duration: number): Promise\<void>
 
 ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
-在给定的时间内延时。使用Promise异步回调。
+延迟指定的时间。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3066,17 +3066,17 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。。传入负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3125,7 +3125,7 @@ findComponent(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3172,7 +3172,7 @@ findComponent(on: On): Promise\<Component \| null>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3221,7 +3221,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3268,7 +3268,7 @@ findComponents(on: On): Promise\<Array\<Component> | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3317,7 +3317,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3364,7 +3364,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3404,7 +3404,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 | 参数名 | 类型       | 必填 | 说明                                      |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | 是   | 目标控件的属性要求。                      |
-| time   | number     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
+| time   | number     | 是   | 查找目标控件的持续时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码 |
 
 **返回值：**
 
@@ -3414,7 +3414,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3452,7 +3452,7 @@ waitForComponent(on: On, time: int): Promise\<Component | null\>
 | 参数名 | 类型       | 必填 | 说明                                      |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | 是   | 目标控件的属性要求。                      |
-| time   | int     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
+| time   | int     | 是   | 查找目标控件的持续时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码 |
 
 **返回值：**
 
@@ -3462,7 +3462,7 @@ waitForComponent(on: On, time: int): Promise\<Component | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3485,7 +3485,7 @@ async function demo() {
 
 assertComponentExist(on: On): Promise\<void>
 
-断言API，用于断言当前界面是否存在满足给出的目标属性的控件。使用Promise异步回调。
+断言API，用于断言当前界面是否存在满足给出的目标属性的控件。断言失败时会抛出JS异常导致测试用例失败。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3505,11 +3505,11 @@ assertComponentExist(on: On): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3533,7 +3533,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-进行点击BACK键的操作。使用Promise异步回调。
+模拟点击BACK键。使用Promise异步回调。
+
+> **说明：**
+>
+> 本方法仅支持在主屏幕上模拟点击BACK键。如需在指定屏幕上模拟点击BACK键，请使用[pressBack(displayId: number)](#pressback20)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3547,11 +3551,11 @@ pressBack(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3575,7 +3579,7 @@ ArkTS-Dyn: pressBack(displayId: number): Promise\<void>
 
 ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
-对指定屏幕进行点击BACK键的操作。使用Promise异步回调。
+对指定屏幕模拟点击BACK键。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3595,11 +3599,11 @@ ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3624,7 +3628,7 @@ ArkTS-Dyn: triggerKey(keyCode: number): Promise\<void>
 
 ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
-传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3638,17 +3642,17 @@ ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3674,7 +3678,7 @@ ArkTS-Dyn: triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+在指定屏幕，传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3688,18 +3692,18 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出401错误码。  |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3723,7 +3727,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void\>
 
-通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键并点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3739,19 +3743,19 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3766,6 +3770,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 注入Ctrl+Alt+Delete组合键
   await driver.triggerCombineKeys(2072, 2047, 2035);
 }
 ```
@@ -3776,7 +3781,7 @@ ArkTS-Dyn: triggerCombineKeys(key0: number, key1: number, key2?: number, display
 
 ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3792,20 +3797,20 @@ ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int)
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
+| key0   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 指定的第三个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。传入displayId不存在时，将抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3830,7 +3835,7 @@ ArkTS-Dyn: click(x: number, y: number): Promise\<void>
 
 ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
-在目标坐标点单击。使用Promise异步回调。
+在目标坐标点单击。仅支持在设备默认屏幕上操作，如需指定屏幕请使用[clickAt](#clickat20)。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3844,18 +3849,18 @@ ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3892,17 +3897,17 @@ clickAt(point: Point): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3921,9 +3926,9 @@ async function demo() {
 }
 ```
 
-### clickAt
+### clickAtWithOptions
 
-clickAt(point: Point, options?: TouchOptions): Promise\<void>
+clickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
 
 在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
 
@@ -3939,18 +3944,18 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置[TouchOptions](#touchoptions)中的pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3961,7 +3966,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Drive, TouchOptions } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -3969,7 +3974,7 @@ async function demo() {
     pressure: 0.5
   };
   // 在目标坐标点进行单击，并指定触摸压力
-  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
+  await driver.clickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3993,18 +3998,18 @@ ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4041,17 +4046,17 @@ doubleClickAt(point: Point): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4076,7 +4081,7 @@ ArkTS-Dyn: longClick(x: number, y: number): Promise\<void>
 
 ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
-在目标坐标点长按。使用Promise异步回调。
+在目标坐标点长按。仅支持在设备默认屏幕上操作且不支持自定义长按时长，如需指定屏幕或长按时长请使用[longClickAt](#longclickat20)。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4090,18 +4095,18 @@ ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4140,12 +4145,12 @@ ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 
-### longClickAt
+### longClickAtWithOptions
 
-longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+longClickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
 
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4161,18 +4166,18 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 | 参数名 | 类型   | 必填 |说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置[TouchOptions](#touchoptions)中的duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4192,7 +4197,7 @@ async function demo() {
     pressure: 0.8  // 触摸压力值
   };
   // 在目标坐标点进行长按，并指定长按时长和触摸压力
-  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
+  await driver.longClickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -4202,7 +4207,7 @@ ArkTS-Dyn: swipe(startx: number, starty: number, endx: number, endy: number, spe
 
 ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
-从起始坐标点滑向目的坐标点。使用Promise异步回调。
+从起始坐标点滑向目的坐标点。仅支持在设备默认屏幕上操作，如需指定屏幕请使用[swipeBetween](#swipebetween20)。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4216,21 +4221,21 @@ ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): P
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
-| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
-| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                       |
+| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                       |
+| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                       |
+| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                     |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4269,19 +4274,19 @@ ArkTS-Sta: swipeBetween(from: Point, to: Point, speed?: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4300,9 +4305,9 @@ async function demo() {
 }
 ```
 
-### swipeBetween
+### swipeBetweenWithOptions
 
-swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+swipeBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4318,19 +4323,19 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置[TouchOptions](#touchoptions)中的speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4341,7 +4346,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -4350,7 +4355,7 @@ async function demo() {
     pressure: 0.5  // 触摸压力值
   };
   // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力
-  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+  await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -4360,7 +4365,7 @@ ArkTS-Dyn: drag(startx: number, starty: number, endx: number, endy: number, spee
 
 ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
-从起始坐标点拖拽至目的坐标点。使用Promise异步回调。
+从起始坐标点拖拽至目的坐标点。仅支持在设备默认屏幕上操作，不支持自定义拖拽前长按时长，如需指定屏幕或长按时长请使用[dragBetween](#dragbetween20)。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4376,25 +4381,26 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
+| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。              |
+| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。              |
+| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。               |
+| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。            |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。|
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4430,20 +4436,20 @@ ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Pro
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
-| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4462,9 +4468,9 @@ async function demo() {
 }
 ```
 
-### dragBetween
+### dragBetweenWithOptions
 
-dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+dragBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
@@ -4482,19 +4488,19 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置[TouchOptions](#touchoptions)中的pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4505,7 +4511,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -4515,7 +4521,7 @@ async function demo() {
     pressure: 0.5   // 触摸压力值
   };
   // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力
-  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+  await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -4543,11 +4549,11 @@ screenCap(savePath: string): Promise\<boolean>
 
 | 类型              | 说明                                        |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise对象，返回截图操作是否成功完成。true：完成，false：未完成。 |
+| Promise\<boolean> | Promise对象，返回截图操作是否成功完成。true：成功完成，false：未成功完成。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4587,17 +4593,17 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出401错误码。                  |
 
 **返回值：**
 
 | 类型              | 说明                                        |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise对象，返回截图操作是否成功完成。true：完成。false：未完成。 |
+| Promise\<boolean> | Promise对象，返回截图操作是否成功完成。true：成功完成。false：未成功完成。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4622,7 +4628,7 @@ ArkTS-Dyn: dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 
 ArkTS-Sta: dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
 
-获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
+获取当前布局信息并保存为JSON格式的文件，适用于需要分析UI控件层级结构或调试控件定位问题的测试场景。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -4636,18 +4642,18 @@ ArkTS-Sta: dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
+| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
 
 | 类型              | 说明                                        |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise对象，返回布局信息导出和文件存储是否成功完成。true：完成。false：未完成。 |
+| Promise\<boolean> | Promise对象，返回布局信息导出和文件存储是否成功完成。true：成功完成。false：未成功完成。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4671,7 +4677,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景，应用可以在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置"orientation" = "auto_rotation" 使能旋转功能。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4693,11 +4699,11 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4722,6 +4728,10 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 获取当前设备的屏幕显示方向。使用Promise异步回调。
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的显示方向。如需获取指定屏幕的显示方向，请使用[getDisplayRotation(displayId: number)](#getdisplayrotation20)。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -4738,7 +4748,7 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4786,7 +4796,7 @@ ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4809,7 +4819,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能，适用于需要在测试过程中锁定屏幕方向以保持特定显示状态的场景，例如测试横屏或竖屏下的布局稳定性。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4831,11 +4841,11 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4858,6 +4868,10 @@ async function demo() {
 
 getDisplaySize(): Promise\<Point>
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的大小。如需获取指定屏幕的大小，请使用[getDisplaySize(displayId: number)](#getdisplaysize20)。
+
 获取当前设备的屏幕大小。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -4876,7 +4890,7 @@ getDisplaySize(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4924,7 +4938,7 @@ ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4949,6 +4963,10 @@ getDisplayDensity(): Promise\<Point>
 
 获取当前设备屏幕的分辨率。使用Promise异步回调。
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的分辨率。如需获取指定屏幕的分辨率，请使用[getDisplayDensity(displayId: number)](#getdisplaydensity20)。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -4965,7 +4983,7 @@ getDisplayDensity(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5013,7 +5031,7 @@ ArkTS-Sta: getDisplayDensity(displayId: int): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5036,7 +5054,7 @@ async function demo() {
 
 wakeUpDisplay(): Promise\<void>
 
-唤醒当前设备即设备亮屏。使用Promise异步回调。
+唤醒当前设备（使设备亮屏）。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5050,11 +5068,11 @@ wakeUpDisplay(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5092,11 +5110,11 @@ pressHome(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5120,7 +5138,7 @@ ArkTS-Dyn: pressHome(displayId: number): Promise\<void>
 
 ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
-设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
+在设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5146,7 +5164,7 @@ ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5171,7 +5189,7 @@ ArkTS-Dyn: waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
-判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲，适用于在页面跳转、动画播放或加载等场景后，等待UI界面完全稳定再执行后续测试操作。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5185,8 +5203,8 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
-| timeout  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
+| idleTime | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
+| timeout  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 等待空闲的最大时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。                    |
 
 **返回值：**
 
@@ -5196,7 +5214,7 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5237,18 +5255,18 @@ ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<voi
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
-| stepLen | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| stepLen | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 滑动间隔距离，取值大于等于0的整数，单位：px。为负数时抛出401错误码。                                         |
+| speed   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5294,11 +5312,11 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 
 | 类型              | 说明                                  |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | Promise对象，返回操作是否成功完成。true：完成，false：未完成。 |
+| Promise\<boolean> | Promise对象，返回操作是否成功完成。true：成功完成，false：未成功完成。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5312,18 +5330,23 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 创建2指5步的滑动轨迹矩阵
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
+  // 设置第一根手指的滑动轨迹
   pointers.setPoint(0, 0, { x: 250, y: 480 });
   pointers.setPoint(0, 1, { x: 250, y: 440 });
   pointers.setPoint(0, 2, { x: 250, y: 400 });
   pointers.setPoint(0, 3, { x: 250, y: 360 });
   pointers.setPoint(0, 4, { x: 250, y: 320 });
+  // 设置第二根手指的滑动轨迹
   pointers.setPoint(1, 0, { x: 250, y: 480 });
   pointers.setPoint(1, 1, { x: 250, y: 440 });
   pointers.setPoint(1, 2, { x: 250, y: 400 });
   pointers.setPoint(1, 3, { x: 250, y: 360 });
   pointers.setPoint(1, 4, { x: 250, y: 320 });
+  // 注入双指滑动操作
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -5349,17 +5372,17 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5399,18 +5422,18 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出401错误码。                  |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5433,7 +5456,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。与[screenCap](#screencap9)的区别在于本接口支持通过rect参数指定截图区域，而非截取全屏。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5458,7 +5481,7 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5488,7 +5511,7 @@ ArkTS-Dyn: mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number
 
 ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5502,20 +5525,20 @@ ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Pro
 
 | 参数名 | 类型                          | 必填 | 说明                           |
 | ------ | ----------------------------- | ---- | ------------------------------ |
-| p      | [Point](#point9)              | 是   | 鼠标点击的坐标。               |
+| p      | [Point](#point9)              | 是   | 鼠标点击操作的目标坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5538,7 +5561,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5552,21 +5575,21 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 
 | 参数名 | 类型             | 必填 | 说明                                                        |
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
-| p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                            |
-| down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
-| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
-| key1   | number           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
-| key2   | number           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| p      | [Point](#point9) | 是   | 鼠标滚轮操作的目标坐标。                                         |
+| down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滚动。false表示向上滚动。 |
+| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应在鼠标光标位置滚动120px。为负数时抛出401错误码。         |
+| key1   | number           | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key2   | number           | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5609,11 +5632,11 @@ mouseMoveTo(p: Point): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5634,7 +5657,7 @@ async function demo() {
 
 ### createUIEventObserver<sup>10+</sup>
 
-createUIEventObserver(): UIEventObserver;
+createUIEventObserver(): UIEventObserver
 
 创建一个UI事件监听器。
 
@@ -5650,11 +5673,11 @@ createUIEventObserver(): UIEventObserver;
 
 | 类型                                   | 说明                                  |
 | ------------------------------------ | ------------------------------------- |
-|[UIEventObserver](#uieventobserver10) | 返回找到的目标窗口对象。 |
+|[UIEventObserver](#uieventobserver10) | 返回创建的UI事件监听器对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -5692,22 +5715,22 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, 
 
 | 参数名 | 类型             | 必填 | 说明                                                         |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                             |
-| down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。  |
-| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| p      | [Point](#point9) | 是   | 鼠标滚轮操作的目标坐标。                                              |
+| down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滚动。false表示向上滚动。  |
+| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应在鼠标光标位置滚动120px。为负数时抛出401错误码。           |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                                |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5748,8 +5771,8 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
@@ -5759,7 +5782,7 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5782,7 +5805,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5800,18 +5823,18 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5836,7 +5859,7 @@ ArkTS-Dyn: mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: nu
 
 ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, duration?: int): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5854,19 +5877,19 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, 
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| key1     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出401错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5891,7 +5914,7 @@ ArkTS-Dyn: mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<
 
 ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点，带有可见移动轨迹，适用于需要验证鼠标悬停效果、鼠标拖拽选择区域等依赖鼠标移动轨迹的测试场景。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5913,11 +5936,11 @@ ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<voi
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5966,11 +5989,11 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6014,7 +6037,7 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出401错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
@@ -6024,7 +6047,7 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6043,9 +6066,9 @@ async function demo() {
 }
 ```
 
-### mouseDrag
+### mouseDragWithOptions
 
-mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+mouseDragWithOptions(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
 
@@ -6065,18 +6088,18 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| touchOptions  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
-| keyOptions  | [KeyOptions](#keyoptions) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值参考[KeyOptions](#keyoptions)各属性默认值。 |
+| touchOptions  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置[TouchOptions](#touchoptions)中的speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+| keyOptions  | [KeyOptions](#keyoptions) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值继承[KeyOptions](#keyoptions)各属性默认值。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6087,7 +6110,7 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 ```ts
 // xxx.test.ets
-import { Driver, TouchOptions } from '@kit.TestKit';
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -6100,7 +6123,7 @@ async function demo() {
     key2: 2019   // C键
   };
   // 鼠标拖拽并同时按下Ctrl+C组合键
-  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
+  await driver.mouseDragWithOptions({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
@@ -6129,11 +6152,11 @@ inputText(p: Point, text: string): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6176,17 +6199,17 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
 | text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br/>**说明：** <br/>InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> [InputTextMode](#inputtextmode20).addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。<br/> 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论[InputTextMode](#inputtextmode20).paste取值为何，均以复制粘贴方式输入。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6239,19 +6262,19 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| fingers      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。取值不在范围内时抛出401错误码。 |
 | direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值。        |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值，用于设置触摸板多指滑动结束是否停留以及滑动速率，适用于在触摸板上模拟多指滑动手势的场景，如三指上滑切换任务视图等。        |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6295,7 +6318,7 @@ ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
 | direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
-| d           | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
+| d           | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应在鼠标光标位置滚动120px。为负数时抛出17000007错误码。         |
 | speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -6306,7 +6329,7 @@ ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6350,11 +6373,11 @@ penClick(point: Point): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6394,17 +6417,17 @@ ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔长按操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6448,11 +6471,11 @@ penDoubleClick(point: Point): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6494,17 +6517,17 @@ ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: 
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。                        |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6529,7 +6552,7 @@ ArkTS-Dyn: injectPenPointerAction(pointers: PointerMatrix, speed?: number, press
 
 ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure?: double): Promise\<void>
 
-模拟手写笔多点连续注入操作。使用Promise异步回调。
+模拟手写笔多点连续注入操作，适用于需要模拟手写笔连续书写、绘图等自定义轨迹操作的测试场景。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -6543,20 +6566,20 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br/>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。 |
 | speed      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
-| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为[0.0, 1.0]，包含0.0和1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。                                 |
 
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6571,10 +6594,13 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 创建单指8步的滑动轨迹矩阵
   let pointer = PointerMatrix.create(1, 8);
+  // 循环设置每步坐标点，模拟从下向上的滑动
   for (let step = 0; step < 8; step++) {
     pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
+  // 以600px/s速率和0.5压力值注入手写笔滑动操作
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
 ```
@@ -6583,7 +6609,7 @@ async function demo() {
 
 triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
 
-触发手写笔按键操作。使用Promise异步回调。
+触发手写笔按键操作，适用于需要模拟手写笔功能切换的测试场景，例如模拟空鼠模式下的点击操作或智慧键唤起等。使用Promise异步回调。
 
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -6598,10 +6624,10 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 | 参数名 | 类型       | 必填 | 说明                                                                 |
 | ------ | ---------- | ---- | -------------------------------------------------------------------- |
-| key | [PenKey](#penkey) | 是   | 手写笔按键。                                                   |
-| mode | [PenMode](#penmode) | 是   | 手写笔模式。                                                   |
-| operation | [PenKeyOperation](#penkeyoperation) | 是   | 操作类型。                                                     |
-| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。 |
+| key | [PenKey](#penkey) | 是   | 要触发的手写笔按键类型，用于指定执行操作的手写笔按键，如书写键、智慧键或空鼠键。      |
+| mode | [PenMode](#penmode) | 是   | 手写笔的工作模式，用于指定手写笔当前所处的操作模式，如手写模式或空鼠模式。         |
+| operation | [PenKeyOperation](#penkeyoperation) | 是   | 对手写笔按键执行的操作类型，用于指定按键的操作方式，如单击或双击。                |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。<br> **说明：** 当参数mode取值为[AIR_MOUSE](#penmode)且key取值为[AIR_MOUSE](#penkey)时，必须在options中设置point属性，否则将抛出17000007错误码。 |
 
 **支持的参数组合：**
 - mode取值为[HANDWRITING](#penmode)时：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
@@ -6616,7 +6642,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6663,18 +6689,18 @@ ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
+| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。为非整数时抛出401错误码。         |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br/>**说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6723,18 +6749,18 @@ ArkTS-Sta: knuckleKnock(pointers: Array\<Point>, times: int): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
-| times     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。取值不在范围内抛出17000007错误码。 |
+| times     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。取值不在范围内抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6782,18 +6808,18 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br/>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
+| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。|
 | speed    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6827,7 +6853,7 @@ ArkTS-Dyn: isComponentPresentWhenLongClick(on: On, point: Point, duration?: numb
 
 ArkTS-Sta: isComponentPresentWhenLongClick(on: On, point: Point, duration?: int): Promise\<boolean>
 
-在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
+在坐标点长按，并查找目标控件是否存在，适用于验证长按操作后动态出现的UI元素，例如长按后弹出的上下文菜单或编辑按钮等。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -6849,11 +6875,11 @@ ArkTS-Sta: isComponentPresentWhenLongClick(on: On, point: Point, duration?: int)
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在。false：不存在。 |
+| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在；false：不存在。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6878,7 +6904,7 @@ ArkTS-Dyn: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: nu
 
 ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: int, duration?: int): Promise\<boolean>
 
-从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点拖拽至终止点，并查找目标控件是否存在，适用于验证拖拽过程中动态出现的UI元素，例如拖拽文件到目标文件夹时验证文件夹高亮效果等。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -6893,8 +6919,8 @@ ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: in
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 | duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
@@ -6906,7 +6932,7 @@ ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: in
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6931,7 +6957,7 @@ ArkTS-Dyn: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: n
 
 ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: int): Promise\<boolean>
 
-从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点滑向终止点，并查找目标控件是否存在，适用于验证滑动操作过程中动态出现的UI元素，例如滑动删除列表项时验证删除按钮出现等。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -6946,8 +6972,8 @@ ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: i
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
-| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 
 **返回值：**
@@ -6958,7 +6984,7 @@ ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: i
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6979,7 +7005,7 @@ async function demo() {
 
 ## PointerMatrix<sup>9+</sup>
 
-存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
+存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](#injectmultipointeraction9)执行多指操作。
 
 ### create<sup>9+</sup>
 
@@ -7001,8 +7027,8 @@ ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
 
 | 参数名  | 类型   | 必填 | 说明                                       |
 | ------- | ------ | ---- | ------------------------------------------ |
-| fingers | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。传入不在取值范围内的值时抛出401错误码。  |
+| steps   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。传入不在取值范围内的值时抛出401错误码。  |
 
 **返回值：**
 
@@ -7047,8 +7073,8 @@ setPoint(finger: number, step: number, point: Point): void
 
 | 参数名 | 类型             | 必填 | 说明                                                       |
 | ------ | ---------------- | ---- | ---------------------------------------------------------- |
-| finger | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
-| step   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
+| finger | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造[PointerMatrix](#pointermatrix9)对象时设置的手指数。                                              |
+| step   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造[PointerMatrix](#pointermatrix9)对象时设置的操作的步骤数。                                               |
 | point  | [Point](#point9) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
 
 **错误码：**
@@ -7108,7 +7134,7 @@ getBundleName(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7152,7 +7178,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7196,7 +7222,7 @@ getTitle(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7240,7 +7266,7 @@ getWindowMode(): Promise\<WindowMode>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7280,11 +7306,11 @@ isFocused(): Promise\<boolean>
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise对象，返回窗口对象是否获取获焦状态。true：获焦。false：未获焦。 |
+| Promise\<boolean> | Promise对象，返回窗口对象是否获焦。true：获焦。false：未获焦。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7332,7 +7358,7 @@ isActived(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7372,11 +7398,11 @@ focus(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7420,18 +7446,18 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7475,19 +7501,19 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 | 参数名    | 类型                                 | 必填 | 说明                                                         |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
-| height    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
+| wide      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 调整后窗口的宽度，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                         |
+| height    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 调整后窗口的高度，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。                        |
 | direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7513,7 +7539,7 @@ async function demo() {
 
 split(): Promise\<void>
 
-将窗口模式切换成分屏模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
+将窗口模式切换成分屏模式。可通过[resume()](#resume9)恢复到之前的窗口模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7529,11 +7555,11 @@ split(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -7560,7 +7586,7 @@ async function demo() {
 
 maximize(): Promise\<void>
 
-将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+将窗口最大化。可通过[resume()](#resume9)恢复到之前的窗口模式。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7576,11 +7602,11 @@ maximize(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7607,7 +7633,7 @@ async function demo() {
 
 minimize(): Promise\<void>
 
-将窗口最小化。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+将窗口最小化。可通过[resume()](#resume9)恢复到之前的窗口模式。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7623,11 +7649,11 @@ minimize(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象，返回无结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7670,11 +7696,11 @@ resume(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7717,11 +7743,11 @@ close(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7766,7 +7792,7 @@ isActive(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
@@ -7812,7 +7838,7 @@ ArkTS-Sta: getDisplayId(): Promise\<int>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -7836,7 +7862,7 @@ async function demo() {
 
 ## UIEventObserver<sup>10+</sup>
 
-UI事件监听器。
+UI事件监听器，用于监听UI界面上的各类事件，包括toast控件出现事件、dialog控件出现事件、窗口变化事件以及控件操作事件。通过[Driver.createUIEventObserver()](#createuieventobserver10)创建实例。
 
 ### once('toastShow')<sup>10+</sup>
 
@@ -7876,13 +7902,17 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 创建UI事件监听器
   let observer: UIEventObserver = driver.createUIEventObserver();
+  // 定义回调函数，输出toast控件的属性信息
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
   }
+  // 订阅toast控件出现事件
   observer.once('toastShow', callback);
 }
 ```
@@ -8032,7 +8062,7 @@ async function demo() {
 
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
 
-开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)的窗口监听。
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)的窗口监听。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -8055,7 +8085,7 @@ once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowCh
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8110,7 +8140,7 @@ onceWindowChange(windowChangeType: WindowChangeType, options: WindowChangeOption
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8168,7 +8198,7 @@ once(type: 'componentEventOccur', componentEventType: ComponentEventType, option
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8228,7 +8258,7 @@ onceComponentEventOccur(componentEventType: ComponentEventType, options: Compone
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8726,17 +8756,17 @@ click(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 // xxx.test.ets
-import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
-  let driver: Driver = Driver.create();
-  let button: Component | null = await driver.findComponent(ON.type('Button'));
+  let driver: UiDriver = UiDriver.create();
+  let button: UiComponent = await driver.findComponent(BY.type('Button'));
   await button.click();
 }
 ```
@@ -8761,7 +8791,7 @@ doubleClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -8796,7 +8826,7 @@ longClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9024,7 +9054,7 @@ async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent | null = await driver.findComponent(BY.scrollable(true));
   if (scrollBar) {
-    if (await scrollBar.isEnabled()) {
+    if (await scrollBar.isScrollable()) {
       console.info('This scrollBar can be operated');
     } else {
       console.info('This scrollBar can not be operated');
@@ -9103,7 +9133,7 @@ import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
   let driver: UiDriver = UiDriver.create();
-  let button: UiComponent | null = await driver.findComponent(ON.type('Button'));
+  let button: UiComponent = await driver.findComponent(BY.type('Button'));
   if (button) {
     if (await button.isFocused()) {
       console.info('This button is focused');
@@ -9184,7 +9214,7 @@ inputText(text: string): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9244,7 +9274,7 @@ async function demo() {
 
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
 
-该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
+该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 > **说明：**
 >
@@ -9287,7 +9317,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-UiDriver对象在给定的时间内延时。使用Promise异步回调。
+延迟指定的时间。使用Promise异步回调。
 
 > **说明：**
 >
@@ -9303,13 +9333,13 @@ UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
 | 参数名   | 类型   | 必填 | 说明         |
 | -------- | ------ | ---- | ------------ |
-| duration | number | 是   | 给定的时间。 |
+| duration | number | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9429,11 +9459,11 @@ assertComponentExist(by: By): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
@@ -9473,7 +9503,7 @@ UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9491,7 +9521,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
+传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 > **说明：**
 >
@@ -9507,19 +9537,19 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。使用
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 // xxx.test.ets
-import { Driver, UiDriver } from '@kit.TestKit';
+import { UiDriver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
@@ -9548,15 +9578,15 @@ UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异�
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y      | number | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9589,15 +9619,15 @@ UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异�
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y      | number | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9630,15 +9660,15 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | 是   | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y      | number | 是   | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -9671,17 +9701,17 @@ UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| startx | number | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。 |
-| starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。 |
-| endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。 |
-| endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。 |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| startx | number | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| starty | number | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endx   | number | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endy   | number | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 

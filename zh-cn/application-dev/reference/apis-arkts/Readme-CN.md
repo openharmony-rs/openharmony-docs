@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 - ArkTS API<!--arkts-arkts-->
   - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
@@ -25,7 +25,7 @@
     - [Interface (ConcatArray)](arkts-apis-arkts-collections-ConcatArray.md)
     - [Types](arkts-apis-arkts-collections-Types.md)
   - [@arkts.lang (ArkTS语言基础能力)](js-apis-arkts-lang.md)
-  - [@arkts.math.Decimal (高精度数学库Decimal)](js-apis-arkts-decimal.md)
+  - [@arkts.math.Decimal (任意精度数学库Decimal)](js-apis-arkts-decimal.md)
   - @arkts.utils (ArkTS工具库)<!--js-apis-arkts-utils-->
     - [模块描述](arkts-apis-arkts-utils.md)
     - [Functions](arkts-apis-arkts-utils-f.md)
@@ -68,9 +68,22 @@
       - [Byte](arkts-sta-byte.md)
       - [Char](arkts-sta-char.md)
       - [Deepcopy (深拷贝)](arkts-sta-deepcopy.md)
+      - [Exceptions](arkts-sta-exceptions.md)
+      - [Float](arkts-sta-float.md)
+      - [Function](arkts-sta-function.md)
+      - [Functions](arkts-sta-functions.md)
+      - [Global](arkts-sta-global.md)
       - [Int](arkts-sta-int.md)
+      - [Intl](arkts-sta-intl.md)
+      - [Iterator](arkts-sta-iterator.md)
       - [JSON](arkts-sta-json.md)
+      - [Long](arkts-sta-long.md)
       - [Map](arkts-sta-map.md)
+      - [Math](arkts-sta-math.md)
+      - [null](arkts-sta-null.md)
+      - [Numeric](arkts-sta-numeric.md)
+      - [Object](arkts-sta-object.md)
+      - [ReadonlyArray](arkts-sta-readonly-array.md)
       - [Set](arkts-sta-set.md)
       - [jsonx](arkts-sta-jsonx.md)
       - [reflect](arkts-sta-reflect.md)
@@ -103,7 +116,7 @@
     - [@ohos.util.Vector (线性容器Vector)](js-apis-vector.md)
 - 错误码<!--arkts-arkts-errcode-->
   - [语言基础类库错误码](errorcode-utils.md)
-  - [Typescript Compiler错误码](errorcode-tsc.md)
+  - [TypeScript Compiler错误码](errorcode-tsc.md)
   - [编译工具链错误码](errorcode-ets-loader.md)
   - [Es2abc编译器错误码](errorcode-es2abc.md)
   - [源码混淆错误码](errorcode-source-obfuscation.md)

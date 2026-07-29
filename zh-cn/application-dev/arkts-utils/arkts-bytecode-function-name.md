@@ -5,10 +5,10 @@
 <!--Owner: @jokerxd-liu; @zmw1-->
 <!--Designer: @huyunhui1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
-本文介绍字节码文件中[Method](arkts-bytecode-file-format.md#method)的`name_off`字段指向的字符串的命名规则，该命名规则从方舟字节码文件版本`12.0.4.0`开始生效。
+本文介绍方舟字节码文件中[Method](arkts-bytecode-file-format.md#method)的`name_off`字段指向的字符串的命名规则，该命名规则从方舟字节码文件版本`12.0.4.0`开始生效。
 ## 入口函数
 模块加载时被执行的函数，名称固定为`func_main_0`。
 ## 非入口函数
@@ -16,18 +16,18 @@
 ```ts
 #前缀#原函数名
 ```
-下面的章节将会详细介绍前缀和原函数名。
+下面的章节将会详细介绍[前缀](#前缀)和[原函数名](#原函数名)。
 ### 前缀
-前缀包含函数定义时所在的作用域信息，具体包括以下几个部分：
-* 作用域标签
-* 作用域名称
-* 重名序号
+前缀由一个或多个作用域层级和函数自身的作用域标签依次拼接组成。每个作用域层级包含三部分：作用域标签、作用域名称和重名序号（可选）。结构如下：
 
-前缀的结构为：
-```ts
-<作用域标签1><作用域名称1>[<重名序号>]<作用域标签2><作用域名称2><[重名序号]>...<作用域标签n><作用域名称n>[<重名序号>]<作用域标签n+1>
+```text
+作用域标签1  作用域名称1  [重名序号]  ...  作用域标签n  作用域名称n  [重名序号]  函数作用域标签
 ```
-其中<>仅为便于阅读的分割标识，并不包含在实际的前缀中，[]表示可以为空。仅当出现重名作用域时才需要[<重名序号>]，即[<重名序号>]可以为空。最后一个作用域标签是本函数所对应的标签。
+
+其中：
+- 各部分直接拼接，无分隔符。
+- `[]`表示其中的内容可以为空。仅当出现重名作用域时才需要重名序号，否则省略。
+- 最后的"函数作用域标签"是本函数所对应的标签，不包含作用域名称和重名序号。
  
 **作用域标签**
  
@@ -44,7 +44,7 @@
  
 **作用域名称**
  
-源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在字节码文件中源代码对应的[Class](arkts-bytecode-file-format.md#class)中有一个名为`scopeNames`的[field](arkts-bytecode-file-format.md#field), 这个field的值是指向一个[LiteralArray](arkts-bytecode-file-format.md#literalarray)的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不进行索引转换。
+源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在方舟字节码文件中源代码对应的[Class](arkts-bytecode-file-format.md#class)中有一个名为`scopeNames`的[field](arkts-bytecode-file-format.md#field), 这个field的值是指向一个[LiteralArray](arkts-bytecode-file-format.md#literalarray)的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不进行索引转换。
 
 例子：
 <!-- @[scope_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ScopeName.ts) -->    
@@ -104,7 +104,7 @@ function foo() {}; // 原函数名为"foo"
    }
    ```
 
-* 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
+* 如果属性名包含`\`或`.`，为防止二义性，其原函数名会按照匿名函数命名。
    <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/OriginalFuncName.ts) -->  
 
    ``` TypeScript

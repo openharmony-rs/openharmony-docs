@@ -321,7 +321,7 @@ SyncMonitor: MonitorDecorator
 
 | 名称        | 类型             | 说明                           |
 | ----------- | ---------------- | ------------------------------ |
-| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 方法装饰器，监听状态变量的修改。 |
 
 **错误码：**
 

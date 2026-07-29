@@ -407,7 +407,7 @@ constructor(initializingProperties?: RecordData)
 
 | 参数名                    | 类型     | 必填   | 说明                                     |
 | ---------------------- | ------ | ---- | ---------------------------------------- |
-| initializingProperties | RecordData | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。 |
+| initializingProperties | [RecordData](../../apis-arkdata/js-apis-data-preferences.md#recorddata23) | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。 |
 
 **示例：**
 ```ts

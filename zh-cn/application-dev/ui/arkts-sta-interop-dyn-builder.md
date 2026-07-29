@@ -8,7 +8,7 @@
 
 ## 概述
 
-从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于ArkTS-Sta互操作中使用@Builder自定义构建函数的场景。
+从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用@Builder自定义构建函数的场景。
 
 
 ## 使用限制
@@ -27,7 +27,7 @@
 
 开发者可以通过[`UIUtils.makeBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
 
-在ArkTS-Sta调用ArkTS-Dyn自定义构建函数的场景下，ArkTS-Dyn侧@Builder需要接收动态`Binding`或动态`MutableBinding`类型。由于ArkTS-Sta侧通过`UIUtils.makeBinding()`创建的是静态`Binding`或静态`MutableBinding`，与ArkTS-Dyn的参数类型不兼容。因此在传递给@Builder之前，需要使用`transfer.transferDynamic()`将其转换为动态`Binding`或动态`MutableBinding`类型。
+在ArkTS-Sta调用ArkTS-Dyn自定义构建函数的场景下，ArkTS-Dyn侧@Builder需要接收动态`Binding`或动态`MutableBinding`类型。由于ArkTS-Sta侧通过`UIUtils.makeBinding()`创建的是静态`Binding`或静态`MutableBinding`，与ArkTS-Dyn的参数类型不兼容。因此在传递给@Builder之前，需要使用[`transfer.transferDynamic()`](../reference/apis-arkts/js-apis-transfer.md#transfertransferdynamic)将其转换为动态`Binding`或动态`MutableBinding`类型。
 
 > **说明：**
 >
@@ -386,7 +386,7 @@ struct MainPage {
 
 ### 声明文件编译报错
 
-在ArkTS-Sta中调用ArkTS-Dyn的@Builder并按回调传递参数时，`transfer.transferDynamic()`的返回类型为`Any`。由于ArkTS-Sta主模块会将ArkTS-Dyn子模块生成的ArkTS-Sta声明文件一并参与编译，且静态编译器会严格校验参数类型，若声明文件中仍保留`MutableBinding<number>`、`Binding<number>`等具体类型，可能引发编译报错。
+在ArkTS-Sta中调用ArkTS-Dyn的@Builder并按回调传递参数时，[`transfer.transferDynamic()`](../reference/apis-arkts/js-apis-transfer.md#transfertransferdynamic)的返回类型为`Any`。由于ArkTS-Sta主模块会将ArkTS-Dyn子模块生成的ArkTS-Sta声明文件一并参与编译，且静态编译器会严格校验参数类型，若声明文件中仍保留`MutableBinding<number>`、`Binding<number>`等具体类型，可能引发编译报错。
 
 以上文[按回调传递参数](#按回调传递参数)示例为例，定义@Builder的ArkTS-Dyn源文件为`dynamic_library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Sta声明文件位于`dynamic_library/build/default/intermediates/declgen/default/declgenV2/src/main/ets/components/MainPage.d.ets`。如遇编译报错，可将声明文件中的参数类型手动修改为`Any`后增量编译。示例如下。
 

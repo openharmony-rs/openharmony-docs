@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS枚举在ANI中有专门的枚举和枚举项类型。ArkTS枚举作为native参数传入，或native侧需要按名称获取枚举项时，可以使用ANI提供的Enum相关接口。
 

@@ -111,7 +111,7 @@ OHIPCRemoteStub *NativeChildProcess_OnConnect()
     return g_ipcStubObj.GetRemoteStub();
 }
 
-void NativeChildProcessMainProc()
+void NativeChildProcess_MainProc()
 {
     // 相当于子进程的Main函数，实现子进程的业务逻辑
     // ...
@@ -130,6 +130,8 @@ void NativeChildProcessMainProc()
 ``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
+// ...
+int32_t g_result = -1;
 // ...
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {

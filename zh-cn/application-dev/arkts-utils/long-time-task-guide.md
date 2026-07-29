@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 此处提供使用TaskPool进行长时任务的开发指导，以定期采集传感器数据为例。
 
@@ -38,7 +38,7 @@
    }
    ```
 
-3. 给sensor添加ohos.permission.ACCELEROMETER权限。
+3. 给sensor添加ohos.permission.ACCELEROMETER权限，在module.json5中添加如下代码。
 
    ```json
    "requestPermissions": [
@@ -87,14 +87,14 @@
              this.sensorTask = new taskpool.LongTask(sensorListener);
              emitter.on({ eventId: 0 }, (data) => {
                // Do something here
-               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
              });
              taskpool.execute(this.sensorTask).then(() => {
+               this.addListener = 'success';
                console.info('Add listener of ACCELEROMETER success');
              }).catch((e: BusinessError) => {
-               // Process error
+               this.addListener = 'failed';
              })
-             this.addListener = 'success';
            })
          Text(this.deleteListener)
            .id('Delete listener')
@@ -105,10 +105,11 @@
              emitter.off(0);
              if (this.sensorTask != undefined) {
                taskpool.terminateTask(this.sensorTask);
+               this.deleteListener = 'success';
              } else {
                console.error('sensorTask is undefined.');
+               this.deleteListener = 'failed';
              }
-             this.deleteListener = 'success';
            })
        }
        .height('100%')

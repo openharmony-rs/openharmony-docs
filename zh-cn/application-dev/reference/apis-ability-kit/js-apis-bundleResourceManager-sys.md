@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供应用资源数据查询能力，支持[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)和[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)等信息的查询。
@@ -12,9 +12,9 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块从API version 12 开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
+> 本模块从API version 12开始支持查询被禁用应用和设备上已安装应用(不区用户)的图标和名称资源。
 >
 > 本模块为系统接口。
 
@@ -24,15 +24,13 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-## 枚举
-
-### ResourceFlag
+## ResourceFlag
 
 资源信息标志，指示需要获取的资源信息的内容。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 | 名称                                                     | 值         | 说明                                                         |
 | -------------------------------------------------------- | ---------- | ------------------------------------------------------------ |
@@ -44,9 +42,7 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 | GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | 用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo)和[getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo)接口中生效。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 
-## 接口
-
-### bundleResourceManager.getBundleResourceInfo
+## bundleResourceManager.getBundleResourceInfo
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo
 
@@ -107,7 +103,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfo
+## bundleResourceManager.getLauncherAbilityResourceInfo
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -167,7 +163,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllBundleResourceInfo
+## bundleResourceManager.getAllBundleResourceInfo
 
 ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array\<BundleResourceInfo>>): void
 
@@ -204,7 +200,7 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<
 
 **示例：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -222,9 +218,10 @@ try {
   });
 } catch (err) {
   let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
-ArkTS-Sta: 
+ArkTS-Sta示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,7 +241,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllBundleResourceInfo
+## bundleResourceManager.getAllBundleResourceInfo
 
 ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number): Promise<Array\<BundleResourceInfo>>
 
@@ -286,7 +283,7 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array\<BundleRe
 
 **示例：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -305,7 +302,7 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
-ArkTS-Sta: 
+ArkTS-Sta示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -323,7 +320,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllLauncherAbilityResourceInfo
+## bundleResourceManager.getAllLauncherAbilityResourceInfo
 
 ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array\<LauncherAbilityResourceInfo>>): void
 
@@ -403,7 +400,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllLauncherAbilityResourceInfo
+## bundleResourceManager.getAllLauncherAbilityResourceInfo
 
 ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array\<LauncherAbilityResourceInfo>>
 
@@ -484,7 +481,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
+## bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
 ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo
 
@@ -550,7 +547,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
+## bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
 ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -614,7 +611,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
+## bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
 
 ArkTS-Dyn: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -680,7 +677,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
+## bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
 
 getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise\<Array\<BundleResourceInfo>>
 
@@ -734,7 +731,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
+## bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
 
 ArkTS-Dyn: getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceFlags: number): Promise\<Array\<LauncherAbilityResourceInfo>>
 
@@ -777,8 +774,8 @@ ArkTS-Sta: getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>
 | 202      | Permission denied. A non-system application is not allowed to call a system API. |
 | 801      | Capability not supported. |
 | 17700001 | The specified bundle is not found.  |
-| 17700002 | The specified module is not found.  |
-| 17700003 | The specified ability is not found. |
+| 17700002 | The specified module is not existed. |
+| 17700003 | The specified ability is not existed. |
 | 17700061 | The specified app index is invalid. |
 
 **示例：**

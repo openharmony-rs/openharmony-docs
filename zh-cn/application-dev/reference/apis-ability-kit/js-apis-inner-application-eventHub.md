@@ -13,7 +13,7 @@ EventHub是系统提供的基于发布-订阅模式实现的事件通信机制�
 
 不同的Context对象拥有不同的EventHub对象，不同EventHub对象之间无法直接通信。事件的订阅、取消订阅、触发都作用在某一个具体的EventHub对象上。
 
-由于Worker、Taskpool通过Actor模型实现[多线程并发](../../arkts-utils/multi-thread-concurrency-overview.md#多线程并发模型)，不同虚拟机实例之间拥有独占的内存，因此EventHub对象不能用于线程间的数据通信。
+由于Worker、TaskPool通过Actor模型实现[多线程并发](../../arkts-utils/multi-thread-concurrency-overview.md#多线程并发模型)，不同虚拟机实例之间拥有独占的内存，因此EventHub对象不能用于线程间的数据通信。
 
 
 > **说明：**
@@ -26,7 +26,7 @@ EventHub是系统提供的基于发布-订阅模式实现的事件通信机制�
 
 ## 约束限制
 
-- 不支持在进程间通过Eventhub对象进行数据通信。
+- 不支持在进程间通过EventHub对象进行数据通信。
 - 不支持在Worker、TaskPool线程间通过EventHub对象进行数据通信。如需进行跨线程通信，参考[使用Emitter进行线程间通信](../../basic-services/common-event/itc-with-emitter.md)。
 - 不支持同一线程内不同Context对象的EventHub对象间进行数据通信。
 - 通过[sendableContextManager](js-apis-app-ability-sendableContextManager.md)转换后的Context对象与原先的Context对象属于不同Context对象，不支持其EventHub对象间的数据通信。
@@ -64,7 +64,7 @@ export default class EntryAbility extends UIAbility {
 
 on(event: string, callback: Function): void
 
-订阅指定事件。
+订阅指定事件。使用前需先通过Context对象获取EventHub实例。
 > **说明：**
 >
 >  callback被emit触发时，调用方是EventHub对象，如果要修改callback中this的指向，可以使用箭头函数。
@@ -82,7 +82,7 @@ on(event: string, callback: Function): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event | string | 是 | 事件名称。 |
-| callback | Function | 是 | 事件回调，事件触发后调用。 |
+| callback | Function | 是 | 事件触发后的回调函数。回调函数无返回值，可接收由emit方法传递的参数。 |
 
 **错误码**：
 
@@ -131,7 +131,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 **示例2：**
-callback使用箭头函数时，调用方是EntryAbility对象。EntryAbility对象里存在value属性，因此结果是12。
+callback使用箭头函数时，this指向EntryAbility对象。EntryAbility对象里存在value属性，因此结果是12。
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -175,7 +175,7 @@ export default class EntryAbility extends UIAbility {
 
 off(event: string, callback?: Function): void;
 
-取消订阅指定事件。
+取消订阅指定事件。使用前需先通过Context对象获取EventHub实例。
  - 传入callback：取消指定的callback对指定事件的订阅，当该事件触发后，将不会回调该callback。
  - 不传callback：取消所有callback对指定事件的订阅。
 
@@ -237,7 +237,7 @@ export default class EntryAbility extends UIAbility {
 
 emit(event: string, ...args: Object[]): void;
 
-触发指定事件。
+触发指定事件。使用前需先通过Context对象获取EventHub实例。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 

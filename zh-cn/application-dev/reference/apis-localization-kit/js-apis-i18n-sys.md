@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
- 本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化支持能力。
+ 本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[国际化-Intl](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化支持能力。
 
 >  **说明：**
 >
@@ -36,6 +36,13 @@ static setSystemLanguage(language: string): void
 
 设置系统语言。
 
+若要监听系统语言变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
+
+>  **说明：**
+>  
+> 可以通过[i18n.System.getSystemLanguage()](js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。
+> 从API version 21开始，也可以使用[param工具](../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
@@ -50,7 +57,7 @@ static setSystemLanguage(language: string): void
 
 | 参数名      | 类型     | 必填   | 说明    |
 | -------- | ------ | ---- | ----- |
-| language | string | 是    | [合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。<br/>**说明：**<br/>可以通过[i18n.System.getSystemLanguage()](js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br/>从API version 21开始，也可以使用[param工具](../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。 |
+| language | string | 是    | [合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -82,7 +89,11 @@ static setSystemRegion(region: string): void
 
 设置系统地区。
 
-若要监听系统地区变化，可以监听[事件](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED。
+若要监听系统地区变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
+
+>  **说明：**
+>  
+> 可以通过[i18n.System.getSystemRegion()](js-apis-i18n.md#getsystemregion9)接口获取系统地区。
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +109,7 @@ static setSystemRegion(region: string): void
 
 | 参数名    | 类型     | 必填   | 说明    |
 | ------ | ------ | ---- | ----- |
-| region | string | 是    | 合法的地区ID。 |
+| region | string | 是    | [合法的地区ID](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -133,7 +144,7 @@ static setSystemLocale(locale: string): void
 
 设置系统区域。
 
-若要监听系统区域变化，可以监听[事件](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED。
+若要监听系统区域变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
 
 **系统接口**：此接口为系统接口。
 
@@ -244,7 +255,7 @@ ArkTS-Sta: static addPreferredLanguage(language: string, index?: int): void
 | 参数名      | 类型     | 必填   | 说明         |
 | -------- | ------ | ---- | ---------- |
 | language | string | 是    | 待添加的偏好语言，要求是[合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。  |
-| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
+| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 偏好语言的添加位置。<br>取值范围：[0, 系统偏好语言列表长度]，小于0时取值为0，大于系统偏好语言列表长度时取值为系统偏好语言列表长度。<br>默认值：系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -294,7 +305,7 @@ ArkTS-Sta: static removePreferredLanguage(index: int): void
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | --------------------- |
-| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 待删除偏好语言在系统偏好语言列表中的位置。<br>取值范围：[0, 系统偏好语言列表长度]，小于0时取值为0，大于系统偏好语言列表长度时取值为系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -1104,7 +1115,7 @@ getLanguageInfoArray(languages: Array&lt;string&gt;, options?: SortOptions): Arr
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
 | languages | Array&lt;string&gt; | 是   | 待排序的语言列表，要求是[合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。|
-| options   | [SortOptions](#sortoptions10)   | 否   | 语言排序选项。 |
+| options   | [SortOptions](#sortoptions10)   | 否   | 语言排序选项。<br>默认值：所有属性都取默认值时的配置项。 |
 
 **返回值：**
 
@@ -1159,7 +1170,7 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
-| regions   | Array&lt;string&gt; | 是   | 待排序的国家或地区列表，要求是合法的国家或地区ID。|
+| regions   | Array&lt;string&gt; | 是   | 待排序的国家或地区列表，要求是[合法的国家或地区ID](../../internationalization/i18n-locale-culture.md#实现原理)。|
 | options   | [SortOptions](#sortoptions10)   | 否   | 国家或地区排序选项。<br>区域ID的默认值为系统当前区域ID，isUseLocalName的默认值为false，isSuggestedFirst的默认值为true。 |
 
 **返回值：**
@@ -1277,9 +1288,9 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。              |
 | cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。                   |
 | cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。          |
-| offset          | number             |   否    |   否    | 时区ID的偏移量。                         |
+| offset          | number             |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。                         |
 | zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。          |
-| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量。                       |
+| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。                       |
 
 
 ## SuggestionType<sup>10+</sup>
@@ -1298,10 +1309,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | ---------------------- | ---- | ---- |
 | SUGGESTION_TYPE_NONE   | 0x00 | 非推荐语言或国家地区。 |
 | SUGGESTION_TYPE_RELATED| 0x01 | 系统语言推荐的国家地区或系统国家地区推荐的语言。 |
-| SUGGESTION_TYPE_SIM    | 0x02 | Sim卡国家地区推荐的语言。 |
+| SUGGESTION_TYPE_SIM    | 0x02 | SIM卡国家地区推荐的语言。 |
 
 
-## SortOptions<sup>10+<sup>
+## SortOptions<sup>10+</sup>
 
 语言或国家地区排序选项。
 

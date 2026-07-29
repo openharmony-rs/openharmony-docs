@@ -28,7 +28,7 @@
 
 - [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
 
-自定义组件生命周期受状态机限制，流程如下图所示。
+自定义组件生命周期受状态机限制，每个生命周期回调函数仅在特定的状态转换阶段才会被调用，比如\@ComponentReuse的限制条件是从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，\@ComponentAppear仅在组件处于CustomComponentLifecycleState.INIT状态时触发，流程如下图所示。
 
 ![custom-component-lifecycle-demo1](figures/customcomponent-lifecycle-new-state.png)
 
@@ -62,18 +62,20 @@
 
 进入复用池的组件转变为非激活态。可复用组件从复用池中重新添加到节点树时转变为激活态。本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况。
 
-```ts
+<!-- @[ComponentActiveRecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveRecycle.ets) -->  
+
+``` TypeScript
 import { ComponentActive, ComponentInactive, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State changeChild: boolean = false;
 
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // 切换Child组件的显示状态，触发组件的回收或复用
           this.changeChild = !this.changeChild;
@@ -130,6 +132,8 @@ struct Child {
 }
 ```
 
+![new-lifecycle-syn-0](./figures/new-lifecycle-syn-0.gif)
+
 上述代码建议按以下步骤执行。
 
 1. 点击change，Child组件第一次创建。
@@ -156,7 +160,9 @@ struct Child {
 
 懒创建场景包含[Tabs](../../ui/arkts-navigation-tabs.md)和[Navigation](../../ui/arkts-navigation-introduction.md)，以下示例展示Navigation和Tabs场景中，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机。
 
-```typescript
+<!-- @[ComponentActiveLazyCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveLazyCreate.ets) -->
+
+``` TypeScript
 // Index.ets
 @Entry
 @Component
@@ -168,26 +174,30 @@ struct Index {
     Column() {
       Navigation(this.pageStack) {
         Text(this.message)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageOne页面
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`PageTwo`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageTwo页面
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
       }
     }
   }
 }
 ```
 
-```typescript
-// PageOne.ets
+<!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
   PageOne()
@@ -202,18 +212,21 @@ struct PageOne {
     NavDestination() {
       Column() {
         Text(`PageOne`)
+          .margin(10)
         Button('PageTwo')
+          .margin(10)
           .onClick(() => {
             // 跳转到PageTwo页面
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // 返回上一页
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -224,8 +237,9 @@ struct PageOne {
 }
 ```
 
-```typescript
-// PageTwo.ets
+<!-- @[PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageTwo.ets) -->  
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 
 @Builder
@@ -237,39 +251,33 @@ export function PageTwoBuilder() {
 @Component
 struct PageTwo {
   @State pageStack: NavPathStack = new NavPathStack();
-  @State @Watch('onMessageUpdated') message: number = 0;
-
-  onMessageUpdated() {
-    console.info(`TabContent message callback func ${this.message}`);
-  }
 
   build() {
     NavDestination() {
       Column() {
         Text(`PageTwo`)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // 跳转到PageOne页面
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // 返回上一页
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
         Row() {
           Column() {
-            Button(`change message`)
-              .onClick(() => {
-                this.message++;
-              })
             TabsComponent();
           }
           .width('100%')
         }
-        .height('100%')
+        .margin(10)
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -305,7 +313,6 @@ struct FreezeChild {
 @Component
 struct TabsComponent {
   private data: number[] = [0, 1, 2];
-  private controller: TabsController = new TabsController();
   @State @Watch('onMessageUpdated') message: number = 0;
 
   onMessageUpdated() {
@@ -316,8 +323,10 @@ struct TabsComponent {
     Column() {
       Button(`Incr state ${this.message}`)
         .onClick(() => {
+          // 点击Button修改message，触发可见TabContent的onMessageUpdated回调
           this.message++;
         })
+        .margin(10)
       Tabs() {
         ForEach(this.data, (item: number) => {
           TabContent() {
@@ -330,7 +339,7 @@ struct TabsComponent {
       .scrollable(true)
       .barMode(BarMode.Fixed)
       .barWidth(400)
-      .barHeight(150)
+      .barHeight(50)
       .animationDuration(400)
       .width('100%')
       .height(200)
@@ -369,6 +378,8 @@ struct TabsComponent {
 }
 ```
 
+![new-lifecycle-syn-1](./figures/new-lifecycle-syn-1.gif)
+
 **场景说明与日志输出：**
 
 本示例展示了`Navigation`页面路由和`TabContent`切换场景下的组件激活/非激活状态变化。当页面路由切换时，离开页面的FreezeChild触发`@ComponentInactive`，返回时触发`@ComponentActive`。
@@ -406,7 +417,9 @@ struct TabsComponent {
 
 本示例展示了`List`和`LazyForEach`场景下的组件激活/非激活状态变化。
 
-```typescript
+<!-- @[ComponentActivePreRender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePreRender.ets) -->
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 import { MyDataSource } from './BasicDataSource';
 
@@ -414,38 +427,41 @@ import { MyDataSource } from './BasicDataSource';
 @Component
 struct Index {
   @State dataSource: MyDataSource<string> = new MyDataSource();
-  private scrollerForList: Scroller = new Scroller();
   @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   @State changeShow: boolean = false;
 
   aboutToAppear(): void {
     for (let index = 1; index <= 50; index++) {
-      this.dataSource.pushData('page-' + index);
+      this.dataSource.pushData('page - ' + index);
     }
   }
 
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // 控制List的创建和销毁
           this.changeShow = !this.changeShow;
         })
       if (this.changeShow) {
         List({ space: 10 }) {
-          LazyForEach(this.dataSource, (item: number, index: number) => {
+          LazyForEach(this.dataSource, (item: string, index: number) => {
             ListItem() {
               Child({ item: item.toString(), index: index.toString() })
             }
-            .backgroundColor(Color.Orange)
+            .backgroundColor(Color.Pink)
             .width('100%')
-          }, (item: number) => item.toString())
+            .height('15%')
+          }, (item: string) => item.toString())
         }
-        .height(360)
+        .width('80%')
+        .height('60%')
         // 预加载区域可容纳节点数量为5
         .cachedCount(5, false)
       }
     }
+    .width('100%')
   }
 }
 
@@ -471,8 +487,9 @@ struct Child {
 }
 ```
 
-```typescript
-// BasicDataSource.ets
+<!-- @[BasicDataSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/BasicDataSource.ets) -->
+
+``` TypeScript
 abstract class BasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];
   abstract totalCount(): number;
@@ -521,23 +538,26 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
+
+![new-lifecycle-syn-2](./figures/new-lifecycle-syn-2.gif)
+
 **场景说明与日志输出：**
 
 上述代码建议按以下步骤执行。
 
 1. 点击change按钮，位于预加载区域的组件触发@ComponentInactive。
    ```text
-   Child myInactive, index: 13
-   Child myInactive, index: 14
-   Child myInactive, index: 15
-   Child myInactive, index: 16
-   Child myInactive, index: 17
+   Child myInactive, index: 6
+   Child myInactive, index: 7
+   Child myInactive, index: 8
+   Child myInactive, index: 9
+   Child myInactive, index: 10
    ```
 
 2. 向下滑动List，进入加载区域的组件触发@ComponentActive，进入预加载区域的组件触发@ComponentInactive，离开加载区域的组件触发@ComponentInactive。
    ```text
-   Child myActive, index: 13
-   Child myInactive, index: 18
+   Child myActive, index: 6
+   Child myInactive, index: 11
    Child myInactive, index: 0
    ```
 
@@ -549,7 +569,9 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 本示例展示了页面可见性变化场景下的组件激活/非激活状态变化。
 
-```typescript
+<!-- @[ComponentActivePageVisible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePageVisible.ets) -->
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 
 @Entry
@@ -579,6 +601,8 @@ struct MyActiveSample {
 }
 ```
 
+![new-lifecycle-syn-3](./figures/new-lifecycle-syn-3.png)
+
 **场景说明与日志输出：**
 
 上述代码建议按以下步骤执行。
@@ -604,7 +628,7 @@ struct MyActiveSample {
 - 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
 
 - 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
-  ```typescript
+  ``` TypeScript
   @Computed
   @ComponentAppear
   get sum() {
@@ -621,7 +645,9 @@ struct MyActiveSample {
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-```typescript
+<!-- @[ComponentNesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentNesting.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { ComponentAppear, ComponentBuilt, ComponentDisappear } from '@kit.ArkUI';
 
@@ -634,6 +660,7 @@ struct Index {
     Column() {
       Button('delete Parent And Child')
         .margin(20)
+        .width('60%')
         .backgroundColor(this.btnColor)
         .onClick(() => {
           this.show = !this.show;
@@ -642,6 +669,7 @@ struct Index {
         Parent()
       }
     }
+    .width('100%')
   }
 }
 @Component
@@ -671,6 +699,7 @@ struct Parent {
         Child()
       }
       Button('delete Child')
+        .width('60%')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -709,6 +738,8 @@ struct Child {
 }
 ```
 
+![new-lifecycle-syn-4](./figures/new-lifecycle-syn-4.gif)
+
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
 
 - 应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt --&gt; Child myAppear --&gt; Child build --&gt; Child myBuilt。此处体现了自定义组件懒展开特性，即Parent执行完myBuilt之后才会执行Child组件的myAppear。日志输出信息如下：
@@ -745,7 +776,7 @@ Parent myBuilt
 Child myAppear
 Child myBuilt
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
@@ -753,12 +784,14 @@ Child myBuilt
 
 通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
 
-```typescript
+<!-- @[ComponentRecycleReuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentRecycleReuse.ets) -->
+
+``` TypeScript
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
-  value: string | undefined;
+  public value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
@@ -766,26 +799,28 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
 
   build() {
     Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .width('50%')
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      // 通过改变switch，实现Child的回收和复用
-      // 更改this.switch为false，回收Child子组件，执行Child myRecycle
-      // 更改this.switch为true，复用Child子组件，执行Child myReuse
-      if (this.switch) {
+      // 通过改变changeChild，实现Child的回收和复用
+      // 更改this.changeChild为false，回收Child子组件，执行Child myRecycle
+      // 更改this.changeChild为true，复用Child子组件，执行Child myReuse
+      if (this.changeChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
+          .margin(10)
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -795,7 +830,8 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
+  @State changeGrandChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'Child myInit');
@@ -830,19 +866,19 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .margin(10)
+      Button(this.changeGrandChild ? 'recycle grandchild' : 'reuse grandchild')
+        .width('50%')
+        .margin(20)
+        .backgroundColor(this.btnColor)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeGrandChild = !this.changeGrandChild;
         })
-      if (this.switch) {
-        GrandChild({ message: new Message('GrandChild') })
+      if (this.changeGrandChild) {
+        GrandChild({ message: new Message('grandchild') })
           .reuseId('GrandChild')
       }
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 
@@ -851,7 +887,6 @@ struct Child {
 struct GrandChild {
   @State message: Message = new Message('GrandChild');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'GrandChild myInit');
@@ -886,12 +921,13 @@ struct GrandChild {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(10)
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 ```
+
+![new-lifecycle-syn-5](./figures/new-lifecycle-syn-5.gif)
 
 以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
 
@@ -906,7 +942,7 @@ GrandChild myAppear
 GrandChild myBuilt
 ```
 
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+- 点击Button按钮，更改changeChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
 ```text
 Child myRecycle
@@ -917,12 +953,14 @@ GrandChild myRecycle
 
 [CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
 
-```typescript
+<!-- @[ComponentLifecycleObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentLifecycleObserver.ets) -->
+
+``` TypeScript
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
-  value: string | undefined;
+  public value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
@@ -931,23 +969,23 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
 
   build() {
     Column() {
-      Button('Hello')
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(10)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      if (this.switch) {
+      if (this.changeChild) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -956,7 +994,6 @@ struct Index {
 @Component
 struct Child {
   @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
   @ComponentInit
   myInit(): void {
     registerObserver(UIUtils.getLifecycle(this));
@@ -1007,9 +1044,11 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 }
 ```
 
+![new-lifecycle-syn-6](./figures/new-lifecycle-syn-6.gif)
+
 在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
 
-按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
+按两次按钮，然后关闭程序，此时日志输出信息如下：
 
 ```text
 MyObserver aboutToAppear
@@ -1020,7 +1059,7 @@ MyObserver aboutToReuse
 
 可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
 
-```typescript
+``` TypeScript
 Column() {
   Text('Hello World')
 }
@@ -1043,7 +1082,9 @@ Column() {
 
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
-```typescript
+<!-- @[LifecycleDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/LifecycleDifference.ets) -->
+
+``` TypeScript
 // Index.ets
 import { SwiperExample } from './SwiperPage';
 
@@ -1051,9 +1092,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
@@ -1086,8 +1125,9 @@ struct Index {
 }
 ```
 
-```typescript
-// SwiperPage.ets
+<!-- @[SwiperPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/SwiperPage.ets) -->
+
+``` TypeScript
 import { ComponentAppear, ComponentDisappear } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1121,7 +1161,7 @@ export struct SwiperPage {
 }
 
 class MyDataSource implements IDataSource {
-  list: number[] = [];
+  public list: number[] = [];
   constructor(list: number[]) {
     this.list = list;
   }
@@ -1186,38 +1226,41 @@ export struct SwiperExample {
   }
 }
 ```
-启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
+
+![new-lifecycle-syn-7](./figures/new-lifecycle-syn-7.gif)
+
+启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
 日志输出信息如下：
 
 ```text
-SwiperPage:aboutToAppear 0
-SwiperPage:myAppear 0
-SwiperPage:aboutToAppear 11
-SwiperPage:myAppear 11
-SwiperPage:aboutToAppear 1
-SwiperPage:myAppear 1
-SwiperPage:aboutToAppear 10
-SwiperPage:myAppear 10
-SwiperPage:aboutToAppear 2
-SwiperPage:myAppear 2
+SwiperPage aboutToAppear 0
+SwiperPage myAppear 0
+SwiperPage aboutToAppear 11
+SwiperPage myAppear 11
+SwiperPage aboutToAppear 1
+SwiperPage myAppear 1
+SwiperPage aboutToAppear 10
+SwiperPage myAppear 10
+SwiperPage aboutToAppear 2
+SwiperPage myAppear 2
 ```
 
 此时关闭程序，缓存的五个节点正常触发aboutToDisappear，但是非缓存的节点触发aboutToDisappear前，会强制触发aboutToAppear。无论是否是缓存节点，myDisappear不会误触发myAppear。
 
 ```text
-SwiperPage:myDisappear 0
-SwiperPage:aboutToDisappear 0
-SwiperPage:myDisappear 1
-SwiperPage:aboutToDisappear 1
-SwiperPage:myDisappear 2
-SwiperPage:aboutToDisappear 2
-SwiperPage:aboutToAppear 3
-SwiperPage:myDisappear 3
-SwiperPage:aboutToDisappear 3
-SwiperPage:aboutToAppear 4
-SwiperPage:myDisappear 4
-SwiperPage:aboutToDisappear 4
+SwiperPage myDisappear 0
+SwiperPage aboutToDisappear 0
+SwiperPage myDisappear 1
+SwiperPage aboutToDisappear 1
+SwiperPage myDisappear 2
+SwiperPage aboutToDisappear 2
+SwiperPage aboutToAppear 3
+SwiperPage myDisappear 3
+SwiperPage aboutToDisappear 3
+SwiperPage aboutToAppear 4
+SwiperPage myDisappear 4
+SwiperPage aboutToDisappear 4
 ...
 ```
 
@@ -1227,7 +1270,9 @@ SwiperPage:aboutToDisappear 4
 
 自定义组件在BUILT状态时，即将转化为RECYCLED时，先调用aboutToRecycle后调用\@ComponentRecycle装饰的函数。
 
-```typescript
+<!-- @[ComponentReuseDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentReuseDifference.ets) -->
+
+``` TypeScript
 import { ComponentAppear, ComponentBuilt, ComponentReuse } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1239,12 +1284,14 @@ struct ReusableTest {
   build() {
     Column() {
       // 点击Button切换flag1，触发ReusableComp1和ReusableComp2的回收/复用
-      Button('a')
+      Button('change flag 1')
+        .margin(10)
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
       // 点击Button切换flag2，触发ReusableComp1和ReusableComp3的回收/复用
-      Button('b')
+      Button('change flag 2')
+        .margin(10)
         .onClick(() => {
           this.flag2 = !this.flag2;
         })
@@ -1255,6 +1302,7 @@ struct ReusableTest {
         ReusableComp1({ flag: false })
       }
     }
+    .width('100%')
   }
 }
 
@@ -1275,7 +1323,8 @@ struct ReusableComp1 {
 @Component
 struct ReusableComp2 {
   build() {
-    Text('A')
+    Text('ReusableComp2')
+      .margin(10)
   }
 }
 
@@ -1302,12 +1351,15 @@ struct ReusableComp3 {
   }
 
   build() {
-    Text('B')
+    Text('ReusableComp3')
+      .margin(10)
   }
 }
 ```
 
-按下a按钮，此时ReusableComp2进入回收状态，再按下b按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
+![new-lifecycle-syn-8](./figures/new-lifecycle-syn-8.gif)
+
+按下change flag 1按钮，此时ReusableComp2进入回收状态，再按下change flag 2按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
 
 ```text
 ReusableComp3 aboutToReuse
@@ -1316,4 +1368,4 @@ ReusableComp3 myAppear
 ReusableComp3 myBuilt
 ```
 
-ReusableComp3从未创建过，但按下b按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。
+ReusableComp3从未创建过，但按下change flag 2按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。

@@ -73,7 +73,7 @@ struct Index {
       Button('clean')
         .fontSize(22)
         .margin(10)
-        // 通过button的点击事件来切换内层column的独占控制属性
+        // 通过button的点击事件来清空触摸事件的消息显示
         .onClick(() => {
           this.messageOut = " "
           this.messageInner = " "

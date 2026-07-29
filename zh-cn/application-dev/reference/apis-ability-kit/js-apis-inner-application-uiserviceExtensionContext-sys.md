@@ -9,7 +9,7 @@
 
 UIServiceExtensionContext模块是[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
-UIServiceExtensionContext模块提供访问[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)特定资源以及具有的能力，包括启动、停止、绑定、解绑Ability。
+UIServiceExtensionContext模块提供访问[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)特定资源以及具有的能力，包括启动Ability、销毁UIServiceExtension、连接和断开UIExtensionAbility。
 
 > **说明：**
 >
@@ -35,7 +35,8 @@ import { common, UIServiceExtensionAbility } from '@kit.AbilityKit';
 
 class UIServiceExtAbility extends UIServiceExtensionAbility {
   onCreate() {
-    let context:common.UIServiceExtensionContext = this.context ; // 获取UIServiceExtensionContext
+    // 获取UIServiceExtensionContext
+    let context:common.UIServiceExtensionContext = this.context;
   }
 }
 ```
@@ -60,7 +61,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数，用于自定义启动配置（如窗口模式、显示模式等）。当需要自定义启动行为时传入此参数，不传入时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -101,10 +102,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
+    // 设置启动Ability的Want参数
     let want: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
     };
+    // 设置启动选项参数
     let options: StartOptions = {
       windowMode: 0,
     };
@@ -152,6 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
+    // 销毁UIServiceExtension
     this.context.terminateSelf().then(() => {
       // 执行正常业务
       console.info('terminateSelf succeed');
@@ -182,9 +186,9 @@ startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilit
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |  -------- |
-| type | string  | 是 | 目标ability类型。 |
+| type | string  | 是 | 目标ability类型，支持预定义的类型值。传入不支持的类型值时，接口返回错误码401。 |
 | wantParam | Record&lt;string, Object&gt;| 是 | Want参数。 |
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| 是 | 拉起UIExtensionAbility执行结果的回调。 |
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| 是 | 拉起UIExtensionAbility执行结果的回调，包含错误处理等回调函数。 |
 
 **返回值：**
 
@@ -234,7 +238,9 @@ struct SubIndex {
                 encodeURI('附件uri2')], // 附件uri，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
               'ability.want.params.uriPermissionFlag': 1
             };
+            // 定义启动结果回调对象
             let abilityStartCallback: common.AbilityStartCallback = {
+              // 处理启动失败的错误回调
               onError: (code: number, name: string, message: string) => {
                 console.error(TAG + `code: ${code}  name:${name}  message:${message}`);
               }
@@ -266,7 +272,7 @@ struct SubIndex {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
-连接到[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，返回连接id。
+连接到[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，返回连接id。使用场景：需要与UIExtensionAbility建立连接以进行交互，例如连接到其他应用提供的UIExtensionAbility来使用其服务。
 
 
 > **说明：**
@@ -281,14 +287,14 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名               | 类型                     | 必填 | 说明              |
 | -------------------- | ------------------------ | ---- |----------------- |
-| want                 | [Want](js-apis-app-ability-want.md) | 是 | Want 参数。       |
+| want                 | [Want](js-apis-app-ability-want.md) | 是 | Want参数，用于传入需要连接的UIExtensionAbility的信息，如Ability名称、Bundle名称等。       |
 | options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id。 |
+| number | 返回连接id，需开发者自行保存，用于后续断开连接。 |
 
 **错误码：**
 
@@ -322,20 +328,26 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
+// connectionId需从connectServiceExtensionAbility接口的返回值获取并保存
+let connectionId: number = 0; // 示例值，实际需使用connectServiceExtensionAbility返回的连接id
+// 设置要连接的后台服务Ability信息
 let want: Want = {
   deviceId: '',
   bundleName: 'com.samples.stagemodelabilitydevelop',
   abilityName: 'ServiceExtAbility'
-};
+  };
 
+// 设置连接选项回调
 let options: common.ConnectOptions = {
+  // 连接成功回调
   onConnect(elementName, remote: rpc.IRemoteObject): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
   },
+  // 断开连接回调
   onDisconnect(elementName): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
+  // 连接失败回调
   onFailed(code: number): void {
     hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
   }
@@ -353,7 +365,7 @@ struct Page_UIServiceExtensionAbility {
           .onClick(() => {
             let context: common.UIServiceExtensionContext =
               this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
-            // The ID returned after the connection is set up must be saved. The ID will be used for disconnection.
+            // 连接成功后返回的ID需保存，用于后续断开连接
             connectionId = context.connectServiceExtensionAbility(want, options);
             // The background service is connected.
             this.getUIContext().getPromptAction().showToast({
@@ -373,7 +385,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
-断开与[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的连接，与[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)功能相反。使用Promise异步回调。
+断开与[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的连接，与[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)功能相反。使用Promise异步回调。使用场景：不再需要与UIExtensionAbility交互时断开连接，例如业务完成后释放资源。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -383,7 +395,7 @@ disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
 | 参数名                | 类型                     | 必填 | 说明              |
 | -------------------- | ------------------------ | ---- | ----------------- |
-| connectionId         | number                   | 是 | 从[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)接口返回的连接Id。 |
+| connectionId         | number                   | 是 | 从[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)接口返回的连接Id，必须为有效的连接ID。 |
 
 
 **返回值：**
@@ -412,7 +424,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
+// connectionId需从connectServiceExtensionAbility接口的返回值获取并保存
+let connectionId: number = 0; // 示例值，实际需使用connectServiceExtensionAbility返回的连接id
 
 @Entry
 @Component

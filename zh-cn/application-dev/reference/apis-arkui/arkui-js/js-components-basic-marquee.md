@@ -28,7 +28,7 @@
 
 | 名称           | 类型     | 默认值  | 必填   | 描述                                       |
 | ------------ | ------ | ---- | ---- | ---------------------------------------- |
-| scrollamount | number | 6    | 否    | 跑马灯每次滚动时移动的最大长度。                         |
+| scrollamount | number | 6    | 否    | 跑马灯每次滚动时移动的步长。                         |
 | loop         | number | -1   | 否    | 跑马灯滚动的次数。如果未指定，则默认值为-1，当该值小于等于零时表示marquee将连续滚动。 |
 | direction    | string | left | 否    | 设置跑马灯的文字滚动方向，可选值为left和right。             |
 
@@ -71,16 +71,16 @@
 ```html
 <!-- xxx.hml -->
 <div class="tutorial-page">
-  <div class="mymarquee">
-    <marquee  style="color: {{color1}}" loop="{{loopval}}" scrollamount="{{scroll}}" direction="{{isleft}}" class="marqueetext" 
-    id="testmarquee" onfinish="setfinish">
-      Life is a journey, not the destination.
-    </marquee>
-  </div>
-  <div style="width: 600px;height: 150px;flex-direction: row;justify-content: space-around;">
-    <button onclick="makestart"  value="start"></button>
-    <button onclick="makestop" value="stop"></button>
-  </div>
+    <div class="myMarquee">
+        <marquee  style="color: {{color1}}" loop="{{loopVal}}" scrollamount="{{scroll}}" direction="{{isLeft}}" class="marqueeText"
+                  id="testMarquee" onfinish="setFinish">
+            Life is a journey, not the destination.
+        </marquee>
+    </div>
+    <div style="width: 600px;height: 150px;flex-direction: row;justify-content: space-around;">
+        <button onclick="makeStart"  value="start"></button>
+        <button onclick="makeStop" value="stop"></button>
+    </div>
 </div>
 ```
 
@@ -93,10 +93,10 @@
   align-items: center;
   justify-content: center;
 }
-.marqueetext {
-  font-size: 37px;
+.marqueeText {
+  font-size: 40px;
 }
-.mymarquee {
+.myMarquee {
   margin-top: 20px;
   width:100%;
   height: 100px;
@@ -116,28 +116,32 @@ button{
 ```js
 // xxx.js
 export default {
-  private: {
-    loopval: 1,
-    scroll: 8,
-    color1: 'red'
-  },
-  onInit(){
-  },
-  setfinish(e) {
-    this.loopval=  this.loopval + 1,
-    this.r = Math.floor(Math.random()*255),
-    this.g = Math.floor(Math.random()*255),
-    this.b = Math.floor(Math.random()*255),
-    this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
-    this.$element('testmarquee').start(),
-    this.loopval=  this.loopval - 1
-  },
-  makestart(e) {
-    this.$element('testmarquee').start()
-  },
-  makestop(e) {
-    this.$element('testmarquee').stop()
-  }
+    private: {
+        loopVal: 1,
+        scroll: 8,
+        color1: 'red',
+        isLeft: 'left',
+        r: 255,
+        g: 0,
+        b: 0
+    },
+    onInit(){
+    },
+    setFinish(e) {
+        this.loopVal=  this.loopVal + 1,
+        this.r = Math.floor(Math.random()*255),
+        this.g = Math.floor(Math.random()*255),
+        this.b = Math.floor(Math.random()*255),
+        this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
+        this.$element('testMarquee').start(),
+        this.loopVal=  this.loopVal - 1
+    },
+    makeStart(e) {
+        this.$element('testMarquee').start()
+    },
+    makeStop(e) {
+        this.$element('testMarquee').stop()
+    }
 }
 ```
 

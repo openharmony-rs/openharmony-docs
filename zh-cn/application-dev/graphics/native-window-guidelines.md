@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 场景介绍
 
-NativeWindow是**本地平台化窗口**，表示图形队列的生产者端。开发者可以通过`NativeWindow`接口进行申请和提交`Buffer`，配置`Buffer`属性信息。
+NativeWindow是**本地平台化窗口**，表示图形队列的生产者端，主要用于需要高效图形数据处理的场景。当开发者开发视频播放、相机预览、游戏渲染等图形密集型应用时，需要在图形缓冲区中高效地写入和提交图形数据。此时，开发者可以通过`NativeWindow`接口进行申请和提交`Buffer`，配置`Buffer`属性信息。
 
 针对NativeWindow，常见的开发场景如下：
 
@@ -22,7 +22,7 @@ NativeWindow是**本地平台化窗口**，表示图形队列的生产者端。�
 | OH_NativeWindow_NativeWindowFlushBuffer (OHNativeWindow \*window, OHNativeWindowBuffer \*buffer, int fenceFd, Region region) | 通过OHNativeWindow将生产好内容的OHNativeWindowBuffer放回到Buffer队列中，用以内容消费。 | 
 | OH_NativeWindow_NativeWindowHandleOpt (OHNativeWindow \*window, int code,...) | 设置/获取OHNativeWindow的属性，包括设置/获取宽高、内容格式等。 | 
 
-详细的接口说明请参考[native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
+详细的接口说明请参考[NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
 
 ## 开发步骤
 
@@ -149,9 +149,9 @@ libnative_window.so
     <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
-    int fenceFd = -1;
+    int releaseFenceFd = -1;
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
-    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &releaseFenceFd);
     if (ret != 0 || nativeWindowBuffer == nullptr) {
         return;
     }
@@ -174,14 +174,14 @@ libnative_window.so
     ``` C++
     int retCode = -1;
     uint32_t timeout = 3000;
-    if (fenceFd != -1) {
+    if (releaseFenceFd != -1) {
         struct pollfd pollfds = {0};
-        pollfds.fd = fenceFd;
+        pollfds.fd = releaseFenceFd;
         pollfds.events = POLLIN;
         do {
             retCode = poll(&pollfds, 1, timeout);
         } while (retCode == -1 && (errno == EINTR || errno == EAGAIN));
-        close(fenceFd);
+        close(releaseFenceFd);
     }
     uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
     for (uint64_t x = 0; x < bufferHandle->width; x++) {
@@ -197,7 +197,8 @@ libnative_window.so
     
     ``` C++
     struct Region *region = new Region();
-    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
+    int acquireFenceFd = -1;
+    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, acquireFenceFd, *region);
     if (ret != NATIVE_ERROR_OK) {
         LOGE("flush failed");
         (void)OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer);
@@ -222,4 +223,4 @@ libnative_window.so
 
 针对NativeWindow的开发，有以下相关实例可供参考：
 
-- [NativeWindow（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
+- [NativeWindow（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)

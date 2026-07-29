@@ -120,7 +120,7 @@ static disableSystemServiceMenuItems(disable: boolean): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| disable | boolean | 是    | 是否禁用系统服务菜单。true表示禁用，false表示不禁用。<br />默认值: false |
+| disable | boolean | 是    | 是否禁用系统服务菜单项。true表示禁用，false表示不禁用。<br />默认值：false |
 
 **示例：**
 

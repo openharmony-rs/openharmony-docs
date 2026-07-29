@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的http auth认证请求确认或取消和使用缓存密码认证功能对象。示例代码参考[onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9)事件。
+HttpAuthHandler是Web组件用于处理HTTP认证请求的处理类。当服务器返回401 Unauthorized要求身份认证时，Web组件通过onHttpAuthRequest事件回调获取HttpAuthHandler实例，由应用决定是否提供认证凭据。示例代码参考[onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9)事件。
 
 > **说明：**
+>
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,6 +26,10 @@ HttpAuthHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -32,6 +38,10 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## confirm<sup>9+</sup>
 
 confirm(userName: string, password: string): boolean
@@ -39,6 +49,10 @@ confirm(userName: string, password: string): boolean
 使用用户名和密码进行HTTP认证操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,6 +74,10 @@ isHttpAuthInfoSaved(): boolean
 确定当前主机存储的凭据是否适合使用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

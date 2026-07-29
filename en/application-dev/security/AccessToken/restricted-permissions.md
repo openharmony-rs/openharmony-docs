@@ -252,7 +252,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -602,6 +602,27 @@ Peripherals connected to the host via a USB bus and:
 
 **Since**: 18
 
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+Allows a peripheral extension driver to access the USB Serial DDK APIs.
+
+The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+
+Peripherals connected to the host via a USB bus and:
+
+1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
+2. The peripheral can simulate traditional serial communication through a USB interface.
+
+<!--RP101--><!--RP101End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices: ** PCs/2-in-1 devices | tablets
+
+**Since**: 18
+
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 Allows an application to install plugins.
@@ -690,9 +711,11 @@ Allows an application to use the global float ball.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+**Changelog**: Since API version 26.0.0, this permission is also available on PCs/2-in-1 devices.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
@@ -1145,3 +1168,17 @@ Allows an application to apply for a continuous task of the special scenario typ
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+Allows an application to manage sandbox applications.
+
+<!--RP97--><!--RP97End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0

@@ -15,14 +15,16 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 > FormExtensionAbility创建后10秒内无操作将会被清理。
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
-> 如下模块不支持在FormExtensionAbility引用，可能会导致程序异常退出。
-> - @ohos.ability.particleAbility (ParticleAbility模块)
-> - @ohos.multimedia.audio (音频管理)
-> - @ohos.multimedia.camera (相机管理)
-> - @ohos.multimedia.media (媒体服务)
-> - @ohos.resourceschedule.backgroundTaskManager (后台任务管理)
 
+## 约束限制
+
+为保障系统安全性和稳定性，防止 FormExtensionAbility 滥用系统资源，系统对其能力进行管控， 不支持以下模块的引用：
+
+- [@ohos.ability.particleAbility (ParticleAbility模块)](../apis-ability-kit/js-apis-ability-particleAbility.md)
+- [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md)
+- [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md)
+- [@ohos.multimedia.media (媒体服务)](../apis-media-kit/arkts-apis-media.md)
+- [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
 
 ## 导入模块
 
@@ -36,6 +38,8 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务。
+
 **系统能力：** SystemCapability.Ability.Form
 
 ### 属性
@@ -46,9 +50,9 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| onStop<sup>23+</sup> |[OnStopFn](#onstopfn23)| 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
-| onAcquireFormState<sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| onStop<sup>23+</sup> |[OnStopFn](#onstopfn23)| 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| onAcquireFormState<sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ### FormExtensionAbility.onAddForm
 
@@ -152,7 +156,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
     console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -167,7 +171,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
     console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onUpdateForm
@@ -216,7 +220,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -265,6 +269,7 @@ ArkTS-Sta: onChangeFormVisibility(newStatus: Record\<string, int>): void
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
 | newStatus  | ArkTS-Dyn: Record\<string, number> <br>ArkTS-Sta: Record\<string, int>| 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
+
 **示例：**
 
 ArkTS-Dyn示例：
@@ -296,11 +301,11 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       formProvider.updateForm(keys[i], obj2).then(() => {
         console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`Operation updateForm failed, code: ${error.code}, message: ${error.message}`);
       });
     }
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -351,7 +356,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -401,7 +406,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onRemoveForm(formId: string) {
     console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -454,7 +459,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
     console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -513,7 +518,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
     return formInfo.FormState.UNKNOWN;
   }
-};
+}
 ```
 
 ### FormExtensionAbility.onStop<sup>12+</sup>

@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于需要频繁读写关系型数据库的场景，可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)将数据库操作调度到后台线程执行，避免数据库打开、建表、批量插入和查询过程阻塞宿主线程。
 

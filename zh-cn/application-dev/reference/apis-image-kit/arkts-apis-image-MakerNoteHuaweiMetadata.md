@@ -92,7 +92,7 @@ ArkTS-Dyn示例：
 async function makerNoteHuaweiCreateInstance(context: Context) {
   let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
   if (makerNoteHuaweiMetadata != undefined) {
-    console.info("createInstance successfully.");
+    console.info("Succeeded in creating a MakerNoteHuaweiMetadata instance.");
   }
 }
 ```
@@ -165,9 +165,9 @@ async function makerNoteHuaweiGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     await metaData.makerNoteHuaweiMetadata.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -369,9 +369,9 @@ async function makerNoteHuaweiGetAllProperties(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     await metaData.makerNoteHuaweiMetadata.getAllProperties().then((data) => {
       const count = Object.keys(data).length;
-      console.info(`Get metadata all properties: ${data}`);
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -461,9 +461,9 @@ async function makerNoteHuaweiClone(context: Context) {
   if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
     let new_metadata = await metaData.makerNoteHuaweiMetadata.clone();
     new_metadata.getProperties(["HwMnoteIsXmageSupported"]).then((data1) => {
-      console.info(`Clone new_metadata and get Properties: ${data1}`);
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to clone new_metadata. error : ${err}`);
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
     });
   } else {
     console.error('Metadata is null.');
