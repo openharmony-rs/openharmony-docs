@@ -103,7 +103,7 @@ bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap*
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 函数返回true表示构造图片内容成功，函数返回false表示构建图片内容失败。 |
+| bool | 函数返回true表示构造图片内容成功，函数返回false表示构造图片内容失败。 |
 
 ### OH_Drawing_ImageGetWidth()
 
