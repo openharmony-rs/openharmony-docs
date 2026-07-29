@@ -95,13 +95,13 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 | 参数项 | 描述 |
 | -- | -- |
 | int pid | 需要被压制子进程的进程号，[OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建子进程后的pid参数，即为子进程进程号。 |
-| [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | 压制档位。 |
+| [BackgroundProcessManager_ProcessPriority](#backgroundprocessmanager_processpriority) priority | 压制档位。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回 [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode)，表示压制参数发送成功。<br>         返回 [ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode)，表示参数检查失败。 |
+| int | 返回 [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](#backgroundprocessmanager_errorcode)，表示压制参数发送成功。<br>         返回 [ERR_BACKGROUND_PROCESS_MANAGER_INVALID_PARAM](#backgroundprocessmanager_errorcode)，表示参数检查失败。 |
 
 ### OH_BackgroundProcessManager_ResetProcessPriority()
 
@@ -126,6 +126,6 @@ int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回 [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](capi-background-process-manager-h.md#backgroundprocessmanager_errorcode)，表示压制参数发送成功。 |
+| int | 返回 [ERR_BACKGROUND_PROCESS_MANAGER_SUCCESS](#backgroundprocessmanager_errorcode)，表示解压制操作成功。 |
 
 
