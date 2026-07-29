@@ -35,7 +35,7 @@ import usbManager from '@ohos.usbManager';
 
 **在使用接口后：**
 
-调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备消息控制通道。
+调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
 ```mermaid
 graph LR
@@ -141,7 +141,7 @@ if (devicesList) {
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备消息传输通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备消息控制通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
+根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及USBDevice;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
@@ -162,7 +162,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备消息传输通道对象，用于后续的数据传输和设备控制操作。 |
+| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备连接通道对象，用于后续的数据传输和设备控制操作。 |
 
 **错误码：**
 
@@ -1180,7 +1180,7 @@ ArkTS-Dyn: closePipe(pipe: USBDevicePipe): number
 
 ArkTS-Sta: closePipe(pipe: USBDevicePipe): int 
 
-关闭设备消息传输通道。
+关闭设备连接通道。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限；
@@ -1196,13 +1196,13 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息传输通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备连接通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。可能原因：1.USB服务未正常运行；2.设备消息控制通道状态异常。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 关闭设备连接通道成功返回0；关闭设备连接通道失败返回其它错误码如下：<br>- 22：服务异常。可能原因：1.USB服务未正常运行；2.设备连接通道状态异常。 |
 
 **错误码：**
 
@@ -1634,7 +1634,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备消息传输通道对象，用于确定设备，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用connectDevice获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
@@ -1801,7 +1801,7 @@ USB设备信息。
 
 ## USBDevicePipe
 
-USB设备消息传输通道，用于确定总线地址和设备地址。
+USB设备连接通道，用于确定总线地址和设备地址。
 
 **系统能力：** SystemCapability.USB.USBManager
 
