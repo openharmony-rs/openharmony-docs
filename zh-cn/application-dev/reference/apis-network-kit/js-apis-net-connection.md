@@ -2776,7 +2776,7 @@ let duration: number = 10;
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
     console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to get RTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
 ```
 
