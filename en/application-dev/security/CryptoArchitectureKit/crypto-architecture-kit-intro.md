@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=3954e7d5e89f0089dd7203a7a61b834cd964636d translatedAt=2026-07-29T03:49:53.443Z pushedAt=2026-07-29T03:52:40.895Z -->
 
 Crypto Architecture Kit provides cryptographic functionalities, such as encryption and decryption, signing and signature verification, message authentication code (MAC) generation, hash computation, random number generation, and key derivation.
 
-Crypto Architecture Kit shields the implementation differences of third-party cryptographic algorithm libraries to elevate your app experience.
+By invoking Crypto Architecture Kit services, developers can abstract away the differences between underlying third-party cryptographic algorithm libraries, enabling rapid development.
 
 ## Constraints
 
 - Crypto Architecture Kit does not support multi-thread concurrent operations.
 
-- Currently, Crypto Architecture Kit supports only OpenSSL.
+- Crypto Architecture Kit is currently implemented based on OpenSSL.
 
 - Crypto Architecture Kit provides most of the common algorithms. However, some algorithms and specifications, such as MD5, are not applicable to scenarios with high security requirements. Use appropriate algorithms based on service requirements.
 
@@ -44,16 +45,16 @@ Crypto Architecture Kit provides the following functionalities, with algorithm s
 Before you get started, be sure to understand the following basic concepts:
 
 - Symmetric key
-  
+
   A symmetric key is a key used both to encrypt and decrypt data. In symmetric encryption, the sender converts information in plaintext into ciphertext using a key and certain algorithm for security purposes. The receiver converts the ciphertext into plaintext using the same key and algorithm.
 
 - Asymmetric key
-  
-  In the asymmetric cryptography, a private and public key pair is required. The private key is used to encrypt the plaintext, and the public key is used to decrypt the ciphertext.
 
-  The public key is public and open to anyone in the system, while the private key is private.
+In asymmetric cryptography, a public-private key pair is used for cryptographic operations. The public key is made public, while the private key is kept secret.
 
-  For signing and signature verification, the private key is used to sign the plaintext, and the public key is used to verify the signature.
+For encryption and decryption, the public key is generally used to encrypt plaintext into ciphertext, and anyone with the private key can decrypt the ciphertext.
+
+For signing and signature verification, the private key is used to sign the plaintext, and the public key holder can use the public key to verify the signed data and check whether the data has been tampered with.
 
 <!--RP1--><!--RP1End-->
 
