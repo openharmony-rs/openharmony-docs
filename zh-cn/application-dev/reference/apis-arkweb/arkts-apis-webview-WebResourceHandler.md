@@ -82,7 +82,7 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 didFinish(): void
 
-通知Web组件被拦截的请求已经完成，并且没有更多的数据可用，调用前需要优先调用[didReceiveResponse](#didreceiveresponse12)将构造的响应头传递给被拦截的请求。
+通知Web组件被拦截的请求已经完成，并且没有更多的数据可用，调用前需调用[didReceiveResponse](#didreceiveresponse12)传入响应头。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -102,7 +102,7 @@ didFinish(): void
 
 didFail(code: WebNetErrorList): void
 
-通知ArkWeb内核被拦截请求将返回失败，并结束该网络请求，调用前需要优先调用[didReceiveResponse](#didreceiveresponse12)将构造的响应头传递给被拦截的请求。
+通知ArkWeb内核被拦截请求将返回失败，并结束该网络请求，调用前需调用[didReceiveResponse](#didreceiveresponse12)传入响应头。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -110,7 +110,7 @@ didFail(code: WebNetErrorList): void
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是   | 网络错误码。 |
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是 | 网络错误码，用于标识请求失败的原因。 |
 
 **错误码：**
 
@@ -130,7 +130,7 @@ didFail(code: WebNetErrorList): void
 
 didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 
-通知ArkWeb内核，被拦截请求将返回失败。若completeIfNoResponse为false，调用前需优先调用[didReceiveResponse](#didreceiveresponse12)，将构造的响应头传递给被拦截的请求。若completeIfNoResponse为true，且调用前未调用[didReceiveResponse](#didreceiveresponse12)，则自动生成一个响应头，网络错误码为-104，详情参见[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)。
+通知ArkWeb内核，被拦截请求将返回失败。若completeIfNoResponse为false，调用前需调用[didReceiveResponse](#didreceiveresponse12)传入响应头。若completeIfNoResponse为true，且调用前未调用[didReceiveResponse](#didreceiveresponse12)，则自动生成一个响应头，网络错误码为-104，详情参见[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -138,8 +138,8 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是   | 网络错误码。 |
-|  completeIfNoResponse | boolean | 是   | 调用当前接口时，若之前未调用过[didReceiveResponse](#didreceiveresponse12)，是否完成此次网络请求；值为true时，若之前未调用过[didReceiveResponse](#didreceiveresponse12)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用[didReceiveResponse](#didreceiveresponse12)并传入response，不会直接完成此次网络请求。 |
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | 是 | 网络错误码，用于标识请求失败的原因。 |
+| completeIfNoResponse | boolean | 是 | 是否在未调用[didReceiveResponse](#didreceiveresponse12)时自动完成此次网络请求；值为true时自动生成响应头（网络错误码为-104）并完成请求，值为false时等待应用调用[didReceiveResponse](#didreceiveresponse12)。 |
 
 **错误码：**
 
@@ -198,7 +198,7 @@ struct WebComponent {
               }
 
               try {
-                // 直接调用didFail(WebNetErrorList.ERR_FAILED, true)，自动构造一个网络请求错误ERR_CONNECTION_FAILED
+                // 直接调用didFail(WebNetErrorList.ERR_FAILED, true)，若此前未调用didReceiveResponse，系统将自动生成响应头，网络错误码为-104（对应ERR_CONNECTION_FAILED）
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
                 // 当error.code为17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)

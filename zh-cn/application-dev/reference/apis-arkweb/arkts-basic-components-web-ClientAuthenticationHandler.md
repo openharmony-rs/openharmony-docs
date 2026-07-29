@@ -36,7 +36,7 @@ confirm(priKeyFile : string, certChainFile : string): void
 
 | 参数名           | 类型   | 必填   | 说明               |
 | ------------- | ------ | ---- | ------------------ |
-| priKeyFile    | string | 是    | 存放私钥文件的完整路径。  |
+| priKeyFile    | string | 是    | 存放私钥文件的完整路径。 |
 | certChainFile | string | 是    | 存放证书链文件的完整路径。 |
 
 ## confirm<sup>10+</sup>
@@ -45,9 +45,7 @@ confirm(authUri : string): void
 
 通知Web组件使用指定的凭据（从证书管理模块获得）。
 
-> **说明：**
->
-> 需要配置权限：ohos.permission.ACCESS_CERT_MANAGER。
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -76,6 +74,8 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。
 
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -97,7 +97,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 cancel(): void
 
-通知Web组件取消服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
+通知Web组件取消客户端证书请求事件。对来自相同host和port服务器的后续请求，不再重复上报该事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

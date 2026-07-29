@@ -32,7 +32,7 @@ setBrand(brand: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| brand | string | 是   | 品牌名称，不能为空字符串。 |
+| brand | string | 是 | 品牌名称，不能为空字符串。 |
 
 **示例：**
 
@@ -72,7 +72,7 @@ setMajorVersion(majorVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| majorVersion | string | 是   | 主版本号，不能为空字符串。 |
+| majorVersion | string | 是 | 主版本号，不能为空字符串。 |
 
 **示例：**
 
@@ -112,7 +112,7 @@ setFullVersion(fullVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| fullVersion | string | 是   | 完整版本号，不能为空字符串。 |
+| fullVersion | string | 是 | 完整版本号，不能为空字符串。 |
 
 **示例：**
 
