@@ -64300,9 +64300,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":42,
+						"name":"roi_buffer_input_callback_queue",
+						"start_line":31
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp",
+				"functions":[
+					{
+						"end_line":296,
 						"name":"roi_buffer_mode_callback",
-						"start_line":33
+						"start_line":275
+					},
+					{
+						"end_line":324,
+						"name":"roi_buffer_mode_fill_input",
+						"start_line":298
 					}
 				]
 			}
