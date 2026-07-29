@@ -1544,11 +1544,8 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
   }
   // GNSS围栏请求信息集合
   let gnssFences: Array<geoLocationManager.GnssFence> = [gnssFence];
-  // CELL围栏信息扩展字段
-  let additionsMap: Map<string, string> = new Map<string, string>([
-    ['key1', 'value1'],
-    ['key2', 'value2'],
-  ]);
+  // CELL围栏信息扩展字段，可选字段，可传空
+  let additionsMap: Map<string, string> = new Map<string, string>();
   // CELL信息
   let cellInfo: geoLocationManager.CellInfo = {
     timeSinceBoot:1781062881671, cellId:9999, lac:1024, mcc: 460, mnc: 1, rat: 13, signalIntensity: -75, arfcn: 1850, pci: 256, tac: 888,
