@@ -1278,7 +1278,7 @@ VM内存信息。
 | threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
 | cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
 
-## hidebug.tags<sup>12+</sup>
+## tags<sup>12+</sup>
 
 ### 常量
 
