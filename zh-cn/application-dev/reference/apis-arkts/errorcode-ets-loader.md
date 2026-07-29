@@ -1,8 +1,8 @@
 # 编译工具链错误码
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @aftott-->
-<!--Designer: @hufeng20-->
+<!--Owner: @luchenxu; @calyx1111-->
+<!--Designer: @luchenxu; @calyx1111-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

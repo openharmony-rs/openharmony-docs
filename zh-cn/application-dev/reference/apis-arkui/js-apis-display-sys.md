@@ -79,7 +79,7 @@ try {
   } catch (exception) {
     console.error(`Failed to check has privateWindow or not. Code: ${exception.code}, message: ${exception.message}`);
   }
-  if (ret == undefined) {
+  if (ret === undefined) {
     console.error('Failed to check has privateWindow or not.');
   }
   if (ret) {
@@ -501,7 +501,7 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
@@ -589,7 +589,7 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 是   | 窗口id列表，传入子窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 

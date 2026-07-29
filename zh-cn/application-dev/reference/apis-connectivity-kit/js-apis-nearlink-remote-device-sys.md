@@ -56,7 +56,7 @@ type ConnectionInterval = nearlinkConstant.ConnectionInterval
 
 ## RemoteDevice
 
-提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](js-apis-nearlink-remote-device.md#createremotedevice)方法创建一个远端设备[RemoteDevice](js-apis-nearlink-remote-device.md#remotedevice)实例。一个设备只需要创建一次，无需多次创建。
+提供远端设备的操作方法，使用前需要使用[remoteDevice.createRemoteDevice](js-apis-nearlink-remote-device.md#remotedevicecreateremotedevice)方法创建一个远端设备[RemoteDevice](js-apis-nearlink-remote-device.md#remotedevice)实例。一个设备只需要创建一次，无需多次创建。
 
 **起始版本：** 26.0.0
 
@@ -634,7 +634,7 @@ try {
 }
 ```
 
-### onPairingRequest
+### remoteDevice.onPairingRequest
 
 onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
@@ -684,7 +684,7 @@ try {
 }
 ```
 
-### offPairingRequest
+### remoteDevice.offPairingRequest
 
 offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 

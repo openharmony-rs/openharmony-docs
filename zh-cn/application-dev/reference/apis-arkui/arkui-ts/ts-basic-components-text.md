@@ -96,7 +96,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | 属性 | 说明 |
 |------|------|
 | enableAutoSpacing<sup>20+</sup> | 设置是否开启中文与西文的自动间距。 |
-| lineHeight | 设置文本的文本行高。 |
+| lineHeight | 设置文本的行高。 |
 | lineHeightMultiple<sup>22+</sup> | 设置文本的行高倍数。 |
 | lineSpacing<sup>12+</sup> | 设置文本的行间距。 |
 | lineSpacing<sup>20+</sup> | 设置文本的行间距。当不配置LineSpacingOptions时，首行上方和尾行下方默认会有行间距。 |
@@ -292,7 +292,7 @@ ArkTS-Sta: contentTransition(transition: ContentTransition | undefined)
 
 | 参数名 | 类型                                             | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| transition  | ArkTS-Dyn: Optional\<[ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20)><br/>ArkTS-Sta: [ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20) \| undefined | 是   | 文本动效属性。<br/>值为undefined时，无翻牌效果。 |
+| transition  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20)><br/>ArkTS-Sta: [ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20) \| undefined | 是   | 文本动效属性。<br/>值为undefined时，无翻牌效果。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -1062,7 +1062,7 @@ ArkTS-Dyn: lineHeight(value: number | string | Resource)
 
 ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
-设置文本的文本行高。
+设置文本的行高。
 
 设置值不大于0时，不限制文本行高，自适应字体大小，number类型时单位为fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -1084,7 +1084,7 @@ ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) &nbsp;\|&nbsp; undefined | 是   | 文本的文本行高。<br/>取值为undefined时，使用默认行高高度。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) &nbsp;\|&nbsp; undefined | 是   | 文本的行高。<br/>取值为undefined时，使用默认行高高度。 |
 
 ### lineHeightMultiple<sup>22+</sup>
 
@@ -1599,7 +1599,7 @@ ArkTS-Sta: privacySensitive(supported: boolean | undefined)
 
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| supported | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否支持卡片敏感隐私信息。<br/>默认值为false，当设置为true时，隐私模式下文字将被遮罩为横杠“-”样式。<br/>**说明：** <br/>设置为null则表示不敏感。<br/>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。<br/>取值为undefined时，按默认值处理。|
+| supported | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否支持卡片敏感隐私信息。<br/>默认值: false<br>true表示支持卡片敏感隐私信息，隐私模式下文字将被遮罩为横杠"-"样式；false表示不支持卡片敏感隐私信息，隐私模式下文字正常显示。<br/>**说明：** <br/>设置为null则表示不敏感。<br/>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。<br/>取值为undefined时，按默认值处理。|
 
 ### punctuationOverflow
 
@@ -2446,8 +2446,8 @@ Marquee状态回调的返回值。
 ```ts
 // xxx.ets
 @Extend(Text)
-function style(TextAlign: TextAlign) {
-  .textAlign(TextAlign)
+function style(textAlign: TextAlign) {
+  .textAlign(textAlign)
   .fontSize(12)
   .border({ width: 1 })
   .padding(10)
@@ -2523,7 +2523,7 @@ struct TextExample1 {
 
 ### 示例2（设置文本样式）
 
-该示例通过[decoration](#decoration)、[letterSpacing](#letterspacing)、[textCase](#textcase)、[fontFamily](#fontfamily)、[textShadow](#textshadow10)（从API version 10开始）、fontStyle、[textIndent](#textindent10)（从API version 10开始）、[fontWeight](#fontweight12)（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
+该示例通过[decoration](#decoration)、[letterSpacing](#letterspacing)、[textCase](#textcase)、[fontFamily](#fontfamily)、[textShadow](#textshadow10)（从API version 10开始）、[fontStyle](#fontstyle)、[textIndent](#textindent10)（从API version 10开始）、[fontWeight](#fontweight12)（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
 
 ```ts
 // xxx.ets
@@ -2981,12 +2981,6 @@ struct TextExample7 {
           .borderWidth(1)
           .padding(10)
           .width('100%')
-        TextInput({ text: 'TextInput这个是输入框内容' })
-          .copyOption(CopyOptions.LocalDevice)
-        TextArea({ text: 'TextArea这个是输入框内容' })
-          .copyOption(CopyOptions.LocalDevice)
-        Search()
-          .copyOption(CopyOptions.LocalDevice)
       }
       .width('100%')
       // 使用parallelGesture中的TapGesture替代onClick属性，达到非冒泡事件类似冒泡

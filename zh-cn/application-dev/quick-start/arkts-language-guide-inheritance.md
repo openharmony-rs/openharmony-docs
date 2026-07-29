@@ -16,6 +16,8 @@
 
 继承通过`extends`关键字建立父子类层次，子类复用父类成员并可扩展或重写，实现多态。
 
+<!-- @[extends_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+
 ``` TypeScript
 class Parent {
   // 父类成员
@@ -25,6 +27,7 @@ class Child extends Parent {
   // 子类成员
 }
 ```
+
 继承让子类复用父类成员以减少重复代码、随父类修改自动同步提升可维护性、通过重写实现多态，并建立清晰的类型层次。
 
 <!-- @[basic_inheritance_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
@@ -535,38 +538,38 @@ class GrandParent {
   }
 }
 
-class Parent extends GrandParent {
+class MultiLevelParent extends GrandParent {
   methodParent(): void {
-    console.info('Parent method');
+    console.info('MultiLevelParent method');
   }
   
   methodGrandParent(): void {
-    console.info('Parent overrides GrandParent');
+    console.info('MultiLevelParent overrides GrandParent');
     super.methodGrandParent();  // 调用父类方法
   }
 }
 
-class Child extends Parent {
+class MultiLevelChild extends MultiLevelParent {
   methodChild(): void {
-    console.info('Child method');
+    console.info('MultiLevelChild method');
   }
   
   methodParent(): void {
-    console.info('Child overrides Parent');
+    console.info('MultiLevelChild overrides MultiLevelParent');
     super.methodParent();  // 调用父类方法
   }
 }
 
-let child: Child = new Child();
+let multiLevelChild: MultiLevelChild = new MultiLevelChild();
 
-child.methodChild();           // 'Child method'
-child.methodParent();          // 'Child overrides Parent', 'Parent method'
-child.methodGrandParent();     // 'Parent overrides GrandParent', 'GrandParent method'
+multiLevelChild.methodChild();           // 'MultiLevelChild method'
+multiLevelChild.methodParent();          // 'MultiLevelChild overrides MultiLevelParent', 'MultiLevelParent method'
+multiLevelChild.methodGrandParent();     // 'MultiLevelParent overrides GrandParent', 'GrandParent method'
 
 // 继承链查找：从子类到父类
-// Child.methodChild() -> Child自身
-// Child.methodParent() -> Child重写 -> Parent方法
-// Child.methodGrandParent() -> Parent重写 -> GrandParent方法
+// MultiLevelChild.methodChild() -> MultiLevelChild自身
+// MultiLevelChild.methodParent() -> MultiLevelChild重写 -> MultiLevelParent方法
+// MultiLevelChild.methodGrandParent() -> MultiLevelParent重写 -> GrandParent方法
 
 // 继承层级限制：避免过深继承
 // 推荐：不超过3层继承

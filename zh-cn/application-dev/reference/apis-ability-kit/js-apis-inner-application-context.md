@@ -287,7 +287,7 @@ export default class EntryAbility extends UIAbility {
 
 createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
-创建特定数据加密级别的应用上下文。开发者可以调用该接口创建不同加密级别的上下文，从而获取对应的沙箱路径。
+创建特定数据加密等级的应用上下文。开发者可以调用该接口创建不同加密级别的上下文，从而获取对应的沙箱路径。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -373,6 +373,7 @@ ArkTS-Sta: createDisplayContext(displayId: long): Context
 ```ts
 import { common, UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {

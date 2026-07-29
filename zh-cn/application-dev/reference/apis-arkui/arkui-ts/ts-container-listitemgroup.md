@@ -200,6 +200,8 @@ ListItemGroup头部和尾部样式枚举。
 
 ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List和ListItemGroup提供子组件。
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // ListDataSource.ets
@@ -350,11 +352,172 @@ struct ListItemGroupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// ListDataSource.ets
+
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+export interface TimeTable {
+  title: string;
+  projects: Array<string>;
+}
+
+export class TimeTableDataSource implements IDataSource<TimeTable> {
+  private list: Array<TimeTable> = [];
+  private listeners: Array<DataChangeListener> = [];
+
+  constructor(list: Array<TimeTable>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): TimeTable {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据变化
+  notifyDataChange(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  // 修改第一个元素
+  public change1stItem(temp: TimeTable): void {
+    this.list[0] = temp;
+    this.notifyDataChange(0);
+  }
+}
+
+export class ProjectsDataSource implements IDataSource<string> {
+  private list: Array<string> = [];
+
+  constructor(list: Array<string>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, List, ListItem, ListItemGroup, LazyForEach, ListOptions, ListItemGroupOptions, ListDividerOptions, StickyStyle, BarState, Color, TextAlign, Padding, Builder } from '@ohos.arkui.component';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+  private headerText: string = '';
+  private footerNum: int = 0;
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: '星期一',
+        projects: ['语文', '数学', '英语']
+      },
+      {
+        title: '星期二',
+        projects: ['物理', '化学', '生物']
+      },
+      {
+        title: '星期三',
+        projects: ['历史', '地理', '政治']
+      },
+      {
+        title: '星期四',
+        projects: ['美术', '音乐', '体育']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  @Builder
+  itemHead() {
+    Text(this.headerText)
+      .fontSize(20)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(10)
+  }
+
+  @Builder
+  itemFoot() {
+    Text('共' + this.footerNum + '节课')
+      .fontSize(16)
+      .backgroundColor(0xAABBCC)
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    Column() {
+      List({ space: 20 } as ListOptions) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable, index: int) => {
+          this.headerText = item.title;
+          this.footerNum = item.projects.length;
+          ListItemGroup({ header: this.itemHead, footer: this.itemFoot } as ListItemGroupOptions) {
+            LazyForEach(new ProjectsDataSource(item.projects), (project: string, index: int) => {
+              ListItem() {
+                Text(project)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(0xFFFFFF)
+              }
+            }, (item: string, index: int): string => item)
+          }
+          .divider({ strokeWidth: 1, color: Color.Blue } as ListDividerOptions) // 每行之间的分界线
+        }, (item: TimeTable, index: int): string => item.title)
+      }
+      .width('90%')
+      .sticky(StickyStyle.BOTH)
+      .scrollBar(BarState.Off)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![zh-cn_image_0000001219864159](figures/image-listitemgroup.gif)
 
 ### 示例2（设置卡片样式）
 
 该示例展示了ListItemGroup的卡片样式效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -411,6 +574,64 @@ interface ArrObject {
   itemStyles: number[];
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, List, ListItem, ListItemGroup, ForEach, ListOptions, ListItemGroupOptions, ListItemOptions, ListItemGroupStyle, ListItemStyle, TextAlign, Padding } from '@ohos.arkui.component';
+@Entry
+@Component
+struct ListItemGroupExample2 {
+  private arr: ArrObject[] = [
+    {
+      style: ListItemGroupStyle.CARD,
+      itemStyles: [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.CARD]
+    },
+    {
+      style: ListItemGroupStyle.CARD,
+      itemStyles: [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE]
+    },
+    {
+      style: ListItemGroupStyle.CARD,
+      itemStyles: [ListItemStyle.CARD, ListItemStyle.NONE, ListItemStyle.CARD]
+    },
+    {
+      style: ListItemGroupStyle.NONE,
+      itemStyles: [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE]
+    }
+  ];
+
+  build() {
+    Column() {
+      List({ space: '4vp', initialIndex: 0 } as ListOptions) {
+        ForEach(this.arr, (item: ArrObject, index: int) => {
+          ListItemGroup({ style: item.style } as ListItemGroupOptions) {
+            ForEach(item.itemStyles, (itemStyle: ListItemStyle, itemIndex: int) => {
+              ListItem({ style: itemStyle } as ListItemOptions) {
+                Text('第' + (index + 1) + '个Group中第' + (itemIndex + 1) + '个item')
+                  .width('100%')
+                  .textAlign(TextAlign.Center)
+              }
+            // ForEach的key生成函数需显式指定返回类型string。
+            }, (item: ListItemStyle): string => item.toString())
+          }
+        })
+      }
+      .width('100%')
+      .multiSelectable(true)
+      .backgroundColor(0xDCDCDC)
+    }
+    .width('100%')
+    .padding({ top: 5 } as Padding)
+  }
+}
+
+interface ArrObject {
+  style: ListItemGroupStyle;
+  itemStyles: Array<ListItemStyle>;
+}
+```
+
 ![ListItemGroupStyle](figures/listItemGroup2.jpeg)
 
 ### 示例3（设置Header/Footer）
@@ -418,6 +639,8 @@ interface ArrObject {
 该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置Header/Footer。
 
 ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -550,6 +773,109 @@ struct ListItemGroupExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, List, ListItem, ListItemGroup, LazyForEach, Button, ListOptions, ListItemGroupOptions, ListDividerOptions, StickyStyle, BarState, Color, TextAlign, Resource, $r, Builder } from '@ohos.arkui.component';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+
+@Component
+struct MyItemGroup {
+  item: TimeTable = { title: '', projects: [] };
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
+
+  aboutToAppear(): void {
+    this.itemArr = new ProjectsDataSource(this.item.projects);
+  }
+
+  @Builder
+  itemHeader() {
+    Text(this.item.title)
+      .fontSize(20)
+      .height('48vp')
+      .width('100%')
+      .padding(10)
+      .backgroundColor($r('sys.color.background_tertiary'))
+  }
+
+  @Builder
+  itemFooter() {
+    Text('共' + this.item.projects.length + '节课')
+      .fontSize(20)
+      .height('48vp')
+      .width('100%')
+      .padding(10)
+      .backgroundColor($r('sys.color.background_tertiary'))
+  }
+
+  build() {
+    ListItemGroup({
+      header: this.itemHeader,
+      footer: this.itemFooter
+    } as ListItemGroupOptions) {
+      LazyForEach(this.itemArr, (project: string, index: int) => {
+        ListItem() {
+          Text(project)
+            .width('100%')
+            .height(100)
+            .fontSize(20)
+            .textAlign(TextAlign.Center)
+        }
+      }, (item: string, index: int): string => item)
+    }
+    .divider({ strokeWidth: 1, color: Color.Blue } as ListDividerOptions) // 每行之间的分界线
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: '星期一',
+        projects: ['语文', '数学', '英语']
+      },
+      {
+        title: '星期二',
+        projects: ['物理', '化学', '生物']
+      },
+      {
+        title: '星期三',
+        projects: ['历史', '地理', '政治', '体育']
+      },
+      {
+        title: '星期四',
+        projects: ['美术', '音乐']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  build() {
+    Column() {
+      Button('update').width(100).height(50).onClick((): void => {
+        this.itemGroupArray.change1stItem({
+          title: '更新后的星期一',
+          projects: ['语文', '物理', '历史', '美术']
+        });
+      })
+      List({ space: 20 } as ListOptions) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable, index: int) => {
+          MyItemGroup({ item: item })
+        }, (item: TimeTable, index: int): string => item.title) // LazyForEach依赖键值判断是否刷新子组件
+      }
+      .layoutWeight(1)
+      .sticky(StickyStyle.BOTH)
+      .scrollBar(BarState.Off)
+    }
+    .backgroundColor($r('sys.color.background_primary'))
+  }
+}
+```
+
 ![zh-cn_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### 示例4（设置多列布局）
@@ -557,6 +883,8 @@ struct ListItemGroupExample {
 该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的[lanes](./ts-container-list.md#lanes9)属性实现多列布局。
 
 ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -699,6 +1027,132 @@ struct ListItemGroupExample {
         LazyForEach(this.itemGroupArray, (item: TimeTable) => {
           MyItemGroup({ item: item })
         }, (item: TimeTable) => item.title)
+      }
+      .lanes(3) // 设置3列布局
+      .alignListItem(ListItemAlign.Center) // 交叉轴居中对齐
+      .layoutWeight(1)
+      .scrollBar(BarState.Auto)
+      .width('100%')
+      .margin(10)
+    }
+    .backgroundColor($r('sys.color.background_primary'))
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Text, List, ListItem, ListItemGroup, LazyForEach, ListOptions, ListItemGroupOptions, ListDividerOptions, ListItemAlign, BarState, FlexAlign, TextAlign, Resource, ShadowOptions, $r, Builder } from '@ohos.arkui.component';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+
+@Component
+struct MyItemGroup {
+  item: TimeTable = { title: '', projects: [] };
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
+
+  aboutToAppear(): void {
+    this.itemArr = new ProjectsDataSource(this.item.projects);
+  }
+
+  @Builder
+  itemHeader() {
+    Text(this.item.title)
+      .fontSize(20)
+      .height('48vp')
+      .width('100%')
+      .padding(10)
+      .backgroundColor($r('sys.color.background_tertiary'))
+  }
+
+  @Builder
+  itemFooter() {
+    Text('共' + this.item.projects.length + '节课')
+      .fontSize(20)
+      .height('48vp')
+      .width('100%')
+      .padding(10)
+      .backgroundColor($r('sys.color.background_tertiary'))
+  }
+
+  build() {
+    ListItemGroup({
+      header: this.itemHeader,
+      footer: this.itemFooter
+    } as ListItemGroupOptions) {
+      LazyForEach(this.itemArr, (project: string, index: int) => {
+        ListItem() {
+          // 修改ListItem样式以适应多列布局
+          Column() {
+            Text(project)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80)
+          .padding(8)
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor($r('sys.color.background_secondary'))
+          .borderRadius(12)
+          .shadow({
+            radius: 4,
+            color: '#20000000',
+            offsetX: 0,
+            offsetY: 2
+          } as ShadowOptions)
+        }
+      }, (item: string, index: int): string => item)
+    }
+    .divider({
+      strokeWidth: 2,
+      color: $r('sys.color.background_tertiary'),
+      startMargin: 20,
+      endMargin: 20
+    } as ListDividerOptions)
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: '星期一',
+        projects: ['语文', '数学', '英语', '物理', '化学', '生物']
+      },
+      {
+        title: '星期二',
+        projects: ['历史', '地理', '政治', '体育', '美术', '音乐']
+      },
+      {
+        title: '星期三',
+        projects: ['计算机', '编程', '算法', '数据结构', '网络']
+      },
+      {
+        title: '星期四',
+        projects: ['文学', '写作', '阅读', '书法']
+      },
+      {
+        title: '星期五',
+        projects: ['实验', '生活', '奥数', '高数', '中医']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  build() {
+    Column() {
+      List({ space: 15 } as ListOptions) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable, index: int) => {
+          MyItemGroup({ item: item })
+        }, (item: TimeTable, index: int): string => item.title)
       }
       .lanes(3) // 设置3列布局
       .alignListItem(ListItemAlign.Center) // 交叉轴居中对齐

@@ -245,7 +245,7 @@ struct Child {
   }
   ```
 
-- \@CustomEnv装饰器只能单独使用，不能和其他V1V2状态变量装饰器联用，否则会有编译时报错。
+- \@CustomEnv装饰器可以和[\@Watch](./arkts-static-watch.md)装饰器联用，不能和其他V1V2状态变量装饰器联用，否则会有编译时报错。
 
   ```ts
   'use static'
@@ -260,11 +260,6 @@ struct Child {
     @CustomEnv('custom') varName: string = 'defaultValue'; // 正确用法
     @State @CustomEnv('custom') varName2: string = 'defaultValue'; // 错误写法，编译时报错
     @Require @CustomEnv('custom') varName3: string = 'defaultValue'; // 错误写法，编译时报错
-    @CustomEnv('custom') @Watch('observedFunction')  varName4: string = 'defaultValue'; // 错误用法，编译时报错
-
-    observedFunction() {
-      console.info(`xxx`);
-    }
 
     build() {
       Column() {
@@ -578,7 +573,7 @@ struct Child {
 
 ### \@Monitor和addMonitor监听\@CustomEnv装饰变量变化
 
-在ArkTS-Sta中，\@CustomEnv不支持与状态变量、[\@Watch](./arkts-static-watch.md)等其他装饰器连用，可以在\@Component里使用[addMonitor](./arkts-static-new-addmonitor-clearmonitor.md)监听变量变化。
+在ArkTS-Sta中，\@CustomEnv不支持与除\@Watch以外的其他装饰器联用，可以在\@Component里使用[addMonitor](./arkts-static-new-addmonitor-clearmonitor.md)和[\@Watch](./arkts-static-watch.md)监听变量变化。
 
 <!-- @[CustomEnvSupportAddMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportAddMonitor.ets) -->
 
@@ -631,6 +626,62 @@ struct Child {
     Column() {
       Text(`Child message is : ${this.message}`)
     }
+  }
+}
+```
+
+运行效果图如下。
+
+![image](../figures/custom-env-static-15.gif)
+
+\@CustomEnv和\@Watch装饰器联用，监听变量变化。
+
+<!-- @[CustomEnvSupportUseWatchDecorator](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CustomEnvSample/entry/src/main/ets/pages/CESupportUseWatchDecorator.ets) -->
+
+``` TypeScript
+import {
+  Entry, Component, Column, Text, Button, CustomEnv, CustomEnvKey, Watch, State, Row
+} from '@kit.ArkUI';
+import { WithEnv, WithEnvAttribute } from '@ohos.arkui.WithEnv';
+
+const custom = CustomEnvKey.create<string>();
+
+@Entry
+@Component
+struct Index {
+  @State defaultMessage: string = 'the nearest WithEnv';
+
+  build() {
+    Row() {
+      Column() {
+        Text(`Index message is : ${this.defaultMessage}`)
+        WithEnv() {
+          Child()
+        }.customEnv(custom, this.defaultMessage)
+
+        Button('change')
+          .onClick(() => {
+            // 点击Button后，this.defaultMessage的值会更新为'Hello World'，触发@Watch监听回调。
+            this.defaultMessage = 'Hello World';
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Component
+struct Child {
+  // @CustomEnv与@Watch装饰器联用，监听变量变化。
+  @CustomEnv('custom') @Watch('onChange') message: string = "Hello";
+  // 当message变量值发生变化时会触发@Watch监听回调。
+  onChange(propName: string): void {
+    console.info(`[CustomEnv], this.message: ${this.message} has changed!`);
+  }
+
+  build() {
+    Text("Child message is :" + this.message)
   }
 }
 ```

@@ -93,6 +93,10 @@ class MyNodeController extends NodeController {
     }
     return this.rootNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 

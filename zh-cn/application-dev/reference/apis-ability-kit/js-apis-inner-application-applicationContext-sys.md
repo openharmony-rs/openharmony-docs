@@ -73,7 +73,7 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16200011 | The context does not exist. |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -148,13 +148,13 @@ export default class EntryAbility extends UIAbility {
           // 处理业务逻辑错误
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          console.error('preloadUIExtensionAbility failed. code: $\{code}, message: $\{message}');
+          console.error(`preloadUIExtensionAbility failed 1. code: ${code}, message: ${message}`);
         });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`preloadUIExtensionAbility failed. code: ${code}, message: ${message}`);
+      console.error(`preloadUIExtensionAbility failed 2. code: ${code}, message: ${message}`);
     }
   }
 }

@@ -18,7 +18,7 @@ Toggle通过调用[ToggleOptions](../reference/apis-arkui/arkui-ts/ts-basic-comp
 Toggle(options: { type: ToggleType, isOn?: boolean })
 ```
 
-其中，[ToggleType](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggletype枚举说明)为开关类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
+其中，[ToggleType](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggletype枚举说明)为切换类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
 
 API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 

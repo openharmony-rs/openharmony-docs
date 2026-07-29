@@ -12,7 +12,7 @@ OverlayModuleInfo信息，可以通过[overlay.getOverlayModuleInfo](js-apis-ove
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -33,5 +33,5 @@ import { overlay } from '@kit.AbilityKit';
 | bundleName            | string                                             | 是   | 否   | overlay特征模块所属应用的bundle名称。           |
 | moduleName            | string                                             | 是   | 否   | overlay特征模块名称。                       |
 | targetModuleName      | string                                             | 是   | 否   | overlay特征模块作用目标的模块名称，表示当前overlay包的资源需要替换生效的模块名称。        |
-| priority              | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 是   | 否   | overlay特征模块的优先级。取值为整数，取值范围1 ~ 100，数值越大优先级越高。    |
-| state                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 是   | 否   | overlay特征模块的禁用启用状态。取值为整数，取值范围：[0-2]，0代表禁用状态，1代表启用状态，2代表无效状态。     |
+| priority              | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 是   | 否   | overlay特征模块的优先级。取值为整数，取值范围：[1, 100]，数值越大优先级越高。    |
+| state                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 是   | 否   | overlay特征模块的禁用启用状态。取值为整数，取值范围：[0, 2]，0代表禁用状态，1代表启用状态，2代表无效状态。     |

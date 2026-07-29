@@ -1376,11 +1376,9 @@ function afIsString(val: Object): boolean {
 }
 
 function afProcess(value: string | number): void {
-  let v: string = afAssertDefined(typeof value === 'string' ? value : null);
-  console.info(`${v.toUpperCase()}`);
-
-  if (afIsString(value) && typeof value === 'string') {
-    console.info(`${value.toUpperCase()}`);
+  if (typeof value === 'string') {
+    let v: string = afAssertDefined(value);
+    console.info(`${v.toUpperCase()}`);
   } else {
     console.info(`${value.toString()}`);
   }
