@@ -599,9 +599,11 @@
 
 ## Callback<sup>15+</sup>
 
-### (data: T)<sup>15+</sup>
+Callback<T, V = void> {
 
-(data: T): V
+(data: T): V;
+
+}
 
 通用回调函数。
 
