@@ -486,6 +486,8 @@ ListItem划出菜单的展开方向。
 ### 示例1（创建ListItem）
 该示例实现了创建ListItem的基本用法。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 export class ListDataSource implements IDataSource {
@@ -536,10 +538,65 @@ struct ListItemExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, List, ListOptions, ListItem, LazyForEach, IDataSource, DataChangeListener, BarState, TextAlign, Padding } from '@ohos.arkui.component';
+
+export class ListDataSource implements IDataSource<number> {
+  private list: Array<number> = [];
+
+  constructor(list: Array<number>) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+@Entry
+@Component
+struct ListItemExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 } as ListOptions) {
+        LazyForEach(this.arr, (item: number, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number, index: int): string => item.toString())
+      }.width('90%')
+      .scrollBar(BarState.Off)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![listItem1](figures/listItem1.gif)
 
 ### 示例2（设置划出组件）
 该示例展示了ListItem设置了swipeAction的横滑效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -614,10 +671,92 @@ struct ListItemExample2 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, List, ListOptions, ListItem, ForEach, Row, Button, TransitionEffect, FlexAlign, TextAlign, SwipeActionOptions, SwipeActionItem, ListScroller, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ListItemExample2 {
+  arr: number[] = [0, 1, 2, 3, 4];
+  @State enterEndDeleteAreaString: string = 'not enterEndDeleteArea';
+  @State exitEndDeleteAreaString: string = 'not exitEndDeleteArea';
+  private scroller: ListScroller = new ListScroller();
+
+  @Builder
+  itemEnd() {
+    Row() {
+      Button('Delete').margin('4vp')
+      Button('Set').margin('4vp').onClick((): void => {
+        try {
+          this.scroller.closeAllSwipeActions();
+        } catch (error) {
+          console.info('Failed to close all swipe actions:', error);
+        }
+      })
+    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+  }
+
+  build() {
+    Column() {
+      List({ space: 10, scroller: this.scroller } as ListOptions) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('item' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .transition(TransitionEffect.OPACITY)
+          .swipeAction({
+            end: {
+              builder: (): void => {
+                this.itemEnd()
+              },
+              onAction: (): void => {
+                this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+                  let index = this.arr.indexOf(item);
+                  this.arr.splice(index, 1);
+                });
+              },
+              actionAreaDistance: 56,
+              onEnterActionArea: (): void => {
+                this.enterEndDeleteAreaString = 'enterEndDeleteArea';
+                this.exitEndDeleteAreaString = 'not exitEndDeleteArea';
+              },
+              onExitActionArea: (): void => {
+                this.enterEndDeleteAreaString = 'not enterEndDeleteArea';
+                this.exitEndDeleteAreaString = 'exitEndDeleteArea';
+              }
+            } as SwipeActionItem
+          } as SwipeActionOptions)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: number): string => item.toString())
+      }
+
+      Text(this.enterEndDeleteAreaString).fontSize(20)
+      Text(this.exitEndDeleteAreaString).fontSize(20)
+    }
+    .padding(10)
+    .backgroundColor(0xDCDCDC)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![deleteListItem](figures/deleteListItem.gif)
 
 ### 示例3（设置卡片样式）
 该示例展示了ListItem的卡片样式效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -654,11 +793,53 @@ struct ListItemExample3 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, List, ListOptions, ListItem, ListItemOptions, ListItemGroup, ListItemGroupOptions, ForEach, ListItemStyle, ListItemGroupStyle, TextAlign, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListItemExample3 {
+  build() {
+    Column() {
+      List({ space: '4vp', initialIndex: 0 } as ListOptions) {
+        ListItemGroup({ style: ListItemGroupStyle.CARD } as ListItemGroupOptions) {
+          ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: ListItemStyle, index?: int) => {
+            ListItem({ style: itemStyle } as ListItemOptions) {
+              Text('' + index)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          })
+        }
+
+        ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: ListItemStyle, index?: int) => {
+          ListItem({ style: itemStyle } as ListItemOptions) {
+            Text('' + index)
+              .width('100%')
+              .textAlign(TextAlign.Center)
+          }
+        })
+      }
+      .width('100%')
+      .multiSelectable(true)
+      .backgroundColor(0xDCDCDC)
+    }
+    .width('100%')
+    .padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![ListItemStyle](figures/listItem3.jpeg)
 
 ### 示例4（通过ComponentContent设置划出组件）
 
 该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -768,10 +949,97 @@ struct ListItemExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, List, ListOptions, ListItem, ListItemGroup, ForEach, Row, Button, FlexAlign, TextAlign, TransitionEffect, SwipeActionOptions, SwipeActionItem, ListScroller, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Component
+struct MyListItem {
+  scroller: ListScroller = new ListScroller();
+  arr: Array<number> = [0, 1, 2, 3, 4];
+  @State project: number = 0;
+
+  @Builder
+  itemSwipeAction() {
+    Row() {
+      Button('delete').margin('4vp')
+      Button('Set').margin('4vp').onClick((): void => {
+        this.scroller.closeAllSwipeActions()
+      })
+    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+  }
+
+  build() {
+    ListItem() {
+      Text('item' + this.project)
+        .width('100%')
+        .height(100)
+        .fontSize(16)
+        .textAlign(TextAlign.Center)
+        .borderRadius(10)
+        .backgroundColor(0xFFFFFF)
+    }
+    .transition(TransitionEffect.OPACITY)
+    .swipeAction({
+      end: {
+        builder: this.itemSwipeAction,
+        onAction: (): void => {
+          this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+            let index = this.arr.indexOf(this.project);
+            this.arr.splice(index, 1);
+          });
+        },
+        actionAreaDistance: 56
+      } as SwipeActionItem,
+      start: {
+        builder: this.itemSwipeAction,
+        onAction: (): void => {
+          this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+            let index = this.arr.indexOf(this.project);
+            this.arr.splice(index, 1);
+          });
+        },
+        actionAreaDistance: 56
+      } as SwipeActionItem
+    } as SwipeActionOptions)
+    .padding(5)
+  }
+}
+
+@Entry
+@Component
+struct ListItemExample {
+  arr: Array<number> = [0, 1, 2, 3, 4];
+  private scroller: ListScroller = new ListScroller();
+
+  build() {
+    Column() {
+      List({ space: 10, scroller: this.scroller } as ListOptions) {
+        ListItemGroup() {
+          ForEach(this.arr, (project: number) => {
+            MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (item: number): string => item.toString())
+        }
+      }
+    }
+    .padding(10)
+    .backgroundColor(0xDCDCDC)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![ListItemStyle](figures/deleteListItem_example04.gif)
 
 ### 示例5（通过ListItemSwipeActionManager管理划出菜单）
 从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的划出菜单。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -855,4 +1123,97 @@ struct ListItemExample5 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { FrameNode } from '@kit.ArkUI';
+import { Entry, Component, Flex, FlexOptions, FlexWrap, FlexAlign, Button, List, ListOptions, ListItem, Text, Row, TextAlign, TransitionEffect, SwipeActionOptions, SwipeActionItem, ListItemSwipeActionManager, ListItemSwipeActionDirection, Margin, Builder } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ListItemExample5 {
+  @Builder
+  itemAction(str: string) {
+    Row() {
+      Button(str).margin('4vp')
+    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
+  }
+
+  build() {
+    Flex({ wrap: FlexWrap.Wrap } as FlexOptions) {
+      Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween } as FlexOptions) {
+        Button('expand start')
+          .onClick((): void => {
+            try {
+              let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
+              if (node != null) {
+                ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
+              }
+            } catch (error) {
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
+            }
+          })
+        Button('expand end')
+          .onClick((): void => {
+            try {
+              let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
+              if (node != null) {
+                ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
+              }
+            } catch (error) {
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
+            }
+          })
+        Button('collapse')
+          .onClick((): void => {
+            try {
+              let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
+              if (node != null) {
+                ListItemSwipeActionManager.collapse(node)
+              }
+            } catch (error) {
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
+            }
+          })
+      }
+      .margin({ bottom: 10 } as Margin)
+
+      List({ space: 10 } as ListOptions) {
+        ListItem() {
+          Text('item')
+            .width('100%')
+            .height(100)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+        }
+        .id('listItem')
+        .transition(TransitionEffect.OPACITY)
+        .swipeAction({
+          start: {
+            builder: (): void => {
+              this.itemAction('start')
+            },
+          } as SwipeActionItem,
+          end: {
+            builder: (): void => {
+              this.itemAction('end')
+            },
+          } as SwipeActionItem
+        } as SwipeActionOptions)
+      }
+      .height('80%')
+
+    }
+    .padding(10)
+    .backgroundColor(0xDCDCDC)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![ListItemSwipeActionManager](figures/listItemSwipeActionManager_example05.gif)

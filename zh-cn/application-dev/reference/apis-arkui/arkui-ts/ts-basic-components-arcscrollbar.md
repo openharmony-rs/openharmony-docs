@@ -91,6 +91,8 @@ ArcScrollBar的构造函数参数。
 
 该示例通过ArcScrollBar与[Scroll](ts-container-scroll.md)组件联动，设置了弧形外置滚动条。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ArcScrollBar } from '@kit.ArkUI';
 
@@ -122,6 +124,48 @@ struct ArcScrollBarExample {
       .scrollBar(BarState.Off)
 
       ArcScrollBar({ scroller: this.scroller, state: BarState.Auto })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, StackOptions, Scroll, Scroller, Flex, FlexOptions, FlexDirection, Row, Text, TextAlign, ForEach, BarState, Alignment, Margin } from '@ohos.arkui.component';
+import { ArcScrollBar, ArcScrollBarOptions } from '@ohos.arkui.ArcScrollBar';
+
+@Entry
+@Component
+struct ArcScrollBarExample {
+  private scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  build() {
+    Stack({ alignContent: Alignment.Center } as StackOptions) {
+      Scroll(this.scroller) {
+        Flex({ direction: FlexDirection.Column } as FlexOptions) {
+          ForEach(this.arr, (item: number) => {
+            Row() {
+              Text(item.toString())
+                .width('80%')
+                .height(60)
+                .backgroundColor('#3366CC')
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 5 } as Margin)
+            }
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (item: number): string => item.toString())
+        }.margin({ right: 15 } as Margin)
+      }
+      .width('90%')
+      .scrollBar(BarState.Off)
+
+      ArcScrollBar({ scroller: this.scroller, state: BarState.Auto } as ArcScrollBarOptions)
     }
     .width('100%')
     .height('100%')

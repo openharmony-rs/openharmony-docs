@@ -326,6 +326,8 @@ attributeModifier(modifier: AttributeModifier\<GridItemAttribute> | AttributeMod
 ### 示例1（GridItem设置自身位置）
 GridItem通过设置合理的ColumnStart、ColumnEnd、RowStart、RowEnd属性来设置自身位置。需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -373,11 +375,64 @@ struct GridItemExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, ForEach, Grid, GridItem, TextAlign, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridItemExample {
+  numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
+
+  build() {
+    Column() {
+      Grid() {
+        GridItem() {
+          Text('4')
+            .fontSize(16)
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .textAlign(TextAlign.Center)
+        }.rowStart(1).rowEnd(2).columnStart(1).columnEnd(2) // 同时设置合理的行列号
+
+        ForEach(this.numbers, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: string): string => item)
+
+        GridItem() {
+          Text('5')
+            .fontSize(16)
+            .backgroundColor(0xDBD0C0)
+            .width('100%')
+            .height('100%')
+            .textAlign(TextAlign.Center)
+        }.columnStart(1).columnEnd(4) // 只设置列号，不会从第1列开始布局
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .width('90%').height(300)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![gridItem](figures/gridItem.gif)
 
 ### 示例2（设置GridItem样式）
 
 使用GridItemOptions设置GridItem样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -436,6 +491,74 @@ struct GridItemExample {
       .height(150)
       .padding('4vp')
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, ColumnOptions, Text, ForEach, Grid, GridItem, GridItemOptions, GridItemStyle, TextAlign, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct GridItemExample {
+  numbers: string[] = ['0', '1', '2'];
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Grid() {
+        ForEach(this.numbers, (day: string) => {
+          ForEach(this.numbers, (day: string) => {
+            GridItem({style:GridItemStyle.NONE} as GridItemOptions) {
+              Text(day)
+                .fontSize(16)
+                .width('100%')
+                .height('100%')
+                .textAlign(TextAlign.Center)
+                .focusable(true)
+            }
+            .backgroundColor(0xF9CF93)
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (day: string): string => day)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string): string => day)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr')
+      .columnsGap(4)
+      .rowsGap(4)
+      .width('60%')
+      .backgroundColor(0xFAEEE0)
+      .height(150)
+      .padding('4vp')
+
+      Grid() {
+        ForEach(this.numbers, (day: string) => {
+          ForEach(this.numbers, (day: string) => {
+            GridItem({style:GridItemStyle.PLAIN} as GridItemOptions) {
+              Text(day)
+                .fontSize(16)
+                .width('100%')
+                .height('100%')
+                .textAlign(TextAlign.Center)
+                .focusable(true)
+            }
+            .backgroundColor(0xF9CF93)
+          // ForEach的key生成函数需显式指定返回类型string。
+          }, (day: string): string => day)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (day: string): string => day)
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr')
+      .columnsGap(4)
+      .rowsGap(4)
+      .width('60%')
+      .backgroundColor(0xFAEEE0)
+      .height(150)
+      .padding('4vp')
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
