@@ -4266,7 +4266,7 @@ ArkTS-Sta: raiseAboveTarget(windowId: int, callback: AsyncCallback&lt;void&gt;):
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当调用成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -4813,7 +4813,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | enable   | boolean                   | 是   | 设置子窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当调用成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
 
