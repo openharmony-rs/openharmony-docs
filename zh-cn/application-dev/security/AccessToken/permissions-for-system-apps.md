@@ -8534,6 +8534,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+允许应用触发资产的智慧分析。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
 
 允许应用创建内容证真签名。
