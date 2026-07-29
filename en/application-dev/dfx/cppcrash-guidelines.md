@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=adc4fccab9ce2d6d069c4d6bc57fbeca9e96cecb translatedAt=2026-07-28T09:24:41.357Z pushedAt=2026-07-28T13:24:06.487Z -->
+<!-- md-trans-meta sourceCommit=adc4fccab9ce2d6d069c4d6bc57fbeca9e96cecb translatedAt=2026-07-28T09:24:41.357Z pushedAt=2026-07-29T01:14:59.525Z -->
 
 ## Overview
 
@@ -1042,7 +1042,7 @@ Starting from API version 24, when an application exits due to a SIGPIPE excepti
 The key log for SIGPIPE exception exit is as follows:
 
 ```text
-应用包名 with pid xxxx exit with signal:13
+App bundle name with pid xxxx exit with signal:13
 ```
 
 - **SIGPIPE signal description**

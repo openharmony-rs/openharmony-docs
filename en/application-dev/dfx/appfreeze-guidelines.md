@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=13910b013ecb4fa1fd994642c8590bcc094e6fc5 translatedAt=2026-07-28T09:31:34.090Z pushedAt=2026-07-28T11:36:14.214Z -->
+<!-- md-trans-meta sourceCommit=13910b013ecb4fa1fd994642c8590bcc094e6fc5 translatedAt=2026-07-28T09:31:34.090Z pushedAt=2026-07-29T01:11:47.580Z -->
 
 ## Overview
 
@@ -26,8 +26,8 @@ Currently, AppFreeze detection supports the fault types listed in the following 
 
 | Event Type | Description | Fault Type |
 | -------- | -------- | -------- |
-| THREAD_BLOCK_3S | App freeze alarm event, triggered when the app main thread executes a task for more than 3s.<br>**Note**: This type is supported since API version 26.0.0. | [THREAD_BLOCK_6S App Main Thread Deadlock Timeout](#thread_block_6s-app-main-thread-deadlock-timeout) |
-| THREAD_BLOCK_6S | App freeze event, triggered when the app main thread executes a task for more than 6s. | [THREAD_BLOCK_6S App Main Thread Deadlock Timeout](#thread_block_6s-app-main-thread-deadlock-timeout) |
+| THREAD_BLOCK_3S | App freeze alarm event, triggered when the app main thread executes a task for more than 3s.<br>**Note**: This type is supported since API version 26.0.0. | [THREAD_BLOCK_6S App Main Thread Freeze Timeout](#thread_block_6s-app-main-thread-freeze-timeout) |
+| THREAD_BLOCK_6S | App freeze event, triggered when the app main thread executes a task for more than 6s. | [THREAD_BLOCK_6S App Main Thread Freeze Timeout](#thread_block_6s-app-main-thread-freeze-timeout) |
 | APP_INPUT_BLOCK | App freeze event, triggered when the user input response times out. | [APP_INPUT_BLOCK User Input Response Timeout](#app_input_block-user-input-response-timeout) |
 | LIFECYCLE_HALF_TIMEOUT | App freeze alarm event, triggered when the half-lifecycle threshold is exceeded during UIAbility lifecycle switching.<br>**Note**: This type is supported since API version 26.0.0. | [LIFECYCLE_TIMEOUT Lifecycle Switch Timeout](#lifecycle_timeout-lifecycle-switch-timeout) |
 | LIFECYCLE_TIMEOUT | App freeze event, triggered when the UIAbility lifecycle switch times out.<br>**Note**: This type is supported since API version 26.0.0. | [LIFECYCLE_TIMEOUT Lifecycle Switch Timeout](#lifecycle_timeout-lifecycle-switch-timeout) |
@@ -852,3 +852,5 @@ The clustering method for AppFreeze fault information is the same as that for Cp
 The clustering specifications for enhanced log information are consistent with those for extracting stack information from AppFreeze fault information. Enhanced log information is mainly included in clustering to address cases where AppFreeze fault stack information is insufficient for clustering.
 
 You can obtain clustering features for enhanced log information by referring to [AppFreeze Fault Information Clustering](#appfreeze-fault-information-clustering) and use these features for clustering enhanced log information.
+
+<!--no_check-->

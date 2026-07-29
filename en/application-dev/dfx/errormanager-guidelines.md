@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-28T09:22:18.082Z pushedAt=2026-07-28T13:51:14.730Z -->
+<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-28T09:22:18.082Z pushedAt=2026-07-29T01:16:19.811Z -->
 
 ## Overview
 
@@ -16,7 +16,7 @@ After the errorManager APIs are used to listen for exceptions and errors, the ap
 
 > **NOTE**
 >
-> Starting from API version 26.0.0, if catchable exceptions have already been listened for through the errorManager APIs, HiAppEvent cannot subscribe to [JsError crashes](hiappevent-watcher-crash-events.md#jserror-crash-type-detection-principle).
+> Starting from API version 26.0.0, if catchable exceptions have already been listened for through the errorManager APIs, HiAppEvent cannot subscribe to [JsError crashes](hiappevent-watcher-crash-events.md#jserror).
 
 ## Available APIs
 

@@ -6,7 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=caf68b250cfd940a1ec05de03c506dce62c7d685 translatedAt=2026-07-28T06:43:43.757Z pushedAt=2026-07-28T07:12:43.653Z -->
+<!-- md-trans-meta sourceCommit=caf68b250cfd940a1ec05de03c506dce62c7d685 translatedAt=2026-07-28T06:43:43.757Z pushedAt=2026-07-29T01:18:47.731Z -->
 
 ## Overview
 
@@ -116,8 +116,10 @@ Connectivity Kit provides basic communication services for applications. Before 
 
 Device capabilities can be used only after the related switch is enabled after user authorization. Otherwise, the system does not provide services for third-party applications.
 
-### 相关实例
+### Samples
 
-针对蓝牙相关的业务，有以下相关实例可供参考：
+For Bluetooth-related services, the following sample is available for reference:
 
-- [bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)
+- [Bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)
+
+<!--no_check-->
