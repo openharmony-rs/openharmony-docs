@@ -2154,6 +2154,131 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### invokeAnalysisTool
+
+invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolResult&gt;): Promise&lt;string&gt;
+
+触发分析工具的执行。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [ToolInvokeConfig](#toolinvokeconfig) | 是   | 调用分析工具的配置。 |
+| callback  | Callback&lt;[AnalysisToolResult](#analysistoolresult)&gt; | 是   | 回调函数，用于返回分析工具结果。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回任务ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported tool type.<br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+let callback = (result: photoAccessHelper.AnalysisToolResult) => {
+  console.info('invokeAnalysisTool callback result: ' + JSON.stringify(result));
+};
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('invokeAnalysisToolDemo');
+  let config: photoAccessHelper.ToolInvokeConfig = {
+    type: photoAccessHelper.AnalysisToolType.IMAGE_RETRIEVAL_TOOL_TYPE,
+    param: '{"key":"value"}'
+  };
+
+  try {
+    let taskId = await phAccessHelper.invokeAnalysisTool(config, callback);
+    console.info('do invokeAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do invokeAnalysisTool');
+  }
+}
+```
+
+### cancelAnalysisTool
+
+cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
+
+取消分析工具的执行。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [ToolCancelConfig](#toolcancelconfig) | 是   | 取消分析工具的配置。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Invalid task id.<br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('cancelAnalysisToolDemo');
+  let config: photoAccessHelper.ToolCancelConfig = {
+    taskId: '123456',
+    param: '{"key":"value"}'
+  };
+
+  try {
+    await phAccessHelper.cancelAnalysisTool(config);
+    console.info('do cancelAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do cancelAnalysisTool');
+  }
+}
+```
+
 ### createAssetsForAppWithMode<sup>12+</sup>
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
@@ -13912,6 +14037,36 @@ try {
 | ANALYSIS\_MAGIC\_EMOJI<sup>24+</sup>        | 21 | 魔法表情分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
 | ANALYSIS\_AI\_EDIT<sup>24+</sup>        | 22 | AI编辑分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
 
+## AnalysisToolType
+
+表示智慧分析工具类型的枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                            | 值  | 说明       |
+| :---------------------------- | :- | :------- |
+| ANALYSIS\_BASE\_TOOL\_TYPE   | 0  | 基础分析工具类型，用于触发所有智慧分析算法。    |
+| IMAGE\_RETRIEVAL\_TOOL\_TYPE               | 1  | 图像检索工具类型。    |
+| NEGATIVE\_FILTER\_TOOL\_TYPE                 | 2  | 负向过滤类型，用于过滤低质量/重复/不当图像。    |
+| FACE\_RECOGNITION\_TOOL\_TYPE                | 3  | 人物识别类型。    |
+| BATCH\_SIMILARITY\_SELECTION\_TOOL\_TYPE              | 4  | 相似去重类型，计算图像间的视觉/语义相似度，辅助去重和关联分析。    |
+| BALANCED\_SELECTION\_TOOL\_TYPE      | 5  | 平衡性选材类型，故事主题与平衡性选材，按叙事角色均衡选取图像。    |
+| COVER\_GRID\_SELECTION\_TOOL\_TYPE        | 6  | 封面优选与排序类型，生成封面风格的多图网格布局，用于社交媒体发布。    |
+| HIGHLIGHT\_TOOL\_TYPE         | 7  | 图库时刻场景类型。   |
+| SEARCH\_TOOL\_TYPE            | 8  | 搜索场景类型。   |
+| SELECTION\_TOOL\_TYPE     | 9  | 图库精选视图场景类型。    |
+| PORTRAIT\_ALBUM\_TOOL\_TYPE    | 10 | 人像相册场景类型。    |
+| CLASSIFY\_ALBUM\_TOOL\_TYPE      | 11 | 分类相册场景类型。    |
+| SIMILARITY\_CLEANING\_TOOL\_TYPE        | 12 | 图库相似清理场景类型。    |
+| EDIT\_RECOMMENDATION\_TOOL\_TYPE        | 13 | 图库主动推荐场景类型。    |
+| AI\_SEARCH\_TOOL\_TYPE        | 14 | 图库智慧搜索场景类型。    |
+
 ## AnalysisConfig<sup>24+</sup>
 
 资产分析配置。
@@ -13941,6 +14096,57 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | result | number  | 否 | 否 | 资产分析的结果码。 |
+
+## ToolInvokeConfig
+
+调用分析工具的配置。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| type | [AnalysisToolType](#analysistooltype)  | 否 | 否 | 要调用的分析工具类型。 |
+| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。|
+
+## AnalysisToolResult
+
+分析工具执行结果。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| errCode | number  | 否 | 否 | 工具执行的错误码。<br>可能返回的错误码：<br>0 - 表示成功。<br>23800203 - 表示设备温度过高。<br>23800204 - 表示设备电量过低。<br>23800205 - 表示存储空间不足。<br>23800206 - 表示省电模式已开启。<br>23800207 - 表示智慧分析服务正在运行。<br>23800208 - 表示智慧分析开关已关闭。<br>23800209 - 表示分析服务异常，查看日志了解详情。<br>23800301 - 表示系统内部错误。|
+| result | string  | 否 | 是 | 工具执行结果，以JSON字符串格式表示。 |
+
+## ToolCancelConfig
+
+取消分析工具的配置。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskId | string  | 否 | 否 | 要取消的任务ID，必须是[invokeAnalysisTool](#invokeanalysistool)返回的有效ID。 |
+| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
