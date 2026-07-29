@@ -1309,8 +1309,7 @@ ArkTS-Dyn示例：
 struct EnableAutoSpacing {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  @State
-  enableAutoSpace:boolean = false;
+  @State enableAutoSpace: boolean = false;
 
   build() {
     Column() {
