@@ -40,7 +40,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | softwareModel | string | 是 | 内部软件子型号。<br>示例：<!--RP5-->TAS-AL00<!--RP5End--> |
 | hardwareModel | string | 是 | 硬件版本号。<br>示例：<!--RP6-->TASA00CVN1<!--RP6End--> |
 | hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br>**说明**：<br>从API version 6开始支持，从API version 9开始废弃。建议使用[系统能力SystemCapability使用指南](../syscap.md)替代。<br>示例：default |
-| serial | string | 是 | 设备序列号SN(Serial Number)。<br>**说明**：可作为设备唯一识别码。<br>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) <br>示例：序列号随设备差异 |
+| serial | string | 是 | 设备序列号SN(Serial Number)，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br>**说明**：可作为设备唯一识别码。<br>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) <br>示例：序列号随设备差异 |
 | bootloaderVersion | string | 是 | Bootloader版本号，用于标识设备启动引导程序的版本信息。<br>示例：bootloader |
 | abiList | string | 是 | 应用二进制接口（Abi）。<br>示例：arm64-v8a |
 | securityPatchTag | string | 是 | 安全补丁级别。<br>示例：<!--RP7-->2021/01/01<!--RP7End--> |
@@ -62,14 +62,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | buildHost | string | 是 | 构建主机。<br>示例：default |
 | buildTime | string | 是 | 构建时间。<br>示例：default |
 | buildRootHash | string | 是 | 构建版本Hash。<br>示例：default |
-| udid<sup>7+</sup> | string | 是 | 设备UDID。<br>**说明**：数据长度为65字节。可作为设备唯一识别码。<br>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
+| udid<sup>7+</sup> | string | 是 | 设备UDID，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br>**说明**：数据长度为65字节。可作为设备唯一识别码。<br>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br>示例：OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br>示例：5.0.0  |
 | distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<br>示例：500001 |
 | distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。<br>示例：OpenHarmony-API |
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br>示例：Release |
 | ODID<sup>12+</sup> | string | 是 | ODID（Open Developer Identifier，开发者匿名设备标识符）。<br>**ODID值会在以下场景重新生成**：<br>手机恢复出厂设置。<br>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br>**ODID生成规则**：<br>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br>**说明**：数据长度为37字节(包含结束符)。<br>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
-| diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br> **说明** ：该字段只能在部分2in1设备上进行查询，其他设备查询结果为空。<br> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO(该权限只允许系统应用及企业类应用申请) <br> 示例：2502EM400567 |
+| diskSN<sup>15+</sup> | string | 是 | 硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br> **说明** ：该字段只能在部分2in1设备上进行查询，其他设备查询结果为空。<br> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO(该权限只允许系统应用及企业类应用申请) <br> 示例：2502EM400567 |
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。<br>**使用场景**：用于根据设备能力进行性能适配，如调整动画复杂度、选择不同质量的资源、动态控制功能特性等。<br>示例：0 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号。<br>**使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。<br> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1。<br> 示例：100 |
@@ -347,7 +347,7 @@ apiAvailable(version: string | number): boolean;
 
 | 类型                                       | 说明                                            |
 | ------------------------------------------ | ----------------------------------------------- |
-| boolean                                     | 返回true表示当前设备API版本大于等于入参版本号；返回false则表示当前设备API版本小于入参版本号。 |
+| boolean                                     | 布尔值。返回true表示当前设备API版本大于等于入参版本号；返回false代表当前设备API版本小于入参版本号，或传入的版本号格式非法、该版本不存在。  |
 
 **示例**：
 

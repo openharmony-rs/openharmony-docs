@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:38.677Z pushedAt=2026-07-25T01:57:12.920Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:56:38.732Z pushedAt=2026-07-25T09:33:49.523Z -->
 
 [\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provide) and [\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md#consume) are used for two-way data synchronization with descendent components and for passing state data across multiple levels. Unlike the named parameter mechanism used between parent and child components mentioned earlier, \@Provide and \@Consume break free from the parameter passing mechanism and enable cross-level transfer.
 
@@ -81,9 +81,9 @@ When \@Provide specifies a variable alias, both the original variable name and a
 | Allowed variable types  | Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Example of @Provide and @Consume Supporting Union Types](#example-of-provide-and-consume-supporting-union-types).<br>**NOTE**<br>Before API version 20: An \@Consume decorated variable must have a matching @Provide decorated variable with the corresponding attribute name or alias in its parent or ancestor component chain.|
 | Disallowed variable types| Function.                                    |
 | Initialization Rules          | In versions earlier than API version 20, the default value of the variable decorated by \@Consume cannot be set locally. The variable decorated by \@Provide must match the variable decorated by \@Consume.<br>Since API version 20, \@Consume supports default values. If a matching @Provide is found, the \@Provide decorated variable value takes precedence as the initial value. If the \@Provide variable is not matched, the local default value is used. For details, see [Setting Default Values for @Consume Decorated Variables](#setting-default-values-for-consume-decorated-variables).|
-| Synchronization Rule            | **When a child component is used**:<br>The \@Provide variable that matches the ancestor component is synchronized bidirectionally.<br>**When the parent component is used**:<br>You can initialize the regular variables, \@State, \@Link, \@Prop, and \@Provide of child components.<br>The change of the @Consume variable is synchronized to the \@Link and \@Prop variables of the child component.|
+| Synchronization Rule            | **When a child component is used**:<br>The \@Provide variable that matches the ancestor component is synchronized bidirectionally.<br>**When the parent component is used**:<br>You can initialize the regular variables, \@State, \@Link, \@Prop, and \@Provide of child components.<br>Changes of the @Consume variable are synchronized to the \@Link and \@Prop variables of the child component.|
 
-  **Figure 2** \@Consume initialization rule 
+  **Figure 2** \@Consume initialization rules
 
 ![consume-initialization](figures/consume-initialization.PNG)
 
@@ -95,9 +95,9 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
 - When the decorated variable is of the class or Object type, its value change and value changes of all its attributes, that is, the attributes that **Object.keys(observedObject)** returns, can be observed.
 
-- When the decorated variable is an array, you can observe changes to the array values, array elements, and API operations performed on the array. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
+- When the decorated variable is an array, you can observe changes to the array, array elements, and API operations performed on the array. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
-- When the decorated object is Date, you can view the overall value assignment of Date. In addition, you can call the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of Date to update the attributes of Date. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
+- When the decorated object is Date, you can observe the overall value assignment of Date. In addition, you can call the **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, and **setUTCMilliseconds** APIs of Date to update the attributes of Date. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
 - When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
@@ -301,7 +301,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
    In non-BuilderNode scenarios, it is recommended that you maintain identical types for \@Provide/\@Consume pairs. Although runtime validation is not strict, the \@Consume variable undergoes implicit type conversion to match the \@Provide variable type during initialization.
 
-   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) --> 
+   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
 
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -333,11 +333,12 @@ When \@Provide specifies a variable alias, both the original variable name and a
    @Entry
    @Component
    struct Index {
-     @Provide message: string = 'hello';
+     @Provide message: string = 'Hello World';
      controller: TextNodeController = new TextNodeController();
    
      build() {
        Column() {
+         Text(`@Provide: ${this.message}`)
          NodeContainer(this.controller)
            .width('100%')
            .height(100)
@@ -347,16 +348,19 @@ When \@Provide specifies a variable alias, both the original variable name and a
      }
    }
    
-   
    @Component
    struct Child {
-     // After the child component is mounted via BuilderNode, @Consume and @Provide in Index have incompatible types, causing a runtime error.
-     @Consume message: number = 0;
+     // Incorrect usage: When Child is mounted via BuilderNode, a type mismatch is detected when @Consume establishes a connection with @Provide in Index, and a runtime error is thrown.
+     // @Consume message: number = 0;
+   
+     // Correct usage: @Consume and @Provide keep their types consistent.
+     @Consume message: string = 'Hello ArkUI';
    
      build() {
        Column() {
-         Text(`@Consume ${this.message}`)
+         Text(`@Consume: ${this.message}`)
        }
+       .width('100%')
      }
    }
    ```
@@ -931,7 +935,7 @@ In the preceding example:
 
 - The @Consume decorated variable of **GrandSon** is initialized from the @Provide decorated variable of its nearest ancestor under the same attribute name.
 
-- GrandSon finds that @Provide with the same attribute name is in the ancestor Child. Therefore, the initial value of Consume('reviewVotes') reviewVotes: number is 10. If a @Provide decorated variable with the same attribute name as @Consume decorated variable is not defined in **Child**, **GrandSon** continues its search in **Parent** until it finds the one decorated by @Provide with the same attribute name, whose value is **20**.
+- **GrandSon** finds that @Provide with the same attribute name is in the ancestor **Child**. Therefore, the initial value of @Consume('reviewVotes') reviewVotes: number is **10**. If a @Provide decorated variable with the same attribute name as @Consume decorated variable is not defined in **Child**, **GrandSon** continues its search in **Parent** until it finds the one decorated by @Provide with the same attribute name, whose value is **20**.
 
 - If no such a variable is found when **GrandSon** has reached the root node, an error is thrown to indicate that @Provide could not be found for @Consume initialization.
 
@@ -1073,11 +1077,11 @@ In the preceding example:
 
 2. After the BuilderNode is mounted to the tree, \@Consume with default values searches upward for \@Provide. Upon finding the nearest matching \@Provide by key, \@Consume establishes two-way synchronization. If no match is found, \@Consume retains its default value.
 
-3. After the bidirectional synchronization relationship is established, if the value of the \@Provide decorative variable is different from the default value of \@Consume, the [\@Watch](./arkts-watch.md) method of \@Consume is called back, and \@Watch methods of variables that have synchronization relationships with \@Consume. For example, \@Consume notifies the \@Link triggering \@Watch method that is bidirectionally synchronized with \@Consume.
+3. After the bidirectional synchronization relationship is established, if the value of the @Provide-decorated variable is different from the default value of @Consume, the [\@Watch](./arkts-watch.md) method of @Consume is called back, and the @Watch methods of variables that have synchronization relationships with @Consume are also called back. For example, @Consume triggers the @Watch method of the @Link that is bidirectionally synchronized with it.
 
-4. When BuilderNode is unmounted from the tree, \@Consume searches for the corresponding \@Provide again. If the previously paired \@Provide is unavailable, the synchronization relationship breaks and \@Consume reverts to its default value.
+4. When **BuilderNode** is unmounted from the tree, \@Consume searches for the corresponding \@Provide again. If the previously paired \@Provide is unavailable, the synchronization relationship breaks and \@Consume reverts to its default value.
 
-5. When \@Consume disconnects from \@Provide and reverts to the default value, if the value changes from \@Provide's value to \@Consume's default, \@Watch methods on @Consume and synchronized variables are triggered.
+5. When \@Consume disconnects from \@Provide and reverts to the default value, if the value changes from \@Provide's value to \@Consume's default, \@Watch methods on \@Consume and synchronized variables are triggered.
 
 In the following example:
 

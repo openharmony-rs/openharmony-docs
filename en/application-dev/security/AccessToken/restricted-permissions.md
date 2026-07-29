@@ -1605,3 +1605,17 @@ Allows an application to generate, use, and delete secure element keys.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+
+Allows an application to be set as the user's default browser.
+
+<!--RP103--><!--RP103End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.1.0

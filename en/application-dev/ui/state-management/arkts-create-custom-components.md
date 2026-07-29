@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:01:19.975Z pushedAt=2026-07-22T06:47:45.774Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:56:14.047Z pushedAt=2026-07-25T09:19:17.720Z -->
 
 In ArkUI, components refer to the elements displayed on the UI. They fall into two categories: built-in components (provided by the ArkUI framework out of the box) and custom components (defined by developers). When developing UIs, you need to not only combine and use system components, but also consider factors such as code reusability, separation of business logic from the UI, and future version evolution. Creating custom components, which encapsulate UI elements and service logic, serves as a critical step in achieving this goal.
 
@@ -18,9 +18,9 @@ Custom components offer the following features:
 
 - Data-driven update: When these state variables change, UI re-rendering is triggered.
 
->**NOTE**
+> **NOTE**
 >
->Starting from API version 24, you can enable custom components to support cross-[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md) migration by configuring the [metadata](./../../quick-start/module-configuration-file.md#metadata) in the [module.json5 configuration file](./../../quick-start/module-configuration-file.md) of your application project. The configuration method is as follows: Add [name](./../../quick-start/module-configuration-file.md#metadata) as **enableCustomComponentCrossAbility** and [value](./../../quick-start/module-configuration-file.md#metadata) as **true**. Since custom components provide UIAbility, the term ability here specifically refers to [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md). For details, see [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components).
+> Starting from API version 24, you can enable custom components to support cross-[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md) migration by configuring the [metadata](./../../quick-start/module-configuration-file.md#metadata) in the [module.json5 configuration file](./../../quick-start/module-configuration-file.md) of your app project. The configuration method is as follows: Add [name](./../../quick-start/module-configuration-file.md#metadata) as `"enableCustomComponentCrossAbility"` and [value](./../../quick-start/module-configuration-file.md#metadata) as `"true"`. Since custom components provide UI capabilities, the term ability here specifically refers to [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md). For details, see [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components).
 
 ## Basic Usage of Custom Components
 
@@ -34,13 +34,13 @@ struct HelloComponent {
   @State message: string = 'Hello, World!';
 
   build() {
-    // The HelloComponent custom component combines the Row and Text built-in components.
+    // The HelloComponent custom component combines the system components Row and Text.
     Row() {
       Text(this.message)
         .fontSize(20)
         .margin(10)
         .onClick(() => {
-          // The change of the state variable message drives the UI to be re-rendered. As a result, the text changes from "Hello, World!" to "Hello, ArkUI!".
+          // The change of the state variable message drives UI refresh, updating the UI from 'Hello, World!' to 'Hello, ArkUI!'
           this.message = 'Hello, ArkUI!';
         })
     }
@@ -98,6 +98,7 @@ To fully understand the preceding example, a knowledge of the following concepts
   - [Constraints](#constraints)
     - [V1 Custom Components Do Not Support Static Code Blocks](#v1-custom-components-do-not-support-static-code-blocks)
     - [Mixing @Component and @ComponentV2](#mixing-component-and-componentv2)
+    - [Mixing @Reusable or @ReusableV2](#mixing-reusable-or-reusablev2)
 
 ## Basic Structure of a Custom Component
 
@@ -109,7 +110,7 @@ The definition of a custom component must start with the \@Component struct foll
   >
   > The name assigned to a class, function, or custom component must be different from the name of any built-in component.
 
-### \@Entry
+### @Entry
 
 A custom component decorated with [@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry) serves as the entry to a [UI page](../arkts-router-to-navigation.md#page-structure). A single UI page can have only one @Entry decorated custom component as the page entry.
 
@@ -137,15 +138,15 @@ A custom component decorated with [@Entry](../../reference/apis-arkui/arkui-ts/t
 
   <!--Table: 20%; 20%; 10%; 10%; 40%-->
 
-  | Name  | Type  | Read-Only| Optional| Description                                                        |
+  | Name | Type | Read-Only | Optional | Description |
   | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | routeName | string | No| Yes| Name of the target named route.|
-  | storage | [LocalStorage](arkts-localstorage.md) | No| Yes| Storage of the page-level UI state. If no value is passed, the framework creates a new LocalStorage instance as the default value.|
-  | useSharedStorage<sup>12+</sup> | boolean | No| Yes| Whether to use the LocalStorage instance passed by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared [LocalStorage](arkts-localstorage.md) instance. **false**: Do not use the shared [LocalStorage](arkts-localstorage.md) instance.|
+  | routeName | string | No | Yes | Name of the page used as a named route. |
+  | storage | [LocalStorage](arkts-localstorage.md) | No | Yes | Page-level UI state storage. If not passed in, the framework creates a new LocalStorage instance as the default value. |
+  | useSharedStorage<sup>12+</sup> | boolean | No | Yes | Whether to use the LocalStorage instance object passed in by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9). Default value: **false**. When the value is **true**, if **loadContent** passes in a LocalStorage instance, that instance is used; otherwise, a new LocalStorage instance is created. When the value is **false**, the shared LocalStorage instance object is not used. |
 
-  > **NOTE**
-  >
-  > When **useSharedStorage** is set to **true** and **storage** is assigned a value, the value of **useSharedStorage** has a higher priority.
+> **NOTE**
+>
+> When **useSharedStorage** is set to **true** and storage is assigned, **useSharedStorage** takes precedence over the storage parameter. In this case, the storage parameter is not used regardless of whether a LocalStorage instance is passed in through **loadContent**.
 
   <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->  
 
@@ -157,7 +158,7 @@ A custom component decorated with [@Entry](../../reference/apis-arkui/arkui-ts/t
   }
   ```
 
-### \@Component
+### @Component
 
 A struct decorated with [@Component](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component.md#component) is a V1 custom component, which can use the capabilities of [state management V1](./arkts-state-management-overview.md#state-management-v1) decorators.
 
@@ -178,7 +179,7 @@ A struct decorated with [@Component](../../reference/apis-arkui/arkui-ts/ts-cust
   }
   ```
 
-### \@ComponentV2
+### @ComponentV2
 
 A struct decorated with [@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2.md#componentv2) is a V2 custom component, which can use the capabilities of [state management V2](./arkts-state-management-overview.md#state-management-v2) decorators.
 > **NOTE**
@@ -205,14 +206,14 @@ Similar to the [\@Component decorator](#component), the @ComponentV2 decorator d
 
     ``` TypeScript
     @Entry
-    @ComponentV2 // Decorator
-    struct ComponentV2Test { // Struct-declared data structure
+    @ComponentV2 // Decorator.
+    struct ComponentV2Test { // Data structure declared by struct.
       @Local message: string = 'Hello World';
-      build() { // UI defined in build
+      build() { // UI defined by build().
         RelativeContainer() {
           Text(this.message)
             .id('HelloWorld')
-            // Replace $r('app.float.page_text_font_size') with the resource file you use.
+            // Replace $r('app.float.page_text_font_size') with the resource file required by the developer.
             .fontSize($r('app.float.page_text_font_size'))
             .fontWeight(FontWeight.Bold)
             .alignRules({
@@ -229,7 +230,7 @@ Similar to the [\@Component decorator](#component), the @ComponentV2 decorator d
     }
     ```
 
-![arkts-create-custom-components-1](../figures/arkts-create-custom-components-1.gif)
+    ![arkts-create-custom-components-1](../figures/arkts-create-custom-components-1.gif)
 
 Unless otherwise specified, a custom component decorated with \@ComponentV2 maintains the same behavior as a custom component decorated with \@Component.
 
@@ -248,13 +249,9 @@ The **build()** function is used to define the declarative UI description of a c
   }
   ```
 
-### \@Reusable
+### @Reusable
 
 Using @Reusable to decorate V1 custom components makes them reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenarios).
-
-  > **NOTE**
-  >
-  > This decorator can be used in ArkTS widgets since API version 10.
 
   <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) --> 
 
@@ -266,13 +263,9 @@ Using @Reusable to decorate V1 custom components makes them reusable. For detail
   }
   ```
 
-### \@ReusableV2
+### @ReusableV2
 
 Using \@ReusableV2 to decorate V2 custom components makes them reusable. For details, see [\@Reusable V2 Decorator: Reusing V2 Components](./arkts-new-reusableV2.md#use-cases).
-
-  > **NOTE**
-  >
-  > This decorator can be used in atomic services since API version 18.
 
   ``` TypeScript
   @ReusableV2
@@ -302,17 +295,17 @@ The initialization rules for member variables of a custom component vary dependi
 
 | Variable Type | Local Initialization | Passed from Parent Component |
 |---------|-----------|-------------|
-| Regular variable | Mandatory | Optional. If a non-**undefined** value is passed, the passed value is used; otherwise, the local default value is used. |
-| [@State](arkts-state.md) | Mandatory | Optional. If a non-**undefined** value is passed, the passed value is used; otherwise, the local default value is used. |
-| [@Prop](arkts-prop.md) | Optional | Optional. Mandatory when no local default value is provided. If a non-**undefined** value is passed, the passed value is used; otherwise, the local default value is used. |
-| [@Link](arkts-link.md) | Not supported | Mandatory. A state variable must be passed. |
-| [@ObjectLink](arkts-observed-and-objectlink.md) | Not supported | Mandatory. An instance of a class decorated with [@Observed](arkts-observed-and-objectlink.md) must be passed (complex types can be passed since API version 19). |
+| Regular variable | Mandatory | Optional. If a non-undefined value is passed, the passed value is used; otherwise, the local default value is used. |
+| [@State](arkts-state.md) | Mandatory | Optional. If a non-undefined value is passed, the passed value is used; otherwise, the local default value is used. |
+| [@Prop](arkts-prop.md) | Optional | Optional. Mandatory when no local default value is provided. If a non-undefined value is passed, the passed value is used; otherwise, the local default value is used. |
+| [@Link](arkts-link.md) | Not supported | Mandatory. A state variable must be passed in. |
+| [@ObjectLink](arkts-observed-and-objectlink.md) | Not supported | Mandatory. An instance of a class decorated by [@Observed](arkts-observed-and-objectlink.md) must be passed in (complex types can be passed in since API version 19). |
 | [@Provide](arkts-provide-and-consume.md) | Mandatory | Optional. If a non-undefined value is passed, the passed value is used; otherwise, the local default value is used. |
-| [@Consume](arkts-provide-and-consume.md) | Not supported (optional since API version 20) | Not supported. Initialized by matching @Provide via alias or variable name. |
-| [@StorageProp](arkts-appstorage.md) | Mandatory | Not supported. Initialized via the corresponding key in [AppStorage](arkts-appstorage.md). |
-| [@StorageLink](arkts-appstorage.md) | Mandatory | Not supported. Initialized via the corresponding key in [AppStorage](arkts-appstorage.md). |
-| [@LocalStorageProp](arkts-localstorage.md) | Mandatory | Not supported. Initialized via the corresponding key in [LocalStorage](arkts-localstorage.md). |
-| [@LocalStorageLink](arkts-localstorage.md) | Mandatory | Not supported. Initialized via the corresponding key in [LocalStorage](arkts-localstorage.md). |
+| [@Consume](arkts-provide-and-consume.md) | Not supported (optional since API version 20) | Not supported. Initialized by matching the alias or variable name with @Provide. |
+| [@StorageProp](arkts-appstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
+| [@StorageLink](arkts-appstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
+| [@LocalStorageProp](arkts-localstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
+| [@LocalStorageLink](arkts-localstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
 
 **Initialization Rules for @ComponentV2 Member Variables**
 
@@ -320,10 +313,10 @@ The initialization rules for member variables of a custom component vary dependi
 |---------|-----------|-------------|
 | Regular variable | Mandatory | Not supported. |
 | [@Local](arkts-new-local.md) | Mandatory | Not supported. |
-| [@Param](arkts-new-param.md) | Optional | Optional. Mandatory when no local default value is provided. If a value is passed, the passed value is used; otherwise, the local default value is used. |
+| [@Param](arkts-new-param.md) | Optional | Optional. Mandatory when no local default value is provided. If a value is passed in, the passed value is used; otherwise, the local default value is used. |
 | [@Event](arkts-new-event.md) | Optional | Optional. When no local default value is provided and no value is passed from the parent component, an empty function is automatically generated as the default callback. |
 | [@Provider](arkts-new-provider-and-consumer.md) | Mandatory | Not supported. |
-| [@Consumer](arkts-new-provider-and-consumer.md) | Mandatory | Not supported. Initialized by matching @Provider via alias or variable name. |
+| [@Consumer](arkts-new-provider-and-consumer.md) | Mandatory | Not supported. Initialized by matching the alias or variable name with @Provider. |
 
 The following example uses a regular variable to demonstrate how to initialize parameters of a custom component in the build method. For usage examples of other decorators, refer to their respective documentation.
 
@@ -353,7 +346,7 @@ struct ParentComponent {
 
   build() {
     Column() {
-      // Create an instance of MyComponent and initialize its countDownFrom variable with the value 10 and its color variable with the value this.someColor.
+      // Create a MyComponent instance, initialize its member variable countDownFrom to 10, and initialize its member variable color to this.someColor.
       MyComponent({ countDownFrom: 10, color: this.someColor })
     }
     .width('100%')
@@ -381,7 +374,7 @@ struct Parent {
       Text(`${this.cnt}`)
         .fontSize(20)
         .margin(10)
-      // Pass the function in the parent component to the child component.
+      // Pass the function from the parent component to the child component.
       Son({ submitArrow: this.submit })
     }
     .width('100%')
@@ -423,7 +416,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   @Component
   struct MyComponent {
     build() {
-      // Exactly one root component is required, and it must be a container component.
+      // The root node is unique and mandatory, and must be a container component.
       Row() {
         ChildComponent()
       }
@@ -434,7 +427,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   @Component
   struct ChildComponent {
     build() {
-      // Exactly one root component is required, and it is not necessarily a container component.
+      // The root node is unique and mandatory, and can be a non-container component.
       // Replace $r('app.media.startIcon') with the actual resource file.
       Image($r('app.media.startIcon'))
     }
@@ -445,16 +438,16 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
 
   ```ts
   build() {
-    // Avoid: declaring a local variable.
+    // Incorrect example: Local variable declaration is not allowed.
     let num: number = 1;
   }
   ```
 
-- **console.info** can be used in the UI description only when it is in a method or function. The following example should be avoided:
+- **console.info** cannot be used in UI description, but can be used in a method or function. The following example should be avoided:
 
   ```ts
   build() {
-    // Avoid: using console.info directly in UI description.
+    // Incorrect example: console.info is not allowed.
     console.info('print debug log');
   }
   ```
@@ -463,7 +456,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
 
   ```ts
   build() {
-    // Avoid: creating a local scope.
+    // Incorrect example: Local scope is not allowed.
     {
       // ...
     }
@@ -479,7 +472,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
     }
     build() {
       Column() {
-        // Avoid: calling a method not decorated by @Builder.
+        // Incorrect example: Methods not decorated with @Builder cannot be called.
         this.doSomeCalculations();
       }
     }
@@ -501,12 +494,12 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
         .fontSize(20)
         .margin(10)
     }
-  
+
     build() {
       Column() {
-        // Prefer: Call a @Builder decorated method.
+        // Correct example: Calling is allowed.
         this.doSomeRender()
-        // Prefer: Pass the return value of a TS method as the parameter.
+        // Correct example: The parameter can be the return value of a TS method call.
         Text(this.calcTextValue())
           .fontSize(20)
           .margin(10)
@@ -521,7 +514,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   ```ts
   build() {
     Column() {
-      // Avoid: using the switch syntax.
+      // Incorrect example: The switch syntax is not allowed.
       switch (expression) {
         case 1:
           Text('...')
@@ -547,7 +540,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   ``` TypeScript
   build() {
     Column() {
-      // Correct usage: Use if.
+      // Correct example: Use if.
       if (this.expression == 1) {
         Text('...')
       } else if (this.expression == 2) {
@@ -564,7 +557,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   ```ts
   build() {
     Column() {
-      // Avoid: expressions.
+      // Incorrect example: Expressions are not allowed.
       (this.aVar > 10) ? Text('...') : Image('...')
     }
   }
@@ -575,7 +568,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   ``` TypeScript
   build() {
     Column() {
-      // Positive example: Use if for judgment.
+      // Correct example: Use an if statement.
       if (this.aVar > 10) {
         Text('...')
       } else {
@@ -616,22 +609,22 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
 
 ![en-us_image_0000001651365257](figures/State-UI-function.png)
 
-Therefore, state variables must not be directly modified in the **build()** function or @Builder method of a custom component, as this may cause the risk of cyclic re-rendering. ``Text(`${this.count++}`)`` has different effects under full update and minimal update:
+  Therefore, state variables must not be directly modified in the **build()** function or @Builder method of a custom component, as this may cause the risk of cyclic re-rendering. ``Text(`${this.count++}`)`` has different effects under full update and minimal update:
 
-- Full update (API version 8 and earlier): ArkUI may fall into an infinite re-rendering loop, because each rendering of the **Text** component changes the app state, which triggers the next round of rendering. When `this.columnColor` changes, the entire **build()** function is executed. Consequently, the text bound to ``Text(`${this.count++}`)`` also changes. Each re-rendering of ``Text(`${this.count++}`)`` updates the `this.count` state variable, leading to a new round of **build()** execution, thus causing an infinite loop.
+  - Full update (API version 8 and earlier): ArkUI may fall into an infinite re-rendering loop, because each rendering of the **Text** component changes the app state, which triggers the next round of rendering. When `this.columnColor` changes, the entire **build()** function is executed. Consequently, the text bound to ``Text(`${this.count++}`)`` also changes. Each re-rendering of ``Text(`${this.count++}`)`` updates the `this.count` state variable, leading to a new round of **build()** execution, thus causing an infinite loop.
 
-- Minimal update (API version 9 and later): When `this.columnColor` is updated, only the **Column** component is updated, and the **Text** component is not updated. Only when `this.textColor` changes is the entire **Text** component updated, and all its attribute functions are executed. Therefore, ``Text(`${this.count++}`)`` is observed to increment. Since the UI is currently updated on a per-component basis, if an attribute of a component changes, the entire component is updated. The overall update chain is: `this.textColor = Color.Pink` → the entire Text component is updated → `this.count++` → the entire Text component is updated again. Note that this approach causes the Text component to be rendered twice during the initial rendering, which affects performance.
+  - Minimal update (API version 9 and later): When `this.columnColor` is updated, only the **Column** component is updated, and the **Text** component is not updated. Only when `this.textColor` changes is the entire **Text** component updated, and all its attribute functions are executed. Therefore, ``Text(`${this.count++}`)`` is observed to increment. Since the UI is currently updated on a per-component basis, if an attribute of a component changes, the entire component is updated. The overall update chain is: `this.textColor = Color.Pink` → the entire Text component is updated → `this.count++` → the entire Text component is updated again. Note that this approach causes the Text component to be rendered twice during the initial rendering, which affects performance.
 
-The behavior of modifying the app state in the **build()** function may be more subtle than the example above, for instance:
+  The behavior of modifying the app state in the **build()** function may be more subtle than the example above, for instance:
 
-- Modifying state variables within @Builder, [@Extend](arkts-extend.md), or [@Styles](arkts-style.md) methods.
+  - Modifying state variables within @Builder, [@Extend](arkts-extend.md), or [@Styles](arkts-style.md) methods.
 
-- Modifying app state variables in functions called during parameter computation, for example, ``Text(`${this.calcLabel()}`)``.
+  - Modifying app state variables in functions called during parameter computation, for example, ``Text(`${this.calcLabel()}`)``.
 
-- Modifying the current array: **sort()** changes the array **this.arr**, and the subsequent **filter()** method returns a new array.
+  - Modifying the current array: **sort()** changes the array **this.arr**, and the subsequent **filter()** method returns a new array.
 
     ```ts
-    // Incorrect usage:
+    // Negative example.
     @State arr : Array<...> = [ ... ];
     ForEach(this.arr.sort().filter(...), 
       item => { 
@@ -640,7 +633,7 @@ The behavior of modifying the app state in the **build()** function may be more 
     ```
 
     ``` TypeScript
-    // Prefer: Call filter before sort() to return a new array. In this way, sort() does not change this.arr.
+    // The correct approach: filter returns a new array, so the subsequent sort method does not modify the original array this.arr.
     ForEach(this.arr.filter((item, index) => index >= 2).sort(),
       (item: number) => {
         // ...
@@ -670,7 +663,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
-      / / Property settings to the ChildComponent instead of Button in ChildComponent.
+      // The attribute is set on ChildComponent, not on the Button inside ChildComponent.
       ChildComponent()
         .width(300)
         .height(300)
@@ -731,7 +724,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onBackground(): void {
-    // You are not advised to asynchronously modify the state variable in the component to be migrated in the onBackground phase.
+    // Do not asynchronously modify the state variables in the migration component during the onBackground phase.
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
@@ -792,11 +785,11 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Text('Index')
-      // Create a globalBuilderNode and mount its nodes to the placeholder node of NodeContainer.
+      // Create a globalBuilderNode and attach the nodes under it to the placeholder node of NodeContainer.
       Button('add node to tree').width(200).onClick(() => {
         this.nodeController.addBuilderNode();
       })
-      // Remove the nodes of globalBuilderNode from the placeholder node of NodeContainer.
+      // Remove the nodes under globalBuilderNode from the placeholder node of NodeContainer.
       Button('remove node from tree').width(200).onClick(() => {
         this.nodeController.removeBuilderNode();
       })
@@ -874,7 +867,7 @@ struct ComponentUnderBuilderNode {
   build() {
     Column() {
       Text(`message: ${this.message}`)
-      // Change the value of message to trigger the @Watch ('messageUpdate') callback and refresh the Text component.
+      // Change the value of message, triggering the @Watch('messageUpdate') callback and refreshing the Text component.
       Button('change message').onClick(() => {
         this.message += ' world';
       })
@@ -897,7 +890,7 @@ export default class ExtraAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/ExtraIndex', (err) => {
       if (err.code) {
-        // If ExtraIndex fails to be loaded, an error message is displayed.
+        // If ExtraIndex fails to load, output the error information.
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
@@ -920,15 +913,15 @@ struct ExtraIndex {
   build() {
     Column({ space: 10 }) {
       Text('ExtraIndex')
-      // Attach the nodes under globalBuilderNode as children of the placeholder node of NodeContainer.
+      // Mount the nodes under globalBuilderNode to the placeholder node of NodeContainer.
       Button('add node to tree').width(200).onClick(() => {
         this.nodeController.addBuilderNode();
       })
-      // Remove the nodes of globalBuilderNode from the placeholder node of NodeContainer.
+      // Remove the nodes under globalBuilderNode from the placeholder node of NodeContainer.
       Button('remove node from tree').width(200).onClick(() => {
         this.nodeController.removeBuilderNode();
       })
-      // Destroy nodes under globalBuilderNode.
+      // Destroy the nodes under globalBuilderNode.
       Button('dispose node').width(200).onClick(() => {
         this.nodeController.disposeNode();
       })
@@ -940,7 +933,7 @@ struct ExtraIndex {
 }
 ```
 
-![customcomponent-cross-ability](./figures/component-cross-ability.gif)
+![custom-component-cross-ability](./figures/component-cross-ability.gif)
 
 ## Constraints
 
@@ -956,7 +949,7 @@ Static code blocks are used to initialize static attributes.
   @Component
   struct MyComponent {
     static a: string = '';
-    // The static block does not take effect, and the value of a is still an empty string.
+    // The static code block does not take effect, and the value of a remains an empty string ''.
     static {
       this.a = 'hello world';
     }
@@ -972,7 +965,7 @@ Static code blocks are used to initialize static attributes.
   @ComponentV2
   struct MyComponent {
     static a: string = '';
-    // The static block takes effect, and the value of a changes to hello world.
+    // The static code block takes effect, and the value of a becomes 'hello world'.
     static {
       this.a = 'hello world';
     }
@@ -983,5 +976,9 @@ Static code blocks are used to initialize static attributes.
 ### Mixing @Component and @ComponentV2
 
 For details about how to mix \@Component decorated custom components with \@ComponentV2 decorated custom components, <!--RP1-->see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->.
+
+### Mixing @Reusable or @ReusableV2
+
+When a reusable component decorated by @Reusable or @ReusableV2 is used together with other custom components, see [Constraints](./arkts-new-reusableV2.md#constraints).
 
 <!--no_check-->

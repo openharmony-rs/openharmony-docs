@@ -1,12 +1,11 @@
 # Migration for Component State Variables
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:25.575Z pushedAt=2026-07-24T03:22:59.502Z -->
+<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:58:07.187Z pushedAt=2026-07-25T09:38:33.788Z -->
 
 This topic provides migration guidance for component state variables across different scenarios.
 
@@ -20,6 +19,7 @@ This topic provides migration guidance for component state variables across diff
 | [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
 | No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-computed.md)                |
+
 
 ## Migration Examples
 
@@ -231,6 +231,7 @@ struct Parent {
   }
 }
 ```
+
 
 Example effect:
 
@@ -547,7 +548,6 @@ In V1, a child component can modify its @Prop decorated variables. These changes
 V1:
 
 - Changes to **localValue** in the child component **Child** are not synchronized to the parent component **Parent**.
-
 - When **Parent** updates **value**, **Child** is notified and its **localValue** is overwritten.
 
 <!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
@@ -602,9 +602,7 @@ In V2, \@Param cannot be modified locally. When used with \@Once, the value is s
 V2:
 
 - When **Parent** is updated, it notifies the child component and triggers the **onValueChange** callback decorated with \@Monitor. This callback assigns the new value to **localValue** in the child component.
-
 - Modifications to **localValue** remain local and are not propagated to **Parent**.
-
 - Subsequent updates from **Parent** will overwrite **localValue** in the child component.
 
 <!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
@@ -664,6 +662,7 @@ struct Parent {
   }
 }
 ```
+
 
 Example effect:
 
@@ -767,6 +766,7 @@ struct Parent {
   }
 }
 ```
+
 
 Example effect:
 
@@ -901,6 +901,7 @@ struct Parent {
   }
 }
 ```
+
 
 Example effect:
 
@@ -1249,6 +1250,7 @@ struct Child {
 }
 ```
 
+
 Example effect:
 
 ![provide-override](figures/migration-provide-override.png)
@@ -1454,6 +1456,7 @@ struct MonitorExample {
 }
 ```
 
+
 Example effect:
 
 ![watch-multi](figures/migration-watch-multi.gif)
@@ -1537,6 +1540,7 @@ struct Index {
 }
 ```
 
+
 Example effect:
 
 ![computed](figures/migration-computed.gif)
@@ -1555,7 +1559,7 @@ For system component parameters, replace **$$** in V1 with **!!** in V2.
 
 V1:
 
-<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+<!-- @[Migration_Sync_Dollar_Dollar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationSyncDollarDollar.ets) -->
 
 ``` TypeScript
 @Entry

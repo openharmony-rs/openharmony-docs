@@ -9,7 +9,7 @@
 
 ArkUI提供了[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)、[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)三种预置懒加载布局容器，分别支持垂直线性布局、垂直网格布局和垂直瀑布流布局。当这些预置布局容器无法满足业务需求时，可以使用[LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)组件配合自定义布局算法实现灵活的懒加载布局。
 
-LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法[LazyLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1)实现任意布局模式。该组件仅创建和布局处于父可滚动组件可视区域内的子组件，减少首帧渲染时间和内存开销。
+LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法[LazyLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1)实现任意布局模式。该组件仅对父可滚动组件可视区域内的子组件进行创建和布局，减少首帧渲染时间和内存开销。
 
 从API版本26.0.0开始，支持LazyDynamicLayout组件。
 
