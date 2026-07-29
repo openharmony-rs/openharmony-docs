@@ -22,11 +22,21 @@ import { hfp } from '@kit.ConnectivityKit';
 ```
 
 
+## HandsFreeAudioGatewayProfile
+
+该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/terminology.md#hfp-ag)角色‌。
+- 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createHfpAgProfile](js-apis-bluetooth-hfp.md#hfpcreatehfpagprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[HF](../../connectivity/terminology.md#hf)角色。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+
 ### connect
 
 connect(deviceId: string): void
 
-连接设备的hfp服务。
+连接设备的HFP服务。
 
 **系统接口**：此接口为系统接口。
 
@@ -34,11 +44,11 @@ connect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -55,7 +65,7 @@ connect(deviceId: string): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -72,7 +82,7 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的hfp服务。
+断开连接设备的HFP服务。
 
 **系统接口**：此接口为系统接口。
 
@@ -80,11 +90,11 @@ disconnect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
 **错误码**：
 
@@ -101,7 +111,7 @@ disconnect(deviceId: string): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -110,5 +120,119 @@ try {
     hfpAg.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## HandsFreeHfProfile
+
+该实例表示蓝牙通话音频中的[HF](../../connectivity/terminology.md#hf)角色‌。
+- 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createHfpHfProfile](js-apis-bluetooth-hfp.md#hfpcreatehfphfprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[HFP AG](../../connectivity/terminology.md#hfp-ag)角色。
+
+**起始版本**： 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+### connect
+
+connect(deviceId: string): void
+
+连接设备的HFP服务。
+
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
+
+**起始版本**： 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名    | 类型     | 必填   | 说明      |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                |
+|2900099 | Internal system error. For example, IPC error.     |
+
+**示例**：
+
+```js
+try {
+    let hf = hfp.createHfpHfProfile();
+    hf.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+### disconnect
+
+disconnect(deviceId: string): void
+
+断开连接设备的HFP服务。
+
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
+
+**起始版本**： 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明      |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | 是    | 远端设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900004 | Profile not supported.                |
+|2900099 | Internal system error. For example, IPC error.          |
+
+**示例：**
+
+```js
+try {
+    let hf = hfp.createHfpHfProfile();
+    hf.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```

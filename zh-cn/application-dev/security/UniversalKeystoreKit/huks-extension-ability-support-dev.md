@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+## 约束限制
+
+针对CryptoExtensionAbility接口调用限制，详细请参考API中的[约束限制](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#约束限制)。
+
 ## 适配指导
 
 本文档旨在指导驱动厂商如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)需要的接口能力，此处给出实现参考，其他实现依照业务需要依次调用driver封装的底层驱动函数。

@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义一组文本公共的枚举和接口。
+定义文本类组件通用的枚举和接口。
 
 **引用文件：** <arkui/node_attributes/text_common.h>
 
@@ -28,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义文本组件支持的属性字符串的数据对象。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义文本组件支持的属性字符串的数据对象，支持对文本内容进行样式设置与管理，适用于需要富文本展示、样式定制等场景。 |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md) | ArkUI_ShowCounterConfig | 定义文本输入框的计数器配置，用于管理字符计数。适用于需要对用户输入进行字符数限制与实时提示的场景，帮助用户了解输入进度，防止超出字符限制。 |
 | [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | 定义文本内容基础控制器，为文本类组件提供内容控制能力，支持文本内容的获取、设置和更新等操作，适用于需要对文本组件进行动态内容管理和实时控制的场景，可帮助开发者更灵活地管理文本显示内容。 |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | 定义文本菜单项结构体，用于在文本选择菜单中表示单个菜单项，支持设置菜单项的标题、图标、启用状态等属性，适用于开发者需要自定义文本选择菜单内容、扩展菜单项功能的场景，帮助开发者灵活定制文本选择菜单，提升用户交互体验。 |
@@ -780,7 +780,8 @@ void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseCont
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | 待修改的配置对象指针。 |
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | 控制器对象指针。 |
+
 
 ### OH_ArkUI_TextContentBaseController_ScrollToVisible()
 
@@ -798,7 +799,7 @@ void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | 待修改的配置对象指针。<br>通过此controller将起始索引与结束索引传递给与其绑定的输入框组件并进行滚动操作。 |
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | 控制器对象指针。<br>通过此controller将起始索引与结束索引传递给与其绑定的输入框组件并进行滚动操作。 |
 | int32_t start | 起始文字索引值。<br>起始索引应小于等于结束索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，起始索引小于0视为0，大于总长度视为总长度。 |
 | int32_t end | 结束文字索引值。<br>结束索引应大于等于起始索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，结束索引小于0视为0，大于总长度视为总长度。 |
 

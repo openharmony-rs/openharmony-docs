@@ -441,7 +441,7 @@ enum OH_Drawing_PlaceholderVerticalAlignment
 | ALIGNMENT_TOP_OF_ROW_BOX | 行框顶部对齐。 |
 | ALIGNMENT_BOTTOM_OF_ROW_BOX | 行框底部对齐。 |
 | ALIGNMENT_CENTER_OF_ROW_BOX | 行框中心对齐。 |
-| ALIGNMENT_FOLLOW_PARAGRAPH<sup>20+</sup> | 跟随文本垂直对齐方式。 |
+| ALIGNMENT_FOLLOW_PARAGRAPH | 跟随文本垂直对齐方式。<br>**起始版本：** 20 |
 
 ### OH_Drawing_TextVerticalAlignment
 
@@ -6242,7 +6242,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyAttributeBool(const OH_Drawing_Typo
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 

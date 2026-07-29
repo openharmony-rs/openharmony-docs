@@ -93,8 +93,8 @@ Waiting for a response from the peer end times out.
 
 **Possible Causes**
 
-The peer end is not connected to the network or is powered off.
+The Bluetooth and Wi-Fi functions are not enabled on the peer end, the peer end is powered off, or the peer end is not nearby.
 
 **Solution**
 
-Ensure that the Internet connection of the peer end is normal and try again.
+Ensure that the constraints and restrictions are met and try again.

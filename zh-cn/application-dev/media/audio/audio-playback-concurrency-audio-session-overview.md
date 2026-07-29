@@ -113,50 +113,16 @@
 | 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成提示播报后A恢复 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
 | 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
 
-## 同应用内不同音频流之间的焦点管理
+## 同应用内焦点管理场景概述
 
-同应用内不同音频流默认共享同一个音频焦点，音频焦点策略不会介入，由应用自行管控各流的播放与恢复。应用应主动管理自身多条音频流的并发与切换，例如启动新的音频流时暂停先播的音频流，新的音频流结束后恢复先播的音频流。
+同一应用内会存在同时创建多条音频流的现象，例如音乐播放器在播放背景音乐的同时重新播放一首音乐，短视频播放器在播放视频的同时背景音乐也在播放。
 
-如需对各音频流进行差异化管理，应用可参考[同应用内焦点管理](./audio-playback-concurrency.md#同应用内焦点管理)，将焦点模式设置为独立焦点模式（INDEPENDENT_MODE），再分别为每条流设置对应的焦点策略。
+系统提供了焦点模式（InterruptMode）来管控同应用内音频流之间的焦点决策行为，焦点模式的详细介绍及实践可参考[同应用内焦点管理](./audio-playback-concurrency.md#同应用内焦点管理)。
 
-推荐使用共享焦点模式（SHARE_MODE），由应用自行管控各流的播放与恢复。
+**常见场景：同应用内音乐和视频冲突**
 
-同应用内常见焦点管理场景如下：
-
-### 场景1：同应用内音乐与音乐互相打断
-
-流A播放音乐（STREAM_USAGE_MUSIC），流B播放音乐（STREAM_USAGE_MUSIC）。
-
-推荐做法：采用默认焦点模式（SHARE_MODE），应用自行管控各流的播放与恢复——流B开始播放时，应用主动暂停流A；流B停止播放时，应用主动恢复流A。这就是PAUSE→RESUME策略，比INDEPENDENT_MODE的STOP（不恢复）更好。
-
-<!-- @[toggle_stream_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets) -->
-
-INDEPENDENT_MODE下，音乐与音乐之间为STOP策略——后播的流会STOP前播的流，且前播的流不会收到RESUME，无法自动恢复。
-
-### 场景2：同应用内音乐与视频互相打断
-
-流A播放音乐（STREAM_USAGE_MUSIC），流B播放视频音频（STREAM_USAGE_MOVIE）。
-
-推荐做法：采用默认焦点模式（SHARE_MODE），应用自行管控——视频开始播放时暂停音乐，视频停止播放时恢复音乐。
-
-<!-- @[toggle_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsVideoPage.ets) -->
-
-INDEPENDENT_MODE下，音乐与视频之间为STOP策略——视频会STOP音乐，音乐不会收到RESUME，无法自动恢复。
-
-### 场景3：同应用内游戏配乐与视频并发
-
-流A为游戏配乐（STREAM_USAGE_GAME），流B为视频音频（STREAM_USAGE_MOVIE）。
-
-GAME与所有媒体类流默认并发混音（MIX），互不影响，SHARE_MODE或INDEPENDENT_MODE下均可并发，无需额外焦点策略适配。
-
-### 场景4：同应用内游戏配乐与游戏音效并发
-
-流A为游戏配乐（STREAM_USAGE_GAME），流B为游戏音效（STREAM_USAGE_GAME）。
-
-GAME与所有媒体类流默认并发混音（MIX），互不影响，SHARE_MODE或INDEPENDENT_MODE下均可并发，无需额外焦点策略适配。
-
-### 场景5：同应用内多个录制流并发
-
-内录（InnerCapturer）与外录（SOURCE_TYPE_MIC）并发。
-
-内录和外录可同时运行，互不影响。推荐采用默认焦点模式（SHARE_MODE）自行管控各录制流的启动与恢复。
+| - | 流A | 流B | 适配方案 | 打断效果 |
+|--|-------|-------|-------------|---------|
+| 默认场景 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 默认为SHARE_MODE模式，不触发焦点策略。 | 音乐A与视频B并发播放。 |
+| 方案一（推荐） | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A和流B均为SHARE_MODE模式，应用自行管控各流的行为。如图：![SHARE_MODE](figures/audio-focus-share-mode.png) | 音乐A被视频B打断，视频B暂停，音乐A恢复。 |
+| 方案二 | 播放音乐（MUSIC） | 播放视频（MOVIE） | 流A或流B其中一个或都为INDEPENDENT_MODE模式，两条流由系统进行焦点决策。 | 音乐A被视频B打断，视频B暂停，音乐A不恢复。 |

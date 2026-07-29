@@ -1,10 +1,12 @@
 # ArkUI_ColorStop
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:28.069Z pushedAt=2026-07-17T06:02:27.566Z -->
 
 ```c
 typedef struct {...} ArkUI_ColorStop
@@ -12,7 +14,7 @@ typedef struct {...} ArkUI_ColorStop
 
 ## Overview
 
-Defines a gradient color stop.
+Defines a gradient color stop, which is used to configure the gradient effect of a component. It supports defining various gradient styles by combining a color array with a stop array.
 
 **Since**: 12
 

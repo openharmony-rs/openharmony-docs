@@ -211,7 +211,7 @@ struct UnionEffectContainerPage {
           Button('+20')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.spacing += 20; // 改变后代组件的距离
+                this.spacing += 20; // 改变融合形变的程度
               });
             })
           Button('-20')
@@ -220,7 +220,7 @@ struct UnionEffectContainerPage {
                 return;
               }
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.spacing -= 20; // 改变后代组件的距离
+                this.spacing -= 20; // 改变融合形变的程度
                 if (this.spacing < 0) {
                   this.spacing = 0;
                 }

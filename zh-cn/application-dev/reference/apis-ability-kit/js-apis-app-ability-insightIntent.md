@@ -111,7 +111,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询模式。 |
+| queryType | [QueryType](#querytype) | 否 | 否 | 意图实体查询方式。 |
 | parameters | Record\<string, Object> | 否 | 是 | 意图实体查询参数。该字段在[QueryType](#querytype)为[BY_PROPERTY](#querytype)时需要填写。 |
 
 ## AppIntentEntity
@@ -206,9 +206,9 @@ export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntent
 
   async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppIntentEntityImpl>> {
     const appStringEntities: AppIntentEntityImpl[] = [
-      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', "扩展字段1"),
-      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', "扩展字段2"),
-      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', "扩展字段3"),
+      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', '扩展字段1'),
+      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', '扩展字段2'),
+      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', '扩展字段3'),
     ];
 
     let resultEntities: AppIntentEntityImpl[] = [];

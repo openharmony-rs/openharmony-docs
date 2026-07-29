@@ -31,7 +31,7 @@
 
 ## 应用接入规范
 
-- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)，长时任务支持的类型请参考[BackgroundMode](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)。
+- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[选择合适的播放流类型](../audio/using-right-streamusage-for-playback.md)，长时任务支持的类型请参考[BackgroundMode](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)。
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务。
 
@@ -45,7 +45,7 @@
 
 应用可以通过AudioRenderer、AVPlayer、其他第三方或自研的播放器来播放音视频。
 
-- AudioRenderer：使用AudioRenderer创建播放音频流时应该注意使用合适的音频流类型。流类型的不同对音量控制、音频焦点管理以及输入/输出设备都具有决定性影响。详细内容请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。<br>
+- AudioRenderer：使用AudioRenderer创建播放音频流时应该注意使用合适的音频流类型。流类型的不同对音量控制、音频焦点管理以及输入/输出设备都具有决定性影响。详细内容请参考[选择合适的播放流类型](../audio/using-right-streamusage-for-playback.md)。<br>
   同时需要注意正确处理音频焦点，系统预设了默认的音频焦点策略，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据焦点策略进行焦点处理。若判定本音频流的焦点有变化，系统会自动执行一些必要操作（如暂停、继续、降低音量、恢复音量等），并通过音频焦点事件（InterruptEvent）通知应用。详细内容请参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)。<br>
   开发指导请参考[使用AudioRenderer开发音频播放功能(ArkTs)](../audio/using-audiorenderer-for-playback.md)。
 

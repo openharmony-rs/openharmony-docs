@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @yangcan18-->
+<!--Owner: @shengu_lancer; @rongShao-Z-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -234,7 +234,7 @@ nestedScroll(value: NestedScrollOptions)
 
 friction(value: number | Resource)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -252,7 +252,7 @@ friction(value: number | Resource)
 
 enablePaging(value: boolean)
 
-设置是否支持划动翻页。如果同时设置了划动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。可用于书籍翻页、卡片分页浏览等场景。
+设置是否支持滑动翻页。如果同时设置了滑动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。可用于书籍翻页、卡片分页浏览等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ enablePaging(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否支持划动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false |
+| value  | boolean | 是   | 是否支持滑动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false |
 
 ### initialOffset<sup>12+</sup>
 
@@ -952,7 +952,7 @@ currentOffset(): OffsetResult
 
 > **说明：**
 > 
-> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明，推荐使用[offset](#offset23)函数。
+> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明。推荐使用[offset](#offset23)函数，其返回类型显式包含undefined。
 >
 > 2. Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题，Grid与WaterFlow估算不准暂无解决方案。
 
@@ -999,7 +999,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 >
 > 2. 在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 >
-> 3. 从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+> 3. 从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和WaterFlow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
 >
 >    - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
 > 
@@ -1425,7 +1425,7 @@ struct ScrollExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.None)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset);
+        console.info(`onWillScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}`);
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge');
@@ -1529,7 +1529,7 @@ struct NestedScroll {
                   .textAlign(TextAlign.Center)
                   .backgroundColor(Color.White)
               }.width('100%').height(100)
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }
           .width('100%')
           .height('50%')
@@ -1863,7 +1863,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .fadingEdge(true,{fadingEdgeLength:LengthMetrics.vp(80)})
@@ -1902,7 +1902,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .edgeEffect(EdgeEffect.Spring,{alwaysEnabled:true,effectEdge:EffectEdge.START})
@@ -1913,7 +1913,7 @@ struct ScrollExample {
 
 ![edgeEffect_scroll](figures/edgeEffect_scroll.gif)
 
-### 示例9（划动翻页效果）
+### 示例9（滑动翻页效果）
 
 该示例通过[enablePaging](#enablepaging11)接口，实现了Scroll组件滑动翻页效果。
 
@@ -2147,8 +2147,8 @@ class MyNodeController extends NodeController {
     });
 
     // 设置OnDidScroll事件
-    scrollEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-      console.info(`onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}`);
+    scrollEvent?.setOnDidScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
+      console.info(`onDidScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}`);
     });
 
     // 设置OnReachStart事件

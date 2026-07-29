@@ -25,7 +25,6 @@ API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../re
 
 ``` C++
 const uint32_t VALUE_2 = 250;
-const uint32_t VALUE_3 = 480;
 ```
 
 <!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
@@ -61,7 +60,7 @@ OH_ArkUI_RunTaskInScope(uiContext, pageOneButton, [](void *userData) {
     auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto pageOneButton = (ArkUI_NodeHandle)userData;
-    ArkUI_NumberValue value[] = {VALUE_3};
+    ArkUI_NumberValue value[1] = {};
     ArkUI_AttributeItem LABEL_Item = {.string = "success"};
     value[0].f32 = VALUE_2;
     ArkUI_AttributeItem button_Item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};

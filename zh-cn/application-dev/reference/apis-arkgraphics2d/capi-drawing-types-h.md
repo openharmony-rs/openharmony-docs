@@ -59,16 +59,16 @@
 | [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | 用于描述字形。 |
 | [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) | OH_Drawing_TextBlob | 定义一个文本对象，表示将多个文本组合到一个不可变的容器中。每个文本行由字形和位置组成。 |
 | [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | 定义一个用于描述绘制二维像素数组的图片。 |
-| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | 定义图像滤波器, 用于对构成图像像素的所有颜色位进行操作。 |
+| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | 定义图像滤波器，用于对构成图像像素的所有颜色位进行操作。 |
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) | OH_Drawing_SamplingOptions | 定义一个采样选项，用于描述图片、位图等图像的采样方法。 |
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md) | OH_Drawing_TextBlobBuilder | 定义文本构建器，用于构建文本。 |
 | [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) | OH_Drawing_GpuContext | 定义图形处理器上下文，用于描述图形处理器后端上下文。 |
 | [OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md) | OH_Drawing_Surface | 定义surface，用于管理画布绘制的内容。 |
-| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | 定义字体管理类, 用于字体管理。 |
-| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | 定义字体样式集, 用于字体样式族匹配。 |
+| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | 定义字体管理类，用于字体管理。 |
+| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | 定义字体样式集，用于字体样式族匹配。 |
 | [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) | OH_Drawing_RecordCmdUtils | 定义指令录制工具，用于生成录制指令。 |
-| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | 定义录制指令类, 用于存储录制指令的集合。 |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | 定义数组对象, 用于存储多个同类型对象。 |
+| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | 定义录制指令类，用于存储录制指令的集合。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | 定义数组对象，用于存储多个同类型对象。 |
 
 ### 枚举
 

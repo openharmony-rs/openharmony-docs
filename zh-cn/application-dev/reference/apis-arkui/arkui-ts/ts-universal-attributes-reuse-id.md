@@ -23,7 +23,7 @@ reuseId(id: string): T
 
 >  **说明：**
 >
-> - 根据组件的不同布局形态或类型设置对应的reuseId，以提升复用匹配的精确度。最佳实践请参考[组件复用-使用reuseId标记布局发生变化的组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
+> - 根据组件的不同布局形态或类型设置对应的reuseId，以提升复用匹配的精确度。最佳实践请参考组件复用-[使用reuseId标记布局发生变化的组件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-component_reuse#使用reuseid标记布局发生变化的组件)。
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 

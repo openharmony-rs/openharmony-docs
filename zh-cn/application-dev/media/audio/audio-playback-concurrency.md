@@ -6,11 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+## 音频焦点概述
+
 在应用播放或录制声音时，常出现与其他音频流的并发或中断情况，这对用户体验构成显著影响。例如，当应用启动视频播放时，若后台正在播放音乐，用户会期望音乐能自动暂停，以确保视频音频优先播放，这正是音频焦点功能的体现。对于涉及音频服务的应用而言，妥善地管理音频焦点非常重要，它可以显著提升用户的音频体验。
 
 本文档将介绍系统的音频焦点策略，以及应对焦点变化的方法。同时，系统提供了[音频会话管理](audio-session-management.md)机制，允许应用自定义其音频流的焦点策略。
 
-## 音频焦点
+## 跨应用音频焦点管理
 
 系统预设了默认的[音频焦点策略](#音频焦点策略)，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。
 
@@ -18,7 +20,7 @@
 
 对于应用而言，为了确保为用户提供优质的音频焦点体验，应当注意以下几点：
 
-- 在启动播放或录制操作前，应根据音频的具体用途，选择并[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)，即准确设置[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
+- 在启动播放操作前，应根据音频的具体用途[选择合适的播放流类型](using-right-streamusage-for-playback.md)，即准确设置[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
 
 - 在播放或录制的过程中，需通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，并在接收到音频焦点中断事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，采取相应的处理措施。
 
@@ -66,7 +68,7 @@
 
 系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和录制流的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）及音频流启动的顺序进行决策。
 
-为防止焦点变化不符合预期，应用在启动播放或录制前，应根据音频流的用途，准确设置StreamUsage或SourceType。关于各类型的详细说明，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
+为防止焦点变化不符合预期，应用在启动播放前，应根据音频流的用途准确设置StreamUsage。关于各类型的详细说明，请参考[选择合适的播放流类型](using-right-streamusage-for-playback.md)。
 
 常见的音频焦点场景示例如下：
 
@@ -128,29 +130,6 @@
   - 停止（INTERRUPT_HINT_STOP）：音频停止，彻底失去音频焦点。
   - 降低音量（INTERRUPT_HINT_DUCK）：音频降低音量播放，而不会停止。默认降低至正常音量的20%。
   - 恢复音量（INTERRUPT_HINT_UNDUCK）：音频恢复正常音量。
-
-### 同应用内焦点管理
-
-针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
-
-推荐使用共享焦点模式（SHARE_MODE），由应用自行管控各流的播放与恢复。
-
-系统预设了两种焦点模式：
-
-| 焦点模式 | 说明 | 同应用内焦点策略 | 适用场景 |
-|---------|------|-------------------|---------|
-| SHARE_MODE（默认，推荐） | 同一应用创建的多个音频流共享一个音频焦点。 | 不触发焦点策略，应用自行决定各流的播放、暂停、停止等操作，系统不发送DUCK/PAUSE/STOP/RESUME事件。 | 应用内多流不冲突，或应用已有自定义并发逻辑。 |
-| INDEPENDENT_MODE | 应用创建的每个音频流均独立拥有一个音频焦点。 | 触发焦点策略，按跨应用焦点策略管理 | 应用内多流需差异化焦点管理 |
-
-设置焦点模式的方法：
-
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
-
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
-
-- 若[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
-
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
 
 ### 典型场景
 
@@ -248,3 +227,43 @@ async function onAudioInterrupt(): Promise<void> {
   });
 }
 ```
+
+
+## 同应用内焦点管理
+
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)）来选择自主管控，或由系统统一管控。
+
+系统预设的焦点模式如下：
+
+| 焦点模式 | 说明 | 规格 |
+|---------|----------|-------------------|
+| SHARE_MODE（默认，推荐） | **共享焦点模式**，不由系统进行焦点决策，应用自行决定各流的播放、暂停、压低等操作。  | 与同应用内其他SHARE_MODE流之间不进行焦点决策，由应用自行管控；<br>同应用内INDEPENDENT_MODE流之间由系统进行焦点决策。 |
+| INDEPENDENT_MODE | **独立焦点模式**，由系统进行焦点决策，按应用间焦点策略管理。 | 与同应用内所有流（无论SHARE_MODE或INDEPENDENT_MODE）一起由系统进行焦点决策。 |
+
+**规格图例：**
+
+![INTERRUPT_MODE](figures/audio-focus-interrupt-mode.png)
+
+推荐使用共享焦点模式（SHARE_MODE）。应用可按需自行管控各流的播放、暂停、恢复等操作，避免系统默认策略（如STOP）导致音频流无法恢复。
+
+设置焦点模式的方法：
+
+- 如果[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的属性[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)进行设置。
+
+- 如果[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
+
+- 如果[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
+
+- 如果[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
+
+同应用内常见焦点管理实践如下，其他场景均可参考该实践自行完成各流的管控。
+
+**实践：同应用内音乐与音乐互相打断**
+
+流A正在播放音乐（STREAM_USAGE_MUSIC），流B也将开始播放音乐（STREAM_USAGE_MUSIC）。此时同一应用内出现了两条媒体类音频流并发，需要处理两者之间的焦点冲突。
+
+推荐做法：采用默认焦点模式（SHARE_MODE），应用自行管控各流的播放与恢复。当流B开始播放时，应用主动暂停流A；当流B停止播放时，应用主动恢复流A。优于独立焦点模式（INDEPENDENT_MODE）下系统停止后不恢复的策略。
+
+<!-- @[toggle_stream_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets) -->
+
+独立焦点模式（INDEPENDENT_MODE）下，音乐与音乐之间为停止策略——后播的流会停止前播的流，且前播的流不会收到恢复事件，无法自动恢复。

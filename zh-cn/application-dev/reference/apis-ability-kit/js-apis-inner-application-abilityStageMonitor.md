@@ -37,12 +37,12 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 let monitor: abilityDelegatorRegistry.AbilityStageMonitor = {
   moduleName: 'feature_as1',
   srcEntrance: './ets/Application/MyAbilityStage.ts',
-}
+};
 
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityStageMonitor(monitor, (error, data) => {
   if (error) {
-    console.error(`waitAbilityStageMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityStageMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
     console.info(`waitAbilityStageMonitor success, data: ${JSON.stringify(data)}`);
   }

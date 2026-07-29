@@ -6,14 +6,13 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-多边形绘制组件。
+多边形绘制组件。该组件通过设置顶点坐标列表来定义多边形的形状，支持填充颜色、边框样式等属性配置。组件采用二维坐标系统，按照顶点顺序依次连接形成封闭多边形区域。适用于绘制三角形、四边形、五边形等自定义多边形形状，以及实现图表、图标等需要多边形元素的可视化场景。
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
-
 
 ## 子组件
 
@@ -37,7 +36,7 @@ new Polygon(options?: PolygonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [PolygonOptions](#polygonoptions18对象说明) | 否 | Polygon组件的配置选项，用于定义绘制区域的宽度和高度。需要指定多边形尺寸时传入此参数，不传入时使用默认宽度和高度（均为0）。当传入undefined或null时，参数设置无效，组件属性维持原值。|
 
 ### Polygon
 
@@ -55,7 +54,7 @@ Polygon(options?: PolygonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [PolygonOptions](#polygonoptions18对象说明) | 否 | Polygon组件的配置选项，用于定义绘制区域的宽度和高度。需要指定多边形尺寸时传入此参数，不传入时使用默认宽度和高度（均为0）。当传入undefined或null时，参数设置无效，组件属性维持原值。|
 
 ## PolygonOptions<sup>18+</sup>对象说明
 
@@ -75,8 +74,8 @@ Polygon(options?: PolygonOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>若给定值小于0，则按默认值处理。异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>若给定值小于0，则按默认值处理。异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -98,13 +97,13 @@ points(value: Array&lt;any&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                  |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------- |
-| value  | Array&lt;any&gt; | 是   | 多边形的顶点坐标列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 多边形的顶点坐标列表。使用时传入一个二维数组，每个子数组表示一个顶点的[x, y]坐标。<br>默认值：[]（空数组）<br>默认单位：vp <br>异常值undefined和null按照默认值处理。|
 
 ## 示例
 
 ### 示例1（组件属性绘制）
 
-通过points、fill、fillOpacity、stroke属性分别绘制多边形的经过坐标、填充颜色、透明度、边框颜色。
+通过points、fill、fillOpacity、stroke、strokeWidth属性分别绘制多边形的顶点坐标、填充颜色、填充透明度、边框颜色和边框宽度。
 
 ```ts
 // xxx.ets

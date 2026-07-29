@@ -46,7 +46,7 @@ import { dialogSession } from '@kit.AbilityKit';
 
 ## DialogSessionInfo
 
-提供会话信息，包括请求方信息、目标组件信息列表、其他参数。
+提供会话信息，包括请求方组件信息、目标组件信息列表、其他参数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,13 +54,13 @@ import { dialogSession } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| 否 | 否 | 表示请求方组件信息。 |
 | targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | 否 | 否 | 表示目标组件信息列表。 |
-| parameters | Record<string, Object> | 否 | 是 | 表示其他参数，用于传递会话相关的自定义数据。 |
+| parameters | Record<string, Object> | 否 | 是 | 表示其他参数，用于传递会话相关的自定义数据，不传入时默认为空。 |
 
 ## getDialogSessionInfo
 
 getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo](#dialogsessioninfo)
 
-通过dialogSessionId获取会话信息。
+通过dialogSessionId获取弹框会话信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -70,7 +70,7 @@ getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo](#dialogsessio
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID，由系统在会话创建时自动生成。 |
+  | dialogSessionId | string | 是 | 用户请求会话ID，由系统在弹框会话创建时自动生成。 |
 
 **返回值：**
 
@@ -112,7 +112,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean, callback: AsyncCallback\<void\>): void
 
-发送用户请求。使用callback异步回调。
+发送弹框结果。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -122,10 +122,10 @@ sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean, 
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
+  | dialogSessionId | string | 是 | 弹框会话ID。 |
   | targetWant | Want | 是 | 目标Ability的Want信息。 |
   | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
-  | callback | AsyncCallback\<void\> | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
+  | callback | AsyncCallback\<void\> | 是 | 回调函数。当发送弹框结果成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -180,7 +180,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean): Promise\<void\>
 
-发送用户请求。使用Promise异步回调。
+发送弹窗结果。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -190,8 +190,8 @@ sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean):
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
-  | targetWant | Want | 是 | 用户请求目标。 |
+  | dialogSessionId | string | 是 | 弹窗会话ID。 |
+  | targetWant | Want | 是 | 目标Ability的Want信息。 |
   | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
 
 **返回值：**

@@ -1,4 +1,4 @@
-# @ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)
+# @ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -8,7 +8,7 @@
 
 本模块提供系统时间管理能力。
 
-> **说明**：
+> **说明：**
 > 
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。从API版本26.0.0开始废弃。
 >

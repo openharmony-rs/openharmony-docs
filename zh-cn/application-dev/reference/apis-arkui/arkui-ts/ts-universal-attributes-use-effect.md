@@ -92,8 +92,8 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
-| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板进行定义。 |
-| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板进行定义。 |
+| DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板。 |
+| WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板。 |
 
 效果模板
 

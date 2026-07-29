@@ -27,7 +27,7 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 | 名称 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄。 |
-| uint8_t endpoint | 要通信的端点的地址。 |
 | uint32_t timeout | 超时时间，单位是毫秒。值为0表示等待直到操作完成。 |
+| uint8_t endpoint | 要通信的端点的地址。 |
 
 

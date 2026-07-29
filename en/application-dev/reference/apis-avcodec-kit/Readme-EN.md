@@ -6,6 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao; @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d2b8e62658bec29d90bb137c6dea1154dffae97d translatedAt=2026-07-21T00:30:48.183Z pushedAt=2026-07-21T01:40:15.836Z -->
 
 - C APIs<!--avcodec-c-->
   - Modules<!--avcodec-module-->
@@ -25,11 +26,13 @@
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)
     - [media_types.h](capi-media-types-h.md)
     - [native_audio_channel_layout.h](capi-native-audio-channel-layout-h.md)
+    - [native_audio_vivid.h](capi-native-audio-vivid-h.md)
     - [native_avbuffer.h](capi-native-avbuffer-h.md)
     - [native_avbuffer_info.h](capi-native-avbuffer-info-h.md)
     - [native_averrors.h](capi-native-averrors-h.md)
     - [native_avformat.h](capi-native-avformat-h.md)
     - [native_avmemory.h](capi-native-avmemory-h.md)
+    - [native_avcodec_videobase.h](capi-native-avcodec-videobase-h.md)
     - [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
     - [native_avcodec_videoencoder.h](capi-native-avcodec-videoencoder-h.md)
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)
@@ -55,6 +58,10 @@
     - [OH_AVSource](capi-avsource-oh-avsource.md)
     - [DrmSubsample](capi-multimedia-drm-drmsubsample.md)
     - [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md)
+    - [OH_CartesianPosition](capi-core-oh-cartesianposition.md)
+    - [OH_PolarPosition](capi-core-oh-polarposition.md)
+    - [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md)
+    - [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md)
   - APIs No Longer Maintained<!--avcodec-arkts-dep-->
     - Modules<!--avcodec-module-arkts-dep-->
       - [AudioDecoder](capi-audiodecoder.md)

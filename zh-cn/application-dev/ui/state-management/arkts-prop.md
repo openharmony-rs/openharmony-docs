@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Prop装饰的变量可以和父组件建立单向同步关系。
+[\@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop)装饰的变量可以和父组件建立单向同步关系。
 
 在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
