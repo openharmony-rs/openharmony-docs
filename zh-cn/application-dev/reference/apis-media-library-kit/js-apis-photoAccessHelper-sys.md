@@ -7168,7 +7168,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件，如果是纯云视频文件，则将视频缓存至图库沙箱。使用promise异步回调。
 
-返回的文件描述符在使用完毕后需要调用[close](arkts-apis-photoAccessHelper-PhotoAsset.md#close)进行释放。
+返回的文件描述符在使用完毕后需要调用[close](arkts-apis-photoAccessHelper-PhotoAsset.md#closedeprecated-1)进行释放。
 
 **系统接口**：此接口为系统接口。
 
