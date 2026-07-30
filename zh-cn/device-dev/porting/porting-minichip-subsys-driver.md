@@ -55,7 +55,7 @@ if (ohos_kernel_type == "liteos_m") {
 （当配置"board_adapter_dir"不为空时，ohos_board_adapter_dir = board_adapter_dir, 代码行信息见"build/lite/config/BUILDCONFIG.gn"）
 
   ```gn
-   # Load board adapter dir form board config
+   # Load board adapter dir from board config
    if (board_adapter_dir !=""){
     ohos_board_adapter_dir = board_adapter_dir
     ohos_vendor_adapter_dir = board_adapter_dir
