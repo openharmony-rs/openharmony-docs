@@ -2602,6 +2602,8 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+  
+**需要权限：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **参数**：
 
