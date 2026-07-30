@@ -26,8 +26,6 @@ new Ellipse(options?: EllipseOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 从API version 18开始，使用EllipseOptions参数时需在Stage模型下使用。
-
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -45,8 +43,6 @@ Ellipse(options?: EllipseOptions)
 用于绘制椭圆的构造函数。调用后创建一个Ellipse对象，可设置宽高属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 从API version 18开始，使用EllipseOptions参数时需在Stage模型下使用。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
