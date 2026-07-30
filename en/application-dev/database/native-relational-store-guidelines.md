@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T06:32:31.207Z pushedAt=2026-07-07T06:45:34.721Z -->
+<!-- md-trans-meta sourceCommit=0d0be136453164e04de0aa5f89855f22befe905b translatedAt=2026-07-28T06:45:13.316Z pushedAt=2026-07-28T08:02:53.466Z -->
 
 ## When to Use
 
@@ -85,7 +85,7 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 | int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates data with conflict resolutions in the database based on specified conditions.|
 | int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes) | Deletes data from an RDB store.|
 | int OH_Value_Destroy(OH_Data_Value *value) | Destroys an **OH_Data_Value** object.|
-| int OH_Values_Destroy(OH_Data_Values *values) | Destroys an **OH_Data_Values** object.|
+| int OH_Values_Destroy(OH_Data_Values *values) | Destroys an **OH_Data_Values** object. |
 | int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result) | Executes an SQL statement that contains specified parameters.|
 | int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans) | Commits a transaction.|
 | int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans) | Rolls back a transaction.|

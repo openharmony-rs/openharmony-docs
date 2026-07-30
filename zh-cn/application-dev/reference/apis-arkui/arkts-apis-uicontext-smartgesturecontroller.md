@@ -1311,36 +1311,26 @@ struct SmartGestureControllerExample {
       if (node) {
         resolution.selectedProposal = new ClickActionProposal(node);
       }
-    }
-    // 覆盖为选中动作
-    else if (proposal.action === SmartGestureAction.SELECT) {
+    } else if (proposal.action === SmartGestureAction.SELECT) { // 覆盖为选中动作
       const node = this.getUIContext().getFrameNodeById('target_text');
       if (node) {
         resolution.selectedProposal = new SelectActionProposal(node);
       }
-    }
-    // 覆盖为翻页动作
-    else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) { // 覆盖为翻页动作
       const node = this.getUIContext().getFrameNodeById('scroll_area');
       if (node) {
         // pageCount：取值为[0, +∞)，单位为页
         resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
       }
-    }
-    // 覆盖为滚动动作
-    else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) { // 覆盖为滚动动作
       const node = this.getUIContext().getFrameNodeById('scroll_area');
       if (node) {
         // distance：取值为[0, +∞)，单位为vp
         resolution.selectedProposal = new ScrollActionProposal(node, 180);
       }
-    }
-    // 覆盖为空动作（不执行任何操作）
-    else if (proposal.action === SmartGestureAction.NONE) {
+    } else if (proposal.action === SmartGestureAction.NONE) { // 覆盖为空动作（不执行任何操作）
       resolution.selectedProposal = new NoneActionProposal();
-    }
-    // 覆盖为返回动作
-    else if (proposal.action === SmartGestureAction.BACK_PRESS) {
+    } else if (proposal.action === SmartGestureAction.BACK_PRESS) { // 覆盖为返回动作
       resolution.selectedProposal = new BackPressActionProposal();
     }
 

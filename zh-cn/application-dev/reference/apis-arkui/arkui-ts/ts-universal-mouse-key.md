@@ -88,7 +88,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 
-获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。目前仅支持通过外接鼠标触发。
+获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果、手势识别、性能优化、轨迹分析或数据分析等操作。目前仅支持通过外接鼠标触发。
 
 该接口仅能在[MouseEvent](#mouseevent对象说明)中调用，用于获取触发[onMouse](#onmouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](#mouseevent对象说明)数目大于1，会将该帧最后一个点通过[onMouse](#onmouse)返回，其余点作为历史点。
 
@@ -140,7 +140,7 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 | windowY    | number    | 否   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
 | globalDisplayX | number| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br>单位：vp  |
 | globalDisplayY | number| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br>单位：vp  |
-| timestamp  | number    | 否   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
+| timestamp  | number    | 否   | 否   | 鼠标事件的时间戳，表示触发事件时距离系统启动的时间间隔。<br>单位：ns                              |
 
 ## 示例
 
@@ -247,7 +247,7 @@ struct MouseEventExample {
 
 ### 示例2（获取当前帧历史点）
 
-该示例通过调用[getHistoricalPoints](#gethistoricalpoints)接口，获取到触发重采样时的历史点，可以用来实现更平滑的绘制等操作。
+该示例通过调用[getHistoricalPoints](#gethistoricalpoints)接口，获取当前帧的历史点，可以用来实现更平滑的绘制等操作。
 
 从API版本26.0.0开始，新增getHistoricalPoints接口。
 ```ts

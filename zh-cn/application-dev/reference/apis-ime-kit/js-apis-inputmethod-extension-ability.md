@@ -87,7 +87,7 @@ class InputMethodExt extends InputMethodExtensionAbility {
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 ```
 
-## InputMethodExtensionAbility<sup>9+</sup>
+## InputMethodExtensionAbility
 
 输入法ExtensionAbility类，提供了输入法应用的核心能力，支持开发者创建输入法应用。
 
@@ -109,7 +109,7 @@ context参数使用建议：
 - 前提条件：`context`由系统在创建`InputMethodExtensionAbility`实例时自动赋值，开发者无需手动创建。`context`仅在ExtensionAbility生命周期内有效，`onDestroy`回调执行后`context`将不可用。
 - 相关接口间的配合/制约关系：`context`需配合`@ohos.inputMethodEngine`模块使用——在`onCreate`回调中，`context`作为`InputMethodAbility.createPanel()`的参数传入，用于创建输入法面板。
 
-### onCreate<sup>9+</sup>
+### onCreate
 
 onCreate(want: Want): void
 
@@ -189,7 +189,7 @@ class InputMethodExt extends InputMethodExtensionAbility {
 }
 ```
 
-### onDestroy<sup>9+</sup>
+### onDestroy
 
 onDestroy(): void
 

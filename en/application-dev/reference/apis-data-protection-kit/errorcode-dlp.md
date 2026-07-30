@@ -5,6 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=603965e6f67783378238262d049a93a8d321dd6f translatedAt=2026-07-23T07:32:39.360Z pushedAt=2026-07-23T09:14:30.222Z -->
 
 > **NOTE**
 > 
@@ -22,7 +23,7 @@ Invalid parameters are specified.
 
 **Possible Causes**
 
-1. The account is empty or exceeds 1024 characters.
+1. The account is empty or the account length exceeds 1024 characters.
 
 2. The account type is incorrect.
 

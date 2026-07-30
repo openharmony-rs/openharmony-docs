@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:22.477Z pushedAt=2026-07-21T03:32:30.706Z -->
 
-You can use [mediatool](#mediatool-1) or [hdc Commands](#hdc-commands) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
+You can use [mediatool](#mediatool-1) or [hdc commands](#hdc-commands) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
 
 ## mediatool
 

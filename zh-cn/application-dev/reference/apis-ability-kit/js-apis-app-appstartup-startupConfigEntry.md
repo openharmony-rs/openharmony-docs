@@ -27,9 +27,9 @@ import { StartupConfigEntry } from '@kit.AbilityKit';
 
 onConfig?(): StartupConfig
 
-在回调[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)前，若该AbilityStage对应的HAP中启动框架配置文件中[定义了启动框架配置](../../application-models/app-startup.md#定义启动参数配置)，则会触发该回调。该方法为可选方法。
+在回调[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)前，若该AbilityStage对应的[HAP](../../../application-dev/quick-start/hap-package.md)的启动框架配置文件中[定义了启动框架配置](../../application-models/app-startup.md#定义启动参数配置)，则会触发该回调。该方法为可选方法。
 
-开发者可以在该回调中设置启动框架配置信息，详细使用方法可参考[设置启动参数](../../application-models/app-startup.md#设置启动参数)章节。
+开发者可以在该回调中设置启动框架配置信息，详细使用方法可参考[设置启动参数](../../application-models/app-startup.md#设置启动参数)章节。若需要自定义匹配规则，该回调完成后会触发[onRequestCustomMatchRule](#onrequestcustommatchrule20)回调。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -76,7 +76,7 @@ onRequestCustomMatchRule(want: Want): string
 
 若该AbilityStage对应的HAP中启动框架配置文件中[定义了启动框架配置](../../application-models/app-startup.md#定义启动参数配置)，则该回调在[AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate)前、[StartupConfigEntry.onConfig](#onconfig)之后触发。
 
-开发者可以在该回调中，根据调用方传入启动UIAbility的Want中的不同参数返回不同的自定义匹配规则。启动框架会将其与启动任务配置的matchRules中customization字段匹配。若匹配成功，任务将在自动模式执行。详细匹配规则请参考[添加任务匹配规则](../../application-models/app-startup.md#添加任务匹配规则)章节。
+开发者可以在该回调中，根据调用方传入启动[UIAbility](js-apis-app-ability-uiAbility.md)的Want中的不同参数返回不同的自定义匹配规则。启动框架会将其与启动任务配置的matchRules中customization字段匹配。若匹配成功，任务将在自动模式执行。详细匹配规则请参考[添加任务匹配规则](../../application-models/app-startup.md#添加任务匹配规则)章节。
 
 该接口通常用于无法直接通过uri、action或意图名称规则来匹配启动任务的场景，可以使用本接口对匹配规则进一步细化。
 

@@ -20,7 +20,7 @@ import { manager } from '@kit.ConnectivityKit';
 ```
 
 
-## getState
+## manager.getState
 
 getState(): NearlinkState
 
@@ -40,7 +40,7 @@ getState(): NearlinkState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -60,7 +60,7 @@ try {
 }
 ```
 
-## isNearLinkSupported
+## manager.isNearLinkSupported
 
 isNearLinkSupported(): boolean
 
@@ -96,7 +96,7 @@ try {
 ```
 
 
-## getLocalName
+## manager.getLocalName
 
 getLocalName(): string
 
@@ -118,7 +118,7 @@ getLocalName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -141,9 +141,9 @@ try {
 ```
 
 
-## getPairedDevices
+## manager.getPairedDevices
 
-getPairedDevices(): Array&lt;string&gt;
+getPairedDevices(): string[]
 
 获取与当前设备配对的设备列表。
 
@@ -159,11 +159,11 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array&lt;string&gt; | 配对设备地址的列表。 |
+| string[] | 配对设备地址的列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -178,7 +178,7 @@ import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let pairedDevices: Array<string> = manager.getPairedDevices();
+  let pairedDevices: string[] = manager.getPairedDevices();
   if (pairedDevices.length > 0) {
         console.info('getPairedDevices return: ' + JSON.stringify(pairedDevices));
     } else {
@@ -190,7 +190,7 @@ try {
 ```
 
 
-## onStateChange
+## manager.onStateChange
 
 onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
@@ -210,7 +210,7 @@ onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -241,7 +241,7 @@ try {
 ```
 
 
-## offStateChange
+## manager.offStateChange
 
 offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
@@ -261,7 +261,7 @@ offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

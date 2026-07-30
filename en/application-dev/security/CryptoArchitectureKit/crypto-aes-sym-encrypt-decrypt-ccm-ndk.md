@@ -10,6 +10,7 @@
 For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 ## Adding the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -19,7 +20,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 **Creating an Object**
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being AES and the key length being 128 bits.
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
 **Encrypting a Message**
@@ -31,19 +32,22 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the key for encryption (**OH_CryptoSymKey**) and the encryption parameter instance (**OH_CryptoSymCipherParams**) corresponding to the CCM mode.
 
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (in plaintext).
-   
+
    Currently, the amount of data to be passed in by a single **update()** call is not limited. You can determine how to pass in data based on the data size.
    > **NOTE**<br>
    > The CCM mode does not support segment-based encryption and decryption.
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the encrypted data.
+
    - If data has been passed in by **update()**, pass in **null** in the **data** parameter.
+
    - Since **final()** might return **null**, always check its output before accessing any data.
+
    > **NOTE**<br>
    > If CCM mode is used, **authTag** is set in **final()** as the authentication information initialized during decryption and needs to be saved.
 
 6. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a **Params** instance, and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set **authTag** as the authentication information for decryption.
-   
+
    In CCM mode, the algorithm library supports only 12-byte **authTag**, which is used for initialization authentication during decryption. In the following example, **authTag** is of 12 bytes.
 
 **Decrypting a Message**
@@ -55,13 +59,15 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to decryption mode, and specify the decryption key and the decryption parameter of the CCM mode.
 
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (in ciphertext).
-   
+
    Currently, the amount of data to be passed in by a single **update()** call is not limited. You can determine how to pass in data based on the ciphertext size.
    > **NOTE**<br>
    > The CCM mode does not support segment-based encryption and decryption.
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
+
    - If data has been passed in by **update()**, pass in **null** in the **data** parameter.
+
    - Before accessing the **final()** output data, check whether the result is **null** to avoid exceptions.
 
 **Destroying Objects**

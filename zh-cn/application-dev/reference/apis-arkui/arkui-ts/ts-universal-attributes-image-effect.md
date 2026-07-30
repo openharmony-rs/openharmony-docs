@@ -484,7 +484,7 @@ hueRotate(rotation: Optional\<number \| string>): T
 
 | 参数名   | 类型                                  | 必填                                                         | 说明 |
 | -------- | ------------------------------------- | ------------------------------------------------------------ | ---- |
-| rotation | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | 是   |色相旋转效果，输入参数为旋转角度。<br/>取值范围：(-∞, +∞)<br/>string需为数值字符串类型。<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当rotation的值为undefined时，恢复为无色相旋转的效果。 |
+| rotation | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | 是   |色相旋转效果，输入参数为旋转角度。<br/>取值范围：(-∞, +∞)<br/>string需为数值字符串类型。<br/>**说明：**<br/>色相旋转360度会显示原始颜色。先将色相旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当rotation的值为undefined时，恢复为无色相旋转的效果。 |
 
 **返回值：**
 
@@ -861,7 +861,7 @@ lightUpEffect(degree: Optional\<number>): T
 
 | 参数名 | 类型              | 必填 | 说明                                                         |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
-| degree | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`degree < 0` 或者 `degree > 1`为异常情况，`degree < 0`按0处理，`degree > 1`按1处理。<br/>当degree的值为undefined时，恢复为亮起为1的效果。 |
+| degree | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果degree等于0则图像为全黑，如果degree等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`degree < 0` 或者 `degree > 1`为异常情况，`degree < 0`按0处理，`degree > 1`按1处理。<br/>当degree的值为undefined时，恢复为亮起为1的效果。 |
 
 **返回值：**
 
