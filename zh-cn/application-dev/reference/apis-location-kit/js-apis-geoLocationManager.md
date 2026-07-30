@@ -3548,7 +3548,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
-|801 | Capability not supported. Failed to call this API due to limited device capabilities          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.  |
 |3301200 | Failed to obtain the post processing track because sports type is not supported.  |
