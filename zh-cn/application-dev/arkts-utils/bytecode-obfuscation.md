@@ -526,7 +526,7 @@ lastName
   
   obj.s1 = 'a';
   let key = 's1';
-  console.info(obj[key]); // key对应的变量值s应该被保留
+  console.info(obj[key]); // key对应的变量值s1应该被保留
   
   obj.t1 = 'b';
   console.info(obj['t' + '1']); // t1应该被保留
