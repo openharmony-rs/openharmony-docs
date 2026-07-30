@@ -409,3 +409,5 @@ HybridStack:
 ```
 
 The clustering method is the same as that for Cpp Crash. For details, see [CppCrash Clustering](cppcrash-guidelines.md#cppcrash-clustering).
+
+<!--no_check-->

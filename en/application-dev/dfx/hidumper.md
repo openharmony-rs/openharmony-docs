@@ -6,7 +6,7 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d9160123fc8d1a4f4284e8e152caf5104ff3fd5d translatedAt=2026-07-30T09:20:24.949Z pushedAt=2026-07-30T11:30:40.276Z -->
+<!-- md-trans-meta sourceCommit=d9160123fc8d1a4f4284e8e152caf5104ff3fd5d translatedAt=2026-07-30T09:20:24.949Z pushedAt=2026-07-30T14:14:35.475Z -->
 
 hidumper is a command line tool used to export system information. It can analyze the usage of system resources such as CPU, memory, and storage, query the running status of system services, and locate resource usage exceptions and communication problems.
 
@@ -581,7 +581,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
 
   ```shell
   $ hidumper --mem-heap 65097 --kotlin  -> 65097 is the target app process ID.
-  $ ls | grep kotlinheap -> 进入堆内存文件存放目录后执行
+  $ ls | grep kotlinheap -> Run after navigating to the heap memory file directory.
   kotlinheap-65097-1775640819058
   ```
 
