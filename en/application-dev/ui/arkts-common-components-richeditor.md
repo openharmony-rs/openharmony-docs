@@ -1145,7 +1145,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_oncut_paste_copy.gif)
+<!--Del-->![alt text](figures/richeditor_image_oncut_paste_copy.gif)<!--DelEnd-->
 
 For details about more events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
 

@@ -707,3 +707,5 @@ struct motionBlurTest {
 ```
 
 ![motionBlurTest](figures/motionBlur.gif)
+
+<!--no_check-->

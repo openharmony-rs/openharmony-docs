@@ -6,15 +6,15 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d0654055576ab02270c2677e50b67065ca2d2e7e translatedAt=2026-07-29T12:44:45.644Z pushedAt=2026-07-30T03:13:21.636Z -->
+<!-- md-trans-meta sourceCommit=d0654055576ab02270c2677e50b67065ca2d2e7e translatedAt=2026-07-29T12:44:45.644Z pushedAt=2026-07-31T01:52:31.239Z -->
 
 CustomDialog is a custom dialog used for user interaction scenarios such as advertisements, prize notifications, warnings, and software updates. You can display a custom dialog through the **CustomDialogController** class. For details, see [Custom Dialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md).
 
 > **NOTE**
 >
-> Currently, ArkUI dialoges are non-page-level by default. When a page route transition occurs, the dialog will not close automatically unless you call the close method. To overlay a dialog during page navigation, you can use the [dialog type for component navigation subpage display](./arkts-navigation-navdestination.md#page-display-type) or [page-level dialog](arkts-embedded-dialog.md).
+> Currently, ArkUI dialogs are non-page-level by default. When a page route transition occurs, the dialog will not close automatically unless you call the close method. To overlay a dialog during page navigation, you can use the [dialog type for component navigation subpage display](./arkts-navigation-navdestination.md#page-display-mode) or [page-level dialog](arkts-embedded-dialog.md).
 
-By default, the dialog is modal with a mask layer, and interaction with controls beneath the mask layer is not allowed (tap and gesture events cannot pass through to the underlying layer). You can configure the **isModal** attribute in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) to implement modal and non-modal dialoges. For details, see [Dialog Box Types](arkts-dialog-overview.md#dialog-box-types).
+By default, the dialog is modal with a mask layer, and interaction with controls beneath the mask layer is not allowed (tap and gesture events cannot pass through to the underlying layer). You can configure the **isModal** attribute in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to implement modal and non-modal dialogs. For details, see [Dialog Box Types](arkts-dialog-overview.md#types-of-popup-windows).
 
 When **isModal** is set to **true**, the dialog is modal, and the mask area around the dialog does not support pass-through. When **isModal** is set to **false**, the dialog is non-modal, and the mask area around the dialog supports pass-through. Therefore, if you need to allow both interaction with the dialog and interaction with the page content outside the dialog, set the dialog to non-modal.
 
@@ -308,7 +308,7 @@ A dialog can be used for data interaction to complete a series of user response 
 
 ## Dialog Box Animation
 
-A dialog controls parameters such as the duration and speed of the appearance animation through the **openAnimation** attribute defined in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description).
+A dialog controls parameters such as the duration and speed of the appearance animation through the **openAnimation** attribute defined in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions).
 
 <!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) --> 
 
@@ -553,11 +553,11 @@ export struct NestDialogNew {
 
 ![nested_dialog](figures/nested_dialog.gif)
 
-Because custom dialoges have a parent-child relationship in state management, if the second dialog is defined inside the first dialog, new components can no longer be created in the child component (the second dialog) when the parent component (the first dialog) is destroyed (closed).
+Because custom dialogs have a parent-child relationship in state management, if the second dialog is defined inside the first dialog, new components can no longer be created in the child component (the second dialog) when the parent component (the first dialog) is destroyed (closed).
 
 ## Implementing Physical Back Press Interception for a Dialog Box
 
-When you perform interactive operations such as tapping the mask layer to close, swiping left or right, pressing the three-key Back button, or pressing ESC to close the dialog, if the onWillDismiss callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) is registered, the dialog is not closed immediately. In the callback, you can obtain the type of operation that prevented the dialog from closing through the reason property in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), and decide whether to close the dialog based on the reason.
+When you perform interactive operations such as tapping the mask layer to close, swiping left or right, pressing the three-key Back button, or pressing ESC to close the dialog, if the onWillDismiss callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog is not closed immediately. In the callback, you can obtain the type of operation that prevented the dialog from closing through the reason property in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), and decide whether to close the dialog based on the reason.
 
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
@@ -664,7 +664,7 @@ export struct DialogWithPhysicalBack {
 
 ## Setting the Distance for Dialog Box to Avoid the Soft Keyboard
 
-To ensure the independence of the displayed dialog, it avoids surrounding elements such as the status bar, navigation bar, and keyboard by maintaining a margin when it appears. Therefore, when the soft keyboard appears, the dialog automatically avoids it and keeps a distance of 16 vp by default. Starting from API version 15, you can use the **keyboardAvoidMode** and **keyboardAvoidDistance** configuration options in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) to set the behavior of the dialog when the soft keyboard appears, including whether to avoid the soft keyboard and the distance from it.
+To ensure the independence of the displayed dialog, it avoids surrounding elements such as the status bar, navigation bar, and keyboard by maintaining a margin when it appears. Therefore, when the soft keyboard appears, the dialog automatically avoids it and keeps a distance of 16 vp by default. Starting from API version 15, you can use the **keyboardAvoidMode** and **keyboardAvoidDistance** configuration options in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to set the behavior of the dialog when the soft keyboard appears, including whether to avoid the soft keyboard and the distance from it.
 
 To set the distance from the soft keyboard, you must set **keyboardAvoidMode** to **KeyboardAvoidMode.DEFAULT**.
 
@@ -731,7 +731,7 @@ export struct DialogAvoidSoftKeyboard {
 
 ## Obtaining the Dialog Box State
 
-In a business module, multiple dialoges may appear on a page at the same time. To avoid opening the same dialog repeatedly, check its current state through the controller before displaying it. If the dialog is already in the displayed state, do not open it again.
+In a business module, multiple dialogs may appear on a page at the same time. To avoid opening the same dialog repeatedly, check its current state through the controller before displaying it. If the dialog is already in the displayed state, do not open it again.
 
 Starting from API version 20, the **getState** API is provided for obtaining the current state of a dialog. For details about dialog states, see the [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20) enumeration.
 

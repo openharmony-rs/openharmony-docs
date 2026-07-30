@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:44:17.877Z pushedAt=2026-07-30T02:28:45.830Z -->
+<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:44:17.877Z pushedAt=2026-07-31T01:39:29.139Z -->
 
 Progress is a component for displaying a progress bar. The displayed content is typically the current progress of a target operation. For details, see [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md).
 
@@ -28,7 +28,7 @@ Progress({ value: 24, total: 100, type: ProgressType.Linear }) // Create a linea
 
 ## Setting the Progress Bar Style
 
-Progress provides five types. You can set the progress bar style through [ProgressType](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progresstype8-enumeration). The ProgressType types include: ProgressType.Linear (linear style), ProgressType.Ring (ring style without scale), ProgressType.ScaleRing (ring style with scale), ProgressType.Eclipse (circular style), and ProgressType.Capsule (capsule style).
+Progress provides five types. You can set the progress bar style through [ProgressType](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progresstype8). The ProgressType types include: ProgressType.Linear (linear style), ProgressType.Ring (ring style without scale), ProgressType.ScaleRing (ring style with scale), ProgressType.Eclipse (circular style), and ProgressType.Capsule (capsule style).
 
 - Linear style progress bar (default type)
 

@@ -6,13 +6,13 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:48:31.832Z pushedAt=2026-07-30T03:12:44.525Z -->
+<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:48:31.832Z pushedAt=2026-07-31T01:54:21.493Z -->
 
 Text is a component used to display content in the user view, such as the text of an article. This component supports binding custom text selection menus, allowing users to choose different functions as needed. In addition, you can extend custom menus to enrich available options and further improve the user experience. Span is used to display inline text.
 
 For details, see the API documentation for [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) and [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md).
 
-For FAQs, see [Text Display (Text/Span) FAQs](./arkts-text-faq.md#text-display-textspan-faqs).
+For FAQs, see [Text Display (Text/Span) FAQs](./arkts-text-faq.md#faqs-about-text-display-textspan).
 
 ## Creating Text
 
@@ -528,7 +528,7 @@ The following examples illustrate the commonly used APIs.
 
   ![Text_optimize_trailing_space](figures/Text_optimize_trailing_space.jpg)
 
-- Starting from API version 20, you can set the text line spacing via [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20). When [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20-object-description) is not configured, line spacing is applied by default above the first line and below the last line. When onlyBetweenLines is set to true, line spacing applies only between lines, with no extra spacing above the first line.
+- Starting from API version 20, you can set the text line spacing via [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20). When [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20) is not configured, line spacing is applied by default above the first line and below the last line. When onlyBetweenLines is set to true, line spacing applies only between lines, with no extra spacing above the first line.
 
   <!-- @[Line_Spacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets) -->
 
@@ -615,7 +615,7 @@ The following examples illustrate the commonly used APIs.
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
+<!--Del-->  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)<!--DelEnd-->
 
 - Starting from API version 20, you can set gradient colors via [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20).
 
@@ -864,7 +864,7 @@ You can tap an empty area within the Text component area to close the selection 
   }
   ```
 
-![close_selection_menu](figures/close_selection_menu.gif)
+<!--Del-->![close_selection_menu](figures/close_selection_menu.gif)<!--DelEnd-->
 
 ### Custom Menu Items in System Menu
 
@@ -933,7 +933,7 @@ The Text component extends the custom selection menu via the [editMenuOptions](.
 
 ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
-- Starting from API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#attribute-1) callback is triggered when the text selection area changes, before the menu is displayed. You can configure menu data in this callback, providing the ability to customize and refresh the system menu.
+- Starting from API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered when the text selection area changes, before the menu is displayed. You can configure menu data in this callback, providing the ability to customize and refresh the system menu.
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->  
 
@@ -1258,7 +1258,7 @@ Starting from API version 20, you can use [disableSystemServiceMenuItems](../ref
   }
   ```
 
-    ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
+    <!--Del-->![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)<!--DelEnd-->
 
 ### Setting the AI Menu
 
@@ -1292,7 +1292,7 @@ The Text component implements AI menu display via the [enableDataDetector](../re
 
 - If needed, to adjust the recognized styles, you can use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11). For details, see the [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11) configuration item.
 
-- If needed, to adjust the menu position, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12). For details, see the [Text Extended Custom Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-text-extended-custom-menu) example.
+- If needed, to adjust the menu position, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12). For details, see [Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
 
 <!--RP2--><!--RP2End-->
 
@@ -1381,7 +1381,7 @@ The Text component controls the window in which the text menu is rendered via [T
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
+  <!--Del-->![Text-menu-subwindow](figures/Text-menu-subwindow.gif)<!--DelEnd-->
 
 ## Implementing a Trending Searches List
 

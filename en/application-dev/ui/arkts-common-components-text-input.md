@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=16d5012cdda87180d94e0c1ee3584d2af7b86146 translatedAt=2026-07-29T12:47:34.065Z pushedAt=2026-07-30T03:14:05.578Z -->
+<!-- md-trans-meta sourceCommit=16d5012cdda87180d94e0c1ee3584d2af7b86146 translatedAt=2026-07-29T12:47:34.065Z pushedAt=2026-07-31T01:56:14.396Z -->
 
 TextInput and TextArea are input box components used to respond to user input, such as input in comment sections, chat boxes, and forms. They can also be combined with other components to build functional pages, for example, login and registration pages. For details, see the API documentation for [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). Search is a special input box component called a search box, which includes a search icon in its default style. For details, see the API documentation for [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
 
@@ -58,7 +58,7 @@ TextInput is a single-line input box, TextArea is a multiline input box, and Sea
 
 TextInput, TextArea, and Search all support setting the input box type through the `type` attribute, but the enum values vary slightly across components. The following uses the single-line input box as an example.
 
-TextInput offers the following types: Normal for basic input, Password for password input, and Email for email address input mode. Set the type through the [type](../reference/apis-arkui/arkui-ts/ts-basic-components-text-input.md#type) attribute:
+TextInput offers the following types: Normal for basic input, Password for password input, and Email for email address input mode. Set the type through the [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type) attribute:
 
 ### Normal Input Mode
 
@@ -181,7 +181,7 @@ TextInput({
 
 ### Setting the Auto-Fill Type of the Input Box
 
-The input box allows you to set the auto-fill type through the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute. For supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12-enumeration).
+The input box allows you to set the auto-fill type through the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute. For supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
 
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
@@ -330,7 +330,7 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 
 ### Custom Menu Items in the System Menu
 
-Starting from API version 12, this example uses the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API to implement the functionality of setting the text content, icon, and callback for custom menu extension items. Starting from API version 20, you can configure menu data in the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#attributes-1) callback.
+Starting from API version 12, this example uses the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API to implement the functionality of setting the text content, icon, and callback for custom menu extension items. Starting from API version 20, you can configure menu data in the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback.
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
@@ -403,7 +403,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
   })
 ```
 
-![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)
+<!--Del-->![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)<!--DelEnd-->
 
 ### Hiding System Menu Items in the System Menu
 
@@ -455,7 +455,7 @@ struct DisableSystemServiceMenuItem {
 
 ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
-Since API version 20, you can use the [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) method to disable specified system service menu items in the text selection menu. For details, see the API description of [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20). The following example is only one part of a complete sample project. To avoid affecting other page samples in the project, system service menu items are disabled and restored only in the page's appear and disappear lifecycle callbacks. In actual scenarios, you can choose other timing, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
+Since API version 20, you can use the [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) method to disable specified system service menu items in the text selection menu. For details, see the API description of [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20). The following example is only one part of a complete sample project. To avoid affecting other page samples in the project, system service menu items are disabled and restored only in the page's **aboutToAppear** and **aboutToDisappear** lifecycle callbacks. In actual scenarios, you can choose other timing, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
 <!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
 
@@ -529,7 +529,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
   .copyOption(CopyOptions.InApp)
 ```
 
-![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
+<!--Del-->![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)<!--DelEnd-->
 
 ## Setting Input Box Avoidance
 

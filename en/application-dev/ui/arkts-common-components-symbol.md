@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:45:15.722Z pushedAt=2026-07-30T03:11:07.415Z -->
+<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:45:15.722Z pushedAt=2026-07-31T01:40:00.423Z -->
 
 SymbolGlyph is an icon symbol component that facilitates the use of exquisite icons, such as rendering multicolor icons and using animated icons. SymbolSpan, as a child component of the Text component, allows icon symbols to be interspersed within text. For details about how to use them, see the API documentation for [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) and [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md).
 
@@ -304,7 +304,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
 
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
-- Starting from API version 20, you can set the **symbolEffect** attribute to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and set [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20-enumeration) to `ReplaceEffectType.SLASH_OVERLAY` to specify the disabled animation effect and its playback trigger condition for **SymbolGlyph**.
+- Starting from API version 20, you can set the **symbolEffect** attribute to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and set [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20) to `ReplaceEffectType.SLASH_OVERLAY` to specify the disabled animation effect and its playback trigger condition for **SymbolGlyph**.
 
   <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
 
@@ -334,7 +334,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
 
   ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
 
-- Starting from API version 20, you can set the **symbolEffect** attribute to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and set [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20-enumeration) to `ReplaceEffectType.CROSS_FADE` to specify the quick replacement animation effect and its playback trigger condition for SymbolGlyph.
+- Starting from API version 20, you can set the **symbolEffect** attribute to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and set [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20) to `ReplaceEffectType.CROSS_FADE` to specify the quick replacement animation effect and its playback trigger condition for SymbolGlyph.
 
   <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
 
