@@ -539,18 +539,18 @@ lwIP是一个小型开源的TCP/IP协议栈，LiteOS-M已对开源lwIP做了适�
 
 本案例在config.json中设置lwIP的路径如下：
 
-   ```json
-  {
-   "subsystem": "kernel",
-   "components": [
-     {
-       "component": "liteos_m",
-       "features": [
-         "ohos_kernel_liteos_m_lwip_path = \"//device/soc/asrmicro/asr582x/liteos_m/components/net/lwip-2.1\""
-       ]
-     }
-   ]
-  }
+  ```json
+   {
+     "subsystem": "kernel",
+     "components": [
+       {
+         "component": "liteos_m",
+         "features": [
+          "ohos_kernel_liteos_m_lwip_path = \"//device/soc/asrmicro/asr582x/liteos_m/components/net/lwip-2.1\""
+        ]
+       }
+     ]
+   }
    ```
 
 另外，需在内核编译配置文件kernel_configs/debug.config中，打开编译lwIP的开关，如下：
