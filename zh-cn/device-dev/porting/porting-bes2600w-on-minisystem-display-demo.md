@@ -430,7 +430,7 @@ int OhosSystemAdapterHooks(void)
 
 ### C库适配
 
-在轻量系统中，C库适配比较复杂，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
+在轻量系统中，C库适配比较复杂，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](hhttps://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
 
 ![image-20211212191013553](figures/bes2600_newlib_make_menuconfig.png)
 
@@ -1473,7 +1473,7 @@ APP_FEATURE_INIT(AppEntry);
 
 步骤2：生成测试报告的`SHA`校验码。本案例是将`zip`文件传到在线生成`hash`的[网站]( https://tool.lmeee.com/jiami/filehash)生成`SHA`校验码。
 
-步骤3：进入`OpenHarmony`[兼容性测试网站](https://www.openharmony.cn/compatibility/)上传报告。
+步骤3：进入`OpenHarmony`[兼容性测试网站](https://www.openharmony.cn)上传报告。
 
 
  - 其中`API Level`填写报告中的`"sdkApiLevel"`字段
