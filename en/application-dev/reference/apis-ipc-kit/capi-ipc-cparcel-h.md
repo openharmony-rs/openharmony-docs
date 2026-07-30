@@ -1188,7 +1188,7 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object. This function is commonly used in scenarios such as passing proxy objects across processes, implementing remote calls in an IPC client, and sharing proxy objects. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
 
 When this function is called:
-- The reference information of the **OHIPCRemoteProxy** object to the **OHIPCParcel** object.
+- The reference information of the **OHIPCRemoteProxy** object is written to the **OHIPCParcel** object.
 - The write position is automatically advanced.
 - The reference information of the **OHIPCRemoteProxy** object is serialized and stored.
 - Calling sequence: First you call [OH_IPCParcel_WriteRemoteProxy](#oh_ipcparcel_writeremoteproxy) to write the **OHIPCRemoteProxy** object, and then the receiving side calls [OH_IPCParcel_ReadRemoteProxy](#oh_ipcparcel_readremoteproxy) to read the object.

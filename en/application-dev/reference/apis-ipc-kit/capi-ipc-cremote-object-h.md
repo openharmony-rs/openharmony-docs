@@ -242,7 +242,7 @@ Sends an IPC message from the proxy to the remote stub. This function supports b
 - Synchronous calls block the current thread. Avoid using them in UI threads to prevent lag.
 - Although asynchronous calls do not block the thread, you should still be mindful of the call frequency to avoid overloading the IPC channel.
 - It is advised to check whether the remote side is alive using [OH_IPCRemoteProxy_IsRemoteDead()](#oh_ipcremoteproxy_isremotedead) before making a call.
-- In case of call failure, It is advised to retry or perform error handling based on the returned error code.
+- In case of call failure, it is advised to retry or perform error handling based on the returned error code.
 - Frequent IPC calls may affect performance. It is advised to design the communication protocol properly to reduce the number of calls.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -445,7 +445,7 @@ int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRe
 
 Unsubscribes from the death of the **OHIPCRemoteStub** object for an **OHIPCRemoteProxy** object. This function is commonly used to unregister the death event listener when the remote object's death events no longer need to be monitored, or to remove the old death listener when switching to another service instance.
 
-- If a listener object is no longer needed, call OH_IPCDeathRecipient_Destroy()](#oh_ipcdeathrecipient_destroy) to destroy it.
+- If a listener object is no longer needed, call [OH_IPCDeathRecipient_Destroy()](#oh_ipcdeathrecipient_destroy) to destroy it.
 - Failure to destroy it may result in memory leaks.
 
 **System capability**: SystemCapability.Communication.IPC.Core
