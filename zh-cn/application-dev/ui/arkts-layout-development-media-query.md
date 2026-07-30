@@ -166,7 +166,8 @@ listener: mediaquery.MediaQueryListener =
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) --> 
 
 ``` TypeScript
-import { mediaquery, window } from '@kit.ArkUI';
+import { mediaquery } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
