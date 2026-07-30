@@ -27,11 +27,11 @@ typedef struct {...} OH_NativeXComponent_TouchEvent
 | 名称 | 描述 |
 | -- | -- |
 | int32_t id | 手指的唯一标识符。 |
-| float screenX | 触摸点相对于XComponent所在应用窗口左上角的x坐标。 |
-| float screenY | 触摸点相对于XComponent所在应用窗口左上角的y坐标。 |
-| float x | 触摸点相对于XComponent组件左边缘的x坐标。 |
-| float y | 触摸点相对于XComponent组件上边缘的y坐标。 |
-| [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | 触摸事件的触摸类型。 |
+| float screenX | 触摸点相对于XComponent所在应用窗口左上角的x坐标，单位：px。 |
+| float screenY | 触摸点相对于XComponent所在应用窗口左上角的y坐标，单位：px。 |
+| float x | 触摸点相对于XComponent组件左边缘的x坐标，单位：px。 |
+| float y | 触摸点相对于XComponent组件上边缘的y坐标，单位：px。 |
+| [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | 触摸事件的类型。 |
 | double size | 指垫和屏幕之间的接触面积。取值范围为[0.0, 1.0]，值越大表示接触面积越大（归一化值）。 |
 | float force | 当前触摸事件的压力。取值范围：[0, 1]。 |
 | int64_t deviceId | 产生当前触摸事件的设备的ID。 |

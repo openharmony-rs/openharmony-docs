@@ -208,7 +208,7 @@ int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t el
 
 **描述：**
 
-获取当前组件中（文本组件）光标位置。由接入方平台实现的回调函数，注册给系统侧调用。支持多实例场景。
+获取当前文本组件中的光标位置。由接入方平台实现的回调函数，注册给系统侧调用。支持多实例场景。
 
 **起始版本：** 15
 

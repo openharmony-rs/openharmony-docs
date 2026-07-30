@@ -51,7 +51,7 @@
 | [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码。 |
 | [OH_NativeXComponent_TouchEventType](#oh_nativexcomponent_toucheventtype) | OH_NativeXComponent_TouchEventType | 触摸事件类型。 |
 | [OH_NativeXComponent_TouchPointToolType](#oh_nativexcomponent_touchpointtooltype) | OH_NativeXComponent_TouchPointToolType | 触摸点工具类型。 |
-| [OH_NativeXComponent_EventSourceType](#oh_nativexcomponent_eventsourcetype) | OH_NativeXComponent_EventSourceType | 触摸事件源类型。 |
+| [OH_NativeXComponent_EventSourceType](#oh_nativexcomponent_eventsourcetype) | OH_NativeXComponent_EventSourceType | 事件源类型。 |
 | [OH_NativeXComponent_MouseEventAction](#oh_nativexcomponent_mouseeventaction) | OH_NativeXComponent_MouseEventAction | 鼠标事件动作。 |
 | [OH_NativeXComponent_MouseEventButton](#oh_nativexcomponent_mouseeventbutton) | OH_NativeXComponent_MouseEventButton | 鼠标事件按键。 |
 | [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | 表示触摸事件的源工具类型。 |
@@ -97,7 +97,7 @@
 | [int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isNumLockOn)](#oh_nativexcomponent_getkeyeventnumlockstate) | 从按键事件中获取NumLock（小键盘锁定）键的状态信息。 |
 | [int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isCapsLockOn)](#oh_nativexcomponent_getkeyeventcapslockstate) | 从按键事件中获取CapsLock（大写锁定）键的状态信息。 |
 | [int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isScrollLockOn)](#oh_nativexcomponent_getkeyeventscrolllockstate) | 从按键事件中获取ScrollLock（滚动锁定）键的状态信息。 |
-| [int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)](#oh_nativexcomponent_setexpectedframeraterange) | 设置期望帧率范围。本接口适用于通过OH_NativeXComponent指针操作的场景。若使用NativeNode（ArkUI_NodeHandle）创建的XComponent，请使用[OH_ArkUI_XComponent_SetExpectedFrameRateRange](#oh_arkui_xcomponent_setexpectedframeraterange)。 |
+| [int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)](#oh_nativexcomponent_setexpectedframeraterange) | 设置期望帧率范围。本接口适用于通过OH_NativeXComponent指针操作的场景。若使用NativeNode（ArkUI_NodeHandle）创建的XComponent，请使用[OH_ArkUI_XComponent_SetExpectedFrameRateRange](#oh_arkui_xcomponent_setexpectedframeraterange)接口。 |
 | [int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp))](#oh_nativexcomponent_registeronframecallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册显示更新回调，并使能每帧回调此函数。 |
 | [int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)](#oh_nativexcomponent_unregisteronframecallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例取消注册回调函数，并关闭每帧回调此函数。 |
 | [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。<br>**配对调用：** 挂载的组件在不再需要时，必须调用[OH_NativeXComponent_DetachNativeRootNode](#oh_nativexcomponent_detachnativerootnode)卸载。 |
@@ -521,7 +521,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| uint32_t pointIndex | 表示触摸点的指针索引。取值范围为[0, OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER)，仅当传入的索引为当前触摸事件中的有效触点索引时可正确获取信息。 |
+| uint32_t pointIndex | 表示触摸点的索引。取值范围为[0, OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER)，仅当传入的索引为当前触摸事件中的有效触点索引时可正确获取信息。 |
 | float* tiltY | 表示指向触摸点沿Y轴倾斜角度的指针。取值范围为[-90, 90]，单位：度。 |
 
 **返回：**
@@ -550,7 +550,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component,
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | uint32_t pointIndex | 表示触摸点的指针索引。 |
-| float* windowX | 表示指向触摸点相对于应用窗口左上角的X坐标的指针。 |
+| float* windowX | 表示指向触摸点相对于应用窗口左上角的X坐标的指针。单位：px。 |
 
 **返回：**
 
@@ -578,7 +578,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component,
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | uint32_t pointIndex | 表示触摸点的指针索引。 |
-| float* windowY | 表示指向触摸点相对于应用窗口左上角的Y坐标的指针。 |
+| float* windowY | 表示指向触摸点相对于应用窗口左上角的Y坐标的指针。单位：px。 |
 
 **返回：**
 
@@ -606,7 +606,7 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayX(OH_NativeXComponent* component
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | uint32_t pointIndex | 表示触摸点的指针索引。 |
-| float* displayX | 表示指向触摸点相对于应用所在屏幕左上角的X坐标的指针。 |
+| float* displayX | 表示指向触摸点相对于应用所在屏幕左上角的X坐标的指针。单位：px。 |
 
 **返回：**
 
@@ -634,7 +634,7 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayY(OH_NativeXComponent* component
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | uint32_t pointIndex | 表示触摸点的指针索引。 |
-| float* displayY | 表示指向触摸点相对于应用所在屏幕左上角的Y坐标的指针。 |
+| float* displayY | 表示指向触摸点相对于应用所在屏幕左上角的Y坐标的指针。单位：px。 |
 
 **返回：**
 
@@ -1248,6 +1248,10 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 
 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。
+
+> **说明：**
+>
+> 挂载的组件在不再需要时，必须调用[OH_NativeXComponent_DetachNativeNode](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_detachnativenode)进行卸载，避免内存泄漏。
 
 **起始版本：** 12
 

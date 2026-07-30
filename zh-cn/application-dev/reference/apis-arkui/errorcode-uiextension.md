@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 1011 Ability启动失败
+## 1011 扩展Ability启动失败
 
 **错误信息**
 
@@ -23,14 +23,14 @@ Failed to start the UIExtension ability.
 **可能原因**
 
 1. Want参数配置错误；
-2. type类型不一致；
+2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
 3. 提供方应用未安装；
 
 **处理步骤**
 
 检查Want参数配置、应用是否安装等。
 
-## 1012 Ability切后台失败
+## 1012 扩展Ability切后台失败
 
 **错误信息**
 
@@ -42,13 +42,17 @@ Failed to switch the UIExtension ability to the background.
 
 **可能原因**
 
-扩展Ability切后台失败，需根据AMS日志具体分析。
+扩展Ability切后台失败，可能原因包括但不限于：
+
+1. Ability生命周期状态异常；
+
+2. 系统资源不足。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
 根据AMS日志进行分析。
 
-## 1013 Ability终止失败
+## 1013 扩展Ability销毁失败
 
 **错误信息**
 
@@ -56,11 +60,15 @@ Failed to destroy the UIExtension ability.
 
 **错误描述**
 
-扩展Ability终止失败。
+扩展Ability销毁失败。
 
 **可能原因**
 
-扩展Ability终止失败，需根据AMS日志具体分析。
+扩展Ability销毁失败，可能原因包括但不限于：
+
+1. Ability生命周期回调执行异常；
+
+2. 资源释放过程中发生错误。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
@@ -82,8 +90,8 @@ No callback has been registered to respond to this request.
 
 **处理步骤**
 
-1. 扩展Ability注册同步回调监听；
-2. 组件使用方调用sendSync接口向被拉起的Ability发送数据。
+1. 在扩展Ability中注册同步回调监听；
+2. 组件使用方需调用sendSync接口向被拉起的Ability发送数据。
 
 ## 100012 数据发送失败
 
@@ -97,7 +105,13 @@ Transferring data failed.
 
 **可能原因**
 
-数据发送失败，需根据AMS日志具体分析。
+数据发送失败，可能原因包括但不限于：
+
+1. 发送的数据量超过限制；
+
+2. 数据序列化失败；
+
+3. 跨进程通信通道异常。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
@@ -111,7 +125,7 @@ Cascading UIExtension components is not allowed.
 
 **错误描述**
 
-UIExtension组件不允许嵌套使用；在特殊场景下可能意外出现UIExtension组件间嵌套，此时会触发此错误码。
+UIExtension组件不允许嵌套使用；在特定页面布局或组件复用等场景下可能意外出现UIExtension组件间嵌套，此时会触发此错误码。
 
 **可能原因**
 
@@ -119,7 +133,7 @@ UIExtension组件不允许嵌套使用；在特殊场景下可能意外出现UIE
 
 **处理步骤**
 
-请确认UIExtension组件规格，避免特殊场景嵌套。
+请确认UIExtension组件规格，避免在组件复用、条件渲染、动态加载等场景下产生意外嵌套。
 
 ## 100014 Ability退出异常
 
@@ -133,7 +147,11 @@ The UIExtension ability exited unexpectedly.
 
 **可能原因**
 
-扩展Ability退出异常，需根据AMS日志具体分析。
+扩展Ability退出异常，可能原因包括但不限于：
+
+1. Ability生命周期回调执行异常导致非正常退出；
+
+2. 资源释放过程中发生未捕获异常。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
@@ -151,7 +169,11 @@ The lifecycle of the UIExtension ability has timed out.
 
 **可能原因**
 
-扩展Ability生命周期超时，需根据AMS日志具体分析。
+扩展Ability生命周期超时，可能原因包括但不限于：
+
+1. 生命周期回调中执行了耗时操作导致超时；
+
+2. 主线程阻塞导致生命周期回调无法及时执行。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
@@ -169,7 +191,11 @@ Key event processing by the UIExtension ability has timed out.
 
 **可能原因**
 
-扩展Ability处理Key事件超时，需根据AMS日志具体分析。
+扩展Ability处理Key事件超时，可能原因包括但不限于：
+
+1. Key事件处理回调中执行了耗时操作导致超时；
+
+2. 主线程阻塞导致事件处理无法及时完成。若仍无法定位，需根据AMS日志具体分析。
 
 **处理步骤**
 
@@ -214,7 +240,7 @@ Failed to switch the UIExtension ability to the background.
 
 根据AMS日志进行分析。
 
-## 100020 Ability终止失败
+## 100020 扩展Ability销毁失败
 
 **错误信息**
 
@@ -222,17 +248,17 @@ Failed to destroy the UIExtension ability.
 
 **错误描述**
 
-设置onTerminated回调场景下，扩展Ability终止失败。
+设置onTerminated回调场景下，扩展Ability销毁失败。
 
 **可能原因**
 
-扩展Ability终止失败，需根据AMS日志具体分析。
+扩展Ability销毁失败，需根据AMS日志具体分析。
 
 **处理步骤**
 
 根据AMS日志进行分析。
 
-## 100021 窗口透明检测
+## 100021 透明节点检测
 
 **错误信息**
 

@@ -222,7 +222,7 @@ NODE_ACCESSIBILITY_VALUE = 91
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 无障碍信息属性，无障碍值信息，参数类型为[ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)。 |
+| .object | 无障碍信息属性，参数类型为[ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)。 |
 
 **返回：**
 
