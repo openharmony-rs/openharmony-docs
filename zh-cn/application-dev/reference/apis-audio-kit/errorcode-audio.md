@@ -315,5 +315,5 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 **处理步骤**
 
 <!--RP1-->
-尝试重试或[提单](https://gitcode.com/openharmony/docs/issues/create/choose)处理问题。
+尝试重试或[提单](https://gitcode.com/openharmony/docs/issues/create/choose)处理。
 <!--RP1End-->
