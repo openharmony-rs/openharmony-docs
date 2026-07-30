@@ -616,6 +616,7 @@ static int32_t PanelDriverInit(struct HdfDeviceObject *object)
         }
     }
 ...
+}
 ```
 
 ### OpenHarmony子系统适配
