@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39b6252a8cedb2718d8eb39925f62558aa774e0b translatedAt=2026-07-25T10:16:04.263Z pushedAt=2026-07-25T10:54:36.448Z -->
+<!-- md-trans-meta sourceCommit=e19b652374a358a3a50594a3ad8cb6bde0515e4e translatedAt=2026-07-29T12:43:22.603Z pushedAt=2026-07-30T01:43:41.278Z -->
 
 Continuous visual effects on the UI resulting from changes to animatable properties are called property animations. As the most fundamental and intuitive type of animation, property animations form the core of UI animation systems. ArkUI provides three animation APIs to create these effects: [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto), [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), and [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md).
 
@@ -16,7 +16,7 @@ Continuous visual effects on the UI resulting from changes to animatable propert
 
 | Animation API| Scope| Principle| Use Scenario|
 | -------- | -------- | -------- | -------- |
-| animateTo | UI changes caused by attribute changes within a closure. | A general-purpose function that animates the differences between the UI before the closure and the UI caused by state variable changes within the closure.<br/>Supports multiple calls and nesting. | Suitable for scenarios where multiple animatable attributes share the same animation parameters, or where animation is triggered imperatively and explicitly.<br/>Scenarios requiring nested animations.<br/>To achieve a multi-segment looping animation effect, configure the **playMode** and **iterations** properties of [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam), or use **keyframeAnimateTo**. |
+| animateTo | UI changes caused by attribute changes within a closure. | A general-purpose function that animates the differences between the UI before the closure and the UI caused by state variable changes within the closure.<br/>Supports multiple calls and nesting. | Suitable for scenarios where multiple animatable attributes share the same animation parameters, or where animation is triggered imperatively and explicitly.<br/>Scenarios requiring nested animations.<br/>To achieve a multi-segment looping animation effect, configure the **playMode** and **iterations** properties of [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam-object-description), or use **keyframeAnimateTo**. |
 | animation | UI changes caused by attribute changes bound to a component through the attribute API. | A declarative attribute animation that detects changes to a component's animatable attributes and automatically applies animation.<br/>Component API calls are executed from bottom to top, and **animation** only affects the attributes called above it.<br/>A component can set different **animation** parameters for multiple attributes based on the call order. | Suitable for scenarios where different animatable attributes require different animation parameters, and for declarative approaches where animation is implicitly triggered upon attribute changes. |
 | keyframeAnimateTo | Segmented property animation caused by property changes in multiple closures.| This API is a common function. It animates the difference between state variables in each closure and the previous state.<br>This API supports multiple calls, but nesting is not recommended.| Multiple animations are applied to the same property sequentially.|
 
@@ -108,7 +108,7 @@ struct attrAnimationDemo3 {
   // Step 1: Declare related state variables.
   @State rotateValue: number = 0; // Rotation angle of component 1.
   @State translateX: number = 0; // Offset of component 2
-  @State opacityValue: number = 1; // Opacity of component 1 and component 2.
+  @State opacityValue: number = 1; // Opacity of Component 1 and Component 2.
 
   // Step 2: Set the declared state variables to the related animatable property APIs.
   build() {
@@ -133,7 +133,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // The translate property of component 2 is changed. Therefore, a translate animation is added to component 2.
         this.translateX = this.animate ? 50 : 0;
-        // The opacity attribute of component 1 and component 2 changes, so an opacity animation is added to them.
+        // The opacity attribute of Component 1 and Component 2 changes, so an opacity animation is added to them.
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 
@@ -166,7 +166,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 
 In the [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md) API, the first parameter [KeyframeAnimateParam](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#keyframeanimateparam) is the overall parameter of the keyframe animation (including the **delay**, **iterations**, **onFinish**, and **expectedFrameRateRange**). The second parameter is an array. Each item indicates the animation behavior in a keyframe. The animation parameters (including **duration** and **curve**) of each animation can be controlled separately.
 
-If there are multiple animations for the same attribute, you can create a new animation in the end callback. However, compilation is complex, and it takes time to create a new animation each time, which may cause frame freezing. Keyframe animations are more suitable for this scenario.
+If there are multiple animations for the same attribute, you can create a new animation in the end callback. However, the implementation is complex, and it takes time to create a new animation each time, which may cause frame freezing. Keyframe animations are more suitable for this scenario.
 
 This example demonstrates how to set the keyframe animation using **keyframeAnimateTo**.
 
