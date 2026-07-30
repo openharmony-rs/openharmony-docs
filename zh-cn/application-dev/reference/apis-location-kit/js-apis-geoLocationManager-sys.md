@@ -1483,7 +1483,7 @@ setLocationSwitchIgnored(isIgnored: boolean): void
 
 ## geoLocationManager.addFusionFence
 
-addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
+addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt;
 
 添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
@@ -1623,7 +1623,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise<void>;
 
 ## geoLocationManager.removeFusionFence
 
-removeFusionFence(identifier: string): Promise<void>;
+removeFusionFence(identifier: string): Promise&lt;void&gt;
 
 删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
@@ -1673,7 +1673,7 @@ removeFusionFence(identifier: string): Promise<void>;
 
 ## geoLocationManager.isFusionFenceSupported
 
-isFusionFenceSupported(): boolean;
+isFusionFenceSupported(): boolean
 
 判断系统是否支持融合围栏能力。
 
