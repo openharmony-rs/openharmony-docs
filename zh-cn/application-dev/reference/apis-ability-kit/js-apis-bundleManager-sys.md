@@ -7058,9 +7058,9 @@ getAppClonePreference(bundleName: string): Promise\<AppClonePreference>;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -7121,9 +7121,9 @@ setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8522,9 +8522,9 @@ type AppClonePreferenceMode = _AppClonePreferenceMode
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -8542,9 +8542,9 @@ ArkTS-Sta: type AppClonePreference = _AppClonePreference
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
