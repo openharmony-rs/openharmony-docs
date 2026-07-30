@@ -7166,9 +7166,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
-以只读方式打开当前文件，如果是纯云视频文件，缓存视频至图库沙箱。使用promise异步回调。
+以只读方式打开当前文件，如果是纯云视频文件，则将视频缓存至图库沙箱。使用promise异步回调。
 
-返回的文件描述符在使用完毕后需要调用close进行释放。
+返回的文件描述符在使用完毕后需要调用[close](arkts-apis-photoAccessHelper-PhotoAsset.md#close)进行释放。
 
 **系统接口**：此接口为系统接口。
 
@@ -7186,7 +7186,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md).md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
