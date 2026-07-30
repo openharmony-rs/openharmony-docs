@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong;@guozejun-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -359,7 +359,7 @@ ArkTS-Sta: clipContent(clip: ContentClipMode | RectShape | undefined)
 
 设置滚动容器的内容层裁剪区域。
 
-从API版本26.0.0开始，内容层裁剪区域内的子组件支持正常显示。API版本26.0.0以前的版本，List、Grid和WaterFlow组件内容层裁剪区域比组件自身大小更大时，完全在组件区域外但在裁剪区域内的子组件默认不会显示。若需要显示可将组件的cachedCount属性的isShow参数设置为true，但由于cachedCount属性设置的预加载子组件只会在空闲时隙时执行，组件大小变化、数据更新等场景可能存在更新不及时导致闪烁问题。
+从API版本26.0.0开始，内容层裁剪区域内的子组件支持正常显示。API版本26.0.0以前的版本，[List](ts-container-list.md)组件内容层裁剪区域比组件自身大小更大时，完全在组件区域外但在裁剪区域内的子组件默认不会显示。若需要显示，可将组件的cachedCount属性的show参数设置为true。但由于cachedCount属性设置的预加载子组件仅在空闲时隙执行，在组件大小变化、数据更新等场景下可能存在更新不及时导致闪烁的问题。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 

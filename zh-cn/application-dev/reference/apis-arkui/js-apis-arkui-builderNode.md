@@ -6,9 +6,9 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供能够挂载系统组件的自定义节点BuilderNode。BuilderNode仅可作为叶子节点使用。使用方式参考[BuilderNode开发指南](../../ui/arkts-user-defined-arktsNode-builderNode.md)。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+提供能够挂载系统组件的自定义节点BuilderNode。BuilderNode仅可作为叶子节点使用，支持通过@Builder生成组件树、实现组件复用与回收、跨节点事件分发以及状态同步，适用于在应用内动态创建和管理自定义组件节点的场景。使用方式参考[BuilderNode开发指南](../../ui/arkts-user-defined-arktsNode-builderNode.md)。最佳实践请参考组件动态创建-[组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#组件动态添加更新和删除)。
 
-与BuilderNode相比，ReactiveBuilderNode能通过多参数的无状态UI方法@Builder生成组件树。
+与BuilderNode相比，ReactiveBuilderNode能通过多参数的无状态UI方法@Builder生成组件树，适用于需要多参数数据绑定和响应式UI动态更新的场景。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 > 
-> - 若传入的Builder的根节点为语法节点（[if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)…）、[Span](./arkui-ts/ts-basic-components-span.md)、[ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md)、[SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md)或自定义组件，将额外生成一个[FrameNode](./js-apis-arkui-frameNode.md)，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响某些测试的传递过程。详情参见[BuilderNode内的BuilderProxyNode导致树结构发生变化](../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode内的builderproxynode导致树结构发生变化)。
+> - 若传入的Builder的根节点为语法节点（[if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)…）、[Span](./arkui-ts/ts-basic-components-span.md)、[ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md)、[SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md)或自定义组件，将额外生成一个[FrameNode](./js-apis-arkui-frameNode.md)，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响事件传递等测试流程。详情参见[BuilderNode内的BuilderProxyNode导致树结构发生变化](../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode内的builderproxynode导致树结构发生变化)。
 >
 > - 如果在跨页面复用BuilderNode时显示异常，可参考[跨页面复用注意事项](../../ui/arkts-user-defined-arktsNode-builderNode.md#跨页面复用注意事项)。
 >
@@ -83,9 +83,9 @@ import { BuilderNode, ReactiveBuilderNode, RenderOptions, NodeRenderType } from 
 
 | 名称          | 类型                                   | 只读 | 可选 | 说明                                                         |
 | ------------- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| selfIdealSize | [Size](js-apis-arkui-graphics.md#size) | 否   | 是 | 节点的理想大小。<br/>默认值：{ width: 0, height: 0 } <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| type          | [NodeRenderType](#noderendertype)      | 否   | 是 | 节点的渲染类型。<br/>默认值：NodeRenderType.RENDER_TYPE_DISPLAY <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| surfaceId     | string                                 | 否   | 是 | 纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](../apis-arkgraphics2d/capi-oh-nativeimage-oh-nativeimage.md)。<br/>surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。<br/>默认值："" <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| selfIdealSize | [Size](js-apis-arkui-graphics.md#size) | 否   | 是 | 节点的理想大小。当将BuilderNode生成的内容嵌入到其它RenderNode中显示时，需要显式指定selfIdealSize，否则Builder内的节点默认父组件布局约束为[0, 0]。<br>默认值：{ width: 0, height: 0 } <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| type          | [NodeRenderType](#noderendertype)      | 否   | 是 | 节点的渲染类型。当取值为NodeRenderType.RENDER_TYPE_TEXTURE时，仅在BuilderNode持有组件树的根节点为自定义组件时设置生效。<br>默认值：NodeRenderType.RENDER_TYPE_DISPLAY <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| surfaceId     | string                                 | 否   | 是 | 纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](../apis-arkgraphics2d/capi-oh-nativeimage-oh-nativeimage.md)。<br/>surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。<br>默认值："" <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | enableMinimized     | boolean                                 | 否   | 是 | 控制BuilderNode持有的FrameNode的类型，当此开关设置为true时，BuilderNode持有的FrameNode为轻量化的FrameNode，内存更小，但是不支持FrameNode的部分接口，具体信息请参见[isMinimized](./js-apis-arkui-frameNode.md#isminimized)。<br/>默认值：false <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## BuildOptions<sup>12+</sup>
@@ -100,9 +100,9 @@ build的可选参数。
 
 | 名称          | 类型               | 只读 | 可选 | 说明                                                         |
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。<br/>默认值：false <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
-| localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。<br/>默认值：null <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[\@Consume](../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[\@Provide](../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[\@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[\@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。<br/>从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 23开始支持状态管理V2自定义组件的双向同步。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
+| nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder使用。其中，true表示支持，false表示不支持。<br>默认值：false <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
+| localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。<br>默认值：null <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[@Consume](../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[@Provide](../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。<br>从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 23开始支持状态管理V2自定义组件的双向同步。<br>true表示支持，false表示不支持。<br>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Dyn。 |
 
 ## BuildOptions<sup>23+</sup>
 
@@ -173,10 +173,10 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 | 参数名    | 类型                                    | 必填 | 说明                                                              |
 | --------- | --------------------------------------- | ---- | ----------------------------------------------------------------- |
-| uiContext | [UIContext](arkts-apis-uicontext-uicontext.md) | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。 |
-| options   | [RenderOptions](#renderoptions)         | 否   | BuilderNode的构造可选参数。<br/>默认值：undefined   |
+| uiContext | [UIContext](arkts-apis-uicontext-uicontext.md) | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
+| options   | [RenderOptions](#renderoptions)         | 否   | BuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br>默认值：undefined   |
 
-> **说明**
+> **说明：**
 > uiContext的入参需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。
 
 ### build
@@ -189,7 +189,7 @@ ArkTS-Sta: build(builder: WrappedBuilder\<CustomBuilder> | WrappedBuilder\<Custo
 
 支持自定义组件。
 
-> **说明**
+> **说明：**
 >
 > - @Builder嵌套使用的时候需要保证内外的@Builder方法的入参对象一致。
 >
@@ -214,7 +214,7 @@ ArkTS-Sta: build(builder: WrappedBuilder\<CustomBuilder> | WrappedBuilder\<Custo
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                   |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | ArkTS-Dyn: [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<Args><br/>ArkTS-Sta: [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder8)> 或 [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilderT](./arkui-ts/ts-types.md#custombuildertt23)\<T>> | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder](../../ui/state-management/arkts-builder.md)。 |
-| arg     | ArkTS-Dyn: Object<br/>ArkTS-Sta: T                              | 否   | builder有入参时当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。ArkTS-Sta下，当builder类型为WrappedBuilder\<CustomBuilder>时无需传入该参数。<br/>默认值：undefined |
+| arg     | ArkTS-Dyn: Object<br/>ArkTS-Sta: T                              | 否   | builder有入参时当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。ArkTS-Sta下，当builder类型为WrappedBuilder\<CustomBuilder>时无需传入该参数。<br>默认值：undefined |
 
 ### build<sup>12+</sup>
 
@@ -226,11 +226,19 @@ ArkTS-Sta: build(builder: WrappedBuilder\<CustomBuilderT\<T>>, arg: T, options: 
 
 支持自定义组件。相比[build](#build)接口，本接口支持builder的配置参数。ArkTS-Dyn下可用于判断是否支持@Builder中嵌套@Builder，ArkTS-Sta下可用于配置是否开启并行构建。
 
-> **说明**
-> 
+> **说明：**
+>
 > - @Builder进行创建和更新的规格参考[@Builder](../../ui/state-management/arkts-builder.md)。
-> 
+>
+> - @Builder嵌套使用的时候需要保证内外的@Builder方法的入参对象一致。
+>
 > - 最外层的@Builder只支持一个入参。
+>
+> - build的参数是值传递，需要使用[update](#update)接口进行更新。
+>
+> - 需要操作BuilderNode中的对象时，需要保证其引用不被回收。当BuilderNode对象被虚拟机回收之后，它的[FrameNode](js-apis-arkui-frameNode.md)、[RenderNode](js-apis-arkui-renderNode.md)对象也会与后端节点解引用。即从BuilderNode中获取的FrameNode对象不对应任何一个节点。
+>
+> - BuilderNode对象会持有实体节点的引用。如果不需要使用BuilderNode前端对象管理后端节点，可以调用[dispose](#dispose12)接口，实现前后端对象的解绑。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -250,7 +258,7 @@ ArkTS-Sta: build(builder: WrappedBuilder\<CustomBuilderT\<T>>, arg: T, options: 
 
 **示例：**
 ```ts
-import { BuilderNode, NodeContent } from "@kit.ArkUI";
+import { BuilderNode, NodeContent } from '@kit.ArkUI';
 
 // 定义传递参数的接口
 interface ParamsInterface {
@@ -259,8 +267,8 @@ interface ParamsInterface {
 }
 
 @Builder
-function buildTextWithFunc(fun: Function) {
-  Text(fun())
+function buildTextWithFunc(func: Function) {
+  Text(func())
     .fontSize(50)
     .fontWeight(FontWeight.Bold)
     .margin({ bottom: 36 })
@@ -281,7 +289,7 @@ function buildText(params: ParamsInterface) {
 @Entry
 @Component
 struct Index {
-  @State message: string = "HELLO";
+  @State message: string = 'HELLO';
   private content: NodeContent = new NodeContent();
 
   build() {
@@ -293,7 +301,7 @@ struct Index {
             // 创建节点树
             buildNode.build(wrapBuilder<[ParamsInterface]>(buildText), {
               text: this.message, func: () => {
-                return "FUNCTION";
+                return 'FUNCTION';
               }
             }, { nestingBuilderSupported: true });
             this.content.addFrameNode(buildNode.getFrameNode());
@@ -301,7 +309,7 @@ struct Index {
           })
         ContentSlot(this.content)
       }
-      .id("column")
+      .id('column')
       .width('100%')
       .height('100%')
     }
@@ -328,18 +336,18 @@ getFrameNode(): FrameNode | null
 
 | 类型                                                      | 说明                                                                  |
 | --------------------------------------------------------- | --------------------------------------------------------------------- |
-| [FrameNode](js-apis-arkui-frameNode.md) \| null | 一个FrameNode对象。若该BuilderNode不包含FrameNode，则返回空对象null。 |
+| [FrameNode](js-apis-arkui-frameNode.md) \| null | BuilderNode持有的FrameNode对象，用于将该BuilderNode作为子节点挂载到其他FrameNode上。若该BuilderNode不包含FrameNode，则返回空对象null。 |
 
 **示例1：**
 
 BuilderNode作为[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的根节点返回。
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 // 定义传递参数的类
 class Params {
-  text: string = "";
+  text: string = '';
   constructor(text: string) {
     this.text = text;
   }
@@ -358,7 +366,7 @@ function buildText(params: Params) {
 // 继承NodeController实现自定义textNode控制器
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "DEFAULT";
+  private message: string = 'DEFAULT';
 
   constructor(message: string) {
     super();
@@ -371,12 +379,16 @@ class TextNodeController extends NodeController {
     // 返回当前BuilderNode包含的FrameNode
     return this.textNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
 
   build() {
     Row() {
@@ -399,11 +411,11 @@ struct Index {
 BuilderNode的[FrameNode](js-apis-arkui-frameNode.md)挂到其它FrameNode下。
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 // 定义传递参数的类
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -424,7 +436,7 @@ function buildText(params: Params) {
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "DEFAULT";
+  private message: string = 'DEFAULT';
 
   constructor(message: string) {
     super();
@@ -442,12 +454,16 @@ class TextNodeController extends NodeController {
 
     return this.rootNode;
   }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
 
   build() {
     Row() {
@@ -470,10 +486,10 @@ struct Index {
 BuilderNode的[RenderNode](./js-apis-arkui-renderNode.md)挂到其它RenderNode下。由于RenderNode不传递布局约束，不推荐通过该方式挂载节点。
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext, RenderNode } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext, RenderNode } from '@kit.ArkUI';
 // 自定义传递参数的类
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -494,7 +510,7 @@ function buildText(params: Params) {
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "DEFAULT";
+  private message: string = 'DEFAULT';
 
   constructor(message: string) {
     super();
@@ -518,12 +534,16 @@ class TextNodeController extends NodeController {
 
     return this.rootNode;
   }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
 
   build() {
     Row() {
@@ -565,11 +585,11 @@ ArkTS-Sta: update(arg: T): void
 
 **示例：**
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 // 自定义传递参数的类
 class Params {
-  text: string = "";
+  text: string = '';
   constructor(text: string) {
     this.text = text;
   }
@@ -578,7 +598,7 @@ class Params {
 // 自定义组件
 @Component
 struct TextBuilder {
-  @Prop message: string = "TextBuilder";
+  @Prop message: string = 'TextBuilder';
 
   build() {
     Row() {
@@ -608,7 +628,7 @@ function buildText(params: Params) {
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "";
+  private message: string = '';
 
   constructor(message: string) {
     super();
@@ -627,12 +647,15 @@ class TextNodeController extends NodeController {
       this.textNode.update(new Params(message));
     }
   }
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
   private textNodeController: TextNodeController = new TextNodeController(this.message);
   private count = 0;
 
@@ -646,7 +669,7 @@ struct Index {
         Button('Update')
           .onClick(() => {
             this.count += 1;
-            const message = "Update " + this.count.toString();
+            const message = 'Update ' + this.count.toString();
             this.textNodeController.update(message);
           })
       }
@@ -662,11 +685,11 @@ struct Index {
 
 postTouchEvent(event: TouchEvent): boolean
 
-将原始事件派发到某个BuilderNode创建出的FrameNode上。
+将原始事件派发到某个BuilderNode创建出的FrameNode上。适用于在自定义NodeContainer中将父组件接收的触摸事件转发给BuilderNode内部组件，使内部组件能够响应触摸交互的场景。
 
 postTouchEvent是从组件树的中间节点往下分发，需要变换到父组件坐标系才能分发成功，参考下图。
 
-OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)获取。OffsetB为point点相对于buildNode的偏移量，可以通过[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) 获取。OffsetC为OffsetA与OffsetB的和，是传给postTouchEvent的最终结果。
+offsetA为builderNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)获取。offsetB为触点相对于builderNode的偏移量，可以通过[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)获取。offsetC为offsetA与offsetB的和，是传给postTouchEvent的最终结果。
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
@@ -693,13 +716,13 @@ OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
-| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 触摸事件。 |
+| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 用于派发到BuilderNode创建出的FrameNode上的触摸事件。 |
 
 **返回值：**
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 派发事件是否成功。true为已命中响应事件的组件，false为未命中任何可响应事件的组件。<br/>**说明：** <br/>如果未按照预期命中组件，需要确认以下几点：<br/>1.坐标系是否转换正确。<br/>2.组件是否可交互状态。<br/>3.是否绑定事件。 |
+| boolean | 派发事件是否成功。true：已命中响应事件的组件；false：未命中任何可响应事件的组件。<br>**说明：**<br>如果未按照预期命中组件，需要确认以下几点：<br>1. 坐标系是否转换正确。<br>2. 组件是否处于可交互状态。<br>3. 是否绑定事件。 |
 
 **示例：**
 
@@ -708,7 +731,7 @@ import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 // 自定义传递参数的类
 class Params {
-  text: string = "this is a text";
+  text: string = 'this is a text';
 }
 
 @Builder
@@ -717,12 +740,12 @@ function ButtonBuilder(params: Params) {
     Button(`button ` + params.text)
       .borderWidth(2)
       .backgroundColor(Color.Orange)
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .gesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            console.info("TapGesture");
+            console.info('TapGesture');
           })
       )
   }
@@ -738,7 +761,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "this is a string" });
+    this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
     return this.rootNode.getFrameNode();
   }
 
@@ -762,6 +785,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postTouchEvent(event);
     console.info(`result ${result}`);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -912,7 +939,7 @@ ArkTS-Sta: reuse(param?: RecordData): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | ArkTS-Dyn: Object<br/>ArkTS-Sta: RecordData | 否   | 用于复用BuilderNode的参数。该参数将直接用于BuilderNode中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时BuilderNode中的自定义组件将直接使用构造时的数据源。 |
+| param  | ArkTS-Dyn: Object<br/>ArkTS-Sta: RecordData | 否   | 用于复用BuilderNode的参数。该参数将直接用于BuilderNode中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时BuilderNode中的自定义组件将直接使用构造时的数据源。 |
 
 ### recycle<sup>12+</sup>
 
@@ -933,9 +960,9 @@ recycle(): void
 **ArkTS-Sta起始版本：** 23
 
 ```ts
-import { FrameNode, NodeController, BuilderNode, UIContext } from "@kit.ArkUI";
+import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "Reuse+Recycle";
+const TEST_TAG: string = 'Reuse+Recycle';
 
 // 自定义管理数据的类
 class MyDataSource {
@@ -977,7 +1004,7 @@ class Params {
 }
 
 @Builder
-function buildNode(param: Params = new Params("hello")) {
+function buildNode(param: Params = new Params('hello')) {
   Row() {
     Text(`C${param.item} -- `)
     ReusableChildComponent2({ item: param.item }) // 该自定义组件在BuilderNode中无法被正确复用
@@ -987,7 +1014,7 @@ function buildNode(param: Params = new Params("hello")) {
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   public builderNode: BuilderNode<[Params]> | null = null;
-  public item: string = "";
+  public item: string = '';
 
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.builderNode == null) {
@@ -995,6 +1022,9 @@ class MyNodeController extends NodeController {
       this.builderNode.build(wrapBuilder<[Params]>(buildNode), new Params(this.item));
     }
     return this.builderNode.getFrameNode();
+  }
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 }
 
@@ -1040,7 +1070,7 @@ struct ReusableChildComponent {
 // 自定义组件
 @Component
 struct ReusableChildComponent2 {
-  @Prop item: string = "false";
+  @Prop item: string = 'false';
 
   aboutToReuse(params: Record<string, object>) {
     console.info(`${TEST_TAG} ReusableChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
@@ -1062,7 +1092,7 @@ struct ReusableChildComponent2 {
 
 @Component
 struct ReusableChildComponent3 {
-  @Prop item: string = "false";
+  @Prop item: string = 'false';
 
   aboutToReuse(params: Record<string, object>) {
     console.info(`${TEST_TAG} ReusableChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
@@ -1115,7 +1145,6 @@ struct Index {
 从API版本26.0.0开始，BuilderNode中的自定义组件支持V2组件复用。
 ```ts
 import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TEST_TAG: string = 'Reuse+Recycle';
 
@@ -1175,6 +1204,9 @@ class MyNodeController extends NodeController {
     }
     return this.builderNode.getFrameNode();
   }
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
 }
 
 // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程。
@@ -1221,11 +1253,11 @@ struct ChildComponent2 {
   @Param item: string = 'false';
 
   aboutToReuse() {
-    console.info(`${TEST_TAG} ReusableChildComponent2 aboutToReuse`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToReuse`);
   }
 
   aboutToRecycle(): void {
-    console.info(`${TEST_TAG} ReusableChildComponent2 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -1243,11 +1275,11 @@ struct ChildComponent3 {
   @Param item: string = 'false';
 
   aboutToReuse() {
-    console.info(`${TEST_TAG} ReusableChildComponent3 aboutToReuse`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToReuse`);
   }
 
   aboutToRecycle(): void {
-    console.info(`${TEST_TAG} ReusableChildComponent3 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -1312,11 +1344,11 @@ updateConfiguration(): void
 
 **示例：**
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext, FrameCallback } from "@kit.ArkUI";
+import { NodeController, BuilderNode, FrameNode, UIContext, FrameCallback } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, ConfigurationConstant, EnvironmentCallback } from '@kit.AbilityKit';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -1327,7 +1359,7 @@ class Params {
 @Component
 struct TextBuilder {
   // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
-  @Prop message: string = "TextBuilder";
+  @Prop message: string = 'TextBuilder';
 
   build() {
     Row() {
@@ -1355,7 +1387,7 @@ function buildText(params: Params) {
 // 继承NodeController实现自定义textNode控制器
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "";
+  private message: string = '';
 
   constructor(message: string) {
     super();
@@ -1404,7 +1436,7 @@ function updateColorMode() {
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
   private textNodeController: TextNodeController = new TextNodeController(this.message);
   private count = 0;
 
@@ -1442,7 +1474,7 @@ struct Index {
         Button('Update')
           .onClick(() => {
             this.count += 1;
-            const message = "Update " + this.count.toString();
+            const message = 'Update ' + this.count.toString();
             this.textNodeController.update(message);
           })
         Button('切换深色')
@@ -1486,7 +1518,7 @@ isDisposed(): boolean
 
 **示例：**
 
-该示例演示了BuilderNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了BuilderNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
@@ -1569,7 +1601,7 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State text: string = ''
+  @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -1604,7 +1636,7 @@ struct Index {
 
 postInputEvent(event: InputEventType): boolean
 
-将事件分发到目标节点。
+将输入事件分发到BuilderNode管理的目标节点。适用于在自定义NodeContainer中将父组件接收的触摸、鼠标或轴事件转发给BuilderNode内部组件，使内部组件能够响应相应交互的场景。
 
 offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对于builderNode的偏移，offsetC为offsetA+offsetB，最终输入给postInputEvent中的window信息。
 
@@ -1618,13 +1650,13 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 >
 > - 注入事件为轴事件[（AxisEvent）](arkui-ts/ts-universal-events-axis.md#axisevent)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发[RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)。
 >
-> - 转发的事件会在被分发到的目标组件所在的子树里做touchtest，并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。
+> - 转发的事件会在被分发到的目标组件所在的子树里做触摸测试（TouchTest），并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。
 >
 > - 如果是开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段，轴事件的scrollStep字段。要保证事件的完整，比如触摸事件的[TouchType](arkui-ts/ts-appendix-enums.md#touchtype)中DOWN和UP字段都要有，防止出现未定义行为。
 >
 > - [webview](../apis-arkweb/arkts-apis-webview.md)已经处理过坐标系变换，可以将事件直接下发。
 >
-> - postTouchEvent接口需要提供手势坐标相对于post事件对端内的局部坐标，postInputEvent接口需要提供手势坐标相对于post事件对端内的窗口坐标。
+> - postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEvent接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 >
 > - 不建议同一个事件转发多次。<!--Del-->不支持[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)。<!--DelEnd-->
 
@@ -1640,7 +1672,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
-| event  | [InputEventType](#inputeventtype20) | 是   | 用于透传的输入事件。 |
+| event  | [InputEventType](#inputeventtype20) | 是   | 用于事件分发的输入事件。 |
 
 **返回值：**
 
@@ -1666,13 +1698,17 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 >
 > - 传入的坐标值单位需要转换为px，坐标转换示例可以参考下面示例代码。
 >
-> - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，[TouchType](arkui-ts/ts-appendix-enums.md#touchtype)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
+> - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，[SourceType](arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
 >
 > - 注入事件为轴事件[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势[RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)。
 >
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。
 >
 > - 如果event转化为对应的事件后，该事件为开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段，轴事件的scrollStep字段。要保证事件的完整，比如触摸事件的[TouchType](arkui-ts/ts-appendix-enums.md#touchtype)中必须同时包含DOWN和UP两个字段，防止出现程序异常或意外崩溃。
+>
+> - [webview](../apis-arkweb/arkts-apis-webview.md)已经处理过坐标系变换，可以将事件直接下发。
+>
+> - postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEventWithStrategy接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 >
 > - 支持同一个事件转发多次<!--Del-->，不支持[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)调用本接口<!--DelEnd-->。
 
@@ -1691,7 +1727,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
 | event  | [InputEventType](#inputeventtype20) | 是   | 用于事件分发的输入事件。 |
-| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否   | 分发事件的手势是否为竞争场景，默认为非竞争。 |
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否   | 分发事件的手势竞争策略。CompetitionStrategy.DEFAULT表示非竞争模式（目标组件与当前组件的手势不竞争），适用于当前组件与目标组件各自独立处理手势、无需竞争同一事件的场景；CompetitionStrategy.COMPETITION表示竞争模式（目标组件与当前组件的手势参与竞争），适用于当前组件与目标组件需要竞争同一手势事件的场景。不传入时默认为CompetitionStrategy.DEFAULT（非竞争）。 |
 
 **返回值：**
 
@@ -1711,7 +1747,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 > **说明：**
 >
-> BuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
+> BuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，BuilderNode的冻结策略不会传递给子组件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1725,11 +1761,11 @@ inheritFreezeOptions(enabled: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| enabled  | boolean | 是  | BuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。true为继承父组件中自定义组件的冻结策略，false为不继承父组件中自定义组件的冻结策略。 |
+| enabled  | boolean | 是  | BuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。<br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。<br>**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置为true才会生效。 |
 
 **示例：**
 
-该示例演示了BuilderNode设置继承状态为True，继承父自定义组件的冻结策略，在不活跃的时候进行冻结，切换为活跃状态解冻，更新缓存的数据。
+该示例演示了BuilderNode设置继承状态为true，继承父自定义组件的冻结策略，在处于不活跃状态时冻结，切换为活跃状态时解冻，更新缓存的数据。
 
 ```ts
 
@@ -1777,6 +1813,10 @@ class TextNodeController extends NodeController {
     }
 
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 const textNodeController: TextNodeController = new TextNodeController();
@@ -1791,15 +1831,15 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack({ message: this.message, logNumber: this.logNumber })
+      PageOneStack({ message: this.message, logNumber: this.logNumber })
     } else if (name === 'pageTwo') {
-      pageTwoStack({ message: this.message, logNumber: this.logNumber })
+      PageTwoStack({ message: this.message, logNumber: this.logNumber })
     }
   }
 
   build() {
     Column() {
-      Button('update builderNode') // 点击更新BuildrNode
+      Button('update builderNode') // 点击更新BuilderNode
         .onClick(() => {
           textNodeController.update();
         })
@@ -1821,7 +1861,7 @@ struct MyNavigationTestStack {
 }
 
 @Component
-struct pageOneStack { // 页面一
+struct PageOneStack { // 页面一
   @Consume('pageInfo') pageInfo: NavPathStack;
   @State index: number = 1;
   @Link message: number;
@@ -1855,7 +1895,7 @@ struct pageOneStack { // 页面一
 }
 
 @Component
-struct pageTwoStack { // 页面二
+struct PageTwoStack { // 页面二
   @Consume('pageInfo') pageInfo: NavPathStack;
   @State index: number = 2;
   @Link message: number;
@@ -1903,13 +1943,13 @@ struct NavigationContentMsgStack {
 @Component({ freezeWhenInactive: true })
   // 设置冻结策略为不活跃冻结
 struct TextBuilder {
-  @Prop @Watch("info") message: number = 0;
+  @Prop @Watch('info') message: number = 0;
   @State count: number = 0;
 
   info() {
     this.count++;
     console.info(`freeze-test TextBuilder message callback change time ${this.count}`); // 根据message内容变化来打印日志来判断是否冻结
-    console.info(`freeze-test TextBuilder message callback change massage ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结
+    console.info(`freeze-test TextBuilder message callback change message ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结
   }
 
   build() {
@@ -1945,7 +1985,7 @@ ReactiveBuilderNode支持通过无状态的UI方法[@Builder](../../ui/state-man
 
 constructor(uiContext: UIContext, options?: RenderOptions)
 
-用于构造ReactiveBuilderNode类。当将ReactiveBuilderNode生成的内容嵌入到其它[RenderNode](js-apis-arkui-renderNode.md)中显示时，需要显式指定[RenderOptions](./js-apis-arkui-builderNode.md#renderoptions)中的[selfIdealSize](./js-apis-arkui-builderNode.md#renderoptions)，否则ReactiveBuilderNode内的节点默认父组件布局约束为[0, 0]。调用此接口，若不设置selfIdealSize则认为ReactiveBuilderNode中子树的根节点大小为[0, 0]。
+用于构造ReactiveBuilderNode类。当将ReactiveBuilderNode生成的内容嵌入到其它[RenderNode](js-apis-arkui-renderNode.md)中显示时，需要显式指定[RenderOptions](#renderoptions)中的[selfIdealSize](#renderoptions)，否则ReactiveBuilderNode内的节点默认父组件布局约束为[0, 0]。调用此接口，若不设置selfIdealSize则认为ReactiveBuilderNode中子树的根节点大小为[0, 0]。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1960,7 +2000,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 | 参数名    | 类型                                    | 必填 | 说明                                                              |
 | --------- | --------------------------------------- | ---- | ----------------------------------------------------------------- |
 | uiContext | [UIContext](arkts-apis-uicontext-uicontext.md) | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
-| options   | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions)         | 否   | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br/>默认值：undefined   |
+| options   | [RenderOptions](#renderoptions)         | 否   | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br>默认值：undefined   |
 
 ### build<sup>22+</sup>
 
@@ -1972,7 +2012,13 @@ build(builder: WrappedBuilder\<Args>, config: BuildOptions, ...args: Args): void
 
 > **说明：**
 > 
-> @Builder进行创建和更新的规格参考[@Builder](../../ui/state-management/arkts-builder.md)。
+> - @Builder进行创建和更新的规格参考[@Builder](../../ui/state-management/arkts-builder.md)。
+>
+> - @Builder嵌套使用的时候需要保证内外的@Builder方法的入参对象一致。
+>
+> - 需要操作ReactiveBuilderNode中的对象时，需要保证其引用不被回收。当ReactiveBuilderNode对象被虚拟机回收之后，它的[FrameNode](js-apis-arkui-frameNode.md)、[RenderNode](js-apis-arkui-renderNode.md)对象也会与后端节点解引用。即从ReactiveBuilderNode中获取的FrameNode对象不对应任何一个节点。
+>
+> - ReactiveBuilderNode对象会持有实体节点的引用。如果不需要使用ReactiveBuilderNode前端对象管理后端节点，可以调用[dispose](#dispose22)接口，实现前后端对象的解绑。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1987,7 +2033,7 @@ build(builder: WrappedBuilder\<Args>, config: BuildOptions, ...args: Args): void
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | [WrappedBuilder\<Args>](../../ui/state-management/arkts-wrapBuilder.md) | 是   | 创建对应节点树时所需的无状态UI方法[@Builder](../../ui/state-management/arkts-builder.md)。   |
-| config | [BuildOptions](#buildoptions12)                                           | 是   | 作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。                                         |
+| config | [BuildOptions](#buildoptions12)                                           | 是   | 用于配置Builder的构建行为，BuildOptions中所有属性都是可选的，各属性默认值请参见BuildOptions的说明。                                         |
 | ...args     | Args    | 否   | builder的入参，用于构造WrappedBuilder对象封装的builder函数。支持多个入参。默认值为undefined。                                                     |
 
 **示例：**
@@ -2036,6 +2082,7 @@ struct Index {
             );
             // 将构建好的FrameNode添加到内容容器中显示
             this.content.addFrameNode(node.getFrameNode());
+            node.dispose();
           })
         ContentSlot(this.content)
       }
@@ -2091,7 +2138,7 @@ getFrameNode(): FrameNode | null
 
 | 类型                                                      | 说明                                                                  |
 | --------------------------------------------------------- | --------------------------------------------------------------------- |
-| [FrameNode](js-apis-arkui-frameNode.md) \| null | FrameNode对象。若该ReactiveBuilderNode不包含FrameNode，则返回空对象null。 |
+| [FrameNode](js-apis-arkui-frameNode.md) \| null | ReactiveBuilderNode持有的FrameNode对象，用于将该ReactiveBuilderNode作为子节点挂载到其他FrameNode上。若该ReactiveBuilderNode不包含FrameNode，则返回空对象null。 |
 
 **示例：**
 
@@ -2175,6 +2222,7 @@ struct Index {
               this.params.count
             );
             this.content.addFrameNode(node.getFrameNode());
+            node.dispose();
           })
         ContentSlot(this.content)
       }
@@ -2193,11 +2241,11 @@ struct Index {
 
 postTouchEvent(event: TouchEvent): boolean
 
-将原始事件派发到某个ReactiveBuilderNode创建的FrameNode上。
+将原始事件派发到某个ReactiveBuilderNode创建的FrameNode上。适用于在自定义NodeContainer中将父组件接收的触摸事件转发给ReactiveBuilderNode内部组件，使内部组件能够响应触摸交互的场景。
 
 postTouchEvent是从组件树的中间节点往下分发，需要变换到父组件坐标系才能分发成功，参考下图。
 
-OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)获取。OffsetB为point点相对于buildNode的偏移量，可以通过[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)获取。OffsetC为OffsetA与OffsetB的和，是传给postTouchEvent的最终结果。
+offsetA为builderNode相对于父组件的偏移量，可以通过FrameNode中的[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)获取。offsetB为触点相对于builderNode的偏移量，可以通过[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)获取。offsetC为offsetA与offsetB的和，是传给postTouchEvent的最终结果。
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
@@ -2224,13 +2272,13 @@ OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
-| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 触摸事件。 |
+| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 用于派发到ReactiveBuilderNode创建出的FrameNode上的触摸事件。 |
 
 **返回值：**
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 派发事件是否成功。true：已命中响应事件的组件；false：未命中任何可响应事件的组件。<br/>**说明：** <br/>如果未按照预期命中组件，需要确认：<br/>1.坐标系是否转换正确。<br/>2.组件是否可交互状态。<br/>3.是否绑定事件。 |
+| boolean | 派发事件是否成功。true：已命中响应事件的组件；false：未命中任何可响应事件的组件。<br>**说明：**<br>如果未按照预期命中组件，需要确认：<br>1. 坐标系是否转换正确。<br>2. 组件是否处于可交互状态。<br>3. 是否绑定事件。 |
 
 **示例：**
 
@@ -2294,6 +2342,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postTouchEvent(event);
     console.info(`result ${result}`);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -2461,7 +2513,7 @@ ReactiveBuilderNode通过reuse和[recycle](#recycle22)完成其内外自定义�
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param | Object | 否 | 用于复用[ReactiveBuilderNode](#reactivebuildernode22)的参数。该参数将直接用于[ReactiveBuilderNode](#reactivebuildernode22)中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveBuilderNode中的自定义组件将直接使用构造时的数据源。 |
+| param | Object | 否 | 用于复用[ReactiveBuilderNode](#reactivebuildernode22)的参数。该参数将直接用于[ReactiveBuilderNode](#reactivebuildernode22)中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveBuilderNode中的自定义组件将直接使用构造时的数据源。 |
 
 **示例：**
 
@@ -2546,6 +2598,10 @@ class MyNodeController extends NodeController {
       this.builderNode.build(wrapBuilder<[string]>(buildNode), {}, this.item);
     }
     return this.builderNode.getFrameNode();
+  }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 }
 
@@ -2675,7 +2731,6 @@ struct Index {
 从API版本26.0.0开始，ReactiveBuilderNode中的自定义组件支持V2组件复用。
 ```ts
 import { FrameNode, NodeController, ReactiveBuilderNode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TEST_TAG: string = 'Reuse+Recycle';
 
@@ -2735,6 +2790,10 @@ class MyNodeController extends NodeController {
     }
     return this.builderNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
 }
 
 // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但ReactiveBuilderNode会阻断这一传递过程。
@@ -2781,11 +2840,11 @@ struct ChildComponent2 {
   @Param item: string = 'false';
 
   aboutToReuse() {
-    console.info(`${TEST_TAG} ReusableChildComponent2 aboutToReuse`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToReuse`);
   }
 
   aboutToRecycle(): void {
-    console.info(`${TEST_TAG} ReusableChildComponent2 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -2803,11 +2862,11 @@ struct ChildComponent3 {
   @Param item: string = 'false';
 
   aboutToReuse() {
-    console.info(`${TEST_TAG} ReusableChildComponent3 aboutToReuse`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToReuse`);
   }
 
   aboutToRecycle(): void {
-    console.info(`${TEST_TAG} ReusableChildComponent3 aboutToRecycle ${this.item}`);
+    console.info(`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
   }
 
   build() {
@@ -2856,7 +2915,7 @@ struct Index {
 
 updateConfiguration(): void
 
-传递系统环境变化事件，触发节点的全量更新。可用于通知对象更新，是否更新所使用的系统环境由应用当前的系统环境变化决定。系统环境变化的相关信息请参见[@ohos.app.ability.Configuration (环境变量)](../apis-ability-kit/js-apis-app-ability-configuration.md)。
+传递系统环境变化事件，触发节点的全量更新。可用于通知对象更新，是否触发更新由应用当前的系统环境变化决定。系统环境变化的相关信息请参见[@ohos.app.ability.Configuration (环境变量)](../apis-ability-kit/js-apis-app-ability-configuration.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -2941,7 +3000,7 @@ class TextNodeController extends NodeController {
   }
 
   update(message: string) {
-    this.message = message
+    this.message = message;
     this.textNode?.flushState();
   }
 }
@@ -3031,7 +3090,7 @@ struct Index {
 
 flushState(): void
 
-根据提供的参数更新ReactiveBuilderNode。当ReactiveBuilderNode中[WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)对象封装的builder函数中使用的绑定参数是由V1装饰器（如@Observed）装饰的类实例时，需要在此类数据变更后手动调用此方法以更新数据，当使用V2装饰器（如@ObservedV2）装饰的类实例时，支持自动更新，无需手动调用。
+根据绑定数据的变化刷新ReactiveBuilderNode的数据状态。当ReactiveBuilderNode中[WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)对象封装的builder函数中使用的绑定参数是由V1装饰器（如@Observed）装饰的类实例时，需要在此类数据变更后手动调用此方法以更新数据，当使用V2装饰器（如@ObservedV2）装饰的类实例时，支持自动更新，无需手动调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3080,7 +3139,7 @@ struct Index {
   private content: NodeContent = new NodeContent();
   params: GeneratedObjectLiteralInterface_1 = new GeneratedObjectLiteralInterface_1(25);
   params2: GeneratedObjectLiteralInterface_2 = new GeneratedObjectLiteralInterface_2(25);
-  private node1: ReactiveBuilderNode<[Binding<number>]> | null = null
+  private node1: ReactiveBuilderNode<[Binding<number>]> | null = null;
 
   build() {
     Row() {
@@ -3099,6 +3158,7 @@ struct Index {
                 })
               );
               this.content.addFrameNode(node.getFrameNode());
+              node.dispose();
             })
           // 创建使用V1装饰器的ReactiveBuilderNode
           Button('绑定参数由V1装饰器装饰').onClick(
@@ -3125,7 +3185,7 @@ struct Index {
           // 显示动态创建的内容
           ContentSlot(this.content)
         }
-        .id("column")
+        .id('column')
         .width('100%')
       }
       .scrollable(ScrollDirection.Vertical)
@@ -3144,17 +3204,17 @@ struct Index {
 
 postInputEvent(event: InputEventType): boolean
 
-将输入事件分发到ReactiveBuilderNode管理的目标节点。
+将输入事件分发到ReactiveBuilderNode管理的目标节点。适用于在自定义NodeContainer中将父组件接收的触摸、鼠标或轴事件转发给ReactiveBuilderNode内部组件，使内部组件能够响应相应交互的场景。
 
 offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对于builderNode的偏移，offsetC为offsetA+offsetB，最终输入给postInputEvent当中。
 
-![接口坐标换算示例图](figures/postTouchEvent.PNG)
+![接口坐标换算示例图](figures/postInputEvent-point.png)
 
 > **说明：**
 >
 > 传入的坐标值需要转换为px，坐标转换示例可以参考下面示例代码。
 >
-> 鼠标左键点击事件将转换为触摸事件，转发时应注意不在外层且绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，事件的[SourceType](arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
+> 鼠标左键点击事件将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，事件的[SourceType](arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
 >
 > 注入事件为轴事件[（AxisEvent）](arkui-ts/ts-universal-events-axis.md#axisevent)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发[RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)。
 >
@@ -3164,7 +3224,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 >
 > [webview](../apis-arkweb/arkts-apis-webview.md)已经处理过坐标系变换，可以将事件直接下发。
 >
-> postTouchEvent接口需要提供手势坐标相对于输入事件对端内的局部坐标，postInputEvent接口需要提供手势坐标相对于输入事件对端内的窗口坐标。
+> postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEvent接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 >
 > 不建议同一个事件转发多次。<!--Del-->
 > 
@@ -3182,7 +3242,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
-| event  | [InputEventType](./js-apis-arkui-builderNode.md#inputeventtype20) | 是   | 待分发的输入事件。 |
+| event  | [InputEventType](#inputeventtype20) | 是   | 待分发的输入事件。 |
 
 **返回值：**
 
@@ -3208,13 +3268,17 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 >
 > - 传入的坐标值单位需要转换为px，坐标转换示例可以参考下面示例代码。
 >
-> - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，[TouchType](arkui-ts/ts-appendix-enums.md#touchtype)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
+> - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，[SourceType](arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)不会发生变化，规格可查看[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)。
 >
 > - 注入事件为轴事件[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势[RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)。
 >
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。
 >
 > - 如果event转化为对应的事件后，该事件为开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段，轴事件的scrollStep字段。要保证事件的完整，比如触摸事件的[TouchType](arkui-ts/ts-appendix-enums.md#touchtype)中必须同时包含DOWN和UP两个字段，防止出现程序异常或意外崩溃。
+>
+> - [webview](../apis-arkweb/arkts-apis-webview.md)已经处理过坐标系变换，可以将事件直接下发。
+>
+> - postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEventWithStrategy接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 >
 > - 支持同一个事件转发多次<!--Del-->，不支持[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)调用本接口<!--DelEnd-->。
 
@@ -3233,7 +3297,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
 | event  | [InputEventType](#inputeventtype20) | 是   | 用于事件分发的输入事件。 |
-| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否   | 分发事件的手势是否为竞争场景，默认为非竞争。 |
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否   | 分发事件的手势竞争策略。CompetitionStrategy.DEFAULT表示非竞争模式（目标组件与当前组件的手势不竞争），适用于当前组件与目标组件各自独立处理手势、无需竞争同一事件的场景；CompetitionStrategy.COMPETITION表示竞争模式（目标组件与当前组件的手势参与竞争），适用于当前组件与目标组件需要竞争同一手势事件的场景。不传入时默认为CompetitionStrategy.DEFAULT（非竞争）。 |
 
 **返回值：**
 
@@ -3249,7 +3313,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 > **说明：**
 >
-> ReactiveBuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
+> ReactiveBuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，ReactiveBuilderNode的冻结策略不会传递给子组件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3263,11 +3327,11 @@ inheritFreezeOptions(enabled: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| enabled  | boolean | 是  | ReactiveBuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。true为继承父组件中自定义组件的冻结策略，false为不继承父组件中自定义组件的冻结策略。 |
+| enabled  | boolean | 是  | ReactiveBuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。<br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。<br>**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置为true才会生效。 |
 
 **示例：**
 
-该示例演示了ReactiveBuilderNode设置继承状态为true时，继承父自定义组件的冻结策略。在页面跳转走不活跃时进行冻结，页面切换回来为活跃状态解冻，更新缓存的数据。
+该示例演示了ReactiveBuilderNode设置继承状态为true时，继承父自定义组件的冻结策略。在页面跳转后进入不活跃状态时进行冻结，切换为活跃状态时解冻，更新缓存的数据。
 
 ```ts
 import { ReactiveBuilderNode, FrameNode, NodeController, Binding, UIUtils } from '@kit.ArkUI';
@@ -3307,6 +3371,10 @@ class TextNodeController extends NodeController {
       this.textNode.flushState();
     }
   }
+
+  aboutToDisappear() {
+    this.textNode?.dispose();
+  }
 }
 
 const textNodeController: TextNodeController = new TextNodeController();
@@ -3321,9 +3389,9 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack({ message: $message, logNumber: $logNumber })
+      PageOneStack({ message: $message, logNumber: $logNumber })
     } else if (name === 'pageTwo') {
-      pageTwoStack({ message: $message, logNumber: $logNumber })
+      PageTwoStack({ message: $message, logNumber: $logNumber })
     }
   }
 
@@ -3366,7 +3434,7 @@ struct MyNavigationTestStack {
 }
 
 @Component
-struct pageOneStack { // 页面一
+struct PageOneStack { // 页面一
   @Consume('pageInfo') pageInfo: NavPathStack;
   @State index: number = 1;
   @Link message: number;
@@ -3407,7 +3475,7 @@ struct pageOneStack { // 页面一
 }
 
 @Component
-struct pageTwoStack { // 页面二
+struct PageTwoStack { // 页面二
   @Consume('pageInfo') pageInfo: NavPathStack;
   @State index: number = 2;
   @Link message: number;
@@ -3469,7 +3537,7 @@ struct TextBuilder {
   info() {
     this.count++;
     console.info(`freeze-test TextBuilder message callback change time ${this.count}`);
-    console.info(`freeze-test TextBuilder message callback change massage ${this.message}`);
+    console.info(`freeze-test TextBuilder message callback change message ${this.message}`);
   }
 
   build() {
@@ -3495,7 +3563,7 @@ struct TextBuilder {
 
 isDisposed(): boolean
 
-查询当前ReactiveBuilderNode对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。因为在节点dispose后可能仍存在被调用dispose接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
+查询当前ReactiveBuilderNode对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3513,9 +3581,9 @@ isDisposed(): boolean
 
 **示例：**
 
-参考[isDisposed](./js-apis-arkui-builderNode.md#isdisposed20)示例。
+参考[isDisposed](#isdisposed20)示例。
 
-该示例演示了ReactiveBuilderNode释放节点前后分别使用[isDisposed](#isdisposed22)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了ReactiveBuilderNode释放节点前后分别使用[isDisposed](#isdisposed22)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { FrameNode, NodeController, ReactiveBuilderNode } from '@kit.ArkUI';
@@ -3600,7 +3668,7 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State text: string = '' // 状态变量，用于显示节点状态信息
+  @State text: string = ''; // 状态变量，用于显示节点状态信息
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -3643,8 +3711,8 @@ import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputE
 
 // 自定义参数传递的类
 class Params {
-  text: string = "this is a text"
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Builder
@@ -3655,8 +3723,8 @@ function ButtonBuilder(params: Params) {
       .align(Alignment.Center)
       .backgroundColor(Color.Orange)
       .fontSize(20)
-      .width("45%")
-      .height("30%")
+      .width('45%')
+      .height('30%')
       .offset({ x: 60, y: 100 })
       .borderRadius('50%')
       .onMouse((event) => {
@@ -3665,7 +3733,7 @@ function ButtonBuilder(params: Params) {
           message: 'onMouse',
           duration: 3000
         });
-        console.info('onMouse')
+        console.info('onMouse');
       })
       .onTouch((event) => {
         let promptAction: PromptAction = params.uiContext!.getPromptAction();
@@ -3673,7 +3741,7 @@ function ButtonBuilder(params: Params) {
           message: 'onTouch',
           duration: 3000
         });
-        console.info('onTouch')
+        console.info('onTouch');
       })
   }
   .width(500)
@@ -3688,7 +3756,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -3739,6 +3807,10 @@ class MyNodeController extends NodeController {
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -3782,8 +3854,8 @@ import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputE
 
 // 自定义传递参数的类
 class Params {
-  text: string = "this is a text"
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Builder
@@ -3794,8 +3866,8 @@ function ButtonBuilder(params: Params) {
       .align(Alignment.Center)
       .backgroundColor(Color.Orange)
       .fontSize(20)
-      .width("45%")
-      .height("30%")
+      .width('45%')
+      .height('30%')
       .offset({ x: 60, y: 100 })
       .borderRadius('50%')
       .onTouch((event) => {
@@ -3804,7 +3876,7 @@ function ButtonBuilder(params: Params) {
           message: 'onTouch',
           duration: 3000
         });
-        console.info('onTouch')
+        console.info('onTouch');
       })
   }
   .width(500)
@@ -3819,7 +3891,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -3854,6 +3926,10 @@ class MyNodeController extends NodeController {
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -3892,8 +3968,8 @@ import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputE
 
 // 自定义传递参数的类
 class Params {
-  text: string = "this is a text"
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Builder
@@ -3904,8 +3980,8 @@ function ButtonBuilder(params: Params) {
       .align(Alignment.Center)
       .backgroundColor(Color.Orange)
       .fontSize(20)
-      .width("45%")
-      .height("30%")
+      .width('45%')
+      .height('30%')
       .offset({ x: 60, y: 100 })
       .borderRadius('50%')
       .onAxisEvent((event) => {
@@ -3914,7 +3990,7 @@ function ButtonBuilder(params: Params) {
           message: 'onAxisEvent',
           duration: 3000
         });
-        console.info('onAxisEvent')
+        console.info('onAxisEvent');
       })
   }
   .width(500)
@@ -3929,7 +4005,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -3950,6 +4026,10 @@ class MyNodeController extends NodeController {
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -3980,13 +4060,13 @@ struct MyComponent {
 ![onAxisEvent](figures/onAxisEvent.gif)
 
 ### 示例4（BuilderNode共享localStorage）
-该示例演示了如何在BuilderNode通过build方法传入外部[localStorage](./arkui-ts/ts-state-management.md#localstorage9)，此时挂载在BuilderNode的所有自定义组件共享该localStorage。
+该示例演示了如何通过BuilderNode的build方法传入外部[localStorage](./arkui-ts/ts-state-management.md#localstorage9)，此时挂载在BuilderNode的所有自定义组件共享该localStorage。
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 // 自定义传递参数的类
 class Params {
-  text: string = ""
+  text: string = ''
 
   constructor(text: string) {
     this.text = text;
@@ -4014,7 +4094,7 @@ class TextNodeController extends NodeController {
       globalBuilderNode = new BuilderNode(context);
       // 传入外部localStorage，共享给挂载在当前BuilderNode的所有自定义组件
       globalBuilderNode.build(wrapBuilder<[Params]>(buildText), new Params('builder node text'),
-        { localStorage: localStorage1 })
+        { localStorage: localStorage1 });
     }
     this.rootNode.appendChild(globalBuilderNode.getFrameNode());
     return this.rootNode;
@@ -4068,8 +4148,8 @@ import { BuilderNode, NodeContent } from '@kit.ArkUI';
 // 自定义组件
 @Component
 struct ConsumeChild {
-  // 与外部的@Provider装饰的状态变量双向同步
-  @Consume @Watch("ChangeData") message: string = ""
+  // 与外部的@Provide装饰的状态变量双向同步
+  @Consume @Watch('ChangeData') message: string = ''
 
   ChangeData() {
     console.info(`ChangeData ${this.message}`);
@@ -4080,11 +4160,11 @@ struct ConsumeChild {
       Text(this.message)
         .fontWeight(FontWeight.Bold)
         .fontSize(20)
-      Button("Click to change message to append C")
+      Button('Click to change message to append C')
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           // 修改Consume的变量
-          this.message = this.message + "C"
+          this.message = this.message + 'C';
         })
     }
   }
@@ -4103,15 +4183,19 @@ function CreateText(textMessage: string) {
 @Entry
 @Component
 struct Index {
-  // 与内部的@Consumer装饰的状态变量双向同步
+  // 与内部的@Consume装饰的状态变量双向同步
   @Provide message: string = 'Hello World';
   private content: NodeContent = new NodeContent();
   private builderNode: BuilderNode<[string]> = new BuilderNode<[string]>(this.getUIContext());
 
   aboutToAppear(): void {
     // 设置enableProvideConsumeCrossing为true，支持BuilderNode内部自定义组件ConsumeChild的@Consume变量与其所在页面中的@Provide变量双向同步
-    this.builderNode.build(wrapBuilder(CreateText), "Test Consume", { enableProvideConsumeCrossing: true })
-    this.content.addFrameNode(this.builderNode.getFrameNode())
+    this.builderNode.build(wrapBuilder(CreateText), 'Test Consume', { enableProvideConsumeCrossing: true });
+    this.content.addFrameNode(this.builderNode.getFrameNode());
+  }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
   }
 
   build() {
@@ -4119,10 +4203,10 @@ struct Index {
       Text(this.message)
         .fontWeight(FontWeight.Bold)
         .fontSize(20)
-      Button("Click to change message to append I")
+      Button('Click to change message to append I')
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.message = this.message + "I";
+          this.message = this.message + 'I';
         })
       Column() {
         ContentSlot(this.content)
@@ -4150,7 +4234,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 @Builder
 function buildText() {
   // @Consumer挂载在BuilderNode下
-  addChildChild();
+  AddChildChild();
 }
 
 class TextNodeControllerAdd extends NodeController {
@@ -4168,10 +4252,14 @@ class TextNodeControllerAdd extends NodeController {
     this.builderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     return this.builderNode.getFrameNode();
   }
+
+  aboutToDisappear() {
+    this.builderNode?.dispose();
+  }
 }
 
 @ComponentV2
-struct addChildChild {
+struct AddChildChild {
   @Consumer() content: string = 'default value';
 
   @Monitor('content')
@@ -4406,6 +4494,10 @@ struct AddRemoveAddToAnother {
     console.info(`Provider change ${this.content}`);
   }
 
+  aboutToDisappear() {
+    globalBuilderNode?.dispose();
+  }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
@@ -4557,6 +4649,11 @@ struct BuildNodeToBuildNode {
   @Monitor('content')
   providerWatch() {
     console.info(`Provider change ${this.content}`);
+  }
+
+  aboutToDisappear() {
+    globalBuilderNode?.dispose();
+    globalBuilderNode2?.dispose();
   }
 
   controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
@@ -4731,13 +4828,13 @@ struct NestedComponentChild {
           // 修改@Consumer的变量
           this.content += 'content';
         })
-      NestedComponentChildChld({ content: this.content, addContent: () => this.content += 'content' });
+      NestedComponentChildChild({ content: this.content, addContent: () => this.content += 'content' });
     }
   }
 }
 
 @ComponentV2
-struct NestedComponentChildChld {
+struct NestedComponentChildChild {
   // 在未上树的时候，Test组件无View的父亲，该节点为离屏节点。@Consumer找不到对应@Provider，使用默认值
   @Param @Require content: string;
   @Event addContent: () => void;
@@ -5051,7 +5148,7 @@ struct Provider2 {
         .onClick(() => {
           this.content.a = 0;
         })
-      defaultConsumer();
+      DefaultConsumer();
     }
     .width('100%')
     .height('100%')
@@ -5059,7 +5156,7 @@ struct Provider2 {
 }
 
 @ComponentV2
-struct defaultConsumer {
+struct DefaultConsumer {
   @Consumer() content: Ob = new Ob();
 
   @Monitor('content')
@@ -5111,7 +5208,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
           message: 'onMouse',
           duration: 3000
         });
-        console.info('onMouse')
+        console.info('onMouse');
       })
       // 触摸事件处理
       .onTouch((event) => {
@@ -5120,7 +5217,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
           message: 'onTouch',
           duration: 3000
         });
-        console.info('onTouch')
+        console.info('onTouch');
       })
   }
   .width(500)
@@ -5135,7 +5232,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, {}, 'onMouse', uiContext)
+    this.rootNode.build(this.wrapBuilder, {}, 'onMouse', uiContext);
     return this.rootNode.getFrameNode();
   }
 
@@ -5189,6 +5286,10 @@ class MyNodeController extends NodeController {
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5253,7 +5354,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
           message: 'onTouch',
           duration: 3000
         });
-        console.info('onTouch')
+        console.info('onTouch');
       })
   }
   .width(500)
@@ -5269,7 +5370,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
     // 构建ReactiveBuilderNode，传递按钮文本和UI上下文
-    this.rootNode.build(this.wrapBuilder, {}, 'onTouch', uiContext)
+    this.rootNode.build(this.wrapBuilder, {}, 'onTouch', uiContext);
     return this.rootNode.getFrameNode();
   }
 
@@ -5305,6 +5406,10 @@ class MyNodeController extends NodeController {
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5353,8 +5458,8 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
       .align(Alignment.Center)
       .backgroundColor(Color.Orange)
       .fontSize(15)
-      .width("45%")
-      .height("30%")
+      .width('45%')
+      .height('30%')
       .offset({ y: 80 })
       .onAxisEvent((event) => {
         let promptAction: PromptAction = uiContext!.getPromptAction();
@@ -5362,7 +5467,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
           message: 'onAxisEvent', // 显示轴事件触发提示
           duration: 3000
         });
-        console.info('onAxisEvent')
+        console.info('onAxisEvent');
       })
   }
   .width(500)
@@ -5379,7 +5484,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
     // 构建ReactiveBuilderNode，传递按钮文本和UI上下文
-    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext)
+    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext);
     return this.rootNode.getFrameNode();
   }
 
@@ -5401,6 +5506,10 @@ class MyNodeController extends NodeController {
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5445,16 +5554,15 @@ import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputE
 
 // 自定义参数传递的类
 class Params {
-  text: string = 'this is a text'
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Component
-struct node22 {
-  @State case1Index: number = 0;
+struct NodeLayer22 {
   private nodeController2: MyNodeController2 = new MyNodeController2();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController2)
           .height(400)
@@ -5474,10 +5582,10 @@ struct node22 {
 }
 
 @Component
-struct node33 {
+struct NodeLayer33 {
   private nodeController3: MyNodeController3 = new MyNodeController3();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController3)
           .height(200)
@@ -5498,11 +5606,11 @@ struct node33 {
 
 @Builder
 function ButtonBuilder(params: Params) {
-  Column(){
-    Button("Layer1")
+  Column() {
+    Button('Layer1')
       .width('100%')
       .height(100)
-    node22()
+    NodeLayer22()
 
   }
   .width(500)
@@ -5512,11 +5620,11 @@ function ButtonBuilder(params: Params) {
 
 @Builder
 function ButtonBuilder2(params: Params) {
-  Column(){
-    Button("Layer2")
+  Column() {
+    Button('Layer2')
       .width('100%')
       .height(100)
-    node33()
+    NodeLayer33()
   }
   .width(500)
   .height(400)
@@ -5525,13 +5633,13 @@ function ButtonBuilder2(params: Params) {
 
 @Builder
 function ButtonBuilder3(params: Params) {
-  Column(){
-    Button("Layer3")
+  Column() {
+    Button('Layer3')
       .width('100%')
       .height(50)
       .gesture(
         TapGesture()
-          .tag("TapGesture")
+          .tag('TapGesture')
           .onAction((event:GestureEvent) => {
             params.uiContext?.showAlertDialog(
               {
@@ -5554,7 +5662,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5577,6 +5685,10 @@ class MyNodeController extends NodeController {
     // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5586,7 +5698,7 @@ class MyNodeController2 extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5609,6 +5721,10 @@ class MyNodeController2 extends NodeController {
     // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5618,7 +5734,7 @@ class MyNodeController3 extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5641,6 +5757,10 @@ class MyNodeController3 extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -5648,7 +5768,7 @@ class MyNodeController3 extends NodeController {
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController)
           .height(600)
@@ -5664,13 +5784,13 @@ struct MyComponent {
           })
           .gesture(
             TapGesture()
-              .tag("TapGesture")
+              .tag('TapGesture')
               .onAction((event:GestureEvent) => {
                 let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
                 promptAction.showToast({
                   message: 'onTapGestureOut',
                   duration: 10000
-                })
+                });
               })
           )
       }.offset({ top: 100 })
@@ -5691,16 +5811,15 @@ import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputE
 
 // 自定义参数传递的类
 class Params {
-  text: string = 'this is a text'
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Component
-struct node22 {
-  @State case1Index: number = 0;
+struct NodeLayer22 {
   private nodeController2: MyNodeController2 = new MyNodeController2();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController2)
           .height(400)
@@ -5722,10 +5841,10 @@ struct node22 {
 }
 
 @Component
-struct node33 {
+struct NodeLayer33 {
   private nodeController3: MyNodeController3 = new MyNodeController3();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController3)
           .height(200)
@@ -5748,11 +5867,11 @@ struct node33 {
 
 @Builder
 function ButtonBuilder(params: Params) {
-  Column(){
-    Button("Layer1")
+  Column() {
+    Button('Layer1')
       .width('100%')
       .height(100)
-    node22()
+    NodeLayer22()
 
   }
   .width(500)
@@ -5762,11 +5881,11 @@ function ButtonBuilder(params: Params) {
 
 @Builder
 function ButtonBuilder2(params: Params) {
-  Column(){
-    Button("Layer2")
+  Column() {
+    Button('Layer2')
       .width('100%')
       .height(100)
-    node33()
+    NodeLayer33()
   }
   .width(500)
   .height(400)
@@ -5775,13 +5894,13 @@ function ButtonBuilder2(params: Params) {
 
 @Builder
 function ButtonBuilder3(params: Params) {
-  Column(){
-    Button("Layer3")
+  Column() {
+    Button('Layer3')
       .width('100%')
       .height(50)
       .gesture(
         TapGesture()
-          .tag("TapGesture")
+          .tag('TapGesture')
           .onAction((event:GestureEvent) => {
             params.uiContext?.showAlertDialog(
               {
@@ -5804,7 +5923,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5835,6 +5954,10 @@ class MyNodeController extends NodeController {
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5844,7 +5967,7 @@ class MyNodeController2 extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5875,6 +5998,10 @@ class MyNodeController2 extends NodeController {
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 
@@ -5884,7 +6011,7 @@ class MyNodeController3 extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -5916,6 +6043,10 @@ class MyNodeController3 extends NodeController {
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
   }
+  
+  aboutToDisappear() {
+    this.rootNode?.dispose();
+  }
 }
 
 @Entry
@@ -5923,7 +6054,7 @@ class MyNodeController3 extends NodeController {
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
   build() {
-    Row(){
+    Row() {
       Stack() {
         NodeContainer(this.nodeController)
           .height(600)
@@ -5941,13 +6072,13 @@ struct MyComponent {
           })
           .gesture(
             TapGesture()
-              .tag("TapGesture")
+              .tag('TapGesture')
               .onAction((event:GestureEvent) => {
                 let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
                 promptAction.showToast({
                   message: 'onTapGestureOut',
                   duration: 1000
-                })
+                });
               })
           )
       }.offset({ top: 100 })
@@ -5968,8 +6099,8 @@ import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputE
 
 // 自定义传递参数的类
 class Params {
-  text: string = 'this is a text'
-  uiContext: UIContext | null = null
+  text: string = 'this is a text';
+  uiContext: UIContext | null = null;
 }
 
 @Builder
@@ -5980,8 +6111,8 @@ function ButtonBuilder(params: Params) {
       .align(Alignment.Center)
       .backgroundColor(Color.Orange)
       .fontSize(20)
-      .width("45%")
-      .height("30%")
+      .width('45%')
+      .height('30%')
       .offset({ x: 60, y: 100 })
       .borderRadius('50%')
       .onAxisEvent((event) => {
@@ -5990,7 +6121,7 @@ function ButtonBuilder(params: Params) {
           message: 'onAxisEvent',
           duration: 3000
         });
-        console.info('onAxisEvent')
+        console.info('onAxisEvent');
       })
   }
   .width(500)
@@ -6005,7 +6136,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    this.rootNode.build(this.wrapBuilder, { text: 'This is a string', uiContext });
     return this.rootNode.getFrameNode();
   }
 
@@ -6026,6 +6157,10 @@ class MyNodeController extends NodeController {
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
     return result;
+  }
+
+  aboutToDisappear() {
+    this.rootNode?.dispose();
   }
 }
 

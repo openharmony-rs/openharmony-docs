@@ -29,7 +29,7 @@
 
 > **说明：**
 >
-> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写音频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
+> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写图片、视频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
 
 
 ## 开发步骤及注意事项
@@ -46,7 +46,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    this.avRecorder = await media.createAVRecorder();
@@ -63,12 +63,12 @@
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
    | 事件类型 | 说明 |
    | -------- | -------- |
-   | stateChange | 必要事件，监听AVRecorder的state属性改变。 |
-   | error | 必要事件，监听AVRecorder的错误信息。 |
+   | stateChange | 必要事件，监听录制器的state属性改变。 |
+   | error | 必要事件，监听录制器的错误信息。 |
 
    ArkTS-Dyn示例：
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    this.avRecorder?.on('stateChange', (state: media.AVRecorderState, reason: media.StateChangeReason) => {
@@ -114,7 +114,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    public async prepareVideoRecorder(context: common.Context): Promise<void> {
@@ -131,10 +131,10 @@
          videoFrameHeight: this.videoResolution.frameHeight, // 视频分辨率的高。
          videoFrameRate: 30, // 视频帧率。
          fileFormat: media.ContainerFormatType.CFT_MPEG_4 // 封装格式。
-       },
+       } as media.AVRecorderProfile,
        metadata: {
          videoOrientation: '90' // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270。
-       },
+       } as media.AVMetadata,
        url: 'fd://' + file.fd.toString()
      };
    
@@ -145,6 +145,7 @@
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+       await this.closeFd();
      }
    }
    ```
@@ -194,7 +195,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[get_input_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[get_input_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    let surfaceId: string | undefined = undefined;
@@ -226,7 +227,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.start();
@@ -244,7 +245,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.pause();
@@ -262,7 +263,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.resume();
@@ -280,10 +281,11 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
    
    ``` TypeScript
    await this.avRecorder?.stop();
+   await this.closeFd();
    ```
 
    ArkTS-Sta示例：
@@ -298,7 +300,7 @@
 
     ArkTS-Dyn示例：
 
-    <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
     
     ``` TypeScript
     await this.avRecorder?.reset();
@@ -316,7 +318,7 @@
 
     ArkTS-Dyn示例：
 
-    <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
     
     ``` TypeScript
     await this.avRecorder?.release();
@@ -336,13 +338,13 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[full_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+<!-- @[full_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 ``` TypeScript
-import { BusinessError } from '@ohos.base';
-import media from '@ohos.multimedia.media';
-import fileIo from '@ohos.file.fs';
-import common from '@ohos.app.ability.common';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
 import { Resolution } from './CommonTypes';
 
 export default class AVRecorderService {
@@ -393,10 +395,10 @@ export default class AVRecorderService {
         videoFrameHeight: this.videoResolution.frameHeight, // 视频分辨率的高。
         videoFrameRate: 30, // 视频帧率。
         fileFormat: media.ContainerFormatType.CFT_MPEG_4 // 封装格式。
-      },
+      } as media.AVRecorderProfile,
       metadata: {
         videoOrientation: '90' // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270。
-      },
+      } as media.AVMetadata,
       url: 'fd://' + file.fd.toString()
     };
 
@@ -407,6 +409,7 @@ export default class AVRecorderService {
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
@@ -458,10 +461,12 @@ export default class AVRecorderService {
     try {
       if (this.avRecorder?.state === 'started' || this.avRecorder?.state === 'paused') {
         await this.avRecorder?.stop();
+        await this.closeFd();
       }
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to stop avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 

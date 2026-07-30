@@ -34,6 +34,22 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
     // 请在resources\base\element\string.json文件中配置name为'dialog_message'，value为非空字符串的资源
     private message: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
+    // 存储所有弹窗延时关闭定时器ID数组，页面销毁统一清除
+    private timerIdList: number[] = [];
+    // 标记页面是否已销毁，销毁后不再执行弹窗关闭逻辑
+    private isPageDestroy: boolean = false;
+    
+    /**
+     * 页面销毁生命周期：清除所有定时器，防止延时关闭弹窗触发异常、内存泄漏
+     */
+    aboutToDisappear(): void {
+      this.isPageDestroy = true;
+      // 遍历清除全部未执行的定时器
+      this.timerIdList.forEach(timerId => {
+        clearTimeout(timerId);
+      });
+      this.timerIdList = [];
+    }
     
     @Builder
     customDialogComponent() {
@@ -87,10 +103,30 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
             this.customDialogComponent();
           },
           focusable: false
-        }).then((dialogId: number) => {
-          setTimeout(() => {
-            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+        })
+        .then((dialogId: number) => {
+          // 创建延时关闭定时器
+          const timerId = setTimeout(() => {
+            // 页面已销毁则直接跳过关闭逻辑
+            if (this.isPageDestroy) {
+              return;
+            }
+            try {
+              this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+            } catch (error) {
+              console.error('closeCustomDialog error');
+            }
+            // 关闭弹窗后移除已完成定时器记录
+            const idx = this.timerIdList.findIndex(item => item === timerId);
+            if (idx > -1) {
+              this.timerIdList.splice(idx, 1);
+            }
           }, 3000);
+          // 保存定时器ID，页面销毁时统一清理
+          this.timerIdList.push(timerId);
+        })
+        .catch(() => {
+          console.error('openCustomDialog failed');
         });
       })
     ```
@@ -132,6 +168,22 @@ export struct Index {
   // 请在resources\base\element\string.json文件中配置name为'dialog_message'，value为非空字符串的资源
   private message: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
+  // 存储所有弹窗延时关闭定时器ID数组，页面销毁统一清除
+  private timerIdList: number[] = [];
+  // 标记页面是否已销毁，销毁后不再执行弹窗关闭逻辑
+  private isPageDestroy: boolean = false;
+
+  /**
+   * 页面销毁生命周期：清除所有定时器，防止延时关闭弹窗触发异常、内存泄漏
+   */
+  aboutToDisappear(): void {
+    this.isPageDestroy = true;
+    // 遍历清除全部未执行的定时器
+    this.timerIdList.forEach(timerId => {
+      clearTimeout(timerId);
+    });
+    this.timerIdList = [];
+  }
 
   @Builder
   customDialogComponent() {
@@ -156,10 +208,30 @@ export struct Index {
                 this.customDialogComponent();
               },
               focusable: false
-            }).then((dialogId: number) => {
-              setTimeout(() => {
-                this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+            })
+            .then((dialogId: number) => {
+              // 创建延时关闭定时器
+              const timerId = setTimeout(() => {
+                // 页面已销毁则直接跳过关闭逻辑
+                if (this.isPageDestroy) {
+                  return;
+                }
+                try {
+                  this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+                } catch (error) {
+                  console.error('closeCustomDialog error');
+                }
+                // 关闭弹窗后移除已完成定时器记录
+                const idx = this.timerIdList.findIndex(item => item === timerId);
+                if (idx > -1) {
+                  this.timerIdList.splice(idx, 1);
+                }
               }, 3000);
+              // 保存定时器ID，页面销毁时统一清理
+              this.timerIdList.push(timerId);
+            })
+            .catch(() => {
+              console.error('openCustomDialog failed');
             });
           })
       }.width('100%')

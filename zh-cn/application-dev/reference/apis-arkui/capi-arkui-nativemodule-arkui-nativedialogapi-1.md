@@ -500,7 +500,7 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
+| void (*callback)(ArkUI_DialogDismissEvent* event) | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
 
 **返回：**
 

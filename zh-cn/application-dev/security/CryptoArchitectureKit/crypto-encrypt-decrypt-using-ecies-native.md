@@ -41,7 +41,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
    > **说明：**
    >
-   > 在GCM模式下，一次加密流程中，将每次update和最后final的结果拼接起来，会得到“密文 + authTag”, authTag为末尾的16字节。其余部分均为密文。如果final的data参数传入null，则final的结果就是authTag。
+   > 在GCM模式下，一次加密流程中，将每次update和最后final的结果拼接起来，会得到“密文 + authTag”，authTag为末尾的16字节。其余部分均为密文。如果final的data参数传入null，则final的结果就是authTag。
 
 ### 解密
 

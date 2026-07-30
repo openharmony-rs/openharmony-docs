@@ -49,6 +49,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | SIM卡1的铃声。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23  |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。<br>**ArkTS-Dyn起始版本：** 10  |
 | RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | SIM卡2的铃声。 <br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23  |
+| RINGTONE_TYPE_ESIM_CARD_0 | 2  | ESIM卡1的铃声。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| RINGTONE_TYPE_ESIM_CARD_1 | 3  | ESIM卡2的铃声。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -66,6 +68,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 | ------------------------------- |-----|------------|
 | SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | SIM卡1的短信提示音。 |
 | SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SIM卡2的短信提示音。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_0     | 2   | ESIM卡1的短信提示音。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_TONE_TYPE_ESIM_CARD_1     | 3   | ESIM卡2的短信提示音。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | 通知提示音。     |
 
 ## MediaType<sup>20+</sup>
@@ -470,7 +474,7 @@ getMediaType(): MediaType
 
 | 类型    | 说明     |
 |--------|--------|
-| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置mediatype，则此函数返回的默认值为AUDIO。|
+| [MediaType](#mediatype20) | 媒体类型，如果应用未调用过setMediaType设置媒体类型，则此函数返回的默认值为AUDIO。|
 
 **错误码：**
 
@@ -569,8 +573,12 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 | ------------------------|----|--------|
 | CALL_SIM_CARD_0         | 0  | SIM卡1的来电铃声的振动。 |
 | CALL_SIM_CARD_1         | 1  | SIM卡2的来电铃声的振动。 |
+| CALL_ESIM_CARD_0         | 2  | ESIM卡1的来电铃声的振动。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CALL_ESIM_CARD_1         | 3  | ESIM卡2的来电铃声的振动。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | TEXT_MESSAGE_SIM_CARD_0 | 20 | SIM卡1的短信提示音的振动。 |
 | TEXT_MESSAGE_SIM_CARD_1 | 21 | SIM卡2的短信提示音的振动。 |
+| TEXT_MESSAGE_ESIM_CARD_0 | 22 | ESIM卡1的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TEXT_MESSAGE_ESIM_CARD_1 | 23 | ESIM卡2的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
 
 ## ToneHapticsMode<sup>14+</sup>
@@ -731,7 +739,7 @@ getGentleUri(): string | null
 
 | 类型    | 说明  |
 |--------|-----|
-| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+| string \| null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则URI为空。 柔和振动是指马达振动强度较标准振动弱。|
 
 **错误码：**
 
@@ -1225,7 +1233,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 | 参数名   | 类型                             | 必填 | 说明                     |
 | -------- | -------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)| 是   | 当前应用的上下文。         |
-| type     | [RingtoneType](#ringtonetype)  | 是   | 被设置的系统铃声的类型。   |
+| type     | [RingtoneType](#ringtonetype)  | 是   | 待获取的系统铃声的类型。   |
 
 **返回值：**
 
@@ -1530,7 +1538,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。         |
 | uri      | string                              | 是   | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
-| type     | [SystemToneType](#systemtonetype11) | 是   | 被设置的系统提示音的类型。   |
+| type     | [SystemToneType](#systemtonetype11) | 是   | 待获取的系统提示音的类型。   |
 
 **返回值：**
 
@@ -2840,7 +2848,7 @@ ArkTS-Dyn: openToneList(uriList: Array&lt;string&gt;): Promise&lt;Array&lt;[stri
 
 ArkTS-Sta: openToneList(uriList: Array&lt;string&gt;): Promise&lt;Array&lt;[string, long, SystemSoundError]&gt;&gt;
 
-获取系统铃声的属性列表。使用Promise异步回调。
+批量打开铃声文件。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 

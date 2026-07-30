@@ -120,7 +120,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean \| [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | boolean \| [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件和子组件进行裁剪；参数为boolean类型时，设置是否按照当前组件边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按当前组件边缘轮廓进行裁剪，false表示不进行裁剪。<br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
@@ -753,7 +753,7 @@ struct ProgressMaskExample {
           delay: 0, // 动画延迟
           iterations: 1, // 播放次数
           playMode: PlayMode.Normal // 动画模式
-        }) // 对Button组件的宽高属性进行动画配置
+        }) // 对Image组件的属性进行动画配置
 
       // 更新进度遮罩的进度值
       Button('updateProgress')

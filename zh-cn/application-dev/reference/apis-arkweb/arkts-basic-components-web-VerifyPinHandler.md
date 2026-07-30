@@ -18,7 +18,7 @@ VerifyPinHandler是Web组件中处理PIN码验证请求的类。当需要用户P
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
-## constructor<sup>22+</sup>
+## constructor
 
 constructor()
 
@@ -30,7 +30,7 @@ VerifyPinHandler的构造函数。
 
 **ArkTS-Sta起始版本：** 23
 
-## confirm<sup>22+</sup>
+## confirm
 
 confirm(result: PinVerifyResult): void
 

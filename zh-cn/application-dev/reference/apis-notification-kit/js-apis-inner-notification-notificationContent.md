@@ -113,7 +113,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 | 名称           | 类型                                          | 只读 | 可选 | 说明                               |
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
 | expandedTitle  | string                                       |  否  | 否  | 通知展开时的标题。<br>不可为空字符串，大小不超过1024字节，超出部分会被截断。    |
-| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知展开后显示的图片内容。<br>图像像素的总字节数不能超过2MB。|
+| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知展开后显示的图片内容。<br>图标像素的总字节数不能超过2MB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。|
 | briefText      | string                                       |  否  | 否  | 通知概要内容，是对通知内容的总结，不在通知中心中显示。<br>不可为空字符串，大小不超过1024字节，超出部分会被截断。 |
 
 
@@ -173,7 +173,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 | 名称  | 类型                                                   | 只读 | 可选 | 说明             |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
-| names | Array\<string\>                                       | 否  |  是 | 按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
+| names | Array\<string\>                                       | 否  |  是 | 按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。<br>每个名称的大小不超过202字节，超出部分会被截断。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
 | icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图标列表，与names一一对应，每个图标显示在对应按钮上。最多支持3个。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。默认为空。该属性与iconsResource互斥，只使用其中一个即可。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23   |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | 否  |  是 | 按钮图标资源列表，与names一一对应，使用Resource资源引用图标。最多支持3个。默认为空。与icons互斥，只使用其中一个即可。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23   |
 
@@ -193,7 +193,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 | 名称           | 类型              | 只读 | 可选 | 说明                             |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
-| initialTime    | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否  | 是  | 计时起始时间，用于设置实况窗中的计时起点。<br>取值范围为全体非负整数。默认值为0。<br>单位：毫秒。  |
+| initialTime    | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否  | 是  | 计时起始时间，用于设置实况窗中的计时起点。默认值为0。<br>单位：毫秒。  |
 | isCountDown    | boolean          | 否  | 是  | 是否为倒计时模式。默认为false。<br> - true：时间从initialTime开始递减显示。<br> - false：时间从initialTime开始递增显示。 |
 | isPaused       | boolean          | 否  | 是  | 计时是否暂停。默认为false。<br> - true：计时暂停在当前值。<br> - false：计时正常运行。   |
 | isInTitle      | boolean          | 否  | 是  | 时间信息是否展示在通知标题中。默认为false。<br> - true：计时信息将嵌入标题区域展示。<br> - false：计时信息在独立区域展示。|
@@ -228,6 +228,6 @@ time: {
 
 | 名称           | 类型            | 只读 | 可选 | 说明                             |
 | -------------- | --------------- | --- | --- | -------------------------------- |
-| maxValue        | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否  | 是  | 进度最大值。<br>取值范围为全体非负整数。                       |
-| currentValue    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否  | 是  | 进度当前值。<br>取值范围为全体非负整数。                       |
+| maxValue        | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否  | 是  | 进度最大值。                       |
+| currentValue    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否  | 是  | 进度当前值。                       |
 | isPercentage    | boolean        | 否  | 是  | 是否按百分比展示进度。默认为false。<br> - true：进度以百分比形式展示。<br> - false：进度以绝对值形式展示。|

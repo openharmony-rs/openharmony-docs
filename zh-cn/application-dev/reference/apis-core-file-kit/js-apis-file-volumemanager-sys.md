@@ -1977,6 +1977,61 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 });
 ```
 
+## volumemanager.isVolumeInUse
+
+isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
+
+查询指定卷当前是否正在被占用。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumePath | string | 是   | 指定卷路径。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;boolean&gt; | Promise对象，返回指定卷当前是否正在被占用。true代表正在被占用，false代表未被占用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600033 | Failed to query whether the specified volume is currently in use. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumePath: string = "";
+volumeManager.isVolumeInUse(volumePath).then(() => {
+  console.info("isVolumeInUse successfully.");
+}).catch((error: BusinessError) => {
+  console.error(`isVolumeInUse failed with error, code is: ${error.code}, message is: ${error.message}`);
+});
+```
+
 ## Volume
 
 卷信息详情。
@@ -1993,11 +2048,11 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | uuid        | string  | 否 | 否 | 卷设备uuid是卷设备的通用唯一识别码，不会随着插卡顺序变化而变化，但是卷设备的格式化会改变卷设备的uuid。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                |
 | diskId | string | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID的格式结构类似，均采用{主设备号}-{次设备号}的命名规则。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
 | description | string | 否 | 否 | 卷设备描述。卷设备的格式化会改变卷设备描述。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
-| removable | boolean | 否 | 否 | 表示卷设备是否可移除。当前仅支持查询可移除存储设备，因此该字段值始终为true。true表示可移除；false表示不可移除。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| removable | boolean | 否 | 否 | 表示卷设备是否可移除。当前仅支持查询可移除存储设备。true表示可移除；false表示不可移除。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
 | state       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23           |
 | path | string | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。卷设备的格式化会改变挂载路径。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
 | fsType<sup>12+</sup> | string | 否 | 否 | 文件系统的类型，取值包括ext2、vfat、ntfs等。<br>**说明**：从API version 24开始，还支持ISO9660、UDF。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
-| partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 卷设备的分区号。该字段为可选字段，不存在时表示无分区号信息。<br> **ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 卷设备的分区号。参数缺省时，表示无分区号信息。<br> **ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | extraInfo | string | 否 | 是 | 卷设备的扩展信息，包含设备的附加属性数据，具体内容因设备类型不同而异。该字段为可选字段，不存在时表示无扩展信息。<br>**ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DiskType

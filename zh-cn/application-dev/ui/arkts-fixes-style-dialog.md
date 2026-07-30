@@ -199,7 +199,7 @@ export struct ShowDialogExample {
               } catch (error) {
                 let message = (error as BusinessError).message;
                 let code = (error as BusinessError).code;
-                console.error(`showdialog args error code is ${code}, message is ${message}`);
+                console.error(`showDialog args error code is ${code}, message is ${message}`);
               }
             })
         }.width('100%')
@@ -502,7 +502,7 @@ export struct DatePickerDialogExample {
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
-该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
+该示例通过配置textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
 
 ArkTS-Dyn示例：
@@ -733,25 +733,25 @@ export struct TextPickerCNDialogExample {
         { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
     }
   ];
-  private select: number = 0;
+  private select: number[] = [0, 0, 0];
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('showTextPickerDialog')
-        // ···
+        // ...
           .margin(30)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
               onAccept: (value: TextPickerResult) => {
-                this.select = value.index as number
+                this.select = value.index as number[]
               }
             });
           })
       }.width('100%').margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
@@ -808,7 +808,7 @@ export struct TextPickerCNDialogExample {
 
 ## 列表选择弹窗 (ActionSheet)
 
-列表选择器弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
+列表选择弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
 
 列表选择器弹窗通过UIContext中的[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)接口实现。
 
@@ -854,7 +854,7 @@ export struct showActionSheetExample {
                 confirm: {
                   value: 'Confirm button',
                   action: () => {
-                    console.info('Get Alert Dialog handled');
+                    console.info('Get ActionSheet handled');
                   }
                 },
                 alignment: DialogAlignment.Center,
@@ -982,14 +982,13 @@ export struct showActionSheetExample {
 
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
-该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
+该示例通过配置[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
 ArkTS-Dyn示例：
 
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
 ``` TypeScript
-import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component

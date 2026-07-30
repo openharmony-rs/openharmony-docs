@@ -90,7 +90,7 @@
    - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考[拍照(C/C++)](./native-camera-shooting.md)步骤5)。
    - 使用完后解注册分段式拍照回调函数。
 
-   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->    
    
    ``` C++
    // 分段式拍照回调函数。

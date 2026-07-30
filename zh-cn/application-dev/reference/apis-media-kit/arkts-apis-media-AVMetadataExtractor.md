@@ -521,7 +521,7 @@ ArkTS-Sta: fetchMetadataWithTimeout(timeoutMs: long): Promise\<AVMetadata | unde
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未完成元数据获取操作，则返回操作超时错误码5400104。|
 
 **返回值：**
 

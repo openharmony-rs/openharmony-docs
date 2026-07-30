@@ -327,8 +327,7 @@ function builderOverlay(params: Params) {
 export struct OverlayManagerAlertDialog {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
-  private overlayContent:ComponentContent<Params>[] = [];
-  controller: TextInputController = new TextInputController();
+  private overlayContent: ComponentContent<Params>[] = [];
 
   aboutToAppear(): void {
     let uiContext = this.getUIContext();
@@ -456,7 +455,7 @@ export struct OverlayManagerAlertDialog {
 
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
-从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
+从API version 18开始，可以利用OverlayManager对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
 
 ArkTS-Dyn示例：
 
