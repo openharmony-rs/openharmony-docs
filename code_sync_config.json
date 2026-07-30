@@ -24099,6 +24099,26 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerOnBackPress.ets",
+				"functions":[
+					{
+						"end_line":190,
+						"name":"OverlayManager_Demo4",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerOnBackPress.ets",
+				"functions":[
+					{
+						"end_line":223,
+						"name":"OverlayManager_Demo4",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
