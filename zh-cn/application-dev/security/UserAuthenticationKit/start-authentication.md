@@ -302,4 +302,4 @@ initiatingUserAuthentication4() {
 
 ## 示例代码
 
-  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
