@@ -1,4 +1,4 @@
-# 设备内组件启动规则（Stage模型）
+# 设备内组件启动规则
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
