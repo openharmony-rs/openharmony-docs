@@ -32,7 +32,7 @@ import { webview } from '@kit.ArkWeb';
 
 static fetchCookieSync(url: string, incognito?: boolean): string
 
-获取指定url对应cookie的值。
+获取指定URL对应cookie的值。
 
 > **说明：**
 >
@@ -52,14 +52,14 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookie所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 指定url对应的cookie的值。 |
+| string | 指定URL对应的cookie的值。 |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ struct WebComponent {
 
 static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
 
-获取指定url对应的cookies，可以通过可选参数incognito指定是否获取隐私模式下的cookies，也可以通过可选参数includePartitionedCookies指定是否获取第一方partitioned cookies。
+获取指定URL对应的cookies，可以通过可选参数incognito指定是否获取隐私模式下的cookies，也可以通过可选参数includePartitionedCookies指定是否获取第一方partitioned cookies。
 
 > **说明：**
 >
@@ -155,7 +155,7 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookies所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookies所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 | includePartitionedCookies | boolean | 否 | 是否允许获取第一方partitioned cookies。true表示允许，false表示不允许。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
@@ -163,7 +163,7 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 指定url对应的cookies。 |
+| string | 指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -238,7 +238,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, callback: AsyncCallback\<string>): void
 
-异步callback方式获取指定url对应cookie的值。
+异步callback方式获取指定URL对应cookie的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -250,7 +250,7 @@ static fetchCookie(url: string, callback: AsyncCallback\<string>): void
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookie所属的URL，建议使用完整的URL。 |
 | callback | AsyncCallback\<string> | 是 | callback回调，用于获取cookie |
 
 **错误码：**
@@ -339,7 +339,7 @@ struct WebComponent {
 
 static fetchCookie(url: string): Promise\<string>
 
-以Promise方式异步获取指定url对应cookie的值。
+以Promise方式异步获取指定URL对应cookie的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -351,13 +351,13 @@ static fetchCookie(url: string): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookie所属的URL，建议使用完整的URL。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise实例，用于获取指定url对应的cookie值。 |
+| Promise\<string> | Promise实例，用于获取指定URL对应的cookie值。 |
 
 **错误码：**
 
@@ -441,7 +441,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
-以Promise方式异步获取指定url对应cookie的值。
+以Promise方式异步获取指定URL对应cookie的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -453,14 +453,14 @@ static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookie所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise实例，用于获取指定url对应的cookie值。 |
+| Promise\<string> | Promise实例，用于获取指定URL对应的cookie值。 |
 
 **错误码：**
 
@@ -544,7 +544,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
 
-获取指定url对应的cookies，可以通过参数incognito指定是否获取隐私模式下的cookies，也可以通过参数includePartitionedCookies指定是否获取第一方partitioned cookies。使用Promise异步回调。
+获取指定URL对应的cookies，可以通过参数incognito指定是否获取隐私模式下的cookies，也可以通过参数includePartitionedCookies指定是否获取第一方partitioned cookies。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -558,7 +558,7 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookies所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookies所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。 <br>传入undefined或null会抛出异常错误码401。 |
 | includePartitionedCookies | boolean | 是 | 是否允许获取第一方partitioned cookies。true表示允许，false表示不允许。 <br>传入undefined或null会抛出异常错误码401。 |
 
@@ -566,7 +566,7 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise对象，用于获取指定url对应的cookies。 |
+| Promise\<string> | Promise对象，用于获取指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -757,11 +757,11 @@ struct WebComponent {
 
 static configCookieSync(url: string, value: string, incognito?: boolean): void
 
-为指定url设置单个cookie的值。
+为指定URL设置单个cookie的值。
 
 > **说明：**
 >
-> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
@@ -771,7 +771,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 >
 > - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
 > - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
@@ -785,9 +785,9 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
+| incognito    | boolean | 否   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -862,11 +862,11 @@ struct WebComponent {
 
 static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void
 
-为指定url设置cookie的值。
+为指定URL设置cookie的值。
 
 > **说明：**
 >
-> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
@@ -876,7 +876,7 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 >
 > - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -888,9 +888,9 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 是   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。 |
+| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。 |
 | includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
 
 **错误码：**
@@ -966,11 +966,11 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, callback: AsyncCallback\<void>): void
 
-异步callback方式为指定url设置单个cookie的值。
+异步callback方式为指定URL设置单个cookie的值。
 
 > **说明：**
 >
-> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
@@ -980,7 +980,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 >
 > - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
 > - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
@@ -994,7 +994,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 | callback | AsyncCallback\<void> | 是 | callback回调，用于获取设置cookie的结果 |
 
@@ -1077,11 +1077,11 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-为指定url设置单个cookie的值。使用Promise异步回调。
+为指定URL设置单个cookie的值。使用Promise异步回调。
 
 > **说明：**
 >
-> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
@@ -1091,7 +1091,7 @@ static configCookie(url: string, value: string): Promise\<void>
 >
 > - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
 > - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
@@ -1105,14 +1105,14 @@ static configCookie(url: string, value: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<void> | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
+| Promise\<void> | Promise实例，用于获取指定URL设置单个cookie值是否成功。 |
 
 **错误码：**
 
@@ -1197,11 +1197,11 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-为指定url设置单个cookie的值。使用Promise异步回调。
+为指定URL设置单个cookie的值。使用Promise异步回调。
 
 > **说明：**
 >
-> - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
 > - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
@@ -1211,7 +1211,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 >
 > - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1223,16 +1223,16 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 是   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。 |
+| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。 |
 | includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<void> | Promise实例，用于获取指定url设置单个cookie值是否成功。 |
+| Promise\<void> | Promise实例，用于获取指定URL设置单个cookie值是否成功。 |
 
 **错误码：**
 
@@ -2522,7 +2522,7 @@ struct WebComponent {
 
 static getCookie(url: string): string
 
-获取指定url对应cookie的值。
+获取指定URL对应cookie的值。
 
 > **说明：**
 >
@@ -2538,13 +2538,13 @@ static getCookie(url: string): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要获取的cookie所属的URL，建议使用完整的URL。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 指定url对应的cookie的值。 |
+| string | 指定URL对应的cookie的值。 |
 
 **错误码：**
 
@@ -2588,7 +2588,7 @@ struct WebComponent {
 
 static setCookie(url: string, value: string): void
 
-为指定url设置单个cookie的值。
+为指定URL设置单个cookie的值。
 
 > **说明：**
 >
@@ -2604,7 +2604,7 @@ static setCookie(url: string, value: string): void
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 
 **错误码：**
