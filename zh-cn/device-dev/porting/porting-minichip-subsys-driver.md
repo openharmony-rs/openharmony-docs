@@ -58,7 +58,7 @@ if (ohos_kernel_type == "liteos_m") {
    # Load board adapter dir form board config
    if (board_adapter_dir !=""){
     ohos_board_adapter_dir = board_adapter_dir
-    ohos_vender_adapter_dir = board_adapter_dir
+    ohos_vendor_adapter_dir = board_adapter_dir
    }
   ```
 
