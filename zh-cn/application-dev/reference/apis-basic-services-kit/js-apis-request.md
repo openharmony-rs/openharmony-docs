@@ -2353,7 +2353,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent<sup>10+</sup>
+## agent<sup>10+</sup>
 
 request.agent提供基于任务的后台上传下载代理能力。开发者通过[request.agent.create](#requestagentcreate10)创建任务并排入队列，通过[Task](#requestagenttask10)对象管理任务生命周期（启动、暂停、恢复、停止、移除）。支持前台和后台两种任务模式：前台任务在应用切到后台一段时间后会显示失败或暂停，后台任务不受影响。支持断点续传、网络条件控制、自动重试、超时控制等特性。与基础的[request.uploadFile](#requestuploadfile9)/[request.downloadFile](#requestdownloadfile9)相比，request.agent提供更完善的任务管理和状态查询能力。
 
@@ -2464,7 +2464,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br>- true，覆盖已存在的文件。<br>- false，下载失败。<br>从API version 20开始，下载到用户文件场景必须为true。<br>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br>- 上传时，使用PUT或POST，默认值为PUT。<br>- 下载时，使用GET或POST，默认值为GET。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标头。<br>- 上传请求，默认的Content-Type为"multipart/form-data"。<br>- 下载请求，默认的Content-Type为"application/json"。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -2704,7 +2704,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称      | 类型   | 只读 | 可选 | 说明                                                           |
 |---------|----------|----|----|--------------------------------------------------------------|
 | speed | number | 否 | 否 | 任务最低速度，单位为字节每秒（B/s），取值范围为[0, +∞)。若任务速度持续低于该值达到指定时长，则任务失败。设置为0表示不启用最低速度限制。 |
-| timeout | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
+| duration | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
 
 ## request.agent.Timeout<sup>20+</sup>
 
