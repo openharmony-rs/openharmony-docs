@@ -45,19 +45,19 @@ listener: mediaquery.MediaQueryListener =
 <!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
-  onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
-    // ···
-    } else {
-    // ···
-    }
+onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
+    // ...
+  } else {
+    // ...
   }
+}
 
-// ···
-    this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-    // ···
-    });
-    // ···
+// ...
+  this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
+    // ...
+  });
+  // ...
 ```
 
 
