@@ -1,22 +1,30 @@
 # ImageBitmap
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:34:02.288Z pushedAt=2026-08-01T06:42:55.881Z -->
 
 An **ImageBitmap** object stores pixel data rendered on a canvas. Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to transfer the **ImageBitmap** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display. 
 
->  **NOTE**
+> **NOTE**
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> * The initial APIs of this module are supported since API version 8. Newly added APIs are marked with a superscript to indicate their earliest API version.
+>
+> * The **ImageBitmap** object only supports loading static images. To play animated images, use the [Image](./ts-basic-components-image.md) component.
 
 ## constructor
 
 constructor(src: string)
 
-Creates an **ImageBitmap** object using an **ImageSrc** object.
+Creates an **ImageBitmap** object using an image data source.
+
+> **NOTE**
+>
+> Call the **close()** method to release resources after use to avoid image resource leaks.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -26,15 +34,21 @@ Creates an **ImageBitmap** object using an **ImageSrc** object.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
+
 | Name | Type  | Mandatory | Description                                   |
 | ---- | ------ | ---- | ---------------------------------------- |
-| src  | string | Yes | Image source. Local images are supported.<br>1. The string format is used to load local images, for example, **ImageBitmap("common/images/example.jpg")**. For entry and feature modules, the start point of the image path for loading is the **ets** folder of the module. For HAR and shared modules, the start point is the **ets** folder of the entry or feature module into which they are built.<br>For modules whose **type** is **"har"** or **"shared**", you are advised to use [ImageSource](../../../media/image/image-decoding.md) to decode resource images into a unified **PixelMap** object for loading and use.<br>2. Supported image formats: BMP, JPG, PNG, SVG, and WEBP.<br>**NOTE**<br>- ArkTS widgets do not support the strings with the **http://**, **datashare://**, or **file://data/storage**.|
+| src | string | Yes | Image data source. Supports local images.<br>1. The string format is used to load local images, for example, `ImageBitmap("common/images/example.jpg")`. For modules of the "entry" and "feature" types, the starting point of the image loading path is the ets folder of the current module. For modules of the "har" and "shared" types, the starting point of the image loading path is the ets folder of the currently built "entry" or "feature" type module.<br>For modules of the "har" and "shared" types, it is recommended to use the [ImageSource](../../../media/image/image-decoding.md) image decoding method to decode resource images into a unified PixelMap for loading.<br>2. Supported local image types: bmp, jpg, png, svg, and webp.<br>**NOTE**<br>- In ArkTS widgets, strings with network-related path prefixes such as `http://`, the `datashare://` path prefix, and the `file://data/storage` path prefix are not supported. |
 
 ## constructor
 
 constructor(data: PixelMap)
 
 Creates an **ImageBitmap** object using a **PixelMap** object.
+
+> **NOTE**
+>
+> Call the **close()** method to release resources after use to avoid image resource leaks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -44,34 +58,46 @@ Creates an **ImageBitmap** object using a **PixelMap** object.
 
 | Name | Type  | Mandatory | Description                                   |
 | ---- | ------ | ---- | ---------------------------------------- |
-| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image data source, which supports **PixelMap** objects.|
+| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes    | Image data source, set through a **PixelMap** object. Applicable to scenarios where images need to be decoded and processed before drawing, which can improve image loading performance. |
 
 ## constructor<sup>12+</sup>
 
 constructor(src: string, unit: LengthMetricsUnit)
 
-Creates an **ImageBitmap** object using an **ImageSrc** object. The unit mode of the Path2D object can be configured using **unit**.
+Creates an **ImageBitmap** object using an image data source. This API supports configuring the unit mode of the **ImageBitmap** object with **unit**.
+
+> **NOTE**
+>
+> Call the **close()** method to release resources after use to avoid image resource leaks.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type  | Mandatory | Description                                   |
 | ---- | ------ | ---- | ---------------------------------------- |
-| src  | string | Yes | Image source. Local images are supported.<br>1. The string format is used to load local images, for example, **ImageBitmap("common/images/example.jpg")**. For entry and feature modules, the start point of the image path for loading is the **ets** folder of the module. For HAR and shared modules, the start point is the **ets** folder of the entry or feature module into which they are built.<br>For modules whose **type** is **"har"** or **"shared**", you are advised to use [ImageSource](../../../media/image/image-decoding.md) to decode resource images into a unified **PixelMap** object for loading and use.<br>2. Supported image formats: BMP, JPG, PNG, SVG, and WEBP.<br>**NOTE**<br>- ArkTS widgets do not support the strings with the **http://**, **datashare://**, or **file://data/storage**.|
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes| Unit mode of the **ImageBitmap** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>If the value is **undefined**, **NaN**, or **Infinity**, the default value will be used.|
+| src  | string | Yes  | Image data source, which supports local images.<br>1. The string format is used to load local images, for example, `ImageBitmap("common/images/example.jpg")`. For modules of the "entry" and "feature" types, the image loading path starts from the ets folder of the current module. For modules of the "har" and "shared" types, the image loading path starts from the ets folder of the currently built "entry" or "feature" type module.<br>For modules of the "har" and "shared" types, you are advised to use the [ImageSource](../../../media/image/image-decoding.md) image decoding method to decode resource images into a unified PixelMap for loading.<br>2. Supported local image types: bmp, jpg, png, svg, and webp.<br>**Note:**<br>- ArkTS widgets do not support strings with network-related path prefixes such as `http://`, the `datashare://` path prefix, or the `file://data/storage` path prefix. |
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  | Unit mode for configuring the **ImageBitmap** object. The mode cannot be dynamically changed after configuration. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Default value: **LengthMetricsUnit.DEFAULT**.<br>Abnormal values such as **undefined**, **NaN**, and **Infinity** are processed as the default value. |
 
 ## constructor<sup>12+</sup>
 
 constructor(data: PixelMap, unit: LengthMetricsUnit)
 
-Creates an **ImageBitmap** object using a **PixelMap** object. The unit mode of the Path2D object can be configured using **unit**.
+Creates an **ImageBitmap** object using a **PixelMap** object. This API supports configuring the unit mode of the **ImageBitmap** object with **unit**.
+
+> **NOTE**
+>
+> Call the **close()** method to release resources after use to avoid image resource leaks.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,14 +105,44 @@ Creates an **ImageBitmap** object using a **PixelMap** object. The unit mode of 
 
 | Name | Type  | Mandatory | Description                                   |
 | ---- | ------ | ---- | ---------------------------------------- |
-| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image data source, which supports **PixelMap** objects.|
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes|  Unit mode of the **ImageBitmap** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).|
+| data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes    | Image data source, set through a **PixelMap** object. This is suitable for scenarios where images need to be decoded and processed before drawing, which can improve image loading performance. |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes | Used to configure the unit mode of the **ImageBitmap** object. Once configured, it cannot be changed dynamically. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Default value: **LengthMetricsUnit.DEFAULT**.<br>Abnormal values such as **undefined**, **NaN**, and **Infinity** are processed as the default value. |
+
+## constructor
+
+constructor(data: Resource, unit?: LengthMetricsUnit)
+
+Creates an **ImageBitmap** object using a **Resource** object. This API supports configuring the unit mode of the **ImageBitmap** object with **unit**.
+
+> **NOTE**
+>
+> Call the **close()** method to release resources after use to avoid image resource leaks.
+
+**Since:** 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type   | Mandatory  | Description                                    |
+| ---- | ------ | ---- | ---------------------------------------- |
+| data  | [Resource](ts-types.md#resource) | Yes    | Image data source, set by referencing a **Resource** object. This is used to reference image resources in the app resource directory, for example, **$r('app.media.example')**, which avoids hardcoding paths.<br>Supported image types: bmp, jpg, png, svg, and webp. |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No | Unit mode of the **ImageBitmap** object. Once configured, it cannot be changed dynamically. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Default value: **LengthMetricsUnit.DEFAULT**.<br>Abnormal values **undefined**, **NaN**, and **Infinity** are processed as the default value. |
 
 ## close
 
 close(): void
 
-Releases all graphics resources associated with this **ImageBitmap** object and sets its width and height to **0**. For the sample code, see the code for creating an **ImageBitmap** object.
+Releases all image resources associated with the **ImageBitmap** object and sets its width and height to **0**.
+
+> **NOTE**
+>
+> - This method must be used together with the [constructor()](#constructor) method. After creating an **ImageBitmap** object, call **close()** to release resources when they are no longer needed. Failure to call **close()** may cause image resource leaks and affect app performance.
+> - It is recommended to call this method after **Canvas** drawing is complete, for example, at the end of the [onReady](ts-components-canvas-canvas.md#onready) callback.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -104,8 +160,8 @@ Releases all graphics resources associated with this **ImageBitmap** object and 
 
 | Name    | Type| Read Only| Optional| Description|
 | ------ | ------ | ----- | -------- | --------------------------- |
-| width | number | Yes| No| Pixel width of the **ImageBitmap** object.<br>Default unit: vp|
-| height | number | Yes| No| Pixel height of the **ImageBitmap** object.<br>Default unit: vp|
+| width | number | Yes | No | Width of the **ImageBitmap**.<br>Unit: vp. |
+| height | number | Yes | No | Height of the **ImageBitmap**.<br>Unit: vp. |
 
 ## Example
 
@@ -115,36 +171,36 @@ This example demonstrates how to load a local image using the **ImageBitmap** ob
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
+> The resources in this example are not located in the **src > main > resource** directory. Starting from DevEco Studio 6.0.0 Beta2, when creating a new project or module, the default module does not package resources outside the resources directory. You need to enable the related switch: set **buildOption > resOptions > copyCodeResource > enable** to **true** in the module's **build-profile.json5**. For details, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct ImageExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    // Replace "common/images/example.jpg" with the image resource file you use.
-    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ImageExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  // Replace "common/images/example.jpg" with the image resource file required by the developer.
+  private img: ImageBitmap = new ImageBitmap('common/images/example.jpg');
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() => {
-            this.context.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 200)
-            this.img.close()
-          })
-      }
-      .width('100%')
-      .height('100%')
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#ffff00')
+        .onReady(() => {
+          this.context.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 200)
+          this.img.close()
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![imageBitmap1](figures/imageBitmap1.png)
+![imageBitmap](figures/imageBitmap.png)
 
 ### Example 2: Creating an ImageBitmap Object
 
@@ -169,7 +225,7 @@ struct Demo {
         .height('50%')
         .backgroundColor('#ffff00')
         .onReady(() => {
-          this.context.fillStyle = "#00ff00"
+          this.context.fillStyle = '#00ff00'
           this.context.fillRect(0, 0, 100, 100)
           let pixel = this.context.getPixelMap(0, 0, 100, 100)
           let image = new ImageBitmap(pixel)
@@ -184,7 +240,6 @@ struct Demo {
 ```
 
   ![imageBitmap2](figures/imageBitmap2.png)
-
 
 ### Example 3: Supporting Concurrent Thread Drawing
 
@@ -227,18 +282,18 @@ struct imageBitmapExamplePage {
   }
 }
 ```
+
 In the worker thread, the application uses **onmessage** to receive the **ImageBitmap** object sent by the main thread through **postMessage** and proceeds with rendering.
 
 ```ts
 import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { image } from '@kit.ImageKit';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data.myImage) {
     let img: ImageBitmap = e.data.myImage
     let offCanvas = new OffscreenCanvas(600, 600)
-    let offContext = offCanvas.getContext("2d")
+    let offContext = offCanvas.getContext('2d')
     offContext.drawImage(img, 0, 0, 500, 500, 0, 0, 400, 200)
     let image = offCanvas.transferToImageBitmap()
     workerPort.postMessage({ myImage: image });
@@ -246,4 +301,39 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-  ![imageBitmap1](figures/imageBitmap1.png)
+  ![imageBitmap](figures/imageBitmap.png)
+
+### Example 4: Loading a Resource Image
+
+Create an **ImageBitmap** object of the **Resource** type using the **constructor** API for canvas drawing.
+
+Since API version 26.0.0, the [constructor](#constructor-2) API is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ImageBitmapResourceExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  // Replace "app.media.example" with the image resource file required by the developer.
+  private img: ImageBitmap = new ImageBitmap($r("app.media.example"));
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#ffff00')
+        .onReady(() => { 
+          this.context.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 200)
+          this.img.close()
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![imageBitmap4](figures/imageBitmap4.png)

@@ -6,6 +6,9 @@
 <!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bc71de9c78619ed6967fc298759f73173061848f translatedAt=2026-07-30T02:29:49.654Z pushedAt=2026-08-01T06:42:55.867Z -->
+
+This document summarizes the public enums in ArkUI development, for developers to look up the meanings and applicable scenarios of enum values.
 
 >**NOTE**
 >
@@ -24,7 +27,7 @@
 | HOVER_ENTER  | 0 | A finger is pressed.        |
 | HOVER_MOVE   | 1 | The touch moves.        |
 | HOVER_EXIT   | 2 | A finger is lifted.             |
-| HOVER_CANCEL | 3 | The current event is canceled. |
+| HOVER_CANCEL | 3 | The current event is interrupted and canceled. |
 
 ## Alignment
 
@@ -253,11 +256,11 @@ Sets the click effect level and animation parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Description              | Animation Settings                         | Default Zoom Ratio                    |
-| ------ | --------------------------------- | --------------------------------- | --------------------------------- |
-| LIGHT  | Small area (light)| Spring effect, with stiffness of 410, damping of 38, and initial velocity of 1.| 90% |
-| MIDDLE | Medium area (stable)| Spring effect, with stiffness of 350, damping of 35, and initial velocity of 0.5.| 95% |
-| HEAVY  | Large area (heavy)| Spring effect, with stiffness of 240, damping of 28, and initial velocity of 0.| 95% |
+| Name   | Value | Description                            |
+| ------ | --- | ----------------------------- |
+| LIGHT  | 0 | Small area (light), spring animation, stiffness: 410, damping: 38, initial velocity: 1, default scale 90%. |
+| MIDDLE | 1 | Medium area (stable), spring animation, stiffness: 350, damping: 35, initial velocity: 0.5, default scale 95%. |
+| HEAVY  | 2 | Large area (heavy), spring animation, stiffness: 240, damping: 28, initial velocity: 0, default scale 95%. |
 
 ## Color
 
@@ -355,7 +358,7 @@ Enumerates the crown actions.
 
 |Name               | Value| Description                                  |
 |-------------------| -- | ------------------------------------- |
-| BEGIN<sup>(deprecated) </sup>             | 0  | The crown starts to rotate.<br> Note: This API is supported since API version 18 and deprecated since API version 24.                         |
+| BEGIN<sup>(deprecated)</sup> | 0 | The crown starts rotating.<br>**Note:** Supported from API version 18 and deprecated from API version 24. |
 | UPDATE            | 1  | The crown is rotating.                           |
 | END                | 2  | The crown stops rotating.                         |
 
@@ -492,7 +495,7 @@ Defines the sliding effect of the scrollable container.
 
 | Name    | Value| Description                                      |
 | ------ | --- | ---------------------------------------- |
-| Spring | 0 | Spring effect. When at one of the edges, the component can move beyond the bounds through touches, and produces a bounce effect when the user releases their finger.<br>In API version 22 and earlier versions, the spring effect of the scrollable component does not take effect when the scrollbar is dragged.<br>In API version 23 and later versions, the spring effect of the scrollable component takes effect when the scrollbar is dragged by fingers, but does not take effect when the scrollbar is dragged by a mouse.|
+| Spring | 0 | Spring effect. When at one of the edges, the component can move beyond the bounds based on initial velocity or through touches, and produces a bounce effect when the user releases their finger.<br>In API version 22 and earlier versions, the spring effect of the scrollable component does not take effect when the scrollbar is dragged.<br>In API version 23 and later versions, the spring effect of the scrollable component takes effect when the scrollbar is dragged by fingers, but does not take effect when the scrollbar is dragged by a mouse.|
 | Fade   | 1 | Fade effect. When at one of the edges, the component produces a fade effect.                    |
 | None   | 2 | No effect when the component is at one of the edges.                              |
 
@@ -513,6 +516,7 @@ Sets the position of ellipsis.
 | MULTILINE_CENTER<sup>24+</sup> | 4 | An ellipsis is used at the center of the line of text. This applies to single-line and multi-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## EmbeddedType<sup>12+</sup>
+
 Enumerates the types of the providers that can be started by the **EmbeddedComponent**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -741,21 +745,21 @@ Sets the direction of the linear gradient.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description   |
-| ----------- | ----- |
-| Left        | From right to left.|
-| Top         | From bottom to top.|
-| Right       | From left to right.|
-| Bottom      | From top to bottom.|
-| LeftTop     | From upper left to lower right.  |
-| LeftBottom  | From lower left to upper right.  |
-| RightTop    | From upper right to lower left.  |
-| RightBottom | From lower right to upper left.  |
-| None        | None.   |
+| Name          | Value | Description    |
+| ----------- | - | ----- |
+| Left        | 0 | From right to left. |
+| Top         | 1 | From bottom to top. |
+| Right       | 2 | From left to right. |
+| Bottom      | 3 | From top to bottom. |
+| LeftTop     | 4 | From top left to bottom right.   |
+| LeftBottom  | 5 | From bottom left to top right.   |
+| RightTop    | 6 | From top right to bottom left.   |
+| RightBottom | 7 | From bottom right to top left.   |
+| None        | 8 | None.    |
 
 ## GestureCollectIntervention
 
-Defines the intervention types for gesture and event collection.
+Enumerates the intervention types for gesture and event collection, applicable to scenarios where gestures need to be retained or discarded by priority during gesture and event collection.
 
 **Since**: 26.0.0
 
@@ -876,7 +880,7 @@ Sets the response logic and node blocking rules for the hit test.
 | Transparent | 2 | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | None        | 3 | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | BLOCK_HIERARCHY<sup>20+</sup>   | 4 | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.|
-| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model. |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | The node itself does not respond to the hit test, and all descendants (children, grandchildren, etc.) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.<br/>**Atomic service API:** This API can be used in atomic services since API version 20.<br/>**Model restriction:** This API can be used only in the stage model.  |
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -934,11 +938,11 @@ Sets the alignment mode of an element on the cross axis of the container.
 | Name      | Value| Description                                      |
 | -------- | ------ | ---------------------------------------- |
 | Auto     | 0 | The default configuration of the flex container is used.                          |
-| Start    | 1 | The items in the flex container are aligned with the cross-start edge.                   |
-| Center   | 2 | The items in the flex container are centered along the cross axis.                   |
-| End      | 3 | The items in the flex container are aligned with the cross-end edge.                   |
-| Stretch  | 4 | The items in the flex container are stretched and padded along the cross axis. If the flex container has the **Wrap** attribute set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the items are stretched to the cross size of the widest element on the current row or column. In other cases, the items are stretched to the container size regardless of whether their size is set.|
-| Baseline | 5 | The items in the flex container are aligned in such a manner that their text baselines are aligned along the cross axis.                 |
+| Start    | 1 | The element in the flex container is aligned with the cross-start edge.                   |
+| Center   | 2 | The element in the flex container is centered along the cross axis.                   |
+| End      | 3 | The element in the flex container is aligned with the cross-end edge.                   |
+| Stretch  | 4 | The element stretches to fill along the cross axis direction in a Flex container. When the container is Flex and **Wrap** is set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the element stretches to the size of the element with the longest cross axis length in the current row/column. In other cases, the element stretches to the container size regardless of whether the element size is set. |
+| Baseline | 5 | The element aligns with the text baseline along the cross axis direction in a Flex container.                  |
 
 ## ImageRepeat
 
@@ -981,7 +985,7 @@ Sets the alignment mode of the image relative to the line height.
 | Name    | Value| Description                          |
 | -------- | ------------------------------ |------------------------------ |
 | TOP      | 1 | The image is top aligned with the line.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| CENTER   | 2 | The image is centered aligned with the line.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| CENTER   | 2 | The image is center aligned with the line.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | BOTTOM   | 3 | The image is bottom aligned with the line.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | BASELINE | 4 | The image is bottom aligned with the text baseline.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |The alignment mode follows the parent component of the **Text** component.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -1097,7 +1101,7 @@ Sets the line break rule.
 | Name        | Value| Description                                                        |
 | ------------ | --- | ------------------------------------------------------------ |
 | GREEDY       | 0 | Places as many words on a line as possible and moves to the next line only if no more words can fit into the same line.|
-| HIGH_QUALITY | 1 | Fills in lines as much as possible on the basis of **BALANCED**, which may results in a large blank area on the last line.|
+| HIGH_QUALITY | 1 | Fills in lines as much as possible on the basis of **BALANCED**, which may result in a large blank area on the last line.|
 | BALANCED     | 2 | Without splitting words, the width of each line in a paragraph is the same as much as possible.  |
 
 ## MouseButton<sup>8+</sup>
@@ -1183,9 +1187,9 @@ Sets the nested mode of a nested scrollable component.
 
 ## Nullable\<T><sup>11+</sup>
 
-type Nullable\<T> = T | undefined
+type Nullable\<T> = T \| undefined
 
-This type allows for an object of a custom type or **undefined**.
+The value of this type can be the type specified by the generic parameter **T**, or **undefined**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1195,8 +1199,8 @@ This type allows for an object of a custom type or **undefined**.
 
 | Type| Description                      |
 | ---- | -------------------------- |
-|  T   | The object can be of any custom type.|
-| undefined | The object can be **undefined**.|
+| T | Type specified by the generic parameter T. |
+| undefined | The object is **undefined**.|
 
 ## ObscuredReasons<sup>10+</sup>
 
@@ -1252,20 +1256,20 @@ Sets the position of the bubble.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                    | Description                                                        |
-| ------------------------ | ------------------------------------------------------------ |
-| Left                     | The popup is on the left of the component, vertically aligned with the component on the left.                  |
-| Right                    | The popup is on the right of the component, vertically aligned with the component on the right.                  |
-| Top                      | The popup is at the top of the component, horizontally aligned with the component at the top.                  |
-| Bottom                   | The popup is at the bottom of the component, horizontally aligned with the component at the bottom.                  |
-| TopLeft                  | The popup is at the top of the component and, since API version 9, aligned with the left of the component.|
-| TopRight                 | The popup is at the top of the component and, since API version 9, aligned with the right of the component.|
-| BottomLeft               | The popup is at the bottom of the component and, since API version 9, aligned with the left of the component.|
-| BottomRight              | The popup is at the bottom of the component and, since API version 9, aligned with the right of the component.|
-| LeftTop<sup>9+</sup>     | The popup is on the left of the component and aligned with the top of the component.                  |
-| LeftBottom<sup>9+</sup>  | The popup is on the left of the component and aligned with the bottom of the component.                  |
-| RightTop<sup>9+</sup>    | The popup is on the right of the component and aligned with the top of the component.                  |
-| RightBottom<sup>9+</sup> | The popup is on the right of the component and aligned with the bottom of the component.                  |
+| Name                    | Value | Description                                                         |
+| ------------------------ | ----- | ------------------------------------------------------------ |
+| Left                     | 0 | The bubble is on the left of the component, aligned with the left center of the component.                   |
+| Right                    | 1 | The bubble is on the right of the component, aligned with the right center of the component.                   |
+| Top                      | 2 | The bubble is on the top of the component, aligned with the top center of the component.                   |
+| Bottom                   | 3 | The bubble is on the bottom of the component, aligned with the bottom center of the component.                   |
+| TopLeft                  | 4 | The bubble is on the top of the component. Since API version 9, it is aligned with the left edge of the component. |
+| TopRight                 | 5 | The bubble is on the top of the component. Since API version 9, it is aligned with the right edge of the component. |
+| BottomLeft               | 6 | The bubble is on the bottom of the component. Since API version 9, it is aligned with the left edge of the component. |
+| BottomRight              | 7 | The bubble is on the bottom of the component. Since API version 9, it is aligned with the right edge of the component. |
+| LeftTop<sup>9+</sup>     | 8 | The bubble is on the left of the component, aligned with the top edge of the component.                   |
+| LeftBottom<sup>9+</sup>  | 9 | The bubble is on the left of the component, aligned with the bottom edge of the component.                   |
+| RightTop<sup>9+</sup>    | 10 | The bubble is on the right of the component, aligned with the top edge of the component.                   |
+| RightBottom<sup>9+</sup> | 11 | The bubble is on the right of the component, aligned with the bottom edge of the component.                   |
 
 ## PixelRoundCalcPolicy<sup>11+</sup>
 
@@ -1331,9 +1335,9 @@ Enumerates column count policies for different [breakpoints](../../../ui/arkts-l
 
 | Name           | Value  | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | **List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).                                      |
-| BREAKPOINT_SM1MD2LG3 | 1    | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).|
-| BREAKPOINT_SM2MD3LG5 | 2    | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).|
+| BREAKPOINT_DEFAULT         | 0    | For **List** and **Swiper** components: displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range.<br> For **Grid**, **WaterFlow**, and **LazyVWaterFlowLayout** components: displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range. **LazyVWaterFlowLayout** is supported since API version 26.0.0.                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | Displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range. |
+| BREAKPOINT_SM2MD3LG5 | 2    | Displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range. |
 
 ## RelateType
 
@@ -1392,15 +1396,15 @@ Enumerates the modes in which the final state of the component's content is rend
 
 | Name                         | Value                         | Description                                                                             |
 | --------------------------- | -- | ---------------------------------------------------------------------------------- |
-| CENTER                      | 0                           | The component's content stays at the final size and always aligned with the center of the component.               ![renderfit_center](figures/renderfit_center.png) |
-| TOP                         | 1                           | The component's content stays at the final size and always aligned with the top center of the component.             ![renderfit_top](figures/renderfit_top.png) |
-| BOTTOM                      | 2                           | The component's content stays at the final size and always aligned with the bottom center of the component.             ![renderfit_bottom](figures/renderfit_bottom.png) |
-| LEFT                        | 3                           | The component's content stays at the final size and always aligned with the left of the component.               ![renderfit_left](figures/renderfit_left.png) |
-| RIGHT                       | 4                           | The component's content stays at the final size and always aligned with the right of the component.              ![renderfit_right](figures/renderfit_right.png) |
-| TOP_LEFT                    | 5                           | The component's content stays at the final size and always aligned with the upper left corner of the component.              ![renderfit_top_left](figures/renderfit_top_left.png) |
-| TOP_RIGHT                   | 6                           | The component's content stays at the final size and always aligned with the upper right corner of the component.             ![renderfit_top_right](figures/renderfit_top_right.png) |
-| BOTTOM_LEFT                 | 7                           | The component's content stays at the final size and always aligned with the lower left corner of the component.              ![renderfit_bottom_left](figures/renderfit_bottom_left.png) |
-| BOTTOM_RIGHT                | 8                           | The component's content stays at the final size and always aligned with the lower right corner of the component.              ![renderfit_bottom_right](figures/renderfit_bottom_right.png) |
+| CENTER                      | 0                           | The component's content stays at the final size and is always aligned with the center of the component.               ![renderfit_center](figures/renderfit_center.png) |
+| TOP                         | 1                           | The component's content stays at the final size and is always aligned with the top center of the component.             ![renderfit_top](figures/renderfit_top.png) |
+| BOTTOM                      | 2                           | The component's content stays at the final size and is always aligned with the bottom center of the component.             ![renderfit_bottom](figures/renderfit_bottom.png) |
+| LEFT                        | 3                           | The component's content stays at the final size and is always aligned with the left of the component.               ![renderfit_left](figures/renderfit_left.png) |
+| RIGHT                       | 4                           | The component's content stays at the final size and is always aligned with the right of the component.              ![renderfit_right](figures/renderfit_right.png) |
+| TOP_LEFT                    | 5                           | The component's content stays at the final size and is always aligned with the upper left corner of the component.              ![renderfit_top_left](figures/renderfit_top_left.png) |
+| TOP_RIGHT                   | 6                           | The component's content stays at the final size and is always aligned with the upper right corner of the component.             ![renderfit_top_right](figures/renderfit_top_right.png) |
+| BOTTOM_LEFT                 | 7                           | The component's content stays at the final size and is always aligned with the lower left corner of the component.              ![renderfit_bottom_left](figures/renderfit_bottom_left.png) |
+| BOTTOM_RIGHT                | 8                           | The component's content stays at the final size and is always aligned with the lower right corner of the component.              ![renderfit_bottom_right](figures/renderfit_bottom_right.png) |
 | RESIZE_FILL                 | 9                           | The component's content is always resized to fill the component's content box, without considering its aspect ratio in the final state.              ![renderfit_resize_fill](figures/renderfit_resize_fill.png) |
 | RESIZE_CONTAIN              | 10                          | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. It is always aligned with the center of the component.   ![renderfit_resize_contain](figures/renderfit_resize_contain.png) |
 | RESIZE_CONTAIN_TOP_LEFT     | 11                          | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. When there is remaining space in the width direction of the component, the content is left-aligned with the component. When there is remaining space in the height direction of the component, the content is top-aligned with the component.   ![renderfit_resize_contain_top_left](figures/renderfit_resize_contain_top_left.png) |
@@ -1408,7 +1412,6 @@ Enumerates the modes in which the final state of the component's content is rend
 | RESIZE_COVER                | 13                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.   ![renderfit_resize_cover](figures/renderfit_resize_cover.png) |
 | RESIZE_COVER_TOP_LEFT       | 14                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is left-aligned with the component, so that its left part is displayed. When there is remaining space in the height direction, the content is top-aligned with the component, so that its top part is displayed.   ![renderfit_resize_cover_top_left](figures/renderfit_resize_cover_top_left.png) |
 | RESIZE_COVER_BOTTOM_RIGHT   | 15                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is right-aligned with the component, so that its right part is displayed. When there is remaining space in the height direction, the content is bottom-aligned with the component, so that its bottom part is displayed.   ![renderfit_resize_cover_bottom_right](figures/renderfit_resize_cover_bottom_right.png) |
-
 
 > **NOTE**
 >
@@ -1477,11 +1480,11 @@ Sets the trigger status type of a touch operation.
 | Down   | 0    | A finger is pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
 | Up     | 1    | A finger is lifted.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
 | Move   | 2    | A finger moves on the screen in pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| Cancel | 3    | A touch event is canceled. For example: 1. A cancel event is fired when the user holds a finger on the screen and taps the home button to return to the home screen. 2. <!--RP2--><!--RP2End-->A cancel event is fired when a stylus is used during an active finger touch.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| Cancel | 3    | A touch event is canceled. For example: 1. When a finger is held on the screen and the Home key is tapped to return to the home screen, **Cancel** is triggered; 2. <!--RP2--><!--RP2End-->When a stylus operation occurs during a finger touch, the finger touch operation receives a Cancel event.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.      |
 | HOVER_ENTER<sup>20+</sup> | 9    | A finger is pressed in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
-| HOVER_MOVE<sup>20+</sup>   | 10    | The mouse pointer moves in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
-| HOVER_EXIT<sup>20+</sup> | 11    | The mouse pointer exits the component in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
-| HOVER_CANCEL<sup>20+</sup> | 12    | The triggered event is canceled in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
+| HOVER_MOVE<sup>20+</sup>   | 10    | The touch moves in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
+| HOVER_EXIT<sup>20+</sup> | 11    | A finger is lifted in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
+| HOVER_CANCEL<sup>20+</sup> | 12    | The current event is canceled in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.       |
 
 ## TitleHeight<sup>9+</sup>
 
@@ -1514,7 +1517,7 @@ Sets the transition type.
 
 ## CompetitionStrategy<sup>24+</sup>
 
-Defines whether the dispatched event is a competitive gesture. In the competitive scenario, only one of the original node and target node of the gesture responds. In the non‑competitive scenario, both nodes can respond simultaneously.
+Defines whether the dispatched event is a competitive gesture. In the competitive scenario, only one of the original node and target node of the gesture responds. In the non-competitive scenario, both the original node and target node of the gesture can respond.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1618,8 +1621,8 @@ Sets the polymorphic style of the text box.
 
 | Name   | Value| Description                                                        |
 | ------- | ----------- | ------------------------------------------------------------ |
-| DEFAULT | - | Default style. The caret width is fixed at 1.5 vp, and the caret height is subject to the background height and font size of the selected text.|
-| INLINE  | - | Inline style, also known as inline mode. The background height of the selected text is the same as the height of the text box.<br>This style is used in scenarios where editing and non-editing states are obvious, for example, renaming in the file list view.<br>The **showError** attribute is not supported for this style.<br>This style does not allow for text dragging and dropping.|
+| DEFAULT | - | Default style. The caret width is 1.5 vp, and the caret height is subject to the background height and font size of the selected text.|
+| INLINE  | - | Inline input style, also known as inline mode. The text selection background height is the same as the input box height.<br/>Inline input is used in scenarios where there is a clear distinction between editing and non-editing states, for example, renaming in a file list view.<br/>The **showError** attribute is not supported.<br/>In inline mode, dragging text is not supported. |
 
 ## TextSelectableMode<sup>12+</sup>
 
@@ -1704,19 +1707,21 @@ Defines the visibility and layout placeholder status of the component.
 
 ## Week
 
+Enumerates the days of the week.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Description  |
-| ---- | ---- |
-| Mon  | Monday. |
-| Tue  | Tuesday. |
-| Wed  | Wednesday. |
-| Thur | Thursday. |
-| Fri  | Friday. |
-| Sat  | Saturday. |
-| Sun  | Sunday. |
+| Name   | Value | Description   |
+| ---- | - | ---- |
+| Mon  | 0 | Monday.  |
+| Tue  | 1 | Tuesday.  |
+| Wed  | 2 | Wednesday.  |
+| Thur | 3 | Thursday.  |
+| Fri  | 4 | Friday.  |
+| Sat  | 5 | Saturday.  |
+| Sun  | 6 | Sunday.  |
 
 ## WidthBreakpoint<sup>13+</sup>
 
@@ -1759,12 +1764,12 @@ Sets the word break rule.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                            | Description                                                        |
-| -------------------------------- | ------------------------------------------------------------ |
-| SURFACE                          | **XComponent** type for EGL/OpenGLES rendering and media data input, with custom content displayed individually on the screen. When the background color is set to black, the display subsystem (DSS) is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| COMPONENT<sup>(deprecated)</sup> | [XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) type serving as a container component for running non-UI logic to dynamically load and display content.<br>**NOTE**<br>This component is supported since API version 10 and deprecated since API version 12. You are advised to use other container components instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| TEXTURE                          | **XComponent** type for EGL/OpenGLES and media data rendering. Custom drawing content is composited with **XComponent**'s native content before display. Key features: 1. Maintains frame synchronization between GPU textures and ArkUI drawing commands. 2. Supports unified animation with built-in components. 3. Utilizes GPU composition, which may have higher power consumption than the SURFACE type using the display subsystem (DSS).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| NODE<sup>(deprecated)</sup>      | **XComponent** type serving as a container for native UI nodes, enabling display of page components developed through native APIs.<br>**NOTE**<br>This component is supported since API version 12 and deprecated since API version 20. You are advised to use the [ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md) component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name                             | Value | Description                                                         |
+| -------------------------------- | - | ------------------------------------------------------------ |
+| SURFACE                          | 0 | Used for EGL/OpenGLES and media data writing, displaying developer-customized rendering content on the screen independently. When the background color is set to black, the display subsystem (DSS) is used.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| COMPONENT<sup>(deprecated)</sup> | 1 | Uses [XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) as a container component, supporting non-UI logic execution within it to dynamically load display content.<br/>**NOTE**<br/>This API is supported since API version 10 and deprecated since API version 12. You are advised to use other container components instead.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| TEXTURE                          | 2 | Used for EGL/OpenGLES and media data writing. The developer-customized rendering content is composited with the XComponent component's content and then displayed on the screen. 1. Frame synchronization is maintained, and the GPU texture and other ArkUI drawing instructions are sent to the render service (RenderService) in the same frame. 2. Animations and system components are unified. 3. GPU compositing is used, which may consume more power compared to the display subsystem (DSS) path used by surface.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| NODE<sup>(deprecated)</sup>      | 3 | Placeholder container for Native UI nodes. Page components developed by developers through native APIs can be displayed within this container area.<br/>**NOTE**<br/>This API is supported since API version 12 and deprecated since API version 20. You are advised to use the [ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md) component instead.<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 ## InputEventSubTypeMask
 
@@ -1796,7 +1801,7 @@ Enumerates input event subtype masks, used to identify different input event sub
 
 ## InputEventInterceptAction
 
-Enumerates input event interception actions.
+Enumerates the input event interception actions, used to control whether input events continue to be delivered to the UI framework, applicable to scenarios where input events need to be allowed or blocked based on business rules.
 
 **Since**: 26.0.0
 
@@ -1810,5 +1815,4 @@ Enumerates input event interception actions.
 | -------- | -------- | ---- |
 | CONTINUE | 0 | The event is permitted to propagate to the UI framework.|
 | BLOCK | 1 | The event is blocked from propagating to the UI framework.|
-
 <!--no_check-->
