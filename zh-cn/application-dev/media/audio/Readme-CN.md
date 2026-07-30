@@ -16,7 +16,7 @@
   - [音频播放开发概述](audio-playback-overview.md)
   - [选择合适的播放流类型](using-right-streamusage-for-playback.md)
   - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
-  - [使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)
+  - [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
   <!--Del-->
   - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
@@ -40,7 +40,7 @@
   - [音频录制开发概述](audio-recording-overview.md)
   - [选择合适的录制流类型](using-right-sourcetype-for-recording.md)
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
-  - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
+  - [使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)
   - [实现后台录音](background-recording.md)
   - [管理麦克风静音状态](mic-management.md)
