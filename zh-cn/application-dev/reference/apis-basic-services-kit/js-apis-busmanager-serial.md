@@ -144,7 +144,7 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   await port.open(config);
   console.info('open success');
   // 串口使用完毕后需调用port.close()释放资源
- 	await port.close();
+  await port.close();
 }).catch((error: BusinessError) => {
   console.error(`Failed to open serial port. Code: ${error.code}, message: ${error.message}`);
 });
@@ -469,7 +469,6 @@ setRts(enable: boolean): Promise&lt;void&gt;
 **ArkTS-Sta起始版本：** 26.0.0
 
 **与setDtr的区别：** 
-
 - setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
