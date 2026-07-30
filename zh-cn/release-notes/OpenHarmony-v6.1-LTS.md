@@ -11,11 +11,13 @@
 
 ## 版本概述
 
-OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比6.1 Release，6.1 LTS版本，在标准系统能力方面引入了一款新的开发板“展锐P7885芯片开发板”，并针对这款开发板进行一系列能力新增和增强，以及预置应用的适配；在轻量系统和小型系统的能力无新增。
+OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比6.1 Release，6.1 LTS版本，在标准系统能力方面引入了一款新的开发板“展锐P7885芯片开发板”，并针对这款开发板进行一系列能力新增和增强，以及预置应用的适配。
 
 ### 新增能力
 
 - 新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/master/README.md)
+
+- 轻量系统支持小型化适配，以减少RAM和ROM的使用，详见[轻量系统小型化适配指导](https://gitcode.com/openharmony/docs/blob/7e59412cb2fba30efc64fe676988747e4edef62e/zh-cn/device-dev/porting/porting-minichip-minimal.md)。
 
 - 针对展锐P7885芯片开发板，新增如下能力：
 
