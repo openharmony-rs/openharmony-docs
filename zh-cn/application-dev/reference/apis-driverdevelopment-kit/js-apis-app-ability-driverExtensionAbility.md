@@ -358,4 +358,4 @@ DriverExtensionAbility不支持以下模块的引用。
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)  |
-|<!--DelRow-->User Authentication Kit（用户认证服务）| [@ohos.userIAM.faceAuth (人脸认证)(系统接口)(../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)]  |
+|<!--DelRow-->User Authentication Kit（用户认证服务）| @ohos.userIAM.faceAuth (人脸认证)(系统接口)(../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)  |
