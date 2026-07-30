@@ -236,4 +236,4 @@ OpenHarmony源码重要目录介绍见表1 OpenHarmony重要目录，其中devic
    > 
    > - device_company，board，kernel_type，kernel_version应与芯片厂商配置匹配。
    > 
-   > - subsystem，component应与“build/lite/components”下的部件描述匹配。
+   > - subsystem，components应与“build/lite/components”下的部件描述匹配。
