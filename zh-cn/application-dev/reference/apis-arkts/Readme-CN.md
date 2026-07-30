@@ -31,7 +31,7 @@
     - [Functions](arkts-apis-arkts-utils-f.md)
     - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)
     - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)
-    - [SendableLruCache<K, V>](arkts-apis-arkts-utils-SendableLruCache.md)
+    - [SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md)
   - [@ohos.buffer (Buffer)](js-apis-buffer.md)
   - [@ohos.convertxml (xml转换JavaScript)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
