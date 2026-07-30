@@ -70,14 +70,14 @@ if (ohos_kernel_type == "liteos_m") {
 
    修改如下：
 
-  ```json
+   ```json
    {
       "subsystem": "iothardware",
       "components": [
         { "component": "peripheral", "features":[] }
       ]
    }
-  ```
+   ```
 
 2. 添加适配文件。
 
@@ -91,7 +91,7 @@ if (ohos_kernel_type == "liteos_m") {
    board_adapter_dir = "//device/soc/MyDeviceCompany/MyBoard/adapter"
    ```
 
-  在"device/soc/MyDeviceCompany/MyBoard/adapter" 目录结构如下：
+   在"device/soc/MyDeviceCompany/MyBoard/adapter" 目录结构如下：
      
    ```text
    hals/iot_hardware/wifiiot_lite
