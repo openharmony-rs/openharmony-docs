@@ -28,8 +28,47 @@
 ArkTS-Dyn示例：
 <!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+async obtainingAuthLockState() : Promise<string> {
+  try {
+    Logger.info(`get auth lock state start`);
+    const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
+    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+      Logger.info('the authentication of given authType is permanent locked.');
+    }
+    const authLockStateContent : string = JSON.stringify(authLockState);
+    Logger.info('get auth lock state successfully.');
+    return authLockStateContent;
+  } catch (error) {
+    const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;
+    Logger.error(errorMessage);
+    return errorMessage;
+  }
+}
+```
+
 ArkTS-Sta示例：
 <!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+async obtainingAuthLockState(): Promise<string> {
+  try {
+    Logger.info(`get auth lock state start`);
+    const authLockState: userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
+    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+      Logger.info('the authentication of given authType is permanent locked.');
+    }
+    const authLockStateContent: string = JSON.stringify(authLockState);
+    Logger.info('get auth lock state successfully.');
+    return authLockStateContent;
+  } catch (error) {
+    const errorMessage: string =
+      `get auth lock state failed, err code is : ${error.code}, err message is : ${error.message}`;
+    Logger.error(errorMessage);
+    return errorMessage;
+  }
+}
+```
 
 ## 示例代码
 
