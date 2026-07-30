@@ -6907,6 +6907,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets",
 				"functions":[
 					{
 						"end_line":22,
@@ -6924,14 +6928,14 @@
 						"start_line":36
 					},
 					{
-						"end_line":214,
-						"name":"music_skill_branch",
-						"start_line":88
-					},
-					{
 						"end_line":129,
 						"name":"music_skill_try",
 						"start_line":56
+					},
+					{
+						"end_line":214,
+						"name":"music_skill_branch",
+						"start_line":88
 					}
 				]
 			}
