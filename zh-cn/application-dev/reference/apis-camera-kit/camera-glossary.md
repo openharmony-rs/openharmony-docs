@@ -1,4 +1,4 @@
-# Camera Kit术语
+# 术语
 
 ## C
 
