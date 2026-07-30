@@ -36,7 +36,7 @@ import { mediaquery } from '@kit.ArkUI';
 
 ``` TypeScript
 listener: mediaquery.MediaQueryListener =
-    this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+  this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 ```
 
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
