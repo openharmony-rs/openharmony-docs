@@ -7186,7 +7186,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md).md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -7219,13 +7219,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     }
     let fd: number = await photoAsset.getReadOnlyFdWithCached();
     if (fd !== undefined) {
-      console.info('File fd' + fd);
+      console.info('File fd: ' + fd);
       photoAsset.close(fd);
     } else {
-      console.error('fail to getReadOnlyFdWithCached');
+      console.error('Failed To Get ReadOnlyFd With Cached fd: ' + fd);
     }
   } catch (err) {
-    console.error(`getReadOnlyFdWithCached demo err: ${err.code}, ${err.message}`);
+    console.error(`Failed To Get ReadOnly Fd With Cached err: ${err.code}, ${err.message}`);
   }
 }
 ```
