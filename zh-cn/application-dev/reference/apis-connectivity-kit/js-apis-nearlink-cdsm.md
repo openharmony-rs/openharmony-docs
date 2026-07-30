@@ -20,7 +20,7 @@ import { cdsm } from '@kit.ConnectivityKit';
 ```
 
 
-## createCdsmClient
+## cdsm.createCdsmClient
 
 createCdsmClient(address: string): CdsmClient
 
@@ -228,7 +228,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| members | Array&lt;[CdsmMemberInfo](#cdsmmemberinfo)&gt; | 否 | 否 | 合作设备集合信息。 |
+| members | [CdsmMemberInfo](#cdsmmemberinfo)[] | 否 | 否 | 合作设备集合信息。 |
 
 
 ## CdsmMemberInfo

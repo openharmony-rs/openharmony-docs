@@ -256,7 +256,7 @@ struct LoadRawfilePdf {
 | pdfbackgroundcolor=color | 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
 
 
-URL示例:
+URL示例：
 ```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  

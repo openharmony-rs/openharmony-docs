@@ -35,7 +35,7 @@ type ConnectionState = nearlinkConstant.ConnectionState
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | 和远端设备的连接状态。 |
 
 
-## createClient
+## ssap.createClient
 
 createClient(address: string): Client
 
@@ -89,7 +89,7 @@ try {
 ```
 
 
-## createServer
+## ssap.createServer
 
 createServer(): Server
 
@@ -137,7 +137,7 @@ try {
 
 ## Client
 
-提供和远端设备ssap数据交互操作方法，使用前需要使用[ssap.createClient](#createclient)方法创建一个[Client](#client)实例。
+提供和远端设备ssap数据交互操作方法，使用前需要使用[ssap.createClient](#ssapcreateclient)方法创建一个[Client](#client)实例。
 
 一个应用针对一个远端设备只需要创建一次实例。
 
@@ -296,7 +296,7 @@ try {
 
 ### getServices
 
-getServices(): Promise&lt;Array&lt;Service&gt;&gt;
+getServices(): Promise&lt;Service[]&gt;
 
 获取服务端支持的服务列表。使用Promise异步回调。
 
@@ -312,7 +312,7 @@ getServices(): Promise&lt;Array&lt;Service&gt;&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[Service](#service)&gt;&gt; | Promise对象，返回服务端支持的服务列表。 |
+| Promise&lt;[Service](#service)[]&gt; | Promise对象，返回服务端支持的服务列表。 |
 
 **错误码：**
 
@@ -912,7 +912,7 @@ addService(service: Service): void
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -998,7 +998,7 @@ removeService(serviceUuid: string): void
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -1508,7 +1508,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。 |
-| properties | Array&lt;[Property](#property)&gt; | 否 | 否 | 表示服务的Property列表。 |
+| properties | [Property](#property)[] | 否 | 否 | 表示服务的Property列表。 |
 
 
 ## Property
@@ -1526,7 +1526,7 @@ try {
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。|
 | propertyUuid | string | 否 | 否 | 表示Property的UUID，数据格式同serviceUuid。 |
 | value | ArrayBuffer | 否 | 否 | 表示Property的数据值。 |
-| descriptors | Array&lt;[PropertyDescriptor](#propertydescriptor)&gt; | 否 | 是 | 表示当前Property的描述符列表。若未配置则默认不携带该字段。 |
+| descriptors | [PropertyDescriptor](#propertydescriptor)[] | 否 | 是 | 表示当前Property的描述符列表。若未配置则默认不携带该字段。 |
 | operation | number | 否 | 是 | 表示Property支持的操作方式，默认值为READABLE\|WRITE_NO_RESPONSE，即可读并可写（以无响应方式）。如要使属性支持相应的操作，需要对该字段赋值，例如赋值为：READABLE\|WRITE_NO_RESPONSE\|NOTIFY。取值范围[0, 15]，各比特位对应的操作方式详见[Operation](#operation)。 |
 
 

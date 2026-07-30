@@ -66,9 +66,9 @@ import { advertising } from '@kit.ConnectivityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| serviceUuids | Array&lt;string&gt; | 否 | 是 | 服务UUID列表。若未配置则默认不携带该字段。 |
-| manufacturerData | Array&lt;[ManufacturerData](#manufacturerdata)&gt; | 否 | 是 | 厂商数据。若未配置则默认不携带该字段。 |
-| serviceData | Array&lt;[ServiceData](#servicedata)&gt; | 否 | 是 | 服务数据。若未配置则默认不携带该字段。 |
+| serviceUuids | string[] | 否 | 是 | 服务UUID列表。若未配置则默认不携带该字段。 |
+| manufacturerData | [ManufacturerData](#manufacturerdata)[] | 否 | 是 | 厂商数据。若未配置则默认不携带该字段。 |
+| serviceData | [ServiceData](#servicedata)[] | 否 | 是 | 服务数据。若未配置则默认不携带该字段。 |
 | includeDeviceName | boolean | 否 | 是 | 指示广播数据中是否携带本机设备名。true：表示包含设备名称。false：表示不包含设备名称。默认值为false。 |
 
 
@@ -153,7 +153,7 @@ import { advertising } from '@kit.ConnectivityKit';
 | STOPPED | 2 | 表示广播已停止。 |
 
 
-## startAdvertising
+## advertising.startAdvertising
 
 startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
@@ -244,7 +244,7 @@ try {
 ```
 
 
-## stopAdvertising
+## advertising.stopAdvertising
 
 stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
@@ -300,7 +300,7 @@ try {
 ```
 
 
-## onAdvertisingStateChange
+## advertising.onAdvertisingStateChange
 
 onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): void
 
@@ -346,7 +346,7 @@ try {
 ```
 
 
-## offAdvertisingStateChange
+## advertising.offAdvertisingStateChange
 
 offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void
 

@@ -222,7 +222,7 @@ export default class EntryAbility extends UIAbility {
       // 隐藏底部导航区域
       windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
     } catch (exception) {
-      console.error('Failed to obtain isImmersiveLayout. Cause: ' + JSON.stringify(exception));
+      console.error('Failed to set status bar or navigation indicator bar invisible. Cause: ' + JSON.stringify(exception));
     }
   }
 }
@@ -253,7 +253,7 @@ export default class EntryAbility extends UIAbility {
       // 获取状态栏避让区高度
       let statusBarHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height;
     } catch (exception) {
-      console.error(`Failed to enable the listener for system avoid area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get window avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
     }
   }
 }
@@ -541,7 +541,7 @@ module.json5配置示例如下：
       console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
   } catch (exception) {
-    console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+    console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
   }
   ```
 
@@ -576,7 +576,7 @@ module.json5配置示例如下：
 若需要对隐私窗口进行截图，可使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口。
 
 ## APP退后台在多任务窗口展示时，如何实现模糊效果
-APP可以通过监听主窗口生命周期状态，并用[AppStorage]( ../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
+APP可以通过监听主窗口生命周期状态，并用[AppStorage](../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
 
 示例代码如下所示：
 

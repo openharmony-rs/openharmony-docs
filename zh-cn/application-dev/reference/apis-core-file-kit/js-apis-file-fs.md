@@ -8098,6 +8098,8 @@ copySignal.onCancel();
 
 ## ProgressListener<sup>11+</sup>
 
+type ProgressListener = (progress: Progress) => void
+
 拷贝进度监听。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
@@ -8106,10 +8108,11 @@ copySignal.onCancel();
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
 
-| 类型 | 说明 |
-| ---- | ---- |
-| (progress:[Progress](#progress11)) => void | 拷贝进度监听 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| progress | [Progress](#progress11) | 是 | 拷贝进度监听 |
 
 **示例：**
 

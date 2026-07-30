@@ -77,7 +77,6 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
    
    ``` TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-   // import { GlobalConfig } from '../pages/Index';
    import { GlobalConfig } from '../managers/SendableFreeze';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

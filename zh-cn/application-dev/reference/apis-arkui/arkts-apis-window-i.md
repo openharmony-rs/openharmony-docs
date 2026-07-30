@@ -491,8 +491,8 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值范围会报错。|
-| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值范围会报错。|
+| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms，取值为非负整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值范围会报错。|
+| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms，取值为非负整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值范围会报错。|
 
 ## MaximizeOptions
 
@@ -574,7 +574,7 @@
 
 仅对全屏应用生效。
 
-**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)且非电脑模式下可正常调用，在其他设备、[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)或电脑模式下调用不生效也不报错。
+**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)且非电脑模式下可正常调用，在其他设备、[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)或电脑模式下调用不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -584,7 +584,7 @@
 
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type             | [AnimationType](arkts-apis-window-e.md#animationtype20)                 | 否   | 否   | 窗口动画类型。|
+| type             | [AnimationType](arkts-apis-window-e.md#animationtype20)                 | 否   | 否   | 窗口动画类型，用于指定窗口启动时使用的动画效果，如淡入淡出等。|
 
 ## WindowCreateParams<sup>20+</sup>
 
@@ -599,9 +599,11 @@
 
 ## Callback<sup>15+</sup>
 
-### (data: T)<sup>15+</sup>
+Callback<T, V = void> {
 
-(data: T): V
+(data: T): V;
+
+}
 
 通用回调函数。
 
@@ -641,7 +643,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| type | [RotationChangeType](arkts-apis-window-e.md#rotationchangetype19) | 否 | 否 | 窗口旋转事件类型。 |
+| type | [RotationChangeType](arkts-apis-window-e.md#rotationchangetype19) | 否 | 否 | 窗口旋转事件类型，如窗口即将旋转、窗口旋转结束等。 |
 | orientation | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 窗口显示方向。<br>- 0表示竖屏。<br>- 1表示反向横屏。<br>- 2表示反向竖屏。<br>- 3表示横屏。<br>开发者在使用时，需要注意该方向与display对象的属性orientation含义不一致。 |
 | displayId | ArkTS-Dyn: number</br>ArkTS-Sta: long | 否 | 否 | 窗口所在屏幕Id。 |
 | displayRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 窗口所在屏幕旋转后的矩形区域大小。 |
@@ -662,7 +664,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
+| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型，用于指定窗口矩形区域使用的坐标系，如屏幕坐标系、父窗口坐标系等。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
 
 ## OrientationResult
@@ -681,7 +683,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 窗口显示方向的执行结果枚举。|
+| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 窗口显示方向的执行结果枚举，表示设置窗口显示方向的操作结果，例如生效、不生效、挂起等。 |
 
 ## SubWindowOptions<sup>11+</sup>
 

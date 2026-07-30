@@ -696,7 +696,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 参数名   | 类型                                          | 必填 | 说明                                 |
 | -------- |---------------------------------------------| ---- |------------------------------------|
-| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
+| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#tags12)。   |
 | flag     | TraceFlag                                   | 是   | 详情请见[TraceFlag](#traceflag12)。        |
 | limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，取值范围（0, 500MB]。超出范围时返回错误码401。 |
 
@@ -1278,7 +1278,7 @@ VM内存信息。
 | threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
 | cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
 
-## hidebug.tags<sup>12+</sup>
+## tags<sup>12+</sup>
 
 ### 常量
 

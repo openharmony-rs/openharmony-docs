@@ -265,7 +265,7 @@ export default class EntryAbility extends UIAbility {
         }
       });
     } catch (paramError) {
-      console.error(`error code: ${(paramError as BusinessError).code}, error code: ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -1284,7 +1284,7 @@ export default class EntryAbility extends UIAbility {
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext取消监听
-      applicationContext.offSystemConfigurationUpdated(CallBack);
+      applicationContext.offSystemConfigurationUpdated(callBack);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
@@ -2303,8 +2303,8 @@ enableDelayedProcessExit(): Promise\<void>
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
-import { hilog } from '@kit.PerformanceAnalysisKit'
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -2361,9 +2361,9 @@ disableDelayedProcessExit(): Promise\<void>
 **示例：**
 
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
-import { hilog } from '@kit.PerformanceAnalysisKit'
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {

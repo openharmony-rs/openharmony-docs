@@ -47,7 +47,7 @@ The UUID is already registered.
 
 **处理步骤**
 
-调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#destroyport)接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100021 端口注册数量超出上限
@@ -66,7 +66,7 @@ Port exceeds the upper limit.
 
 **处理步骤**
 
-调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#destroyport)接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100022 端口未注册
@@ -144,7 +144,7 @@ Invalid address.
 
 修改地址参数为正确格式，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
-正确的地址格式形如“11:22:33:AA:BB:FF”，由16进制数字字符和冒号共17个字符组成。
+正确的地址格式形如“11:22:33:AA:BB:FF”，由十六进制数字字符和冒号共17个字符组成。
 
 
 ## 36100042 数组为空
@@ -184,7 +184,7 @@ Invalid UUID.
 
 修改UUID参数为正确格式，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
-正确的UUID格式形如“FFFFFFFF-1234-5678-ABCD-000000001234”，由16进制数字字符和连字符共36个字符组成，代表128比特标识。
+正确的UUID格式形如“FFFFFFFF-1234-5678-ABCD-000000001234”，由十六进制数字字符和连字符共36个字符组成，代表128比特标识。
 
 
 ## 36100044 禁止使用星闪标准服务UUID

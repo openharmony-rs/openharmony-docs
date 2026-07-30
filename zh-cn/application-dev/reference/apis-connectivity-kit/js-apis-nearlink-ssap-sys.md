@@ -426,9 +426,9 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。 |
-| properties | Array&lt;[Property](js-apis-nearlink-ssap.md#property)&gt; | 否 | 否 | 表示服务的Property列表。 |
-| methods | Array&lt;[Method](#method)&gt; | 否 | 是 | 表示服务的方法列表。 |
-| events | Array&lt;[Event](#event)&gt; | 否 | 是 | 表示服务的事件列表。 |
+| properties | [Property](js-apis-nearlink-ssap.md#property)[] | 否 | 否 | 表示服务的Property列表。 |
+| methods | [Method](#method)[] | 否 | 是 | 表示服务的方法列表。 |
+| events | [Event](#event)[] | 否 | 是 | 表示服务的事件列表。 |
 
 
 ## Method

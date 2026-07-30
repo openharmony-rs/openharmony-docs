@@ -167,6 +167,8 @@ attributeModifier(modifier: AttributeModifier\<ScrollBarAttribute> | AttributeMo
 
 该示例为ScrollBar组件有子节点时的滚动条样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -211,11 +213,61 @@ struct ScrollBarExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Stack, StackOptions, Scroll, Scroller, Flex, FlexOptions, FlexDirection, Row, Text, TextAlign, ForEach, ScrollBar, ScrollBarOptions, ScrollBarDirection, BarState, Alignment, Margin, ScrollDirection } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ScrollBarExample {
+  private scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End } as StackOptions) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column } as FlexOptions) {
+            ForEach(this.arr, (item: number) => {
+              Row() {
+                Text(item.toString())
+                  .width('80%')
+                  .height(60)
+                  .backgroundColor('#3366CC')
+                  .borderRadius(15)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .margin({ top: 5 } as Margin)
+              }
+            // ForEach的key生成函数需显式指定返回类型string。
+            }, (item: number): string => item.toString())
+          }.margin({ right: 15 } as Margin)
+        }
+        .width('90%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto } as ScrollBarOptions) {
+          Text()
+            .width(20)
+            .height(100)
+            .borderRadius(10)
+            .backgroundColor('#C0C0C0')
+        }.width(20).backgroundColor('#ededed')
+      }
+    }
+  }
+}
+```
+
 ![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
 该示例为ScrollBar组件没有子节点时的滚动条样式。从API version 20开始，可通过[scrollBarColor](#scrollbarcolor20)设置滚动条颜色。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
@@ -258,11 +310,59 @@ struct ScrollBarExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Stack, StackOptions, Scroll, Scroller, Flex, FlexOptions, FlexDirection, Row, Text, TextAlign, ForEach, ScrollBar, ScrollBarOptions, ScrollBarDirection, BarState, Alignment, Margin, ScrollDirection, ColorMetrics } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ScrollBarExample {
+  private scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  @State scrollBarColor: ColorMetrics = ColorMetrics.rgba(24, 35, 48, 0.4);
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End } as StackOptions) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column } as FlexOptions) {
+            ForEach(this.arr, (item: number) => {
+              Row() {
+                Text(item.toString())
+                  .width('80%')
+                  .height(60)
+                  .backgroundColor('#3366CC')
+                  .borderRadius(15)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .margin({ top: 5 } as Margin)
+              }
+            // ForEach的key生成函数需显式指定返回类型string。
+            }, (item: number): string => item.toString())
+          }.margin({ right: 15 } as Margin)
+        }
+        .width('90%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto } as ScrollBarOptions)
+          .scrollBarColor(this.scrollBarColor)
+      }
+    }
+  }
+}
+```
+
 ![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 
 从API version 20开始，该示例通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。
+
+ArkTS-Dyn示例：
+
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
 
@@ -322,6 +422,71 @@ struct StickyNestedScroll {
   }
 
   aboutToAppear() {
+    for (let i = 0; i < 15; i++) {
+      this.array.push(i);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Scroll, Scroller, Column, Text, List, ListItem, ListOptions, ForEach, ScrollBar, ScrollBarOptions, BarState, Color, ColorMetrics, TextAlign, EdgeEffect, NestedScrollMode, NestedScrollOptions, Edges } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct StickyNestedScroll {
+  listScroller: Scroller = new Scroller();
+  @State array: number[] = new Array<number>();
+  @State scrollBarColor: ColorMetrics = ColorMetrics.rgba(24, 35, 48, 0.4);
+
+  build() {
+    Stack() {
+      Scroll() {
+        Column() {
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
+            .backgroundColor('#0080DC')
+            .textAlign(TextAlign.Center)
+          List({ space: 10, scroller: this.listScroller } as ListOptions) {
+            ForEach(this.array, (item: number) => {
+              ListItem() {
+                Text('item' + item)
+                  .fontSize(16)
+              }
+              .backgroundColor(Color.White)
+              .height(72)
+              .width('100%')
+              .borderRadius(12)
+            // ForEach的key生成函数需显式指定返回类型string。
+            }, (item: number): string => item.toString())
+          }
+          .scrollBar(BarState.Off)
+          .nestedScroll({
+            scrollForward: NestedScrollMode.PARENT_FIRST,
+            scrollBackward: NestedScrollMode.SELF_FIRST
+          } as NestedScrollOptions)
+          .height('100%')
+        }
+        .width('100%')
+      }
+      .edgeEffect(EdgeEffect.Spring)
+      .backgroundColor('#DCDCDC')
+      .scrollBar(BarState.Off)
+      .width('100%')
+      .height('100%')
+
+      ScrollBar({ scroller: this.listScroller } as ScrollBarOptions)
+        .position({ right: 0 } as Edges)
+        .enableNestedScroll(true)
+        .scrollBarColor(this.scrollBarColor)
+    }
+  }
+
+  aboutToAppear(): void {
     for (let i = 0; i < 15; i++) {
       this.array.push(i);
     }
