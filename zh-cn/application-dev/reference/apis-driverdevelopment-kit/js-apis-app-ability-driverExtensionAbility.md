@@ -288,7 +288,7 @@ DriverExtensionAbility不支持以下模块的引用。
 | ArkData（方舟数据管理）| [@ohos.data.distributedData (分布式数据管理)](../apis-arkdata/js-apis-distributed-data.md)  |
 | ArkData（方舟数据管理）  | [@ohos.data.distributedDataObject (分布式数据对象)](../apis-arkdata/js-apis-data-distributedobject.md)  |
 | ArkData（方舟数据管理）  | [@ohos.data.distributedKVStore (分布式键值数据库)](../apis-arkdata/js-apis-distributedKVStore.md)  |
-| ArkData（方舟数据管理）  | [@ohos.data.rdb(关系型数据库)](../apis-arkdata/js-apis-data-rdb.md)  |
+| ArkData（方舟数据管理）  | [@ohos.data.rdb（关系型数据库）](../apis-arkdata/js-apis-data-rdb.md)  |
 |<!--DelRow-->ArkData（方舟数据管理）  | [@ohos.data.relationalStore (关系型数据库)(系统接口)](../apis-arkdata/js-apis-data-relationalStore-sys.md)  |
 |<!--DelRow-->ArkUI（方舟UI框架）| [@ohos.screen (屏幕)(系统接口)](../apis-arkui/js-apis-screen-sys.md)  |
 | ArkUI（方舟UI框架）  | [@ohos.screenshot (屏幕截图)](../apis-arkui/js-apis-screenshot.md)  |
@@ -358,4 +358,4 @@ DriverExtensionAbility不支持以下模块的引用。
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.radio (网络搜索)](../apis-telephony-kit/js-apis-radio.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)  |
 | Telephony Kit（蜂窝通信服务） | [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)  |
-|<!--DelRow-->User Authentication Kit（用户认证服务）| [@ohos.userIAM.faceAuth (人脸认证)(系统接口)](../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)  |
+|<!--DelRow-->User Authentication Kit（用户认证服务）| @ohos.userIAM.faceAuth (人脸认证)(系统接口)(../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)  |
