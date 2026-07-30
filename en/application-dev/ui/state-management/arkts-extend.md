@@ -24,7 +24,7 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
 
 
 ```ts
-@Extend(UIComponentName) function functionName { ... }
+@Extend(UIComponentName) function functionName() { ... }
 ```
 
 
