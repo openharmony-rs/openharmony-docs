@@ -53,7 +53,7 @@ For details about the following error codes, see [General Error Code Description
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -162,7 +162,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a UI page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a UI page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -258,7 +258,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance that inherits from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance that inherits from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -356,7 +356,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -446,7 +446,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 >**NOTE**
 >
->In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -557,7 +557,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -676,7 +676,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -785,7 +785,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -876,7 +876,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -959,7 +959,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, the UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, the UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1050,7 +1050,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -1132,7 +1132,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1217,7 +1217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1312,7 +1312,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -1616,7 +1616,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1703,7 +1703,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. If you need to use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1892,7 +1892,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the examples in this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1999,7 +1999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -2180,7 +2180,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2274,7 +2274,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2470,7 +2470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -2653,7 +2653,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 > **NOTE**
 >
->In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance that inherits from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance that inherits from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2841,7 +2841,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2947,7 +2947,7 @@ For details about the following error codes, see [General Error Code Description
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -3043,7 +3043,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3129,7 +3129,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3224,7 +3224,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3316,7 +3316,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3422,7 +3422,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3514,7 +3514,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3598,7 +3598,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples of this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples of this document, UIAbilityContext is obtained through **this.context**, where **this** represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3696,7 +3696,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain UIAbilityContext, where **this** refers to a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain UIAbilityContext, where **this** refers to a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3785,7 +3785,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3873,7 +3873,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3949,7 +3949,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4035,7 +4035,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
->In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4285,7 +4285,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 > **NOTE**
 >
-> In the examples in this document, the UIAbilityContext is obtained through **this.context**, where **this** represents the UIAbility instance that inherits from **UIAbility**. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, the UIAbilityContext is obtained through **this.context**, where **this** represents the UIAbility instance that inherits from **UIAbility**. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4347,7 +4347,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4409,7 +4409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 
@@ -4475,7 +4475,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 > **NOTE**
 >
->In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -4536,7 +4536,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -4692,7 +4692,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 >**NOTE**
 >
->In the examples of this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+>In the examples of this document, UIAbilityContext is obtained through this.context, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -4747,7 +4747,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 > **NOTE**
 >
-> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-uiability-context-information).
+> In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 ```js
 import { contact } from '@kit.ContactsKit';
