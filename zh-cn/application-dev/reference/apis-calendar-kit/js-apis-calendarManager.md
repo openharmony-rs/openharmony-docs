@@ -1935,7 +1935,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | 名称           | 类型     | 只读    | 可选 | 说明                                                         |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
-| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，超出取值范围会导致颜色值与颜色不匹配，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。不设置时默认值为0xFF0A59F7，输入0或'#000000'时显示日历主题颜色朱彤色，输入undefined或错误值时抛异常。 |
+| color          | number \| string | 否   | 是  | Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，超出取值范围会导致颜色值与颜色不匹配，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。<br>输入0或'#000000'时显示日历主题颜色朱彤色，输入undefined或错误值时抛异常。<br>针对搭载HarmonyOS 7.0.0及以上版本的设备，默认颜色值为0xFF0A59F7。针对搭载HarmonyOS 7.0.0以下版本的设备，默认颜色为黑色。 |
 
 ## Event
 
