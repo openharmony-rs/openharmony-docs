@@ -74,8 +74,8 @@ Provides the coordinates of a point.
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | number |  No  | No  | Horizontal coordinate of a coordinate point, in pixels. The value is an integer greater than or qual to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| y    | number |  No  | No  | Vertical coordinate of a coordinate point, in pixels. The value is an integer greater than or qual to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| x    | number |  No  | No  | Horizontal coordinate of a coordinate point, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| y    | number |  No  | No  | Vertical coordinate of a coordinate point, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayId<sup>20+</sup>    | number | No   | Yes  | ID of the display to which the coordinate point belongs. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Rect<sup>9+</sup>
