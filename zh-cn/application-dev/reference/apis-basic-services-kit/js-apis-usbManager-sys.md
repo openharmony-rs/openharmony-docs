@@ -818,7 +818,6 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 async function addAccessoryRightExample() {
   // 为指定应用添加USB配件访问权限
   try {
@@ -838,7 +837,7 @@ async function addAccessoryRightExample() {
     // 为应用添加USB配件访问权限
     usbManager.addAccessoryRight(tokenId, accList[0])
     console.info(`addAccessoryRight success`)
-  } catch (error: BusinessError) {
+  } catch (error) {
     console.error(`addAccessoryRight error ${error.code}, message is ${error.message}`);
   }
 }

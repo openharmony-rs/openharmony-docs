@@ -62,14 +62,13 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 // 添加串口访问权限
 // Token ID 需要通过bundleManager.getBundleInfoForSelf接口获取，此处仅为示例占位符
 let tokenId: string = '123456';
 let deviceId: string = '/dev/ttyUSB0';
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to addPortAuthorization. Code: ${error.code}, message: ${error.message}`);
 });
 ```

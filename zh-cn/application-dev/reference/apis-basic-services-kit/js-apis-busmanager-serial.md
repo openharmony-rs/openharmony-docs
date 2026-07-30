@@ -51,7 +51,6 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 **示例：**
 
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口设备列表
 serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
   console.info(`getSerialPortList success, length: ${portList.length}`);
@@ -59,7 +58,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
     let portInfo: serial.SerialPortInfo = portList[0].portInfo;
     console.info(`portName: ${portInfo.portName}`);
   }
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get serial port list. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -127,7 +126,6 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口列表并打开第一个串口
 serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   if (portList.length === 0) {
@@ -145,7 +143,7 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   console.info('open success');
   // 串口使用完毕后需调用port.close()释放资源
   await port.close();
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to open serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -187,12 +185,11 @@ close(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 关闭串口
 port.close().then(() => {
   console.info('close success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to close serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -246,14 +243,13 @@ ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // buffer需从@kit.ArkTS导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 向串口写入数据
 let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
 port.write(writeData, 2000).then((size: int) => {
   console.info('write success, size: ' + size);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to write to serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -395,12 +391,11 @@ flush(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 刷新串口缓冲区
 port.flush().then(() => {
   console.info('flush success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to flush serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -448,12 +443,11 @@ drain(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 等待所有写请求完成
 port.drain().then(() => {
   console.info('drain success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to drain serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -501,12 +495,11 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置RTS信号
 port.setRts(true).then(() => {
   console.info('setRts success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to set RTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -548,12 +541,11 @@ getCts(): Promise&lt;boolean&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取CTS信号状态
 port.getCts().then((cts: boolean) => {
   console.info('getCts success, cts: ' + cts);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get CTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -592,12 +584,11 @@ sendBrk(): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 发送BRK信号
 port.sendBrk().then(() => {
   console.info('sendBrk success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to send BRK. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -642,12 +633,11 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置DTR信号
 port.setDtr(true).then(() => {
   console.info('setDtr success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to set DTR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -686,12 +676,11 @@ getDsr(): Promise&lt;boolean&gt;
 
 <!--code_no_check-->
 ```ts
-// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取DSR信号状态
 port.getDsr().then((dsr: boolean) => {
   console.info('getDsr success, dsr: ' + dsr);
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to get DSR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
