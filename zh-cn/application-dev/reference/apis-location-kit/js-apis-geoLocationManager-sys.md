@@ -94,7 +94,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | loiterTimeMs | number | 否 | 否 | 表示徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
 | gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 是 | 表示GNSS围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择GNSS，则为必填<br/>**系统接口**：此接口为系统接口。 |
 | cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 是 | 表示CELL围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择CELLULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
-| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 是 | 表示WiFi围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择WIFI，则为必填<br/>**系统接口**：此接口为系统接口。 |
+| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | 否 | 是 | 表示Wi-Fi围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择WIFI，则为必填<br/>**系统接口**：此接口为系统接口。 |
 | expirationMs | number | 否 | 否 | 表示围栏存活时间，单位是毫秒。取值范围为大于0。<br/>**系统接口**：此接口为系统接口。 |
 | fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | 否 | 否 | 表示用于接收围栏事件的回调函数。<br/>**系统接口**：此接口为系统接口。 |
 
@@ -127,7 +127,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- |
 | GNSS    | 1 | 表示GNSS围栏。<br/>**系统接口**：此接口为系统接口。 |
 | CELLULAR    | 2 | 表示CELLULAR围栏。<br/>**系统接口**：此接口为系统接口。 |
-| WIFI    | 4 | 表示WiFi围栏。<br/>**系统接口**：此接口为系统接口。 |
+| WIFI    | 4 | 表示Wi-Fi围栏。<br/>**系统接口**：此接口为系统接口。 |
 | BLUETOOTH    | 8 | 表示蓝牙围栏。<br/>**系统接口**：此接口为系统接口。 |
 
 
@@ -160,9 +160,9 @@ GNSS围栏信息。
 | polygon | Array&lt;[Point](#point)&gt; | 否 | 是 | 表示多边形围栏信息集合。若GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt选择POLYGON，则为必填<br/>**系统接口**：此接口为系统接口。 |
 
 
-## GnssFenceType
+跟你说商分测统一## GnssFenceType
 
-POI位置信息。
+GNSS围栏类型。
 
 **起始版本：** 26.0.0
 
@@ -189,7 +189,7 @@ CELL围栏信息。
 
 ## WifiFence
 
-WiFi围栏信息。
+Wi-Fi围栏信息。
 
 **起始版本：** 26.0.0
 
@@ -197,13 +197,13 @@ WiFi围栏信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| type | WifiFingerprintType&lt;[WifiFingerprintType](#wififingerprinttype)&gt; | 否 | 否 | 表示WiFi指纹算法类型。<br/>**系统接口**：此接口为系统接口。 |
-| wifiFeatures | Array&lt;[WirelessSignalFeature](#wirelesssignalfeature)&gt; | 否 | 否 | 表示WiFi指纹信息集合。<br/>**系统接口**：此接口为系统接口。 |
+| type | WifiFingerprintType&lt;[WifiFingerprintType](#wififingerprinttype)&gt; | 否 | 否 | 表示Wi-Fi指纹算法类型。<br/>**系统接口**：此接口为系统接口。 |
+| wifiFeatures | Array&lt;[WirelessSignalFeature](#wirelesssignalfeature)&gt; | 否 | 否 | 表示Wi-Fi指纹信息集合。<br/>**系统接口**：此接口为系统接口。 |
 
 
 ## WifiFingerprintType
 
-WiFi指纹算法类型。
+Wi-Fi指纹算法类型。
 
 **起始版本：** 26.0.0
 
@@ -217,7 +217,7 @@ WiFi指纹算法类型。
 
 ## WirelessSignalFeature
 
-WiFi指纹信息。
+Wi-Fi指纹信息。
 
 **起始版本：** 26.0.0
 
@@ -1487,7 +1487,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 
 添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
-融合围栏支持设置多种类型围栏，包括GNSS围栏、WiFi围栏、CELL围栏。
+融合围栏支持设置多种类型围栏，包括GNSS围栏、Wi-Fi围栏、CELL围栏。
 
 **起始版本：** 26.0.0
 
@@ -1561,20 +1561,20 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
   let cellFences: Array<geoLocationManager.CellFence> = [cellFence];
   // MAC地址
   let mac: Array<string> = ["FA:C4:D0:0E:BF:DF"];
-  // WiFi指纹信息
+  // Wi-Fi指纹信息
   let wifiFeature: geoLocationManager.WirelessSignalFeature = {
     rssiAvg: 1,
     rssiStandardDeviation:2.0,
     mac:mac
   };
-  // WiFi指纹信息集合
+  // Wi-Fi指纹信息集合
   let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
   // WiFi围栏请求信息
   let wifiFence: geoLocationManager.WifiFence = {
     type: geoLocationManager.WifiFingerprintType.LOCATION,
     wifiFeatures:wifiFeatures
   };
-  // WiFi围栏请求信息集合
+  // Wi-Fi围栏请求信息集合
   let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
   // 构造围栏请求参数fenceRequestParams
   let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
@@ -1596,7 +1596,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
     gnssFences: gnssFences,
     // CELL围栏信息集合,参数为可选。若fenceType选择CELLULAR，则必须填写
     cellFences: cellFences,
-    // WiFi围栏信息集合,参数为可选。若fenceType选择WIFI，则必须填写
+    // Wi-Fi围栏信息集合,参数为可选。若fenceType选择WIFI，则必须填写
     wifiFences: wifiFences,
     // 表示围栏存活时间，单位是毫秒
     expirationMs: 100000000,
