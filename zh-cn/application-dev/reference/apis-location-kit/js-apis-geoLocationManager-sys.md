@@ -1569,7 +1569,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
   };
   // Wi-Fi指纹信息集合
   let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
-  // WiFi围栏请求信息
+  // Wi-Fi围栏请求信息
   let wifiFence: geoLocationManager.WifiFence = {
     type: geoLocationManager.WifiFingerprintType.LOCATION,
     wifiFeatures:wifiFeatures
