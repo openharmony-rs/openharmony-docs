@@ -52,23 +52,25 @@
 
 当前支持使用认证控件的认证类型包括：
 
-- 锁屏口令认证
+- 锁屏口令认证。
 
-- 人脸认证
+- 人脸认证。
 
-- 指纹认证
+- 指纹认证。
 
-- 人脸+锁屏口令认证
+- 人脸+锁屏口令认证。
 
-- 指纹+锁屏口令认证
+- 指纹+锁屏口令认证。
 
-- 人脸+指纹+锁屏口令认证
+- 人脸+指纹+锁屏口令认证。
 
-- 人脸+自定义导航按键
+- 人脸+自定义导航按键。
 
-- 指纹+自定义导航按键
+- 指纹+自定义导航按键。
 
-- 人脸+指纹+自定义导航按键<sup>18+</sup>
+- 从API版本18开始，支持人脸+指纹+自定义导航按键的认证类型。
+
+<!--RP3--><!--RP3End-->
 
 ## 开发步骤
 
@@ -85,317 +87,31 @@
  发起用户认证，采用认证可信等级≥ATL3的人脸+指纹+锁屏口令认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-initiatingUserAuthentication1() {
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    // 设置认证参数
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.on('result', {
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.off('result');
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
-  }
-}
-```
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ArkTS-Sta示例：
-<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-initiatingUserAuthentication1() {
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    // 设置认证参数
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.onResult({
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          EAWorker.postToMain<void>((): void => {
-            this.result[ResultIndex.EXAMPLE_1] =
-              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
-          });
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.offResult();
-        } catch (error) {
-          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
-  }
-}
-```
 
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-initiatingUserAuthentication2() {
-  // 设置认证参数
-  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  };
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      reuseUnlockResult: reuseUnlockResult,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.on('result', {
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.off('result');
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
-  }
-}
-```
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ArkTS-Sta示例：
-<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
-
-``` TypeScript
-initiatingUserAuthentication2() {
-  // 设置认证参数
-  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  };
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      reuseUnlockResult: reuseUnlockResult,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.onResult({
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          EAWorker.postToMain<void>((): void => {
-            this.result[ResultIndex.EXAMPLE_2] =
-              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
-          });
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.offResult();
-        } catch (error) {
-          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
-  }
-}
-```
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-initiatingUserAuthentication3() {
-  // 设置认证参数
-  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-    reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
-    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  };
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      reuseUnlockResult: reuseUnlockResult,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.on('result', {
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.off('result');
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
-  }
-}
-```
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ArkTS-Sta示例：
-<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
-
-``` TypeScript
-initiatingUserAuthentication3() {
-  // 设置认证参数
-  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-    reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
-    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  };
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      reuseUnlockResult: reuseUnlockResult,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.onResult({
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          EAWorker.postToMain<void>((): void => {
-            this.result[ResultIndex.EXAMPLE_3] =
-              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
-          });
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.offResult();
-        } catch (error) {
-          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
-  }
-}
-```
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 **示例4：**
 
@@ -405,103 +121,12 @@ initiatingUserAuthentication3() {
 > 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 ArkTS-Dyn示例：
-<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-initiatingUserAuthentication4() {
-  // 设置认证参数
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-      uiContext: this.getUIContext().getHostContext()
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.on('result', {
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.off('result');
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
-  }
-}
-```
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ArkTS-Sta示例：
-<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
-
-``` TypeScript
-initiatingUserAuthentication4() {
-  // 设置认证参数
-  try {
-    const randData = getRandData();
-    if (!randData) {
-      return;
-    }
-    const authParam: userAuth.AuthParam = {
-      challenge: randData,
-      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-    };
-    // 配置认证界面
-    const widgetParam: userAuth.WidgetParam = {
-      title: resourceToString($r('app.string.title')),
-      uiContext: this.getUIContext().getHostContext()
-    };
-    // 获取认证对象
-    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully.');
-    // 订阅认证结果
-    userAuthInstance.onResult({
-      onResult: (result: userAuth.UserAuthResult) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          EAWorker.postToMain<void>((): void => {
-            this.result[ResultIndex.EXAMPLE_4] =
-              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
-          });
-          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-          userAuthInstance.offResult();
-        } catch (error) {
-          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
-        }
-      }
-    });
-    // 启动认证
-    userAuthInstance.start();
-    Logger.info('auth start successfully.');
-  } catch (error) {
-    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
-  }
-}
-```
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ## 示例代码
 
-  - [发起认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)
+  - [发起认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [发起认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
