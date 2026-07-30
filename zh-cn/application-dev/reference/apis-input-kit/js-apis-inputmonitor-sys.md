@@ -2750,7 +2750,7 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -2911,7 +2911,7 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -3044,7 +3044,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -3205,7 +3205,7 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
