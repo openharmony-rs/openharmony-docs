@@ -586,7 +586,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。</br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。</br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。</br>从API版本26.1.0开始，通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接更新通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。
+申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。</br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。</br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。</br>从API版本26.1.0开始，通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接更新通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1033,7 +1033,7 @@ export default class EntryAbility extends UIAbility {
 
 ## backgroundTaskManager.updateDataTransferProgress
 
-updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress): void;
+updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress): void
 
 更新长时任务通知。仅支持更新包含数据传输类型的长时任务通知。
 
@@ -1101,6 +1101,7 @@ export default class EntryAbility extends UIAbility {
     try {
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
+          // 申请数据传输类型长时任务
           let list: Array<string> = ['dataTransfer'];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info('Operation startBackgroundRunning succeeded');
@@ -1112,6 +1113,7 @@ export default class EntryAbility extends UIAbility {
                 wantAgent: wantAgentObj,
                 progressInfo: progress,
               }
+              // 更新通知
               backgroundTaskManager.updateDataTransferProgress(this.context, progressInfo);
               console.info('Operation updateDataTransferProgress succeeded');
             } catch(error) {
@@ -2175,5 +2177,5 @@ export default class EntryAbility extends UIAbility {
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | ---------------- | --------------------------------- | ---- | ---- | ---------------- |
 | continuousTaskId | number             | 否    | 否    | 长时任务ID。必须是存在的ID。          |
-| wantAgent        | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
+| wantAgent        | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。默认为申请长时任务时传入的wantAgent。 |
 | progressInfo     | [ProgressInfo](#progressinfo)  | 否    | 否    | 通知进度信息。 |
