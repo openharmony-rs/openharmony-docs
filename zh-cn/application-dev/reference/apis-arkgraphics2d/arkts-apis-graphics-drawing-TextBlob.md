@@ -53,12 +53,12 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -72,7 +72,7 @@ class DrawingRenderNode extends RenderNode {
     for (let i = 0; i !== length; ++i) {
       points.push({ x: i * 35, y: i * 35 });
     }
-    let textblob : drawing.TextBlob =drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    let textblob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
     canvas.drawTextBlob(textblob, 100, 100);
   }
 }
@@ -102,7 +102,7 @@ let font : drawing.Font = new drawing.Font();
 font.setSize(100);
 let textBlob = drawing.TextBlob.makeFromString(text, font, 0);
 let id = textBlob.uniqueID();
-console.info("uniqueID---------------" +id);
+console.info('uniqueID---------------' + id);
 ```
 
 ## makeFromString
@@ -133,12 +133,12 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -184,12 +184,12 @@ static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: co
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
