@@ -127,7 +127,7 @@ The integrity check verifies the digital signature of the **AuthToken** to ensur
 
 | Type                                     | Description        |
 | ----------------------------------------- | ------------ |
-| Promise\<[AuthToken](#authtoken)> | Promise object used to return the result. If the verification is successful, the parsed **AuthToken** data is returned, including the challenge value, authentication trust level, authentication type, and user ID. If the verification fails, the corresponding error code is returned.|
+| Promise\<[AuthToken](#authtoken)> | Promise used to return the result. If the verification is successful, the parsed **AuthToken** data is returned, including the challenge value, authentication trust level, authentication type, and user ID. If the verification fails, the corresponding error code is returned.|
 
 **Error codes**
 
