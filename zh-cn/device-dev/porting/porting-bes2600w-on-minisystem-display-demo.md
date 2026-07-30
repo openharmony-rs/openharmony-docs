@@ -430,7 +430,7 @@ int OhosSystemAdapterHooks(void)
 
 ### C库适配
 
-在轻量系统中，C库适配比较复杂，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](hhttps://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
+在轻量系统中，C库适配比较复杂，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
 
 ![image-20211212191013553](figures/bes2600_newlib_make_menuconfig.png)
 
