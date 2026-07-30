@@ -1436,3 +1436,122 @@ struct AlertDialogExample {
 ```
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
+
+### 示例9（设置弹窗的显示层级与顺序）
+
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的levelMode、levelUniqueId、immersiveMode和levelOrder属性，实现页面内嵌入式弹窗的层级、蒙层效果及显示顺序控制。
+
+从API version 15开始，在AlertDialogParam中新增了levelMode、levelUniqueId和immersiveMode属性。从API version 18开始，在AlertDialogParam中新增了levelOrder属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 })
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 4,
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, Margin, DialogAlignment,
+  LevelOrder, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+import { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 } as Margin)
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 4,
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-levelmode](figures/image-alert-levelmode.png)

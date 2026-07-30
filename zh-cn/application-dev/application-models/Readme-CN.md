@@ -40,7 +40,15 @@
       - [显式Want与隐式Want匹配规则](explicit-implicit-want-mappings.md)
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
-    - [组件启动规则](component-startup-rules.md)
+    - 组件启动规则<!--component-startup-rules-->
+      - [设备内组件启动规则](component-startup-rules-inner-device.md)
+      <!--Del-->
+      - [设备内组件启动规则（仅对系统应用开放）](component-startup-rules-inner-device-sys.md)
+      <!--DelEnd-->
+      - [跨设备组件启动规则](component-startup-rules-cross-device.md)
+      <!--Del-->
+      - [跨设备组件启动规则（仅对系统应用开放）](component-startup-rules-cross-device-sys.md)
+      <!--DelEnd-->
     - [获取/设置环境变量](subscribe-system-environment-variable-changes.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->

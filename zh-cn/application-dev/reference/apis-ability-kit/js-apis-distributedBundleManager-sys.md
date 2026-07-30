@@ -223,7 +223,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -331,7 +331,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -626,7 +626,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -735,7 +735,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -758,7 +758,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 

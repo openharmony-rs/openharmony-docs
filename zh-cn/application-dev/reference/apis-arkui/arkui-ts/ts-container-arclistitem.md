@@ -127,6 +127,8 @@ attributeModifier(modifier: AttributeModifier\<ArcListItemAttribute> | Attribute
 
 该示例展示了子项关闭自动缩放和开启自动缩放后的对比效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { LengthMetrics, CircleShape } from '@kit.ArkUI';
@@ -161,6 +163,62 @@ struct ArcListItemExample {
           }
           .autoScale(item % 3 == 0 || item % 5 == 0)
         }, (item: number) => item.toString())
+      }
+      .space(LengthMetrics.px(10))
+      .borderRadius(this.watchSize)
+    }
+    .width(this.watchSize)
+    .height(this.watchSize)
+  }
+
+  build() {
+    Column() {
+      this.buildList();
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Builder, Stack, Column, ForEach, Button, ButtonOptions, LengthMetrics, ButtonType, HorizontalAlign, FlexAlign } from '@ohos.arkui.component';
+import { ArcList, ArcListItem, ArkListOptions } from '@ohos.arkui.ArcList';
+import { CircleShape } from '@ohos.arkui.shape';
+
+@Entry
+@Component
+struct ArcListItemExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private watchSize: string = '466px'; // 手表默认宽高：466*466
+  private itemSize: string = '414px'; // item宽度
+
+  @Builder
+  buildList() {
+    Stack() {
+      Column() {
+      }
+      .width(this.watchSize)
+      .height(this.watchSize)
+      .clipShape(new CircleShape({ width: '100%', height: '100%' }))
+      .backgroundColor(0x707070)
+
+      ArcList({ initialIndex: 3} as ArkListOptions) {
+        ForEach(this.arr, (item: number) => {
+          ArcListItem() {
+            Button('' + item, { type: ButtonType.Capsule } as ButtonOptions)
+              .width(this.itemSize)
+              .height('70px')
+              .fontSize('40px')
+              .backgroundColor(0x17A98D)
+          }
+          .autoScale(item % 3 == 0 || item % 5 == 0)
+        // ForEach的key生成函数需显式指定返回类型string。
+        }, (item: number): string => item.toString())
       }
       .space(LengthMetrics.px(10))
       .borderRadius(this.watchSize)

@@ -48,7 +48,7 @@
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) | OH_Drawing_RoundRect | 用于描述圆角矩形。 |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) | OH_Drawing_Matrix | 定义一个矩阵，用于描述坐标变换。 |
 | [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) | OH_Drawing_ShaderEffect | 定义一个着色器，用于描述绘制内容的源颜色。 |
-| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | 定义一个阴影层，用于描述绘制内容的阴影层。 |
+| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | 定义一个阴影层，用于描述绘制内容的阴影效果。 |
 | [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) | OH_Drawing_Filter | 定义一个滤波器，用于存储颜色滤波器，蒙版滤波器和图像滤波器。 |
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) | OH_Drawing_MaskFilter | 定义蒙版滤波器。 |
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) | OH_Drawing_ColorFilter | 定义颜色滤波器，传入一个颜色并返回一个新的颜色。 |
