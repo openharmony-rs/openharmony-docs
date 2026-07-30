@@ -1,5 +1,12 @@
 # 术语
 
+<!--Kit: Camera Kit-->
+<!--Subsystem: Camera-->
+<!--Owner: @lu-daochun-->
+<!--Designer: leo_ysl-->
+<!--Tester: 77_cc-->
+<!--Adviser: @lu-daochun-->
+
 ## C
 
 ### Camera Input; 相机输入
