@@ -5741,3 +5741,17 @@ Allows a system application to access the camera together with other application
 **Supported devices**: Car
 
 **Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+
+Allows an application to manage clone preferences.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
