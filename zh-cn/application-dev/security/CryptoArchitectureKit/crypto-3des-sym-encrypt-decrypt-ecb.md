@@ -44,7 +44,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-3DES解密失败返回错误码17630001可参考[使用des3des算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用des3des算法解密时调用dofinal失败)
+3DES解密失败返回错误码17630001可参考[使用DES/3DES算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用des3des算法解密时调用dofinal失败)
 
 ## 开发示例
 

@@ -26,7 +26,7 @@
    当前单次update无长度限制，开发者可根据数据量调用update。
 
    - 当数据量较小时，可以在init完成后直接调用doFinal。
-   - 当数据量较大时，可以多次调用update，即[分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
+   - 当数据量较大时，可以多次调用update，即分段加解密，请参考[使用aes对称密钥gcm模式分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
 
 5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。注意，由于已使用update传入数据，此处data传入null。doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
@@ -46,7 +46,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（GCM模式）解密失败返回错误码17630001可参考[使用aes-gcm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-gcm算法解密时调用dofinal失败)
+AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-gcm算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
@@ -252,7 +252,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用aes-gcm算�
 
 3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（CCM模式）解密失败返回错误码17630001可参考[使用aes-ccm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ccm算法解密时调用dofinal失败)
+AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ccm算法解密时调用dofinal失败)
 
 - 异步方法示例：
   <!-- @[ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_asynchronous.ets) -->
@@ -431,7 +431,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用aes-ccm算�
 
 3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（CCM模式）解密失败返回错误码17630001可参考[使用aes-ccm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ccm算法解密时调用dofinal失败)
+AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ccm算法解密时调用dofinal失败)
 
 - 异步方法示例：
   <!-- @[new_ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_new_ccm_encryption_decryption_asynchronous.ets) -->
@@ -589,7 +589,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用aes-ccm算�
 
 3. 当解密内容长度较短时，可以省略调用update，直接调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（CBC模式）解密失败返回错误码17630001可参考[使用aes-cbc算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-cbc算法解密时调用dofinal失败)
+AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-cbc算法解密时调用dofinal失败)
 
 - 异步方法示例：
   <!-- @[cbc_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_cbc_encryption_decryption/aes_cbc_encryption_decryption_asynchronous.ets) -->
@@ -747,7 +747,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用aes-cbc算�
 
 3. 解密内容较短时，可以不调用update，直接调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（ECB模式）解密失败返回错误码17630001可参考[使用aes-ecb算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ecb算法解密时调用dofinal失败)
+AES（ECB模式）解密失败返回错误码17630001可参考[使用AES-ECB算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-ecb算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
@@ -894,7 +894,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考[使用aes-ecb算�
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-AES（GCM模式）解密失败返回错误码17630001可参考[使用aes-gcm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-gcm算法解密时调用dofinal失败)
+AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-gcm算法解密时调用dofinal失败)
 
 - 异步方法示例：
 

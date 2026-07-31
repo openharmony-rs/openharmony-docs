@@ -474,9 +474,9 @@ SM2密文参数，包括：
 
 **开发者应当对每次update和doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。**
 
-**开发示例：** [使用AES对称密钥（GCM模式）分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)
+**开发示例：** [使用aes对称密钥gcm模式分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)
 
-**开发示例：** [使用SM4对称密钥（GCM模式）分段加解密](crypto-sm4-sym-encrypt-decrypt.md#使用sm4对称密钥gcm模式分段加解密)
+**开发示例：** [使用sm4对称密钥gcm模式分段加解密](crypto-sm4-sym-encrypt-decrypt.md#使用sm4对称密钥gcm模式分段加解密)
 
 ### 非对称加解密
 
