@@ -467,8 +467,6 @@ struct RadioExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Column,
@@ -480,9 +478,9 @@ import {
   FlexAlign,
   Flex,
   FlexDirection,
-  ItemAlign
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  ItemAlign,
+  State
+} from '@kit.ArkUI';
 
 // xxx.ets
 @Entry
@@ -591,8 +589,6 @@ struct RadioExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Column,
@@ -606,9 +602,9 @@ import {
   ItemAlign,
   Image,
   $r,
-  RadioIndicatorType
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  RadioIndicatorType,
+  State
+} from '@kit.ArkUI';
 
 // xxx.ets
 @Entry
@@ -617,7 +613,7 @@ struct RadioExample {
   @Builder
   indicatorBuilder() {
     // $r('app.media.star')需要替换为开发者所需的图像资源文件。
-    Image($r("app.media.star"))
+    Image($r('app.media.star'))
   }
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -729,8 +725,6 @@ struct refreshExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Column,
@@ -755,9 +749,9 @@ import {
   ButtonType,
   RowOptions,
   ColumnOptions,
-  Circle
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Circle,
+  State
+} from '@kit.ArkUI';
 
 type BuilderRadio = @Builder(config: RadioConfiguration) => void
 
@@ -781,7 +775,7 @@ function buildRadio(config: RadioConfiguration) {
     Circle({ width: 50, height: 50 })
       .stroke(Color.Black)
       .fill(config.checked ? (config.contentModifier as MyRadioStyle).selectedColor : Color.White)
-    Button(config.checked ? "off" : "on")
+    Button(config.checked ? 'off' : 'on')
       .width(100)
       .type(config.checked ? (config.contentModifier as MyRadioStyle).type : ButtonType.Normal)
       .backgroundColor('#2787D9')
