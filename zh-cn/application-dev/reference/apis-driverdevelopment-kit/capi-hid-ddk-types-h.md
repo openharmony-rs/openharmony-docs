@@ -31,7 +31,7 @@
 | [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | 事件类型编码数组，用于存储HID设备支持的事件类型信息。 |
 | [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | 键值属性编码数组，用于存储HID设备支持的键值编码信息。 |
 | [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md)       | Hid_AbsAxesArray | 绝对坐标属性数组，用于存储HID设备的多个绝对坐标轴的属性信息，支持描述如触摸屏、游戏摇杆等输入设备的坐标特征，适用于需要精确读取和处理多维输入数据的驱动开发场景，例如在手柄、触摸板等输入设备中记录轴位数据。 |
-| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | 相对坐标属性数组，用于存储HID设备支持的相对坐标属性信息。 |
+| [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | 相对坐标属性编码数组，用于存储HID设备支持的相对坐标属性信息。 |
 | [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | 其他特殊事件属性数组，用于存储HID设备支持的特殊事件信息。 |
 | [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | 设备事件属性，包括事件类型、键值、绝对坐标、相对坐标等各类事件属性编码及取值范围。用于HID设备的属性配置，适用于需要精细化管理输入事件的场景。使用结构体前，需根据HID设备规范初始化所有成员变量。 |
 | [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标识信息。开发者可以通过此结构体识别和区分不同的HID设备，通常用于设备识别、设备匹配、设备过滤等场景。 |
@@ -187,21 +187,21 @@ enum Hid_KeyCode
 | HID_KEY_COMMA = 51 | 键“,”。 |
 | HID_KEY_PERIOD = 52 | 键“.”。 |
 | HID_KEY_RIGHT_SHIFT = 54 | 键右shift。 |
-| HID_KEY_NUMPAD_0 = 82 | 数字键“0”。 |
-| HID_KEY_NUMPAD_1 = 79 | 数字键“1”。 |
-| HID_KEY_NUMPAD_2 = 80 | 数字键“2”。 |
-| HID_KEY_NUMPAD_3 = 81 | 数字键“3”。 |
-| HID_KEY_NUMPAD_4 = 75 | 数字键“4”。 |
-| HID_KEY_NUMPAD_5 = 76 | 数字键“5”。 |
-| HID_KEY_NUMPAD_6 = 77 | 数字键“6”。 |
-| HID_KEY_NUMPAD_7 = 71 | 数字键“7”。 |
-| HID_KEY_NUMPAD_8 = 72 | 数字键“8”。 |
-| HID_KEY_NUMPAD_9 = 73 | 数字键“9”。 |
-| HID_KEY_NUMPAD_DIVIDE = 70 | 数字小键盘斜杠键。 |
-| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字小键盘上的星号键（*）。 |
-| HID_KEY_NUMPAD_SUBTRACT = 74 | 数字键“-”。 |
-| HID_KEY_NUMPAD_ADD = 78 | 数字键“+”。 |
-| HID_KEY_NUMPAD_DOT = 83 | 数字键“.”。 |
+| HID_KEY_NUMPAD_0 = 82 | 数字小键盘的“0”键。 |
+| HID_KEY_NUMPAD_1 = 79 | 数字小键盘的“1”键。 |
+| HID_KEY_NUMPAD_2 = 80 | 数字小键盘的“2”键。 |
+| HID_KEY_NUMPAD_3 = 81 | 数字小键盘的“3”键。 |
+| HID_KEY_NUMPAD_4 = 75 | 数字小键盘的“4”键。 |
+| HID_KEY_NUMPAD_5 = 76 | 数字小键盘的“5”键。 |
+| HID_KEY_NUMPAD_6 = 77 | 数字小键盘的“6”键。 |
+| HID_KEY_NUMPAD_7 = 71 | 数字小键盘的“7”键。 |
+| HID_KEY_NUMPAD_8 = 72 | 数字小键盘的“8”键。 |
+| HID_KEY_NUMPAD_9 = 73 | 数字小键盘的“9”键。 |
+| HID_KEY_NUMPAD_DIVIDE = 70 | 数字小键盘的“/”键。 |
+| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字小键盘的“*”键。 |
+| HID_KEY_NUMPAD_SUBTRACT = 74 | 数字小键盘的“-”键。 |
+| HID_KEY_NUMPAD_ADD = 78 | 数字小键盘的“+”键。 |
+| HID_KEY_NUMPAD_DOT = 83 | 数字小键盘的“.”键。 |
 | HID_KEY_SYSRQ = 99 | 键打印屏幕。 |
 | HID_KEY_DELETE = 111 | 键删除。 |
 | HID_KEY_MUTE = 113 | 键静音。 |
@@ -265,10 +265,10 @@ enum Hid_AbsAxes
 | HID_ABS_RX = 0x03 | 右模拟摇杆的 X 轴。 |
 | HID_ABS_RY = 0x04 | 右模拟摇杆的 Y 轴。 |
 | HID_ABS_RZ = 0x05 | 右模拟摇杆的 Z 轴。 |
-| HID_ABS_THROTTLE = 0x06 | 油门。 |
-| HID_ABS_RUDDER = 0x07 | 舵。 |
+| HID_ABS_THROTTLE = 0x06 | 油门控制。 |
+| HID_ABS_RUDDER = 0x07 | 方向舵。 |
 | HID_ABS_WHEEL = 0x08 | 滚轮。 |
-| HID_ABS_GAS = 0x09 | 气。 |
+| HID_ABS_GAS = 0x09 | 油门踏板。 |
 | HID_ABS_BRAKE = 0x0a | 制动。 |
 | HID_ABS_HAT0X = 0x10 | HAT0X，游戏手柄或操纵器的方向键X轴，表示水平方向的倾斜或旋转角度。 |
 | HID_ABS_HAT0Y = 0x11 | HAT0Y，游戏手柄或操纵器的方向键Y轴，表示垂直方向的倾斜或旋转角度。 |
