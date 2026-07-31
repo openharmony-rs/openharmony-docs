@@ -52,7 +52,7 @@ LazyDynamicLayout(algorithm: LazyLayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LazyLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1) | 是 | 指定懒加载动态布局组件的布局算法。|
+| algorithm | [LazyLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1) | 是 | 指定懒加载动态布局组件的布局算法。需传入LazyLayoutAlgorithm类型的实例，可通过继承[LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)自定义测量和布局逻辑。自定义算法中获取子组件或子组件总数时，需分别使用[ExpandMode.LAZY_NOT_EXPAND](../js-apis-arkui-frameNode.md#expandmode15)和[ChildrenCountMode.ALL_NOT_EXPAND](../js-apis-arkui-frameNode.md#childrencountmode)，避免全量加载导致懒加载失效。|
 
 ## 属性
 
@@ -71,7 +71,7 @@ LazyDynamicLayout(algorithm: LazyLayoutAlgorithm)
 
 onVisibleIndexesChange(callback: [Callback](ts-types.md#callback12)&lt;number[]&gt; | undefined)
 
-设置onVisibleIndexesChange回调函数。当LazyDynamicLayout首次布局完成或在其父可滚动组件可视区域内的子组件的索引值发生变化时触发回调，返回可视区域内子组件的索引值列表。
+设置onVisibleIndexesChange回调函数。当LazyDynamicLayout可视区域内子组件索引列表发生变化时触发回调，返回可视区域内子组件索引列表。
 
 **起始版本：** 26.0.0
 
@@ -89,7 +89,7 @@ onVisibleIndexesChange(callback: [Callback](ts-types.md#callback12)&lt;number[]&
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](ts-types.md#callback12)&lt;number[]&gt;&nbsp;\|&nbsp;undefined | 是  | LazyDynamicLayout在其父可滚动组件可视区域内子组件的索引值发生变化时触发的回调函数。返回可视区域内子组件的索引数组。入参为undefined时，取消监听。 |
+| callback  | [Callback](ts-types.md#callback12)&lt;number[]&gt;&nbsp;\|&nbsp;undefined | 是  | 当LazyDynamicLayout可视区域内子组件索引列表发生变化时触发的回调函数。返回可视区域内子组件索引列表。入参为undefined时，取消监听。 |
 
 ## 示例
 
@@ -441,8 +441,10 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 
   public popData(): void {
-    this.dataArray.pop();
-    this.notifyDataDelete(this.dataArray.length);
+    if (this.dataArray.length > 0) {
+      this.dataArray.pop();
+      this.notifyDataDelete(this.dataArray.length);
+    }
   }
 
   public clearData(): void {

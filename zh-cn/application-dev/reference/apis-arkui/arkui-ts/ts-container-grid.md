@@ -64,8 +64,8 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 | 参数名   | 类型                                    | 必填 | 说明                                                     |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
+| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项，用于配置GridItem跨行跨列等布局信息。不传入时，Grid按照rowsTemplate、columnsTemplate等常规属性以及GridItem自身属性进行布局，不启用GridLayoutOptions提供的布局选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## GridLayoutOptions<sup>10+</sup>对象说明
 
@@ -88,7 +88,7 @@ Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对�
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)和[滚动组件通用属性](ts-container-scrollable-common.md#属性)外，还支持以下属性：
-> **说明：** 
+> **说明：**
 >
 > Grid组件使用通用属性[clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12)和通用属性[clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18)时默认值都为true。
 >
@@ -127,7 +127,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -157,11 +157,11 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是   | 当前网格组件布局列的数量。 |
+| value | ArkTS-Dyn: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是 | 当前网格组件布局列的数量。value为string类型时，表示固定列数或repeat函数形式；value为ItemFillPolicy类型时，根据断点自动确定列数。 |
 
 ### rowsTemplate
 
@@ -194,7 +194,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -250,11 +250,11 @@ ArkTS-Sta: columnsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是   | 列与列的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是 | 列与列的间距。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### rowsGap
 
@@ -274,11 +274,11 @@ ArkTS-Sta: rowsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是   | 行与行的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length)  <br/>ArkTS-Sta: [Length](ts-types.md#length)  \| undefined | 是 | 行与行的间距。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBar
 
@@ -298,7 +298,7 @@ ArkTS-Sta: scrollBar(value: BarState | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -320,7 +320,7 @@ scrollBarColor(value: Color | number | string)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -344,7 +344,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -356,7 +356,7 @@ ArkTS-Dyn: scrollBarWidth(value: number | string)
 
 ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的高度，则滚动条的宽度会变为默认值。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的可视尺寸，则滚动条的宽度会变为默认值4vp。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -368,11 +368,11 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是 | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：[0, +∞)，设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarWidth
 
@@ -380,7 +380,7 @@ ArkTS-Dyn: scrollBarWidth(value: number | string | Resource)
 
 ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
-设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的高度，则滚动条的宽度会变为4vp。支持Resource资源类型。
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的可视尺寸，则滚动条的宽度会变为默认值4vp。支持Resource资源类型。
 
 未通过该接口设置时，设置滚动条的宽度为4vp。
 
@@ -394,7 +394,7 @@ ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -407,9 +407,9 @@ ArkTS-Dyn: cachedCount(value: number)
 
 ArkTS-Sta: cachedCount(value: int | undefined)
 
-设置预加载的GridItem的数量，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。<!--Del-->具体使用可参考[减少应用白块说明](../../../performance/arkts-performance-improvement-recommendation.md#减少应用滑动白块)。<!--DelEnd-->
+设置主轴方向前后两侧分别预加载的网格行/列数，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。<!--Del-->具体使用可参考[减少应用白块说明](../../../performance/arkts-performance-improvement-recommendation.md#减少应用滑动白块)。<!--DelEnd-->
 
-设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。
 
 [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)超出显示和缓存范围的GridItem会被释放。
 
@@ -421,7 +421,7 @@ ArkTS-Sta: cachedCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -434,9 +434,9 @@ ArkTS-Dyn: cachedCount(count: number, show: boolean)
 
 ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
-设置预加载的GridItem数量，并配置是否显示预加载节点。
+设置主轴方向前后两侧分别预加载的网格行/列数，并配置是否显示预加载节点，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。
 
-设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -448,7 +448,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -464,7 +464,11 @@ ArkTS-Sta: editMode(value: boolean | undefined)
 
 设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部[GridItem](ts-container-griditem.md)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -472,7 +476,7 @@ ArkTS-Sta: editMode(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
@@ -486,7 +490,11 @@ ArkTS-Sta: layoutDirection(value: GridDirection | undefined)
 
 设置布局的主轴方向。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,7 +502,7 @@ ArkTS-Sta: layoutDirection(value: GridDirection | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                     | 必填 | 说明                                           |
 | ------ | ---------------------------------------- | ---- | ---------------------------------------------- |
@@ -507,6 +515,10 @@ ArkTS-Dyn: maxCount(value: number)
 ArkTS-Sta: maxCount(value: int | undefined)
 
 设置可显示的最大行数或列数。设置为小于1的值时，按默认值显示。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 当layoutDirection是Row/RowReverse时，表示可显示的最大列数。
 
@@ -522,11 +534,11 @@ ArkTS-Sta: maxCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int  \| undefined | 是   | 可显示的最大行数或列数。<br/>默认值：Infinity<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number <br/>ArkTS-Sta: int  \| undefined | 是 | 可显示的最大行数或列数。<br/>默认值：Infinity<br/>取值范围：[1, +∞)，设置为小于1的值时，按默认值Infinity处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### minCount<sup>8+</sup>
 
@@ -535,6 +547,10 @@ ArkTS-Dyn: minCount(value: number)
 ArkTS-Sta: minCount(value: int | undefined)
 
 设置可显示的最小行数或列数。设置为小于1的值时，按默认值显示。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 当layoutDirection是Row/RowReverse时，表示可显示的最小列数。
 
@@ -550,11 +566,11 @@ ArkTS-Sta: minCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: number<br/> ArkTS-Sta: int&nbsp;\|&nbsp;undefined | 是   | 可显示的最小行数或列数。<br/>默认值：1<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number<br/> ArkTS-Sta: int&nbsp;\|&nbsp;undefined | 是 | 可显示的最小行数或列数。<br/>默认值：1<br/>取值范围：[1, +∞)，设置为小于1的值时，按默认值1处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### cellLength<sup>8+</sup>
 
@@ -563,6 +579,10 @@ ArkTS-Dyn: cellLength(value: number)
 ArkTS-Sta: cellLength(value: double | undefined)
 
 设置一行的高度或者一列的宽度。
+
+> **说明：**
+>
+> 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
 当layoutDirection是Row/RowReverse时，表示一行的高度。
 
@@ -576,11 +596,11 @@ ArkTS-Sta: cellLength(value: double | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------- |
-| value  | ArkTS-Dyn: number<br/> ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 一行的高度或者一列的宽度。<br/>默认值：第一个元素的大小<br/>单位：vp<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值显示。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number<br/> ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是 | 一行的高度或者一列的宽度。<br/>默认值：当layoutDirection是Row/RowReverse时，为首个GridItem的高度；当layoutDirection是Column/ColumnReverse时，为首个GridItem的宽度。<br/>单位：vp <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### multiSelectable<sup>8+</sup>
 
@@ -598,7 +618,7 @@ ArkTS-Sta: multiSelectable(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -622,7 +642,7 @@ supportAnimation动画效果参考[示例5（Grid拖拽场景）](#示例5grid�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                             |
 | ------ | ------- | ---- | -------------------------------- |
@@ -644,7 +664,7 @@ ArkTS-Sta: edgeEffect(value: EdgeEffect | undefined, options?: EdgeEffectOptions
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -669,13 +689,13 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
-> **说明：** 
+> **说明：**
 >
 > 组件无法通过鼠标按下拖动操作进行滚动。
 
@@ -697,11 +717,11 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/> ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)&nbsp;\|&nbsp;undefined | 是   | 嵌套滚动选项。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/> ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)&nbsp;\|&nbsp;undefined | 是 | 嵌套滚动选项，用于设置Grid组件与父组件的嵌套滚动联动行为。<br/>取值为undefined时，按默认值处理。 |
 
 ### friction<sup>10+</sup>
 
@@ -721,7 +741,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                        |
 | ------ | ---------------------------------------------------- | ---- | ----------------------------------------------------------- |
@@ -745,7 +765,7 @@ ArkTS-Sta: alignItems(alignment: GridItemAlignment | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -769,7 +789,7 @@ ArkTS-Sta: focusWrapMode(mode: FocusWrapMode | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -793,7 +813,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -815,11 +835,11 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。<br/>true表示支持空分支节点；false表示不支持空分支节点。<br/>值为undefined时，按false处理。 |
 
 ### editModeOptions<sup>23+</sup>
 
@@ -841,7 +861,7 @@ editModeOptions(options?: EditModeOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项。|
+| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项，用于配置Grid编辑模式下的多选聚拢动画、预览角标、多选样式、双指滑动多选等行为。需要调整上述行为时传入；不传入时，各选项使用EditModeOptions对象说明中的默认值。 |
 
 ### enableEditMode
 
@@ -887,7 +907,7 @@ GridItem的对齐方式枚举。
 | STRETCH |  1  | 以一行中的最高的GridItem作为其他GridItem的高度。 |
 
 
-> **说明：** 
+> **说明：**
 >
 > 1、只有可滚动的Grid中，设置STRETCH参数会生效，其他场景不生效。<br/>
 > 2、在Grid的一行中，如果每个GridItem都是大小规律的（只占一行一列），设置STRETCH参数会生效，存在跨行或跨列的GridItem的场景不生效。<br/>
@@ -935,7 +955,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -967,7 +987,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
@@ -991,7 +1011,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                  | 必填 | 说明           |
 | ------ | ------------------------------------- | ---- | -------------- |
@@ -1005,13 +1025,71 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 拖拽在GridItem范围内移动时触发。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名      | 类型                                  | 必填 | 说明           |
+| ----------- | ------------------------------------- | ---- | -------------- |
+| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
+| itemIndex   | number                                | 是   | 拖拽起始位置，表示被拖拽的GridItem在Grid中的索引值。 |
+| insertIndex | number                                | 是   | 当前拖拽插入位置，表示GridItem在拖拽移动过程中的目标插入索引值。 |
+
+### onItemDragLeave<sup>8+</sup>
+
+onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
+
+拖拽离开GridItem时触发。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                                  | 必填 | 说明                       |
+| --------- | ------------------------------------- | ---- | -------------------------- |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
+| itemIndex | number                                | 是   | 拖拽离开的GridItem索引值。 |
+
+### onItemDrop<sup>8+</sup>
+
+onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void)
+
+绑定该事件的GridItem可作为拖拽释放目标，当GridItem停止拖拽时触发。
+
+当拖拽释放位置在GridItem之内时，isSuccess会返回true；在GridItem之外时，isSuccess会返回false。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名      | 类型                                  | 必填 | 说明           |
+| ----------- | ------------------------------------- | ---- | -------------- |
+| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
+| itemIndex   | number                                | 是   | 拖拽起始位置。 |
+| insertIndex | number                                | 是   | 拖拽插入位置。 |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的GridItem之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的GridItem之内；false：表示拖拽释放位置在设置了onItemDrop的GridItem之外。  |
+
+### onScrollBarUpdate<sup>10+</sup>
+
+onScrollBarUpdate(event: (index: number, offset: number) => ComputedBarAttribute)
+
+在Grid每帧布局结束时触发，可通过该回调设置滚动条的位置及长度。
+
+该接口只用作设置Grid的滚动条位置，不建议开发者在此接口中做业务逻辑处理。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1033,7 +1111,7 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1059,7 +1137,7 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1085,7 +1163,7 @@ ArkTS-Sta: onScrollBarUpdate(event: ((index: int, offset: double) => ComputedBar
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1097,7 +1175,7 @@ onReachStart(event: () => void)
 
 网格到达起始位置时触发。
 
-Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Grid边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹回起始位置时再触发一次。
+Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Grid边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹返回起始位置时再触发一次。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1119,9 +1197,9 @@ Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Gri
 
 onReachEnd(event: () => void)
 
-网格到达末尾位置时触发。不满一屏并且最后一个子组件末端在Grid内时触发。
+网格到达末尾位置时触发。当网格内容不满一屏，并且最后一个子组件末端在Grid内时触发。
 
-Grid边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
+Grid边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹返回末尾位置时再触发一次。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1169,7 +1247,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
@@ -1223,7 +1301,7 @@ onScrollStop(event: () => void)
 | ------ | ------ | ------ | ------|
 | event | () => void | 是 | 网格滑动停止时触发的回调。 |
 
-### onWillScroll<sup>23+</sup> 
+### onWillScroll<sup>23+</sup>
 
 onWillScroll(handler: OnWillScrollCallback | undefined)
 
@@ -1247,7 +1325,7 @@ onWillScroll(handler: OnWillScrollCallback | undefined)
 | ------ | ------ | ------ | ------|
 | handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | Grid滑动前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
-### onDidScroll<sup>23+</sup> 
+### onDidScroll<sup>23+</sup>
 
 onDidScroll(handler: OnScrollCallback | undefined)
 
@@ -1308,7 +1386,7 @@ attributeModifier(modifier: AttributeModifier\<GridAttribute> | AttributeModifie
 | modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>GridAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ### onScroll<sup>(deprecated)</sup>
-onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void) 
+onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void)
 
 网格滑动时触发。
 
@@ -1377,7 +1455,7 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onWillScroll事件的回调函数。 |
+| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onWillScroll事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ### setOnDidScroll<sup>19+</sup>
 
@@ -1401,7 +1479,7 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onDidScroll事件的回调函数。 |
+| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | 是   | onDidScroll事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ### setOnScrollIndex<sup>19+</sup>
 
@@ -1425,7 +1503,7 @@ setOnScrollIndex(callback: OnGridScrollIndexCallback | undefined): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnGridScrollIndexCallback](#ongridscrollindexcallback19)&nbsp;\|&nbsp;undefined | 是   | onScrollIndex事件的回调函数。 |
+| callback  | [OnGridScrollIndexCallback](#ongridscrollindexcallback19)&nbsp;\|&nbsp;undefined | 是   | onScrollIndex事件的回调函数。传入undefined时，会重置事件回调。 |
 
 ## OnGridScrollIndexCallback<sup>19+</sup>
 
@@ -1671,7 +1749,7 @@ export class GridDataSource implements IDataSource {
       listener.onDataMove(from, to);
     })
   }
-  
+
   // 重新加载所有数据
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
@@ -2485,7 +2563,7 @@ struct GridExample {
 3.  在[onItemDrop](#onitemdrop8)中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](#onitemdrop8)中完成交换数组位置逻辑。
 4.  设置属性`supportAnimation(true)`支持动画。
 
-> **说明：** 
+> **说明：**
 >
 > 预览器窗口不支持显示拖拽跟手。
 
@@ -3807,7 +3885,7 @@ struct GridScrollToIndexSample {
     let list: string[] = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        list.push((i * 5 + j  + 1).toString());
+        list.push((i * 5 + j + 1).toString());
       }
     }
     this.numbers =  new GridDataSource(list);
@@ -5763,7 +5841,7 @@ struct GridExample {
           this.enableEditMode = !this.enableEditMode;
         })
         Button('TwoFinger: ' + this.enableTwoFingerSelect).onClick(() => {
-          this.enableTwoFingerSelect = !this.enableTwoFingerSelect
+          this.enableTwoFingerSelect = !this.enableTwoFingerSelect;
         })
       }
       .margin({
