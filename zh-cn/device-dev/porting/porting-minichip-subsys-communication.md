@@ -20,7 +20,7 @@ group("wifi") {
 }
 ```
 
-从中可以看到厂商适配Wi-Fi相关接口的.h头文件存放目录应为“foundation/communication/wifi_lite/interfaces/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”。需要厂商适配的Wi-Fi接口见表1 、表2 和表3，蓝牙接口见表4和表5。
+从中可以看到厂商适配Wi-Fi相关接口的.h头文件存放目录应为“foundation/communication/wifi_lite/interfaces/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”。需要厂商适配的Wi-Fi接口见表1、表2和表3，蓝牙接口见表4和表5。
 
   **表1** wifi_device.h
 
