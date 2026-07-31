@@ -43,7 +43,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-SM4（CBC模式）解密失败返回错误码17630001可参考[使用sm4-ecbcbc算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
+SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
@@ -173,7 +173,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用sm4-ecbcbc�
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-SM4（CBC模式）解密失败返回错误码17630001可参考[使用sm4-ecbcbc算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
+SM4（CBC模式）解密失败返回错误码17630001可参考[使用SM4-ECB/CBC算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-ecbcbc算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
@@ -350,7 +350,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考[使用sm4-ecbcbc�
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-SM4（GCM模式）解密失败返回错误码17630001可参考[使用sm4-gcm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
+SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
@@ -558,7 +558,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考[使用sm4-gcm算�
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-SM4（GCM模式）解密失败返回错误码17630001可参考[使用sm4-gcm算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
+SM4（GCM模式）解密失败返回错误码17630001可参考[使用SM4-GCM算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用sm4-gcm算法解密时调用dofinal失败)
 
 - 异步方法示例：
 

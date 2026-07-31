@@ -11,7 +11,7 @@
 
 对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-encryption-decryption.md#chacha20)。
 
-## 开发步骤
+## 使用ChaCha20对称密钥加解密
 
 **创建对象**
 
@@ -187,9 +187,7 @@
   }
   ```
 
-# 使用ChaCha20对称密钥（Poly1305模式）加解密(ArkTS)
-
-## 开发步骤
+## 使用ChaCha20对称密钥（Poly1305模式）加解密
 
 **创建对象**
 
@@ -227,7 +225,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
-ChaCha20（Poly1305模式）解密失败返回错误码17630001可参考[使用chacha20-poly1305算法解密时调用dofinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用chacha20-poly1305算法解密时调用dofinal失败)
+ChaCha20（Poly1305模式）解密失败返回错误码17630001可参考[使用ChaCha20-Poly1305算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用chacha20-poly1305算法解密时调用dofinal失败)
 
 - 异步方法示例：
 
