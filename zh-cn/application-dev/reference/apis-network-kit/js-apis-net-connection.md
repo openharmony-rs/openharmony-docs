@@ -2717,7 +2717,7 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info('Succeeded to getDefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
     console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
@@ -3478,7 +3478,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get addresses by name. Code:${error.code}, message:${error.message}`);
+    console.error(`Failed to get addresses by name. Code:${err.code}, message:${err.message}`);
   });
 });
 ```
