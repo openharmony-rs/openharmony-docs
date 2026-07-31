@@ -1878,7 +1878,7 @@ struct Index {
 
 ### When LazyForEach and @ObjectLink Are Used Together, the UI Is Not Refreshed After the Array Data Is Replaced
 
-When the array of the class decorated by @Observed is expanded by [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md), the UI may not be refreshed after the array data is replaced. After the array data is changed, onDataChange needs to be called to instruct the LazyForEach component to rebind the status variable. Otherwise, the preceding problem occurs.
+When the array of the class decorated by @Observed is expanded by [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md), the UI may not be refreshed after the array data is replaced. After the array data is changed, onDataChange needs to be called to instruct the LazyForEach component to rebind the state variable. Otherwise, the preceding problem occurs.
 
 **Incorrect Usage**
 

@@ -8,7 +8,7 @@
 
 Freezing a custom component is designed to optimize the performance of complex UI pages, especially for scenarios where multiple page stacks, long lists, or grid layouts are involved. When a state variable is bound to multiple UI components, the change of the state variable may trigger a large number of component updates. As a result, the page freezes and the response is delayed. To improve the refresh performance of such heavy-load UIs, you are advised to use the custom component freezing function.
 
-The component freezing function is a performance optimization mechanism. It freezes the refresh capability of components in the inactive state. When a component is in the inactive state, the UI of the component is not re-rendered even if the status variable bound to the component changes. This reduces the refresh load in complex UI scenarios.
+The component freezing function is a performance optimization mechanism. It freezes the refresh capability of components in the inactive state. When a component is in the inactive state, the UI of the component is not re-rendered even if the state variable bound to the component changes. This reduces the refresh load in complex UI scenarios.
 
 Before reading this topic, you are advised to read [Creating a Custom Component](./arkts-create-custom-components.md) to learn about the basic syntax.
 
@@ -128,18 +128,18 @@ struct PageTwo {
 
 In the preceding example:
 
-1. When **first page storageLink + 1** is clicked, the storageLink status variable changes, and the first method registered by [@Watch](./arkts-watch.md) is called.
+1. When **first page storageLink + 1** is clicked, the storageLink state variable changes, and the first method registered by [@Watch](./arkts-watch.md) is called.
 
 2. When **go to next page** on page 1 is clicked, page 2 is displayed. Page 1 is hidden, and its status changes from active to inactive.
 
-3. When **this.storageLink2 += 2** is clicked on page 2, only the second method registered by @Watch on page 2 is called back because the status variable of page 1 is frozen.
+3. When **this.storageLink2 += 2** is clicked on page 2, only the second method registered by @Watch on page 2 is called back because the state variable of page 1 is frozen.
 
-4. When **back** on page 2 is clicked, page 2 is destroyed, the status of page 1 changes from inactive to active, the status variable frozen in inactive is refreshed, and the first method registered by @Watch on page 1 is called again.
+4. When **back** on page 2 is clicked, page 2 is destroyed, the status of page 1 changes from inactive to active, the state variable frozen in inactive is refreshed, and the first method registered by @Watch on page 1 is called again.
 
 
 ### TabContent
 
-Freezes the TabContent that is currently invisible in Tabs. Modifying the status variable does not trigger the update of the frozen component.
+Freezes the TabContent that is currently invisible in Tabs. Modifying the state variable does not trigger the update of the frozen component.
 
 Note that when the tab is rendered for the first time, only the TabContent that is being displayed is created. After all TabContents are switched, all TabContents are created.
 
@@ -214,7 +214,7 @@ In the preceding example:
 
 ### LazyForEach
 
-Freezes the custom components cached in LazyForEach. Modifying status variables does not trigger the update of the cache components.
+Freezes the custom components cached in LazyForEach. Modifying state variables does not trigger the update of the cache components.
 <!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
 
 ``` TypeScript

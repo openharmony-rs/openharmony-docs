@@ -153,7 +153,7 @@ PersistentStorage.persistProp('aProp', 48): A property with the name **aProp** a
 
 ### Accessing a Property in AppStorage After PersistentStorage
 
-If you do not want to overwrite the values saved in PersistentStorage during the previous application run, make sure any access to properties in AppStorage is made after a call to a PersistentStorage API.
+You can first determine whether to overwrite the value previously saved in PersistentStorage. If overwriting is required,  call the AppStorage API to modify it; if not, avoid calling the AppStorage API.
 
 <!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 

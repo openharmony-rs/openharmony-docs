@@ -1498,6 +1498,10 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值会返回16000050错误码。
+
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1513,7 +1517,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | number | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | number | 否 | 预加载应用分身的appIndex。 |
+| appIndex | number | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
 
 **返回值：**
 

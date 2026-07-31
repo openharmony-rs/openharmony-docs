@@ -23,7 +23,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
 
   - The member attributes of the current class cannot be modified. @Trace observes class attributes and dynamically modifies the attributes of the class. This behavior is not allowed in the class decorated with [@Sendable](../../arkts-utils/arkts-sendable.md#sendable-decorator). In this case, you can use **makeObserved**.
 
-  - Anonymous object returned by API or JSON.parse does not have a class declaration. In this scenario, you cannot use @Trace to mark that the current attribute, therefore, **makeObserved** can be used instead.
+  - Anonymous object returned by **interface** or **JSON.parse** does not have a class declaration. In this scenario, you cannot use @Trace to mark that the current attribute. Therefore, **makeObserved** can be used instead.
 
 
 - To use the **makeObserved** API, you need to import UIUtils.
@@ -146,7 +146,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
 
 ## Supported Types and Observed Changes
 
-### Material
+### Supported Types
 
 - Classes that are not decorated with [\@Observed](./arkts-observed-and-objectlink.md) or [\@ObservedV2](./arkts-new-observedV2-and-trace.md) are supported.
 - Array, Map, Set, and Date types are supported.
@@ -245,7 +245,7 @@ Note: Data construction and processing can be done in the child thread, but obse
 ### Using makeObserved and collections.Array/collections.Set/collections.Map Together
 **collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS containers)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
 
-makeObserved enables importing observable collections into ArkUI, but is incompatible with state management V1 decorators like, such as @State and [@Prop](./arkts-prop.md). Combining them will result in runtime exceptions.
+makeObserved enables importing observable collections into ArkUI, but is incompatible with state management V1 decorators such as @State and [@Prop](./arkts-prop.md). Combining them will result in runtime exceptions.
 
 **collections.Array**
 

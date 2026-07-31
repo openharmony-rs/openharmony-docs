@@ -90,7 +90,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
 
 State management V1 adds proxies to the following objects:
 
-1. Instances of classes decorated with \@Observed A proxy is automatically added to an instance of a class decorated with \@Observed when the instance is created. In the following example, classes not decorated with \@Observed are not proxied.
+1. Instances of classes decorated with \@Observed. A proxy is automatically added to an instance of a class decorated with \@Observed when the instance is created. This occurs during the **new** process. In the following example, classes not decorated with \@Observed are not proxied.
 <!-- @[nonObservedClass_outOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) -->
 
 ``` TypeScript

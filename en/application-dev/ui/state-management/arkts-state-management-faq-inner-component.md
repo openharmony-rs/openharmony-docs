@@ -85,9 +85,9 @@ The rendering process in the preceding example is as follows:
 
 Therefore, modifying state variables within the build method constitutes a critical error. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, immediate correction is required even if no immediate severe consequences are observed.
 
-## The status variable is not deregistered during registration callback. As a result, memory leakage occurs.
+## The state variable is not deregistered during registration callback. As a result, memory leakage occurs.
 
-You can register the arrow function in [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) to change the status variables in the component.
+You can register the arrow function in [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) to change the state variables in the component.
 
 >**NOTE**
 >
@@ -487,7 +487,7 @@ struct Index {
 
 ## Unnecessary Deep Copy Caused by Using @Prop When Child Components Do Not Need to Modify State Variables
 
-During application development, a parent component often transfers values to its child components. If the subcomponent does not need to modify the status variable, using the [@Prop](./arkts-prop.md) decorator will increase the component creation time and affect the performance. In this case, you are advised to use [@ObjectLink](./arkts-observed-and-objectlink.md) instead.
+During application development, a parent component often transfers values to its child components. If the subcomponent does not need to modify the state variable, using the [@Prop](./arkts-prop.md) decorator will increase the component creation time and affect the performance. In this case, you are advised to use [@ObjectLink](./arkts-observed-and-objectlink.md) instead.
 
 **Incorrect Usage**
 
@@ -577,7 +577,7 @@ struct Parent {
 
 ## Performance Deteriorates Due to Too Many Components Associated with State Variables
 
-It is recommended that the number of components associated with each state variable be less than 20. Precisely controlling the number of components associated with state variables can reduce unnecessary component updates and improve update efficiency. Sometimes, developers bind the same state variable to multiple component attributes at the same level. When the state changes, these components are updated synchronously, causing unnecessary updates. When the component complexity is high, the overall performance is greatly affected. On the contrary, binding the state variable to the parent components of these components can reduce the number of components that need to be refreshed and improve performance. During application development, you can use HiDumper to view the number of components associated with status variables.
+It is recommended that the number of components associated with each state variable be less than 20. Precisely controlling the number of components associated with state variables can reduce unnecessary component updates and improve update efficiency. Sometimes, developers bind the same state variable to multiple component attributes at the same level. When the state changes, these components are updated synchronously, causing unnecessary updates. When the component complexity is high, the overall performance is greatly affected. On the contrary, binding the state variable to the parent components of these components can reduce the number of components that need to be refreshed and improve performance. During application development, you can use HiDumper to view the number of components associated with state variables.
 
 **Incorrect Usage**
 
@@ -782,7 +782,7 @@ struct Index {
 
 During application development, you should reduce direct value changes to the state variables and compute data by using temporary variables.
 
-When a status variable changes, ArkUI queries the components that depend on the status variable and executes the update method of the components to complete component rendering. By using temporary variables instead of directly operating state variables, ArkUI can query and render components only when the last state variable changes, reducing unnecessary operations and improving application performance. For details about the behavior of state variables, see [@State Decorator: State Owned by Component](arkts-state.md).
+When a state variable changes, ArkUI queries the components that depend on the state variable and executes the update method of the components to complete component rendering. By using temporary variables instead of directly operating state variables, ArkUI can query and render components only when the last state variable changes, reducing unnecessary operations and improving application performance. For details about the behavior of state variables, see [@State Decorator: State Owned by Component](arkts-state.md).
 
 **Incorrect Usage**
 
@@ -827,7 +827,7 @@ struct Index {
 }
 ```
 
-Directly operate the status variable, trigger the calculation function for three times, and run the [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) command. The result is as follows:
+Directly operate the state variable, trigger the calculation function for three times, and run the [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) command. The result is as follows:
 
 ![hp_arkui_use_state_var](figures/hp_arkui_use_state_var.png)
 

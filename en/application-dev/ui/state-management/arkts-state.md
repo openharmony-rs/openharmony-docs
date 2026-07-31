@@ -10,7 +10,7 @@ A variable decorated with a state decorator is called a state variable, enabling
 
 Among state variable decorators, @State is the most fundamental and serves as the data source for most state management scenarios.
 
-Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the positioning of AppStorage in the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
+Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -90,7 +90,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   }
   ```
 
-  \@State The decorative type is Model.
+  The type decorated by @State is Model.
     <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
   
     ``` TypeScript
@@ -124,7 +124,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
 - When the decorated object is of the Array type, you can observe both the assignment to the entire Array and the assignment to individual array elements. In addition, updates to the array's data can be observed through calls to its APIs: `push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, and `sort`. However, property assignments on nested items within the array cannot be observed. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
-- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **Date** APIs **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
+- When the [decorated object is of the Date type](#decorating-variables-of-the-date-type), the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **Date** APIs **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
 
 - When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
@@ -568,7 +568,7 @@ struct DatePickerExample {
 
 ### Using Union Types
 
-\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is number | undefined. If the value of **count** is changed when the button is clicked, the change will be updated according to the view.
+\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is number | undefined. If the value of **count** is changed when the button is clicked, the view will be updated accordingly.
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 ``` TypeScript

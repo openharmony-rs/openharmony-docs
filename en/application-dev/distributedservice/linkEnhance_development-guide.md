@@ -23,7 +23,7 @@ The interaction between the two devices is implemented as follows. After the [li
 
 ![linkEnhance-process](figures/linkEnhance-process.png)
 
-### For details, see Notes and Constraints.
+### Constraints
 
 - Bluetooth must be enabled for device interconnection.
 

@@ -16,7 +16,7 @@ AppStorage provides APIs for manual create, retrieve, update, delete (CRUD) oper
 
 > **NOTE**
 >
-> For details about UI decoupling, status management, and status sharing and synchronization between multiple components, see [StateStore-based Global State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-global-state-management-state-store).
+> For details about UI decoupling, state management, and status sharing and synchronization between multiple components, see [StateStore-based Global State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-global-state-management-state-store).
 >
 > For data processing that does not involve UI component synchronization, see [Persisting User Preferences (ArkTS)](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/data-persistence-by-preferences)
 
