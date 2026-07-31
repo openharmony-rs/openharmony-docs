@@ -2585,6 +2585,8 @@ onCustomCommand(callback: CustomCommandEvent): void
 
 自定义控制命令的监听。使用callback异步回调。
 
+**起始版本：** 26.1.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2645,6 +2647,8 @@ export class TemplateManager {
 offCustomCommand(callback?: CustomCommandEvent): void
 
 注销自定义控制命令的监听。
+
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
