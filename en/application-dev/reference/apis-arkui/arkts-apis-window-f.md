@@ -1078,7 +1078,7 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');
