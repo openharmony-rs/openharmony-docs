@@ -6,7 +6,7 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e5488cc1ee0054ec83eb97239c70dbc7f34a2781 translatedAt=2026-07-30T03:06:56.380Z pushedAt=2026-07-30T12:39:03.723Z -->
+<!-- md-trans-meta sourceCommit=e5488cc1ee0054ec83eb97239c70dbc7f34a2781 translatedAt=2026-07-30T03:06:56.380Z pushedAt=2026-07-31T08:56:32.695Z -->
 
 ## Viewing Logs on DevEco Studio
 
@@ -44,7 +44,7 @@ In DevEco Studio Profiler, you can display HiTraceMeter logs to analyze the CPU 
 
       For details, see [CPU Activity Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-cpu).
 
-   - Use the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/README_zh.md) tool for analysis.
+   - Use the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/README.md) tool for analysis.
 
 ## User-Mode Trace Format
 
@@ -129,7 +129,7 @@ The following describes fields of the user-mode trace, including the field compo
 
   This field consists of the level and tag.
 
-  The level is passed through the logging API, whose value can be **D**, **I**, **C**, or **M**. It corresponds to the **level** parameter in the [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) API. For details about the description and mappings, see[HiTraceOutputLevel](#hitraceoutputlevel).
+  The level is passed through the logging API, whose value can be **D**, **I**, **C**, or **M**. It corresponds to the **level** parameter in the [@ohos.hiTraceMeter (Performance Tracing)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) API. For details about the description and mappings, see [HiTraceOutputLevel](#hitraceoutputlevel).
 
   The tag set indicates the tags of the trace, each of which is represented by a two-digit number. The tag set can contain multiple two-digit numbers in ascending order.
 
@@ -167,7 +167,7 @@ Since API version 19, new fields are added to the end of the current user-mode t
 | Stop an asynchronous trace logging| F\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|428\|M62         | F\|1234\|H:tracename\|428\|M62                               |
 | Log an integer trace    | C\|1234\|H:[a92ab94c18e1341,0,0]#tracename\|5678\|M62        | C\|1234\|H:tracename\|5678\|M62                              |
 
-In the trace log samples above, the Process ID is `1234`, the Trace Point content is `tracename`, and the level is `M`, representing the `COMMERCIAL` level. The Tag set is `62`, which contains only one Tag, with the corresponding Tag name being `app`. When HiTraceChain is enabled, the Distributed Tracing chain ID is `[a92ab94c18e1341,0,0]`. The Custom Key-Value Pairs for both Synchronous Tracing and Asynchronous Tracing are `key1=value1,key2=value2`. For the Asynchronous Tracing trace point, the Async Task ID is `428` and the Custom Aggregation name is `appcategory01`. The trace value for Integer Tracing is `5678`.
+In the trace log samples above, the process ID is `1234`, the trace point content is `tracename`, and the level is `M`, representing the `COMMERCIAL` level. The tag set is `62`, which contains only one tag, with the corresponding tag name being `app`. When HiTraceChain is enabled, the distributed tracing chain ID is `[a92ab94c18e1341,0,0]`. The custom key-value pairs for both synchronous tracing and asynchronous tracing are `key1=value1,key2=value2`. For the asynchronous tracing trace point, the async task ID is `428` and the custom aggregation name is `appcategory01`. The trace value for integer tracing is `5678`.
 
 > **NOTE**
 >
@@ -219,7 +219,7 @@ In the user-mode trace, if the middle field is empty, the vertical bar (|) is re
 
 ### HiTraceMeter Tags
 
-The following is the HiTraceMeter User Mode Tag set, where the Tag value is the left shift value based on the number 1 at the actual code layer. The definitions of User Mode Tags can be viewed using the [hitrace](hitrace.md#displaying-the-tag-list-in-hitrace) Command Line Tool, where `always` and `commercial` are the system-side default always-on Tag and the commercial version scenario customization Tag, respectively.
+The following is the HiTraceMeter user mode tag set, where the tag value is the left shift value based on the number 1 at the actual code layer. The definitions of user mode tags can be viewed using the [hitrace](hitrace.md#displaying-the-tag-list-in-hitrace) command line tool, where `always` and `commercial` are the system-side default always-on tag and the commercial version scenario customization tag, respectively.
 
 | Name           | Constant Value at the Code Layer| Value|
 | ------------------ | ------------ | ----- |
