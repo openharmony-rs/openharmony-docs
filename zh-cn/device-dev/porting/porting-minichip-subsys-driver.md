@@ -52,7 +52,7 @@ if (ohos_kernel_type == "liteos_m") {
 
 从中可以看到厂商适配相关接口的存放目录应为"$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite"，且该目录下BUILD.gn文件中的目标应为hal_iothardware。
 
-（当配置"board_adapter_dir"不为空时，ohos_board_adapter_dir = board_adapter_dir, 代码行信息见"build/lite/config/BUILDCONFIG.gn"）
+（当配置"board_adapter_dir"不为空时，ohos_board_adapter_dir = board_adapter_dir，代码行信息见"build/lite/config/BUILDCONFIG.gn"）
 
   ```gn
    # Load board adapter dir from board config
