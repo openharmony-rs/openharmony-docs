@@ -1513,7 +1513,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
-|801 | Capability not supported. Failed to call this API due to limited device.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.addFusionFence} due to limited device.          |
 |3301000 | The location service is unavailable.                                            |
 |3301100 | The location switch is off.|
 |3301603 | Duplicate fusion fence identifier.                                            |
@@ -1648,7 +1648,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
 | -------- | ---------------------------------------- |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
-|801 | Capability not supported. Failed to call this API due to limited device.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.removeFusionFence} due to limited device.          |
 |3301000 | The location service is unavailable.                                            |
 |3301602 | Failed to delete a fusion fence due to an incorrect identifier.                                          |
 
