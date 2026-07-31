@@ -8482,6 +8482,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentSetOnVisibleAreaApproximateChange.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"canvasContentSetOnVisibleAreaApproximateChange_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentOnVisibleAreaApproximateChange.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"canvasContentOnVisibleAreaApproximateChange_start",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -8979,6 +8999,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -8986,18 +9010,28 @@
 						"start_line":17
 					},
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"obtain_mediaquery_listener",
 						"start_line":29
 					},
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"obtain_mediaquery_Portrait",
-						"start_line":34
+						"start_line":35
 					},
 					{
-						"end_line":94,
+						"end_line":95,
 						"name":"obtain_mediaquery_all",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryFlex.ets",
+				"functions":[
+					{
+						"end_line":104,
+						"name":"obtain_mediaquery_flex",
 						"start_line":16
 					}
 				]
