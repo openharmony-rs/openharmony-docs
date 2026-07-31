@@ -8,7 +8,7 @@ OpenHarmony芯片移植完成后，需要开展OpenHarmony兼容性测试以及�
 
 OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一，详见[OpenHarmony兼容性测试](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/XTS%E5%AD%90%E7%B3%BB%E7%BB%9F.md)。
 
-1. 添加xts子系统以及acts部件。 在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
+1. 添加xts子系统以及acts部件。在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
 
      
    ```json
@@ -27,7 +27,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
      
    ```text
    "-Wl,--whole-archive",
-   #......
+   //......
    "-lhctest",
    "-lbootstrap",
    "-lbroadcast",
@@ -37,7 +37,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    "-lmodule_ActsParameterTest",
    "-lmodule_ActsSamgrTest",
    "-lmodule_ActsSecurityDataTest",
-   #......
+   //......
    "-Wl,--no-whole-archive",
    ```
 
