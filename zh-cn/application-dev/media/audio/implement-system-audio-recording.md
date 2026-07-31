@@ -66,9 +66,8 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
 
    > **说明：**
    >
-   > 如果`capturerInfo.source`配置为麦克风类音频源，需要按普通录音流程申请麦克风权限`ohos.permission.MICROPHONE`，申请方式参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
-   >
-   > 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
+   > - 如果`capturerInfo.source`配置为麦克风类音频源，需要按普通录音流程申请麦克风权限`ohos.permission.MICROPHONE`，申请方式参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+   > - 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
