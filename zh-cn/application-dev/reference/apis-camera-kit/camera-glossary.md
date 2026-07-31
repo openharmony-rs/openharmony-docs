@@ -1,11 +1,11 @@
 # 术语
 
 <!--Kit: Camera Kit-->
-<!--Subsystem: Camera-->
-<!--Owner: @lu-daochun-->
-<!--Designer: leo_ysl-->
-<!--Tester: 77_cc-->
-<!--Adviser: @lu-daochun-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## C
 
