@@ -7550,7 +7550,7 @@ ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+**设备行为差异：** 该接口在PC/2in1设备中无效果，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
