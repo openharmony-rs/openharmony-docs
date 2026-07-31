@@ -126,7 +126,7 @@ SoC目录的`Kconfig`，以`//device/soc/asrmicro`为例：
 config SOC_SERIES_ASR582X
     bool "ASR582X Series"
     select ARM
-    select SOC_COMPANY_ASRMICRO              // 选择 SOC_COMPANY_ASRMICRO
+    select SOC_COMPANY_ASRMICRO              # 选择 SOC_COMPANY_ASRMICRO
     select CPU_CORTEX_M4
     help
         Enable support for ASR582X series
@@ -139,7 +139,7 @@ choice
     prompt "ASR582X series SoC"
     depends on SOC_SERIES_ASR582X
 
-config SOC_ASR5822S                         // 选择 SOC_ASR5822S
+config SOC_ASR5822S                         # 选择 SOC_ASR5822S
     bool "SoC ASR5822S"
 
 endchoice
