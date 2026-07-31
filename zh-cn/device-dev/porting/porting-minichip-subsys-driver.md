@@ -81,7 +81,7 @@ if (ohos_kernel_type == "liteos_m") {
 
 2. 添加适配文件。
 
-   在"device/board/MyVendorCompany/MyProduct/liteos_m/config.gni"文件中，(不同产品路径可能有差异)
+   在"device/board/MyVendorCompany/MyProduct/liteos_m/config.gni"文件中，（不同产品路径可能有差异）
    
    通常将配置"board_adapter_dir"配置为 "//device/soc/MyDeviceCompany/MyBoard/adapter"。
 
