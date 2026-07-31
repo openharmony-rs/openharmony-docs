@@ -347,7 +347,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.1.0开始，通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接更新通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1537,7 +1537,9 @@ updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress)
 
 更新长时任务通知。仅支持更新包含数据传输类型的长时任务通知。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2789,19 +2791,15 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 21
-
-**ArkTS-Sta起始版本：** 24
-
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。     |
-| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。|
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
-| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
-| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br/>**起始版本：** 26.1.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**说明：** 该属性仅适用于通过[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)。<br/>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不允许使用该属性。 |
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24      |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24  |
+| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
+| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24    |
+| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**说明：** 该属性仅适用于通过[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)。<br/>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不允许使用该属性。<br/> **ArkTS-Dyn起始版本：** 26.1.0 <br/> **ArkTS-Sta起始版本：** 26.1.0  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -3348,7 +3346,9 @@ class EntryAbility extends UIAbility {
 
 通知进度信息。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3365,7 +3365,9 @@ class EntryAbility extends UIAbility {
 
 长时任务通知进度信息。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
