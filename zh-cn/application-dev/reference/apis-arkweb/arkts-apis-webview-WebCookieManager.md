@@ -30,15 +30,15 @@ import { webview } from '@kit.ArkWeb';
 
 static fetchCookieSync(url: string, incognito?: boolean): string
 
-获取指定URL对应cookie的值。
+获取指定URL对应的cookies。
 
 > **说明：**
 >
-> - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
+> - 系统会自动清理过期的cookies，对于同名key的数据，新数据将会覆盖前一个数据。
 > 
-> - 为了获取可正常使用的cookie值，fetchCookieSync建议传入完整链接。
+> - 为了获取可正常使用的cookies，fetchCookieSync建议传入完整链接。
 > 
-> - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+> - fetchCookieSync用于获取所有的cookies，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,14 +46,14 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取cookie的URL，建议使用完整的URL。 |
+| url    | string | 是   | 要获取cookies所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 指定URL对应的cookie的值。 |
+| string | 指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -168,7 +168,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, callback: AsyncCallback\<string>): void
 
-获取指定URL对应cookie的值。使用callback异步回调。
+获取指定URL对应的cookies。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -176,8 +176,8 @@ static fetchCookie(url: string, callback: AsyncCallback\<string>): void
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取cookie的URL，建议使用完整的URL。 |
-| callback | AsyncCallback\<string> | 是 | 回调函数，用于获取cookie。 |
+| url    | string | 是   | 要获取cookies所属的URL，建议使用完整的URL。 |
+| callback | AsyncCallback\<string> | 是 | 回调函数，用于获取cookies。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ struct WebComponent {
 
 static fetchCookie(url: string): Promise\<string>
 
-获取指定URL对应cookie的值。使用Promise异步回调。
+获取指定URL对应的cookies。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -236,13 +236,13 @@ static fetchCookie(url: string): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取cookie的URL，建议使用完整的URL。 |
+| url    | string | 是   | 要获取cookies所属的URL，建议使用完整的URL。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise实例，用于获取指定URL对应的cookie值。 |
+| Promise\<string> | Promise实例，用于获取指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -291,7 +291,7 @@ struct WebComponent {
 
 static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
-获取指定URL对应cookie的值。使用Promise异步回调。
+获取指定URL对应的cookies。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -299,14 +299,14 @@ static fetchCookie(url: string, incognito: boolean): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取cookie的URL，建议使用完整的URL。 |
+| url    | string | 是   | 要获取cookies所属的URL，建议使用完整的URL。 |
 | incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<string> | Promise实例，用于获取指定URL对应的cookie值。 |
+| Promise\<string> | Promise实例，用于获取指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -423,7 +423,7 @@ struct WebComponent {
 
 static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
-获取所有cookie，使用Promise异步回调。
+获取所有cookies，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -431,13 +431,13 @@ static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------- | -- | -------------------------------------- |
-| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
+| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookies，false表示正常非隐私模式下的所有cookies。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookies及其对应的字段值。 |
 
 **示例：**
 
@@ -488,9 +488,9 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 
 > **说明：**
 >
-> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookies。
 >
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - cookies每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -500,7 +500,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 >
 > - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
-> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
+> - 如果要覆盖HttpOnly的cookie，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -510,7 +510,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 否   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
+| incognito    | boolean | 否   | true表示设置隐私模式下对应URL的cookie，false表示设置正常非隐私模式下对应URL的cookie。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -559,9 +559,9 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 
 > **说明：**
 >
-> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的URL，可以指定域名的方式来使得页面内请求也附带上cookies。
 >
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - cookies每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -579,8 +579,8 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。 |
-| includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
+| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookie，false表示设置正常非隐私模式下对应URL的cookie。 |
+| includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookie，false表示不允许覆盖含有http-only的cookie。 |
 
 **错误码：**
 
@@ -629,9 +629,9 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 
 > **说明：**
 >
-> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookies。
 >
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - cookies每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -641,7 +641,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 >
 > - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
-> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
+> - 如果要覆盖HttpOnly的cookie，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -703,9 +703,9 @@ static configCookie(url: string, value: string): Promise\<void>
 
 > **说明：**
 >
-> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookies。
 >
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - cookies每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -715,7 +715,7 @@ static configCookie(url: string, value: string): Promise\<void>
 >
 > - 如果指定的值包含"Secure"属性，则URL必须使用"https://"协议。
 >
-> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
+> - 如果要覆盖HttpOnly的cookie，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -784,9 +784,9 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 > **说明：**
 >
-> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookie中的URL，可以指定域名的方式来使得页面内请求也附带上cookies。
 >
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - cookies每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -804,8 +804,8 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的URL，建议使用完整的URL。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookies，false表示设置正常非隐私模式下对应URL的cookies。 |
-| includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
+| incognito    | boolean | 是   | true表示设置隐私模式下对应URL的cookie，false表示设置正常非隐私模式下对应URL的cookie。 |
+| includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookie，false表示不允许覆盖含有http-only的cookie。 |
 
 **返回值：**
 
@@ -861,13 +861,13 @@ struct WebComponent {
 
 static saveCookieSync(): void
 
-将当前可通过fetchCookie获取到的所有需要持久化的cookie同步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookies同步保存到磁盘中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 > **说明：**
 >
-> - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
+> - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookies，即使调用saveCookieSync，也不会将session cookies写入磁盘。
 >
 > - saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
 
@@ -903,11 +903,11 @@ struct WebComponent {
 
 static saveCookieAsync(callback: AsyncCallback\<void>): void
 
-将当前可通过fetchCookie获取到的所有需要持久化的cookie异步保存到磁盘中。
+将当前可通过fetchCookie获取到的所有需要持久化的cookies异步保存到磁盘中。
 
 > **说明：**
 >
-> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘。
+> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookies，即使调用saveCookieAsync，也不会将session cookies写入磁盘。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -915,7 +915,7 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取cookie是否成功保存。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取cookies是否成功保存。 |
 
 **错误码：**
 
@@ -961,11 +961,11 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-将当前可通过fetchCookie获取到的所有需要持久化的cookie保存到磁盘中。使用Promise异步回调。
+将当前可通过fetchCookie获取到的所有需要持久化的cookies保存到磁盘中。使用Promise异步回调。
 
 > **说明：**
 >
-> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘。
+> - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookies，即使调用saveCookieAsync，也不会将session cookies写入磁盘。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -973,7 +973,7 @@ static saveCookieAsync(): Promise\<void>
 
 | 类型             | 说明                                      |
 | ---------------- | ----------------------------------------- |
-| Promise\<void> | Promise实例，用于获取cookie是否成功保存。 |
+| Promise\<void> | Promise实例，用于获取cookies是否成功保存。 |
 
 **错误码：**
 
@@ -1021,7 +1021,7 @@ struct WebComponent {
 
 static putAcceptCookieEnabled(accept: boolean): void
 
-设置WebCookieManager实例是否拥有发送和接收cookie的权限。
+设置WebCookieManager实例是否拥有发送和接收cookies的权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1029,7 +1029,7 @@ static putAcceptCookieEnabled(accept: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | :----------------------------------- |
-| accept | boolean | 是   | 设置是否拥有发送和接收cookie的权限，默认为true，表示拥有发送和接收cookie的权限。false表示没有发送和接收cookie的权限。 |
+| accept | boolean | 是   | 设置是否拥有发送和接收cookies的权限，默认为true，表示拥有发送和接收cookies的权限。false表示没有发送和接收cookies的权限。 |
 
 **错误码：**
 
@@ -1071,7 +1071,7 @@ struct WebComponent {
 
 static isCookieAllowed(): boolean
 
-获取WebCookieManager实例是否拥有发送和接收cookie的权限。
+获取WebCookieManager实例是否拥有发送和接收cookies的权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1079,7 +1079,7 @@ static isCookieAllowed(): boolean
 
 | 类型    | 说明                             |
 | ------- | -------------------------------- |
-| boolean | 是否拥有发送和接收cookie的权限。<br>true表示拥有发送和接收cookie的权限，false表示无发送和接收cookie的权限。<br>默认值：true。 |
+| boolean | 是否拥有发送和接收cookies的权限。<br>true表示拥有发送和接收cookies的权限，false表示无发送和接收cookies的权限。<br>默认值：true。 |
 
 **示例：**
 
@@ -1109,7 +1109,7 @@ struct WebComponent {
 
 static putAcceptThirdPartyCookieEnabled(accept: boolean): void
 
-设置WebCookieManager实例是否拥有发送和接收第三方cookie的权限。
+设置WebCookieManager实例是否拥有发送和接收第三方cookies的权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1117,7 +1117,7 @@ static putAcceptThirdPartyCookieEnabled(accept: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | :----------------------------------------- |
-| accept | boolean | 是   | 是否允许发送和接收第三方cookie。<br>true表示允许，false表示不允许。 |
+| accept | boolean | 是   | 是否允许发送和接收第三方cookies。<br>true表示允许，false表示不允许。 |
 
 **错误码：**
 
@@ -1159,7 +1159,7 @@ struct WebComponent {
 
 static isThirdPartyCookieAllowed(): boolean
 
-获取WebCookieManager实例是否拥有发送和接收第三方cookie的权限。
+获取WebCookieManager实例是否拥有发送和接收第三方cookies的权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1167,7 +1167,7 @@ static isThirdPartyCookieAllowed(): boolean
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 是否拥有发送和接收第三方cookie的权限。<br>true表示拥有发送和接收第三方cookie的权限，false表示无发送和接收第三方cookie的权限。<br>默认值：false。 |
+| boolean | 是否拥有发送和接收第三方cookies的权限。<br>true表示拥有发送和接收第三方cookies的权限，false表示无发送和接收第三方cookies的权限。<br>默认值：false。 |
 
 **示例：**
 
@@ -1197,7 +1197,7 @@ struct WebComponent {
 
 static existCookie(incognito?: boolean): boolean
 
-判断是否存在cookie。
+判断是否存在cookies。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1211,7 +1211,7 @@ static existCookie(incognito?: boolean): boolean
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | true表示存在cookie，false表示不存在cookie。 |
+| boolean | true表示存在cookies，false表示不存在cookies。 |
 
 **示例：**
 
@@ -1241,7 +1241,7 @@ struct WebComponent {
 
 static clearAllCookiesSync(incognito?: boolean): void
 
-清除所有cookie（包括会话cookie和持久化cookie）。如需仅清除会话cookie，请使用[clearSessionCookieSync](#clearsessioncookiesync11)。
+清除所有cookies（包括会话cookies和持久化cookies）。如需仅清除会话cookies，请使用[clearSessionCookieSync](#clearsessioncookiesync11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1278,7 +1278,7 @@ struct WebComponent {
 
 static clearAllCookies(callback: AsyncCallback\<void>): void
 
-清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11)。
+清除所有cookies（包括会话cookies和持久化cookies），使用callback异步回调。如需仅清除会话cookies，请使用[clearSessionCookie](#clearsessioncookie11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1286,7 +1286,7 @@ static clearAllCookies(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有cookie是否成功。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有cookies是否成功。 |
 
 **错误码：**
 
@@ -1332,7 +1332,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-清除所有cookie（包括会话cookie和持久化cookie），使用Promise异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11-1)。
+清除所有cookies（包括会话cookies和持久化cookies），使用Promise异步回调。如需仅清除会话cookies，请使用[clearSessionCookie](#clearsessioncookie11-1)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1340,7 +1340,7 @@ static clearAllCookies(): Promise\<void>
 
 | 类型             | 说明                                      |
 | ---------------- | ----------------------------------------- |
-| Promise\<void> | Promise实例，用于获取清除所有cookie是否成功。 |
+| Promise\<void> | Promise实例，用于获取清除所有cookies是否成功。 |
 
 **错误码：**
 
@@ -1384,7 +1384,7 @@ struct WebComponent {
 
 static clearSessionCookieSync(): void
 
-清除所有会话cookie。
+清除所有会话cookies。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1415,7 +1415,7 @@ struct WebComponent {
 
 static clearSessionCookie(callback: AsyncCallback\<void>): void
 
-清除所有会话cookie。使用callback异步回调。
+清除所有会话cookies。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1423,7 +1423,7 @@ static clearSessionCookie(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                               |
 | -------- | ---------------------- | ---- | :------------------------------------------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有会话cookie是否成功。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，用于获取清除所有会话cookies是否成功。 |
 
 **错误码：**
 
@@ -1469,7 +1469,7 @@ struct WebComponent {
 
 static clearSessionCookie(): Promise\<void>
 
-清除所有会话cookie。使用Promise异步回调。
+清除所有会话cookies。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1477,7 +1477,7 @@ static clearSessionCookie(): Promise\<void>
 
 | 类型             | 说明                                      |
 | ---------------- | ----------------------------------------- |
-| Promise\<void> | Promise实例，用于获取清除所有会话cookie是否成功。 |
+| Promise\<void> | Promise实例，用于获取清除所有会话cookies是否成功。 |
 
 **错误码：**
 
@@ -1571,7 +1571,7 @@ struct WebComponent {
 
 static getCookie(url: string): string
 
-获取指定URL对应cookie的值。
+获取指定URL对应的cookies。
 
 > **说明：**
 >
@@ -1583,13 +1583,13 @@ static getCookie(url: string): string
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取cookie的URL，建议使用完整的URL。 |
+| url    | string | 是   | 要获取cookies所属的URL，建议使用完整的URL。 |
 
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 指定URL对应的cookie的值。 |
+| string | 指定URL对应的cookies。 |
 
 **错误码：**
 
@@ -1690,7 +1690,7 @@ struct WebComponent {
 
 static deleteEntireCookie(): void
 
-清除所有cookie。
+清除所有cookies。
 
 > **说明：**
 >
@@ -1725,7 +1725,7 @@ struct WebComponent {
 
 static deleteSessionCookie(): void
 
-清除所有会话cookie。
+清除所有会话cookies。
 
 > **说明：**
 >
