@@ -1029,7 +1029,7 @@ Sensor.unsubscribeOnBodyState();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
