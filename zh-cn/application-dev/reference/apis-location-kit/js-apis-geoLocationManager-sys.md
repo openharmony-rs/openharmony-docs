@@ -1612,7 +1612,7 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
     // 添加围栏
     await geoLocationManager.addFusionFence(fenceRequestParams).then(() => {
       // 围栏添加成功
-      console.info("addFusionGeofence success");
+      console.info("addFusionFence success");
     }).catch((error : BusinessError) => {
       console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
     });
