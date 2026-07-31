@@ -2215,7 +2215,7 @@ forceDisplayScrollBar(enabled: boolean)
 > **说明：**
 >
 > - 该接口在当前应用的所有Web组件中全局生效。多个Web组件设置不同值时，以首次设置的值为准。
-> - 若同时调用[setScrollbarMode](./arkts-apis-webview-WebviewController.md#setscrollbarmode23)，该接口设置不生效。
+> - 建议使用[setScrollbarMode](./arkts-apis-webview-WebviewController.md#setscrollbarmode23)设置当前应用所有Web组件的滚动条模式。若同时调用setScrollbarMode接口，forceDisplayScrollBar接口设置不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
