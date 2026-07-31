@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从 API version 22 开始支持。后续版本的新增接口，采用上角标单独标记起始版本。
+> - 本模块首批接口从 API version 22 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,7 +22,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 @interface Available { minApiVersion: string = '' }
 
-提供API注解能力，用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
+提供API注解能力，用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段，会生成兼容性警告。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -35,7 +35,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 <!--RP1-->
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段时，会生成兼容性警告。 |
+| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段时，会生成兼容性警告。传入无效格式时，编译器会报错提示格式不正确。 |
 
 **示例：**
 
@@ -74,7 +74,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 }  
 
-系统提供的API告警屏蔽功能，允许开发者通过注解的方式抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。适用于需要在特定场景下暂时忽略某些告警、避免编译器产生干扰性警告的情况，帮助开发者专注于关键问题，提高开发效率。
+系统提供的API告警屏蔽功能，允许开发者通过注解的方式抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。预设规则包括：当API调用版本高于兼容版本时产生的兼容性告警、当设备不支持某系统能力时产生的多设备告警、当缺少权限配置时产生的权限告警等。适用于需要在特定场景下暂时忽略某些告警、避免编译器产生干扰性警告的情况，帮助开发者专注于关键问题，提高开发效率。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -86,7 +86,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警。可选取值参见[SuppressWarningsType](#suppresswarningstype23)。|
+| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警，数组至少包含一个元素。可选取值参见[SuppressWarningsType](#suppresswarningstype23)。建议仅在明确告警不影响应用功能或已做兼容性处理时使用，避免掩盖潜在问题。|
 
 **注解使用示例：**
 
@@ -211,6 +211,6 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
-| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
-| SYSCAP     | syscap    | 支持消除多设备告警。 |
-| PERMISSION     | permission    | 支持消除权限告警。<br/>**起始版本：** 26.0.0 |
+| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。 |
+| SYSCAP     | syscap    | 支持消除多设备告警。当调用API的系统能力在目标设备上不支持时产生的告警。 |
+| PERMISSION     | permission    | 支持消除权限告警。当调用需要权限的API但未在配置文件中声明相应权限时产生的告警。<br/>**起始版本：** 26.0.0 |

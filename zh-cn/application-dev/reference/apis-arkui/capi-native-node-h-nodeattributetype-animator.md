@@ -328,7 +328,7 @@ NODE_CLIP_SHAPE = 24
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_RECTANGLE。 |
+| .value[0].i32 | 裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype)，rect类型需设置为ARKUI_CLIP_TYPE_RECTANGLE。 |
 | .value[1].f32 | 矩形宽度，单位为vp。 |
 | .value[2].f32 | 矩形高度，单位为vp。 |
 | .value[3].f32 | 矩形圆角宽度，单位为vp。 |
@@ -343,7 +343,7 @@ NODE_CLIP_SHAPE = 24
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
+| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，circle类型需设置为ARKUI_CLIP_TYPE_CIRCLE。 |
 | .value[1].f32 | 圆形宽度，单位为vp。 |
 | .value[2].f32 | 圆形高度，单位为vp。 |
 | .object | 参数类型为ArkUI_RenderNodeClipOption，圆形坐标偏移量，在仅传入.object参数时生效。 |
@@ -352,7 +352,7 @@ NODE_CLIP_SHAPE = 24
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
+| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ellipse类型需设置为ARKUI_CLIP_TYPE_ELLIPSE。 |
 | .value[1].f32 | 椭圆形宽度，单位为vp。 |
 | .value[2].f32 | 椭圆形高度，单位为vp。 |
 | .object | 参数类型为ArkUI_RenderNodeClipOption，椭圆形坐标偏移量，在仅传入.object参数时生效。 |
@@ -361,7 +361,7 @@ NODE_CLIP_SHAPE = 24
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
+| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，path类型需设置为ARKUI_CLIP_TYPE_PATH。 |
 | .value[1].f32 | 路径宽度，单位为vp。 |
 | .value[2].f32 | 路径高度，单位为vp。 |
 | .string | 路径绘制的命令字符串。 |
@@ -520,8 +520,8 @@ NODE_BACKGROUND_BLUR_STYLE = 32
 | .value[1]?.i32 | 表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 |
 | .value[2]?.i32 | 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。不传入时默认取色模式为自适应取色，当需要指定固定取色方式时传入此参数。 |
 | .value[3]?.f32 | 表示模糊效果程度，取[0.0,1.0]范围内的值。0.0表示无模糊，1.0表示最大模糊效果。不传入时默认值为0.0，当需要调整内容模糊强度时传入此参数。 |
-| .value[4]?.f32 | 表示灰阶模糊起始边界。 |
-| .value[5]?.f32 | 表示灰阶模糊终点边界。 |
+| .value[4]?.f32 | 表示灰阶模糊起始边界，对黑色提亮到哪个位置，有效值范围0-127。参数值越大调整效果越明显。 |
+| .value[5]?.f32 | 表示灰阶模糊终点边界，对白色压暗到哪个位置，有效值范围0-127。参数值越大调整效果越明显。 |
 
 **返回：**
 
@@ -554,9 +554,9 @@ NODE_TRANSFORM_CENTER = 33
 | .value[0]?.f32 | 表示中心点X轴坐标值，单位为vp，默认值0.0。 |
 | .value[1]?.f32 | 表示中心点Y轴坐标，单位为vp，默认值0.0。 |
 | .value[2]?.f32 | 表示中心点Z轴坐标，单位为vp，默认值0.0。 |
-| .value[3]?.f32 | 表示中心点X轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[0].f32，默认值：0.5f。超出范围时按边界值处理。 |
-| .value[4]?.f32 | 表示中心点Y轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[1].f32，默认值：0.5f。超出范围时按边界值处理。 |
-| .value[5]?.f32 | 表示中心点Z轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[2].f32，默认值：0.0f。超出范围时按边界值处理。 |
+| .value[3]?.f32 | 表示中心点X轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[0].f32，默认值：0.5f。<br/>超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| .value[4]?.f32 | 表示中心点Y轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[1].f32，默认值：0.5f。<br/>超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| .value[5]?.f32 | 表示中心点Z轴坐标的百分比位置，取值范围[0, 1]，如0.2表示百分之20的位置，该属性覆盖value[2].f32，默认值：0.0f。<br/>超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -611,14 +611,14 @@ NODE_OPACITY_TRANSITION = 34
 | .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3]?.i32 | 表示动画延迟时长，单位ms。不传入时默认值为0（无延迟），当需要在动画开始前等待一段时间时传入此参数。 |
 | .value[4]?.i32 | 表示动画播放次数。不传入时默认值为1（单次播放），当需要动画重复播放时传入此参数。 |
-| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。不传入时默认为正向单次播放，当需要反向播放、循环播放等特殊播放模式时传入此参数。 |
+| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。默认值为ARKUI_ANIMATION_PLAY_MODE_NORMAL，当需要反向播放、循环播放等特殊播放模式时传入此参数。 |
 | .value[6]?.f32 | 表示动画播放速度。不传入时默认值为1.0（正常速度），当需要加速或减速播放动画时传入此参数，大于1.0为加速，小于1.0为减速。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 表示起始和终点的透明度值，取值范围[0, 1]，包含0和1。超出范围时自动修正为边界值。 |
+| .value[0].f32 | 表示起始和终点的透明度值，取值范围[0, 1]。超出范围时自动修正为边界值。 |
 | .value[1].i32 | 表示动画时长，单位ms。 |
 | .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3].i32 | 表示动画延迟时长，单位ms。 |
@@ -649,9 +649,9 @@ NODE_ROTATE_TRANSITION = 35
 | .value[4].f32 | 表示视距，默认值：0.0f。 |
 | .value[5].i32 | 表示动画时长，单位ms。 |
 | .value[6].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
-| .value[7]?.i32 | 表示动画延迟时长，单位ms。 |
+| .value[7]?.i32 | 表示动画延迟时长，单位ms。不传入时默认值为0（无延迟），当需要在动画开始前等待一段时间时传入此参数。 |
 | .value[8]?.i32 | 表示动画播放次数。 |
-| .value[9]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
+| .value[9]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。默认值为ARKUI_ANIMATION_PLAY_MODE_NORMAL。 |
 | .value[10]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -686,14 +686,14 @@ NODE_SCALE_TRANSITION = 36
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 横向放大倍数，默认值1。 |
-| .value[1].f32 | 纵向放大倍数，默认值1。 |
-| .value[2].f32 | 竖向放大倍数，默认值1。 |
+| .value[0].f32 | 横向放大倍数，默认值1.0。 |
+| .value[1].f32 | 纵向放大倍数，默认值1.0。 |
+| .value[2].f32 | 竖向放大倍数，默认值1.0。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
 | .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
-| .value[5]?.i32 | 表示动画延迟时长，单位ms。 |
+| .value[5]?.i32 | 表示动画延迟时长，单位ms。不传入时默认值为0（无延迟），当需要在动画开始前等待一段时间时传入此参数。 |
 | .value[6]?.i32 | 表示动画播放次数。 |
-| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。默认值为ARKUI_ANIMATION_PLAY_MODE_NORMAL。 |
 | .value[8]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -731,9 +731,9 @@ NODE_TRANSLATE_TRANSITION = 37
 | .value[2].f32 | 表示竖向平移距离值，单位为vp。默认值为0.0vp。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
 | .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
-| .value[5]?.i32 | 表示动画延迟时长，单位ms。 |
+| .value[5]?.i32 | 表示动画延迟时长，单位ms。不传入时默认值为0（无延迟），当需要在动画开始前等待一段时间时传入此参数。 |
 | .value[6]?.i32 | 表示动画播放次数。 |
-| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。默认值为ARKUI_ANIMATION_PLAY_MODE_NORMAL。 |
 | .value[8]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -771,7 +771,7 @@ NODE_MOVE_TRANSITION = 38
 | .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3]?.i32 | 表示动画延迟时长，单位ms。不传入时默认值为0（无延迟），当需要在动画开始前等待一段时间时传入此参数。 |
 | .value[4]?.i32 | 表示动画播放次数。 |
-| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
+| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。默认值为ARKUI_ANIMATION_PLAY_MODE_NORMAL。 |
 | .value[6]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -803,7 +803,7 @@ NODE_SWEEP_GRADIENT = 43
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0]?.f32 | 为角度渐变的中心点，即相对于当前组件左上角的X轴坐标，单位为vp，默认值为组件宽度的50%。 |
-| .value[1]?.f32 | 为角度渐变的中心点，即相对于当前组件左上角的Y轴坐标。不传入时默认为组件垂直中心位置，当需要将渐变中心偏移到特定位置时传入此参数。 |
+| .value[1]?.f32 | 为角度渐变的中心点，即相对于当前组件左上角的Y轴坐标，单位为vp。不传入时默认为组件垂直中心位置，当需要将渐变中心偏移到特定位置时传入此参数。 |
 | .value[2]?.f32 | 角度渐变的起点，单位为度（°），默认值0。 |
 | .value[3]?.f32 | 角度渐变的终点，单位为度（°），默认值0。 |
 | .value[4]?.f32 | 角度渐变的旋转角度，单位为度（°），默认值0。 |
@@ -844,11 +844,11 @@ NODE_RADIAL_GRADIENT = 44
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0]?.f32 | 为径向渐变的中心点，即相对于当前组件左上角的坐标,X轴坐标。 |
-| .value[1]?.f32 | 为径向渐变的中心点，即相对于当前组件左上角的坐标,Y轴坐标。 |
-| .value[2]?.f32 | 径向渐变的半径，默认值0。 |
-| .value[3]?.i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 |
-| .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： |
+| .value[0]?.f32 | 为径向渐变的中心点，即相对于当前组件左上角的X轴坐标。 |
+| .value[1]?.f32 | 为径向渐变的中心点，即相对于当前组件左上角的Y轴坐标。 |
+| .value[2]?.f32 | 径向渐变的半径，取值范围[0, +∞)，默认值0。 |
+| .value[3]?.i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。不传入时默认值为0（不重复着色）。 |
+| .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
 | colors | 渐变色颜色。 |
 | stops | 渐变位置。 |
 | size | 颜色个数。 |
@@ -861,7 +861,7 @@ NODE_RADIAL_GRADIENT = 44
 | .value[1].f32 | 为径向渐变的中心点，即相对于当前组件左上角的坐标，Y轴坐标。 |
 | .value[2].f32 | 径向渐变的半径，默认值0。 |
 | .value[3].i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 |
-| .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： |
+| .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
 | colors | 渐变色颜色。 |
 | stops | 渐变位置。 |
 | size | 颜色个数。 |
@@ -882,7 +882,7 @@ NODE_MASK = 45
 
 | 参数项 | 描述 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp，默认值0；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp，默认值0；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp，默认值0；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp，默认值0。 |
 | 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
 | 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
 | 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
@@ -1037,7 +1037,7 @@ NODE_FOREGROUND_COLOR = 53
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].u32 | 颜色数值，0xargb类型，如0xFFFF0000表示红色，默认值为0xFF000000。 |
-| .value[0].i32 | 颜色数值枚举ArkUI_ColoringStrategy。 |
+| .value[0].i32 | 颜色数值枚举[ArkUI_ColorStrategy](capi-native-type-visual-h.md#arkui_colorstrategy)。 |
 
 **返回：**
 
@@ -1243,7 +1243,7 @@ NODE_TRANSITION = 94
 NODE_BACKDROP_BLUR = 99
 ```
 
-设置背景模糊效果，支持属性设置，属性重置和属性获取。<br>
+设置背景模糊效果，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 15
@@ -1261,7 +1261,7 @@ NODE_BACKDROP_BLUR = 99
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 表示背景模糊半径，取值范围[0,+∞)。单位px。 |
+| .value[0].f32 | 表示背景模糊半径，取值范围[0,+∞)，单位为px。 |
 | .value[1].f32 | 表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。 |
 | .value[2].f32 | 表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。 |
 
@@ -1352,7 +1352,7 @@ NODE_ROTATE_ANGLE = 104
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | x轴方向旋转角度，单位为度（°），默认值0 |
+| .value[0].f32 | x轴方向旋转角度，单位为度（°），默认值0。 |
 | .value[1].f32 | y轴方向旋转角度，单位为度（°），默认值0。 |
 | .value[2].f32 | z轴方向旋转角度，单位为度（°），默认值0。 |
 | .value[3].f32 | 视距，即视点到z=0平面的距离，单位px，默认值0。 |

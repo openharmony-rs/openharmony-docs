@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-**@ObjectLink** is used in state management V1 to receive instances of classes decorated with **@Observed** and establish two-way data binding with the data source in a parent component.
+**@ObjectLink** is used in state management V1 to receive instances of classes decorated with **@Observed** and establish two-way data binding with the data source in the parent component. It is applicable to scenarios where nested class properties need to be observed and UI updates need to be triggered.
 
 For details, see [@Observed and @ObjectLink Decorators: Observing Property Changes in Nested Class Objects](../../../ui/state-management/arkts-observed-and-objectlink.md).
 

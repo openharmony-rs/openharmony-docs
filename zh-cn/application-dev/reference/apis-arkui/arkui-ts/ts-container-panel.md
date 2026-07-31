@@ -88,7 +88,7 @@ mode(value: PanelMode)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [PanelMode](#panelmode枚举说明) | 是   | 设置可滑动面板的初始状态。<br/>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
+| value   | [PanelMode](#panelmode枚举说明) | 是   | 设置可滑动面板的初始状态。<br>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half<br>从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
 
 ### dragBar
 
@@ -134,7 +134,7 @@ customHeight(value: Dimension | PanelHeight)
 
 fullHeight(value: number | string)
 
-指定PanelType.Full状态下的高度。
+指定PanelMode.Full状态下的高度。
 
 > **说明：**
 >
@@ -373,7 +373,7 @@ struct PanelExample {
       .type(PanelType.Foldable)
       .mode(PanelMode.Half)
       .dragBar(true) // 默认开启
-      .halfHeight(500) // 默认一半
+      .halfHeight(500) // 设置半屏高度为500（默认为组件主轴大小的一半）
       .showCloseIcon(true) // 显示关闭图标
       .onChange((width: number, height: number, mode: PanelMode) => {
         console.info(`width:${width},height:${height},mode:${mode}`);

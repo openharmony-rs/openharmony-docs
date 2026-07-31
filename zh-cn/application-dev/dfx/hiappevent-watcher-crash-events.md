@@ -188,7 +188,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | process_life_time | number | 故障进程存活时间，单位为s。<br>**说明**：从API version 22开始支持。 |
 | memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。<br>**说明**：从API version 22开始支持。 |
 | threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。仅在NativeCrash类型的崩溃事件提供。 |
-| external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
+| external_log<sup></sup> | string[] | [应用沙箱目录](../file-management/app-sandbox-directory.md)下的故障日志文件路径。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
 | log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用[minidump](performance-analysis-kit-terminology.md#minidump)时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_name | string | 故障进程名。<br>**说明**：从API version 21开始支持。 |
 | page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |

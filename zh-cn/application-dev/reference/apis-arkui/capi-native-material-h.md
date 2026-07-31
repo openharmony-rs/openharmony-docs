@@ -35,9 +35,9 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_ImmersiveMaterial](./capi-arkui-nativemodule-arkui-immersivematerial.md) | ArkUI_ImmersiveMaterial | 定义Native侧的沉浸式材质对象。沉浸式材质根据设备算力等级分为不同等级。材质等级由[ArkUI_MaterialLevel](#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](#oh_arkui_nativemodule_getglobalmateriallevel)获取。在高算力和中算力设备上，会影响材质层的滤镜效果和阴影（[NODE_SHADOW](./capi-native-node-h-nodeattributetype-animator.md#node_shadow)或[NODE_CUSTOM_SHADOW](./capi-native-node-h-nodeattributetype-animator.md#node_custom_shadow)）效果。在低算力设备上，会影响背景颜色[NODE_BACKGROUND_COLOR](./capi-native-node-h-nodeattributetype-common.md#node_background_color)、边框颜色[NODE_BORDER_COLOR](./capi-native-node-h-nodeattributetype-layoutattributes.md#node_border_color)、边框宽度[NODE_BORDER_WIDTH](./capi-native-node-h-nodeattributetype-layoutattributes.md#node_border_width)和阴影（[NODE_SHADOW](./capi-native-node-h-nodeattributetype-animator.md#node_shadow)或[NODE_CUSTOM_SHADOW](./capi-native-node-h-nodeattributetype-animator.md#node_custom_shadow)）效果。 |
-| [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | ArkUI_ImmersiveMaterialHandle | 定义指向沉浸式材质对象的指针。可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](#oh_arkui_nativemodule_immersivematerial_create)创建沉浸式材质对象。可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](#oh_arkui_nativemodule_immersivematerial_destroy)接口销毁沉浸式材质对象。 |
+| [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | ArkUI_ImmersiveMaterialHandle | 定义指向沉浸式材质对象的指针，沉浸式材质用于实现的沉浸式视觉效果对象。可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](#oh_arkui_nativemodule_immersivematerial_create)创建沉浸式材质对象。可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](#oh_arkui_nativemodule_immersivematerial_destroy)接口销毁沉浸式材质对象。 |
 | [ArkUI_LightEffectOptions](./capi-arkui-nativemodule-arkui-lighteffectoptions.md) | ArkUI_LightEffectOptions | 定义沉浸式材质的光感交互效果配置对象。创建时默认光感交互颜色为白色（0xffffffff）。 |
-| [ArkUI_LightEffectOptions*](./capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md) | ArkUI_LightEffectOptionsHandle | 定义指向光感交互效果配置对象的指针。可以通过[OH_ArkUI_NativeModule_LightEffectOptions_Create](#oh_arkui_nativemodule_lighteffectoptions_create)创建光感交互效果配置对象。可以通过[OH_ArkUI_NativeModule_LightEffectOptions_Destroy](#oh_arkui_nativemodule_lighteffectoptions_destroy)接口销毁光感交互效果配置对象。 |
+| [ArkUI_LightEffectOptions*](./capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md) | ArkUI_LightEffectOptionsHandle | 定义指向光感交互效果配置对象的指针，开发者通过该指针可配置和管理光感交互效果的各项参数。可以通过[OH_ArkUI_NativeModule_LightEffectOptions_Create](#oh_arkui_nativemodule_lighteffectoptions_create)创建光感交互效果配置对象。可以通过[OH_ArkUI_NativeModule_LightEffectOptions_Destroy](#oh_arkui_nativemodule_lighteffectoptions_destroy)接口销毁光感交互效果配置对象。 |
 
 ### 函数
 
@@ -223,7 +223,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
-| [ArkUI_ImmersiveStyle](#arkui_immersivestyle) style | 指向用于接收材质样式的变量的指针。 |
+| [ArkUI_ImmersiveStyle](#arkui_immersivestyle)* style | 指向用于接收材质样式的变量的指针。 |
 
 **返回：**
 

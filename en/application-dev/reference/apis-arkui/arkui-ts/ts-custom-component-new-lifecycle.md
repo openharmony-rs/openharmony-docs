@@ -20,7 +20,7 @@ Decorates a function that is called when the initialization of a custom componen
 
 > **NOTE**
 >
-> You cannot change the status variable in this callback. Otherwise, the application will break down.
+> You cannot change the state variable in this callback. Otherwise, the application will break down.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -100,7 +100,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentDetach: MethodDecorator
 
-Decorates a function that is called before the status of the custom component changes back from **CustomComponentLifecycleState.MOUNTED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as modifying non-status variables.
+Decorates a function that is called before the status of the custom component changes back from **CustomComponentLifecycleState.MOUNTED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as modifying non-state variables.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -243,7 +243,7 @@ Observes lifecycle status changes of a custom component, and triggers the lifecy
 
 aboutToAppear?(): void
 
-Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the status variables in this phase. Its function is similar to that of [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
+Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the state variables in this phase. Its function is similar to that of [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

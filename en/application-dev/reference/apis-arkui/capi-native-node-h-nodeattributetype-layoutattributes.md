@@ -268,7 +268,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color for the four borders, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color for the four borders, in 0xARGB format, for example, **0xFFFF11FF**.|
 
 2: Specify different colors for the four borders.<br>
 
@@ -648,7 +648,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_OUTLINE_WIDTH = 70
 ```
 
-Outline width of an element, which can be set, reset, and obtained as required through APIs.<br>
+Width of the outline of an element. The outline is not involved in component layout calculation and does not affect the component size. It is different from the border width. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12

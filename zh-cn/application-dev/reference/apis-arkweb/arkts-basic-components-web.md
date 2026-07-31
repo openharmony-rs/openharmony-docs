@@ -27,7 +27,7 @@ Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在�
 - [EventResult](./arkts-basic-components-web-EventResult.md)：同层事件消费结果。
 - [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md)：Web组件获取文件对象。
 - [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md)：Web组件文件选择结果。
-- [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md)：Web组件退出全屏的操作对象。
+- [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md)：Web组件退出全屏的处理操作对象。
 - [HttpAuthHandler](./arkts-basic-components-web-HttpAuthHandler.md)：HttpAuth认证请求相关操作功能对象。
 - [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md)：地理位置信息权限功能。
 - [JsResult](./arkts-basic-components-web-JsResult.md)：弹窗操作。
@@ -41,6 +41,7 @@ Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在�
 - [WebResourceError](./arkts-basic-components-web-WebResourceError.md)：资源管理错误。
 - [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md)：资源获取请求。
 - [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)：资源获取响应。
+- [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md)：PIN码验证请求。
 
 ## 需要权限
 

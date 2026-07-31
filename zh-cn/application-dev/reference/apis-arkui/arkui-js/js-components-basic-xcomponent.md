@@ -7,9 +7,9 @@
 <!--Adviser: @Brilliantry_Rui-->
 
   > **说明：**
-  > 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+  > 该组件从API version 8 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-  用于显示写入了EGL/OpenGLES或媒体数据的组件。
+  用于显示写入了EGL/OpenGLES或媒体数据的组件，支持surface（内容单独送显，直接合成到屏幕）和component（与其他组件合成后统一送显）两种类型，适用于相机预览等需要显示EGL/OpenGLES渲染内容或媒体数据的场景。
 
 ## 权限列表
 
@@ -25,9 +25,9 @@
 
 | 名称          | 参数类型   | 必填   | 描述                                       |
 | ----------- | ------ | ---- | ---------------------------------------- |
-| id          | string | 是    | 组件的唯一标识，支持最大的字符串长度128。                   |
-| type        | string | 是    | 用于指定xcomponent组件类型，可选值为：<br/>- surface：组件内容单独送显，直接合成到屏幕。<br/>- component：组件内容与其他组件合成后统一送显。<br/> |
-| libraryname | string | 否    | 应用Native层编译输出动态库名称。                      |
+| id          | string | 是    | 组件的唯一标识，最大字符串长度为128。                   |
+| type        | string | 是    | 用于指定xcomponent组件类型，可选值为：<br/>- surface：组件内容单独送显，直接合成到屏幕，适用于相机预览、视频播放等场景。<br/>- component：组件内容与其他组件合成后统一送显，适用于需要与其他组件混合显示的场景。<br/> |
+| libraryname | string | 否    | 应用Native层编译输出动态库名称。设置后组件加载该动态库，库中注册的方法可通过onLoad回调的context或getXComponentContext在JS侧调用；不设置时不加载动态库。                      |
 
 ## 样式
 
@@ -39,7 +39,7 @@
 
 | 名称                               | 功能描述                                     |
 | -------------------------------- | ---------------------------------------- |
-| onLoad(context?: object) => void | 插件加载完成时回调事件。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
+| onLoad(context?: object) => void | 插件（通过libraryname属性加载的Native动态库）加载完成时回调事件。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
 | onDestroy() => void              | 插件销毁完成时回调事件。                             |
 
 ## 方法
@@ -48,9 +48,9 @@
 
 | 名称                       | 参数                                       | 返回值类型  | 描述                                       |
 | ------------------------ | ---------------------------------------- | ------ | ---------------------------------------- |
-| getXComponentSurfaceId   | -                                        | string | 获取xcomponent对应Surface的ID，供@ohos接口使用，比如camera相关接口。 |
-| setXComponentSurfaceSize | {<br/>surfaceWidth: number,<br/>surfaceHeight: number  <br/>} | -      | 设置xcomponent持有Surface的宽度和高度。             |
-| getXComponentContext     | -                                        | object | 获取开发者扩展的xcomponent方法的实例对象。               |
+| getXComponentSurfaceId   | -                                        | string | 获取xcomponent对应Surface的ID，供@ohos接口使用，比如camera相关接口。需在onLoad回调后调用。 |
+| setXComponentSurfaceSize | {<br/>surfaceWidth: number,<br/>surfaceHeight: number  <br/>} | -      | 设置xcomponent持有Surface的宽度和高度，单位为px。需在onLoad回调后调用。             |
+| getXComponentContext     | -                                        | object | 获取开发者扩展的xcomponent方法的实例对象，该对象的接口由开发者自定义。需先设置libraryname属性。               |
 
 ## 示例
 
@@ -72,7 +72,9 @@ export default {
         var surfaceId = this.$element('xcomponent').getXComponentSurfaceId();
         camera.createPreviewOutput(surfaceId).then((previewOutput) => {
             console.info('Promise returned with the PreviewOutput instance');
-        })
+        });
+    },
+    ondestroy() {
     }
 }
 ```

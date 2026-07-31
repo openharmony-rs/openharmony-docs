@@ -41,7 +41,7 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -85,7 +85,7 @@ Obtains the zoom ratio in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.<br>Applicable versions: 12 and later          |
@@ -130,7 +130,7 @@ Sets smooth zoom.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.<br>Applicable versions: 11-17            |
 

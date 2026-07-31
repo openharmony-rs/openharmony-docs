@@ -110,7 +110,7 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值:**
+**返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |

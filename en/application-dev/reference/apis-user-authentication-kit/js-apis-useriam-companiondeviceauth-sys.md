@@ -5,8 +5,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:46:44.372Z pushedAt=2026-07-27T08:45:08.368Z -->
 
 The **companionDeviceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to companion device authentication management. This module provides the system application with capabilities such as querying and subscribing to companion devices, and managing the service scope.
 

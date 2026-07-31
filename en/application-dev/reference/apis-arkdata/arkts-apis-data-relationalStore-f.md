@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **NOTE**
@@ -26,12 +26,12 @@ If no database file exists in the corresponding sandbox directory, a database fi
 
 When creating a database, you should consider whether to configure the [encrypt](arkts-apis-data-relationalStore-i.md#storeconfig) parameter. Once the database is created, you are not allowed to change this parameter.
 
-| Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
+| Encryption Type Configured When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
 | ------- | -------------------------------- | ---- |
-| Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
-| Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
+| Non-encryption| Encryption                         | The RDB store is opened using the encryption configuration (**encrypt**=**true**).  |
+| Encryption| Non-encryption                         | The RDB store is opened using the non-encryption configuration (**encrypt**=**false**).  |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+**getRdbStore** supports multi-thread concurrent operations.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -41,7 +41,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                        | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | Yes  | Configuration of the RDB store.                               |
-| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | Yes  | Callback invoked to return the RDB store obtained.                  |
+| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | Yes  | Callback used to return the result. If the RDB store is obtained successfully, **err** is **undefined** and **data** is the **RdbStore** object. Otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -53,17 +53,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error.     |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
 | 14800011  | The current operation failed because the database is corrupted.    |
-| 14801001  | The operation is supported in the stage model only.    |
-| 14801002  | Invalid data group ID.   |
-| 14800017  | StoreConfig is changed. |
-| 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.   |
-| 14800023  | SQLite: Access permission denied.    |
-| 14800027  | SQLite: Attempt to write a readonly database.   |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.     |
-| 14800029  | SQLite: The database is full.  |
-| 14800030  | SQLite: Unable to open the database file.   |
+| 14801001  | The operation is supported in the stage model only. <br>Applicable versions: 10+   |
+| 14801002  | Invalid data group ID. <br>Applicable versions: 10+  |
+| 14800017  | StoreConfig is changed. <br>Applicable versions: 12+|
+| 14800020  | The secret key is corrupted or lost. <br>Applicable versions: 14+  |
+| 14800021  | SQLite: Generic error. <br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort. <br>Applicable versions: 12+  |
+| 14800023  | SQLite: Access permission denied. <br>Applicable versions: 12+   |
+| 14800027  | SQLite: Attempt to write a readonly database. <br>Applicable versions: 12+  |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. <br>Applicable versions: 12+    |
+| 14800029  | SQLite: The database is full. <br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file. <br>Applicable versions: 12+  |
 
 **Example**:
 
@@ -132,12 +132,12 @@ If no database file exists in the corresponding sandbox directory, a database fi
 
 When creating a database, you should consider whether to configure the [encrypt](arkts-apis-data-relationalStore-i.md#storeconfig) parameter. Once the database is created, you are not allowed to change this parameter.
 
-| Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
+| Encryption Type Configured When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
 | ------- | -------------------------------- | ---- |
-| Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
-| Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
+| Non-encryption| Encryption                         | The RDB store is opened using the encryption configuration (**encrypt**=**true**).  |
+| Encryption| Non-encryption                         | The RDB store is opened using the non-encryption configuration (**encrypt**=**false**).  |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+**getRdbStore** supports multi-thread concurrent operations.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -164,17 +164,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
 | 14800011  | The current operation failed because the database is corrupted.  |
-| 14801001  | The operation is supported in the stage model only.                               |
-| 14801002  | Invalid data group ID.                             |
-| 14800017  | StoreConfig is changed. |
-| 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.   |
-| 14800023  | SQLite: Access permission denied.    |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
+| 14801001  | The operation is supported in the stage model only. <br>Applicable versions: 10+ |
+| 14801002  | Invalid data group ID. <br>Applicable versions: 10+ |
+| 14800017  | StoreConfig is changed. <br>Applicable versions: 12+|
+| 14800020  | The secret key is corrupted or lost. <br>Applicable versions: 14+  |
+| 14800021  | SQLite: Generic error. <br>Applicable versions: 12+|
+| 14800022  | SQLite: Callback routine requested an abort. <br>Applicable versions: 14+  |
+| 14800023  | SQLite: Access permission denied. <br>Applicable versions: 14+   |
+| 14800027  | SQLite: Attempt to write a readonly database. <br>Applicable versions: 12+|
+| 14800028  | SQLite: Some kind of disk I/O error occurred. <br>Applicable versions: 12+|
+| 14800029  | SQLite: The database is full. <br>Applicable versions: 12+|
+| 14800030  | SQLite: Unable to open the database file. <br>Applicable versions: 12+|
 
 **Example**:
 
@@ -227,6 +227,85 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+## relationalStore.getRdbStoreSync<sup>24+</sup>
+
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
+
+Creates or opens an existing relational RDB store. You can set the **config** parameter as required and use the **RdbStore** object to call related APIs to perform data operations. This is a synchronous method, which blocks the thread until the **RdbStore** instance is obtained.
+
+If no database file exists in the corresponding sandbox directory, a database file is created. For details, see [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig). If a database file exists in the corresponding directory, the existing database file is opened.
+
+When creating a database, you should consider whether to configure the [encrypt](arkts-apis-data-relationalStore-i.md#storeconfig) parameter. Once the database is created, you are not allowed to change this parameter. If the parameter is modified, an error code will be reported.
+
+| Encryption Type Configured When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
+| ------- | -------------------------------- | ---- |
+| Non-encryption| Encryption                         | The RDB store is opened using the encryption configuration (**encrypt**=**true**).  |
+| Encryption| Non-encryption                         | The RDB store is opened using the non-encryption configuration (**encrypt**=**false**).  |
+
+**getRdbStoreSync** supports multi-thread concurrent operations.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                            | Mandatory| Description                                                        |
+| ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
+
+**Return value**
+
+| Type                                     | Description                             |
+| ----------------------------------------- | --------------------------------- |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | **RdbStore** object.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). To handle error 14800011, you can refer to [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid args. |
+| 14800010  | Invalid database path. |
+| 14800011  | The current operation failed because the database is corrupted.  |
+| 14801001  | The operation is supported in the stage model only.                               |
+| 14801002  | Invalid data group ID.                             |
+| 14800017  | Config changed. |
+| 14800020  | The secret key is corrupted or lost.   |
+| 14800021  | SQLite: Generic error. |
+| 14800027  | SQLite: Attempt to write a readonly database. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800029  | SQLite: The database is full. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**Example**:
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let store: relationalStore.RdbStore | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S1
+    };
+
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
 ## relationalStore.deleteRdbStore
 
 deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
@@ -244,8 +323,8 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| name     | string                    | Yes  | Name of the RDB store to delete.                                                |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback invoked to return the result.                                      |
+| name     | string                    | Yes  | RDB store name, which cannot be an empty string or contain path separators (/).                                                |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the RDB store is deleted successfully, **err** is undefined. Otherwise, **err** is an error object.                                      |
 
 **Error codes**
 
@@ -318,7 +397,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| name    | string  | Yes  | Name of the RDB store to delete.                                                |
+| name    | string  | Yes  | RDB store name, which cannot be an empty string or contain path separators (/).                                                |
 
 **Return value**
 
@@ -394,7 +473,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
-| callback | AsyncCallback&lt;void&gt;   | Yes  | Callback invoked to return the result.                                      |
+| callback | AsyncCallback&lt;void&gt;   | Yes  | Callback used to return the result. If the RDB store is deleted successfully, **err** is undefined. Otherwise, **err** is an error object.                                      |
 
 **Error codes**
 
@@ -403,10 +482,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**         |
 |-----------|----------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error.        |
-| 14800010  | Failed to open or delete the database by an invalid database path.        |
-| 14801001  | The operation is supported in the stage model only.         |
-| 14801002  | Invalid data group ID.        |
+| 14800000  | Inner error.      |
+| 14800010  | Failed to open or delete the database by an invalid database path.   |
+| 14801001  | The operation is supported in the stage model only.   |
+| 14801002  | Invalid data group ID.   |
 
 **Example**:
 
@@ -493,7 +572,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | **ID**| **Error Message**            |
 |-----------|---------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.      |
+| 801       | Capability not supported. <br>Applicable versions: 12+     |
 | 14800000  | Inner error.      |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
 | 14801001  | The operation is supported in the stage model only.   |
@@ -649,9 +728,9 @@ Obtains the SQL statement used to insert data. This API returns the result synch
 
 | Name | Type                 | Mandatory| Description                                                        |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| table | string              | Yes  | Name of the database table to which data is to be written.|
+| table | string              | Yes  | Name of the RDB store table to which data is to be written. The value cannot be an empty string.|
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes| Field information and corresponding values of the data to be written to the database.|
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No|Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No| Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
 **Return value**
 

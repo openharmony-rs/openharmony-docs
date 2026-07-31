@@ -119,7 +119,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 >  4. TransitionEffect中指定的属性值如与默认值相同，则该属性不会产生转场动画。如TransitionEffect.opacity(1).animation({duration:1000})，由于opacity默认值也为1，未产生透明度动画，该组件直接出现或者消失。
 >  5. 更详细的关于scale、rotate效果的介绍可参考[图形变换](ts-universal-attributes-transformation.md)。
 >  6. 如果在动画范围([animateTo](../arkts-apis-uicontext-uicontext.md#animateto)、[animation](ts-animatorproperty.md))内触发组件的上下树或可见性([visibility](ts-universal-attributes-visibility.md#visibility))改变，而该子树的根组件没有配置transition，会给该组件加上默认透明度转场，即TransitionEffect.OPACITY，动画参数跟随所处动画环境的参数。如不需要可通过主动配置TransitionEffect.IDENTITY来禁用，使该组件直接出现或消失。
->  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件的有充足的消失转场时间，见示例3。
+>  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件有充足的消失转场时间，见示例3。
 
 ### translate<sup>10+</sup>
 
@@ -343,7 +343,7 @@ animation(value: AnimateParam): TransitionEffect
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | -------- | ---- | ------------------ |
-| value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明)   | 是   | 动画参数。</br>该参数仅用于指定动画参数，其入参AnimateParam的onFinish回调不生效。</br>如果通过combine进行TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
+| value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明)   | 是   | 动画参数。<br/>该参数仅用于指定动画参数，其入参AnimateParam的onFinish回调不生效。<br/>如果通过combine进行TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
 
 **返回值：**
 
@@ -530,7 +530,7 @@ struct TransitionEffectExample3 {
         Column() {
           Row() {
             // $r('app.media.testImg')需要替换为开发者所需的图像资源文件。
-            Image($r('app.media.testImg')).width(150).height(150).id("image1")
+            Image($r('app.media.testImg')).width(150).height(150).id('image1')
               .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
           }
 
@@ -539,11 +539,11 @@ struct TransitionEffectExample3 {
             .width(150)
             .height(150)
             .margin({ top: 50 })
-            .id("image2")
+            .id('image2')
             .transition(TransitionEffect.scale({ x: 0, y: 0 }).animation({ duration: 1000 }))
-          Text("view").margin({ top: 50 })
+          Text('view').margin({ top: 50 })
         }
-        .id("column1")
+        .id('column1')
         .transition(TransitionEffect.opacity(0.99).animation({ duration: 1000 }),
           // 结束回调设置在消失的第一层节点上，确保能有消失的结束回调
           (transitionIn: boolean) => {
@@ -575,7 +575,7 @@ struct TransitionVisibilityExample {
         .onClick(() => {
           this.getUIContext()?.animateTo({ duration: 1000 }, () => {
             this.isVisible = !this.isVisible;
-          })
+          });
         })
       Column() {
         Text('Hello World')

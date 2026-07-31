@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 106104 适配器未绑定
+## 106104 NodeAdapter未绑定
 
 **错误信息**
 
@@ -18,17 +18,17 @@ The lazy loading adapter is not bound to the component.
 
 **错误描述**
 
-组件未设置NodeAdapter。
+组件未绑定NodeAdapter。
 
 **可能原因**
 
-组件未设置NodeAdapter。
+组件未设置NodeAdapter，NodeAdapter需先与组件绑定后才能进行节点操作。
 
 **处理步骤**
 
 为组件设置NodeAdapter。
 
-## 106105 适配器已存在
+## 106105 NodeAdapter已存在
 
 **错误信息**
 
@@ -40,11 +40,11 @@ NodeAdapter已经存在。
 
 **可能原因**
 
-NodeAdapter已经存在，不支持添加删除子节点。
+NodeAdapter已经存在，不支持添加或删除子节点。
 
 **处理步骤**
 
-移除NodeAdapter，或放弃在此处添加删除子节点。
+移除NodeAdapter，或放弃在此处添加或删除子节点。
 
 ## 106106 子节点已存在
 
@@ -54,7 +54,7 @@ The corresponding node already has a child node and cannot add an adapter.
 
 **错误描述**
 
-组件已经有子节点
+组件已经有子节点。
 
 **可能原因**
 
@@ -76,7 +76,7 @@ The parameter length in the parameter event exceeds the limit.
 
 **可能原因**
 
-传入的index参数超出传入的数组长度限制。
+传入的index参数超出数组长度限制。
 
 **处理步骤**
 
@@ -98,7 +98,7 @@ The data does not exist in the component event.
 
 **处理步骤**
 
-确认当前事件是否存在想要查询的数据。
+确认当前事件是否存在需查询的数据。
 
 ## 106109 不支持返回值
 
@@ -116,7 +116,7 @@ The component event does not support return values.
 
 **处理步骤**
 
-确认当前事件是否存在返回值。
+请移除获取事件返回值的相关代码。
 
 ## 106110 暂不支持该事件类型
 
@@ -126,7 +126,7 @@ The event type is not supported.
 
 **错误描述**
 
-注册通用事件时传入的事件类型错误。
+注册通用事件时传入的事件类型不被支持。
 
 **可能原因**
 
@@ -134,4 +134,4 @@ The event type is not supported.
 
 **处理步骤**
 
-检查函数入参的事件类型的具体值。
+检查函数入参的事件类型取值是否在已支持的事件类型范围内。

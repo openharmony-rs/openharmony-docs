@@ -91,10 +91,10 @@ Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
 | ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for the width and height to be greater than or equal to the display boundaries (the part that exceeds the boundaries may be clipped).|
-| ARKUI_OBJECT_FIT_AUTO = 2 | The image is scaled automatically to fit the display area.|
+| ARKUI_OBJECT_FIT_AUTO = 2 | The image is displayed in an appropriate fill mode that is automatically selected based on the sizes of the image and container.|
 | ARKUI_OBJECT_FIT_FILL = 3 | The image is scaled to fill the display area, and its aspect ratio is not retained.|
 | ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | The image is displayed with its aspect ratio retained, in a size less than or equal to the original size.|
-| ARKUI_OBJECT_FIT_NONE = 5 | The original size is retained.|
+| ARKUI_OBJECT_FIT_NONE = 5 | The image size remains unchanged.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | Not resized, the image is aligned with the start edge of the top of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | Not resized, the image is horizontally centered at the top of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | Not resized, the image is aligned with the end edge at the top of the container.|
@@ -104,7 +104,7 @@ Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The original image size is retained. This value must be used together with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) in the **Image** component to control the image display effect (such as scaling, rotation, and translation) through matrix transformation.<br>**Since:** 21|
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The original image size is retained. This value must be used together with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) in the **Image** component to control the image display effect (such as scaling, rotation, and translation) through matrix transformation. If this value is not used together with **NODE_IMAGE_IMAGE_MATRIX**, it will not take effect.<br>**Since:** 21|
 
 ### ArkUI_ImageInterpolation
 

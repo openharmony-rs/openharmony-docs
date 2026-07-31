@@ -51,7 +51,7 @@
    #include <hilog/log.h>
    ```
 
-3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
+3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
 
    <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -139,7 +139,7 @@
 
    > **说明：**
    >
-   > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体管理器OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
+   > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体集OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
 
    <!-- @[custom_font_c_create_shared_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -252,6 +252,7 @@
    // 情况一：如果此时设置使用了自定义字体，文本会正常显示
    // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
    // 后续使用自定义字体时，需使用到该字体家族名
+   // 情况二：如果此时不调用OH_Drawing_SetTextStyleFontFamilies或传入空参，文本会默认使用系统默认字体，而此时系统字体已被禁用，因此文本将无法显示
    const char* fontFamily = "HarmonyOS_Sans"; 
    const char* fontPath = "/system/fonts/HarmonyOS_Sans.ttf"; 
    // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
@@ -259,14 +260,6 @@
    DRAWING_LOGI("errorCode = %{public}d", errorCode);
    const char *myFontFamilies[] = {"HarmonyOS_Sans"}; // 确保已成功注册自定义字体，填入自定义字体的字体家族名
    OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
-   
-   // 情况二：如果此时使用了系统字体，文本将无法显示
-   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
-   
-   // 情况三：如果此时不设置使用字体，文本会默认使用系统默认字体，而此时系统字体已被禁用，因此文本将无法显示
-   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
    ```
 
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。

@@ -6,14 +6,14 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-文本类组件公共接口。
+文本类组件公共接口，提供TextInput、TextArea、Search等组件的通用控制能力，支持文本内容获取、键盘外观配置、内容变化原因追踪等功能，适用于需要对文本输入组件进行统一管理和控制的场景。
 
 >  **说明：**
 >
 > - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
-
+>
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[基础类型定义](ts-types.md)和[文本组件公共接口](ts-text-common.md)。
 
 ## TextContentControllerBase
@@ -28,7 +28,10 @@ TextInput、TextArea、Search的基础控制器。
 
 getText(range?: TextRange): string
 
-获取指定范围的文本内容。
+获取指定范围的文本内容。可用于以下场景：
+- 文本编辑器中获取用户选中的文本内容进行处理。
+- 内容校验时获取特定范围的文本进行检查。
+- 文本处理应用中提取部分文本内容进行分析或转换。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -46,7 +49,7 @@ getText(range?: TextRange): string
 
 | 类型    | 说明               |
 | ------ | ---------------- |
-| string | 指定范围的文本内容。 |
+| string | 返回指定范围内的文本内容字符串。当指定的起始位置大于终止位置时，返回空字符串。 |
 
 ## KeyboardGradientMode<sup>20+</sup>枚举说明
 
@@ -59,7 +62,7 @@ getText(range?: TextRange): string
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | NONE | 0 | 键盘无模糊效果。 |
-| LINEAR_GRADIENT | 1 | 键盘设置线性渐变模糊效果。 |
+| LINEAR_GRADIENT | 1 | 键盘设置从顶部到底部的线性渐变模糊效果，模糊程度沿垂直方向渐变。 |
 
 ## KeyboardFluidLightMode<sup>20+</sup>枚举说明
 
@@ -72,7 +75,7 @@ getText(range?: TextRange): string
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | NONE | 0 | 键盘无流光效果。 |
-| BACKGROUND_FLUID_LIGHT | 1 | 键盘设置流光效果。 |
+| BACKGROUND_FLUID_LIGHT | 1 | 键盘设置背景流光效果。 |
 
 ## KeyboardAppearanceConfig<sup>20+</sup>
 
@@ -84,8 +87,8 @@ getText(range?: TextRange): string
 
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的渐变模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
-| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 是   | 键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的渐变模糊效果。当需要为键盘设置渐变模糊效果时传入此参数。<br>默认值：KeyboardGradientMode.NONE |
+| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 是   | 键盘的流光效果。当需要为键盘设置流光动画效果时传入此参数。<br>默认值：KeyboardFluidLightMode.NONE（无流光效果）|
 
 ## TextChangeReason<sup>20+</sup>
 
@@ -108,7 +111,7 @@ getText(range?: TextRange): string
 | UNDO | 8 | 撤销。 |
 | CONTROLLER | 9 | 开发者调用组件接口。 |
 | ACCESSIBILITY | 10 | 无障碍接口。 |
-| COLLABORATION | 11 | 跨端拍照。 |
+| COLLABORATION | 11 | 跨端拍照协同输入。 |
 | STYLUS | 12 | 手写笔。 |
 
 ## VoiceButtonOptions<sup>23+</sup>
@@ -125,4 +128,4 @@ getText(range?: TextRange): string
 
 | 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
-| enabled              | boolean                                         | 否  | 是 | 输入框启用或禁用语音按钮。<br/>true表示启用语音按钮，false表示禁用语音按钮。<br/> 默认值：false|
+| enabled              | boolean                                         | 否  | 是 | 输入框启用或禁用语音按钮。<br>true表示启用语音按钮，false表示禁用语音按钮。<br> 默认值：false|

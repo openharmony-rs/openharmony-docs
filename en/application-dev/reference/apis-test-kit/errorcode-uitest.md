@@ -6,6 +6,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bc134ab2c4b569cd5c3d8caa272b645345002259 translatedAt=2026-07-29T01:30:19.612Z pushedAt=2026-07-30T03:36:40.003Z -->
 
 > **NOTE**
 >
@@ -29,7 +30,8 @@ The accessibility service cannot be accessed.
 
 Run the **param set persist.ace.testmode.enabled 1** command and restart the device.
 
-## 17000002 Unable to Call the API
+## 17000002 API Does Not Support Concurrent Calls
+
 **Error Message**
 
 The API does not support concurrent calls.
@@ -44,9 +46,10 @@ The async API does not use **await** to wait until the asynchronous execution is
 
 **Solution**
 
-Use **await** to wait until the asynchronous function execution is complete.
+Ensure that only one API call is executed at a time. The async API uses **await** to wait until the asynchronous execution is complete.
 
 ## 17000003 Assertion Failure
+
 **Error Message**
 
 Assertion failed.
@@ -63,14 +66,15 @@ The component that the user asserts to exist does not exist.
 
 Check the existence of the component that is asserted to exist.
 
-## 17000004 Target Component/Window Lost
+## 17000004 Target Component/Window Invisible or Destroyed
+
 **Error Message**
 
 The window or component is invisible or destroyed.
 
 **Description**
 
-This error code is reported when the target component or window is lost and cannot be operated.
+The target component or window is invisible or has been destroyed, and no operation can be performed.
 
 **Possible Causes**
 
@@ -81,6 +85,7 @@ After the target component or window is obtained, the page changes. As a result,
 Check whether the loss is caused by page changes.
 
 ## 17000005 Operation Not Supported
+
 **Error Message**
 
 This operation is not supported.
@@ -98,6 +103,7 @@ The component, window attribute, or device does not support the performed operat
 Check whether the UI component, window attribute, or device supports the performed operation.
 
 ## 17000007 Parameters Are Invalid
+
 **Error Message**
 
 Parameter verification failed.

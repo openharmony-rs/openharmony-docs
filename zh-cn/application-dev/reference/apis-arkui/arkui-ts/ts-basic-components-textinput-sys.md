@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-单行文本输入框组件。
+单行文本输入框组件，用于接收用户输入的单行文本内容，支持多种输入类型（如密码、语音等），可应用于表单填写、搜索框、登录注册等场景，帮助开发者快速构建用户交互界面。
 
 > **说明：**
 >
@@ -22,13 +22,12 @@
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。密码显示小眼睛图标并且默认会将文字变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-
+| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。密码显示小眼睛图标并且默认会将文字变成圆点，从API version 12开始，Wearable设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 ## voiceButton<sup>23+</sup>
 
 voiceButton(options: Optional\<VoiceButtonOptions\>)
 
-设置语音按钮选项。
+设置语音按钮选项，启用后将在输入框中显示语音输入按钮，用户可通过语音进行输入。
 
 **系统接口：** 此接口为系统接口。
 
@@ -42,7 +41,7 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ----- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | 是  | 语音按钮选项参数。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)\> | 是  | 语音按钮配置选项，用于控制语音输入按钮的启用状态和行为。当需要在TextInput组件中启用语音输入功能时使用此参数，具体配置项参见VoiceButtonOptions类型定义。 |
 
 
 ## 示例

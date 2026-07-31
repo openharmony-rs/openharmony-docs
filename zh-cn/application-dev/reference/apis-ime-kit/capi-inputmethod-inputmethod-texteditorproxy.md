@@ -45,19 +45,19 @@ TextEditorProxy采用回调函数机制实现输入法应用与编辑器之间�
 - 所有Set*Func接口必须在Attach之前调用，Attach后设置的回调函数将不会被输入法调用。
 - 回调函数中的指针参数具有临时性，回调返回后不可再访问，必须在回调内部完成数据处理。
 - 建议至少注册GetTextConfigFunc和InsertTextFunc两个核心回调，否则输入法可能无法正常工作。
-- 非线程安全，不建议在多线程环境下同时操作同一个TextEditorProxy对象。可通过[OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread)（since 22）将回调切换到主线程执行以避免多线程并发问题。
+- 非线程安全，不建议在多线程环境下同时操作同一个TextEditorProxy对象。可通过[OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread)将回调切换到主线程执行以避免多线程并发问题。
 - 此对象为不透明类型，不可直接访问内部成员或进行内存操作。
 
-## 相关函数列表
+相关函数：
 
-### 创建/销毁函数
+- 创建/销毁函数
 
 | 函数 | 描述 |
 | -- | -- |
 | [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create) | 创建一个新的InputMethod_TextEditorProxy实例。 |
 | [OH_TextEditorProxy_Destroy](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_destroy) | 销毁一个InputMethod_TextEditorProxy实例。 |
 
-### 回调设置函数（Set*Func，须在Attach前调用）
+- 回调设置函数（Set*Func，须在Attach前调用）
 
 | 函数 | 描述 |
 | -- | -- |
@@ -77,7 +77,7 @@ TextEditorProxy采用回调函数机制实现输入法应用与编辑器之间�
 | [OH_TextEditorProxy_SetSetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setsetpreviewtextfunc) | 设置SetPreviewTextFunc回调。 |
 | [OH_TextEditorProxy_SetFinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setfinishtextpreviewfunc) | 设置FinishTextPreviewFunc回调。 |
 
-### 回调获取函数（Get*Func）
+- 回调获取函数（Get*Func）
 
 | 函数 | 描述 |
 | -- | -- |
@@ -97,13 +97,13 @@ TextEditorProxy采用回调函数机制实现输入法应用与编辑器之间�
 | [OH_TextEditorProxy_GetSetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getsetpreviewtextfunc) | 获取已注册的SetPreviewTextFunc回调。 |
 | [OH_TextEditorProxy_GetFinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getfinishtextpreviewfunc) | 获取已注册的FinishTextPreviewFunc回调。 |
 
-### 线程配置函数
+线程配置函数：
 
 | 函数 | 描述 |
 | -- | -- |
-| [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread) | 配置回调函数的执行线程策略（since 22）。 |
+| [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread) | 配置回调函数的执行线程策略。 |
 
-## 关联关系
+关联关系：
 
 - 与InputMethodProxy的关系：[InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md)负责向输入法服务发送请求和通知，InputMethod_TextEditorProxy负责接收输入法应用的请求和通知。两者在Attach时同时建立关联，构成双向通信通道。
 - 与TextConfig的关系：[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)在GetTextConfigFunc回调中使用，用于向输入法传递编辑框的配置信息。GetTextConfigFunc回调被触发时，开发者需在回调内对config参数赋值以填充配置信息。

@@ -52,7 +52,7 @@ Checks whether this session supports a preconfigured resolution.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                       |
+| ID  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 
@@ -94,7 +94,7 @@ Preconfigures this session.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                       |
+| ID  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 
@@ -391,7 +391,7 @@ Sets the priority level for video recording quality.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| Error Code| Error Message                                                                                                                                       |
+| ID| Error Message                                                                                                                                       |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 7400103  | Session not config. The session has not been committed or configured.                                                                           |

@@ -158,7 +158,7 @@ export default class MyAbility extends UIAbility {
 >   - 3005：Kernel锁异常清理。
 >   - 3006：省电模式清理。
 >   - 3007：模块高耗电异常清理。
->   - 3030：应急模式、超级省电模式或睡眠模式的清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>   - 3042：应急模式或超级省电模式清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
 >
 > - [LastExitReason](#lastexitreason)为RESOURCE_CONTROL时：
 >   - 101：未申请合理的后台任务，但是后台有大量音频播放。
@@ -425,7 +425,7 @@ export default class MyAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 | ------------- | --------- | ----------- |
-| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作，默认值。|
+| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作。|
 | CANCEL | 1 | 表示取消结束动作。|
 
 **示例：**

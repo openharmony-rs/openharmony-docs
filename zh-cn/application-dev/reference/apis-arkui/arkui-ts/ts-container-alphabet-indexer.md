@@ -141,7 +141,7 @@ popupBackground(value: ResourceColor)
 该接口未被主动调用或参数value传入undefined时：<br />
 API version 11及以前版本，提示弹窗背景颜色默认为0xFFFFFFFF，显示为白色。<br />
 对于API version 12至API version 24版本，默认为#66808080，显示为半透明的灰色。<br />
-从API版本26.0.0开始，如果[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用或参数value传入undefined，高档、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。<br />
+从API版本26.0.0开始，如果[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用，或调用时参数value均传入undefined，高算力、中算力设备默认显示为沉浸式系统材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THICK样式，低算力设备默认显示为白色背景。<br />
 如果popupBackgroundBlurStyle被主动调用且参数value传入有效值，提示弹窗背景颜色默认为#66808080，显示为半透明的灰色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -423,7 +423,7 @@ itemBorderRadius(value: number)
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始，[popupBackground](#popupbackground)和popupBackgroundBlurStyle均未被主动调用或者传入undefined时，在高档、中档算力设备默认显示为沉浸式材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THIN样式，低档算力设备默认显示为白色背景。
+设置提示弹窗的背景模糊材质。API版本26.0.0之前版本，未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。从API版本26.0.0开始，[popupBackground](#popupbackground)和[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)均未被主动调用，或调用时参数value均传入undefined时，在高算力、中算力设备默认显示为沉浸式系统材质[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)的THICK样式，低算力设备默认显示为白色背景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

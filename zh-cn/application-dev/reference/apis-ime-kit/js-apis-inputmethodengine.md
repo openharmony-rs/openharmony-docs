@@ -26,7 +26,7 @@
 | KeyboardDelegate | 键盘代理对象，提供物理键盘按键事件监听、光标位置变化监听、文本选择变化监听、文本内容变化监听、编辑框属性变化监听等能力。通过`getKeyboardDelegate()`获取实例。 |
 | InputClient | 输入客户端对象，提供对编辑框的文本操作能力，包括插入文本、删除文本（前删/后删）、获取光标前后文本、移动光标、选中文本、发送功能键和扩展编辑动作、设置预览文本、发送私有数据、自定义消息通信等。通过订阅`inputStart`事件在回调中获取实例。 |
 | KeyboardController | 键盘控制器对象，提供隐藏键盘、退出当前输入类型等能力。通过订阅`inputStart`事件在回调中获取实例。 |
-| Panel | 输入法面板对象，提供面板页面内容加载、大小调整、位置移动、显示/隐藏、面板状态切换、隐私模式设置、沉浸模式与效果设置、面板矩形区域预设置、热区更新等能力。通过`createPanel()`获取实例。 |
+| Panel | 输入法面板对象，提供面板页面内容加载、大小调整、位置移动、显示/隐[destroyPanel]藏、面板状态切换、隐私模式设置、沉浸模式与效果设置、面板矩形区域预设置、热区更新等能力。通过`createPanel()`获取实例。 |
 | MessageHandler | 自定义通信对象，用于接收编辑框应用发送的自定义通信数据，并提供终止通知回调。通过`InputClient.recvMessage()`注册。 |
 
 输入法应用的典型使用流程涉及多个API的组合调用，核心流程为：获取InputMethodAbility实例 -> 订阅inputStart事件 -> 在回调中获取KeyboardController和InputClient -> 创建Panel -> 加载面板页面内容 -> 通过InputClient操作编辑框文本 -> 通过KeyboardController控制键盘显隐。
@@ -312,7 +312,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 ```ts
 inputMethodEngine.getInputMethodEngine()
   .off('inputStart',
-    (_kbController: inputMethodEngine.KeyboardController, _textClient: inputMethodEngine.TextInputClient) => {
+    (kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.TextInputClient) => {
       console.info('delete inputStart notification.');
     });
 ```
@@ -805,7 +805,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------------- | ---- |
+| -------- | ---------------------------------------------- |
 | 801 | capability not supported. |
 
 **示例：**
@@ -930,7 +930,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 创建输入法面板，仅支持输入法应用在[InputMethodExtensionAbility](js-apis-inputmethod-extension-ability.md)（输入法扩展能力）类中调用。使用callback异步回调。
 
 配对调用：
-- 调用createPanel()创建面板后，必须在使用完毕后调用[destroyPanel](#destroyPanel0)销毁面板以释放资源。
+- 调用createPanel()创建面板后，必须在使用完毕后调用[destroyPanel](#destroypanel10)销毁面板以释放资源。
 - 未调用destroyPanel()会导致面板资源泄漏，影响系统资源使用。
 - 单个输入法应用仅允许创建一个软键盘类型和一个状态栏类型的面板。
 
@@ -1725,8 +1725,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt; ): voi
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| width | number | 是   | 目标面板的宽度，单位为vp。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
-| height | number | 是   | 目标面板的高度，单位为vp。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
+| width | number | 是   | 目标面板的宽度，单位为px。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
+| height | number | 是   | 目标面板的高度，单位为px。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
 | callback | AsyncCallback&lt;void&gt;  | 是   | 回调函数。当面板大小改变成功，err为undefined，否则err为错误对象。 |
 
 **错误码：**
@@ -1770,8 +1770,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| width | number | 是   | 目标面板的宽度，单位为vp。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
-| height | number | 是   | 目标面板的高度，单位为vp。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
+| width | number | 是   | 目标面板的宽度，单位为px。该参数应为大于或等于0的整数，不超出屏幕宽度。超出范围时返回错误码401。|
+| height | number | 是   | 目标面板的高度，单位为px。该参数应为大于或等于0的整数，不高于屏幕高度的0.7倍。超出范围时返回错误码401。|
 
 **返回值：**
 
@@ -2126,6 +2126,8 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用[updatePanelRect](#updatepanelrect-1)或[updatePanelRectSync](#updatepanelrectsync-1)。
 >
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+>
+> 当com.ohos.sceneboard进程不存在时，输入法热区生效范围保持和软键盘区域一致。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2262,6 +2264,8 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise&lt;void&gt;
 > 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
 >
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+>
+> 当com.ohos.sceneboard进程不存在时，输入法热区生效范围保持和软键盘区域一致。
 
 **起始版本：** 26.0.0
 
@@ -2403,6 +2407,8 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。
 >
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+>
+> 当com.ohos.sceneboard进程不存在时，输入法热区生效范围保持和软键盘区域一致。
 
 **起始版本：** 26.0.0
 
@@ -2470,6 +2476,8 @@ updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
 >
 > 此接口为同步接口，接口返回仅代表系统侧收到更新热区的请求，不代表已完成热区更新。
+>
+> 当com.ohos.sceneboard进程不存在时，输入法热区生效范围保持和软键盘区域一致。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2903,7 +2911,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise&lt;SystemPanelInsets&gt;
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ------------------------------------------------------- | ---- |
+| -------- | ------------------------------------------------------- |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. Possible causes: 1. Current panel's type is not SOFT_KEYBOARD.  2. Panel's flag is not FLG_FIXED or FLG_FLOATING. |
 | 12800022 | invalid displayId. |
@@ -3185,7 +3193,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 输入法的安全模式，如BASIC或FULL。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称  | 值   | 说明                                         |
 | ----- | ---- | -------------------------------------------- |
@@ -3196,7 +3204,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 编辑框中文本的扩展编辑操作类型，如剪切、复制等。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -3209,7 +3217,7 @@ keyboardController.exitCurrentInputType().then(() => {
 
 光标的移动方向。
 
-**系统能力**: SystemCapability.MiscServices.InputMethodFramework
+**系统能力:** SystemCapability.MiscServices.InputMethodFramework
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |

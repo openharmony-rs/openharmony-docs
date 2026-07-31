@@ -239,9 +239,9 @@ export async function reEncoding(context : Context, fd : number | undefined) {
   const imagePackerApi = image.createImagePacker();
   // 配置图片编码选项：
   // format应使用标准的mimetype格式，如："image/jpeg"、"image/png"、"image/heic"；
-  // quality推荐设置为80，在保证较好的图片质量的同时，可以使编码后的图片文件体积更小；
+  // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积；
   // needsPackProperties参数，用于控制编码时是否保存图片属性信息。默认值为false，即不保存。
-  let packOpts : image.PackingOption = { format:'image/jpeg', quality:80, needsPackProperties:false };
+  let packOpts : image.PackingOption = { format:'image/jpeg', quality:90, needsPackProperties:false };
   // 指定图片编码文件的存放路径。
   const filePath : string = context.cacheDir + '/result.jpg';
   try {

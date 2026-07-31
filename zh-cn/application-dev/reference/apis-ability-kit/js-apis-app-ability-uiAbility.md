@@ -567,9 +567,9 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
   export default class MyUIAbility extends UIAbility {
-    onContinue(wantParams: Record<string, Object>) {
+    onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567'; // 保存待迁移的业务数据
+      wantParam['myData'] = 'my1234567'; // 保存待迁移的业务数据
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }
@@ -814,9 +814,9 @@ export default class EntryAbility extends UIAbility {
     // 开发者定义预关闭动作
     // 例如拉起另一个ability，根据ability处理结果执行异步关闭
     let want: Want = {
-      bundleName: "com.example.myapplication",
-      moduleName: "entry",
-      abilityName: "SecondAbility"
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
       .then((result) => {
@@ -829,7 +829,7 @@ export default class EntryAbility extends UIAbility {
       // 异常处理
       console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
-    })
+    });
 
     return true; // 已定义预关闭操作后，返回true表示UIAbility取消关闭
   }

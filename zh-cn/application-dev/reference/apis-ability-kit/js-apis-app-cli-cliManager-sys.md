@@ -93,7 +93,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 
 | 名称      | 类型 | 只读 | 必填 | 说明 |
 | --------- | ---- | ---- | --- | ------------------ |
-| sessionId  | string | 是 | 是 | 会话身份id。 |
+| sessionId  | string | 是 | 是 | 会话id。 |
 | toolName  | string | 是 | 是 | 工具名称。 |
 | status  | [SessionStatus](#sessionstatus) | 是 | 是 | 会话状态。 |
 | result  | [ExecResult](#execresult) | 是 | 否 | 工具执行结果。默认值：undefined。 |
@@ -304,7 +304,7 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 35600030 | No tool with the specified name exists. |
 | 35600031 | Maximum number of processes has been reached. |
-| 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+| 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -320,6 +320,7 @@ let CLI_DEMO: abilityAccessCtrl.CliInfo = {
     cliName: 'ohos-timer',
     subCliName: '',
 };
+// 定义授权信息列表
 const authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
     cliInfo: CLI_DEMO,
     permissionNames: ['ohos.permission.APPROXIMATELY_LOCATION', "ohos.permission.LOCATION"],
@@ -400,6 +401,7 @@ import { cliManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 'example_session_id';
+// 定义CLI工具会话事件回调
 let callback: common.ToolEventCallback = {
   onEvent: (event: common.CliToolEvent) => {
     console.info('subscribeSession event type: ' + event.toolEventType + ', data: ' + event.data);
@@ -602,7 +604,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 | 201 | Permission denied. |
 | 202 | Not system application. |
 | 35600031 | Maximum number of processes has been reached. |
-| 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+| 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -680,7 +682,7 @@ sendMessage(sessionId: string, message: string): Promise\<void>
 | 参数名    | 类型   | 必填 | 说明                                  |
 | --------- | ------ | ---- | ------------------------------------- |
 | sessionId | string | 是   | 目标CLI工具进程的会话ID。             |
-| message   | string | 是   | 要发送的消息，最大长度为10240。超过最大长度时抛出错误码401。 |
+| message   | string | 是   | 要发送的消息，最大长度为10240字符。超过最大长度时抛出错误码401。 |
 
 **返回值：**
 
