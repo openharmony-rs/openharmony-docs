@@ -268,7 +268,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister all callbacks for events whose **eventId** is **1**.
+// Unregister all callbacks for events whose event ID is 1.
 emitter.off(1);
 ```
 
@@ -293,7 +293,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister all callbacks for events whose **eventId** is **eventId1**.
+// Unregister all callbacks for events whose event ID is eventId1.
 emitter.off('eventId1');
 ```
 
@@ -324,7 +324,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 };
-// Unregister all callbacks for events whose **eventId** is **1**. The callback object must be the object used during registration.
+// Unregister all callbacks for events whose event ID is 1. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off(1, callback);
 ```
@@ -356,7 +356,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 };
-// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
+// Unregister all callbacks for events whose event ID is eventId1. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off('eventId1', callback);
 ```
@@ -402,7 +402,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 };
-// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
+// Unregister all callbacks for events whose event ID is eventId1. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off('eventId1', callback);
 ```

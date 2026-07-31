@@ -126,7 +126,7 @@ imageAccess(imageAccess: boolean)
 
 javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
-将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
+将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
 
 > **说明：**
 >
@@ -795,7 +795,7 @@ textZoomRatio(textZoomRatio: number)
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。默认值：100。|
+| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。|
 
 **示例：**
 
@@ -1915,7 +1915,7 @@ layoutMode(mode: WebLayoutMode)
 > **说明：**
 >
 > 目前只支持两种Web布局模式，分别为
-> - Web布局跟随系统（`WebLayoutMode.NONE`）
+> - Web布局跟随系统（`WebLayoutMode.NONE`）。
 > - Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
@@ -4200,7 +4200,7 @@ textZoomAtio(textZoomAtio: number)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为(0, 2147483647]。<br>默认值：100。 |
+| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值范围为(0, 2147483647]。|
 
 **示例：**
 

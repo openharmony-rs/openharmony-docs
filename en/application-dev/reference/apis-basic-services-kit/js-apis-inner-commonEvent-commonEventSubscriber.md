@@ -6,7 +6,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5b716a0e1c062ed98c8e1f363a9507fe09b52f56 translatedAt=2026-07-21T02:35:16.883Z pushedAt=2026-07-21T07:45:40.331Z -->
+<!-- md-trans-meta sourceCommit=04248b439068918cc127a54213680eef5225567f translatedAt=2026-07-29T01:29:21.063Z pushedAt=2026-07-29T11:55:39.813Z -->
 
 > **NOTE**
 >
@@ -14,7 +14,7 @@
 
 ## CommonEventSubscriber
 
-Represents the subscriber of a common event. The **CommonEventSubscriber** module provides the capabilities for processing ordered common events, including obtaining and setting the data and code transferred by events, checking whether the current common event is an ordered or sticky event, terminating an ordered common event or clearing the termination status, ending the processing of the current ordered common event, and obtaining subscription information of a subscriber. This module is applicable to data processing and process control of the received common event by the subscriber.
+The **CommonEventSubscriber** module provides APIs for describing the common event subscriber. This module also provides the capabilities for processing ordered common events, including obtaining and setting the code and data transferred by events, checking whether the current common event is an ordered or sticky common event, terminating an ordered common event or clearing the termination status, ending the processing of the current ordered common event, and obtaining subscription information of a subscriber. This module is applicable to data processing and process control of the received common event by the subscriber.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -54,7 +54,7 @@ Obtains the result code of an ordered common event. This API uses an asynchronou
 
 | Name  | Type                  | Mandatory| Description              |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<number\> | Yes  | Callback used to return the result. If the result code (number type) of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the code obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<number\> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -92,7 +92,7 @@ Obtains the result code of an ordered common event. This API uses a promise to r
 
 | Type            | Description                |
 | ---------------- | -------------------- |
-| Promise\<number> | Promise used to return the result code.|
+| Promise\<number> | Promise used to return the result code of an ordered common event. |
 
 **Example**
 
@@ -146,7 +146,7 @@ Sets the code of an ordered common event. This API uses an asynchronous callback
 | Name  | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
 | code     | number               | Yes   | Code delivered by the ordered common event.   |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -263,7 +263,7 @@ Obtains the data of an ordered common event. This API uses an asynchronous callb
 
 | Name  | Type                  | Mandatory| Description                |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | Yes  | Callback used to return the result. If the result data (string type) of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<string> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -278,7 +278,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 
 ```ts
-// Obtain the result data (string type) of an ordered common event.
+// Obtain the data callback for ordered common event delivery.
 subscriber.getData((err: BusinessError, data: string) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -302,7 +302,7 @@ Obtains the data of an ordered common event. This API uses a promise to return t
 
 | Type            | Description              |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise used to return the result data (string type) of an ordered common event.|
+| Promise\<string> | Promise used to return the result data of an ordered common event. |
 
 **Example**
 
@@ -355,8 +355,8 @@ Sets the data of an ordered common event. This API uses an asynchronous callback
 
 | Name  | Type                | Mandatory| Description                |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | Yes  | Result data (string type) of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.  |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| data     | string               | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.   |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the data of an ordered common event is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
