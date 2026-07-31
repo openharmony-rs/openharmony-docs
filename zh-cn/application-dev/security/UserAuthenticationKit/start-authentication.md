@@ -241,6 +241,56 @@ initiatingUserAuthentication2() {
 ArkTS-Sta示例：
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+initiatingUserAuthentication2() {
+  // 设置认证参数
+  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+  };
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
+    }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      reuseUnlockResult: reuseUnlockResult,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    userAuthInstance.onResult({
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback.');
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.EXAMPLE_2] =
+              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
+          });
+          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+          userAuthInstance.offResult();
+        } catch (error) {
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
+        }
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+  } catch (error) {
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
