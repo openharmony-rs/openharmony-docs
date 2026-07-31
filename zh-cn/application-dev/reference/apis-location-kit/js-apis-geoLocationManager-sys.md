@@ -1662,7 +1662,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
     let identifier = "123456789";
     await geoLocationManager.removeFusionFence(identifier).then(() => {
       // 围栏删除成功
-      console.info("addFusionGeofence success");
+      console.info("removeFusionFence success");
     }).catch((error : BusinessError) => {
       console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
     });
