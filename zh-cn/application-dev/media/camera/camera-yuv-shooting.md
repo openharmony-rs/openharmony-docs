@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的相机功能API说明请参考Camera[模块描述](../../reference/apis-camera-kit/arkts-apis-camera.md)Camera。
+详细的相机功能API说明请参考Camera模块描述[Camera](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入依赖模块。
 
@@ -290,7 +290,7 @@
 
 5. 触发拍照。
 
-   通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二个参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
+   通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
 
    通过PhotoOutput中的[getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12)方法，可以获取拍照旋转角度。
 
