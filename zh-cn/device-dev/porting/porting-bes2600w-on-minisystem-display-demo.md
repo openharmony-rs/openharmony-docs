@@ -62,10 +62,10 @@ vendor
 
    ```gni
       # Kernel type, e.g. "linux", "liteos_a", "liteos_m".
-      kernel_type = "liteos_m"                // 内核类型，跟config.json中kernel_type对应。
+      kernel_type = "liteos_m"                 # 内核类型，跟config.json中kernel_type对应。
 
       # Kernel version.
-      kernel_version = "3.0.0"                // 内核版本，跟config.json中kernel_version对应。
+      kernel_version = "3.0.0"                 # 内核版本，跟config.json中kernel_version对应。
    ```
 
 3. 验证`hb set`配置是否正确，输入`hb set`能够显示如下图片表示配置正确。
@@ -94,7 +94,7 @@ $(foreach line,$(shell hb env | sed 's/\[OHOS INFO\]/ohos/g;s/ /_/g;s/:_/=/g' ||
 ifneq ($(ohos_kernel),liteos_m)
 $(error The selected product ($(ohos_product)) is not a liteos_m kernel type product)
 endif
-// 将hb env的每一行输出转化为变量形式，例如将[OHOS INFO] device company: fnlink转换为ohos_device_company=fnlink
+# 将hb env的每一行输出转化为变量形式，例如将[OHOS INFO] device company: fnlink转换为ohos_device_company=fnlink
 
 ……
 
@@ -103,7 +103,7 @@ BOARD_COMPANY:=$(ohos_device_company)
 endif
 ……
 export BOARD_COMPANY
-// 将ohos_device_company转化为BOARD_COMPANY环境变量
+# 将ohos_device_company转化为BOARD_COMPANY环境变量
 ```
 
 在`//kernel/liteos_m/Kconfig`文件中使用这些导出的环境变量，`Kconfiglib`采用`ulfalizer`开发基于`python`的版本，[源码地址](https://gitcode.com/gh_mirrors/kc/Kconfiglib)，[功能介绍连接参考](https://gitcode.com/GitHub_Trending/ze/zephyr/blob/main/scripts/kconfig/kconfiglib.py)，里面用到了`orsource`关键字，其中`o`表示`optional`，表示这个文件是否存在可选，`r`表示`relative`，表示这个文件相对当前文件的相对路径。
@@ -116,27 +116,27 @@ config SOC_COMPANY
       SoC's Kconfig file, and should be exactly the same with SoC company path, and the user should generally avoid
        modifying it via the menu configuration.
 
-orsource "../../device/board/*/Kconfig.liteos_m.shields"                                 // 将所有扩展板配置信息加载进来，因为单板厂商A提供扩展板可以给单板厂商B使用，所以这里使用*匹配所有的扩展板，而非BOARD_COMPANY。另外由于OpenHarmony支持多内核设计，Kconfig文件采用liteos_m作为后缀，在进行单板适配过程中，其他内核在适配过程中，可以使用对应的内核名作为后缀名进行扩展。
+orsource "../../device/board/*/Kconfig.liteos_m.shields"                                  # 将所有扩展板配置信息加载进来，因为单板厂商A提供扩展板可以给单板厂商B使用，所以这里使用*匹配所有的扩展板，而非BOARD_COMPANY。另外由于OpenHarmony支持多内核设计，Kconfig文件采用liteos_m作为后缀，在进行单板适配过程中，其他内核在适配过程中，可以使用对应的内核名作为后缀名进行扩展。
 
-orsource "../../device/board/$(BOARD_COMPANY)/Kconfig.liteos_m.defconfig.boards"         // 加载BOARD_COMPANY的所有单板预定义配置
+orsource "../../device/board/$(BOARD_COMPANY)/Kconfig.liteos_m.defconfig.boards"          # 加载BOARD_COMPANY的所有单板预定义配置
 
 choice
     prompt "Board Selection"
 
-orsource "../../device/board/$(BOARD_COMPANY)/Kconfig.liteos_m.boards"                   // 提供Board选择列表
+orsource "../../device/board/$(BOARD_COMPANY)/Kconfig.liteos_m.boards"                    # 提供Board选择列表
 
 endchoice
 
-orsource "../../device/soc/*/Kconfig.liteos_m.defconfig"                                 // 加载所有SoC的默认配置定义
+orsource "../../device/soc/*/Kconfig.liteos_m.defconfig"                                  # 加载所有SoC的默认配置定义
 
 choice
     prompt "SoC Series Selection"
 
-orsource "../../device/soc/*/Kconfig.liteos_m.series"                                    // 提供所有SoC Series选择列表
+orsource "../../device/soc/*/Kconfig.liteos_m.series"                                     # 提供所有SoC Series选择列表
 
 endchoice
 
-orsource "../../device/soc/*/Kconfig.liteos_m.soc"                                       // 加载所有SoC配置
+orsource "../../device/soc/*/Kconfig.liteos_m.soc"                                        # 加载所有SoC配置
 ```
 
 从`//kernel/liteos_m/Kconfig`文件可以看出需要在`//device/board/fnlink`目录下新增如下`Kconfig`文件进行适配：
@@ -166,7 +166,7 @@ orsource "../../device/soc/*/Kconfig.liteos_m.soc"                              
 ```text
 config BOARD_v200zr
     bool "select board v200zr"
-    depends on SOC_BES2600W         // v200zr单板用的bes2600w的SoC，只有 bes2600w的SoC被选择后，v200zr单板配置选项才可见，可以被选择。
+    depends on SOC_BES2600W          # v200zr单板用的bes2600w的SoC，只有 bes2600w的SoC被选择后，v200zr单板配置选项才可见，可以被选择。
 ```
 
 在 `v200zr/Kconfig.liteos_m.defconfig.board`需要配置选择该单板后，默认定义 `BOARD` 的名字为 `"v200zr"` ，如下：
@@ -174,7 +174,7 @@ config BOARD_v200zr
 ```text
 if BOARD_v200zr
 config BOARD
-    string         // string后没有带提示，因此用户不可见
+    string          # string后没有带提示，因此用户不可见
     default "v200zr"
 
 endif # BOARD_v200zr
@@ -197,11 +197,11 @@ endif # BOARD_v200zr
 在 `bes2600/Kconfig.liteos_m.series` 需要配置`bes2600 SoC series`，以及它的芯片架构等信息，如下：
 
 ```text
-config SOC_SERIES_BES2600         // 提供bes2600 SoC Series选项
+config SOC_SERIES_BES2600          # 提供bes2600 SoC Series选项
     bool "Bestechnic 2600 Series"
-    select ARM                 // 选择bes2600后，默认选择ARM架构
-    select SOC_COMPANY_BESTECHNIC    // 选择bes2600后，默认选择bestechnic芯片公司，驱动会依赖这个宏配置，选择配置编译对应厂商的驱动
-    select CPU_CORTEX_M33         // 选择bes2600后，默认选择cortex-m33 CPU
+    select ARM                  # 选择bes2600后，默认选择ARM架构
+    select SOC_COMPANY_BESTECHNIC     # 选择bes2600后，默认选择bestechnic芯片公司，驱动会依赖这个宏配置，选择配置编译对应厂商的驱动
+    select CPU_CORTEX_M33          # 选择bes2600后，默认选择cortex-m33 CPU
     help
         Enable support for Bestechnic 2600 series
 ```
@@ -211,9 +211,9 @@ config SOC_SERIES_BES2600         // 提供bes2600 SoC Series选项
 ```text
 choice
     prompt "Bestechnic 2600 series SoC"
-    depends on SOC_SERIES_BES2600     // 只有选择了bes2600 Series后，才会出现如下配置选项
+    depends on SOC_SERIES_BES2600      # 只有选择了bes2600 Series后，才会出现如下配置选项
 
-config SOC_BES2600W             // 增加bes2600w SoC配置选择项
+config SOC_BES2600W              # 增加bes2600w SoC配置选择项
     bool "SoC BES2600w"
 
 endchoice
@@ -222,11 +222,11 @@ endchoice
 在 `bes2600/Kconfig.liteos_m.defconfig.series` 需要提供`bes2600 SoC series`选择后的默认配置，如下：
 
 ```text
-if SOC_SERIES_BES2600                 // 选择了bes2600 Series后，才会增加如下默认配置选项
+if SOC_SERIES_BES2600                  # 选择了bes2600 Series后，才会增加如下默认配置选项
 
-rsource "Kconfig.liteos_m.defconfig.bes2600w"     // 增加bes2600w SoC的默认配置
+rsource "Kconfig.liteos_m.defconfig.bes2600w"      # 增加bes2600w SoC的默认配置
 
-config SOC_SERIES                 // 增加SOC_SERIES的默认配置
+config SOC_SERIES                  # 增加SOC_SERIES的默认配置
     string
     default "bes2600"
 
@@ -242,7 +242,7 @@ endif
 ifeq ($(RELEASE:1=y),y)
 CONFIG ?= $(PRODUCT_PATH)/kernel_configs/release$(tee).config
 else
-CONFIG ?= $(PRODUCT_PATH)/kernel_configs/debug$(tee).config         // 配置文件保存在$(CONFIG)中，由产品最终定义
+CONFIG ?= $(PRODUCT_PATH)/kernel_configs/debug$(tee).config          # 配置文件保存在$(CONFIG)中，由产品最终定义
 endif
 
 ……
@@ -281,11 +281,11 @@ deps += [ "$DEVICE_SOC_DIR/$LOSCFG_SOC_COMPANY" ]
 在`//device/board/fnlink/BUILD.gn`中，新增内容如下：
 
 ```gn
-if (ohos_kernel_type == "liteos_m") {                          // 由于多内核设计，对于LiteOS-M内核适配，需要用宏来隔离
-  import("//kernel/liteos_m/liteos.gni")                       // 引入内核gn编写模板
-  module_name = get_path_info(rebase_path("."), "name")        // 动态获取当前文件目录作为模块名，防止目录名修改后，这里还需要跟着修改
-  module_group(module_name) {                                  // 采用module_group模板
-    modules = [                                                // 添加需要编译的模块
+if (ohos_kernel_type == "liteos_m") {                           # 由于多内核设计，对于LiteOS-M内核适配，需要用宏来隔离
+  import("//kernel/liteos_m/liteos.gni")                        # 引入内核gn编写模板
+  module_name = get_path_info(rebase_path("."), "name")         # 动态获取当前文件目录作为模块名，防止目录名修改后，这里还需要跟着修改
+  module_group(module_name) {                                   # 采用module_group模板
+    modules = [                                                 # 添加需要编译的模块
     ]
   }
 }
@@ -515,14 +515,14 @@ off_t _lseek(int fd, off_t offset, int whence)
 在`//drivers/hdf_core/adapter/platform/gpio/BUILD.gn`文件中，描述了恒玄`gpio`驱动的编译适配。如下：
 
 ```gn
-import("../../khdf/liteos_m/hdf.gni")             // 引入HDF驱动编译模板
+import("../../khdf/liteos_m/hdf.gni")              # 引入HDF驱动编译模板
 
-module_switch = defined(LOSCFG_DRIVERS_HDF_PLATFORM_GPIO)     // 如果打开HDF的GPIO配置开关，才进行如下编译
+module_switch = defined(LOSCFG_DRIVERS_HDF_PLATFORM_GPIO)      # 如果打开HDF的GPIO配置开关，才进行如下编译
 module_name = get_path_info(rebase_path("."), "name")
 
 hdf_driver(module_name) {
   sources = []
-  if (defined(LOSCFG_SOC_COMPANY_BESTECHNIC)) {                // 如果打开恒玄的芯片配置开关，才进行恒玄GPIO的驱动编译
+  if (defined(LOSCFG_SOC_COMPANY_BESTECHNIC)) {                 # 如果打开恒玄的芯片配置开关，才进行恒玄GPIO的驱动编译
     sources += [ "gpio_bes.c" ]
   }
 
@@ -662,7 +662,7 @@ static int32_t PanelDriverInit(struct HdfDeviceObject *object)
 
 ```gn
 config("include") {
-  include_dirs = [ "interfaces/wifiservice" ]     // 因为wifi_lite只提供头文件，不提供wifi的具体实现，所以wifi模块暴露出适配的目录路径提供给硬件厂商来适配，厂商提供wifi协议栈源码实现。
+  include_dirs = [ "interfaces/wifiservice" ]      # 因为wifi_lite只提供头文件，不提供wifi的具体实现，所以wifi模块暴露出适配的目录路径提供给硬件厂商来适配，厂商提供wifi协议栈源码实现。
 }
 
 group("wifi") {
@@ -749,7 +749,7 @@ module_switch = defined(LOSCFG_NET_LWIP_SACK)
 module_name = "lwip"
 kernel_module(module_name) {
   sources = LWIP_PORTING_FILES + LWIPNOAPPSFILES -
-            [ "$LWIPDIR/api/sockets.c" ] + [ "porting/src/ethernetif.c" ]         // 增加ethernetif.c文件，用以适配ethernet网卡的初始化适配
+            [ "$LWIPDIR/api/sockets.c" ] + [ "porting/src/ethernetif.c" ]          # 增加ethernetif.c文件，用以适配ethernet网卡的初始化适配
   defines = [ "LITEOS_LWIP=1" ]
   defines += [ "CHECKSUM_BY_HARDWARE=1" ]
 }
