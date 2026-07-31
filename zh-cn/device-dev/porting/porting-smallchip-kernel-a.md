@@ -84,7 +84,7 @@ LiteOS-A提供系统运行所需的系统初始化流程和定制化配置选项
   
   | 层级 | 说明 | 
   | -------- | -------- |
-  | LOS_INIT_LEVEL_EARLIEST | 最早期初始化。<br>说明：不依赖架构，单板以及后续模块会对其有依赖的纯软件模块初始化。<br/>例如：Trace模块。 | 
+  | LOS_INIT_LEVEL_EARLIEST | 最早期初始化。<br>说明：不依赖架构，单板以及后续模块会对其有依赖的纯软件模块初始化。<br>例如：Trace模块。 | 
   | LOS_INIT_LEVEL_ARCH_EARLY | 架构早期初始化。<br>说明：架构相关，后续模块会对其有依赖的模块初始化，如启动过程中非必需的功能，建议放到LOS_INIT_LEVEL_ARCH层。 | 
   | LOS_INIT_LEVEL_PLATFORM_EARLY | 平台早期初始化。<br>说明：单板平台、驱动相关，后续模块会对其有依赖的模块初始化，如启动过程中非必需的功能，建议放到LOS_INIT_LEVEL_PLATFORM层。<br>例如：uart模块。 | 
   | LOS_INIT_LEVEL_KMOD_PREVM | 内存初始化前的内核模块初始化。<br>说明：在内存初始化之前需要使能的模块初始化。 | 
