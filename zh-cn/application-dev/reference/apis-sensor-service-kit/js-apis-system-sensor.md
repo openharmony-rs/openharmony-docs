@@ -45,7 +45,7 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_accelerometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -405,7 +405,7 @@ static unsubscribeAccelerometer(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_accelerometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -435,7 +435,7 @@ Sensor.unsubscribeAccelerometer();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -489,7 +489,7 @@ static unsubscribeCompass(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -517,7 +517,7 @@ Sensor.unsubscribeCompass();
 
 > **说明**：
 >
-> 从 API version 3开始支持，从API version 8开始废弃。除Lite Wearable外，建议使用[PROXIMITY](js-apis-sensor.md#sensoronsensortypesensor_type_id_proximitydeprecated)替代。
+> 从 API version 3开始支持，从API version 8开始废弃。除Lite Wearable外，建议使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -573,7 +573,7 @@ static unsubscribeProximity(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[PROXIMITY](js-apis-sensor.md#sensoroffsensortypesensor_type_id_proximitydeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -603,7 +603,7 @@ Sensor.unsubscribeProximity();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoronsensortypesensor_type_id_ambient_lightdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -659,7 +659,7 @@ static unsubscribeLight(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoroffsensortypesensor_type_id_ambient_lightdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -689,7 +689,7 @@ Sensor.unsubscribeLight();
 
 > **说明**：
 >
->  除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_pedometerdeprecated)替代。
+>  除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -745,7 +745,7 @@ static unsubscribeStepCounter(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_pedometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -776,7 +776,7 @@ static subscribeBarometer(options: SubscribeBarometerOptions): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_barometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -831,7 +831,7 @@ static unsubscribeBarometer(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_barometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -860,7 +860,7 @@ Sensor.unsubscribeBarometer();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoronsensortypesensor_type_id_heart_ratedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -917,7 +917,7 @@ static unsubscribeHeartRate(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_heart_ratedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -947,7 +947,7 @@ Sensor.unsubscribeHeartRate();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1001,7 +1001,7 @@ static unsubscribeOnBodyState(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1029,7 +1029,7 @@ Sensor.unsubscribeOnBodyState();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1083,7 +1083,7 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1145,7 +1145,7 @@ static unsubscribeDeviceOrientation(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1175,7 +1175,7 @@ Sensor.unsubscribeDeviceOrientation();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoronsensortypesensor_type_id_gyroscopedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1237,7 +1237,7 @@ static unsubscribeGyroscope(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_gyroscopedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated-2)替代。
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限

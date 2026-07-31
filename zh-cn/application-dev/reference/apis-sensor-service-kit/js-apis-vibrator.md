@@ -1559,7 +1559,7 @@ ArkTS-Dyn: addTransientEvent(time: number, options?: TransientParam): VibratorPa
 
 ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder;
 
-添加短振事件的方法，添加后使用[build](#build18)方法生成[VibratorPattern](#vibratorpattern18)对象。适用于点击、按键等短促振动反馈场景，返回VibratorPatternBuilder对象，支持链式调用继续添加振动事件。
+添加短振事件的方法，添加后使用[build](#vibratorbuild18)方法生成[VibratorPattern](#vibratorpattern18)对象。适用于点击、按键等短促振动反馈场景，返回VibratorPatternBuilder对象，支持链式调用继续添加振动事件。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
