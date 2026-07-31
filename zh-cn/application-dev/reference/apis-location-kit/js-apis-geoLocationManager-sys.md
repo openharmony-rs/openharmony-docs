@@ -1664,7 +1664,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
       // 围栏删除成功
       console.info("removeFusionFence success");
     }).catch((error : BusinessError) => {
-      console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
+      console.error("removeFusionFence: BusinessError=" + JSON.stringify(error));
     });
   } catch(error) {
     console.error("addFusionFence: error=" + JSON.stringify(error));
