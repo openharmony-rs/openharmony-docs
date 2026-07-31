@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于独立运行的耗时任务，任务完成后将结果返回给宿主线程。可采用以下方式实现。
 

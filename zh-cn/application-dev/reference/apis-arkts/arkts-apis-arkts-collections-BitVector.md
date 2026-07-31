@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 BitVector是一种线性数据结构，底层基于数组实现。BitVector中存储元素为bit值，能存储和处理bit级别的操作。
 
 > **说明：**

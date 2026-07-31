@@ -72,7 +72,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 import { window } from '@kit.ArkUI';
 
 // 监听面板大小变化
-panel.on('sizeUpdate', (size: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
   // 打印面板大小和键盘区域信息
   console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
     `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
@@ -103,7 +103,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                     |
 | -------- | ------------------------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                                      | 是   | 监听当前面板的大小是否产生变化，固定值为'sizeUpdate'。 |
+| type     | string                                      | 是   | 取消监听当前面板的大小是否产生变化，固定值为'sizeUpdate'。 |
 | callback | [SizeUpdateCallback](#sizeupdatecallback14) | 否   | 回调函数。用于指定要取消监听的回调函数，如果不填则取消所有sizeUpdate监听。 |
 
 **示例：**
@@ -112,7 +112,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 import { window } from '@kit.ArkUI';
 
 // 取消监听面板大小变化
-panel.off('sizeUpdate', (size: window.Size, _keyboardArea: inputMethodEngine.KeyboardArea) => {
+panel.off('sizeUpdate', (windowSize: window.Size, _keyboardArea: inputMethodEngine.KeyboardArea) => {
   // 打印面板宽度、高度信息
   console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
 });
@@ -151,11 +151,11 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
-| 错误码ID | 错误信息 | 可能原因 | 处理步骤 |
-| -------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| 202 | 不是系统应用。 | 应用未配置为系统应用。 | 请确认应用是否为系统应用，或申请系统应用权限。 |
-| 12800013 | 窗口管理服务错误。 | 系统服务异常或连接失败。 | 请检查系统服务状态，或重启设备后重试。 |
-| 12800017 | 面板类型或面板标志无效。 | 面板标志为FLG_FIXED，不支持该操作。 | 请检查面板类型和标志，使用支持的面板标志。 |
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 202 | not system application. |
+| 12800013  | window manager service error.      |
+| 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
 
 **示例：**
 

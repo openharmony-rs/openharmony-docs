@@ -40,7 +40,7 @@ Captures a photo with the default photo capture parameters. This API uses an asy
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -81,7 +81,7 @@ Captures a photo with the default photo capture parameters. This API uses a prom
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -121,7 +121,7 @@ Captures a photo with the specified photo capture parameters. This API uses an a
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -180,7 +180,7 @@ Captures a photo with the specified photo capture parameters. This API uses a pr
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -446,7 +446,7 @@ Checks whether taking moving photos is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code      | Error Message      |
+| ID      | Error Message      |
 | -------------- | --------------- |
 | 7400201 |  Camera service fatal error. |
 
@@ -490,7 +490,7 @@ Enables or disables the feature of taking moving photos.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message                                          |
+| ID   | Error Message                                          |
 | -------- |------------------------------------------------|
 | 201      | permission denied.                             |
 | 7400101  | Parameter missing or parameter type incorrect. |
@@ -625,7 +625,7 @@ Before calling this API, check whether moving photo capture is supported by call
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message                                          |
+| ID   | Error Message                                          |
 | -------- |------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
@@ -667,7 +667,7 @@ Obtains the supported video codec types of moving photos.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code       | Error Message                     |
+| ID       | Error Message                     |
 | --------------- | ---------------               |
 | 7400201         |  Camera service fatal error.  |
 
@@ -700,7 +700,7 @@ Sets a video codec type for moving photos.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code       | Error Message                     |
+| ID       | Error Message                     |
 | --------------- | ---------------               |
 | 7400201         |  Camera service fatal error.  |
 
@@ -1110,7 +1110,7 @@ Obtains the profile that takes effect currently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -1164,7 +1164,7 @@ Obtains the photo rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400101 | Parameter missing or parameter type incorrect.<br>Applicable versions: 12-22  |
 | 7400201 | Camera service fatal error.  |
@@ -1293,7 +1293,7 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code     | Error Message    |
+| ID     | Error Message    |
 | ------------- | --------------- |
 | 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
@@ -1339,7 +1339,7 @@ Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message                                          |
+| ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
 | 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
@@ -1425,7 +1425,7 @@ Enables or disables automatic extended gain map delivery.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code    | Error Message                                           |
+| ID    | Error Message                                           |
 | -------- |------------------------------------------------|
 | 7400102  | Operation not allowed. |
 | 7400103  | Session not config, only throw in session usage. |

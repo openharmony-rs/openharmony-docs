@@ -1,8 +1,8 @@
 # oh_display_capture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -41,7 +41,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 获取屏幕全屏截图，可通过设置不同的屏幕ID截取指定屏幕。
 
 **需要权限：**
-- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE或ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **起始版本：** 14

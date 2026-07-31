@@ -1522,7 +1522,7 @@ In the following API examples, you must use [getLastWindow()](arkts-apis-window-
 
 hide (callback: AsyncCallback&lt;void&gt;): void
 
-Hides this window. This API uses an asynchronous callback to return the result. This API takes effect only for a system window or an application child window.
+Hides this window. This API uses an asynchronous callback to return the result. This API takes effect only for system windows, global floating windows, modal windows, and application child windows.
 
 **System API**: This is a system API.
 
@@ -1562,7 +1562,7 @@ windowClass.hide((err: BusinessError) => {
 
 hide(): Promise&lt;void&gt;
 
-Hides this window. This API uses a promise to return the result. This API takes effect only for a system window or an application child window.
+Hides this window. This API uses a promise to return the result. This API takes effect only for system windows, global floating windows, modal windows, and application child windows.
 
 **System API**: This is a system API.
 

@@ -6,6 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d2b8e62658bec29d90bb137c6dea1154dffae97d translatedAt=2026-07-21T00:29:31.703Z pushedAt=2026-07-21T02:34:42.299Z -->
 
 ## Overview
 
@@ -222,26 +223,6 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 **Description**
 
 Obtains the virtual address of a data buffer.
-
-The capability to obtain virtual addresses varies in scenarios, as described in the table below.
-
-**Encoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Not supported|
-| Surface| OnNewOutputBuffer output | Supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
-
-**Decoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Supported|
-| Surface| OnNewOutputBuffer output | Not supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

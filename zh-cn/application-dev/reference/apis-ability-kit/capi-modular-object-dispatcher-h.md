@@ -183,15 +183,12 @@ void OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(OH_AbilityRuntime_ModObjDi
 - 数组（ARRAY）类型：递归释放并删除由new分配的子TypeInfo节点（u.arrayType.pElementType）。  
 - 向量（VECTOR）或集合（SET）类型：递归释放并删除由new分配的子TypeInfo节点（u.pElementType）。  
 - 结构体（STRUCT）、枚举（ENUM）、远端通信对象（IPC_REMOTE_PROXY、IPC_REMOTE_STUB）类型：释放u.idlType字符串（由strdup分配）。
-> **说明：**
->
-> 当TypeInfo从函数返回（如[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)、[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)、[OH_AbilityRuntime_TypeDescriptor_GetStructFieldType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldtype)、[OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraygetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorgetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_SetGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setgetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_MapGetValueType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapgetvaluetype)）时，函数执行深拷贝，调用方获得返回TypeInfo的所有权，必须调用此接口释放资源。
->
-> 当TypeInfo被传入函数（如[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate)、[OH_AbilityRuntime_ModObjDispatcher_VectorCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorcreate)、[OH_AbilityRuntime_ModObjDispatcher_SetCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setcreate)、[OH_AbilityRuntime_ModObjDispatcher_MapCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapcreate)）时，函数执行深拷贝，调用方保留原始TypeInfo的所有权，需自行调用此接口释放原始TypeInfo持有的资源。
->
-> 简单类型（布尔、整数、浮点数、空值等）不持有堆资源，无需调用此接口释放。
->
-> 禁止对TypeInfo的浅拷贝调用此接口。如果执行了 TypeInfo t2 = t1，只能清理其中一个。
+
+释放规则：
+- 当TypeInfo从函数返回（如[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)、[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)、[OH_AbilityRuntime_TypeDescriptor_GetStructFieldType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldtype)、[OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraygetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorgetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_SetGetElementType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setgetelementtype)、[OH_AbilityRuntime_ModObjDispatcher_MapGetValueType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapgetvaluetype)）时，函数执行深拷贝，调用方获得返回TypeInfo的所有权，必须调用此接口释放资源。
+- 当TypeInfo被传入函数（如[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate)、[OH_AbilityRuntime_ModObjDispatcher_VectorCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorcreate)、[OH_AbilityRuntime_ModObjDispatcher_SetCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setcreate)、[OH_AbilityRuntime_ModObjDispatcher_MapCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapcreate)）时，函数执行深拷贝，调用方保留原始TypeInfo的所有权，需自行调用此接口释放原始TypeInfo持有的资源。
+- 简单类型（布尔、整数、浮点数、空值等）不持有堆资源，无需调用此接口释放。
+- 禁止对TypeInfo的浅拷贝调用此接口。如果执行了 TypeInfo t2 = t1，只能清理其中一个。
 
 **起始版本：** 26.0.0
 
@@ -212,15 +209,12 @@ void OH_AbilityRuntime_ModObjDispatcher_VariantClear(OH_AbilityRuntime_ModObjDis
 清理变体持有的资源。
 
 释放变体持有的资源（字符串、容器句柄等），清理后变体被重置为VT_EMPTY，所有字段归零。
-> **说明：**
->
-> 当变体被传入函数（如[OH_AbilityRuntime_ModObjDispatcher_ArraySet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayset)、[OH_AbilityRuntime_ModObjDispatcher_MapPut](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapput)）时，函数执行深拷贝，调用方保留原始变体的所有权，需自行释放原始变体持有的资源（如字符串需调用free(bstrVal)、容器句柄需调用对应的Release接口）。  
->
-> 当变体从函数返回（如[OH_AbilityRuntime_ModObjDispatcher_ArrayGet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayget)、[OH_AbilityRuntime_ModObjDispatcher_MapGet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapget)、[OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)）时，函数执行深拷贝，调用方获得返回变体的所有权，必须调用此接口释放资源。  
->
-> 简单类型（布尔、整数、浮点数等）不持有堆资源，无需调用此接口释放。  
->
-> 禁止对变体的浅拷贝调用此接口。如果执行了 Variant v2 = v1，只能清理其中一个。  
+
+释放规则：
+- 当变体被传入函数（如[OH_AbilityRuntime_ModObjDispatcher_ArraySet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayset)、[OH_AbilityRuntime_ModObjDispatcher_MapPut](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapput)）时，函数执行深拷贝，调用方保留原始变体的所有权，需自行释放原始变体持有的资源（如字符串需调用free(bstrVal)、容器句柄需调用对应的Release接口）。  
+- 当变体从函数返回（如[OH_AbilityRuntime_ModObjDispatcher_ArrayGet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayget)、[OH_AbilityRuntime_ModObjDispatcher_MapGet](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapget)、[OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)）时，函数执行深拷贝，调用方获得返回变体的所有权，必须调用此接口释放资源。  
+- 简单类型（布尔、整数、浮点数等）不持有堆资源，无需调用此接口释放。  
+- 禁止对变体的浅拷贝调用此接口。如果执行了 Variant v2 = v1，只能清理其中一个。  
 
 **起始版本：** 26.0.0
 

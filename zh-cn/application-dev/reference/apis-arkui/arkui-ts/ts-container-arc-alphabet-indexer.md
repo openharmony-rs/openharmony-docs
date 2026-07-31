@@ -54,7 +54,7 @@ ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
 | 参数名     | 类型     | 必填     | 说明     |
 | -------- | -------- | -------- | -------- |
-| info     | [ArcAlphabetIndexerInitInfo](#arcalphabetindexerinitinfo对象说明) | 是 | 定义弧形字母索引条的初始化参数。 |
+| info     | [ArcAlphabetIndexerInitInfo](#arcalphabetindexerinitinfo对象说明) | 是 | 定义弧形字母索引条的初始化参数，包含字母索引字符串数组和初始选中项索引值。 |
 
 
 ## 属性
@@ -175,7 +175,7 @@ selectedFont(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                                     | 必填 | 说明                                                         |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 选中项文字样式，用于设置索引条中被选中字母的显示效果，包括文字大小、粗细、倾斜角度和字体族等。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### popupFont
 
@@ -191,13 +191,13 @@ popupFont(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 提示弹窗字体样式，用于设置提示弹窗中显示的当前选中字母的显示效果，包括文字大小、粗细、倾斜角度和字体族等。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### font
 
 font(font: Optional&lt;Font&gt;)
 
-设置弧形字母索引条默认字体样式。
+设置弧形字母索引条默认字体样式，即未选中状态下索引项的字体样式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -207,7 +207,7 @@ font(font: Optional&lt;Font&gt;)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 字母索引条默认字体样式，用于设置索引条上所有字母的显示效果，包括文字大小、粗细、倾斜角度和字体族等。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### itemSize
 
@@ -223,7 +223,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 弧形索引条索引项区域大小，索引项区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 弧形索引条索引项区域大小（圆形区域的直径）。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 ### selected
 
@@ -295,7 +295,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数，用于处理索引条选中事件。 |
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数，用于处理索引条选中事件。当用户点击或滑动索引条选中某项时触发，回调中返回当前选中项的索引值。 |
 
 
 ## ArcAlphabetIndexerInitInfo对象说明
@@ -330,6 +330,8 @@ type OnSelectCallback =  (index: number) => void
 
 ## 示例
 
+### 示例1（设置联动控制和定位）
+
 该示例实现了弧形索引条和弧形列表联动控制和定位。
 
 ```ts
@@ -344,7 +346,7 @@ import {
   ArcAlphabetIndexer,
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
-// 从API version 22开始，无需手动导入ArcListAttribute、ArcListItemAttribute、ArcAlphabetIndexerAttribute。具体请参考ArcList、ArcListItem、ArcAlphabetIndexer的导入模块说明。
+// 本示例代码兼容API version 21及之前版本，因此手动导入了ArcListAttribute、ArcListItemAttribute、ArcAlphabetIndexerAttribute。从API version 22开始，无需手动导入这些Attribute类型。具体请参考ArcList、ArcListItem、ArcAlphabetIndexer的导入模块说明。
 
 @Entry
 @Component
@@ -407,8 +409,6 @@ struct ArcListAndIndexer {
             .selectedColor(ColorMetrics.resourceColor(0xFFFFFF))
             .selectedBackgroundColor(ColorMetrics.resourceColor(0x1F71FF))
             .color(ColorMetrics.resourceColor(0xFFFFFF))
-            .popupColor(ColorMetrics.resourceColor(0xFFFFFF))
-            .popupBackground(ColorMetrics.resourceColor(0xD8404040))
             .itemSize(LengthMetrics.px(this.itemSize))
             .selectedFont({
               size: '11.0fp',
@@ -424,10 +424,110 @@ struct ArcListAndIndexer {
             })
 
         }.width('100%').height('100%')
+        .backgroundColor(Color.Pink)
       }.width('100%').height('100%')
     }
   }
 }
 ```
 
-![arc_alphabet_indexer_preview](figures/arc_alphabet_indexer_preview.gif)
+![arc-alphabet-indexer-preview1](figures/arc-alphabet-indexer-preview1.gif)
+
+
+### 示例2（设置弹窗显示）
+
+该示例通过[popupColor](#popupcolor)和[popupBackground](#popupbackground)接口实现了提示弹窗的显示背景颜色和文字颜色。
+
+从API version 18开始，支持popupColor和popupBackground接口。
+
+```ts
+// xxx.ets
+import {
+  LengthMetrics,
+  ColorMetrics,
+  ArcList,
+  ArcListItem,
+  ArcListAttribute,
+  ArcListItemAttribute,
+  ArcAlphabetIndexer,
+  ArcAlphabetIndexerAttribute
+} from '@kit.ArkUI';
+// 从API version 22开始，无需手动导入ArcListAttribute、ArcListItemAttribute、ArcAlphabetIndexerAttribute。具体请参考ArcList、ArcListItem、ArcAlphabetIndexer的导入模块说明。
+
+@Entry
+@Component
+struct ArcListAndIndexer {
+  private fullValue: string[] = [
+    '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+  ];
+  private arrName : string[] = [
+    '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20',
+    '21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38',
+    '39','40', '41','42',
+  ];
+
+  private scrollerForList: Scroller = new Scroller();
+  @State indexerIndex: number = 0;
+
+  private watchSize: string = '466px'; // 手表默认宽高：233*233
+  private itemSize: number = 24;  // 索引项默认大小：24
+
+  build() {
+    Column() {
+      Row() {
+        Stack() {
+          ArcList({ scroller : this.scrollerForList, initialIndex: 0 }) {
+            ForEach(this.arrName, (itemName: string, index: number) => {
+              ArcListItem() {
+                Text(itemName)
+                  .width('90%')
+                  .height('92px')
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(index % 2 == 0 ? 0xAFEEEE : 0x00FFFF)
+                  .borderRadius(23)
+              }
+            })
+          }
+          .scrollBar(BarState.Off)
+          .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+            this.indexerIndex = centerIndex;
+          })
+          .borderWidth(1)
+          .width(this.watchSize)
+          .height(this.watchSize)
+          .borderRadius(this.watchSize)
+          .space(LengthMetrics.px(4))
+
+          ArcAlphabetIndexer({ arrayValue: this.fullValue, selected: 0 })
+            .autoCollapse(true)
+            .width(this.watchSize)
+            .height(this.watchSize)
+            .usePopup(true)
+            .selected(this.indexerIndex)
+            .onSelect((index: number) => {
+              this.indexerIndex = index;
+              this.scrollerForList.scrollToIndex(this.indexerIndex);
+            })
+            .selectedColor(ColorMetrics.resourceColor(0xFFFFFF))
+            .selectedBackgroundColor(ColorMetrics.resourceColor(0x1F71FF))
+            .color(ColorMetrics.resourceColor(0xFFFFFF))
+            .popupColor(ColorMetrics.resourceColor(0xFFFFFF))
+            .popupBackground(ColorMetrics.resourceColor(0xD8404040))
+            .popupFont({
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
+            })
+
+        }.width('100%').height('100%')
+        .backgroundColor(Color.Pink)
+      }.width('100%').height('100%')
+    }
+  }
+}
+```
+
+![arc-alphabet-indexer-preview2](figures/arc-alphabet-indexer-preview2.gif)

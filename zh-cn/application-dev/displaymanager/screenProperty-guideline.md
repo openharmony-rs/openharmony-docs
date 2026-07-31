@@ -1,8 +1,8 @@
 # 使用Display实现屏幕属性查询及状态监听 (ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 

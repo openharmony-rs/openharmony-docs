@@ -4,7 +4,7 @@
 <!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 [ASON](../reference/apis-arkts/arkts-apis-arkts-utils-ASON.md)工具与JS提供的JSON工具类似，JSON用于进行JS对象的序列化（stringify）、反序列化（parse）。ASON则提供了[Sendable对象](arkts-sendable.md)的序列化、反序列化能力。使用ASON.stringify方法可将对象转换为字符串，使用ASON.parse方法可将字符串转换为Sendable对象，从而实现对象在并发任务间的高性能引用传递。
 
@@ -17,7 +17,7 @@ ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的
 ## 使用示例
 
 使用ASON提供的接口，对[Sendable对象](arkts-sendable.md)进行序列化、反序列化。
-<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
+<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
 
 ``` TypeScript
 import { ArkTSUtils, collections } from '@kit.ArkTS';

@@ -1,10 +1,10 @@
 # 使用Node-API接口进行错误处理开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -33,7 +33,7 @@
 | napi_get_and_clear_last_exception | 当你需要获取最近一次出现的异常，并将异常队列清空时，可以使用这个函数。 |
 | napi_is_exception_pending | 当你需要判断是否有未处理的异常时，可以使用这个函数。 |
 | napi_fatal_error | 当遇到严重错误或不可恢复的情况时，可以使用这个函数引发致命错误来立即终止进程。 |
-| napi_fatal_exception | 抛出一个致命异常并终止进程, 同时产生相应的crash日志。|
+| napi_fatal_exception | 抛出一个致命异常并终止进程，同时产生相应的crash日志。|
 
 ## 使用示例
 

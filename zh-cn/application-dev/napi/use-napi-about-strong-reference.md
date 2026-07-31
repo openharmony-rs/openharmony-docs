@@ -1,11 +1,11 @@
 # 使用扩展的Node-API接口创建对ArkTS对象的强引用
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony提供的API优化了强引用的创建效率，保留了Node-API的强引用特性，相较于napi_ref，napi_strong_ref具有更快的创建效率。
 

@@ -29,7 +29,7 @@ queryDeviceInfo(deviceId?: number): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
-**系统能力：**  SystemCapability.Driver.ExternalDevice
+**系统能力：** SystemCapability.Driver.ExternalDevice
 
 **参数：**
 
@@ -81,13 +81,13 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
-**系统能力：**  SystemCapability.Driver.ExternalDevice
+**系统能力：** SystemCapability.Driver.ExternalDevice
 
 **参数：**
 
 | 参数名       | 类型     | 必填  | 说明                         |
 |-----------|--------|-----|----------------------------|
-| driverUid | string | 否   | 驱动UID，通过[queryDeviceInfo](#deviceinfo)获得。如果不传入驱动UID，则默认获取所有的驱动信息；如果没有匹配的驱动，且没有传入驱动UID则会返回空数组。 |
+| driverUid | string | 否   | 驱动UID，通过[queryDeviceInfo](#devicemanagerquerydeviceinfo)返回的设备信息获得。如果不传入驱动UID，则默认获取所有的驱动信息；如果传入了UID但不存在对应的驱动，则会返回空数组。 |
 
 **返回值：**
 
@@ -178,7 +178,7 @@ USB设备接口描述符。
 | 名称            | 类型                                                 | 只读  | 可选  | 说明             |
 |---------------|----------------------------------------------------|-----|-----|----------------|
 | busType       | [BusType](js-apis-driver-deviceManager.md#bustype) | 否   | 否   | 总线类型。          |
-| driverUid     | string                                             | 否   | 否   | 驱动Uid。         |
+| driverUid     | string                                             | 否   | 否   | 驱动UID。         |
 | driverName    | string                                             | 否   | 否   | 驱动名称。          |
 | driverVersion | string                                             | 否   | 否   | 驱动版本。          |
 | driverSize    | string                                             | 否   | 否   | 驱动文件的大小，单位为字节，用于标识驱动文件占用的存储空间大小。 |

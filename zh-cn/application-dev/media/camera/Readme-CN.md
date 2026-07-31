@@ -60,3 +60,10 @@
   - [微距能力设置(C/C++)](native-camera-macro.md)
   - [多摄同开(C/C++)](native-camera-concurrent-open.md)
   - [YUV拍照(C/C++)](native-camera-yuv-shooting.md)<!--RP2--><!--RP2End-->
+- Camera Kit常见问题<!--camera-dev-faq-->
+  - 相机无法启动<!--camera-dev-faq-start-->
+    - [相机API调用时序问题](camera-api-faq.md)
+    - [相机预览流启动问题](camera-previewoutput-faq.md)
+    - [会话配置问题](camera-sessionconfig-faq.md)
+  - [相机预览画面旋转异常问题](camera-rotation-faq.md)
+  - [白平衡相关问题](camera-whitebalance-faq.md)

@@ -6,13 +6,13 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-``` c
+```c
 typedef struct {...} ArkUI_PickerIndicatorStyle
 ```
 
 ## 概述
 
-选中项指示器的样式。
+选中项指示器的样式。包含指示器的颜色、大小等属性配置，用于增强Picker组件的选中项视觉效果，提升用户交互体验。
 
 **起始版本：** 23
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
 
 ## 概述
 
-定义关键帧动画参数对象。
+定义关键帧动画参数对象，作为关键帧动画相关接口的输入参数使用。
 
 **起始版本：** 12
 

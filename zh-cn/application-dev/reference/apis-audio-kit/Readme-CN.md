@@ -46,7 +46,6 @@
   - 模块<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
-    - [AudioConverter](capi-audioconverter.md)
     - [OHMIDI](capi-ohmidi.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
@@ -59,6 +58,7 @@
     - [native_audio_common.h](capi-native-audio-common-h.md)
     - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
+    - [native_audio_debugging_manager.h](capi-native-audio-debugging-manager-h.md)
     - [native_audio_device_enhance_manager.h](capi-native-audio-device-enhance-manager-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
@@ -79,6 +79,7 @@
     - [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md)
     - [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)
     - [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md)
+    - [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md)
     - [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md)
     - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
     - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)

@@ -6,13 +6,11 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-## 模块简介
+@system.vibrator模块提供控制设备马达振动的能力，开发者可以通过该模块触发设备执行长振动或短振动效果，为用户提供触觉反馈。主要用于闹钟、开关机振动、来电振动等需要触觉提醒的交互场景，帮助应用在关键事件发生时通过振动吸引用户注意力。
 
-@system.vibrator模块提供控制设备马达振动的能力，开发者可以通过该模块触发设备执行长振动或短振动效果，为用户提供触觉反馈。
+适用于Lite Wearable轻量穿戴设备。对于其他设备类型，自API version 8起该模块不再维护，
 
-该模块主要用于闹钟、开关机振动、来电振动等需要触觉提醒的交互场景，帮助应用在关键事件发生时通过振动吸引用户注意力。
-
-@system.vibrator适用于Lite Wearable轻量穿戴设备。对于其他设备类型，自API version 8起该模块不再维护，推荐使用[@ohos.vibrator (振动)](js-apis-vibrator.md)模块提供的更丰富的振动控制能力。该功能需要设备硬件支持，仅支持真机调试。
+与[@ohos.vibrator (振动)](js-apis-vibrator.md)模块相比，本模块功能较为简单，不支持振动效果查询、振动器列表查询、自定义振动文件等高级功能。对于Lite Wearable设备，本模块持续维护；对于其他设备类型，从API version 8起不再维护，推荐使用[@ohos.vibrator (振动)](js-apis-vibrator.md)模块的[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)接口，该替代接口支持更丰富的振动效果（包括指定时长振动[VibrateTime](js-apis-vibrator.md#vibratetime9)、预置效果振动[VibratePreset](js-apis-vibrator.md#vibratepreset9)、自定义文件振动[VibrateFromFile](js-apis-vibrator.md#vibratefromfile10)等），适用于更多设备类型。
 
 > **说明：**
 >
@@ -21,28 +19,6 @@
  >   - 对于支持该模块的其他设备类型，该模块从API version 8开始不再维护，推荐使用新接口[@ohos.vibrator (振动)](js-apis-vibrator.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该功能使用需要对应硬件支持，仅支持真机调试。可通过系统设备信息或相关接口查询设备是否支持振动功能。
-
-## 概述
-
-本模块（@system.vibrator）仅提供触发设备振动的基本接口[Vibrator.vibrate()](#vibratorvibrate)，支持短振动（short）和长振动（long）两种模式。与[@ohos.vibrator (振动)](js-apis-vibrator.md)模块相比，本模块功能较为简单，不支持振动效果查询、振动器列表查询、自定义振动文件等高级功能。对于Lite Wearable设备，本模块持续维护；对于其他设备类型，从API version 8起不再维护，推荐使用[@ohos.vibrator (振动)](js-apis-vibrator.md)模块的[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)接口，该替代接口支持更丰富的振动效果（包括指定时长振动[VibrateTime](js-apis-vibrator.md#vibratetime9)、预置效果振动[VibratePreset](js-apis-vibrator.md#vibratepreset9)、自定义文件振动[VibrateFromFile](js-apis-vibrator.md#vibratefromfile10)等），适用于更多设备类型。
-
-### 类图
-
-```mermaid
-classDiagram
-    class Vibrator {
-        +static vibrate(options?: VibrateOptions) void
-    }
-    class VibrateOptions {
-        +mode?: long | short
-        +success: () => void
-        +fail?: (data: string, code: number) => void
-        +complete?: () => void
-    }
-    Vibrator ..> VibrateOptions : Dependency
-```
-
-Vibrator类通过`vibrate()`方法依赖VibrateOptions接口来接收振动配置参数。
 
 ## 导入模块
 

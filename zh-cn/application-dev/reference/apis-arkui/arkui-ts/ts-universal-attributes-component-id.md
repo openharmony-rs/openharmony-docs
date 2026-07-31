@@ -6,11 +6,11 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供向指定id组件发送事件的功能。
+id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供获取组件树及组件属性的功能，还提供向指定id组件发送事件的功能。以上拓展能力仅用于对应用的测试。
 
 >  **说明：**
 >
-> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 若同一个组件设置了多个id或者key，最后设置的生效。
 
@@ -19,7 +19,7 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 id(value: string): T
 
-组件的唯一标识，唯一性由使用者保证。当未设置id时，组件默认id为空。
+组件的唯一标识，唯一性由使用者保证。当未设置id时，组件默认id为空。与key同时使用时，后赋值的属性会覆盖先赋值的属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -31,13 +31,13 @@ id(value: string): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | string   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
+| value  | string   |  是  | 组件的唯一标识，唯一性由使用者保证。与key同时使用时，后赋值的属性会覆盖先赋值的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## key<sup>12+</sup>
 
@@ -57,13 +57,13 @@ key(value: string): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br/> |
+| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。<br>默认值：'' |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## 基于组件标识的拓展能力
 
@@ -75,37 +75,39 @@ getInspectorByKey(id: string): string
 
 获取指定id的组件的所有属性，不包括子组件信息。
 
-此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议测试之外的场景使用。
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**参数:**
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名   | 类型      | 必填     | 说明        |
 | ---- | -------- | ---- | -------------|
 | id   | string   | 是    | 要获取属性的组件id。 |
 
-**返回值:**
+**返回值：**
 
 | 类型        | 说明             |
 | -------| -------------- |
-| string | 组件属性列表的JSON字符串。<br />**说明**：<br /> 字符串信息包含组件的tag、id、位置信息(相对于窗口左上角的坐标)以及用于测试检查的组件所包含的相关属性信息。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+| string | 组件属性列表的JSON字符串。<br>**说明**：<br>字符串信息包含组件的tag、id、位置信息（相对于窗口左上角的坐标）以及组件所包含的属性信息（用于测试检查）。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
 
-**示例:**
+**示例：**
 ```ts
 @Entry
 @Component
 struct ComponentPage {
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
         .onClick(() => {
           console.info(`Text is clicked`);
         })
       Button('TEST BUTTON').onClick(() => {
-        let result = getInspectorByKey("TEXT");
+        let result = getInspectorByKey('TEXT');
         console.info(`result is ${result}`);
       })
     }
@@ -121,26 +123,28 @@ getInspectorTree(): Object
 
 获取组件树及组件属性。
 
-此接口仅用于对应用的测试。由于耗时长，不建议使用。
+此接口仅用于对应用的测试。使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**返回值:**
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
 
 | 类型     | 说明                            |
 | ------ | --------------------------- |
 | Object | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
 
-**示例:**
+**示例：**
 ```ts
 @Entry
 @Component
 struct ComponentPage {
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
         .onClick(() => {
           console.info(`Text is clicked`);
         })
@@ -161,39 +165,41 @@ sendEventByKey(id: string, action: number, params: string): boolean
 
 给指定id的组件发送事件。
 
-此接口仅用于对应用的测试。由于耗时长，不建议使用。
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**参数:**
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名       | 类型      | 必填       | 说明                         |
 | ------ | -------| ---- | -------------------------- |
 | id     | string | 是    | 要触发事件的组件的id。                      |
-| action | number | 是    | 要触发的事件类型，目前支持取值：<br/>-&nbsp;点击事件Click:&nbsp;10。<br/>-&nbsp;长按事件LongClick:&nbsp;11。 |
-| params | string | 是    | 事件参数，无参数传空字符串&nbsp;""。            |
+| action | number | 是    | 要触发的事件类型，目前支持取值：<br>-&nbsp;点击事件Click:&nbsp;10。<br>-&nbsp;长按事件LongClick:&nbsp;11。 |
+| params | string | 是    | 事件参数。当前支持的事件类型（Click和LongClick）均无需额外参数，请传空字符串&nbsp;""。            |
 
-**返回值:**
+**返回值：**
 
 | 类型          | 说明                         |
 | -------- | --------------------------|
 | boolean  | 找不到指定id的组件时返回false，其余情况返回true。 |
 
-**示例:**
+**示例：**
 ```ts
 @Entry
 @Component
 struct ComponentPage {
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
         .onClick(() => {
           console.info(`Text is clicked`);
         })
       Button('TEST BUTTON').onClick(() => {
-        sendEventByKey("TEXT", 10, "");
+        sendEventByKey('TEXT', 10, '');
       })
     }
     .width('100%')
@@ -208,17 +214,19 @@ sendTouchEvent(event: TouchObject): boolean
 
 发送触摸事件。
 
-此接口仅用于对应用的测试。由于耗时长，不建议使用。
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**参数:**
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名      | 类型            | 必填  | 说明                                                         |
 | ----- | ----------- | ---- | ------------------------------------------------------------ |
 | event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触摸事件，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
 
-**返回值:**
+**返回值：**
 
 | 类型      | 说明                         |
 | ------- | ---------------------------|
@@ -230,17 +238,19 @@ sendKeyEvent(event: KeyEvent): boolean
 
 发送按键事件。
 
-此接口仅用于对应用的测试。由于耗时长，不建议使用。
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**参数:**
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名    | 类型     | 必填      | 说明                                                         |
 | ----- | -------- | ----  | ------------------------------------------------------------ |
 | event | [KeyEvent](ts-universal-events-key.md#keyevent对象说明) | 是     | 按键事件，event参数见[KeyEvent](ts-universal-events-key.md#keyevent对象说明)介绍。 |
 
-**返回值:**
+**返回值：**
 
 | 类型      | 说明                           |
 | ------- | ------------------------------|
@@ -252,9 +262,11 @@ sendMouseEvent(event: MouseEvent): boolean
 
 发送鼠标事件。
 
-此接口仅用于对应用的测试。由于耗时长，不建议使用。
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -277,28 +289,28 @@ sendMouseEvent(event: MouseEvent): boolean
 import { IntentionCode } from '@kit.InputKit';
 
 class Utils {
-  static rect_left: number;
-  static rect_top: number;
-  static rect_right: number;
-  static rect_bottom: number;
-  static rect_value: Record<string, number>;
+  static rectLeft: number;
+  static rectTop: number;
+  static rectRight: number;
+  static rectBottom: number;
+  static rectValue: Record<string, number>;
 
   // 获取组件所占矩形区域坐标
   static getComponentRect(key: string): Record<string, number> {
     let strJson = getInspectorByKey(key);
     let obj: Record<string, string> = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
+    console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
     let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]; // 相对于窗口左上角的水平方向坐标
-    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]; // 相对于窗口左上角的垂直方向坐标
-    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]; // 相对于窗口左上角的水平方向坐标
-    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 相对于窗口左上角的垂直方向坐标
-    return Utils.rect_value = {
-      "left": Utils.rect_left,
-      "top": Utils.rect_top,
-      "right": Utils.rect_right,
-      "bottom": Utils.rect_bottom
+    console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
+    Utils.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]; // 组件左上角相对于窗口左上角的水平方向坐标
+    Utils.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]; // 组件左上角相对于窗口左上角的垂直方向坐标
+    Utils.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]; // 组件右下角相对于窗口左上角的水平方向坐标
+    Utils.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 组件右下角相对于窗口左上角的垂直方向坐标
+    return Utils.rectValue = {
+      "left": Utils.rectLeft,
+      "top": Utils.rectTop,
+      "right": Utils.rectRight,
+      "bottom": Utils.rectBottom
     };
   };
 }
@@ -315,18 +327,18 @@ struct IdExample {
         Text('onKeyTab').fontSize(25).fontWeight(FontWeight.Bold)
       }.margin({ top: 20 }).backgroundColor('#0D9FFB')
       .onKeyEvent(() => {
-        this.text = "onKeyTab";
+        this.text = 'onKeyTab';
       })
 
       Button() {
         Text('click to start').fontSize(25).fontWeight(FontWeight.Bold)
       }.margin({ top: 20 })
       .onClick(() => {
-        console.info(getInspectorByKey("click"));
+        console.info(getInspectorByKey('click'));
         console.info(JSON.stringify(getInspectorTree()));
         this.text = "Button 'click to start' is clicked";
         setTimeout(() => {
-          sendEventByKey("longClick", 11, ""); // 向id为"longClick"的组件发送长按事件
+          sendEventByKey('longClick', 11, ''); // 向id为"longClick"的组件发送长按事件
         }, 2000)
       }).id('click')
 
@@ -344,8 +356,6 @@ struct IdExample {
               type: TouchType.Down,
               x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
               y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
-              screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
-              screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
               windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
               windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
               displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
@@ -370,8 +380,6 @@ struct IdExample {
             action: MouseAction.Press,
             x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
             y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
-            screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
-            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
             windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
             windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
             displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标

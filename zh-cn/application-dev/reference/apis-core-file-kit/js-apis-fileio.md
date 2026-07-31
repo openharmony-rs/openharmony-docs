@@ -1723,7 +1723,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
+  | Promise&lt;[Stat](#stat)&gt; | Promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 **示例：**
 
@@ -2918,7 +2918,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | filename | string                            | 是   | 待监视文件的应用沙箱路径。                                   |
-| events   | number                            | 是   | -&nbsp;1:&nbsp;监听文件或者目录是否发生重命名。<br/>-&nbsp;2：监听文件或者目录内容的是否修改。<br/>-&nbsp;3：两者都有。 |
+| events   | number                            | 是   | - 1：监听文件或者目录是否发生重命名。<br/>- 2：监听文件或者目录内容是否修改。<br/>- 3：两者都有。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 每发生变化一次，调用一次此函数。                             |
 
 **返回值：**
@@ -3781,7 +3781,7 @@ readSync(): Dirent
 
 close(): Promise&lt;void&gt;
 
-异步关闭目录，使用promise形式返回结果。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+异步关闭目录。使用Promise异步回调。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >
@@ -3803,7 +3803,7 @@ close(): Promise&lt;void&gt;
 
 close(callback: AsyncCallback&lt;void&gt;): void
 
-异步关闭目录，使用callback形式返回结果。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+异步关闭目录。使用callback异步回调。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >
@@ -3825,7 +3825,7 @@ close(callback: AsyncCallback&lt;void&gt;): void
 
 closeSync(): void
 
-用于关闭目录。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+用于关闭目录。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >

@@ -7,12 +7,12 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AVTranscoder OH_AVTranscoder
+typedef struct OH_AVTranscoder OH_AVTranscoder;
 ```
 
 ## 概述
 
-初始化AVTranscoder。
+定义AVTranscoder结构体类型。
 
 **起始版本：** 20
 

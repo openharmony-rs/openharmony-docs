@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@Monitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor)装饰器对状态变量进行监听。
 
 
 \@Monitor提供了对V2状态变量的监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
@@ -35,7 +35,7 @@
 - 在继承类场景中，可以在父子组件中对同一个属性分别定义\@Monitor进行监听，当属性变化时，父子组件中定义的\@Monitor回调均会被调用。
 - 和[\@Watch装饰器](arkts-watch.md)类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与\@Watch的对比可以查看[\@Monitor与\@Watch的对比](#monitor与watch对比)。
 
-从API版本26.0.0开始，支持配置[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)来获得以下能力增强：
+从API版本26.0.0开始，支持配置[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions)来获得以下能力增强：
 
 - 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见[监听包含通配符的路径](#监听包含通配符的路径)。
 - 对@Monitor部分能力进行修正，详情见[@Monitor使用配置项前后的对比](#monitor使用配置项前后的对比)。
@@ -112,8 +112,8 @@ struct Index {
 
 | \@Monitor属性装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见[监听变化](#监听变化)。 |
-| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以[IMonitor类型](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
+| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions)配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见[监听变化](#监听变化)。 |
+| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以[IMonitor类型](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#imonitor)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
 
 ### 语法
 
@@ -155,7 +155,7 @@ onValueChange3(monitor: IMonitor) {
 
 ## 接口说明
 
-IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：[状态变量变化监听](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：[@Monitor：状态变量修改监听](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)。
 
 ## 监听变化
 
@@ -2121,7 +2121,15 @@ property path:age change from 24 to 25
 property path:name change from John to Johny
 ```
 
-实际上name属性本身并不是可被观测的变量，不应被加入到\@Monitor的入参当中。建议开发者去除对name属性的监听或者给name加上\@Trace装饰成为状态变量。
+实际上name属性本身并不是可被观测的变量，不应被加入到\@Monitor的入参当中。
+
+从API版本26.0.0开始，使用配置项的\@Monitor对路径的监听变为互相独立的监听，各路径互不影响。若改为使用配置项的\@Monitor（如`@Monitor({}, 'age', 'name')`），非状态变量name将被忽略，不参与监听。仅当状态变量age变化时才会触发回调，且dirty中仅包含age；当仅修改name时不会触发回调。在这种情况下，点击按钮同时修改age和name时，会输出以下日志：
+
+```text
+property path:age change from 24 to 25
+```
+
+建议开发者去除对name属性的监听，或给name加上\@Trace装饰使其成为状态变量；也可改为使用配置项的\@Monitor。
 
 【正例1】
 
@@ -2204,7 +2212,9 @@ struct Index {
 }
 ```
 
-上面的代码中，\@Monitor的入参为一个getter访问器的名字，但该getter访问器本身并未被\@Computed装饰，不是一个可被监听的变量。但由于使用了状态变量参与了计算，在状态变量变化后，myAge也被认为发生了变化，因此触发了\@Monitor回调。建议开发者给myAge添加\@Computed装饰器或当getter访问器直接返回状态变量时，不监听getter访问器而是直接监听状态变量本身。
+上面的代码中，\@Monitor的入参为一个getter访问器的名字，但该getter访问器本身并未被\@Computed装饰，不是一个可被监听的变量。但由于使用了状态变量参与了计算，在状态变量变化后，myAge也被认为发生了变化，因此触发了\@Monitor回调。从API版本26.0.0开始，若改为使用配置项的\@Monitor（如`@Monitor({}, 'myAge')`），由于读取myAge时仍会读取状态变量age，因此行为不变，依然会触发回调。
+
+建议开发者给myAge添加\@Computed装饰器使其成为状态变量，或直接监听状态变量本身。
 
 【正例2】
 
@@ -2292,6 +2302,8 @@ struct Index {
 \@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。在下面的例子中，点击三个Button，均不会触发`onChange`的回调。
 
 从API version 20开始，如果需要监听可访问到不可访问和不可访问到可访问的状态变化，可以使用[addMonitor](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不访问和从不可访问到可访问)。
+
+从API版本26.0.0开始，使用配置项的\@Monitor能够正常处理变量在可访问与不可访问之间的切换。在下面的例子中，若将`@Monitor('user.age')`改写为使用配置项的形式`@Monitor({}, 'user.age')`，则点击三个Button均会触发`onChange`回调，dirty中将包含路径`user.age`，其对应的IMonitorValue的before值与now值会分别反映可访问性切换前后的状态（变量可访问时为实际值，变量不可访问时为undefined）。
 
 <!-- @[monitor_problem_state_change_use_addMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemStateChangeUseAddMonitor.ets) --> 
 

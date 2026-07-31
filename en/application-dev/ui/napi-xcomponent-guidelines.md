@@ -1,7 +1,7 @@
 # Custom Rendering (XComponent)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -122,7 +122,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       nativeRender.SetSurfaceId(BigInt(surfaceId));
     }
     onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
       // Call ChangeSurface to draw content in onSurfaceChanged.
       nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
     }
@@ -140,7 +140,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
     build() {
       Column() {
         // ···
-        // Define XComponent in xxx.ets.
+        // Define XComponent in an .ets file.
         Column({ space: 10 }) {
           XComponent({
             type: XComponentType.SURFACE,
@@ -158,7 +158,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
             hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
           }
           if (hasChangeColor) {
-            this.currentStatus = "change color";
+            this.currentStatus = 'change color';
           }
         })
         // ···
@@ -169,7 +169,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   }
   ```
   
-- Use the declarative UI description in ArkTS to create a component and use **OH_ArkUI_SurfaceHolders** to manage the lifecycle of the surface.
+- Use the declarative UI description in ArkTS to create a component and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of the surface.
 
   <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 
@@ -197,11 +197,13 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
                 return;
               }
               native.bindNode('XComponentSurfaceHolder', this.xcNode); // Cross-language calling to the native side to obtain SurfaceHolder and bind the surface lifecycle callback.
+              this.currentStatus = 'index';
             })
             .onDetach(() => {
               native.unbindNode('XComponentSurfaceHolder');
               this.xcNode = null;
             })
+            // ...
         }
         // ...
       }
@@ -245,7 +247,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
     }
   
     onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     }
   
     onSurfaceDestroyed(surfaceId: string): void {
@@ -302,7 +304,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
         .id(this.xComponentId)
         .focusable(true)
         .focusOnTouch(true)
-      native.bindNode(this.xComponentId, this.xComponent) // Cross-language calling to the native side to bind the surface lifecycle callback.
+      native.bindNode(this.xComponentId, this.xComponent)
       // ...
     }
   
@@ -360,6 +362,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
+      // ...
       return nullptr;
   }
   ```
@@ -367,6 +370,9 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
 - Use NDK APIs to create components and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of the surface.
   <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
   ``` typescript
+  import nativeNode from 'libnativerender.so';
+  import { NodeContent } from '@kit.ArkUI';
+
   @Component
   export struct SurfaceHolderNDK {
     @State currentStatus: string = 'init';
@@ -471,7 +477,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
 
 Starting from API version 8, you can use the APIs related to the [OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance to listen to the lifecycle of the surface held by the **XComponent** component, obtain the **NativeWindow** instance, and listen to basic events, thereby implementing rendering, drawing, and interaction response. However, using the APIs related to **OH_NativeXComponent** has the following problems:
 
-- The lifecycle of an **OH_NativeXComponent** instance is closely related to the **XComponent** component. If you still operate this instance after the **XComponent** is destroyed, the appication may crash due to stability issues.
+- The lifecycle of an **OH_NativeXComponent** instance is closely related to the **XComponent** component. If you still operate this instance after the **XComponent** is destroyed, the application may crash due to stability issues.
 - The interaction event APIs provided by **OH_NativeXComponent** are limited, offering only basic touch, mouse, and keyboard interaction APIs. To recognize advanced gestures such as long press or drag, you must implement your own recognition logic.
 
 Given the above issues, you are advised to use the **OHArkUI_SurfaceHolder**-related APIs as a replacement for the **OH_NativeXComponent**-related APIs. The following uses the creation of a component via ArkTS declarative UI description as an example to explain how to switch from managing the surface lifecycle with **OH_NativeXComponent** to managing it with **OH_ArkUI_SurfaceHolder**.
@@ -579,6 +585,7 @@ The main difference in binding surface lifecycle callbacks lies in the APIs used
   ``` C++
   void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
   {
+      // Register various callbacks of XComponent, including the surface callback and various event callbacks.
       renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
       renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
       renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
@@ -962,7 +969,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     ArkUI_AccessibilityProvider *PluginManager::provider_ = nullptr;
     ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-    // ···
+    // ...
     static std::string value2String(napi_env env, napi_value value)
     {
         size_t stringSize = 0;
@@ -972,7 +979,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         napi_get_value_string_utf8(env, value, &valueString[0], stringSize+1, &stringSize);
         return valueString;
     }
-    // ···
+    // ...
     napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
     {
         size_t argc = 2;
@@ -1017,7 +1024,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         std::string nodeId = value2String(env, args[0]);
         ArkUI_NodeHandle node;
         if (nodeHandleMap_.find(nodeId) == nodeHandleMap_.end()) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "SetNeedSoftKeyboard", "nodeId not exit error");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "UnbindNode", "nodeId not exit error");
             return nullptr;
         }
         node = nodeHandleMap_[nodeId];
@@ -1467,11 +1474,6 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
                          "eglCreateWindowSurface: unable to create surface");
             return false;
         }
-        if (eglSurface_ == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                         "eglCreateWindowSurface: unable to create surface");
-            return false;
-        }
         // Create a context.
         eglContext_ = eglCreateContext(eglDisplay_, eglConfig_, EGL_NO_CONTEXT, CONTEXT_ATTRIBS);
         if (!eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_)) {
@@ -1571,11 +1573,11 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         }
     }
     
-    // ···
+    // ...
     
     bool EGLRender::ExecuteDraw(GLint position, const GLfloat *color, const GLfloat shapeVertices[])
     {
-        if ((position > 0) || (color == nullptr)) {
+        if ((position < 0) || (color == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "ExecuteDraw: param error");
             return false;
         }
@@ -1604,11 +1606,11 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         }
     
         if ((eglDisplay_ == nullptr) || (eglContext_ == nullptr) || (!eglDestroyContext(eglDisplay_, eglContext_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroyContext failed");
         }
     
         if ((eglDisplay_ == nullptr) || (!eglTerminate(eglDisplay_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglTerminate failed");
         }
         eglDisplay_ = EGL_NO_DISPLAY;
         eglSurface_ = EGL_NO_SURFACE;

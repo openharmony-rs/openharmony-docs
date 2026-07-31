@@ -6,6 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:34.078Z pushedAt=2026-07-21T08:51:22.436Z -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -38,6 +39,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | appdebug |  Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings.|
 | process |  Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.|
 | send-memory-level |  Triggers the **onMemoryLevel** lifecycle callback of a process based on its PID and memory usage level.|
+| pre-start | Application pre-launch command. Used to pre-launch an app to a specific lifecycle stage in the background, so as to improve the startup speed when the user taps the app. |
 
 ## help
 
@@ -53,10 +55,10 @@ Starts an application component. The target component can be the PageAbility and
 ```bash
 # Start an ability explicitly.
 # To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
 ```
 
   **Parameters**
@@ -71,6 +73,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -U | URI. This parameter is optional.<br>Note: Only strings can be passed.|
   | -A | Action. This parameter is optional.     |
   | -e | Entity. This parameter is optional.     |
+  | -u | Optional parameter. **userId** indicates the user ID. In multi-user scenarios, it is used to distinguish apps under different user accounts on the same device.<br>**Note:** This parameter is supported since API version 26.0.0. |
   | -t | Type. This parameter is optional.       |
   | --pi  | Key-value pair of the integer type. This parameter is optional.<br>Note: Only unsigned integer values are supported.    |
   | --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
@@ -124,7 +127,6 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   > 
   > This example describes only the usage of some fields. For details about ability matching rules, see [Matching Rules of Explicit Want and Implicit Want](../application-models/explicit-implicit-want-mappings.md).
 
-
   - Configure **uris** for the target ability in the **module.json5** file.
 
       ```json5
@@ -150,7 +152,6 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
       }
       ```
 
-
   - Implicitly start the ability.
 
     - Run the **-U** command to start an application page.
@@ -166,7 +167,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
         ```
 
       The following is an example for the UIAbility to obtain input parameters:
-  
+
         ```ts
         import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
         import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -190,7 +191,6 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
         aa start -A ohos.want.action.viewData -U https://www.example.com
         ```
 
-
 ## stop-service
 
 Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model.
@@ -200,6 +200,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
 ```
 
   **Parameters**
+
   | Name| Description|
   | -------- | -------- |
   | -h/--help | Help information.|
@@ -223,7 +224,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
   | 10105002 | Failed to obtain ability information. |
 
   **Example**
-  
+
   ```bash
   # Stop a ServiceAbility.
   aa stop-service -a EntryAbility -b com.example.myapplication -m entry
@@ -242,6 +243,7 @@ aa dump -a
 > This command is supported since API version 7 and deprecated since API version 9. You are advised to use **[hidumper](../dfx/hidumper.md) -s AbilityManagerService** instead.
 
   **Parameters**
+
   | Name| Level-2 Parameter| Description|
   | -------- | -------- | -------- |
   | -h/--help | - | Help information.|
@@ -262,7 +264,7 @@ aa dump -a
   | 10105001 | Failed to connect to the ability service. |
 
   **Example**
-  
+
   ```bash
   # Print the application component information in all missions.
   aa dump -a
@@ -270,7 +272,6 @@ aa dump -a
 
   ![aa-dump-a](figures/aa-dump-a.png)
 
-  
   ```bash
   # Print all task chains.
   aa dump -l
@@ -278,7 +279,6 @@ aa dump -a
 
   ![aa-dump-l](figures/aa-dump-l.png)
 
-  
   ```bash
   # Print the detailed information about an application component.
   aa dump -i 105
@@ -334,6 +334,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 > For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli)<!--RP2End-->.
 
   **Parameters**
+
   | Name| Description|
   | -------- | -------- |
   | -h/--help | Help information.|
@@ -383,6 +384,7 @@ aa attach -b <bundleName>
 ```
 
   **Parameters**
+
   | Name| Description             |
   | -------- |-------------------|
   | -h/--help | Help information.            |
@@ -418,6 +420,7 @@ aa detach -b <bundleName>
 ```
 
   **Parameters**
+
   | Name| Description             |
   | -------- |-------------------|
   | -h/--help | Help information.            |
@@ -453,6 +456,7 @@ aa appdebug -b <bundleName> [-p]
 ```
 
   **Parameters**
+
   | Name| Level-2 Parameter| Description|
   | -------- | -------- | -------- |
   | -h/--help | - | Help information.|
@@ -492,7 +496,7 @@ aa appdebug -b <bundleName> [-p]
 
 ## process
 
-Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.
+Debugs or tunes an app. DevEco Studio uses this command to integrate debugging and tuning tools.
 
 ```bash
 # Debug an application.
@@ -503,6 +507,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 ```
 
   **Parameters**
+
   | Name| Description|
   | -------- | -------- |
   | -h/--help | Help information.|
@@ -566,6 +571,43 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 aa send-memory-level -p 6066 -l 0
 ```
 
+## Application Pre-launch Command (pre-start)
+
+Starting from API version 26.0.0, you can use this command to pre-launch an app in the background, improving the startup speed when the user taps the app. Currently, pre-launching an app to a specific lifecycle stage is supported. The app is first pre-launched to the [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20) stage (the foreground window is hidden and not displayed). If the user does not manually tap the app within the default 30 seconds, the system automatically transitions the app to the [onDidBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20) stage.
+
+```bash
+aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>
+```
+
+**Parameter List**
+
+| Name | Description |
+| -------- | -------- |
+| -h/--help | Displays the help information of the command. |
+| -m | Pre-launch mode. Currently, this parameter is mandatory and must be set to **1**, which indicates pre-launching the application to a specific lifecycle stage. |
+| -b | Mandatory parameter. **bundleName** indicates the application package name of the application to be pre-launched. |
+| -u | Mandatory parameter. **userId** indicates the user ID, used to specify the user for pre-launching the application. |
+
+**Return Value**
+
+If the command is executed successfully, "prestart successfully." is returned. If the command fails, "error: failed to prestart." is returned. If an unknown parameter is entered, "fail: unknown option." is returned and the help information is printed.
+
+Error codes
+
+| ID | Error Message |
+| ------- | -------- |
+| 10106003 | Currently, only mode 1 (Specific stage prelaunch) is supported. |
+
+**Example**
+
+```bash
+# Pre-start the app with the specified bundle name.
+aa pre-start -m 1 -b com.example.myapplication -u 100
+
+# View the help information.
+aa pre-start -h
+```
+
 ## Error Codes
 
 ### 10103001 Failed to Verify the Visibility of the Target Ability
@@ -587,12 +629,13 @@ The **exported** field of the [abilities](../quick-start/module-configuration-fi
 Check whether the **exported** field of the ability in the **module.json5** file of the target application is **true**. If not, change it to **true** and try again.
 
 ### 10104001 The Ability Does Not Exist
+
 **Error Message**
 
 The specified ability does not exist.
 
 **Symptom**
- 
+
 The specified ability name does not exist.
 
 **Possible Causes**
@@ -602,11 +645,15 @@ The specified ability is not installed.
 **Solution**
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
+
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+
     ```bash
     hdc shell bm dump -a
     ```
+
 3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
+
     ```bash
     hdc shell bm dump -n bundleName
     ```
@@ -618,7 +665,7 @@ The specified ability is not installed.
 The specified pid does not exist.
 
 **Symptom**
- 
+
 The specified PID does not exist.
 
 **Possible Causes**
@@ -636,7 +683,7 @@ Check whether the process ID specified by the **-p** parameter exists on the dev
 The specified level does not exist.
 
 **Symptom**
- 
+
 The specified memory usage level does not exist.
 
 **Possible Causes**
@@ -743,6 +790,24 @@ The target application is signed by the release certificate.
 
 Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
+### 10106003 Unsupported Pre-launch Mode
+
+**Error Message**
+
+Currently, only mode 1 (Specific stage prelaunch) is supported.
+
+**Error Description**
+
+This error code is returned when the pre-launch mode specified in the aa pre-start command is not supported.
+
+**Possible Causes**
+
+The value specified for the **-m** parameter of the aa pre-start command is not **1**. Currently, only mode **1** is supported, which pre-starts the app to a specific lifecycle stage.
+
+**Solution**
+
+Check the value of the **-m** parameter and ensure it is set to **1**.
+
 ### 10100101 Failed to Obtain Application Information
 
 **Error Message**
@@ -760,11 +825,15 @@ The application name or bundle name in the app information obtained from BMS is 
 **Solution**
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
+
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+
     ```bash
     hdc shell bm dump -a
     ```
+
 3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
+
     ```bash
     hdc shell bm dump -n bundleName
     ```
@@ -800,11 +869,13 @@ A matching ability is not found during implicit launch.
 **Possible Causes**
 
 * The implicit launch parameters are incorrectly configured or the specified HAP is not installed.
+
 * If the application is launched explicitly, it is possible that **bundleName** is specified but **abilityName** is not specified in the command.
 
 **Solution**
 
 * For implicit launch, ensure that the launch parameters are set correctly and the specified HAP is installed.
+
 * For explicit launch, ensure that the value of **abilityName** is correct.
 
 ### 10103102 The Value of AppCloneIndex Is Invalid
@@ -892,12 +963,26 @@ The application is controlled by the application market.
 **Possible Causes**
 
 - The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
+
 - The target application is a pre-installed system application, and it is overwritten by a locally compiled version.
+
+- The development certificate of the target app has expired, and the app is blocked by system control during launch. In this case, a message indicating application expiration is displayed.
+
+- The target app has just completed app cloning and is in the process of data recovery. In this case, a message indicating that data recovery in progress is displayed.
+
+- The 5-day validity period of the [created trial debug profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819) has expired, causing the app to be blocked by system control during launch.
 
 **Solution**
 
 - For possible cause 1, you are advised to uninstall the application.
+
 - For possible cause 2, you need to uninstall the application and then install it using the locally compiled version.
+
+- For possible cause 3, [replace the certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519).
+
+- For possible cause 4, wait for data recovery to complete before attempting to launch again.
+
+- For possible cause 5, [create a trial debug profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819) again.
 
 ### 10106106 The Target Application Is Managed by EDM
 
@@ -969,7 +1054,7 @@ Common kernel errors such as memory application and multi-thread processing erro
 
 **Solution**
 
-You cannot handle internal errors that occur during system running.
+Internal errors are errors that occur during system running and cannot be handled.
 
 ### 10103201 The Target Ability Is Not of the ServiceAbility Type
 
@@ -1006,7 +1091,9 @@ The application corresponding to the specified bundle name is not installed.
 **Solution**
 
 1. Check whether the specified bundle name is correct.
+
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+
     ```bash
     hdc shell bm dump -a
     ```
@@ -1024,6 +1111,7 @@ The process fails to be terminated.
 **Possible Causes**
 
 1. The application specified by the **aa force-stop** command does not exist.
+
 2. AppManagerService is not connected.
 
 **Solution**
@@ -1033,6 +1121,7 @@ The process fails to be terminated.
     ```bash
     hdc shell bm dump -a
     ```
+
 2. Restart the device.
 
 ### 10106402 Persistent Processes Cannot Be Terminated

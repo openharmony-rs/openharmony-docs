@@ -59,6 +59,7 @@
       }
     }
     ```
+
   加载的HTML。
   ```html
   <!-- test.html -->
@@ -141,6 +142,7 @@
       }
     }
     ```
+
   加载的html。
   ```html
   <!-- alert.html -->
@@ -334,6 +336,7 @@
       }
     }
     ```
+
   加载的html。
   ```html
   <!-- confirm.html -->
@@ -459,6 +462,7 @@
       }
     }
     ```
+
   加载的html。
   ```html
   <!-- prompt.html -->

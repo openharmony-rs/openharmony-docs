@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides the RenderNode capabilities of ArkUI on the native side, including RenderNode creation and destruction, tree node operations, and attribute setting.
+Provides the RenderNode capabilities of ArkUI on the native side, which can be used to create, destroy, and manage RenderNodes. You can use **ArkUI_RenderNodeHandle** to organize a RenderNode tree and set rendering attributes such as the background color, size, and position.
 
 **Since**: 20
 
@@ -16,4 +16,4 @@ Provides the RenderNode capabilities of ArkUI on the native side, including Rend
 
 | Name| Description|
 | -- | -- |
-| [native_render.h](capi-native-render-h.md) | Provides type definitions for RenderNode on the native side and the capability to operate RenderNodes.|
+| [native_render.h](capi-native-render-h.md) | Provides type definitions, node tree operations, and attribute settings of RenderNodes on the native side.|

@@ -40,7 +40,7 @@ Requests to publish a widget to the widget host. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -106,7 +106,7 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |

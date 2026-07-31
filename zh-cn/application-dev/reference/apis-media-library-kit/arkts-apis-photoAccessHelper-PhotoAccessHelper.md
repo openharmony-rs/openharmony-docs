@@ -45,7 +45,8 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：12+        |
+| 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -112,7 +113,8 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
+| 201     | Permission denied.<br> 适用版本：20+         |
+| 13900012     | Permission denied. <br> 适用版本：10-19         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -243,7 +245,8 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：11+        |
+| 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -301,7 +304,8 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：11+        |
+| 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -362,7 +366,8 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：11+        |
+| 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -478,7 +483,8 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：12+        |
+| 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -543,7 +549,8 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201     | Permission denied.         |
+| 201     | Permission denied.  <br> 适用版本：12+       |
+| 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -606,7 +613,8 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：12+        |
+| 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -1965,7 +1973,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## offSinglePhotoChange<sup>23+</sup> 
 
-offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
+offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 取消单个资产的监听。具体规则如下：
 
@@ -2054,7 +2062,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## onSinglePhotoAlbumChange<sup>23+</sup> 
 
-onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void;
+onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 注册对普通单个相册变化的监听。使用callback异步回调。
 

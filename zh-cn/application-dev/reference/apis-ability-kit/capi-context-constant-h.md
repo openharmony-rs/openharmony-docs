@@ -30,7 +30,7 @@
 | [AbilityRuntime_AreaMode](#abilityruntime_areamode) | AbilityRuntime_AreaMode | 文件数据加密等级。 |
 | [AbilityRuntime_StartVisibility](#abilityruntime_startvisibility) | AbilityRuntime_StartVisibility | 启动Ability时的窗口和dock栏图标的显示模式。例如：需要在后台静默启动服务而不显示UI时使用隐藏模式；需要正常显示UI并与用户交互时使用显示模式。 |
 | [AbilityRuntime_WindowMode](#abilityruntime_windowmode) | AbilityRuntime_WindowMode | 窗口模式。 |
-| [AbilityRuntime_SupportedWindowMode](#abilityruntime_supportedwindowmode) | AbilityRuntime_SupportedWindowMode | 组件所支持的窗口模式。在应用内启动UIAbility时，指定窗口是否显示最大化/窗口化/分屏按键。 |
+| [AbilityRuntime_SupportedWindowMode](#abilityruntime_supportedwindowmode) | AbilityRuntime_SupportedWindowMode | 组件所支持的窗口模式。在应用内启动UIAbility时，指定窗口是否显示最大化、窗口化、分屏按键。 |
 
 ## 枚举类型说明
 
@@ -68,8 +68,8 @@ enum AbilityRuntime_StartVisibility
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ABILITY_RUNTIME_HIDE_UPON_START = 0 | 隐藏窗口及dock栏图标。仅在2in1设备上生效。 |
-| ABILITY_RUNTIME_SHOW_UPON_START = 1 | 显示窗口及dock栏图标。仅在2in1设备上生效。 |
+| ABILITY_RUNTIME_HIDE_UPON_START = 0 | 隐藏窗口及dock栏图标。仅在PC/2in1设备上生效。 |
+| ABILITY_RUNTIME_SHOW_UPON_START = 1 | 显示窗口及dock栏图标。仅在PC/2in1设备上生效。 |
 
 ### AbilityRuntime_WindowMode
 
@@ -86,7 +86,7 @@ enum AbilityRuntime_WindowMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ABILITY_RUNTIME_WINDOW_MODE_UNDEFINED = 0 | 窗口模式未定义。 |
-| ABILITY_RUNTIME_WINDOW_MODE_FULL_SCREEN = 1 | 全屏模式。仅在2in1设备上生效。 |
+| ABILITY_RUNTIME_WINDOW_MODE_FULL_SCREEN = 1 | 全屏模式。仅在PC/2in1设备上生效。 |
 
 ### AbilityRuntime_SupportedWindowMode
 
@@ -103,5 +103,5 @@ enum AbilityRuntime_SupportedWindowMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FULL_SCREEN = 0 | 窗口支持全屏显示。 |
-| ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT = 1 | 窗口支持分屏显示。通常需要与ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FULL_SCREEN或ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING组合使用（通过位或运算），不建议单独使用ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT。当仅配置ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT时，2in1设备上的窗口默认为悬浮窗模式，支持进入分屏模式。 |
+| ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT = 1 | 窗口支持分屏显示。通常需要与ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FULL_SCREEN或ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING组合使用（通过位或运算），不建议单独使用ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT。当仅配置ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_SPLIT时，PC/2in1设备上的窗口默认为悬浮窗模式，支持进入分屏模式。 |
 | ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING = 2 | 支持窗口化显示。 |

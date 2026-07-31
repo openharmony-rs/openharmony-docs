@@ -12,7 +12,7 @@ typedef struct ArkUI_Matrix4 ArkUI_Matrix4
 
 ## 概述
 
-定义四阶矩阵对象。
+四阶矩阵对象，用于矩阵变换操作。
 
 **起始版本：** 24
 

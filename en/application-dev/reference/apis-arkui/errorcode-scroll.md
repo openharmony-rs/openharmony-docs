@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Designer: @yylong; @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 

@@ -1,11 +1,11 @@
 # 使用扩展的Node-API接口加速属性访问
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @starunvs-->
 <!--Designer: @shilei123; @starunvs-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API 24版本开始，OpenHarmony提供了基于调用点缓存的快速属性访问接口。通过为每个调用点创建`napi_callsite_info`句柄，在重复访问相同键名属性时，可以缓存对象的结构信息，从而加速属性访问，显著提升属性访问性能。
 
