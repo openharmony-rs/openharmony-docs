@@ -1,7 +1,7 @@
 # Component3D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->

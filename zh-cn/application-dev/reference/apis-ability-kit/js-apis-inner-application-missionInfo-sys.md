@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-表示任务的详细信息，可以通过[getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo)获取。
+表示任务的详细信息，包含任务ID、运行状态、创建或更新时间等，适用于系统任务管理场景中查询和管理任务状态。可以通过[getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo)获取。
 
 > **说明：**
 > 
@@ -28,12 +28,12 @@ import { missionManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| missionId | number | 否 | 否 | 表示任务ID。|
-| runningState | number | 否 | 否 | 表示运行状态。 |
+| missionId | number | 否 | 否 | 表示任务ID，用于唯一标识一个任务实例。|
+| runningState | number | 否 | 否 | 表示任务的运行状态。0表示启用，任务活跃有效，对应的Ability正在运行或可恢复到前台；-1表示未启用，任务已关闭、销毁或不可恢复。 |
 | lockedState | boolean | 否 | 否 | 表示锁定状态。返回true表示锁定状态，返回false表示未锁定状态。 |
-| timestamp | string | 否 | 否 | 表示任务的最近创建或更新时间。 |
+| timestamp | string | 否 | 否 | 表示任务的最近创建或更新时间。单位：ns。 |
 | want | [Want](js-apis-app-ability-want.md) | 否 | 否 | 表示任务的Want信息。 |
-| label | string | 否 | 否 | 表示任务的标签。 |
+| label | string | 否 | 否 | 表示任务的标签，用于在任务列表中显示的任务名称。 |
 | iconPath | string | 否 | 否 | 表示任务的图标路径。 |
 | continuable | boolean | 否 | 否 | 表示任务是否可以迁移。返回true表示可以迁移，返回false表示不可迁移。 |
 | abilityState<sup>10+</sup> | number | 否 | 否 | 表示此任务的能力状态。 |
@@ -45,6 +45,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取任务详细信息
   missionManager.getMissionInfo('', 1, (error, data) => {
     if (error) {
       // 处理业务逻辑错误

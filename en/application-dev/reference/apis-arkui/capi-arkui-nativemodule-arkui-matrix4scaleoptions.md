@@ -1,10 +1,12 @@
 # ArkUI_Matrix4ScaleOptions
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:25:24.762Z pushedAt=2026-07-17T11:26:06.573Z -->
 
 ```c
 typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions
@@ -12,7 +14,7 @@ typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions
 
 ## Overview
 
-Defines a matrix scaling object.
+Defines matrix scale options.
 
 **Since**: 24
 

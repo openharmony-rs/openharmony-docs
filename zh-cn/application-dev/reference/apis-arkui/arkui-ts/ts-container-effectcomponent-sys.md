@@ -41,7 +41,7 @@ EffectComponent()
 
 EffectComponent(options?: EffectComponentOptions)
 
-创建特效绘制合并组件，无参数或者参数为EffectLayer.None时用于对子组件背景模糊特效的绘制合并。有明确参数时表示当前渲染图层置于特殊图层。
+创建特效绘制合并组件，无参数或者参数为EffectLayer.NONE时用于对子组件背景模糊特效的绘制合并。有明确参数时表示当前渲染图层置于特殊图层。
 
 **系统接口：** 此接口为系统接口。
 
@@ -69,9 +69,9 @@ EffectComponent(options?: EffectComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                    | 只读 | 可选 | 说明                                                     |
-| ----------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20枚举说明) | 否   | 否   | EffectComponent的渲染层级。<br/>默认值：EffectLayer.NONE |
+| 名称                | 类型  | 必填 | 说明                                                                                                                                  |
+|-------------------|-----|----|-------------------------------------------------------------------------------------------------------------------------------------|
+| effectLayer | [EffectLayer](#effectlayer20枚举说明) | 否   | EffectComponent的渲染层级。<br/>默认值：EffectLayer.NONE |
 
 ## EffectLayer<sup>20+</sup>枚举说明
 

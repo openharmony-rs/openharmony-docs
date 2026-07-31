@@ -6,41 +6,37 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-## 模块简介
-
 vibrator模块是设备马达振动的控制模块，属于SensorServiceKit。该模块提供精确控制设备马达振动的能力，支持按指定时长、预置效果、自定义配置文件、自定义振动模式等多种方式触发振动，并支持按指定模式或全部模式停止振动。此外，模块还提供振动效果支持查询、马达设备信息查询、马达上下线状态监听等能力。
 
 vibrator模块主要用于增强用户交互体验，通过触觉感知反馈为应用提供直观的物理反馈能力。典型使用场景包括：
-- **交互反馈**：点击、长按、滑动、拖拽等触控操作的短振反馈，推荐使用VibratePreset预置效果以保持与系统整体振感风格一致。
-- **通知提醒**：消息通知、来电响铃、闹钟等场景的振动提醒。
-- **游戏与多媒体**：游戏操作反馈、表情包拟真效果等复杂场景的精细振动，推荐使用VibrateFromFile或VibrateFromPattern自定义振动效果。
-- **多设备协同**：在分布式场景下，通过指定设备ID和马达ID控制远端设备振动。
+- 交互反馈：点击、长按、滑动、拖拽等触控操作的短振反馈，推荐使用VibratePreset预置效果以保持与系统整体振感风格一致。
+- 通知提醒：消息通知、来电响铃、闹钟等场景的振动提醒。
+- 游戏与多媒体：游戏操作反馈、表情包拟真效果等复杂场景的精细振动，推荐使用VibrateFromFile或VibrateFromPattern自定义振动效果。
+- 多设备协同：在分布式场景下，通过指定设备ID和马达ID控制远端设备振动。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## 概述
-
 vibrator模块的核心能力围绕"启动振动"和"停止振动"两条主线展开，整体使用流程如下：
 
-**启动振动流程：**
+启动振动流程：
 
 1. 若使用预置振动效果（VibratePreset），建议先调用[vibrator.isSupportEffect](#vibratorissupporteffect10)或[vibrator.isSupportEffectSync](#vibratorissupporteffectsync12)查询当前设备是否支持该效果；若使用自定义振动配置文件（VibrateFromFile），建议先确认设备支持自定义振动模式（可通过[vibrator.isHdHapticSupported](#vibratorishdhapticsupported12)查询是否支持高清振动）；若使用自定义振动模式（VibrateFromPattern），需先通过[VibratorPatternBuilder](#vibratorpatternbuilder18)构建振动序列。
 2. 调用[vibrator.startVibration](#vibratorstartvibration9)启动振动，需同时指定振动效果（VibrateEffect）和振动属性（VibrateAttribute）。振动属性中的usage参数决定了振动的场景类型，不同场景类型受系统振动开关管控规则不同。
 
-**停止振动流程：**
+停止振动流程：
 
 - 停止指定时长振动或预置效果振动：调用[vibrator.stopVibration](#vibratorstopvibration9)（API version 9），传入对应的VibratorStopMode。
 - 停止自定义振动（VibrateFromFile或VibrateFromPattern）：调用[vibrator.stopVibration](#vibratorstopvibration10-1)（API version 10+，无参数版本）停止所有模式振动。
 - 停止所有模式振动：调用[vibrator.stopVibration](#vibratorstopvibration10-1)（无参数版本）或[vibrator.stopVibrationSync](#vibratorstopvibrationsync12)（同步版本）。
 - 停止指定设备的马达振动：调用[vibrator.stopVibration](#vibratorstopvibration19)（API version 19+，传入VibratorInfoParam）。
 
-**多马达设备场景：**
+多马达设备场景：
 
 从API version 19开始，支持多设备多马达场景。可通过[vibrator.getVibratorInfoSync](#vibratorgetvibratorinfosync19)查询马达信息，通过[vibrator.on](#vibratoron19)监听马达上下线事件，以便动态选择合适的马达触发振动。
 
-**振动效果类型对比：**
+振动效果类型对比：
 
 | 振动效果类型 | 适用场景 | 个性化程度 | 推荐优先级 |
 | --- | --- | --- | --- |
@@ -49,77 +45,10 @@ vibrator模块的核心能力围绕"启动振动"和"停止振动"两条主线�
 | VibrateFromPattern | 与VibrateFromFile一致，但更灵活 | 高，支持振动事件数组组合 | 适用于需要动态组合振动事件的场景 |
 | VibrateTime | 基础时长振动，仅控制启停 | 低，无法调节强度和频率 | 仅满足基础功能需求 |
 
-### UML类图
+## 导入模块
 
-```mermaid
-classDiagram
-    direction LR
-
-    class VibrateTime {
-        type: 'time'
-        duration: int
-    }
-
-    class VibratePreset {
-        type: 'preset'
-        effectId: string
-        count?: int
-        intensity?: int
-    }
-
-    class VibrateFromFile {
-        type: 'file'
-        hapticFd: HapticFileDescriptor
-    }
-
-    class VibrateFromPattern {
-        type: 'pattern'
-        pattern: VibratorPattern
-    }
-
-    class HapticFileDescriptor {
-        fd: int
-        offset?: long
-        length?: long
-    }
-
-    class VibratorPattern {
-        time: int
-        events: VibratorEvent[]
-    }
-
-    class VibratorEvent {
-        eventType: VibratorEventType
-        time: int
-        duration?: int
-        intensity?: int
-        frequency?: int
-    }
-
-    class VibratorPatternBuilder {
-        addContinuousEvent() VibratorPatternBuilder
-        addTransientEvent() VibratorPatternBuilder
-        build() VibratorPattern
-    }
-
-    class VibrateAttribute {
-        id?: int
-        deviceId?: int
-        usage: Usage
-    }
-
-    VibrateFromFile *-- HapticFileDescriptor : 组合
-    VibrateFromPattern *-- VibratorPattern : 组合
-    VibratorPattern *-- VibratorEvent : 组合
-    VibratorPatternBuilder ..> VibratorPattern : 依赖
-    VibratorPatternBuilder ..> ContinuousParam : 依赖
-    VibratorPatternBuilder ..> TransientParam : 依赖
-    VibrateAttribute --> Usage : 关联
-
-    note for VibrateTime "VibrateEffect联合类型成员"
-    note for VibratePreset "VibrateEffect联合类型成员"
-    note for VibrateFromFile "VibrateEffect联合类型成员"
-    note for VibrateFromPattern "VibrateEffect联合类型成员"
+```ts
+import { vibrator } from '@kit.SensorServiceKit';
 ```
 
 ## vibrator.startVibration<sup>9+</sup>
@@ -129,7 +58,6 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 根据指定的振动效果和振动属性触发马达振动，使用callback异步回调。
 
 适用于为用户交互提供触觉反馈、为通知/闹钟等事件提供振动提醒，或在游戏、多媒体等场景中提供沉浸式振动体验。调用成功后，设备马达将按指定效果和属性开始振动；若同一马达已有正在进行的振动，新请求将按系统优先级规则处理。同功能还提供Promise版本vibrator.startVibration (#vibratorstartvibration9-1)，开发者可根据回调风格偏好选择。
-
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -224,7 +152,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
                if (rawFd != undefined) {
                  try {
                    vibrator.startVibration({
-                     type: "file",
+                     type: 'file',
                      hapticFd: { fd: rawFd.fd, offset: rawFd.offset, length: rawFd.length }
                    }, {
                      id: 0,
@@ -385,12 +313,10 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
                    }, {
                      id: 0,
                      usage: 'alarm' // 根据实际选择类型归属不同的开关管控
-                   }, (error: BusinessError) => {
-                     if (error) {
-                       console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-                       return;
-                     }
+                   }).then(() => {
                      console.info('Succeed in starting vibration');
+                   }).catch((error: BusinessError) => {
+                     console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
                    });
                  } catch (err) {
                    let e: BusinessError = err as BusinessError;
@@ -855,7 +781,7 @@ stopVibrationSync(): void
    // 使用try catch对可能出现的异常进行捕获
    try {
      // 停止任何形式的马达振动
-     vibrator.stopVibrationSync()
+     vibrator.stopVibrationSync();
      console.info('Succeed in stopping vibration');
    } catch (error) {
      let e: BusinessError = error as BusinessError;
@@ -1104,7 +1030,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 查询一个或所有设备的马达信息列表。适用于在触发振动前查询设备马达能力和多马达设备的马达ID，以便选择合适的马达触发振动。
 
-不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
+不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1405,7 +1331,7 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
      console.info(`addContinuousEvent builder is ${builder.build()}`);
    } catch(error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Exception. Code ${e.code}`);
+     console.error(`Failed to add continuous event. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -1474,7 +1400,7 @@ build(): VibratorPattern;
 
 | 类型                                  | 说明                               |
 | ------------------------------------- | ---------------------------------- |
-| [VibratorPattern](#vibratorpattern18) | 构造组合短振或长振的振动序列方法。返回的VibratorPattern对象可作为[VibrateFromPattern](#vibratefrompattern18)的pattern参数传入[startVibration](#vibratorstartvibration9)接口触发振动。 |
+| [VibratorPattern](#vibratorpattern18) | 振动序列对象。包含振动序列的起始时间和振动事件数组，可作为[VibrateFromPattern](#vibratefrompattern18)的pattern参数传入[startVibration](#vibratorstartvibration9)接口触发振动。 |
 
 **示例**：
 
@@ -1497,10 +1423,10 @@ build(): VibratorPattern;
    }
    try {
      vibrator.startVibration({
-       type: "pattern",
+       type: 'pattern',
        pattern: builder.build()
      }, {
-     usage: "alarm", // 根据实际选择类型归属不同的开关管控
+     usage: 'alarm', // 根据实际选择类型归属不同的开关管控
      }, (error) => {
      if (error) {
        let e: BusinessError = error as BusinessError;
@@ -1628,8 +1554,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | offset | number | 否   | 是   | 距文件起始位置的偏移量。单位：字节。默认值：文件起始位置（0）。取值范围：不可超出文件有效范围。使用场景：适用于振动配置文件中包含多种振动效果、需要指定从特定偏移位置开始振动的场景。不填写时默认从文件起始位置开始。 |
 | length | number | 否   | 是   | 资源长度。单位：字节。默认值：从偏移位置至文件结尾的长度。取值范围：不可超出文件有效范围。使用场景：适用于振动配置文件中包含多种振动效果、需要指定特定长度振动的场景。不填写时默认读取从偏移位置至文件结尾的全部内容。 |
 
-**相关参数间的配合/制约关系**：offset和length共同确定振动配置文件的读取范围。offset + length不能超出文件的有效范围，否则振动可能失败。
-
 ## VibratorEventType<sup>18+</sup>
 
 振动事件类型。用于[VibratorEvent](#vibratorevent18)的eventType字段指定振动事件的类型。
@@ -1653,8 +1577,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | intensity | number | 否   | 是   | 可选参数，相对事件振动强度增益。取值范围：[0,1]。默认值：1。使用场景：适用于精细调节振动强度的交互反馈场景，值越大振动越强。不填写时默认使用最大增益。 |
 | frequency | number | 否   | 是   | 可选参数，相对事件振动频率变化。取值范围：[-100,100]内所有整数。默认值：0。使用场景：适用于精细调节振动频率的交互反馈场景，正值频率升高，负值频率降低。不填写时默认不改变频率。 |
 
-**相关参数间的配合/制约关系**：VibratorCurvePoint数组中元素个数最少设置4个，最大设置16个。time值应按升序排列，表示振动调节曲线中各调节点的时间先后顺序。
-
 ## VibratorEvent<sup>18+</sup>
 
 振动事件。用于[VibratorPattern](#vibratorpattern18)的events数组中定义具体的振动事件。
@@ -1670,11 +1592,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | frequency | number                          | 否   | 是   | 可选参数，表示振动频率。取值范围：[0,100]区间内所有整数。默认值：50。不填写时默认使用中等频率。 |
 | index     | number                          | 否   | 是   | 可选参数，表示马达通道编号。取值范围：[0,2]区间内所有整数。默认值：0。使用场景：不同通道对应不同的马达器件，适用于多马达设备的精细控制场景。不填写时默认使用通道0。        |
 | points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | 否   | 是   | 可选参数，表示振动调节曲线数组。使用场景：适用于需要精细控制振动强度和频率变化趋势的交互反馈场景。数组中元素个数最少设置4个，最大设置16个。                             |
-
-**相关参数间的配合/制约关系**：
-- eventType为CONTINUOUS时，duration为必填项，用于指定长振持续时间；eventType为TRANSIENT时，duration可不填写，使用默认值48。
-- 同一VibratorPattern中多个VibratorEvent的time值不能重叠。
-- points数组中VibratorCurvePoint的time值应按升序排列。
 
 ## VibratorPattern<sup>18+</sup>
 
@@ -1700,8 +1617,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | 否   | 是   | 可选参数，表示振动调节曲线数组。数组中元素个数最少设置4个，最大设置16个。                             |
 | index     | number               | 否   | 是   | 可选参数，表示通道编号。取值范围：[0,2]区间内所有整数。默认值：0。使用场景：不同通道对应不同的马达器件，适用于多马达设备的精细控制场景。不填写时默认使用通道0。                    |
 
-**相关参数间的配合/制约关系**：设置points时，points数组中VibratorCurvePoint的time值应按升序排列。points数组中元素个数最少设置4个，最大设置16个，否则振动调节曲线不生效。
-
 ## TransientParam<sup>18+</sup>
 
 瞬态振动参数。用于[VibratorPatternBuilder.addTransientEvent](#addtransientevent18)的options参数，指定短振事件的振动强度、频率和通道编号。
@@ -1722,7 +1637,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称    | 类型            | 只读 | 可选 | 说明                                                 |
 | ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
-| type    | 'pattern'       | 否   | 否   | 值为"pattern"，根据组合模式触发马达振动。固定值，不可更改。            |
+| type    | 'pattern'       | 否   | 否   | 值为'pattern'，根据组合模式触发马达振动。固定值，不可更改。            |
 | pattern | VibratorPattern | 否   | 否   | [build](#build18)方法返回的[VibratorPattern](#vibratorpattern18)对象。需先通过[VibratorPatternBuilder](#vibratorpatternbuilder18)添加振动事件后调用build方法生成。 |
 
 ## VibrateAttribute<sup>9+</sup>
@@ -1738,8 +1653,6 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | id                     | number           | 否   | 是   | 马达ID。默认值：0。使用场景：当设备存在多个马达时，可通过指定不同的马达ID来选择特定马达触发振动。马达ID可以通过[getVibratorInfoSync](#vibratorgetvibratorinfosync19)查询。不填写时默认使用马达ID为0的马达。                                         |
 | deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID。默认值：-1，表示本地设备。使用场景：在多设备场景下需指定远程设备时设置此参数；不填写时默认控制本地设备。从API version 19开始，设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 | usage                  | [Usage](#usage9) | 否   | 否   | 马达振动的使用场景。默认值：'unknown'。取值范围只允许在[Usage](#usage9)提供的类型中选取。不同usage值对应不同的系统振动开关管控规则，开发者需根据实际业务场景选择合适的usage值。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-
-**相关参数间的配合/制约关系**：id和deviceId共同确定目标马达。deviceId指定目标设备，id指定该设备上的目标马达。在多设备多马达场景下需同时设置这两个参数以精确控制振动目标。
 
 ## Usage<sup>9+</sup>
 

@@ -29,7 +29,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
 
-    > **说明**
+    > **说明：**
     >
     > 由于已使用update传入数据，此处data传入null。
     >

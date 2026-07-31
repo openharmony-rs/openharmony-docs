@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 <!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T08:17:14.438Z pushedAt=2026-06-23T08:19:18.879Z -->

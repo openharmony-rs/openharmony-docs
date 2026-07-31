@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 `deviceConfig` 包含设备上的应用配置信息，支持 `default`、`tv`、`car`、`wearable` 等属性。

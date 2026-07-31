@@ -6,7 +6,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:41:18.811Z pushedAt=2026-06-22T08:31:01.279Z -->
+<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:14:15.482Z pushedAt=2026-07-07T03:50:14.281Z -->
 
 ## When to Use
 
@@ -23,7 +23,7 @@ Since API version 18, data in vector stores can be persisted.
 
 - The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
 
-- A vector store supports a maximum of four read connections and one write connection at a time by default. A thread can perform the read operation when acquiring an idle read connection. If there is no idle read connection, a new read connection will be created.
+- By default, a vector store has four read connections and one write connection. A thread can perform read operations after obtaining an available read connection. If no read connections are available, a new read connection is created.
 
 - To ensure data accuracy, the database supports only one write operation at a time. Concurrent write operations are performed in serial mode.
 
@@ -39,15 +39,15 @@ Since API version 18, data in vector stores can be persisted.
 
 Types of database table fields are as follows.
 
-| Type| Description| Supported|
+| Type | Description | Supported |
 | -------- | -------- | -------- |
-| NULL | Null.| Yes|
-| INTEGER | Integer.| Yes|
-| DOUBLE | Floating point.| Yes|
-| TEXT | String.| Yes|
-| BLOB | Binary.| Yes|
-| FLOATVECTOR | Vector data.| Yes|
-| GEOMETRY (supported by devices running OpenHarmony 7.0.0 or later) | Geographic coordinate type. | Yes |
+| NULL | Null value | Yes |
+| INTEGER | Integer | Yes |
+| DOUBLE | Floating-point type | Yes |
+| TEXT | String type | Yes |
+| BLOB | Binary type | Yes |
+| FLOATVECTOR | Vector data type | Yes |
+| GEOMETRY (supported on devices running OpenHarmony 7.0.0 or later) | Geographic coordinate type | Yes |
 
 ### Field Constraints
 
@@ -79,7 +79,7 @@ Clauses in a query statement are as follows.
 
 ### Sets
 
-Set statements in a query statement are as follows.
+Set operations in a query statement are as follows.
 
 | Keyword| Description| Supported|
 | -------- | -------- | -------- |
@@ -88,7 +88,7 @@ Set statements in a query statement are as follows.
 
 ### Operators
 
-The following lists the operators used to filter data based on a condition. Generally, they are used in query statements.  
+The following lists the operators used to filter data based on a condition. Generally, they are used in query statements.
 
 | Type| Operator| Supported|
 | -------- | -------- | -------- |
@@ -200,7 +200,7 @@ The following are APIs for the vector database persistence feature. For details 
 
    > **NOTE**
    >
-   > **RelationalStore** does not provide explicit flush operations for data persistence. The data inserted is persisted.
+   > Vector store does not provide explicit flush operations for data persistence. The data inserted is persisted.
 
    The sample code is as follows:
 
@@ -253,7 +253,7 @@ The following are APIs for the vector database persistence feature. For details 
 
    The sample code is as follows:
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
 
    ``` TypeScript
    // Perform single-table queries.
@@ -281,7 +281,7 @@ The following are APIs for the vector database persistence feature. For details 
      // Create the second table.
      let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
      await store!.execute(CREATE_SQL);
-     let resultSet = await store!.querySql('select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;');
+     let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -457,7 +457,7 @@ The following are APIs for the vector database persistence feature. For details 
    | time_col | Yes| Column name. The value must be an integer and cannot be empty.|
    | interval | No| Interval for executing the aging task thread. If a write operation is performed after the interval, an aging task will be triggered to delete the data that meets the aging conditions. If the write operation is performed within the interval, no aging task will be triggered. <br>Value range: [5 second, 1 year]<br>Default value: **1 day**<br>Time units supported include **second**, **minute**, **hour**, **day**, **month** and **year**. The value is case-insensitive and supports both singular and plural forms (for example, **2 hour** and **2 hours** are acceptable).|
    | ttl | No| Data retention period. <br>Value range: [1 hour, 1 year]<br>Default value: **3 month**<br>Time units supported include **second**, **minute**, **hour**, **day**, **month** and **year**. The value is case-insensitive and supports both singular and plural forms (for example, **2 hour** and **2 hours** are acceptable).|
-   | max_num | No| Maximum data volume allowed. <br>Value range: [100, 1024]<br>Default value: **1024**<br> After the aging task deletes expired data, if the remaining data in the table exceeds the value of **max_num**, data tied to the nearest expiration-adjacent time point will be deleted until the total row count falls below **max_num**.|
+   | max_num | No| Maximum data volume allowed. <br>Value range: [100, 1024]<br>Default value: **1024**<br> After the aging task deletes expired data, if the remaining data in the table exceeds the value of **max_num**, data tied to the time point closest to the expiration time will be deleted until the total row count falls below **max_num**.|
 
    Time-related parameters are converted into seconds as follows.
 

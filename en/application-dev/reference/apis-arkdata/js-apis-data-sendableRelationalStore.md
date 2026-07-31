@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 The **sendableRelationalStore** module provides APIs for obtaining **ValuesBucket** of the sendable type from the query result set and transferring it between concurrent instances.
@@ -249,7 +249,7 @@ Converts the array data that can be passed across threads into the data that can
 
 | Name| Type           | Mandatory| Description                     |
 | ------ | --------------- | ---- | :------------------------ |
-| values  | collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | Yes  | Array data that can be passed across threads.|
+| values  | [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | Yes  | Array data that can be passed across threads.|
 
 **Return value**
 
@@ -296,7 +296,7 @@ Converts the array data that cannot be passed across threads into the data that 
 
 | Type                                  | Description                       |
 | -------------------------------------- | --------------------------- |
-| collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | Array data that can be passed across threads.|
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | Array data that can be passed across threads.|
 
 **Error codes**
 
@@ -361,8 +361,8 @@ Defines the types of the value in a KV pair. The type varies with the parameter 
 | string  | The value is a string.|
 | boolean | The value is **true** or **false**.|
 | [collections.Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md) | The value is a Uint8 array.|
-| [Asset](#asset)  | The value is an asset.<br>If the value type is **Asset**, the type in the SQL statement for creating a table must be **ASSET**.            |
-| [Assets](#assets) | The value is an array of assets.<br>If the value type is **Assets**, the type in the SQL statement for creating a table must be **ASSETS**.|
+| [Asset](#asset)  | The value is an asset.<br>If the field type is **Asset**, the type in the SQL statement for creating a table must be **ASSET**.            |
+| [Assets](#assets) | The value is an array of assets.<br>If the field type is **Assets**, the type in the SQL statement for creating a table must be **ASSETS**.|
 | [collections.Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md) | The value is an array of 32-bit floating-point numbers.<br>If the field type is **collections.Float32Array**, the type in the SQL statement for creating a table must be **floatvector(128)**.|
 | bigint | The value is an integer of any length.<br>If the value type is bigint, the type in the SQL statement for creating a table must be **UNLIMITED INT**. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md).<br>**NOTE**<br>The bigint type does not support value comparison and cannot be used with the following predicates: **between**, **notBetween**, **greaterThan**, **lessThan**, **greaterThanOrEqualTo**, **lessThanOrEqualTo**, **orderByAsc**, and **orderByDesc**<br>To write a value of bigint type, use **BigInt()** or add **n** to the end of the value, for example,'let data = BigInt(1234)' or 'let data = 1234n'.<br>If data of the number type is written to a bigint field, the type of the return value obtained (queried) is number but not bigint.|
 
@@ -445,7 +445,7 @@ async function insert(context: Context, dataItem: sendableRelationalStore.Values
   console.info(`Create table test successfully!`);
 
   // Insert data.
-  const rowId = await store.insertSync("test", dataItem);
+  const rowId = store.insertSync("test", dataItem);
   await store.close();
   return rowId;
 }
@@ -457,6 +457,7 @@ async function queryByName(context: Context, name: string) {
     securityLevel: relationalStore.SecurityLevel.S3,
   };
 
+  let result: sendableRelationalStore.ValuesBucket | undefined;
   let store = await relationalStore.getRdbStore(context, CONFIG);
   console.info(`Get store successfully!`);
 
@@ -466,9 +467,12 @@ async function queryByName(context: Context, name: string) {
   const resultSet = await store.query(predicates);
   if (resultSet.rowCount > 0 && resultSet.goToFirstRow()) {
     // Obtain the cross-thread transferable ValuesBucket to return the query result.
-    return resultSet.getSendableRow();
+    result = resultSet.getSendableRow();
+    return result;
   }
-  return null;
+  resultSet.close();
+  await store.close();
+  return result;
 }
 
 

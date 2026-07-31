@@ -3324,7 +3324,7 @@ struct TextInputExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        TextInput({text: '中文 Text'})
+        TextInput({text: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         TextInput({text: '中文Text'})

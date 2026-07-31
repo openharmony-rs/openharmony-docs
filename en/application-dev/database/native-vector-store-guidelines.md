@@ -1,12 +1,12 @@
 # Persisting Vector Store Data (C/C++)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @htt1997-->
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:37:54.719Z pushedAt=2026-06-25T08:32:33.621Z -->
+<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:15:37.187Z pushedAt=2026-07-07T06:49:15.217Z -->
+
 
 ## When to Use
 
@@ -16,7 +16,6 @@ Since API version 18, data in vector stores can be persisted.
 ## Basic Concepts
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
-
 - **floatvector**: vector data, for example, **[1.0, 3.0, 2.4, 5.1, 6.2, 11.7]**.
 
 ## Constraints
@@ -314,7 +313,6 @@ libnative_rdb_ndk.z.so
 
      DROP INDEX table_name.index_name;
      ```
-
    - The extended syntax is as follows:
 
      ```sql
@@ -331,7 +329,7 @@ libnative_rdb_ndk.z.so
 
    | Type  | Operator| Description  |
    | ------ | -------- | ---------- |
-   | L2     | <->      | Euclidean distance.|
+   | L2     | <->      | Euclidean distance. |
    | COSINE | <=>      | Cosine distance.|
 
    **Table 3** Extended syntax parameter (parameter)

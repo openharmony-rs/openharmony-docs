@@ -10,16 +10,7 @@
 
 **业务状态转换示意图：**
 
-```mermaid
-stateDiagram-v2
-    [*] --> 已启动 : 分布式硬件服务启动
-    已启动 --> 已暂停 : pauseDistributedHardware
-    已暂停 --> 已启动 : resumeDistributedHardware
-    已启动 --> 已停止 : stopDistributedHardware
-    已暂停 --> 已停止 : stopDistributedHardware
-    已停止 --> 已启动 : 重新启动分布式硬件服务
-    已停止 --> [*]
-```
+![dhardwareManager_stateDiagram](../figures/dhardwareManager_stateDiagram.png)
 
 > **说明：**
 >

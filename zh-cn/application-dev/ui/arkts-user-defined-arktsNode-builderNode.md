@@ -37,7 +37,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议通
 > 
 > - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[selfIdealSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)显式指定布局约束大小，才能正常显示。
 > 
-> - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建的时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
+> - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
 
 ## 创建BuilderNode对象
 
@@ -53,7 +53,7 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 >
 > build方法中对应的@Builder支持一个参数作为入参。
 >
-> build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build的中提供的入参一致。
+> build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build中提供的入参一致。
 > 
 > 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加[BuildOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)字段作为[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12)的入参。
 > 
@@ -200,8 +200,6 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
   ```
 
 ## 更新组件树
-
-通过BuilderNode对象的build创建组件树。依照传入的WrappedBuilder对象创建组件树，并持有组件树的根节点。
 
 自定义组件的更新遵循[状态管理](../ui/state-management/arkts-state-management-overview.md)的更新机制。WrappedBuilder中直接使用的自定义组件其父组件为BuilderNode对象。因此，更新子组件即WrappedBuilder中定义的自定义组件，需要遵循状态管理的定义将相关的状态变量定义为[\@Prop](../ui/state-management/arkts-prop.md)或者[\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md)。装饰器的选择请参照状态管理的装饰器规格结合应用开发需求进行选择。
 
@@ -1030,7 +1028,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
 
     makeNode(context: UIContext): FrameNode | null {
-      return this.textNode?.getFrameNode() ? this.textNode?.getFrameNode() : null;
+      return this.textNode?.getFrameNode() ?? null;
     }
 
     createNode(context: UIContext) {
@@ -2272,7 +2270,7 @@ export struct RepeatVirtualScrollFreeze {
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   storage: Params = Params.instance();
-  @Param @Require message: string ;
+  @Param @Require message: string;
   @Param @Require bgColor: Color;
   @Monitor('storage.bgColor')
   onBgColorChange(monitor: IMonitor) {
@@ -2290,10 +2288,10 @@ struct BuildNodeChild {
   storage: Params = Params.instance();
   @Param message: string = '';
 
-  // 使用@Monitor装饰器监听storage.message的变化。
+  // 使用@Monitor装饰器监听storage.bgColor的变化。
   @Monitor('storage.bgColor')
-  onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  onBgColorChange(monitor: IMonitor) {
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -2448,11 +2446,11 @@ struct FreezeBuildNode {
 
 在上面的示例中：
 
-1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
+3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 

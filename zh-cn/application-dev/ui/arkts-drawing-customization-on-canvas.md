@@ -451,41 +451,43 @@ struct CanvasContentUpdate {
 
 - 从API version 13开始，使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口监听Canvas组件可见性。
 
-  ```ts
-  import { ColorMetrics } from '@kit.ArkUI';
+<!-- @[canvasContentSetOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentSetOnVisibleAreaApproximateChange.ets) -->
 
-  @Entry
-  @Component
-  struct Page {
-    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
-    private timerId: number = -1;
+``` TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
 
-    drawRandomCircle(): void {
-      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
-      let radius: number = Math.random() * 20 + 10
-      let color: ColorMetrics =
-        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255))
+@Entry
+@Component
+struct CanvasContentSetOnVisibleAreaApproximateChange {
+  private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+  private timerId: number = -1;
 
-      // 清空原先内容与画布状态
-      this.canvasContext.reset()
+  drawRandomCircle(): void {
+    let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+    let radius: number = Math.random() * 20 + 10
+    let color: ColorMetrics =
+      ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255))
 
-      // 开始绘制
-      this.canvasContext.fillStyle = color.color
-      let path: Path2D = new Path2D()
-      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
-      this.canvasContext.fill(path)
-    }
+    // 清空原先内容与画布状态
+    this.canvasContext.reset()
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.canvasContext)
-          .width(300)
-          .height(300)
-          .onReady(() => {
-            let frameNode = this.canvasContext.canvas;
-            frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
-              (isVisible: boolean, currentRatio: number) => {
+    // 开始绘制
+    this.canvasContext.fillStyle = color.color
+    let path: Path2D = new Path2D()
+    path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+    this.canvasContext.fill(path)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.canvasContext)
+        .width(300)
+        .height(300)
+        .onReady(() => {
+          let frameNode = this.canvasContext.canvas;
+          frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
+            (isVisible: boolean, currentRatio: number) => {
               // canvas不可见
               if (!isVisible && currentRatio <= 0) {
                 clearInterval(this.timerId)
@@ -500,86 +502,90 @@ struct CanvasContentUpdate {
                 }
               }
             })
-          })
-        Button("draw sth")
-          .onClick(() => {
-            if (this.timerId < 0) {
-              this.timerId = setInterval(() => {
-                this.drawRandomCircle()
-              }, 500)
-            }
-          })
-      }
-      .width('100%')
-      .height('100%')
+        })
+      Button('draw sth')
+        .onClick(() => {
+          if (this.timerId < 0) {
+            this.timerId = setInterval(() => {
+              this.drawRandomCircle()
+            }, 500)
+          }
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
+
   ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - 从API version 17开始，使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口监听Canvas组件可见性。
 
-  ```ts
-  import { ColorMetrics } from '@kit.ArkUI';
+<!-- @[canvasContentOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentOnVisibleAreaApproximateChange.ets) -->
 
-  @Entry
-  @Component
-  struct Page {
-    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
-    private timerId: number = -1;
+``` TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
 
-    drawRandomCircle(): void {
-      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
-      let radius: number = Math.random() * 20 + 10
-      let color: ColorMetrics =
-        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255))
+@Entry
+@Component
+struct CanvasContentOnVisibleAreaApproximateChange {
+  private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+  private timerId: number = -1;
 
-      // 清空原先内容与画布状态
-      this.canvasContext.reset()
+  drawRandomCircle(): void {
+    let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+    let radius: number = Math.random() * 20 + 10
+    let color: ColorMetrics =
+      ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255))
 
-      // 开始绘制
-      this.canvasContext.fillStyle = color.color
-      let path: Path2D = new Path2D()
-      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
-      this.canvasContext.fill(path)
-    }
+    // 清空原先内容与画布状态
+    this.canvasContext.reset()
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.canvasContext)
-          .width(300)
-          .height(300)
-          .onVisibleAreaApproximateChange({ ratios: [0.0] },
-              (isVisible: boolean, currentRatio: number) => {
-                // canvas不可见
-                if (!isVisible && currentRatio <= 0) {
-                  clearInterval(this.timerId)
-                  this.timerId = -2
-                }
-                // canvas可见
-                if (isVisible) {
-                  if (this.timerId == -2) {
-                    this.timerId = setInterval(() => {
-                      this.drawRandomCircle()
-                    }, 500)
-                  }
-                }
-              })
-        Button("draw sth")
-          .onClick(() => {
-            if (this.timerId < 0) {
-              this.timerId = setInterval(() => {
-                this.drawRandomCircle()
-              }, 500)
+    // 开始绘制
+    this.canvasContext.fillStyle = color.color
+    let path: Path2D = new Path2D()
+    path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+    this.canvasContext.fill(path)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.canvasContext)
+        .width(300)
+        .height(300)
+        .onVisibleAreaApproximateChange({ ratios: [0.0] },
+          (isVisible: boolean, currentRatio: number) => {
+            // canvas不可见
+            if (!isVisible && currentRatio <= 0) {
+              clearInterval(this.timerId)
+              this.timerId = -2
+            }
+            // canvas可见
+            if (isVisible) {
+              if (this.timerId == -2) {
+                this.timerId = setInterval(() => {
+                  this.drawRandomCircle()
+                }, 500)
+              }
             }
           })
-      }
-      .width('100%')
-      .height('100%')
+      Button('draw sth')
+        .onClick(() => {
+          if (this.timerId < 0) {
+            this.timerId = setInterval(() => {
+              this.drawRandomCircle()
+            }, 500)
+          }
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
+
   ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## 场景示例
@@ -869,7 +875,7 @@ export interface Position {
 
 - [分布式五子棋（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/DistributedDataGobang)
 
-- [ArkTS时钟（ArkTS）(API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock)
+- [ArkTS时钟（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock)
 
 - [Lottie动画](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Lottie)
 

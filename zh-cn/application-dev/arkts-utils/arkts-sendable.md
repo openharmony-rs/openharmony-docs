@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过[Transferable对象](transferabled-object.md)的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。
@@ -30,7 +30,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 ### ISendable
 
-在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implement ISendable的语法糖。
+在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implements ISendable的语法糖。
 
 ### Sendable class
 
@@ -47,8 +47,6 @@ Sendable class需同时满足以下两个规则：
 ### Sendable function
 
 > **说明：**
->
-> - 从API version 12开始，支持使用\@Sendable装饰器校验Sendable function。
 >
 > - 针对API version 12的工程，开发者使用\@Sendable装饰器校验Sendable function时，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则其Sendable特性将不生效。参考[build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5)。
 >
@@ -107,7 +105,7 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
 
 ``` TypeScript
 export const enum ModelState {
@@ -115,7 +113,7 @@ export const enum ModelState {
   INACTIVE
 }
 ```
-<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -200,29 +198,27 @@ struct enumusage {
 | 适用场景 | 1. 在TaskPool或Worker中使用类方法或Sendable函数。<br/>2. 传输对象数据量较大的场景。序列化耗时会随着数据量增大而增大，使用Sendable对数据进行改造后，传输100KB数据效率提升约20倍，传输1MB数据效率提升约100倍。 |
 
 **装饰器修饰Class使用示例：**
-<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) --> 
+<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/class/Index.ets) -->  
 
 ``` TypeScript
-export { MainPage } from './src/main/ets/components/MainPage';
-
 @Sendable
 class SendableTestClass {
   desc: string = 'sendable: this is SendableTestClass ';
   num: number = 5;
   printName() {
-    console.info('sendable: SendableTestClass desc is: ' + this.desc);
+    console.info(`sendable: SendableTestClass desc is: ${this.desc}`);
   }
   get getNum(): number {
     return this.num;
   }
 }
 
-let object = new SendableTestClass;
+let object = new SendableTestClass();
 export { object }
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
 ``` TypeScript
 @Sendable

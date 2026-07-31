@@ -25,8 +25,8 @@ Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#seta
 ### Member Variables
 
 | Name                                | Description|
-|------------------------------------| -- |
-| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Numeric array, used to store parameters of the numeric array type.|
-| int32_t size                       | Size of the numeric array. Used in conjunction with the **value** variable, it indicates the length of the **value** array.|
-| const char* string                 | String, used to store parameters of the string type.|
+| ---------------------------------- | --- |
+| const [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)* value | Pointer to the numeric type array, used to store parameters of the numeric array type. The array length is specified by **size**.|
+| int32_t size                       | Length of the **value** array, which must be used together with the **value** variable.|
+| const char* string                 | String pointer, used to store parameters of the string type.|
 | void* object                       | Object pointer, used to store parameters of the object type.|

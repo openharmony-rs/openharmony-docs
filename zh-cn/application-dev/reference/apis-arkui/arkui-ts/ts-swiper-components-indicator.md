@@ -8,7 +8,7 @@
 
 导航点组件，提供圆点和数字两种指示样式。
 
-将原[Swiper](ts-container-swiper.md)组件中的[indicator](ts-container-swiper.md#indicator)已有的能力作为一个单独组件提供给开发者使用。
+将原[Swiper](ts-container-swiper.md)组件中的[indicator](ts-container-swiper.md#indicator)能力作为一个单独组件提供给开发者使用。
 
 开发者可以不依赖Swiper组件单独显示导航点，也可以通过[IndicatorComponentController](#indicatorcomponentcontroller)与Swiper组件绑定使用，适用于轮播图、引导页、图片浏览等需要展示当前位置的场景。
 
@@ -45,7 +45,7 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 |参数名|类型|必填|说明|
 | ----- | ----- | -- |  --- |
-| controller |  [IndicatorComponentController](#indicatorcomponentcontroller) | 否 | 设置控制器，可通过该参数控制单独导航点进行导航点之间的跳转。不传入时，导航点组件无法被外部控制。 |
+| controller |  [IndicatorComponentController](#indicatorcomponentcontroller) | 否 | 设置控制器，可通过该参数控制单独导航点组件进行导航点之间的跳转。不传入时，导航点组件无法被外部控制。 |
 
 ## 属性
 
@@ -91,13 +91,13 @@ Indicator组件与Swiper绑定时，以Swiper的页面数量为准。
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| totalCount  | number | 是   |  导航点总数量。<br/>默认值：2。 |
+| totalCount  | number | 是   |  导航点总数量，取值范围[2, +∞)。<br/>默认值：2。<br/>传入0、1或负数时，按照默认值2处理。 |
 
 ### initialIndex
 
 initialIndex(index: number)
 
-设置首次显示时当前导航点的索引值。设置小于0或大于等于导航点数量时，按照默认值0处理。
+设置首次显示时当前导航点的索引值。传入值小于0或大于等于导航点数量时，按照默认值0处理。
 
 Indicator组件与Swiper绑定时，该属性不生效。
 
@@ -173,11 +173,11 @@ onChange(event: Callback\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的选中导航点索引变化时触发的回调。|
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的选中导航点索引变化时触发的回调，回调参数为当前选中导航点的索引值。|
 
 ## IndicatorComponentController
 
-Indicator组件的控制器，可以将此对象绑定至Indicator组件来控制翻页。
+Indicator组件的控制器，可以将此对象绑定至Indicator组件来控制翻页。通过将同一IndicatorComponentController实例传入IndicatorComponent的构造函数和Swiper组件的indicator属性，可实现Indicator与Swiper的绑定联动。
 
 ### constructor
 
@@ -195,7 +195,7 @@ IndicatorComponentController的构造函数。
 
 showNext(): void
 
-跳转到下一导航点。适用于通过按钮或其他交互方式控制导航点切换的场景。
+跳转到下一导航点。当与Swiper组件绑定时，同时会控制Swiper切换至下一页面。适用于通过按钮或其他交互方式控制导航点切换的场景。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -207,7 +207,7 @@ showNext(): void
 
 showPrevious(): void
 
-跳转到上一导航点。适用于通过按钮或其他交互方式控制导航点切换的场景。
+跳转到上一导航点。当与Swiper组件绑定时，同时会控制Swiper切换至上一页面。适用于通过按钮等交互方式控制导航点切换的场景。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 

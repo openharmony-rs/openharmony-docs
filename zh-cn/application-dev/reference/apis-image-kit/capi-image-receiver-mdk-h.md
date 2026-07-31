@@ -14,7 +14,7 @@
 
 **引用文件：** <multimedia/image_framework/image_receiver_mdk.h>
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 10
 

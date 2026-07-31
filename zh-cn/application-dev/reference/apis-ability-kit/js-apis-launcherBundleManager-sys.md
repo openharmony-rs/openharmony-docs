@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
@@ -38,8 +38,8 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -150,8 +150,8 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -165,7 +165,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 | 801 | Capability not support. |
 | 17700004 | The specified user ID is not found.      |
 
-示例：
+**示例：**
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
@@ -202,7 +202,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -261,7 +261,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
 
 **错误码：**
 
@@ -431,7 +431,7 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 
 **返回值：**
 
@@ -555,8 +555,8 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundle-ShortcutInfo.md) | 是   | 应用的快捷方式信息。 |
-| startReason  | string   | 是   | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| startReason  | string   | 是   | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**

@@ -35,7 +35,7 @@ Check whether DevEco Studio is connected to an OpenHarmony device.
 
 ## HDC Configuration
 
-HarmonyOS Device Connector (hdc) is a command-line debugging tool. It enables interaction with real devices or emulators on Windows, Linux, and Mac systems. For details, see [hdc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc).
+HarmonyOS Device Connector (hdc) is a command-line debugging tool. It enables interaction with real devices or emulators on Windows, Linux, and Mac systems. For details, see [hdc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hdc).
 
 > **NOTE**
 >   

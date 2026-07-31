@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
 
-当AutoFillExtensionAbility触发回调函数时，会提供给开发者页面数据。
+本模块提供自动填充与自动保存场景下的页面请求数据，以及自动填充失败时的返回结果。
 
 ## 导入模块
 
@@ -63,4 +63,4 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称    | 类型   | 只读 | 可选 | 说明      |
 | ------- | ------ | ---- | ---- | -------- |
-| errCode | number | 否   | 否   | 错误码。 |
+| errCode | number | 否   | 否   | 自动填充失败的错误码。 |

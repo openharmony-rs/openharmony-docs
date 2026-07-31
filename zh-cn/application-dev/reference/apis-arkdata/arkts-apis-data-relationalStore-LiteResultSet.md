@@ -67,6 +67,7 @@ async function getColumnNamesExample(store: relationalStore.RdbStore) {
     resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
     if (resultSet != undefined) {
       const names = resultSet.getColumnNames();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
@@ -88,13 +89,13 @@ getColumnIndex(columnName: string): number
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | -------------------------- |
-| columnName | string | 是   | 表示结果集中指定列的名称。当结果集中包含重名列时，返回值会不符合预期。 |
+| columnName | string | 是   | 表示结果集中指定列的名称。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回指定列的索引。 |
+| number | 返回指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 
@@ -123,6 +124,7 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
       const nameIndex = resultSet.getColumnIndex("NAME");
       const ageIndex = resultSet.getColumnIndex("AGE");
       const salaryIndex = resultSet.getColumnIndex("SALARY");
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -180,6 +182,7 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
       const name = resultSet.getColumnName(1);
       const age = resultSet.getColumnName(2);
       const salary = resultSet.getColumnName(3);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -246,6 +249,7 @@ async function getColumnTypeExample(store : relationalStore.RdbStore){
       let assetDataType = await resultSet.getColumnType(6);
       let assetsDataType = await resultSet.getColumnType(7);
       let floatArrayType = await resultSet.getColumnType(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -312,6 +316,7 @@ async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
       let assetDataType = resultSet.getColumnTypeSync(6);
       let assetsDataType = resultSet.getColumnTypeSync(7);
       let floatArrayType = resultSet.getColumnTypeSync(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -361,6 +366,7 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -412,6 +418,7 @@ async function getValueExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -465,6 +472,7 @@ async function getBlobExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -519,6 +527,7 @@ async function getStringExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -574,6 +583,7 @@ async function getLongExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -627,6 +637,7 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -679,6 +690,7 @@ async function getAssetExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -731,6 +743,7 @@ async function getAssetsExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -781,6 +794,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getRow();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -832,6 +846,7 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getCurrentRowData();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -907,6 +922,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
         console.info(JSON.stringify(rows[0]));
         position += rows.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -991,6 +1007,7 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
         });
         position += rowsData.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
@@ -1047,6 +1064,7 @@ async function isColumnNullExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);

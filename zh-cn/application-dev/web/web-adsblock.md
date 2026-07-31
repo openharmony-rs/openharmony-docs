@@ -43,7 +43,7 @@ ArkWeb为应用提供广告过滤功能，支持通过云端推送默认的easyl
 
 - 如果应用未启用广告过滤特性，那么Web组件不会向服务器请求默认的内置easylist规则。
 
-- disallowedlist和allowedlist数据采用后缀匹配，例如应用的设置的域名"xxyy.com"，可以匹配上url为"wwsstt.xxyy.com"的网站。
+- disallowedlist和allowedlist数据采用后缀匹配，例如应用设置的域名"xxyy.com"，可以匹配上url为"wwsstt.xxyy.com"的网站。
 
 ## 使用场景
 

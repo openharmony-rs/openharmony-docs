@@ -40,7 +40,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -102,7 +102,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -165,7 +165,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -219,7 +219,7 @@ Checks whether a widget can be added to the widget host. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -286,7 +286,7 @@ Checks whether a widget can be added to the widget host. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -354,7 +354,7 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -411,7 +411,7 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -470,7 +470,7 @@ Updates the static configuration information of a specified template widget on t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -527,7 +527,7 @@ Subscribes to controls on cross-bundle widget addition to the home screen. This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -574,7 +574,7 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |

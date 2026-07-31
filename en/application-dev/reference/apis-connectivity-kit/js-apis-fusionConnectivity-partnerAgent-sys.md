@@ -61,7 +61,7 @@ Enables peripheral interconnection. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Error Codes of the Converged Short-Range Service Subsystem](../apis-connectivity-kit/errorcode-fusionConnectivity.md).
 
-| **Error Code**| **Error Message**|
+| **ID**| **Error Message**|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
@@ -127,7 +127,7 @@ Disables peripheral interconnection. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Error Codes of the Converged Short-Range Service Subsystem](../apis-connectivity-kit/errorcode-fusionConnectivity.md).
 
-| **Error Code**| **Error Message**|
+| **ID**| **Error Message**|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |

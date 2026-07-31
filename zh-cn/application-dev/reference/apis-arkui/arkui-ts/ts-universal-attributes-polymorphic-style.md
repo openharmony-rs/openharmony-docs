@@ -6,21 +6,21 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件不同状态下的样式。
+设置组件在不同状态下的样式，适用于需要根据各种交互状态动态切换组件样式的场景，帮助开发者统一管理组件状态样式。
 
 >  **说明：**
 >
-> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 从API version 11开始支持另一种写法[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)，可根据开发者需要动态设置属性。
 >
 > - 多态样式仅支持[通用属性](ts-component-general-attributes.md)。如果多态样式不生效，则该属性可能为组件的私有属性，例如：fontColor、[TextInput](./ts-basic-components-textinput.md)组件的[backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18)等。此时，可以通过attributeModifier动态设置组件属性来解决此问题。
 >
 > - 当前多态样式实现依赖于组件自定义节点的刷新机制。因Builder不具备独立的自定义父节点，无法直接触发刷新，致使多态样式无法直接在Builder中生效。解决方法是将多态样式封装至自定义组件内部，再将此组件置于@Builder中，以此来间接实现多态样式。示例代码可参考[示例3（设置Builder多态样式）](#示例3设置builder多态样式)。
->  
+>
 > - 多态样式的焦点态只有在[焦点激活态](../../../ui/arkts-common-events-focus-event.md#基础概念)开启时生效。
 >
-> - 如果组件同时处于多种状态，并且分别在各自的状态里设置了一样的属性，那么最终样式生效的顺序由开发者设置的顺序决定，样式生效的顺序为后设置的生效。
+> - 如果组件同时处于多种状态，并且分别在各自的状态里设置了相同属性，那么最终生效样式由开发者设置顺序决定，后设置的样式生效。
 
 ## stateStyles
 
@@ -56,13 +56,13 @@ stateStyles(value: StateStyles): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | 否 | 是 | 组件无状态时的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| pressed | any | 否 | 是 | 组件按下状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| disabled | any | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| focused | any | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| clicked | any | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| hovered | object | 否 | 是 | 组件悬浮状态的样式。<br/>**起始版本：** 26.0.0 <br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| normal | any | 否 | 是 | 组件无状态时的样式。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| pressed | any | 否 | 是 | 组件按下状态的样式。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| disabled | any | 否 | 是 | 组件禁用状态的样式。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| focused | any | 否 | 是 | 组件获焦状态的样式。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| clicked | any | 否 | 是 | 组件点击状态的样式。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| hovered | object | 否 | 是 | 组件悬浮状态的样式。<br>**起始版本：** 26.0.0 <br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **selected选中状态说明**
 
@@ -193,7 +193,7 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text(this.isEnable == true ? 'effective' : 'disabled')
+      Text(this.isEnable ? 'effective' : 'disabled')
         .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Solid)
@@ -212,8 +212,8 @@ struct StyleExample {
         .textAlign(TextAlign.Center)
       Text('control disabled')
         .onClick(() => {
-          this.isEnable = !this.isEnable
-          console.info(`${this.isEnable}`)
+          this.isEnable = !this.isEnable;
+          console.info(`${this.isEnable}`);
         })
     }
     .width(350).height(300)
@@ -232,17 +232,17 @@ struct StyleExample {
 @Entry
 @Component
 struct Index {
-  @State value: boolean = false
-  @State value2: boolean = false
+  @State isRadio1Selected: boolean = false
+  @State isRadio2Selected: boolean = false
 
   @Styles
-  normalStyles(): void{
-    .backgroundColor("#E5E5E1")
+  normalStyles(): void {
+    .backgroundColor('#E5E5E1')
   }
 
   @Styles
-  selectStyles(): void{
-    .backgroundColor("#ED6F21")
+  selectStyles(): void {
+    .backgroundColor('#ED6F21')
     .borderWidth(2)
   }
 
@@ -252,13 +252,13 @@ struct Index {
         Text('Radio1')
           .fontSize(25)
         Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.value)
+          .checked(this.isRadio1Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
           .borderRadius(30)
           .onClick(() => {
-            this.value = !this.value
+            this.isRadio1Selected = !this.isRadio1Selected;
           })
           .stateStyles({
             normal: this.normalStyles,
@@ -271,7 +271,7 @@ struct Index {
         Text('Radio2')
           .fontSize(25)
         Radio({ value: 'Radio2', group: 'radioGroup2' })
-          .checked($$this.value2)
+          .checked($$this.isRadio2Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
@@ -291,7 +291,7 @@ struct Index {
 
 ### 示例3（设置Builder多态样式）
 
-该示例展示了状态为pressed时Builder组件的样式变化。
+该示例展示了状态为pressed时@Builder中自定义组件的样式变化。
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -328,18 +328,18 @@ struct Index {
 
   build() {
     Column() {
-      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+      Button().margin({ top: 200 }).onClick(() => {
         this.getUIContext()
           .getPromptAction()
           .openCustomDialog(this.contentNode)
           .then(() => {
-            console.info('OpenCustomDialog complete.')
+            console.info('OpenCustomDialog complete.');
           })
           .catch((error: BusinessError) => {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
+            let message = error.message;
+            let code = error.code;
             console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-          })
+          });
       })
     }
     .width('100%')

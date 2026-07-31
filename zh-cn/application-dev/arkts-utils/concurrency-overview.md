@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 并发指在同一时间内，多个任务同时执行。在多核设备上，任务可以在不同CPU上并行执行。对于单核设备，尽管多个任务不会同时执行，但CPU会在某个任务休眠或进行I/O操作时切换任务，调度其他任务，提高CPU的资源利用率。
 
@@ -17,4 +17,4 @@
 
 在并发多线程场景下，不同线程间需要进行数据通信。不同类别的对象采用不同的传输方式，如拷贝或内存共享。
 
-并发能力广泛应用于多种场景，包括[异步并发任务](async-concurrency-overview.md)、[耗时任务](time-consuming-task-overview.md)（如[CPU密集型任务](cpu-intensive-task-development.md)、[I/O密集型任务](io-intensive-task-development.md)和[同步任务](sync-task-development.md)等）、[长时任务](long-time-task-overview.md)、[常驻任务](resident-task-overview.md)等。开发者可以根据不同的任务诉求和场景，选择相应的并发策略进行优化和开发，具体案例可以参见[应用多线程开发实践案例](batch-database-operations-guide.md)。
+并发能力广泛应用于多种场景，包括[异步并发任务](async-concurrency-overview.md)、[耗时任务](time-consuming-task-overview.md)（如[CPU密集型任务](cpu-intensive-task-development.md)、[I/O密集型任务](io-intensive-task-development.md)和[同步任务](sync-task-development.md)等）、[长时任务](long-time-task-overview.md)、[常驻任务](resident-task-overview.md)等。开发者可以根据不同的任务诉求和场景，选择相应的并发策略进行优化和开发。

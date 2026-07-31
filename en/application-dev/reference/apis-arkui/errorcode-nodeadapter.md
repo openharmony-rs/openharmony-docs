@@ -1,16 +1,18 @@
 # NodeAdapter Error Codes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T07:01:28.910Z pushedAt=2026-07-17T07:10:50.082Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 106104 Adapter Not Bound
+## 106104 NodeAdapter Not Bound
 
 **Error Message**
 
@@ -18,17 +20,17 @@ The lazy loading adapter is not bound to the component.
 
 **Description**
 
-This error code is reported when no **NodeAdapter** is set for the component.
+This error code is reported when no NodeAdapter is bound to the component.
 
 **Possible Causes**
 
-No **NodeAdapter** is set for the component.
+The component does not have a NodeAdapter set. The NodeAdapter must be bound to the component before node operations can be performed.
 
 **Solution**
 
 Set a **NodeAdapter** for the component.
 
-## 106105 Adapter Already Exists
+## 106105 NodeAdapter Already Exists
 
 **Error Message**
 
@@ -40,11 +42,11 @@ This error code is reported when an attempt is made to create a duplicate NodeAd
 
 **Possible Causes**
 
-The NodeAdapter already exists and does not support adding or removing child nodes.
+The NodeAdapter already exists and does not support adding or deleting child nodes.
 
 **Solution**
 
-Remove the existing NodeAdapter or perform child node operations elsewhere.
+Remove the NodeAdapter or perform child node adding or deletion elsewhere.
 
 ## 106106 Child Node Exists
 
@@ -76,7 +78,7 @@ This error code is reported when the **index** parameter in a component event ex
 
 **Possible Causes**
 
-The provided **index** parameter exceeds the length limit of the input array.
+The **index** parameter passed exceeds the array length limit.
 
 **Solution**
 
@@ -98,7 +100,7 @@ The data to access is not included in the event.
 
 **Solution**
 
-Verify that the target data exists in the current event.
+Check whether the current event contains the data to be queried.
 
 ## 106109 Return Value Not Supported
 
@@ -116,7 +118,7 @@ The component event does not support return values.
 
 **Solution**
 
-Check whether the current event supports return values.
+Remove the code related to obtaining the event return value.
 
 ## 106110 Unsupported Event Type
 
@@ -126,7 +128,7 @@ The event type is not supported.
 
 **Description**
 
-This error code is reported when an invalid event type is detected during common event registration.
+This error code is reported when the event type passed when registering a universal event is not supported.
 
 **Possible Causes**
 
@@ -134,4 +136,4 @@ The passed event type is not among the supported event types.
 
 **Solution**
 
-Verify the specific value of the event type parameter.
+Check whether the event type value of the function input parameter falls within the range of supported event types.

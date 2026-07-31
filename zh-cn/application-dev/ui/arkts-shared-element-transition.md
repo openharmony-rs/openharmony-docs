@@ -1405,7 +1405,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 ```
 
 ```ts
-// index.ets
+// Index.ets
 import { MyNodeController, createMyNode, getMyNode } from '../NodeContainer/CustomComponent';
 import { ComponentAttrUtils, RectInfoInPx } from '../utils/ComponentAttrUtils';
 import { WindowUtils } from '../utils/WindowUtils';
@@ -1473,8 +1473,8 @@ struct Index {
           this.clipHeight = this.targetInfo.clipHeight;
           // 修正因半模态高度和缩放导致的高度差
           this.translateY = this.targetInfo.translateY +
-            (this.getUIContext().px2vp(WindowUtils.windowHeight_px) - this.bindSheetHeight
-              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeight_px) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeight_px));
+            (this.getUIContext().px2vp(WindowUtils.windowHeightPx) - this.bindSheetHeight
+              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeightPx) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeightPx));
           // 修正因缩放导致的圆角差异
           this.radius = this.sheetRadius / this.scaleValue
         })
@@ -1496,8 +1496,8 @@ struct Index {
     let itemInfo: RectInfoInPx =
       ComponentAttrUtils.getRectInfoById(WindowUtils.window.getUIContext(), id);
     // 首先计算图片的宽高与窗口宽高的比例
-    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidth_px;
-    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeight_px;
+    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidthPx;
+    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeightPx;
     let isUseWidthScale = widthScaleRatio > heightScaleRatio;
     let itemScale: number = isUseWidthScale ? widthScaleRatio : heightScaleRatio;
     let itemTranslateX: number = 0;
@@ -1506,15 +1506,15 @@ struct Index {
     let itemTranslateY: number = 0;
 
     if (isUseWidthScale) {
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px - itemInfo.width) / 2);
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx - itemInfo.width) / 2);
       itemClipWidth = '100%';
       itemClipHeight = this.getUIContext().px2vp((itemInfo.height) / itemScale);
       itemTranslateY = this.getUIContext().px2vp(itemInfo.top - ((this.getUIContext().vp2px(itemClipHeight) - this.getUIContext().vp2px(itemClipHeight) * itemScale) / 2));
     } else {
-      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeight_px - itemInfo.height) / 2);
+      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeightPx - itemInfo.height) / 2);
       itemClipHeight = '100%';
       itemClipWidth = this.getUIContext().px2vp((itemInfo.width) / itemScale);
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px / 2 - itemInfo.width / 2));
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx / 2 - itemInfo.width / 2));
     }
 
     return {
@@ -2192,4 +2192,4 @@ export default struct Post {
 
 ![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
-<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->

@@ -91,5 +91,27 @@
 | 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
 | 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
 
+### 场景4：音乐播放过程中开启录制，打断音乐播放
+
+应用A正在播放音乐，应用B开始录音（语音识别、录音机等），音乐被暂停，录音结束后音乐可恢复播放。
+
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 启动音乐播放 | 开启录制 | 录音抢占焦点，音乐暂停；录音结束后音乐收到RESUME提示可恢复 | RESUME事件需应用主动调用play()恢复 |
+| 方案一 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | 录音期间音乐静音继续播放，录音结束后音乐恢复有声 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
+| 方案二 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_DUCK_OTHERS` | 录音正常采集，音乐音量降低；录音结束后音量自动恢复 | 音量自动恢复，无需额外适配 |
+| 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 录音与音乐同时运行，互不影响 | - |
+
+### 场景5：提示音（TTS）打断音乐，无法恢复
+
+应用A正在播放音乐，应用B播放提示音。提示音使用通知音类型（STREAM_USAGE_NOTIFICATION）时不会打断音乐；但使用TTS播报时，TTS属于媒体类音频流，与音乐之间的默认焦点策略为STOP，音乐被打断后不恢复。
+
+| - | 应用A | 应用B | 打断效果 | 备注 |
+|--|-------|-------|---------|------|
+| 默认场景 | 启动音乐播放 | 播放提示音（TTS，媒体类流） | TTS抢占焦点，音乐停止且不恢复 | TTS与音乐同为媒体类流，默认策略为STOP |
+| 方案一 | 启动音乐播放 | 使用STREAM_USAGE_NOTIFICATION流类型播放提示音 | NOTIFICATION正常播放，音乐降低音量；提示音结束后音乐音量自动恢复 | - |
+| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成提示播报后A恢复 | 复播会跳过静音期内容，对进度条敏感场景不建议使用 |
+| 方案三 | 无需适配 | 音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | TTS与音乐同时播放，互不影响 | - |
+
 ## 同应用内不同音频流之间的焦点管理
 同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。

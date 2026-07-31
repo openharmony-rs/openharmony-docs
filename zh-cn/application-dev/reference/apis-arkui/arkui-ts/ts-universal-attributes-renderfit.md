@@ -85,23 +85,23 @@ struct RenderFitExample {
 
   build() {
     Column() {
-      Text("Hello")
+      Text('Hello')
         .width(this.width1)
         .height(this.height1)
         .borderWidth(1)
         .textAlign(TextAlign.Start)
-        .renderFit(RenderFit.LEFT)// 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
+        .renderFit(RenderFit.LEFT) // 设置LEFT的renderFit，动画过程中，动画的终态内容与组件保持左对齐
         .margin(20)
 
-      Text("Hello")
+      Text('Hello')
         .width(this.width1)
         .height(this.height1)
         .textAlign(TextAlign.Center)
         .borderWidth(1)
-        .renderFit(RenderFit.CENTER)// 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
+        .renderFit(RenderFit.CENTER) // 设置CENTER的renderFit，动画过程中，动画的终态内容与组件保持中心对齐
         .margin(20)
 
-      Button("animate")
+      Button('animate')
         .onClick(() => {
           this.getUIContext()?.animateTo({ curve: Curve.Ease }, () => {
             if (this.flag) {
@@ -114,7 +114,7 @@ struct RenderFitExample {
             this.flag = !this.flag;
           })
         })
-    }.width("100%").height("100%").alignItems(HorizontalAlign.Center)
+    }.width('100%').height('100%').alignItems(HorizontalAlign.Center)
   }
 }
 ```

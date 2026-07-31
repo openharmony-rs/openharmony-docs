@@ -4,13 +4,13 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-FastBuffer对象是更高效的Buffer容器，用于表示固定长度的字节序列，是专门存放二进制数据的缓存区。
+FastBuffer对象是比Buffer性能更优的Buffer容器，用于表示固定长度的字节序列，是专门存放二进制数据的缓冲区。
 
-FastBuffer通过from构造时，仅支持FastBuffer、Uint8Array、string、Array、ArrayBuffer类型的参数。
+FastBuffer通过from构造时，仅支持FastBuffer、Uint8Array、string、Array、ArrayBuffer和SharedArrayBuffer类型的参数。
 
-需要高性能处理大型二进制数据（如图片、文件传输、网络通信等）时，推荐使用FastBuffer。
+需要高效处理二进制数据（如图片、文件传输、网络通信等）时，推荐使用FastBuffer以获得更好的性能。
 
 > **说明：**
 >
@@ -53,7 +53,7 @@ type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' 
 
 alloc(size: number, fill?: string | FastBuffer | number, encoding?: BufferEncoding): FastBuffer
 
-创建指定字节长度的FastBuffer对象并初始化。
+创建指定字节长度的FastBuffer对象并初始化。调用后，FastBuffer对象的每个字节将被填充为指定的fill值，未指定fill时默认填充为0。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -64,7 +64,7 @@ alloc(size: number, fill?: string | FastBuffer | number, encoding?: BufferEncodi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 <= size <= UINT32_MAX。|
-| fill | string&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;number | 否 | 填充至新缓存区的值，默认值：0。 |
+| fill | string&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;number | 否 | 填充至新缓冲区的值，默认值：0。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`fill`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
@@ -78,8 +78,13 @@ alloc(size: number, fill?: string | FastBuffer | number, encoding?: BufferEncodi
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
+// 创建长度为5的FastBuffer对象，默认填充0
 let buf1 = fastbuffer.alloc(5);
+console.info(buf1.toString());
+// 输出结果：00000
+// 创建长度为5的FastBuffer对象，填充字符'a'
 let buf2 = fastbuffer.alloc(5, 'a');
+// 创建长度为11的FastBuffer对象，使用base64编码填充
 let buf3 = fastbuffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 console.info(buf2.toString());
 // 输出结果：aaaaa
@@ -91,7 +96,7 @@ console.info(buf3.toString());
 
 allocUninitializedFromPool(size: number): FastBuffer
 
-从缓冲池中创建指定大小未初始化的FastBuffer对象，需要使用[fill](#fill)函数来初始化FastBuffer对象。
+从缓冲池中创建指定大小未初始化的FastBuffer对象。调用[fill](#fill)函数初始化该对象。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -107,7 +112,7 @@ allocUninitializedFromPool(size: number): FastBuffer
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [FastBuffer](#fastbuffer) | 未初始化的Buffer实例。 |
+| [FastBuffer](#fastbuffer) | 未初始化的FastBuffer实例。 |
 
 **示例：**
 
@@ -123,7 +128,7 @@ buf.fill(0);
 
 allocUninitialized(size: number): FastBuffer
 
-创建指定大小未初始化的FastBuffer对象，需要使用[fill](#fill)函数来初始化FastBuffer对象。
+创建指定大小未初始化的FastBuffer对象。调用[fill](#fill)函数初始化该对象。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -133,7 +138,7 @@ allocUninitialized(size: number): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| size | number | 是 |指定的FastBuffer对象长度，单位：字节。取值范围：0 <= size <= UINT32_MAX。 |
+| size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 <= size <= UINT32_MAX。 |
 
 **返回值：**
 
@@ -155,7 +160,7 @@ buf.fill(0);
 
 byteLength(value: string | FastBuffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer, encoding?: BufferEncoding): number
 
-根据不同的编码格式，返回指定字符串的字节数。
+根据不同的编码格式，返回指定内容的字节数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -165,14 +170,14 @@ byteLength(value: string | FastBuffer | TypedArray | DataView | ArrayBuffer | Sh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;TypedArray&nbsp;\|&nbsp;DataView&nbsp;\|&nbsp;ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 指定字符串。 |
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
+| value | string&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;TypedArray&nbsp;\|&nbsp;DataView&nbsp;\|&nbsp;ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 指定用于计算字节长度的内容。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`value`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定字符串的字节数。 |
+| number | 返回指定内容的字节数。 |
 
 **示例：**
 
@@ -213,7 +218,7 @@ compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -226,9 +231,9 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf1 = fastbuffer.from('1234');
 let buf2 = fastbuffer.from('0123');
-let res = fastbuffer.compare(buf1, buf2);
+let compareResult = fastbuffer.compare(buf1, buf2);
 
-console.info(Number(res).toString());
+console.info(Number(compareResult).toString());
 // 输出结果：1
 ```
 
@@ -236,22 +241,22 @@ console.info(Number(res).toString());
 
 concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBuffer
 
-将数组中指定字节长度的内容复制到新的FastBuffer对象中并返回拼接后的FastBuffer对象。
+将数组中指定字节长度的内容复制并拼接后，返回新的FastBuffer对象。
 
 当数组中所有对象的长度总和大于totalLength时，返回结果的长度将被截断为totalLength。
 
 当数组中所有对象的长度总和小于totalLength时，返回结果的多余部分将会被填充为0。
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| list | [FastBuffer](#fastbuffer)[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
-| totalLength | number | 否 | 需要复制的总字节长度，默认值为0。 |
+| list | [FastBuffer](#fastbuffer)[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 待拼接的FastBuffer或Uint8Array实例数组，数组中所有对象的内容将被依次复制到新的FastBuffer对象中。 |
+| totalLength | number | 否 | 需要复制的总字节长度，默认值为数组中所有对象的长度总和。取值范围：0 <= totalLength <= UINT32_MAX。 |
 
 **返回值：**
 
@@ -272,8 +277,8 @@ concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBuffer
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let buf1 = fastbuffer.from("1234");
-let buf2 = fastbuffer.from("abcd");
+let buf1 = fastbuffer.from('1234');
+let buf2 = fastbuffer.from('abcd');
 let buf = fastbuffer.concat([buf1, buf2]);
 console.info(buf.toString('hex'));
 // 输出结果：3132333461626364
@@ -325,15 +330,15 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
+| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 用于创建FastBuffer对象的底层ArrayBuffer或SharedArrayBuffer，创建的FastBuffer将与该对象共享相同的内存区域。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer。 |
+| length | number | 否 | 字节长度，默认值：（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回长度为0的FastBuffer对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [FastBuffer](#fastbuffer) | 返回一个FastBuffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。 |
+| [FastBuffer](#fastbuffer) | 返回一个FastBuffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。修改FastBuffer对象的数据将同步修改原ArrayBuffer中对应位置的数据，修改原ArrayBuffer的数据也会同步修改FastBuffer中对应位置的数据。 |
 
 **错误码：**
 
@@ -349,8 +354,8 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let ab = new ArrayBuffer(10);
-let buf = fastbuffer.from(ab, 0, 2);
+let arrayBuffer = new ArrayBuffer(10);
+let buf = fastbuffer.from(arrayBuffer, 0, 2);
 console.info(buf.length.toString());
 // 输出结果：2
 ```
@@ -359,9 +364,9 @@ console.info(buf.length.toString());
 
 from(buffer: FastBuffer | Uint8Array): FastBuffer
 
-当入参为FastBuffer对象时，创建新的FastBuffer对象并复制入参FastBuffer对象的数据，然后返回新对象。
+当入参为FastBuffer对象时，创建新的FastBuffer对象并复制入参数据。新旧对象数据独立，互不影响。
 
-当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的FastBuffer对象并返回，保持数据的内存关联。
+当入参为Uint8Array对象时，基于其内存创建新的FastBuffer对象。两个对象保持内存关联，修改任一对象的数据会同步影响另一对象。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -371,7 +376,7 @@ from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| buffer | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 对象数据。 |
+| buffer | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 用于创建新FastBuffer对象的源数据。当入参为FastBuffer时，将复制其数据创建新对象；当入参为Uint8Array时，基于其内存创建新对象并保持内存关联。 |
 
 **返回值：**
 
@@ -392,8 +397,9 @@ from(buffer: FastBuffer | Uint8Array): FastBuffer
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-// 以FastBuffer对象类型进行创建新的FastBuffer对象
+// 从字符串创建FastBuffer对象
 let buf1 = fastbuffer.from('buffer');
+// 以FastBuffer对象类型创建新的FastBuffer对象
 let buf2 = fastbuffer.from(buf1);
 console.info(buf2.toString());
 // 输出结果：buffer
@@ -401,8 +407,9 @@ console.info(buf2.toString());
 // 以Uint8Array对象类型进行创建FastBuffer对象，保持对象间内存共享
 let uint8Array = new Uint8Array(10);
 let buf3 = fastbuffer.from(uint8Array);
-buf3.fill(1)
-console.info("uint8Array:", uint8Array)
+// 修改buf3以验证内存共享：buf3修改后uint8Array同步变化
+buf3.fill(1);
+console.info('uint8Array:', uint8Array);
 // 输出结果：1,1,1,1,1,1,1,1,1,1
 ```
 
@@ -420,7 +427,7 @@ from(value: string, encoding?: BufferEncoding): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string | 是 | 字符串。 |
+| value | string | 是 | 用于创建FastBuffer对象的字符串。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。|
 
 **返回值：**
@@ -434,7 +441,9 @@ from(value: string, encoding?: BufferEncoding): FastBuffer
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
+// 从普通字符串创建FastBuffer对象
 let buf1 = fastbuffer.from('this is a test');
+// 从hex编码字符串创建FastBuffer对象
 let buf2 = fastbuffer.from('7468697320697320612074c3a97374', 'hex');
 
 console.info(buf1.toString());
@@ -458,7 +467,7 @@ isBuffer(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | Object | 是 | 判断对象。 |
+| obj | Object | 是 | 待判断是否为FastBuffer的对象。 |
 
 **返回值：**
 
@@ -471,21 +480,21 @@ isBuffer(obj: Object): boolean
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let result = fastbuffer.isBuffer(fastbuffer.alloc(10)); // 10: fastbuffer size
-console.info("result = " + result);
-// 输出结果：result = true
-let result1 = fastbuffer.isBuffer(fastbuffer.from('foo'));
-console.info("result1 = " + result1);
-// 输出结果：result1 = true
-let result2 = fastbuffer.isBuffer('a string');
-console.info("result2 = " + result2);
-// 输出结果：result2 = false
-let result3 = fastbuffer.isBuffer([]);
-console.info("result3 = " + result3);
-// 输出结果：result3 = false
-let result4 = fastbuffer.isBuffer(new Uint8Array(1024));
-console.info("result4 = " + result4);
-// 输出结果：result4 = false
+let allocResult = fastbuffer.isBuffer(fastbuffer.alloc(10)); // 10: fastbuffer size
+console.info('allocResult = ' + allocResult);
+// 输出结果：allocResult = true
+let fromResult = fastbuffer.isBuffer(fastbuffer.from('foo'));
+console.info('fromResult = ' + fromResult);
+// 输出结果：fromResult = true
+let stringResult = fastbuffer.isBuffer('a string');
+console.info('stringResult = ' + stringResult);
+// 输出结果：stringResult = false
+let arrayResult = fastbuffer.isBuffer([]);
+console.info('arrayResult = ' + arrayResult);
+// 输出结果：arrayResult = false
+let uint8ArrayResult = fastbuffer.isBuffer(new Uint8Array(1024));
+console.info('uint8ArrayResult = ' + uint8ArrayResult);
+// 输出结果：uint8ArrayResult = false
 ```
 
 ## fastbuffer.isEncoding
@@ -502,7 +511,7 @@ isEncoding(encoding: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 是 | 编码格式。 |
+| encoding | string | 是 | 待判断是否为支持的编码格式。 |
 
 **返回值：**
 
@@ -529,7 +538,7 @@ console.info(fastbuffer.isEncoding('').toString());
 
 transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: string): FastBuffer
 
-将FastBuffer或Uint8Array对象从fromEnc编码转换为toEnc编码。
+将FastBuffer或Uint8Array对象从fromEnc编码转换为toEnc编码。适用于需要在不同编码格式之间转换数据的场景。例如，将UTF-8编码的数据转换为Latin1编码，以便在仅支持ASCII的系统中处理。
 
 fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'latin1'| 'binary'。
 
@@ -541,9 +550,9 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| source | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 实例对象。 |
-| fromEnc | string | 是 | 当前编码格式。支持的格式范围为BufferEncoding。传入空字符串时，表示使用编码格式'utf8'。 |
-| toEnc | string | 是 | 目标编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
+| source | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 需要进行编码转换的源数据对象，将从fromEnc编码转换为toEnc编码。 |
+| fromEnc | string | 是 | 当前编码格式。支持的格式范围为'ascii' \| 'utf8' \| 'utf16le' \| 'ucs2' \| 'latin1' \| 'binary'。传入空字符串时，表示使用编码格式'utf8'。 |
+| toEnc | string | 是 | 目标编码。支持的格式范围为'ascii' \| 'utf8' \| 'utf16le' \| 'ucs2' \| 'latin1' \| 'binary'。 |
 
 **返回值：**
 
@@ -557,7 +566,7 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 import { fastbuffer } from '@kit.ArkTS';
 
 let newBuf = fastbuffer.transcode(fastbuffer.from('buffer'), 'utf-8', 'ascii');
-console.info("newBuf = " + newBuf.toString('ascii'));
+console.info('newBuf = ' + newBuf.toString('ascii'));
 // 输出结果：newBuf = buffer
 ```
 
@@ -572,15 +581,15 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | 是 | 否 | FastBuffer对象的字节长度。 |
-| buffer | ArrayBuffer | 是 | 否 | ArrayBuffer对象。 |
-| byteOffset | number | 是 | 否 | 当前Buffer所在内存池的偏移量。 |
+| buffer | ArrayBuffer | 是 | 否 | FastBuffer底层对应的ArrayBuffer对象。 |
+| byteOffset | number | 是 | 否 | 当前FastBuffer底层ArrayBuffer的偏移量。 |
 
 **示例：**
 
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let buf = fastbuffer.from("1236");
+let buf = fastbuffer.from('1236');
 console.info(JSON.stringify(buf.length));
 // 输出结果：4
 let arrayBuffer = buf.buffer;
@@ -605,7 +614,7 @@ compare(target: FastBuffer | Uint8Array, targetStart?: number, targetEnd?: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | target | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | number | 否 | `target`实例中开始的偏移量。默认值：0。 0 <= targetStart <= target.length。|
+| targetStart | number | 否 | `target`实例中开始的偏移量。默认值：0。取值范围：0 <= targetStart <= target.length。 |
 | targetEnd | number | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。取值范围：0 <= targetEnd <= target.length。 |
 | sourceStart | number | 否 | `this`实例中开始的偏移量。默认值：0。取值范围：0 <= sourceStart <= this.length。|
 | sourceEnd | number | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。取值范围：0 <= sourceEnd <= this.length。 |
@@ -633,10 +642,13 @@ import { fastbuffer } from '@kit.ArkTS';
 let buf1 = fastbuffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 let buf2 = fastbuffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
 
+// 比较buf1[0,4)与buf2[5,9)，结果为0表示相同
 console.info(buf1.compare(buf2, 5, 9, 0, 4).toString());
 // 输出结果：0
+// 比较buf1[4,end)与buf2[0,6)，结果为-1表示buf1排在前面
 console.info(buf1.compare(buf2, 0, 6, 4).toString());
 // 输出结果：-1
+// 比较buf1[5,end)与buf2[5,6)，结果为1表示buf1排在后面
 console.info(buf1.compare(buf2, 5, 6, 5).toString());
 // 输出结果：1
 ```
@@ -657,7 +669,7 @@ copy(target: FastBuffer| Uint8Array, targetStart?: number, sourceStart?: number,
 | -------- | -------- | -------- | -------- |
 | target | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
 | targetStart | number | 否 | `target`实例中开始写入的偏移量。默认值：0。取值范围：0 <= targetStart <= UINT32_MAX。 |
-| sourceStart | number | 否 | `this`实例中开始复制的偏移量。默认值: 0。取值范围：0 <= sourceStart <= UINT32_MAX。 |
+| sourceStart | number | 否 | `this`实例中开始复制的偏移量。默认值：0。取值范围：0 <= sourceStart <= UINT32_MAX。 |
 | sourceEnd | number | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。取值范围：0 <= sourceEnd <= this.length。 |
 
 **返回值：**
@@ -680,13 +692,15 @@ copy(target: FastBuffer| Uint8Array, targetStart?: number, sourceStart?: number,
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
+// 创建未初始化的FastBuffer对象作为复制源
 let buf1 = fastbuffer.allocUninitializedFromPool(26);
+// 创建填充'!'的FastBuffer对象作为复制目标
 let buf2 = fastbuffer.allocUninitializedFromPool(26).fill('!');
-
+// 向buf1写入a-z的ASCII字符
 for (let i = 0; i < 26; i++) {
   buf1.writeInt8(i + 97, i);
 }
-
+// 将buf1的第16到20字节复制到buf2的第8字节起的位置
 buf1.copy(buf2, 8, 16, 20);
 console.info(buf2.toString('ascii', 0, 25));
 // 输出结果：!!!!!!!!qrst!!!!!!!!!!!!!
@@ -696,7 +710,7 @@ console.info(buf2.toString('ascii', 0, 25));
 
 entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 
-返回一个包含key值和value值的迭代器。
+返回一个包含key值和value值的迭代器，其中key为字节索引位置，value为该位置的字节值。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -713,20 +727,24 @@ entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
+// 创建FastBuffer对象
 let buf = fastbuffer.from('buffer');
-let pair = buf.entries();
-let next: IteratorResult<Object[]> = pair.next();
-while (!next.done) {
-  console.info("fastbuffer: " + next.value);
+// 获取entries迭代器
+let entryIterator = buf.entries();
+// 获取迭代器的第一个元素
+let nextEntry: IteratorResult<Object[]> = entryIterator.next();
+// 遍历迭代器输出每个[key, value]对
+while (!nextEntry.done) {
+  console.info('fastbuffer: ' + nextEntry.value);
   /*
-  输出结果：buffer: 0,98
+  输出结果：fastbuffer: 0,98
            fastbuffer: 1,117
            fastbuffer: 2,102
            fastbuffer: 3,102
            fastbuffer: 4,101
            fastbuffer: 5,114
    */
-  next = pair.next();
+  nextEntry = entryIterator.next();
 }
 ```
 
@@ -744,7 +762,7 @@ equals(otherBuffer: Uint8Array | FastBuffer): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| otherBuffer | Uint8Array&nbsp;\|&nbsp;FastBuffer | 是 | 比较的目标对象。 |
+| otherBuffer | Uint8Array&nbsp;\|&nbsp;[FastBuffer](#fastbuffer) | 是 | 比较的目标对象。 |
 
 **返回值：**
 
@@ -779,7 +797,7 @@ console.info(buf1.equals(buf3).toString());
 
 fill(value: string | FastBuffer | Uint8Array | number, offset?: number, end?: number, encoding?: BufferEncoding): FastBuffer
 
-使用`value`填充当前对象指定位置的数据，默认为循环填充，并返回填充后的FastBuffer对象。
+使用`value`填充当前对象指定位置的数据，当`value`长度小于待填充范围时将循环重复`value`进行填充，并返回填充后的FastBuffer对象。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -789,7 +807,7 @@ fill(value: string | FastBuffer | Uint8Array | number, offset?: number, end?: nu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;Uint8Array&nbsp;\|&nbsp;number | 是 | 用于填充的值。 |
+| value | string&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array&nbsp;\|&nbsp;number | 是 | 用于填充的值。 |
 | offset | number | 否 | 起始偏移量。默认值：0。取值范围：0 <= offset <= this.length。 |
 | end | number | 否 | 结束偏移量（不包含结束位置）。 默认值：当前对象的字节长度。取值范围：0 <= end <= this.length。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（`value`为string才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
@@ -814,8 +832,8 @@ fill(value: string | FastBuffer | Uint8Array | number, offset?: number, end?: nu
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let b = fastbuffer.allocUninitializedFromPool(50).fill('h');
-console.info(b.toString());
+let filledBuffer = fastbuffer.allocUninitializedFromPool(50).fill('h');
+console.info(filledBuffer.toString());
 // 输出结果：hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
@@ -838,9 +856,9 @@ includes(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;Uint8Array | 是 | 要搜索的内容。 |
-| byteOffset | number | 否 | 字节偏移量。若为正数，则从0开始计算偏移量；若byteOffset为正数，则从0开始计算偏移量；如果为负数，则从末尾开始计算偏移量。默认值：0。|
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
+| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 要搜索的内容。 |
+| byteOffset | number | 否 | 字节偏移量。若byteOffset为正数，则从0开始计算偏移量；如果为负数，则从末尾开始计算偏移量。默认值：0。|
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（当`value`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
@@ -878,17 +896,17 @@ indexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, e
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;Uint8Array | 是 | 要查找的内容。 |
+| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 要查找的内容。 |
 | byteOffset | number | 否 | 字节偏移量。若byteOffset为正数，则从0开始计算偏移量；如果为负数，则从末尾开始计算偏移量。默认值：0。|
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（当`value`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回第一次出现的位置。 |
+| number | 返回第一次出现的位置。如果不包含`value`，则返回-1。 |
 
-**示例**
+**示例：**
 
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
@@ -904,7 +922,7 @@ console.info(buf.indexOf('is').toString());
 
 keys(): IterableIterator&lt;number&gt;
 
-返回一个包含key值的迭代器。
+返回一个包含key值的迭代器，其中key为字节索引位置，范围为0到length-1。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -940,7 +958,7 @@ for (const key of keys) {
 
 values(): IterableIterator&lt;number&gt;
 
-返回一个包含value的迭代器。
+返回一个包含FastBuffer字节值的迭代器。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -950,7 +968,7 @@ values(): IterableIterator&lt;number&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| IterableIterator&lt;number&gt; | 迭代器。 |
+| IterableIterator&lt;number&gt; | 包含FastBuffer中每个字节值的迭代器。 |
 
 **示例：**
 
@@ -958,10 +976,10 @@ values(): IterableIterator&lt;number&gt;
 import { fastbuffer } from '@kit.ArkTS';
 
 let buf1 = fastbuffer.from('buffer');
-let pair = buf1.values()
-let next:IteratorResult<number> = pair.next()
-while (!next.done) {
-  console.info(next.value.toString());
+let valueIterator = buf1.values();
+let nextValue:IteratorResult<number> = valueIterator.next();
+while (!nextValue.done) {
+  console.info(nextValue.value.toString());
   /*
   输出结果：98
            117
@@ -970,7 +988,7 @@ while (!next.done) {
            101
            114
    */
-  next = pair.next();
+  nextValue = valueIterator.next();
 }
 ```
 
@@ -992,15 +1010,15 @@ lastIndexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;FastBuffer&nbsp;\|&nbsp;Uint8Array | 是 | 要搜索的内容。 |
+| value | string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;[FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 要搜索的内容。 |
 | byteOffset | number | 否 | 字节偏移量。若byteOffset为正数，则从0开始计算偏移量；如果为负数，则从末尾开始计算偏移量。默认值：this.length - 1。|
-| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](#bufferencoding) | 否 | 字符编码格式（当`value`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 最后一次出现`value`值的索引。 |
+| number | 最后一次出现`value`值的索引。如果对象不包含`value`，则返回-1。 |
 
 **示例：**
 
@@ -1029,7 +1047,7 @@ readBigInt64BE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。|
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 **返回值：**
 
@@ -1578,7 +1596,7 @@ readIntBE(offset: number, byteLength: number): number
 ```ts
 import { fastbuffer } from '@kit.ArkTS';
 
-let buf = fastbuffer.from("ab");
+let buf = fastbuffer.from('ab');
 let num = buf.readIntBE(0, 1);
 console.info(num.toString());
 // 输出结果：97
@@ -1631,7 +1649,7 @@ console.info(buf.readIntLE(0, 6).toString(16));
 
 readUInt8(offset?: number): number
 
-从`offset`处读取8位无符号整型数。
+从指定的`offset`处读取8位无符号整型数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1717,7 +1735,7 @@ console.info(buf.readUInt16BE(1).toString(16));
 
 readUInt16LE(offset?: number): number
 
-从指定的`offset`处的buf读取无符号的小端序16位整数。
+从指定的`offset`处读取无符号的小端序16位整数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1760,7 +1778,7 @@ console.info(buf.readUInt16LE(1).toString(16));
 
 readUInt32BE(offset?: number): number
 
-从指定的`offset`处的buf读取无符号的大端序32位整数。
+从指定的`offset`处读取无符号的大端序32位整数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1801,7 +1819,7 @@ console.info(buf.readUInt32BE(0).toString(16));
 
 readUInt32LE(offset?: number): number
 
-从指定的`offset`处的buf读取无符号的小端序32位整数。
+从指定的`offset`处读取无符号的小端序32位整数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1842,7 +1860,7 @@ console.info(buf.readUInt32LE(0).toString(16));
 
 readUIntBE(offset: number, byteLength: number): number
 
-从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
+从指定的`offset`处读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1852,8 +1870,8 @@ readUIntBE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| offset | number | 是 | 偏移量。取值范围：0 <= offset <= this.length - byteLength，默认值：0。 |
-| byteLength | number | 是 | 要读取的字节数。读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | number | 是 | 偏移量。取值范围：0 <= offset <= this.length - byteLength。 |
+| byteLength | number | 是 | 要读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -1884,7 +1902,7 @@ console.info(buf.readUIntBE(0, 6).toString(16));
 
 readUIntLE(offset: number, byteLength: number): number
 
-从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
+从指定的`offset`处读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1894,7 +1912,7 @@ readUIntLE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| offset | number | 是 | 偏移量。取值范围：0 <= offset <= this.length - byteLength，默认值：0。 |
+| offset | number | 是 | 偏移量。取值范围：0 <= offset <= this.length - byteLength。 |
 | byteLength | number | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
@@ -1926,7 +1944,7 @@ console.info(buf.readUIntLE(0, 6).toString(16));
 
 subarray(start?: number, end?: number): FastBuffer
 
-截取当前对象指定位置的数据并返回。
+截取当前对象指定位置的数据并返回。返回的FastBuffer对象与原对象共享同一内存区域，修改任一对象的数据都会影响另一个。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1937,7 +1955,7 @@ subarray(start?: number, end?: number): FastBuffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。传入null时返回空FastBuffer。 |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。传入null时返回长度为0的FastBuffer对象。 |
 
 **返回值：**
 
@@ -1964,7 +1982,7 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 
 swap16(): FastBuffer
 
-将当前对象转换为无符号的16位整数数组，并交换字节顺序。
+以16位无符号整数为单位交换当前对象的字节顺序。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2078,7 +2096,7 @@ console.info(buf1.toString('hex'));
 
 toJSON(): Object
 
-将Buffer转为JSON并返回。
+将FastBuffer转为JSON并返回。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2097,8 +2115,8 @@ toJSON(): Object
 import { fastbuffer } from '@kit.ArkTS';
 
 let buf1 = fastbuffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
-let obj = buf1.toJSON();
-console.info(JSON.stringify(obj));
+let jsonResult = buf1.toJSON();
+console.info(JSON.stringify(jsonResult));
 // 输出结果: {"type":"FastBuffer","data":[1,2,3,4,5]}
 ```
 
@@ -2116,9 +2134,9 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 字符编码格式。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码格式，支持的格式范围参考[BufferEncoding](#bufferencoding)。默认值：'utf8'。 |
 | start  | number | 否 |  开始位置。默认值：0。 |
-| end  | number | 否 |  结束位置。默认值：Buffer.length。 |
+| end  | number | 否 |  结束位置。默认值：this.length。 |
 
 **返回值：**
 
@@ -2151,7 +2169,7 @@ console.info(buf1.toString('utf-8'));
 
 write(str: string, offset?: number, length?: number, encoding?: string): number
 
-在FastBuffer对象的offset偏移处写入指定编码的字符串，写入的字节长度为length。
+在FastBuffer对象的offset偏移处写入指定编码的字符串，最大写入字节长度为length，实际写入字节数取决于字符串编码后的字节数。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2161,10 +2179,10 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| str | string | 是 | 要写入Buffer的字符串。 |
+| str | string | 是 | 要写入FastBuffer的字符串。 |
 | offset | number | 否 | 偏移量。默认值：0。 |
 | length | number | 否 | 最大字节长度。默认值：(this.length - offset)。|
-| encoding | string | 否 | 字符编码。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码格式，支持的格式范围参考[BufferEncoding](#bufferencoding)。默认值：'utf8'。 |
 
 
 **返回值：**
@@ -2188,13 +2206,13 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.alloc(256);
-let len = buf.write('\u00bd + \u00bc = \u00be', 0);
-console.info(`${len} bytes: ${buf.toString('utf-8', 0, len)}`);
+let bytesWritten = buf.write('\u00bd + \u00bc = \u00be', 0);
+console.info(`${bytesWritten} bytes: ${buf.toString('utf-8', 0, bytesWritten)}`);
 // 输出结果: 12 bytes: ½ + ¼ = ¾
 
-let buffer1 = fastbuffer.alloc(10);
-let length = buffer1.write('abcd', 8);
-console.info("length = " + length);
+let buf1 = fastbuffer.alloc(10);
+let length = buf1.write('abcd', 8);
+console.info('length = ' + length);
 // 输出结果：length = 2
 ```
 
@@ -2212,7 +2230,7 @@ writeBigInt64BE(value: bigint, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | bigint | 是 | 写入Buffer的数据。取值范围：-INT64_MAX <= value <= INT64_MAX。|
+| value | bigint | 是 | 写入FastBuffer的数据。取值范围：-INT64_MAX <= value <= INT64_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2237,7 +2255,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeBigInt64BE(BigInt(0x0102030405060708), 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2255,7 +2273,7 @@ writeBigInt64LE(value: bigint, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | bigint | 是 | 写入Buffer的数据。取值范围：-INT64_MAX <= value <= INT64_MAX。|
+| value | bigint | 是 | 写入FastBuffer的数据。取值范围：-INT64_MAX <= value <= INT64_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2280,7 +2298,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeBigInt64LE(BigInt(0x0102030405060708), 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2288,9 +2306,9 @@ console.info("result = " + result);
 
 writeBigUInt64BE(value: bigint, offset?: number): number
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
-
 在FastBuffer对象的offset偏移处写入无符号的大端序64位BigUInt型数据。
+
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2298,7 +2316,7 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | bigint | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT64_MAX。|
+| value | bigint | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT64_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2323,7 +2341,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeBigUInt64BE(BigInt(0xdecafafecacefade), 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2341,7 +2359,7 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | bigint | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT64_MAX。 |
+| value | bigint | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT64_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2366,7 +2384,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeBigUInt64LE(BigInt(0xdecafafecacefade), 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2384,7 +2402,7 @@ writeDoubleBE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-DOUBLE_MAX <= value <= DOUBLE_MAX。|
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-DOUBLE_MAX <= value <= DOUBLE_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2409,7 +2427,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeDoubleBE(123.456, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2427,7 +2445,7 @@ writeDoubleLE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-DOUBLE_MAX <= value <= DOUBLE_MAX。|
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-DOUBLE_MAX <= value <= DOUBLE_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 8。 |
 
 
@@ -2452,7 +2470,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeDoubleLE(123.456, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 8
 ```
 
@@ -2470,7 +2488,7 @@ writeFloatBE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-FLOAT_MAX <= value <= FLOAT_MAX。|
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-FLOAT_MAX <= value <= FLOAT_MAX。|
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -2495,7 +2513,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeFloatBE(3.1415, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -2514,7 +2532,7 @@ writeFloatLE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-FLOAT_MAX <= value <= FLOAT_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-FLOAT_MAX <= value <= FLOAT_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -2539,7 +2557,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(8);
 let result = buf.writeFloatLE(3.1415, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -2557,7 +2575,7 @@ writeInt8(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-INT8_MAX <= value <= INT8_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-INT8_MAX <= value <= INT8_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 1。 |
 
 
@@ -2582,10 +2600,10 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(2);
 let result = buf.writeInt8(2, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 1
 let result1 = buf.writeInt8(-2, 1);
-console.info("result1 = " + result1);
+console.info('result1 = ' + result1);
 // 输出结果：result1 = 2
 ```
 
@@ -2604,7 +2622,7 @@ writeInt16BE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-INT16_MAX <= value <= INT16_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-INT16_MAX <= value <= INT16_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 2。 |
 
 
@@ -2629,7 +2647,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(2);
 let result = buf.writeInt16BE(0x0102, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 2
 ```
 
@@ -2648,7 +2666,7 @@ writeInt16LE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-INT16_MAX <= value <= INT16_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-INT16_MAX <= value <= INT16_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 2。 |
 
 
@@ -2673,7 +2691,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(2);
 let result = buf.writeInt16LE(0x0304, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 2
 ```
 
@@ -2691,7 +2709,7 @@ writeInt32BE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-INT32_MAX <= value <= INT32_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-INT32_MAX <= value <= INT32_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -2716,7 +2734,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeInt32BE(0x01020304, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -2735,7 +2753,7 @@ writeInt32LE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：-INT32_MAX <= value <= INT32_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-INT32_MAX <= value <= INT32_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -2760,7 +2778,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeInt32LE(0x05060708, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -2778,9 +2796,9 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。  |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-2^(8×byteLength-1) ≤ value ≤ 2^(8×byteLength-1)-1。 |
 | offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
-| byteLength | number | 是 | 要写入的字节数。 |
+| byteLength | number | 是 | 要写入的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -2804,7 +2822,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(6);
 let result = buf.writeIntBE(0x1234567890ab, 0, 6);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 6
 ```
 
@@ -2823,9 +2841,9 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：-2^(8×byteLength-1) ≤ value ≤ 2^(8×byteLength-1)-1。 |
 | offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
-| byteLength | number | 是 | 要写入的字节数。 |
+| byteLength | number | 是 | 要写入的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -2849,7 +2867,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(6);
 let result = buf.writeIntLE(0x1234567890ab, 0, 6);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 6
 ```
 
@@ -2867,7 +2885,7 @@ writeUInt8(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT8_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT8_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 1。 |
 
 
@@ -2892,16 +2910,16 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeUInt8(0x3, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 1
 let result1 = buf.writeUInt8(0x4, 1);
-console.info("result1 = " + result1);
+console.info('result1 = ' + result1);
 // 输出结果：result1 = 2
 let result2 = buf.writeUInt8(0x23, 2);
-console.info("result2 = " + result2);
+console.info('result2 = ' + result2);
 // 输出结果：result2 = 3
 let result3 = buf.writeUInt8(0x42, 3);
-console.info("result3 = " + result3);
+console.info('result3 = ' + result3);
 // 输出结果：result3 = 4
 ```
 
@@ -2919,8 +2937,8 @@ writeUInt16BE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT16_MAX。 |
-| offset | number | 否 | 偏移量。默认值为0。取值范围：0 <= offset <= this.length - 2。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT16_MAX。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 2。 |
 
 
 **返回值：**
@@ -2944,10 +2962,10 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeUInt16BE(0xdead, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 2
 let result1 = buf.writeUInt16BE(0xbeef, 2);
-console.info("result1 = " + result1);
+console.info('result1 = ' + result1);
 // 输出结果：result1 = 4
 ```
 
@@ -2965,7 +2983,7 @@ writeUInt16LE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT16_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT16_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 2。 |
 
 
@@ -2990,10 +3008,10 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeUInt16LE(0xdead, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 2
 let result1 = buf.writeUInt16LE(0xbeef, 2);
-console.info("result1 = " + result1);
+console.info('result1 = ' + result1);
 // 输出结果：result1 = 4
 ```
 
@@ -3011,7 +3029,7 @@ writeUInt32BE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围：0 <= value <= UINT32_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT32_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -3036,7 +3054,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeUInt32BE(0xfeedface, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -3054,7 +3072,7 @@ writeUInt32LE(value: number, offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入FastBuffer对象的数据。取值范围：0 <= value <= UINT32_MAX。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 <= value <= UINT32_MAX。 |
 | offset | number | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - 4。 |
 
 
@@ -3079,7 +3097,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(4);
 let result = buf.writeUInt32LE(0xfeedface, 0);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 4
 ```
 
@@ -3097,9 +3115,9 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 ≤ value ≤ 2^(8×byteLength)-1。 |
 | offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
-| byteLength | number | 是 | 要写入的字节数。 |
+| byteLength | number | 是 | 要写入的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -3123,7 +3141,7 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(6);
 let result = buf.writeUIntBE(0x1234567890ab, 0, 6);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 6
 ```
 
@@ -3141,9 +3159,9 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
+| value | number | 是 | 写入FastBuffer的数据。取值范围：0 ≤ value ≤ 2^(8×byteLength)-1。 |
 | offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
-| byteLength | number | 是 | 要写入的字节数。 |
+| byteLength | number | 是 | 要写入的字节数。取值范围：1 <= byteLength <= 6。 |
 
 
 **返回值：**
@@ -3167,6 +3185,6 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf = fastbuffer.allocUninitializedFromPool(6);
 let result = buf.writeUIntLE(0x1234567890ab, 0, 6);
-console.info("result = " + result);
+console.info('result = ' + result);
 // 输出结果：result = 6
 ```

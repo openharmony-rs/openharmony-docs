@@ -1,10 +1,10 @@
 # 使用JSVM-API获取堆快照及监控堆内存阈值
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @pennyatmosphere; @sunzibo-->
 <!--Designer: @pennyatmosphere-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 

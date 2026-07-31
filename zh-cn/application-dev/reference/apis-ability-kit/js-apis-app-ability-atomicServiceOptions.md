@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AtomicServiceOptions可以作为[openAtomicService()](js-apis-inner-application-uiAbilityContext.md#openatomicservice12)的入参，用于携带参数。继承于[StartOptions](js-apis-app-ability-startOptions.md)。
+AtomicServiceOptions可以作为[openAtomicService()](js-apis-inner-application-uiAbilityContext.md#openatomicservice12)的入参，支持指定系统启动方式（如免安装能力）、传递额外参数以及接收打开原子化服务的结果回调。继承自[StartOptions](js-apis-app-ability-startOptions.md)。
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | [flags](js-apis-app-ability-wantConstant.md#flags) | number | 否 |  是 | 系统处理该次启动的方式。<br />例如通过wantConstant.Flags.FLAG_INSTALL_ON_DEMAND表示使用免安装能力。 |
 | parameters | Record\<string, Object> | 否 |  是 | 表示额外参数描述。具体描述参考[Want](js-apis-app-ability-want.md)中parameters字段描述。 |
-| completionHandlerForAtomicService<sup>20+</sup> | [CompletionHandlerForAtomicService](./js-apis-app-ability-CompletionHandlerForAtomicService.md) | 否 |  是 | 打开原子化服务结果的操作类，用于接收打开原子化服务的结果。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| completionHandlerForAtomicService<sup>20+</sup> | [CompletionHandlerForAtomicService](js-apis-app-ability-CompletionHandlerForAtomicService.md) | 否 |  是 | 打开原子化服务结果的操作类，用于接收打开原子化服务的结果。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -44,15 +44,18 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let completionHandler: CompletionHandlerForAtomicService = {
+      // 原子化服务打开成功的回调处理
       onAtomicServiceRequestSuccess(appId: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}`);
       },
+      // 原子化服务打开失败的回调处理
       onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
       }
     };
-
+    // 定义原子化服务启动选项参数
     let options: AtomicServiceOptions = {
+      // 使用免安装能力，目标原子化服务未安装时自动触发安装
       flags: wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
       parameters: {
         'demo.result': 123456
@@ -62,13 +65,13 @@ export default class EntryAbility extends UIAbility {
 
     try {
       let appId: string = '6918661953712445909'; // 根据实际appId修改此值
-      this.context.openAtomicService(appId, options)
+      this.context.openAtomicService(appId, options) // 打开原子化服务
         .then((result: common.AbilityResult) => {
-          // 执行正常业务
+          // 打开成功后的业务逻辑处理
           console.info('openAtomicService succeed');
         })
         .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
+          // 处理打开失败的业务逻辑
           console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {

@@ -44,7 +44,7 @@ The callback function is invalid.
 
 **处理步骤**
 
-传入正确类型的回调函数。
+传入非空且符合接口签名要求的回调函数。
 
 ## 100101 小于0的非法值
 
@@ -62,7 +62,7 @@ The parameter value cannot be less than 0.
 
 **处理步骤**
 
-传入正常范围的参数。
+传入大于或等于0的参数。
 
 ## 100102 参数类型错误
 
@@ -108,7 +108,7 @@ The UIContext is not available.
 
 **错误描述**
 
-实例不存在。
+UIContext不可用。
 
 **可能原因**
 

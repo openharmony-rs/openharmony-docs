@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
 
 ## 概述
 
-定义animator动画参数对象。
+定义animator动画参数对象，用于创建animator动画时配置动画属性参数。
 
 **起始版本：** 12
 

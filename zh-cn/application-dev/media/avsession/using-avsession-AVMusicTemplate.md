@@ -60,7 +60,7 @@
        this.context.startAbility(want).then(() => {
          console.info('startTemplateControllerAbility: startAbility success');
        }).catch((e: BusinessError) => {
-         console.error(`startTemplateControllerAbility: startAbility: errCode: ${e?.code}}`);
+         console.error(`startTemplateControllerAbility: startAbility: errCode: ${e?.code}`);
        });
      }
    }
@@ -76,6 +76,7 @@
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      private static sInstance: TemplateManager;
      // ...
+   
      private constructor() {
      }
    
@@ -128,26 +129,10 @@
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
      private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
-       return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-         try {
-           let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-           resolve(tabs);
-         } catch (e) {
-           console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.getMainTabs(), 'queryMainTabsEvent');
      };
      private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
-       return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
-         try {
-           let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
-           resolve(tabContent);
-         } catch (e) {
-           console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.createMediaTabContent(), 'queryMediaTabContentEvent');
      };
      // ...
    
@@ -230,7 +215,17 @@
        };
        return mediaEntity;
      };
+   
      // ...
+     private async handlePromiseReturnFunc<T>(func: () => Promise<T>, errFunc: string): Promise<T> {
+       try {
+         return await func();
+       } catch (e) {
+         const msg = `Failed to ${errFunc}. Code: ${e?.code}`;
+         console.error(msg);
+         throw e instanceof Error ? e : new Error(e?.message ?? msg);
+       }
+     }
    }
    ```
 
@@ -262,7 +257,7 @@
      }
    
      /**
-      * 用户信息发生变化后通知界面刷新用户信息，如登陆账号后。
+      * 用户信息发生变化后通知界面刷新用户信息，如登录账号后。
       */
      public setUserInfo() {
        let userInfo: avMusicTemplate.UserInfo = {
@@ -290,6 +285,7 @@
    export class TemplateManager {
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
+   
      /**
       * 注销监听。
       */

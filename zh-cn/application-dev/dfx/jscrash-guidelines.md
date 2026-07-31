@@ -19,7 +19,7 @@
 
 2. 方舟运行时收集故障信息，并将其上报给维测进程Hiview。
 
-3. 维测进程Hiview补充仅其有权限获取的信息(如整机内存状态、应用页面切换轨迹)，生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
+3. 维测进程Hiview补充仅其有权限获取的信息（如整机内存状态、应用页面切换轨迹），生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
 
 4. 上报崩溃事件，开发者可通过HiAppEvent订阅[崩溃事件](hiappevent-watcher-crash-events.md)。如需了解JS Crash问题分析方法，请参见[JS Crash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-js-way)。
 
@@ -104,7 +104,7 @@ Process name:com.example.myapplication <- 进程名
 App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
-Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
+Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息（非必选）
 Page switch history: <- 页面切换轨迹
   14:08:30:327 /ets/pages/Index:JsError
   14:08:28:986 /ets/pages/Index

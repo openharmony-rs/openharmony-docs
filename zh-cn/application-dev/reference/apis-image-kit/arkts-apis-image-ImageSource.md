@@ -1356,6 +1356,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1425,7 +1426,8 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 > **说明：**
 >
-> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

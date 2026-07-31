@@ -30,12 +30,12 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| NONE | 0 | 无系统材质效果。对应的效果为背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)为透明色，边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)为透明色，边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)为0，无阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)。<br/>**系统接口：** 此接口为系统接口。|
-| SEMI_TRANSPARENT | 1 | 半透明系统材质效果。对应的效果为：<br/>背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。<br/>边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)为混合10%的透明度的theme.colors.compForegroundPrimary的[token](../../ui/theme_skinning.md#系统缺省token色值)值。<br/>边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)为1vp。<br/>阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)为ShadowStyle.OUTER_DEFAULT_SM。<br/>**系统接口：** 此接口为系统接口。|
+| NONE | 0 | 无系统材质效果。对应的效果为背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)为透明色，边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)为透明色，边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)为0，无阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)。<br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**系统接口：** 此接口为系统接口。|
+| SEMI_TRANSPARENT | 1 | 半透明系统材质效果。对应的效果为：<br>背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。<br>边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)为theme.colors.compForegroundPrimary的[token](../../ui/theme_skinning.md#系统缺省token色值)值以10%透明度（alpha值）进行混合叠加。<br>边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)为1vp。<br>阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)为ShadowStyle.OUTER_DEFAULT_SM。<br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**系统接口：** 此接口为系统接口。|
 
 ## ImmersiveStyle
 
-材质样式枚举。以EC为后缀的部分枚举设置在[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)上，以EC_SUB为后缀的部分材质设置在EffectComponent的子组件上，两者配合实现材质效果绘制的合并优化。设置在EffectComponent上的材质模糊最终将生效在子组件上。不同的材质样式对应不同的材质参数，主要包括材质的模糊程度、高光效果等，具体参见[ImmersiveStyle](arkts-apis-uimaterial.md#immersivestyle)。
+材质样式枚举。以EC为后缀的部分枚举设置在[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)上，以EC_SUB为后缀的部分枚举设置在EffectComponent的子组件上，两者配合实现材质效果绘制的合并优化。设置在EffectComponent上的材质模糊最终将生效在子组件上。不同的材质样式对应不同的材质参数，主要包括材质的模糊程度、高光效果等，具体参见[ImmersiveStyle](arkts-apis-uimaterial.md#immersivestyle)。
 
 **起始版本：** 26.0.0
 
@@ -49,14 +49,14 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| ULTRA_THIN_EC | 5 | 超薄样式。材质层超薄，具有很强的透明效果。<br/>适用于[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)。 |
+| ULTRA_THIN_EC | 5 | 超薄样式。材质层超薄，具有很强的透明效果。<br/>适用于[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)，需配合对应EC_SUB后缀的枚举一同使用以实现材质效果绘制的合并优化。 |
 | THIN_EC | 6 | 薄样式。材质层薄，具有较强的透明效果。<br/>适用于EffectComponent。 |
-| REGULAR_EC | 7 | 常规样式。材质层的厚度常规。<br/>适用于EffectComponent。 |
+| REGULAR_EC | 7 | 常规样式。材质层厚度适中，具有适度的透明与模糊效果。<br/>适用于EffectComponent。 |
 | THICK_EC | 8 | 厚样式。模糊效果强。<br/>适用于EffectComponent。 |
 | ULTRA_THICK_EC | 9 | 超厚样式。模糊效果很强。<br/>适用于EffectComponent。 |
 | ULTRA_THIN_EC_SUB | 10 | 超薄样式。材质层超薄，具有很强的透明效果。<br/>适用于EffectComponent的子组件。 |
 | THIN_EC_SUB | 11 | 薄样式。材质层薄，具有较强的透明效果。<br/>适用于EffectComponent的子组件。 |
-| REGULAR_EC_SUB | 12 | 常规样式。材质层的厚度常规。<br/>适用于EffectComponent的子组件。 |
+| REGULAR_EC_SUB | 12 | 常规样式。材质层厚度适中，具有适度的透明与模糊效果。<br/>适用于EffectComponent的子组件。 |
 | THICK_EC_SUB | 13 | 厚样式。模糊效果强。<br/>适用于EffectComponent的子组件。 |
 | ULTRA_THICK_EC_SUB | 14 | 超厚样式。模糊效果很强。<br/>适用于EffectComponent的子组件。 |
 
@@ -66,7 +66,7 @@ convertToECMaterial(material: uiMaterial.ImmersiveMaterial): uiMaterial.Immersiv
 
 将一个[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)材质转换为适用于[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)的ImmersiveMaterial材质。
 
-EffectComponent组件上不生效材质中的[materialColor](arkts-apis-uimaterial.md#immersiveoptions)、[applyShadow](arkts-apis-uimaterial.md#immersiveoptions)、[interactive](arkts-apis-uimaterial.md#immersiveoptions)、[lightEffect](arkts-apis-uimaterial.md#immersiveoptions)属性，经过该接口转换后的材质若配置的上述接口也将不会生效。
+EffectComponent组件上不生效材质中的[materialColor](arkts-apis-uimaterial.md#immersiveoptions)、[applyShadow](arkts-apis-uimaterial.md#immersiveoptions)、[interactive](arkts-apis-uimaterial.md#immersiveoptions)、[lightEffect](arkts-apis-uimaterial.md#immersiveoptions)属性，经过该接口转换后的材质若配置了上述属性，也将不会生效。
 
 **起始版本：** 26.0.0
 
@@ -130,7 +130,7 @@ convertToECSubMaterial(material: uiMaterial.ImmersiveMaterial): uiMaterial.Immer
 
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
-| type   | [MaterialType](#materialtype)                                   | 否 | 是   | 材质类型。<br/>默认值：MaterialType.NONE |
+| type   | [MaterialType](#materialtype)                                   | 否 | 是   | 材质类型。当不需要材质效果时选择MaterialType.NONE，当需要半透明背景效果时选择MaterialType.SEMI_TRANSPARENT。<br/>默认值：MaterialType.NONE <br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。|
 
 ## Material
 
@@ -144,6 +144,8 @@ Material的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -152,7 +154,7 @@ Material的构造函数。
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [MaterialOptions](#materialoptions)                      | 否   | 系统材质配置选项，包括材质类型。<br/>默认值：{type:MaterialType.NONE}    |
+|  options      | [MaterialOptions](#materialoptions)                      | 否   | 系统材质配置选项，包括材质类型。当需要指定材质类型（如半透明效果）时传入此参数，不传入时使用默认材质配置`{type:MaterialType.NONE}`，即无系统材质效果。    |
 
 ## 示例
 
@@ -194,7 +196,7 @@ struct SystemMaterialPage {
 
 ### 示例2（使用EffectComponent设置系统材质）
 
-本示例介绍如何使用[uiMaterial.convertToECMaterial](#uimaterialconverttoecmaterial)、[uiMaterial.convertToECSubMaterial](#uimaterialconverttoecsubmaterial)将[uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)经过转换，分别设置到[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)及其子组件上。
+本示例介绍如何将[uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)设置到[EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md)及其子组件上，包括直接使用EC样式材质，以及通过[uiMaterial.convertToECMaterial](#uimaterialconverttoecmaterial)、[uiMaterial.convertToECSubMaterial](#uimaterialconverttoecsubmaterial)将材质经过转换后设置两种方式。
 
 从API版本26.0.0开始，新增uiMaterial.convertToECMaterial、uiMaterial.convertToECSubMaterial接口。
 

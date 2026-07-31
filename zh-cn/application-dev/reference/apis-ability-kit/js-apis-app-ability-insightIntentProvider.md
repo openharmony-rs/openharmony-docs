@@ -24,8 +24,8 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 
 sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
-意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
+意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -62,6 +62,7 @@ sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Prom
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class InsightIntentExecutorUI extends InsightIntentExecutor {
   onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -80,7 +81,7 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
-      console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, error msg: ${msg}.`);
     }
     // 将意图实例的id通过localStorage传入目标页面中
     let localStorageData: Record<string, number> = {
@@ -126,15 +127,15 @@ struct Index {
             };
             insightIntentProvider.sendExecuteResult(this.insightId, result)
               .then(() => {
-                console.info('testTag setExecuteResult success');
+                console.info('testTag sendExecuteResult success');
               })
               .catch((error: BusinessError) => {
-                console.error(`testTag setExecuteResult fail1, error code: ${error.code}, error msg: ${error.message}.`);
+                console.error(`testTag sendExecuteResult fail 1, error code: ${error.code}, error msg: ${error.message}.`);
               });
           } catch (e) {
             let code = (e as BusinessError).code;
             let msg = (e as BusinessError).message;
-            console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
+            console.error(`testTag sendExecuteResult fail 2, error code: ${code}, error msg: ${msg}`);
           }
         })
     }
@@ -148,7 +149,7 @@ struct Index {
 
 sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
 意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -184,6 +185,7 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
 设置意图执行结果延迟返回示例：
 ```ts
 import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class PlayVideoResultDef {
   resultCode: number = 0;
@@ -207,9 +209,6 @@ class PlayVideoResultDef {
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
 })
 export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResultDef> {
-  entityId: string = 'zhz';
-  episodeId: string = '50';
-  episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
     console.info('testTag', 'PlayVideo onExecute success')
@@ -272,7 +271,7 @@ struct Index {
 
   build() {
     Column() {
-      // 通过sendExecuteResult接口主动返回意图执行结果
+      // 通过sendIntentResult接口主动返回意图执行结果
       Button('insightIntentProvider sendIntentResult')
         .onClick(() => {
           try {

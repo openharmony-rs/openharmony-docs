@@ -26,7 +26,7 @@ import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 
 ## 使用说明
 
-在使用StaticSubscriberExtensionContext的功能前，需要通过StaticSubscriberExtensionAbility获取。
+在使用StaticSubscriberExtensionContext的功能前，需要通过StaticSubscriberExtensionAbility获取该上下文。
 
 ```ts
 import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
@@ -36,11 +36,7 @@ import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } fr
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-拉起一个静态订阅所属的同应用的Ability。使用callback异步回调。
-
-使用规则：
- - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限
- - 跨应用场景下，目标Ability的visible属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限
+拉起与静态订阅同属一个应用的Ability。使用callback异步回调。
 
 **需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -52,8 +48,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-wantAgent.md) | 是   | 启动Ability的want信息。    |
-| callback | AsyncCallback&lt;void&gt;           | 是   | callback形式返回启动结果。 |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。    |
+| callback | AsyncCallback&lt;void&gt;           | 是   | 回调函数，用于接收启动结果。 |
 
 **错误码：**
 
@@ -85,8 +81,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -97,7 +93,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
         this.context.startAbility(want, (error: BusinessError) => {
           if (error) {
             // 处理业务逻辑错误
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
             return;
           }
           // 执行正常业务
@@ -117,11 +113,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 startAbility(want: Want): Promise&lt;void&gt;
 
-拉起一个静态订阅所属的同应用的Ability。使用Promise异步回调。
-
-使用规则：
- - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限
- - 跨应用场景下，目标Ability的visible属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限
+拉起与静态订阅同属一个应用的Ability。使用Promise异步回调。
 
 **需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -133,7 +125,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 参数名 | 类型                                | 必填 | 说明                    |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-wantAgent.md) | 是   | 启动Ability的want信息。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的want信息。 |
 
 **返回值：**
 
@@ -171,8 +163,8 @@ startAbility(want: Want): Promise&lt;void&gt;
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -186,7 +178,7 @@ startAbility(want: Want): Promise&lt;void&gt;
           })
           .catch((error: BusinessError) => {
             // 处理业务逻辑错误
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
           });
       } catch (paramError) {
         // 处理入参错误异常

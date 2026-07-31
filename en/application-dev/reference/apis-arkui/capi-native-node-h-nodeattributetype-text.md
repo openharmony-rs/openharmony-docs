@@ -1377,14 +1377,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp. The value range is [0, +∞). When the value of **.size** is **1**, all lines share the same tail indentation value (specified by **.value[0].i32**). When the value of **.size** is greater than **1**, the *i*th line uses the tail indentation value (specified by **.value[i].i32**). When the number of text lines exceeds the value of **.size**, the excess part reuses **.value[.size - 1].i32**.|
+| .value[i].f32 | Tail indentation value of the *i*th line of text, in fp. The value range is [0, +∞). When the value of **.size** is **1**, all lines share the same tail indentation value (specified by **.value[0].f32**). When the value of **.size** is greater than **1**, the *i*th line uses the tail indentation value (specified by **.value[i].f32**). When the number of text lines exceeds the value of **.size**, the excess part reuses **.value[.size - 1].f32**.|
 | .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp.|
+| .value[i].f32 | Tail indentation value of the *i*th line of text, in fp.|
 | .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
 ## NODE_SPAN_CONTENT
