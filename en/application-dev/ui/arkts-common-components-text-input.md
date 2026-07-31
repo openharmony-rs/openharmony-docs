@@ -647,3 +647,5 @@ struct CursorAvoid {
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
 <!--RP1--><!--RP1End-->
+
+<!--no_check-->

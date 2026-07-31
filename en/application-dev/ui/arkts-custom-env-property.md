@@ -1042,3 +1042,5 @@ struct Child {
 The running effect is shown in the figure below.
 
 ![image](./figures/custom-env-15.gif)
+
+<!--no_check-->

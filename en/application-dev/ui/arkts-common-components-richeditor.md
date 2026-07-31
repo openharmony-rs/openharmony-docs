@@ -1588,3 +1588,5 @@ SystemMenu() {
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
 
 <!--RP1--><!--RP1End-->
+
+<!--no_check-->

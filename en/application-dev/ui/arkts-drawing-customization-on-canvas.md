@@ -844,3 +844,5 @@ The following samples demonstrate how to draw custom shapes on a canvas:
 - [Custom Lottery Wheel (ArkTS) (API 9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/CanvasComponent)
 
 <!--RP1--><!--RP1End-->
+
+<!--no_check-->
