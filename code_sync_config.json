@@ -40661,5 +40661,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/bytecode-obfuscation-questions.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"export_decorator",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
