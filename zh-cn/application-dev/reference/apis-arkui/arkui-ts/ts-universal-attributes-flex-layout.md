@@ -19,6 +19,8 @@
 
 ## flexBasis
 
+ArkTS-Dyn: flexBasis(value: number | string): T
+
 ArkTS-Sta: flexBasis(value: double | string | undefined): this
 
 设置组件的基准尺寸。仅作为Flex、Column、Row和DynamicLayout容器的子组件时支持设置此属性。设置后组件会以该基准尺寸作为初始尺寸参与布局计算。当父容器为Column、Row时，需设置主轴方向的尺寸。Column和Row在未设置主轴尺寸（width/height/size）时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时可能影响flexBasis的效果。
