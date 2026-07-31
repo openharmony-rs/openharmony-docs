@@ -78,7 +78,7 @@ struct Index {
       HalfScreenLaunchComponent({
         appId: this.appId,
         options: {},
-        onTerminated:  (info:TerminationInfo)=> {
+        onTerminated:  (info:TerminationInfo) => {
           console.info('onTerminated info = '+ info.want);
         },
         onError: (err) => {
