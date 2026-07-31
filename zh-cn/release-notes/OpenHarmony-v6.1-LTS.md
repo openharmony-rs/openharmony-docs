@@ -15,7 +15,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 ### 新增能力
 
-- 新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/master/README.md)
+- 新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/6.1-release/README.md)
 
 - 轻量系统支持小型化适配，以减少RAM和ROM的使用，详见[轻量系统小型化适配指导](https://gitcode.com/openharmony/docs/blob/7e59412cb2fba30efc64fe676988747e4edef62e/zh-cn/device-dev/porting/porting-minichip-minimal.md)。
 
@@ -101,7 +101,6 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持联系人搜索、字母索引、智能/自定义群组。
 - 支持联系人新建/编辑/详情（头像、多号码、邮箱、地址、生日等完整字段）。
 - 支持收藏联系人及排序、批量管理。
-- 支持黑/白名单、黄页查询。
 - 支持联系人导入/导出、SIM 卡导入、最近删除、重复联系人合并。
 - 支持单人铃声（本地/视频/无铃声）。
 - 支持服务卡片（快捷拨打、未接来电、桌面快捷方式）。
@@ -123,8 +122,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持紧急拨号、SOS 连按电源键、紧急位置展示。
 - 支持紧急联系人及自动求助。
 - 支持来电全屏/横幅、铃声/振动。
-- 支持号码归属地/黄页/标记。
-- 支持移动数据、APN、数据漫游、网络模式设置。
+- 支持移动数据、APN、数据漫游等设置。
 - 支持飞行模式拨号提示、接近光防误触。
 
 ## 配套关系
@@ -186,18 +184,12 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 
 
-## 修复缺陷列表
-
-**表3** 修复缺陷ISSUE列表
-
-| ISSUE单 | 问题描述 | 
-| ------- | ------- |
-
-
 ## 遗留缺陷列表
 
 **表4** 遗留缺陷列表
 
-| ISSUE | 问题描述 | 影响 | 计划解决日期 | 
+| ISSUE | 问题描述 | 影响 | 计划解决时间或版本 | 
 | -------- | -------- | -------- | -------- |
-
+| [13048](https://gitcode.com/openharmony/multimedia_audio_framework/issues/13048) | 进程audio_server有低概率因libaudio_policy_service.z.so导致cppcrash。 | 进程会自动重启 | 7.0版本 |
+| [51](https://gitcode.com/openharmony/device_soc_unisoc/issues/51) | 测试过程中P7785开发板低概率出现白屏，显示`abnormal mode: init-mmc-fat failed Please check SD card`。原因为测试用例进入到updater模式导致。 | 不进入updater模式可规避此问题。<br />P7885开发板计划在7.1版本适配updater模式。 | 7.1版本 |
+| [24762](https://gitcode.com/openharmony/graphic_graphic_2d/issues/24762) | P7885开发板配套Vulkan版本为1.2，测试套件要求Vulkan版本高于1.3，导致部分测试用例执行失败。 | 不影响正常使用，兼容性认证时建议申请豁免。<br />P7885开发板计划在7.1版本升级Vulkan版本。 | 7.1版本 |
