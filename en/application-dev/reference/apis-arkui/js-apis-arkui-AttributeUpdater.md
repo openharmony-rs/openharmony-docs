@@ -6,7 +6,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d89c4be0c26be57dcac6e3a0bb8b7f968642aa19 translatedAt=2026-07-29T09:27:32.314Z pushedAt=2026-07-30T01:41:22.328Z -->
+<!-- md-trans-meta sourceCommit=d89c4be0c26be57dcac6e3a0bb8b7f968642aa19 translatedAt=2026-07-29T09:27:32.314Z pushedAt=2026-07-31T10:47:41.992Z -->
 
 Sets attributes directly to a component to trigger UI re-renders, without marking them as state variables. This is applicable to scenarios where component attributes need to be dynamically updated without defining state variables, such as dynamically modifying component constructor parameters or avoiding defining state variables for one-time attribute updates.
 
@@ -38,7 +38,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >
 > 6. **AttributeUpdater** does not support operations related to state management, such as switching between light and dark modes.
 >
-> 7. When the API of the [AttributeUpdater](#attributeupdatert-c-initializert) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
+> 7. When the API of the [AttributeUpdater](#attributeupdatert-c--initializert) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Initializer\<T>
 
@@ -216,7 +216,7 @@ struct UpdaterDemo2 {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c-initializert) | No | No | **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component. The component must first be bound to **AttributeUpdater** through the component's **attributeModifier** attribute method before use. Currently, only the **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, and **ImageSpan** components are supported. Ensure the type matching of **T** and **C** before use; otherwise, it may cause functionality issues. |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No | No | **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component. The component must first be bound to **AttributeUpdater** through the component's **attributeModifier** attribute method before use. Currently, only the **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, and **ImageSpan** components are supported. Ensure the type matching of **T** and **C** before use; otherwise, it may cause functionality issues. |
 
 **Example**
 
