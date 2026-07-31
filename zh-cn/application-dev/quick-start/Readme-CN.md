@@ -42,8 +42,7 @@
 - [资源分类与访问](resource-categories-and-access.md)
 - 学习ArkTS语言<!--learning-arkts-->
   - [初识ArkTS语言](arkts-get-started.md)
-  - [ArkTS语言介绍](introduction-to-arkts.md)
-  - 基础语法<!--arkts-language-guide-->
+  - 语法<!--arkts-language-guide-->
     - [基础知识](arkts-language-guide-basics.md)
     - [基本操作符](arkts-language-guide-basic-operators.md)
     - [字符串](arkts-language-guide-strings.md)
@@ -53,7 +52,6 @@
     - [枚举](arkts-language-guide-enums.md)
     - [类](arkts-language-guide-classes.md)
     - [属性](arkts-language-guide-properties.md)
-
     - [方法](arkts-language-guide-methods.md)
     - [初始化](arkts-language-guide-initialization.md)
     - [继承](arkts-language-guide-inheritance.md)
