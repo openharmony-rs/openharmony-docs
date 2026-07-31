@@ -562,8 +562,6 @@ struct RatingExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Column,
@@ -573,9 +571,9 @@ import {
   Rating,
   Row,
   Image,
-  HorizontalAlign
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  HorizontalAlign,
+  State
+} from '@kit.ArkUI';
 
 // xxx.ets
 @Entry
@@ -838,8 +836,6 @@ struct ratingExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Column,
@@ -856,15 +852,15 @@ import {
   ClickEvent,
   Button,
   Visibility,
-  FlexAlign
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  FlexAlign,
+  State
+} from '@kit.ArkUI';
 
 // xxx.ets
 type BuilderRating = @Builder(config: RatingConfiguration) => void
 
 class MyRatingStyle implements ContentModifier<RatingConfiguration> {
-  name: string = "";
+  name: string = '';
   style: number = 0;
 
   constructor(value1: string, value2: number) {
@@ -988,7 +984,7 @@ function buildRating(config: RatingConfiguration) {
         }).visibility(config.stars >= 5 ? Visibility.Visible : Visibility.Hidden)
     }
 
-    Text("分值：" + config.rating)
+    Text('分值：' + config.rating)
   }
 }
 
@@ -1017,8 +1013,8 @@ struct ratingExample {
             console.info('Rating change is' + value);
             this.rating = value;
           })
-          .contentModifier(new MyRatingStyle("hello", 3))
-        Button(this.ratingIndicator ? "ratingIndicator : true" : "ratingIndicator : false")
+          .contentModifier(new MyRatingStyle('hello', 3))
+        Button(this.ratingIndicator ? 'ratingIndicator : true' : 'ratingIndicator : false')
           .onClick((event) => {
             if (this.ratingIndicator) {
               this.ratingIndicator = false;
@@ -1027,22 +1023,22 @@ struct ratingExample {
             }
           }).margin({ top: 5 })
 
-        Button(this.ratingStars < 5 ? "ratingStars + 1, ratingStars =" + this.ratingStars : "ratingStars最大值为5")
+        Button(this.ratingStars < 5 ? 'ratingStars + 1, ratingStars =' + this.ratingStars : 'ratingStars最大值为5')
           .onClick((event) => {
             if (this.ratingStars < 5) {
               this.ratingStars += 1;
             }
           }).margin({ top: 5 })
 
-        Button(this.ratingStars > 0 ? "ratingStars - 1, ratingStars =" + this.ratingStars :
-          "ratingStars小于等于0时默认等于5")
+        Button(this.ratingStars > 0 ? 'ratingStars - 1, ratingStars =' + this.ratingStars :
+          'ratingStars小于等于0时默认等于5')
           .onClick((event) => {
             if (this.ratingStars > 0) {
               this.ratingStars -= 1;
             }
           }).margin({ top: 5 })
 
-        Button(this.ratingStepSize == 0.5 ? "ratingStepSize : 0.5" : "ratingStepSize : 1")
+        Button(this.ratingStepSize == 0.5 ? 'ratingStepSize : 0.5' : 'ratingStepSize : 1')
           .onClick((event) => {
             if (this.ratingStepSize == 0.5) {
               this.ratingStepSize = 1;
