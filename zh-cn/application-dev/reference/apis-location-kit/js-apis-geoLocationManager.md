@@ -3050,8 +3050,8 @@ getDistanceBetweenLocations(location1: Location, location2: Location): number
       "additionSize": 0
     }
     let location2: geoLocationManager.Location = {
-      "latitude": 30.12,
-      "longitude": 120.11,
+      "latitude": 31.12,
+      "longitude": 121.11,
       "altitude": 0,
       "accuracy": 0,
       "speed": 0,
@@ -3724,7 +3724,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.              | 
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 | 
-|801 | Capability not supported. Failed to call ${geoLocationManager.startBluetoothSearch} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301800 | Failed to start Bluetooth scanning.                                        |
 
