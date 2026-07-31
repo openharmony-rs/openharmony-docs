@@ -27,7 +27,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
     | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | 设置是否开启文档对象模型存储接口（DOM Storage API）权限，若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
-    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | 设置是否开启应用中文系统的访问。若不开启，文件读写功能完全被阻断，依赖文件的模块会崩溃。 | 
+    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件读写的模块会遇到访问被拒绝的错误。 | 
     | [imageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#imageaccess) | 设置是否允许自动加载图片资源。 | 
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
@@ -284,7 +284,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
 ## 网页User-Agent适配问题定位
 网页加载异常，使用DevTools切换Android或Windows User-Agent后重新加载页面查看是否可以恢复正常。
-1. 鸿蒙的默认User-Agent：Mozilla/5.0 (Phone;OpenHarmony 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 ArkWeb/6.0.0.42 Mobile。
+1. 默认User-Agent：Mozilla/5.0 (Phone;OpenHarmony 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 ArkWeb/6.0.0.42 Mobile。
 2. 通过inspect打开网页，查看网络，选择任一请求链接，查看请求标头中的User-Agent信息。
 3. 对比应用的自定义User-Agent和ArkWeb默认User-Agent，查看应用自定义User-Agent是否携带OpenHarmony标识。若加载失败时未携带标识，则设置自定义User-Agent携带OpenHarmony标识查看是否能加载成功；若加载失败时携带了OpenHarmony标识，则设置自定义User-Agent携带Android等其他标识查看是否能加载成功，若加载成功则说明第三方网站未适配OpenHarmony，应推动第三方做适配。 如果需要修改User-Agent，去勾选“使用浏览器默认设置”。 选择自定义User-Agent，输入自己的User-Agent即可。
 4. 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
@@ -320,5 +320,5 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
 
 ## Cookie常见问题定位
-* 若Cookie的SameSite属性未显式指定，默认值为Lax。此时，Cookie仅在用户直接导航至源站点时发送，不会在跨站请求（如通过第三方链接跳转）中传递。若需允许跨站请求携带Cookie，需将SameSite设置为None，必须同时设置Secure属性，确保Cookie仅通过HTTPS协议加密传输，防止在HTTP明文连接中被窃取或篡改。
+* 若Cookie的SameSite属性未显式指定，默认值为Lax。此时，Cookie仅在用户顶级导航（如地址栏输入或链接点击）至源站点时发送，不会在跨站请求（如通过第三方链接跳转）中传递。若需允许跨站请求携带Cookie，需将SameSite设置为None，必须同时设置Secure属性，确保Cookie仅通过HTTPS协议加密传输，防止在HTTP明文连接中被窃取或篡改。
 * 排查[putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)是否使能。若未使能，需设置[putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)为true，使web组件实例允许发送和接收第三方Cookie。Cookie每30s周期性保存到磁盘中，设置Cookie后，30s内退出应用可能会导致Cookie没有及时落盘而丢失。此时可以使用接口[saveCookieAsync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
