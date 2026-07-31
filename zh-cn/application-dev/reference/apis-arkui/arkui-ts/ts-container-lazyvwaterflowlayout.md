@@ -80,13 +80,13 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前LazyVWaterFlowLayout的列数、固定列宽或最小列宽值。|
+| value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | LazyVWaterFlowLayout的列数、固定列宽、最小列宽值或断点填充策略。使用string类型时，可通过`1fr 1fr 2fr`设置列数和比例，或通过`repeat(auto-fill, track-size)`按列宽自动计算列数；track-size支持px、vp、%或有效数字，默认单位为vp；使用ItemFillPolicy类型时，按组件宽度对应断点类型确定列数。<br/>入参为undefined时，恢复为默认值（1列）。 |
 
 ### columnsGap
 
 columnsGap(value: LengthMetrics | undefined): T
 
-设置列与列的间距。默认值为LengthMetrics.vp(0)，设置为小于0的值时，按LengthMetrics.vp(0)处理。
+设置列与列的间距。默认值为LengthMetrics.vp(0)，设置为小于0的值时，按LengthMetrics.vp(0)处理。与[columnsTemplate](#columnstemplate)的`repeat(auto-stretch, track-size)`模式配合使用时，该值作为最小列间距，系统会自动计算实际列间距和列数。
 
 **起始版本：** 26.0.0
 
@@ -106,7 +106,7 @@ columnsGap(value: LengthMetrics | undefined): T
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前组件。 |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
 
 ### rowsGap
 
@@ -132,13 +132,13 @@ rowsGap(value: LengthMetrics | undefined): T
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前组件。 |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
 
 ### header
 
 header(builder: CustomBuilder | undefined): T
 
-设置当前LazyVWaterFlowLayout的头部组件。头部组件的吸顶效果需通过[sticky](#sticky)属性设置后才能生效。
+设置当前LazyVWaterFlowLayout的头部组件。未通过该接口设置时，默认不设置头部组件。头部组件的吸顶效果需通过[sticky](#sticky)属性设置后才能生效。
 
 > **说明：**
 >
@@ -162,11 +162,17 @@ header(builder: CustomBuilder | undefined): T
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 头部组件构造函数。<br/>入参为undefined时，不设置头部组件，如果已有头部组件，也会被移除。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
+
 ### footer
 
 footer(builder: CustomBuilder | undefined): T
 
-设置当前LazyVWaterFlowLayout的尾部组件。尾部组件的吸底效果需通过[sticky](#sticky)属性设置后才能生效。
+设置当前LazyVWaterFlowLayout的尾部组件。未通过该接口设置时，默认不设置尾部组件。尾部组件的吸底效果需通过[sticky](#sticky)属性设置后才能生效。
 
 > **说明：**
 >
@@ -189,6 +195,12 @@ footer(builder: CustomBuilder | undefined): T
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 尾部组件构造函数。<br/>入参为undefined时，不设置尾部组件，如果已有尾部组件，也会被移除。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
 
 ### sticky
 
@@ -218,6 +230,12 @@ sticky(sticky: StickyStyle | undefined): T
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sticky | [StickyStyle](ts-container-list.md#stickystyle9枚举说明) \| undefined | 是   | 头部组件和尾部组件的吸附模式。sticky属性可设置为StickyStyle.Header（头部组件吸顶）、StickyStyle.Footer（尾部组件吸底）、StickyStyle.BOTH（同时支持头部组件吸顶和尾部组件吸底）或StickyStyle.None（不启用吸附效果）。<br/>入参为undefined时，恢复为默认值StickyStyle.None。<br/>未通过该接口设置时，默认头部组件不吸顶、尾部组件不吸底。 |
 
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -236,7 +254,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 >
 > 当该组件懒加载功能因上述父组件配置条件失效时，所有子组件都会被加载布局。此时onVisibleIndexesChange回调中start返回0，end返回数据源最后一个子组件的索引值。
 >
-> 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
+> 此处的父组件指从当前组件向上查找到的最近一个List、Scroll或WaterFlow组件；FlowItem、LazyColumnLayout、自定义组件和NodeContainer仅作为中间封装层，不作为此处的父组件，其他文档下的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 
@@ -256,7 +274,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前组件。 |
+| T | 返回当前LazyVWaterFlowLayout组件自身，用于支持链式调用。 |
 
 ## 示例
 
@@ -669,4 +687,4 @@ struct LazyVWaterFlowLayoutColumnsTemplateDemo {
   }
 }
 ```
-![scroll_lazyvwaterflowlayout_header_footer.gif](figures/scroll-lazyvwaterflowlayout-columntemplate.gif)
+![scroll-lazyvwaterflowlayout-columntemplate.gif](figures/scroll-lazyvwaterflowlayout-columntemplate.gif)
