@@ -36474,6 +36474,16 @@
 						"end_line":686,
 						"name":"iterator_manual",
 						"start_line":651
+					},
+					{
+						"end_line":487,
+						"name":"record_type_basic",
+						"start_line":481
+					},
+					{
+						"end_line":499,
+						"name":"record_type_complex",
+						"start_line":490
 					}
 				]
 			}
@@ -39258,13 +39268,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets",
-				"functions":[
-					{
-						"end_line":24,
-						"name":"generic_array",
-						"start_line":20
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
