@@ -14,4 +14,4 @@
 <!--DelEnd-->
 - [基于AVPlayer播放DRM节目(ArkTS)](drm-avplayer-arkts-integration.md)
 - [基于AVCodec播放DRM节目(C/C++)](drm-avcodec-integration.md)
-- [术语](drm-glossary.md)
+- [DRM Kit术语](drm-glossary.md)
