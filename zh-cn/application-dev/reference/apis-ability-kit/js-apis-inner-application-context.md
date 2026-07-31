@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
+Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及提供应用级操作的回调能力。
 
 > **说明：**
 >
@@ -287,7 +287,7 @@ export default class EntryAbility extends UIAbility {
 
 createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
-创建特定数据加密级别的应用上下文。开发者可以调用该接口创建不同加密级别的上下文，从而获取对应的沙箱路径。
+创建特定数据加密等级的应用上下文。开发者可以调用该接口创建不同加密级别的上下文，从而获取对应的沙箱路径。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -314,6 +314,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 ```ts
 import { common, UIAbility, contextConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
@@ -372,6 +373,7 @@ ArkTS-Sta: createDisplayContext(displayId: long): Context
 ```ts
 import { common, UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
@@ -521,7 +523,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 | 类型    | 说明                   |
 | ------- | ---------------------- |
-| boolean | 是否为指定类型的上下文。返回true表示Context类型为指定类型，返回false表示Context类型匹配失败。 |
+| boolean | 是否为指定类型的上下文。返回true表示Context类型为指定类型，返回false表示当前Context不是指定类型。 |
 
 **示例：**
 

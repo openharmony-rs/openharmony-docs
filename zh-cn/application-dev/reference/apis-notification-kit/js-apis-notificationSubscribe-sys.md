@@ -13,7 +13,7 @@
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口均为系统接口。
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
@@ -27,12 +27,6 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 订阅通知并指定订阅信息。使用callback异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -40,6 +34,12 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -121,12 +121,6 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 订阅当前用户下所有应用的通知。使用callback异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -134,6 +128,12 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -204,12 +204,6 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 订阅通知并指定订阅信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
-
-**废弃版本**：26.0.0
-
 **替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -217,6 +211,12 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -286,10 +286,6 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -297,6 +293,10 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -363,10 +363,6 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -374,6 +370,10 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 **需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -647,7 +647,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -662,7 +662,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
 }).catch((err: Error): void => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`unsubscribe fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -819,7 +820,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -838,8 +839,9 @@ let notificationKey: notificationSubscribe.NotificationKey = {
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
-}).catch((err: Error): void  => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -969,7 +971,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -980,7 +982,8 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1108,7 +1111,7 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1119,7 +1122,8 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: Error): void => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1314,7 +1318,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1324,7 +1328,8 @@ ArkTS-Sta示例：
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1455,7 +1460,7 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1465,7 +1470,8 @@ let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: Error): void => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1526,7 +1532,7 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1540,7 +1546,8 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
 }).catch((err: Error): void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`distributeOperation fail, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1558,7 +1565,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                |
 | ----- | ------ | --- | ---- | ------------------ |
-| id    | number | 否  |  否  | 通知ID。            |
+| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  |  否  | 通知ID。            |
 | label | string | 否  |  是  | 通知标签，默认为空。 |
 
 ## RemoveReason
@@ -1585,10 +1592,6 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：18
-
-**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型   | 只读 | 可选 | 说明     |
 | ----- | ------ | --- | ---- | -------- |

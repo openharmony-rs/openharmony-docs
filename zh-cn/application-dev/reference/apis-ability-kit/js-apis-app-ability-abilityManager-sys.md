@@ -238,7 +238,7 @@ ArkTS-Dyn: getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\
 
 ArkTS-Sta: getExtensionRunningInfos(upperLimit: int, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
 
-获取关于运行扩展能力的信息。使用callback异步回调。
+获取运行扩展能力的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -273,6 +273,7 @@ ArkTS-Sta: getExtensionRunningInfos(upperLimit: int, callback: AsyncCallback\<Ar
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 设置获取消息数量的最大限制
 let upperLimit = 10;
 
 try {
@@ -711,6 +712,7 @@ let want: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
+// 设置操作结果码
 let resultCode = 100;
 // 返回给另存为行为发起方AbilityResult信息
 let abilityResult: common.AbilityResult = {
@@ -1203,6 +1205,7 @@ export default class UiExtAbility extends UIExtensionAbility {
       const sessionId: string = want.parameters?.[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string ?? '';
     }
 
+    // 设置用户操作状态为终止
     let status = abilityManager.UserStatus.ASSERT_TERMINATE;
     abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
       console.info('notifyDebugAssertResult success.');
@@ -1260,6 +1263,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
@@ -1322,6 +1326,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置常驻进程的包名
   let residentProcessBundleName: string = 'com.xxx.xxxxxx';
   let enable: boolean = false;
   abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)
@@ -1947,6 +1952,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.queryAtomicServiceStartupRule(this.context, appId)

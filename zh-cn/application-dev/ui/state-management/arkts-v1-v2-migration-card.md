@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkTS卡片开发支持状态管理V2装饰器（如[\@ComponentV2](./arkts-create-custom-components.md#componentv2)、[\@Local](./arkts-new-local.md)、[\@ObservedV2](./arkts-new-observedV2-and-trace.md)等），建议开发者使用V2装饰器替代V1装饰器进行状态管理，以获得更优的组件渲染性能和状态同步能力。
+从API version 23开始，ArkTS卡片支持使用状态管理V2开发，建议开发者使用[V2装饰器](./arkts-state-management-overview.md#装饰器总览-1)替代[V1装饰器](./arkts-state-management-overview.md#装饰器总览)进行状态管理，以获得更优的组件渲染性能和状态同步能力。
 
 卡片的状态管理迁移与普通应用页面基本一致，组件内、数据对象等通用场景的迁移可参见[组件内状态变量迁移](./arkts-v1-v2-migration-inner-component.md)和[数据对象状态变量迁移](./arkts-v1-v2-migration-inner-class.md)。本文仅针对卡片独有的差异点进行说明，即卡片提供方与卡片UI之间的数据接收机制。
 
@@ -58,6 +58,7 @@ V1与V2在数据接收上的核心差异在于匹配规则：
 <!-- @[CardMigrationV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCardV1.ets) -->
 
 ``` TypeScript
+// 创建LocalStorage实例，用于在卡片入口组件与卡片提供方之间传递刷新数据
 let storage = new LocalStorage();
 
 // V1卡片入口组件需通过@Entry传入LocalStorage实例，用于接收卡片提供方updateForm推送的数据
@@ -65,6 +66,7 @@ let storage = new LocalStorage();
 @Component
 struct WidgetCardV1 {
   // 通过@LocalStorageProp的入参key值匹配updateForm数据中的对应字段
+  // 此处入参key为'title'，将匹配updateForm数据中key为'title'的字段
   @LocalStorageProp('title') title: string = 'Default title';
   @LocalStorageProp('detail') detail: string = 'Default detail';
 
@@ -85,6 +87,8 @@ struct WidgetCardV1 {
       Button('update')
         .margin({ top: '15%' })
         .onClick(() => {
+          // 点击按钮通过postCardAction触发message事件
+          // 该事件会被卡片提供方FormExtensionAbility的onFormEvent回调接收
           postCardAction(this, {
             'action': 'message',
             'params': { 'msgTest': 'messageEvent' }
@@ -109,6 +113,7 @@ struct WidgetCardV1 {
 @ComponentV2
 struct WidgetCard {
   // @LocalStorageProp迁移为@Local，系统改为按变量名匹配updateForm数据
+  // 此处变量名为title，将匹配updateForm数据中key为'title'的字段
   @Local title: string = 'Default title';
   @Local detail: string = 'Default detail';
 
@@ -129,6 +134,8 @@ struct WidgetCard {
       Button('update')
         .margin({ top: '15%' })
         .onClick(() => {
+          // 点击按钮通过postCardAction触发message事件
+          // 该事件会被卡片提供方FormExtensionAbility的onFormEvent回调接收
           postCardAction(this, {
             'action': 'message',
             'params': { 'msgTest': 'messageEvent' }
@@ -146,15 +153,19 @@ struct WidgetCard {
 <!-- @[CardMigrationFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
 ``` TypeScript
+// 卡片提供方接收到卡片页面postCardAction触发的message事件后，在此回调中处理刷新逻辑
 onFormEvent(formId: string, message: string) {
   class FormDataClass {
     // 变量名与卡片页面中接收数据的变量名保持一致
+    // 卡片UI侧（V2）通过变量名匹配这些字段，V1则通过@LocalStorageProp的入参key匹配
     title: string = 'Title Update.';
     detail: string = 'Description update success.';
   }
 
   let formData = new FormDataClass();
+  // 将业务数据封装为卡片可识别的FormBindingData格式
   let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+  // 调用updateForm将刷新数据推送到指定卡片（formId），卡片UI接收后自动刷新界面
   formProvider.updateForm(formId, formInfo).then(() => {
     hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
   }).catch((error: BusinessError) => {
@@ -180,6 +191,7 @@ onFormEvent(formId: string, message: string) {
 <!-- @[CardMigrationShareV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCardV1.ets) -->
 
 ``` TypeScript
+// 创建LocalStorage实例，用于在卡片入口组件、子组件与卡片提供方之间传递共享数据
 let storage = new LocalStorage();
 
 // V1卡片入口组件需通过@Entry传入LocalStorage实例
@@ -199,6 +211,7 @@ struct ShareWidgetCardV1 {
         Text(this.detail)
           .fontSize(12)
           .margin({ top: '5%', left: '10%' })
+        // 引用子组件，子组件内部通过同key的@LocalStorageProp读取同一LocalStorage中的共享数据
         ChildComp1()
       }
       .width('100%')
@@ -208,6 +221,7 @@ struct ShareWidgetCardV1 {
       Button('update')
         .margin({ top: '15%' })
         .onClick(() => {
+          // 点击按钮通过postCardAction触发message事件，由卡片提供方处理刷新
           postCardAction(this, {
             'action': 'message',
             'params': { 'msgTest': 'messageEvent' }
@@ -222,6 +236,7 @@ struct ShareWidgetCardV1 {
 @Component
 struct ChildComp1 {
   // 子组件同样通过@LocalStorageProp读取LocalStorage中的共享数据
+  // 入参key为'detail'，与入口组件保持一致，从而读取到同一份数据
   @LocalStorageProp('detail') detail: string = 'Default detail';
 
   build() {
@@ -246,6 +261,7 @@ struct ShareWidgetCard {
   // 仅组件内部使用的变量迁移为@Local
   @Local title: string = 'Default title';
   // 需跨组件共享的变量迁移为@Provider，系统按变量名匹配updateForm数据
+  // updateForm推送key为'detail'的数据后，会自动更新此处@Provider，并同步给后代组件中@Consumer
   @Provider() detail: string = 'Default detail';
 
   build() {
@@ -257,6 +273,7 @@ struct ShareWidgetCard {
         Text(this.detail)
           .fontSize(12)
           .margin({ top: '5%', left: '10%' })
+        // 引用子组件，子组件通过@Consumer自动同步父组件@Provider提供的detail数据
         ChildComp()
       }
       .width('100%')
@@ -266,6 +283,7 @@ struct ShareWidgetCard {
       Button('update')
         .margin({ top: '15%' })
         .onClick(() => {
+          // 点击按钮通过postCardAction触发message事件，由卡片提供方处理刷新
           postCardAction(this, {
             'action': 'message',
             'params': { 'msgTest': 'messageEvent' }
@@ -280,6 +298,7 @@ struct ShareWidgetCard {
 @ComponentV2
 struct ChildComp {
   // 子组件通过@Consumer同步@Provider提供的数据
+  // @Consumer与祖先组件中同名变量的@Provider自动建立连接，无需手动传参
   @Consumer() detail: string = 'Default detail for Consumer';
 
   build() {

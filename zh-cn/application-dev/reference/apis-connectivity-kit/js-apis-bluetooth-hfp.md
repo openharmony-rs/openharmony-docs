@@ -39,7 +39,7 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -54,7 +54,7 @@ createHfpAgProfile(): HandsFreeAudioGatewayProfile
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -67,9 +67,64 @@ try {
 }
 ```
 
+
+## hfp.createHfpHfProfile
+
+createHfpHfProfile(): HandsFreeHfProfile
+
+创建蓝牙通话音频中的[HF](../../connectivity/terminology.md#hf)实例。通过该实例可使用本端作为HF设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。
+
+**起始版本**： 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| [HandsFreeHfProfile](#handsfreehfprofile) | 返回HF实例。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|801 | Capability not supported.          |
+
+**示例**：
+
+```js
+try {
+    let hfProfile = hfp.createHfpHfProfile();
+    console.info('hf success');
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## HandsFreeAudioGatewayProfile
 
 该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/terminology.md#hfp-ag)角色‌。
 - 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createHfpAgProfile](#hfpcreatehfpagprofile)接口构造该类的实例。
 - 和该实例角色相对应的是[HF](../../connectivity/terminology.md#hf)角色。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+
+## HandsFreeHfProfile
+
+该实例表示蓝牙通话音频中的[HF](../../connectivity/terminology.md#hf)角色‌。
+- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createHfpHfProfile](#hfpcreatehfphfprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[HFP AG](../../connectivity/terminology.md#hfp-ag)角色。
+
+**起始版本**： 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。

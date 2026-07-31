@@ -46,7 +46,7 @@
 ### OH_LowPowerAudioSink_OnError()
 
 ```c
-typedef void (*OH_LowPowerAudioSink_OnError)(OH_LowPowerAudioSink* sink,OH_AVErrCode errCode,const char* errorMsg,void* userData)
+typedef void (*OH_LowPowerAudioSink_OnError)(OH_LowPowerAudioSink* sink, OH_AVErrCode errCode, const char* errorMsg, void* userData)
 ```
 
 **描述**
@@ -68,7 +68,7 @@ LowPowerAudioSink发生错误时调用该方法。
 ### OH_LowPowerAudioSink_OnPositionUpdated()
 
 ```c
-typedef void (*OH_LowPowerAudioSink_OnPositionUpdated)(OH_LowPowerAudioSink* sink,int64_t currentPosition,void* userData)
+typedef void (*OH_LowPowerAudioSink_OnPositionUpdated)(OH_LowPowerAudioSink* sink, int64_t currentPosition, void* userData)
 ```
 
 **描述**
@@ -89,7 +89,7 @@ LowPowerAudioSink进度更新时调用该方法。
 ### OH_LowPowerAudioSink_OnDataNeeded()
 
 ```c
-typedef void (*OH_LowPowerAudioSink_OnDataNeeded)(OH_LowPowerAudioSink* sink,OH_AVSamplesBuffer* samples,void* userData)
+typedef void (*OH_LowPowerAudioSink_OnDataNeeded)(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples, void* userData)
 ```
 
 **描述**
@@ -110,7 +110,7 @@ LowPowerAudioSink需要数据时调用该方法。
 ### OH_LowPowerAudioSink_OnInterrupted()
 
 ```c
-typedef void (*OH_LowPowerAudioSink_OnInterrupted)(OH_LowPowerAudioSink* sink,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint,void* userData)
+typedef void (*OH_LowPowerAudioSink_OnInterrupted)(OH_LowPowerAudioSink* sink, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint, void* userData)
 ```
 
 **描述**
@@ -132,7 +132,7 @@ LowPowerAudioSink焦点打断时调用该方法。
 ### OH_LowPowerAudioSink_OnDeviceChanged()
 
 ```c
-typedef void (*OH_LowPowerAudioSink_OnDeviceChanged)(OH_LowPowerAudioSink* sink,OH_AudioStream_DeviceChangeReason reason,void* userData)
+typedef void (*OH_LowPowerAudioSink_OnDeviceChanged)(OH_LowPowerAudioSink* sink, OH_AudioStream_DeviceChangeReason reason, void* userData)
 ```
 
 **描述**

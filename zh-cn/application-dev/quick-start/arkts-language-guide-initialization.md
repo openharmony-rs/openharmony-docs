@@ -844,7 +844,7 @@ class CalculatedInitialization {
 
 ### 必须初始化的属性要求
 
-ArkTS编译器在`strictPropertyInitialization`模式下检查：所有非可选属性必须在声明时或构造函数中被赋值，否则编译报错。满足要求的方式有三种：声明时赋初值、构造函数中赋值、使用肯定赋值断言`!`（表示通过其他方式确保已赋值）。可选属性（`?`）不要求初始化。
+ArkTS编译器默认强制执行属性初始化检查（等效于TypeScript的`strictPropertyInitialization`选项，但ArkTS中不可关闭），所有非可选属性必须在声明时或构造函数中被赋值，否则编译报错。满足要求的方式有两种：声明时赋初值、构造函数中赋值。可选属性（`?`）不要求初始化。
 
 ### 可选属性的初始化（? 修饰符，允许未初始化）
 
@@ -948,13 +948,18 @@ class ImmutablePoint {
 
 ## 初始化顺序
 
-当基类和派生类都有字段初始化时，执行顺序为：基类字段 → 基类构造函数 → 派生类字段 → 派生类构造函数。
+当基类和派生类都有字段初始化时，执行顺序为：基类字段 → 基类构造函数 → 派生类字段 → 派生类构造函数。此外，静态初始化块（`static { }`）在类首次被加载时执行，先于所有实例字段初始化和构造函数调用；静态字段的初始化按声明顺序执行，静态初始化块穿插在静态字段之间按顺序执行。
 
 <!-- @[init_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
 
 ``` TypeScript
 class IoBase {
+  public static baseStatic: number = 10;
   public name: string = 'base';
+
+  static {
+    console.info('Base static block');
+  }
 
   constructor() {
     console.info(`Base constructor: name = ${this.name}`);
@@ -962,7 +967,12 @@ class IoBase {
 }
 
 class IoDerived extends IoBase {
+  public static derivedStatic: number = 20;
   public name: string = 'derived';
+
+  static {
+    console.info('Derived static block');
+  }
 
   constructor() {
     super();
@@ -972,6 +982,8 @@ class IoDerived extends IoBase {
 
 let ioD: IoDerived = new IoDerived();
 // 输出：
+// Base static block（类加载时执行静态初始化块，先于实例创建）
+// Derived static block
 // Base constructor: name = base（派生类字段尚未初始化）
 // Derived constructor: name = derived
 ```

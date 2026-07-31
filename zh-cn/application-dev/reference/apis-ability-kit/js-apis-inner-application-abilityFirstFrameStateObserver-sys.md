@@ -50,6 +50,7 @@ ArkTS-Dyn示例：
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 创建Ability首帧绘制状态监听对象
 let observer: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
     console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
@@ -57,6 +58,7 @@ let observer: appManager.AbilityFirstFrameStateObserver = {
 };
 
 try {
+  // 注册Ability首帧绘制完成事件监听
   appManager.on('abilityFirstFrameState', observer);
 } catch (e) {
   let code = (e as BusinessError).code;

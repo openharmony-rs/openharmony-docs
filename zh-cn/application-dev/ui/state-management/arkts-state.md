@@ -8,7 +8,7 @@
 
 被状态变量装饰器装饰的变量称为状态变量，使普通变量具备状态属性。当状态变量改变时，会触发其直接绑定的UI组件渲染更新。
 
-在状态变量相关装饰器中，@State是最基础的装饰器，也是大部分状态变量的数据源。
+在状态变量相关装饰器中，[@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md#state)是最基础的装饰器，也是大部分状态变量的数据源。
 
 在阅读\@State文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 

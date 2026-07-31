@@ -27,6 +27,10 @@ import { NavPushPathHelper } from '@kit.ArkUI';
 
 不支持[通用属性](ts-component-general-attributes.md)
 
+## 事件
+
+不支持[通用事件](ts-component-general-events.md)
+
 ## NavPushPathHelper
 
 对Navigation路由栈[NavPathStack](ts-basic-components-navigation.md#navpathstack10)的所有路由跳转接口进行了封装，在NavPushPathHelper中持有一个NavPathStack对象，在封装的跳转接口中，去判断子包是否存在，如果不存在则进行动态下载子包，等结果返回后调用NavPathStack的相应的接口将指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈。使用示例参见[示例](#示例)。
@@ -69,7 +73,7 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<vo
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -103,7 +107,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -136,7 +140,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -170,7 +174,7 @@ pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -202,7 +206,7 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -240,7 +244,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -277,7 +281,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -315,7 +319,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Ca
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -351,7 +355,7 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -385,7 +389,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -418,7 +422,7 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -427,10 +431,6 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
 | 300001    | hsp silent install fail.|
-
-## 事件
-
-不支持[通用事件](ts-component-general-events.md)
 
 ## 示例
 

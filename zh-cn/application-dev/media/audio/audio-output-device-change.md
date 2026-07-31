@@ -51,65 +51,76 @@
 
 ## 参考示例
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
 
 ### AudioRenderer示例
 
-ArkTS-Dyn示例：
+  ArkTS-Dyn示例：
 
-<!-- @[all_outputDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->  
-
-``` TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-let audioRenderer: audio.AudioRenderer | undefined = undefined;
-let audioStreamInfo: audio.AudioStreamInfo = {
-  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-  channels: audio.AudioChannel.CHANNEL_2, // 通道。
-  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-};
-let audioRendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型:语音通话。根据业务场景配置,参考StreamUsage。
-  rendererFlags: 0 // 音频渲染器标志。
-};
-let audioRendererOptions: audio.AudioRendererOptions = {
-  streamInfo: audioStreamInfo,
-  rendererInfo: audioRendererInfo
-};
-// ...
-  // 创建AudioRenderer实例。
-  audio.createAudioRenderer(audioRendererOptions).then((data) => {
-    audioRenderer = data;
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');
-    // ...
-  }).catch((err: BusinessError) => {
-    console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
-    // ...
-  });
-
-  if (audioRenderer) {
-    // 订阅监听音频流输出设备变化及原因。
-    (audioRenderer as audio.AudioRenderer).on('outputDeviceChangeWithInfo', async (deviceChangeInfo: audio
-    .AudioStreamDeviceChangeInfo) => {
-      switch (deviceChangeInfo.changeReason) {
-        case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-          // 响应设备不可用事件,如果应用处于播放状态,应暂停播放,更新UX界面。
-          // await audioRenderer.pause();
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
-          // 应用根据业务情况响应设备可用事件。
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
-          // 应用根据业务情况响应设备强选事件。
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
-          // 应用根据业务情况响应未知原因事件。
-          break;
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+  
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：语音通话。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+  // ...
+  
+    // 创建AudioRenderer实例。
+    audio.createAudioRenderer(audioRendererOptions, (err, renderer) => {
+      if (!err) {
+        console.info('Succeeded in creating audio renderer.');
+        // ...
+        audioRenderer = renderer;
+        // ...
+      } else {
+        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        // ...
       }
     });
-  }
-```
+    // ...
+  
+    try {
+      audioRenderer?.on('outputDeviceChangeWithInfo', (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+        console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
+        // ...
+        switch (deviceChangeInfo.changeReason) {
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+            // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
+            audioRenderer?.pause();
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+            // 应用根据业务情况响应设备可用事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+            // 应用根据业务情况响应设备强选事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+            // 应用根据业务情况响应未知原因事件。
+            break;
+        }
+      });
+    } catch (err) {
+      let error = err as BusinessError;
+      console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+      // ...
+    }
+  ```
 
 ArkTS-Sta示例：
 
@@ -170,46 +181,136 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 
 ### AudioSessionManager示例
 
-ArkTS-Dyn示例：
+  ArkTS-Dyn示例：
 
-```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+  
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：语音通话。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+  
+  let audioSessionManager = audio.getAudioManager().getSessionManager();
+  // ...
+  
+    // 创建AudioRenderer实例。
+    audio.createAudioRenderer(audioRendererOptions, (err, renderer) => {
+      if (!err) {
+        console.info('Succeeded in creating audio renderer.');
+        // ...
+        audioRenderer = renderer;
+        // ...
+      } else {
+        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        // ...
+      }
+    });
+    // ...
+  
+    // 设置音频会话策略。
+    let strategy: audio.AudioSessionStrategy = {
+      concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+    };
+  
+    // 激活AudioSession。
+    audioSessionManager.activateAudioSession(strategy).then(() => {
+      console.info('Succeeded in activating audio session.');
+      // ...
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+    // ...
+  
+    try {
+      // 订阅监听音频流输出设备变化及原因。
+      audioSessionManager.on('currentOutputDeviceChanged', async (deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
+        console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
+        // ...
+        switch (deviceChangeInfo.changeReason) {
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+            // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
+            audioRenderer?.pause();
+            console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+            // 应用根据业务情况响应设备可用事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+            // 应用根据业务情况响应设备强选事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+            // 应用根据业务情况响应未知原因事件。
+            break;
+        }
+      });
+    } catch (err) {
+      let error = err as BusinessError;
+      console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+      // ...
+    }
+  ```
 
-let audioRenderer: audio.AudioRenderer | undefined = undefined;
-let audioStreamInfo: audio.AudioStreamInfo = {
-  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-  channels: audio.AudioChannel.CHANNEL_2, // 通道。
-  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-};
-let audioRendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-  rendererFlags: 0 // 音频渲染器标志。
-};
-let audioRendererOptions: audio.AudioRendererOptions = {
-  streamInfo: audioStreamInfo,
-  rendererInfo: audioRendererInfo
-};
+  ArkTS-Sta示例：
 
-// 创建AudioRenderer实例。
-audio.createAudioRenderer(audioRendererOptions).then((data) => {
-  audioRenderer = data;
-  console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
-});
-
-if (audioRenderer) {
-  try {
-    let sessionManager = audio.getAudioManager().getSessionManager();
-    sessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  // ...
+  
+  let audioRenderer: audio.AudioRenderer | null = null;
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+  // ...
+  
+    audio.createAudioRenderer(audioRendererOptions).then((data) => {
+      audioRenderer = data as audio.AudioRenderer;
+      // ...
+    }).catch((err) => {
+      console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+    // ...
+  
+    let audioSessionManager = audio.getAudioManager().getSessionManager();
+    audioSessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
     // 订阅监听音频流输出设备变化及原因。
-    sessionManager.on('currentOutputDeviceChanged', async (deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
+    audioSessionManager.onCurrentOutputDeviceChanged((deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
+      console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
+      // ...
       switch (deviceChangeInfo.changeReason) {
         case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
           // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
-          // await audioRenderer.pause();
+          (audioRenderer as audio.AudioRenderer).pause();
           console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
           break;
         case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
@@ -223,67 +324,4 @@ if (audioRenderer) {
           break;
       }
     });
-  } catch (err) {
-    console.error(`on sessionManager#currentOutputDeviceChanged fail: ${err}`);
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
-
-``` TypeScript
-import { audio } from '@kit.AudioKit';
-// ...
-
-let audioRenderer: audio.AudioRenderer | null = null;
-let audioStreamInfo: audio.AudioStreamInfo = {
-  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-  channels: audio.AudioChannel.CHANNEL_2, // 通道。
-  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-};
-let audioRendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-  rendererFlags: 0 // 音频渲染器标志。
-};
-let audioRendererOptions: audio.AudioRendererOptions = {
-  streamInfo: audioStreamInfo,
-  rendererInfo: audioRendererInfo
-};
-// ...
-
-  audio.createAudioRenderer(audioRendererOptions).then((data) => {
-    audioRenderer = data as audio.AudioRenderer;
-    // ...
-  }).catch((err) => {
-    console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
-    // ...
-  });
-  // ...
-
-  let audioSessionManager = audio.getAudioManager().getSessionManager();
-  audioSessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
-  // 订阅监听音频流输出设备变化及原因。
-  audioSessionManager.onCurrentOutputDeviceChanged((deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
-    console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
-    // ...
-    switch (deviceChangeInfo.changeReason) {
-      case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-        // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
-        (audioRenderer as audio.AudioRenderer).pause();
-        console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
-        break;
-      case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
-        // 应用根据业务情况响应设备可用事件。
-        break;
-      case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
-        // 应用根据业务情况响应设备强选事件。
-        break;
-      case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
-        // 应用根据业务情况响应未知原因事件。
-        break;
-    }
-  });
-```
+  ```

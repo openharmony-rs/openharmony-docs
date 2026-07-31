@@ -1133,7 +1133,7 @@ struct CapsuleSegmentButtonV2Example {
     { text: '2in1' },     
     { text: '智能穿戴' },     
   ]);     
-  @Local textSelectedIndex: number = 0;     
+  @Local textSelectedIndex: int = 0;
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([     
     // 设置分段按钮选项图标。 
     { icon: $r('sys.media.ohos_ic_public_device_phone') },     
@@ -1141,7 +1141,7 @@ struct CapsuleSegmentButtonV2Example {
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },     
     { icon: $r('sys.media.ohos_ic_public_device_watch') },     
   ]);     
-  @Local imageSelectedIndex: number = 0;     
+  @Local imageSelectedIndex: int = 0;
   @Local symbolItems: SegmentButtonV2Items = new SegmentButtonV2Items([     
     // 分段按钮选项图标，Symbol类型。 
     { symbol: $r('sys.symbol.phone') },     

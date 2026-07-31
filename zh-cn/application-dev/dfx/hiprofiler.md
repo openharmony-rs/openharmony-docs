@@ -182,6 +182,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | use_file_cache_mode | bool | 是否使用文件缓存模式。<br/>true：使用文件缓存模式。<br/>false：不使用文件缓存模式。<br/>默认为false。 |文件缓存模式通过将缓存数据落盘，提升内存分配信息的采集性能，有效缓解应用进程在内存信息采集过程中可能出现的卡顿问题。<br/>**说明**：从API version 24开始，支持该参数。 | 
 | async_stack_enable | bool | 是否抓取异步栈。<br/>true：表示开启抓取异步栈功能。<br/>false：表示关闭抓取异步栈功能。 | 默认为false。<br/>**说明**：从API version 24开始，支持该参数。|
 | async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表[async_type参数介绍](#async_type参数介绍)。<br/>**说明**：从API version 24开始，支持该参数。|
+| discard_destroyed_traces | bool | 是否丢弃已释放内存的调用栈数据。<br>true：尽量丢弃已释放的调用栈数据，保留未释放的调用栈数据；<br>false：保留全部申请和释放内存调用栈数据。<br>默认为false。 | 设置为true时，可减少被调优应用的性能影响。<br>注意：<br>此功能仅在统计周期或文件缓存周期内生效，本插件会尽量匹配并丢弃已释放内存的调用栈数据；如果数据已持久化，则无法丢弃。<br>在共享内存模式（use_file_cache_mode为false）与详情模式（statistics_interval为0）同时开启的场景下，将无法丢弃已释放内存调用栈数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 
 ### restrace_tag参数介绍
 
@@ -209,6 +210,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
+| RES_COMPOSITE_HEAP | 三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件。 | 26.1.0 |
 
 ### async_type参数介绍
 
@@ -1064,19 +1066,21 @@ LocalHandle对象内存录制功能要求被测应用在启动时替换加载维
 
 应用替换加载维测库方法：
 
-1.应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
+1. 应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
 
-2.应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
+2. 应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
 
 > **说明：**
 >
-> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
+> 1. 应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
 >
-> 2.使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
+> 2. 使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
 >
-> 3.此种方式抓取到的LocalHandle内存一定是泄漏的。
+> 3. 此种方式抓取到的LocalHandle内存一定是泄漏的。
 >
-> 4.命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+>
+> 5. 从API版本26.0.0开始，统计模式支持采集local/global handle地址信息能力。
 
 
 ### 手动控制采集时长
@@ -1164,6 +1168,64 @@ $ hiprofiler_cmd \
    startup_mode: false
    max_js_stack_depth: 20
    use_file_cache_mode: true
+  }
+ }
+CONFIG
+```
+
+### 抓取指定进程三合一维测日志
+
+从API版本26.1.0开始支持抓取指定进程三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件，可配合[RES_ARK_GLOBAL_HANDLE](#抓取指定进程globalhandle对象的调用栈)和[RES_ARK_LOCAL_HANDLE](#抓取指定进程localhandle对象调用栈)使用。
+
+> **说明：**
+>
+> 抓取三合一维测日志，须在[native hook插件](#native-hook插件)配置中增加[restrace_tag参数](#restrace_tag参数介绍)为RES_COMPOSITE_HEAP。
+>
+> 三合一维测日志落盘在命令行-o指定的/data/local/tmp/目录下，是以hiprofiler_data_{timestamp}.zip命名的压缩文件。日志文件仅保留最新记录。
+>
+> 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。
+
+示例命令：
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 20
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   js_stack_report: 1
+   max_js_stack_depth: 20
+   filter_size: 0
+   statistics_interval: 10
+   restrace_tag: "RES_COMPOSITE_HEAP"
+   restrace_tag: "RES_ARK_LOCAL_HANDLE"
+   restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+   startup_mode: true
+   memtrace_enable: true
+   malloc_disable:false
+   discard_destroyed_traces: true
   }
  }
 CONFIG

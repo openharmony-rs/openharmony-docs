@@ -55,9 +55,9 @@
 | onDidAppear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
 | onWillDisappear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br /> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
 | onDidDisappear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
+| levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
 | levelUniqueId<sup>15+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是  | 设置页面级弹窗需要显示的层级下的[getUniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)。仅在levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>取值范围：大于等于0的数字。传入小于0的数字本项配置不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
-| immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
+| immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
 | levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
 | systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
@@ -1436,3 +1436,122 @@ struct AlertDialogExample {
 ```
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
+
+### 示例9（设置弹窗的显示层级与顺序）
+
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的levelMode、levelUniqueId、immersiveMode和levelOrder属性，实现页面内嵌入式弹窗的层级、蒙层效果及显示顺序控制。
+
+从API version 15开始，在AlertDialogParam中新增了levelMode、levelUniqueId和immersiveMode属性。从API version 18开始，在AlertDialogParam中新增了levelOrder属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 })
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 4,
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            }
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, Margin, DialogAlignment,
+  LevelOrder, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+import { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 } as Margin)
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 4,
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-levelmode](figures/image-alert-levelmode.png)

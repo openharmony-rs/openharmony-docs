@@ -10,7 +10,7 @@
 
 **API组合使用关系说明**：
 
-本模块的接口围绕通知的"授权→发布→取消→渠道管理"的完整流程展开，各接口间存在明确的组合使用关系：
+本模块的接口围绕通知的“授权→发布→取消→渠道管理”的完整流程展开，各接口间存在明确的组合使用关系：
 
 1. **授权查询与申请流程**：发布通知前，先通过isNotificationEnabled查询通知能力的授权状态。如果通知能力未授权，通过requestEnableNotification引导用户开启通知权限。
 
@@ -212,6 +212,7 @@ notificationManager.publish(notificationRequest).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知Request对象
 let notificationRequest: notificationManager.NotificationRequest = {
@@ -240,11 +241,11 @@ ArkTS-Dyn: cancel(id: number, label: string, callback: AsyncCallback\<void\>): v
 
 ArkTS-Sta: cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
 
-根据通知ID和标签取消已发布的通知。使用callback异步回调。
+根据通知ID和标签label取消已发布的通知。使用callback异步回调。
 
 取消后，对应的通知将从通知中心、状态栏等位置移除，用户不再可见。适用于需要精确取消某一条带有特定标签的通知的场景。
 
-与仅传入通知ID的[notificationManager.cancel(id, callback)](#notificationmanagercancel-2)相比，此接口额外传入label参数，可精确取消同一ID下不同标签的通知。
+与仅传入通知ID的[notificationManager.cancel(id, callback)](#notificationmanagercancel-2)相比，此接口额外传入label参数，可精确取消同一ID，不同标签的通知。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -257,7 +258,7 @@ ArkTS-Sta: cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
 | id       | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 通知ID，用于标识目标通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的id字段指定。               |
-| label    | string                | 是   | 通知标签，用于区分同一ID下不同标签的通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的label字段指定。             |
+| label    | string                | 是   | 通知标签，用于区分同一ID下不同标签的通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的label字段指定。<br> - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。<br> - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。             |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。根据通知ID和标签取消已发布的通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -310,7 +311,7 @@ ArkTS-Dyn: cancel(id: number, label?: string): Promise\<void\>
 
 ArkTS-Sta: cancel(id: int, label?: string): Promise\<void\>
 
-根据通知ID和标签取消已发布的通知，若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。使用Promise异步回调。
+根据通知ID和标签label取消已发布的通知。使用Promise异步回调。
 
 取消后，对应的通知将从通知中心、状态栏等位置移除，用户不再可见。
 
@@ -324,7 +325,7 @@ ArkTS-Sta: cancel(id: int, label?: string): Promise\<void\>
 
 | 参数名  | 类型   | 必填 | 说明     |
 | ----- | ------ | ---- | -------- |
-| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID，用于标识目标通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的id字段指定。   |
+| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID，用于标识目标通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的id字段指定。<br> - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。<br> - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。   |
 | label | string | 否   | 通知标签，默认为空。 |
 
 **返回值：**
@@ -360,6 +361,7 @@ notificationManager.cancel(0).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancel(0).then(() => {
   console.info(`Succeeded in canceling notification.`);
@@ -546,6 +548,7 @@ notificationManager.cancelAll().then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancelAll().then(() => {
   console.info(`Succeeded in canceling all notification.`);
@@ -673,6 +676,7 @@ notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).t
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
   console.info(`Succeeded in adding slot.`);
@@ -703,7 +707,7 @@ ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot
 | 参数名     | 类型                              | 必填 | 说明                                                        |
 | -------- | --------------------------------- | ---- | ----------------------------------------------------------- |
 | slotType | [SlotType](#slottype)                          | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 |
-| callback | AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | 是   | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的`NotificationSlot`，否则为错误对象。                                        |
+| callback | ArkTS-Dyn: AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\><br/>ArkTS-Sta: AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\|null\> | 是   | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的`NotificationSlot`，否则为错误对象。                                        |
 
 **错误码：**
 
@@ -773,13 +777,13 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 | 参数名     | 类型     | 必填 | 说明                                                        |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 |
+| slotType | [SlotType](#slottype) | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。 |
 
 **返回值：**
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | Promise对象，返回通知渠道对象。 |
+| ArkTS-Dyn: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\><br/>ArkTS-Sta: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\|null\> | Promise对象，返回通知渠道对象。 |
 
 **错误码：**
 
@@ -808,6 +812,7 @@ notificationManager.getSlot(slotType).then((data: notificationManager.Notificati
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot | null) => {
@@ -824,7 +829,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 获取当前应用的所有通知渠道。使用callback异步回调。
 
-用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。适用于需要查看所有渠道配置的场景。
+用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。适用于需要查看所有渠道配置的场景。需先通过[addSlot](#notificationmanageraddslot)创建对应类型的通知渠道，否则获取结果为空。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -888,7 +893,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 获取当前应用的所有通知渠道。使用Promise异步回调。
 
-用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。适用于需要查看所有渠道配置的场景。
+用于批量查询当前应用已创建的所有通知渠道的配置信息，包括各渠道的类型、提醒方式、级别等设置。适用于需要查看所有渠道配置的场景。需先通过[addSlot](#notificationmanageraddslot)创建对应类型的通知渠道，否则获取结果为空。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -927,6 +932,7 @@ notificationManager.getSlots().then((data: Array<notificationManager.Notificatio
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
   console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
@@ -953,7 +959,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                                                        |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
+| slotType | [SlotType](#slottype)              | 是   | 通知渠道类型，例如社交通信、服务提醒、内容咨询等类型。需传入已创建的渠道类型，否则删除操作无效。 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当删除指定类型的通知渠道成功，err为undefined，否则为错误对象。                                        |
 
 **错误码：**
@@ -1054,6 +1060,7 @@ notificationManager.removeSlot(slotType).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType).then(() => {
@@ -1170,6 +1177,7 @@ notificationManager.removeAllSlots().then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.removeAllSlots().then(() => {
   console.info(`Succeeded in removing all slots.`);
@@ -1295,6 +1303,7 @@ notificationManager.isNotificationEnabled().then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isNotificationEnabled().then((data: boolean) => {
   console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -1400,6 +1409,7 @@ notificationManager.setBadgeNumber(badgeNumber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let badgeNumber: int = 10;
 notificationManager.setBadgeNumber(badgeNumber).then(() => {
@@ -1527,6 +1537,7 @@ notificationManager.getBadgeNumber().then((badgeNumber: number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getBadgeNumber().then((badgeNumber: long) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
@@ -1542,9 +1553,9 @@ ArkTS-Dyn: getActiveNotificationCount(callback: AsyncCallback\<number\>): void
 
 ArkTS-Sta: getActiveNotificationCount(callback: AsyncCallback\<long\>): void
 
-获取当前应用未删除的通知数。使用callback异步回调。
+获取当前应用的通知数量。使用callback异步回调。
 
-用于查询当前应用在通知中心中仍处于活跃状态（未被用户删除或程序取消）的通知数量。适用于需要展示未读通知数量提示的场景。
+用于查询当前应用在通知中心中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1607,9 +1618,9 @@ ArkTS-Dyn: getActiveNotificationCount(): Promise\<number\>
 
 ArkTS-Sta: getActiveNotificationCount(): Promise\<long\>
 
-获取当前应用未删除的通知数。使用Promise异步回调。
+获取当前应用的通知数量。使用Promise异步回调。
 
-用于查询当前应用在通知中心中的通知数量。适用于需要展示未读通知数量提示的场景。
+用于查询当前应用在通知中心中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1648,6 +1659,7 @@ notificationManager.getActiveNotificationCount().then((data: number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotificationCount().then((data: long) => {
   console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
@@ -1763,6 +1775,7 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
   console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
@@ -1793,13 +1806,13 @@ ArkTS-Sta: getNotificationParameters(id: int, label?: string): Promise\<Notifica
 | 参数名  | 类型   | 必填 | 说明     |
 | ----- | ------ | ---- | -------- |
 | id    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID，用于标识目标通知。该值由发布通知时[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的id字段指定。   |
-| label | string | 否   | 通知标签，默认为空。 |
+| label | string | 否   | 通知标签，默认为空。<br> - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。<br> - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\> | Promise对象，返回wantAgent的部分信息。 |
+| ArkTS-Dyn: Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\><br/>ArkTS-Sta: Promise\<[NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24)\|null\> | Promise对象，返回wantAgent的部分信息。 |
 
 **错误码：**
 
@@ -1829,6 +1842,7 @@ notificationManager.getNotificationParameters(id, label).then((data: notificatio
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: int = 0;
 let label: string = "";
@@ -1957,6 +1971,7 @@ notificationManager.cancelGroup(groupName).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupName: string = "GroupName";
 notificationManager.cancelGroup(groupName).then(() => {
@@ -2080,6 +2095,7 @@ notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let templateName: string = 'downloadTemplate';
 notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
@@ -2257,6 +2273,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import common from '@ohos.app.ability.common';
 import { AppStorage } from '@ohos.arkui.stateManagement'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
     await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
@@ -2369,6 +2386,10 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
@@ -2431,6 +2452,10 @@ notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2603,7 +2628,7 @@ openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<Notifica
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise对象，返回此应用程序的通知设置。 | 
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise对象，返回此应用的通知设置。 | 
 
 **错误码：**
 
@@ -2675,7 +2700,7 @@ class MyAbility extends UIAbility {
 
 getNotificationSetting(): Promise\<NotificationSetting\>
 
-获取应用程序的通知设置，包括锁屏通知、横幅通知、桌面角标、振动、铃声等开关状态。使用Promise异步回调。
+获取应用的通知设置，包括锁屏通知、横幅通知、桌面角标、振动、铃声等开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2687,7 +2712,7 @@ getNotificationSetting(): Promise\<NotificationSetting\>
 
 | 类型               | 说明            |
 | ------------------ | --------------- |
-| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise对象，返回此应用程序的通知设置。 |
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise对象，返回此应用的通知设置。 |
 
 **错误码：**
 
@@ -2714,6 +2739,7 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
@@ -2885,7 +2911,7 @@ type BundleOption = _BundleOption
 
 指定应用的包信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2901,7 +2927,7 @@ type NotificationActionButton = _NotificationActionButton
 
 通知中显示的操作按钮。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2917,7 +2943,7 @@ type NotificationBasicContent = _NotificationBasicContent
 
 普通文本通知。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2933,7 +2959,7 @@ type NotificationContent = _NotificationContent
 
 通知内容。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2949,7 +2975,7 @@ type NotificationLongTextContent = _NotificationLongTextContent
 
 长文本通知。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2965,7 +2991,7 @@ type NotificationMultiLineContent = _NotificationMultiLineContent
 
 多行文本通知。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2981,7 +3007,7 @@ type NotificationPictureContent = _NotificationPictureContent
 
 附有图片的通知。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -2997,7 +3023,7 @@ type NotificationSystemLiveViewContent = _NotificationSystemLiveViewContent
 
 系统实况窗通知内容。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：11
 
@@ -3013,7 +3039,7 @@ type NotificationRequest = _NotificationRequest
 
 通知请求。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -3031,7 +3057,7 @@ type NotificationParameters = _NotificationParameters
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：24
 
@@ -3047,7 +3073,7 @@ type DistributedOptions = _DistributedOptions
 
 分布式选项。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -3063,7 +3089,7 @@ type NotificationSlot = _NotificationSlot
 
 通知渠道。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -3079,7 +3105,7 @@ type NotificationTemplate = _NotificationTemplate
 
 通知模板。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -3095,7 +3121,7 @@ type NotificationUserInput = _NotificationUserInput
 
 保存用户输入的通知消息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
 
@@ -3111,7 +3137,7 @@ type NotificationCapsule = _NotificationCapsule
 
 通知胶囊。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：11
 
@@ -3127,7 +3153,7 @@ type NotificationButton = _NotificationButton
 
 通知按钮。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：11
 
@@ -3143,7 +3169,7 @@ type NotificationTime = _NotificationTime
 
 通知计时信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：11
 
@@ -3159,7 +3185,7 @@ type NotificationProgress = _NotificationProgress
 
 通知进度。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：11
 

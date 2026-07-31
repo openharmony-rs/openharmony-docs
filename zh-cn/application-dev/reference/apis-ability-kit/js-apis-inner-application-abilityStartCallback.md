@@ -56,7 +56,7 @@ ArkTS-Sta: onError(code: int, name: string, message: string): void
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
 | code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 拉起UIExtensionAbility执行失败时返回的结果码。 |
-| name | string | 是    | 拉起UIExtensionAbility执行失败时返回的名称。 |
+| name | string | 是    | 拉起UIExtensionAbility执行失败时返回的错误名称，用于标识错误类型。 |
 | message | string | 是    | 拉起UIExtensionAbility执行失败时返回的错误信息。 |
 
 **示例：**
@@ -161,10 +161,10 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
       }
     };
 

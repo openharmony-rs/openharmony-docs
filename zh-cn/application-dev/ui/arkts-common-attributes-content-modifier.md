@@ -222,4 +222,5 @@ ArkTS-Sta示例：
    }
  }
  ```
+ 
 ![](figures/common_builder.gif)

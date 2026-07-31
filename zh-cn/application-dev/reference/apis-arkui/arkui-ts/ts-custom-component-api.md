@@ -492,7 +492,7 @@ struct MyComponent {
     Column() {
       Button('Close Dialog')
         .onClick(() => {
-          let ctrl: PromptActionDialogController = this.getDialogController();
+          let ctrl: PromptActionDialogController | undefined = this.getDialogController();
           if (ctrl != undefined) {
             ctrl.close();
           }

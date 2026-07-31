@@ -153,6 +153,7 @@ createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 创建[GattClientDevice](#gattclientdevice)实例，表示GATT连接中的client端，可通过[GattSetting](#gattsetting)设置GATT连接参数。
 - 通过该实例可以操作client端行为，如调用[connect](#connect)向对端设备发起连接，调用[getServices](#getservices)获取对端设备支持的所有服务能力。
 - 创建该实例所需要的设备地址表示server端设备。可以通过[ble.startBLEScan](#blestartblescan)或[BleScanner](#blescanner15)的[startScan](#startscan15)接口获取server端设备地址，且需保证server端设备的BLE广播是可连接的。
+- 通过[GattSetting](#gattsetting)设置连接的传输类型transport时，若不清楚设备的传输类型[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)，默认为[TRANSPORT_LE](js-apis-bluetooth-connection.md#bluetoothtransport)，但不能设置为[TRANSPORT_UNKNOWN](js-apis-bluetooth-connection.md#bluetoothtransport)（未知的设备传输方式），否则无法成功创建[GattClientDevice](#gattclientdevice)实例。
 
 **起始版本**：26.0.0
 
@@ -206,7 +207,9 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 获取和本机设备已连接GATT的BLE设备集合。
 - 建议给server端使用，client端使用返回的设备地址集合为空。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -250,7 +253,9 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 - 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
 - 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本21-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -409,7 +414,9 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 - 同步接口，不要和API version 11的[ble.stopAdvertising](#blestopadvertising11)搭配使用。
 
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+**需要权限**：
+- API版本23+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+- API版本10-22：ohos.permission.ACCESS_BLUETOOTH
 
 - 当应用使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
@@ -438,9 +445,9 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900010 | The number of advertising resources reaches the upper limit.       |
+|2900010 | The number of advertising resources reaches the upper limit.<br>适用版本：20+       |
 |2900099 | Operation failed.                        |
-|2902054 | The length of the advertising data exceeds the upper limit.        |
+|2902054 | The length of the advertising data exceeds the upper limit.<br>适用版本：20+        |
 
 **示例**：
 
@@ -542,7 +549,9 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+**需要权限**：
+- API版本23+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+- API版本11-22：ohos.permission.ACCESS_BLUETOOTH
 
 - 当使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要同步申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
@@ -568,9 +577,9 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 |801     | Capability not supported.                |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900010 | The number of advertising resources reaches the upper limit.       |
+|2900010 | The number of advertising resources reaches the upper limit.<br>适用版本：20+       |
 |2900099 | Operation failed.                        |
-|2902054 | The length of the advertising data exceeds the upper limit.        |
+|2902054 | The length of the advertising data exceeds the upper limit.<br>适用版本：20+        |
 
 **示例**：
 
@@ -646,7 +655,9 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11-1)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+**需要权限**：
+- API版本23+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+- API版本11-22：ohos.permission.ACCESS_BLUETOOTH
 
 - 当使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要同步申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
@@ -677,9 +688,9 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 |801     | Capability not supported.                |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900010 | The number of advertising resources reaches the upper limit.       |
+|2900010 | The number of advertising resources reaches the upper limit.<br>适用版本：20+       |
 |2900099 | Operation failed.                        |
-|2902054 | The length of the advertising data exceeds the upper limit.        |
+|2902054 | The length of the advertising data exceeds the upper limit.<br>适用版本：20+        |
 
 **示例**：
 
@@ -776,7 +787,7 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: As
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -892,7 +903,7 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise&lt;
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -1001,7 +1012,7 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback:
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -1113,7 +1124,7 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise&
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -1219,7 +1230,7 @@ stopAdvertising(advertisingId: number, callback: AsyncCallback&lt;void&gt;): voi
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -1329,7 +1340,7 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.                        |
+|2902055 | Invalid advertising id.<br>适用版本：20+                        |
 
 **示例**：
 
@@ -1495,7 +1506,9 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): vo
 
 订阅BLE设备扫描结果上报事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1517,7 +1530,7 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): vo
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1928,7 +1941,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -1978,7 +1991,7 @@ disconnect(deviceId: string): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -2198,7 +2211,9 @@ on(type: 'characteristicRead', callback: Callback&lt;CharacteristicReadRequest&g
 
 server端订阅client的特征值读请求事件，server端收到该事件后需要调用[sendResponse](#sendresponse)接口回复client。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2220,7 +2235,7 @@ server端订阅client的特征值读请求事件，server端收到该事件后�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -2299,7 +2314,9 @@ on(type: 'characteristicWrite', callback: Callback&lt;CharacteristicWriteRequest
 
 server端订阅client的特征值写请求事件，server端收到该事件后需要根据[CharacteristicWriteRequest](#characteristicwriterequest)中的needRsp决定是否调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2321,7 +2338,7 @@ server端订阅client的特征值写请求事件，server端收到该事件后�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -2403,7 +2420,9 @@ on(type: 'descriptorRead', callback: Callback&lt;DescriptorReadRequest&gt;): voi
 
 server端订阅client的描述符读请求事件，server端收到该事件后需要调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2425,7 +2444,7 @@ server端订阅client的描述符读请求事件，server端收到该事件后�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -2504,7 +2523,9 @@ on(type: 'descriptorWrite', callback: Callback&lt;DescriptorWriteRequest&gt;): v
 
 server端订阅client的描述符写请求事件，server端收到该事件后需要根据[DescriptorWriteRequest](#descriptorwriterequest)里的needRsp决定是否调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2526,7 +2547,7 @@ server端订阅client的描述符写请求事件，server端收到该事件后�
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -2608,7 +2629,9 @@ on(type: 'connectionStateChange', callback: Callback&lt;BLEConnectionChangeState
 
 server端订阅GATT profile协议的连接状态变化事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2630,7 +2653,7 @@ server端订阅GATT profile协议的连接状态变化事件。使用Callback异
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
 **示例**：
@@ -3429,14 +3452,14 @@ client端从指定的server端特征值读取数据。使用Callback异步回调
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901000 | Read forbidden.                         |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3513,14 +3536,14 @@ client端从指定的server端特征值读取数据。使用Promise异步回调�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901000 | Read forbidden.                         |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3583,14 +3606,14 @@ client端从指定的server端描述符读取数据。使用Callback异步回调
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901000 | Read forbidden.                         |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3660,14 +3683,14 @@ client端从指定的server端描述符读取数据。使用Promise异步回调�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.               |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901000 | Read forbidden.                         |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3726,14 +3749,14 @@ client端向指定的server端特征值写入数据。使用Callback异步回调
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901001 | Write forbidden.                        |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3809,14 +3832,14 @@ client端向指定的server端特征值写入数据。使用Promise异步回调�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901001 | Write forbidden.                        |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3881,14 +3904,14 @@ client端向指定的server端描述符写入数据。使用Callback异步回调
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
-|2901001 | Write forbidden.                        |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901001 | Write forbidden.                         |
+|2901003 | The connection is not established.<br>适用版本：20+                 |
+|2901004 | The connection is congested.<br>适用版本：20+                 |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                 |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                 |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -3958,14 +3981,14 @@ client端向指定的server端描述符写入数据。使用Promise异步回调�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
 |2901001 | Write forbidden.                        |
-|2901003 | The connection is not established.                |
-|2901004 | The connection is congested.                |
-|2901005 | The connection is not encrypted.                |
-|2901006 | The connection is not authenticated.                |
-|2901007 | The connection is not authorized.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
+|2901004 | The connection is congested.<br>适用版本：20+                |
+|2901005 | The connection is not encrypted.<br>适用版本：20+                |
+|2901006 | The connection is not authenticated.<br>适用版本：20+                |
+|2901007 | The connection is not authorized.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4021,8 +4044,9 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4072,8 +4096,9 @@ client端获取GATT连接链路信号强度 (Received Signal Strength Indication
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20-21 |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4139,6 +4164,65 @@ try {
 ```
 
 
+### setBLEMtu
+
+setBLEMtu(mtu: number): Promise&lt;number&gt;
+
+client端同server端协商[MTU](../../connectivity/terminology.md#mtu)（最大传输单元）大小。<br>
+- 需先调用[connect](#connect-1)方法，等GATT profile连接成功后才能使用。<br>
+- 需保证入参符合取值范围，不在取值范围内会直接返回异常。<br>
+- 如果未协商，MTU大小默认为23字节。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名  | 类型     | 必填   | 说明             |
+| ---- | ------ | ---- | -------------- |
+| mtu  | number | 是    | 需要协商的mtu大小，取值范围：[23, 517]，单位：Byte。 |
+
+**返回值**：
+
+| 类型                    | 说明                                |
+| --------------------- | --------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回实际协商成功的Mtu结果，单位：Byte。 |
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900011 | The operation is busy. The last operation is not complete.                        |
+|2900099 | Operation failed.                        |
+|2901003 | The connection is not established.                |
+
+
+**示例**：
+
+```js
+try {
+    let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+    device.setBLEMtu(128).then(outMtuSize => {
+        console.info('实际设置的mtu：' + outMtuSize);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ### setCharacteristicChangeNotification
 
 setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -4178,9 +4262,9 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4258,9 +4342,9 @@ client端启用或者禁用接收server端特征值内容变更通知的能力�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4327,9 +4411,9 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+             |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -4407,9 +4491,9 @@ client端启用或者禁用接收server端特征值内容变更指示的能力�
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
-|2900011 | The operation is busy. The last operation is not complete.             |
+|2900011 | The operation is busy. The last operation is not complete.<br>适用版本：20+          |
 |2900099 | Operation failed.                        |
-|2901003 | The connection is not established.                |
+|2901003 | The connection is not established.<br>适用版本：20+                |
 
 **示例**：
 
@@ -5244,7 +5328,9 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 
 订阅BLE设备扫描结果上报事件。使用Callback异步回调。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本15-24：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -5266,7 +5352,7 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：15-24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -5526,6 +5612,7 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | deviceId | string                                            | 否 | 否   | 对端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 否 | 否   | GATT profile连接状态。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | reason<sup>20+</sup>    | [GattDisconnectReason](#gattdisconnectreason20) | 否 | 是   | GATT链路断连原因，仅在连接状态为 [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) 时提供，其他连接状态下断连原因默认为undefined。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| reasonMessage    | string | 否 | 是   | GATT链路断连原因，仅在连接状态为 [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) 时提供，其他连接状态下断连原因默认为undefined。例如：本端主动断开连接时，返回：0X16_LOCAL_HOST。 **起始版本**：26.0.0 <br> **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 
 ## ScanResult

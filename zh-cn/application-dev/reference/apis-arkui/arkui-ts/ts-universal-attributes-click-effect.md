@@ -106,7 +106,7 @@ clickEffect(value: ClickEffect | null | undefined)
 
 | 名称  | 类型                                                  | 只读    | 可选   |  说明                                                         |
 | ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
-| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | 否   | 否  |设置当前组件的点击回弹效果。<br/>默认值：ClickEffectLevel.LIGHT<br/>**说明：**<br/>当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。 |
+| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | 否   | 否  |点击回弹效果级别。<br/>默认值：ClickEffectLevel.LIGHT<br/>**说明：**<br/>当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。 |
 | scale |  ArkTS-Dyn: number<br/>ArkTS-Sta: double                               | 否   | 是  |回弹缩放比例，支持在设置ClickEffectLevel的基础上微调。<br/>**说明：**<br/>当level为ClickEffectLevel.LIGHT时，默认值：0.90 <br/>当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95 <br/>当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90 <br/>当scale为undefined或者null时，使用当前level对应的默认缩放比例。 |
 
 ## 示例

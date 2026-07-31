@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-音效播放器提供了加载、卸载和播放系统声音的功能。
+音效播放器提供了加载、卸载和播放系统音效的功能。
 
 SystemSoundPlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSoundManager.md)配合使用，才能完成管理系统音效的功能。
 

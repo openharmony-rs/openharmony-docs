@@ -40,7 +40,15 @@
       - [显式Want与隐式Want匹配规则](explicit-implicit-want-mappings.md)
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
-    - [组件启动规则](component-startup-rules.md)
+    - 组件启动规则<!--component-startup-rules-->
+      - [设备内组件启动规则](component-startup-rules-inner-device.md)
+      <!--Del-->
+      - [设备内组件启动规则（仅对系统应用开放）](component-startup-rules-inner-device-sys.md)
+      <!--DelEnd-->
+      - [跨设备组件启动规则](component-startup-rules-cross-device.md)
+      <!--Del-->
+      - [跨设备组件启动规则（仅对系统应用开放）](component-startup-rules-cross-device-sys.md)
+      <!--DelEnd-->
     - [获取/设置环境变量](subscribe-system-environment-variable-changes.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
@@ -111,7 +119,8 @@
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)
   - [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](modular-object-extension-development.md)
-  - [使用Taihe实现ModularObjectExtensionAbility的IPC通信](modular-object-extension-ability-taihe.md)
+  - [使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)](modular-object-extension-ability-taihe.md)
+  - [使用ModularObjectDispatcher实现动态接口调用 (C/C++)](modular-object-dispatcher-development.md)
 - Native子进程开发指导<!--native-childprocess-development-->
     - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)

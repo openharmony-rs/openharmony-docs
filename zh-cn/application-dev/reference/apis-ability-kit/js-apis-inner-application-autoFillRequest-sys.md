@@ -125,6 +125,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
+      // 初始化LocalStorage
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
         'fillCallback': callback,
         'message': 'AutoFill Page',
@@ -717,6 +718,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     console.info(`testTag. Get fill request type: ${JSON.stringify(request.type)}.`);
 
     try {
+      // 初始化LocalStorage，存储保存回调
       let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> =
         {
           'message': 'AutoFill Page',
@@ -746,6 +748,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
     try {
+      // 初始化LocalStorage，存储保存回调
       let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
         'message': 'AutoFill Page',
         'saveCallback': callback
