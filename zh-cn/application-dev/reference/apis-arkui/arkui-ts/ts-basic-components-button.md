@@ -706,8 +706,6 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -815,8 +813,6 @@ struct ButtonRenderControlExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -898,8 +894,6 @@ struct ButtonTestDemo {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -991,8 +985,6 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -1072,8 +1064,6 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -1184,8 +1174,6 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -1212,10 +1200,10 @@ import {
 @Builder
 function buildButton1(config: ButtonConfiguration) {
   Column({ space: 30 } as ColumnOptions) {
-    Text(config.enabled ? "enabled true" : "enabled false")
-    Text('圆圈状态' + (config.pressed ? "（ 按压 ）" : "（ 非按压 ）"))
-    Text('点击位置x坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).x : "0"))
-    Text('点击位置y坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).y : "0"))
+    Text(config.enabled ? 'enabled true' : 'enabled false')
+    Text('圆圈状态' + (config.pressed ? '（ 按压 ）' : '（ 非按压 ）'))
+    Text('点击位置x坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).x : '0'))
+    Text('点击位置y坐标：' + (config.enabled ? (config.contentModifier as MyButtonStyle).y : '0'))
     Circle({ width: 50, height: 50 })
       .fill(config.pressed ? (config.contentModifier as MyButtonStyle).selectedColor : Color.Black)
       .gesture(
@@ -1321,8 +1309,6 @@ struct ButtonExample {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
@@ -1402,8 +1388,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static';
-
 import {
   Entry,
   Component,
