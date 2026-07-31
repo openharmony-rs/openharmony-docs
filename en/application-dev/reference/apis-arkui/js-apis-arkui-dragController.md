@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-07-29T09:15:03.383Z pushedAt=2026-07-31T08:27:39.223Z -->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-07-29T09:15:03.383Z pushedAt=2026-07-31T10:59:09.475Z -->
 
 This module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein. It is suitable for scenarios where the application needs to independently control the timing of drag initiation, drag preview effects, and drag data transfer, implementing more flexible custom drag interactions.
 
@@ -1340,8 +1340,7 @@ Enumerates hover detection states during drag operations.
 
 | Name| Value|Description                                                         |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | 0 |Initial state when a dragged item enters the component boundary and remains stationary for the duration specified 
- by [stillTimeLimit](#dragspringloadingconfiguration20). This state enables preparation operations such as data preparation and state recording required for hover detection. |
+| BEGIN  | 0 |Initial state when a dragged item enters the component boundary and remains stationary for the duration specified by [stillTimeLimit](#dragspringloadingconfiguration20). This state enables preparation operations such as data preparation and state recording required for hover detection. |
 | UPDATE | 1 |Periodic notification state during sustained hover detection. In this state, periodic updates refresh UI effects to highlight the hover state.|
 | END    | 2 |Final state indicating completion of the hover detection cycle, which is triggered when the dragged item remains stationary after the last **UPDATE** notification. After entering **END**, the dragged item must move out of the component boundary and re-enter the component boundary, or move into a child component within the component, for hover detection to restart. In this state, the application can perform cleanup, navigation, or view switching operations. |
 | CANCEL | 3 |Interruption state of hover detection triggered by termination events, which include the following: finger or mouse release, window switching, screen off, exiting the component boundary, entering child components within the component, or exceeding the movement threshold within the component. The application will restore the UI style and cancel pending navigation and view switching operations. |

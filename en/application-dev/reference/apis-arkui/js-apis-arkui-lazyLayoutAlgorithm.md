@@ -281,3 +281,5 @@ Input parameters for constructing the custom lazy loading layout algorithm, whic
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | axis | [Axis](./arkui-ts/ts-appendix-enums.md#axis) | No | Yes | Main axis direction of the lazy loading layout. **Axis.Vertical** is used for the vertical layout of the main axis, and **Axis.Horizontal** is used for the horizontal layout of the main axis.<br/>Default value: **Axis.Vertical** |
+
+<!--no_check-->

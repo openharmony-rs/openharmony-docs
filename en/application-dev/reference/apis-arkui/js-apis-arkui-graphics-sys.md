@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:26:01.246Z pushedAt=2026-07-31T07:38:32.541Z -->
+<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:26:01.246Z pushedAt=2026-07-31T10:52:56.254Z -->
 
 The **Graphics** module provides APIs for defining attributes of a custom node, which supports HDR color creation, color space management and query, and color component retrieval. It is applicable to scenarios requiring HDR color processing and custom node attribute configuration in the stage model.
 
@@ -67,7 +67,7 @@ Instantiates the HDR-supported **ColorMetrics** class using the [color space](./
 
 | Parameter| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| exposure | number | Yes | Logarithmic exposure coefficient. Value range: [0, +∞). **0.0** indicates the standard exposure coefficient, and a value greater than 0.0 indicate the exposure degree that increases exponentially. Negative values are automatically clamped to 0.0. |
+| exposure | number | Yes | Logarithmic exposure coefficient. Value range: [0, +∞). **0.0** indicates the standard exposure coefficient, and a value greater than 0.0 indicates the exposure degree that increases exponentially. Negative values are automatically clamped to 0.0. |
 | colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | Yes   | Color space used to specify the color space of the color. To use **ColorSpace.DISPLAY_P3**, call [setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1) in the current window to set the current window to the wide color gamut mode. |
 | red   | number | Yes   | Red component of the color, which is a floating-point number ranging from 0.0 to 1.0. Values outside this range are automatically clamped to [0.0, 1.0]. |
 | green | number | Yes   | Green component of the color, which is a floating-point number ranging from 0.0 to 1.0. Values outside this range are automatically clamped to [0.0, 1.0]. |

@@ -6,7 +6,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:18:37.755Z pushedAt=2026-07-30T07:07:51.182Z -->
+<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:18:37.755Z pushedAt=2026-07-31T11:05:24.702Z -->
 
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. It supports generating a component tree through **@Builder**, implementing component reuse and recycling, cross-node event posting, and state synchronization. It is suitable for scenarios where custom component nodes are dynamically created and managed within applications. For details, see [BuilderNode Development](../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
 
@@ -629,7 +629,7 @@ Posts a raw touch event to the FrameNode created by this BuilderNode. This is su
 
 **postTouchEvent** posts the event from a middle node in the component tree downwards. To ensure the event is posted correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent). **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
@@ -2114,7 +2114,7 @@ Posts a raw touch event to the FrameNode created by a ReactiveBuilderNode. This 
 
 **postTouchEvent** posts the event from a middle node in the component tree downwards. To ensure the event is posted correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent). **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
