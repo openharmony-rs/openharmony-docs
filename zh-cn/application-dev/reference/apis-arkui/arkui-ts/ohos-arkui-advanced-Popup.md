@@ -480,8 +480,6 @@ struct PopupPage {
 ArkTS-Sta示例：
 
 ``` ts
-'use static';
-
 // xxx.ets
 import { Component, Row, Entry, FlexAlign, FontWeight, Color, $r, Direction } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
