@@ -1667,7 +1667,7 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
       console.error("removeFusionFence: BusinessError=" + JSON.stringify(error));
     });
   } catch(error) {
-    console.error("addFusionFence: error=" + JSON.stringify(error));
+    console.error("removeFusionFence: error=" + JSON.stringify(error));
   }
   ```
 
