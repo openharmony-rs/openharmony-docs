@@ -175,18 +175,18 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-6.1-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-6.1-LTS --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.1-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.1-LTS --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -197,14 +197,14 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-6.1-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-6.1-LTS --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.1-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.1-LTS --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
