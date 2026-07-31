@@ -12,11 +12,15 @@
 
 DRM解决方案所支持的内容保护安全级别，用于描述内容解密、解码和渲染的安全程度。常见级别包括：软件加密（SW_CRYPTO）、硬件加密（HW_CRYPTO）、硬件安全解码（HW_SECURE_CRYPTO）、硬件安全解码器（HW_SECURE_DECODER）、硬件安全全路径（HW_SECURE_ALL）等。
 
+### cencinfo；视音频数据帧加密信息
+
+视音频数据帧加密的描述信息，包括加密算法及模式、密钥标识（KeyId）、初始向量（IV）、子样本加密信息（subsample）等。在使用AVCodec Kit时，可将这些加密描述信息设置到AVBuffer的CencInfo中，在调用PushInputBuffer时，播放器根据这些信息完成视音频数据帧的解密和解码。
+
 ## D
 
 ### DRM Kit；数字版权保护服务
 
-Digital Rights Management Kit的缩写，提供了DRM加密节目授权解密的功能，包括DRM插件管理、DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等功能。可实现DRM解决方案的集成、DRM解决方案的证书下载、节目的授权及解密。
+数字版权保护服务（Digital Rights Management Kit）提供了DRM加密节目授权解密的功能，包括DRM插件管理、DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等功能。可实现DRM解决方案的集成、DRM解决方案的证书下载、节目的授权及解密。
 
 ### DRM Plugin；DRM插件
 
@@ -28,13 +32,13 @@ Digital Rights Management Kit的缩写，提供了DRM加密节目授权解密的
 
 ### DRM Certificate；DRM证书
 
-DRM解决方案正常工作所需的设备证书，用于验证设备的合法性和安全性。不同DRM解决方案对应不同的设备证书。一般情况下，设备证书由DRM系统在设备注册时自动下发，无需应用层处理。如遇证书缺失或过期等异常情况，需按具体DRM解决方案的证书更新流程重新获取。
+DRM解决方案正常工作所需的设备证书，用于验证设备的合法性和安全性。不同DRM解决方案对应不同的设备证书。一般情况下，设备证书由DRM系统在设备注册时自动下发，无需应用层处理。
 
-### Provision；DRM证书下载
+### DRM Provision；DRM证书下载
 
 DRM解决方案采用证书下载流程获取设备证书。不同DRM解决方案的证书下载流程不同，通常情况下，DRM证书由设备出厂预置或DRM系统自动完成下载，应用层无需额外处理。如需应用主动触发下载，请向所选用DRM解决方案的提供商索取证书管理接口文档。
 
-### MediaKeySystemInfo；DRM信息
+### DRM MediaKeySystemInfo；DRM信息
 
 DRM节目加密的描述信息，包括DRM解决方案UUID及pssh数据等。应用可以通过业务提供的DRM描述得到节目的DRM信息，也可以根据Media Kit或AVCodec Kit在ArkTS环境下抛出的mediaKeySystemInfoUpdate事件或在C/C++环境下抛出的MediaKeySystemInfo回调得到节目的DRM信息。
 
@@ -45,8 +49,6 @@ DRM节目加密的描述信息，包括DRM解决方案UUID及pssh数据等。应
 ### DRM Content Decryption；DRM节目解密
 
 对加密的DRM节目内容进行解密的过程。DRM Kit支持的媒体协议包括HLS、DASH；封装格式包括MP4、TS；视频编码格式包括H264；音频编码格式包括AAC。
-
-## L
 
 ### DRM Content License；DRM内容许可证
 
@@ -92,13 +94,8 @@ DRM设备证书下载过程中生成的请求信息，包含设备信息和证�
 
 实现安全解密、安全解码、安全渲染、安全输出的完整视频处理通路。确保内容在整个处理过程中不被非法获取，依赖DRM解决方案及操作系统的硬件安全能力支持。
 
-## V
-
-### cencinfo；视音频数据帧加密信息
-
-视音频数据帧加密的描述信息，包括加密算法及模式、密钥标识（KeyId）、初始向量（IV）、子样本加密信息（subsample）等。在使用AVCodec Kit时，可将这些加密描述信息设置到AVBuffer的CencInfo中，在调用PushInputBuffer时，播放器根据这些信息完成视音频数据帧的解密和解码。
+## U
 
 ### Universal Unique Identifier(UUID)；唯一标识符
-
 
 用于标识不同的DRM解决方案。每个DRM解决方案都有唯一的UUID，应用通过UUID识别并创建对应的MediaKeySystem实例。
