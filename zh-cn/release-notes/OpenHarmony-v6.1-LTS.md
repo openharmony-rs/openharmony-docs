@@ -131,14 +131,10 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 | 软件 | 版本 | 备注 | 
 | -------- | -------- | -------- |
-| OpenHarmony |  | NA | 
-| Public SDK |  | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
-| 统一SDK |  | 面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力。 |
-| HUAWEI DevEco Studio（可选） | 6.1.0 Release | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
+| OpenHarmony | 6.1 LTS | NA | 
+| Public SDK | Ohos_sdk_public 6.1.0.35 (API Version 23 Release) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| HUAWEI DevEco Studio（可选） | 6.1.0 Release | OpenHarmony应用开发推荐使用。<br />[请点击这里获取](https://developer.huawei.com/consumer/cn/download/)。 | 
 | HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
-
-
-## 源码获取
 
 
 ### 前提条件
@@ -177,11 +173,135 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 ### 通过repo获取
 
+**方式一（推荐）**
+
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-6.1-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.1-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+**方式二**
+
+通过repo + https 下载。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-6.1-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.1-Release --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
 
 
+### 前提条件
+
+1. 注册gitcode账号。
+
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
+
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
+  
+   ```shell
+   git config --global user.name "yourname"
+   git config --global user.email "your-email-address"
+   git config --global credential.helper store
+   ```
+
+4. 执行如下命令安装gitcode的repo工具。
+
+   下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
+  
+   ```shell
+   mkdir ~/bin
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
+   chmod a+x ~/bin/repo
+   pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+   ```
+
+5. 将repo添加到环境变量。
+
+   ```shell
+   vim ~/.bashrc               # 编辑环境变量
+   export PATH=~/bin:$PATH     # 在环境变量的最后添加一行repo路径信息
+   source ~/.bashrc            # 应用环境变量
+   ```
+
+
+### 通过repo获取
+
+**方式一（推荐）**
+
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-6.1-LTS --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v6.1-LTS --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+**方式二**
+
+通过repo + https 下载。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-6.1-LTS --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v6.1-LTS --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
 
 ### 从镜像站点获取
 
+**表2** 获取源码路径
+
+| 版本源码 | **版本信息** | **下载站点** | **SHA256校验码** | **软件包容量** |
+|---------------------------------------|------------|------------------------------------------------------------|------------------------------------------------------------|--------|
+| 全量代码（标准、轻量和小型系统）        | 6.1 LTS  | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3861解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3863解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3861 64K解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3863 64K解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3516解决方案-LiteOS（二进制） | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| Hi3516解决方案-Linux（二进制）  | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| RK3568标准系统解决方案（二进制）ROM包        | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| RK3568标准系统解决方案（二进制）XTS包        | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| P7885标准系统解决方案（二进制）ROM包        | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| P7885标准系统解决方案（二进制）XTS包        | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| 标准系统Public SDK包（Mac）             | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| 标准系统Public SDK包（Mac-M1）             | *软件包上传中* | *软件包上传中* | *软件包上传中* |
+| 标准系统Public SDK包（Windows/Linux）   | *软件包上传中* | *软件包上传中* | *软件包上传中* |
 
 
 ## 遗留缺陷列表
@@ -193,3 +313,6 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 | [13048](https://gitcode.com/openharmony/multimedia_audio_framework/issues/13048) | 进程audio_server有低概率因libaudio_policy_service.z.so导致cppcrash。 | 进程会自动重启 | 7.0版本 |
 | [51](https://gitcode.com/openharmony/device_soc_unisoc/issues/51) | 测试过程中P7785开发板低概率出现白屏，显示`abnormal mode: init-mmc-fat failed Please check SD card`。原因为测试用例进入到updater模式导致。 | 不进入updater模式可规避此问题。<br />P7885开发板计划在7.1版本适配updater模式。 | 7.1版本 |
 | [24762](https://gitcode.com/openharmony/graphic_graphic_2d/issues/24762) | P7885开发板配套Vulkan版本为1.2，测试套件要求Vulkan版本高于1.3，导致部分测试用例执行失败。 | 不影响正常使用，兼容性认证时建议申请豁免。<br />P7885开发板计划在7.1版本升级Vulkan版本。 | 7.1版本 |
+
+
+<!--no_check-->
