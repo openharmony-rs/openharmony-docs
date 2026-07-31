@@ -12,7 +12,7 @@ typedef struct OH_Data_VBuckets OH_Data_VBuckets
 
 ## 概述
 
-定义OH_Data_VBuckets结构类型。
+定义OH_Data_VBuckets结构体类型。
 
 **起始版本：** 18
 

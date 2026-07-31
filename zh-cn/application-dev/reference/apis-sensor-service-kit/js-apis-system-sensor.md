@@ -6,21 +6,15 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-## 模块简介
+@system.sensor模块是面向轻量穿戴（Lite Wearable）设备的传感器数据订阅模块，提供对加速度、罗盘、距离、环境光、计步、气压计、心率、佩戴状态、设备方向及陀螺仪传感器的数据订阅与取消订阅能力。
 
-@system.sensor模块是面向轻量穿戴（Lite Wearable）设备的传感器数据订阅模块，提供对加速度传感器、罗盘传感器、距离传感器、环境光传感器、计步传感器、气压计传感器、心率传感器、设备佩戴状态传感器、设备方向传感器及陀螺仪传感器的数据订阅与取消订阅能力。
+本模块帮助应用实时获取传感器数据变化通知，实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
 
-该模块用于帮助应用实时获取各类传感器数据变化通知，从而实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器均提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
+非轻量穿戴设备从API version 8起不再维护本模块，建议使用[@ohos.sensor](js-apis-sensor.md)模块替代。
 
-该模块适用于轻量穿戴设备场景，需要对应硬件支持且仅支持真机调试。对于非轻量穿戴设备类型，该模块从API version 8起不再维护，建议使用@ohos.sensor模块替代。同一应用对同一传感器多次调用订阅接口时，仅最后一次调用生效。
+本模块采用"订阅-取消订阅"模式：通过subscribe订阅数据，数据变化时回调上报；通过unsubscribe取消订阅。subscribe与unsubscribe需配对使用，同一应用对同一传感器多次subscribe仅最后一次生效。加速度传感器、设备方向传感器和陀螺仪传感器的subscribe支持通过interval配置回调频率，默认为"normal"（200ms/次）。
 
-## 概述
-
-本模块采用"订阅-取消订阅"的使用模式：开发者通过subscribe类接口订阅传感器数据，系统在传感器数据变化时通过回调函数将数据上报给开发者；开发者不再需要数据时，通过对应的unsubscribe类接口取消订阅。同一类型的传感器，subscribe与unsubscribe接口需配对使用。
-
-各传感器subscribe接口的回调频率可通过interval参数配置（仅支持加速度传感器、设备方向传感器和陀螺仪传感器），默认频率为"normal"（200ms/次）。针对同一个应用对同一类型传感器的多次subscribe调用，仅最后一次调用生效，前一次订阅的回调函数将被覆盖。
-
-该模块所有接口均需对应硬件支持，仅支持真机调试。且各接口存在设备行为差异，部分接口仅在Lite Wearable设备上可正常调用，部分接口仅在非Lite Wearable设备上可正常调用，具体差异见各接口说明。
+所有接口均需硬件支持，仅支持真机调试。部分接口存在设备行为差异，具体见各接口说明。
 
 > **说明：**
 >
@@ -30,178 +24,6 @@
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该功能使用需要对应硬件支持，仅支持真机调试。
 > - 建议在页面销毁时（即onDestroy回调中），取消数据订阅，避免不必要的性能开销。
-
-### UML类图
-
-```mermaid
-classDiagram
-
-    class Sensor {
-        <<class>>
-        +static subscribeAccelerometer(subscribeAccelerometerOptions) void
-        +static unsubscribeAccelerometer() void
-        +static subscribeCompass(SubscribeCompassOptions) void
-        +static unsubscribeCompass() void
-        +static subscribeHeartRate(SubscribeHeartRateOptions) void
-        +static unsubscribeHeartRate() void
-        +static getOnBodyState(GetOnBodyStateOptions) void
-    }
-
-    class subscribeAccelerometerOptions {
-        <<interface>>
-        +interval: string
-        +success: AccelerometerResponse~void
-        +fail: string, number~void
-    }
-
-    class AccelerometerResponse {
-        <<interface>>
-        +x: number
-        +y: number
-        +z: number
-    }
-
-    class SubscribeCompassOptions {
-        <<interface>>
-        +success: CompassResponse~void
-        +fail: string, number~void
-    }
-
-    class CompassResponse {
-        <<interface>>
-        +direction: number
-    }
-
-    class SubscribeProximityOptions {
-        <<interface>>
-        +success: ProximityResponse~void
-        +fail: string, number~void
-    }
-
-    class ProximityResponse {
-        <<interface>>
-        +distance: number
-    }
-
-    class SubscribeLightOptions {
-        <<interface>>
-        +success: LightResponse~void
-        +fail: string, number~void
-    }
-
-    class LightResponse {
-        <<interface>>
-        +intensity: number
-    }
-
-    class SubscribeStepCounterOptions {
-        <<interface>>
-        +success: StepCounterResponse~void
-        +fail: string, number~void
-    }
-
-    class StepCounterResponse {
-        <<interface>>
-        +steps: number
-    }
-
-    class SubscribeBarometerOptions {
-        <<interface>>
-        +success: BarometerResponse~void
-        +fail: string, number~void
-    }
-
-    class BarometerResponse {
-        <<interface>>
-        +pressure: number
-    }
-
-    class SubscribeHeartRateOptions {
-        <<interface>>
-        +success: HeartRateResponse~void
-        +fail: string, number~void
-    }
-
-    class HeartRateResponse {
-        <<interface>>
-        +heartRate: number
-    }
-
-    class SubscribeOnBodyStateOptions {
-        <<interface>>
-        +success: OnBodyStateResponse~void
-        +fail: string, number~void
-    }
-
-    class GetOnBodyStateOptions {
-        <<interface>>
-        +success: OnBodyStateResponse~void
-        +fail: string, number~void
-        +complete: void~void
-    }
-
-    class OnBodyStateResponse {
-        <<interface>>
-        +value: boolean
-    }
-
-    class SubscribeDeviceOrientationOptions {
-        <<interface>>
-        +interval: string
-        +success: DeviceOrientationResponse~void
-        +fail: string, number~void
-    }
-
-    class DeviceOrientationResponse {
-        <<interface>>
-        +alpha: number
-        +beta: number
-        +gamma: number
-    }
-
-    class SubscribeGyroscopeOptions {
-        <<interface>>
-        +interval: string
-        +success: GyroscopeResponse~void
-        +fail: string, number~void
-    }
-
-    class GyroscopeResponse {
-        <<interface>>
-        +x: number
-        +y: number
-        +z: number
-    }
-
-    Sensor ..> subscribeAccelerometerOptions : Dependency
-    Sensor ..> SubscribeCompassOptions : Dependency
-    Sensor ..> SubscribeProximityOptions : Dependency
-    Sensor ..> SubscribeLightOptions : Dependency
-    Sensor ..> SubscribeStepCounterOptions : Dependency
-    Sensor ..> SubscribeBarometerOptions : Dependency
-    Sensor ..> SubscribeHeartRateOptions : Dependency
-    Sensor ..> SubscribeOnBodyStateOptions : Dependency
-    Sensor ..> GetOnBodyStateOptions : Dependency
-    Sensor ..> SubscribeDeviceOrientationOptions : Dependency
-    Sensor ..> SubscribeGyroscopeOptions : Dependency
-
-    subscribeAccelerometerOptions --> AccelerometerResponse : Association
-    SubscribeCompassOptions --> CompassResponse : Association
-    SubscribeProximityOptions --> ProximityResponse : Association
-    SubscribeLightOptions --> LightResponse : Association
-    SubscribeStepCounterOptions --> StepCounterResponse : Association
-    SubscribeBarometerOptions --> BarometerResponse : Association
-    SubscribeHeartRateOptions --> HeartRateResponse : Association
-    SubscribeOnBodyStateOptions --> OnBodyStateResponse : Association
-    GetOnBodyStateOptions --> OnBodyStateResponse : Association
-    SubscribeDeviceOrientationOptions --> DeviceOrientationResponse : Association
-    SubscribeGyroscopeOptions --> GyroscopeResponse : Association
-```
-
-图中：
-- Sensor类通过Dependency关系使用各SubscribeOptions接口作为方法参数。
-- 各SubscribeOptions接口通过Association关系持有对应Response接口，作为success回调的参数类型。
-- GetOnBodyStateOptions和SubscribeOnBodyStateOptions均关联OnBodyStateResponse。
 
 ## 导入模块
 
@@ -223,7 +45,7 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_accelerometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_accelerometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -539,22 +361,22 @@ export default {
           sensor.unsubscribeCompass();
           break;
         case "PROXIMITY":
-          sensor.unsubscribeProximity()
+          sensor.unsubscribeProximity();
           break;
         case "AMBIENT_LIGHT":
-          sensor.unsubscribeLight()
+          sensor.unsubscribeLight();
           break;
         case "PEDOMETER":
-          sensor.unsubscribeStepCounter()
+          sensor.unsubscribeStepCounter();
           break;
         case "BAROMETER":
           sensor.unsubscribeBarometer();
           break;
         case "HEART_RATE":
-          sensor.unsubscribeHeartRate()
+          sensor.unsubscribeHeartRate();
           break;
         case "WEAR_DETECTION":
-          sensor.unsubscribeOnBodyState()
+          sensor.unsubscribeOnBodyState();
           break;
         case "ORIENTATION":
           sensor.unsubscribeDeviceOrientation();
@@ -563,9 +385,9 @@ export default {
           sensor.unsubscribeGyroscope();
           break;
         }
-        this.TextContent = ""
+        this.TextContent = "";
     } catch (e) {
-        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`)
+        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`);
     }
   }
 }
@@ -583,7 +405,7 @@ unsubscribeAccelerometer(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_accelerometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_accelerometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -613,7 +435,7 @@ Sensor.unsubscribeAccelerometer();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -621,7 +443,7 @@ Sensor.unsubscribeAccelerometer();
 
 | 参数名  | 类型                                                | 必填 | 说明                             |
 | ------- | --------------------------------------------------- | ---- | -------------------------------- |
-| options | [SubscribeCompassOptions](#subscribecompassoptions) | 是   | 当罗盘传感器数据发生变化时调用。 |
+| options | [SubscribeCompassOptions](#subscribecompassoptions) | 是   | 用于设置罗盘传感器订阅的参数，包括回调函数。 |
 
 **ArkTS示例**：
 
@@ -667,7 +489,7 @@ static unsubscribeCompass(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -705,7 +527,7 @@ Sensor.unsubscribeCompass();
 
 | 参数名  | 类型                                                    | 必填 | 说明                             |
 | ------- | ------------------------------------------------------- | ---- | -------------------------------- |
-| options | [SubscribeProximityOptions](#subscribeproximityoptions) | 是   | 当距离传感器数据发生变化时调用。 |
+| options | [SubscribeProximityOptions](#subscribeproximityoptions) | 是   | 用于设置距离传感器订阅的参数，包括回调函数。 |
 
 **ArkTS示例**：
 
@@ -751,7 +573,7 @@ static unsubscribeProximity(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[PROXIMITY](js-apis-sensor.md#sensoroffsensortypesensor_type_id_proximitydeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[PROXIMITY](js-apis-sensor.md#sensoroffsensortypesensor_type_id_proximitydeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -781,7 +603,7 @@ Sensor.unsubscribeProximity();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoronsensortypesensor_type_id_ambient_lightdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoronsensortypesensor_type_id_ambient_lightdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -837,7 +659,7 @@ static unsubscribeLight(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoroffsensortypesensor_type_id_ambient_lightdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#sensoroffsensortypesensor_type_id_ambient_lightdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -867,7 +689,7 @@ Sensor.unsubscribeLight();
 
 > **说明**：
 >
->  除Lite Wearable外，从API Version8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_pedometerdeprecated)替代。
+>  除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_pedometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -923,7 +745,7 @@ static unsubscribeStepCounter(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_pedometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_pedometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -954,7 +776,7 @@ static subscribeBarometer(options: SubscribeBarometerOptions): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_barometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoronsensortypesensor_type_id_barometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1009,7 +831,7 @@ static unsubscribeBarometer(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_barometerdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#sensoroffsensortypesensor_type_id_barometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1038,7 +860,7 @@ Sensor.unsubscribeBarometer();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoronsensortypesensor_type_id_heart_ratedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoronsensortypesensor_type_id_heart_ratedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1095,7 +917,7 @@ static unsubscribeHeartRate(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_heart_ratedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_heart_ratedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1125,7 +947,7 @@ Sensor.unsubscribeHeartRate();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1179,7 +1001,7 @@ static unsubscribeOnBodyState(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1207,7 +1029,7 @@ Sensor.unsubscribeOnBodyState();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1257,11 +1079,11 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 当开发者需要获取设备方向信息以实现屏幕旋转、游戏方向控制、AR/VR场景等功能时，使用此接口。
 
-针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
+针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoronsensortypesensor_type_id_orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1271,7 +1093,7 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 | 参数名  | 类型                                                         | 必填 | 说明                                             |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| options | [SubscribeDeviceOrientationOptions](#subscribedeviceorientationoptions6) | 是   | 用于监听设备方向传感器数据的回调函数的执行频率。 |
+| options | [SubscribeDeviceOrientationOptions](#subscribedeviceorientationoptions6) | 是   | 用于设置设备方向传感器订阅的参数，包括回调频率和回调函数。 |
 
 **ArkTS示例**：
 
@@ -1323,7 +1145,7 @@ static unsubscribeDeviceOrientation(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#sensoroffsensortypesensor_type_id_orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1353,7 +1175,7 @@ Sensor.unsubscribeDeviceOrientation();
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoronsensortypesensor_type_id_gyroscopedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoronsensortypesensor_type_id_gyroscopedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1363,7 +1185,7 @@ Sensor.unsubscribeDeviceOrientation();
 
 | 参数名  | 类型                                                     | 必填 | 说明                                           |
 | ------- | -------------------------------------------------------- | ---- | ---------------------------------------------- |
-| options | [SubscribeGyroscopeOptions](#subscribegyroscopeoptions6) | 是   | 用于侦听陀螺仪传感器数据的回调函数的执行频率。 |
+| options | [SubscribeGyroscopeOptions](#subscribegyroscopeoptions6) | 是   | 用于设置陀螺仪传感器订阅的参数，包括回调频率和回调函数。 |
 
 **ArkTS示例**：
 
@@ -1415,7 +1237,7 @@ static unsubscribeGyroscope(): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API Version8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_gyroscopedeprecated)替代。
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#sensoroffsensortypesensor_type_id_gyroscopedeprecated)替代。
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
@@ -1443,7 +1265,7 @@ Sensor.unsubscribeGyroscope();
 | 名称     | 类型                                            | 只读 | 可选 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | interval | string                                          | 否   | 否   | 频率参数，加速度的回调函数执行频率。<br/>默认值：'normal'。<br/>可选值：<br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。<br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。<br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。 |
-| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 感应到加速度数据变化后的回调函数，回调参数为AccelerometerResponse对象。                           |
+| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 当加速度传感器数据发生变化时的回调函数，回调参数为AccelerometerResponse对象。                         |
 | fail     | Function                                        | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                                     |
 
 ## AccelerometerResponse 

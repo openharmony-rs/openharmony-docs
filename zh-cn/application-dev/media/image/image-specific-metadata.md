@@ -112,11 +112,22 @@
    <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   async release(pixelMap: image.PixelMap | undefined, imageSource: image.ImageSource | undefined) {
-     await pixelMap?.release();
-     pixelMap = undefined;
-     await imageSource?.release();
-     imageSource = undefined;
+   async release() {
+     try {
+       await this.pixelMap?.release();
+     } catch (error) {
+       console.error(`Failed to release PixelMap: ${error}.`);
+     } finally {
+       this.pixelMap = undefined;
+     }
+   
+     try {
+       await this.imageSource?.release();
+     } catch (error) {
+       console.error(`Failed to release ImageSource: ${error}.`);
+     } finally {
+       this.imageSource = undefined;
+     }
    }
    ```
 

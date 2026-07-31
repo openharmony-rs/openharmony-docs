@@ -28,7 +28,7 @@
 \'@BuilderParam\' property can only initialized by \'@Builder\' function or \'@LocalBuilder\' method in struct.
 
 **错误描述**<br>
-@BuilderParam装饰的变量只能被@Builder装饰的函数初始化。
+@BuilderParam装饰的变量只能被@Builder或@LocalBuilder装饰的函数初始化。
 
 **可能原因**<br> 
 用普通函数其他类型变量初始化@BuilderParam装饰的变量。
@@ -873,7 +873,7 @@ A class decorated by \'@ObservedV2\' cannot inherit from a class decorated by \'
 A class can not be decorated by \'@Observed\' and \'@ObservedV2\' at the same time.
 
 **错误描述**<br>
-一个类不能同时被\'@Observed\'和\'@ObservedV2\'修饰。
+一个类不能同时被\'@Observed\'和\'@ObservedV2\'装饰。
 
 **可能原因**<br>
 开发者同时使用\'@Observed\'和\'@ObservedV2\'装饰一个类导致报错。
@@ -889,7 +889,7 @@ The \'xxx\' can decorate only member variables in a \'class\'.
 @Type等装饰器只能装饰class中的变量，不能装饰方法。
 
 **可能原因**<br>
-开发者使用@Type等装饰器装饰了class中的变量导致报错。
+开发者使用@Type等装饰器装饰了class中的方法导致报错。
 
 **处理步骤**<br>
 删除去掉class中方法上的@Type等装饰器即可。

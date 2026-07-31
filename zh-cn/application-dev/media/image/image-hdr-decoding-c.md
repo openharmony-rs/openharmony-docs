@@ -418,7 +418,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
         char type[] = "image/jpeg";
         Image_MimeType mimeType = {type, strlen(type)};
         OH_PackingOptions_SetMimeType(packingOptions, &mimeType);
-        uint32_t quality = 95;
+        // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+        uint32_t quality = 90;
         OH_PackingOptions_SetQuality(packingOptions, quality);
         OH_PackingOptions_SetDesiredDynamicRange(packingOptions, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
     

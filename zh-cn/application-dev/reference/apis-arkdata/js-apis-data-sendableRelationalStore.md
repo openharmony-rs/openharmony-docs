@@ -457,6 +457,7 @@ async function queryByName(context: Context, name: string) {
     securityLevel: relationalStore.SecurityLevel.S3,
   };
 
+  let result: sendableRelationalStore.ValuesBucket | undefined;
   let store = await relationalStore.getRdbStore(context, CONFIG);
   console.info(`Get store successfully!`);
 
@@ -466,10 +467,11 @@ async function queryByName(context: Context, name: string) {
   const resultSet = await store.query(predicates);
   if (resultSet.rowCount > 0 && resultSet.goToFirstRow()) {
     // 获取可用于跨线程传递的ValuesBucket返回查询结果
-    return resultSet.getSendableRow();
+    result = resultSet.getSendableRow();
   }
   resultSet.close();
   await store.close();
+  return result;
 }
 
 

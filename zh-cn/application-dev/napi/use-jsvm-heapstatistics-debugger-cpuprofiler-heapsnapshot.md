@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行JavaScript代码调试调优
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -188,7 +188,7 @@ JSVM API heap usedGlobalHandlesSize: 32
 
 ### OH_JSVM_OpenInspector
 
-在指定的主机和端口上激活inspector，用于调试JS码。
+在指定的主机和端口上激活inspector，用于调试JS代码。
 
 ### OH_JSVM_CloseInspector
 

@@ -204,6 +204,7 @@
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { wantAgent } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    
    @Entry
    @Component
@@ -232,6 +233,8 @@
              }
              wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
                session.setLaunchAbility(agent);
+             }).catch((err: BusinessError) => {
+               console.error(`Failed to getWantAgent. Code: ${err.code}, message: ${err.message}`);
              })
              // ...
            })
@@ -407,8 +410,8 @@
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('rewind')取消监听。
                // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
              });
-             session.on('seek', (time) => {
-               console.info(`on seek , the seek time is ${time}`);
+             session.on('seek', (time: number) => {
+               console.info(`on seek , the time is ${time}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('seek')取消监听。
                // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
@@ -483,8 +486,8 @@
                  // ...
                  // 实现具体功能。
                });
-               session.on('outputDeviceChange', (device) => {
-                 console.info(`on outputDeviceChange , the device info is ${JSON.stringify(device)}`);
+               session.on('outputDeviceChange', (state: AVSessionManager.ConnectionState, device: AVSessionManager.OutputDeviceInfo) => {
+                 console.info(`on outputDeviceChange , the state is ${JSON.stringify(state)} and device info is ${JSON.stringify(device)}`);
                  // ...
                  // 实现具体功能。
                });

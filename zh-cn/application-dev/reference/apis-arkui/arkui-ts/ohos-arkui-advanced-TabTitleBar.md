@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-页签型标题栏，用于页面之间的切换。仅一级页面适用。
+TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联动切换，并可配置右侧菜单项。适用于需要通过页签切换页面内容的场景，如顶部导航栏等。该组件通过页签和菜单项的灵活配置，可满足不同的交互需求。仅支持一级页面的页签切换。
 
 
 > **说明：**
@@ -61,8 +61,8 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。若设置了symbolStyle，则该属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value。当需要使用Symbol图标时传入此参数，不传入时使用value参数设置的图标。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签，用于为菜单项图标提供文字说明。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | isEnabled | boolean | 否 | 是 | 是否启用。true：启用，false：禁用。禁用时菜单项不响应点击事件，action不会触发。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 点击菜单项时触发的动作闭包。若不设置，点击菜单项无响应。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -79,8 +79,8 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | title | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 页签项显示的文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 页签图标资源。若不设置，页签仅显示文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 页签图标资源。若设置了symbolStyle，则该属性不生效。若不设置，页签仅显示文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于icon。当需要使用Symbol图标作为页签时传入此参数，不传入时使用icon参数设置的图片页签。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 
 ## 事件

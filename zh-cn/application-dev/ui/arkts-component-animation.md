@@ -56,7 +56,7 @@ struct ComponentDemo {
 
 - 如果要在滑动过程中定制动效，可在滑动回调[onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
 
-- 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14)或手势结束回调中对滑动的最终位置进行微调。
+- 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onscrollstop11)或手势结束回调中对滑动的最终位置进行微调。
 
 定制Scroll组件滑动动效示例代码和效果如下。
 
@@ -411,7 +411,7 @@ class DragSortCtrl<T> {
   }
 
   onMove(item: T, offset: number) {
-    this.offsetY = offset - this.dragRefOffset; // 逐帧计算传入的offect，每满足一个item高度时，进入下方if逻辑，更新dragRefOffset的值
+    this.offsetY = offset - this.dragRefOffset; // 逐帧计算传入的offset，每满足一个item高度时，进入下方if逻辑，更新dragRefOffset的值
     let index = this.arr.indexOf(item); // 在数组中查找传入的item
     this.modify[index].offsetY = this.offsetY;
     if (this.offsetY < -this.ITEM_INTV / 2) { // 通过判断使指定的item逐一移动到首位

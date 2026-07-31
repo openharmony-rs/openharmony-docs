@@ -6,7 +6,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-**@ohos.inputMethod**模块是面向普通前台应用（如备忘录、短信、设置等系统应用）的输入法客户端模块，提供输入法控制和管理能力。
+@ohos.inputMethod模块是面向普通前台应用（如备忘录、短信、设置等应用）的输入法客户端模块，提供输入法控制和管理能力。
 
 本模块是输入法框架的客户端接口，为编辑框应用提供与输入法服务的交互能力，包括输入法绑定/解绑、软键盘显示/隐藏、输入法切换、输入法列表查询、编辑框属性与光标更新、文本选择与操作事件监听、自定义消息通信等。
 
@@ -19,9 +19,9 @@
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 本模块是IME Kit（输入法框架Kit）中的客户端控制模块，与IME Kit中的其他模块协同工作：
-- **@ohos.inputMethodEngine**：面向输入法应用的服务端模块，提供软键盘窗口创建、文本插入/删除、监听物理按键等能力。本模块（@ohos.inputMethod）发出的请求（如显示键盘、切换输入法）最终由@ohos.inputMethodEngine侧的输入法应用响应和处理。
-- **@ohos.inputMethodList**：提供输入法列表选择对话框的显示与管理能力。
-- **@ohos.inputMethod.Panel**：定义输入法面板类型与状态信息，用于查询面板可见性等。
+- @ohos.inputMethodEngine：面向输入法应用的服务端模块，提供软键盘窗口创建、文本插入/删除、监听物理按键等能力。本模块（@ohos.inputMethod）发出的请求（如显示键盘、切换输入法）最终由@ohos.inputMethodEngine侧的输入法应用响应和处理。
+- @ohos.inputMethodList：提供输入法列表选择对话框的显示与管理能力。
+- @ohos.inputMethod.Panel：定义输入法面板类型与状态信息，用于查询面板可见性等。
 
 典型的客户端应用（如备忘录、设置）与输入法交互的调用序列如下：
 1. 通过`inputMethod.getController()`获取客户端控制器实例`InputMethodController`。
@@ -31,7 +31,7 @@
 5. 通过`InputMethodController.hideTextInput()`隐藏软键盘，退出编辑状态。
 6. 通过`InputMethodController.detach()`解除与输入法的绑定。
 
-**配对约束：**
+配对约束：
 - `attach`与`detach`必须配对使用，未detach而直接退出可能导致资源泄漏。
 - `showTextInput`与`hideTextInput`必须配对使用，避免输入法状态不一致。
 
@@ -39,19 +39,19 @@
 
 | Interface | 说明 |
 |---|---|
-| **InputMethodController** | 输入法控制器，编辑框应用与输入法交互的核心对象。提供绑定/解绑输入法（attach/detach）、显示/隐藏键盘（showTextInput/hideTextInput/showSoftKeyboard/hideSoftKeyboard）、更新光标和编辑属性（updateCursor/updateAttribute/changeSelection）、监听输入法操作事件（insertText/deleteLeft/deleteRight/selectByRange/selectByMovement/moveCursor/sendFunctionKey/sendKeyboardStatus/handleExtendAction/setPreviewText/finishTextPreview）、自定义消息通信（sendMessage/recvMessage）、停止输入会话等能力。通过`getController()`获取实例。 |
-| **InputMethodSetting** | 输入法设置管理对象，提供输入法查询和管理能力。包括获取已启用/已禁用/全部输入法列表（getInputMethods/getAllInputMethods）、查询指定输入法的子类型列表（listInputMethodSubtype）、获取当前输入法及子类型、订阅输入法切换事件（on('imeChange')）、订阅面板显隐事件（on('imeShow')/on('imeHide')）、查询面板显示状态（isPanelShown）、启用/禁用输入法（enableInputMethod）、获取输入法自身启用状态（getInputMethodState）等。通过`getSetting()`获取实例。 |
+| InputMethodController | 输入法控制器，编辑框应用与输入法交互的核心对象。提供绑定/解绑输入法（attach/detach）、显示/隐藏键盘（showTextInput/hideTextInput）、更新光标和编辑属性（updateCursor/updateAttribute/changeSelection）、监听输入法操作事件（insertText/deleteLeft/deleteRight/selectByRange/selectByMovement/moveCursor/sendFunctionKey/sendKeyboardStatus/handleExtendAction/setPreviewText/finishTextPreview）、自定义消息通信（sendMessage/recvMessage）、停止输入会话等能力。通过`getController()`获取实例。 |
+| InputMethodSetting | 输入法设置管理对象，提供输入法查询和管理能力。包括获取已启用/已禁用/全部输入法列表（getInputMethods/getAllInputMethods）、查询指定输入法的子类型列表（listInputMethodSubtype）、获取当前输入法及子类型、订阅输入法切换事件（on('imeChange')）、订阅面板显隐事件（on('imeShow')/on('imeHide')）、查询面板显示状态（isPanelShown）、启用/禁用输入法（enableInputMethod）、获取输入法自身启用状态（getInputMethodState）等。通过`getSetting()`获取实例。 |
 
 此外，本模块还定义了多个关键数据类型：
 
 | 类型 | 说明 |
 |---|---|
-| **InputMethodProperty** | 输入法属性信息，描述一个输入法的名称、ID、标签、图标、启用状态等。 |
-| **InputMethodSubtype** | 输入法子类型，描述输入法的语言、模式等子类型属性。 |
-| **TextConfig** | 编辑框文本配置，包含输入属性（InputAttribute）、光标信息（CursorInfo）、选区信息、窗口ID等。 |
-| **InputAttribute** | 输入属性，定义文本输入类型（TextInputType）和回车键类型（EnterKeyType）。 |
-| **CursorInfo** | 光标信息，定义光标的位置和尺寸。 |
-| **MessageHandler** | 自定义消息处理器，用于接收输入法应用发送的消息并提供终止通知。 |
+| InputMethodProperty | 输入法属性信息，描述一个输入法的名称、ID、标签、图标、启用状态等。 |
+| InputMethodSubtype | 输入法子类型，描述输入法的语言、模式等子类型属性。 |
+| TextConfig | 编辑框文本配置，包含输入属性（InputAttribute）、光标信息（CursorInfo）、选区信息、窗口ID等。 |
+| InputAttribute | 输入属性，定义文本输入类型（TextInputType）和回车键类型（EnterKeyType）。 |
+| CursorInfo | 光标信息，定义光标的位置和尺寸。 |
+| MessageHandler | 自定义消息处理器，用于接收输入法应用发送的消息并提供终止通知。 |
 
 编辑框应用与输入法交互的典型流程涉及InputMethodController的多个API组合调用：获取控制器 -> 绑定输入法 -> 订阅输入法操作事件 -> 在回调中处理文本操作 -> 解绑输入法。
 
@@ -99,126 +99,9 @@ controller.detach();
 setting.getInputMethods(true);  // 获取已启用输入法列表
 inputMethod.switchInputMethod(targetProperty);  // 切换到目标输入法
 ```
-
-> **重要说明**：订阅输入法操作事件（如insertText、deleteLeft等）应在`attach`之前完成，避免事件遗漏。`attach`是编辑框应用使用输入法能力的前提，必须先绑定才能进行后续操作。
-
-UML类图如下（按两大核心能力集分为两组独立类图）：
-
-**InputMethodController依赖关系**：
-
-```mermaid
-classDiagram
-    direction TB
-
-    class InputMethodController {
-        +attach(showKeyboard, textConfig) 绑定输入法
-        +detach() 解绑输入法
-        +showTextInput() 显示键盘
-        +hideTextInput() 隐藏键盘
-        +updateCursor(cursorInfo) 更新光标
-        +updateAttribute(attribute) 更新编辑属性
-        +sendMessage(msgId, msgParam) 发送消息
-        +recvMessage(msgHandler) 接收消息
-    }
-
-    class TextConfig {
-        +inputAttribute: InputAttribute
-        +cursorInfo: CursorInfo
-        +selection: Range
-        +windowId: int
-    }
-
-    class InputAttribute {
-        +textInputType: TextInputType
-        +enterKeyType: EnterKeyType
-        +placeholder: string
-    }
-
-    class CursorInfo {
-        +left: double
-        +top: double
-        +width: double
-        +height: double
-    }
-
-    class MessageHandler {
-        +onMessage(msgId, msgParam) 接收消息回调
-        +onTerminated() 终止通知回调
-    }
-
-    InputMethodController ..> TextConfig : 依赖（attach参数）
-    InputMethodController ..> CursorInfo : 依赖（updateCursor参数）
-    InputMethodController ..> InputAttribute : 依赖（updateAttribute参数）
-    InputMethodController ..> MessageHandler : 依赖（recvMessage参数）
-```
-
-**TextConfig结构包含关系**：
-
-```mermaid
-classDiagram
-    direction TB
-
-    class TextConfig {
-        +inputAttribute: InputAttribute
-        +cursorInfo: CursorInfo
-        +selection: Range
-        +windowId: int
-    }
-
-    class InputAttribute {
-        +textInputType: TextInputType
-        +enterKeyType: EnterKeyType
-        +placeholder: string
-    }
-
-    class CursorInfo {
-        +left: double
-        +top: double
-        +width: double
-        +height: double
-    }
-
-    class Range {
-        +start: int
-        +end: int
-    }
-
-    TextConfig *-- InputAttribute : 组合（必选包含）
-    TextConfig o-- CursorInfo : 聚合（可选包含）
-    TextConfig o-- Range : 聚合（可选包含）
-```
-
-**InputMethodSetting相关类图**：
-
-```mermaid
-classDiagram
-    direction TB
-
-    class InputMethodSetting {
-        +getInputMethods(enable) 获取输入法列表
-        +listInputMethodSubtype(property) 获取子类型
-        +onImeChange(callback) 订阅输入法切换
-        +isPanelShown(panelInfo) 查询面板状态
-        +enableInputMethod(...) 启用/禁用输入法
-    }
-
-    class InputMethodProperty {
-        +name: string
-        +id: string
-        +label: string
-        +icon: string
-        +enabledState: EnabledState
-    }
-
-    InputMethodSetting ..> InputMethodProperty : 依赖（查询返回值及入参）
-```
-
 > **说明：**
 >
-> - **依赖关系图**：`InputMethodController`对`TextConfig`、`CursorInfo`、`InputAttribute`、`MessageHandler`均为**依赖关系**（虚线箭头），表示这些类型作为方法参数被使用——`TextConfig`为`attach`参数、`CursorInfo`为`updateCursor`参数、`InputAttribute`为`updateAttribute`参数、`MessageHandler`为`recvMessage`参数。
-> - **结构包含图**：`TextConfig`与`InputAttribute`为**组合关系**（实心菱形◆），`inputAttribute`是必选组成部分；`TextConfig`与`CursorInfo`为**聚合关系**（空心菱形◇），`cursorInfo`可选包含；`TextConfig`与`Range`为**聚合关系**（空心菱形◇），`selection`可选包含。
-> - 依赖关系（虚线，方法参数使用）与组合/聚合关系（实线菱形，数据结构包含）是不同类型的关联，分别表达不同语义，因此分图绘制以避免线条交叉。
-> - `InputMethodSetting`与`InputMethodProperty`为**依赖关系**：作为查询方法的返回值（如`getInputMethods`）和入参（如`listInputMethodSubtype`）使用。
+> 订阅输入法操作事件（如insertText、deleteLeft等）应在`attach`之前完成，避免事件遗漏。`attach`是编辑框应用使用输入法能力的前提，必须先绑定才能进行后续操作。
 
 ## 导入模块
 
@@ -264,10 +147,10 @@ import { inputMethod } from '@kit.IMEKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -- | -------- |
-| NONE | 0 | 不进行任何首字母大写处理。<br/>**使用场景：**适用于无需自动大写的输入框，如密码输入、验证码输入等。|
-| SENTENCES | 1 | 每个句子的首字母大写。<br/>**使用场景：**适用于普通文本输入框，如聊天、备忘录等，自动在句号等标点后将首字母大写。|
-| WORDS | 2 | 每个单词首字母大写。<br/>**使用场景：**适用于标题、人名等需要每个单词首字母大写的场景。|
-| CHARACTERS | 3 | 每个字母都大写。<br/>**使用场景：**适用于全大写输入场景，如缩写词输入（如URL中的域名部分）。|
+| NONE | 0 | 不进行任何首字母大写处理。<br/>使用场景：适用于无需自动大写的输入框，如密码输入、验证码输入等。|
+| SENTENCES | 1 | 每个句子的首字母大写。<br/>使用场景：适用于普通文本输入框，如聊天、备忘录等，自动在句号等标点后将首字母大写。|
+| WORDS | 2 | 每个单词首字母大写。<br/>使用场景：适用于标题、人名等需要每个单词首字母大写的场景。|
+| CHARACTERS | 3 | 每个字母都大写。<br/>使用场景：适用于全大写输入场景，如缩写词输入（如URL中的域名部分）。|
 
 ## inputMethod.getController<sup>9+</sup>
 
@@ -275,11 +158,11 @@ getController(): InputMethodController
 
 获取客户端实例[InputMethodController](#inputmethodcontroller)。
 
-**含义/功能**：获取当前应用的输入法客户端控制器实例，用于后续与输入法进行交互（绑定、显示/隐藏键盘、同步编辑框状态等）。
+含义/功能：获取当前应用的输入法客户端控制器实例，用于后续与输入法进行交互（绑定、显示/隐藏键盘、同步编辑框状态等）。
 
-**使用场景：**当前台应用（如备忘录、聊天应用）需要控制输入法的显示/隐藏、绑定/解绑、同步编辑框信息时，必须先通过此接口获取InputMethodController实例。
+使用场景：当前台应用（如备忘录、聊天应用）需要控制输入法的显示/隐藏、绑定/解绑、同步编辑框信息时，必须先通过此接口获取InputMethodController实例。
 
-**使用后效果**：返回一个InputMethodController实例，后续可通过该实例调用attach、showTextInput、hideTextInput、detach等一系列接口与输入法交互。
+使用后效果：返回一个InputMethodController实例，后续可通过该实例调用attach、showTextInput、hideTextInput、detach等一系列接口与输入法交互。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -367,11 +250,11 @@ getSetting(): InputMethodSetting
 
 获取客户端设置实例[InputMethodSetting](#inputmethodsetting8)。
 
-**含义/功能**：获取输入法设置实例，用于查询输入法列表、订阅输入法变化事件、查询面板可见性等配置管理操作。
+含义/功能：获取输入法设置实例，用于查询输入法列表、订阅输入法变化事件、查询面板可见性等配置管理操作。
 
-**使用场景：**当应用需要查询已安装/已激活输入法列表、订阅输入法切换事件、或显示输入法选择对话框时，必须先通过此接口获取InputMethodSetting实例。
+使用场景：当应用需要查询已安装/已激活输入法列表、订阅输入法切换事件、或显示输入法选择对话框时，必须先通过此接口获取InputMethodSetting实例。
 
-**使用后效果**：返回一个InputMethodSetting实例，后续可通过该实例调用getInputMethods、listInputMethodSubtype、on('imeChange')等接口。
+使用后效果：返回一个InputMethodSetting实例，后续可通过该实例调用getInputMethods、listInputMethodSubtype、on('imeChange')等接口。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -401,13 +284,12 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 切换输入法，使用callback异步回调。
 
-**含义/功能**：将当前输入法切换为指定的目标输入法。
+含义/功能：将当前输入法切换为指定的目标输入法。
 
-**使用场景：**当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。
+使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。
 
-**使用后效果**：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。
+使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined，data为true；失败时返回BusinessError对象。
 > **说明：**
 >
 >  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
@@ -419,7 +301,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| target | [InputMethodProperty](#inputmethodproperty8) | 是 | 目标输入法。<br/>**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。<br/>**说明：**只需填写name和id字段即可唯一指定一个输入法，无需填写label、icon等可选字段。 |
+| target | [InputMethodProperty](#inputmethodproperty8) | 是 | 目标输入法。<br/>使用场景：指定要切换到的目标输入法，通过name和id唯一确定。<br/>说明：只需填写name和id字段即可唯一指定一个输入法，无需填写label、icon等可选字段。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当输入法切换成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
@@ -461,13 +343,11 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 切换输入法，使用promise异步回调。
 
-**含义/功能**：将当前输入法切换为指定的目标输入法。
+含义/功能：将当前输入法切换为指定的目标输入法。
 
-**使用场景：**当前输入法应用需要切换到另一个输入法时使用。
+使用场景：当前输入法应用需要切换到另一个输入法时使用。
 
-**使用后效果**：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。
-
-**异步返回方式**：使用Promise异步回调。成功时返回true，失败时返回BusinessError对象。
+使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。
 
 > **说明：**
 >
@@ -480,13 +360,13 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | target | [InputMethodProperty](#inputmethodproperty8) | 是 | 目标输入法。<br/>**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。<br/>**说明：**只需填写name和id字段即可唯一指定一个输入法。 |
+  | target | [InputMethodProperty](#inputmethodproperty8) | 是 | 目标输入法。<br/>使用场景：指定要切换到的目标输入法，通过name和id唯一确定。<br/>说明：只需填写name和id字段即可唯一指定一个输入法。 |
 
 **返回值：**
 
   | 类型                                      | 说明                         |
   | ----------------------------------------- | ---------------------------- |
-  | Promise\<boolean> | Promise对象。返回true表示切换输入法成功，返回false表示切换输入法失败。 |
+  | Promise&lt;boolean&gt; | Promise对象。resolve时返回true表示切换输入法成功，返回false表示切换输入法失败；reject时返回错误对象，表示切换输入法时发生错误。 |
 
 **错误码：**
 
@@ -526,11 +406,11 @@ getCurrentInputMethod(): InputMethodProperty
 
 使用同步方法获取当前输入法。
 
-**含义/功能**：获取当前正在使用的输入法属性信息。
+含义/功能：获取当前正在使用的输入法属性信息。
 
-**使用场景：**当应用需要知道当前活跃的输入法是哪个（如判断输入法名称、获取输入法id用于后续切换操作）时使用。
+使用场景：当应用需要知道当前活跃的输入法是哪个（如判断输入法名称、获取输入法id用于后续切换操作）时使用。
 
-**使用后效果**：返回当前输入法的InputMethodProperty对象。
+使用后效果：返回当前输入法的InputMethodProperty对象。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -636,7 +516,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 类型                                      | 说明                         |
 | ----------------------------------------- | ---------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型失败。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve时返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型失败；reject时返回错误对象，表示切换输入法子类型时发生错误。 |
 
 **错误码：**
 
@@ -784,7 +664,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 类型                                      | 说明                         |
 | ----------------------------------------- | ---------------------------- |
-| Promise\<boolean> | Promise对象。返回true表示切换至指定输入法的指定子类型成功，返回false表示切换至指定输入法的指定子类型失败。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve时返回true表示切换至指定输入法的指定子类型成功，返回false表示切换至指定输入法的指定子类型失败；reject时返回错误对象，表示切换至指定输入法的指定子类型时发生错误。 |
 
 **错误码：**
 
@@ -956,21 +836,21 @@ inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| NONE  | -1 |NONE。<br/>**使用场景：**当编辑框不希望指定特定输入类型时使用，输入法将使用默认键盘布局。 |
-| TEXT  | 0 |文本类型。<br/>**使用场景：**适用于普通文本输入框，如聊天、备忘录等，输入法显示全功能键盘。 |
-| MULTILINE  | 1 |多行类型。<br/>**使用场景：**适用于需要多行文本输入的场景，如长文本编辑、评论框等。 |
-| NUMBER  | 2 |数字类型。<br/>**使用场景：**适用于仅需要输入数字的场景，如数量输入、年龄输入等，输入法显示数字键盘。 |
-| PHONE  | 3 |电话号码类型。<br/>**使用场景：**适用于电话号码输入框，输入法显示电话号码键盘（包含数字和常用电话符号）。 |
-| DATETIME  | 4 |日期类型。<br/>**使用场景：**适用于日期时间输入框，输入法显示日期相关的键盘布局。 |
-| EMAIL_ADDRESS  | 5 |邮箱地址类型。<br/>**使用场景：**适用于邮箱输入框，输入法键盘会突出显示"@""."等常用邮箱符号。 |
-| URL  | 6 |链接类型。<br/>**使用场景：**适用于网址输入框，输入法键盘会突出显示"/""."等常用URL符号。 |
-| VISIBLE_PASSWORD  | 7 |密码类型。<br/>**使用场景：**适用于密码输入框，输入法显示可见密码键盘，不进行自动建议。 |
-| NUMBER_PASSWORD<sup>11+</sup> | 8 |数字密码类型。<br/>**使用场景：**适用于仅需输入数字密码的场景，如PIN码输入。 |
-| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |锁屏密码类型。<br/>**使用场景：**适用于锁屏界面的密码输入框。 |
-| USER_NAME<sup>20+</sup> | 10 |用户名类型。<br/>**使用场景：**适用于用户名输入框，输入法可根据用户名特点优化建议。 |
-| NEW_PASSWORD<sup>20+</sup> | 11 |新密码类型。<br/>**使用场景：**适用于设置新密码的输入框，输入法可提供密码强度提示。 |
-| NUMBER_DECIMAL<sup>20+</sup> | 12 |带小数点的数字类型。<br/>**使用场景：**适用于需要输入带小数点数字的场景，如金额输入。 |
-| ONE_TIME_CODE<sup>20+</sup> | 13 |验证码类型。<br/>**使用场景：**适用于验证码输入框，输入法可优化验证码输入体验。 |
+| NONE  | -1 |NONE。<br/>使用场景：当编辑框不希望指定特定输入类型时使用，输入法将使用默认键盘布局。 |
+| TEXT  | 0 |文本类型。<br/>使用场景：适用于普通文本输入框，如聊天、备忘录等，输入法显示全功能键盘。 |
+| MULTILINE  | 1 |多行类型。<br/>使用场景：适用于需要多行文本输入的场景，如长文本编辑、评论框等。 |
+| NUMBER  | 2 |数字类型。<br/>使用场景：适用于仅需要输入数字的场景，如数量输入、年龄输入等，输入法显示数字键盘。 |
+| PHONE  | 3 |电话号码类型。<br/>使用场景：适用于电话号码输入框，输入法显示电话号码键盘（包含数字和常用电话符号）。 |
+| DATETIME  | 4 |日期类型。<br/>使用场景：适用于日期时间输入框，输入法显示日期相关的键盘布局。 |
+| EMAIL_ADDRESS  | 5 |邮箱地址类型。<br/>使用场景：适用于邮箱输入框，输入法键盘会突出显示"@""."等常用邮箱符号。 |
+| URL  | 6 |链接类型。<br/>使用场景：适用于网址输入框，输入法键盘会突出显示"/""."等常用URL符号。 |
+| VISIBLE_PASSWORD  | 7 |密码类型。<br/>使用场景：适用于密码输入框，输入法显示可见密码键盘，不进行自动建议。 |
+| NUMBER_PASSWORD<sup>11+</sup> | 8 |数字密码类型。<br/>使用场景：适用于仅需输入数字密码的场景，如PIN码输入。 |
+| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |锁屏密码类型。<br/>使用场景：适用于锁屏界面的密码输入框。 |
+| USER_NAME<sup>20+</sup> | 10 |用户名类型。<br/>使用场景：适用于用户名输入框，输入法可根据用户名特点优化建议。 |
+| NEW_PASSWORD<sup>20+</sup> | 11 |新密码类型。<br/>使用场景：适用于设置新密码的输入框，输入法可提供密码强度提示。 |
+| NUMBER_DECIMAL<sup>20+</sup> | 12 |带小数点的数字类型。<br/>使用场景：适用于需要输入带小数点数字的场景，如金额输入。 |
+| ONE_TIME_CODE<sup>20+</sup> | 13 |验证码类型。<br/>使用场景：适用于验证码输入框，输入法可优化验证码输入体验。 |
 
 ## EnterKeyType<sup>10+</sup>
 
@@ -980,15 +860,15 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| UNSPECIFIED  | 0 |未指定。<br/>**使用场景：**编辑框不指定Enter键具体功能时使用。 |
-| NONE  | 1 |NONE。<br/>**使用场景：**Enter键无特定行为，仅作为换行或普通按键使用。 |
-| GO  | 2 |前往。<br/>**使用场景：**适用于URL输入框，Enter键触发"前往"操作，如打开链接。 |
-| SEARCH  | 3 |查找。<br/>**使用场景：**适用于搜索框，Enter键触发搜索操作。 |
-| SEND  | 4 |发送。<br/>**使用场景：**适用于消息发送框，Enter键触发发送操作。 |
-| NEXT  | 5 |下一步。<br/>**使用场景：**适用于多步骤表单，Enter键跳转到下一个输入框。 |
-| DONE  | 6 |完成。<br/>**使用场景：**适用于单步骤表单的最后输入框，Enter键表示输入完成。 |
-| PREVIOUS  | 7 |上一步。<br/>**使用场景：**适用于多步骤表单，Enter键跳转到上一个输入框。 |
-| NEWLINE<sup>12+</sup>  | 8 | 换行。<br/>**使用场景：**适用于多行文本编辑框，Enter键插入换行符。|
+| UNSPECIFIED  | 0 |未指定。<br/>使用场景：编辑框不指定Enter键具体功能时使用。 |
+| NONE  | 1 |NONE。<br/>使用场景：Enter键无特定行为，仅作为换行或普通按键使用。 |
+| GO  | 2 |前往。<br/>使用场景：适用于URL输入框，Enter键触发"前往"操作，如打开链接。 |
+| SEARCH  | 3 |查找。<br/>使用场景：适用于搜索框，Enter键触发搜索操作。 |
+| SEND  | 4 |发送。<br/>使用场景：适用于消息发送框，Enter键触发发送操作。 |
+| NEXT  | 5 |下一步。<br/>使用场景：适用于多步骤表单，Enter键跳转到下一个输入框。 |
+| DONE  | 6 |完成。<br/>使用场景：适用于单步骤表单的最后输入框，Enter键表示输入完成。 |
+| PREVIOUS  | 7 |上一步。<br/>使用场景：适用于多步骤表单，Enter键跳转到上一个输入框。 |
+| NEWLINE<sup>12+</sup>  | 8 | 换行。<br/>使用场景：适用于多行文本编辑框，Enter键插入换行符。|
 
 ## KeyboardStatus<sup>10+</sup>
 
@@ -998,9 +878,9 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| NONE  | 0 |NONE。<br/>**使用场景：**表示键盘状态尚未确定或无法判断时使用。 |
-| HIDE  | 1 |隐藏状态。<br/>**使用场景：**表示当前软键盘处于隐藏状态。 |
-| SHOW  | 2 |显示状态。<br/>**使用场景：**表示当前软键盘处于显示状态。 |
+| NONE  | 0 |NONE。<br/>使用场景：表示键盘状态尚未确定或无法判断时使用。 |
+| HIDE  | 1 |隐藏状态。<br/>使用场景：表示当前软键盘处于隐藏状态。 |
+| SHOW  | 2 |显示状态。<br/>使用场景：表示当前软键盘处于显示状态。 |
 
 ## Direction<sup>10+</sup>
 
@@ -1010,10 +890,10 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| CURSOR_UP  | 1 |向上。<br/>**使用场景：**输入法请求光标向上移动时使用，如多行文本中上移光标。 |
-| CURSOR_DOWN  | 2 |向下。<br/>**使用场景：**输入法请求光标向下移动时使用。 |
-| CURSOR_LEFT  | 3 |向左。<br/>**使用场景：**输入法请求光标向左移动时使用，如删除左侧字符前移动光标。 |
-| CURSOR_RIGHT  | 4 |向右。<br/>**使用场景：**输入法请求光标向右移动时使用。 |
+| CURSOR_UP  | 1 |向上。<br/>使用场景：输入法请求光标向上移动时使用，如多行文本中上移光标。 |
+| CURSOR_DOWN  | 2 |向下。<br/>使用场景：输入法请求光标向下移动时使用。 |
+| CURSOR_LEFT  | 3 |向左。<br/>使用场景：输入法请求光标向左移动时使用，如删除左侧字符前移动光标。 |
+| CURSOR_RIGHT  | 4 |向右。<br/>使用场景：输入法请求光标向右移动时使用。 |
 
 ## ExtendAction<sup>10+</sup>
 
@@ -1023,10 +903,10 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| SELECT_ALL  | 0 |全选。<br/>**使用场景：**输入法请求全选编辑框中的文本时使用。 |
-| CUT  | 3 |剪切。<br/>**使用场景：**输入法请求剪切选中的文本时使用，将选中文本复制到剪贴板并删除原文本。 |
-| COPY  | 4 |复制。<br/>**使用场景：**输入法请求复制选中的文本时使用，将选中文本复制到剪贴板。 |
-| PASTE  | 5 |粘贴。<br/>**使用场景：**输入法请求粘贴剪贴板内容时使用。 |
+| SELECT_ALL  | 0 |全选。<br/>使用场景：输入法请求全选编辑框中的文本时使用。 |
+| CUT  | 3 |剪切。<br/>使用场景：输入法请求剪切选中的文本时使用，将选中文本复制到剪贴板并删除原文本。 |
+| COPY  | 4 |复制。<br/>使用场景：输入法请求复制选中的文本时使用，将选中文本复制到剪贴板。 |
+| PASTE  | 5 |粘贴。<br/>使用场景：输入法请求粘贴剪贴板内容时使用。 |
 
 ## FunctionKey<sup>10+</sup>
 
@@ -1127,9 +1007,9 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| DISABLED   | 0 |未启用。<br/>**使用场景：**输入法已被禁用，不能作为当前输入法使用。 |
-| BASIC_MODE  | 1 |基础模式。<br/>**使用场景：**输入法已启用但处于基础模式，仅具备基础输入能力，不支持高级功能（如自定义通信）。 |
-| FULL_EXPERIENCE_MODE  | 2 |完整体验模式。<br/>**使用场景：**输入法已启用且处于完整体验模式，支持所有功能（包括自定义通信、预上屏等）。 |
+| DISABLED   | 0 |未启用。<br/>使用场景：输入法已被禁用，不能作为当前输入法使用。 |
+| BASIC_MODE  | 1 |基础模式。<br/>使用场景：输入法已启用但处于基础模式，仅具备基础输入能力，不支持高级功能（如自定义通信）。 |
+| FULL_EXPERIENCE_MODE  | 2 |完整体验模式。<br/>使用场景：输入法已启用且处于完整体验模式，支持所有功能（包括自定义通信、预上屏等）。 |
 
 ## RequestKeyboardReason<sup>15+</sup>
 
@@ -1139,10 +1019,10 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| NONE   | 0 |表示没有特定的原因触发键盘请求。<br/>**使用场景：**默认值，不指定特定触发原因时使用。 |
-| MOUSE  | 1 |表示键盘请求是由鼠标操作触发的。<br/>**使用场景：**用户通过鼠标点击编辑框触发键盘弹出时使用。 |
-| TOUCH  | 2 |表示键盘请求是由触摸操作触发的。<br/>**使用场景：**用户通过触摸点击编辑框触发键盘弹出时使用。 |
-| OTHER  | 20 |表示键盘请求是由其他原因触发的。<br/>**使用场景：**键盘弹出的触发原因不属于鼠标和触摸时使用。 |
+| NONE   | 0 |表示没有特定的原因触发键盘请求。<br/>使用场景：默认值，不指定特定触发原因时使用。 |
+| MOUSE  | 1 |表示键盘请求是由鼠标操作触发的。<br/>使用场景：用户通过鼠标点击编辑框触发键盘弹出时使用。 |
+| TOUCH  | 2 |表示键盘请求是由触摸操作触发的。<br/>使用场景：用户通过触摸点击编辑框触发键盘弹出时使用。 |
+| OTHER  | 20 |表示键盘请求是由其他原因触发的。<br/>使用场景：键盘弹出的触发原因不属于鼠标和触摸时使用。 |
 
 ## MessageHandler<sup>15+</sup>
 
@@ -1246,9 +1126,9 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。<br/>**使用场景：**应用窗口未获得焦点时调用attach，会返回此失败原因。<br/>**说明：**调用attach前需确保应用窗口已获焦。 |
-| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。<br/>**使用场景：**输入法应用进程崩溃或未正常运行时，attach会返回此失败原因。 |
-| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。<br/>**使用场景：**输入法框架服务进程异常时，attach会返回此失败原因。 |
+| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。<br/>使用场景：应用窗口未获得焦点时调用attach，会返回此失败原因。<br/>说明：调用attach前需确保应用窗口已获焦。 |
+| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。<br/>使用场景：输入法应用进程崩溃或未正常运行时，attach会返回此失败原因。 |
+| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。<br/>使用场景：输入法框架服务进程异常时，attach会返回此失败原因。 |
 
 ## AttachOptions<sup>23+</sup>
 
@@ -1269,14 +1149,15 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 
 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：
 
-- **绑定管理**：通过[attach](#attach10)建立与输入法的绑定，通过[detach](#detach10)解除绑定。attach和detach必须配对使用。
-- **键盘控制**：通过[showTextInput](#showtextinput10)拉起软键盘进入编辑状态，通过[hideTextInput](#hidetextinput10)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。
-- **编辑框状态同步**：通过[updateCursor](#updatecursor10)、[changeSelection](#changeselection10)、[updateAttribute](#updateattribute10)等接口向输入法同步光标、选区、属性等编辑框状态信息。
-- **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。
+- 绑定管理：通过[attach](#attach10)建立与输入法的绑定，通过[detach](#detach10)解除绑定。attach和detach必须配对使用。
+- 键盘控制：通过[showTextInput](#showtextinput10)拉起软键盘进入编辑状态，通过[hideTextInput](#hidetextinput10)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。
+- 编辑框状态同步：通过[updateCursor](#updatecursor10)、[changeSelection](#changeselection10)、[updateAttribute](#updateattribute10)等接口向输入法同步光标、选区、属性等编辑框状态信息。
+- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。
 
 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()`
 
-> **注意：**
+> **说明：**
+>
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
 
 ### attach<sup>10+</sup>
@@ -1285,22 +1166,20 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback&lt
 
 自绘控件绑定输入法。使用callback异步回调。
 
-**含义/功能**：建立自绘控件与输入法应用之间的绑定关系，是自绘控件使用输入法功能的前提。
+含义/功能：建立自绘控件与输入法应用之间的绑定关系，是自绘控件使用输入法功能的前提。
 
-**使用场景：**自绘控件（非系统原生编辑框）需要与输入法交互时，必须先调用此接口建立绑定。原生编辑框获焦时系统自动绑定，无需调用此接口。
+使用场景：自绘控件（非系统原生编辑框）需要与输入法交互时，必须先调用此接口建立绑定。原生编辑框获焦时系统自动绑定，无需调用此接口。
 
-**使用后效果**：绑定成功后，自绘控件可调用showTextInput/hideTextInput控制键盘显隐、调用updateCursor/changeSelection同步编辑框状态、订阅输入法事件等。
+使用后效果：绑定成功后，自绘控件可调用showTextInput/hideTextInput控制键盘显隐、调用updateCursor/changeSelection同步编辑框状态、订阅输入法事件等。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
+前提条件/前置操作：自绘控件所在窗口需处于获焦状态，否则绑定会失败。
 
-**前提条件/前置操作**：自绘控件所在窗口需处于获焦状态，否则绑定会失败。
+相关接口间的配合/制约关系：attach必须与detach配对使用。调用attach后才能调用showTextInput、hideTextInput、updateCursor等接口。
 
-**相关接口间的配合/制约关系**：attach必须与detach配对使用。调用attach后才能调用showTextInput、hideTextInput、updateCursor等接口。
-
-**相似接口差异点及选取原则**：
-- **attach**：不需要传入UIContext，适用于API version 10+的自绘控件绑定场景。
-- **attachWithUIContext**：需要传入UIContext，适用于API version 23+的Stage模型场景，支持更多绑定选项。
-- **选取原则**：API version 23+的Stage模型应用优先使用attachWithUIContext，以获得更完整的绑定选项支持。
+相似接口差异点及选取原则：
+- attach：不需要传入UIContext，适用于API version 10+的自绘控件绑定场景。
+- attachWithUIContext：需要传入UIContext，适用于API version 23+的Stage模型场景，支持更多绑定选项。
+- 选取原则：API version 23+的Stage模型应用优先使用attachWithUIContext，以获得更完整的绑定选项支持。
 
 > **说明：**
 >
@@ -1372,7 +1251,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1427,7 +1306,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1561,22 +1440,20 @@ showTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 进入文本编辑状态。使用callback异步回调。
 
-**含义/功能**：拉起软键盘，使编辑框进入文本编辑状态。
+含义/功能：拉起软键盘，使编辑框进入文本编辑状态。
 
-**使用场景：**自绘控件绑定输入法后，需要显示软键盘开始文本输入时调用。
+使用场景：自绘控件绑定输入法后，需要显示软键盘开始文本输入时调用。
 
-**使用后效果**：软键盘弹出，编辑框进入可输入的文本编辑状态。
+使用后效果：软键盘弹出，编辑框进入可输入的文本编辑状态。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
+前提条件/前置操作：需先调用[attach](#attach10)完成绑定，否则会报12800009错误。
 
-**前提条件/前置操作**：需先调用[attach](#attach10)完成绑定，否则会报12800009错误。
+相关接口间的配合/制约关系：showTextInput与hideTextInput必须配对使用。调用hideTextInput退出编辑状态后，需再次调用showTextInput才能重新进入编辑状态。
 
-**相关接口间的配合/制约关系**：showTextInput与hideTextInput必须配对使用。调用hideTextInput退出编辑状态后，需再次调用showTextInput才能重新进入编辑状态。
-
-**相似接口差异点及选取原则**：
-- **showTextInput**：面向自绘控件，需先attach绑定后调用。适用于自绘控件场景，是标准的键盘显示方式。
-- **showSoftKeyboard**：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。适用于系统应用需要强制显示键盘的场景。
-- **选取原则**：自绘控件优先使用showTextInput；系统应用且有特殊需求时使用showSoftKeyboard。
+相似接口差异点及选取原则：
+- showTextInput：面向自绘控件，需先attach绑定后调用。适用于自绘控件场景，是标准的键盘显示方式。
+- showSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。适用于系统应用需要强制显示键盘的场景。
+- 选取原则：自绘控件优先使用showTextInput；系统应用且有特殊需求时使用showSoftKeyboard。
 
 > **说明：**
 >
@@ -1630,7 +1507,7 @@ showTextInput(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1676,7 +1553,7 @@ showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1708,22 +1585,20 @@ hideTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 退出文本编辑状态。使用callback异步回调。
 
-**含义/功能**：隐藏软键盘，使编辑框退出文本编辑状态。
+含义/功能：隐藏软键盘，使编辑框退出文本编辑状态。
 
-**使用场景：**自绘控件不再需要输入时调用，如用户点击了编辑框外的区域、切换到其他页面等。
+使用场景：自绘控件不再需要输入时调用，如用户点击了编辑框外的区域、切换到其他页面等。
 
-**使用后效果**：软键盘被隐藏，编辑框退出编辑状态。调用此接口不会解除与输入法的绑定，再次调用showTextInput可重新进入编辑状态。
+使用后效果：软键盘被隐藏，编辑框退出编辑状态。调用此接口不会解除与输入法的绑定，再次调用showTextInput可重新进入编辑状态。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
+前提条件/前置操作：需先调用[attach](#attach10)完成绑定，且已调用showTextInput进入编辑状态。
 
-**前提条件/前置操作**：需先调用[attach](#attach10)完成绑定，且已调用showTextInput进入编辑状态。
+相关接口间的配合/制约关系：hideTextInput与showTextInput必须配对使用。hideTextInput后如需再次输入，必须先调用showTextInput重新进入编辑状态，不能直接调用其他编辑操作。
 
-**相关接口间的配合/制约关系**：hideTextInput与showTextInput必须配对使用。hideTextInput后如需再次输入，必须先调用showTextInput重新进入编辑状态，不能直接调用其他编辑操作。
-
-**相似接口差异点及选取原则**：
-- **hideTextInput**：面向自绘控件，退出编辑状态但不解除绑定，可再次showTextInput重新进入。适用于自绘控件需要暂时隐藏键盘的场景。
-- **hideSoftKeyboard**：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。仅隐藏键盘，不改变编辑状态。
-- **选取原则**：自绘控件优先使用hideTextInput；系统应用且有特殊需求时使用hideSoftKeyboard。
+相似接口差异点及选取原则：
+- hideTextInput：面向自绘控件，退出编辑状态但不解除绑定，可再次showTextInput重新进入。适用于自绘控件需要暂时隐藏键盘的场景。
+- hideSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。仅隐藏键盘，不改变编辑状态。
+- 选取原则：自绘控件优先使用hideTextInput；系统应用且有特殊需求时使用hideSoftKeyboard。
 
 > **说明：**
 >
@@ -1781,7 +1656,7 @@ hideTextInput(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1811,15 +1686,13 @@ detach(callback: AsyncCallback&lt;void&gt;): void
 
 自绘控件解除与输入法的绑定。使用callback异步回调。
 
-**含义/功能**：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
+含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
 
-**使用场景：**自绘控件不再需要与输入法交互时调用（如页面切换、编辑框被销毁等）。
+使用场景：自绘控件不再需要与输入法交互时调用（如页面切换、编辑框被销毁等）。
 
-**使用后效果**：解除绑定后，不能再调用showTextInput、hideTextInput、updateCursor等需要绑定状态的接口。输入法软键盘将被隐藏。
+使用后效果：解除绑定后，不能再调用showTextInput、hideTextInput、updateCursor等需要绑定状态的接口。输入法软键盘将被隐藏。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
-
-**相关接口间的配合/制约关系**：detach必须与attach配对使用。建议在hideTextInput之后调用detach，完整流程为：attach → showTextInput → hideTextInput → detach。
+相关接口间的配合/制约关系：detach必须与attach配对使用。建议在hideTextInput之后调用detach，完整流程为：attach → showTextInput → hideTextInput → detach。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1858,15 +1731,13 @@ detach(): Promise&lt;void&gt;
 
 自绘控件解除与输入法的绑定。使用promise异步回调。
 
-**含义/功能**：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
+含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
 
-**使用场景：**自绘控件不再需要与输入法交互时调用。
+使用场景：自绘控件不再需要与输入法交互时调用。
 
-**使用后效果**：解除绑定后，不能再调用需要绑定状态的接口。输入法软键盘将被隐藏。
+使用后效果：解除绑定后，不能再调用需要绑定状态的接口。输入法软键盘将被隐藏。
 
-**异步返回方式**：使用Promise异步回调。成功时无返回结果；失败时返回BusinessError对象。
-
-**相关接口间的配合/制约关系**：detach必须与attach配对使用。
+相关接口间的配合/制约关系：detach必须与attach配对使用。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1874,7 +1745,7 @@ detach(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1904,6 +1775,8 @@ setCallingWindow(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 设置要避让软键盘的窗口。使用callback异步回调。
 
 > **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口设置避让软键盘的窗口。
 >
 > 将绑定到输入法的应用程序所在的窗口Id传入，此窗口可以避让输入法窗口。
 
@@ -1964,7 +1837,7 @@ setCallingWindow(windowId: number): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1995,6 +1868,10 @@ inputMethod.getController().setCallingWindow(windowId).then(() => {
 updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback&lt;void&gt;): void
 
 当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用callback异步回调。
+
+> **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口更新光标信息。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2043,6 +1920,10 @@ updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
 当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用promise异步回调。
 
+> **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口更新光标信息。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -2055,7 +1936,7 @@ updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2091,6 +1972,10 @@ inputMethod.getController().updateCursor(cursorInfo).then(() => {
 changeSelection(text: string, start: number, end: number, callback: AsyncCallback&lt;void&gt;): void
 
 当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用callback异步回调。
+
+> **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口更新文本选区信息。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2134,6 +2019,10 @@ changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
 当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用promise异步回调。
 
+> **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口更新文本选区信息。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -2148,7 +2037,7 @@ changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2220,6 +2109,10 @@ updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
 更新编辑框属性信息。使用promise异步回调。
 
+> **说明：**
+>
+> 编辑框与输入法绑定成功后，才可调用该接口更新编辑框属性信息。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -2232,7 +2125,7 @@ updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2264,17 +2157,15 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 结束输入会话。使用callback异步回调。
 
-**含义/功能**：结束当前的输入会话，隐藏软键盘。
+含义/功能：结束当前的输入会话，隐藏软键盘。
 
-**使用场景：**应用需要主动结束输入会话时调用（如用户完成了输入操作）。
+使用场景：应用需要主动结束输入会话时调用（如用户完成了输入操作）。
 
-**使用后效果**：软键盘被隐藏，输入会话结束。与hideTextInput不同，stopInputSession直接结束会话而不需要先进入编辑状态。
+使用后效果：软键盘被隐藏，输入会话结束。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined，data为true；失败时返回BusinessError对象。
+前提条件/前置操作：编辑框与输入法绑定时才能调用，即点击编辑控件后。
 
-**前提条件/前置操作**：编辑框与输入法绑定时才能调用，即点击编辑控件后。
-
-**相关接口间的配合/制约关系**：stopInputSession会隐藏软键盘并结束输入会话。如果使用自绘控件的attach/showTextInput/hideTextInput/detach流程，建议使用hideTextInput而非stopInputSession。
+相关接口间的配合/制约关系：stopInputSession会隐藏软键盘并结束输入会话。如果使用自绘控件的attach/showTextInput/hideTextInput/detach流程，建议使用hideTextInput而非stopInputSession。
 
 > **说明：**
 >
@@ -2286,7 +2177,7 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当结束输入会话成功时，err为undefined，data为true；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当结束输入会话成功时，err为undefined，data为true；失败时err为错误对象。 |
 
 **错误码：**
 
@@ -2364,20 +2255,18 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 显示输入法软键盘。使用callback异步回调。
 
-**含义/功能**：强制显示当前输入法的软键盘。
+含义/功能：强制显示当前输入法的软键盘。
 
-**使用场景：**系统应用需要强制显示输入法软键盘时使用（如设置应用测试输入法）。
+使用场景：系统应用需要强制显示输入法软键盘时使用（如设置应用测试输入法）。
 
-**使用后效果**：输入法软键盘弹出显示。
+使用后效果：输入法软键盘弹出显示。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
+前提条件/前置操作：编辑框与输入法绑定时才能调用。
 
-**前提条件/前置操作**：编辑框与输入法绑定时才能调用。
-
-**相似接口差异点及选取原则**：
-- **showSoftKeyboard**：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY，仅显示键盘不改变编辑状态。
-- **showTextInput**：面向自绘控件，需先attach绑定，拉起键盘并进入编辑状态。
-- **选取原则**：自绘控件使用showTextInput；系统应用且有权限时使用showSoftKeyboard。
+相似接口差异点及选取原则：
+- showSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY，仅显示键盘不改变编辑状态。
+- showTextInput：面向自绘控件，需先attach绑定，拉起键盘并进入编辑状态。
+- 选取原则：自绘控件使用showTextInput；系统应用且有权限时使用showSoftKeyboard。
 
 > **说明：**
 >
@@ -2435,7 +2324,7 @@ showSoftKeyboard(): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2465,20 +2354,18 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 隐藏输入法软键盘。使用callback异步回调。
 
-**含义/功能**：强制隐藏当前输入法的软键盘。
+含义/功能：强制隐藏当前输入法的软键盘。
 
-**使用场景：**系统应用需要强制隐藏输入法软键盘时使用。
+使用场景：系统应用需要强制隐藏输入法软键盘时使用。
 
-**使用后效果**：输入法软键盘被隐藏。
+使用后效果：输入法软键盘被隐藏。
 
-**异步返回方式**：使用callback异步回调。成功时err为undefined；失败时返回BusinessError对象。
+前提条件/前置操作：编辑框与输入法绑定时才能调用。
 
-**前提条件/前置操作**：编辑框与输入法绑定时才能调用。
-
-**相似接口差异点及选取原则**：
-- **hideSoftKeyboard**：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY，仅隐藏键盘不退出编辑状态。
-- **hideTextInput**：面向自绘控件，隐藏键盘并退出编辑状态，可再次showTextInput重新进入。
-- **选取原则**：自绘控件使用hideTextInput；系统应用且有权限时使用hideSoftKeyboard。
+相似接口差异点及选取原则：
+- hideSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY，仅隐藏键盘不退出编辑状态。
+- hideTextInput：面向自绘控件，隐藏键盘并退出编辑状态，可再次showTextInput重新进入。
+- 选取原则：自绘控件使用hideTextInput；系统应用且有权限时使用hideSoftKeyboard。
 
 > **说明：**
 >
@@ -2536,7 +2423,7 @@ hideSoftKeyboard(): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2562,7 +2449,7 @@ inputMethod.getController().hideSoftKeyboard().then(() => {
 
 ### sendMessage<sup>15+</sup>
 
-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
+sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise&lt;void&gt;
 
 发送自定义通信至输入法应用。使用Promise异步回调。
 
@@ -2585,7 +2472,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2762,11 +2649,11 @@ on(type: 'insertText', callback: (text: string) => void): void
 **示例：**
 
 ```ts
-function callback1(text: string): void {
+const callback1 = (text: string): void => {
   console.info(`Succeeded in getting callback1, data: ${text}`);
 }
 
-function callback2(text: string): void {
+const callback2 = (text: string): void => {
   console.info(`Succeeded in getting callback2, data: ${text}`);
 }
 
@@ -3669,10 +3556,10 @@ console.info(`All callbacks unsubscribed from finishTextPreview`);
 
 InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能：
 
-- **输入法变化订阅**：通过[on('imeChange')](#onimechange9)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。
-- **输入法列表查询**：通过[getInputMethods](#getinputmethods9)查询已激活/未激活输入法列表，通过[getAllInputMethods](js-apis-inputmethod.md#getallinputmethods11)查询所有已安装输入法列表，通过[listInputMethodSubtype](#listinputmethodsubtype9)查询指定输入法的子类型列表。
-- **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。
-- **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。
+- 输入法变化订阅：通过[on('imeChange')](#onimechange9)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。
+- 输入法列表查询：通过[getInputMethods](#getinputmethods9)查询已激活/未激活输入法列表，通过[getAllInputMethods](js-apis-inputmethod.md#getallinputmethods11)查询所有已安装输入法列表，通过[listInputMethodSubtype](#listinputmethodsubtype9)查询指定输入法的子类型列表。
+- 面板可见性查询：通过isPanelShown查询输入法面板是否显示。
+- 输入法选择对话框：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。
 
 需通过[getSetting](#inputmethodgetsetting9)获取InputMethodSetting实例后使用。
 
@@ -3760,8 +3647,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
-  packageName: 'com.example.keyboard',
-  methodId: 'propertyId',
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3793,7 +3678,7 @@ listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise&lt;Arr
 
 | 类型                                                        | 说明                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>> | Promise对象，返回指定输入法应用的所有子类型。 |
+| Promise&lt;Array&lt;[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)&gt;&gt; | Promise对象，返回指定输入法应用的所有子类型。 |
 
 **错误码：**
 
@@ -3814,8 +3699,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
-  packageName: 'com.example.keyboard',
-  methodId: 'propertyId',
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3877,7 +3760,7 @@ listCurrentInputMethodSubtype(): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
 | 类型                                                        | 说明                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>> | Promise对象，返回当前输入法应用的所有子类型。 |
+| Promise&lt;Array&lt;[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)&gt;&gt;| Promise对象，返回当前输入法应用的所有子类型。 |
 
 **错误码：**
 
@@ -3973,7 +3856,7 @@ getInputMethods(enable: boolean): Promise&lt;Array&lt;InputMethodProperty&gt;&gt
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<Array\<[InputMethodProperty](#inputmethodproperty8)>> | Promise对象，返回已激活/未激活输入法列表。 |
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise对象，返回已激活/未激活输入法列表。 |
 
 **错误码：**
 
@@ -4091,7 +3974,7 @@ getAllInputMethods(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array\<[InputMethodProperty](#inputmethodproperty8)>> | Promise对象，返回所有输入法列表。 |
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise对象，返回所有输入法列表。 |
 
 **错误码：**
 
@@ -4206,7 +4089,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。当输入法选择对话框显示成功，err为undefined，data为true；否则为错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示输入法选择对话框显示成功，返回false表示显示失败。 |
 
 **错误码：**
 
@@ -4280,7 +4163,7 @@ listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
 | 类型                                                        | 说明                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodProperty](#inputmethodproperty8)>> | Promise对象，返回已安装输入法列表。 |
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise对象，返回已安装输入法列表。 |
 
 **示例：**
 
@@ -4342,7 +4225,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -4368,7 +4251,7 @@ getInputMethodState(): Promise&lt;EnabledState&gt;
 
 | 类型                                    | 说明                                                         |
 | --------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[EnabledState](#enabledstate15)> | Promise对象，返回EnabledState.DISABLED表示未启用; 返回EnabledState.BASIC_MODE表示基础模式; 返回EnabledState.FULL_EXPERIENCE_MODE表示完整体验模式。 |
+| Promise&lt;[EnabledState](#enabledstate15)&gt; | Promise对象，返回EnabledState.DISABLED表示未启用; 返回EnabledState.BASIC_MODE表示基础模式; 返回EnabledState.FULL_EXPERIENCE_MODE表示完整体验模式。 |
 
 **错误码：**
 

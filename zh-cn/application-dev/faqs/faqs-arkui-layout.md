@@ -1,8 +1,8 @@
 # ArkUI布局开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu; @yylong; @zcdqs-->
-<!--Designer: @lanshouren; @yylong; @zcdqs-->
+<!--Owner: @fenglinbailu; @yangcan18; @guozejun-->
+<!--Designer: @lanshouren; @yangcan18; @guozejun-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @HelloCrease-->
 

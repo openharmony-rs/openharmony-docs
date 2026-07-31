@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行Date相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -54,7 +54,7 @@ static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info)
 
     JSVM_CALL(OH_JSVM_CreateDate(env, value, &returnValue));
 
-    bool isDate;
+    bool isDate = false;
     JSVM_CALL(OH_JSVM_IsDate(env, returnValue, &isDate));
     if (!isDate) {
         OH_LOG_ERROR(LOG_APP, "JSVM IsDate fail");
@@ -120,12 +120,12 @@ static JSVM_Value GetDateValue(JSVM_Env env, JSVM_CallbackInfo info)
     return returnValue;
 }
 
-// CreateDate注册回调
+// GetDateValue注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDateValue},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateDate方法别名，供JS调用
+// GetDateValue方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getDateValue", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -161,12 +161,12 @@ static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_CALL(OH_JSVM_GetBoolean(env, isDate, &result));
     return result;
 }
-// CreateDate注册回调
+// IsDate注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsDate},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateDate方法别名，供JS调用
+// IsDate方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isDate", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

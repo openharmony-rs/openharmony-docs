@@ -10,49 +10,7 @@ abilityConnectionManager模块提供了应用协同接口管理能力。设备�
 
 多端协同的逻辑分层架构视图如下：
 
-```mermaid
-sequenceDiagram
-    participant AppA as 设备A·应用层
-    participant FrameA as 设备A·分布式组件管理服务
-    participant Bus as 分布式通信层（软总线）
-    participant FrameB as 设备B·分布式组件管理服务
-    participant AppB as 设备B·应用层
-
-    Note over AppA,Bus: 1. 创建会话
-    AppA->>FrameA: createAbilityConnectionSession()
-    FrameA-->>AppA: 返回sessionId
-
-    Note over AppA,AppB: 2. 建立连接（基于软总线秒级建连，自动拉起对端应用）
-    AppA->>FrameA: connect(sessionId)
-    FrameA->>Bus: 发起跨端连接
-    Bus->>FrameB: 建立会话通道，拉起设备B应用
-    FrameB->>AppB: onCollaborate生命周期回调
-    AppB->>FrameB: createAbilityConnectionSession()
-    AppB->>FrameB: acceptConnect(sessionId, token)
-    FrameB->>Bus: 接受连接
-    Bus-->>FrameA: 连接建立成功
-    FrameA-->>AppA: connect完成（connect事件回调）
-
-    Note over AppA,AppB: 3. 数据传输（基于sessionId点对点通信，更高效安全）
-    AppA->>FrameA: sendMessage / sendData
-    FrameA->>Bus: 传输数据
-    Bus->>FrameB: 转发数据
-    FrameB->>AppB: receiveMessage / receiveData 事件回调
-    AppB->>FrameB: sendMessage / sendData
-    FrameB->>Bus: 传输数据
-    Bus->>FrameA: 转发数据
-    FrameA->>AppA: receiveMessage / receiveData 事件回调
-
-    Note over AppA,AppB: 4. 断开连接
-    AppA->>FrameA: disconnect(sessionId)
-    FrameA->>Bus: 断开会话通道
-    Bus->>FrameB: 通知断连
-    FrameB->>AppB: disconnect 事件回调
-
-    Note over AppA,AppB: 5. 销毁会话
-    AppA->>FrameA: destroyAbilityConnectionSession(sessionId)
-    AppB->>FrameB: destroyAbilityConnectionSession(sessionId)
-```
+![abilityConnectionManager_sequenceDiagram](../figures/abilityConnectionManager_sequenceDiagram.png)
 
 逻辑分层架构视图的关键原理说明如下：
 
@@ -100,7 +58,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。 |
+| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。取值范围是大于100的整数。 |
 
 **错误码：**
 
@@ -162,9 +120,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          abilityName: 'EntryAbility',
          serviceName: 'collabTest'
        };
-       const myRecord: Record<string, string> = {
-         "newKey1": "value1",
-       };
+        const myRecord: Record<string, string> = {
+          'newKey1': 'value1',
+        };
    
        // 定义连接选项
        const connectOptions: abilityConnectionManager.ConnectOptions = {
@@ -220,7 +178,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
-         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
        } catch (error) {
          hilog.error(0x0000, 'testTag', error);
        }
@@ -246,7 +204,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明                              |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。|
+| sessionId | number | 是 | 待销毁的协同会话ID。<br />取值范围是不小于100的整数。传入小于100的值或不存在的协同会话ID时返回错误码401。|
 
 **示例：**
 
@@ -434,7 +392,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+        hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
       } catch (error) {
         hilog.error(0x0000, 'testTag', error);
       }
@@ -488,7 +446,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| token | string | 是    | 用于协作服务管理的令牌。    |
+| token | string | 是    | 用于协作服务管理的令牌。该值通过wantParam参数中'ohos.dms.collabToken'键获取（在应用被拉起后的onCollaborate生命周期方法的wantParam参数中获取）。   |
 | reason | string | 是    | 连接被拒绝的原因。    |
 
 **错误码：**
@@ -678,7 +636,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.off("disconnect", sessionId);
 
   ```
@@ -890,7 +848,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
   abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 
@@ -939,9 +897,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
   let sessionId = 100;
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.error(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 
@@ -961,7 +919,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 | bundleName        | string | 否   |否    | 对端应用的包名，用于唯一标识要连接的应用。需与对端应用的bundleName保持一致。 |
 | moduleName        | string | 否   |否    | 对端应用的模块名，用于标识要连接的应用模块。通常为'entry'或其他自定义模块名。 |
 | abilityName       | string | 否   |否     | 对端应用的组件名，用于标识要连接的UIAbility组件。需与对端应用的abilityName保持一致。 |
-| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。 |
+| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。不设置此值时，使用默认服务名称。 |
 
 ## ConnectOptions
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_DrawContext ArkUI_DrawContext
 
 ## 概述
 
-定义组件绘制上下文类型结构。
+定义组件绘制上下文的结构体类型，用于在自定义组件绘制过程中提供绘制上下文信息，可获取用于绘制的 Canvas 指针和可绘制区域大小。
 
 **起始版本：** 12
 

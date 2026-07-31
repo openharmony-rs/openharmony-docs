@@ -26,7 +26,7 @@ typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDe
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t bLength | 该描述符的大小，单位为字节。 |
+| uint8_t bLength | 该描述符的大小，单位：字节。 |
 | uint8_t bDescriptorType | 描述符类型。 |
 | uint16_t bcdUSB | USB协议版本号。 |
 | uint8_t bDeviceClass | 由USB标准化组织（USB-IF）分配的设备类代码。 |
@@ -36,9 +36,9 @@ typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDe
 | uint16_t idVendor | 由USB标准化组织（USB-IF）分配的厂商编号。 |
 | uint16_t idProduct | 由厂商分配的产品编号。 |
 | uint16_t bcdDevice | 设备版本编号。 |
-| uint8_t iManufacturer | 描述厂商的字符串描述符的索引。 |
-| uint8_t iProduct | 描述产品的字符串描述符的索引。 |
-| uint8_t iSerialNumber | 描述设备序列号的字符串描述符的索引。 |
+| uint8_t iManufacturer | 厂商字符串描述符的索引。 |
+| uint8_t iProduct | 产品字符串描述符的索引。 |
+| uint8_t iSerialNumber | 设备序列号字符串描述符的索引。 |
 | uint8_t bNumConfigurations | 配置数量。 |
 
 

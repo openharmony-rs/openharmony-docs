@@ -244,11 +244,11 @@ class AppColors implements CustomColors {
   }
 }
 
-@Entry({ routeName: "text" })
+@Entry({ routeName: 'text' })
 @Component
 struct TextPage {
   @State appColors: AppColors = new AppColors(
-    "#ff0000", "#0000ff", "#00ff00", "#ff00ff"
+    '#ff0000', '#0000ff', '#00ff00', '#ff00ff'
   );
   controller: TextClockController = new TextClockController();
   @State accumulateTime: number = 0;

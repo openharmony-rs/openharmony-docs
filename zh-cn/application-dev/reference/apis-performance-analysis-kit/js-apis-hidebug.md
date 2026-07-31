@@ -583,7 +583,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 参数名   | 类型     | 必填 | 说明                                 |
 | -------- | ------   | ---- |------------------------------------|
-| tags     | number[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
+| tags     | number[] | 是   | trace范围，详情请见[tags](#tags12)。   |
 | flag     | TraceFlag| 是   | 详情请见[TraceFlag](#traceflag12)。        |
 | limitSize| number   | 是   | 开启trace文件大小限制，单位为Byte，取值范围（0, 500MB]。超出范围时返回错误码401。 |
 
@@ -1058,7 +1058,7 @@ VM内存信息。
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
 
-## hidebug.tags<sup>12+</sup>
+## tags<sup>12+</sup>
 
 ### 常量
 
@@ -1352,7 +1352,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
@@ -1407,7 +1407,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 

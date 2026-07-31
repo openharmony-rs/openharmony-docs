@@ -1,10 +1,10 @@
 # 使用Node-API接口进行函数创建和调用
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -141,7 +141,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 在C/C++侧对ArkTS函数进行调用。
 
-注意事项：napi_call_function传入的argv的长度必须大于等于argc声明的数量，并且每个元素都应初始化为nullptr。
+注意事项：napi_call_function传入的argv长度需不少于argc；argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
 
 cpp部分代码
 
@@ -241,6 +241,18 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
     napi_create_double(env, width * height, &area);
     return area;
 }
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // ...
+    napi_value fn = nullptr;
+    napi_create_function(env, nullptr, 0, CalculateArea, nullptr, &fn);
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    napi_set_named_property(env, exports, "calculateArea", fn);
+    return exports;
+}
+EXTERN_C_END
 ```
 
 接口声明

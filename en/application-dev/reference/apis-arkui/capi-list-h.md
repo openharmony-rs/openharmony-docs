@@ -10,7 +10,7 @@
 
 Defines enumerations and APIs related to **List**.
 
-**File to include:** <arkui/list.h>
+**File to include:** <arkui/node_attributes/list.h>
 
 **Library:** libace_ndk.z.so
 

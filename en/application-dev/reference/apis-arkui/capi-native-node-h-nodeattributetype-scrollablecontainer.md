@@ -1258,6 +1258,56 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the swipe-out component of **ListItem** is collapsed when the system back button takes effect. **0**: no; **1**: yes.|
 
+## NODE_LIST_ENABLE_EDIT_MODE
+
+```c
+NODE_LIST_ENABLE_EDIT_MODE = 1003021
+```
+
+Whether to enable the edit mode for the **List** component. After the edit mode is enabled, the check box is displayed by default, and users can swipe with their fingers to select multiple items. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable the edit mode for the **List** component. **0**: disable; **1**: enable. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the edit mode is enabled for the **List** component. **0**: disabled; **1**: enabled.|
+
+## NODE_LIST_EDIT_MODE_OPTIONS
+
+```c
+NODE_LIST_EDIT_MODE_OPTIONS = 1003022
+```
+
+Edit mode options of the **List** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to use the default multi-selection style for the **List** component. **0**: no; **1**: yes. The default value is **1**.|
+| .value[1].i32 | Whether to enable two-finger swipe to select multiple items for the **List** component. **0**: disable; **1**: enable. The default value is **1**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the default multi-selection style is used for the **List** component. **0**: no; **1**: yes.|
+| .value[1].i32 | Whether two-finger swipe is enabled to select multiple items for the **List** component. **0**: disabled; **1**: enabled.|
+
 ## NODE_LIST_ITEM_SWIPE_ACTION
 
 ```c
@@ -2321,6 +2371,56 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the **Grid** component supports the generation of empty branches. **0**: no; **1**: yes.|
 
+## NODE_GRID_ENABLE_EDIT_MODE
+
+```c
+NODE_GRID_ENABLE_EDIT_MODE = 1013016
+```
+
+Whether to enable the edit mode for the **Grid** component. After the edit mode is enabled, the check box is displayed by default, and users can swipe with their fingers to select multiple items. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable the edit mode for the **Grid** component. **0**: disable; **1**: enable. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the edit mode is enabled for the **Grid** component. **0**: disabled; **1**: enabled.|
+
+## NODE_GRID_EDIT_MODE_OPTIONS
+
+```c
+NODE_GRID_EDIT_MODE_OPTIONS = 1013017
+```
+
+Edit mode options of the **Grid** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to use the default multi-selection style for the **Grid** component. **0**: no; **1**: yes. The default value is **1**.|
+| .value[1].i32 | Whether to enable two-finger swipe to select multiple items for the **Grid** component. **0**: disable; **1**: enable. The default value is **1**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the default multi-selection style is used for the **Grid** component. **0**: no; **1**: yes.|
+| .value[1].i32 | Whether two-finger swipe is enabled to select multiple items for the **Grid** component. **0**: disabled; **1**: enabled.|
+
 ## NODE_GRID_ITEM_STYLE
 
 ```c
@@ -2520,7 +2620,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .object | The parameter type is [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md).|
+| .object | The parameter type is [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md). This parameter defines the main axis sizes of all child items in **ArcList**.<br>You can use [OH_ArkUI_ListChildrenMainSizeOption_Create](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_create) to create the object, and use [OH_ArkUI_ListChildrenMainSizeOption_Splice](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_splice) to adjust the array of the main axis sizes of child items in **ArcList**.|
 
 ## NODE_ARC_LIST_SET_HEADER
 
@@ -2751,7 +2851,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .object | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object.|
+| .object | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object.<br>This parameter defines the swipe-out component information of **ArcListItem**. You can use [OH_ArkUI_ListItemSwipeActionOption_Create](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_create) to create the object, and use [OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_setstart) to set the content on the left (in the vertical layout) or above (in the horizontal layout) of **ListItemSwipeActionItem**.|
 
 ## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
 

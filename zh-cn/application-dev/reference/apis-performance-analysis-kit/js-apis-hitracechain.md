@@ -9,11 +9,11 @@
 
 本模块提供了端侧业务流程调用链跟踪的打点能力，包括业务流程跟踪的启动、结束、信息埋点等能力。
 
-**使用场景**：
-- 分布式跨设备业务调用链追踪与分析
-- 性能问题定位与瓶颈分析
-- 业务流程调试与故障排查
-- 异步调用链路监控
+使用场景：
+- 分布式跨设备业务调用链追踪与分析。
+- 性能问题定位与瓶颈分析。
+- 业务流程调试与故障排查。
+- 异步调用链路监控。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 | DEFAULT           | 0      | 默认标志。       |
 | INCLUDE_ASYNC     | 1      | 异步调用标志。<br>设置该标志，同时跟踪同步和异步调用；默认只跟踪同步调用。 |
 | DONOT_CREATE_SPAN | 1 << 1 | 无分支标志。<br>设置该标志，不创建分支信息；默认创建分支信息。 |
-| TP_INFO           | 1 << 2 | 埋点标志。<br/>设置该标志后，调用[tracepoint()](#hitracechaintracepoint)接口时会打印埋点信息hilog；默认不打印埋点信息hilog日志。 |
+| TP_INFO           | 1 << 2 | 埋点标志。<br>设置该标志后，调用[tracepoint()](#hitracechaintracepoint)接口时会打印埋点信息hilog；默认不打印埋点信息hilog日志。 |
 | NO_BE_INFO        | 1 << 3 | 无开始结束信息标志。<br>调试场景下设置该标志，调用开始跟踪接口[begin()](#hitracechainbegin)和结束跟踪接口[end()](#hitracechainend)时，分别会打印开始、结束跟踪信息hilog日志；默认不打印开始、结束跟踪信息hilog日志。 |
 | DISABLE_LOG       | 1 << 4 | 日志关联标志。<br>设置该标志，不会在hilog日志中附加HiTraceId信息；默认会在hilog日志中附加HiTraceId信息。 |
 | FAILURE_TRIGGER   | 1 << 5 | 故障触发标志。预置标志，暂未启用。 |
@@ -88,13 +88,11 @@ begin(name: string, flags?: number): HiTraceId
 
 开始跟踪，同步接口。用于在业务流程的起始节点启动分布式跟踪，例如在用户点击按钮发起请求、服务端收到请求开始处理、启动后台任务等场景。
 
-当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该HiTraceId。
-
-当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。
-
-**配对调用：**
-- begin()必须与end()方法配对使用。
-- 调用begin()后，应在业务逻辑完成后调用end()结束跟踪，未调用end()可能导致跟踪链无法正常结束，影响跟踪数据的完整性。
+> **说明：**
+>
+> - 当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该HiTraceId。
+> - 当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。
+> - begin()必须与end()方法配对使用，调用begin()后，应在业务逻辑完成后调用end()结束跟踪，未调用end()可能导致跟踪链无法正常结束，影响跟踪数据的完整性。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -125,14 +123,10 @@ hiTraceChain.end(traceId);
 end(id: HiTraceId): void
 
 结束跟踪，同步接口。用于在业务流程的结束节点终止分布式跟踪，例如在请求处理完成返回结果、用户操作流程结束、后台任务执行完毕等场景。
-
-若给定的HiTraceId有效，且等于当前线程TLS中的HiTraceId，结束跟踪并将当前线程TLS中的HiTraceId设置为无效。
-
-若给定的HiTraceId无效，或不等于当前线程TLS中的HiTraceId，结束跟踪失败，打印结束跟踪失败hilog日志。
-
-**配对调用：**
-- end()必须与begin()方法配对使用。
-- 应传入begin()方法返回的HiTraceId，用于结束由begin()启动的跟踪链，释放相关资源。
+> **说明：**
+>
+> - 若给定的HiTraceId有效，且等于当前线程TLS中的HiTraceId，结束跟踪并将当前线程TLS中的HiTraceId设置为无效。若给定的HiTraceId无效，或不等于当前线程TLS中的HiTraceId，结束跟踪失败，打印结束跟踪失败hilog日志。
+> - end()必须与begin()方法配对使用，且需要传入begin()方法返回的HiTraceId，用于结束由begin()启动的跟踪链，释放相关资源。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -156,13 +150,10 @@ hiTraceChain.end(traceId);
 getId(): HiTraceId
 
 获取跟踪标识，同步接口。用于在需要传递当前跟踪标识的场景，例如将跟踪标识传递给子线程、传递给其他进程、或者在日志中记录当前跟踪标识。
-
-获取当前线程TLS中的HiTraceId。若当前线程TLS中不存在有效的HiTraceId，返回各属性值均为0的无效HiTraceId。
-
-**调用顺序：**
-- 应在调用begin()方法之后使用此方法。
-- 如果当前线程TLS中不存在有效的HiTraceId（即未调用begin()或已调用clearId()），则返回各属性值均为0的无效HiTraceId。
-- 可用于在同一线程的业务逻辑间传递跟踪标识。
+> **说明：**
+>
+> - 获取当前线程TLS中的HiTraceId。若当前线程TLS中不存在有效的HiTraceId，返回各属性值均为0的无效HiTraceId。
+> - 应在调用begin()方法之后使用此方法，用于在同一线程的业务逻辑间获取跟踪标识后进行传递。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -193,7 +184,9 @@ setId(id: HiTraceId): void
 
 设置跟踪标识，同步接口。用于在需要将外部跟踪标识设置到当前线程的场景，例如从父线程继承跟踪标识、从其他进程接收跟踪标识、从设备间通信获取跟踪标识。
 
-将给定的HiTraceId设置到当前线程TLS中。若给定的HiTraceId无效，则不执行任何操作。
+> **说明：**
+>
+> 将给定的HiTraceId设置到当前线程TLS中。若给定的HiTraceId无效，则不执行任何操作。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -218,7 +211,9 @@ clearId(): void
 
 清除跟踪标识，同步接口。用于在需要切断当前跟踪链的场景，例如业务逻辑分支不再需要跟踪、任务完成后清理跟踪标识、或者在开始新的跟踪前清理旧的跟踪标识。
 
-将当前线程TLS中的HiTraceId设置为无效。
+> **说明：**
+>
+> 将当前线程TLS中的HiTraceId设置为无效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -239,13 +234,11 @@ createSpan(): HiTraceId
 
 创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务分支。
 
-创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。
 
-**调用顺序：**
-- 应在调用begin()方法之后使用此方法
-- 需要当前线程TLS中存在有效的HiTraceId（即已调用begin()且未调用clearId()）
-- 如果当前线程TLS中没有有效HiTraceId，将返回各属性值均为0的无效HiTraceId
-- 用于在同一线程的跟踪链中创建子分支，实现多层级的跟踪结构
+> **说明：**
+>
+> - 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。
+> - 需要当前线程TLS中存在有效的HiTraceId（即已调用begin()且未调用clearId()），如果当前线程TLS中没有有效HiTraceId，将返回各属性值均为0的无效HiTraceId。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -276,7 +269,10 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 [@ohos.hiTraceMeter (性能打点)](./js-apis-hitracemeter.md)跟踪信息埋点，同步接口。
 
-本接口与HiTraceMeter模块协同工作，HiTraceChain负责跟踪链的管理，HiTraceMeter负责性能数据的采集和统计。当type为客户端发送CS且服务端接收到SR时，进行同步HiTraceMeter开始打点；当type为服务端发送SS且客户端接收到CR时，进行同步HiTraceMeter结束打点；CS和CR以及SR和SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。
+> **说明：**
+>
+> 本接口与HiTraceMeter模块协同工作，HiTraceChain负责跟踪链的管理，HiTraceMeter负责性能数据的采集和统计。当type为客户端发送CS且服务端接收到SR时，进行同步HiTraceMeter开始打点；当type为服务端发送SS且客户端接收到CR时，进行同步HiTraceMeter结束打点；CS和CR以及SR和SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。
+
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
@@ -284,7 +280,7 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，用于在性能分析时标识打点位置。当需要在HiTraceMeter报告中区分不同打点位置时传入有意义的描述信息（如函数名、操作步骤等），不传入参数时使用空字符串，不影响基本打点功能。该参数的长度不超过63Byte，超出部分将被截断。 |
+| mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | 是 | 信息埋点需要指定的跟踪通信模式，用于标识埋点发生的通信范围：THREAD表示线程间通信，PROCESS表示进程间通信，DEVICE表示设备间通信。 |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| 是 | 信息埋点需要指定的跟踪埋点类型。 |
 | id   | [HiTraceId](#hitraceid) | 是 | 实施信息埋点操作的HiTraceId实例。 |
 | msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，用于在性能分析时标识打点位置。当需要在HiTraceMeter报告中区分不同打点位置时传入有意义的描述信息（如函数名、操作步骤等），不传入时使用空字符串，不影响基本打点功能。该参数的长度不超过63Byte，超出部分将被截断。 |

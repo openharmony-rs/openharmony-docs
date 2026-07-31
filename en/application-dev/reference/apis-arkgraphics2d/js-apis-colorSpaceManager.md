@@ -1,13 +1,13 @@
 # @ohos.graphics.colorSpaceManager (Color Space Management)
 
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @xubo85-->
-<!--Designer: @comicchang; @wang-luyu4-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-The **colorSpaceManager** module provides APIs for creating and managing color space objects and obtaining basic color space attributes.
+This module provides basic capabilities for managing abstract color space objects, including creating criterion color space objects (such as sRGB, DCI-P3, and BT2020) and custom color space objects, as well as obtaining attributes such as the color space type, white point value, and gamma value. It is suitable for scenarios where color consistency needs to be ensured, such as image processing, video rendering, and cross-device color display. It helps you implement accurate color management and conversion, improving user experience in color display.
 
 > **NOTE**
 >
@@ -63,7 +63,7 @@ Enumerates the color space types.
 
 ## ColorSpacePrimaries
 
-The three primary colors (red, green, blue) and white as defined by the gamut standard, whose positions in the color space are represented by (x, y) coordinates based on real-world chromaticity.
+The three primary colors (red, green, blue) and white as defined by the color space standard, whose positions in the color space are represented by (x, y) coordinates based on real-world chromaticity.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -104,16 +104,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **Example**
 
 ```ts
 try {
+  // Create a color management instance for the criterion sRGB color space.
   let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-  console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -144,13 +145,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **Example**
 
 ```ts
 try {
+  // Define the color space criterion primary colors parameter.
   let primaries: colorSpaceManager.ColorSpacePrimaries = {
     redX: 0.1,
     redY: 0.1,
@@ -161,10 +163,12 @@ try {
     whitePointX: 0.4,
     whitePointY: 0.4
   };
+  // Define the color space gamma value.
   let gamma = 2.2;
+  // Create a custom color space object.
   let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-  console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -188,14 +192,23 @@ Obtains the color space type.
 | ------------------ | ------------------------ |
 | [ColorSpace](#colorspace)  | Color space type.|
 
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 9-22| 
+
 **Example**
 
 ```ts
 try {
+  // Obtain the color space type.
   let spaceName = colorSpace.getColorSpaceName();
   console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-  console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -213,14 +226,23 @@ Obtains the coordinates of the white point in the color space.
 | ------------------ | ------------------------ |
 | Array\<number\>  | Coordinates [x, y] of the white point.|
 
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 9-22| 
+
 **Example**
 
 ```ts
 try {
+  // Obtain the white point value of the color space.
   let point = colorSpace.getWhitePoint();
   console.info(`point: ` + point.toString());
 } catch (err) {
-  console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -238,13 +260,22 @@ Obtains the gamma of the color space.
 | ------------------ | ------------------------ |
 | number  | Gamma of the color space.|
 
+**Error codes**
+
+For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
+
+| ID| Error Message| 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>Applicable versions: 9-22| 
+
 **Example**
 
 ```ts
 try {
+  // Obtain the gamma value of the color space.
   let gamma = colorSpace.getGamma();
   console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-  console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```

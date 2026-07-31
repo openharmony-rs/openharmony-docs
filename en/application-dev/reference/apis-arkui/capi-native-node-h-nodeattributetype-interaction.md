@@ -427,11 +427,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+> **NOTE**
+>
+> If finger movement exceeds the preset distance limit, click event recognition will fail.
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Movement threshold for click events. The value range is (0, +∞). The default value is **+∞**. The unit is vp.|
+| .value[0].f32 | Movement threshold for click events. If the value specified is less than or equal to 0, it will be converted to the default value. The value range is (0, +∞). The default value is **+∞**. The unit is vp.|
 
 **Returns**
 

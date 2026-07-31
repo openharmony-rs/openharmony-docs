@@ -1,10 +1,10 @@
 # JSVM_Data__*
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef struct JSVM_Data__* JSVM_Data

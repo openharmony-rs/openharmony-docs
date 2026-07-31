@@ -10,7 +10,7 @@
 
 Defines the enumerations related to the **Scroll** component.
 
-**File to include:** <arkui/scroll.h>
+**File to include:** <arkui/node_attributes/scroll.h>
 
 **Library:** libace_ndk.z.so
 
