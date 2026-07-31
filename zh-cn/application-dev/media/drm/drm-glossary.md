@@ -1,4 +1,4 @@
-# 术语
+# DRM Kit术语
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qin_wei_jie-->
@@ -12,7 +12,7 @@
 
 DRM解决方案所支持的内容保护安全级别，用于描述内容解密、解码和渲染的安全程度。常见级别包括：软件加密（SW_CRYPTO）、硬件加密（HW_CRYPTO）、硬件安全解码（HW_SECURE_CRYPTO）、硬件安全解码器（HW_SECURE_DECODER）、硬件安全全路径（HW_SECURE_ALL）等。
 
-### cencinfo；视音频数据帧加密信息
+### Cencinfo；视音频数据帧加密信息
 
 视音频数据帧加密的描述信息，包括加密算法及模式、密钥标识（KeyId）、初始向量（IV）、子样本加密信息（subsample）等。在使用AVCodec Kit时，可将这些加密描述信息设置到AVBuffer的CencInfo中，在调用PushInputBuffer时，播放器根据这些信息完成视音频数据帧的解密和解码。
 
