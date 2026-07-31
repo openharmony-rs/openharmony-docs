@@ -1,12 +1,12 @@
 # Combo解决方案之ASR芯片移植案例
 
-本方案基于OpenHarmony LiteOS-M内核，使用ASR582X芯片的[DEV.WIFI.A开发板](https://gitcode.com/openharmony/device_board_lango)进行开发移植。作为典型的IOT Combo（Wi-Fi+BLE）解决方案，本文章介绍ASR582X的适配过程。
+本方案基于OpenHarmony LiteOS-M内核，使用ASR582X芯片的[DEV.WIFI.A开发板](https://gitcode.com/openharmony/device_board_lango/blob/master/README_ZH.md)进行开发移植。作为典型的IOT Combo（Wi-Fi+BLE）解决方案，本文章介绍ASR582X的适配过程。
 
 ## 编译移植
 
 ### 目录规划
 
-本方案的目录结构使用[Board和Soc解耦的思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
+本方案的目录结构使用[Board和SoC解耦的思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
 
 ```text
 device
@@ -126,7 +126,7 @@ SoC目录的`Kconfig`，以`//device/soc/asrmicro`为例：
 config SOC_SERIES_ASR582X
     bool "ASR582X Series"
     select ARM
-    select SOC_COMPANY_ASRMICRO              --- 选择 SOC_COMPANY_ASRMICRO
+    select SOC_COMPANY_ASRMICRO              # 选择 SOC_COMPANY_ASRMICRO
     select CPU_CORTEX_M4
     help
         Enable support for ASR582X series
@@ -139,7 +139,7 @@ choice
     prompt "ASR582X series SoC"
     depends on SOC_SERIES_ASR582X
 
-config SOC_ASR5822S                         --- 选择 SOC_ASR5822S
+config SOC_ASR5822S                         # 选择 SOC_ASR5822S
     bool "SoC ASR5822S"
 
 endchoice
@@ -224,6 +224,7 @@ LOSCFG_SOC_ASR5822S=y
      ldflags = []                            # 链接参数，包括ld文件。
      libs = []                               # 链接库。
      defines = []                            # 定义。
+   }
    ```
 
    > <img src="public_sys-resources/icon-note.gif" alt=""/><b>说明：</b>
@@ -406,7 +407,7 @@ LOSCFG_DRIVERS_HDF_PLATFORM=y
    GpioSetIrq(1, OSAL_IRQF_TRIGGER_FALLING, GpioKeyIrqFunc, NULL);
 
    GpioWrite(0, 0);
-   lega_rtos_delay_milliseconds(1000);
+   lega_rtos_delay_milliseconds(1000);       // ASR SDK提供的延时函数
    GpioWrite(0, 1);
    ```
 
@@ -538,16 +539,18 @@ lwIP是一个小型开源的TCP/IP协议栈，LiteOS-M已对开源lwIP做了适�
 
 本案例在config.json中设置lwIP的路径如下：
 
-   ```json
-   "subsystem": "kernel",
-   "components": [
-     {
-       "component": "liteos_m",
-       "features": [
-         "ohos_kernel_liteos_m_lwip_path = \"//device/soc/asrmicro/asr582x/liteos_m/components/net/lwip-2.1\""
-       ]
-     }
-   ]
+  ```json
+   {
+     "subsystem": "kernel",
+     "components": [
+       {
+         "component": "liteos_m",
+         "features": [
+          "ohos_kernel_liteos_m_lwip_path = \"//device/soc/asrmicro/asr582x/liteos_m/components/net/lwip-2.1\""
+        ]
+       }
+     ]
+   }
    ```
 
 另外，需在内核编译配置文件kernel_configs/debug.config中，打开编译lwIP的开关，如下：
@@ -561,6 +564,7 @@ LOSCFG_NET_LWIP=y
 security需要在config.json中打开相应的选项，本案例移植了三方库中的mbedtls（`//third_party/mbedtls`）作为加密模块，选项配置如下：
 
   ```json
+  {
   "subsystem": "security",
   "components": [
     { "component": "huks", "features":
@@ -569,6 +573,7 @@ security需要在config.json中打开相应的选项，本案例移植了三方�
       ]
     }
   ]
+  }
   ```
 
 在上述目录中，需要对mbedtls做配置，可见`config/config_liteos_m.h`。需要注意的是，如果使用mbedtls的RNG的能力（比如dsoftbus组件在`//foundation/communication/dsoftbus/adapter/common/mbedtls/softbus_adapter_crypto.c`中有使用），要指定产生随机数的熵源。本案例使用了ASR582X的硬件随机数能力，需要打开如下宏定义：
@@ -584,10 +589,12 @@ security需要在config.json中打开相应的选项，本案例移植了三方�
 wifi_lite组件的选项配置如下：
 
 ```json
+{
 "subsystem": "communication",
 "components": [
   { "component": "wifi_lite", "features":[] }
   ]
+}
 ```
 
 与Wi-Fi有关的实现在`//device/soc/asrmicro/asr582x/liteos_m/sdk/hal/src/wifi_adapter.c`下。
@@ -606,6 +613,7 @@ wifi_lite组件的选项配置如下：
 xts组件的适配，以`//vendor/asrmicro/xts_demo/config.json`为例，需要加入组件选项：
 
 ```json
+{
 "subsystem": "xts",
 "components": [
   { "component": "xts_acts", "features":
@@ -615,11 +623,13 @@ xts组件的适配，以`//vendor/asrmicro/xts_demo/config.json`为例，需要�
   },
   { "component": "xts_tools", "features":[] }
 ]
+}
 ```
 
 另外，xts功能也使用了list来组织，可参考[模块化编译](#模块化编译)，在config.json文件中增减相应模块：
 
 ```json
+{
 "xts_list": [
   {
     "enable": "true",
@@ -635,6 +645,7 @@ xts组件的适配，以`//vendor/asrmicro/xts_demo/config.json`为例，需要�
     ]
   }
 ]
+}
 ```
 
 ### dsoftbus组件
@@ -648,10 +659,12 @@ dsoftbus组件提供了设备间的发现连接、组网和传输能力，本方
 dsoftbus组件的选项配置如下：
 
 ```json
+{
 "subsystem": "communication",
 "components": [
   { "component": "dsoftbus", "features":[] }
   ]
+}
 ```
 
 在`//vendor/asrmicro/wifi_demo`下提供了dsoftbus的测试Demo，打开该功能需修改`//vendor/asrmicro/wifi_demo/tests/BUILD.gn`：
@@ -665,6 +678,7 @@ declare_args() {
 另外，需在`//vendor/asrmicro/wifi_demo/config.json`中添加dsoftbus_test模块：
 
 ```json5
+{
 "tests_list": [
     {
     "enable": "true",
@@ -674,6 +688,7 @@ declare_args() {
     ]
     }
 ]
+}
 ```
 
 dsoftbus组件的启动接口可参考`//vendor/asrmicro/wifi_demo/tests/dsoftbus/dsoftbus_app.c`：
