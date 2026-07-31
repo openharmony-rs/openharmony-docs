@@ -184,7 +184,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表[async_type参数介绍](#async_type参数介绍)。<br/>**说明**：从API version 24开始，支持该参数。|
 | discard_destroyed_traces | bool | 是否丢弃已释放内存的调用栈数据。<br>true：尽量丢弃已释放的调用栈数据，保留未释放的调用栈数据；<br>false：保留全部申请和释放内存调用栈数据。<br>默认为false。 | 设置为true时，可减少被调优应用的性能影响。<br>注意：<br>此功能仅在统计周期或文件缓存周期内生效，本插件会尽量匹配并丢弃已释放内存的调用栈数据；如果数据已持久化，则无法丢弃。<br>在共享内存模式（use_file_cache_mode为false）与详情模式（statistics_interval为0）同时开启的场景下，将无法丢弃已释放内存调用栈数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 
-### restrace_tag参数介绍
+#### restrace_tag参数介绍
 
 | 参数名称 | 资源类型 | 开始支持的版本 | 
 | -------- | -------- | -------- |
@@ -212,7 +212,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
 | RES_COMPOSITE_HEAP | 三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件。 | 26.1.0 |
 
-### async_type参数介绍
+#### async_type参数介绍
 
 | 参数名称 | 参数说明 | 开始支持的版本 | 
 | -------- | -------- | -------- |
@@ -252,15 +252,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
@@ -297,15 +293,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
@@ -340,15 +332,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    statistics_interval: 10
@@ -384,15 +372,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    statistics_interval: 0
@@ -850,15 +834,14 @@ smartperf工具暂时不支持该插件的trace数据解析，若需分析networ
 
 ## 常用命令
 
-### 堆内存分配调用栈数据采样记录
-
+### 抓取指定进程Native堆内存调用栈数据
 
 对com.example.insight_test_stage进程的堆内存分配操作进行抓栈，并开启fp回栈、离线符号化和统计模式。
 
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -t 30 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -872,42 +855,291 @@ plugin_configs {
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-  save_file: false
   smb_pages: 16384
-  max_stack_depth: 20
+  max_stack_depth: 30
   process_name: "com.example.insight_test_stage"
-  string_compressed: true
   fp_unwind: true
   blocked: true
-  callframe_compress: true
-  record_accurately: true
   offline_symbolization: true
   startup_mode: false
   statistics_interval: 10
-  sample_interval: 256
+  sample_interval: 4096
   js_stack_report: 1
   max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
   }
 }
 CONFIG
 ```
 
-
 采集的数据会被保存至/data/local/tmp/hiprofiler_data.htrace文件中，该文件包含了内存泄漏分析所需的函数调用信息、线程和动态库维度内存分配情况，以及调用栈次数和分配大小聚类信息。开启离线符号化，fp回栈，统计模式均可以提升调优服务处理数据速率。
 
+### 抓取指定进程GlobalHandle对象的调用栈
 
+从API version 23开始支持抓取指定进程创建[napi_ref](../napi/use-napi-life-cycle.md#napi_ref)的调用栈，不会抓取创建弱引用的调用栈。
 
-### 抓取指定进程CPU使用率。
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.txt \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  pid: 11237
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
 
+### 抓取指定进程LocalHandle对象调用栈
+
+从API version 23开始支持LocalHandle对象内存录制功能。例如，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.txt \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: true
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_LOCAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+LocalHandle对象内存录制功能要求被测应用在启动时替换加载维测库，才能正常采集LocalHandle内存信息。
+
+应用替换加载维测库方法：
+
+1. 应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
+
+2. 应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
+
+> **说明：**
+> 
+> 1. 应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
+> 
+> 2. 使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
+> 
+> 3. 此种方式抓取到的LocalHandle内存一定是泄漏的。
+> 
+> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+> 
+> 5. 从API版本26.0.0开始，统计模式支持采集local/global handle地址信息能力。
+
+### 抓取指定进程GPU图形内存调用栈
+
+抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_GPU_VK"
+  restrace_tag: "RES_GPU_GLES_BUFFER"
+  restrace_tag: "RES_GPU_GLES_IMAGE"
+  restrace_tag: "RES_GPU_CL_BUFFER"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
+
+### 抓取指定进程句柄调用栈
+
+抓取指定进程的句柄调用栈数据。
+> **说明：**
+> 
+> restrace_tag 参数需设置为"RES_FD_ALL"。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_FD_ALL"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+### 抓取指定进程DMA内存调用栈
+
+抓取指定进程的DMA内存调用栈数据。
+> **说明：**
+> 
+> restrace_tag 参数需设置为"RES_DMABUF_MASK"。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_DMABUF_MASK"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+### 抓取指定进程CPU使用率
 
 对进程号为1234的进程采集CPU数据，采集时长为30s，采样周期为1000ms，调优数据传输的共享内存大小是16384个内存页，采集的数据会被保存至/data/local/tmp/hiprofiler_data.htrace文件中。
-
 
 ```shell
 $ hiprofiler_cmd \
   -c - \
   -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 30 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -928,166 +1160,12 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-### 抓取指定进程GPU图形内存调用栈
-
-抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 30 \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  pid: 11237
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: false
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_GPU_VK"
-  restrace_tag: "RES_GPU_GLES_BUFFER"
-  restrace_tag: "RES_GPU_GLES_IMAGE"
-  restrace_tag: "RES_GPU_CL_BUFFER"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
-
-### 抓取指定进程GlobalHandle对象的调用栈
-
-从API version 23开始支持抓取指定进程创建[napi_ref](../napi/use-napi-life-cycle.md#napi_ref)的调用栈，不会抓取创建弱引用的调用栈。
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 60 \
-  -o /data/local/tmp/hiprofiler_data.txt \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  pid: 11237
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: false
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-
-### 抓取指定进程LocalHandle对象调用栈
-
-从API version 23开始支持LocalHandle对象内存录制功能。例如，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 60 \
-  -o /data/local/tmp/hiprofiler_data.txt \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  process_name: "com.example.insight_test_stage"
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: true
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_ARK_LOCAL_HANDLE"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-LocalHandle对象内存录制功能要求被测应用在启动时替换加载维测库，才能正常采集LocalHandle内存信息。
-
-应用替换加载维测库方法：
-
-1. 应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
-
-2. 应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
-
-> **说明：**
->
-> 1. 应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
->
-> 2. 使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
->
-> 3. 此种方式抓取到的LocalHandle内存一定是泄漏的。
->
-> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
->
-> 5. 从API版本26.0.0开始，统计模式支持采集local/global handle地址信息能力。
-
-
 ### 手动控制采集时长
 
 使用手动控制采集时长调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
 
 调优开始：
+
 ```shell
 $ hiprofiler_cmd start \
   -c - \
@@ -1104,21 +1182,22 @@ plugin_configs {
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-  save_file: false
   smb_pages: 16384
-  max_stack_depth: 20
+  max_stack_depth: 30
   process_name: "com.example.insight_test_stage"
-  string_compressed: true
   fp_unwind: true
   blocked: true
-  callframe_compress: true
-  record_accurately: true
   offline_symbolization: true
   startup_mode: false
   statistics_interval: 10
-  sample_interval: 256
+  sample_interval: 4096
   js_stack_report: 1
   max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
   }
 }
 CONFIG
@@ -1141,7 +1220,7 @@ $ hiprofiler_cmd stop
 $ hiprofiler_cmd \
   -c - \
   -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 60 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -1155,15 +1234,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
-   max_stack_depth: 20
+   max_stack_depth: 30
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    max_js_stack_depth: 20
@@ -1191,7 +1266,7 @@ CONFIG
 $ hiprofiler_cmd \
   -c - \
   -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 60 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -1205,15 +1280,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
-   max_stack_depth: 20
+   max_stack_depth: 30
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    js_stack_report: 1
    max_js_stack_depth: 20
@@ -1226,6 +1297,7 @@ $ hiprofiler_cmd \
    memtrace_enable: true
    malloc_disable:false
    discard_destroyed_traces: true
+   use_file_cache_mode: true
   }
  }
 CONFIG
