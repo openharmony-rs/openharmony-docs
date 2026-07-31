@@ -311,7 +311,7 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 | ISSUE | 问题描述 | 影响 | 计划解决时间或版本 | 
 | -------- | -------- | -------- | -------- |
 | [13048](https://gitcode.com/openharmony/multimedia_audio_framework/issues/13048) | 进程audio_server有低概率因libaudio_policy_service.z.so导致cppcrash。 | 进程会自动重启 | 7.0版本 |
-| [51](https://gitcode.com/openharmony/device_soc_unisoc/issues/51) | 测试过程中P7785开发板低概率出现白屏，显示`abnormal mode: init-mmc-fat failed Please check SD card`。原因为测试用例进入到updater模式导致。 | 不进入updater模式可规避此问题。<br />P7885开发板计划在7.1版本适配updater模式。 | 7.1版本 |
+| [51](https://gitcode.com/openharmony/device_soc_unisoc/issues/51) | 测试过程中P7885开发板低概率出现白屏，显示`abnormal mode: init-mmc-fat failed Please check SD card`。原因为测试用例进入到updater模式导致。 | 不进入updater模式可规避此问题。<br />P7885开发板计划在7.1版本适配updater模式。 | 7.1版本 |
 | [24762](https://gitcode.com/openharmony/graphic_graphic_2d/issues/24762) | P7885开发板配套Vulkan版本为1.2，测试套件要求Vulkan版本高于1.3，导致部分测试用例执行失败。 | 不影响正常使用，兼容性认证时建议申请豁免。<br />P7885开发板计划在7.1版本升级Vulkan版本。 | 7.1版本 |
 
 
