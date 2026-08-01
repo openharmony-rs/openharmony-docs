@@ -64,8 +64,8 @@ AtomicServiceTabs({
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | --------------- | ------ | ---- | ----|----|
-| tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | 否 | @BuilderParam| 内容视图容器数组，默认值为空，无内容展示。 |
-| tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | 是 | @Prop | 页签容器数组。 |
+| tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | 否 | @BuilderParam| 内容视图容器数组，最多支持5个页签，默认值为空，无内容展示。 |
+| tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | 是 | @Prop | 页签容器数组，最多支持5个页签。 |
 | tabBarPosition | [TabBarPosition](#tabbarposition) | 否   |@Prop | 设置页签栏位置，默认值为TabBarPosition.BOTTOM。 |
 | layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | @Prop | 设置TabBar的背景颜色，默认值为透明。 |
@@ -80,7 +80,7 @@ AtomicServiceTabs({
 
 type TabContentBuilder = () => void
 
-内容视图容器。
+内容视图构建器，用于构建TabContent页签内容的函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -125,7 +125,7 @@ TabBarOptions的构造函数。
 
 type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean
 
-页面内容发生变化时触发的回调函数。
+页面内容即将发生变化时触发的回调函数，用于拦截页面切换。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -142,7 +142,7 @@ type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) =
 
 | 类型 | 说明 |
 |--|--|
-| boolean | 回调函数正常执行则返回true，反之返回false。 |
+| boolean | 返回true表示允许切换到即将显示的页面，返回false表示不允许切换，仍然显示当前页面内容。 |
 
 ## 示例
 
