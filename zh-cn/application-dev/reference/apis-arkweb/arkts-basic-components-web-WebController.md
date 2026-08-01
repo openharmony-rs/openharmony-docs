@@ -509,7 +509,7 @@ onActive(): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -546,7 +546,7 @@ onInactive(): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

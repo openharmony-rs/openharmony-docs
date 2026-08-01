@@ -947,7 +947,7 @@ ArkTS-Dyn: multiWindowAccess(multiWindow: boolean)
 
 ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
-设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
+设置是否开启多窗口权限。当属性没有显式调用时，默认不开启。
 
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
@@ -961,7 +961,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。|
+| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示开启，false表示不开启。 |
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
@@ -2488,7 +2488,7 @@ struct WebComponent {
                     })
                     this.dialogController.open();
                     // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
                     // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
                     event.handler.setWebController(popController);
                 })

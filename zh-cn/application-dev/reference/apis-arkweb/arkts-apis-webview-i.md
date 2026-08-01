@@ -205,7 +205,7 @@ Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制�
 
 ## ControllerAttachState<sup>20+</sup>
 
-WebViewController与Web组件的绑定状态。
+WebviewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
