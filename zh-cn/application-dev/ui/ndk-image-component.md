@@ -112,7 +112,7 @@
     ArkTS-Dyn示例：
 
     <!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
-
+    
     ``` C++
     // 设置图片源（使用rawfile资源）
     ArkUI_AttributeItem srcItem = {nullptr, 0, "resource://RAWFILE/clouds.jpg"};
