@@ -245,7 +245,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: Error) => {
   let error = err as BusinessError
   console.error(`subscribe fail, code is ${error.code}, message is ${error.message}`);
@@ -297,7 +297,7 @@ notificationExtensionSubscription.unsubscribe().then(() => {
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((error: Error) => {
   let err = error as BusinessError
   console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
