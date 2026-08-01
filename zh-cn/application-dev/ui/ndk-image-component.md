@@ -69,7 +69,7 @@
     将图片文件放到`entry/src/main/resources/rawfile/`目录下，在代码中使用相对路径引用。
 
     <!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
-
+    
     ``` C++
     // 设置图片源（使用rawfile资源）
     ArkUI_AttributeItem srcItem = {nullptr, 0, "resource://RAWFILE/clouds.jpg"};
