@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 需要权限
@@ -320,8 +320,8 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 
 | 参数名     | 类型                              | 必填 | 说明             |
 |---------|---------------------------------|----|:---------------|
-| url     | string \| [Resource](../../apis-arkui/arkui-ts/ts-types.md#resource)               | 是  | 需要加载的 URL。     |
-| headers | Array\<[WebHeader](#webheader)> | 否  | URL的附加HTTP请求头。 |
+| url     | string \| [Resource](../../apis-arkui/arkui-ts/ts-types.md#resource)               | 是  | 需要加载的 URL，需为合法的URL格式。     |
+| headers | Array\<[WebHeader](#webheader)> | 否  | URL的附加HTTP请求头。默认值为空数组，即不添加附加请求头。 |
 
 **错误码：**
 
@@ -387,7 +387,7 @@ Web组件返回的请求/响应头对象。
 
 ## OnPageBeginEvent
 
-定义网页加载开始时触发的函数。
+定义网页加载开始时触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -399,7 +399,7 @@ Web组件返回的请求/响应头对象。
 
 ## OnPageEndEvent
 
-定义网页加载结束时触发的函数。
+定义网页加载结束时触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -447,13 +447,13 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 参数名  | 类型     | 必填 | 说明                    |
 |------|--------|----|-----------------------|
-| event | OnLoadInterceptEvent | 是  | 当Web组件加载url之前触发的加载拦截事件。 |
+| event | [OnLoadInterceptEvent](#onloadinterceptevent) | 是  | 当Web组件加载url之前触发的加载拦截事件。 |
 
 **返回值：**
 
 | 类型      | 说明        |
 |---------|-----------|
-| boolean | 返回资源是否被拦截，true表示被拦截。 |
+| boolean | 返回资源是否被拦截，true表示被拦截，false表示不被拦截。 |
 
 ## 示例
 
@@ -680,7 +680,7 @@ struct WebComponent {
   @State forceDarkAccess: boolean = true;
   @State mixedMode: MixedMode = MixedMode.None;
   @State controller: AtomicServiceWebController = new AtomicServiceWebController();
-  @State num: number = 1;
+  @State count: number = 1;
 
   build() {
     Column() {
@@ -718,7 +718,7 @@ struct WebComponent {
       Button('点击').onClick(() => {
         console.info(`AtomicServiceWebLog getUserAgent = ${this.controller.getUserAgent()}`);
         console.info(`AtomicServiceWebLog getCustomUserAgent = ${this.controller.getCustomUserAgent()}`);
-        this.controller.setCustomUserAgent('test' + this.num++);
+        this.controller.setCustomUserAgent('test' + this.count++);
 
         console.info(`AtomicServiceWebLog getUserAgent after set = ${this.controller.getUserAgent()}`);
         console.info(`AtomicServiceWebLog getCustomUserAgent after set = ${this.controller.getCustomUserAgent()}`);
