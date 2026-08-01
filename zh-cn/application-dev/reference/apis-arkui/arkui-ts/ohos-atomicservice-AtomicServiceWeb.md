@@ -132,7 +132,7 @@ getCustomUserAgent(): string
 
 | 类型     | 说明         |
 |--------|------------|
-| string | 用户自定义代理信息。默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../../web/web-default-userAgent.md)。 |
+| string | 自定义用户代理。默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../../web/web-default-userAgent.md)。 |
 
 **错误码：**
 
@@ -374,7 +374,7 @@ Web组件返回的请求/响应头对象。
 
 ## OnHttpErrorReceiveEvent
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页加载资源遇到HTTP错误时触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -411,7 +411,7 @@ Web组件返回的请求/响应头对象。
 
 ## OnLoadInterceptEvent
 
-当资源加载被拦截时，加载拦截事件。
+定义Web组件加载url之前触发的加载拦截事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -437,7 +437,7 @@ Web组件返回的请求/响应头对象。
 
 type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
-资源加载被拦截时触发该回调。
+当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -447,7 +447,7 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 参数名  | 类型     | 必填 | 说明                    |
 |------|--------|----|-----------------------|
-| event | OnLoadInterceptEvent | 是  | 当资源加载被拦截时，加载拦截事件。 |
+| event | OnLoadInterceptEvent | 是  | 当Web组件加载url之前触发的加载拦截事件。 |
 
 **返回值：**
 
@@ -747,19 +747,19 @@ struct WebComponent {
           console.info("AtomicServiceWebLog onProgressChange call back success " + JSON.stringify(event));
         },
         onMessage: (event: OnMessageEvent) => {
-          console.info("onMessage call back success " + JSON.stringify(event));
+          console.info("AtomicServiceWebLog onMessage call back success " + JSON.stringify(event));
         },
         onPageBegin: (event: OnPageBeginEvent) => {
-          console.info("onPageBegin call back success " + JSON.stringify(event));
+          console.info("AtomicServiceWebLog onPageBegin call back success " + JSON.stringify(event));
         },
         onPageEnd: (event: OnPageEndEvent) => {
-          console.info("onPageEnd call back success " + JSON.stringify(event));
+          console.info("AtomicServiceWebLog onPageEnd call back success " + JSON.stringify(event));
         },
         onHttpErrorReceive: (event: OnHttpErrorReceiveEvent) => {
-          console.info("onHttpErrorReceive call back success " + JSON.stringify(event));
+          console.info("AtomicServiceWebLog onHttpErrorReceive call back success " + JSON.stringify(event));
         },
         onErrorReceive: (event: OnErrorReceiveEvent) => {
-          console.info("onErrorReceive call back success " + JSON.stringify(event));
+          console.info("AtomicServiceWebLog onErrorReceive call back success " + JSON.stringify(event));
         }
       })
     }
