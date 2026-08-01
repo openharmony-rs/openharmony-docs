@@ -77,7 +77,7 @@ AtomicServiceSearch中“选择区”的可选属性。
 | optionFontColor         | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单项的文本颜色。默认值：`$r('sys.color.ohos_id_color_text_primary')`。 |
 | optionWidth             | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | 否 | 是 | 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。当设置为异常值或小于最小宽度56vp时，属性不生效，菜单项宽度设为默认值，即菜单默认宽度为2栅格。 |
 | optionHeight            | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置下拉菜单显示的最大高度，不支持设置百分比。下拉菜单的默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。 |
-| space                   | [Length](ts-types.md#length) | 否 | 是 | 下拉菜单项的文本与箭头之间的间距。默认值：`8`。 |
+| space                   | [Length](ts-types.md#length) | 否 | 是 | 下拉菜单项的文本与箭头之间的间距。默认值：`8`。单位：vp。 |
 | arrowPosition           | [ArrowPosition](ts-basic-components-select.md#arrowposition10枚举说明) | 否 | 是 | 下拉菜单项的文本与箭头之间的对齐方式。默认值：`ArrowPosition.END`。 |
 | menuAlign               | [MenuAlignParams](#menualignparams) | 否 | 是 | 设置下拉按钮与下拉菜单间的对齐方式。默认值：`{alignType: MenuAlignType.START,   offset: {dx: 0, dy: 0}}`。 |
 | menuBackgroundColor     | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单的背景色。默认值：`Color.Transparent`。   |
@@ -99,7 +99,7 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | pressedBackgroundColor   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置组件按压态的背景色。默认值：`$r('sys.color.ohos_id_color_click_effect')`。 |
 | searchButton             | [SearchButtonParams](#searchbuttonparams) | 否 | 是 | 设置搜索框末尾搜索按钮。点击搜索按钮，同时触发onSubmit与onClick回调。<br>-searchButtonValue: 搜索框末尾搜索按钮文本内容。<br> -options: 配置搜索框文本样式。默认值：`{fontSize: '16fp', fontColor: '#ff3f97e9'}`。 |
 | placeholderColor         | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | placeholder文本颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。   |
-| placeholderFont          | [Font](ts-types.md#font) | 否 | 是 | 设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。 |
+| placeholderFont          | [Font](ts-types.md#font) | 否 | 是 | 设置placeholder文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。 |
 | textFont                 | [Font](ts-types.md#font) | 否 | 是 | 设置搜索框内输入文本样式，包括字体大小、字体粗细、字体族、字体风格。目前仅支持默认字体族。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。 |
 | textAlign                | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 文本在搜索框中的对齐方式。默认值：`TextAlign.Start`。   |
 | copyOptions              | [CopyOptions](ts-appendix-enums.md#copyoptions9) | 否 | 是 | 输入的文本是否可复制。默认值：`CopyOptions.LocalDevice`，支持设备内复制。   |
@@ -117,9 +117,9 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | fontFeature              | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。<br>格式为：normal \| \<feature-tag-value\><br>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br>例如，使用等宽数字的输入格式为："ss01" on。默认值为`undefined`。   |
 | selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本选中底板颜色。默认值：系统默认底板颜色，20%不透明度。 |
 | inputFilter              | [InputFilterParams](#inputfilterparams) | 否 | 是 | 通过正则表达式设置输入过滤器。匹配表达式的输入允许显示，不匹配的输入将被过滤。仅支持单个字符匹配，不支持字符串匹配。默认值为`undefined`。<br> -value: 正则表达式。 <br> -error: 正则匹配失败时，返回被过滤的内容。 |
-| textIndent               | [Dimension](ts-types.md#dimension10) | 否 | 是 | 首行文本缩进。默认值：`0`。   |
-| minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最小显示字号。需要配合maxFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
-| maxFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最大显示字号。需要配合minFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
+| textIndent               | [Dimension](ts-types.md#dimension10) | 否 | 是 | 首行文本缩进。默认值：`0`。单位：vp。   |
+| minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最小显示字号。需要配合maxFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。取值为number类型时，单位：fp。   |
+| maxFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最大显示字号。需要配合minFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。取值为number类型时，单位：fp。   |
 | editMenuOptions          | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 否 | 是 | 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。默认值为`undefined`。   |
 | enablePreviewText        | boolean | 否 | 是 | 是否开启输入预上屏。true表示开启输入预上屏。false表示不开启输入预上屏。默认值：`true`。 <br> 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。  |
 | enableHapticFeedback     | boolean | 否 | 是 | 是否开启触控反馈。true表示开启触控反馈。false表示不开启触控反馈。默认值：`true`。   |
@@ -160,7 +160,7 @@ AtomicServiceSearch中“功能区”的初始化参数。
 
 | 名称             | 类型         | 只读 | 可选 | 说明                               |
 | ---------------- | ---------------- | ---- | ---| ------------------------------- |
-| inputFilterValue | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 正则表达式。 |
+| inputFilterValue | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 正则表达式。仅支持单个字符匹配，不支持字符串匹配。 |
 | error | Callback&lt;string&gt; | 否 | 是 | 正则匹配失败时，返回被过滤的内容。默认值为`undefined`。 |
 
 ## SearchButtonParams
@@ -259,8 +259,8 @@ type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => v
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| totalOffsetX | number | 是 | 文本左上角横坐标相较于整个内容输入区左上角横坐标的偏移量。 |
-| totalOffsetY | number | 是 | 文本左上角纵坐标相较于整个内容输入区左上角纵坐标的偏移量。 |
+| totalOffsetX | number | 是 | 文本左上角横坐标相较于整个内容输入区左上角横坐标的偏移量。单位：px。 |
+| totalOffsetY | number | 是 | 文本左上角纵坐标相较于整个内容输入区左上角纵坐标的偏移量。单位：px。 |
 
 
 ## 示例
