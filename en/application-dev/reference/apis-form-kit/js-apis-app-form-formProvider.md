@@ -34,7 +34,7 @@ Sets the next refresh time for a widget. This API uses an asynchronous callback 
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | Yes  | Widget ID.                              |
 | minute | number | Yes  | Interval after which the widget is refreshed, in minutes. The value range is greater than or equal to 5. |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. Callback used to return the result. If the operation is successful, **error** is **undefined**.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **undefined**.|
 
 **Error codes**
 
@@ -146,7 +146,7 @@ Updates a widget. This API uses an asynchronous callback to return the result. T
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
 | formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes  | Data to be used for the update. For details about the restrictions, see the preceding note.   |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. Callback used to return the result. If the operation is successful, **error** is **undefined**.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **undefined**.|
 
 **Error codes**
 

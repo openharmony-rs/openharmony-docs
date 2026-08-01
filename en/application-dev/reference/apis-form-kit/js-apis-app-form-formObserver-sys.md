@@ -511,7 +511,7 @@ Unsubscribes events indicating that a widget becomes invisible. This API uses an
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | Yes  | Event type. This value **'notifyInvisible'** indicates a widget invisibility event.   |
-| hostBundleName | string                                                       | No  | Bundle name of the widget host, which is used to unsubscribe from invisibility change events for a specific host. When this parameter is provided, this API corresponds to the **on** API with the the same **bundleName** specified.<br> |
+| hostBundleName | string                                                       | No  | Bundle name of the widget host, which is used to unsubscribe from invisibility change events for a specific host. When this parameter is provided, this API corresponds to the **on** API with the same **bundleName** specified.<br> |
 | observerCallback   | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | No  | Callback used to return an array of widgets that have unsubscribed from the event. If no value is passed in, all the subscriptions to the specified event are canceled.<br> To cancel the subscription with a given callback, this parameter must be set to the same value as **callback** in **on('notifyInvisible')**.|
 
 **Error codes**

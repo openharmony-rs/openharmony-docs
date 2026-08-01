@@ -25,7 +25,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the next udpate time for a specified widget. This API uses an asynchronous callback to return the result.
+Sets the next update time for a specified widget. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
