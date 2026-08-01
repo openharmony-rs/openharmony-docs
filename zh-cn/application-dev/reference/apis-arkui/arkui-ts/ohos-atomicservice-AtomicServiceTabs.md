@@ -11,7 +11,7 @@ AtomicServiceTabs高级组件，对Tabs组件一些不需提供给用户自定�
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -67,7 +67,7 @@ AtomicServiceTabs({
 | tabContents | [[TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder),[TabContentBuilder?](#tabcontentbuilder), [TabContentBuilder?](#tabcontentbuilder)] | 否 | @BuilderParam| 内容视图容器数组，最多支持5个页签，默认值为空，无内容展示。 |
 | tabBarOptionsArray | [[TabBarOptions](#tabbaroptions),[TabBarOptions](#tabbaroptions), [TabBarOptions?](#tabbaroptions),[TabBarOptions?](#tabbaroptions), [TabBarOptions?](#tabbaroptions)]  | 是 | @Prop | 页签容器数组，最多支持5个页签。 |
 | tabBarPosition | [TabBarPosition](#tabbarposition) | 否   |@Prop | 设置页签栏位置，默认值为TabBarPosition.BOTTOM。 |
-| layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| layoutMode<sup>18+</sup> | [LayoutMode](ts-container-tabcontent.md#layoutmode10) | 否   |@Prop | 设置底部页签的图片、文字排布的方式，默认值为LayoutMode.VERTICAL。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | barBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | @Prop | 设置TabBar的背景颜色，默认值为透明。 |
 | index | number | 否 | @Prop | 设置当前显示页签的索引，索引值从0开始。默认值为0。 |
 | barOverlap | boolean| 否 | @Prop | 设置TabBar是否背景变模糊并叠加在TabContent之上。true表示TabBar背景变模糊并叠加在TabContent之上。默认值为true。 |
@@ -103,7 +103,7 @@ TabBarOptions的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol](ts-container-tabcontent.md#tabbarsymbol12对象说明) | 是 | 页签内的图片内容。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol](ts-container-tabcontent.md#tabbarsymbol12对象说明) | 是 | 页签内的图标内容。 |
 | text | [ResourceStr](ts-types.md#resourcestr) | 是 | 页签内的文字内容。 |
 | unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 未选择时的页签颜色，默认值：#99182431。 |
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 被选择时的页签颜色，默认值：#FF007DFF。 |
@@ -159,7 +159,7 @@ struct Index {
   @State onClickNumber: number = 0;
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
-  onContentWillChangeCallBack:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
+  onContentWillChangeCallback:  OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
     console.info('OnContentWillChangeCallback')
@@ -206,10 +206,10 @@ struct Index {
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
       onTabBarClick:this.onTabClick,
-      onContentWillChange: this.onContentWillChangeCallBack,
+      onContentWillChange: this.onContentWillChangeCallback,
     })
     Column() {
-      Text("onchange回调次数:" + this.onClickNumber)
+      Text("onTabBarClick回调次数:" + this.onClickNumber)
       Text("comingIndex = " + this.comingIndex + ", currentIndex = " + this.currentIndex)
     }.margin({top:500})
     }.height('100%')
@@ -231,7 +231,7 @@ struct Index {
   @State onClickNumber: number = 0;
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
-  onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
+  onContentWillChangeCallback: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
     console.info('OnContentWillChangeCallback');
@@ -278,10 +278,10 @@ struct Index {
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
       onTabBarClick:this.onTabClick,
-      onContentWillChange: this.onContentWillChangeCallBack,
+      onContentWillChange: this.onContentWillChangeCallback,
     })
     Column() {
-      Text("onchange回调次数:" + this.onClickNumber)
+      Text("onTabBarClick回调次数:" + this.onClickNumber)
       Text("comingIndex = " + this.comingIndex + ", currentIndex = " + this.currentIndex)
     }.margin({top:500})
     }.height('100%')
@@ -306,7 +306,7 @@ struct AtomicserviceTabs  {
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
   @State layoutMode: LayoutMode = LayoutMode.VERTICAL;
-  onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
+  onContentWillChangeCallback: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
     console.info('OnContentWillChangeCallback');
@@ -358,7 +358,7 @@ struct AtomicserviceTabs  {
         tabBarPosition: TabBarPosition.BOTTOM,
         barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
         onTabBarClick: this.onTabClick,
-        onContentWillChange: this.onContentWillChangeCallBack,
+        onContentWillChange: this.onContentWillChangeCallback,
         onChange: this.onChange,
         layoutMode: this.layoutMode,
       })
