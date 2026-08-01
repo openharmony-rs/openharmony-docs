@@ -82,7 +82,7 @@ int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elem
 | -- | -- |
 | const char* instanceId | 第三方框架的实例编码。 |
 | int64_t elementId | 无障碍元素的唯一编号，需指向文本组件。 |
-|  const char* text | 组件需要匹配的文本内容。 |
+| const char* text | 组件需要匹配的文本内容。匹配规则说明：需说明匹配方式（精确匹配/模糊匹配）、是否区分大小写等。 |
 | int32_t requestId | 请求id，用于关联请求过程，建议日志打印时附带输出该信息，方便问题定位。 |
 |  [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | 本次查询到的所有无障碍元素列表。 |
 

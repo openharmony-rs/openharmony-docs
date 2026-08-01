@@ -46,11 +46,11 @@ Failed to switch the UIExtension ability to the background.
 
 1. Ability生命周期状态异常；
 
-2. 系统资源不足。若仍无法定位，需根据AMS日志具体分析。
+2. 系统资源不足。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 1013 扩展Ability销毁失败
 
@@ -68,11 +68,11 @@ Failed to destroy the UIExtension ability.
 
 1. Ability生命周期回调执行异常；
 
-2. 资源释放过程中发生错误。若仍无法定位，需根据AMS日志具体分析。
+2. 资源释放过程中发生错误。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100011 未注册同步回调
 
@@ -111,11 +111,11 @@ Transferring data failed.
 
 2. 数据序列化失败；
 
-3. 跨进程通信通道异常。若仍无法定位，需根据AMS日志具体分析。
+3. 跨进程通信通道异常。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100013 禁止嵌套
 
@@ -151,11 +151,11 @@ The UIExtension ability exited unexpectedly.
 
 1. Ability生命周期回调执行异常导致非正常退出；
 
-2. 资源释放过程中发生未捕获异常。若仍无法定位，需根据AMS日志具体分析。
+2. 资源释放过程中发生未捕获异常。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100015 生命周期超时
 
@@ -173,11 +173,11 @@ The lifecycle of the UIExtension ability has timed out.
 
 1. 生命周期回调中执行了耗时操作导致超时；
 
-2. 主线程阻塞导致生命周期回调无法及时执行。若仍无法定位，需根据AMS日志具体分析。
+2. 主线程阻塞导致生命周期回调无法及时执行。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100016 Key事件处理超时
 
@@ -195,17 +195,17 @@ Key event processing by the UIExtension ability has timed out.
 
 1. Key事件处理回调中执行了耗时操作导致超时；
 
-2. 主线程阻塞导致事件处理无法及时完成。若仍无法定位，需根据AMS日志具体分析。
+2. 主线程阻塞导致事件处理无法及时完成。若仍无法定位，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
-## 100018 Ability启动失败
+## 100018 扩展Ability启动失败
 
 **错误信息**
 
-Failed to start the UIExtension ability.
+Start ui extension ability failed, please check the want of UIextensionAbility.
 
 **错误描述**
 
@@ -222,11 +222,11 @@ Failed to start the UIExtension ability.
 
 检查Want参数配置、应用是否安装、当前能力是否支持此设备类型等。
 
-## 100019 Ability切后台失败
+## 100019 扩展Ability切后台失败
 
 **错误信息**
 
-Failed to switch the UIExtension ability to the background.
+background ui extension ability failed, please check AMS log.
 
 **错误描述**
 
@@ -234,17 +234,17 @@ Failed to switch the UIExtension ability to the background.
 
 **可能原因**
 
-扩展Ability切后台失败，需根据AMS日志具体分析。
+扩展Ability切后台失败，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
-## 100020 扩展Ability销毁失败
+## 100020 扩展Ability销毁失败（onTerminated场景）
 
 **错误信息**
 
-Failed to destroy the UIExtension ability.
+terminate ui extension ability failed, please check AMS log.
 
 **错误描述**
 
@@ -252,11 +252,11 @@ Failed to destroy the UIExtension ability.
 
 **可能原因**
 
-扩展Ability销毁失败，需根据AMS日志具体分析。
+扩展Ability销毁失败，需根据AMS（Ability Manager Service）日志具体分析。
 
 **处理步骤**
 
-根据AMS日志进行分析。
+根据AMS（Ability Manager Service）日志进行分析。
 
 ## 100021 透明节点检测
 
@@ -270,8 +270,8 @@ Transparent node is detected in the UIExtension ability.
 
 **可能原因**
 
-检测到扩展Ability存在透明节点，可能导致阻塞。
+检测到扩展Ability存在透明节点，可能导致事件分发阻塞。
 
 **处理步骤**
 
-终止透明节点，避免阻塞事件。
+移除透明节点，或调整组件透明度设置，避免阻塞事件。

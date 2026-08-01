@@ -53,9 +53,9 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 | 参数项                                                                            | 描述 |
 |--------------------------------------------------------------------------------| -- |
-| int64_t elementId                                                              | 无障碍元素的唯一编号。 |
+| int64_t elementId                                                              | 无障碍元素的唯一编号，取值应为系统已分配的有效元素ID。 |
 | [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode) mode | 表示无障碍搜索模式。具体取值及含义参见[ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode)。 |
-| int32_t requestId                                                              | 表示请求ID。 |
+| int32_t requestId                                                              | 表示请求ID，由系统侧生成，用于标识一次无障碍请求。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | 表示无障碍元素信息列表。 |
 
 **返回：**
@@ -110,7 +110,7 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 | int64_t elementId                                                                                               | 无障碍元素的唯一编号。 |
 | [ArkUI_AccessibilityFocusType](capi-native-interface-accessibility-h.md#arkui_accessibilityfocustype) focusType | 表示焦点的类型。具体取值及含义参见[ArkUI_AccessibilityFocusType](capi-native-interface-accessibility-h.md#arkui_accessibilityfocustype)。 |
 | int32_t requestId                                                                                               | 表示请求ID。 |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                 | 表示无障碍元素信息。 |
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo                                                                 | 表示查询到的无障碍元素信息。 |
 
 **返回：**
 

@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于访问Native XComponent的API。
+声明用于访问Native XComponent的API。Native XComponent提供Surface生命周期管理、触摸事件、鼠标事件、按键事件、帧率控制、图像AI分析及无障碍接入等能力，适用于需要在ArkUI中嵌入自渲染内容（如游戏渲染、媒体播放等）的场景。
 
 **引用文件：** <ace/xcomponent/native_interface_xcomponent.h>
 
@@ -109,7 +109,7 @@
 | [int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window))](#oh_nativexcomponent_registersurfacehidecallback) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册Surface隐藏回调，该回调在应用窗口已经从前台进入后台时触发。 |
 | [int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* component, int32_t pointId, OH_NativeXComponent_EventSourceType* sourceType)](#oh_nativexcomponent_gettoucheventsourcetype) | 获取ArkUI XComponent触摸事件的输入设备类型。 |
 | [OH_NativeXComponent* OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle node)](#oh_nativexcomponent_getnativexcomponent) | 基于Native接口创建的组件实例获取[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)类型的指针。 |
-| [int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* component, ArkUI_AccessibilityProvider** handle)](#oh_nativexcomponent_getnativeaccessibilityprovider) | 获取ArkUI XComponent无障碍接入句柄，handle为地址（双重指针），用于接收返回的实例指针。 |
+| [int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* component, ArkUI_AccessibilityProvider** handle)](#oh_nativexcomponent_getnativeaccessibilityprovider) | 获取ArkUI XComponent无障碍接入Provider，handle为地址（双重指针），用于接收返回的实例指针。 |
 | [int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXComponent* component, bool (\*callback)(OH_NativeXComponent* component, void* window))](#oh_nativexcomponent_registerkeyeventcallbackwithresult) | 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册带有返回值的按键事件回调。与[OH_NativeXComponent_RegisterKeyEventCallback](#oh_nativexcomponent_registerkeyeventcallback)不同，通过此接口注册的按键事件回调都必须返回一个结果，即true或false。当返回值为true时，该事件将不会继续分发；当返回值为false时，该事件将按照事件处理流程继续分发。如需控制按键事件是否继续分发，使用此接口；如仅需监听按键事件，可使用OH_NativeXComponent_RegisterKeyEventCallback。 |
 | [int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* userData, void (\*callback)(ArkUI_NodeHandle node, ArkUI_XComponent_ImageAnalyzerState statusCode, void* userData))](#oh_arkui_xcomponent_startimageanalyzer) | 为此XComponent组件实例开始图像AI分析，适用于需要在应用中提供图像智能识别相关功能的场景，使用前需先使能图像AI分析能力。 |
 | [int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_stopimageanalyzer) | 为此XComponent组件实例停止图像AI分析。使用前需先使能图像AI分析能力。<br>**方法关系（配对调用）：** 此方法为OH_ArkUI_XComponent_StartImageAnalyzer的配对方法，需在调用StartImageAnalyzer开始分析后，于分析完成或不再需要分析时调用此方法停止分析并释放相关资源。 |
@@ -168,8 +168,8 @@ enum anonymous
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NATIVEXCOMPONENT_RESULT_SUCCESS = 0 | 成功结果。 |
-| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | 失败结果。 |
-| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | 无效参数。 |
+| OH_NATIVEXCOMPONENT_RESULT_FAILED = -1 | 失败结果。表示接口执行失败，可能由以下原因导致：1. XComponent组件尚未完成初始化；2. Surface已被销毁或释放；3. 系统内部错误。请检查XComponent初始化状态和Surface生命周期后重试。 |
+| OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER = -2 | 无效参数。表示传入的参数为空指针或不符合接口要求，请检查传入参数是否合法。 |
 
 ### ArkUI_XComponent_ImageAnalyzerState
 
@@ -358,7 +358,7 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentSize()
 
@@ -549,7 +549,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| uint32_t pointIndex | 表示触摸点的指针索引。 |
+| uint32_t pointIndex | 表示触摸点的索引。取值范围[0, 当前触摸事件中的触摸点数量-1]，且不超过OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER-1。传入越界索引时返回OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER。 |
 | float* windowX | 表示指向触摸点相对于应用窗口左上角的X坐标的指针。单位：px。 |
 
 **返回：**
@@ -577,7 +577,7 @@ int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| uint32_t pointIndex | 表示触摸点的指针索引。 |
+| uint32_t pointIndex | 表示触摸点的指针索引。取值范围为[0, OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER - 1]。 |
 | float* windowY | 表示指向触摸点相对于应用窗口左上角的Y坐标的指针。单位：px。 |
 
 **返回：**
@@ -1251,7 +1251,7 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 > **说明：**
 >
-> 挂载的组件在不再需要时，必须调用[OH_NativeXComponent_DetachNativeNode](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_detachnativenode)进行卸载，避免内存泄漏。
+> 挂载的组件在不再需要时，必须调用[OH_NativeXComponent_DetachNativeRootNode](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_detachnativerootnode)进行卸载，避免内存泄漏。
 
 **起始版本：** 12
 
@@ -1895,6 +1895,10 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 
 设置XComponent组件是否需要自动初始化Surface的标志位。
 
+**配置依赖：**
+- 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用Initialize/Finalize。
+- 当autoInitialize设置为false时，开发者必须手动调用[OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize)初始化Surface，并在不再使用时调用[OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize)销毁Surface。
+
 **起始版本：** 19
 
 
@@ -1922,6 +1926,11 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 初始化XComponent组件持有的Surface。
 
+**配对调用：**
+- 调用此接口初始化Surface后，必须在Surface不再使用时调用[OH_ArkUI_XComponent_Finalize](#oh_arkui_xcomponent_finalize)销毁Surface。
+- 若Surface已经处于初始化状态，再次调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
+- 可通过[OH_ArkUI_XComponent_IsInitialized](#oh_arkui_xcomponent_isinitialized)查询当前初始化状态。
+
 **起始版本：** 19
 
 
@@ -1947,6 +1956,10 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 
 销毁XComponent组件持有的Surface。
+
+**配对调用：**
+- 此接口用于销毁由[OH_ArkUI_XComponent_Initialize](#oh_arkui_xcomponent_initialize)初始化的Surface，必须在Initialize之后调用。
+- 若Surface尚未初始化或已被销毁，调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
 
 **起始版本：** 19
 
