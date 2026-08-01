@@ -16212,19 +16212,109 @@
 						"start_line":178
 					},
 					{
-						"end_line":228,
-						"name":"image_alt",
-						"start_line":225
-					},
-					{
 						"end_line":235,
 						"name":"image_decode_size",
 						"start_line":231
 					},
 					{
-						"end_line":70,
-						"name":"image_receiver",
-						"start_line":51
+						"end_line":24,
+						"name":"image_headfiles",
+						"start_line":19
+					},
+					{
+						"end_line":114,
+						"name":"image_source_rawfile",
+						"start_line":110
+					},
+					{
+						"end_line":277,
+						"name":"network_image",
+						"start_line":274
+					},
+					{
+						"end_line":253,
+						"name":"image_getnode",
+						"start_line":246
+					},
+					{
+						"end_line":282,
+						"name":"create_image_component",
+						"start_line":279
+					},
+					{
+						"end_line":148,
+						"name":"image_repeat",
+						"start_line":143
+					},
+					{
+						"end_line":374,
+						"name":"image_alt_source",
+						"start_line":370
+					},
+					{
+						"end_line":159,
+						"name":"image_render",
+						"start_line":154
+					},
+					{
+						"end_line":166,
+						"name":"image_load_sync",
+						"start_line":161
+					},
+					{
+						"end_line":200,
+						"name":"image_color_filter",
+						"start_line":172
+					},
+					{
+						"end_line":207,
+						"name":"image_orientation",
+						"start_line":202
+					},
+					{
+						"end_line":56,
+						"name":"event_receiver",
+						"start_line":36
+					},
+					{
+						"end_line":258,
+						"name":"register_image_receiver",
+						"start_line":255
+					},
+					{
+						"end_line":80,
+						"name":"image_load_complete",
+						"start_line":58
+					},
+					{
+						"end_line":217,
+						"name":"register_image_load_complete",
+						"start_line":214
+					},
+					{
+						"end_line":96,
+						"name":"image_load_error",
+						"start_line":82
+					},
+					{
+						"end_line":222,
+						"name":"register_image_load_error",
+						"start_line":219
+					},
+					{
+						"end_line":104,
+						"name":"image_svg_complete",
+						"start_line":98
+					},
+					{
+						"end_line":227,
+						"name":"register_svg_play_component",
+						"start_line":224
+					},
+					{
+						"end_line":240,
+						"name":"unregister_node_event",
+						"start_line":232
 					}
 				]
 			}
