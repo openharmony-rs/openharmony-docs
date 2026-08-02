@@ -11,7 +11,7 @@ AtomicServiceSearch为开发者提供满足定制化需求的功能，内容包�
 
 > **说明：**
 >
-> 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -75,8 +75,8 @@ AtomicServiceSearch中“选择区”的可选属性。
 | optionBgColor           | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单项的背景色。默认值：`Color.Transparent`。当设置了menuItemContentModifier属性时，本属性不生效。 |
 | optionFont              | [Font](ts-types.md#font) | 否 | 是 | 下拉菜单项的文本样式。默认值：`{size: $r('sys.float.ohos_id_text_size_body1'), weight: FontWeight.Regular}`。当设置了menuItemContentModifier属性时，本属性不生效。 |
 | optionFontColor         | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单项的文本颜色。默认值：`$r('sys.color.ohos_id_color_text_primary')`。 |
-| optionWidth             | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | 否 | 是 | 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。当设置为异常值或小于最小宽度56vp时，属性不生效，菜单项宽度设为默认值，即菜单默认宽度为2栅格。 |
-| optionHeight            | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置下拉菜单显示的最大高度，不支持设置百分比。下拉菜单的默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。 |
+| optionWidth             | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | 否 | 是 | 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode为枚举类型，决定下拉菜单是否继承下拉按钮宽度。当设置为异常值或小于最小宽度56vp时，属性不生效，菜单项宽度设为默认值，即菜单默认宽度为2栅格。 |
+| optionHeight            | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置下拉菜单显示的最大高度，不支持设置百分比。下拉菜单的默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度，超过时属性不生效，按默认最大高度显示。 |
 | space                   | [Length](ts-types.md#length) | 否 | 是 | 下拉菜单项的文本与箭头之间的间距。默认值：`8`。单位：vp。 |
 | arrowPosition           | [ArrowPosition](ts-basic-components-select.md#arrowposition10枚举说明) | 否 | 是 | 下拉菜单项的文本与箭头之间的对齐方式。默认值：`ArrowPosition.END`。 |
 | menuAlign               | [MenuAlignParams](#menualignparams) | 否 | 是 | 设置下拉按钮与下拉菜单间的对齐方式。默认值：`{alignType: MenuAlignType.START,   offset: {dx: 0, dy: 0}}`。 |
@@ -108,7 +108,7 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 |  输入文本的字体颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。 |
 | caretStyle               | [CaretStyle](ts-text-common.md#caretstyle10) | 否 | 是 | 光标样式。默认值：`{width: '1.5vp', color: '#007DFF'}`。   |
 | enableKeyboardOnFocus    | boolean | 否 | 是 | Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动拉起软键盘。false表示Search获焦时不主动拉起键盘。默认值：`true`。   |
-| hideSelectionMenu        | boolean | 否 | 是 |是否不弹出系统文本选择菜单。<br>设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。   |
+| hideSelectionMenu        | boolean | 否 | 是 |是否隐藏系统文本选择菜单。<br>设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。   |
 | type                     | [SearchType](ts-basic-components-search.md#searchtype11枚举说明) | 否 | 是 | 输入框类型。默认值：`SearchType.Normal`。   |
 | maxLength                | number | 否 | 是 | 设置文本的最大输入字符数。默认不设置最大输入字符数限制。到达文本最大字符限制，将无法继续输入字符。默认值：`-1`。  |
 | enterKeyType             | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype枚举说明) | 否 | 是 | 输入法回车键类型。默认值：`EnterKeyType.Search`。   |
@@ -458,7 +458,6 @@ struct Index {
   @State changeValue: string = '';
   @State value: string = 'false';
   @State submitValue: string = '';
-  @State text: string = 'Search editMenuOptions';
 
   build() {
     Column({ space: 6 }) {
@@ -732,10 +731,6 @@ struct Index {
       }).width('100%')
     }.padding({ left: 16, right: 16 })
   }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
-  }
 }
 ```
 
@@ -776,10 +771,6 @@ struct Index {
       }).width('100%')
 
     }.padding({ left: 16, right: 16 })
-  }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
   }
 }
 ```
@@ -834,10 +825,6 @@ struct Index {
       });
     }.padding({ left: 16, right: 16 })
   }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
-  }
 }
 ```
 
@@ -874,10 +861,6 @@ struct Index {
         }
       }).width('80%').height(40).borderWidth(1).borderRadius(20)
     }.padding({ left: 16, right: 16 })
-  }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
   }
 }
 ```
@@ -949,10 +932,6 @@ struct Index {
       })
     }.padding({ left: 16, right: 16 })
   }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
-  }
 }
 ```
 
@@ -993,10 +972,6 @@ struct Index {
       })
     }.padding({ left: 16, right: 16 })
   }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
-  }
 }
 ```
 
@@ -1036,10 +1011,6 @@ struct Index {
 
       }
     }.padding({ left: 16, right: 16 })
-  }
-
-  public alert(message: string): void {
-    this.getUIContext().showAlertDialog({ message: message });
   }
 }
 ```
