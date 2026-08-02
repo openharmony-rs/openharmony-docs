@@ -60,7 +60,7 @@ AtomicServiceNavigation({
 | navigationContent | Callback\<void\> | 否 | @BuilderParam | Navigation容器内容。默认值为空，无内容展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | title | [ResourceStr](ts-types.md#resourcestr) | 否 |@Prop | 设置页面标题。默认值为空字符串。当titleOptions的titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | titleOptions | [TitleOptions](#titleoptions) | 否 | @Prop | 标题栏选项。默认值为{ isBlurEnabled: true }。当titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | 否 | @Prop | 背景色选项。默认值见[GradientBackground](#gradientbackground18)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | 否 | @Prop | 背景色选项。设置时各字段的默认值见[GradientBackground](#gradientbackground18)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | hideTitleBar | boolean | 否 | @Prop | 设置是否隐藏标题栏。默认为false。<br>false表示显示标题栏，true表示隐藏标题栏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | navBarWidth | [Length](ts-types.md#length)| 否 | @Prop | 设置导航栏宽度。默认值为240vp。<br>仅在Navigation组件分栏时生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mode| [NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明) | 否 | @Prop | 设置导航栏的显示模式。默认值为Auto。<br>支持Stack、Split与Auto模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -70,7 +70,7 @@ AtomicServiceNavigation({
 | sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | 否 | @Prop | 侧边栏的功能选项。默认值为{ sideBarBackground: $r('sys.color.ohos_id_color_sub_background'), sideBarIcon: $r('sys.symbol.open_sidebar') }。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | sideBarContent<sup>18+</sup> | Callback\<void\> | 否 | @BuilderParam | 侧边栏的内容。默认值为空。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | 否 | @BuilderParam | 宽屏场景下用户自定义插入的布局样式。默认值为空，不显示任何样式。屏幕宽度低于600vp为非宽屏场景，大于等于600vp为宽屏场景。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。true表示导航栏显示，false表示隐藏。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。true表示导航栏显示，false表示导航栏隐藏。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)\> | 否 | - | 当Navigation首次显示或者单双栏状态发生变化时触发该回调。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## TitleOptions
@@ -182,7 +182,7 @@ NavDestination组件内容。
 | --------------- | ------ | ---- | -- |----|
 | sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认值为$r('sys.color.ohos_id_color_sub_background')。 |
 | onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。true表示显示，false表示隐藏。默认值为空，即无事件。 |
-| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 打开侧边栏的图标。默认值为$r('sys.symbol.open_sidebar')。 |
+| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 侧边栏的展开图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例
 
