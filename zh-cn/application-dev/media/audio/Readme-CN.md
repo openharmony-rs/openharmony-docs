@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
-- [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
+- [使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
   - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
