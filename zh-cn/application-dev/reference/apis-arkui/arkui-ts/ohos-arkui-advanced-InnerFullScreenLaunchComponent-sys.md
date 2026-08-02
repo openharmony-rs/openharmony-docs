@@ -88,7 +88,7 @@ type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOption
 | 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
 |appId | string |是| 原子化服务的appId。 |
-| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | 拉起原子化服务参数。 |
+| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | 拉起原子化服务参数。不填时使用默认参数拉起原子化服务。 |
 
 ## 示例
 
