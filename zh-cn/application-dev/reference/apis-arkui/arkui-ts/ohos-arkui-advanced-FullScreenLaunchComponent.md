@@ -75,7 +75,7 @@ FullScreenLaunchComponent组件需要由使用方调用。在提供方完成本�
 
 **使用方**
 ```ts
-// 使用方入口界面Index.ets内容如下:
+// 使用方入口界面Index.ets内容如下：
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
 
 @Entry
