@@ -21,7 +21,7 @@
 - 分布式媒体会话<!--distributed-avsession-->
   <!--Del-->
   - [分布式媒体会话概述（仅对系统应用开放）](distributed-avsession-overview-sys.md)
-  - [使用分布式媒体会话(仅对系统应用开放)](using-distributed-avsession-sys.md)
+  - [使用分布式媒体会话（仅对系统应用开放）](using-distributed-avsession-sys.md)
   <!--DelEnd-->
   - [使用组件切换通话设备](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
 
