@@ -397,7 +397,7 @@ ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102 | Operation not allowed. |
 | 5400103 | I/O error. |
-| 5400106 | Unsupported format. |
+| 5400106 | Unsupport format. |
 
 **示例：**
 
@@ -500,7 +500,7 @@ start(): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
-| 5400102 | Operation not permitted. |
+| 5400102 | Operate not permitted. |
 | 5400103 | IO error. |
 | 5400105 | Service died. |
 
@@ -540,7 +540,7 @@ stop(): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
-| 5400102 | Operation not permitted. |
+| 5400102 | Operate not permitted. |
 | 5400105 | Service died. |
 
 **示例：**
@@ -630,7 +630,7 @@ ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
 | 5400105  | Service died. |
-| 5400102  | Operation not permitted in current state. |
+| 5400102  | Operate not permit in current state. |
 | 5400108  | Parameter out of range. |
 
 **示例：**
