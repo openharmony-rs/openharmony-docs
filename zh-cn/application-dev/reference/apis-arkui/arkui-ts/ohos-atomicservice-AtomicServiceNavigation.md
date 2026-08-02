@@ -70,7 +70,7 @@ AtomicServiceNavigation({
 | sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | 否 | @Prop | 侧边栏的功能选项。默认值为{ sideBarBackground: $r('sys.color.ohos_id_color_sub_background'), sideBarIcon: $r('sys.symbol.open_sidebar') }。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | sideBarContent<sup>18+</sup> | Callback\<void\> | 否 | @BuilderParam | 侧边栏的内容。默认值为空。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | 否 | @BuilderParam | 宽屏场景下用户自定义插入的布局样式。默认值为空，不显示任何样式。屏幕宽度低于600vp为非宽屏场景，大于等于600vp为宽屏场景。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。true表示导航栏显示状态发生了切换。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。true表示导航栏显示，false表示隐藏。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)\> | 否 | - | 当Navigation首次显示或者单双栏状态发生变化时触发该回调。默认值为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## TitleOptions
@@ -84,7 +84,7 @@ AtomicServiceNavigation({
 | isBlurEnabled | boolean | 否 | 是 | 标题栏是否模糊，默认值：true，表示标题栏模糊。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 是 | 标题栏样式属性设置。默认值为BarStyle.STANDARD。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 是 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.media.ohos_id_color_titlebar_icon')。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## GradientBackground<sup>18+</sup>
 供开发者设置品牌渐变色。
@@ -182,7 +182,7 @@ NavDestination组件内容。
 | --------------- | ------ | ---- | -- |----|
 | sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认值为$r('sys.color.ohos_id_color_sub_background')。 |
 | onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。true表示显示，false表示隐藏。默认值为空，即无事件。 |
-| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
+| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 打开侧边栏的图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例
 
@@ -396,9 +396,6 @@ struct Index {
     }
   }
 
-  @State showText: string = 'time: ';
-  @State time: number = 0;
-
   @Builder
   insertComp() {
     Text('This is menus area')
@@ -536,17 +533,6 @@ struct Index {
     } else if (name === 'page two') {
       PageTwo()
     }
-  }
-
-  @State showText: string = 'time: ';
-  @State time: number = 0;
-
-  @Builder
-  insertComp() {
-    Text('This is menus area')
-      .fontColor(Color.Red)
-      .width(200)
-      .height('100%')
   }
 
   @Builder
