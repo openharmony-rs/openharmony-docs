@@ -1442,7 +1442,7 @@ export class ControllerManager {
 
 sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
 
-自定义控制命令，支持音视频，示例仅以音频为例。使用Promise异步回调。
+发送自定义控制命令。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -1455,7 +1455,7 @@ sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
 | 参数名     | 类型   | 必填 |      说明       |
 | ---------- | ------ | ---- | -------------- |
 | command    | string | 是   | 自定义控制命令。 |
-| args       | string | 是   | 自定义控制参数。 |
+| args       | string | 是   | 自定义控制命令事件的参数。 |
 
 **返回值：**
 
