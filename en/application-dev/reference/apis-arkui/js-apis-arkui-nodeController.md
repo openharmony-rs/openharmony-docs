@@ -6,7 +6,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:21:30.505Z pushedAt=2026-08-03T07:43:02.885Z -->
+<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:21:30.505Z pushedAt=2026-08-03T11:01:15.465Z -->
 
 The **NodeController** module provides APIs for managing custom nodes, such as creating, showing, and updating custom nodes, and APIs for mounting custom nodes to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md). It is suitable for scenarios where custom nodes need to be dynamically created, updated, and reused on a page.
 
@@ -26,7 +26,7 @@ import { NodeController } from '@kit.ArkUI';
 
 ## NodeController
 
-Creates a controller to manage the bound [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. This API is typically used together with [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md). One **NodeController** can be bound to only one [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. For best practices, see Dynamic Component Creation: [Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
+Creates a controller to manage the bound [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. This API is typically used together with [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md). One **NodeController** can be bound to only one [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. For best practices, see Dynamic Component Creation: [Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

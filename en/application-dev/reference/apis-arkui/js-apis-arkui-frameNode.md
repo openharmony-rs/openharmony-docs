@@ -6,7 +6,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=00dce3decf0762303db24df00c77b5a9d42cfc02 translatedAt=2026-07-29T09:23:06.029Z pushedAt=2026-08-03T06:57:33.190Z -->
+<!-- md-trans-meta sourceCommit=00dce3decf0762303db24df00c77b5a9d42cfc02 translatedAt=2026-07-29T09:23:06.029Z pushedAt=2026-08-03T11:17:15.972Z -->
 
 **FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
@@ -1120,7 +1120,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getGlobalPositionOnDisplay(): Position
 
-Obtains the position offset of this FrameNode relative to the global screen, in vp. The coordinate system reference differs from that of [getPositionToScreen](#getpositiontoscreen12). Choose the appropriate API based on the actual scenario.
+Obtains the position offset of this FrameNode relative to the global display, in vp. The coordinate system reference differs from that of [getPositionToScreen](#getpositiontoscreen12). Choose the appropriate API based on the actual scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2430,7 +2430,7 @@ Sets the cross-language access options for this FrameNode. For example, for node
 
 > **NOTE**
 >
-> Currently, the cross-ArkTS language access option can only be configured for the following component types of [TypedFrameNode](#typedframenode12): [Scroll](#scroll12), [Swiper](#swiper12), [List](#list12), [ListItem](#listitem12), [ListItemGroup](#listitemgroup12), [WaterFlow](#waterflow12), [FlowItem](#flowitem12), [Grid](#grid14), [GridItem](#griditem14), [TextInput](#textinput12), [TextArea](#textarea14), [Column](#column12), [Row](#row12), [Stack](#stack12), [Flex](#flex12), [RelativeContainer](#relativecontainer12), [Progress](#progress12), [LoadingProgress](#loadingprogress12), [Image](#image12), [Button](#button12), [Checkbox](#checkbox18), [Radio](#radio18), [Slider](#slider18), [Toggle](#toggle18), and [XComponent](#xcomponent12).
+> Currently, the cross-ArkTS language access option can only be configured for the following components: [Scroll](#scroll12), [Swiper](#swiper12), [List](#list12), [ListItem](#listitem12), [ListItemGroup](#listitemgroup12), [WaterFlow](#waterflow12), [FlowItem](#flowitem12), [Grid](#grid14), [GridItem](#griditem14), [TextInput](#textinput12), [TextArea](#textarea14), [Column](#column12), [Row](#row12), [Stack](#stack12), [Flex](#flex12), [RelativeContainer](#relativecontainer12), [Progress](#progress12), [LoadingProgress](#loadingprogress12), [Image](#image12), [Button](#button12), [Checkbox](#checkbox18), [Radio](#radio18), [Slider](#slider18), [Toggle](#toggle18), and [TypedFrameNode](#typedframenode12) of the [XComponent](#xcomponent12) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5521,7 +5521,7 @@ Represents a FrameNode of the **Divider** type. This type of node does not allow
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | FrameNode of the Divider type.<br/> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Divider** component. <br/> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.<br/> **DividerInterface** indicates the [API](./arkui-ts/ts-basic-components-divider.md#apis) of the **Divider** component, and **DividerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-divider.md#attributes) of the **Divider** component. |
+| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | FrameNode of the **Divider** type.<br/> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Divider** component. <br/> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.<br/> **DividerInterface** indicates the [API](./arkui-ts/ts-basic-components-divider.md#apis) of the **Divider** component, and **DividerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-divider.md#attributes) of the **Divider** component. |
 
 ### createNode('Divider')<sup>12+</sup>
 

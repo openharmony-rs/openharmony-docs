@@ -6,7 +6,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3941aef1b3f2e81ba6f36ef0d30f9e1a4994e8fa translatedAt=2026-07-29T09:17:58.023Z pushedAt=2026-08-03T08:32:32.779Z -->
+<!-- md-trans-meta sourceCommit=3941aef1b3f2e81ba6f36ef0d30f9e1a4994e8fa translatedAt=2026-07-29T09:17:58.023Z pushedAt=2026-08-03T11:03:20.752Z -->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs. **RenderNode** also supports capabilities such as render node tree management (adding, removing, and querying child nodes), visual attribute settings like background color and opacity, transformations (scaling, rotation, translation, and transformation matrices), shadows, borders, masks and clipping, and blur effects. It is suitable for custom rendering and node tree management scenarios in the stage model.
 
@@ -884,7 +884,7 @@ Sets the opacity for this RenderNode. If the value passed in is less than **0**,
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | number | Yes  | Opacity to set. The value range is [0, 1], and a larger value indicates lower opacity. |
+| value  | number | Yes  | Opacity to set. The value range is [0, 1], and a larger value indicates lower transparency. |
 
 get opacity(): number
 
