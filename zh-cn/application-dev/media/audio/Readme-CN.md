@@ -40,7 +40,7 @@
   - [音频录制开发概述](audio-recording-overview.md)
   - [选择合适的录制流类型](using-right-sourcetype-for-recording.md)
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
-  - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
+  - [使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)
   - [实现后台录音](background-recording.md)
   - [管理麦克风静音状态](mic-management.md)
@@ -70,7 +70,7 @@
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
 - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
-  - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
+  - [从OpenSL ES切换到OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
 - Audio Kit常见问题<!--audio-issues-->
