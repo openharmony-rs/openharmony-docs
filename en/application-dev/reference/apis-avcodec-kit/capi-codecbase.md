@@ -18,7 +18,7 @@ The main capabilities provided by this module include:
 - **User-defined data source**: Supports custom media data reading through the `OH_AVDataSourceReadAt` callback and the `OH_AVDataSource` structure.
 - **MIME type definitions**: Defines MIME type constants for video codecs (H.264, H.265, and more), audio codecs (MP3, FLAC, OGG, WAV, and more), subtitles (SRT, WEBVTT), and more.
 - **Media description keys**: Provides unified key name constants (`OH_MD_KEY_*`) for configuring and querying media parameters, covering the video resolution, frame rate, bitrate, profile, pixel format, color space, audio sample rate, channel count, channel layout, codec features (layered coding, long-term reference frames, B-frames, low latency); and media metadata (title, artist, album, and more).
-- **Video ROI configuration**: Supports ROI encoding configuration, including ROI region coordinates, quantization parameter offset, semantic labels, and provides ROI string parsing an\d formatting functions.
+- **Video ROI configuration**: Supports ROI encoding configuration, including ROI region coordinates, quantization parameter offset, semantic labels, and provides ROI string parsing and formatting functions.
 - **Audio channel layout**: Defines audio channel sets and channel layout enumerations.
 
 Applicable scenarios include audio and video encoding and decoding, media encapsulation and decapsulation, and media data processing, and other scenarios where basic types and attribute keys of common codecs are required.
