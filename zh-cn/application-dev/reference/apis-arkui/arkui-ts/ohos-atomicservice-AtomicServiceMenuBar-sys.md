@@ -25,7 +25,7 @@ import { AtomicServiceMenuBar } from '@kit.ArkUI';
 
 ## 属性
 
-不支持[通用属性](ts-component-general-attributes.md)
+不支持[通用属性](ts-component-general-attributes.md)。
 
 ## AtomicServiceMenuBar
 
