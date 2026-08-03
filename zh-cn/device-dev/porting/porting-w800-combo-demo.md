@@ -1,6 +1,6 @@
 # Combo解决方案之W800芯片移植案例
 
-本方案基于OpenHarmony LiteOS-M内核，使用联盛德W800芯片的润和软件海王星系列[Neptune100开发板](https://gitcode.com/openharmony-sig/device_board_hihope)，进行开发移植。移植架构采用`Board`与`SoC`分离方案，支持通过Kconfig图形化配置编译选项，增加玄铁`ck804ef`架构移植，实现了`HDF`、`XTS`等子系统及组件的适配。
+本方案基于OpenHarmony LiteOS-M内核，使用联盛德W800芯片的润和软件海王星系列[Neptune100开发板](https://gitcode.com/openharmony/device_board_hihope/blob/master/neptune100/README_zh.md)，进行开发移植。移植架构采用`Board`与`SoC`分离方案，支持通过Kconfig图形化配置编译选项，增加玄铁`ck804ef`架构移植，实现了`HDF`、`XTS`等子系统及组件的适配。
 
 ## 适配准备
 
@@ -10,7 +10,7 @@
 
 ### 目录规划
 
-本方案的目录结构使用[Board和Soc解耦的思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
+本方案的目录结构使用[Board和SoC解耦的思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
 
 芯片适配目录规划为：
    ```text
@@ -39,13 +39,13 @@
    ```json5
    {
       "product_name": "neptune_iotlink_demo",                // 产品名称
-      "ohos_version": "OpenHarmony 3.1",                     // 使用的OS版本
+      "ohos_version": "OpenHarmony 7.0",                     // 使用的OS版本
       "type":"mini",                                         // 系统类型：mini
-      "version": "3.0",                                      // 系统版本：3.0
+      "version": "7.0",                                      // 系统版本：7.0
       "device_company": "hihope",                            // 单板厂商：hihope
       "board": "neptune100",                                 // 单板名：neptune100
       "kernel_type": "liteos_m",                             // 内核类型：liteos_m
-      "kernel_version": "3.0.0",                             // 内核版本：3.0.0
+      "kernel_version": "7.0.0",                             // 内核版本：7.0.0
       "subsystems": [                                        // 子系统
       {
       "subsystem": "kernel",
@@ -125,7 +125,7 @@
 kernel_type = "liteos_m"
 
 # Kernel version.
-kernel_version = "3.0.0"
+kernel_version = "7.0.0"
 
 # Board CPU type, e.g. "cortex-a7", "riscv32".
 board_cpu = "ck804ef"
@@ -291,7 +291,7 @@ OHOS Which product do you need?  neptune_iotlink_demo
    └── Kconfig.liteos_m.soc                         --- SoC配置
    ```
 
-6. 修改`Soc`目录下`Kconfig`文件内容：
+6. 修改`SoC`目录下`Kconfig`文件内容：
 
    在`wm800/Kconfig.liteos_m.defconfig.wm800`中添加：
 
@@ -321,7 +321,7 @@ OHOS Which product do you need?  neptune_iotlink_demo
    ```text
    config SOC_SERIES_WM800
        bool "winnermicro 800 Series"
-       select ARM
+       select CSKY
        select SOC_COMPANY_WINNERMICRO              --- 选择 SOC_COMPANY_WINNERMICRO
        select CPU_XT804
        help
@@ -341,12 +341,12 @@ OHOS Which product do you need?  neptune_iotlink_demo
    endchoice
    ```
 
-   综上所述，要编译单板BOARD_NEPTUNE100，则要分别选中：SOC_COMPANY_WINNERMICRO、SOC_SERIES_WM800、SOC_WM800
-7. 在`kernel/liteos_m`中执行`make menuconfig`进行选择配置,能够对SoC Series进行选择：
+   综上所述，要编译单板BOARD_NEPTUNE100，则需要依次选中：SOC_SERIES_WM800和SOC_WM800（选中SOC_SERIES_WM800时会自动选中SOC_COMPANY_WINNERMICRO）。
+7. 在`kernel/liteos_m`中执行`make menuconfig`进行选择配置，能够对SoC Series进行选择：
 
    ![w800_select.json](figures/w800_select.png)
 
-   配置后的文件会默认保存在`vendor/hihope/neptune_iotlink_demo/kernel_configs/debug.config`,也可以直接填写`debug.config`：
+   配置后的文件会默认保存在`vendor/hihope/neptune_iotlink_demo/kernel_configs/debug.config`，也可以直接填写`debug.config`：
 
    ```text
    LOSCFG_PLATFORM_QEMU_CSKY_SMARTL=y
@@ -561,7 +561,7 @@ HDF驱动框架提供了一套应用访问硬件的统一接口，可以简化�
    HDF_INIT(g_GpioDriverEntry);
    ```
 
-3. 在`device/board/hihope/shields/neptune100/neptune100.hcs`添加gpio硬件描述信息, 添加内容如下：
+3. 在`device/board/hihope/shields/neptune100/neptune100.hcs`添加gpio硬件描述信息，添加内容如下：
 
    ```hcs
    root {
@@ -575,7 +575,7 @@ HDF驱动框架提供了一套应用访问硬件的统一接口，可以简化�
    }
    ```
 
-4. 在GpioDriverInit获取hcs参数进行初始化，如下：
+4. 在GpioDriverInit获取HCS参数进行初始化，如下：
 
    ```c
     ...
@@ -615,7 +615,7 @@ HDF驱动框架提供了一套应用访问硬件的统一接口，可以简化�
    HDF_INIT(g_UartDriverEntry);
    ```
 
-3. 在`device/board/hihope/shields/neptune100/neptune100.hcs`添加uart硬件描述信息, 添加内容如下：
+3. 在`device/board/hihope/shields/neptune100/neptune100.hcs`添加uart硬件描述信息，添加内容如下：
 
    ```hcs
    root {
@@ -643,7 +643,7 @@ HDF驱动框架提供了一套应用访问硬件的统一接口，可以简化�
    }
    ```
 
-4. 在UartDriverInit获取hcs参数进行初始化，如下：
+4. 在UartDriverInit获取HCS参数进行初始化，如下：
 
    ```c
     ...
@@ -686,7 +686,7 @@ HDF驱动框架提供了一套应用访问硬件的统一接口，可以简化�
    }
    ```
 
-在本案例中，`wifi`适配源码可见`device/soc/winnermicro/wm800/board/src/wifi/wm_wifi.c`,如下：
+在本案例中，`wifi`适配源码可见`device/soc/winnermicro/wm800/board/src/wifi/wm_wifi.c`，如下：
 
    ```c
    int tls_wifi_netif_add_status_event(tls_wifi_netif_status_event_fn event_fn)   ---用于增加wifi事件功能
