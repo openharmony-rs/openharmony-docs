@@ -501,4 +501,4 @@ export struct OverlayManagerOnBackPress {
 }
 ```
 
-![overlayManager-demo4](figures/overlaymanager-demo-4.png)
+<!--Del-->![overlayManager-demo4] (figures/overlaymanager-demo-4.png)<!--DelEnd-->

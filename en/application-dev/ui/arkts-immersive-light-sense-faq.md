@@ -1,4 +1,4 @@
-# Immersive Light Sense FAQs
+# FAQs About Immersive Light Sense
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
