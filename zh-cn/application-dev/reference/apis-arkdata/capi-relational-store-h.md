@@ -610,7 +610,7 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置。 |
-| int dbType | 表示数据库的数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。 |
+| int dbType | 表示数据库的内核类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。 |
 
 **返回：**
 
@@ -793,7 +793,7 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>指示与此RDB存储相关的数据库的配置。 |
-| bool isPersistent | 指示数据库是否需要持久性。 |
+| bool isPersistent | 指示数据库是否需要持久化。true表示需要持久化，false表示不需要持久化，即内存数据库。 |
 
 **返回：**
 
@@ -824,7 +824,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| const int * | 返回支持的数据库类型数组指针。调用成功时返回有效指针，调用失败时返回NULL。 |
 
 ### OH_Rdb_CreateValueObject()
 
@@ -1106,7 +1106,7 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBu
 | 参数项                                                                                | 描述 |
 |------------------------------------------------------------------------------------| -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store                                        | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| const char *table                                                                 |  要设置的分布式数据库表表名。 |
+| const char *table                                                                 |  表示要插入数据的目标表名。 |
 | const [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows                        | 表示要插入到表中的一组数据。 |
 | [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | 表示发生冲突时的解决策略。 |
 | int64_t *changes                                                                   | 输出参数，表示插入成功的次数。 |
@@ -2246,7 +2246,7 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 取消注册的数据库异常处理的回调函数。
 
-handler和context必须要和订阅时保持一致，否则取消失败。
+handler和context必须要和注册时保持一致，否则取消失败。
 
 **起始版本：** 22
 
@@ -2289,7 +2289,7 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果获取store失败或结果集为空，则返回nullptr。 |
 
 
 ### OH_Rdb_QuerySqlWithoutRowCount()

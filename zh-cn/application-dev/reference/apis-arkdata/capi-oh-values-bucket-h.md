@@ -85,7 +85,7 @@ int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **val
 | ---------------------------------------- | ------------------------------------------------------------ |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | 表示指向[OH_VBucket](capi-rdb-oh-vbucket.md)实例的指针。         |
 | const char *field                        | 数据库表中的列名，不能为空。                                   |
-| [Data_Asset](capi-rdb-data-asset.md) **value | 数据库表中指定列名对应的值。                                 |
+| [Data_Asset](capi-rdb-data-asset.md) **value | 数据库表中指定列名对应的Data_Asset对象数组。                                 |
 | uint32_t count                           | 表示传入的[Data_Asset](capi-rdb-data-asset.md)对象数组元素的个数。 |
 
 **返回：**

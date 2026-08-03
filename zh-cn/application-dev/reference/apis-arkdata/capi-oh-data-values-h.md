@@ -43,7 +43,7 @@
 | [int OH_Values_PutAsset(OH_Data_Values *values, const Data_Asset *val)](#oh_values_putasset) | 添加ASSET类型数据给OH_Data_Values对象。                      |
 | [int OH_Values_PutAssets(OH_Data_Values *values, const Data_Asset * const * val, size_t length)](#oh_values_putassets) | 添加ASSETS类型数据给OH_Data_Values对象。                     |
 | [int OH_Values_PutFloatVector(OH_Data_Values *values, const float *val, size_t length)](#oh_values_putfloatvector) | 添加float数组类型数据给OH_Data_Values对象。                  |
-| [int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *trueForm, size_t length)](#oh_values_putunlimitedint) | 添加任意长度的整型数组数据给OH_Data_Values对象。             |
+| [int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *trueForm, size_t length)](#oh_values_putunlimitedint) | 添加任意长度的整型数据给OH_Data_Values对象。             |
 | [int OH_Values_Count(OH_Data_Values *values, size_t *count)](#oh_values_count) | 获取数据个数。                                               |
 | [int OH_Values_GetType(OH_Data_Values *values, int index, OH_ColumnType *type)](#oh_values_gettype) | 获取数据类型。                                               |
 | [int OH_Values_Get(OH_Data_Values *values, int index, OH_Data_Value **val)](#oh_values_get) | 获取OH_Data_Value类型数据。                                  |
@@ -349,7 +349,7 @@ int OH_Values_PutUnlimitedInt(OH_Data_Values *values, int sign, const uint64_t *
 
 **描述**
 
-添加任意长度的整型数组数据给OH_Data_Values对象。
+添加任意长度的整型数据给OH_Data_Values对象。
 
 **起始版本：** 18
 
