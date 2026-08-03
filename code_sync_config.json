@@ -36999,12 +36999,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets",
 				"functions":[
 					{
-						"end_line":273,
+						"end_line":277,
 						"name":"audioRenderer_setDefaultOutputDevice",
 						"start_line":16
 					},
 					{
-						"end_line":226,
+						"end_line":230,
 						"name":"audioSessionManager_setDefaultOutputDevice",
 						"start_line":17
 					}
