@@ -533,6 +533,11 @@ ArkTS-Sta示例：
 <!-- @[dialog_component_get_state](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
 
 ``` TypeScript
+/**
+ * customDialogComponentGetState - 可获取状态的对话框内容构建器
+ * @param dialogController - 对话框控制器
+ * 演示如何获取对话框当前状态（打开/关闭/正在关闭）
+ */
 @Builder
 customDialogComponentGetState(dialogController: promptAction.DialogController): void {
   Column({ space: 5 } as ColumnOptions) {
