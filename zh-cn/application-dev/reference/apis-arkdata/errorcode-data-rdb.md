@@ -106,7 +106,7 @@ The current operation failed because the database is corrupted.
 
 **错误描述**
 
-数据库损坏，当前操作失败。
+数据库异常，当前操作失败。
 
 **可能原因**
 
