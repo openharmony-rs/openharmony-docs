@@ -330,6 +330,12 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    <!-- @[dialog_component_id](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
+   /**
+    * customDialogComponentWithId - 带 dialogId 的对话框内容构建器
+    * @param dialogId - 对话框唯一标识符
+    * @param dialogController - 对话框控制器
+    * 演示两种关闭方式：通过 dialogId 或通过 controller
+    */
    @Builder
    customDialogComponentWithId(dialogId: int, dialogController: promptAction.DialogController): void {
      Column({ space: 5 } as ColumnOptions) {
