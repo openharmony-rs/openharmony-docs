@@ -592,8 +592,6 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
 3. 当解密内容长度较短时，可以省略调用update，直接调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
 
 AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算法解密时调用doFinal失败](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#使用aes-cbc算法解密时调用dofinal失败)
-
-- 异步方法示例：
   <!-- @[cbc_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_cbc_encryption_decryption/aes_cbc_encryption_decryption_asynchronous.ets) -->
   
   ``` TypeScript
@@ -632,6 +630,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -639,6 +638,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function aesCBC() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -656,6 +656,8 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     } catch (error) {
       console.error(`AES CBC failed: errCode: ${error.code}, message: ${error.message}`);
     }
+  }
+  ```
   }
   ```
 
