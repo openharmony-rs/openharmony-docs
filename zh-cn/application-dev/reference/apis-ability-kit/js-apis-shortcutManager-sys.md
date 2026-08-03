@@ -189,7 +189,7 @@ struct ShortcutExample {
 
 ## shortcutManager.updateDesktopShortcutInfo
 
-updateDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number): Promise\<void>;
+updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void>;
 
 更新指定用户的快捷方式信息。使用Promise异步回调。
 
@@ -205,11 +205,13 @@ updateDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
 | userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
@@ -226,7 +228,6 @@ updateDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 | -------- | ---------------------------------------- |
 | 201 | Verify permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
 | 17700004 | The specified user ID is not found.       |
 | 17700026 | The specified bundle is disabled. |
@@ -240,6 +241,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// 请开发者替换为实际的快捷方式信息、用户id。
 let shortcutInfo: shortcutManager.ShortcutInfo = {
   id: 'test1',
   bundleName: 'com.example.myapplication',
@@ -258,7 +260,7 @@ try {
   shortcutManager.updateDesktopShortcutInfo(shortcutInfo, 100)
     .then(() => {
       hilog.info(0x0000, 'testTag', 'updateDesktopShortcutInfo successfully');
-    }).catch((err: BusinessError) => {
+    }).catch((err: Error) => {
       hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', err.message);
     });
 } catch (err) {
