@@ -7166,7 +7166,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
-以只读方式打开当前文件，如果是纯云视频文件，则将视频缓存至图库沙箱。使用Promise异步回调。
+以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
