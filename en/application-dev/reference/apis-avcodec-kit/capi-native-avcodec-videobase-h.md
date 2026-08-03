@@ -2,7 +2,7 @@
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
-<!--Designer: @dpy2650--->
+<!--Designer: @dpy2650-->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -98,7 +98,7 @@ Converts the ROI configuration in the OH_AVFormat handle into a string and appen
 
 | Type| Description|
 | -- | -- |
-| OH_AVErrCode | <ul><br>         <li>`AV_ERR_OK`: The string is successfully converted and appended.</li><br>         <li>`AV_ERR_INVALID_VAL`: The `roiStrInOut` pointer or `format` handle is NULL, or the format lacks the required ROI key.</li><br>         <li>`AV_ERR_NO_MEMORY`: Internal memory allocation or reallocation fails.</li><br>         </ul> |
+| OH_AVErrCode | `AV_ERR_OK`: The string is successfully converted and appended.<br> `AV_ERR_INVALID_VAL`: The `roiStrInOut` pointer or `format` handle is NULL, or the format lacks the required ROI key.<br> `AV_ERR_NO_MEMORY`: Internal memory allocation or reallocation fails.|
 
 ### OH_VideoMetadata_GetRoiCount()
 
@@ -123,7 +123,7 @@ Pre-parse the ROI string to retrieve the number of valid ROI regions it contains
 
 | Type| Description|
 | -- | -- |
-| OH_AVErrCode | <ul><br>         <li>`AV_ERR_OK`: The operation is successful.</li><br>         <li>`AV_ERR_INVALID_VAL`: `roiStr` or `outCount` is NULL.</li><br>         </ul> |
+| OH_AVErrCode | `AV_ERR_OK`: The operation is successful.<br> `AV_ERR_INVALID_VAL`: `roiStr` or `outCount` is NULL.|
 
 ### OH_VideoMetadata_ParseRoiString()
 
@@ -153,4 +153,4 @@ Parses the ROI string and fills the OH_AVFormat array provided by the caller.
 
 | Type| Description|
 | -- | -- |
-| OH_AVErrCode | <ul><br>        <li>`AV_ERR_OK`: The operation is successful.</li><br>        <li>`AV_ERR_INVALID_VAL`: `roiStr`, `outOwnedFormats`, or `outCount` is NULL.</li><br>        </ul> |
+| OH_AVErrCode | `AV_ERR_OK`: The operation is successful.<br> `AV_ERR_INVALID_VAL`: `roiStr`, `outOwnedFormats`, or `outCount` is NULL.|

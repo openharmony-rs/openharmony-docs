@@ -8860,3 +8860,45 @@ Allows an application to mount the media library sandbox within appspawn.
 **Supported devices**: wearables | TVs | tablets | phones | PCs/2-in-1 devices | cars | lite wearables | smartlocks | routers
 
 **Since**: 26.1.0
+
+## ohos.permission.MUTE_VOIP_CAPTURE
+
+Allows an application to mute the VoIP capture streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MUTE_VOIP_PLAYBACK
+
+Allows an application to mute the VoIP playback streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.VOIP_CAPTURE_CONCURRENCY
+
+Allows an application to enable the VoIP recording stream while another application is recording VoIP calls.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
