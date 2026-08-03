@@ -94,4 +94,4 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  无效的UIContext对象。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  无效的回调函数。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  不支持手势识别器类型。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  当前阶段不允许该操作。错误码的详细介绍请参见[拖拽事件错误码](errorcode-drag-event.md)。<br>**起始版本：** 19 |
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | 当前拖拽事件处理阶段不允许执行请求的操作。错误码的详细介绍请参见[拖拽事件错误码](errorcode-drag-event.md)。<br>**起始版本：** 19 |
