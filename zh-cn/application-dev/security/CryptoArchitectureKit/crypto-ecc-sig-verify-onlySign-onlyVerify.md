@@ -1,4 +1,4 @@
-# 使用ECC密钥对签名验签（OnlySign和OnlyVerify模式）(ArkTS)
+# 使用ECC密钥对签名验签(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,8 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+
+## 使用ECC密钥对签名验签（OnlySign和OnlyVerify模式）
 
 从API版本26.0.0开始，签名验签支持OnlySign/OnlyVerify模式。对应的算法规格请查看[签名验签算法规格：ECDSA](crypto-sign-sig-verify-overview.md#ecdsa)。
 

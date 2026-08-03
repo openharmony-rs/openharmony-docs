@@ -1,4 +1,4 @@
-# 使用DES对称密钥（ECB模式）加解密(ArkTS)
+# 使用DES对称密钥加解密(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -8,6 +8,8 @@
 <!--Adviser: @zengyawen-->
 
 对应的算法规格请查看[对称密钥加解密算法规格：DES](crypto-encryption-decryption.md#des)。
+
+## 使用DES对称密钥（ECB模式）加解密
 
 **加密**
 
@@ -91,7 +93,6 @@ DES解密失败返回错误码17630001可参考[使用DES/3DES算法解密时调
     }
   }
   ```
-
 
 - 同步方法示例：
 
