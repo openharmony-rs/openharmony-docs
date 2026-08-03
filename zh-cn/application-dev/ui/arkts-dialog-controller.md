@@ -141,6 +141,11 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
+   /**
+    * buildText - 构建对话框文本内容
+    * @param params - 对话框参数对象，包含文本和控制器
+    * 使用 @Builder 装饰器，可被 ComponentContent 调用
+    */
    @Builder
    function buildText(params: Params): void {
      Column({ space: 5 } as ColumnOptions) {
