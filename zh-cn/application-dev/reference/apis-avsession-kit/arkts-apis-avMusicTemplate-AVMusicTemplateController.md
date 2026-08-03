@@ -1465,7 +1465,7 @@ sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
