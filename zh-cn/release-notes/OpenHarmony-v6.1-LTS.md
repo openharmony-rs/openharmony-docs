@@ -288,21 +288,20 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 | 版本源码 | **版本信息** | **下载站点** | **SHA256校验码** | **软件包容量** |
 |---------------------------------------|------------|------------------------------------------------------------|------------------------------------------------------------|--------|
-| 全量代码（标准、轻量和小型系统）        | 6.1 LTS  | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3861解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3863解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3861 64K解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3863 64K解决方案（二进制）        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3516解决方案-LiteOS（二进制） | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| Hi3516解决方案-Linux（二进制）  | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| RK3568标准系统解决方案（二进制）ROM包        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| RK3568标准系统解决方案（二进制）XTS包        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| P7885标准系统解决方案（二进制）ROM包        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| P7885标准系统解决方案（二进制）XTS包        | 6.1 LTS    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| 标准系统Public SDK包（Mac）             | 6.1.0.35    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| 标准系统Public SDK包（Mac-M1）             | 6.1.0.35    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-| 标准系统Public SDK包（Windows/Linux）   | 6.1.0.35    | *软件包上传中* | *软件包上传中* | *软件包上传中* |
-
+| 全量代码（标准、轻量和小型系统）        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/code-v6.1-LTS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/code-v6.1-LTS.tar.gz.sha256) | 69.3 GB |
+| Hi3861解决方案（二进制）        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus.tar.gz.sha256) | 28.8 MB |
+| Hi3863解决方案（二进制）        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_3863.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_3863.tar.gz.sha256) | 8.0 MB |
+| Hi3861 64K解决方案（二进制）        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_64k.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_64k.tar.gz.sha256) | 7.9 MB |
+| Hi3863 64K解决方案（二进制）        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_3863_64k.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_pegasus_3863_64k.tar.gz.sha256) | 3.0 MB |
+| Hi3516解决方案-LiteOS（二进制） | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_taurus_LiteOS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_taurus_LiteOS.tar.gz.sha256) | 359.7 MB |
+| Hi3516解决方案-Linux（二进制）  | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_taurus_Linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/hispark_taurus_Linux.tar.gz.sha256) | 238.5 MB |
+| RK3568标准系统解决方案（二进制）ROM包        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu200_standard_arm32_rom.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu200_standard_arm32_rom.tar.gz.sha256) | 4.0 GB |
+| RK3568标准系统解决方案（二进制）XTS包        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu200_standard_arm32_xts.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu200_standard_arm32_xts.tar.gz.sha256) | 4.4 GB |
+| P7885标准系统解决方案（二进制）ROM包        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu600_standard_arm32_rom.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu600_standard_arm32_rom.tar.gz.sha256) | 6.0 GB |
+| P7885标准系统解决方案（二进制）XTS包        | 6.1 LTS    | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu600_standard_arm32_xts.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/dayu600_standard_arm32_xts.tar.gz.sha256) | 4.5 GB |
+| 标准系统Public SDK包（Mac）             | 6.1.0.35 | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/ohos-sdk-mac-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/ohos-sdk-mac-public.tar.gz.sha256) | 1.3 GB |
+| 标准系统Public SDK包（Mac-M1）             | 6.1.0.35  | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/L2-SDK-MAC-M1-PUBLIC.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/L2-SDK-MAC-M1-PUBLIC.tar.gz.sha256) | 1.2 GB |
+| 标准系统Public SDK包（Windows/Linux）   | 6.1.0.35   | [站点](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/ohos-sdk-windows_linux-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/6.1-LTS/ohos-sdk-windows_linux-public.tar.gz.sha256) | 3.0 GB |
 
 ## 遗留缺陷列表
 
