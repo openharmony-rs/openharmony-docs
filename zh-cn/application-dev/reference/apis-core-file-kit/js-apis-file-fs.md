@@ -11285,7 +11285,7 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取文件位置，单位为Byte。可选，默认从当前位置开始读。 |
 | length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 ## ReadTextOptions<sup>11+</sup>
@@ -11317,7 +11317,7 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入文件位置，单位为Byte。可选，默认从当前位置开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | encoding | string | 否 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
