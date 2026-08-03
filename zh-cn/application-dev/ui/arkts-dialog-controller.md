@@ -47,6 +47,10 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    <!-- @[dialog_params](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
+   /**
+    * Params - 对话框参数类
+    * 用于传递对话框的文本内容和控制器对象
+    */
    class Params {
      public text: string = '';
      public dialogController: promptAction.CommonController = new promptAction.DialogController();
