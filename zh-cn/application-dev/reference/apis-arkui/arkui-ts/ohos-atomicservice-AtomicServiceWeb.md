@@ -195,7 +195,7 @@ refresh(): void
 
 forward(): void
 
-按照历史栈，前进一个页面。一般结合[accessForward](#accessforward)一起使用。
+按照历史栈，前进一个页面。可结合[accessForward](#accessforward)一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -213,7 +213,7 @@ forward(): void
 
 backward(): void
 
-按照历史栈，后退一个页面。一般结合[accessBackward](#accessbackward)一起使用。
+按照历史栈，后退一个页面。可结合[accessBackward](#accessbackward)一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
