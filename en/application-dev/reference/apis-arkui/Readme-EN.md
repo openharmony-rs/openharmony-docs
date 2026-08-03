@@ -16,8 +16,8 @@
     - [@ohos.arkui.inspector (Layout Callback)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (Custom Node)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (Observer)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
-    - [@ohos.arkui.shape(Shape)](js-apis-arkui-shape.md)
+    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.shape (Shape)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme (Theme)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [Module Description](arkts-apis-uicontext.md)
