@@ -2583,7 +2583,7 @@ export class TemplateManager {
 
 onCustomCommand(callback: CustomCommandEvent): void
 
-自定义控制命令的监听。使用callback异步回调。
+注册自定义控制命令的监听。使用callback异步回调。
 
 **起始版本：** 26.1.0
 
@@ -2658,7 +2658,7 @@ offCustomCommand(callback?: CustomCommandEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                               |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | 否   | 自定义控制命令的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | 否   | 回调函数，注销自定义控制命令的监听。|
 
 **错误码：**
 
