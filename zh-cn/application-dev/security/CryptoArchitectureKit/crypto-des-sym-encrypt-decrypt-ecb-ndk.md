@@ -1,4 +1,4 @@
-# 使用DES对称密钥（ECB模式）加解密(C/C++)
+# 使用DES对称密钥加解密(C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -15,6 +15,8 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## 开发步骤
+
+### 使用DES对称密钥（ECB模式）加解密
 
 **创建对象**
 
