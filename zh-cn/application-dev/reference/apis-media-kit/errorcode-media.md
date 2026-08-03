@@ -72,7 +72,7 @@ Operation not allowed.
 
 **处理步骤**
 
-确认所需音频资源对应的soundId正确，注册监听[on('loadComplete')](js-apis-inner-multimedia-soundPool.md#on('loadComplete'))，等待回调到达后方可播放。
+确认所需音频资源对应的soundId正确，注册监听[on('loadComplete')](js-apis-inner-multimedia-soundPool.md#onloadcomplete)，等待回调到达后方可播放。
 
 ## 5400103 出现IO错误
 
