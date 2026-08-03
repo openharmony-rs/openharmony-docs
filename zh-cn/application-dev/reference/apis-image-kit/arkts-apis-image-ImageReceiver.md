@@ -147,7 +147,7 @@ readLatestImage(): Promise\<Image>
 
 > **注意**：
 >
->此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -191,7 +191,7 @@ readNextImage(callback: AsyncCallback\<Image>): void
 
 > **注意**：
 >
->此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -237,7 +237,7 @@ readNextImage(): Promise\<Image>
 
 > **注意**：
 >
->此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
