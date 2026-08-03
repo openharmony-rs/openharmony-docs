@@ -632,6 +632,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -639,6 +640,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考[使用AES-CBC算�
     console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function aesCBC() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
