@@ -532,7 +532,7 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 type CustomCommandEvent = (command: string, args: string) => Promise&lt;OperResult&gt;
 
-自定义控制命令。使用Promise异步回调。
+自定义控制命令事件。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -543,7 +543,7 @@ type CustomCommandEvent = (command: string, args: string) => Promise&lt;OperResu
 | 参数名     | 类型   | 必填 |      说明       |
 | ---------- | ------ | ---- | -------------- |
 | command    | string | 是   | 自定义控制命令。 |
-| args       | string | 是   | 自定义控制参数。 |
+| args       | string | 是   | 自定义控制命令事件的参数。 |
 
 **返回值：**
 
