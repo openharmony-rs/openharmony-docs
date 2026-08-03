@@ -430,6 +430,11 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    <!-- @[custom_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
+   /**
+    * CustomDialogExample - 自定义对话框组件
+    * 演示如何使用 @CustomDialog 装饰器创建自定义对话框
+    * 支持内置控制器关闭对话框
+    */
    @CustomDialog
    @Component
    struct CustomDialogExample {
