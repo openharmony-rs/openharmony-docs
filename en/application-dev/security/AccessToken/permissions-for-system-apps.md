@@ -8904,15 +8904,15 @@ Allows an application to enable the VoIP recording stream while another applicat
 **Valid since**: 26.0.0
 
 ## ohos.permission.vehicle.DEVICE_AUTH
- 	 
-  Allows an application on the rear armrest screen to connect to the head unit for device authentication.
- 	 
- **Permission level**: system_basic
- 	 
- **Authorization mode**: system_grant
- 	 
-  **Certificate-based authorization**: true
- 	 
-  **Supported devices**: cars
- 	 
-  **Since**: 26.1.0
+
+Allows an application on the rear armrest screen to connect to the head unit for device authentication.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
