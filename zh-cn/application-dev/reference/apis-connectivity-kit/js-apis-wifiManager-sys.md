@@ -161,7 +161,7 @@ WLAN配置信息。
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
 | configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全WiFi，true:是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。|
 
 ## IpType
 
