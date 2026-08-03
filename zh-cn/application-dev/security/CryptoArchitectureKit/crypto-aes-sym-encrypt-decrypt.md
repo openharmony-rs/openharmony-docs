@@ -369,7 +369,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     let decryptUpdate = decoder.doFinalSync(cipherText);
     return decryptUpdate;
   }
-
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
@@ -377,7 +377,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考[使用AES-CCM算�
     console.info('convertKeySync result: success.');
     return symKey;
   }
-
+  
   function main() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = genSymKeyByData(keyData);
