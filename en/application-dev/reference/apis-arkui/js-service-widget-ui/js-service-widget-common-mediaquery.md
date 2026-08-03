@@ -1,11 +1,12 @@
 # Media Query
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:56.950Z pushedAt=2026-07-31T12:04:26.611Z -->
 
 Media queries are widely used on mobile devices. You can use them to modify the application style based on the device type or specific features and device parameters (such as the screen resolution). Specifically, media queries allow you to:
 
@@ -13,18 +14,15 @@ Media queries are widely used on mobile devices. You can use them to modify the 
 
 2. Update the page layout to adapt to dynamic screen changes (for example, screen splitting or switching between landscape and portrait modes).
 
-
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > The **media** attribute uses the actual size, physical pixel, and screen resolution of the device by default. Do not confuse them with the configuration based on basic screen width 720 px.
 
-
 ## CSS Syntax Rules
 
 Use **@media** to import query statements. The rule is as follows:
-
 
 ```css
 @media [media-type] [and|not|only] [(media-feature)] {
@@ -42,11 +40,9 @@ Example:
 
 \@media screen and (device-type: tv) or (resolution &lt; 2) { ... } // Multi-condition query that contains the media type and multiple media features.
 
-
 ## Referencing Resources on a Page
 
 Use **@import** to import a media query. The rule is as follows:
-
 
 ```js
 @import url [media-type] [and|not|only] [(media-feature)];
@@ -54,18 +50,15 @@ Use **@import** to import a media query. The rule is as follows:
 
 Example:
 
-
 ```js
 @import '../common/style.css' screen and (min-width: 600) and (max-width: 1200);
 ```
-
 
 ## Media Type
 
 | Type| Description|
 | -------- | -------- |
 | screen | Media query based on screen-related parameters.|
-
 
 ## Media Logical Operation
 
@@ -78,8 +71,8 @@ You can use logical operators (**and**, **or**, **not**, and **only**) to compos
 | and | The **and** logical operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions.<br>For example, **screen and (device-type: wearable) and (max-height: 600)** indicates that the query is valid when the device type is wearable and the maximum height of the application is 600 pixel units.|
 | not | The **not** operator is used to perform a logical negation for a media query. **true** is returned if the query condition is not met. Otherwise, **false** is returned. In a media query list, logical negation is performed only for the media query using the **not** operator.<br>For example, **not screen and (min-height: 50) and (max-height: 600)** indicates that the query is valid when the height of the application is less than 50 pixel units or greater than 600 pixel units.<br>You must specify the media type when using the **not** operator.|
 | only | The **only** operator applies the selected style only when the entire expression is matched. It can be used to prevent ambiguity on browsers of earlier versions. The statements that contain both media types and media features produce ambiguity when they are received by some browsers of earlier versions. For example:<br>screen&nbsp;and&nbsp;(min-height:&nbsp;50)<br>the browsers of earlier versions would mislead this sentence into **screen**, causing the fact that the specified style is applied when only the media type is matched. In this case, the **only** operator can be used to avoid this issue.<br>You must specify the media type when using the **only** operator.|
-| ,(comma) | The comma operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator.<br>For example, **screen and (min-height: 1000), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
-| or | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true.<br>For example, **screen and (max-height: 1000) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
+| ,(comma) | The comma operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator.<br/>For example, **screen and (min-height: 1000), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round. |
+| or | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true.<br/>For example, **screen and (max-height: 1000) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round. |
 
 At MediaQuery Level 4, range query is imported so that you can use the operators including &lt;=, &gt;=, &lt;, and &gt; besides the max- and min-operators.
 
@@ -91,7 +84,6 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | &gt;= | Greater than or equal to, for example, **screen and (height >= 600)**.|
 | &lt; | Less than, for example, **screen and (height < 50)**.|
 | &gt; | Greater than, for example, **screen and (height > 600)**.|
-
 
 ## Media Features
 
@@ -119,9 +111,7 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
 | round-screen | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|
 | dark-mode<sup>6+</sup> | Whether the device is in dark mode. The value **true** means that the device is in dark mode, and **false** means the opposite.|
 
-
 ## Sample Code
-
 
 ```html
 <!-- xxx.hml -->
@@ -131,7 +121,6 @@ At MediaQuery Level 4, range query is imported so that you can use the operators
   </div>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
