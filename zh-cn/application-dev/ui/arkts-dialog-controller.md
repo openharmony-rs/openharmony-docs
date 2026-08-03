@@ -90,6 +90,10 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    <!-- @[dialog_my_component](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
+   /**
+    * MyComponent - 内部组件
+    * 演示如何在组件内部通过内置方法关闭对话框
+    */
    @Component
    struct MyComponent {
      build(): void {
