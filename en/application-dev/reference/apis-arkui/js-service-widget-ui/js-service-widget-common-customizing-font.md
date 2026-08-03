@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:21.654Z pushedAt=2026-07-31T12:04:26.598Z -->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:21.654Z pushedAt=2026-08-03T01:05:49.548Z -->
 
 **font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your app and then reference this font from **font-family**.
 
@@ -31,7 +31,7 @@ The custom font can be loaded from the font file in a project or a network font 
 
 **src**: source of the custom font, which can be a font file in the project or an online font file.
 
-- Font file in the project: Specify the path of the font file in the project through **url**. (You can use absolute paths only. For details, see [File Organization](js-service-widget-file.md.)
+- Font file in the project: Specify the path of the font file in the project through **url**. (You can use absolute paths only. For details, see [File Organization](js-service-widget-file.md).
 
 - Online font file: Specify the address of the online font through **url**.
 

@@ -6,10 +6,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:24.801Z pushedAt=2026-07-31T12:04:26.602Z -->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:24.801Z pushedAt=2026-08-03T01:04:27.328Z -->
 
-The **chart** component displays a line chart, bar chart, gauge chart, progress circ
-le chart, loading circle chart, or proportional circle chart.
+The **chart** component displays a line chart, bar chart, gauge chart, progress circle chart, loading circle chart, or proportional circle chart.
 
 > **NOTE**
 >
