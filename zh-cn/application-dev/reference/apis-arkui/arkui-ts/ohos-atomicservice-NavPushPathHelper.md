@@ -604,7 +604,7 @@ export struct PageOne {
           .height(35)
           .margin(10)
           .onClick(() => {
-            let navParam = new 	NavParam();
+            let navParam = new NavParam();
             this.helper.pushDestinationByName('hsptest2', 'pageTwo', navParam, true)
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationByNameWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
