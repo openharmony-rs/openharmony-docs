@@ -40921,5 +40921,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/windowmanager/native-window-event-filter.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkEventDistribution/KeyEventFilter/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"keyEventFilter",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkEventDistribution/InjectTouchEvent/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"injectTouchEvent",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
