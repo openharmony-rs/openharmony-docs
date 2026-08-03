@@ -17,7 +17,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -250,7 +250,7 @@
     - 动态属性与自定义<!--attribute-modifier-property-->
       - [动态属性设置](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [动态手势设置](arkui-ts/ts-universal-attributes-gesture-modifier.md)
-      - [自定义绘制](arkui-ts/ts-universal-attributes-draw-modifier.md)
+      - [自定义绘制设置](arkui-ts/ts-universal-attributes-draw-modifier.md)
       - [自定义内容](arkui-ts/ts-universal-attributes-content-modifier.md)
       - [自定义属性设置](arkui-ts/ts-universal-attributes-custom-property.md)
       - [动态SymbolGlyphModifier属性设置](arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
@@ -527,19 +527,19 @@
     - 自定义组件装饰器<!--custom-component-decorator-->
       - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component.md)
       - [@ComponentV2：自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2.md)
-      - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
+      - [\@Entry：页面入口](arkui-ts/ts-universal-entry.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [@AnimatableExtend：定义可动画属性](arkui-ts/ts-animatable-extend.md)
-      - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-dynamic.md)
+      - [\@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-dynamic.md)
       - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-dynamic.md)
       - [@Extend：扩展组件样式](arkui-ts/ts-custom-component-decorator-extend.md)
       - [@LocalBuilder装饰器：维持组件关系](arkui-ts/ts-universal-localbuilder.md)
-      - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-dynamic.md)
-      - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable.md)
+      - [\@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-dynamic.md)
+      - [\@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable.md)
       - [@ReusableV2：组件复用V2](arkui-ts/ts-custom-component-decorator-reusablev2.md)
       - [@Styles：组件重用样式](arkui-ts/ts-custom-component-decorator-styles.md)
-      - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
-      - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
+      - [wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md)
+      - [mutableBuilder](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
@@ -649,7 +649,7 @@
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
-    - [AbilityComponent](arkui-ts/ts-container-ability-component-sys.md)
+    - [AbilityComponent (系统接口)](arkui-ts/ts-container-ability-component-sys.md)
     <!--DelEnd-->
     - [GridContainer](arkui-ts/ts-container-gridcontainer.md)
     - [Panel](arkui-ts/ts-container-panel.md)
@@ -949,7 +949,7 @@
     - [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md)
     - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
     - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
-    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TouchTestInfoItemArray](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
     - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
