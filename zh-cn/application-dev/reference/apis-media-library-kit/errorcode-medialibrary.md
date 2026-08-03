@@ -97,7 +97,7 @@ Failed to open the file.
 
 **可能原因**
 
-1. 因网络连接问题，无法访问云图（Unable to access cloud images due to network connectivity issues）。
+1. 因网络连接问题，无法访问云图库资产（Unable to access cloud images due to network connectivity issues）。
 
 2. 文件系统异常（File system malfunction）。
 
