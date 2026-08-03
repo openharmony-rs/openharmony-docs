@@ -7168,9 +7168,9 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件，如果是纯云视频文件，则将视频缓存至图库沙箱。使用promise异步回调。
 
-**系统接口**：此接口为系统接口。
-
 **起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
