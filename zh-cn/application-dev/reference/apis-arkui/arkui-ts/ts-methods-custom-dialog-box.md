@@ -1314,6 +1314,8 @@ struct MyStateSample {
 }
 ```
 
+![zh-cn_image_dialogGetState](figures/dialogGetState.gif)
+
 ### 示例6（使用@Link和@Consume监听数据变化）
 
 该示例使用[@Link](../../../ui/state-management/arkts-link.md)和[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)实现页面与弹窗内数据的双向绑定。

@@ -1234,3 +1234,5 @@ export struct SupportedAvoidAxisPopupExample {
   }
 }
 ```
+
+![popupEnableHoverMode](figures/popupEnableHoverMode.gif)
