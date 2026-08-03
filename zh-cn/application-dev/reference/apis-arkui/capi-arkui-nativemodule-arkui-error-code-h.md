@@ -89,7 +89,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  该事件不是克隆事件。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 |  组件状态异常。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 |  未命中可响应事件的组件。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 15 |
-| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 |  接口不支持此输入事件类型。错误码的详细介绍请参见[180006 不支持输入事件类型](errorcode-event.md#180006-不支持输入事件类型)。<br>**起始版本：** 20 |
+| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 |  接口不支持此输入事件类型。错误码的详细介绍请参见[180006 不支持输入事件类型](errorcode-event.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 |  无效的属性字符串。错误码的详细介绍请参见[属性字符串错误码](errorcode-styled-string.md)。<br>**起始版本：** 14 |
 | ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  无效的UIContext对象。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  无效的回调函数。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
