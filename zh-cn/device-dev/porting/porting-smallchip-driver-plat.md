@@ -89,7 +89,7 @@ HDF为所有的平台驱动都创建了驱动模型，移植平台驱动的主�
    static int32_t GpioInit(struct HdfDeviceObject *device)
    {
        int32_t ret;
-       SocNameGpioCntlr *impl = CreateGpio(); // 你的创建代码需要自己实现。
+       struct SocNameGpioCntlr *impl = CreateGpio(); // 你的创建代码需要自己实现。
        ret = GpioCntlrAdd(&impl->cntlr);  // 注册GPIO模型实例。
        if (ret != HDF_SUCCESS) {
            HDF_LOGE("%s: err add controller:%d", __func__, ret);

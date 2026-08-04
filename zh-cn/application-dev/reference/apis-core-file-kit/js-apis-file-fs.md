@@ -1080,7 +1080,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
-| listeners | [DfsListeners](#fileiodfslisteners12) | 是 | 分布式文件系统状态监听器。 |
+| listeners | [DfsListeners](#dfslisteners12) | 是 | 分布式文件系统状态监听器。 |
 
 **返回值：**
 
@@ -5324,13 +5324,17 @@ copySignal.onCancel();
 
 ## ProgressListener<sup>11+</sup>
 
+type ProgressListener = (progress: Progress) => void
+
 拷贝进度监听。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 类型 | 说明 |
-| ---- | ---- |
-|(progress: [Progress](#progress11)) => void| 拷贝进度监听|
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| progress | [Progress](#progress11) | 是 | 拷贝进度监听 |
 
 **示例：**
 
@@ -6997,7 +7001,7 @@ console.info("Succeeded in unmap.");
 fileIo.closeSync(file);
 ```
 
-## fileIo.DfsListeners<sup>12+</sup>
+## DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
@@ -7712,7 +7716,7 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | 否 | 是 | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| offset | number | 否 | 是 | 期望读取文件位置，单位为Byte。可选，默认从当前位置开始读。 |
 | length | number | 否 | 是 | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 ## ReadTextOptions<sup>11+</sup>
@@ -7735,7 +7739,7 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | 否 | 是 | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | number | 否 | 是 | 期望写入文件位置，单位为Byte。可选，默认从当前位置开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length | number | 否 | 是 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | encoding | string | 否 | 是 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 

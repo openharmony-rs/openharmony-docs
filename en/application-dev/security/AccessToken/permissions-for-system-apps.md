@@ -7598,6 +7598,20 @@ Allows a system application to launch another application to a specified page st
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+Allows an application to obtain the information and status of the rear control screen and establish a communication channel with it.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 Allows an application to obtain and set the car scenario mode.
@@ -7643,6 +7657,62 @@ Allows an application to send update instructions to the head unit.
 ## ohos.permission.vehicle.CAR_LOG_SERVICE
 
 Allows a system application to send commands to collect logs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+
+Allows an application to read vehicle hardware information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
+
+Allows an application to write vehicle hardware information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
+
+Allows an application to read vehicle and head unit configurations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
+
+Allows an application to write vehicle and head unit configurations.
 
 **Permission level**: system_basic
 
@@ -8504,6 +8574,20 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+Allows an application to trigger smart analysis for assets.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
  	 
 Allows an application to create a content trust signature.
@@ -8788,5 +8872,61 @@ Allows an application to mount the media library sandbox within appspawn.
 **Certificate-based authorization**: true
 
 **Supported devices**: wearables | TVs | tablets | phones | PCs/2-in-1 devices | cars | lite wearables | smartlocks | routers
+
+**Since**: 26.1.0
+
+## ohos.permission.MUTE_VOIP_CAPTURE
+
+Allows an application to mute the VoIP capture streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MUTE_VOIP_PLAYBACK
+
+Allows an application to mute the VoIP playback streams of other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.VOIP_CAPTURE_CONCURRENCY
+
+Allows an application to enable the VoIP recording stream while another application is recording VoIP calls.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs | PCs/2-in-1 devices | cars | wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.vehicle.DEVICE_AUTH
+
+Allows an application on the rear armrest screen to connect to the head unit for device authentication.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
 
 **Since**: 26.1.0
