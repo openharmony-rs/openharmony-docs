@@ -27,7 +27,7 @@
   - [播放音量管理](volume-management.md)
   - [空间音频能力查询和状态订阅](public-audio-spatialization-management.md)
   <!--Del-->
-  - [空间音频管理（仅对系统应用开放）](audio-spatialization-management-sys.md)
+  - [空间音频管理(仅对系统应用开放)](audio-spatialization-management-sys.md)
   <!--DelEnd-->
   - [音频播放流管理](audio-playback-stream-management.md)
   <!--Del-->
