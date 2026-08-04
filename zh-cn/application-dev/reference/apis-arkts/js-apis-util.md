@@ -645,7 +645,7 @@ getMainThreadStackTrace(): string
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
