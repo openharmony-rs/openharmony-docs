@@ -181,6 +181,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // 处理二进制图像数据。
@@ -249,6 +250,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // 处理二进制图像数据。
@@ -315,6 +317,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // 处理二进制图像数据。
@@ -382,6 +385,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // 处理二进制图像数据。
