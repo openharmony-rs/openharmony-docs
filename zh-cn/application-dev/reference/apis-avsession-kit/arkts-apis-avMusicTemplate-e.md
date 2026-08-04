@@ -144,8 +144,8 @@
 | --------------- | --------------- | ---------------------- |
 | PLAY_MUSIC      | 'playMusic'     | 播放音乐。              |
 | PLAY_VIDEO      | 'playVideo'     | 播放视频。              |
-| PLAY_MUSIC_LIST | 'playMusicList' | 播放音乐列表（指定歌单）。 **起始版本：** 26.1.0  |
-| PLAY_VIDEO_LIST | 'playVideoList' | 播放视频列表（指定视频）。 **起始版本：** 26.1.0  |
+| PLAY_MUSIC_LIST | 'playMusicList' | 播放音乐列表（指定歌单）。<br>**起始版本：** 26.1.0  |
+| PLAY_VIDEO_LIST | 'playVideoList' | 播放视频列表（指定视频）。<br>**起始版本：** 26.1.0  |
 
 ## DownloadStatus
 
