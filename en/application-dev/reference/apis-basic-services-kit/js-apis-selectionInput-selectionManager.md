@@ -6,7 +6,7 @@
 <!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d682c265ebaab7ba09f14d1bce2dfd9303f27af1 translatedAt=2026-07-29T01:31:49.551Z pushedAt=2026-07-29T11:55:39.838Z -->
+<!-- md-trans-meta sourceCommit=bb3fe7567540ccb1863f77532b1f5c54ec3874e8 translatedAt=2026-08-04T01:03:31.953Z pushedAt=2026-08-04T01:36:49.483Z -->
 
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying panels, listening for word selection events using a mouse or touchpad, and retrieving the selected text. The typical usage process is as follows:
 
@@ -48,7 +48,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
-Subscribes to the word selection completion event. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection completion event. This API is used together with [off('selectionCompleted')](#selectionmanageroffselectioncompleted). [off('selectionCompleted')](#selectionmanageroffselectioncompleted) is used to unsubscribe from the event. This API uses an asynchronous callback to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -372,7 +372,7 @@ In the following APIs, you must first use [createPanel](#createpanel) to obtain 
 
 setUiContent(path: string): Promise\<void>
 
-Sets the UI content for the current word selection panel. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Sets the UI content for the current word selection panel, for example, to display translation results, search suggestions, or custom action buttons. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -556,7 +556,7 @@ RelativeContainer() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-Moves the word selection panel to the specified coordinates on the screen. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinate system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -570,8 +570,8 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 | Name  | Type                  | Mandatory| Description    |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | Yes  |X-axis coordinate of the target position, in px.|
-| y | number | Yes  |Y-axis coordinate of the target position, in px.|
+| x | number | Yes | X-coordinate of the target position in the global coordinate system of the screen, in px. The upper left corner of the main screen is the origin of the global coordinate system, and the positive direction of the X axis is rightward. The x-coordinate of an extended screen may be negative, depending on the screen layout. |
+| y | number | Yes | Y-coordinate of the target position in the global coordinate system of the screen, in px. The upper left corner of the main screen is the origin of the global coordinate system, and the positive direction of the Y axis is downward. The y-coordinate of an extended screen may be negative, depending on the screen layout. |
 
 **Return value**
 
