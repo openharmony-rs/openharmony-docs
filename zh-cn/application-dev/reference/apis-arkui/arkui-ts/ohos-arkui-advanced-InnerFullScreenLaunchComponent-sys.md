@@ -25,7 +25,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 
 ## 子组件
 
-无
+无。
 
 ## 属性
 
