@@ -187,7 +187,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       dialogUIContext = windowClass.getUIContext();
-    })
+    });
 
     // 获取窗口
     windowStage.getMainWindow((err, data) => {
@@ -198,7 +198,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       // 设置窗口非全屏
-      windowClass.setWindowLayoutFullScreen(false)
+      windowClass.setWindowLayoutFullScreen(false);
     })
   }
 
@@ -314,7 +314,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       dialogUIContext = windowClass.getUIContext();
-    })
+    });
 
     // 获取窗口
     windowStage.getMainWindow((err, data) => {
@@ -325,7 +325,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       // 设置窗口非全屏
-      windowClass.setWindowLayoutFullScreen(false)
+      windowClass.setWindowLayoutFullScreen(false);
     })
   }
 
