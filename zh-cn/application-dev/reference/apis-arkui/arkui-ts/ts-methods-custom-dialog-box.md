@@ -441,8 +441,8 @@ ArkTS-Sta示例：
  * 本示例展示如何在CustomDialog中打开另一个CustomDialog，实现弹窗嵌套
  * 演示了CustomDialogController的嵌套使用和多个Controller的管理
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@ohos.arkui.component';
-import { Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog,
+  CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Link } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExampleTwo {
@@ -691,7 +691,7 @@ ArkTS-Sta示例：
  * 本示例展示如何设置showInSubWindow为true，使弹窗可以在主窗口外显示
  * 适用于2in1设备，弹窗可以超出主窗口边界显示
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@ohos.arkui.component';
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -882,7 +882,7 @@ ArkTS-Sta示例：
  * 本示例展示如何自定义弹窗的样式，包括宽度、高度、背景色、阴影等
  * 演示了width、height、backgroundColor、shadow等样式属性的使用
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, BorderStyle, Color, ShadowOptions } from '@ohos.arkui.component';
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, BorderStyle, Color, ShadowOptions } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -1078,8 +1078,7 @@ ArkTS-Sta示例：
  * 本示例展示如何设置enableHoverMode和hoverModeArea属性
  * 在悬停态下控制弹窗的显示区域（上半屏或下半屏）
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, HoverModeAreaType } from '@ohos.arkui.component';
-import { Link, State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, HoverModeAreaType, Link, State } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -1433,8 +1432,7 @@ ArkTS-Sta示例：
  * 本示例展示如何使用@Link和@Consume实现页面与弹窗内数据的双向绑定
  * 演示了状态管理装饰器在自定义弹窗中的应用
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color } from '@ohos.arkui.component';
-import { Link, Consume, Provide, State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, Link, Consume, Provide, State } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -1658,8 +1656,7 @@ ArkTS-Sta示例：
  * 本示例展示如何使用maskColor、maskRect和LoadingProgress实现带loading的弹窗
  * 演示了遮罩层区域外事件透传的效果
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, LoadingProgress, CustomDialog, CustomDialogController, Color, BlurStyle, Rectangle, DialogAlignment, DismissDialogAction, DismissReason } from '@ohos.arkui.component';
-import { window } from '@kit.ArkUI';
+import { Entry, Component, Column, ColumnOptions, Button, Text, LoadingProgress, CustomDialog, CustomDialogController, Color, BlurStyle, Rectangle, DialogAlignment, DismissDialogAction, DismissReason, window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -1916,9 +1913,7 @@ ArkTS-Sta示例：
  * 本示例展示如何通过监听键盘变化，手动调整弹窗与软键盘的间距
  * 演示了使用margin实现键盘避让效果
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color } from '@ohos.arkui.component';
-import { Link, State } from '@ohos.arkui.stateManagement';
-import { window } from '@kit.ArkUI';
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, Link, State, window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -2162,8 +2157,7 @@ ArkTS-Sta示例：
  * 本示例展示如何配置弹窗的生命周期回调
  * 演示了onWillAppear、onDidAppear、onWillDisappear、onDidDisappear的使用
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, State } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample1 {
@@ -2355,8 +2349,7 @@ ArkTS-Sta示例：
  * 本示例展示customStyle属性为true和false时弹窗的不同表现
  * 演示了弹窗内容与安全区域的关系
  */
-import { Entry, Component, Column, ColumnOptions, Button, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, State } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -2513,7 +2506,7 @@ ArkTS-Sta示例：
  * 本示例展示如何使用backgroundBlurStyleOptions自定义背景模糊效果
  * 演示了colorMode、adaptiveColor、scale、blurOptions等参数的配置
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, ThemeColorMode, AdaptiveColor } from '@ohos.arkui.component';
+import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, ThemeColorMode, AdaptiveColor } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -2645,7 +2638,7 @@ ArkTS-Sta示例：
  * 本示例展示如何使用backgroundEffect自定义背景效果
  * 演示了radius、saturation、brightness、color等参数的配置
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, Color } from '@ohos.arkui.component';
+import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, Color } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -2782,8 +2775,7 @@ ArkTS-Sta示例：
  * 本示例展示如何通过状态变量动态刷新自定义弹窗的宽度
  * 演示了customStyle为true时通过属性绑定实现动态刷新效果
  */
-import { Entry, Component, Column, ColumnOptions, Button, Text, Row, Slider, SliderChangeMode, CustomDialog, CustomDialogController, Color, ShadowStyle } from '@ohos.arkui.component';
-import { Link, State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ColumnOptions, Button, Text, Row, Slider, SliderChangeMode, CustomDialog, CustomDialogController, Color, ShadowStyle, Link, State } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
