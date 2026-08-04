@@ -5833,7 +5833,7 @@ Allows an application to obtain the information and status of the rear control s
 
 **Supported devices**: cars
 
-***Valid since**: 26.1.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
