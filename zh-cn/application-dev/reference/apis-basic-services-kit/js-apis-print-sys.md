@@ -7,7 +7,7 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
 
-该模块为基本打印的操作API，提供调用基础打印功能的接口。
+该模块为打印管理的系统接口，提供查询打印机扩展服务、打印机发现与管理、设置打印机首选项与默认打印机、打印任务管理、监听状态变化事件等功能。
 
 > **说明：**  
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -36,10 +36,10 @@ import { print } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extensionId | string | 否 | 否 | 表示打印机扩展的扩展ID。 |
+| extensionId | string | 否 | 否 | 表示打印机扩展ID。 |
 | vendorId | string | 否 | 否 | 表示扩展的供应商ID。 |
 | vendorName | string | 否 | 否 | 表示供应商名称。 |
-| vendorIcon | number | 否 | 否 | 表示供应商图标。 |
+| vendorIcon | number | 否 | 否 | 表示供应商图标资源ID。 |
 | version | string | 否 | 否 | 表示当前打印机扩展的版本。 |
 
 ## PrintMargin
@@ -110,13 +110,13 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-print.queryAllPrinterExtensionInfos((err: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
-    if (err) {
-        console.error('queryAllPrinterExtensionInfos err ' + JSON.stringify(err));
+print.queryAllPrinterExtensionInfos((error: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
+    if (error) {
+        console.error(`Failed to query all printer extension infos. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
     }
-})
+});
 ```
 
 ## print.queryAllPrinterExtensionInfos
@@ -196,20 +196,20 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
-print.disconnectPrinter(printerId, (err: BusinessError) => {
-    if (err) {
-        console.error('failed to disconnect Printer because : ' + JSON.stringify(err));
+print.disconnectPrinter(printerId, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to disconnect printer. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('start disconnect Printer success');
     }
-})
+});
 ```
 
 ## print.disconnectPrinter
 
 disconnectPrinter(printerId: string): Promise&lt;void&gt;
 
-断开特定打印机的连接，使用Promise异步回调。
+断开指定打印机的连接，使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -289,20 +289,20 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
-print.queryPrinterCapability(printerId, (err: BusinessError) => {
-    if (err) {
-        console.error('failed to query Printer Capability because : ' + JSON.stringify(err));
+print.queryPrinterCapability(printerId, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to query printer capability. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('start query Printer Capability success');
     }
-})
+});
 ```
 
 ## print.queryPrinterCapability
 
 queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
-查询打印机能力，使用Promise异步回调。
+查询打印机能力，使用Promise异步回调。调用该接口触发指定打印机的能力查询，能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -382,7 +382,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
     jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
@@ -448,7 +448,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
     jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
@@ -507,20 +507,20 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
-print.cancelPrintJob(jobId, (err: BusinessError) => {
-    if (err) {
-        console.error('cancelPrintJob failed, because : ' + JSON.stringify(err));
+print.cancelPrintJob(jobId, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to cancel print job. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('cancelPrintJob success');
     }
-})
+});
 ```
 
 ## print.cancelPrintJob
 
 cancelPrintJob(jobId: string): Promise&lt;void&gt;
 
-取消已发送到打印机的打印任务，使用Promise异步回调。
+取消已发送到打印机的打印任务，使用Promise异步回调。仅可取消处于运行状态的打印任务，对不存在或已完成的任务调用将返回错误。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -646,18 +646,18 @@ requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
 import { print } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
-    jobState : PRINT_JOB_COMPLETED,
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
     jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
     copyNumber : 1,
     pageRange : {},
     isSequential : false,
     pageSize : {id : '', name : '', width : 10, height : 20},
     isLandscape : false,
-    colorMode : COLOR_MODE_COLOR,
-    duplexMode : DUPLEX_MODE_NONE,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
     margin : undefined,
     preview : undefined,
     options : undefined
@@ -709,18 +709,18 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
-    fdList : [44,45],
+    fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
     jobId : 'jobId_12',
     printerId : 'printerId_32',
-    jobState : PRINT_JOB_COMPLETED,
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
     jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
     copyNumber : 1,
     pageRange : {},
     isSequential : false,
     pageSize : {id : '', name : '', width : 10, height : 20},
     isLandscape : false,
-    colorMode : COLOR_MODE_COLOR,
-    duplexMode : DUPLEX_MODE_NONE,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
     margin : undefined,
     preview : undefined,
     options : undefined
@@ -1117,13 +1117,13 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
-print.removePrinters([printerId], (err: BusinessError) => {
-    if (err) {
-        console.error('removePrinters failed, because : ' + JSON.stringify(err));
+print.removePrinters([printerId], (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to remove printers. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('removePrinters success');
     }
-})
+});
 ```
 
 ## print.removePrinters
@@ -1218,20 +1218,20 @@ let printerInfo : print.PrinterInfo = {
     capability : undefined,
     options : 'opt'
 };
-print.updatePrinters([printerInfo], (err: BusinessError) => {
-    if (err) {
-        console.error('updataPrinters failed, because : ' + JSON.stringify(err));
+print.updatePrinters([printerInfo], (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to update printers. Code: ${error.code}, message: ${error.message}`);
     } else {
-        console.info('updataPrinters success');
+        console.info('updatePrinters success');
     }
-})
+});
 ```
 
 ## print.updatePrinters
 
 updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
-更新特定打印机的信息，使用Promise异步回调。
+更新指定打印机的信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -1416,20 +1416,20 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let info : string = 'WIFI_INACTIVE';
-print.updateExtensionInfo(info, (err: BusinessError) => {
-    if (err) {
-        console.error('updateExtensionInfo failed, because : ' + JSON.stringify(err));
+print.updateExtensionInfo(info, (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to update extension info. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('updateExtensionInfo success');
     }
-})
+});
 ```
 
 ## print.updateExtensionInfo
 
 updateExtensionInfo(info: string): Promise&lt;void&gt;
 
-更新打印扩展状态，使用Promise异步回调。
+更新打印机扩展信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -1509,19 +1509,18 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-print.queryAllPrintJobs((err: BusinessError) => {
-    if (err) {
-        console.error('queryAllPrintJobs failed, because : ' + JSON.stringify(err));
+print.queryAllPrintJobs((error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to query all print jobs. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('queryAllPrintJobs success');
     }
-})
+});
 ```
 
 ## print.queryAllPrintJobs<sup>(deprecated)</sup>
 
-> 从API version 10开始支持，从API version 11开始废弃。
-> 建议使用[queryPrintJobList](#printqueryprintjoblist11-1)替代。
+> 从 API version 10开始支持，从 API version 11开始废弃。建议使用[queryPrintJobList](#printqueryprintjoblist11-1)替代。
 
 queryAllPrintJobs(): Promise&lt;void&gt;
 
@@ -1634,13 +1633,13 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
-    if (err) {
-        console.error('queryPrintJobList failed, because : ' + JSON.stringify(err));
+print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => {
+    if (error) {
+        console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
     }
-})
+});
 ```
 
 ## print.queryPrintJobList<sup>11+</sup>
@@ -1719,13 +1718,13 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
-print.queryPrintJobById(jobId, (err: BusinessError, printJob : print.PrintJob) => {
-    if (err) {
-        console.error('queryPrintJobById failed, because : ' + JSON.stringify(err));
+print.queryPrintJobById(jobId, (error: BusinessError, printJob : print.PrintJob) => {
+    if (error) {
+        console.error(`Failed to query print job by id. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('queryPrintJobById success, data : ' + JSON.stringify(printJob));
     }
-})
+});
 ```
 
 ## print.queryPrintJobById<sup>11+</sup>
@@ -1887,20 +1886,20 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
-print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessError) => {
-    if (err) {
-        console.error('notifyPrintService failed, because : ' + JSON.stringify(err));
+print.notifyPrintService(jobId, 'spooler_closed_for_started', (error: BusinessError) => {
+    if (error) {
+        console.error(`Failed to notify print service. Code: ${error.code}, message: ${error.message}`);
     } else {
         console.info('notifyPrintService success');
     }
-})
+});
 ```
 
 ## print.notifyPrintService<sup>11+</sup>
 
 notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise&lt;void&gt;
 
-将spooler关闭信息通知打印服务，使用Promise异步回调。
+将打印预览界面关闭信息通知打印服务，使用Promise异步回调。用于在打印预览界面关闭后，让打印服务进行清理、退出等操作。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -2276,20 +2275,20 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-let printerUri : string = "testPrinterUri";
-let printerId : string = "testPrinterId";
+let printerUri : string = 'testPrinterUri';
+let printerId : string = 'testPrinterId';
 print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {
     console.info('queryPrinterCapabilityByUri success' + JSON.stringify(capabilities));
 }).catch((error: BusinessError) => {
-    console.error('queryPrinterCapabilityByUri error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to query printer capability by uri. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ## print.addPrinterToCups<sup>24+</sup>
 
 addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise&lt;boolean&gt;
 
-添加打印机到cups，使用Promise异步回调。
+添加打印机到CUPS，使用Promise异步回调。CUPS是系统中的打印服务框架，用于管理打印机和打印任务。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -2329,22 +2328,22 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-let printerUri : string = "testPrinterUri";
-let printerName : string = "testPrinterName";
-let printerMake : string = "testPrinterMake";
+let printerUri : string = 'testPrinterUri';
+let printerName : string = 'testPrinterName';
+let printerMake : string = 'testPrinterMake';
 
 print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boolean) => {
     console.info('addPrinterToCups success' + JSON.stringify(result));
 }).catch((error: BusinessError) => {
-    console.error('addPrinterToCups error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to add printer to cups. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ## print.deletePrinterFromCups<sup>24+</sup>
 
 deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 
-从cups中删除打印机，使用Promise异步回调。
+从CUPS中删除打印机，使用Promise异步回调。CUPS是系统中的打印服务框架，用于管理打印机和打印任务。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -2381,11 +2380,11 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-let printerName : string = "testPrinterName";
+let printerName : string = 'testPrinterName';
 
 print.deletePrinterFromCups(printerName).then(() => {
     console.info('deletePrinterFromCups success');
 }).catch((error: BusinessError) => {
-    console.error('deletePrinterFromCups error : ' + JSON.stringify(error));
-})
+    console.error(`Failed to delete printer from cups. Code: ${error.code}, message: ${error.message}`);
+});
 ```

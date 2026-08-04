@@ -1,18 +1,18 @@
 # Print_Resolution
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
 
-```c
+```cpp
 typedef struct {...} Print_Resolution
 ```
 
 ## 概述
 
-表示以 dpi 为单位的打印分辨率。
+Print_Resolution用于表示以 dpi 为单位的打印分辨率，可控制打印输出的精细度与质量。
 
 **起始版本：** 12
 
