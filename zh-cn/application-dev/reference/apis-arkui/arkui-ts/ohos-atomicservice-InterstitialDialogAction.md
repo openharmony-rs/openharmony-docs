@@ -230,15 +230,15 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("show dialog")
+        Text('show dialog')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let ctx: UIContext | null = getDialogUIContext();
             let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
               uiContext: ctx as UIContext,
-              title: "主标题",
-              subtitle: "副标题",
+              title: '主标题',
+              subtitle: '副标题',
               titleColor: 'rgb(255, 192, 0)',
               subtitleColor: Color.Red,
               backgroundImage: $r('app.media.testBackgroundImg'),
@@ -357,15 +357,15 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("show dialog")
+        Text('show dialog')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let ctx: UIContext | null = getDialogUIContext();
             let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
               uiContext: ctx as UIContext,
-              title: "主标题",
-              subtitle: "副标题",
+              title: '主标题',
+              subtitle: '副标题',
               titleColor: 'rgb(255, 192, 0)',
               subtitleColor: Color.Red,
               backgroundImage: $r('app.media.testBackgroundImg'),
