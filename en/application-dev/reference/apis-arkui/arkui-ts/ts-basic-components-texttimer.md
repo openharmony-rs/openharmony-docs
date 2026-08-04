@@ -418,7 +418,7 @@ function buildTextTimer(config: TextTimerConfiguration) {
             (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + '/' +
             (config.count / 1000).toFixed(0)
             : ((config.elapsedTime / 100).toFixed(0))
-          ) + '')
+          ) + 's'
         ).fontColor(Color.White)
       }
     }
