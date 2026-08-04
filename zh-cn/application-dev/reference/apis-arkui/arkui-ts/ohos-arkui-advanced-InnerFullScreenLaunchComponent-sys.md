@@ -59,7 +59,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 >
 > - 若原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)退出，其携带的信息会传给回调函数的入参；
 > - 若原子化服务通过调用[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)退出，上述回调函数的入参中，"code"取默认值"0"，"want"为"undefined"；
-> - 从API版本26.0.0开始，原子化服务通过手势侧滑退出触发onTerminated回调。
+> - 从API version 26.0.0开始，原子化服务通过手势侧滑退出触发onTerminated回调。
 
 ## LaunchController
 
