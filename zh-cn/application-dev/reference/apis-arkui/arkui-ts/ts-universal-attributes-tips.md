@@ -158,7 +158,7 @@ ArkTS-Sta示例：
  * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
  */
 import { Entry, Component, Flex, FlexDirection, Button,
-  Position, Padding } from '@ohos.arkui.component';
+  Position, Padding } from '@kit.ArkUI';
 @Entry
 @Component
 struct TipsExample {
@@ -268,7 +268,7 @@ ArkTS-Sta示例：
  * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
  */
 import { Entry, Component, Flex, FlexDirection, Button,
-  Position, Padding } from '@ohos.arkui.component';
+  Position, Padding } from '@kit.ArkUI';
 
 @Entry
 @Component

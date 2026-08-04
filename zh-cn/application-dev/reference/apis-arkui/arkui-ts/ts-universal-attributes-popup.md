@@ -320,8 +320,6 @@ type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -500,8 +498,8 @@ ArkTS-Sta示例：
  */
 import { Entry, Component, Builder, Row, RowOptions, Flex, Image, Button, Text, Margin, $r,
   FlexDirection, PopupOptions, CustomPopupOptions, Position, Padding, KeyboardAvoidMode,
-  Color, PopupStateChangeParam, Placement} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Color, PopupStateChangeParam, Placement, State } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct PopupExample {
@@ -697,8 +695,7 @@ ArkTS-Sta示例：
  * messageOptions属性：用于设置气泡文本的颜色、字体大小、字体样式等
  */
 import { Entry, Component, Column, ColumnOptions, Button, FontStyle, FontWeight,
-  PopupOptions, Color, PopupStateChangeParam, Placement} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  PopupOptions, Color, PopupStateChangeParam, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -840,8 +837,7 @@ ArkTS-Sta示例：
  * - backgroundBlurStyle：设置背景模糊效果
  */
 import { Entry, Component, Column, ColumnOptions, Button, PopupOptions, Color,
-  Margin, ShadowStyle, BlurStyle, ArrowPointPosition} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Margin, ShadowStyle, BlurStyle, ArrowPointPosition, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1020,8 +1016,7 @@ ArkTS-Sta示例：
  * - TransitionEffect.scale：缩放动画
  */
 import { Entry, Component, Builder, Row, Text, Flex, FlexDirection, Button, CustomPopupOptions,
-  Position, PopupOptions, PopupStateChangeParam, TransitionEffect, Padding, Curve, Placement } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  Position, PopupOptions, PopupStateChangeParam, TransitionEffect, Padding, Curve, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1217,8 +1212,7 @@ ArkTS-Sta示例：
  * - CLOSE_BUTTON：点击关闭按钮
  */
 import { Entry, Component, Column, Button, PopupOptions, PopupStateChangeParam, FontWeight,
-  FontStyle, Color, DismissPopupAction, Placement, DismissReason } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  FontStyle, Color, DismissPopupAction, Placement, DismissReason, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1377,8 +1371,7 @@ ArkTS-Sta示例：
  * followTransformOfTarget属性：设置为true时，气泡跟随宿主组件的变换（平移、缩放等）
  */
 import { Entry, Component, Column, Button, PopupOptions, PopupStateChangeParam, FontWeight,
-  FontStyle, Color, Placement } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+  FontStyle, Color, Placement, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1531,8 +1524,7 @@ ArkTS-Sta示例：
  * - direction：渐变方向
  * - colors：颜色和位置数组，[颜色, 位置]格式，位置范围为[0.0, 1.0]
  */
-import { Entry, Component, ClickEvent, Flex, FlexDirection, Column, Row, Button, Text, Color, Position, Padding, Placement, PopupOptions, GradientDirection } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, ClickEvent, Flex, FlexDirection, Column, Row, Button, Text, Color, Position, Padding, Placement, PopupOptions, GradientDirection, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1645,8 +1637,7 @@ ArkTS-Sta示例：
  * - AvoidanceMode.COVER_TARGET：气泡可以覆盖宿主组件（默认值）
  * - AvoidanceMode.AVOID_AROUND_TARGET：气泡避让宿主组件，四周空间不足时会压缩气泡高度
  */
-import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding, State } from '@kit.ArkUI';
 
 @Entry
 @Component
