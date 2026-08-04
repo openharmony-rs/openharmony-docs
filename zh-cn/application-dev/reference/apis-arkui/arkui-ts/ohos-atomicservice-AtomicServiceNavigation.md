@@ -7,7 +7,7 @@
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
-作为Page页面的根容器使用，其内部默认包含了标题栏、内容区，其中内容区在首页默认显示导航内容，在非首页显示[NavDestination](ts-basic-components-navdestination.md)的子组件，首页和非首页通过路由进行切换。
+作为Page页面的根容器使用，其内部默认包含了标题栏、内容区。其中，内容区在首页默认显示导航内容，在非首页显示[NavDestination](ts-basic-components-navdestination.md)的子组件，首页和非首页通过路由进行切换。
 
 > **说明：**
 >
@@ -187,7 +187,7 @@ type NavDestinationBuilder = (name: string, param?: Object) => void
 ## 示例
 
 ### 示例1（AtomicServiceNavigation页面布局与渐变色背景）
-AtomicServiceNavigation的基础样式，并展示渐变色背景。
+展示AtomicServiceNavigation的基础样式与渐变色背景。
 
 ```ts
 import { AtomicServiceNavigation, MixMode, GradientAlpha, BackgroundTheme } from '@kit.ArkUI';
@@ -324,7 +324,7 @@ export struct PageTwo {
 
 ### 示例2（抽屉样式，宽屏场景下插入自定义布局）
 
-设备宽屏场景（宽度大于600vp）下设置抽屉模式，用户在标题栏插入自定义布局。
+设备宽屏场景（宽度大于600vp）下设置抽屉模式，在标题栏插入自定义布局。
 
 ```ts
 import { AtomicServiceNavigation, TitleBarType } from '@kit.ArkUI';
