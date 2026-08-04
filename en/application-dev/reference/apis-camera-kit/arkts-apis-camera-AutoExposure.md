@@ -1,4 +1,4 @@
-# API (AutoExposure)
+# Interface (AutoExposure)
 
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
