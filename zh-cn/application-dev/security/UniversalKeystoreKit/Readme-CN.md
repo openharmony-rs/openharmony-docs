@@ -89,8 +89,8 @@
   - CryptoExtensionAbility适配<!--huks-cryptoextensionability-adaptation-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
     - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
-    - [注册/注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)
-    - [注册/注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)
+    - [CryptoExtensionAbility注册与注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)
+    - [CryptoExtensionAbility注册与注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)
   - 密钥管理扩展使用<!--huks-key-management-extension-usage-->
     - 密钥生成/导入/导出<!--huks-key-generation-import-export-->
       - [密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)
