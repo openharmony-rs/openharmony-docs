@@ -6,9 +6,9 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b0e4b19d7f8b7b5ce997c9a9797d470be7afdcb translatedAt=2026-07-25T10:15:28.041Z pushedAt=2026-07-25T10:46:54.788Z -->
+<!-- md-trans-meta sourceCommit=03e7ebde175519478419394081c9ffa3eece48e0 translatedAt=2026-07-29T12:41:45.300Z pushedAt=2026-07-30T01:12:26.917Z -->
 
-The UI (user interface) is the interface through which users interact with devices, consisting of various visual components (such as buttons and lists). Attributes serve as interfaces for controlling component behavior, and changes in attribute values cause UI changes. Animations can add smooth transition effects when the UI changes, allowing attribute values to gradually change from the initial state to the final state, thereby avoiding the abruptness caused by instantaneous changes and maintaining the user's visual focus.
+The user interface (UI) is the interface through which users interact with devices, consisting of various visual components (such as buttons and lists). Attributes serve as interfaces for controlling component behavior, and changes in attribute values cause UI changes. Animations can add smooth transition effects when the UI changes, allowing attribute values to gradually change from the initial state to the final state, thereby avoiding the abruptness caused by instantaneous changes and maintaining the user's visual focus.
 
 ![en-us_image_20230822](figures/Animation-what.gif)
 
@@ -44,7 +44,7 @@ Animation interfaces drive attribute values to transition continuously from the 
 
 - [Animation Smoothing](arkts-animation-smoothing.md): Describes how to achieve natural transitions between animations and between gestures and animations.
 
-- [Dynamic blur](arkts-blur-effect.md): Describes how to use advanced effect APIs such as blur, large shadows, and color gradients.
+- [Motion blur](arkts-blur-effect.md): Describes how to use advanced effect APIs such as blur, large shadows, and color gradients.
 
 - [Frame Animation](arkts-animator.md): The system provides interpolation results during the animation process, and the developer modifies attribute values per frame to produce the animation. Compared with attribute animation, it offers the advantage of pausing, but has lower performance than attribute animation.
 

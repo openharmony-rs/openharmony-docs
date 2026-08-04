@@ -1,4 +1,4 @@
-# Animation Development Guide
+# Animation Development
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

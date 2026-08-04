@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a5ec2554156d2155d55febe6fc6bdd310c9d09c2 translatedAt=2026-07-30T03:08:10.215Z pushedAt=2026-07-30T09:10:46.632Z -->
+<!-- md-trans-meta sourceCommit=a5ec2554156d2155d55febe6fc6bdd310c9d09c2 translatedAt=2026-07-30T03:08:10.215Z pushedAt=2026-07-31T08:57:10.668Z -->
 
 ## Overview
 
@@ -20,7 +20,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 2. ArkCompiler runtime collects fault information and reports it to HiView.
 
-3. The Hiview DFX process supplements information that only it has permission to obtain (such as the overall memory status of the device and the app page switching trace), generates the corresponding crash log file, and stores it in the `/data/log/faultlog/faultlogger` directory.
+3. The HiView DFX process supplements information that only it has permission to obtain (such as the overall memory status of the device and the app page switching trace), generates the corresponding crash log file, and stores it in the `/data/log/faultlog/faultlogger` directory.
 
 4. To report a crash event, you can use HiAppEvent to subscribe to the [crash event](hiappevent-watcher-crash-events.md).  
 
