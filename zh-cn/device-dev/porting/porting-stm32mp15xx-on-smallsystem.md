@@ -34,7 +34,7 @@ device
 vendor
 ├── hihope                              --- hihope产品相关目录，可供参考
 ├── hisilicon                           --- hisilicon产品相关目录，可供参考
-├── ohemu                               --- hisilicon产品相关目录，可供参考
+├── ohemu                               --- ohemu产品相关目录，可供参考
 ├── revoview                            --- revoview产品相关目录，可供参考
 └── bearpi                              --- 开发产品样例厂商目录，小熊派的产品样例
     └── bearpi_hm_micro                 --- 产品名字：bearpi_hm_micro开发板
@@ -53,9 +53,9 @@ vendor
     ```json5
     {
       "product_name": "bearpi_hm_micro",    // 用于hb set进行选择时，显示的产品名称
-      "version": "3.0",                     // 构建系统的版本，1.0/2.0/3.0等
+      "version": "7.0",                     // 构建系统的版本，1.0/2.0/3.0/7.0
       "type": "small",                      // 构建系统的类型，mini/small/standard
-      "ohos_version": "OpenHarmony 3.0",    // OpenHarmony系统版本
+      "ohos_version": "OpenHarmony 7.0",    // OpenHarmony系统版本
       "device_company": "bearpi",           // 单板厂商名，用于编译时找到/device/board/bearpi目录
       "device_build_path": "device/board/bearpi/bearpi_hm_micro", // 单板编译路径
       "board": "bearpi_hm_micro",           // 单板名，用于编译时找到/device/board/bearpi/bearpi_hm_micro目录
@@ -111,7 +111,7 @@ vendor
     board_include_dirs = []
 
     # Board adapter dir for OHOS components.
-    board_adapter_dir = "//device/soc/bearpi/common/hal"
+    board_adapter_dir = "//device/soc/st/common/hal"
 
     # Sysroot path.
     board_configed_sysroot = ""
@@ -169,7 +169,6 @@ vendor
 2. 在`//device/soc/st/common/platform/Kconfig`中添加驱动相关配置。
     ```text
     config DRIVERS_MMC
-        depends on DRIVERS
         bool "Enable MMC"
         default y
         depends on DRIVERS && FS_VFS
@@ -341,7 +340,7 @@ vendor
 
     #ifdef LOSCFG_DRIVERS_HDF_PLATFORM_UART
         if (virtual_serial_init(TTY_DEVICE) != 0) {
-            PRINT_ERR("virtual_serial_init failed");
+            PRINT_ERR("virtual_serial_init failed\n");
         }
         if (system_console_init(SERIAL) != 0) {
             PRINT_ERR("system_console_init failed\n");
@@ -461,7 +460,7 @@ vendor
         int32_t ret;
         struct Mp1xxGpioCntlr *stm32gpio = &g_Mp1xxGpioCntlr;
 
-        dprintf("%s: Enter", __func__);
+        dprintf("%s: Enter\n", __func__);
         if (device == NULL || device->property == NULL) {
             HDF_LOGE("%s: device or property NULL!", __func__);
             return HDF_ERR_INVALID_OBJECT;

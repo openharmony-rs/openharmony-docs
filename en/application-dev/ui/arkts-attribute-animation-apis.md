@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39b6252a8cedb2718d8eb39925f62558aa774e0b translatedAt=2026-07-25T10:16:04.263Z pushedAt=2026-07-25T10:54:36.448Z -->
+<!-- md-trans-meta sourceCommit=e19b652374a358a3a50594a3ad8cb6bde0515e4e translatedAt=2026-07-29T12:43:22.603Z pushedAt=2026-07-31T01:24:06.167Z -->
 
 Continuous visual effects on the UI resulting from changes to animatable properties are called property animations. As the most fundamental and intuitive type of animation, property animations form the core of UI animation systems. ArkUI provides three animation APIs to create these effects: [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto), [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), and [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md).
 
@@ -108,7 +108,7 @@ struct attrAnimationDemo3 {
   // Step 1: Declare related state variables.
   @State rotateValue: number = 0; // Rotation angle of component 1.
   @State translateX: number = 0; // Offset of component 2
-  @State opacityValue: number = 1; // Opacity of component 1 and component 2.
+  @State opacityValue: number = 1; // Opacity of Component 1 and Component 2.
 
   // Step 2: Set the declared state variables to the related animatable property APIs.
   build() {
@@ -133,7 +133,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // The translate property of component 2 is changed. Therefore, a translate animation is added to component 2.
         this.translateX = this.animate ? 50 : 0;
-        // The opacity attribute of component 1 and component 2 changes, so an opacity animation is added to them.
+        // The opacity attribute of Component 1 and Component 2 changes, so an opacity animation is added to them.
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 
@@ -166,7 +166,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 
 In the [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md) API, the first parameter [KeyframeAnimateParam](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#keyframeanimateparam) is the overall parameter of the keyframe animation (including the **delay**, **iterations**, **onFinish**, and **expectedFrameRateRange**). The second parameter is an array. Each item indicates the animation behavior in a keyframe. The animation parameters (including **duration** and **curve**) of each animation can be controlled separately.
 
-If there are multiple animations for the same attribute, you can create a new animation in the end callback. However, compilation is complex, and it takes time to create a new animation each time, which may cause frame freezing. Keyframe animations are more suitable for this scenario.
+If there are multiple animations for the same attribute, you can create a new animation in the end callback. However, the implementation is complex, and it takes time to create a new animation each time, which may cause frame freezing. Keyframe animations are more suitable for this scenario.
 
 This example demonstrates how to set the keyframe animation using **keyframeAnimateTo**.
 

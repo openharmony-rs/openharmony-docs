@@ -130,20 +130,6 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。|
 | FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。|
 
-## BundleInstallStatus<sup>23+</sup>
-
-标识应用的安装状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-| 名称 | 值 | 说明 |
-|:----------------:|:---:|:---:|
-| BUNDLE_NOT_EXIST        | 1   | 应用未安装。 |
-| BUNDLE_INSTALLING         | 2   | 应用正在安装。 |
-| BUNDLE_INSTALLED        | 3   | 应用已安装完成。 |
-
 ## bundleManager.getApplicationInfo
 
 getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
@@ -4447,7 +4433,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
 
 **错误码：**
 
@@ -4496,7 +4482,7 @@ getAllNewPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationI
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
 
 **错误码：**
 
@@ -6115,59 +6101,6 @@ try {
 }
 ```
 
-## bundleManager.getBundleInstallStatus<sup>23+</sup>
-
-getBundleInstallStatus(bundleName: string): BundleInstallStatus
-
-查询当前用户下指定应用的安装状态。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**参数：**
-
-| 参数名     | 类型   | 必填 | 说明                       |
-| ----------- | ------ | ---- | ---------------------------- |
-| bundleName  | string | 是   | 指定应用的包名。 |
-
-**返回值：**
-
-| 类型                                                        | 说明                        |
-| ----------------------------------------------------------- | --------------------------- |
-| [BundleInstallStatus](#bundleinstallstatus23) | 应用的安装状态。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                            |
-| -------- | --------------------------------------|
-| 201 | Permission denied. |
-| 202 | Permission denied. A non-system application is not allowed to call a system API. |
-
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 请开发者替换为实际的包名
-let bundleName: string = 'com.ohos.demo';
-
-try {
-  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
-  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
-}
-```
-
 ## bundleManager.isApplicationDisableForbidden<sup>24+</sup>
 
 isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
@@ -6583,7 +6516,7 @@ type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12) |预置应用信息。 |
+| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo) |预置应用信息。 |
 
 ## PluginBundleInfo<sup>19+</sup>
 

@@ -1,14 +1,14 @@
 # Custom Font Styles
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:21.654Z pushedAt=2026-08-03T01:05:49.548Z -->
 
 **font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your app and then reference this font from **font-family**.
-
 
 The custom font can be loaded from the font file in a project or a network font file.
 
@@ -18,9 +18,7 @@ The custom font can be loaded from the font file in a project or a network font 
 >
 > The font format can be .ttf or .otf.
 
-
 ## Defining @font-face
-
 
 ```css
 @font-face {   
@@ -28,24 +26,23 @@ The custom font can be loaded from the font file in a project or a network font 
   src: url('/common/HWfont.ttf'); 
 }
 ```
- 
+
 **font-family**: name of the custom font.
 
 **src**: source of the custom font, which can be a font file in the project or an online font file.
 
-- Font file in the project: Specify the absolute path of the font file in the project through **url**. For details, see [File Organization](js-service-widget-file.md).
+- Font file in the project: Specify the path of the font file in the project through **url**. (You can use absolute paths only. For details, see [File Organization](js-service-widget-file.md).
 
 - Online font file: Specify the address of the online font through **url**.
 
 - You can set only one **src** attribute.
-
 
 ## Using font-face
 
 You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**. The following is an example:
 
 - Page layout
-  
+
   ```html
   <div>    
     <text class="demo-text">Test the custom font.</text>  
@@ -53,7 +50,7 @@ You can set **font-face** in **style** and specify the name of the **font-face**
   ```
 
 - Page style
-  
+
   ```css
   @font-face {
     font-family: HWfont;
