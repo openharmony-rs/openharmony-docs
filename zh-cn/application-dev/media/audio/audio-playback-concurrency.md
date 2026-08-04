@@ -265,4 +265,30 @@ async function onAudioInterrupt(): Promise<void> {
 
 <!-- @[toggle_stream_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets) -->
 
+``` TypeScript
+async toggleStreamB() { // 切换流B的播放状态。
+  await this.initStreams(); // 惰性初始化两条音频流，首次播放时才创建Renderer。
+  if (this.streamBPlaying) { // 流B正在播放，用户要停止流B。
+    // ...
+    if (this.streamAPausedByApp) { // 流A是被应用自行管控暂停的，停止流B后应自动恢复流A。
+      this.streamAPausedByApp = false; // 清除标记，流A即将恢复，不再是被管控暂停状态。
+      await this.streamA.startPlay(); // 恢复流A的音频输出，完成暂停→恢复。
+      this.promptAction.showToast({
+        message: $r('app.string.app_control_stream_a_auto_resume'),
+        duration: TOAST_DURATION
+      });
+    }
+  } else { // 流B未播放，用户要开始播放流B。
+    if (this.appControl && this.currentMode === InterruptMode.SHARE_MODE && 
+    this.streamAPlaying) { // 流A正在播放，暂停流A。
+      await this.streamA.pausePlay(); // 主动暂停流A，后续可恢复，而非让系统停止流A导致不可恢复。
+      this.streamAPausedByApp = true; // 标记流A是被应用管控暂停的，流B停止后需要自动恢复流A。
+      this.promptAction.showToast({ message: $r('app.string.app_control_stream_a_pause'),
+       duration: TOAST_DURATION });
+    }
+    await this.streamB.startPlay(); // 开始流B的音频输出。
+  }
+}
+```
+
 独立焦点模式（INDEPENDENT_MODE）下，音乐与音乐之间为停止策略——后播的流会停止前播的流，且前播的流不会收到恢复事件，无法自动恢复。
