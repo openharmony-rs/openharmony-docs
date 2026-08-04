@@ -422,8 +422,7 @@ unsupport container format type.
 
    例如：
 
-   （1）当播放的视频文件损坏时（mp4 ftyp 头部正常，缺少moov和媒体数据），错误信息为：errorCode 5400106, errorMsg Unsupported Format: CONTAINER_ERR-unsupport interface, unsupport container 
-format type, null-
+   （1）当播放的视频文件损坏时（mp4 ftyp 头部正常，缺少moov和媒体数据），错误信息为：errorCode 5400106, errorMsg Unsupported Format: CONTAINER_ERR-unsupport interface, unsupport container format type, null-
 
    （2）当播放时打开的是空文件时，错误信息为：errorCode 5400106, errorMsg Unsupported Format: CONTAINER_ERR-unsupport interface, unsupport container format type, null-
 
