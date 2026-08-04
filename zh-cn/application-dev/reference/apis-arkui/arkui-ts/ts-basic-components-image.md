@@ -481,6 +481,8 @@ syncLoad(value: boolean)
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
+[alt](#alt)占位图始终为异步加载，syncLoad对其不生效。
+
 如果加载图片时出现闪烁，设置syncLoad为true。详情请参见[并发优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -627,7 +629,7 @@ resizable(value: ResizableOptions)
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+当组件的参数类型为动图、[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
 
 >**说明：**
 >
@@ -1067,7 +1069,7 @@ onError(callback: ImageErrorCallback)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageErrorCallback](#imageerrorcallback9) | 是   | 图片加载异常时触发的回调。<br>**说明：**<br/>建议开发者使用此回调，可快速确认图片加载失败时的具体原因，参见[ImageError](#imageerror9)的错误信息详细介绍。 |
+| callback | [ImageErrorCallback](#imageerrorcallback9) | 是   | 图片加载异常时触发的回调。<br>**说明：**<br/>建议开发者使用此回调，可快速确认图片加载失败时的具体原因，参见[ImageError](#imageerror9)的错误信息详细介绍；网络相关的超时上报，重试次数等规格细节，参见[CacheDownloadOptions](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoptions)。 |
 
 ### onFinish
 

@@ -1,12 +1,12 @@
 # Silent Access via DatamgrService (ArkTS) (for System Applications Only)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @woodenarow-->
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:29.701Z pushedAt=2026-06-25T09:20:59.340Z -->
-
+<!-- md-trans-meta sourceCommit=884f2bc20aae49403f7da1e2ced69bc1867b3253 translatedAt=2026-07-28T06:46:10.692Z pushedAt=2026-07-28T08:26:51.862Z -->
 
 ## When to Use
 
@@ -20,23 +20,18 @@ However, **DatamgrService** supports basic database access and data hosting only
 
 If the service processing is too complex to be encapsulated, use [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md) to start the data provider.
 
-
 ## Working Principles
 
 The **DatamgrService** can serve as a proxy to access the following data:
 
-- Persistent data: data in the database of the data provider. It is stored in the sandbox directory of the data provider and can be shared in declaration mode by the data provider. Persistent data is configured as data tables for access.
-
+- Persistent data: data in the database of the data provider. It is stored in the sandbox directory of the data provider and can be shared in declaration mode by the data provider. Persistent data is configured at the table level as data tables that can be accessed by other applications.
 
 - Process data: process data, in the JSON or byte format, managed by **DatamgrService**. It is stored in the **DatamgrService** sandbox directory, and is automatically deleted 10 days after no subscription.
-
-
 
 | Type | Location     | Data Format       | Validity Period         | Scenario                             |
 | ----- | --------- | ----------- | ------------ | --------------------------------- |
 | Persistent data| Sandbox directory of the data provider | Database tables   | Permanent        | RDB data used for schedules and meetings.     |
 | Process data | DatamgrService sandbox directory| JSON or byte| Automatically deleted 10 days after no subscription| Time-sensitive data in simple format used for step count, weather, and heart rate monitoring.|
-
 
 **Figure 1** Silent access
 
@@ -52,25 +47,31 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
 - You can add parameters to the URI to specify the access mode and target object. When adding parameters to a URI, note that the URI must be in the **datashareproxy://{*bundleName*}/{*dataPath*}?{*arg1*}&{*arg2*}** format. Otherwise, the parameters do not take effect.
 
-  The parameters to add start with a question mark (?) and separated by an ampersand (&). Consecutive symbols (for example, ???? or &&&) are considered as one. Currently, only the **appIndex** and **user** parameters are supported.
+  The parameters to add start with a question mark (?) and are separated by an ampersand (&). Consecutive symbols are considered as one. Currently, only the **appIndex**, **user**, and **accountId** parameters are supported.
 
   - **appIndex** specifies the index of an application clone. The value must be an integer starting from 1. This parameter takes effect only for cloned applications. For details about **appIndex**, see [BundleInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md). If **appIndex** is **0** or left empty, the data consumer accesses the application of the data provider.
 
     Currently, cloned applications are supported only in silent access mode.
 
-  - The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data consumer is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
+  The value of **user** must be an integer. It is the user ID of the data provider. For details about the definition of **user** and how to obtain it, see [getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9). If **user** is not set, the user ID of the data accessor is used. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
 
     Currently, only the main space and privacy space support cross-user access, and the data consumer must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
+
+  The value of **accountId** must be an integer. It is the sub-profile identifier of the system account. For details about the definition of **accountId** and how to obtain it, see [getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid). If **accountId** is not set, the foreground sub-profile identifier of the system account to which the caller belongs is used. For example, when the data accessor needs to access data under a specific sub-profile in the data provider, it can specify **accountId** in the URI in the following format: `datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`.<br>This parameter can be configured and used on devices running OpenHarmony 7.0.0 or later. Only Car devices are supported.<br>On devices running earlier versions, this parameter configuration does not take effect.
 
 ## Constraints
 
 - Currently, only the RDB stores support silent access.
-- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
-- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
-- The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
-- If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
-- Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
 
+- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
+
+- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
+
+- The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
+
+- If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
+
+- Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
 
 ## Available APIs
 
@@ -145,6 +146,7 @@ The following walks you through on how to share an RDB store.
      }
    ]
    ```
+
    **Table 2** Fields in my_config.json
 
    | Name | Description                                    | Mandatory  |
@@ -152,24 +154,25 @@ The following walks you through on how to share an RDB store.
    | path  | Data source path, in the **Database_name/Table_name** format. Currently, only RDB stores are supported.            | Yes   |
    | type  | Database type. Currently, only **rdb** is supported.            | Yes   |
    | scope | Scope of the database.<br>1. **module** indicates that the database is located in this module.<br>2. **application** indicates that the database is located in this application.| No   |
-   | allowLists          | List of applications that can access the data. **allowLists** consists of two fields: **appIdentifier** and **onlyMain**.<br>It allows a maximum of 256 records. In cross-application data access, the data consumers are checked against the settings here. If the data consumer is not listed in **allowlists**, the data access will be rejected. If **allowLists** is not configured, allowlist verification is skipped. No matter whether **allowLists** is configured, the read and write permissions in [Table 1](#data-provider-application-development) are always verified.<br>- **appIdentifier**: unique identifier (string) of the application allocated by the cloud. The data provider should obtain it from the data consumer.<br>For details about **appIdentifier**, see [SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo).<br>- **onlyMain**: a Boolean value indicating whether the data is accessible only to the application. The value **true** means only the application can access the data. The value **false** means both the application and its clone can access the data. This feature is available only to silent access.| No  |
+   | allowLists          | Consists of two fields: **appIdentifier** and **onlyMain**.<br>It specifies the list of apps that are allowed to access the data, with a maximum of 256 authorization records. During cross-app data access, this configuration is used to verify whether the data accessor is in the list configured by the data provider. If not, the access is denied. If **allowLists** is not configured, allowlist verification is skipped. Regardless of whether **allowLists** is configured, the read and write permissions in [Table 1](#data-provider-application-development) are still verified as usual.<br>**- appIdentifier**: a string representing the unique identifier of the app, allocated by the cloud. The data provider should obtain it from the data accessor.<br>For details about **appIdentifier**, see [SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo).<br>**- onlyMain**: a Boolean value indicating whether only the main app is supported. The value **true** means only the main app can access the data, and clone apps cannot. The value **false** means both the main app and clone apps can access the data. This feature is available only for silent access. | No   |
+   | accountIsolation          | Indicates whether data is isolated by account. A Boolean value. The value **true** means data is isolated by account, that is, different accounts access different data. The value **false** means data is not isolated by account, that is, different accounts access the same data. The default value is **false** when not configured.<br>This parameter can be configured and used on devices running OpenHarmony 7.0.0 or later. It is supported only on Car devices.<br>For devices running versions earlier than this, this parameter configuration does not take effect. | No   |
 
    **my_config.json example**
 
    ```json
-   {
-     "path": "DB00/TBL00",
-     "type": "rdb",
-     "scope": "application",
-     "allowLists":[
-           {"appIdentifier": "appIdentifier1", "onlyMain": false},
-           {"appIdentifier": "appIdentifier2", "onlyMain": true}
-     ]
-   }
+    {
+      "path": "DB00/TBL00",
+      "type": "rdb",
+      "scope": "application",
+      "accountIsolation": true,
+      "allowLists":[
+            {"appIdentifier": "appIdentifier1", "onlyMain": false},
+            {"appIdentifier": "appIdentifier2", "onlyMain": true}
+      ]
+    }
    ```
 
 ### Data Consumer Application Development
-
 
 1. Import dependencies.
 

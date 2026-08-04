@@ -106,7 +106,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 interruptFollowHandMorphDropAnimation(): boolean
 
-中断由[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)触发的待执行跟手变形落位动效，并立即触发其收尾流程，适用于用户取消拖拽、页面切换或需要终止未完成跟手变形落位动效的场景。
+中断由[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)触发的待执行跟手变形落位动效，并立即触发其注册的回调函数[onAnimationFinished](#executefollowhandmorphdropanimation)，适用于用户取消拖拽、页面切换或需要终止未完成跟手变形落位动效的场景。
 
 
 **起始版本：** 26.0.0

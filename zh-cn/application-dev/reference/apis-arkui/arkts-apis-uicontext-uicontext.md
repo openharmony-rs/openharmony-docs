@@ -1902,8 +1902,8 @@ export default class EntryAbility extends UIAbility{
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
-        let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        let currentKeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+        console.info("KeyboardAvoidMode:", JSON.stringify(currentKeyboardAvoidMode));
       });
     }
 }
@@ -2850,7 +2850,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的宽高比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
+| [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13) | 当前实例所在窗口的高宽比对应的高度断点枚举值。若窗口高宽比为0，则返回HEIGHT_SM。 |
 
 **示例：**
 

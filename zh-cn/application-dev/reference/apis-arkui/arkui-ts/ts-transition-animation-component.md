@@ -119,7 +119,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 >  4. TransitionEffect中指定的属性值如与默认值相同，则该属性不会产生转场动画。如TransitionEffect.opacity(1).animation({duration:1000})，由于opacity默认值也为1，未产生透明度动画，该组件直接出现或者消失。
 >  5. 更详细的关于scale、rotate效果的介绍可参考[图形变换](ts-universal-attributes-transformation.md)。
 >  6. 如果在动画范围([animateTo](../arkts-apis-uicontext-uicontext.md#animateto)、[animation](ts-animatorproperty.md))内触发组件的上下树或可见性([visibility](ts-universal-attributes-visibility.md#visibility))改变，而该子树的根组件没有配置transition，会给该组件加上默认透明度转场，即TransitionEffect.OPACITY，动画参数跟随所处动画环境的参数。如不需要可通过主动配置TransitionEffect.IDENTITY来禁用，使该组件直接出现或消失。
->  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件的有充足的消失转场时间，见示例3。
+>  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件有充足的消失转场时间，见示例3。
 
 ### translate<sup>10+</sup>
 

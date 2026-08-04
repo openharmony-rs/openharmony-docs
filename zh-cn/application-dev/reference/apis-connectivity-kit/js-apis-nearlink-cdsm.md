@@ -20,7 +20,7 @@ import { cdsm } from '@kit.ConnectivityKit';
 ```
 
 
-## createCdsmClient
+## cdsm.createCdsmClient
 
 createCdsmClient(address: string): CdsmClient
 
@@ -48,7 +48,7 @@ createCdsmClient(address: string): CdsmClient
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -111,7 +111,7 @@ getCdsmInfo(): CdsmInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -228,7 +228,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| members | Array&lt;[CdsmMemberInfo](#cdsmmemberinfo)&gt; | 否 | 否 | 合作设备集合信息。 |
+| members | [CdsmMemberInfo](#cdsmmemberinfo)[] | 否 | 否 | 合作设备集合信息。 |
 
 
 ## CdsmMemberInfo

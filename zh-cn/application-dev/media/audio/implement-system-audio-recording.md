@@ -6,13 +6,15 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API版本26.0.0开始，Audio Kit支持应用使用AudioCapturer（ArkTS API）或OH_AudioCapturer（C API）录制系统音频。本文介绍具体开发方法，适用于仅需要音频的脉冲编码调制（Pulse Code Modulation，PCM）数据，或需要将音频数据交给自定义处理链路的场景。内录的基本概念、适用场景和接口选择请参考[录制系统音频概述与接口选择](audio-recording-system-audio-overview.md)。
+从API版本26.0.0开始，Audio Kit支持应用使用AudioCapturer（ArkTS API）或OH_AudioCapturer（C API）录制系统音频。本文介绍具体开发方法。
 
 Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCapture`系统能力，其他设备可以通过[canIUse()](../../reference/common/js-apis-syscap.md#caniuse)检查是否支持该系统能力。使用ArkTS API开发时，仅支持Stage模型。
 
 创建AudioCapturer时通过`playbackCaptureMode`配置内录模式，创建OH_AudioCapturer时通过`OH_AudioStreamBuilder_SetPlaybackCaptureMode()`配置内录模式。
 
 配置内录模式后，需分别通过`requestPlaybackCaptureStart()`或`OH_AudioCapturer_RequestPlaybackCaptureStart()`启动，不支持通过`start()`或`OH_AudioCapturer_Start()`接口启动。
+
+如果需要同时录制屏幕画面和系统音频，请参考[AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md)。
 
 ## 开发指导
 
@@ -66,7 +68,6 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
 
    > **说明：**
    >
-   > - 如果`capturerInfo.source`配置为麦克风类音频源，需要按普通录音流程申请麦克风权限`ohos.permission.MICROPHONE`，申请方式参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
    > - 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->

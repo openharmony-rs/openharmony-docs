@@ -22,16 +22,16 @@
   <!--DelEnd-->
   - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
-  - [使用AudioHaptic开发音振协同播放功能(ArkTs)](using-audiohaptic-for-playback.md)
+  - [使用AudioHaptic开发音振协同播放功能(ArkTS)](using-audiohaptic-for-playback.md)
   - [使用SoundPlayer开发系统音效播放功能](using-soundplayer-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [空间音频能力查询和状态订阅](public-audio-spatialization-management.md)
   <!--Del-->
-  - [空间音频管理(仅对系统应用开放)](audio-spatialization-management-sys.md)
+  - [空间音频管理（仅对系统应用开放）](audio-spatialization-management-sys.md)
   <!--DelEnd-->
   - [音频播放流管理](audio-playback-stream-management.md)
   <!--Del-->
-  - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback-sys.md)
+  - [分布式音频播放（仅对系统应用开放）](distributed-audio-playback-sys.md)
   <!--DelEnd-->
   <!--Del-->
   - [移动全景声管理（仅对系统应用开放）](audio-collaborative-management-sys.md)
@@ -41,7 +41,7 @@
   - 开发麦克风录制(外录)功能<!--external-audio-recording-->
     - [选择合适的录制流类型](using-right-sourcetype-for-recording.md)
     - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
-    - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
+    - [使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)
     - [低时延音频录制(C/C++)](audio-fast-recording.md)
     - [实现后台录音](background-recording.md)
   - 开发录制系统音频(内录)功能<!--system-audio-recording-->
@@ -74,7 +74,7 @@
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
 - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
-  - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
+  - [从OpenSL ES切换到OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
 - Audio Kit常见问题<!--audio-issues-->

@@ -41,7 +41,7 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_PERMISSION<sup>9+</sup> | number |   201   | 通用错误码：权限校验失败。 |
 | EXCEPTION_PARAMCHECK<sup>9+</sup> | number |   401   | 通用错误码：参数检查失败。 |
 | EXCEPTION_UNSUPPORTED<sup>9+</sup> | number |   801   | 通用错误码：该设备不支持此API。 |
-| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。 |
+| EXCEPTION_FILEIO<sup>9+</sup> | number |   13400001   | 特有错误码：文件操作异常。具体请参考[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。 |
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | 特有错误码：文件路径异常。 |
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | 特有错误码：服务异常。 |
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | 特有错误码：其他错误。 |
@@ -55,7 +55,7 @@ import { request } from '@kit.BasicServicesKit';
 | ERROR_INSUFFICIENT_SPACE<sup>7+</sup> | number |   5   | 下载任务错误码：存储空间不足。 |
 | ERROR_TOO_MANY_REDIRECTS<sup>7+</sup> | number |   6   | 下载任务错误码：网络重定向过多导致的错误。 |
 | ERROR_UNHANDLED_HTTP_CODE<sup>7+</sup> | number |   7   | 下载任务错误码：无法识别的HTTP代码。 |
-| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。 |
+| ERROR_UNKNOWN<sup>7+</sup> | number |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。具体请参考[ERROR_UNKNOWN错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-73)。 |
 | ERROR_OFFLINE<sup>9+</sup> | number |   9   | 下载任务错误码：网络未连接。 |
 | ERROR_UNSUPPORTED_NETWORK_TYPE<sup>9+</sup> | number |   10   | 下载任务错误码：网络类型不匹配。 |
 | PAUSED_QUEUED_FOR_WIFI<sup>7+</sup> | number |   0   | 下载任务暂停原因：文件大小超过了使用蜂窝网络会话允许的最大值，下载被暂停并等待WLAN连接。 |
@@ -2353,7 +2353,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent<sup>10+</sup>
+## agent<sup>10+</sup>
 
 request.agent提供基于任务的后台上传下载代理能力。开发者通过[request.agent.create](#requestagentcreate10)创建任务并排入队列，通过[Task](#requestagenttask10)对象管理任务生命周期（启动、暂停、恢复、停止、移除）。支持前台和后台两种任务模式：前台任务在应用切到后台一段时间后会显示失败或暂停，后台任务不受影响。支持断点续传、网络条件控制、自动重试、超时控制等特性。与基础的[request.uploadFile](#requestuploadfile9)/[request.downloadFile](#requestdownloadfile9)相比，request.agent提供更完善的任务管理和状态查询能力。
 
@@ -2464,7 +2464,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。超出最大长度时任务创建失败。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。超出最大长度时任务创建失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| mode | [Mode](#requestagentmode10) | 是 | 否 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，支持设置前台和后台任务，默认为后台任务。<br>- FOREGROUND表示前台任务。<br>- BACKGROUND表示后台任务。<br>从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND，否则任务将无法正常创建或执行。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br>- true，覆盖已存在的文件。<br>- false，下载失败。<br>从API version 20开始，下载到用户文件场景必须为true。<br>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br>- 上传时，使用PUT或POST，默认值为PUT。<br>- 下载时，使用GET或POST，默认值为GET。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标头。<br>- 上传请求，默认的Content-Type为"multipart/form-data"。<br>- 下载请求，默认的Content-Type为"application/json"。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -2704,7 +2704,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | 名称      | 类型   | 只读 | 可选 | 说明                                                           |
 |---------|----------|----|----|--------------------------------------------------------------|
 | speed | number | 否 | 否 | 任务最低速度，单位为字节每秒（B/s），取值范围为[0, +∞)。若任务速度持续低于该值达到指定时长，则任务失败。设置为0表示不启用最低速度限制。 |
-| timeout | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
+| duration | number | 否 | 否 | 允许低于最低速度的持续时间，单位为秒，取值范围为[0, +∞)。若任务速度持续低于设定值达到该时长，则任务失败。设置为0表示不启用最低速度限制。 |
 
 ## request.agent.Timeout<sup>20+</sup>
 

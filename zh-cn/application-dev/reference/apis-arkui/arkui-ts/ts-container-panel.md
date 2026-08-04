@@ -134,7 +134,7 @@ customHeight(value: Dimension | PanelHeight)
 
 fullHeight(value: number | string)
 
-指定PanelType.Full状态下的高度。
+指定PanelMode.Full状态下的高度。
 
 > **说明：**
 >
@@ -373,7 +373,7 @@ struct PanelExample {
       .type(PanelType.Foldable)
       .mode(PanelMode.Half)
       .dragBar(true) // 默认开启
-      .halfHeight(500) // 默认一半
+      .halfHeight(500) // 设置半屏高度为500（默认为组件主轴大小的一半）
       .showCloseIcon(true) // 显示关闭图标
       .onChange((width: number, height: number, mode: PanelMode) => {
         console.info(`width:${width},height:${height},mode:${mode}`);

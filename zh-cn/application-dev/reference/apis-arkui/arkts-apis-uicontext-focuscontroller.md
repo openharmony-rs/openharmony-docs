@@ -82,7 +82,7 @@ struct ClearFocusExample {
 
 requestFocus(key: string): void
 
-通过组件的id将焦点转移到组件树对应的实体节点，当前帧生效。
+通过组件的id将焦点转移到组件树对应的实体节点，当前帧生效，适用于需要在表单校验、页面初始化或键盘操作流程中主动将焦点定位到指定组件的场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -149,7 +149,7 @@ struct RequestExample {
             try {
               this.getUIContext().getFocusController().requestFocus('eee');
             } catch (error) {
-              console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
+              console.error(`Failed to request focus. Code: ${error.code}, message: ${error.message}`);
             }
           })
       }
@@ -218,7 +218,7 @@ struct ActivateExample {
 
 isActive(): boolean
 
-返回UI实例的焦点激活态。
+返回UI实例的焦点激活态。适用于需要根据当前焦点激活状态决定是否启用方向键走焦或更新焦点提示的场景。
 
 焦点激活态可参考[基础概念：焦点激活态](../../ui/arkts-common-events-focus-event.md#基础概念)。
 
@@ -239,7 +239,7 @@ isActive(): boolean
 ```ts
 @Entry
 @Component
-struct ClearFocusExample {
+struct IsActiveExample {
   @State btColor: Color = Color.Blue;
 
   build() {
@@ -354,7 +354,7 @@ struct CustomDialogUser {
 
 setKeyProcessingMode(mode: KeyProcessingMode): void
 
-设置按键事件处理的模式。
+设置按键事件处理的优先级，适用于父子组件都需要处理按键事件时，开发者需要控制按键事件优先分发策略的场景。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

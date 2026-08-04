@@ -6,6 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:24:27.353Z pushedAt=2026-07-17T10:59:45.626Z -->
 
 ```c
 typedef struct {...} ArkUI_GridItemSize
@@ -29,5 +30,5 @@ Defines the return value for the [OH_ArkUI_GridLayoutOptions_RegisterGetIrregula
 
 | Name| Description|
 | -- | -- |
-| uint32_t rowSpan | Number of rows occupied by a grid item.|
-| uint32_t columnSpan | Number of columns occupied by a grid item.|
+| uint32_t rowSpan | Number of rows occupied by a grid item, which is used to set the span of the grid item in the row direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a horizontal grid layout, if the value exceeds the actual number of rows, the actual number of rows is used. |
+| uint32_t columnSpan | Number of columns occupied by a grid item, which is used to set the span of the grid item in the column direction. Value range: [1, +∞). If set to **0**, the value **1** is used. In a vertical grid layout, if the value exceeds the actual number of columns, the actual number of columns is used. |

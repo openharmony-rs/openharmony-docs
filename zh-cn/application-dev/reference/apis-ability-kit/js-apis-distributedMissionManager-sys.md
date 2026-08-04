@@ -343,7 +343,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。 |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。 tag为同步标识，用于区分不同同步会话，取值需满足场景需求。fixConflict表示是否解决冲突，建议在可能存在任务冲突的场景下设置为true以避免任务冲突问题。|
 
 **返回值：**
 

@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-集合类型用于存储多个数据项。ArkTS提供多种集合类型，包括数组、元组、Set、Map等，每种类型有其特定的用途和特性。ArkTS集合主要按结构与可变性两个维度划分：结构上区分数组 Array、集合 Set、映射 Map，可变性上区分可变集合与只读集合（如 ReadonlyArray）。理解各类型在有序性、唯一性、键值映射等方面的差异，是选型的前提。
+集合类型用于存储多个数据项。ArkTS提供多种集合类型，包括数组、元组、Set、Map等，每种类型有其特定的用途和特性。ArkTS集合主要按结构与可变性两个维度划分：结构上区分数组 Array、集合 Set、字典（Map），可变性上区分可变集合与只读集合（如 ReadonlyArray）。理解各类型在有序性、唯一性、键值映射等方面的差异，是选型的前提。
 
 ## 可变集合与只读集合
 
@@ -466,8 +466,6 @@ Set与数组之间可以相互转换，利用Set的唯一性可实现数组去�
 let convSet: Set<number> = new Set([1, 2, 3]);
 let convArr: number[] = Array.from(convSet);
 console.info(`${convArr.join(', ')}`);  // 1, 2, 3
-let convArr2: number[] = Array.from(convSet);
-console.info(`${convArr2.join(', ')}`);  // 1, 2, 3
 
 // 数组转Set
 let convNumbers: number[] = [1, 2, 2, 3];
@@ -595,9 +593,42 @@ for (let entry of iterMap.entries()) {
 }
 ```
 
+### Record<K,V> 类型
+
+`Record<K, V>`是ArkTS内置的工具类型，将键类型`K`映射到值类型`V`，适合表达“字符串键值对象”。当键固定为字符串或数值、结构相对简单时，比`Map`更轻量，常用对象字面量初始化。
+
+<!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let ages: Record<string, number> = {
+  'John': 25,
+  'Mary': 21
+};
+ages['John']; // 25
+```
+
+键类型`K`可为`string`或`number`（不含`bigint`），值类型`V`可为任意类型；按下标读取返回`V | undefined`，使用前需判空。
+
+当值为复合结构时，可用接口描述其形状：
+
+<!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+interface PersonInfo {
+  age: number;
+  salary: number;
+}
+let staff: Record<string, PersonInfo> = {
+  'John': { age: 25, salary: 10},
+  'Mary': { age: 21, salary: 20}
+};
+```
+
+与`Map`相比，`Record`基于对象字面量、键只能为字符串或数值、无`size`属性（需`Object.keys(obj).length`计算）、不支持任意类型键。需要任意类型键、动态增删键值对或保持插入顺序时优先使用`Map`（见[Map与普通对象的区别](#map与普通对象的区别)）。
+
 ### Map与普通对象的区别
 
-Map键可以是任意类型，对象键只能是字符串或Symbol，Map更适合动态键值存储。
+Map键可以是任意类型，对象键只能是字符串，Map更适合动态键值存储。
 
 <!-- @[map_vs_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -681,7 +712,7 @@ let nums: ReadOnlyNumbers = [1, 2, 3];
 
 ### 只读Map与只读Set
 
-只读集合通过ReadonlyMap或ReadonlySet类型声明，防止意外修改。
+只读集合通过`ReadonlyMap`或`ReadonlySet`类型声明，防止意外修改。`ReadonlyMap`和`ReadonlySet`为ArkTS内置只读接口。
 
 <!-- @[readonly_map_set_interfaces](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -808,6 +839,8 @@ console.info(`${JSON.stringify(mapIterator.next())}`);  // {"value":["x",10],"do
 ### 集合的解构赋值
 
 ArkTS不支持集合的解构赋值，需通过索引或迭代器逐个访问元素。
+
+**TypeScript对照**
 
 <!-- @[ts_destructuring_alternatives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
 
@@ -1081,6 +1114,11 @@ let ffnNested: number[][] = [[1, 2], [3, 4], [5, 6]];
 // flat：将二维数组展平为一维
 let ffnFlat: number[] = ffnNested.flat();
 console.info(`${ffnFlat.join(', ')}`); // 1, 2, 3, 4, 5, 6
+
+// flatMap：对每个元素映射后展平一级
+let ffnWords: string[] = ['hello world', 'foo bar'];
+let ffnFlatMapped: string[] = ffnWords.flatMap((s: string): string[] => s.split(' '));
+console.info(`${ffnFlatMapped.join(', ')}`); // hello, world, foo, bar
 
 // reduce和展开运算符替代flat
 let ffnFlatReduce: number[] = ffnNested.reduce((acc: number[], arr: number[]): number[] => {

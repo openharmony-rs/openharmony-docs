@@ -1,4 +1,4 @@
-# @ohos.enterprise.systemManager （系统管理）
+# @ohos.enterprise.systemManager（系统管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -8,7 +8,7 @@
 
 本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
 
-> **说明**：
+> **说明：**
 > 
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -41,7 +41,7 @@ setNTPServer(admin: Want, server: string): void
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| server | string | 是 | NTP服务器地址（以","分隔，如"ntpserver1.com,ntpserver2.com"。最大长度96字节，包括结束符）。 |
+| server | string | 是 | NTP服务器地址（以","分隔，如"ntpserver1.com,ntpserver2.com"。最大长度96字节，包括null终止符（\0））。 |
 
 **错误码**：
 
@@ -584,8 +584,6 @@ isOtaUpdateNonceEnable(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
@@ -612,7 +610,6 @@ isOtaUpdateNonceEnable(admin: Want): boolean
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -655,7 +652,7 @@ addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | 是   | 星闪协议列表。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 
 **错误码**：
@@ -722,7 +719,7 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | 是   | 星闪协议列表。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
 
@@ -781,7 +778,7 @@ getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array&lt;NearLin
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 
@@ -1275,6 +1272,7 @@ startCollectLog(admin: Want): Promise&lt;void&gt;
 
 ```ts
 import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { systemManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -1396,6 +1394,7 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 
 ```ts
 import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { systemManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -1455,6 +1454,7 @@ isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
 ```ts
 import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { systemManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -1502,7 +1502,7 @@ setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, ac
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
 
@@ -1558,7 +1558,7 @@ getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: num
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 

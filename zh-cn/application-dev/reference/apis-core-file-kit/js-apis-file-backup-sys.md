@@ -37,7 +37,7 @@ import { backup } from '@kit.CoreFileKit';
 
 > **说明：**
 >
-> FileData使用完成后必须关闭，如不关闭会出现内存泄露问题。关闭的方法可参考由[@ohos.file.fs](js-apis-file-fs.md)提供的[fileIo.closeSync](js-apis-file-fs.md#fileioclosesync)等相关关闭接口。
+> FileData使用完成后必须关闭，如不关闭会出现内存泄漏问题。关闭的方法可参考由[@ohos.file.fs](js-apis-file-fs.md)提供的[fileIo.closeSync](js-apis-file-fs.md#fileioclosesync)等相关关闭接口。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -51,7 +51,7 @@ import { backup } from '@kit.CoreFileKit';
 
 > **说明：**
 >
-> FileManifestData使用完成后必须关闭，如不关闭会出现内存泄露问题。关闭的方法可参考[fileIo.closeSync](js-apis-file-fs.md#fileioclosesync)等关闭接口。
+> FileManifestData使用完成后必须关闭，如不关闭会出现内存泄漏问题。关闭的方法可参考[fileIo.closeSync](js-apis-file-fs.md#fileioclosesync)等关闭接口。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -136,7 +136,7 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  否  |  否  | 指定碎片清理的触发类型，取值范围为0，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能，其他取值返回参数错误。|
+| triggerType | number |  否  |  否  | 指定碎片清理的触发类型，当前仅支持触发类型0，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能，其他取值返回参数错误。|
 | writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB，超出范围返回参数错误。|
 | waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-300秒，超出范围返回参数错误。|
 
@@ -2009,7 +2009,9 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
 constructor(callbacks: GeneralCallbacks)
 
-恢复流程的构造函数，用于获取SessionRestore类的实例。典型流程为：创建SessionRestore实例，调用appendBundles添加待恢复应用，通过getFileHandle获取文件句柄并写入恢复数据，必要时调用publishFile发布文件，流程结束后调用release释放资源。
+恢复流程的构造函数，用于获取SessionRestore类的实例。
+
+典型流程为：创建SessionRestore实例，调用appendBundles添加待恢复应用，通过getFileHandle获取文件句柄并写入恢复数据，必要时调用publishFile发布文件，流程结束后调用release释放资源。
 
 **系统接口**：此接口为系统接口。
 

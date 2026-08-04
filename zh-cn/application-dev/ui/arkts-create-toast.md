@@ -50,7 +50,7 @@
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
 
-<!-- @[toast_showDefaultAndTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets) -->
+<!-- @[toast_showDefaultAndTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets) --> 
 
 ``` TypeScript
 import { promptAction } from '@kit.ArkUI';
@@ -114,7 +114,7 @@ export struct DefaultAndTopToastExample {
 
 适用于短时间内提示框自动消失的场景。
 
-<!-- @[toast_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/CreateToast.ets) -->
+<!-- @[toast_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/CreateToast.ets) --> 
 
 ``` TypeScript
 import { PromptAction } from '@kit.ArkUI';
@@ -157,7 +157,7 @@ export struct CreateToastExample {
 
 适用于提示框停留时间较长，用户操作可以提前关闭提示框的场景。
 
-<!-- @[toast_openClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets) -->
+<!-- @[toast_openClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets) --> 
 
 ``` TypeScript
 import { PromptAction } from '@kit.ArkUI';

@@ -225,7 +225,7 @@
        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
@@ -315,7 +315,7 @@
        nodeAPI->setAttribute(firstImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(firstImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 25}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -359,7 +359,7 @@
        nodeAPI->setAttribute(secondImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 200}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(secondImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,

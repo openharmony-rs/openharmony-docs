@@ -1,10 +1,12 @@
 # ArkUI_NativeDialogAPI_3
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8b7a7d18aa38aad39c3fae4dcbb93ef9e9d5f258 translatedAt=2026-07-17T12:20:31.454Z pushedAt=2026-07-29T06:31:39.882Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeDialogAPI_3
@@ -12,7 +14,7 @@ typedef struct {...} ArkUI_NativeDialogAPI_3
 
 ## Overview
 
-Provides a collection of native-side custom dialog box APIs provided by ArkUI.
+Provides a collection of native-side custom dialog box APIs provided by ArkUI, which supports the configuration of border styles, sizes, background effects, keyboard avoidance modes, and focus management, and other capabilities. It is used to precisely control the appearance and interaction behavior of custom dialog boxes at the native layer, and is suitable for scenarios requiring highly customized dialog box UIs.
 
 **Since**: 19
 
@@ -29,7 +31,6 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Collection of native-side custom dialog box APIs provided by ArkUI, covering the scope of [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md).<br>**Since**: 19|
 | [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2                                                   | Collection of native-side custom dialog box APIs provided by ArkUI, covering the scope of [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md).<br>**Since**: 19|
 
-
 ### Member Functions
 
 | Name| Description|
@@ -45,14 +46,14 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 | [int32_t (\*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)](#setwidth) | Sets the backdrop width of the custom dialog box.|
 | [int32_t (\*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)](#setheight) | Sets the backdrop height of the custom dialog box.|
 | [int32_t (\*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)](#setshadow) | Sets the shadow of the custom dialog box's backdrop.|
-| [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | Sets the shadow of the custom dialog box's backdrop.|
+| [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | Sets the custom shadow of the custom dialog box's backdrop. |
 | [int32_t (\*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)](#setbackgroundblurstyle) | Sets the backdrop blur style of the custom dialog box.|
 | [int32_t (\*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#setkeyboardavoidmode) | Sets the keyboard avoidance mode of the custom dialog box.|
 | [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether the custom dialog box responds when the device is in hover mode.|
 | [int32_t (\*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)](#sethovermodearea) | Sets the default display area of the custom dialog box in hover mode.|
 | [int32_t (\*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)](#setfocusable) | Sets whether the custom dialog box can gain focus.|
-| [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | Sets the background blur effect of the custom dialog box.|
-| [int32_t (\*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)](#setbackgroundeffect) | Sets the background effect parameters of the custom dialog box.|
+| [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | Sets the background blur effect of the custom dialog box. |
+| [int32_t (\*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)](#setbackgroundeffect) | Sets the background effect parameters of the custom dialog box. |
 
 ## Member Function Description
 
@@ -63,7 +64,6 @@ int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)
 ```
 
 **Description**
-
 
 Sets the display order of the custom dialog box.
 
@@ -93,7 +93,6 @@ int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData,
 ```
 
 **Description**
-
 
 Registers a callback function that is triggered before the custom dialog box appears.
 
@@ -125,7 +124,6 @@ int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, 
 
 **Description**
 
-
 Registers a callback function that is triggered after the custom dialog box appears.
 
 > **NOTE**
@@ -155,7 +153,6 @@ int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userDa
 ```
 
 **Description**
-
 
 Registers a callback function that is triggered before the custom dialog box disappears.
 
@@ -187,7 +184,6 @@ int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userDat
 
 **Description**
 
-
 Registers a callback function that is triggered after the custom dialog box disappears.
 
 > **NOTE**
@@ -217,7 +213,6 @@ int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float righ
 ```
 
 **Description**
-
 
 Sets the border width of the custom dialog box.
 
@@ -252,7 +247,6 @@ int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_
 
 **Description**
 
-
 Sets the border color of the custom dialog box.
 
 > **NOTE**
@@ -266,10 +260,10 @@ Sets the border color of the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  uint32_t top | Top border color.|
-|  uint32_t right | Right border color.|
-|  uint32_t bottom | Bottom border color.|
-|  uint32_t left | Left border color.|
+| uint32_t top | Top border color, in 0xARGB format. |
+| uint32_t right | Right border color, in 0xARGB format. |
+| uint32_t bottom | Bottom border color, in 0xARGB format. |
+| uint32_t left | Left border color, in 0xARGB format. |
 
 **Returns**
 
@@ -284,7 +278,6 @@ int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t 
 ```
 
 **Description**
-
 
 Sets the border style of the custom dialog box.
 
@@ -318,7 +311,6 @@ int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMe
 
 **Description**
 
-
 Sets the backdrop width of the custom dialog box.
 
 > **NOTE**
@@ -348,7 +340,6 @@ int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_Length
 ```
 
 **Description**
-
 
 Sets the backdrop height of the custom dialog box.
 
@@ -380,7 +371,6 @@ int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)
 
 **Description**
 
-
 Sets the shadow of the custom dialog box's backdrop.
 
 > **NOTE**
@@ -394,7 +384,7 @@ Sets the shadow of the custom dialog box's backdrop.
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle) shadow                | Backdrop shadow style, specified by an enumerated value.|
+| [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle) shadow                | Shadow of the backdrop, which is an enumerated value. This parameter is used to set the shadow effect of the dialog box backdrop. Different enumerated values provide shadows of varying depth or floating styles. |
 
 **Returns**
 
@@ -410,8 +400,7 @@ int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_Attribut
 
 **Description**
 
-
-Sets the shadow of the custom dialog box's backdrop.
+Sets the custom shadow of the custom dialog box's backdrop.
 
 > **NOTE**
 >
@@ -440,8 +429,7 @@ int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurSty
 
 **Description**
 
-
-Sets the backdrop blur style of the custom dialog box.
+Sets the background blur style of the custom dialog box.
 
 > **NOTE**
 >
@@ -454,7 +442,7 @@ Sets the backdrop blur style of the custom dialog box.
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle) blurStyle                 | Backdrop blur material, specified by an enumerated value.|
+| [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle) blurStyle                 | Background blur style, which is an enumerated value. This parameter is used to set the blur effect of the dialog box backboard. Different enumerated values provide material textures of varying depth. |
 
 **Returns**
 
@@ -470,7 +458,6 @@ int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardA
 
 **Description**
 
-
 Sets the keyboard avoidance mode of the custom dialog box.
 
 > **NOTE**
@@ -484,7 +471,7 @@ Sets the keyboard avoidance mode of the custom dialog box.
 | Name                                                                                       | Description|
 |--------------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle         | Pointer to the custom dialog box controller.|
-| [ArkUI_KeyboardAvoidMode](capi-native-type-h.md#arkui_keyboardavoidmode) keyboardAvoidMode | Keyboard avoidance mode, specified by an enumerated value.|
+| [ArkUI_KeyboardAvoidMode](capi-native-type-h.md#arkui_keyboardavoidmode) keyboardAvoidMode | Keyboard avoidance mode, which is an enumerated value. This parameter is used to set the avoidance behavior of the dialog box when the keyboard is displayed. |
 
 **Returns**
 
@@ -500,7 +487,6 @@ int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode
 
 **Description**
 
-
 Sets whether the custom dialog box responds when the device is in hover mode.
 
 > **NOTE**
@@ -511,7 +497,7 @@ Sets whether the custom dialog box responds when the device is in hover mode.
 
 **Parameters**
 
-| Name| Description|
+| Name | Description |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 |  bool enableHoverMode | Whether to respond when the device is in hover mode. The default value is **false**. The value **true** means to respond when the device is in hover mode, and **false** means the opposite.|
@@ -530,7 +516,6 @@ int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeArea
 
 **Description**
 
-
 Sets the default display area of the custom dialog box in hover mode.
 
 > **NOTE**
@@ -544,7 +529,7 @@ Sets the default display area of the custom dialog box in hover mode.
 | Name                                                                                       | Description|
 |--------------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle         | Pointer to the custom dialog box controller.|
-| [ArkUI_HoverModeAreaType](capi-native-type-h.md#arkui_hovermodeareatype) hoverModeAreaType | Display area in hover mode, specified by an enumerated value.|
+| [ArkUI_HoverModeAreaType](capi-native-type-h.md#arkui_hovermodeareatype) hoverModeAreaType | Display area in hover mode, which is an enumerated value. This parameter is used to set the default area position (upper or lower half of the screen) where the dialog box is displayed during hovering. |
 
 **Returns**
 
@@ -559,7 +544,6 @@ int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)
 ```
 
 **Description**
-
 
 Sets whether the custom dialog box can gain focus.
 
@@ -590,7 +574,6 @@ int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const 
 
 **Description**
 
-
 Sets the background blur effect of the custom dialog box.
 
 > **NOTE**
@@ -604,7 +587,7 @@ Sets the background blur effect of the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Options for customizing the background blur effect. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. If the value is out of the valid range, the boundary value is used.<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[4]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[5]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+| const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Background blur effect. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. If the value is out of the valid range, the boundary value is used.<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[4]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[5]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
 
 **Returns**
 
@@ -620,7 +603,6 @@ int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_Attr
 
 **Description**
 
-
 Sets the background effect parameters of the custom dialog box.
 
 > **NOTE**
@@ -634,7 +616,7 @@ Sets the background effect parameters of the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect parameters. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation.<br>        .value[2]?.f32: brightness.<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[6]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[7]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+|  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect parameters. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation. The value range is [0.0, 1.0].<br>        .value[2]?.f32: brightness. The value range is [0.0, 1.0].<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[6]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[7]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed). |
 
 **Returns**
 
