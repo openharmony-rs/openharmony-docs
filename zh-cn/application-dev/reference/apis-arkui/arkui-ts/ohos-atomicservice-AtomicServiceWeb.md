@@ -82,7 +82,7 @@ AtomicServiceWeb({
 | onPageEnd            | Callback\<[OnPageEndEvent](#onpageendevent)\>                                                                    | 否  | -           | 网页加载完成时触发该回调，且只在主frame触发。                                                                                            |
 | onControllerAttached | Callback\<void\>                                                                                                 | 否  | -           | 当Controller成功绑定到Web组件时触发该回调，此回调中不能使用操作网页的相关接口。                                                                                         |
 | onLoadIntercept      | [OnLoadInterceptCallback](#onloadinterceptcallback) | 否  | -  | 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。默认允许加载。                                                                              |
-| onProgressChange     | Callback\<[OnProgressChangeEvent](../../apis-arkweb/arkts-basic-components-web-i.md#onprogresschangeevent12)\>        | 否  | -           | 网页加载进度变化时触发该回调。                                                                                                      |
+| onProgressChange     | Callback\<[OnProgressChangeEvent](#onprogresschangeevent)\>        | 否  | -           | 网页加载进度变化时触发该回调。                                                                                                      |
 
 ## AtomicServiceWebController
 
