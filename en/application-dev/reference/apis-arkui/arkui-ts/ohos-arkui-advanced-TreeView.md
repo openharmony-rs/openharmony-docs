@@ -1,21 +1,22 @@
 # TreeView
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4c495f520711bb7a7c0f878dd925391606600e97 translatedAt=2026-07-29T03:12:11.165Z pushedAt=2026-08-04T02:47:38.436Z -->
 
+A tree view is a hierarchical list suitable for displaying nested structures. It consists of parent nodes and child nodes, and supports expanding or collapsing.
 
-The **TreeView** component represents a tree view used to display a hierarchical list of items. Each item can contain subitems, which may be expanded or collapsed.
-
-
-This component is applicable in productivity applications, such as side navigation bars in notepad, email, and Gallery applications.
-
+The tree view is applicable in the side navigation bar of productivity apps, such as notepad, email, and Gallery.
 
 > **NOTE**
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - This component can be used only in the stage model.
 >
 > - If the **TreeView** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TreeView** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TreeView** component.
 
@@ -24,7 +25,6 @@ This component is applicable in productivity applications, such as side navigati
 ```
 import { TreeView } from "@kit.ArkUI";
 ```
-
 
 ## Child Components
 
@@ -42,15 +42,13 @@ TreeView({ treeController: TreeController })
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| treeController | [TreeController](#treecontroller) | Yes| Node information of the tree view.|
-
+| treeController | [TreeController](#treecontroller) | Yes | Controller of the tree view component, used to control the node information of the tree. |
 
 ## TreeController
 
-Implements a **TreeController** object, which can be bound to a tree view component to control the node information of the component. One **TreeController** object can be bound to only one tree view component.
+A controller for the tree view component, used to control node information of the tree. The same controller instance cannot control multiple tree view components simultaneously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -58,13 +56,11 @@ Implements a **TreeController** object, which can be bound to a tree view compon
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-
 ### addNode
-
 
 addNode(nodeParam?: NodeParam): TreeController
 
-Adds a child node to the selected node.
+After a node is selected, call this method to add a child node.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -76,19 +72,19 @@ Adds a child node to the selected node.
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | No| Node information.|
+| nodeParam | [NodeParam](#nodeparam) | No| Node information. If this parameter is not passed, a node titled **New Folder** will be added under the currently selected node.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [TreeController](#treecontroller) | Controller of the **TreeView** component.|
+| [TreeController](#treecontroller) | Returns the controller instance of the tree view component, supporting chain calls. |
 
 ### removeNode
 
 removeNode(): void
 
-Removes the selected node.
+Deletes the selected node.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -96,9 +92,7 @@ Removes the selected node.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-
 ### modifyNode
-
 
 modifyNode(): void
 
@@ -110,12 +104,11 @@ Modifies the selected node.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-
 ### buildDone
 
 buildDone(): void
 
-Builds a tree view. After a node is added, this API must be called to save the tree information.
+Saves the tree information after all nodes are added.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -123,12 +116,11 @@ Builds a tree view. After a node is added, this API must be called to save the t
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-
 ### refreshNode
 
 refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 
-Refreshes the tree view. You can call this API to update the information about the current node.
+Updates the display information of the current node by specifying the parent node ID, parent node subtitle, and current node subtitle.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -140,9 +132,9 @@ Refreshes the tree view. You can call this API to update the information about t
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| parentId | number | Yes| ID of the parent node.<br>The value must be greater than or equal to -1.|
-| parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | Yes| Secondary text of the parent node.|
-| currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | Yes| Secondary text of the current node.|
+| parentId | number | Yes | Parent node ID.<br />The value range is greater than or equal to -1. The root node ID is -1. If the value is set to less than -1, it does not take effect. |
+| parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | Yes | Subtitle of the parent node. After setting, the subtitle display content of the parent node is updated. |
+| currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | Yes | Subtitle of the current node. After setting, the subtitle display content of the current node is updated. |
 
 ## NodeParam
 
@@ -153,25 +145,23 @@ Refreshes the tree view. You can call this API to update the information about t
 | Name| Type| Read-Only| Optional| Description                                                                                                                                              |
 | -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | parentNodeId | number | No| Yes| ID of the parent node.<br>The value must be greater than or equal to -1.<br>Default value: -1. The root node ID is -1. If the value is less than -1, the setting does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                              |
-| currentNodeId | number | No| Yes| Current child node ID.<br>The value must be greater than or equal to -1.<br>The value cannot be the root node ID or null. Otherwise, an exception is thrown. In addition, duplicate **currentNodeId** values are not allowed.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isFolder | boolean | No| Yes| Whether the node is a directory.<br>Default value: **false**.<br>**true**: The node is a directory. **false**: The node is not a directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                        |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
+| currentNodeId | number | No | Yes | Current child node ID.<br />Value range: greater than or equal to -1.<br />Cannot be the root node ID (i.e., cannot be -1) or **null**; otherwise, an exception is thrown. Two identical **currentNodeId** values cannot be set.<br />Default value: **-1**<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| isFolder | boolean | No | Yes | Whether the node is a folder.<br />Default value: **false**<br />**true**: a folder that can contain child nodes and supports expand/collapse operations; **false**: not a folder, i.e., a leaf node.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon. If **symbolIconStyle** is also set, **symbolIconStyle** takes precedence.<br/>Default value: empty string<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon, which has higher priority than **icon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                      |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon of the selected node.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
-| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon of the selected node., which has higher priority than **selectedIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
-| editIcon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Edit icon.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                        |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Selected icon. If **symbolSelectedIconStyle** is also set, **symbolSelectedIconStyle** takes precedence.<br/>Default value: empty string<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon of the selected node, which has higher priority than **selectedIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
+| editIcon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Edit icon. If **symbolEditIconStyle** is also set, **symbolEditIconStyle** takes precedence.<br/>Default value: empty string<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol edit icon, which has a higher priority than **editIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                |
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Primary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                         |
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Secondary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
-| container | () =&gt; void | No| Yes| Right-click child component bound to the node. The child component is decorated with @Builder.<br>Default value: **() =&gt; void**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                               |
-
+| container | ()&nbsp;=&gt;&nbsp;void | No | Yes | Context menu component bound to the node, displayed when the user right-clicks the node. It must be defined through the **@Builder** function.<br/>Default value: ()&nbsp;=&gt;&nbsp;void<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 
 ## TreeListenerManager
 
-Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one tree view component.
+Defines a listener manager for the tree view component, which can obtain a listener instance and bind it to the tree view component for managing node listening of the tree. The same listener cannot control multiple tree view components.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
 
 ### getInstance
 
@@ -191,7 +181,6 @@ Obtains a **TreeListenerManager** singleton object.
 | --------------- |------------------|
 | [TreeListenerManager](#treelistenermanager) | **TreeListenerManager** singleton object.|
 
-
 ### getTreeListener
 
 getTreeListener(): TreeListener
@@ -210,17 +199,15 @@ Obtains a listener.
 | ------------ |------------|
 | [TreeListener](#treelistener) | Obtained listener.|
 
-
 ## TreeListener
 
-Listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component.
-
+Defines a listener for the tree view component, which can be bound to the tree view component to listen for node changes of the tree. The same listener cannot control multiple tree view components. The listener internally maintains the mapping between event types and callback functions. When a user performs a node operation on the TreeView, the TreeView notifies the listener to trigger the corresponding callback function, and the developer can obtain node information in the callback and perform service processing.
 
 ### on
 
 on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
 
-Register a listener.
+Registers a listener for tree view node events. After successful registration, the callback function is triggered when the corresponding event occurs on a node. The same listener cannot control multiple tree view components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -232,15 +219,14 @@ Register a listener.
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | Yes| Listening type.|
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes| Node information.|
-
+| type | [TreeListenType](#treelistentype) | Yes | Type of the listening event, used to specify the listening event to register. |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes | Callback invoked when the corresponding listening event is triggered. The callback parameter **callbackParam** contains information such as **currentNodeId**, **parentNodeId**, and **childIndex**. |
 
 ### once
 
 once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
 
-Registers a one-off listener.
+Registers a one-time listening for tree view node events. After successful registration, the callback function is triggered when the corresponding event occurs on a node for the first time, and the listening is automatically removed after triggering. The same listener cannot control multiple tree view components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -252,16 +238,14 @@ Registers a one-off listener.
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | Yes| Listening type.|
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes| Node information.|
-
+| type | [TreeListenType](#treelistentype) | Yes | Type of the listening event, used to specify the listening event to register. |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | Yes | Callback invoked when the corresponding listening event is triggered. The callback parameter **callbackParam** contains information such as **currentNodeId**, **parentNodeId**, and **childIndex**. |
 
 ### off
 
-
 off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void;
 
-Unregisters a listener.
+Cancels listening. Listening must be registered before it can be canceled. The same listener cannot control multiple tree view components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -273,8 +257,8 @@ Unregisters a listener.
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | [TreeListenType](#treelistentype) | Yes| Listening type.|
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | No| Node information.|
+| type | [TreeListenType](#treelistentype) | Yes | Type of the listening event, used to specify the listening event to cancel. |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | No | Callback invoked when the corresponding listening event is triggered. Default value: **undefined**. When this parameter is passed, the listener for the corresponding node information is canceled; when not passed, all node information listeners of this type are canceled. |
 
 ## TreeListenType
 
@@ -289,10 +273,10 @@ Enumerates the listening types of tree view nodes.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | NODE_CLICK | "NodeClick" | Listens for click events of nodes.|
-| NODE_ADD | "NodeAdd" | Listens for add events of nodes.|
-| NODE_DELETE | "NodeDelete" | Listens for delete events of nodes.|
-| NODE_MODIFY | "NodeModify" | Listens for modify events of nodes.|
-| NODE_MOVE | "NodeMove" | Listens for move events of nodes.|
+| NODE_ADD | "NodeAdd" | Listens for the node addition event. Triggered after the **addNode** method is called to add a node. |
+| NODE_DELETE | "NodeDelete" | Listens for the node deletion event. Triggered after the **removeNode** method is called to delete a node. |
+| NODE_MODIFY | "NodeModify" | Listens for the node modification event. Triggered after the **modifyNode** method is called to modify a node. |
+| NODE_MOVE | "NodeMove" | Listens for the node move event. Triggered after the node position changes. |
 
 ## CallbackParam
 
@@ -306,9 +290,10 @@ Enumerates the listening types of tree view nodes.
 | -------- | -------- |---|---|------------------------------------------|
 | currentNodeId | number | No| No| ID of the current child node.<br>The value must be greater than or equal to 0.             |
 | parentNodeId | number | No| Yes| ID of the current parent node.<br>The value must be greater than or equal to -1.<br>Default value: **-1**|
-| childIndex | number | No| Yes| Child index.<br>The value must be greater than or equal to -1.<br>Default value: **-1**  |
+| childIndex | number | No | Yes | Index of the child node under the parent node, used to identify the position of the child node in the parent node's child list.<br />Value range: greater than or equal to -1, where -1 indicates an invalid index or no child node.<br />Default value: **-1** |
 
 ## Events
+
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
@@ -425,7 +410,8 @@ struct TreeViewDemo {
       .showControlButton(false)
       .showSideBar(true)
     }
-  }}
+  }
+}
 ```
 
 ![Directory](figures/Directory.png)
@@ -551,7 +537,8 @@ struct TreeViewDemo {
       .showControlButton(false)
       .showSideBar(true)
     }
-  }}
+  }
+}
 ```
 
 ![Example 2-Setting the Symbol Icon](figures/image-treeview-demo-02.png)

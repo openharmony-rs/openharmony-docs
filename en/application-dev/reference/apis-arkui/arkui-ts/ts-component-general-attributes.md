@@ -1,4 +1,5 @@
 # Universal Attributes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -6,62 +7,129 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
+<!-- md-trans-meta sourceCommit=12b2cd63ed349116d480bc7806471549d9a7ea45 translatedAt=2026-07-30T02:29:10.538Z pushedAt=2026-08-01T06:42:55.864Z -->
+
+Universal attributes are used to configure common capabilities such as size, position, layout, border, background, visibility, interaction, and accessibility for ArkUI components. They are suitable for scenarios where you need to uniformly adjust the appearance, layout behavior, and interaction effects of components, helping developers improve UI building efficiency and maintain consistent component behavior.
+
 - [Size](ts-universal-attributes-size.md)
+
 - [Location](ts-universal-attributes-location.md)
+
 - [Layout Constraints](ts-universal-attributes-layout-constraints.md)
+
 - [Component-Level Pixel Rounding](ts-universal-attributes-pixelRoundForComponent.md)
+
 - [Page-Level Pixel Rounding](ts-universal-attributes-pixelRoundForPage.md)
+
 - [Flex Layout](ts-universal-attributes-flex-layout.md)
+
 - [Border](ts-universal-attributes-border.md)
+
 - [Border Image](ts-universal-attributes-border-image.md)
+
 - [Background](ts-universal-attributes-background.md)
-- [Opacity](ts-universal-attributes-opacity.md)
+
+- [Opacity Control](ts-universal-attributes-opacity.md)
+
 - [Visibility](ts-universal-attributes-visibility.md)
+
 - [Enable/Disable](ts-universal-attributes-enable.md)
+
 - [Overlay](ts-universal-attributes-overlay.md)
+
 - [Z-order Control](ts-universal-attributes-z-order.md)
+
 - [Transformation](ts-universal-attributes-transformation.md)
+
 - [Image Effect](ts-universal-attributes-image-effect.md)
+
 - [Shape Clipping](ts-universal-attributes-sharp-clipping.md)
+
 - [Gradient Color](ts-universal-attributes-gradient-color.md)
+
 - [Popup Control](ts-universal-attributes-popup.md)
+
 - [Menu Control](ts-universal-attributes-menu.md)
+
 - [Focus Control](ts-universal-attributes-focus.md)
+
 - [Hover Effect](ts-universal-attributes-hover-effect.md)
+
 - [Component ID](ts-universal-attributes-component-id.md)
+
 - [Reuse ID](ts-universal-attributes-reuse-id.md)
+
 - [Polymorphic Style](ts-universal-attributes-polymorphic-style.md)
-- [restoreId](ts-universal-attributes-restoreId.md)
+
+- [Distributed Migration Identifier](ts-universal-attributes-restoreId.md)
+
 - [Foreground Color](ts-universal-attributes-foreground-color.md)
+
 - [Foreground Effect](ts-universal-attributes-foreground-effect.md)
+
 - [Foreground Blur](ts-universal-attributes-foreground-blur-style.md)
+
 - [Motion Blur](ts-universal-attributes-motionBlur.md)
+
 - [Click Feedback Effect](ts-universal-attributes-click-effect.md)
+
 - [Click Sound Effect](ts-universal-attributes-click-sound.md)
+
+- [Smart Gesture Response](ts-universal-attributes-smart-gesture-shortcut.md)
+
 - [Accessibility](ts-universal-attributes-accessibility.md)
+
 - [Attribute Modifier](ts-universal-attributes-attribute-modifier.md)
+
 - [Gesture Modifier](ts-universal-attributes-gesture-modifier.md)
+
 - [Outline](ts-universal-attributes-outline.md)
+
 - [Visual Effect](ts-universal-attributes-filter-effect.md)
+
 - [Drawing Modifier](ts-universal-attributes-draw-modifier.md)
+
 - [Content Modifier](ts-universal-attributes-content-modifier.md)
+
 - [Custom Property](ts-universal-attributes-custom-property.md)
+
 - Touch Interactions<!--touch-interactions-->
+
   - [Touch Target](ts-universal-attributes-touch-target.md)
+
   - [Hit Test Control](ts-universal-attributes-hit-test-behavior.md)
+
 - Transition<!--transition-->
+
   - [Modal Transition](ts-universal-attributes-modal-transition.md)
+
   - [Sheet Transition](ts-universal-attributes-sheet-transition.md)
+
   - [Sheet Transition (System API)](ts-universal-attributes-sheet-transition-sys.md)
+
 - [Obscuring](ts-universal-attributes-obscured.md)
+
 - [Text Box Component Common APIs](ts-universal-attributes-text-style.md)
+
 - [Drag and Drop Control](ts-universal-attributes-drag-drop.md)
+
 - [Drag-and-Drop Sorting](ts-universal-attributes-drag-sorting.md)
+
 - [Safe Area](ts-universal-attributes-expand-safe-area.md)
+
 - [Render Fit](ts-universal-attributes-renderfit.md)
+
 - [Event Monopolization](ts-universal-attributes-monopolize-events.md)
+
 - [Cursor Control](ts-universal-attributes-cursor.md)
+
 - [Special Effect Drawing Combination](ts-universal-attributes-use-effect.md)
+
+- [Node Inspector Label](ts-universal-attributes-inspector-label.md)
+
 - [Point Light Style (System API)](ts-universal-attributes-point-light-style-sys.md)
+
 - [Image Effect (System API)](ts-universal-attributes-image-effect-sys.md)
+
 <!--DelEnd-->
+<!--no_check-->

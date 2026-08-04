@@ -1,24 +1,26 @@
 # ImageData
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:33:31.518Z pushedAt=2026-08-01T06:42:55.877Z -->
 
-An **ImageData** object stores pixel data rendered on a canvas.
+The **ImageData** object stores pixel data rendered on a canvas, supporting reading, modifying, and manipulating pixels. It is suitable for scenarios such as image processing, pixel-level editing, and special effect filters. With **ImageData**, you can precisely control each pixel of an image, implement custom image processing algorithms, and provide flexible pixel-level data access for canvas drawing.
 
 >  **NOTE**
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> A constructor used to create an **ImageData** object. To ensure successful drawing, make sure the object's area does not exceed 16000 x 16000, with its width and height not greater than 16384 px. If the created area exceeds 536870911 px, the returned width and height are both 0 px, and **data** is **undefined**.
+>  When creating an **ImageData** object, the width and height must not exceed 16384 px, and the area must not exceed 16000 px × 16000 px. If the area exceeds this limit, the object cannot be rendered properly. If the created area exceeds 536870911 square pixels, the width and height of the return value are both 0 px, and **data** is **undefined**.
 
 ## constructor
 
 constructor(width: number, height: number, data?: Uint8ClampedArray)
 
-Creates an **ImageData** object with the specified width, height, and color. If data is not defined, it is populated with a one‑dimensional array of 0s.
+Creates an **ImageData** object with the specified width, height, and pixel data. If **data** is not defined, a one-dimensional array filled with zeros is used. When creating the object, the width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the area exceeds the maximum limit, the object cannot be rendered properly. If the created area exceeds 536870911 square pixels, the width and height of the return value are both 0 px, and **data** is **undefined**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -27,21 +29,24 @@ Creates an **ImageData** object with the specified width, height, and color. If 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name| Type | Mandatory | Description|
 | ------ | ----- | ----- | ----- |
-| width | number |Yes| Width of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| height | number |Yes| Height of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all 0s|
+| width | number | Yes | Width of the rectangular area, in vp. The width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the maximum area is exceeded, rendering will be abnormal. When the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br>Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as **0**. |
+| height | number | Yes | Height of the rectangular area, in vp. The width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the maximum area is exceeded, rendering will be abnormal. When the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br>Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as **0**. |
+| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) | No | One-dimensional array that stores pixel data in RGBA format. Each pixel occupies 4 bytes, in the order of R, G, B, and A. Data values range from 0 to 255. The array length must be width × height × 4. Pass this parameter when custom pixel data for **ImageData** is needed, for example, when pixel-level processing or modification of an image is required. When the invalid value **undefined** is passed, **data** is **undefined**.<br>Default value: a one-dimensional array with all values set to 0 |
 
 ## constructor<sup>12+</sup>
 
 constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
 
-Creates an **ImageData** object with the specified width, height, and color. If data is not defined, it is populated with a one‑dimensional array of 0s. The unit of the **ImageData** object can be configured using **unit**.
+Creates an **ImageData** object with the specified width, height, and pixel data. If **data** is not defined, a one-dimensional array filled with zeros is used. The unit parameter can be used to configure the unit mode of the **ImageData** object. When creating the object, the width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the area exceeds the maximum limit, the object cannot be rendered properly. If the created area exceeds 536870911 square pixels, the width and height of the return value are both 0 px, and **data** is **undefined**. Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as 0. When you need to use the vp unit for responsive layout or to adapt to different screen densities, you can specify the unit mode through the **unit** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,10 +54,10 @@ Creates an **ImageData** object with the specified width, height, and color. If 
 
 | Name| Type | Mandatory | Description|
 | ------ | ----- | ----- | ----- |
-| width | number |Yes| Width of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| height | number |Yes| Height of the rectangle.<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as **0**.|
-| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |No| A one-dimensional array of color values. The values range from 0 to 255.<br>If the value specified is **undefined**, **data** is **undefined**.<br>Default value: a one-dimensional array of all 0s|
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No  |  Unit mode of the **ImageData** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
+| width | number | Yes | Width of the rectangular area. The unit is determined by the unit parameter, and the default unit is vp. The width and height cannot exceed 16384 px, and the maximum area cannot exceed 16000 px × 16000 px. If the maximum area is exceeded, the content cannot be rendered properly. If the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br>Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as 0. |
+| height | number | Yes | Height of the rectangular area. The unit is determined by the **unit** parameter, and the default unit is vp. The width and height cannot exceed 16384 px, and the maximum area cannot exceed 16000 px × 16000 px. If the maximum area is exceeded, the content cannot be rendered properly. If the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br>Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as **0**. |
+| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) | No | One-dimensional array that stores pixel data in RGBA format. Each pixel occupies 4 bytes, in the order of R, G, B, and A, with data values ranging from 0 to 255. Pass this parameter when custom pixel data of **ImageData** is required, for example, when pixel-level processing or modification of an image is needed.<br>If the invalid value **undefined** is passed, **data** is **undefined**.<br>Default value: a one-dimensional array with all values set to 0. |
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No   | Unit mode of the **ImageData** object. Once configured, it cannot be dynamically changed. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). Pass this parameter when the vp unit is needed for responsive layout or adaptation to different screen densities.<br>Invalid values such as **undefined**, **NaN**, and **Infinity** are processed as the default value.<br>Default value: **DEFAULT**. |
 
 ## Properties
 
@@ -64,9 +69,9 @@ Creates an **ImageData** object with the specified width, height, and color. If 
 
 | Name    | Type  | Read-Only| Optional| Description|
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| width | number | Yes| No| Actual width of the rectangle on the canvas.<br>The unit is px.|
-| height | number | Yes| No| Actual height of the rectangle on the canvas.<br>The unit is px.|
-| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) | Yes| No| A one-dimensional array of color values. The values range from 0 to 255.|
+| width | number | Yes| No| Actual width of the rectangle.<br>The unit is px.|
+| height | number | Yes| No| Actual height of the rectangle.<br>The unit is px.|
+| data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) | Yes | No | One-dimensional array that stores pixel data in RGBA format. Each pixel occupies 4 bytes, in the order of R, G, B, and A, with data values ranging from 0 to 255. |
 
 >  **NOTE**
 >
@@ -74,7 +79,7 @@ Creates an **ImageData** object with the specified width, height, and color. If 
 
 ## Example
 
-This example shows how to use the **getImageData** API to obtain an **ImageData** object.
+Draw an image using **drawImage**, obtain an **ImageData** object through the **getImageData** API, and then draw the image data onto the canvas using the **putImageData** API.
 
   ```ts
   // xxx.ets
