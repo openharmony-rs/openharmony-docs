@@ -19,7 +19,7 @@ import { serial } from '@kit.BasicServicesKit';
 
 ## serial.getSerialPortList
 
-getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
+getSerialPortList(): Promise&lt;SerialPort[]&gt;
 
 查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
 
@@ -78,7 +78,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 ### open
 
-open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
+open(config?: SerialConfigs): Promise&lt;void&gt;
 
 打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。
 
