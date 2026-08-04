@@ -6,7 +6,7 @@
 <!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bb3fe7567540ccb1863f77532b1f5c54ec3874e8 translatedAt=2026-08-04T01:03:31.953Z pushedAt=2026-08-04T01:36:49.483Z -->
+<!-- md-trans-meta sourceCommit=0ab2451f3e12ca62369db634d1dfd7a8226e9b2e translatedAt=2026-08-04T07:31:13.441Z pushedAt=2026-08-04T08:10:28.117Z -->
 
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying panels, listening for word selection events using a mouse or touchpad, and retrieving the selected text. The typical usage process is as follows:
 
@@ -48,7 +48,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
-Subscribes to the word selection completion event. This API is used together with [off('selectionCompleted')](#selectionmanageroffselectioncompleted). [off('selectionCompleted')](#selectionmanageroffselectioncompleted) is used to unsubscribe from the event. This API uses an asynchronous callback to return the result.
+Subscribes to the word selection completion event. This API is used together with [off('selectionCompleted')](#selectionmanageroffselectioncompleted). [off('selectionCompleted')](#selectionmanageroffselectioncompleted) is used to unsubscribe from the event.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -88,7 +88,7 @@ try {
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
-Unsubscribes from the word selection completion event. This method is used together with [on('selectionCompleted')](#selectionmanageronselectioncompleted). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection completion event. This API is used together with [on('selectionCompleted')](#selectionmanageronselectioncompleted).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -99,7 +99,7 @@ Unsubscribes from the word selection completion event. This method is used toget
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'selectionCompleted'**.               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No   | Callback to be unregistered (that is, the callback instance registered using **on**). This callback is used to return [SelectionInfo](#selectioninfo). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No | Callback to be unregistered (that is, the callback instance registered using on). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -664,7 +664,7 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -675,7 +675,7 @@ Subscribes to the word selection panel destruction event. This API is used toget
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes   | Callback used to return the result, which is triggered when [destroyPanel](#destroypanel) is called to destroy the panel. The return value is null.       |
+| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when [destroyPanel](#destroypanel) is called to destroy the panel. |
 
 **Example**
 
@@ -696,7 +696,7 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-Unsubscribes from the word selection panel destruction event. This API is used together with [on('destroyed')](#ondestroyed). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel destruction event. This API is used together with [on('destroyed')](#ondestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -707,7 +707,7 @@ Unsubscribes from the word selection panel destruction event. This API is used t
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Type of the event to unsubscribe from. The value is fixed to **'destroyed'**. |
-| callback | Callback\<void> | No  | Callback to be unregistered (that is, the callback instance registered using on). The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered (that is, the callback instance registered using **on**). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -726,7 +726,7 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -737,7 +737,7 @@ Subscribes to the word selection panel hiding event. This API is used together w
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when the panel is hidden. The return value is null. The panel can be hidden by calling [hide](#hide) or automatically hidden when it loses focus. |
+| callback | Callback\<void> | Yes | Callback used to return the result, which is triggered when the panel is hidden. The panel can be hidden by calling [hide](#hide) or automatically hidden when it loses focus. |
 
 **Example**
 
@@ -758,7 +758,7 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-Unsubscribes from the word selection panel hiding event. This API is used together with [on('hidden')](#onhidden). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses an asynchronous callback to return the result.
+Unsubscribes from the word selection panel hiding event. This API is used together with [on('hidden')](#onhidden). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel).
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -769,7 +769,7 @@ Unsubscribes from the word selection panel hiding event. This API is used togeth
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'hidden'**.               |
-| callback | Callback\<void> | No   | Callback to be unregistered (that is, the callback instance registered using **on**). The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered (that is, the callback instance registered using **on**). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
