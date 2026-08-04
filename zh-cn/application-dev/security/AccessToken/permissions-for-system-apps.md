@@ -7628,6 +7628,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+允许应用获取后排控制屏信息和状态，与后排控制屏建立通信通道。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 允许应用获取和设置车机情景模式。

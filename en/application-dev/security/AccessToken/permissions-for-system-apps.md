@@ -7598,6 +7598,20 @@ Allows a system application to launch another application to a specified page st
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+Allows an application to obtain the information and status of the rear control screen and establish a communication channel with it.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 Allows an application to obtain and set the car scenario mode.
