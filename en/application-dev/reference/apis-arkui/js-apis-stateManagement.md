@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9bb36595a2813e8704f3d2210b29cb79f60cb17a translatedAt=2026-08-04T04:23:51.744Z pushedAt=2026-08-04T08:10:15.005Z -->
+<!-- md-trans-meta sourceCommit=9bb36595a2813e8704f3d2210b29cb79f60cb17a translatedAt=2026-08-04T04:23:51.744Z pushedAt=2026-08-04T08:50:53.304Z -->
 
 This module provides capabilities for application data storage, persistence data management, and UIAbility (application component that contains a UI) data storage. It also covers scenarios such as environment state, tool, and UI state synchronization, helping you simplify state management logic and improve application responsiveness and data consistency.
 
@@ -183,7 +183,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 >
 > 8. Avoid using **connect** and **globalConnect** together because they have different data copy paths. If they must be used together, make sure the keys are unique to avoid application crashes.
 >
-> 9. To enable EL5 encryption, configure the **ohos.permission.PROTECT_SCREEN_LOCK_DATA** field in the **module.json** file. For details, see [Declaring Permissions](../../security/AccessToken/declaring-permissions.md).
+> 9. To enable EL5 encryption, configure the **ohos.permission.PROTECT_SCREEN_LOCK_DATA** field in the **module.json** file. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
