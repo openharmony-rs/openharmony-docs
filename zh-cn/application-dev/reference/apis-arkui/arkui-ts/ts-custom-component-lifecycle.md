@@ -6,13 +6,13 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-自定义组件的生命周期回调函数用于通知用户该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用程序中手动调用这些回调函数。不要在多个窗口复用同一个自定义组件节点，其生命周期可能会紊乱。
+自定义组件的生命周期回调函数用于通知用户该自定义组件的生命周期，这些回调函数是私有的，在运行时由开发框架在特定的时间进行调用，不能从应用中主动调用。通过这些回调，开发者可以在组件创建时初始化数据和状态变量，在组件销毁时释放资源，在页面显示和隐藏时更新页面状态、刷新数据或暂停恢复任务，在组件复用时传递参数与更新状态等，从而实现组件的精细化管理。不要在多个窗口复用同一个自定义组件节点，其生命周期可能会紊乱。
 
 >**说明：**
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >- 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
->- 允许在生命周期函数中使用Promise和异步回调函数，比如网络资源获取，定时器设置等。
+>- 允许在生命周期函数中使用Promise和异步回调函数，比如网络资源获取、定时器设置等。
 
 ## build
 
@@ -75,7 +75,7 @@ ArkTS-Dyn: aboutToDisappear?(): void
 
 ArkTS-Sta: default aboutToDisappear(): void
 
-aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是[\@Link](../../../ui/state-management/arkts-link.md)变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
+aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是[\@Link](../../../ui/state-management/arkts-link.md)变量的修改可能会导致应用行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
 
 > **说明：**
 >
@@ -143,9 +143,9 @@ onBackPress?(): void | boolean
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| void \| boolean | 返回按钮动作。返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理。 |
+| void \| boolean | 返回按钮动作。返回true表示由页面自行处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值时按false处理。 |
 
-```ts
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
@@ -206,11 +206,11 @@ ArkTS-Sta: onNewParam?(param: object | undefined | null): void
 |-------|----------|----------|---------------------------|
 | param | ArkTS-Dyn: ESObject<br/>ArkTS-Sta: object \| undefined \| null |是 | 路由跳转时传递到目标页面的数据。|
 
-```ts
+``` TypeScript
 // pages/Index.ets
 import { router } from '@kit.ArkUI';
 
-export class routerParam {
+export class RouterParam {
   msg: string = '__NA__';
 
   constructor(msg: string) {
@@ -236,7 +236,7 @@ struct Index {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/PageOne',
-            params: new routerParam('push pageOne Standard')
+            params: new RouterParam('push pageOne Standard')
           }, router.RouterMode.Standard);
         })
       // Single模式下若PageOne已在栈中，会复用并触发PageOne.onNewParam
@@ -245,8 +245,8 @@ struct Index {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/PageOne',
-            params: new routerParam('push pageOne Single')
-          }, router.RouterMode.Single)
+            params: new RouterParam('push pageOne Single')
+          }, router.RouterMode.Single);
         })
     }
     .width('100%')
@@ -255,10 +255,10 @@ struct Index {
 }
 ```
 <!--code_no_check-->
-```ts
+``` TypeScript
 // pages/PageOne.ets
 import { router } from '@kit.ArkUI';
-import { routerParam } from './Index';
+import { RouterParam } from './Index';
 
 @Entry
 @Component
@@ -278,7 +278,7 @@ struct PageOne {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/Index',
-            params: new routerParam('push Index Standard')
+            params: new RouterParam('push Index Standard')
           }, router.RouterMode.Standard);
         })
       // Single模式下若Index已在栈中，会复用并触发Index.onNewParam
@@ -287,8 +287,8 @@ struct PageOne {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({
             url: 'pages/Index',
-            params: new routerParam('push Index Single')
-          }, router.RouterMode.Single)
+            params: new RouterParam('push Index Single')
+          }, router.RouterMode.Single);
         })
     }
     .width('100%')
@@ -303,7 +303,7 @@ ArkTS-Dyn: aboutToReuse?(params: Record\<string, Object | undefined | null>): vo
 
 ArkTS-Sta: aboutToReuse(params: ReuseObject): void
 
-当一个可复用的自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调，并将组件的构造参数传递给aboutToReuse。
+当一个可复用的自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调，并将组件的构造参数传递给该回调。
 
 > **说明：**
 >
@@ -324,40 +324,40 @@ ArkTS-Sta: aboutToReuse(params: ReuseObject): void
 
 | 参数名  | 类型                                      | 必填 | 说明                |
 |--------|-------------------------------------------|-----|---------------------|
-| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](ts-custom-component-api-sta.md#reuseobject) |   是   | 自定义组件的构造参数。|
+| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](ts-custom-component-api-sta.md#reuseobject) |   是   | 自定义组件的构造参数。其中key为复用时外部传入的组件成员变量名，value为复用时外部传入的对应参数值。|
 
 **示例：**
 
 ArkTS-Dyn示例：
-```ts
+``` TypeScript
 // xxx.ets
 export class Message {
   value: string | undefined;
 
   constructor(value: string) {
-    this.value = value
+    this.value = value;
   }
 }
 
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true
+  @State isShown: boolean = true;
 
   build() {
     Column() {
-      // 点击Button切换switch，控制Child从组件树移除或重新加入
+      // 点击Button切换isShown，控制Child从组件树移除或重新加入
       Button('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch
+          this.isShown = !this.isShown;
         })
-      if (this.switch) {
+      if (this.isShown) {
         Child({ message: new Message('Child') })
       }
     }
-    .height("100%")
+    .height('100%')
     .width('100%')
   }
 }
@@ -449,7 +449,7 @@ ArkTS-Dyn: aboutToReuse?(): void
 
 ArkTS-Sta: aboutToReuse(): void
 
-当一个状态管理V2的可复用自定义组件从复用池被取出重新加入到节点树时，触发aboutToReuse生命周期回调。
+当一个状态管理V2的可复用自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调。在频繁调用场景下，应避免在其中执行耗时操作，否则可能导致丢帧卡顿。
 
 详细内容请参考[\@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md)。
 
@@ -467,7 +467,7 @@ ArkTS-Sta: aboutToReuse(): void
 
 ArkTS-Dyn示例：
 
-```ts
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -538,7 +538,7 @@ ArkTS-Dyn: aboutToRecycle?(): void
 
 ArkTS-Sta: aboutToRecycle(): void
 
-组件的生命周期回调，在可复用组件从组件树上被加入到复用缓存之前调用。
+组件的生命周期回调，在可复用组件从节点树上被加入到复用缓存之前调用。当该组件后续从复用缓存中被重新复用时，将触发[aboutToReuse](#abouttoreuse10)生命周期回调。在频繁调用场景下，应避免在其中执行耗时操作，否则可能导致丢帧卡顿。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -550,7 +550,7 @@ ArkTS-Sta: aboutToRecycle(): void
 
 **ArkTS-Sta起始版本：** 23
 
-```ts
+``` TypeScript
 // xxx.ets
 export class Message {
   value: string | undefined;
@@ -563,7 +563,7 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State isShown: boolean = true;
 
   build() {
     Column() {
@@ -571,13 +571,13 @@ struct Index {
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.isShown = !this.isShown;
         })
-      if (this.switch) {
+      if (this.isShown) {
         Child({ message: new Message('Child') })
       }
     }
-    .height("100%")
+    .height('100%')
     .width('100%')
   }
 }
@@ -588,13 +588,13 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Reuse Child");
+    console.info('Reuse Child');
     this.message = params.message as Message;
   }
 
   aboutToRecycle() {
     // 这里可以释放比较占内存的内容或其他非必要资源引用，避免一直占用内存，引发内存泄漏
-    console.info("Recycle Child,child进入复用池中");
+    console.info('Recycle Child,child进入复用池中');
   }
 
   build() {
@@ -612,7 +612,7 @@ struct Child {
 
 onWillApplyTheme?(theme: Theme): void
 
-onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创建自定义组件的新实例后，在执行其build()函数之前执行。允许在onWillApplyTheme函数中改变状态变量，更改将在后续执行build()函数中生效。
+onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创建自定义组件的新实例后、其build()函数执行之前调用。允许在onWillApplyTheme函数中改变状态变量，更改将在后续执行build()函数中生效。
 
 > **说明：**
 >
@@ -656,7 +656,7 @@ type Theme = import('../api/@ohos.arkui.theme').Theme
 
 V1：
 
-```ts
+``` TypeScript
 // xxx.ets
 import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 
@@ -673,9 +673,9 @@ class PageCustomTheme implements CustomTheme {
     this.colors = colors;
   }
 }
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
 // setDefaultTheme应该在应用入口页面调用或者在Ability中调用。
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @Component
@@ -683,7 +683,7 @@ struct IndexComponent {
   @State textColor: ResourceColor = $r('sys.color.font_primary');
   @State columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（blueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
     this.columnBgColor = theme.colors.backgroundPrimary;
@@ -728,7 +728,7 @@ struct IndexComponent {
 
 V2：
 
-```ts
+``` TypeScript
 import { CustomTheme, CustomColors, Theme, ThemeControl } from '@kit.ArkUI';
 
 class BlueColors implements CustomColors {
@@ -745,9 +745,9 @@ class PageCustomTheme implements CustomTheme {
   }
 }
 
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
+const blueColorsTheme = new PageCustomTheme(new BlueColors());
 // setDefaultTheme应该在应用入口页面调用或者在Ability中调用。
-ThemeControl.setDefaultTheme(BlueColorsTheme);
+ThemeControl.setDefaultTheme(blueColorsTheme);
 
 @Entry
 @ComponentV2
@@ -755,7 +755,7 @@ struct IndexComponent {
   @Local textColor: ResourceColor = $r('sys.color.font_primary');
   @Local columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（blueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
     this.columnBgColor = theme.colors.backgroundPrimary;
@@ -803,7 +803,7 @@ struct IndexComponent {
 
 pageTransition?(): void
 
-进入此页面或移动到其他页面时实现动画。
+pageTransition函数用于定义页面入场和页面退场的转场动效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -830,7 +830,7 @@ onFormRecycle回调函数在卡片回收时执行，卡片提供方可以返回�
 | string | 返回卡片提供方需要卡片管理服务代保存的数据。 |
 
 **示例：**
-```ts
+``` TypeScript
 @Entry
 @Component
 struct WidgetCard {
@@ -842,14 +842,14 @@ struct WidgetCard {
   readonly fullHeightPercent: string = '100%';
 
   onFormRecycle(): string {
-    let formId: string = "1859635745"
+    let formId: string = '1859635745';
     // 卡片回收时触发回调
-    console.info("card is recycled, formID: " + formId);
+    console.info('card is recycled, formID: ' + formId);
     return formId;
   }
 
   onFormRecover(statusData: string): void {
-    console.info("card has been restored, formID: " + statusData);
+    console.info('card has been restored, formID: ' + statusData);
   }
 
   build() {
@@ -898,7 +898,7 @@ onFormRecover回调函数在卡片恢复时执行，卡片提供方可以拿到�
 | statusData | string | 是     | 卡片回收时卡片管理服务代保存的数据。|
 
 **示例：**
-```ts
+``` TypeScript
 @Entry
 @Component
 struct WidgetCard {
@@ -910,14 +910,14 @@ struct WidgetCard {
   readonly fullHeightPercent: string = '100%';
 
   onFormRecycle(): string {
-    let formId: string = "1859635745"
-    console.info("card is recycled, formID: " + formId);
+    let formId: string = '1859635745';
+    console.info('card is recycled, formID: ' + formId);
     return formId;
   }
 
   onFormRecover(statusData: string): void {
     // 在卡片恢复时触发回调
-    console.info("card has been restored, formID: " + statusData);
+    console.info('card has been restored, formID: ' + statusData);
   }
 
   build() {

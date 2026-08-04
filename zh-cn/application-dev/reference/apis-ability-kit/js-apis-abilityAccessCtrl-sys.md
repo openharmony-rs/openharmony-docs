@@ -1219,6 +1219,7 @@ ArkTS-Sta: requestPermissionOnApplicationSetting(tokenID: int): Promise&lt;void&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100007 | Service exception. |
 
