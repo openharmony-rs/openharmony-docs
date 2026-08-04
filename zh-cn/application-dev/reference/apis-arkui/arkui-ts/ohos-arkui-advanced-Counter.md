@@ -80,7 +80,7 @@ CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 
 | 名称   | 类型                              | 必填 | 装饰器类型 | 说明                    |
 | ------- | --------------------------------- | ---- | ---------- | ----------------------- |
-| options | [CounterOptions](#counteroptions) | 是   | ArkTS-Dyn: @Prop <br>ArkTS-Sta: @PropRef  | 定义Counter组件的类型。 |
+| options | [CounterOptions](#counteroptions) | 是   | ArkTS-Dyn: @Prop <br>ArkTS-Sta: @PropRef  | 配置选项，用于配置Counter组件的类型和样式。包含type（Counter类型）、direction（布局方向）、numberOptions（列表型和紧凑型样式）、inlineOptions（数值内联样式）、dateOptions（日期内联样式）等配置项。 |
 
 ### build<sup>23+</sup>
 
@@ -179,7 +179,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 | min       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最小值。<br>默认值：0。 <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。  |
 | max       | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否  | 是 | 设置Counter的最大值。<br>默认值：999。  <br>取值范围：<br>ArkTS-Dyn：[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]。<br>ArkTS-Sta：[Int.MIN_VALUE, Int.MAX_VALUE]内的整数，小于0时，按照默认值处理。 <br>值为undefined时，按默认值处理。   |
 | textWidth | ArkTS-Dyn: number <br>ArkTS-Sta: double | 否  | 是 | 设置数值文本的宽度。<br>默认值：自适应文本宽度。<br>取值范围：[0, +∞)。 <br>单位：vp。  <br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。  |
-| onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange23) | 否  | 是 | 当数值改变时，返回当前值。<br>value：当前显示的数值。<br>默认值：数值改变时，不返回值。 <br>值为undefined时，按默认值处理。 |
+| onChange  | ArkTS-Dyn: (value: number) => void <br>ArkTS-Sta: [OnInlineCounterChange](#oninlinecounterchange23) | 否  | 是 | 数值改变时，返回当前值。使用场景：当需要在数值变化时执行自定义操作（如更新关联UI、记录日志、保存状态等）时传入此回调。<br>value：当前显示的数值。<br>默认值：不触发数值改变时的回调。<br>值为undefined时，按默认值处理。 |
 
 ## NumberStyleOptions
 
@@ -623,7 +623,7 @@ struct DataStyleExample {
 
 ### 示例5（镜像布局展示）
 
-该示例通过设置direction属性，实现列表型、紧凑型、数字内联型、日期内联型Counter进行镜像布局。
+该示例通过设置direction属性，实现了列表型、紧凑型、数值内联型、日期内联型Counter的镜像布局。
 
 ArkTS-Dyn示例：
 

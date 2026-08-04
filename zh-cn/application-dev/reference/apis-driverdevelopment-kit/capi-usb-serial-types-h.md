@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供USB Serial DDK中的枚举变量、结构体定义与宏定义，用于USB串口驱动开发，简化串口设备参数配置、返回码处理和流量控制等操作，提升驱动开发效率。
+提供USB Serial DDK中的枚举类型、结构体与宏的定义，用于USB串口驱动开发，简化串口设备参数配置、返回码处理和流量控制等操作，提升驱动开发效率。
 
 **引用文件：** <usb_serial/usb_serial_types.h>
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数。用于USB转串口设备的通信参数配置，常见于工业控制设备、调试工具、传感器数据采集等需要通过USB串口与设备通信的场景。 |
+| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、传感器数据采集等需要通过USB串口与设备通信的场景。 |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_Device | USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过[OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open)接口函数获取此结构体实例。 |
 
 ### 枚举
@@ -53,13 +53,13 @@ enum UsbSerial_DdkRetCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| USB_SERIAL_DDK_NO_PERM = 201 | 权限被拒绝。请确保应用在module.json5文件中声明了相应的权限。 |
+| USB_SERIAL_DDK_NO_PERM = 201 | 权限被拒绝。请确保应用在module.json5文件中声明了所需的权限。 |
 | USB_SERIAL_DDK_INVALID_PARAMETER = 401 | 无效参数。请确保传入的参数值在有效范围内，参考相关接口的参数说明。 |
 | USB_SERIAL_DDK_SUCCESS = 31600000 | 操作成功。 |
 | USB_SERIAL_DDK_INVALID_OPERATION = 31600001 | 无效操作，例如使用了无效的设备句柄。请检查确保设备处于正常打开的状态。 |
 | USB_SERIAL_DDK_INIT_ERROR = 31600002 | 初始化失败。请先初始化DDK服务。 |
 | USB_SERIAL_DDK_SERVICE_ERROR = 31600003 | 服务错误。请检查DDK服务状态和接口调用逻辑是否正常。 |
-| USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | 内存相关错误，例如内存不足、内存数据复制失败或内存应用程序故障。建议优化内存参数，及时释放不再需要的资源。 |
+| USB_SERIAL_DDK_MEMORY_ERROR = 31600004 | 内存相关错误，例如内存不足、内存数据复制失败或内存申请故障。建议优化内存参数，及时释放不再需要的资源。 |
 | USB_SERIAL_DDK_IO_ERROR = 31600005 | I/O 错误。请检查设备连接是否正常、传输线是否完好、设备是否处于正常工作状态。 |
 | USB_SERIAL_DDK_DEVICE_NOT_FOUND = 31600006 | 未找到设备。请检查参数和设备连接状态。 |
 

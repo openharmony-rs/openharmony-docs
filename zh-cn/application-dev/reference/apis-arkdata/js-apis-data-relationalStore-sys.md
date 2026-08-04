@@ -1557,7 +1557,7 @@ ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&g
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. |
 | 14800024  | SQLite: The database file is locked. |
-| 14800043  | DB is not support this scenario. Possible causes: 1. DB type is not support; 2. Table type is not support; 3. This is a readonly db. |
+| 14800043  | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database. |
 
 **示例：**
 

@@ -13,11 +13,9 @@ agentConstant模块提供Agent相关的常量。
 
 > **说明：**
 >
-> 本模块接口仅可在Stage模型下使用。
->
-> 本模块接口均为系统接口。
->
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> 当前页面仅包含本模块的系统接口，其他公开接口参考[@ohos.app.agent.agentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)。
 
 ## 导入模块
 
@@ -36,6 +34,8 @@ Agent卡片的类型。
 **ArkTS-Dyn起始版本**：26.0.0
 
 **ArkTS-Sta起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 值   | 说明                   |
 | --------- | ---- | ---------------------- |

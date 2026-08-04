@@ -76,6 +76,7 @@
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      private static sInstance: TemplateManager;
      // ...
+   
      private constructor() {
      }
    
@@ -128,26 +129,10 @@
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
      private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
-       return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-         try {
-           let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-           resolve(tabs);
-         } catch (e) {
-           console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.getMainTabs(), 'queryMainTabsEvent');
      };
      private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
-       return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
-         try {
-           let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
-           resolve(tabContent);
-         } catch (e) {
-           console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
-           reject(e);
-         }
-       });
+       return this.handlePromiseReturnFunc(() => this.createMediaTabContent(), 'queryMediaTabContentEvent');
      };
      // ...
    
@@ -230,7 +215,17 @@
        };
        return mediaEntity;
      };
+   
      // ...
+     private async handlePromiseReturnFunc<T>(func: () => Promise<T>, errFunc: string): Promise<T> {
+       try {
+         return await func();
+       } catch (e) {
+         const msg = `Failed to ${errFunc}. Code: ${e?.code}`;
+         console.error(msg);
+         throw e instanceof Error ? e : new Error(e?.message ?? msg);
+       }
+     }
    }
    ```
 
@@ -289,6 +284,7 @@
    export class TemplateManager {
      private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
      // ...
+   
      /**
       * 注销监听。
       */

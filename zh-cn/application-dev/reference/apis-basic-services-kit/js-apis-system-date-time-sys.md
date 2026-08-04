@@ -354,7 +354,7 @@ try {
 ```
 ArkTS-Sta示例：
 ```ts
-impoer { BusinessError } from '@ohos.base';
+import { BusinessError } from '@ohos.base';
 
 try {
   systemDateTime.setTimezone('Asia/Jakarta', (error: BusinessError | null) => {
@@ -428,14 +428,14 @@ try {
 
 ArkTS-Sta示例：
 ```ts
-impoer { BusinessError } from '@ohos.base';
+import { BusinessError } from '@ohos.base';
 
 try {
   await systemDateTime.setTimezone('Europe/Moscow');
-  systemDateTime.getTimezone((error: BusinessError | null, data: String | undefined) => {
+  systemDateTime.getTimezone((error: BusinessError | null, data: string | undefined) => {
     if (error) {
       console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
-      reutrn;
+      return;
     }
     console.error(`Succeeded in getting timezone : ${data}`);
   });
