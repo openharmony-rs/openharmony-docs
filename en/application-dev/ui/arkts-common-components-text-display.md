@@ -598,7 +598,7 @@ The following examples illustrate the commonly used APIs.
           .margin({ bottom: 20 })
   
         // Set whether to apply automatic spacing between Chinese and Western text.
-        /*Replace $r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing') with the actual resource file. In this example, the value of the resource file is "Chinese and Western Auto Spacing automatic spacing".*/
+        /*Replace $r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing') with the actual resource file. In this example, the value of the resource file is "中西文Auto Spacing自动间距".*/
         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
           .fontSize(24)
           .padding(15)
@@ -615,7 +615,7 @@ The following examples illustrate the commonly used APIs.
   }
   ```
 
-<!--Del-->  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)<!--DelEnd-->
+  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Starting from API version 20, you can set gradient colors via [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20).
 
@@ -864,7 +864,7 @@ You can tap an empty area within the Text component area to close the selection 
   }
   ```
 
-<!--Del-->![close_selection_menu](figures/close_selection_menu.gif)<!--DelEnd-->
+![close_selection_menu](figures/close_selection_menu.gif)
 
 ### Custom Menu Items in System Menu
 
@@ -1258,7 +1258,7 @@ Starting from API version 20, you can use [disableSystemServiceMenuItems](../ref
   }
   ```
 
-    <!--Del-->![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)<!--DelEnd-->
+    ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
 
 ### Setting the AI Menu
 
@@ -1381,7 +1381,7 @@ The Text component controls the window in which the text menu is rendered via [T
     .copyOption(CopyOptions.InApp)
   ```
 
-  <!--Del-->![Text-menu-subwindow](figures/Text-menu-subwindow.gif)<!--DelEnd-->
+  ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
 
 ## Implementing a Trending Searches List
 
