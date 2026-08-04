@@ -375,7 +375,7 @@ ArkTS-Dyn示例：
 /**
  * 示例1：弹出多个按钮的弹窗
  * 本示例展示如何创建包含1个、2个、3个按钮的警告弹窗
- * 演示 AlertDialogParamWithConfirm、AlertDialogParamWithButtons、AlertDialogParamWithOptions 三种参数类型的使用
+ * 演示AlertDialogParamWithConfirm、AlertDialogParamWithButtons、AlertDialogParamWithOptions三种参数类型的使用
  */
 @Entry
 @Component
