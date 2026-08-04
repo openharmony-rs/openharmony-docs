@@ -87,10 +87,10 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
 | scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
-| fenceType | number | 否 | 否 | 表示融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。每个bit位表示一种围栏类型，比如3，代表同时包含GNSS和CELL两种围栏。<br/>**系统接口**：此接口为系统接口。 |
+| fenceType | number | 否 | 否 | 表示融合围栏类型。可参考FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;。使用时按二进制bit位进行设置。例如3（二进制11）表示GNSS围栏和CELLULAR围栏。<br/>**系统接口**：此接口为系统接口。 |
 | poiType | string | 否 | 是 | 表示POI类型。<br/>**系统接口**：此接口为系统接口。 |
 | poiLocation | Point&lt;[Point](#point)&gt; | 否 | 否 | 表示POI位置信息。<br/>**系统接口**：此接口为系统接口。 |
-| monitorTransitionEvents | number | 否 | 否 | 表示监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。每个bit位表示一种围栏事件，比如3，代表同时监听围栏进入和围栏退出两种事件。<br/>**系统接口**：此接口为系统接口。 |
+| monitorTransitionEvents | number | 否 | 否 | 表示监听的围栏事件。可参考GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;。使用时按二进制bit位进行设置。例如3（二进制11）表示同时监听围栏进入和围栏退出两种事件。<br/>**系统接口**：此接口为系统接口。 |
 | loiterTimeMs | number | 否 | 否 | 表示徘徊时间，单位为毫秒。取值范围为大于0。若监听徘徊事件，当设备在围栏内徘徊时间达到该值，则上报徘徊事件。<br/>**系统接口**：此接口为系统接口。 |
 | gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | 否 | 是 | 表示GNSS围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择GNSS，则为必填<br/>**系统接口**：此接口为系统接口。 |
 | cellFences | Array&lt;[CellFence](#cellfence)&gt; | 否 | 是 | 表示CELL围栏信息集合。若FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt选择CELLULAR，则为必填<br/>**系统接口**：此接口为系统接口。 |
