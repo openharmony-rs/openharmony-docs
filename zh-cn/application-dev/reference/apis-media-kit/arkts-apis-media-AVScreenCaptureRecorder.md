@@ -48,9 +48,9 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. Return by promise. Suggestion: Please check that all required parameters are correctly passed and their types conform to the interface requirements. |
-| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.                  |
-| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
+| 401      | Parameter error. |
+| 5400103  | IO error. Return by promise. |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -203,9 +203,9 @@ pauseRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. Possible cause: This operation is not allowed in the current state (e.g., pausing before initialization). Suggestion: Please ensure the interfaces are called in the correct sequence. |
-| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.    |
-| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise. |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -256,9 +256,9 @@ resumeRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. Possible cause: This operation is not allowed in the current state (e.g., resuming before pauseRecording). Suggestion: Please ensure the interfaces are called in the correct sequence. |
-| 5400103  | IO error. Return by promise. Possible cause: File path does not exist, insufficient read/write permissions, or insufficient storage space. Suggestion: Please check the file path, permissions, and available storage space.     |
-| 5400105  | Service died. Return by promise. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise. |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -320,10 +320,10 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. Possible cause: Called before startRecording or exceeded 5 watermarks. Suggestion: Please ensure proper timing of the call, and keep watermark count within 5. |
-| 5400103  | IO error. Return by promise. Possible cause: Watermark image resource unavailable or insufficient storage space. Suggestion: Please check watermark image validity and storage space.    |
-| 5400105  | Service died. Return by promise. Possible cause: System service terminated abnormally. Suggestion: Please release resources and retry. If the problem persists, restart the application. |
-| 5400108  | The parameter check failed, parameter value out of range. Possible cause: Watermark configuration parameters out of valid range. Suggestion: Please check if top, left, width, height parameter values are valid.    |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise. |
+| 5400105  | Service died. Return by promise. |
+| 5400108  | The parameter check failed, parameter value out of range. |
 
 **示例：**
 
@@ -471,11 +471,6 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 设置Picker显示模式，在下一次显示Picker时生效。使用Promise异步回调。
 
 可根据录制需求选择不同模式。
-
-- SCREEN_ONLY适用于只需要录制整个屏幕的场景。
-- WINDOW_ONLY适用于只需要录制特定应用窗口的场景。
-- SCREEN_AND_WINDOW适用于需要让用户自由选择录制屏幕或窗口的场景。
-
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -799,9 +794,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 201      | permission denied. Possible cause: Missing required permissions. Suggestion: Please check and apply for the necessary permissions.     |
-| 5400103  | IO error. Return by ErrorCallback. Possible cause: System I/O operation failed. Suggestion: Please retry the operation. If the issue persists, restart the application. |
-| 5400105  | Service died. Return by ErrorCallback. Possible cause: System service terminated unexpectedly. Suggestion: Please release resources and retry. If the issue persists, restart the application. |
+| 201      | permission denied. |
+| 5400103  | IO error. Return by ErrorCallback. |
+| 5400105  | Service died. Return by ErrorCallback. |
 
 **示例：**
 
