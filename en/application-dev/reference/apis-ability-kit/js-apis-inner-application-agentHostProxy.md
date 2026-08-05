@@ -32,7 +32,7 @@ Sends data from the [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbil
 
 **Atomic Service API**: This API can be used in atomic services since API version 24.
 
-**System Capability**: SystemCapability.Ability.AgentRuntime.Core
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
 
 **Parameters:**
 
@@ -80,7 +80,7 @@ Sends a security authentication request from the [AgentExtensionAbility](js-apis
 
 **Atomic Service API**: This API can be used in atomic services since API version 24.
 
-**System Capability**: SystemCapability.Ability.AgentRuntime.Core
+**System capability**: SystemCapability.Ability.AgentRuntime.Core
 
 **Parameters**
 
