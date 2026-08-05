@@ -528,11 +528,6 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 可根据录制需求选择不同模式。
 
-- SCREEN_ONLY适用于只需要录制整个屏幕的场景。
-- WINDOW_ONLY适用于只需要录制特定应用窗口的场景。
-- SCREEN_AND_WINDOW适用于需要让用户自由选择录制屏幕或窗口的场景。
-
-
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **ArkTS-Dyn起始版本：** 22
