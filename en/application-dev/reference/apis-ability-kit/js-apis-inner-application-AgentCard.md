@@ -30,7 +30,7 @@ Describes the basic information and abilities of an agent.
 
 **Atomic service API:** This interface is supported in atomic services since API version 24.
 
-**System Capability:** SystemCapability.Ability.AgentRuntime.Core
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 | Name | Type | Read-only | Optional | Description |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
@@ -57,7 +57,7 @@ Represents the service provider of the agent.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System Capability:** SystemCapability.Ability.AgentRuntime.Core
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 | Name               | Type    | Read-only | Optional | Description                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
@@ -72,7 +72,7 @@ Defines optional capabilities supported by the Agent.
 
 **Atomic service API:** Starting from API version 24, this API is supported in atomic services.
 
-**System Capability:** SystemCapability.Ability.AgentRuntime.Core
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 | Name               | Type    | Read-only | Optional | Description                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
@@ -90,7 +90,7 @@ Represents the different abilities or functions that an Agent can perform.
 
 **Atomic service API:** Starting from API version 24, this interface is supported in atomic services.
 
-**System Capability:** SystemCapability.Ability.AgentRuntime.Core
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 | Name               | Type    | Read-only | Optional | Description                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
@@ -111,7 +111,7 @@ Application information of the agent.
 
 **Atomic service API:** This API is supported in atomic services since API version 24.
 
-**System Capability:** SystemCapability.Ability.AgentRuntime.Core
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 | Name               | Type    | Read-only | Optional | Description                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
