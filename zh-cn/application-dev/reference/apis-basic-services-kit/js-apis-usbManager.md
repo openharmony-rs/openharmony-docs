@@ -241,7 +241,7 @@ async function hasRight(): boolean {
 
 requestRight(deviceName: string): Promise&lt;boolean&gt;
 
-请求应用的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。
+请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -835,7 +835,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 > **说明：** 
 >
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
@@ -905,6 +905,12 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | -------- | -------- | -------- | -------- |
 | transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 作为通用USB数据传输接口，客户端需要填充这个对象中的参数，用以发起传输请求。在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。|
 
+**返回值：**
+
+| 类型      | 说明          |
+| --------- | ------------- |
+| void      | 无返回值。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -922,7 +928,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1009,6 +1015,12 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | -------- | -------- | -------- | -------- |
 | transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 被取消传输的参数，该参数与[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的transfer参数相同。在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。|
 
+**返回值：**
+
+| 类型      | 说明          |
+| --------- | ------------- |
+| void      | 无返回值。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -1025,7 +1037,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1261,6 +1273,12 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | --------- | ------------ | ---- | ------------------------------------- |
 | accessory | [USBAccessory](#usbaccessory14) | 是   | USB配件，需要通过[getAccessoryList](#usbmanagergetaccessorylist14)获取。 |
 
+**返回值：**
+
+| 类型      | 说明          |
+| --------- | ------------- |
+| void      | 无返回值。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -1401,6 +1419,12 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 参数名          | 类型               | 必填 | 说明                                   |
 | --------------- | ------------------ | ---- | -------------------------------------- |
 | accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | 是   | USB配件句柄。需要通过[openAccessory](#usbmanageropenaccessory14)获取。 |
+
+**返回值：**
+
+| 类型      | 说明          |
+| --------- | ------------- |
+| void      | 无返回值。 |
 
 **错误码：**
 

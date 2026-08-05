@@ -442,6 +442,10 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制硬件流控的请求发送信号，如启用RTS/CTS硬件流控时控制发送权、与支持硬件流控的设备通信等场景。
 
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用setRts()设置RTS信号
+- 未调用open()就调用setRts()会抛出错误码35700005（Port not open）
+
 **与setDtr的区别：** setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
 
 **起始版本：** 26.0.0
