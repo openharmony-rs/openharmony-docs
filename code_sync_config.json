@@ -56030,19 +56030,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":118,
 						"name":"configure_full_baseline",
 						"start_line":86
 					},
 					{
-						"end_line":344,
+						"end_line":356,
 						"name":"onUserSpeedChanged",
-						"start_line":315
+						"start_line":321
 					},
 					{
-						"end_line":366,
+						"end_line":384,
 						"name":"onThermalWarningReceived",
-						"start_line":346
+						"start_line":358
 					}
 				]
 			}
@@ -58903,9 +58903,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":207,
 						"name":"quick_start",
-						"start_line":137
+						"start_line":171
 					}
 				]
 			}
