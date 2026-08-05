@@ -103,10 +103,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 > 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型。当多个不同类型的抑制实例同时存在时，各类型独立生效。
 
   ```typescript
-  import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+  import { SuppressWarnings, SuppressWarningsType, systemDateTime } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
-  import { systemDateTime } from '@kit.BasicServicesKit';
   // 兼容性告警消除部分
   systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
