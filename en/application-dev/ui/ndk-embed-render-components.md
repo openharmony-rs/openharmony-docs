@@ -236,8 +236,8 @@ The following example demonstrates how to create a rendering node, implement cus
        OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, resources->renderNode);
        OH_ArkUI_RenderNodeUtils_SetSize(resources->renderNode, 1000, 1000);
    
-       // Define animatable properties (for driving animation and drawing).
-       // Set initial values.
+       // The Property is used to trigger set updates and synchronously update the Draw method of the modifier.
+       // Set base values.
        resources->width = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
        resources->height = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
        resources->v2 = OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(1000, 1000);
@@ -246,7 +246,7 @@ The following example demonstrates how to create a rendering node, implement cus
        // Associate the component with modifiers.
        resources->modifier = OH_ArkUI_RenderNodeUtils_CreateContentModifier();
        OH_ArkUI_RenderNodeUtils_AttachContentModifier(resources->renderNode, resources->modifier);
-       // Bind animatable properties to the modifier.
+       // Bind properties to the modifier.
        OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(resources->modifier, resources->width);
        OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(resources->modifier, resources->height);
        OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(resources->modifier, resources->v2);

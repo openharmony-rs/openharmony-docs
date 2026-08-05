@@ -301,7 +301,7 @@
   - Media Display<!--arkts-build-media-ndk-->
     - [Image Display (Image)](ndk-image-component.md)
     - [Using the Swiper Component](ndk-swiper.md)
-    - [Using the Arc Swiper Component](ndk-arc-swiper.md)
+    - [Using the Arc Swiper Container (ArcSwiper)](ndk-arc-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
   - [Building a Dialog Box](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
