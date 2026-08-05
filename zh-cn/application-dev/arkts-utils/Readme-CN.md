@@ -164,7 +164,7 @@
     - [编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)
     - [方舟字节码生成常见问题](es2abc-faq.md)
     - [Disassembler反汇编工具 (ArkTS-Dyn)](tool-disassembler.md)
-    - [Disassembler反汇编工具](tool-disassembler-sta.md)
+    - [Disassembler反汇编工具 (ArkTS-Sta)](tool-disassembler-sta.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard源码混淆工具概述](source-obfuscation-overview.md)
     - [ArkGuard混淆原理](source-obfuscation.md)
