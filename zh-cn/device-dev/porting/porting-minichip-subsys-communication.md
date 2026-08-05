@@ -20,13 +20,13 @@ group("wifi") {
 }
 ```
 
-从中可以看到厂商适配Wi-Fi相关接口的.c文件存放目录应为“foundation/communication/wifi_lite/interfaces/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”；适配蓝牙相关接口的.c文件存放目录应为“foundation/communication/bluetooth/interfaces/inner_api/include/c_header”。需要厂商适配的Wi-Fi接口见表1 、表2 和表3，蓝牙接口见表4和表5。
+从中可以看到厂商适配Wi-Fi相关接口的.h头文件存放目录应为“foundation/communication/wifi_lite/interfaces/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”。需要厂商适配的Wi-Fi接口见表1、表2和表3，蓝牙接口见表4和表5。
 
   **表1** wifi_device.h
 
 | 接口 | 作用                             | 
 | -------- |--------------------------------|
-| EnableWifi | 启用Wi-Fista模式。                  | 
+| EnableWifi | 启用Wi-Fi&nbsp;sta模式。            | 
 | DisableWifi | 禁用Wi-Fi&nbsp;sta模式。            | 
 | IsWifiActive | 检查Wi-Fi&nbsp;sta模式是否启用。        | 
 | Scan | 扫描热点信息。                        | 
@@ -36,7 +36,7 @@ group("wifi") {
 | RemoveDevice | 删除指定的热点配置信息。                   | 
 | DisableDeviceConfig | 禁用指定的热点配置信息。                   | 
 | EnableDeviceConfig | 启用指定的热点配置信息。                   | 
-| ConnectTo | 接到指定的热点。                       | 
+| ConnectTo | 连接到指定的热点。                      | 
 | ConnectToDevice | 通过指定的配置连接到热点。                  |
 | Disconnect | 断开Wi-Fi连接。                     | 
 | GetLinkedInfo | 获取热点连接信息。                      | 
@@ -140,7 +140,7 @@ group("wifi") {
 
 ## 适配实例
 
-1. 在“config.json”中添加communication子系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
+1. 在“config.json”中添加通信子系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
    修改如下：
 
@@ -161,3 +161,49 @@ group("wifi") {
    在“vendor/MyVendorCompany/MyProduct/config.json”文件中，通常将配置“vendor_adapter_dir”配置为 “//device/MyVendorCompany/MyProduct/adapter”。
 
    在“vendor_adapter_dir”目录下根据上述适配指导中提到的头文件，适配Wi-Fi、蓝牙接口。
+
+   Wi-Fi适配接口案例如下：
+```c++
+WifiErrorCode EnableWifi(void)
+{
+    if (LockWifiGlobalLock() != WIFI_SUCCESS) {
+        return ERROR_WIFI_UNKNOWN;
+    }
+    if (g_wifiStaStatus == WIFI_STA_ACTIVE) {
+        if (UnlockWifiGlobalLock() != WIFI_SUCCESS) {
+            return ERROR_WIFI_UNKNOWN;
+        }
+        return ERROR_WIFI_BUSY;
+    }
+
+    char ifName[WIFI_IFNAME_MAX_SIZE + 1] = {0};
+    int len = sizeof(ifName);
+    int hiRet;
+
+    hiRet = hi_wifi_sta_start(ifName, &len);
+    if (hiRet != HISI_OK) {
+        printf("[wifi_service]:EnableWifi sta start fail\n");
+        if (UnlockWifiGlobalLock() != WIFI_SUCCESS) {
+            return ERROR_WIFI_UNKNOWN;
+        }
+        return ERROR_WIFI_NOT_STARTED;
+    }
+
+    hiRet = hi_wifi_sta_set_reconnect_policy(WIFI_RECONN_POLICY_ENABLE, WIFI_RECONN_POLICY_TIMEOUT,
+        WIFI_RECONN_POLICY_PERIOD, WIFI_RECONN_POLICY_MAX_TRY_COUNT);
+    if (hiRet != HISI_OK) {
+        printf("[wifi_service]:EnableWifi set reconn policy fail\n");
+        if (UnlockWifiGlobalLock() != WIFI_SUCCESS) {
+            return ERROR_WIFI_UNKNOWN;
+        }
+        return ERROR_WIFI_UNKNOWN;
+    }
+
+    g_wifiStaStatus = WIFI_STA_ACTIVE;
+    if (UnlockWifiGlobalLock() != WIFI_SUCCESS) {
+        return ERROR_WIFI_UNKNOWN;
+    }
+
+    return WIFI_SUCCESS;
+}
+```

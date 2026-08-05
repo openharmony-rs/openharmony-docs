@@ -1,10 +1,12 @@
 # native_audio_vivid.h
+
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=01b83f7f3d1ff1b424af3de357499307e5dc2db9 translatedAt=2026-08-01T07:19:35.969Z pushedAt=2026-08-01T07:47:41.569Z -->
 
 ## Overview
 
@@ -72,7 +74,6 @@ Enumerates the signal formats of the Audio Vivid encoder.
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Stereo. The encoder accepts stereo data and internally sets the channel layout to [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO.|
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2, and [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.|
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2, and [OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.|
-
 
 ## Function Description
 
@@ -150,7 +151,7 @@ Updates the linear gain of audio object rendering when the Audio Vivid signal fo
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](./capi-codecbase.md#key-value-pairs-dedicated-for-audio) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder.|
-| float gain | Linear gain applied during object rendering. The value range is [0.0, 6.0], where **0.0** indicates silence, and **1.0** indicates no change. This parameter is optional. If it is not set, no gain is applied.|
+| float gain | Linear gain applied during object rendering. The value range is [0.0, 6.0], where **0.0** indicates silence, and **1.0** indicates no change. |
 
 **Returns**
 
@@ -203,7 +204,7 @@ Obtains the metadata buffer.
 | const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
 | bool withStaticMeta | Whether the output buffer includes static metadata. The value **true** indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata.|
 | uint8_t *buffer | Pointer to the buffer for receiving the metadata.|
-| int32_t len | Buffer length, in bytes.|
+| int32_t len | Buffer length, in bytes. The value must be greater than or equal to the length of the data to be obtained, which can be obtained via [OH_AudioVividMetaBuilder_GetMetaLen](#oh_audiovividmetabuilder_getmetalen).|
 
 **Returns**
 

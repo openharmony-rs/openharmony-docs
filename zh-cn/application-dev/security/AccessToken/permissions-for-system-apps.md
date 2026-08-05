@@ -7628,6 +7628,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CAR_DETACHABLE_SCREEN_MANAGEMENT
+
+允许应用获取后排控制屏信息和状态，与后排控制屏建立通信通道。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 允许应用获取和设置车机情景模式。
@@ -8889,5 +8903,61 @@
 **是否支持证书授权**：true
 
 **支持设备**：Wearable | TV | Tablet | Phone | PC/2in1 | Car | LiteWearable | Smartlock | Router
+
+**起始版本**：26.1.0
+
+## ohos.permission.MUTE_VOIP_CAPTURE
+
+允许应用静音其他应用的VoIP录音流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.MUTE_VOIP_PLAYBACK
+
+允许应用静音其他应用的VoIP播放流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.VOIP_CAPTURE_CONCURRENCY
+
+允许应用在其他应用进行VoIP录制期间，启用VoIP录制流。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV | PC/2in1 | Car | Wearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.DEVICE_AUTH
+
+允许车辆后排扶手屏应用连接车机，进行设备认证。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：26.1.0

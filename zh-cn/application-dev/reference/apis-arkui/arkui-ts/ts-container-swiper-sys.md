@@ -27,7 +27,7 @@ ignoreHiddenItem(enabled: boolean)
 >
 > 该接口在属性[loop](ts-container-swiper.md#loop)为true，或者属性[displayCount](ts-container-swiper.md#displaycount22)的swipeByGroup参数为true时不生效。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -45,7 +45,7 @@ ignoreHiddenItem(enabled: boolean)
 
 该示例通过设置[ignoreHiddenItem](#ignorehiddenitem)接口，展示了Swiper组件如何在子节点设置不可见时，使其不占位显示。
 
-从API版本26.1.0开始，新增[ignoreHiddenItem](#ignorehiddenitem)接口。
+从API版本26.0.0开始，新增[ignoreHiddenItem](#ignorehiddenitem)接口。
 
 ```ts
 // xxx.ets

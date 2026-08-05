@@ -8,7 +8,7 @@ OpenHarmony芯片移植完成后，需要开展OpenHarmony兼容性测试以及�
 
 OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一，详见[OpenHarmony兼容性测试](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/XTS%E5%AD%90%E7%B3%BB%E7%BB%9F.md)。
 
-1. 添加test子系统以及xts_acts部件。 在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
+1. 添加xts子系统以及acts部件。在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
 
      
    ```json
@@ -27,7 +27,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
      
    ```text
    "-Wl,--whole-archive",
-   ......
+   //......
    "-lhctest",
    "-lbootstrap",
    "-lbroadcast",
@@ -37,7 +37,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    "-lmodule_ActsParameterTest",
    "-lmodule_ActsSamgrTest",
    "-lmodule_ActsSecurityDataTest",
-   ......
+   //......
    "-Wl,--no-whole-archive",
    ```
 
@@ -77,7 +77,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
 > <img src="public_sys-resources/icon-caution.gif" alt="说明"/> <b>说明：</b>
 > 1. XTS会在OHOS_SystemInit()调用之后，自行运行测试。
 > 
-> 2. 需要在"-Wl,--whole-archive"和"-Wl,--no-whole-archive"中间添加，否则链接不到。
+> 2. XTS静态库需要在"-Wl,--whole-archive"和"-Wl,--no-whole-archive"中间添加，否则链接不到。
 > 
 > 进行XTS测试时，必须链接以下静态库。
 > 

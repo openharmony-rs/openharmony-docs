@@ -1,12 +1,14 @@
 # NodeContent
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:27:28.733Z pushedAt=2026-08-03T07:03:48.395Z -->
 
-**NodeContent** is the ArkUI-provided manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md).
+**NodeContent** is a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) provided by ArkUI. It manages the FrameNode node content mounted on **ContentSlot**, and supports dynamic addition and removal of FrameNodes. It is applicable to scenarios where FrameNode node content needs to be dynamically managed through **ContentSlot**, for example, dynamically adding or removing custom FrameNodes such as text and images based on user interactions.
 
 > **NOTE**
 >
@@ -24,7 +26,7 @@ import { NodeContent } from '@kit.ArkUI';
 
 ## NodeContent
 
-**NodeContent** is the entity-level encapsulation of node content.
+An entity encapsulation of node content. It provides management capabilities such as dynamic addition and removal of FrameNodes, and is applicable to scenarios where the content nodes displayed in **ContentSlot** need to be dynamically managed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -50,7 +52,7 @@ import { NodeContent } from '@kit.ArkUI';
 
 @Component
 struct Parent {
-  private nodeContent: Content = new NodeContent();
+  private nodeContent: NodeContent = new NodeContent();
 
   aboutToAppear() {
     // Create a node through the C API and add it to the nodeContent manager.
@@ -72,7 +74,7 @@ For details about the implementation of the .so file in the preceding code, see 
 
 addFrameNode(node: FrameNode): void
 
-Adds a FrameNode to this **NodeContent** object.
+Adds a FrameNode to **NodeContent**. After being added, the FrameNode is rendered and displayed through the associated **ContentSlot**. This is applicable to scenarios where the content nodes displayed in **ContentSlot** need to be dynamically managed, for example, dynamically adding custom FrameNodes such as text and images based on user interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -82,7 +84,7 @@ Adds a FrameNode to this **NodeContent** object.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to add.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes | FrameNode to add, which must be a valid FrameNode that can be added. |
 
 **Error codes**
 
@@ -96,7 +98,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 removeFrameNode(node: FrameNode): void
 
-Removes a FrameNode from this **NodeContent** object.
+Removes a FrameNode from **NodeContent**. After being removed, the FrameNode is no longer displayed through **ContentSlot**. This is applicable to scenarios where added content nodes need to be dynamically removed, for example, removing specified custom FrameNodes such as text and images after user interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -106,11 +108,11 @@ Removes a FrameNode from this **NodeContent** object.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to remove.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes | FrameNode to remove. The node must have been added to the current **NodeContent**; otherwise, the removal is invalid. |
 
 **Example**
 
-This example shows how to add or remove a FrameNode in the **NodeContent** object.
+This example shows how to add and remove a FrameNode in **NodeContent**.
 
 ```ts
 // xxx.ets
@@ -120,32 +122,34 @@ class NodeContentCtrl {
   content: NodeContent;
   textNode: Array<typeNode.Text> = new Array();
   uiContext: UIContext;
-  width: number;
 
   constructor(uiContext: UIContext) {
     this.content = new NodeContent();
     this.uiContext = uiContext;
-    this.width = Infinity;
   }
 
-  AddNode() {
-    let node = typeNode.createNode(this.uiContext, "Text");
-    node.initialize("ContentText:" + this.textNode.length).fontSize(20);
+  addNode() {
+    let node = typeNode.createNode(this.uiContext, 'Text');
+    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
     this.textNode.push(node);
     this.content.addFrameNode(node);
   }
 
-  RemoveNode() {
+  removeNode() {
     let node = this.textNode.pop();
-    this.content.removeFrameNode(node);
+    if (node) {
+      this.content.removeFrameNode(node);
+    }
   }
 
-  RemoveFront() {
+  removeFront() {
     let node = this.textNode.shift();
-    this.content.removeFrameNode(node);
+    if (node) {
+      this.content.removeFrameNode(node);
+    }
   }
 
-  GetContent(): NodeContent {
+  getContent(): NodeContent {
     return this.content;
   }
 }
@@ -153,24 +157,23 @@ class NodeContentCtrl {
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   controller = new NodeContentCtrl(this.getUIContext());
 
   build() {
     Row() {
       Column() {
-        ContentSlot(this.controller.GetContent())
-        Button("AddToSlot")
+        ContentSlot(this.controller.getContent())
+        Button('AddToSlot')
           .onClick(() => {
-            this.controller.AddNode();
+            this.controller.addNode();
           })
-        Button("RemoveBack")
+        Button('RemoveBack')
           .onClick(() => {
-            this.controller.RemoveNode();
+            this.controller.removeNode();
           })
-        Button("RemoveFront")
+        Button('RemoveFront')
           .onClick(() => {
-            this.controller.RemoveFront();
+            this.controller.removeFront();
           })
       }
       .width('100%')
