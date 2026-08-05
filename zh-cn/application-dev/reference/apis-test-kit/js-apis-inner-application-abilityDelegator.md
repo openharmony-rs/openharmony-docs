@@ -195,7 +195,7 @@ abilityDelegator.addAbilityMonitorSync(monitor);
 
 removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
-删除已经添加的AbilityMonitor实例。使用callback异步回调。
+删除已经添加的AbilityMonitor实例。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -642,7 +642,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UI
 
 getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
-获取当前应用顶部Ability。使用callback异步回调。不支持Worker线程调用。
+获取当前应用顶部Ability。使用callback异步回调。不支持Worker线程调用。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -692,7 +692,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UI
 
 getCurrentTopAbility(): Promise\<UIAbility>
 
-获取当前应用顶部Ability。使用Promise异步回调。不支持Worker线程调用。
+获取当前应用顶部Ability。使用Promise异步回调。不支持Worker线程调用。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -736,7 +736,7 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 
 startAbility(want: Want, callback: AsyncCallback\<void>): void
 
-启动指定Ability。使用callback异步回调。
+启动指定Ability。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -803,7 +803,7 @@ abilityDelegator.startAbility(want, (err: BusinessError<void> | null, data: unde
 
 startAbility(want: Want): Promise\<void>
 
-启动指定Ability。使用Promise异步回调。
+启动指定Ability。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -870,7 +870,7 @@ abilityDelegator.startAbility(want).then(() => {
 
 doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-调度指定Ability生命周期状态到Foreground状态。使用callback异步回调。
+调度指定Ability生命周期状态到Foreground状态。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -928,7 +928,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UI
 
 doAbilityForeground(ability: UIAbility): Promise\<void>
 
-调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。
+调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -991,7 +991,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UI
 
 doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-调度指定Ability生命周期状态到Background状态。使用callback异步回调。
+调度指定Ability生命周期状态到Background状态。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1053,7 +1053,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UI
 
 doAbilityBackground(ability: UIAbility): Promise\<void>
 
-调度指定Ability生命周期状态到Background状态。使用Promise异步回调。
+调度指定Ability生命周期状态到Background状态。使用Promise异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1236,7 +1236,7 @@ abilityDelegator.print(msg).then(() => {
 
 executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
-执行指定的shell命令。使用callback异步回调。
+执行指定的shell命令。使用callback异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1282,7 +1282,7 @@ ArkTS-Dyn: executeShellCommand(cmd: string, timeoutSecs: number, callback: Async
 
 ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs: long, callback: AsyncCallback\<ShellCmdResult>): void
 
-指定超时时间，并执行指定的shell命令。使用callback异步回调。
+指定超时时间，并执行指定的shell命令。使用callback异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1329,7 +1329,7 @@ ArkTS-Dyn: executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<Shel
 
 ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs?: long): Promise\<ShellCmdResult>
 
-指定超时时间，并执行指定的shell命令。使用Promise异步回调。
+指定超时时间，并执行指定的shell命令。使用Promise异步回调。不支持多线程并发调用。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof。
 
@@ -1495,7 +1495,7 @@ abilityDelegator.finishTest(msg, 0).then(() => {
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
-添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用callback异步回调。
+添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用callback异步回调。不支持多线程并发调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
