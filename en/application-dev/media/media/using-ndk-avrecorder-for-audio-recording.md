@@ -16,7 +16,8 @@ During application development, you can use the **state** property of the AVReco
 
 ![Recording state change](figures/audio-recording-status-change.png)
 
-For details about the states, see [AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9).
+For details about the states, see [OH_AVRecorder_State](../../reference/apis-media-kit/capi-avrecorder-base-h.md#oh_avrecorder_state).
+.
 
 
 ## Requesting Permissions
