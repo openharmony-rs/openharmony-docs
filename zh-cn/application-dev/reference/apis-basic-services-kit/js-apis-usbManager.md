@@ -1493,7 +1493,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400008 | No such device (it may have been disconnected) |
+| 14400008 | No such device (it may have been disconnected).|
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
 
