@@ -31892,6 +31892,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets",
+				"functions":[
+					{
+						"end_line":117,
+						"name":"toggle_stream_b",
+						"start_line":91
+					}
+				]
 			}
 		]
 	},
