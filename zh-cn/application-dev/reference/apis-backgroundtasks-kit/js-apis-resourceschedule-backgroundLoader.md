@@ -9,7 +9,7 @@
 
 本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与 执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
-> **起始版本：** 
+> **说明：** 
 >
 > -本模块同时支持ArkTs-Dyn、ArkTS-Sta
 >
@@ -26,7 +26,9 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 ## 常量
 
-**起始版本：** 26.0.0
+**ArkTs-Dyn起始版本：** 26.0.0
+
+**ArkTs-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -105,9 +107,9 @@ unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
-**ArkTs-Dyn起始版本：** 26
+**ArkTs-Dyn起始版本：** 26.0.0
 
-**ArkTs-Sta起始版本：** 26
+**ArkTs-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -160,14 +162,15 @@ unregisterTask(taskInfo: TaskInfo): void
 ## backgroundLoader.getTaskInfo
 
 ArkTs-Dyn: getTaskInfo(taskId: number): Promise\<TaskInfo>
+
 ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
-**ArkTs-Dyn起始版本：** 26
+**ArkTs-Dyn起始版本：** 26.0.0
 
-**ArkTs-Sta起始版本：** 26
+**ArkTs-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -179,7 +182,7 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| taskId | number   | 是    | 需要查询的后台加载任务ID，取值范围为整数。 |
+| taskId | ArkTs-Dyn: number <br> ArkTs-Sta: int  | 是    | 需要查询的后台加载任务ID，取值范围为整数。 |
 
 **返回值**： 
 
@@ -220,9 +223,9 @@ finishTask(taskInfo: TaskInfo): void
  
 应用需要实现后台加载任务的[常量](#常量)的主业务回调方法，在完成业务加载任务后，需要通过调用finishTask方法通知系统加载任务完成。运行在异步回调函数或其他线程中执行finishTask调用。
 
-**ArkTs-Dyn起始版本：** 26
+**ArkTs-Dyn起始版本：** 26.0.0
 
-**ArkTs-Sta起始版本：** 26
+**ArkTs-Sta起始版本：** 26.0.0
 
 **超时时间限制**：应用需要确保后台加载任务尽量在30秒内执行完成，从开始执行ON_START回调方法之后，需要在30秒内完成finishTask任务完成的调用。
 如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
