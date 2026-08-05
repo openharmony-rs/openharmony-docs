@@ -1,4 +1,4 @@
-# @ohos.accessibility.config (SystemAPI)
+# @ohos.accessibility.config (System Accessibility Configuration) (System API)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->

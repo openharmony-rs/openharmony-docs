@@ -1,4 +1,4 @@
-# Accessibility Subsystem Error Codes
+# Accessibility Error Codes
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->

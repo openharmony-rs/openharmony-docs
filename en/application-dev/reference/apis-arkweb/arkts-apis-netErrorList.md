@@ -1,4 +1,4 @@
-# @ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)
+# @ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
