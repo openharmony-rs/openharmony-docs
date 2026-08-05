@@ -23,7 +23,7 @@ import serial from '@ohos.busManager.serial';
 
 addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
-添加应用程序访问串口的权限。此函数通过将应用的Token ID与串口设备ID关联，建立应用的串口访问权限关系。仅用于会弹出串口授权弹窗的系统应用，在用户授权后，权限信息将持久化存储。使用Promise异步回调。
+添加应用访问串口的权限。此函数通过将应用的Token ID与串口设备ID关联，建立应用的串口访问权限关系。适用于系统管理类应用为第三方应用授予串口访问权限的场景，如设备管理工具为工业数据采集应用分配串口权限。仅用于会弹出串口授权弹窗的系统应用，在用户授权后，权限信息将持久化存储。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -39,8 +39,8 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | --------- | -------- | ---- | ------------------------------------------------------------ |
-| tokenId   | string   | 是   | 被授权应用的Token ID，用于标识被授予串口访问权限的应用程序。设置后，指定该应用可获得对相应串口设备的访问权限。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。|
-| deviceId  | string   | 是   | 串口设备ID，用于指定需要授权访问的串口设备。板载串口取值为portName；USB虚拟串口取值为VID+PID+SN的组合或设备路径（如/dev/ttyUSB0）。设置后，应用将获得对指定串口设备的访问权限。 |
+| tokenId   | string   | 是   | 被授权应用的Token ID，用于标识被授予串口访问权限的应用。设置后，指定该应用可获得对相应串口设备的访问权限。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。|
+| deviceId  | string   | 是   | 串口设备ID，用于指定需要授权访问的串口设备。可通过获取串口设备列表接口获得。板载串口取值为portName；USB虚拟串口取值为VID+PID+SN的组合或设备路径（如/dev/ttyUSB0）。设置后，应用将获得对指定串口设备的访问权限。 |
 
 **返回值：**
 
@@ -62,14 +62,13 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
 // 添加串口访问权限
 // Token ID 需要通过bundleManager.getBundleInfoForSelf接口获取，此处仅为示例占位符
 let tokenId: string = '123456';
 let deviceId: string = '/dev/ttyUSB0';
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
-}).catch((error: BusinessError) => {
+}).catch((error) => {
   console.error(`Failed to addPortAuthorization. Code: ${error.code}, message: ${error.message}`);
 });
 ```

@@ -73,7 +73,6 @@ ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 **示例：**
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 import serialManager from '@ohos.usbManager.serial';
 
@@ -98,7 +97,7 @@ function addSerialRight() {
     } catch (error) {
       console.error('addSerialRight error, ' + JSON.stringify(error));
     }
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error('getBundleInfoForSelf failed, error = ' + JSON.stringify(error));
   });
 }

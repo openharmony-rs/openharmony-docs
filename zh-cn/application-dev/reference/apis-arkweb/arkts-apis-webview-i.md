@@ -18,7 +18,7 @@
 
 本页面汇总了ArkWeb Webview模块（`@kit.ArkWeb`）中的辅助接口与数据结构类型。这些类型主要作为Web组件各能力的方法入参、回调出参或状态枚举使用，配合[WebviewController](./arkts-apis-webview-WebviewController.md)、[WebCookieManager](./arkts-apis-webview-WebCookieManager.md)、[WebStorage](./arkts-apis-webview-WebStorage.md)等核心类共同完成Web网页的加载、渲染、交互、媒体接管及性能优化等控制能力。
 
-本模块提供Web控制能力，网页显示的能力请参考[组件描述](arkts-basic-components-web.md)；Web控制能力的完整说明及核心控制器类请参考[模块描述](./arkts-apis-webview.md)。
+本模块提供Web控制能力，网页显示的能力请参考[组件描述](./arkts-basic-components-web.md)；Web控制能力的完整说明及核心控制器类请参考[模块描述](./arkts-apis-webview.md)。
 
 ## WebStorageOrigin
 
@@ -111,8 +111,8 @@ Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制�
 
 | 名称 | 类型 |  只读 |  可选 | 说明 |
 |------|------|------|------|------|
-| id | string | 否 | 是 | snapshot的id。|
-| size | [SizeOptions](../apis-arkui/arkui-ts/ts-types.md#sizeoptions)  | 否 | 是 | web绘制的尺寸，最多支持16000px * 16000px，长度单位支持px、vp、%，需保持不同参数传入长度单位一致，默认单位vp，超过规格时返回最大规格。（示例：width:'100px'，height:'200px'。或者 width:'20%'，height:'30%'。只写数字时单位为vp。）|
+| id | string | 否 | 是 | snapshot的id，用于标识本次全量绘制请求，便于在回调结果中匹配对应的全量绘制数据。不传入时不指定id，由系统自动处理。|
+| size | [SizeOptions](../apis-arkui/arkui-ts/ts-types.md#sizeoptions)  | 否 | 是 | Web绘制的尺寸，最多支持16000px * 16000px，长度单位支持px、vp、%，需保持不同参数传入长度单位一致，不一致时可能导致绘制尺寸不符合预期，默认单位vp，超过规格时返回最大规格。不传入以截图区域的实际尺寸绘制。（示例：width:'100px'，height:'200px'。或者 width:'20%'，height:'30%'。只写数字时单位为vp。）|
 
 ## SnapshotResult<sup>12+</sup>
 
@@ -127,8 +127,8 @@ Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制�
 | 名称 | 类型 | 只读 | 可选 |  说明 |
 |------|------|-- |--|---------|
 | id | string | 否 | 是 | snapshot的id。|
-| status | boolean | 否 | 是 |  snapshot的状态，正常为true，失败为false，获取全量绘制结果失败，返回size的长宽都为0，map为空。|
-| size | [SizeOptions](../apis-arkui/arkui-ts/ts-types.md#sizeoptions)   | 否 | 是 | web绘制的真实尺寸，number类型，单位vp。|
+| status | boolean | 否 | 是 |  snapshot的状态，正常为true，失败为false，获取全量绘制结果失败，返回size的长宽都为0，imagePixelMap为空。|
+| size | [SizeOptions](../apis-arkui/arkui-ts/ts-types.md#sizeoptions)   | 否 | 是 | Web绘制的真实尺寸，SizeOptions对象包含width和height属性，均为number类型，单位vp。|
 | imagePixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 全量绘制结果为image.PixelMap格式。|
 
 ## OfflineResourceMap<sup>12+</sup>
