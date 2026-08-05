@@ -2090,7 +2090,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setSupportedWindowModes<sup>15+</sup>
 
-setSupportedWindowModes(supportedWindowModes: Array&lt;bundleManager.SupportWindowMode&gt;): Promise&lt;void&gt;
+setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
 设置主窗的窗口支持模式，使用Promise异步回调。
 
@@ -2160,7 +2160,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setSupportedWindowModes<sup>20+</sup>
 
-setSupportedWindowModes(supportedWindowModes: Array&lt;bundleManager.SupportWindowMode&gt;, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
+setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
 
 设置主窗的窗口支持模式，并提供最大化按钮置灰功能，使用Promise异步回调。
 
