@@ -49,7 +49,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | securityPatchTag | string | 是 | 安全补丁级别。<br/>示例：<!--RP7-->2021/01/01<!--RP7End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | displayVersion | string | 是 | 产品版本。<!--RP14--><!--RP14End--><br/>示例：<!--RP8-->XXX X.X.X.X<!--RP8End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| incrementalVersion | string | 是 | 差异版本号，是编译时生成的ohos的版本号。 <br/>示例：default<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| incrementalVersion | string | 是 | 差异版本号，是编译时生成的ohos的版本号。 <br/>示例：6.1.1.120<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br/>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br/>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br/>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br/>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | osFullName | string | 是 | 系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x，其中x表示数字占位符。<!--RP12End-->如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->OpenHarmony-5.0.0.1<!--RP10End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | majorVersion | number | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：5<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
