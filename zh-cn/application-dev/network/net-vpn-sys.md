@@ -17,7 +17,7 @@ VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上
 
 ## 接口说明
 
-完整的 JS API 说明以及实例代码请参考：[@ohos.net.vpn (VPN管理)（系统接口）](../reference/apis-network-kit/js-apis-net-vpn-sys.md)。
+完整的 JS API 说明以及实例代码请参考：[@ohos.net.vpn (VPN 管理)（系统接口）](../reference/apis-network-kit/js-apis-net-vpn-sys.md)。
 
 | 接口名                                                            | 描述                                          |
 | ----------------------------------------------------------------- | --------------------------------------------------- |
