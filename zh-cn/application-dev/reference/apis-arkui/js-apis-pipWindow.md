@@ -786,9 +786,9 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 | FAST_FORWARD      | 3   | 视频快进控件     |
 | FAST_BACKWARD     | 4   | 视频快退控件。   |
 | HANG_UP_BUTTON           | 5   | 挂断控件。 |
-| MICROPHONE_SWITCH | 6  | 启用/禁用麦克风控件。 |
-| CAMERA_SWITCH     | 7   | 启用/禁用摄像头控件。     |
-| MUTE_SWITCH       | 8   | 启用/禁用静音控件。     |
+| MICROPHONE_SWITCH | 6  | 打开/关闭麦克风控件。 |
+| CAMERA_SWITCH     | 7   | 打开/关闭摄像头控件。     |
+| MUTE_SWITCH       | 8   | 静音/解除静音控件。     |
 
 
 ## ControlPanelActionEventCallback<sup>12+</sup>
@@ -812,7 +812,7 @@ ArkTS-Sta: type ControlPanelActionEventCallback = (event: PiPActionEventType, st
 | 参数名                       | 类型           | 必填    | 说明                                |
 |--------------------------|--------------|--------------|-----------------------------------|
 | event       |  [PiPActionEventType](#pipactioneventtype)       | 是 | 回调画中画控制面板控件动作事件类型。<br/>应用依据控件动作事件做相应处理，如触发'playbackStateChanged'事件时，需要开始或停止视频。 |
-| status | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 表示可切换状态的控件当前的状态，如具备启用和禁用两种状态的麦克风控件组、摄像头控件组和静音控件组，启用为1，禁用为0；具备播放和暂停两种状态的播放/暂停控件组，播放为1，暂停为0。其余不具备可切换状态的控件，如视频上/下一个控件组，视频快进/快退控件组，挂断控件组，该参数返回默认值-1。 |
+| status | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组和摄像头控件组，打开为1，关闭为0；具备静音和解除静音两种状态的静音控件组，静音为1，解除静音为0；具备播放和暂停两种状态的播放/暂停控件组，播放为1，暂停为0。其余不具备可切换状态的控件，如视频上/下一个控件组，视频快进/快退控件组，挂断控件组，该参数返回默认值-1。 |
 
 
 ## StateChangeCallback
