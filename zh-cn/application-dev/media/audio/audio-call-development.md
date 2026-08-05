@@ -82,9 +82,6 @@ async function initArguments(context: common.UIAbilityContext) {
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
       // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
