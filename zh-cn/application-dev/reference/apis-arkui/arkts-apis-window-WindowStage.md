@@ -1466,10 +1466,10 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('onWindowStageCreate');
+        console.info('Succeeded in loading the content.');
       try {
         windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in loading the content.');
+        console.info('Succeeded in setting default density enabled.');
       } catch (exception) {
         console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
       }
@@ -1994,9 +1994,9 @@ export default class EntryAbility extends UIAbility {
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
         bufferArr[i] = 255;
-        bufferArr[i+1] = 0;
-        bufferArr[i+2] = 122;
-        bufferArr[i+3] = 255;
+        bufferArr[i + 1] = 0;
+        bufferArr[i + 2] = 122;
+        bufferArr[i + 3] = 255;
       }
       image.createPixelMap(color, {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
@@ -2011,20 +2011,20 @@ export default class EntryAbility extends UIAbility {
             console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
           });
         } catch (exception) {
-          console.error(`Failed to set image for recent.`);
+          console.error(`Failed to set image for recent. Cause code: ${exception.code}, message: ${exception.message}`);
         }
       })
 
-      let imgResourceId = $r("app.media.startIcon").id
+      let imgResourceId = $r("app.media.startIcon").id;
       try {
-        let promise2 = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
-        promise2.then(() => {
+        let imgResourcePromise = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
+        imgResourcePromise.then(() => {
           console.info(`Succeeded in setting image for recent`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
         });
       } catch (exception) {
-        console.error(`Failed to set image for recent.`);
+        console.error(`Failed to set image for recent. Cause code: ${exception.code}, message: ${exception.message}`);
       }
     });
   }
@@ -2035,7 +2035,7 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。
 
 **起始版本：** 26.0.0
 
@@ -2082,7 +2082,7 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
-      console.error(`Failed to remove image for recent.`);
+      console.error(`Failed to remove image for recent. Cause code: ${exception.code}, message: ${exception.message}`);
     }
   }
 };
@@ -2090,7 +2090,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setSupportedWindowModes<sup>15+</sup>
 
-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
+setSupportedWindowModes(supportedWindowModes: Array&lt;bundleManager.SupportWindowMode&gt;): Promise&lt;void&gt;
 
 设置主窗的窗口支持模式，使用Promise异步回调。
 
@@ -2160,7 +2160,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setSupportedWindowModes<sup>20+</sup>
 
-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
+setSupportedWindowModes(supportedWindowModes: Array&lt;bundleManager.SupportWindowMode&gt;, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
 
 设置主窗的窗口支持模式，并提供最大化按钮置灰功能，使用Promise异步回调。
 
