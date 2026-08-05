@@ -44,7 +44,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | softwareModel | string | 是 | 内部软件子型号。<br/>示例：<!--RP5-->TAS-AL00<!--RP5End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | hardwareModel | string | 是 | 硬件版本号。<br/>示例：<!--RP6-->TASA00CVN1<!--RP6End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6开始支持，从API version 9开始废弃。建议使用[系统能力SystemCapability使用指南](../syscap.md)替代。<br/>示例：default<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| serial | string | 是 | 设备序列号SN(Serial Number)，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) <br/示例：序列号随设备差异<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| serial | string | 是 | 设备序列号SN(Serial Number)，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请) <br/>示例：序列号随设备差异<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | bootloaderVersion | string | 是 | Bootloader版本号，用于标识设备启动引导程序的版本信息。<br/>示例：bootloader<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | securityPatchTag | string | 是 | 安全补丁级别。<br/>示例：<!--RP7-->2021/01/01<!--RP7End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
