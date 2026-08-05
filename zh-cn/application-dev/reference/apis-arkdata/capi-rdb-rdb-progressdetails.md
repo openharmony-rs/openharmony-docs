@@ -12,7 +12,7 @@ typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
 
 ## 概述
 
-描述数据库整体执行端云同步任务的进度信息。
+描述数据库整体执行端云同步任务上传和下载的统计信息。
 
 **起始版本：** 11
 

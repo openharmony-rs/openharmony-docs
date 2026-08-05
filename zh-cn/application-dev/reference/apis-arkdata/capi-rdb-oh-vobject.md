@@ -100,7 +100,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 **描述**
 
-将char *类型的字符数组转换为OH_VObject类型的值。
+将char *类型的字符串转换为OH_VObject类型的值。
 
 **起始版本：** 10
 
@@ -109,7 +109,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 | 参数项                  | 描述                           |
 | ----------------------- | ------------------------------ |
 | OH_VObject *valueObject | 表示指向OH_VObject实例的指针。 |
-| const char *value       | 表示字符数组参数。             |
+| const char *value       | 表示字符串参数。             |
 
 **返回：**
 
