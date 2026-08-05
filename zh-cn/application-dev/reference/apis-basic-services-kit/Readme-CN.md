@@ -15,6 +15,7 @@
     - [@ohos.account.distributedAccount (分布式账号管理)(系统接口)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (系统账号管理)(系统接口)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+    - [系统账号约束列表](appendix-osAccount-constraints.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
