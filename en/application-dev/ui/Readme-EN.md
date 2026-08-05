@@ -117,7 +117,7 @@
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
     - [Component Navigation (Navigation) (Recommended)]<!--arkts-navigation-navigation-->
-      - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
+      - [Navigation Architecture](./arkts-navigation-architecture.md)
       - [Subpage](./arkts-navigation-navdestination.md)
       - [Page Routing](./arkts-navigation-jump.md)
       - [Transition Animation](./arkts-navigation-animation.md)
@@ -139,7 +139,7 @@
   - Lists and Grids<!--arkts-list-and-grid-->
     - [List and Grid Overview](arkts-list-grid-development-overview.md)
     - [Creating a List (List)](arkts-layout-development-create-list.md)
-    - [Creating an Arc List (ArcList)](arkts-layout-development-create-arclist.md) (Recommended for Circular Screens)
+    - [Creating an Arc List (ArcList) (Recommended for Circular Screens)](arkts-layout-development-create-arclist.md)
     - [Creating a Grid (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
     - [Creating a Waterfall Flow (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
     - [Creating Lazy Layouts (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
@@ -189,7 +189,7 @@
        - [Global Popup Independent of UI Components (openPopup)](arkts-popup-and-menu-components-uicontext-popup.md)
      - Binding Modal Pages<!--arkts-bind-modal-->
         - [Modal Page Overview](arkts-modal-overview.md)
-        - [Binding a Semi-Modal Page (bindSheet)](arkts-sheet-page.md)
+        - [Binding a Semi-Modal Sheet (bindSheet)](arkts-sheet-page.md)
         - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
      - [Using Toasts (Toast)](arkts-create-toast.md)
      - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->

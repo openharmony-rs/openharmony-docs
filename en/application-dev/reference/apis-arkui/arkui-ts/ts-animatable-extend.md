@@ -1,10 +1,12 @@
 # @AnimatableExtend: Animatable Property Definition
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=27d0fa5fed547f5e93e0b56b8ad3e27d447b6bbd translatedAt=2026-07-29T03:09:43.152Z pushedAt=2026-08-04T02:47:40.271Z -->
 
 The @AnimatableExtend decorator is used to customize animatable property methods. Functions defined within this decorator are called on a frame-by-frame basis during the animation process until the animation ends. Common use cases for this decorator include:
 
@@ -16,9 +18,11 @@ The @AnimatableExtend decorator is used to customize animatable property methods
 
 - Non-animatable property: a property that does not trigger an animation effect when its value changes (even if called before the animation property). Its value changes abruptly without transitions. An example is the **points** property of the **Polyline** component.
 
->  **NOTE**
+> **NOTE**
 >
->  This decorator is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This decorator is supported since API version 10. If new content is added in subsequent versions, the start version of the content will be marked with a superscript.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Syntax
 
@@ -29,7 +33,9 @@ The @AnimatableExtend decorator is used to customize animatable property methods
 ```
 
 - \@AnimatableExtend can be defined only globally.
+
 - The parameter of the \@AnimatableExtend decorated function must be of the number type or a custom type that implements the **AnimatableArithmetic\<T\>** API.
+
 - The function body of an \@AnimatableExtend decorated function can only access attribute methods of the component type specified within the parentheses of @AnimatableExtend.
 
 ## AnimatableArithmetic\<T\>
@@ -44,7 +50,7 @@ The **AnimatableArithmetic** API defines animation calculation rules for non-num
 
 plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
-Defines the addition rule for the data type.
+Defines the addition operation rule for this data type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -54,7 +60,7 @@ Defines the addition rule for the data type.
 
 | Name  | Type                               | Mandatory| Description                                   |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes   | Object for the addition operation.                          |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes    | The other data object for addition with the current object.                           |
 
 **Return value**
 
@@ -76,7 +82,7 @@ Defines the subtraction rule for the data type.
 
 | Name  | Type                               | Mandatory| Description                                   |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes   | Object for the subtraction operation.                          |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes   | The other data object for subtraction with the current object. |
 
 **Return value**
 
@@ -120,7 +126,7 @@ Defines the equality check rule for the data type.
 
 | Name  | Type                               | Mandatory| Description                                   |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes   |  Another data object to compare for equality with the current object.                         |
+| rhs | [AnimatableArithmetic\<T\>](#animatablearithmetict) | Yes | The other data object to compare with the current object for equality. |
 
 **Return value**
 
@@ -172,8 +178,8 @@ class Point {
   y: number
 
   constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   plus(rhs: Point): Point {
@@ -265,7 +271,7 @@ struct AnimatablePropertyExample {
     Column() {
       Polyline()
         .animatablePoints(this.points)
-        .animation({ duration: 1000, curve: Curve.Ease })// Set animation parameters.
+        .animation({ duration: 1000, curve: Curve.Ease }) // Set the animation parameters.
         .size({ height: 220, width: 300 })
         .fill(Color.Green)
         .stroke(Color.Red)
@@ -286,4 +292,5 @@ struct AnimatablePropertyExample {
   }
 }
 ```
+
 ![image](figures/animatable-points.gif)

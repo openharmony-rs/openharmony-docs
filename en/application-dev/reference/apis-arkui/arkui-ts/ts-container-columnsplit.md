@@ -1,23 +1,27 @@
 # ColumnSplit
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:38:56.715Z pushedAt=2026-08-01T06:42:55.892Z -->
 
-The **ColumnSplit** component lays out child components vertically and inserts a horizontal divider between every two child components.
+The **ColumnSplit** component lays out child components vertically and inserts a horizontal divider between every two child components. It is suitable for scenarios that require a vertical multi-area layout with dynamic area resizing, such as dashboard UIs and adjustable top-bottom split layouts. Through draggable dividers, users can flexibly adjust the height of each area, enhancing UI interactivity and user experience.
 
 >  **NOTE**
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+
 ## Child Components
 
 Supported
 
-This component limits the height of its child components through dividers. During initialization, the divider positions are calculated based on the height of its child components. After initialization, dynamic height modifications to child components do not affect divider positions. To adjust child component heights, drag the adjacent dividers.
+**ColumnSplit** limits the height of child components through dividers. During initialization, the divider positions are calculated based on the heights of the child components. After initialization, dynamically modifying the height of child components does not take effect, and the divider positions remain unchanged. After **resizeable** is set to **true**, the height of child components can be changed by dragging adjacent dividers.
 
-After initialization, dynamic changes to the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) attributes may cause the size of the child components to exceed the allowable distance between adjacent dividers. In such cases, dividers cannot be dragged to adjust the height of the child components.
+After initialization, when dynamic modification of the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) universal attributes causes a child component size to exceed the spacing between adjacent dividers, dragging the divider to change the child component height is not supported.
+
 ## APIs
 
 ColumnSplit()
@@ -40,7 +44,11 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 resizeable(value: boolean)
 
-Sets whether the divider can be dragged.
+Sets whether the divider can be dragged. When set to **true**, the user can drag the divider to adjust the height of adjacent child components. When set to **false**, the divider cannot be dragged and the child component height is fixed.
+
+>  **NOTE**
+>
+> After initialization, when dynamic modification of the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) universal attributes causes a child component size to exceed the spacing between adjacent dividers, dragging the divider to change the child component height is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -50,15 +58,17 @@ Sets whether the divider can be dragged.
 
 | Name| Type   | Mandatory| Description                                |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | Yes  | Whether the divider can be dragged. **true**: The divider can be dragged. **false**: The divider cannot be dragged.<br>Default value: **false**<br>Invalid values are treated as the default value.|
+| value  | boolean | Yes   | Whether the divider can be dragged. The value **true** means that the divider can be dragged, and **false** means the opposite. The height adjustment range of a child component is limited by its maximum and minimum heights. When the size of a child component is greater than the spacing between adjacent dividers, divider drag is not supported. After initialization, when dynamic modification of **margin**, **border**, or **padding** universal attributes causes the size of a child component to be greater than the spacing between adjacent dividers, divider drag to change the height of the child component is not supported.<br>Default value: **false** <br>Illegal value: The default value is used. |
 
 ### divider<sup>10+</sup>
 
 divider(value: ColumnSplitDividerStyle | null)
 
-Margin of the divider.
+Sets the distance between the divider and the child components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,7 +76,7 @@ Margin of the divider.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10)&nbsp;\|&nbsp;null| Yes  | Margin of the divider, that is, the distance between the divider and the child component.<br>Default value: **null**. When this parameter is set to null, the distance between the divider and the child component is 0 vp.<br>Invalid values are treated as the default value.|
+| value | [ColumnSplitDividerStyle](#columnsplitdividerstyle10)&nbsp;\|&nbsp;null | Yes | Margin of the divider, which sets the distance between the divider and child components. The object properties include: **startMargin** (distance between the child component and the divider above) and **endMargin** (distance between the child component and the divider below).<br>Default value: **null**. When set to **null**, the distance between the divider and child components is 0 vp.<br>Illegal value: The default value is used. |
 
 ## ColumnSplitDividerStyle<sup>10+</sup>
 
@@ -74,12 +84,14 @@ Sets the distance between the child component and the upper and lower dividers.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| startMargin | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the child component and the upper divider.<br>Default value: **0vp**<br>Invalid values are treated as the default value. In this case, the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**.|
-| endMargin   | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the child component and the lower divider.<br>Default value: **0vp**<br>Invalid values are treated as the default value. In this case, the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**.|
+| startMargin | [Dimension](ts-types.md#dimension10)       | No | Yes  | Distance between the child component and the divider above it. This spacing can be adjusted (for example, to prevent content from overlapping with the divider or to improve layout aesthetics).<br>Default value: **0vp**<br>Value range: negative values are not supported.<br>Illegal value: treated as the default value, in which case the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**. |
+| endMargin   | [Dimension](ts-types.md#dimension10)       | No | Yes  | Distance between the child component and the divider below it. This spacing can be adjusted (for example, to prevent content from overlapping with the divider or to improve layout aesthetics).<br>Default value: **0vp**<br>Value range: negative values are not supported.<br>Illegal value: treated as the default value, in which case the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**. |
 
 >  **NOTE**
 >
@@ -113,14 +125,14 @@ struct ColumnSplitExample {
         Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
       }
       .borderWidth(1)
-      .resizeable(true) // The divider can be dragged.
+      .resizeable(true) // Set the divider draggable.
       .width('90%').height('60%')
     }.width('100%')
   }
 }
 ```
 
-![columnSplit1](figures/columnSplit1.gif)
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### Example 2: Setting the ColumnSplit Component with Spacing
 
@@ -142,7 +154,7 @@ struct ColumnSplitDividerExample {
         Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
       }
       .borderWidth(1)
-      .divider({ startMargin: 5, endMargin: 5 }) // Set the spacing.
+      .divider({ startMargin: 5, endMargin: 5 }) // Set the distance between the divider and child components.
       .width('90%')
       .height('60%')
     }.width('100%')

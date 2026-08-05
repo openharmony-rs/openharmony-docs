@@ -1,8 +1,8 @@
 # SwipeRefresherV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -32,7 +32,7 @@ import { SwipeRefresherV2 } from '@kit.ArkUI';
 
 ## SwipeRefresherV2
 
-SwipeRefresherV2({content?: string, isLoading: boolean})
+SwipeRefresherV2({content?: ResourceStr, isLoading: boolean})
 
 实现下拉刷新功能，常用于需要下拉获取最新内容的场景，如社交应用的消息列表刷新、新闻应用的资讯加载等。当用户下拉页面时，组件展示加载状态，开发者需自行实现数据获取逻辑，并通过isLoading参数控制加载状态的切换。
 
@@ -50,8 +50,8 @@ SwipeRefresherV2({content?: string, isLoading: boolean})
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- |----------|
-| content | string | 否 | @Param | 加载时显示的文本内容，需与isLoading配合使用。当需要在加载效果中显示提示文本时传入此参数，不传入时默认为空字符串（即加载效果中不显示文本）。当isLoading为true时显示该文本，当isLoading为false时不显示该文本。<br/>默认值：空字符串。<br/>**说明：** 当文本大于列宽时，文本被截断。 |
-| isLoading | boolean | 是 | \@Require<br>\@Param | 当前内容是否正在加载。<br/>true：组件处于加载中状态，显示加载效果和content参数指定的文本。<br/>false：组件未在加载状态，停止显示加载效果和content参数指定的文本。<br/>**说明：** 开发者需在数据获取完成后将isLoading设置为false，以停止加载效果。 |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。 |
+| isLoading | boolean | 是 | \@Require<br/>\@Param | 当前内容是否正在加载。<br> true：内容正在加载。<br> false：内容未在加载。 |
 
 ## 事件
 
