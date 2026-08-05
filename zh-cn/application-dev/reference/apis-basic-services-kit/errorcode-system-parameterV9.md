@@ -28,7 +28,7 @@ System parameter not found.
 
 **处理步骤**
 
-设置合法的参数。关于参数的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+设置合法的参数。关于参数的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 ## 14700102 系统参数值无效
 
@@ -38,7 +38,7 @@ Invalid system parameter value.
 
 **错误描述**
 
-当系统参数value值为空字符、非法字符或长度超出范围时，系统会报此错误码。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+当系统参数value值为空字符、非法字符或长度超出范围时，系统会报此错误码。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
@@ -46,7 +46,7 @@ Invalid system parameter value.
 
 **处理步骤**
 
-修改value值为合法字符串。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+修改value值为合法字符串。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 ## 14700103 系统操作因权限被拒绝
 
@@ -56,7 +56,7 @@ The operation on the system permission is denied.
 
 **错误描述**
 
-系统参数没有DAC或MAC权限时，系统会报此错误码。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+系统参数没有DAC或MAC权限时，系统会报此错误码。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
@@ -64,7 +64,7 @@ The operation on the system permission is denied.
 
 **处理步骤**
 
-添加相应的DAC或MAC权限。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+添加相应的DAC或MAC权限。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 ## 14700104 系统内部错误，包括内存不足，死锁等
 
@@ -74,7 +74,7 @@ System internal error such as out memory or deadlock.
 
 **错误描述**
 
-当试图修改const属性参数（赋值后不可更改的参数）、socket连接失败、内存拷贝失败等错误时，系统会报此错误码。关于const属性参数的设计机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
+当试图修改const属性参数（赋值后不可更改的参数）、socket连接失败、内存拷贝失败等错误时，系统会报此错误码。关于const属性参数的设计机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
