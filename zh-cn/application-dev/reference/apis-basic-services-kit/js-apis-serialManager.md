@@ -220,7 +220,7 @@ open(portId: number): void
 
 **配对调用：**
 - 必须与[close](#serialmanagerclose)方法配对使用
-
+- 打开串口后，使用完毕必须调用close()释放资源
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
