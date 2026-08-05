@@ -192,5 +192,3 @@ type EventProcess = (event: string, args: Record<string, Object>) => void
 |-------|----| ---- |------|
 | event | string  | 是   | 请求事件 |
 | args | Record<string, Object>  | 是   | 事件关联的参数 |
-
-
