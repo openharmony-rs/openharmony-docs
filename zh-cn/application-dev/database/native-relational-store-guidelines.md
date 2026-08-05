@@ -479,7 +479,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     int res = OH_Rdb_CreateTransaction(store_, options, &trans);
     OH_RdbTrans_DestroyOptions(options);
     ```
-    <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->  
+    <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
     ``` C++
     char transCreateTableSql[] =
