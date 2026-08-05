@@ -24,7 +24,7 @@ import { stream } from '@kit.ArkTS';
 
 ## Writable
 
-可写入数据的流。可写流允许将数据写入到目标中，这个目标可以是文件、HTTP 响应、标准输出、另一个流等。
+可写入数据的流。可写流允许将数据写入到目标中，这个目标可以是文件、HTTP 响应、标准输出、另一个流等。可写流采用缓冲区机制：数据通过[write()](#write)写入缓冲区，缓冲区数据通过[doWrite()](#dowrite)自动写出到目标，开发者需实现doWrite以定义数据写出的具体行为。
 
 ### 属性
 
@@ -70,7 +70,7 @@ let writableStream = new stream.Writable();
 
 write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean
 
-将数据写入流的缓冲区中。使用callback异步回调。
+将数据写入流的缓冲区中。数据写入缓冲区后，当缓冲区数据被消耗时，会自动调用[doWrite()](#dowrite)将数据写出。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +86,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 | ------ | ------ | ---- | -------------------------- |
 | chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串，会抛出异常。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
-| callback  | Function | 否   | 回调函数。默认不调用。 |
+| callback  | Function | 否   | 回调函数，用于在数据写入完成后执行特定逻辑。传入callback时，数据写入缓冲区后会调用该回调函数；不传入时，不调用回调函数。 |
 
 **返回值：**
 
@@ -144,7 +144,7 @@ writableStream.write("test", "utf8");
 
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 
-结束可写流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
+结束可写流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数且不为空值时，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -158,9 +158,9 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认为undefined。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
-| callback  | Function | 否   | 回调函数。|
+| callback  | Function | 否   | 回调函数。传入时异步调用，不传入时，不调用回调函数。|
 
 **返回值：**
 
@@ -226,7 +226,7 @@ writableStream.end("finish", "utf8", () => {
 
 setDefaultEncoding(encoding?: string): boolean
 
-设置可写流的默认字符编码。
+设置可写流的默认字符编码类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -240,7 +240,7 @@ setDefaultEncoding(encoding?: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 设置默认字符编码。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
+| encoding | string | 否 | 设置默认字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 
 **返回值：**
 
@@ -428,7 +428,7 @@ ArkTS-Sta: on(event: string, callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br>\- `'error'`：在可写流发生异常时触发该事件。<br>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件传输的数据。 |
 
 **示例：**
@@ -446,11 +446,11 @@ class TestWritable extends stream.Writable {
 }
 
 let callbackCalled = false;
-let writable = new TestWritable();
-writable.on('error', () => {
+let writableStream = new TestWritable();
+writableStream.on('error', () => {
   console.info("Writable event test", callbackCalled.toString()); // Writable event test false
 });
-writable.write("hello", "utf8", () => {
+writableStream.write("hello", "utf8", () => {
 });
 ```
 
@@ -467,11 +467,11 @@ class TestWritable extends stream.Writable {
 }
 
 let callbackCalled = false;
-let writable = new TestWritable();
-writable.on('error', (): void => {
+let writableStream = new TestWritable();
+writableStream.on('error', (): void => {
   console.info("Writable event test", callbackCalled.toString()); // 期望结果: Writable event test false
 });
-writable.write("hello", "utf8", () => {
+writableStream.write("hello", "utf8", () => {
 });
 ```
 
@@ -495,7 +495,7 @@ ArkTS-Sta: off(event: string, callback?: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br>\- `'error'`：在可写流发生异常时触发该事件。<br>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
 **示例：**
@@ -556,7 +556,7 @@ setTimeout(() => {
 
 doInitialize(callback: Function): void
 
-用户实现这个函数。该函数在可写流初始化阶段被调用，无需用户调用。使用callback异步回调。
+开发者实现这个函数。该函数在可写流初始化阶段被调用，无需手动触发。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -728,7 +728,7 @@ Readable构造函数的选项信息。
 
 | 名称 | 类型 | 必填 | 说明 |
 | ---- | -------- | ---- | -------------- |
-| encoding | string  | 否 | 指定数据的编码格式，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br/>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。|
+| encoding | string  | 否 | 指定数据的字符编码类型，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br>-&nbsp; 默认值是：'utf-8'。|
 
 ## Readable
 
@@ -829,7 +829,7 @@ ArkTS-Sta: read(size?: int): buffer.Buffer | string | null
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| ArkTS-Dyn: string \| null<br>ArkTS-Sta: buffer.Buffer \| string \| null | 可读流读取出的数据。 |
+| ArkTS-Dyn: string \| null<br>ArkTS-Sta: buffer.Buffer \| string \| null | 从可读流缓冲区读取出的数据。如果未读取到数据，则返回null。 |
 
 **错误码：**
 
@@ -989,9 +989,9 @@ console.info("Readable test pause", readableStream.isPaused()); // 期望结果:
 
 setEncoding(encoding?: string): boolean
 
-设置可读流的字符编码。
+设置可读流的字符编码类型。
 
-当缓冲区有数据时，不允许设置字符编码，返回值为false。
+当缓冲区有数据时，不允许设置字符编码类型，返回值为false。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1005,7 +1005,7 @@ setEncoding(encoding?: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 需要设置的字符编码。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
+| encoding | string | 否 | 需要设置的字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 
 **返回值：**
 
@@ -1156,9 +1156,9 @@ class TestWritable extends stream.Writable {
   }
 }
 
-let readable = new TestReadable();
-let writable = new TestWritable();
-readable.pipe(writable);
+let readableStream = new TestReadable();
+let writableStream = new TestWritable();
+readableStream.pipe(writableStream);
 ```
 
 ArkTS-Sta示例：
@@ -1185,9 +1185,9 @@ class TestWritable extends stream.Writable {
   }
 }
 
-let readable = new TestReadable();
-let writable = new TestWritable();
-readable.pipe(writable);
+let readableStream = new TestReadable();
+let writableStream = new TestWritable();
+readableStream.pipe(writableStream);
 ```
 
 ### unpipe
@@ -1241,11 +1241,11 @@ class TestWritable extends stream.Writable {
   }
 }
 
-let readable = new TestReadable();
-let writable = new TestWritable();
-readable.pipe(writable);
-readable.unpipe(writable);
-readable.on("data", () => {
+let readableStream = new TestReadable();
+let writableStream = new TestWritable();
+readableStream.pipe(writableStream);
+readableStream.unpipe(writableStream);
+readableStream.on("data", () => {
   console.info("Readable test unpipe data event triggered");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event triggered"
@@ -1274,11 +1274,11 @@ class TestWritable extends stream.Writable {
   }
 }
 
-let readable = new TestReadable();
-let writable = new TestWritable();
-readable.pipe(writable);
-readable.unpipe(writable);
-readable.on("data", () => {
+let readableStream = new TestReadable();
+let writableStream = new TestWritable();
+readableStream.pipe(writableStream);
+readableStream.unpipe(writableStream);
+readableStream.on("data", () => {
   console.info("Readable test unpipe data event called");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event called"
@@ -1304,7 +1304,7 @@ ArkTS-Sta: on(event: string, callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件数据。 |
 
 **示例：**
@@ -1317,14 +1317,14 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    throw new Error('Simulated error');
+    throw new Error("Simulated error");
   }
 }
 
-let readable = new TestReadable();
-readable.push("test");
-readable.on("error", () => {
-  console.info("error event called"); // error event called
+let readableStream = new TestReadable();
+readableStream.push("test");
+readableStream.on("error", () => {
+  console.error("error event called"); // error event called
 });
 ```
 
@@ -1336,14 +1336,14 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    throw new Error('Simulated error');
+    throw new Error("Simulated error");
   }
 }
 
-let readable = new TestReadable();
-readable.push("test");
-readable.on("error", (): void => {
-  console.info("error event called"); // 期望结果: error event called
+let readableStream = new TestReadable();
+readableStream.push("test");
+readableStream.on("error", (): void => {
+  console.error("error event called"); // 期望结果: error event called
 });
 ```
 
@@ -1353,7 +1353,7 @@ ArkTS-Dyn: off(event: string, callback?: Callback<emitter.EventData>): void
 
 ArkTS-Sta: off(event: string, callback?: Function): void
 
-移除通过[on](#on)注册的事件处理函数。
+移除通过[on](#on-1)注册的事件处理函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1367,7 +1367,7 @@ ArkTS-Sta: off(event: string, callback?: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br>\- `'error'`：流发生异常时触发。<br>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
 **示例：**
@@ -1383,16 +1383,16 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
+let readableStream = new TestReadable();
 
 function read() {
   console.info("read() called");
 }
 
-readable.setEncoding("utf8");
-readable.on("readable", read);
-readable.off("readable");
-readable.push("test");
+readableStream.setEncoding("utf8");
+readableStream.on("readable", read);
+readableStream.off("readable");
+readableStream.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1407,16 +1407,16 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
+let readableStream = new TestReadable();
 
 function read() {
   console.info("read() called");
 }
 
-readable.setEncoding("utf8");
-readable.on("readable", read);
-readable.off("readable");
-readable.push("test");
+readableStream.setEncoding("utf8");
+readableStream.on("readable", read);
+readableStream.off("readable");
+readableStream.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1512,8 +1512,8 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
-readable.on("data", () => {
+let readableStream = new TestReadable();
+readableStream.on("data", () => {
 });
 ```
 
@@ -1529,8 +1529,8 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
-readable.on("data", () => {
+let readableStream = new TestReadable();
+readableStream.on("data", () => {
 });
 ```
 
@@ -1553,7 +1553,7 @@ push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | chunk | Uint8Array \| string  \| undefined \| null | 是 | 读取的数据。 <br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`Uint8Array \| string  \| null`。 |
-| encoding | string | 否 | 数据的编码格式。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
+| encoding | string | 否 | 数据的字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 
 **返回值：**
 
@@ -1574,10 +1574,10 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
+let readableStream = new TestReadable();
 let testData = "Hello world";
-readable.push(testData);
-console.info("Readable push test", readable.readableLength); // Readable push test 11
+readableStream.push(testData);
+console.info("Readable push test", readableStream.readableLength); // Readable push test 11
 ```
 
 ArkTS-Sta示例：
@@ -1591,10 +1591,10 @@ class TestReadable extends stream.Readable {
   }
 }
 
-let readable = new TestReadable();
+let readableStream = new TestReadable();
 let testData = "Hello world";
-readable.push(testData);
-console.info("Readable push test", readable.readableLength); // 期望结果: Readable push test 11
+readableStream.push(testData);
+console.info("Readable push test", readableStream.readableLength); // 期望结果: Readable push test 11
 ```
 
 ## Duplex
@@ -1661,9 +1661,9 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串，会抛出异常。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
-| callback  | Function | 否   | 回调函数。默认不调用。 |
+| callback  | Function | 否   | 回调函数，用于在数据写入完成后执行特定逻辑。传入callback时，数据写入缓冲区后会调用该回调函数；不传入时，不调用回调函数。 |
 
 **返回值：**
 
@@ -1743,9 +1743,9 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认为undefined。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
-| callback  | Function | 否   | 回调函数。默认不调用。 |
+| callback  | Function | 否   | 回调函数。传入时异步调用，不传入时，不调用回调函数。 |
 
 **返回值：**
 
@@ -1774,8 +1774,8 @@ class TestDuplex extends stream.Duplex {
   }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
-  console.info("Duplex chunk is", chunk); // Duplex chunk is test
-  callback();
+    console.info("Duplex chunk is", chunk); // Duplex chunk is test
+    callback();
   }
 }
 
@@ -1796,8 +1796,8 @@ class TestDuplex extends stream.Duplex {
   }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
-  console.info("Duplex chunk is", chunk); // 期望结果: Duplex chunk is test
-  callback.unsafeCall();
+    console.info("Duplex chunk is", chunk); // 期望结果: Duplex chunk is test
+    callback.unsafeCall();
   }
 }
 
@@ -1825,7 +1825,7 @@ setDefaultEncoding(encoding?: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| encoding | string | 否 | 需要设置的默认字符编码。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
+| encoding | string | 否 | 需要设置的默认字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 
 **返回值：**
 
@@ -2139,7 +2139,7 @@ Transform的构造函数。
 **示例：**
 
 ```ts
-let transform = new stream.Transform();
+let transformStream = new stream.Transform();
 ```
 
 ### doTransform
@@ -2181,8 +2181,8 @@ class TestTransform extends stream.Transform {
   }
 }
 
-let tr = new TestTransform();
-tr.write("hello");
+let transformStream = new TestTransform();
+transformStream.write("hello");
 ```
 
 ArkTS-Sta示例：
@@ -2200,8 +2200,8 @@ class TestTransform extends stream.Transform {
   }
 }
 
-let tr = new TestTransform();
-tr.write("hello");
+let transformStream = new TestTransform();
+transformStream.write("hello");
 ```
 
 ### doFlush
@@ -2242,9 +2242,9 @@ class TestTransform extends stream.Transform {
   }
 }
 
-let transform = new TestTransform();
-transform.end("my test");
-transform.on("data", (data) => {
+let transformStream = new TestTransform();
+transformStream.end("my test");
+transformStream.on("data", (data) => {
   console.info("data is", data.data); // data is test
 });
 ```
@@ -2265,9 +2265,9 @@ class TestTransform extends stream.Transform {
   }
 }
 
-let transform = new TestTransform();
-transform.on("data", (data: Object) => {
+let transformStream = new TestTransform();
+transformStream.on("data", (data: Object) => {
   console.info("StreamTest data is", data); // 期望结果: data is test
 });
-transform.end("my test");
+transformStream.end("my test");
 ```

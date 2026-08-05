@@ -96,7 +96,7 @@ outline(value: OutlineOptions | undefined)
 
 | 参数名 | 类型                                      | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ---- |
-| options | Optional\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外边框效果。   |
+| options | Optional\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外描边效果。   |
 
 ## OutlineStyle枚举说明
 

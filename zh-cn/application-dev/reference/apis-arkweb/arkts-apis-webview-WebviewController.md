@@ -5683,7 +5683,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。<br>默认为false。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。 |
 
 **错误码：**
 
@@ -6378,11 +6378,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前WebView上下文相关的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
+清除应用内所有Webview产生的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6468,10 +6464,6 @@ struct WebComponent {
 static removeAllCache(clearRom: boolean): void
 
 清除应用内所有Webview(含隐私模式)产生的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/app/el2/100/base/\<applicationPackageName\>/cache/web/目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8005,7 +7997,7 @@ struct Index {
 
 setAudioMuted(mute: boolean): void
 
-设置网页静音。
+设置网页静音。典型使用场景包括：应用需要控制网页音量（如提供静音开关）、后台播放时需要静音等。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8559,15 +8551,15 @@ setCustomUserAgent(userAgent: string): void
 
 设置自定义用户代理，会覆盖系统的用户代理。
 
-当Web组件src设置了URL时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。
-
-当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
-
-默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
-
 > **说明：**
 >
->当Web组件src设置了URL，且未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+> - 当Web组件src设置了URL时，建议在[onControllerAttached](./arkts-basic-components-web-events.md#oncontrollerattached10)回调中设置User-Agent。不要在onLoadIntercept回调中设置，否则可能会设置失败或导致不可预期的后果。
+>
+> - 若未在onControllerAttached回调中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+>
+> - 当Web组件src未设置URL时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
+>
+> - 默认User-Agent定义与使用场景请参考[User-Agent开发指导](../../web/web-default-userAgent.md)
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -12208,7 +12200,7 @@ struct WebComponent {
 
 setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前应用的所有Web组件设置用于拦截ServiceWorker的WebSchemeHandler。
+为当前应用的所有Web组件设置WebSchemeHandler，用于拦截ServiceWorker中指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -12392,6 +12384,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -12473,6 +12469,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -14692,7 +14692,7 @@ ArkTS-Sta示例：
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景：用于需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全的场景。（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
  
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
@@ -15438,7 +15438,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **示例：**
 
@@ -15590,7 +15590,7 @@ getPageOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量），包含x和y坐标，单位为vp。 |
 
 **错误码：**
 
@@ -16342,7 +16342,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16401,7 +16401,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -16901,7 +16901,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息，主要包括首屏相似度预测值，首屏加载耗时预测值，应用需根据此信息来决策是否启用无白屏加载插帧。 |
+| [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20) | 页面首屏加载预测信息对象，应用需根据此信息来决策是否启用无白屏加载插帧。 |
 
 **错误码：**
 
@@ -17573,7 +17573,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。典型使用场景：使用特定内核版本的特性或兼容性需求时，可切换到对应内核版本。
 
 **遗留内核适配：**
 
@@ -18098,7 +18098,7 @@ class EntryAbility extends UIAbility {
 
 setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 
-设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。
+设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。典型使用场景：不希望Web组件在inactive或active状态切换时自动隐藏或重新拉起软键盘时，可使用DISABLE_AUTO_KEYBOARD_ON_ACTIVE；需要保留默认自动管理行为时，可使用DEFAULT。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -18210,6 +18210,10 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+        return;
+      }
       console.info('data:' + JSON.stringify(data));
       console.info('data permissions:' + data.permissions);
       console.info('data authResults:' + data.authResults);
@@ -18293,6 +18297,10 @@ struct WebComponent {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (err) {
+          console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
+          return;
+        }
         if (data) {
           console.info('data:' + JSON.stringify(data));
           console.info('data permissions:' + data.permissions);
@@ -18398,6 +18406,12 @@ struct WebComponent {
 pauseMicrophone(): void
 
 暂停当前网页麦克风捕获。
+
+> **说明：**
+>
+> 与 resumeMicrophone 和 stopMicrophone 的区别：
+>
+> pauseMicrophone 仅暂停麦克风捕获，可通过 resumeMicrophone 恢复；stopMicrophone 会停止捕获并释放资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -19143,7 +19157,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
+| Promise\<string\> | Promise对象，执行成功时返回JSON格式的命令执行结果，执行失败或无返回值时返回空字符串。 |
 
 **错误码：**
 

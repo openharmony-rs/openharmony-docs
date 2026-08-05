@@ -68,7 +68,7 @@ PromptOptions定义options的类型。
 | -------- |----------------------------------------------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | icon | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的异常图标样式。<br/>默认不设置或设置为undefined，异常图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| tip | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| tip | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到位置状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | marginType | [MarginType](#margintype)                                                        | 否 | 否 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | actionText | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>默认不设置或设置为undefined，文字内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23  |
 | marginTop | [Dimension](ts-types.md#dimension10)                                             | 否 | 否 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -226,16 +226,6 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct Index1 {
-  @State ButtonText: string = '';
-  @State MAP_HEIGHT: string = '30%';
-  @State duration: number = 2500;
-  @State tips: string = '';
-  @State actionText: string = '';
-  controller: TextInputController = new TextInputController();
-  cancel: () => void = () => {
-  };
-  confirm: () => void = () => {
-  };
   @State options: PromptOptions = {
     icon: $r('sys.media.ohos_ic_public_fail'),
     tip: '',

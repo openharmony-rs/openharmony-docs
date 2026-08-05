@@ -94,7 +94,7 @@ struct attrAnimateToDemo2 {
 
 相比于animateTo接口需要将属性修改封装在闭包中执行，[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口无需使用闭包，只需将其加在要做动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
-<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';

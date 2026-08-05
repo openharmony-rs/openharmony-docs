@@ -48,13 +48,7 @@ import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
 
 ## AddFormMenuItem 
 
-```ts
-AddFormMenuItem(
-  want: Want,
-  componentId: string,
-  options?: AddFormOptions
-): void
-```
+AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 
 **装饰器类型：**@Builder
 

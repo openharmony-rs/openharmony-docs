@@ -114,4 +114,4 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，有以下可能原因：<br>- xDivs或yDivs是空指针nullptr；<br>- rectTypes不是空指针，且rectTypeCount不等于`(xCount + 1)*(yCount + 1)`。<br>- colors不是空指针，且colorCount不等于`(xCount + 1)*(yCount + 1)`。<br>- rectTypes是空指针，且rectTypeCount不等于0。<br>- colors是空指针，且colorCount不等于0。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示rectTypes中的枚举值超过枚举范围。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，有以下可能原因：<br>- xDivs或yDivs是空指针nullptr；<br>- rectTypes不是空指针，且rectTypeCount不等于`(xCount + 1)*(yCount + 1)`。<br>- colors不是空指针，且colorCount不等于`(xCount + 1)*(yCount + 1)`。<br>- rectTypes是空指针，且rectTypeCount不等于0。<br>- colors是空指针，且colorCount不等于0。<br>- lattice是空指针。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示rectTypes中的枚举值超过枚举范围。 |

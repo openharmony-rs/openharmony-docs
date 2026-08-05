@@ -38,7 +38,7 @@
 以跳过禁用的生物认证，订阅认证信息为例：
 
 ArkTS-Dyn示例：
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -91,51 +91,50 @@ perceiveAndAdjustAuthentication() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  perceiveAndAdjustAuthentication() {
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      // 设置认证参数
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-        skipLockedBiometricAuth: true
-      };
-      // 配置认证界面
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // 获取认证对象
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance successfully.');
-      // 订阅认证过程中的提示信息。
-      userAuthInstance.onAuthTip((authTipInfo: userAuth.AuthTipInfo) => {
-        try {
-          Logger.info('userAuthInstance callback.');
-          EAWorker.postToMain<void>((): void => {
-            this.result[ResultIndex.PERCEIVE_ADJUST] =
-              `tipType: ${authTipInfo.tipType}, tipCode: ${authTipInfo.tipCode}`;
-          });
-        } catch (error) {
-          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
-        }
-      });
-      // 开始认证
-      userAuthInstance.start();
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth failed, code is ${err?.code as int}, message is ${err?.message}`);
+perceiveAndAdjustAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    // 设置认证参数
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      skipLockedBiometricAuth: true
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证过程中的提示信息。
+    userAuthInstance.onAuthTip((authTipInfo: userAuth.AuthTipInfo) => {
+      try {
+        Logger.info('userAuthInstance callback.');
+        EAWorker.postToMain<void>((): void => {
+          this.result[ResultIndex.PERCEIVE_ADJUST] =
+            `tipType: ${authTipInfo.tipType}, tipCode: ${authTipInfo.tipCode}`;
+        });
+      } catch (error) {
+        Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
+      }
+    });
+    // 开始认证
+    userAuthInstance.start();
+  } catch (error) {
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
+}
 ```
 
 ## 示例代码
 
-  - [感知和调整认证过程(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  - [感知和调整认证过程(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)
+  - [感知和调整认证过程(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - [感知和调整认证过程(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

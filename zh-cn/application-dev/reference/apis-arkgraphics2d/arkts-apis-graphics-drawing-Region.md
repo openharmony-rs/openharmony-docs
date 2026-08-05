@@ -312,14 +312,12 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
-    let other = new drawing.Region();
     region.setRect(100, 100, 200, 200);
     region.op(new drawing.Region(220, 200, 280, 280), drawing.RegionOp.UNION);
     let flag: boolean = false;
     flag = region.isComplex();
     console.info('flag :', flag);
     canvas.drawRegion(region);
-    canvas.drawRegion(other);
     canvas.detachPen();
   }
 }
@@ -429,7 +427,7 @@ let path = region.getBoundaryPath();
 
 ArkTS-Dyn: isPointContained(x: number, y: number): boolean
 
-ArkTS-Sta: isPointContained(x: int, y:int): boolean
+ArkTS-Sta: isPointContained(x: int, y: int): boolean
 
 判断测试点是否在区域内。
 
@@ -458,7 +456,7 @@ ArkTS-Sta: isPointContained(x: int, y:int): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -530,7 +528,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## isRegionContained<sup>12+</sup>
 
-isRegionContained(other: Region) : boolean
+isRegionContained(other: Region): boolean
 
 判断其他区域是否在当前区域内。
 
@@ -558,7 +556,7 @@ isRegionContained(other: Region) : boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -589,7 +587,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## op<sup>12+</sup>
 
-op(region: Region, regionOp: RegionOp) : boolean
+op(region: Region, regionOp: RegionOp): boolean
 
 将当前区域与指定区域进行运算，并替换为运算结果。
 
@@ -618,7 +616,7 @@ op(region: Region, regionOp: RegionOp) : boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -707,7 +705,7 @@ ArkTS-Sta: quickReject(left: int, top: int, right: int, bottom: int): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -808,7 +806,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setPath<sup>12+</sup>
 
-setPath(path: Path, clip: Region) : boolean
+setPath(path: Path, clip: Region): boolean
 
 设置一个与裁剪区域内路径轮廓相匹配的区域。
 
@@ -837,7 +835,7 @@ setPath(path: Path, clip: Region) : boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -965,7 +963,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setRect<sup>12+</sup>
 
-ArkTS-Dyn: setRect(left: number, top: number, right: number, bottom: number) : boolean
+ArkTS-Dyn: setRect(left: number, top: number, right: number, bottom: number): boolean
 
 ArkTS-Sta: setRect(left: int, top: int, right: int, bottom: int): boolean
 
@@ -998,7 +996,7 @@ ArkTS-Sta: setRect(left: int, top: int, right: int, bottom: int): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

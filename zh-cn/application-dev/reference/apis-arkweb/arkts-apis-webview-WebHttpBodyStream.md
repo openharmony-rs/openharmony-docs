@@ -12,6 +12,8 @@ WebHttpBodyStream与[WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHand
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -32,6 +34,10 @@ initialize(): Promise\<void\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -48,6 +54,7 @@ initialize(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -89,7 +96,7 @@ struct WebComponent {
                     console.info("[schemeHandler] onRequestStart postDataStream isChunked:" + stream.isChunked());
                     console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
                     console.info("[schemeHandler] onRequestStart postDataStream isInMemory:" + stream.isInMemory());
-                    stream.read(stream.getSize()).then((buffer) => {
+                    stream.read(stream.getSize().toInt()).then((buffer) => {
                       if (!stream) {
                         return;
                       }
@@ -126,22 +133,108 @@ struct WebComponent {
     }
   }
 }
-
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { buffer } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+
+  build() {
+    Column() {
+      Button('postUrl')
+        .onClick(() => {
+          try {
+            let postData = buffer.from(this.htmlData);
+            this.controller.postUrl('https://www.example.com', postData.buffer);
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  stream.initialize().then(() => {
+                    if (!stream) {
+                      return;
+                    }
+                    console.info("[schemeHandler] onRequestStart postDataStream size:" + stream.getSize());
+                    console.info("[schemeHandler] onRequestStart postDataStream position:" + stream.getPosition());
+                    console.info("[schemeHandler] onRequestStart postDataStream isChunked:" + stream.isChunked());
+                    console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
+                    console.info("[schemeHandler] onRequestStart postDataStream isInMemory:" + stream.isInMemory());
+                    stream.read(stream.getSize()).then((buffer) => {
+                      if (!stream) {
+                        return;
+                      }
+                      console.info("[schemeHandler] onRequestStart postDataStream readlength:" + buffer.byteLength);
+                      console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
+                      console.info("[schemeHandler] onRequestStart postDataStream position:" + stream.getPosition());
+                    }).catch((error: Error) => {
+                      console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    })
+                  }).catch((error: Error) => {
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  })
+                } else {
+                  console.info("[schemeHandler] onRequestStart has no http body stream");
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+
+              return false;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
 ## read<sup>12+</sup>
 
-read(size: number): Promise\<ArrayBuffer\>
+ArkTS-Dyn: read(size: number): Promise\<ArrayBuffer\>
+
+ArkTS-Sta: read(size: int): Promise\<ArrayBuffer\>
 
 读取WebHttpBodyStream中的数据。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  size | number | 是   | 读取WebHttpBodyStream中的字节数。单位：字节。 |
+|  size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 读取WebHttpBodyStream中的字节数。单位：字节。 |
 
 **返回值：**
 
@@ -163,17 +256,23 @@ read(size: number): Promise\<ArrayBuffer\>
 
 ## getSize<sup>12+</sup>
 
-getSize(): number
+ArkTS-Dyn: getSize(): number
+
+ArkTS-Sta: getSize(): double | long
 
 获取WebHttpBodyStream中的数据大小，分块传输时总是返回零。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 获取WebHttpBodyStream中的数据大小。单位：字节。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 获取WebHttpBodyStream中的数据大小。单位：字节。 |
 
 **示例：**
 
@@ -181,17 +280,23 @@ getSize(): number
 
 ## getPosition<sup>12+</sup>
 
-getPosition(): number
+ArkTS-Dyn: getPosition(): number
+
+ArkTS-Sta: getPosition(): int
 
 读取WebHttpBodyStream中当前的读取位置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | WebHttpBodyStream中当前的读取位置。单位：字节。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | WebHttpBodyStream中当前的读取位置。单位：字节。 |
 
 **示例：**
 
@@ -204,6 +309,10 @@ isChunked(): boolean
 WebHttpBodyStream是否采用分块传输。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -223,6 +332,10 @@ isEof(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -240,6 +353,10 @@ isInMemory(): boolean
 判断WebHttpBodyStream中的上传数据是否在内存中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

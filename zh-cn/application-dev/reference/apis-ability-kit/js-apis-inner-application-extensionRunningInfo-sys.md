@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过[getExtensionRunningInfos接口](js-apis-app-ability-abilityManager-sys.md#getextensionrunninginfos)获取。
+ExtensionRunningInfo模块封装了Extension运行的相关信息，包括Extension信息、进程ID、用户ID、进程名称、启动时间、客户端包名、Extension类型等。可以通过[getExtensionRunningInfos接口](js-apis-app-ability-abilityManager-sys.md#getextensionrunninginfos)获取。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ let upperLimit = 1;
 function getExtensionInfos() {
   abilityManager.getExtensionRunningInfos(upperLimit, (error, data) => {
     if (error) {
-      console.error(`getForegroundApplications failed, error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`getExtensionRunningInfos failed, error.code: ${error.code}, error.message: ${error.message}`);
       return;
     }
 

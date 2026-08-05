@@ -424,14 +424,13 @@ import { Popup, PopupTextOptions, PopupButtonOptions, PopupIconOptions } from '@
 @Entry
 @Component
 struct PopupPage {
-  @State currentDirection: Direction = Direction.Rtl;
 
   build() {
     Row() {
       // popup 自定义高级组件
       Popup({
         // 设置自定义宽度
-        maxWidth: '50%',
+        maxWidth: '70%',
         // PopupIconOptions 类型设置图标内容
         icon: {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
@@ -496,7 +495,7 @@ struct PopupPage {
       // popup 自定义高级组件
       Popup({
         // 设置自定义宽度
-        maxWidth: '50%',
+        maxWidth: '70%',
         // PopupIconOptions 类型设置图标内容
         icon: {
           image: $r('app.media.startIcon'),

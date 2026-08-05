@@ -88,7 +88,7 @@ struct Index {
               .then(() => {
                 let topOrder: LevelOrder = this.promptAction.getTopOrder();
                 if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
+                  console.info('topOrder: ' + topOrder.getOrder());
                 }
               })
           })
@@ -168,7 +168,7 @@ struct Index {
               .then(() => {
                 let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
                 if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                  console.info('bottomOrder: ' + bottomOrder.getOrder());
                 }
               })
           })
@@ -652,7 +652,7 @@ struct Index {
 
 openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
 
-创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。
+创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置[customStyle](arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)为true时的显示效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -894,7 +894,7 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 创建并弹出dialogContent对应的自定义弹窗，使用Promise异步回调。支持传入弹窗控制器与自定义弹窗绑定，后续可以通过控制器控制自定义弹窗。
 
-通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置customStyle为true时的显示效果。
+通过该接口弹出的弹窗内容样式完全按照dialogContent中设置的样式显示，即相当于customDialog设置[customStyle](arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)为true时的显示效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1179,7 +1179,7 @@ struct Index {
                   console.info('succeeded');
                 })
                 .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                  console.error(`CloseCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
             }, 2000); // 2秒后自动关闭
           })

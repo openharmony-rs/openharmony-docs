@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[应用程序包管理模块](js-apis-bundleManager.md)。
 
@@ -139,24 +139,6 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
-
-## BundleInstallStatus<sup>23+</sup>
-
-标识应用的安装状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称 | 值 | 说明 |
-|:----------------:|:---:|:---:|
-| BUNDLE_NOT_EXIST        | 1   | 应用未安装。 |
-| BUNDLE_INSTALLING         | 2   | 应用正在安装。 |
-| BUNDLE_INSTALLED        | 3   | 应用已安装完成。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -1118,7 +1100,7 @@ ArkTS-Sta: queryAbilityInfoSync(want: Want, abilityFlags: int, userId?: int): Ar
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | Array\<AbilityInfo>信息。 |
+| Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)> | 返回查询到的Ability信息列表。 |
 
 **错误码：**
 
@@ -1631,7 +1613,7 @@ ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Exten
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | Array\<ExtensionAbilityInfo>信息。 |
+| Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | 返回查询到的ExtensionAbility信息列表。 |
 
 **错误码：**
 
@@ -1873,7 +1855,7 @@ ArkTS-Sta: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bund
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回BundleInfo对象。 |
+| [BundleInfo](js-apis-bundleManager-bundleInfo.md) | 返回查询到的应用包信息。 |
 
 **错误码：**
 
@@ -3997,7 +3979,7 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回Array\<PermissionDef>对象。 |
+| Promise\<[PermissionDef](js-apis-bundleManager-permissionDef-sys.md)> | Promise对象，返回查询到的权限结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4076,7 +4058,7 @@ getPermissionDefSync(permissionName: string): PermissionDef;
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | PermissionDef对象。 |
+|[PermissionDef](js-apis-bundleManager-permissionDef-sys.md) | 返回查询到的权限定义结构体PermissionDef信息。 |
 
 **错误码：**
 
@@ -4098,8 +4080,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let permissionName = "ohos.permission.GET_BUNDLE_INFO";
 try {
-  let PermissionDef = bundleManager.getPermissionDefSync(permissionName);
-  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(PermissionDef));
+  let permissionDef = bundleManager.getPermissionDefSync(permissionName);
+  hilog.info(0x0000, 'testTag', 'getPermissionDefSync successfully. Data: %{public}s', JSON.stringify(permissionDef));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getPermissionDefSync failed. Cause: %{public}s', message);
@@ -4538,7 +4520,7 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4676,7 +4658,7 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 获取所有的共享包信息。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4874,7 +4856,7 @@ ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId?: int): Promise\<AppPr
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -4988,7 +4970,7 @@ ArkTS-Sta: getAppProvisionInfoSync(bundleName: string, userId?: int): AppProvisi
 
 获取调用方自身的信息时不需要权限。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -5728,7 +5710,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，返回Array\<PreinstalledApplicationInfo>。 |
 
 **错误码：**
 
@@ -5800,7 +5782,7 @@ getAllNewPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationI
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
+| Promise<Array\<[PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo)>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
 
 **错误码：**
 
@@ -7058,9 +7040,9 @@ getAppClonePreference(bundleName: string): Promise\<AppClonePreference>;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -7121,9 +7103,9 @@ setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -7912,63 +7894,6 @@ try {
 }
 ```
 
-## bundleManager.getBundleInstallStatus<sup>23+</sup>
-
-getBundleInstallStatus(bundleName: string): BundleInstallStatus
-
-查询当前用户下指定应用的安装状态。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名     | 类型   | 必填 | 说明                       |
-| ----------- | ------ | ---- | ---------------------------- |
-| bundleName  | string | 是   | 指定应用的包名。 |
-
-**返回值：**
-
-| 类型                                                        | 说明                        |
-| ----------------------------------------------------------- | --------------------------- |
-| [BundleInstallStatus](#bundleinstallstatus23) | 应用的安装状态。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                            |
-| -------- | --------------------------------------|
-| 201 | Permission denied. |
-| 202 | Permission denied. A non-system application is not allowed to call a system API. |
-
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 请开发者替换为实际的包名
-let bundleName: string = 'com.ohos.demo';
-
-try {
-  let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
-  hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
-}
-```
-
 ## bundleManager.isApplicationDisableForbidden<sup>24+</sup>
 
 ArkTS-Dyn: isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
@@ -8434,7 +8359,7 @@ type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12) |预置应用信息。 |
+| [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo) |预置应用信息。 |
 
 ## PluginBundleInfo<sup>19+</sup>
 
@@ -8522,9 +8447,9 @@ type AppClonePreferenceMode = _AppClonePreferenceMode
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -8542,9 +8467,9 @@ ArkTS-Sta: type AppClonePreference = _AppClonePreference
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

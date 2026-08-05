@@ -28,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | ArkUI_Node | 定义ArkUI native组件实例对象。 |
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | 定义ArkUI native组件实例对象。 |
 | [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | 事件回调类型。 |
 | [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | ArkUI在Native侧的数字类型定义。 |
 | [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) | ARKUI_TextPickerRangeContent | 定义单列滑动数据选择器支持的图片资源结构体。 |
@@ -163,7 +163,7 @@
 | [ArkUI_TransitionEdge](#arkui_transitionedge)                       | ArkUI_TransitionEdge            | 定义转场从边缘滑入和滑出的效果。                  |
 | [ArkUI_FinishCallbackType](#arkui_finishcallbacktype)               | ArkUI_FinishCallbackType        | 在动画中定义[OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。              |
 | [ArkUI_ListItemAlignment](#arkui_listitemalignment)                 | ArkUI_ListItemAlignment         | 交叉轴方向的布局方式。                       |
-| [ArkUI_BlendApplyType](#arkui_blendapplytype)                       | ArkUI_BlendApplyType            | 指定的混合模式应用于视图的内容选项.                |
+| [ArkUI_BlendApplyType](#arkui_blendapplytype)                       | ArkUI_BlendApplyType            | 指定的混合模式应用于视图的内容选项。                |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit)                   | ArkUI_LengthMetricUnit          | 定义组件的单位模式。                        |
 | [ArkUI_BarrierDirection](#arkui_barrierdirection)                   | ArkUI_BarrierDirection          | 定义屏障线的方向。                         |
 | [ArkUI_RelativeLayoutChainStyle](#arkui_relativelayoutchainstyle)   | ArkUI_RelativeLayoutChainStyle  | 定义链的风格。                           |
@@ -176,7 +176,7 @@
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
-| [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | 定义错误码枚举值。                         |
+| [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | 定义ArkUI Native API的错误码枚举值，用于表示接口调用结果或失败原因。                         |
 | [ArkUI_ScrollSource](#arkui_scrollsource)                           | ArkUI_ScrollSource              | 定义滚动来源枚举值。                        |
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | 定义扩展安全区域的枚举值。                     |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge)                           | ArkUI_SafeAreaEdge              | 定义扩展安全区域的方向的枚举值。                  |
@@ -445,7 +445,7 @@
 | [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | 创建可见区域变化监听的参数。 |
 | [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | 销毁可见区域变化监听的参数。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | 设置阈值数组。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。 |
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | 设置开发者期望的计算间隔，用于控制可见区域比例的计算频率。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | 设置可见区域计算模式。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | - | 获取阈值数组。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | 获取预期更新间隔。 |
@@ -460,8 +460,8 @@
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | 删除TextCascadePickerRangeContent数组对象。 |
 | [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | - | 创建EmbeddedComponent组件选项的对象。 |
 | [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | - | 删除EmbeddedComponent组件选项的对象。 |
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnError (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | - | 设置EmbeddedComponent组件的onError回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。 |
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | - | 设置EmbeddedComponent组件的onTerminated回调。EmbeddedComponent组件正常退出时触发本回调。 |
+| [void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | - | 设置EmbeddedComponent组件的onError回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。 |
+| [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | - | 设置EmbeddedComponent组件的onTerminated回调。EmbeddedComponent组件正常退出时触发本回调。 |
 | [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()](#oh_arkui_positionedges_create) | - | 创建PositionEdges属性对象。|
 | [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_copy) | - | 深拷贝PositionEdges属性对象。|
 | [void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_dispose) | - | 销毁PositionEdges属性对象。|
@@ -490,7 +490,7 @@
 | [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | - | 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时，irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。 |
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | - | Grid布局选项通过GridItem索引获取指定Item占用的行列数。 |
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | - | Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。 |
-| [ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | - | 创建选择选项。 |
+| [ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | - | 创建选择选项。 |
 | [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | - | 释放选择选项对象。 |
 | [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | - | 设置选择选项的菜单弹出策略。 |
 | [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | - | 获取选择选项的菜单弹出策略。 |
@@ -2052,7 +2052,7 @@ enum ArkUI_BlendApplyType
 **描述：**
 
 
-指定的混合模式应用于视图的内容选项.
+指定的混合模式应用于视图的内容选项。
 
 **起始版本：** 12
 
@@ -2313,7 +2313,7 @@ enum ArkUI_ErrorCode
 **描述：**
 
 
-定义错误码枚举值。
+定义ArkUI Native API的错误码枚举值，用于表示接口调用结果或失败原因。
 
 **起始版本：** 12
 
@@ -2322,7 +2322,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NO_ERROR = 0 | 无错误。 |
 | ARKUI_ERROR_CODE_PARAM_INVALID = 401 | 参数错误。 |
 | ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 |  接口初始化错误。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 |  出现内部错误，例如内部环境错误导致失败，或者由于内部执行失败导致操作失败。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 | 出现内部错误，例如运行环境异常导致接口调用失败，或接口内部执行失败。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  参数错误。错误码的详细介绍请参见[100023 参数错误](../apis-arkui/errorcode-node.md#100023-参数错误)。<br>**起始版本：** 21 |
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见[XComponent组件错误码](../apis-arkui/errorcode-xcomponent.md)。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
@@ -2330,13 +2330,13 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104 适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
 | ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105 适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
 | ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106 子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见[106107 参数下标越界](../apis-arkui/errorcode-nodeadapter.md#106107-参数下标越界)。 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见[106108 数据不存在](../apis-arkui/errorcode-nodeadapter.md#106108-数据不存在)。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中的参数下标越界。错误码的详细介绍请参见[106107 组件事件中的参数下标越界](../apis-arkui/errorcode-nodeadapter.md#106107-组件事件中的参数下标越界)。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在调用方请求获取的数据。错误码的详细介绍请参见[106108 组件事件中不存在调用方请求获取的数据](../apis-arkui/errorcode-nodeadapter.md#106108-组件事件中不存在调用方请求获取的数据)。 |
 | ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见[106109 不支持返回值](../apis-arkui/errorcode-nodeadapter.md#106109-不支持返回值)。 |
 | ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见[106110 暂不支持该事件类型](../apis-arkui/errorcode-nodeadapter.md#106110-暂不支持该事件类型)。<br>**起始版本：** 21 |
 | ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。<br/>错误码的详细介绍请参见[106200 传入的索引值非法](../apis-arkui/errorcode-router.md#106200-传入的索引值非法)。 |
 | ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。<br/>错误码的详细介绍请参见[106201 查询路由导航信息失败](../apis-arkui/errorcode-router.md#106201-查询路由导航信息失败)。 |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。<br/>错误码的详细介绍请参见[106202 传入的buffer size异常](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size不足以容纳目标数据。<br/>错误码的详细介绍请参见[106202 传入的buffer size不足以容纳目标数据](../apis-arkui/errorcode-router.md#106202-传入的buffer-size不足以容纳目标数据)。 |
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[106203 传入的节点未挂载到组件树上](../apis-arkui/errorcode-node.md#106203-传入的节点未挂载到组件树上)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[106204 不支持在非UI线程操作传入的节点](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[106205 反色能力配置错误](../apis-arkui/errorcode-force-dark.md#106205-反色能力配置错误)。<br>**起始版本：** 20 |
@@ -2357,8 +2357,8 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[150002 祖先节点无法获得焦点](../apis-arkui/errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[150003 节点不存在](../apis-arkui/errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  截图超时。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | 截图选项不支持的色彩空间或动态范围模式。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | 离屏节点截图不支持色彩空间或动态范围模式的isAuto参数设置为true。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | 截图选项中设置的色彩空间或动态范围模式不受支持。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | 离屏节点截图不支持将色彩空间或动态范围模式对应的isAuto参数设置为true。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
 | ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | 非滚动类容器。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
 | ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | 存储区大小不足。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
 | ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  该事件不是克隆事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。<br>**起始版本：** 15 |
@@ -2369,7 +2369,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  无效的UIContext对象。错误码的详细介绍请参见[UI上下文错误码](../apis-arkui/errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  无效的回调函数。错误码的详细介绍请参见[UI上下文错误码](../apis-arkui/errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  不支持手势识别器类型。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。<br>**起始版本：** 18 |
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  当前阶段不允许该操作。错误码的详细介绍请参见[拖拽事件错误码](../apis-arkui/errorcode-drag-event.md)。<br>**起始版本：** 19 |
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | 当前拖放事件处理阶段不允许执行请求的操作。错误码的详细介绍请参见[拖拽事件错误码](../apis-arkui/errorcode-drag-event.md)。<br>**起始版本：** 19 |
 
 ### ArkUI_ScrollSource
 
@@ -8454,7 +8454,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 **描述：**
 
 
-设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
+设置开发者期望的计算间隔，用于控制可见区域比例的计算频率。
 
 **起始版本：** 17
 
@@ -8464,7 +8464,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | 可见区域变化监听的参数实例。 |
-| int32_t value | 预期更新间隔，单位为ms。定义了开发者期望的更新间隔。默认值：1000。 |
+| int32_t value | 开发者期望的计算间隔，单位为ms。默认值：1000ms。 |
 
 **返回：**
 
@@ -9449,7 +9449,7 @@ Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的�
 ### OH_ArkUI_SelectionOptions_Create()
 
 ```c
-ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()
+ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()
 ```
 
 **描述：**
@@ -10568,7 +10568,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式。 |
+
 
 **返回：**
 
@@ -10593,7 +10594,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式，取值为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)中的枚举。 |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | 识别内容的装饰样式。 |
+
 
 **返回：**
 

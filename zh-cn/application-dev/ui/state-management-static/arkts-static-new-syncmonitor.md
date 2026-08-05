@@ -1019,7 +1019,7 @@ struct DocSampleNestedClass {
 
 在以下例子中，有两个\@SyncMonitor监听的路径分别为：`topArray.1.*`和`topArray.*`。
 
-<!-- @[SyncMonitorArrayOfArrays](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArrayOfArrays.ets) -->
+<!-- @[SyncMonitorArrayOfArrays](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArrayOfArrays.ets) -->  
 
 ``` TypeScript
 import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace, Divider } from '@kit.ArkUI';
@@ -1089,7 +1089,7 @@ struct DocSampleArrayOfArrays {
       // 当topArray[1]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
       Button('topArray[1].push')
         .onClick(() => {
-          if (this.topArray.length > 1 && this.topArray[1] instanceof Array<Person>) {
+          if (this.topArray.length > 1 && this.topArray[1] instanceof Array) {
             this.topArray[1].push(new Person());
           }
         })
@@ -1167,8 +1167,8 @@ struct DocSampleArrayOfArrays {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propA change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
    
-     // @SyncMonitor入参类型为const常量
-     @SyncMonitor([propB])
+     // @SyncMonitor入参类型为constant字面量，顶层的const不能被当作constant字面量使用，需传入'propB'，而非propB
+     @SyncMonitor(['propB'])
      onPropBChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propB change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }

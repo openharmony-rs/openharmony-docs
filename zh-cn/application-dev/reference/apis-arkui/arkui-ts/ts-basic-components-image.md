@@ -713,6 +713,8 @@ ArkTS-Sta: syncLoad(value: boolean | undefined)
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
+[alt](#alt)占位图始终为异步加载，syncLoad对其不生效。
+
 如果加载图片时出现闪烁，设置syncLoad为true。详情请参见[并发优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -817,7 +819,7 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor |
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制。<br/>当传入undefined时，图片显示无滤镜效果。|
+| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。[ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制（该模式表示滤镜颜色与目标图像叠加，滤镜覆盖在目标上方）。<br/>当传入undefined时，图片显示无滤镜效果。|
 
 ### draggable<sup>9+</sup>
 
@@ -893,7 +895,7 @@ ArkTS-Sta: resizable(value: ResizableOptions | undefined)
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+当组件的参数类型为动图、[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
 
 >**说明：**
 >

@@ -19,7 +19,7 @@
 
 ### 使用场景
 
-下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务。可以参考下表中的场景举例，选择合适的长时任务类型。
+下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务等类型。可以参考下表中的场景举例，选择合适的长时任务类型。
 
 **表1** 长时任务类型
 | 参数名 | 描述 | 配置项 | 场景举例 |
@@ -42,6 +42,8 @@
 - 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+
+- 从API版本26.1.0开始，可使用[updateDataTransferProgress()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 

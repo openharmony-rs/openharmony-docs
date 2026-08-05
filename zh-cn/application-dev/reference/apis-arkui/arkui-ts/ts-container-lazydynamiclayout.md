@@ -2,14 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @guozejun-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-该组件用于实现支持懒加载的动态布局容器，支持开发者自定义布局算法。
+该组件用于实现支持懒加载的动态布局容器，支持开发者自定义布局算法。适用于在可滚动组件中展示大量子组件的场景，通过按需加载和布局可视区域内的子组件，减少首帧渲染时间和内存开销。
 
-该组件的父组件支持[List](ts-container-list.md)、[WaterFlow](ts-container-waterflow.md)、[FlowItem](ts-container-flowitem.md)、[Scroll](ts-container-scroll.md)和[LazyColumnLayout](ts-container-lazycolumnlayout.md)，同时支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在List、WaterFlow、FlowItem、Scroll和LazyColumnLayout中。
+其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)、[FlowItem](ts-container-flowitem.md)或[LazyColumnLayout](ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
 > **说明：**
 >
@@ -21,6 +21,8 @@
 >   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段场景下使用时支持懒加载。
 >   2. 在List组件下，当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
 >   3. 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。
+>   4. 通过FlowItem、LazyColumnLayout、自定义组件或NodeContainer封装使用时，懒加载行为取决于其上层滚动组件（如WaterFlow、Scroll或List）的配置条件。
+> - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 

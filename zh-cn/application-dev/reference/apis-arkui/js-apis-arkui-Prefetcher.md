@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
-配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预加载能力，提升用户浏览体验。
+配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预取能力，提升用户浏览体验。
 
 >  **说明：**
 >
@@ -31,7 +31,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@ohos.arku
 ```
 
 ## IPrefetcher
-实现此接口以提供预取能力。
+实现此接口以提供预取能力，配合LazyForEach在List、Grid等容器组件滑动浏览时预取数据项，提升用户浏览体验。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -100,7 +100,7 @@ ArkTs-Dyn: visibleAreaChanged(minVisible: number, maxVisible: number): void
 
 ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
-当可见区域边界发生改变时调用此方法。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
+当可见区域边界发生改变时调用此方法，将当前可见区域范围通知给Prefetcher，使其据此决定预取或取消预取的数据项。调用此方法前需先通过setDataSource方法设置数据源。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -114,8 +114,8 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值。 |
-| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值。 |
+| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
+| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
 
 **示例：**
 
@@ -168,7 +168,7 @@ ArkTs-Dyn: constructor(dataSource?: IDataSourcePrefetching)
 
 ArkTs-Sta: constructor(dataSource?: IDataSourcePrefetching\<T>)
 
-传入支持预取的DataSource以绑定到Prefetcher。
+传入支持预取的数据源，在创建对象时绑定到Prefetcher。若创建时未传入数据源，也可在创建后通过setDataSource方法设置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +182,7 @@ ArkTs-Sta: constructor(dataSource?: IDataSourcePrefetching\<T>)
 
 | 参数名        | 类型                                                | 必填 | 说明         |
 |------------|---------------------------------------------------|----|------------|
-| dataSource | ArkTs-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTs-Sta: [IDataSourcePrefetching\<T>](#idatasourceprefetching) | 否  | 支持预取能力的数据源。 |
+| dataSource | ArkTs-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTs-Sta: [IDataSourcePrefetching\<T>](#idatasourceprefetching) | 否  | 支持预取能力的数据源。不传入时默认为空，后续可通过setDataSource方法设置数据源。 |
 
 ### setDataSource
 
@@ -190,7 +190,7 @@ ArkTs-Dyn: setDataSource(dataSource: IDataSourcePrefetching): void
 
 ArkTs-Sta: setDataSource(dataSource: IDataSourcePrefetching\<T>): void
 
-设置支持预取的DataSource以绑定到Prefetcher。
+设置支持预取的数据源以绑定到Prefetcher。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -212,7 +212,7 @@ ArkTs-Dyn: visibleAreaChanged(minVisible: number, maxVisible: number): void
 
 ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
-当可见区域边界发生改变时调用此方法。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
+当可见区域边界发生改变时调用此方法，将当前可见区域范围通知给Prefetcher，使其据此决定预取或取消预取的数据项。调用此方法前需确保已通过构造函数或setDataSource方法设置数据源。支持与`List`、`Grid`、`WaterFlow`和`Swiper`组件配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -226,12 +226,12 @@ ArkTs-Sta: visibleAreaChanged(minVisible: int, maxVisible: int): void
 
 | 参数名        | 类型     | 必填 | 说明        |
 |------------|--------|----|-----------|
-| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值。 |
-| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值。 |
+| minVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中第一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
+| maxVisible | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 当前可见区域中最后一项数据的索引值，取值范围为[0, totalCount()-1]。超出范围时计算错误。 |
 
 ## IDataSourcePrefetching
 
-继承自[IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)。实现该接口，提供具备预取能力的DataSource。
+继承自[IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)。实现该接口，提供具备预取能力的数据源。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -247,7 +247,7 @@ ArkTs-Dyn: prefetch(index: number): Promise\<void> | void
 
 ArkTs-Sta: prefetch(index: int): Promise\<void> | undefined
 
-从数据集中预取指定的元素。该方法可以为同步，也可为异步。
+从数据集中预取指定的数据项。该方法可以为同步，也可为异步。当可见区域发生变化时，预取算法判断即将进入可见区域的数据项需要预取时，会调用该方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -261,7 +261,7 @@ ArkTs-Sta: prefetch(index: int): Promise\<void> | undefined
 
 | 参数名   | 类型     | 必填 | 说明       |
 |-------|--------|----|----------|
-| index | number | 是  | 预取数据项索引值。 |
+| index | number | 是  | 预取数据项索引值，取值范围为[0, totalCount()-1]。 |
 
 **返回值：**
 
@@ -275,7 +275,7 @@ ArkTs-Dyn: cancel?(index: number): Promise\<void> | void
 
 ArkTs-Sta: cancel(index: int): Promise\<void> | undefined
 
-取消从数据集中预取指定的元素。该方法可以为同步，也可为异步。
+取消从数据集中预取指定的数据项。该方法可以为同步，也可为异步。该方法为可选方法，若数据源未实现该方法，则不执行取消预取操作。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -289,7 +289,7 @@ ArkTs-Sta: cancel(index: int): Promise\<void> | undefined
 
 | 参数名   | 类型     | 必填 | 说明         |
 |-------|--------|----|------------|
-| index | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 取消预取数据项索引值。 |
+| index | ArkTs-Dyn: number</br>ArkTs-Sta: int | 是  | 取消预取数据项索引值，取值范围为[0, totalCount()-1]。 |
 
 **返回值：**
 
@@ -297,11 +297,11 @@ ArkTs-Sta: cancel(index: int): Promise\<void> | undefined
 | ----------------------- | -------- |
 | ArkTs-Dyn: Promise\<void> \| void</br>ArkTs-Sta: Promise\<void> \| undefined | ArkTs-Dyn: 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。</br>ArkTs-Sta: 异步执行时返回Promise对象，同步执行时返回undefined。Promise仅表示操作完成，无实际返回内容。 |
 
-列表内容移出屏幕时（比如列表快速滑动场景下），预取算法判断屏幕以外的Item可以被取消预取时，该方法即会被调用。例如，如果HTTP框架支持请求取消，则可以在此处取消在prefetch中发起的网络请求。
+当列表内容移出屏幕（例如列表快速滑动场景下），且预取算法判断屏幕以外的数据项可以被取消预取时，该方法会被调用。例如，如果HTTP框架支持请求取消，则可以在此处取消在prefetch中发起的网络请求。
 
 ## 示例
 
-下面示例展示了Prefetcher的预加载能力。该示例采用分页的方式，配合LazyForEach实现懒加载效果，并通过添加延时来模拟加载过程。
+下面示例展示了Prefetcher的预取能力。该示例采用分页的方式，配合LazyForEach实现懒加载效果，并添加延时模拟加载过程。
 
 ArkTS-Dyn示例：
 ```typescript
@@ -329,6 +329,7 @@ struct PrefetcherDemoComponent {
               .height(`${100 / ITEMS_ON_SCREEN}%`)
           }
           .onAppear(() => {
+            // 当列表项索引达到分页触发点时加载下一页数据，并将触发点更新为当前总数据量减半页，使下一页在接近列表末尾时再次触发加载
             if (index >= this.breakPoint) {
               this.dataSource.getHttpData(++this.page, this.pageSize);
               this.breakPoint = this.dataSource.totalCount() - this.pageSize / 2;
@@ -363,12 +364,10 @@ class PictureItem {
   readonly color: number;
   title: string;
   imagePixelMap: image.PixelMap | undefined;
-  key: string;
 
   constructor(color: number, title: string) {
     this.color = color;
     this.title = title;
-    this.key = title;
   }
 }
 
@@ -400,10 +399,11 @@ class MyDataSource implements IDataSourcePrefetching {
         const bitmap = create10x10Bitmap(item.color);
         const imageSource: image.ImageSource = image.createImageSource(bitmap);
         item.imagePixelMap = await imageSource.createPixelMap();
+        imageSource.release();
         resolve();
       }, this.fetchDelayMs);
 
-      this.fetches.set(index, timeoutId)
+      this.fetches.set(index, timeoutId);
     });
   }
 
@@ -416,7 +416,7 @@ class MyDataSource implements IDataSourcePrefetching {
   }
 
   // 模拟分页方式加载数据
-  getHttpData(pageNum: number, pageSize:number): void {
+  getHttpData(pageNum: number, pageSize: number): void {
     const newItems: PictureItem[] = [];
     for (let i = (pageNum - 1) * pageSize; i < pageNum * pageSize; i++) {
       const item = new PictureItem(getRandomColor(), `Item ${i}`);
@@ -464,11 +464,11 @@ class MyDataSource implements IDataSourcePrefetching {
 
 function getRandomColor(): number {
   const maxColorCode = 256;
-  const r = Math.floor(Math.random() * maxColorCode);
-  const g = Math.floor(Math.random() * maxColorCode);
-  const b = Math.floor(Math.random() * maxColorCode);
+  const red = Math.floor(Math.random() * maxColorCode);
+  const green = Math.floor(Math.random() * maxColorCode);
+  const blue = Math.floor(Math.random() * maxColorCode);
 
-  return (r * 256 + g) * 256 + b;
+  return (red * 256 + green) * 256 + blue;
 }
 
 function create10x10Bitmap(color: number): ArrayBuffer {
@@ -500,16 +500,16 @@ function create10x10Bitmap(color: number): ArrayBuffer {
   view16[offset++] = 1;
   view16[offset++] = 24;
 
-  const b = color & 0xff;
-  const g = (color >> 8) & 0xff;
-  const r = color >> 16;
+  const blue = color & 0xff;
+  const green = (color >> 8) & 0xff;
+  const red = color >> 16;
   offset = headerLength;
   const view8 = new Uint8Array(buffer);
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      view8[offset++] = b;
-      view8[offset++] = g;
-      view8[offset++] = r;
+      view8[offset++] = blue;
+      view8[offset++] = green;
+      view8[offset++] = red;
     }
     offset += 2;
   }
@@ -749,4 +749,4 @@ function create10x10Bitmap(color: number): ArrayBuffer {
 
 ## 补充说明
 
-开发者也可使用OpenHarmony三方库[@netteam/prefetcher](https://ohpm.openharmony.cn/#/cn/detail/@netteam%2Fprefetcher)开发预加载功能。该三方库提供了更多的接口，可以更加便捷有效地实现数据预加载。
+开发者也可使用OpenHarmony三方库[@netteam/prefetcher](https://ohpm.openharmony.cn/#/cn/detail/@netteam%2Fprefetcher)开发预取功能。该三方库提供了更多的接口，可以更加便捷有效地实现数据预取。

@@ -122,7 +122,7 @@ export default {
   visibilitychange(e) {
     promptAction.showToast({
       message: 'visibility change visibility: ' + e.visibility,
-        duration: 3000
+      duration: 3000
     }); 
   },
   showpopup() {

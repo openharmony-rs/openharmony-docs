@@ -58,7 +58,7 @@ ArkTS-Sta: handleVolumeChanged(volume: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放器的音量，取值范围：[0, 1.0]。 |
+| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放器的音量，取值范围：[0, 1.0]。超出范围时，ArkWeb 内核将不会执行。|
 
 **示例：**
 
@@ -104,7 +104,7 @@ ArkTS-Sta: handlePlaybackRateChanged(playbackRate: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率，取值范围：[0, +∞) |
+| playbackRate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率，取值范围：[0, +∞)。传入负数时，ArkWeb 内核将不会执行。|
 
 **示例：**
 
@@ -128,7 +128,7 @@ ArkTS-Sta: handleDurationChanged(duration: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞) |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞)。传入负数时，ArkWeb 内核将不会执行。|
 
 **示例：**
 
@@ -152,7 +152,7 @@ ArkTS-Sta: handleTimeUpdate(currentPlayTime: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]  |
+| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]。超出范围时，ArkWeb 内核将不会执行。|
 
 **示例：**
 
@@ -176,7 +176,7 @@ ArkTS-Sta: handleBufferedEndTimeChanged(bufferedEndTime: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| bufferedEndTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration] |
+| bufferedEndTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration]。超出范围时，ArkWeb 内核将不会执行。|
 
 **示例：**
 
@@ -268,7 +268,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 handleSeeking(): void
 
-当播放器进入seek状态时，调用该方法将seek进入事件通知 ArkWeb 内核。
+当播放器进入 seek 状态时，调用该方法将 seek 进入事件通知 ArkWeb 内核。seek完成后，应调用 handleSeekFinished 将 seek 完成事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -284,7 +284,7 @@ handleSeeking(): void
 
 handleSeekFinished(): void
 
-当播放器seek完成后，调用该方法将seek完成事件通知 ArkWeb 内核。
+当播放器 seek 完成后，调用该方法将 seek 完成事件通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -300,7 +300,7 @@ handleSeekFinished(): void
 
 handleError(error: MediaError, errorMessage: string): void
 
-当播放器发生错误时，调用该方法将错误通知 ArkWeb 内核。
+当播放器发生错误时，调用该方法将错误通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -325,7 +325,7 @@ ArkTS-Dyn: handleVideoSizeChanged(width: number, height: number): void
 
 ArkTS-Sta: handleVideoSizeChanged(width: double, height: double): void;
 
-当播放器解析出视频的尺寸时， 调用该方法将视频尺寸通知 ArkWeb 内核。
+当播放器解析出视频的尺寸时，调用该方法将视频尺寸通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -337,8 +337,8 @@ ArkTS-Sta: handleVideoSizeChanged(width: double, height: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的宽，单位：像素，取值范围：[0, +∞) |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的高，单位：像素，取值范围：[0, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的宽，单位：像素，取值范围：[0, +∞)。传入负数时，ArkWeb 内核将忽略该值。|
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的高，单位：像素，取值范围：[0, +∞)。传入负数时，ArkWeb 内核将忽略该值。|
 
 **示例：**
 
