@@ -199,7 +199,7 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 | maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是    | 弹窗遮罩层区域，在遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | openAnimation<sup>10+</sup>   | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗弹出的动画效果相关参数。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | closeAnimation<sup>10+</sup>  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗关闭的动画效果相关参数。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。<br/>页面转场切换时，建议使用默认关闭动效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
-| showInSubWindow<sup>10+</sup> | boolean                                  | 否    | 是   | 某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br>默认值：false，弹窗显示在应用内，而非独立子窗口。<br>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| showInSubWindow<sup>10+</sup> | boolean                                  | 否    | 是   | 弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br>默认值：false，弹窗显示在应用内，而非独立子窗口。<br>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | backgroundColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)      | 否   | 是  | 设置弹窗背板填充。<br/>默认值：Color.Transparent<br />**说明：** 如果同时设置了内容构造器的背景色，则backgroundColor会被内容构造器的背景色覆盖。<br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | cornerRadius<sup>10+</sup>    | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | 否   | 是  | 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br />**说明**：自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](ts-universal-attributes-border.md#borderradius)属性一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
 | isModal<sup>11+</sup> | boolean | 否 | 是 | 弹窗是否为模态窗口。值为true表示为模态窗口且有遮罩层，不可与弹窗周围其他控件进行交互，即遮罩层区域无法事件透传。值为false表示为非模态窗口且无遮罩层，可以与弹窗周围其他控件进行交互。<br/>默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
@@ -263,7 +263,7 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | dismiss | [Callback](ts-types.md#voidcallback12)&lt;void&gt;                                         | 否   | 否   | 弹窗关闭回调函数。开发者需要退出时调用，不需要退出时无需调用此函数。 |
-| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | 弹窗无法关闭原因。根据开发者需要选择不同操作下，弹窗是否需要关闭。 |
+| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 是   | 关闭原因，返回本次拦截弹窗关闭的事件原因。开发者可根据不同操作选择是否关闭弹窗。 |
 
 ## 示例
 
@@ -271,11 +271,18 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 
 该示例实现了在CustomDialog中打开另一个或另一些CustomDialog。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例1：弹出嵌套弹窗
+ * 本示例展示如何在CustomDialog中打开另一个CustomDialog，实现弹窗嵌套
+ * 演示了CustomDialogController的嵌套使用和多个Controller的管理
+ */
 @CustomDialog
 struct CustomDialogExampleTwo {
-  controllerTwo?: CustomDialogController;
+  controllerTwo?: CustomDialogController;                            // 第二个弹窗的控制器
   build() {
     Column() {
       Text('我是第二个弹窗')
@@ -284,7 +291,7 @@ struct CustomDialogExampleTwo {
       Button('点我关闭第二个弹窗')
         .onClick(() => {
           if (this.controllerTwo != undefined) {
-            this.controllerTwo.close();
+            this.controllerTwo.close();                              // 关闭第二个弹窗
           }
         })
         .margin(20)
@@ -294,34 +301,34 @@ struct CustomDialogExampleTwo {
 @CustomDialog
 @Component
 struct CustomDialogExample {
-  @Link textValue: string;
-  @Link inputValue: string;
+  @Link textValue: string;                                           // 文本输入值，与父组件双向绑定
+  @Link inputValue: string;                                          // 输入值，与父组件双向绑定
   dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExampleTwo(),
-    alignment: DialogAlignment.Bottom,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    builder: CustomDialogExampleTwo(),                               // 第二个弹窗的内容构造器
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {     // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {  // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    offset: { dx: 0, dy: -25 } })
-  controller?: CustomDialogController;
-  // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面
-  cancel: () => void = () => {
-  }
-  confirm: () => void = () => {
-  }
+    offset: { dx: 0, dy: -25 } })                                      // 弹窗偏移：向上偏移25vp
+    controller?: CustomDialogController;
+    // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面
+    cancel: () => void = () => {                                       // 取消按钮回调
+    }
+    confirm: () => void = () => {                                      // 确认按钮回调
+    }
 
   build() {
     Column() {
       Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
       TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .onChange((value: string) => {
+        .onChange((value: string) => {                              // 输入内容变化回调
           this.textValue = value;
         })
       Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
@@ -329,16 +336,16 @@ struct CustomDialogExample {
         Button('cancel')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.controller.close();
-              this.cancel();
+              this.controller.close();                              // 关闭弹窗
+              this.cancel();                                        // 触发取消回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.inputValue = this.textValue;
-              this.controller.close();
-              this.confirm();
+              this.inputValue = this.textValue;                     // 更新输入值
+              this.controller.close();                              // 关闭弹窗
+              this.confirm();                                       // 触发确认回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
@@ -346,7 +353,7 @@ struct CustomDialogExample {
       Button('点我打开第二个弹窗')
         .onClick(() => {
           if (this.dialogControllerTwo != null) {
-            this.dialogControllerTwo.open();
+            this.dialogControllerTwo.open();                        // 打开第二个弹窗
           }
         })
         .margin(20)
@@ -357,37 +364,37 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = ''
-  @State inputValue: string = 'click me'
+  @State textValue: string = ''                                     // 文本值状态
+  @State inputValue: string = 'click me'                            // 输入值状态
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); },
-      textValue: this.textValue,
-      inputValue: this.inputValue
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: ()=> { this.onCancel(); },                            // 取消回调
+      confirm: ()=> { this.onAccept(); },                           // 确认回调
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue                                   // 传递输入值
     }),
-    cancel: this.exitApp,
-    autoCancel: true,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    customStyle: false,
-    cornerRadius: 10,
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
   })
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -406,7 +413,161 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例1：弹出嵌套弹窗（ArkTS-Sta版本）
+ * 本示例展示如何在CustomDialog中打开另一个CustomDialog，实现弹窗嵌套
+ * 演示了CustomDialogController的嵌套使用和多个Controller的管理
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog,
+  CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Link } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExampleTwo {
+  controllerTwo?: CustomDialogController                            // 第二个弹窗的控制器
+  build(): void {
+    Column() {
+      Text('我是第二个弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭第二个弹窗')
+        .onClick(() => {
+          if (this.controllerTwo != undefined) {
+            this.controllerTwo.close()                              // 关闭第二个弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  @Link textValue: string                                           // 文本输入值，与父组件双向绑定
+  @Link inputValue: string                                          // 输入值，与父组件双向绑定
+  dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExampleTwo(),                              // 第二个弹窗的内容构造器
+    alignment: DialogAlignment.Bottom,                              // 弹窗底部对齐
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    offset: { dx: 0, dy: -25 } as Offset                            // 弹窗偏移：向上偏移25vp
+  }) as CustomDialogController | null
+  controller?: CustomDialogController
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+
+  build(): void {
+    Column() {
+      Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
+      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
+        .onChange((value: string): void => {                         // 输入内容变化回调
+          this.textValue = value
+        })
+      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      Flex({ justifyContent: FlexAlign.SpaceAround }) {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close()                                // 关闭弹窗
+              this.cancel()                                          // 触发取消回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.inputValue = this.textValue                       // 更新输入值
+              this.controller.close()                                // 关闭弹窗
+              this.confirm()                                         // 触发确认回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
+      }.margin({ bottom: 10 })
+
+      Button('点我打开第二个弹窗')
+        .onClick(() => {
+          if (this.dialogControllerTwo != null) {
+            this.dialogControllerTwo.open()                          // 打开第二个弹窗
+          }
+        })
+        .margin(20)
+    }.borderRadius(10)
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State textValue: string = ''                                     // 文本值状态
+  @State inputValue: string = 'click me'                            // 输入值状态
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: (): void => { this.onCancel() },                      // 取消回调
+      confirm: (): void => { this.onAccept() },                     // 确认回调
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue                                   // 传递输入值
+    }),
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+  }) as CustomDialogController | null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button(this.inputValue)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -420,14 +581,21 @@ struct CustomDialogUser {
 
 在2in1设备上设置[showInSubWindow](#customdialogcontrolleroptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例2：可在主窗外弹出的弹窗
+ * 本示例展示如何设置showInSubWindow为true，使弹窗可以在主窗口外显示
+ * 适用于2in1设备，弹窗可以超出主窗口边界显示
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController;
-  cancel: () => void = () => {
+  controller?: CustomDialogController;                               // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
   build() {
     Column() {
@@ -437,7 +605,7 @@ struct CustomDialogExample {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -448,34 +616,34 @@ struct CustomDialogExample {
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); }
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: ()=> { this.onCancel(); },                            // 取消回调
+      confirm: ()=> { this.onAccept(); }                            // 确认回调
     }),
-    cancel: this.existApp,
-    autoCancel: true,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Center,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    showInSubWindow: true,
-    isModal: true,
-    customStyle: false,
-    cornerRadius: 10,
-    focusable: true
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    showInSubWindow: true,                                          // 在子窗口显示弹窗，可超出主窗口
+    isModal: true,                                                  // 模态窗口，有遮罩层
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+    focusable: true                                                 // 弹窗可获取焦点
   })
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -495,7 +663,100 @@ struct CustomDialogUser {
       Button('click me')
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例2：可在主窗外弹出的弹窗（ArkTS-Sta版本）
+ * 本示例展示如何设置showInSubWindow为true，使弹窗可以在主窗口外显示
+ * 适用于2in1设备，弹窗可以超出主窗口边界显示
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+  build(): void {
+    Column() {
+      Text('可展示在主窗口外的弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: (): void => { this.onCancel() },                      // 取消回调
+      confirm: (): void => { this.onAccept() }                      // 确认回调
+    }),
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    showInSubWindow: true,                                          // 在子窗口显示弹窗，可超出主窗口
+    isModal: true,                                                  // 模态窗口，有遮罩层
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+    focusable: true                                                 // 弹窗可获取焦点
+  }) as CustomDialogController | null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  existApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button('click me')
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -507,14 +768,22 @@ struct CustomDialogUser {
 
 ### 示例3（设置弹窗的样式）
 该示例定义了CustomDialog的样式，包括宽度、高度、背景色、阴影等。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例3：设置弹窗的样式
+ * 本示例展示如何自定义弹窗的样式，包括宽度、高度、背景色、阴影等
+ * 演示了width、height、backgroundColor、shadow等样式属性的使用
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController;
-  cancel: () => void = () => {
+  controller?: CustomDialogController;                               // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
   build() {
     Column() {
@@ -524,7 +793,7 @@ struct CustomDialogExample {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -535,37 +804,37 @@ struct CustomDialogExample {
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); }
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: ()=> { this.onCancel(); },                            // 取消回调
+      confirm: ()=> { this.onAccept(); }                            // 确认回调
     }),
-    cancel: this.existApp,
-    autoCancel: true,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Center,
-    offset: { dx: 0, dy: -20 },
-    customStyle: false,
-    cornerRadius: 20,
-    width: 300,
-    height: 200,
-    borderWidth: 1,
-    borderStyle: BorderStyle.Dashed,// 使用borderStyle属性，需要和borderWidth属性一起使用
-    borderColor: Color.Blue,// 使用borderColor属性，需要和borderWidth属性一起使用
-    backgroundColor: Color.White,
-    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 20,                                               // 圆角半径20vp
+    width: 300,                                                     // 弹窗宽度300vp
+    height: 200,                                                    // 弹窗高度200vp
+    borderWidth: 1,                                                 // 边框宽度1vp
+    borderStyle: BorderStyle.Dashed,                                // 边框样式：虚线
+    borderColor: Color.Blue,                                        // 边框颜色：蓝色
+    backgroundColor: Color.White,                                   // 背景色：白色
+    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}), // 阴影效果
   })
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -585,7 +854,103 @@ struct CustomDialogUser {
       Button('click me')
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例3：设置弹窗的样式（ArkTS-Sta版本）
+ * 本示例展示如何自定义弹窗的样式，包括宽度、高度、背景色、阴影等
+ * 演示了width、height、backgroundColor、shadow等样式属性的使用
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, BorderStyle, Color, ShadowOptions } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+  build(): void {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: (): void => { this.onCancel() },                      // 取消回调
+      confirm: (): void => { this.onAccept() }                      // 确认回调
+    }),
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 20,                                               // 圆角半径20vp
+    width: 300,                                                     // 弹窗宽度300vp
+    height: 200,                                                    // 弹窗高度200vp
+    borderWidth: 1,                                                 // 边框宽度1vp
+    borderStyle: BorderStyle.Dashed,                                // 边框样式：虚线
+    borderColor: Color.Blue,                                        // 边框颜色：蓝色
+    backgroundColor: Color.White,                                   // 背景色：白色
+    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0} as ShadowOptions), // 阴影效果
+  }) as CustomDialogController | null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  existApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button('click me')
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -599,19 +964,26 @@ struct CustomDialogUser {
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例4：悬停态弹窗
+ * 本示例展示如何设置enableHoverMode和hoverModeArea属性
+ * 在悬停态下控制弹窗的显示区域（上半屏或下半屏）
+ */
 @CustomDialog
 @Component
 struct CustomDialogExample {
-  @Link textValue: string;
-  @Link inputValue: string;
-  controller?: CustomDialogController;
+  @Link textValue: string;                                          // 文本输入值，与父组件双向绑定
+  @Link inputValue: string;                                         // 输入值，与父组件双向绑定
+  controller?: CustomDialogController;                              // 弹窗控制器
 
   build() {
     Column() {
       Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
       TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .onChange((value: string) => {
+        .onChange((value: string) => {                              // 输入内容变化回调
           this.textValue = value;
         })
       Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
@@ -619,14 +991,14 @@ struct CustomDialogExample {
         Button('cancel')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.controller.close();
+              this.controller.close();                              // 关闭弹窗
             }
           }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.inputValue = this.textValue;
-              this.controller.close();
+              this.inputValue = this.textValue;                     // 更新输入值
+              this.controller.close();                              // 关闭弹窗
             }
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
@@ -637,37 +1009,37 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = '';
-  @State inputValue: string = 'click me';
+  @State textValue: string = '';                                    // 文本值状态
+  @State inputValue: string = 'click me';                           // 输入值状态
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      textValue: this.textValue,
-      inputValue: this.inputValue
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue                                   // 传递输入值
     }),
-    cancel: this.exitApp,
-    autoCancel: true,
-    onWillDismiss: (dismissDialogAction: DismissDialogAction)=> {
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss: (dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    customStyle: false,
-    cornerRadius: 10,
-    enableHoverMode: true,
-    hoverModeArea: HoverModeAreaType.TOP_SCREEN
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+    enableHoverMode: true,                                          // 启用悬停态
+    hoverModeArea: HoverModeAreaType.TOP_SCREEN                     // 悬停态下显示在上半屏
   })
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   exitApp() {
@@ -679,7 +1051,103 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例4：悬停态弹窗（ArkTS-Sta版本）
+ * 本示例展示如何设置enableHoverMode和hoverModeArea属性
+ * 在悬停态下控制弹窗的显示区域（上半屏或下半屏）
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, HoverModeAreaType, Link, State } from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  @Link textValue: string                                           // 文本输入值，与父组件双向绑定
+  @Link inputValue: string                                          // 输入值，与父组件双向绑定
+  controller?: CustomDialogController                               // 弹窗控制器
+
+  build(): void {
+    Column() {
+      Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
+      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
+        .onChange((value: string): void => {                         // 输入内容变化回调
+          this.textValue = value
+        })
+      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      Flex({ justifyContent: FlexAlign.SpaceAround }) {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close()                                // 关闭弹窗
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.inputValue = this.textValue                       // 更新输入值
+              this.controller.close()                                // 关闭弹窗
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
+      }.margin({ bottom: 10 })
+    }.borderRadius(10)
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State textValue: string = ''                                     // 文本值状态
+  @State inputValue: string = 'click me'                            // 输入值状态
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue                                   // 传递输入值
+    }),
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss: (dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+    enableHoverMode: true,                                          // 启用悬停态
+    hoverModeArea: HoverModeAreaType.TOP_SCREEN                     // 悬停态下显示在上半屏
+  }) as CustomDialogController | null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button(this.inputValue)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -695,30 +1163,37 @@ struct CustomDialogUser {
 
 从API version 20开始，在CustomDialogController中新增了getState接口。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例5：获取弹窗的状态
+ * 本示例展示如何使用getState接口获取弹窗的当前状态
+ * 演示了通过自定义组件自带的controller和CustomDialogController两种方式获取状态
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController
+  controller?: CustomDialogController                                // 弹窗控制器
 
   build() {
     Column() {
       Button("点我查询弹窗状态:通过自定义组件自带controller")
         .onClick(() => {
           if (this.getDialogController() != undefined) {
-            console.info('state:' + this.getDialogController().getState())
+            console.info('state:' + this.getDialogController().getState()) // 通过自带controller获取状态
           } else {
             console.info('state: no exist')
           }
         }).margin(20)
       Button('点我查询弹窗状态:通过CustomDialogController ')
         .onClick(() => {
-          console.info('state:' + this.controller?.getState())
+          console.info('state:' + this.controller?.getState())      // 通过传入的controller获取状态
         }).margin(20)
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.getDialogController() != undefined) {
-            this.getDialogController().close()
+            this.getDialogController().close()                      // 关闭弹窗
           }
         }).margin(20)
       
@@ -729,11 +1204,11 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State bg: ResourceColor = Color.Green
+  @State bg: ResourceColor = Color.Green                             // 背景色状态
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
     }),
-    autoCancel: false
+    autoCancel: false                                               // 不允许点击遮罩层关闭
   })
 
   build() {
@@ -741,7 +1216,7 @@ struct CustomDialogUser {
       Button('click me')
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open()
+            this.dialogController.open()                             // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -754,12 +1229,16 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Entry, Component, ClickEvent, BusinessError, Column, ColumnOptions, Button, Text, Color, Image, CustomDialog, wrapBuilder, CustomDialogController } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+/**
+ * 示例5：获取弹窗的状态（ArkTS-Sta版本）
+ * 本示例展示如何使用getState接口获取弹窗的当前状态
+ * 演示了通过自定义组件自带的controller和CustomDialogController两种方式获取状态
+ */
+import { Entry, Component, ClickEvent, BusinessError, Column, ColumnOptions, Button, Text, Color, Image, CustomDialog, wrapBuilder, CustomDialogController, State } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController
+  controller?: CustomDialogController                                // 弹窗控制器
 
   build() {
     Column() {
@@ -767,7 +1246,7 @@ struct CustomDialogExample {
         .onClick(() => {
           let controller = this.getDialogController()
           if (controller != undefined) {
-            console.info('state: ', controller.getState())
+            console.info('state: ', controller.getState())         // 通过自带controller获取状态
           } else {
             console.info('state: no exist')
           }
@@ -776,7 +1255,7 @@ struct CustomDialogExample {
         .onClick(() => {
           let controller = this.controller
           if (controller != undefined) {
-            console.info('state: ', controller.getState())
+            console.info('state: ', controller.getState())         // 通过传入的controller获取状态
           } else {
             console.info('state: no exist')
           }
@@ -785,7 +1264,7 @@ struct CustomDialogExample {
         .onClick(() => {
           let controller = this.getDialogController()
           if (controller != undefined) {
-            controller.close()
+            controller.close()                                      // 关闭弹窗
           } else {
             console.info('state: no exist')
           }
@@ -798,7 +1277,7 @@ struct CustomDialogExample {
 @Component
 struct MyStateSample {
   dialogController: CustomDialogController = new CustomDialogController({
-    builder: CustomDialogExample(),
+    builder: CustomDialogExample(),                                 // 弹窗内容构造器
   }) as CustomDialogController
 
   build() {
@@ -811,7 +1290,7 @@ struct MyStateSample {
         .borderWidth(1.0)
         .onClick(() => {
           setTimeout(() => {
-            this.dialogController.open()
+            this.dialogController.open()                             // 打开弹窗
           });
         })
     }.borderWidth(1.0)
@@ -822,28 +1301,37 @@ struct MyStateSample {
 }
 ```
 
+![zh-cn_image_dialogGetState](figures/dialogGetState.gif)
+
 ### 示例6（使用@Link和@Consume监听数据变化）
 
 该示例使用[@Link](../../../ui/state-management/arkts-link.md)和[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)实现页面与弹窗内数据的双向绑定。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例6：使用@Link和@Consume监听数据变化
+ * 本示例展示如何使用@Link和@Consume实现页面与弹窗内数据的双向绑定
+ * 演示了状态管理装饰器在自定义弹窗中的应用
+ */
 @CustomDialog
 @Component
 struct CustomDialogExample {
-  @Link textValue: string;
-  @Consume inputValue: string;
-  controller?: CustomDialogController;
+  @Link textValue: string;                                          // 文本输入值，@Link双向绑定
+  @Consume inputValue: string;                                      // 输入值，@Consume从上层提供者获取
+  controller?: CustomDialogController;                              // 弹窗控制器
 
-  cancel: () => void = () => {
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
 
   build() {
     Column() {
       Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
       TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .onChange((value: string) => {
+        .onChange((value: string) => {                              // 输入内容变化回调
           this.textValue = value;
         })
       Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
@@ -851,16 +1339,16 @@ struct CustomDialogExample {
         Button('cancel')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.controller.close();
-              this.cancel();
+              this.controller.close();                              // 关闭弹窗
+              this.cancel();                                        // 触发取消回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.inputValue = this.textValue;
-              this.controller.close();
-              this.confirm();
+              this.inputValue = this.textValue;                     // 更新输入值，自动同步到页面
+              this.controller.close();                              // 关闭弹窗
+              this.confirm();                                       // 触发确认回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
@@ -870,34 +1358,34 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = ''
-  @Provide inputValue: string = 'click me'
+  @State textValue: string = ''                                     // 文本值状态
+  @Provide inputValue: string = 'click me'                          // 使用@Provide提供inputValue给子组件
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); },
-      textValue: this.textValue
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: ()=> { this.onCancel(); },                            // 取消回调
+      confirm: ()=> { this.onAccept(); },                           // 确认回调
+      textValue: this.textValue                                     // 传递文本值
     }),
-    cancel: this.exitApp,
-    autoCancel: true,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Center,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    customStyle: false,
-    cornerRadius: 10,
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
   })
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -916,34 +1404,150 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例6：使用@Link和@Consume监听数据变化（ArkTS-Sta版本）
+ * 本示例展示如何使用@Link和@Consume实现页面与弹窗内数据的双向绑定
+ * 演示了状态管理装饰器在自定义弹窗中的应用
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, Link, Consume, Provide, State } from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  @Link textValue: string                                           // 文本输入值，@Link双向绑定
+  @Consume inputValue: string                                       // 输入值，@Consume从上层提供者获取
+  controller?: CustomDialogController                               // 弹窗控制器
+
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+
+  build(): void {
+    Column() {
+      Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
+      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
+        .onChange((value: string): void => {                         // 输入内容变化回调
+          this.textValue = value
+        })
+      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      Flex({ justifyContent: FlexAlign.SpaceAround }) {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close()                                // 关闭弹窗
+              this.cancel()                                          // 触发取消回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.inputValue = this.textValue                       // 更新输入值，自动同步到页面
+              this.controller.close()                                // 关闭弹窗
+              this.confirm()                                         // 触发确认回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
+      }.margin({ bottom: 10 })
+    }.borderRadius(10)
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State textValue: string = ''                                     // 文本值状态
+  @Provide inputValue: string = 'click me'                          // 使用@Provide提供inputValue给子组件
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: (): void => { this.onCancel() },                      // 取消回调
+      confirm: (): void => { this.onAccept() },                     // 确认回调
+      textValue: this.textValue                                     // 传递文本值
+    }),
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Center,                               // 弹窗居中对齐
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    gridCount: 4,                                                   // 弹窗宽度占用栅格数
+    customStyle: false,                                             // 使用默认弹窗容器样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+  }) as CustomDialogController | null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button(this.inputValue)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 ![zh-cn_image_custom](figures/dialog_consume_or_link.gif)
 
 ### 示例7（自定义带loading的弹窗）
 
 该示例使用[maskColor](#customdialogcontrolleroptions对象说明)，[maskRect](#customdialogcontrolleroptions对象说明)和[LoadingProgress](ts-basic-components-loadingprogress.md)，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例7：自定义带loading的弹窗
+ * 本示例展示如何使用maskColor、maskRect和LoadingProgress实现带loading的弹窗
+ * 演示了遮罩层区域外事件透传的效果
+ */
 import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
 struct LoadingDialogExample {
-  controller?: CustomDialogController;
-  cancel: () => void = () => {
+  controller?: CustomDialogController;                               // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
 
   build() {
     Column() {
-      LoadingProgress().color(Color.Blue).layoutWeight(1)
+      LoadingProgress().color(Color.Blue).layoutWeight(1)           // 加载进度指示器
     }.borderRadius(10).width(100).height(100)
   }
 }
@@ -951,12 +1555,12 @@ struct LoadingDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State number: number = 0;
+  @State number: number = 0;                                        // 计数器状态
   dialogController: CustomDialogController | null = null;
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -973,7 +1577,7 @@ struct CustomDialogUser {
 
   build() {
     Column() {
-      Button("click " + this.number).onClick(() => {
+      Button("click " + this.number).onClick(() => {                // 该按钮在maskRect区域外，事件可透传
         this.number++;
       })
       Button("show loading dialog").onClick(() => {
@@ -983,7 +1587,7 @@ struct CustomDialogUser {
           // 获取窗口信息，设置maskRect
           try {
             let properties = window.getWindowProperties();
-            let maskRect = {
+            let maskRect = {                                        // 设置遮罩层区域
               x: this.getUIContext().px2vp(properties.windowRect.left + 150),
               y: this.getUIContext().px2vp(properties.windowRect.top + 350),
               width: this.getUIContext().px2vp(properties.windowRect.width - 300),
@@ -991,7 +1595,7 @@ struct CustomDialogUser {
             } as Rectangle
             if (this.dialogController == null) {
               this.dialogController = new CustomDialogController({
-                builder: LoadingDialogExample({
+                builder: LoadingDialogExample({                     // 弹窗内容构造器
                   cancel: () => {
                     this.onCancel();
                   },
@@ -999,29 +1603,29 @@ struct CustomDialogUser {
                     this.onAccept();
                   },
                 }),
-                cancel: this.exitApp,
-                maskRect: maskRect,
-                autoCancel: false,
-                maskColor: "#33AA0000",
-                showInSubWindow: false,
-                backgroundBlurStyle: BlurStyle.NONE,
+                cancel: this.exitApp,                               // 点击遮罩层关闭时的回调
+                maskRect: maskRect,                                 // 设置遮罩层区域，区域外事件可透传
+                autoCancel: false,                                  // 不允许点击遮罩层关闭
+                maskColor: "#33AA0000",                             // 自定义遮罩颜色
+                showInSubWindow: false,                             // 不在子窗口显示
+                backgroundBlurStyle: BlurStyle.NONE,                // 无背景模糊
                 onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
                     dismissDialogAction.dismiss();
                   }
-                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
                     dismissDialogAction.dismiss();
                   }
                 },
-                alignment: DialogAlignment.Center,
-                customStyle: false,
-                cornerRadius: 10,
-                openAnimation: { duration: 0, tempo: 0 },
-                closeAnimation: { duration: 0, tempo: 0 }
+                alignment: DialogAlignment.Center,                   // 弹窗居中对齐
+                customStyle: false,                                 // 使用默认弹窗容器样式
+                cornerRadius: 10,                                   // 圆角半径10vp
+                openAnimation: { duration: 0, tempo: 0 },           // 无打开动画
+                closeAnimation: { duration: 0, tempo: 0 }           // 无关闭动画
               })
             }
             this.dialogController.close();
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
           } catch (error) {
             console.error('error is ' + error)
           }
@@ -1031,6 +1635,114 @@ struct CustomDialogUser {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例7：自定义带loading的弹窗（ArkTS-Sta版本）
+ * 本示例展示如何使用maskColor、maskRect和LoadingProgress实现带loading的弹窗
+ * 演示了遮罩层区域外事件透传的效果
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, LoadingProgress, CustomDialog, CustomDialogController, Color, BlurStyle, Rectangle, DialogAlignment, DismissDialogAction, DismissReason, window } from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct LoadingDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+
+  build(): void {
+    Column() {
+      LoadingProgress().color(Color.Blue).layoutWeight(1)           // 加载进度指示器
+    }.borderRadius(10).width(100).height(100)
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State number: number = 0                                         // 计数器状态
+  dialogController: CustomDialogController | null = null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button("click " + this.number).onClick(() => {                // 该按钮在maskRect区域外，事件可透传
+        this.number++
+      })
+      Button("show loading dialog").onClick(() => {
+        let windowClass = window.getLastWindow(this.getUIContext().getHostContext())
+        windowClass.then((win: window.Window): void => {
+          try {
+            let properties = win.getWindowProperties()
+            let maskRect = {                                        // 设置遮罩层区域
+              x: this.getUIContext().px2vp(properties.windowRect.left + 150),
+              y: this.getUIContext().px2vp(properties.windowRect.top + 350),
+              width: this.getUIContext().px2vp(properties.windowRect.width - 300),
+              height: this.getUIContext().px2vp(properties.windowRect.height - 700)
+            } as Rectangle
+            if (this.dialogController == null) {
+              this.dialogController = new CustomDialogController({
+                builder: LoadingDialogExample({                     // 弹窗内容构造器
+                  cancel: (): void => {
+                    this.onCancel()
+                  },
+                  confirm: (): void => {
+                    this.onAccept()
+                  },
+                }),
+                cancel: this.exitApp,                               // 点击遮罩层关闭时的回调
+                maskRect: maskRect,                                 // 设置遮罩层区域，区域外事件可透传
+                autoCancel: false,                                  // 不允许点击遮罩层关闭
+                maskColor: "#33AA0000",                             // 自定义遮罩颜色
+                showInSubWindow: false,                             // 不在子窗口显示
+                backgroundBlurStyle: BlurStyle.NONE,                // 无背景模糊
+                onWillDismiss: (dismissDialogAction: DismissDialogAction): void => {
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+                    dismissDialogAction.dismiss()
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+                    dismissDialogAction.dismiss()
+                  }
+                },
+                alignment: DialogAlignment.Center,                   // 弹窗居中对齐
+                customStyle: false,                                 // 使用默认弹窗容器样式
+                cornerRadius: 10,                                   // 圆角半径10vp
+                openAnimation: { duration: 0, tempo: 0 },           // 无打开动画
+                closeAnimation: { duration: 0, tempo: 0 }           // 无关闭动画
+              }) as CustomDialogController | null
+            }
+            this.dialogController.close()
+            this.dialogController.open()                             // 打开弹窗
+          } catch (error) {
+            console.error('error is ', error)
+          }
+        })
+      }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 ![zh-cn_image_custom](figures/custom_loading_dialog.gif)
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
@@ -1039,27 +1751,34 @@ struct CustomDialogUser {
 
 从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例8：不使用keyboardAvoidDistance调整弹窗与软键盘的间距
+ * 本示例展示如何通过监听键盘变化，手动调整弹窗与软键盘的间距
+ * 演示了使用margin实现键盘避让效果
+ */
 import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
 struct CustomDialogExample {
-  @Link textValue: string;
-  @Link inputValue: string;
-  @Link isKeyboardShow: boolean
-  @Link navigationBarHeight: number
-  controller?: CustomDialogController;
-  cancel: () => void = () => {
+  @Link textValue: string;                                          // 文本输入值，与父组件双向绑定
+  @Link inputValue: string;                                         // 输入值，与父组件双向绑定
+  @Link isKeyboardShow: boolean                                     // 键盘显示状态
+  @Link navigationBarHeight: number                                 // 导航栏高度
+  controller?: CustomDialogController;                              // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
 
   build() {
     Column() {
       Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
       TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .onChange((value: string) => {
+        .onChange((value: string) => {                              // 输入内容变化回调
           this.textValue = value;
         })
       Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
@@ -1067,23 +1786,23 @@ struct CustomDialogExample {
         Button('cancel')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.controller.close();
-              this.cancel();
+              this.controller.close();                              // 关闭弹窗
+              this.cancel();                                        // 触发取消回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             if (this.controller != undefined) {
-              this.inputValue = this.textValue;
-              this.controller.close();
-              this.confirm();
+              this.inputValue = this.textValue;                     // 更新输入值
+              this.controller.close();                              // 关闭弹窗
+              this.confirm();                                       // 触发确认回调
             }
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
     }.borderRadius(10)
     .margin({
       // 通过键盘显隐调整间距（键盘与弹窗间距为16vp）
-      bottom: this.isKeyboardShow ? -16 : this.navigationBarHeight
+      bottom: this.isKeyboardShow ? -16 : this.navigationBarHeight  // 根据键盘状态动态调整底部间距
     }).backgroundColor(Color.White)
   }
 }
@@ -1091,37 +1810,37 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = ''
-  @State inputValue: string = 'click me'
-  @State isKeyboardShow: boolean = false
-  @State navigationBarHeight: number = 0
+  @State textValue: string = ''                                     // 文本值状态
+  @State inputValue: string = 'click me'                            // 输入值状态
+  @State isKeyboardShow: boolean = false                            // 键盘显示状态
+  @State navigationBarHeight: number = 0                            // 导航栏高度
   windowClass: window.Window | null = null
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
       cancel: () => {
         this.onCancel();
       },
       confirm: () => {
         this.onAccept();
       },
-      textValue: this.textValue,
-      inputValue: this.inputValue,
-      isKeyboardShow: this.isKeyboardShow,
-      navigationBarHeight: this.navigationBarHeight
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue,                                  // 传递输入值
+      isKeyboardShow: this.isKeyboardShow,                          // 传递键盘显示状态
+      navigationBarHeight: this.navigationBarHeight                 // 传递导航栏高度
     }),
-    cancel: this.exitApp,
-    autoCancel: true,
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
     onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    alignment: DialogAlignment.Bottom,
-    customStyle: true,
-    cornerRadius: 10,
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    customStyle: true,                                              // 使用自定义样式
+    cornerRadius: 10,                                               // 圆角半径10vp
   })
 
   aboutToAppear(): void {
@@ -1132,9 +1851,9 @@ struct CustomDialogUser {
       try {
         let navigationArea = this.windowClass?.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
         this.navigationBarHeight = navigationArea.bottomRect.height;
-        this.windowClass?.on('avoidAreaChange', (data) => {
+        this.windowClass?.on('avoidAreaChange', (data) => {         // 监听避让区域变化
           if (data.type == window.AvoidAreaType.TYPE_KEYBOARD) {
-            this.isKeyboardShow = data.area.bottomRect.height > 0;
+            this.isKeyboardShow = data.area.bottomRect.height > 0;  // 键盘显示状态
           }
         })
       } catch (error) {
@@ -1145,7 +1864,7 @@ struct CustomDialogUser {
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
     this.windowClass?.off('avoidAreaChange')
   }
 
@@ -1166,13 +1885,153 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例8：不使用keyboardAvoidDistance调整弹窗与软键盘的间距（ArkTS-Sta版本）
+ * 本示例展示如何通过监听键盘变化，手动调整弹窗与软键盘的间距
+ * 演示了使用margin实现键盘避让效果
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, TextInput, Flex, FlexAlign, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, Color, Link, State, window } from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  @Link textValue: string                                           // 文本输入值，与父组件双向绑定
+  @Link inputValue: string                                          // 输入值，与父组件双向绑定
+  @Link isKeyboardShow: boolean                                     // 键盘显示状态
+  @Link navigationBarHeight: number                                 // 导航栏高度
+  controller?: CustomDialogController                               // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+
+  build(): void {
+    Column() {
+      Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
+      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
+        .onChange((value: string): void => {                         // 输入内容变化回调
+          this.textValue = value
+        })
+      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      Flex({ justifyContent: FlexAlign.SpaceAround }) {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close()                                // 关闭弹窗
+              this.cancel()                                          // 触发取消回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.inputValue = this.textValue                       // 更新输入值
+              this.controller.close()                                // 关闭弹窗
+              this.confirm()                                         // 触发确认回调
+            }
+          }).backgroundColor(0xffffff).fontColor(Color.Red)
+      }.margin({ bottom: 10 })
+    }.borderRadius(10)
+    .margin({
+      bottom: this.isKeyboardShow ? -16 : this.navigationBarHeight  // 根据键盘状态动态调整底部间距
+    }).backgroundColor(Color.White)
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State textValue: string = ''                                     // 文本值状态
+  @State inputValue: string = 'click me'                            // 输入值状态
+  @State isKeyboardShow: boolean = false                            // 键盘显示状态
+  @State navigationBarHeight: number = 0                            // 导航栏高度
+  windowClass: window.Window | null = null
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({                                  // 弹窗内容构造器
+      cancel: (): void => {
+        this.onCancel()
+      },
+      confirm: (): void => {
+        this.onAccept()
+      },
+      textValue: this.textValue,                                    // 传递文本值
+      inputValue: this.inputValue,                                  // 传递输入值
+      isKeyboardShow: this.isKeyboardShow,                          // 传递键盘显示状态
+      navigationBarHeight: this.navigationBarHeight                 // 传递导航栏高度
+    }),
+    cancel: this.exitApp,                                           // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    onWillDismiss: (dismissDialogAction: DismissDialogAction): void => {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    customStyle: true,                                              // 使用自定义样式
+    cornerRadius: 10,                                               // 圆角半径10vp
+  }) as CustomDialogController | null
+
+  aboutToAppear(): void {
+    let windowClass = window.getLastWindow(this.getUIContext().getHostContext())
+    windowClass.then((win: window.Window): void => {
+      this.windowClass = win
+      try {
+        let navigationArea = this.windowClass?.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR)
+        this.navigationBarHeight = navigationArea.bottomRect.height
+        this.windowClass?.on('avoidAreaChange', (data): void => {   // 监听避让区域变化
+          if (data.type == window.AvoidAreaType.TYPE_KEYBOARD) {
+            this.isKeyboardShow = data.area.bottomRect.height > 0   // 键盘显示状态
+          }
+        })
+      } catch (error) {
+        console.error('error is ', error)
+      }
+    })
+  }
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+    this.windowClass?.off('avoidAreaChange')
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button(this.inputValue)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 ![zh-cn_image_custom](figures/dialog_keyboard_distance.gif)
 
 ### 示例9（弹窗生命周期）
@@ -1181,14 +2040,21 @@ struct CustomDialogUser {
 
 从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例9：弹窗生命周期
+ * 本示例展示如何配置弹窗的生命周期回调
+ * 演示了onWillAppear、onDidAppear、onWillDisappear、onDidDisappear的使用
+ */
 @CustomDialog
 struct CustomDialogExample1 {
-  controller?: CustomDialogController
-  cancel: () => void = () => {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
   build() {
     Column() {
@@ -1198,7 +2064,7 @@ struct CustomDialogExample1 {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -1209,43 +2075,43 @@ struct CustomDialogExample1 {
 @Entry
 @Component
 struct Example3 {
-  @State log: string = 'Log information:';
+  @State log: string = 'Log information:';                          // 日志信息状态
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample1({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); }
+    builder: CustomDialogExample1({                                 // 弹窗内容构造器
+      cancel: ()=> { this.onCancel(); },                            // 取消回调
+      confirm: ()=> { this.onAccept(); }                            // 确认回调
     }),
-    cancel: this.existApp,
-    autoCancel: true,
-    alignment: DialogAlignment.Bottom,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {   // 交互式关闭回调
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
         dismissDialogAction.dismiss();
       }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
         dismissDialogAction.dismiss();
       }
     },
-    onDidAppear: () => {
+    onDidAppear: () => {                                            // 弹窗显示后的回调
       this.log += '# onDidAppear';
       console.info('CustomDialog,is onDidAppear!');
     },
-    onDidDisappear: () => {
+    onDidDisappear: () => {                                         // 弹窗消失后的回调
       this.log += '# onDidDisappear';
       console.info('CustomDialog,is onDidDisappear!');
     },
-    onWillAppear: () => {
+    onWillAppear: () => {                                           // 弹窗显示前的回调
       this.log = 'Log information:onWillAppear';
       console.info('CustomDialog,is onWillAppear!');
     },
-    onWillDisappear: () => {
+    onWillDisappear: () => {                                        // 弹窗消失前的回调
       this.log += '# onWillDisappear';
       console.info('CustomDialog,is onWillDisappear!');
     },
-    offset: { dx: 0, dy: -20 },
-    customStyle: false,
+    offset: { dx: 0, dy: -20 },                                     // 弹窗偏移：向上偏移20vp
+    customStyle: false,                                             // 使用默认弹窗容器样式
   })
   onCancel() {
     console.info('CustomDialog Callback when the first button is clicked');
@@ -1262,7 +2128,107 @@ struct Example3 {
     Column({ space: 5 }) {
       Button('CustomDialog')
         .onClick(() => {
-          this.dialogController?.open();
+          this.dialogController?.open();                             // 打开弹窗
+        })
+      Text(this.log).fontSize(30).margin({ top: 200 })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例9：弹窗生命周期（ArkTS-Sta版本）
+ * 本示例展示如何配置弹窗的生命周期回调
+ * 演示了onWillAppear、onDidAppear、onWillDisappear、onDidDisappear的使用
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, State } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample1 {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+  build(): void {
+    Column() {
+      Text('允许访问相机？')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Example3 {
+  @State log: string = 'Log information:'                           // 日志信息状态
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample1({                                 // 弹窗内容构造器
+      cancel: (): void => { this.onCancel() },                      // 取消回调
+      confirm: (): void => { this.onAccept() }                      // 确认回调
+    }),
+    cancel: this.existApp,                                          // 点击遮罩层关闭时的回调
+    autoCancel: true,                                               // 允许点击遮罩层关闭
+    alignment: DialogAlignment.Bottom,                               // 弹窗底部对齐
+    onWillDismiss:(dismissDialogAction: DismissDialogAction): void => { // 交互式关闭回调
+      console.info('reason= ', dismissDialogAction.reason)
+      console.info('dialog onWillDismiss')
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+        dismissDialogAction.dismiss()
+      }
+    },
+    onDidAppear: (): void => {                                      // 弹窗显示后的回调
+      this.log += '# onDidAppear'
+      console.info('CustomDialog,is onDidAppear!')
+    },
+    onDidDisappear: (): void => {                                   // 弹窗消失后的回调
+      this.log += '# onDidDisappear'
+      console.info('CustomDialog,is onDidDisappear!')
+    },
+    onWillAppear: (): void => {                                     // 弹窗显示前的回调
+      this.log = 'Log information:onWillAppear'
+      console.info('CustomDialog,is onWillAppear!')
+    },
+    onWillDisappear: (): void => {                                  // 弹窗消失前的回调
+      this.log += '# onWillDisappear'
+      console.info('CustomDialog,is onWillDisappear!')
+    },
+    offset: { dx: 0, dy: -20 } as Offset,                           // 弹窗偏移：向上偏移20vp
+    customStyle: false,                                             // 使用默认弹窗容器样式
+  }) as CustomDialogController | null
+
+  onCancel(): void {
+    console.info('CustomDialog Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('CustomDialog Callback when the second button is clicked')
+  }
+
+  existApp(): void {
+    console.info('CustomDialog Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column({ space: 5 }) {
+      Button('CustomDialog')
+        .onClick(() => {
+          this.dialogController?.open()                              // 打开弹窗
         })
       Text(this.log).fontSize(30).margin({ top: 200 })
     }.width('100%').margin({ top: 5 })
@@ -1276,14 +2242,21 @@ struct Example3 {
 
 该示例是在[alignment](#customdialogcontrolleroptions对象说明)的对齐方式为DialogAlignment.Bottom时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例10：不同customStyle下的弹窗示例
+ * 本示例展示customStyle属性为true和false时弹窗的不同表现
+ * 演示了弹窗内容与安全区域的关系
+ */
 @CustomDialog
 @Component
 struct CustomStyleDialogExample {
-  controller?: CustomDialogController;
-  cancel: () => void = () => {
+  controller?: CustomDialogController;                               // 弹窗控制器
+  cancel: () => void = () => {                                      // 取消按钮回调
   }
-  confirm: () => void = () => {
+  confirm: () => void = () => {                                     // 确认按钮回调
   }
 
   build() {
@@ -1294,12 +2267,12 @@ struct CustomStyleDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State customStyle: boolean = false;
+  @State customStyle: boolean = false;                              // customStyle状态，默认false
   dialogController: CustomDialogController | null = null;
 
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
+    this.dialogController = null;                                   // 将dialogController置空
   }
 
   onCancel() {
@@ -1317,14 +2290,14 @@ struct CustomDialogUser {
   build() {
     Column() {
       Button('change  customStyle:' + this.customStyle).onClick(() => {
-        this.customStyle = !this.customStyle;
+        this.customStyle = !this.customStyle;                       // 切换customStyle值
       })
       Button('show dialog').onClick(() => {
         if (this.dialogController != null) {
           this.dialogController.close();
         }
         this.dialogController = new CustomDialogController({
-          builder: CustomStyleDialogExample({
+          builder: CustomStyleDialogExample({                       // 弹窗内容构造器
             cancel: () => {
               this.onCancel();
             },
@@ -1332,29 +2305,118 @@ struct CustomDialogUser {
               this.onAccept();
             },
           }),
-          cancel: this.exitApp,
-          autoCancel: true,
-          showInSubWindow: false,
+          cancel: this.exitApp,                                     // 点击遮罩层关闭时的回调
+          autoCancel: true,                                         // 允许点击遮罩层关闭
+          showInSubWindow: false,                                   // 不在子窗口显示
           onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-            if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+            if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
               dismissDialogAction.dismiss();
             }
-            if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+            if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
               dismissDialogAction.dismiss();
             }
           },
-          alignment: DialogAlignment.Bottom,
-          customStyle: this.customStyle,
-          cornerRadius: 10,
-          openAnimation: { duration: 0, tempo: 0 },
-          closeAnimation: { duration: 0, tempo: 0 }
+          alignment: DialogAlignment.Bottom,                         // 弹窗底部对齐
+          customStyle: this.customStyle,                            // 是否使用自定义样式
+          cornerRadius: 10,                                         // 圆角半径10vp
+          openAnimation: { duration: 0, tempo: 0 },                 // 无打开动画
+          closeAnimation: { duration: 0, tempo: 0 }                 // 无关闭动画
         })
-        this.dialogController.open();
+        this.dialogController.open();                                // 打开弹窗
       }).margin({ top: 5 })
     }.width('100%').margin({ top: 5 })
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例10：不同customStyle下的弹窗示例（ArkTS-Sta版本）
+ * 本示例展示customStyle属性为true和false时弹窗的不同表现
+ * 演示了弹窗内容与安全区域的关系
+ */
+import { Entry, Component, Column, ColumnOptions, Button, CustomDialog, CustomDialogController, DialogAlignment, DismissDialogAction, DismissReason, State } from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct CustomStyleDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+  cancel: () => void = (): void => {                                // 取消按钮回调
+  }
+  confirm: () => void = (): void => {                               // 确认按钮回调
+  }
+
+  build(): void {
+    Column().borderRadius(10).width(110).height(110).backgroundColor("#2787d9")
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State customStyle: boolean = false                               // customStyle状态，默认false
+  dialogController: CustomDialogController | null = null
+
+  aboutToDisappear(): void {
+    this.dialogController = null                                    // 将dialogController置空
+  }
+
+  onCancel(): void {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept(): void {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp(): void {
+    console.info('Click the callback in the blank area')
+  }
+
+  build(): void {
+    Column() {
+      Button('change  customStyle:' + this.customStyle).onClick(() => {
+        this.customStyle = !this.customStyle                        // 切换customStyle值
+      })
+      Button('show dialog').onClick(() => {
+        if (this.dialogController != null) {
+          this.dialogController.close()
+        }
+        this.dialogController = new CustomDialogController({
+          builder: CustomStyleDialogExample({                       // 弹窗内容构造器
+            cancel: (): void => {
+              this.onCancel()
+            },
+            confirm: (): void => {
+              this.onAccept()
+            },
+          }),
+          cancel: this.exitApp,                                     // 点击遮罩层关闭时的回调
+          autoCancel: true,                                         // 允许点击遮罩层关闭
+          showInSubWindow: false,                                   // 不在子窗口显示
+          onWillDismiss: (dismissDialogAction: DismissDialogAction): void => {
+            if (dismissDialogAction.reason == DismissReason.PRESS_BACK) { // 按返回键时关闭
+              dismissDialogAction.dismiss()
+            }
+            if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) { // 点击遮罩层时关闭
+              dismissDialogAction.dismiss()
+            }
+          },
+          alignment: DialogAlignment.Bottom,                         // 弹窗底部对齐
+          customStyle: this.customStyle,                            // 是否使用自定义样式
+          cornerRadius: 10,                                         // 圆角半径10vp
+          openAnimation: { duration: 0, tempo: 0 },                 // 无打开动画
+          closeAnimation: { duration: 0, tempo: 0 }                 // 无关闭动画
+        }) as CustomDialogController | null
+        this.dialogController.open()                                 // 打开弹窗
+      }).margin({ top: 5 })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 ![zh-cn_image_custom](figures/customstyle_dialog_demo.gif)
 
 ### 示例11（自定义背景模糊效果参数）
@@ -1363,10 +2425,17 @@ struct CustomDialogUser {
 
 从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例11：自定义背景模糊效果参数
+ * 本示例展示如何使用backgroundBlurStyleOptions自定义背景模糊效果
+ * 演示了colorMode、adaptiveColor、scale、blurOptions等参数的配置
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController;
+  controller?: CustomDialogController;                               // 弹窗控制器
 
   build() {
     Column() {
@@ -1376,7 +2445,7 @@ struct CustomDialogExample {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -1388,14 +2457,14 @@ struct CustomDialogExample {
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample(),
-    backgroundColor: undefined,
-    backgroundBlurStyle: BlurStyle.Thin,
-    backgroundBlurStyleOptions: {
-      colorMode: ThemeColorMode.LIGHT,
-      adaptiveColor: AdaptiveColor.AVERAGE,
-      scale: 1,
-      blurOptions: { grayscale: [20, 20] },
+    builder: CustomDialogExample(),                                 // 弹窗内容构造器
+    backgroundColor: undefined,                                     // 背景色未定义
+    backgroundBlurStyle: BlurStyle.Thin,                            // 背景模糊样式：薄
+    backgroundBlurStyleOptions: {                                   // 背景模糊效果选项
+      colorMode: ThemeColorMode.LIGHT,                              // 主题颜色模式：浅色
+      adaptiveColor: AdaptiveColor.AVERAGE,                         // 自适应颜色：平均
+      scale: 1,                                                     // 缩放比例
+      blurOptions: { grayscale: [20, 20] },                        // 模糊选项
     },
   })
 
@@ -1408,7 +2477,69 @@ struct CustomDialogUser {
           .margin(20)
           .onClick(() => {
             if (this.dialogController != null) {
-              this.dialogController.open();
+              this.dialogController.open();                          // 打开弹窗
+            }
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例11：自定义背景模糊效果参数（ArkTS-Sta版本）
+ * 本示例展示如何使用backgroundBlurStyleOptions自定义背景模糊效果
+ * 演示了colorMode、adaptiveColor、scale、blurOptions等参数的配置
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, ThemeColorMode, AdaptiveColor } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+
+  build(): void {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),                                 // 弹窗内容构造器
+    backgroundColor: undefined,                                     // 背景色未定义
+    backgroundBlurStyle: BlurStyle.Thin,                            // 背景模糊样式：薄
+    backgroundBlurStyleOptions: {                                   // 背景模糊效果选项
+      colorMode: ThemeColorMode.LIGHT,                              // 主题颜色模式：浅色
+      adaptiveColor: AdaptiveColor.AVERAGE,                         // 自适应颜色：平均
+      scale: 1,                                                     // 缩放比例
+      blurOptions: { grayscale: [20, 20] },                        // 模糊选项
+    } as BackgroundBlurStyleOptions,
+  }) as CustomDialogController | null
+
+  build(): void {
+    Stack({ alignContent: Alignment.Top }) {
+      Image($r('app.media.bg'))
+      Column() {
+        Button('CustomDialog')
+          .margin(20)
+          .onClick(() => {
+            if (this.dialogController != null) {
+              this.dialogController.open()                           // 打开弹窗
             }
           })
       }.width('100%')
@@ -1425,10 +2556,17 @@ struct CustomDialogUser {
 
 从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundEffect属性。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例12：自定义背景效果参数
+ * 本示例展示如何使用backgroundEffect自定义背景效果
+ * 演示了radius、saturation、brightness、color等参数的配置
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController;
+  controller?: CustomDialogController;                               // 弹窗控制器
 
   build() {
     Column() {
@@ -1438,7 +2576,7 @@ struct CustomDialogExample {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -1450,15 +2588,15 @@ struct CustomDialogExample {
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample(),
-    backgroundColor: undefined,
-    backgroundBlurStyle: BlurStyle.Thin,
-    backgroundEffect: {
-      radius: 60,
-      saturation: 0,
-      brightness: 1,
-      color: Color.White,
-      blurOptions: { grayscale: [20, 20] }
+    builder: CustomDialogExample(),                                 // 弹窗内容构造器
+    backgroundColor: undefined,                                     // 背景色未定义
+    backgroundBlurStyle: BlurStyle.Thin,                            // 背景模糊样式：薄
+    backgroundEffect: {                                             // 背景效果参数
+      radius: 60,                                                   // 模糊半径
+      saturation: 0,                                                // 饱和度
+      brightness: 1,                                                // 亮度
+      color: Color.White,                                           // 背景颜色
+      blurOptions: { grayscale: [20, 20] }                         // 模糊选项
     },
   })
 
@@ -1471,7 +2609,70 @@ struct CustomDialogUser {
           .margin(20)
           .onClick(() => {
             if (this.dialogController != null) {
-              this.dialogController.open();
+              this.dialogController.open();                          // 打开弹窗
+            }
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例12：自定义背景效果参数（ArkTS-Sta版本）
+ * 本示例展示如何使用backgroundEffect自定义背景效果
+ * 演示了radius、saturation、brightness、color等参数的配置
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, Stack, Alignment, CustomDialog, CustomDialogController, Image, BlurStyle, Color } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+
+  build(): void {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),                                 // 弹窗内容构造器
+    backgroundColor: undefined,                                     // 背景色未定义
+    backgroundBlurStyle: BlurStyle.Thin,                            // 背景模糊样式：薄
+    backgroundEffect: {                                             // 背景效果参数
+      radius: 60,                                                   // 模糊半径
+      saturation: 0,                                                // 饱和度
+      brightness: 1,                                                // 亮度
+      color: Color.White,                                           // 背景颜色
+      blurOptions: { grayscale: [20, 20] }                         // 模糊选项
+    } as BackgroundEffectOptions,
+  }) as CustomDialogController | null
+
+  build(): void {
+    Stack({ alignContent: Alignment.Top }) {
+      Image($r('app.media.bg'))
+      Column() {
+        Button('CustomDialog')
+          .margin(20)
+          .onClick(() => {
+            if (this.dialogController != null) {
+              this.dialogController.open()                           // 打开弹窗
             }
           })
       }.width('100%')
@@ -1486,11 +2687,18 @@ struct CustomDialogUser {
 
 该示例通过状态变量同步自定义组件的宽度，实现自定义弹窗宽度动态切换。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例13：自定义弹窗动态刷新宽度
+ * 本示例展示如何通过状态变量动态刷新自定义弹窗的宽度
+ * 演示了customStyle为true时通过属性绑定实现动态刷新效果
+ */
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController;
-  @Link currentWidth: number;
+  controller?: CustomDialogController;                               // 弹窗控制器
+  @Link currentWidth: number;                                       // 当前宽度百分比，与父组件双向绑定
 
   build() {
     Column() {
@@ -1500,7 +2708,7 @@ struct CustomDialogExample {
       Button('点我关闭弹窗')
         .onClick(() => {
           if (this.controller != undefined) {
-            this.controller.close();
+            this.controller.close();                                // 关闭弹窗
           }
         })
         .margin(20)
@@ -1508,18 +2716,18 @@ struct CustomDialogExample {
     .borderRadius(32)
     .backgroundColor(Color.White)
     .shadow(ShadowStyle.OUTER_DEFAULT_SM)
-    .width(this.currentWidth + "%")
+    .width(this.currentWidth + "%")                                 // 宽度根据状态变量动态调整
   }
 }
 
 @Entry
 @Component
 struct CustomDialogUser {
-  @State currentWidth: number = 0
+  @State currentWidth: number = 0                                   // 当前宽度百分比状态
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({ currentWidth: this.currentWidth }),
-    customStyle: true,
-    isModal: false,
+    builder: CustomDialogExample({ currentWidth: this.currentWidth }), // 弹窗内容构造器，传递宽度值
+    customStyle: true,                                              // 使用自定义样式，才能动态刷新
+    isModal: false,                                                 // 非模态窗口
   })
 
   build() {
@@ -1528,10 +2736,10 @@ struct CustomDialogUser {
       Row() {
         Text("宽度设置：")
           .height(50)
-        Slider({ min: 60, max: 100, step: 5 })
+        Slider({ min: 60, max: 100, step: 5 })                      // 滑块控制器，调整宽度
           .showTips(true, this.currentWidth + '%')
-          .onChange((value: number, mode: SliderChangeMode) => {
-            this.currentWidth = value;
+          .onChange((value: number, mode: SliderChangeMode) => {    // 滑块值变化回调
+            this.currentWidth = value;                              // 更新宽度值
           }).width(200)
       }
 
@@ -1539,7 +2747,77 @@ struct CustomDialogUser {
         .margin(20)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open();
+            this.dialogController.open();                            // 打开弹窗
+          }
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+/**
+ * 示例13：自定义弹窗动态刷新宽度（ArkTS-Sta版本）
+ * 本示例展示如何通过状态变量动态刷新自定义弹窗的宽度
+ * 演示了customStyle为true时通过属性绑定实现动态刷新效果
+ */
+import { Entry, Component, Column, ColumnOptions, Button, Text, Row, Slider, SliderChangeMode, CustomDialog, CustomDialogController, Color, ShadowStyle, Link, State } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController                                // 弹窗控制器
+  @Link currentWidth: number                                        // 当前宽度百分比，与父组件双向绑定
+
+  build(): void {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()                                 // 关闭弹窗
+          }
+        })
+        .margin(20)
+    }
+    .borderRadius(32)
+    .backgroundColor(Color.White)
+    .shadow(ShadowStyle.OUTER_DEFAULT_SM)
+    .width(this.currentWidth + "%")                                 // 宽度根据状态变量动态调整
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State currentWidth: number = 0                                   // 当前宽度百分比状态
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({ currentWidth: this.currentWidth }), // 弹窗内容构造器，传递宽度值
+    customStyle: true,                                              // 使用自定义样式，才能动态刷新
+    isModal: false,                                                 // 非模态窗口
+  }) as CustomDialogController | null
+
+  build(): void {
+    Column() {
+
+      Row() {
+        Text("宽度设置：")
+          .height(50)
+        Slider({ min: 60, max: 100, step: 5 })                      // 滑块控制器，调整宽度
+          .showTips(true, this.currentWidth + '%')
+          .onChange((value: number, mode: SliderChangeMode): void => { // 滑块值变化回调
+            this.currentWidth = value                               // 更新宽度值
+          }).width(200)
+      }
+
+      Button('CustomDialog')
+        .margin(20)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()                             // 打开弹窗
           }
         })
     }.width('100%')
