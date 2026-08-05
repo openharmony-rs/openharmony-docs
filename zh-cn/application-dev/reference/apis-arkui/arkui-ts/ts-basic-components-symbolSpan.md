@@ -6,11 +6,11 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-作为Text组件的子组件，用于显示图标小符号的组件。
+SymbolSpan作为Text组件的子组件，用于在文本中显示系统预置的图标小符号（Symbol图标）。支持设置颜色、大小、粗细、渲染策略和动效策略等属性，适用于需要在文本中嵌入图标符号的场景，如状态指示、功能标识等。SymbolSpan仅支持系统预置的symbol资源，可继承父组件Text的属性设置。
 
 >  **说明：**
 >
-> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
@@ -42,11 +42,11 @@ SymbolSpan(value: Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [Resource](ts-types.md#resource)| 是 | SymbolSpan组件的资源名，如 $r('sys.symbol.ohos_wifi')。 |
+| value | [Resource](ts-types.md#resource)| 是 | SymbolSpan组件的资源引用，如 $r('sys.symbol.ohos_wifi')。仅支持系统预置的symbol资源，引用非symbol资源将显示异常。 |
 
 >  **说明：**
 >
->  $r('sys.symbol.ohos_wifi')中引用的资源为系统预置，SymbolSpan仅支持系统预置的symbol资源名，引用非symbol资源将显示异常。
+>  $r('sys.symbol.ohos_wifi')中引用的资源为系统预置，SymbolSpan仅支持系统预置的symbol资源，引用非symbol资源将显示异常。
 
 ## 属性
 
@@ -58,7 +58,7 @@ ArkTS-Dyn: fontColor(value: Array&lt;ResourceColor&gt;)
 
 ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
-设置SymbolSpan组件颜色。
+设置SymbolSpan组件颜色。未通过该接口设置时，默认颜色随[renderingStrategy](#renderingstrategy)变化，单色渲染策略（SINGLE）下默认为单色；多色渲染策略（MULTIPLE_COLOR）和分层渲染策略（MULTIPLE_OPACITY）下默认取图标资源预设的多色配置。具体说明请参考[SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)。
 
 >**说明：**
 >
@@ -78,7 +78,7 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br/>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolSpan组件颜色。<br/> 默认值：不同渲染策略下默认值不同。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolSpan组件颜色。具体颜色渲染模式及其说明请参考[SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)。<br>取值为undefined时，按默认值处理。 |
 
 ### fontSize
 
@@ -86,7 +86,7 @@ ArkTS-Dyn: fontSize(value: number | string | Resource)
 
 ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
-设置SymbolSpan组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置SymbolSpan组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。未通过该接口设置时，默认组件大小为16fp。
 
 >**说明：**
 >
@@ -106,7 +106,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                          |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br>取值范围：[0,&nbsp;+∞)<br>单位：[fp](ts-pixel-units.md#基本像素单位) <br>取值为undefined时，按默认值处理。|
 
 ### fontWeight
 
@@ -114,7 +114,7 @@ ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
 
 ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
-设置SymbolSpan组件字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular" 、"medium"分别对应FontWeight中相应的枚举值。
+设置SymbolSpan组件字体粗细。未通过该接口设置时，默认字体粗细为FontWeight.Normal（正常粗细，对应数值400）。
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
@@ -136,7 +136,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件字体粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -144,7 +144,9 @@ ArkTS-Dyn: renderingStrategy(value: SymbolRenderingStrategy)
 
 ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
-设置SymbolSpan渲染策略。
+设置SymbolSpan渲染策略。未通过该接口设置时，默认渲染策略为SymbolRenderingStrategy.SINGLE。
+
+SINGLE表示单色渲染，适用于需要统一颜色的图标显示场景；MULTIPLE_COLOR表示多色渲染，适用于需要展示图标多层不同颜色的场景；MULTIPLE_OPACITY表示分层渲染，适用于需要展示图标层次效果的场景。
 
 >**说明：**
 >
@@ -164,7 +166,7 @@ ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolSpan渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)<br>ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolSpan渲染策略。<br>取值为undefined时，按默认值处理。 |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -176,7 +178,11 @@ ArkTS-Dyn: effectStrategy(value: SymbolEffectStrategy)
 
 ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
-设置SymbolSpan动效策略。
+设置SymbolSpan动效策略。未通过该接口设置时，默认动效策略为SymbolEffectStrategy.NONE。
+
+NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。
+
+不同动效策略效果可以参考[示例1（设置渲染和动效策略）](#示例1设置渲染和动效策略)。
 
 >**说明：**
 >
@@ -196,7 +202,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolSpan动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明)<br>ArkTS-Sta: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolSpan动效策略。<br>取值为undefined时，按默认值处理。 |
 
 ### attributeModifier<sup>12+</sup>
 
@@ -218,7 +224,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute> |
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。<br>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### key<sup>23+</sup>
 
@@ -238,7 +244,7 @@ key(value: string | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br>取值为undefined时，按默认值处理。 |
 
 ### id<sup>23+</sup>
 
@@ -256,7 +262,7 @@ id(value: string | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br>取值为undefined时，按默认值处理。 |
 
 ### debugLine
 
@@ -295,7 +301,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Text("Light")
+          Text('Light')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(FontWeight.Lighter)
@@ -304,7 +310,7 @@ struct Index {
         }
 
         Column() {
-          Text("Normal")
+          Text('Normal')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(FontWeight.Normal)
@@ -313,7 +319,7 @@ struct Index {
         }
 
         Column() {
-          Text("Bold")
+          Text('Bold')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(FontWeight.Bold)
@@ -324,7 +330,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("单色")
+          Text('单色')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
               .fontSize(96)
@@ -334,7 +340,7 @@ struct Index {
         }
 
         Column() {
-          Text("多色")
+          Text('多色')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
               .fontSize(96)
@@ -344,7 +350,7 @@ struct Index {
         }
 
         Column() {
-          Text("分层")
+          Text('分层')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
               .fontSize(96)
@@ -356,7 +362,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("无动效")
+          Text('无动效')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
@@ -365,7 +371,7 @@ struct Index {
         }
 
         Column() {
-          Text("整体缩放动效")
+          Text('整体缩放动效')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
@@ -374,7 +380,7 @@ struct Index {
         }
 
         Column() {
-          Text("层级动效")
+          Text('层级动效')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
@@ -398,7 +404,7 @@ import { SymbolSpanModifier } from '@kit.ArkUI';
 @Component
 struct Index {
   @State modifier: SymbolSpanModifier =
-    new SymbolSpanModifier($r("sys.symbol.ohos_wifi")).fontColor([Color.Blue]).fontSize(100);
+    new SymbolSpanModifier($r('sys.symbol.ohos_wifi')).fontColor([Color.Blue]).fontSize(100);
 
   build() {
     Row() {
