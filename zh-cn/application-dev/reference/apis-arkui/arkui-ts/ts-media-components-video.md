@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于播放视频文件并控制其播放状态的组件。 
+Video组件用于播放视频文件并控制其播放状态，支持播放、暂停、进度控制、倍速播放、全屏切换等功能。
 
 >  **说明：**
 >
@@ -160,7 +160,7 @@ ArkTS-Sta: controls(value: boolean | undefined)
 
 > **说明：**
 >
-> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
+> Video组件自带的控制栏样式无法自定义。如需自定义控制栏，可将controls属性设置为false并自行实现控制栏的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
 
 ### objectFit
 
@@ -216,9 +216,9 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-使能后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
+启用后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
 
-不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。
+不支持与[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性会失效。
 
 >**说明：**
 >
@@ -238,7 +238,7 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用AI分析功能。<br/>true：开启AI分析功能；false：关闭AI分析功能。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用AI分析功能。<br/>true：开启AI分析功能；false：关闭AI分析功能。<br/>默认值：false<br/>取值为undefined时，按默认值处理。<br>**说明：**<br>不支持与[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性会失效。 |
 
 > **说明：**
 >
@@ -706,7 +706,7 @@ ArkTS-Sta: stop(): void
 
 reset(): void
 
-Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。
+重置视频播放器。显示当前帧，再次播放时从头开始播放。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -792,6 +792,10 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 指定视频播放的进度位置，并指定跳转模式。
 
+> **说明：**
+>
+> 如需从视频内的某一时间点开始播放，应关闭自动播放，在视频准备完成后先跳转再播放。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -836,7 +840,7 @@ VideoControllerAsync是VideoController的异步版本，可以通过Promise获�
 
 > **说明：**
 >
->  VideoControllerAsync向开发者暴露了命令的执行结果，与VideoController相比，VideoControllerAsync中的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)播放控制命令为异步执行，请求后可立即返回而不阻塞当前线程；并且可基于Promise的then和catch方法，对命令成功或失败的结果进行后续处理。
+>  VideoControllerAsync提供命令执行结果。与VideoController相比，[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)等播放控制命令为异步执行，请求后立即返回不阻塞当前线程，可通过Promise的then和catch方法处理命令执行结果。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -944,7 +948,7 @@ stop(): Promise\<void\>
 
 reset(): Promise\<void\>
 
-Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
+重置视频播放器。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1041,16 +1045,16 @@ setCurrentTime(value: number, seekMode?: SeekMode)
 
 | 名称             |值|  说明                         |
 | ---------------- |--|  ---------------------------- |
-| PreviousKeyframe |0|  跳转到前一个最近的关键帧。   |
-| NextKeyframe     |1|  跳转到后一个最近的关键帧。   |
-| ClosestKeyframe  |2|  跳转到最近的关键帧。         |
-| Accurate         |3|  精准跳转，不论是否为关键帧。 |
+| PreviousKeyframe |0|  跳转到当前播放位置之前最近的关键帧。 |
+| NextKeyframe     |1|  跳转到当前播放位置之后最近的关键帧。 |
+| ClosestKeyframe  |2|  跳转到距离当前播放位置最近的关键帧。 |
+| Accurate         |3|  精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。 |
 
 ## 示例
 
 ### 示例1（视频播放基础用法）
 
-基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置AVPlayer、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
+基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
 ArkTS-Dyn示例：
 
@@ -1151,7 +1155,7 @@ struct VideoCreateComponent {
           this.controller.stop(); // 结束播放。
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset(); // 重置AVPlayer。
+          this.controller.reset(); // 重置视频播放器。
         }).margin(2)
         Button('setTime').onClick(() => {
           this.controller.setCurrentTime(10, SeekMode.Accurate); // 精准跳转到视频的10s位置。
@@ -1806,7 +1810,7 @@ struct VideoModifierDemo {
           this.controller.stop(); // 结束播放
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset(); // 重置AVPlayer
+          this.controller.reset(); // 重置视频播放器
         }).margin(2)
       }
 
@@ -1947,7 +1951,7 @@ struct VideoModifierDemo {
 
 ### 示例7（VideoControllerAsync用法）
 
-该示例通过提供VideoControllerAsync的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口，获取命令结果。
+本示例展示VideoControllerAsync的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口用法，通过Promise异步回调获取命令执行状态。
 
 从API版本26.0.0开始，新增VideoControllerAsync控制器及[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口。
 
@@ -2040,7 +2044,7 @@ struct VideoControllerAsyncExample {
             })
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset() // 重置AVPlayer。
+          this.controller.reset() // 重置视频播放器。
             .then(() => {
               console.info('reset success')
             })

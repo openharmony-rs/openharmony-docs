@@ -6,15 +6,15 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的宽高、边距。
+设置组件的宽高、边距。通过设置组件尺寸相关属性，可以实现灵活的页面布局和响应式设计，常见场景包括固定组件大小、按比例分配布局空间、设置组件内外边距、实现安全区域适配等。
 
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
+> - 如果组件的尺寸通过百分比进行设置，在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
 >
 > - 从API version 10开始，尺寸设置内部分属性支持使用calc计算特性，具体支持属性请参考对应的属性说明。calc计算特性是一种动态计算长度值的函数，常用于灵活设置布局尺寸（如宽度、高度、边距等）。它允许通过数学表达式组合不同单位和数值，支持通过加减乘除括号运算符组成计算表达式，实现动态响应式设计。注意，在使用calc时，运算符与数值之间需要使用空格隔开。具体使用场景可见[示例1](#示例1设置组件的宽高和边距)。
 
@@ -22,7 +22,7 @@
 
 width(value: Length): T
 
-设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
+设置组件自身的宽度，缺省时使用子组件自身内容需要的宽度。若子组件的宽大于父组件的宽，则子组件会溢出显示在父组件外部。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -40,7 +40,7 @@ width(value: Length): T
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| value | [Length](ts-types.md#length) | 是    | 要设置的组件宽度。<br/>单位：vp |
+| value | [Length](ts-types.md#length) | 是    | 要设置的组件宽度。<br>单位：vp<br>设置百分比时，以父容器的宽度作为基础值。<br>异常值：参数为undefined时，属性设置不生效；其它异常值时，width属性恢复到不配置时的默认行为。 |
 
 **返回值：**
 
@@ -53,12 +53,14 @@ width(value: Length): T
 >  - 在[TextInput](./ts-basic-components-textinput.md)组件中，width设置auto表示自适应文本宽度。
 >
 >  - 在[AlphabetIndexer](./ts-container-alphabet-indexer.md)组件中，width设置auto表示自适应宽度最大索引项的宽度。
+>
+>  - 在[Row](./ts-container-row.md)、[Column](./ts-container-column.md)、[RelativeContainer](./ts-container-relativecontainer.md)组件中，width设置auto表示自适应子组件。
 
 ## height
 
 height(value: Length): T
 
-设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
+设置组件自身的高度，缺省时使用子组件自身内容需要的高度。若子组件的高大于父组件的高，则子组件会溢出显示在父组件外部。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -76,13 +78,13 @@ height(value: Length): T
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| value | [Length](ts-types.md#length) | 是    | 要设置的组件高度。<br/>单位：vp |
+| value | [Length](ts-types.md#length) | 是    | 要设置的组件高度。<br>单位：vp<br>设置百分比时，以父容器的高度作为基础值。<br>异常值：参数为undefined时，属性设置不生效；其它异常值时，height属性恢复到不配置时的默认行为。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  T | 返回当前组件对象，用于链式调用。 |
 
 >  **说明：**
 >
@@ -94,7 +96,9 @@ ArkTS-Dyn: width(widthValue: Length | LayoutPolicy): T
 
 ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
-设置组件自身的宽度或水平方向布局策略，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
+设置组件自身的宽度或水平方向布局策略，缺省时使用子组件自身内容需要的宽度。若子组件的宽大于父组件的宽，则子组件会溢出显示在父组件外部。
+
+从API version 15开始，当参数为Length类型时，该接口支持calc计算特性。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -104,8 +108,6 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 23
@@ -114,7 +116,7 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度或水平方向布局策略。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
+| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度或水平方向布局策略。<br>单位：vp<br>设置百分比时，以父容器的宽度作为基础值。 |
 
 **返回值：**
 
@@ -128,7 +130,9 @@ ArkTS-Dyn: height(heightValue: Length | LayoutPolicy): T
 
 ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 
-设置组件自身的高度或垂直方向布局策略，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
+设置组件自身的高度或垂直方向布局策略，缺省时使用子组件自身内容需要的高度。若子组件的高大于父组件的高，则子组件会溢出显示在父组件外部。
+
+从API version 15开始，当参数为Length类型时，该接口支持calc计算特性。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -138,8 +142,6 @@ ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 23
@@ -148,7 +150,7 @@ ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| heightValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件高度或垂直方向布局策略。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
+| heightValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件高度或垂直方向布局策略。<br>单位：vp<br>设置百分比时，以父容器的高度作为基础值。 |
 
 **返回值：**
 
@@ -162,7 +164,7 @@ ArkTS-Dyn: size(value: SizeOptions): T
 
 ArkTS-Sta: size(value: SizeOptions | undefined): this
 
-设置组件自身的宽高尺寸。
+设置组件自身的宽高尺寸。设置后会影响组件在父容器中的布局和显示大小。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -194,7 +196,7 @@ ArkTS-Dyn: padding(value: Padding | Length | LocalizedPadding): T
 
 ArkTS-Sta: padding(value: Padding | Length | LocalizedPadding | undefined): this
 
-设置组件的内边距属性。
+设置组件的内边距属性。设置后会在组件内容和边框之间创建额外空间，影响组件内部内容的布局区域。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -244,7 +246,7 @@ ArkTS-Sta: margin(value: Margin | Length | LocalizedMargin | undefined): this
 
 | 参数名 | 类型                                                         | 必填     | 说明                                                         |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Margin](ts-types.md#margin)&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedMargin](ts-types.md#localizedmargin12)<sup>12+</sup><br/>ArkTS-Sta: [Margin](ts-types.md#margin)&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedMargin](ts-types.md#localizedmargin12) \| undefined | &nbsp;是 | 设置组件的外边距。<br/>参数为Length类型时，四个方向外边距同时生效。<br/>默认值：0 <br/>单位：vp<br/>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在[Row](./ts-container-row.md)、[Column](./ts-container-column.md)、[Flex](./ts-container-flex.md)交叉轴上布局时，子组件交叉轴的大小与margin的和为整体。<br/>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件水平方向偏移10。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Margin](ts-types.md#margin)&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedMargin](ts-types.md#localizedmargin12)<sup>12+</sup><br/>ArkTS-Sta: [Margin](ts-types.md#margin)&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedMargin](ts-types.md#localizedmargin12) \| undefined | &nbsp;是 | 设置组件的外边距。<br/>参数为Length类型时，四个方向外边距同时生效。<br/>默认值：0 <br/>单位：vp<br/>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在[Row](./ts-container-row.md)、[Column](./ts-container-column.md)、[Flex](./ts-container-flex.md)交叉轴上布局时，子组件在交叉轴方向占用的空间包含子组件本身尺寸和margin值。<br/>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件宽度与左右margin之和为50+10+20=80，小于容器宽度100，子组件在交叉轴方向居中对齐，此时水平方向左侧和右侧各有(100-80)/2=10的空白区域。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -258,7 +260,7 @@ ArkTS-Dyn: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadd
 
 ArkTS-Sta: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding | undefined): this
 
-设置安全区边距属性。允许容器向自身添加组件级安全区域，供子组件延伸，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置安全区边距属性。允许容器向自身添加组件级安全区域，供子组件延伸，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。与padding不同，safeAreaPadding用于设置组件级安全区域供子组件延伸使用，而padding用于设置组件内容区域的内边距，两者可同时设置、分别生效。
 
 >**说明：**
 >
@@ -272,8 +274,6 @@ ArkTS-Sta: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadd
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -282,7 +282,7 @@ ArkTS-Sta: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadd
 
 | 参数名   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| paddingValue | ArkTS-Dyn: [Padding](ts-types.md#padding)&nbsp;\|&nbsp;&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;&nbsp; [LocalizedPadding](ts-types.md#localizedpadding12)<br/>ArkTS-Sta: [Padding](ts-types.md#padding)&nbsp;\|&nbsp;&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;&nbsp; [LocalizedPadding](ts-types.md#localizedpadding12) \| undefined| 是    | 设置组件的安全区边距。<br/>默认值：0 <br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
+| paddingValue | ArkTS-Dyn: [Padding](ts-types.md#padding)&nbsp;\|&nbsp;&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;&nbsp; [LocalizedPadding](ts-types.md#localizedpadding12)<br/>ArkTS-Sta: [Padding](ts-types.md#padding)&nbsp;\|&nbsp;&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;&nbsp; [LocalizedPadding](ts-types.md#localizedpadding12) \| undefined| 是    | 设置组件的安全区边距，用于在组件内部创建组件级安全区域供子组件延伸使用。<br/>默认值：0 <br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -302,7 +302,7 @@ ArkTS-Dyn: layoutWeight(value: number | string): T
 
 ArkTS-Sta: layoutWeight(value: double | string | undefined): this
 
-设置组件的布局权重，使组件在父容器（[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)）的主轴方向按照权重分配尺寸。
+设置组件的布局权重，使组件在父容器（[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)）的主轴方向按照权重分配尺寸。适用于父容器尺寸确定、需要多个子组件按比例分配剩余空间的场景。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -318,7 +318,7 @@ ArkTS-Sta: layoutWeight(value: double | string | undefined): this
 
 | 参数名   | 类型                         | 必填      | 说明                                       |
 | ----- | -------------------------- | ------- | ---------------------------------------- |
-| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | &nbsp;是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的元素优先占位，这些元素占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子元素会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略元素本身的尺寸设置。<br/>默认值：0<br/>**说明：** <br/>仅在[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串。<br/>如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于[flexShrink](./ts-universal-attributes-flex-layout.md#flexshrink)和[flexGrow](./ts-universal-attributes-flex-layout.md#flexgrow)布局。<br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | &nbsp;是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的子组件优先占位，这些子组件占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子子组件会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略子组件本身的width/height设置，但保留minWidth/minHeight约束。<br/>默认值：0<br/>取值范围：[0, +∞)<br>超出范围时：传入小于0的值时，按0处理。<br>**说明：** <br/>仅在[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串（支持整数、小数格式）。<br/>如果容器中有子子组件设置了layoutWeight属性，且设置的属性值大于0，则所有子子组件不会再基于[flexShrink](./ts-universal-attributes-flex-layout.md#flexshrink)和[flexGrow](./ts-universal-attributes-flex-layout.md#flexgrow)布局。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -332,7 +332,7 @@ ArkTS-Dyn: constraintSize(value: ConstraintSizeOptions): T
 
 ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
-设置约束尺寸，组件布局时，进行尺寸范围限制。
+设置约束尺寸，组件布局时进行尺寸范围限制。设置后组件的宽度和高度将被限制在指定的最小值和最大值范围内，constraintSize的优先级高于width和height属性。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -362,19 +362,19 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 | 缺省值                                      | 结果                                       |
 | ---------------------------------------- | ---------------------------------------- |
-| \ | width=MAX(minWidth,MIN(maxWidth,width))<br/>height=MAX(minHeight,MIN(maxHeight,height)) |
-| maxWidth、maxHeight | width=MAX(minWidth,width)<br/>height=MAX(minHeight,height) |
-| minWidth、minHeight | width=MIN(maxWidth,width)<br/>height=MIN(maxHeight,height) |
-| width、height | 若minWidth<maxWidth，组件自身布局逻辑生效，width取值范围为[minWidth,maxWidth]；否则，width=MAX(minWidth,maxWidth)。<br/>若minHeight<maxHeight，组件自身布局逻辑生效，height取值范围为[minHeight,maxHeight]；否则，height=MAX(minHeight,maxHeight)。 |
-| width与maxWidth、height与maxHeight | width=minWidth<br/>height=minHeight |
-| width与minWidth、height与minHeight | 组件自身布局逻辑生效，width取值约束为不大于maxWidth。<br/>组件自身布局逻辑生效，height取值约束为不大于maxHeight。 |
-| minWidth与maxWidth、minHeight与maxHeight | width以所设值为基础，根据其他布局属性发生可能的拉伸或者压缩。<br/>height以所设值为基础，根据其他布局属性发生可能的拉伸或者压缩。|
+| 全部缺省 | width=MAX(minWidth,MIN(maxWidth,width))<br>height=MAX(minHeight,MIN(maxHeight,height)) |
+| maxWidth、maxHeight | width=MAX(minWidth,width)<br>height=MAX(minHeight,height) |
+| minWidth、minHeight | width=MIN(maxWidth,width)<br>height=MIN(maxHeight,height) |
+| width、height | 若minWidth<maxWidth，组件自身布局逻辑生效，width取值范围为[minWidth,maxWidth]；否则，width=MAX(minWidth,maxWidth)。<br>若minHeight<maxHeight，组件自身布局逻辑生效，height取值范围为[minHeight,maxHeight]；否则，height=MAX(minHeight,maxHeight)。 |
+| width与maxWidth、height与maxHeight | width=minWidth<br>height=minHeight |
+| width与minWidth、height与minHeight | 组件自身布局逻辑生效，width取值约束为不大于maxWidth。<br>组件自身布局逻辑生效，height取值约束为不大于maxHeight。 |
+| minWidth与maxWidth、minHeight与maxHeight | width以所设值为基础，根据其他布局属性发生可能的拉伸或者压缩。<br>height以所设值为基础，根据其他布局属性发生可能的拉伸或者压缩。|
 | width与minWidth与maxWidth | 使用父容器传递的布局限制进行布局。 |
 | height与minHeight与maxHeight | 使用父容器传递的布局限制进行布局。 |
 
 ## LayoutPolicy<sup>15+</sup>
 
-用于组件宽度和高度的布局策略。
+用于组件宽度和高度的布局策略。提供matchParent、wrapContent、fixAtIdealSize三种布局策略选项，分别用于组件自适应父组件布局、根据内容自适应但不超过父组件尺寸、根据内容自适应且可超过父组件尺寸的场景。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,19 +386,19 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 | 名称      | 类型   | 只读 | 可选 | 说明 |
 | --------- | ------ | ---- | ---- |---------- |
-| matchParent | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应父组件布局时，其大小与父组件内容区相等，不包括padding，border和safeAreaPadding。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
-| wrapContent<sup>20+</sup> | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应子组件（内容）时，其大小与子组件（内容）相等，并且其大小受父组件内容区大小约束。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| fixAtIdealSize<sup>20+</sup> | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应子组件（内容）时，其大小与子组件（内容）相等，并且其大小不受父组件内容区大小约束。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| matchParent | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应父组件布局时，其大小与父组件内容区相等，不包括padding，border和safeAreaPadding。适用于需要组件填满父容器内容区的场景，例如列表项、卡片容器等。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
+| wrapContent<sup>20+</sup> | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应子组件（内容）时，其大小与子组件（内容）相等，并且其大小受父组件内容区大小约束。适用于需要根据内容自动调整大小但不能超出父容器的场景，例如文本容器、弹窗内容区等。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| fixAtIdealSize<sup>20+</sup> | [LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是 | 否   | 当前组件自适应子组件（内容）时，其大小与子组件（内容）相等，并且其大小不受父组件内容区大小约束。适用于需要根据内容自动调整大小且可以超出父容器的场景，例如悬浮提示、下拉菜单等。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
 >
-> - LayoutPolicy支持设置三种布局策略：matchParent（自适应父组件布局）、wrapContent（根据内容自适应但不超过父组件尺寸的布局）和fixAtIdealSize（根据内容自适应，可能超过父组件尺寸的布局）。具体示例代码参见[设置布局策略](./ts-universal-attributes-size.md#示例5设置布局策略)。
+> - LayoutPolicy支持设置三种布局策略：matchParent（自适应父组件布局）、wrapContent（根据内容自适应但不超过父组件尺寸的布局）和fixAtIdealSize（根据内容自适应，可能超过父组件尺寸的布局）。具体示例代码参见[设置布局策略](#示例5设置布局策略)。
 >
-> - wrapContent和fixAtIdealSize场景，组件无法通过内容确定大小时，如果组件大小有默认值，则按照默认值进行测算；如果没有默认值，则按照宽高(0,0)进行测算。
+> - wrapContent和fixAtIdealSize场景，组件无法通过内容确定大小时，如果组件大小有默认值，则按照默认值进行测算，组件最终以默认大小显示；如果没有默认值，则按照宽高(0,0)进行测算，组件最终以零尺寸显示。
 > 
 > - 容器设置wrapContent，并且有子组件设置matchParent时（包括仅一边设置matchParent），容器先由确定大小的子组件撑大，设置matchParent的子组件再匹配容器大小；如果没有确定大小的子组件，容器和子组件大小均为0。
 >
-> - LayoutPolicy优先级低于constraintSize。
+> - LayoutPolicy的设置会被constraintSize约束，即当同时设置LayoutPolicy和constraintSize时，constraintSize的约束优先生效。
 > 
 > - 从API version 15开始，仅Row和Column组件的width和height属性支持设置LayoutPolicy类型参数，其他组件设置LayoutPolicy类型参数后与不设置宽度或高度表现一致；从API version 20开始，所有基础组件均支持设置LayoutPolicy类型参数。
 >
@@ -451,7 +451,7 @@ struct SizeExample {
         .fontSize(12)
         .fontColor(0xCCCCCC)
         .width('90%')
-      // 父容器尺寸确定时，设置了layoutWeight的子元素在主轴布局尺寸按照权重进行分配，忽略本身尺寸设置。
+      // 父容器尺寸确定时，设置了layoutWeight的子组件在主轴布局尺寸按照权重进行分配，忽略本身尺寸设置。
       Row() {
         // 权重1，占主轴剩余空间1/3
         Text('layoutWeight(1)')
@@ -534,7 +534,7 @@ struct SizeExample {
         .constraintSize({ maxWidth: 200 })
 
       Text('layoutWeight').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      // 父容器尺寸确定时，设置了layoutWeight的子元素在主轴布局尺寸按照权重进行分配，忽略本身尺寸设置
+      // 父容器尺寸确定时，设置了layoutWeight的子子组件在主轴布局尺寸按照权重进行分配，忽略本身尺寸设置
       Row() {
         // 权重1，占主轴剩余空间1/3
         Text('layoutWeight(1)')
