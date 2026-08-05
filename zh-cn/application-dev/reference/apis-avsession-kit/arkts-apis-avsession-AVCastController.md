@@ -139,7 +139,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | 是 | 设备所支持的解码格式。<br>设备所支持的解码格式包括：<br>'OH_AVCODEC_MIMETYPE_VIDEO_AVC'：VIDEO AVC，<br>'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'：VIDEO HEVC，<br>'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'：AUDIO AV3A。 |
+| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | 是 | 设备所支持的解码格式包括：<br>'OH_AVCODEC_MIMETYPE_VIDEO_AVC'：VIDEO AVC，<br>'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'：VIDEO HEVC，<br>'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'：AUDIO AV3A。 |
 
 **返回值：**
 
@@ -271,7 +271,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -308,7 +308,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -354,7 +354,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. You are advised to: 1. Scheduled retry. 2. Destroy the current session or session controller and re-create it. |
 
 **示例：**
 
@@ -387,7 +387,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
@@ -450,7 +450,7 @@ prepare(item: AVQueueItem): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
@@ -507,7 +507,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
@@ -574,7 +574,7 @@ start(item: AVQueueItem): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
@@ -769,7 +769,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -884,7 +884,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -923,7 +923,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -957,7 +957,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -990,7 +990,7 @@ off(type: 'mediaItemChange'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1024,7 +1024,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1057,7 +1057,7 @@ off(type: 'playNext'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1091,7 +1091,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1124,7 +1124,7 @@ off(type: 'playPrevious'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1156,7 +1156,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1180,7 +1180,7 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
 | type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。    |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
 
 **错误码：**
 
@@ -1188,7 +1188,7 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1220,7 +1220,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1244,7 +1244,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
 | type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。    |
-| callback | Callback\<void\>                                            | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。   |
+| callback | Callback\<void\>                                            | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。   |
 
 **错误码：**
 
@@ -1252,7 +1252,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1286,7 +1286,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1319,7 +1319,7 @@ off(type: 'seekDone'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1351,7 +1351,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1385,7 +1385,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1408,7 +1408,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当视频尺寸变化时，触发该事件。 |
 | callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
 
 **错误码：**
@@ -1417,7 +1417,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1440,7 +1440,7 @@ off(type: 'videoSizeChange'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'videoSizeChange'`。 |
 
 **错误码：**
 
@@ -1448,7 +1448,7 @@ off(type: 'videoSizeChange'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1482,7 +1482,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
@@ -1523,7 +1523,7 @@ off(type: 'error'): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
@@ -1564,7 +1564,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1591,7 +1591,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持的事件是`'keyRequest'`。 |
-| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -1599,7 +1599,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1674,7 +1674,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlGenericError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1759,7 +1759,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlIoError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1832,7 +1832,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlParsingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1906,7 +1906,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1977,7 +1977,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlAudioRendererError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1997,7 +1997,7 @@ avCastController.off('castControlAudioRendererError');
 
 on(type: 'castControlDrmError', callback: ErrorCallback): void
 
-监听投播drm的错误事件。
+监听投播DRM的错误事件。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -2010,7 +2010,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 错误事件回调类型，支持的事件：'castControlDrmError'。 |
-| callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
+| callback | ErrorCallback | 是   | 投播DRM的错误事件回调方法。 |
 
 **错误码：**
 
@@ -2044,7 +2044,7 @@ avCastController.on('castControlDrmError', (error: BusinessError) => {
 
 off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
-取消投播drm的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消投播DRM的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -2055,7 +2055,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDrmError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
