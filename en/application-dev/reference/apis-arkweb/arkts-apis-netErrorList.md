@@ -268,3 +268,4 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request was blocked due to an insecure connection (HTTP/WS). The app should handle this error like an HTTP redirect, redirecting the connection to secure HTTPS or WSS.|
 |ERR_DNS_REQUEST_CANCELED | -810 | All DNS requests related to this task are canceled.|
 |ERR_DNS_NO_MATCHING_SUPPORTED_ALPN | -811 | The hostname resolution of the HTTPS record failed to resolve using ALPN values of supported protocols.|
+<!--no_check-->
