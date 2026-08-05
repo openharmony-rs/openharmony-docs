@@ -43,7 +43,7 @@ setUrlSource(url: string, headers?: Record\<string, string>): void
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
 | url | string       | 是   | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http://xx`。<br/>2. https网络播放：`https://xx`。<br/>**说明：** 不支持设置HLS/Dash、直播资源。|
-| headers | Record\<string, string> | 否   | 支持访问网络资源HttpHeader自定义。默认为空。|
+| headers | Record\<string, string> | 否   | 支持访问网络资源HTTP Header自定义。默认为空。|
 
 **示例：**
 
@@ -97,7 +97,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
@@ -169,7 +169,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400104  | Operation timeout. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
 
