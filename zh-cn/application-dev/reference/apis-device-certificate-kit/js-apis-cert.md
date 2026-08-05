@@ -134,7 +134,7 @@ OpenSSL中规定了扩展类型，例如challengePassword、keyUsage等。
 | subject | [X500DistinguishedName](#x500distinguishedname12) | 否   | 否   | 主体名称。 |
 | mdName | string | 否   | 否   | 摘要算法名。 |
 | attributes | Array\<[CsrAttribute](#csrattribute18)> | 否   | 是   | 扩展。 |
-| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | 否   | 是   | 输出类型。 |
+| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | 否   | 是   | 输出类型。|
 
 > **说明：**
 >
