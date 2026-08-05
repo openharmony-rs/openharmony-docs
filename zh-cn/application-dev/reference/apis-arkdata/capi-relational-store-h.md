@@ -824,7 +824,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回支持的数据库类型数组指针。调用成功时返回有效指针，调用失败时返回NULL。 |
+| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Rdb_CreateValueObject()
 
