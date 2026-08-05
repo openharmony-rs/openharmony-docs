@@ -111,10 +111,10 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not supported.|
-| 2004002  | Duplicate calls, previous call still in progress.|
-| 2004003  | Send data failed.|
-| 2004004  | Wait remote ack timeout.|
+| 2004001  | Remote system version is too low.|
+| 2004002  | Failed to start ability on the remote side.|
+| 2004003  | Failed to send data.|
+| 2004004  | Timeout while waiting for acknowledgement from the remote side.|
 
 **示例**：
 
