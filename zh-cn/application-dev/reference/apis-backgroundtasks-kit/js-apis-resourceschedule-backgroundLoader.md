@@ -22,7 +22,7 @@
 ## 导入模块
 
 ```ts
-import { backgroundLoader } from '@kit.BackgroundTasksKit';
+import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader';
 ```
 ## 常量
 
@@ -74,12 +74,42 @@ registerTask(taskInfo: TaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
+```ts
+
+ 	import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+ 	import { backgroundLoader } from '@kit.BackgroundTasksKit';
+
+ 	export default class TestAppMainUIAbility extends UIAbility {
+ 	  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+ 	    console.info('Callee onCreate is called');
+ 	    try {
+
+ 	      // 01.定义后台加载任务的参数
+ 	      let taskInfo: backgroundLoader.TaskInfo = {
+ 	        taskId: 1,
+ 	        abilityName: 'TestAppMainUIAbility'
+ 	      }
+
+ 	      // 02.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+ 	      backgroundLoader.registerTask(taskInfo);
+ 	      console.info('registerTask success');
+ 	    } catch (error) {
+ 	      console.error(`backgroundLoader.registerTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+ 	    }
+ 	  }
+ 	}
+```
+
+ArkTS-Sta示例：
+
 ```ts
   'use static'
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-  import { backgroundLoader } from '@kit.BackgroundTasksKit';
+  import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader';
   import { BusinessError } from '@Kit.BasicServicesKit'
-  
+
   export default class TestAppMainUIAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.info('Callee onCreate is called');
@@ -134,12 +164,39 @@ unregisterTask(taskInfo: TaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
+```ts
+ 	import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+ 	import { backgroundLoader } from '@kit.BackgroundTasksKit';
+
+ 	export default class TestAppMainUIAbility extends UIAbility {
+ 	  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+ 	    try {
+
+ 	      // 01.定义后台加载任务的参数
+ 	      let taskInfo: backgroundLoader.TaskInfo = {
+ 	        taskId: 1,
+ 	        abilityName: 'TestAppMainUIAbility'
+ 	      }
+ 	      // 02.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+ 	      backgroundLoader.unregisterTask(taskInfo);
+ 	      console.info('unregisterTask success');
+ 	    } catch (error) {
+ 	      console.error(`backgroundLoader.unregisterTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+ 	    }
+ 	  }
+ 	}
+```
+
+ArkTS-Sta示例：
+
 ```ts
   'use static'
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-  import { backgroundLoader } from '@kit.BackgroundTasksKit';
+  import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader';
   import { BusinessError } from '@Kit.BasicServicesKit'
-  
+
   export default class TestAppMainUIAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         try {
@@ -202,12 +259,28 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
+```ts
+ 	import { BusinessError } from '@kit.BasicServicesKit';
+ 	import { backgroundLoader } from '@kit.BackgroundTasksKit';
+
+ 	let taskId: number = 1;
+ 	backgroundLoader.getTaskInfo(taskId).then((taskInfo: backgroundLoader.TaskInfo) => {
+ 	  console.info(`workschedulerLog getTaskInfo success, ${JSON.stringify(taskInfo)}`);
+ 	}).catch((error: BusinessError) => {
+ 	  console.error(`workschedulerLog getTaskInfo failed. code is ${error.code} message is ${error.message}`);
+ 	})
+ 	 ``` 
+
+ArkTS-Sta示例：
+
 ```ts
   'use static'
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-  import { backgroundLoader } from '@kit.BackgroundTasksKit';
+  import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader';
   import { BusinessError } from '@Kit.BasicServicesKit'
-  
+
   let taskId: Int = 1;
   backgroundLoader.getTaskInfo(taskId).then((taskInfo: backgroundLoader.TaskInfo) => {
     console.info(`workschedulerLog getTaskInfo success, ${JSON.stringify(taskInfo)}`);
@@ -253,9 +326,79 @@ finishTask(taskInfo: TaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
+```ts
+ 	import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+ 	import { backgroundLoader } from '@kit.BackgroundTasksKit';
+ 	import { rpc } from '@kit.IPCKit';
+ 	import { BusinessError } from '@kit.BasicServicesKit';
+ 	   
+ 	// 根据需要定义ReplyParcelable返回类型
+ 	class ReplyParcelable implements rpc.Parcelable {
+ 	  marshalling(dataOut: rpc.MessageSequence): boolean {
+ 	    return true;
+ 	  }
+ 	  marshalling(dataIn: rpc.MessageSequence): boolean {
+ 	    return true;
+ 	  }
+ 	}
+ 	// 01.定义后台加载的onStart回调方法
+ 	function BackgroundLoaderOnStart(pdata: rpc.MessageSequence) {
+ 	  let taskInfo =  backgroundLoader.TaskInfo = {
+ 	    taskId: pdata.readInt(),
+ 	    abilityName: pdata.readString()
+ 	  };
+
+ 	  console.info(`background loader Task OnStart, taskInfo ${taskInfo.taskId}`);
+ 	  // TODO: 执行应用后台加载的业务逻辑
+
+ 	  // 通知系统预取任务处理完成，可以提前冻结应用。
+ 	  backgroundLoader.finishTask(taskInfo);
+ 	  return new ReplyParcelable();
+ 	}
+ 	 
+ 	// 02.定义后台加载的onStop回调方法
+ 	function BackgroundPrefetchOnStop(pdata: rpc.MessageSequence) {
+ 	  let taskStopInfo = backgroundLoader.TaskStopInfo() = {
+ 	    taskId: pdata.readInt(),
+ 	    abilityName: pdata.readString(),
+ 	    stopCode: pdata.readInt(),
+ 	    stopMessage: ''
+ 	  };
+
+ 	  console.info(`background loader Task OnStop, taskInfo `${taskInfo.taskId});
+ 	  return new ReplyParcelable();
+ 	}
+ 	 
+ 	export default class TestAppMainUIAbility extends UIAbility {
+ 	  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+ 	    console.info('Callee onCreate is called');
+ 	    try {
+ 	      // 03.声明后台加载的回调方法，参数名使用后台加载定义好的回调方法
+ 	      this.callee.on(backgroundLoader.ON_START, BackgroundPrefetchOnStart);
+        this.callee.on(backgroundLoader.ON_STOP, BackgroundPrefetchOnStop);
+
+ 	      let taskInfo: backgroundLoader.TaskInfo = {
+ 	        taskId: 1,
+ 	        abilityName: 'TestAppMainUIAbility'
+ 	      }
+ 
+ 	      // 04.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+ 	      backgroundLoader.unregisterTask(taskInfo);
+ 	      console.info('unregisterTask success');
+      } catch (error) {
+ 	      console.error(`backgroundLoader.unregisterTask catch error, code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+ 	    }
+ 	  }
+ 	}
+ ```
+
+ArkTS-Sta示例：
+
 ```ts
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-  import { backgroundLoader } from '@kit.BackgroundTasksKit';
+  import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader'; 
   import { rpc } from '@kit.IPCKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
