@@ -220,7 +220,7 @@ open(portId: number): void
 
 **配对调用：**
 - 必须与[close](#serialmanagerclose)方法配对使用
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -300,13 +300,13 @@ async function openExample() {
 
 getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
-获取指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能获取配置。通常在设备初始化后、需要查看当前通信参数配置、调试串口通信问题时调用此接口。
+获取指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能获取配置，使用完毕必须调用[close](#serialmanagerclose)释放资源。通常在设备初始化后、需要查看当前通信参数配置、调试串口通信问题时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -404,13 +404,13 @@ async function getAttributeExample() {
 
 setAttribute(portId: number, attribute: SerialAttribute): void
 
-设置指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能设置配置。配置参数对象包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
+设置指定串口的配置参数。需先调用[open](#serialmanageropen)打开串口后才能设置配置，使用完毕必须调用[close](#serialmanagerclose)释放资源。配置参数对象包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -505,13 +505,12 @@ async function setAttributeExample() {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-从串口设备异步读取数据，读取的数据将存储在buffer参数中。使用前需先调用[open](#serialmanageropen)打开串口设备。使用Promise异步回调，返回实际读取的数据长度。适用于接收传感器上报的数据、读取设备返回的响应数据、接收设备状态信息等场景。
+从串口设备异步读取数据，读取的数据将存储在buffer参数中。使用前需先调用[open](#serialmanageropen)打开串口设备，使用完毕必须调用[close](#serialmanagerclose)释放资源。使用Promise异步回调，返回实际读取的数据长度。适用于接收传感器上报的数据、读取设备返回的响应数据、接收设备状态信息等场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -614,13 +613,12 @@ async function readExample() {
 
 readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-从串口设备同步读取数据，读取的数据将存储在buffer参数中，返回实际读取的数据长度。使用前需先调用[open](#serialmanageropen)打开串口设备。适用于需要阻塞式等待数据、对读取顺序有严格要求、或实时性要求不高的简单通信场景。
+从串口设备同步读取数据，读取的数据将存储在buffer参数中，返回实际读取的数据长度。使用前需先调用[open](#serialmanageropen)打开串口设备，使用完毕必须调用[close](#serialmanagerclose)释放资源。适用于需要阻塞式等待数据、对读取顺序有严格要求、或实时性要求不高的简单通信场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -719,13 +717,12 @@ async function readSyncExample() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备异步写数据，需要先调用[open](#serialmanageropen)打开串口后才能调用此接口。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于向设备发送控制命令、下发配置参数、传输采集数据等场景。
+向串口设备异步写数据，需要先调用[open](#serialmanageropen)打开串口后才能调用此接口，使用完毕必须调用[close](#serialmanagerclose)释放资源。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于向设备发送控制命令、下发配置参数、传输采集数据等场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -829,13 +826,12 @@ async function writeExample() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备同步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
+向串口设备同步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备，使用完毕必须调用[close](#serialmanagerclose)释放资源。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -945,7 +941,7 @@ close(portId: number): void
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 

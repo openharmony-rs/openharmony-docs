@@ -167,7 +167,6 @@ Transmission timeout.
 **前置条件：**
 - 必须先调用[open](js-apis-busmanager-serial.md#open)打开串口，才能调用write()接口。
 - write()接口依赖串口处于打开状态。
-- 打开串口后，使用完毕必须调用[close](#serialmanagerclose)释放资源
 
 **可能原因**
 
