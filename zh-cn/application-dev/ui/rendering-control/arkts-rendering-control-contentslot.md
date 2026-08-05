@@ -237,12 +237,12 @@ import { NodeContent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Parent {
-  // ···
+  // ...
   private nodeContent_1: Content = new NodeContent();
   private nodeContent_2: Content = new NodeContent();
 
   aboutToAppear() {
-    // ···
+    // ...
     // 通过C-API创建节点，并添加到管理器nodeContent_1和nodeContent_2上
     nativeNode.createNativeNode(this.nodeContent_1);
     nativeNode.createNativeNode(this.nodeContent_2);
@@ -250,8 +250,8 @@ struct Parent {
 
   build() {
     Column() {
-      // ···
-      ContentSlot(this.nodeContent_1);// nodeContent_1将被挂载到下一个Contentslot节点，此处无法显示
+      // ...
+      ContentSlot(this.nodeContent_1);// nodeContent_1将被挂载到下一个ContentSlot节点，此处无法显示
       ContentSlot(this.nodeContent_1); // 正常显示
       ContentSlot(this.nodeContent_2); // 正常显示
     }

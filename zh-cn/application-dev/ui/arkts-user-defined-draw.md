@@ -140,7 +140,7 @@
        {
            // 注册自定义事件监听器。
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并转递自身作为自定义数据。
+           // 声明自定义事件并传递自身作为自定义数据。
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -447,7 +447,7 @@
        {
            // 注册自定义事件监听器
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并转递自身作为自定义数据
+           // 声明自定义事件并传递自身作为自定义数据
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -648,7 +648,7 @@
                OH_Drawing_TextStyle* textStyle = nullptr;
                OH_Drawing_Brush* textBrush = nullptr;
                OH_Drawing_Typography* typography = nullptr;
-
+   
                ~DrawingTextResources()
                {
                    OH_Drawing_DestroyTypography(typography);
@@ -659,7 +659,7 @@
                    OH_Drawing_DestroyFontCollection(fontCollection);
                }
            } resources;
-
+   
            // 创建字体集合
            resources.fontCollection = OH_Drawing_CreateFontCollection();
            if (resources.fontCollection == nullptr) {

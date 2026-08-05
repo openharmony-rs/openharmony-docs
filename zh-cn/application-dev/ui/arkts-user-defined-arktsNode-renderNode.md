@@ -91,7 +91,7 @@ export struct OperationNodeTree {
             if (child === null) {
               hilog.info(DOMAIN, TEST_TAG, ' the child is null');
               this.myLog = 'the child is null';
-            } else{
+            } else {
               const nextSibling = child!.getNextSibling()
               if (nextSibling === null) {
                 hilog.info(DOMAIN, TEST_TAG, ' the nextSibling is null');

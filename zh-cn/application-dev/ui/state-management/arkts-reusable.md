@@ -528,7 +528,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable注解的自定义组件。
+          // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable装饰器装饰的自定义组件。
           let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
           });
           this.uiContext.getPromptAction().openCustomDialog(contentNode);
