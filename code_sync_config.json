@@ -1036,12 +1036,12 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
 				"functions":[
 					{
-						"end_line":241,
+						"end_line":237,
 						"name":"callback_start",
 						"start_line":17
 					},
 					{
-						"end_line":242,
+						"end_line":238,
 						"name":"quick_start",
 						"start_line":16
 					}
