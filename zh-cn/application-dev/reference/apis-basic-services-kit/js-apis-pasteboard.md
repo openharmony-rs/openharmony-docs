@@ -72,14 +72,8 @@ createData(mimeType: string, value: ValueType): PasteData
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                     |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。 |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。建议根据实际场景选择合适的数据类型，使用过大的数据对象会影响应用复制粘贴性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
-
-**mimeType参数详细说明**
-
-- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
-- **自定义类型**：开发者可自定义MIME类型，自定义类型不能与常量中已定义的类型重复。
-- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **返回值：**
 
@@ -127,17 +121,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record对象，key为MIME类型，value为对应数据。详情见下文说明。 |
-
-**data参数详细说明**
-
-- **Record的key**：剪贴板数据对应的MIME类型。
-- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
-- **自定义类型**：开发者可自定义MIME类型。
-- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
-- **Record的value**：key中指定MIME类型对应的数据。
-- **默认MIME类型**：Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型。
-- **非默认类型读取**：非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。
+| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -195,14 +179,8 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明                |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。  |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
 | value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。建议根据实际场景选择合适的数据类型，避免使用过大的数据对象以免影响剪贴板性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
-
-**mimeType参数详细说明**
-
-- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
-- **自定义类型**：开发者可自定义MIME类型。
-- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **返回值：**
 
@@ -727,14 +705,8 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名   | 类型 | 必填 | 说明                |
 |-------| -------- | -------- |-------------------|
-| type  | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。  |
+| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。          |
-
-**mimeType参数详细说明**
-
-- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
-- **自定义类型**：开发者可自定义MIME类型。
-- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **错误码：**
 
