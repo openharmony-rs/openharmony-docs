@@ -435,7 +435,7 @@ Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进�
 
 **问题：**
 
-H5页面在应用里的WebView中无法访问，返回白屏。通过Chrome DevTools调试发现请求报412错误。
+某网页在系统自带浏览器访问正常，但是在应用中用WebView加载白屏。
 
 **原因：**
 
@@ -443,7 +443,7 @@ WebView默认的缓存模式（CacheMode.Default）行为是优先使用缓存�
 
 **解决方案：**
 
-将Web组件的[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-V5.md#cachemode枚举说明)缓存模式设置为`CacheMode.Online`，优先使用网络资源。`CacheMode.Online`的策略是优先发起无条件请求（不携带基于旧缓存的条件头），从服务端获取最新资源，仅在网络不可用时才回退使用缓存，从而绕开缓存校验环节，避免触发412。
+将Web组件的[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)缓存模式设置为`CacheMode.Online`，优先使用网络资源。`CacheMode.Online`的策略是优先发起无条件请求（不携带基于旧缓存的条件头），从服务端获取最新资源，仅在网络不可用时才回退使用缓存，从而绕开缓存校验环节，避免触发412。
 
 ```ts
 Web({ src: 'www.example.com', controller: this.controller })
