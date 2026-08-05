@@ -31961,7 +31961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":46,
 						"name":"napi_event_loop_build",
 						"start_line":18
 					}
@@ -33473,7 +33473,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":47,
 						"name":"napi_ark_runtime_build",
 						"start_line":19
 					}
@@ -51429,7 +51429,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":79,
+						"end_line":83,
 						"name":"napi_call_function",
 						"start_line":48
 					},
@@ -51808,7 +51808,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/build-profile.json5",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":47,
 						"name":"napi_load_module_napi_build",
 						"start_line":18
 					}
@@ -53816,7 +53816,7 @@
 						"start_line":171
 					},
 					{
-						"end_line":270,
+						"end_line":271,
 						"name":"napi_create_external",
 						"start_line":223
 					},
@@ -56480,14 +56480,14 @@
 						"start_line":19
 					},
 					{
-						"end_line":62,
+						"end_line":61,
 						"name":"napi_create_type_error",
 						"start_line":48
 					},
 					{
-						"end_line":78,
+						"end_line":76,
 						"name":"napi_create_range_error",
-						"start_line":64
+						"start_line":63
 					},
 					{
 						"end_line":98,
@@ -56645,7 +56645,7 @@
 						"start_line":241
 					},
 					{
-						"end_line":267,
+						"end_line":268,
 						"name":"ark_napi_get_and_clear_last_exception",
 						"start_line":261
 					},
