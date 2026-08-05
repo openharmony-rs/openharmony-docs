@@ -675,14 +675,12 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 >
 > 在解析URL字符串时，如果入参中的port内容是当前protocol的默认端口，那么port将被解析为空字符串。默认端口为：
 >
-> | 协议 | 默认端口 |
-> | -------- | -------- |
-> | http: | 80 |
-> | https: | 443 |
-> | ftp: | 21 |
-> | gopher: | 70 |
-> | ws: | 80 |
-> | wss: | 443 |
+> - http:  80
+> - https:  443
+> - ftp:  21
+> - gopher:  70
+> - ws:  80
+> - wss:  443
 
 **示例：**
 
