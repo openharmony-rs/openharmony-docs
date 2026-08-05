@@ -905,12 +905,6 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | -------- | -------- | -------- | -------- |
 | transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 作为通用USB数据传输接口，客户端需要填充这个对象中的参数，用以发起传输请求。在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。|
 
-**返回值：**
-
-| 类型      | 说明          |
-| --------- | ------------- |
-| void      | 无返回值。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -1014,12 +1008,6 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 被取消传输的参数，该参数与[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的transfer参数相同。在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。|
-
-**返回值：**
-
-| 类型      | 说明          |
-| --------- | ------------- |
-| void      | 无返回值。 |
 
 **错误码：**
 
@@ -1273,12 +1261,6 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | --------- | ------------ | ---- | ------------------------------------- |
 | accessory | [USBAccessory](#usbaccessory14) | 是   | USB配件，需要通过[getAccessoryList](#usbmanagergetaccessorylist14)获取。 |
 
-**返回值：**
-
-| 类型      | 说明          |
-| --------- | ------------- |
-| void      | 无返回值。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -1420,12 +1402,6 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | --------------- | ------------------ | ---- | -------------------------------------- |
 | accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | 是   | USB配件句柄。需要通过[openAccessory](#usbmanageropenaccessory14)获取。 |
 
-**返回值：**
-
-| 类型      | 说明          |
-| --------- | ------------- |
-| void      | 无返回值。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
@@ -1493,7 +1469,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400008 | No such device (it may have been disconnected).|
+| 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
 
