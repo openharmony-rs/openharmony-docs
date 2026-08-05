@@ -446,6 +446,6 @@ WebView默认的缓存模式（CacheMode.Default）行为是优先使用缓存�
 将Web组件的[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)缓存模式设置为`CacheMode.Online`，优先使用网络资源。`CacheMode.Online`的策略是优先发起无条件请求（不携带基于旧缓存的条件头），从服务端获取最新资源，仅在网络不可用时才回退使用缓存，从而绕开缓存校验环节，避免触发412。
 
 ```ts
-Web({ src: 'www.example.com', controller: this.controller })
+Web({ src: '', controller: this.controller })
   .cacheMode(CacheMode.Online)
 ```
