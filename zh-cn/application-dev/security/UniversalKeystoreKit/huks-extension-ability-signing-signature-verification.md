@@ -17,9 +17,9 @@
 
 | 步骤 | 接口 | 说明 |
 |------|------|------|
-| 1 | [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) | 初始化密钥会话，返回会话 handle |
-| 2 | [updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9) | （可选）传入分段数据，执行中间密码运算 |
-| 3 | [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) | 结束会话，返回最终结果（签名/验签结果） |
+| 1 | [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) | 初始化密钥会话，返回会话handle。 |
+| 2 | [updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9) | （可选）传入分段数据，执行中间密码运算。 |
+| 3 | [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) | 结束会话，返回最终结果（签名/验签结果）。 |
 
 > **说明：**
 >
@@ -46,8 +46,6 @@
 ## 签名/验签示例
 
 以密钥算法为RSA、摘要算法为SHA384、填充模式为PSS的密钥为例，完成签名、验签：
-
-- [密钥算法为RSA、摘要算法为SHA384、填充模式为PSS](#rsasha384pss)
 
 ### 开发步骤
 
@@ -259,7 +257,7 @@ static struct OH_Huks_Param g_signParamsTest[] = {
         .uint32Param = OH_HUKS_PADDING_PSS
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA384
+        .uint32Param = OH_HUKS_DIGEST_SHA256
     }, {
         .tag = OH_HUKS_TAG_KEY_CLASS,
         .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION
@@ -281,7 +279,7 @@ static struct OH_Huks_Param g_verifyParamsTest[] = {
         .uint32Param = OH_HUKS_PADDING_PSS
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA384
+        .uint32Param = OH_HUKS_DIGEST_SHA256
     }, {
         .tag = OH_HUKS_TAG_KEY_CLASS,
         .uint32Param = OH_HUKS_KEY_CLASS_EXTENSION

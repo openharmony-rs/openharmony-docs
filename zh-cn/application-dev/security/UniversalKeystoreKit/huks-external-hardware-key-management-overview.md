@@ -13,7 +13,7 @@ HUKS提供统一的Ability扩展接口，让外部密钥管理能力能够接入
 
 - 密钥管理扩展能力使用方：通过调用HUKS提供的huksExternalCrypto和huks模块标准接口，配合调用证书管理模块的标准接口拉起证书选择与PIN码认证等弹窗流程，使用外部密钥管理扩展能力。
 
-HUKS框架保持设备无关——既支持UKey物理设备，也支持软件形态，覆盖[浏览器双向SSL登录](huks-extension-ability-best-dev.md)等典型应用场景。
+HUKS框架保持设备无关，既支持UKey物理设备，也支持软件形态，覆盖[浏览器双向SSL登录](huks-extension-ability-best-dev.md)等典型应用场景。
 
 本文作为密钥管理扩展文档的总入口，主要介绍整体框架及文档组织方式，便于开发者快速建立对密钥管理扩展能力的整体认知。
 
