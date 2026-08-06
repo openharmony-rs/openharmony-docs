@@ -1,0 +1,66 @@
+# CreateAccountImplicitlyOptions
+
+表示隐式创建账号的选项。
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-appAccount-interface CreateAccountImplicitlyOptions--><!--Device-appAccount-interface CreateAccountImplicitlyOptions-End-->
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+## authType
+
+```TypeScript
+authType?: string
+```
+
+令牌的鉴权类型。
+
+**类型：** string
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-CreateAccountImplicitlyOptions-authType?: string--><!--Device-CreateAccountImplicitlyOptions-authType?: string-End-->
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+## parameters
+
+```TypeScript
+parameters?: Record<string, Object>
+```
+
+自定义参数对象，默认为空。
+
+**类型：** Record&lt;string, Object&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-CreateAccountImplicitlyOptions-parameters?: Record<string, Object>--><!--Device-CreateAccountImplicitlyOptions-parameters?: Record<string, Object>-End-->
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+## requiredLabels
+
+```TypeScript
+requiredLabels?: Array<string>
+```
+
+所需的标签，默认为空。
+
+**类型：** Array&lt;string&gt;
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-CreateAccountImplicitlyOptions-requiredLabels?: Array<string>--><!--Device-CreateAccountImplicitlyOptions-requiredLabels?: Array<string>-End-->
+
+**系统能力：** SystemCapability.Account.AppAccount
+

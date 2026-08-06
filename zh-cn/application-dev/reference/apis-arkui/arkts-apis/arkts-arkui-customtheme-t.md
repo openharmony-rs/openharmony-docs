@@ -1,0 +1,22 @@
+# CustomTheme
+
+```TypeScript
+declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
+```
+
+用于自定义WithTheme作用域内组件的配色方案，具体配色项通过CustomColors接口配置。
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme--><!--Device-unnamed-declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**属性类型：** import('../api/@ohos.arkui.theme').CustomTheme
+

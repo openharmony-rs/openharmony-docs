@@ -1,0 +1,125 @@
+# cancelAll
+
+## cancelAll
+
+```TypeScript
+function cancelAll(callback: AsyncCallback<void>): void
+```
+
+取消当前应用所有已发布的通知。使用callback异步回调。 取消后，当前应用的所有通知将从通知中心、状态栏等位置移除，用户不再可见。 适用于应用退出或用户手动清除全部通知的场景。
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-notificationManager-function cancelAll(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function cancelAll(callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数。当取消当前应用所有已发布的通知成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// cancelAll回调
+let cancelAllCallback = (err: BusinessError): void => {
+  if (err) {
+    console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeeded in canceling all notification.`);
+  }
+}
+notificationManager.cancelAll(cancelAllCallback);
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// cancel回调
+let cancelAllCallback = (err: BusinessError | null): void => {
+  if (err) {
+    console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeeded in canceling all notification.`);
+  }
+}
+notificationManager.cancelAll(cancelAllCallback);
+```
+
+
+## cancelAll
+
+```TypeScript
+function cancelAll(): Promise<void>
+```
+
+取消当前应用所有已发布的通知。使用Promise异步回调。 取消后，当前应用的所有通知将从通知中心、状态栏等位置移除，用户不再可见。 适用于应用退出或用户手动清除全部通知的场景。
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-notificationManager-function cancelAll(): Promise<void>--><!--Device-notificationManager-function cancelAll(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.cancelAll().then(() => {
+  console.info(`Succeeded in canceling all notification.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.cancelAll().then(() => {
+  console.info(`Succeeded in canceling all notification.`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to cancel all notification. Code is ${error.code}, message is ${error.message}`);
+});
+```
+

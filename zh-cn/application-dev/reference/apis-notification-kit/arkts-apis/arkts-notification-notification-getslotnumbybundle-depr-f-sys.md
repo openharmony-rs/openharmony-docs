@@ -1,0 +1,70 @@
+# getSlotNumByBundle（系统接口）
+
+## getSlotNumByBundle
+
+```TypeScript
+function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number>): void
+```
+
+获取指定应用的通知通道数量（Callback形式）。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.notificationManager/notificationManager#getSlotNumByBundle
+
+**需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number>): void--><!--Device-notification-function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number>): void-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 | 获取通知通道数量回调函数。 |
+
+
+## getSlotNumByBundle
+
+```TypeScript
+function getSlotNumByBundle(bundle: BundleOption): Promise<number>
+```
+
+获取指定应用的通知通道数量（Promise形式）。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** ohos.notificationManager/notificationManager#getSlotNumByBundle
+
+**需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function getSlotNumByBundle(bundle: BundleOption): Promise<number>--><!--Device-notification-function getSlotNumByBundle(bundle: BundleOption): Promise<number>-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundle | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | 以Promise形式返回获取指定应用的通知通道数量。 |
+

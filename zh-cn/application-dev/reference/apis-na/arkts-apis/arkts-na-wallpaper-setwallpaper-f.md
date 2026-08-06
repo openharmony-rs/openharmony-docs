@@ -14,6 +14,8 @@ function setWallpaper(
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.SET_WALLPAPER
@@ -27,8 +29,8 @@ function setWallpaper(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 |  |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **示例：**
 
@@ -65,7 +67,6 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 }).catch((error: BusinessError) => {
     console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
 });
-
 ```
 
 
@@ -78,6 +79,8 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 将指定资源设置为指定类型的壁纸。
 
 **起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
 
 **废弃版本：** 9
 
@@ -92,7 +95,7 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 |  |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -131,6 +134,5 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
   }).catch((error: BusinessError) => {
     console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
 });
-
 ```
 

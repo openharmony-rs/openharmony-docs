@@ -1,0 +1,66 @@
+# isSimDisabled
+
+## isSimDisabled
+
+```TypeScript
+function isSimDisabled(admin: Want, slotId: number): boolean
+```
+
+查询指定卡槽是否禁用。适用于企业管理员需要确认SIM卡禁用策略是否生效的场景，帮助管理员验证策略执行状态，确保通话管控策略正确实施。
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-telephonyManager-function isSimDisabled(admin: Want, slotId: number): boolean--><!--Device-telephonyManager-function isSimDisabled(admin: Want, slotId: number): boolean-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| admin | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| slotId | number | 是 | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 指定卡槽的禁用状态。true表示已被禁用，false表示未被禁用。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  // 设置要查询的卡槽ID
+  let slotId: number = 0;
+  // 查询指定卡槽的SIM卡是否被禁用
+  let result: boolean = telephonyManager.isSimDisabled(wantTemp, slotId);
+  console.info(`Succeeded in querying slotId: ${slotId} is disabled or not, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to query sim is disabled or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+

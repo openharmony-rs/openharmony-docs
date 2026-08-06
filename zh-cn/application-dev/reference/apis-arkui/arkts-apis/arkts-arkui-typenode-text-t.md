@@ -1,0 +1,20 @@
+# Text
+
+```TypeScript
+type Text = TextFrameNode
+```
+
+Define the FrameNode type for Text.
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-typeNode-type Text = TextFrameNode--><!--Device-typeNode-type Text = TextFrameNode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**属性类型：** TextFrameNode
+

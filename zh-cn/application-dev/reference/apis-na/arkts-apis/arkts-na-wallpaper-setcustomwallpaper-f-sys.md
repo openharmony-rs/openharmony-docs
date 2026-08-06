@@ -6,9 +6,11 @@
 function setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void
 ```
 
-将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET_WALLPAPER权限的应用可以访问/data/wallpaper/目录获取设置的资源。使用callback异步回调。
+将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET\_WALLPAPER权限的应用可以访问/data/wallpaper/目 录获取设置的资源。使用callback异步回调。
 
 **起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
 
 **需要权限：** ohos.permission.SET_WALLPAPER
 
@@ -23,8 +25,8 @@ function setCustomWallpaper(source: string, wallpaperType: WallpaperType, callba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
 
@@ -51,8 +53,6 @@ try {
 } catch (error) {
     console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
-
-
 ```
 
 
@@ -62,9 +62,11 @@ try {
 function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise<void>
 ```
 
-将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET_WALLPAPER权限的应用可以访问/data/wallpaper/目录获取设置的资源。使用Promise异步回调。
+将指定的zip资源包设置为桌面或锁屏的壁纸资源，仅当com.ohos.sceneboard存在时，支持使用该接口。且具有ohos.permission.GET\_WALLPAPER权限的应用可以访问/data/wallpaper/目 录获取设置的资源。使用Promise异步回调。
 
 **起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
 
 **需要权限：** ohos.permission.SET_WALLPAPER
 
@@ -79,7 +81,7 @@ function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -110,6 +112,5 @@ try {
 } catch (error) {
     console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
-
 ```
 

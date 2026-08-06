@@ -10,6 +10,8 @@ function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.Pi
 
 **起始版本：** 9
 
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
 **需要权限：** ohos.permission.GET_WALLPAPER
 
 <!--Device-wallpaper-function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.PixelMap>): void--><!--Device-wallpaper-function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.PixelMap>): void-End-->
@@ -22,8 +24,8 @@ function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.Pi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
 
@@ -46,7 +48,6 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
   }
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
 });
-
 ```
 
 
@@ -60,6 +61,8 @@ function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>
 
 **起始版本：** 9
 
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
 **需要权限：** ohos.permission.GET_WALLPAPER
 
 <!--Device-wallpaper-function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>--><!--Device-wallpaper-function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>-End-->
@@ -72,7 +75,7 @@ function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -99,6 +102,5 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.P
 }).catch((error: BusinessError) => {
   console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
-
 ```
 

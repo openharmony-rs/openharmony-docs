@@ -1,0 +1,34 @@
+# StartOptions
+
+StartOptions可以作为启动UIAbility接口（例如 [startAbility()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ ）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
+
+**起始版本：** 9
+
+**ArkTS模式：** ArkTS-Dyn起始版本为9；ArkTS-Sta起始版本为23。
+
+<!--Device-unnamed-declare class StartOptions--><!--Device-unnamed-declare class StartOptions-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## windowFocused
+
+```TypeScript
+windowFocused?: boolean
+```
+
+窗口是否获焦。默认是true，表示窗口获焦。 **约束：** 1.该功能仅在2in1和Tablet设备上生效。 2.仅在[UIAbilityContext.startAbility]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中生效。
+
+**类型：** boolean
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartOptions-windowFocused?: boolean--><!--Device-StartOptions-windowFocused?: boolean-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+

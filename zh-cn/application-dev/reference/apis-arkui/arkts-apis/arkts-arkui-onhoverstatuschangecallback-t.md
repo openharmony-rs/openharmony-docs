@@ -1,0 +1,24 @@
+# OnHoverStatusChangeCallback
+
+```TypeScript
+export type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
+```
+
+当前设备的悬停状态改变时触发的回调。 Anonymous Object Rectification
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-export type OnHoverStatusChangeCallback = (param: HoverEventParam) => void--><!--Device-unnamed-export type OnHoverStatusChangeCallback = (param: HoverEventParam) => void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| param | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 当前设备与悬停状态相关的参数，包括设备的折叠状态、 悬停状态、应用方向以及窗口模式枚举。  |
+

@@ -1,0 +1,74 @@
+# DoNotDisturbProfile（系统接口）
+
+勿扰模式的配置信息。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-notificationManager-export interface DoNotDisturbProfile--><!--Device-notificationManager-export interface DoNotDisturbProfile-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## id
+
+```TypeScript
+id: long
+```
+
+勿扰模式编号。
+
+**类型：** long
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-DoNotDisturbProfile-id: long--><!--Device-DoNotDisturbProfile-id: long-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## name
+
+```TypeScript
+name: string
+```
+
+勿扰模式名称。
+
+**类型：** string
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-DoNotDisturbProfile-name: string--><!--Device-DoNotDisturbProfile-name: string-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## trustlist
+
+```TypeScript
+trustlist?: Array<BundleOption>
+```
+
+勿扰模式的信任列表。
+
+**类型：** Array&lt;BundleOption&gt;
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>--><!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+

@@ -10,6 +10,8 @@ function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<R
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<RgbaColor>>): void--><!--Device-wallpaper-function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<RgbaColor>>): void-End-->
@@ -20,8 +22,8 @@ function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RgbaColor&gt;&gt; | 是 | 回调函数，返回壁纸的主要颜色信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;Array&lt;RgbaColor&gt;&gt; | 是 | 回调函数，返回壁纸的主要颜色信息。 |
 
 **示例：**
 
@@ -35,7 +37,6 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessEr
     }
     console.info(`success to getColors: ${JSON.stringify(data)}`);
 });
-
 ```
 
 
@@ -49,6 +50,8 @@ function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>
 
 **起始版本：** 7
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
 **废弃版本：** 9
 
 <!--Device-wallpaper-function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>--><!--Device-wallpaper-function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>-End-->
@@ -59,7 +62,7 @@ function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -77,6 +80,5 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<
   }).catch((error: BusinessError) => {
     console.error(`failed to getColors because: ${JSON.stringify(error)}`);
 });
-
 ```
 

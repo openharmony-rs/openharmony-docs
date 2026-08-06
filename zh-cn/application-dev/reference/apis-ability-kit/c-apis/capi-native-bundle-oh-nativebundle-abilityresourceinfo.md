@@ -1,0 +1,16 @@
+# OH_NativeBundle_AbilityResourceInfo
+
+```c
+struct OH_NativeBundle_AbilityResourceInfo
+```
+
+## 概述
+
+表示组件资源信息。
+
+**起始版本：** 21
+
+**相关模块：** [Native_Bundle](capi-native-bundle.md)
+
+**所在头文件：** [ability_resource_info.h](capi-ability-resource-info-h.md)
+

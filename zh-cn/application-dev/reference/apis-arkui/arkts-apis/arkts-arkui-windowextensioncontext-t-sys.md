@@ -1,0 +1,24 @@
+# WindowExtensionContext（系统接口）
+
+```TypeScript
+export type WindowExtensionContext = _WindowExtensionContext
+```
+
+WindowExtension上下文信息。
+
+**起始版本：** 9
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+
+**废弃版本：** 21
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-export type WindowExtensionContext = _WindowExtensionContext--><!--Device-unnamed-export type WindowExtensionContext = _WindowExtensionContext-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**属性类型：** _WindowExtensionContext
+

@@ -1,0 +1,300 @@
+# ArkTS API<!--arkts-inputkit-->
+
+- [@ohos.multimodalInput.gestureEvent](arkts-multimodalinput-gestureevent.md)
+  - [FourFingersSwipe](arkts-input-multimodalinput-gestureevent-fourfingersswipe-i.md)
+  - [Pinch](arkts-input-multimodalinput-gestureevent-pinch-i.md)
+  - [Rotate](arkts-input-multimodalinput-gestureevent-rotate-i.md)
+  <!--Del-->
+  - [SwipeInward(系统接口)](arkts-input-multimodalinput-gestureevent-swipeinward-i-sys.md)<!--DelEnd-->
+  - [ThreeFingersSwipe](arkts-input-multimodalinput-gestureevent-threefingersswipe-i.md)
+  - [ThreeFingersTap](arkts-input-multimodalinput-gestureevent-threefingerstap-i.md)
+  <!--Del-->
+  - [TouchGestureEvent(系统接口)](arkts-input-multimodalinput-gestureevent-touchgestureevent-i-sys.md)<!--DelEnd-->
+  - [ActionType](arkts-input-multimodalinput-gestureevent-actiontype-e.md)
+  <!--Del-->
+  - [TouchGestureAction(系统接口)](arkts-input-multimodalinput-gestureevent-touchgestureaction-e-sys.md)<!--DelEnd-->
+- [@ohos.multimodalInput.infraredEmitter](arkts-multimodalinput-infraredemitter.md)
+  - [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f.md)
+  - [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md)
+  - [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f.md)
+  - [InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i.md)
+- [@ohos.multimodalInput.inputConsumer](arkts-multimodalinput-inputconsumer.md)
+  - [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md)
+  <!--Del-->
+  - [getShieldStatus(系统接口)](arkts-input-inputconsumer-getshieldstatus-f-sys.md)<!--DelEnd-->
+  - [off](arkts-input-inputconsumer-off-f.md)
+  <!--Del-->
+  - [off(系统接口)](arkts-input-inputconsumer-off-f-sys.md)<!--DelEnd-->
+  - [offHotkeyChange](arkts-input-inputconsumer-offhotkeychange-f.md)
+  <!--Del-->
+  - [offKey(系统接口)](arkts-input-inputconsumer-offkey-f-sys.md)<!--DelEnd-->
+  - [offKeyPressed](arkts-input-inputconsumer-offkeypressed-f.md)
+  - [on](arkts-input-inputconsumer-on-f.md)
+  <!--Del-->
+  - [on(系统接口)](arkts-input-inputconsumer-on-f-sys.md)<!--DelEnd-->
+  - [onHotkeyChange](arkts-input-inputconsumer-onhotkeychange-f.md)
+  <!--Del-->
+  - [onKey(系统接口)](arkts-input-inputconsumer-onkey-f-sys.md)<!--DelEnd-->
+  - [onKeyPressed](arkts-input-inputconsumer-onkeypressed-f.md)
+  <!--Del-->
+  - [setShieldStatus(系统接口)](arkts-input-inputconsumer-setshieldstatus-f-sys.md)<!--DelEnd-->
+  - [HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)
+  <!--Del-->
+  - [KeyOptions(系统接口)](arkts-input-inputconsumer-keyoptions-i-sys.md)<!--DelEnd-->
+  - [KeyPressedConfig](arkts-input-inputconsumer-keypressedconfig-i.md)
+  <!--Del-->
+  - [KeyCommandCallback(系统接口)](arkts-input-inputconsumer-keycommandcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [KeyCommandTriggerType(系统接口)](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ShieldMode(系统接口)](arkts-input-inputconsumer-shieldmode-e-sys.md)<!--DelEnd-->
+- [@ohos.multimodalInput.inputDevice](arkts-multimodalinput-inputdevice.md)
+  - [getDevice](arkts-input-inputdevice-getdevice-f.md)
+  - [getDeviceIds](arkts-input-inputdevice-getdeviceids-f.md)
+  - [getDeviceInfo](arkts-input-inputdevice-getdeviceinfo-f.md)
+  - [getDeviceInfoSync](arkts-input-inputdevice-getdeviceinfosync-f.md)
+  - [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)
+  - [getIntervalSinceLastInput](arkts-input-inputdevice-getintervalsincelastinput-f.md)
+  <!--Del-->
+  - [getKeyboardRepeatDelay(系统接口)](arkts-input-inputdevice-getkeyboardrepeatdelay-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getKeyboardRepeatRate(系统接口)](arkts-input-inputdevice-getkeyboardrepeatrate-f-sys.md)<!--DelEnd-->
+  - [getKeyboardType](arkts-input-inputdevice-getkeyboardtype-f.md)
+  - [getKeyboardTypeSync](arkts-input-inputdevice-getkeyboardtypesync-f.md)
+  - [isFunctionKeyEnabled](arkts-input-inputdevice-isfunctionkeyenabled-f.md)
+  - [off](arkts-input-inputdevice-off-f.md)
+  - [offChange](arkts-input-inputdevice-offchange-f.md)
+  - [on](arkts-input-inputdevice-on-f.md)
+  - [onChange](arkts-input-inputdevice-onchange-f.md)
+  - [setFunctionKeyEnabled](arkts-input-inputdevice-setfunctionkeyenabled-f.md)
+  <!--Del-->
+  - [setInputDeviceEnabled(系统接口)](arkts-input-inputdevice-setinputdeviceenabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setKeyboardRepeatDelay(系统接口)](arkts-input-inputdevice-setkeyboardrepeatdelay-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setKeyboardRepeatRate(系统接口)](arkts-input-inputdevice-setkeyboardrepeatrate-f-sys.md)<!--DelEnd-->
+  - [supportKeys](arkts-input-inputdevice-supportkeys-f.md)
+  - [supportKeysSync](arkts-input-inputdevice-supportkeyssync-f.md)
+  - [AxisRange](arkts-input-inputdevice-axisrange-i.md)
+  - [DeviceListener](arkts-input-inputdevice-devicelistener-i.md)
+  - [InputDeviceData](arkts-input-inputdevice-inputdevicedata-i.md)
+  - [AxisType](arkts-input-inputdevice-axistype-t.md)
+  - [ChangedType](arkts-input-inputdevice-changedtype-t.md)
+  - [SourceType](arkts-input-inputdevice-sourcetype-t.md)
+  - [FunctionKey](arkts-input-inputdevice-functionkey-e.md)
+  - [KeyboardType](arkts-input-inputdevice-keyboardtype-e.md)
+- [@ohos.multimodalInput.inputDeviceCooperate](arkts-multimodalinput-inputdevicecooperate.md)
+  <!--Del-->
+  - [enable(系统接口)](arkts-input-inputdevicecooperate-enable-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getState(系统接口)](arkts-input-inputdevicecooperate-getstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [off(系统接口)](arkts-input-inputdevicecooperate-off-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [on(系统接口)](arkts-input-inputdevicecooperate-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [start(系统接口)](arkts-input-inputdevicecooperate-start-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [stop(系统接口)](arkts-input-inputdevicecooperate-stop-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [EventMsg(系统接口)](arkts-input-inputdevicecooperate-eventmsg-e-sys.md)<!--DelEnd-->
+- [@ohos.multimodalInput.inputEvent](arkts-multimodalinput-inputevent.md)
+  - [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)
+- [@ohos.multimodalInput.inputEventClient](arkts-multimodalinput-inputeventclient.md)
+  - [createKeyboardController](arkts-input-inputeventclient-createkeyboardcontroller-f.md)
+  - [createMouseController](arkts-input-inputeventclient-createmousecontroller-f.md)
+  - [createTouchController](arkts-input-inputeventclient-createtouchcontroller-f.md)
+  - [injectEvent](arkts-input-inputeventclient-injectevent-f.md)
+  - [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f.md)
+  - [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f.md)
+  - [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f.md)
+  - [permitInjection](arkts-input-inputeventclient-permitinjection-f.md)
+  - [KeyboardController](arkts-input-inputeventclient-keyboardcontroller-i.md)
+  - [KeyEvent](arkts-input-inputeventclient-keyevent-i.md)
+  - [KeyEventData](arkts-input-inputeventclient-keyeventdata-i.md)
+  - [KeyEventInfo](arkts-input-inputeventclient-keyeventinfo-i.md)
+  - [MouseController](arkts-input-inputeventclient-mousecontroller-i.md)
+  - [MouseEventData](arkts-input-inputeventclient-mouseeventdata-i.md)
+  - [TouchController](arkts-input-inputeventclient-touchcontroller-i.md)
+  - [TouchEventData](arkts-input-inputeventclient-toucheventdata-i.md)
+  - [TouchPoint](arkts-input-inputeventclient-touchpoint-i.md)
+- [@ohos.multimodalInput.inputMonitor](arkts-multimodalinput-inputmonitor.md)
+  <!--Del-->
+  - [off(系统接口)](arkts-input-inputmonitor-off-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offFingerprint(系统接口)](arkts-input-inputmonitor-offfingerprint-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offFourFingersSwipe(系统接口)](arkts-input-inputmonitor-offfourfingersswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offKeyPressed(系统接口)](arkts-input-inputmonitor-offkeypressed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offMouse(系统接口)](arkts-input-inputmonitor-offmouse-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offPinch(系统接口)](arkts-input-inputmonitor-offpinch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offRotate(系统接口)](arkts-input-inputmonitor-offrotate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offSwipeInward(系统接口)](arkts-input-inputmonitor-offswipeinward-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offThreeFingersSwipe(系统接口)](arkts-input-inputmonitor-offthreefingersswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offThreeFingersTap(系统接口)](arkts-input-inputmonitor-offthreefingerstap-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offTouch(系统接口)](arkts-input-inputmonitor-offtouch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offTouchscreenPinch(系统接口)](arkts-input-inputmonitor-offtouchscreenpinch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offTouchscreenSwipe(系统接口)](arkts-input-inputmonitor-offtouchscreenswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [on(系统接口)](arkts-input-inputmonitor-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onFingerprint(系统接口)](arkts-input-inputmonitor-onfingerprint-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onFourFingersSwipe(系统接口)](arkts-input-inputmonitor-onfourfingersswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onKeyPressed(系统接口)](arkts-input-inputmonitor-onkeypressed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onMouse(系统接口)](arkts-input-inputmonitor-onmouse-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onPinch(系统接口)](arkts-input-inputmonitor-onpinch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onRotate(系统接口)](arkts-input-inputmonitor-onrotate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onSwipeInward(系统接口)](arkts-input-inputmonitor-onswipeinward-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onThreeFingersSwipe(系统接口)](arkts-input-inputmonitor-onthreefingersswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onThreeFingersTap(系统接口)](arkts-input-inputmonitor-onthreefingerstap-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onTouch(系统接口)](arkts-input-inputmonitor-ontouch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onTouchscreenPinch(系统接口)](arkts-input-inputmonitor-ontouchscreenpinch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onTouchscreenSwipe(系统接口)](arkts-input-inputmonitor-ontouchscreenswipe-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [queryTouchEvents(系统接口)](arkts-input-inputmonitor-querytouchevents-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TouchEventReceiver(系统接口)](arkts-input-inputmonitor-toucheventreceiver-t-sys.md)<!--DelEnd-->
+- [@ohos.multimodalInput.intentionCode](arkts-multimodalinput-intentioncode.md)
+  - [IntentionCode](arkts-input-multimodalinput-intentioncode-intentioncode-e.md)
+- [@ohos.multimodalInput.keyCode](arkts-multimodalinput-keycode.md)
+  - [KeyCode](arkts-input-multimodalinput-keycode-keycode-e.md)
+- [@ohos.multimodalInput.keyEvent](arkts-multimodalinput-keyevent.md)
+  - [Key](arkts-input-multimodalinput-keyevent-key-i.md)
+  - [KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md)
+  - [Action](arkts-input-multimodalinput-keyevent-action-e.md)
+- [@ohos.multimodalInput.mouseEvent](arkts-multimodalinput-mouseevent.md)
+  - [AxisValue](arkts-input-multimodalinput-mouseevent-axisvalue-i.md)
+  - [MouseEvent](arkts-input-multimodalinput-mouseevent-mouseevent-i.md)
+  - [Action](arkts-input-multimodalinput-mouseevent-action-e.md)
+  - [Axis](arkts-input-multimodalinput-mouseevent-axis-e.md)
+  - [Button](arkts-input-multimodalinput-mouseevent-button-e.md)
+  - [ToolType](arkts-input-multimodalinput-mouseevent-tooltype-e.md)
+- [@ohos.multimodalInput.pointer](arkts-multimodalinput-pointer.md)
+  <!--Del-->
+  - [getHoverScrollState(系统接口)](arkts-input-pointer-gethoverscrollstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMousePrimaryButton(系统接口)](arkts-input-pointer-getmouseprimarybutton-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMouseScrollDirection(系统接口)](arkts-input-pointer-getmousescrolldirection-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getMouseScrollRows(系统接口)](arkts-input-pointer-getmousescrollrows-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerColor(系统接口)](arkts-input-pointer-getpointercolor-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerColorSync(系统接口)](arkts-input-pointer-getpointercolorsync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerSize(系统接口)](arkts-input-pointer-getpointersize-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerSizeSync(系统接口)](arkts-input-pointer-getpointersizesync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerSpeed(系统接口)](arkts-input-pointer-getpointerspeed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPointerSpeedSync(系统接口)](arkts-input-pointer-getpointerspeedsync-f-sys.md)<!--DelEnd-->
+  - [getPointerStyle](arkts-input-pointer-getpointerstyle-f.md)
+  - [getPointerStyleSync](arkts-input-pointer-getpointerstylesync-f.md)
+  <!--Del-->
+  - [getTouchpadDoubleTapAndDragState(系统接口)](arkts-input-pointer-gettouchpaddoubletapanddragstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadPinchSwitch(系统接口)](arkts-input-pointer-gettouchpadpinchswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadPointerSpeed(系统接口)](arkts-input-pointer-gettouchpadpointerspeed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadRightClickType(系统接口)](arkts-input-pointer-gettouchpadrightclicktype-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadScrollDirection(系统接口)](arkts-input-pointer-gettouchpadscrolldirection-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadScrollSwitch(系统接口)](arkts-input-pointer-gettouchpadscrollswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadSwipeSwitch(系统接口)](arkts-input-pointer-gettouchpadswipeswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getTouchpadTapSwitch(系统接口)](arkts-input-pointer-gettouchpadtapswitch-f-sys.md)<!--DelEnd-->
+  - [isPointerVisible](arkts-input-pointer-ispointervisible-f.md)
+  - [isPointerVisibleSync](arkts-input-pointer-ispointervisiblesync-f.md)
+  - [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md)
+  - [setCustomCursorSync](arkts-input-pointer-setcustomcursorsync-f.md)
+  <!--Del-->
+  - [setHoverScrollState(系统接口)](arkts-input-pointer-sethoverscrollstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setMousePrimaryButton(系统接口)](arkts-input-pointer-setmouseprimarybutton-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setMouseScrollDirection(系统接口)](arkts-input-pointer-setmousescrolldirection-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setMouseScrollRows(系统接口)](arkts-input-pointer-setmousescrollrows-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerColor(系统接口)](arkts-input-pointer-setpointercolor-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerColorSync(系统接口)](arkts-input-pointer-setpointercolorsync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerSize(系统接口)](arkts-input-pointer-setpointersize-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerSizeSync(系统接口)](arkts-input-pointer-setpointersizesync-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerSpeed(系统接口)](arkts-input-pointer-setpointerspeed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPointerSpeedSync(系统接口)](arkts-input-pointer-setpointerspeedsync-f-sys.md)<!--DelEnd-->
+  - [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md)
+  - [setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md)
+  - [setPointerVisible](arkts-input-pointer-setpointervisible-f.md)
+  - [setPointerVisibleSync](arkts-input-pointer-setpointervisiblesync-f.md)
+  <!--Del-->
+  - [setTouchpadDoubleTapAndDragState(系统接口)](arkts-input-pointer-settouchpaddoubletapanddragstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadPinchSwitch(系统接口)](arkts-input-pointer-settouchpadpinchswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadPointerSpeed(系统接口)](arkts-input-pointer-settouchpadpointerspeed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadRightClickType(系统接口)](arkts-input-pointer-settouchpadrightclicktype-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadScrollDirection(系统接口)](arkts-input-pointer-settouchpadscrolldirection-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadScrollSwitch(系统接口)](arkts-input-pointer-settouchpadscrollswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadSwipeSwitch(系统接口)](arkts-input-pointer-settouchpadswipeswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setTouchpadTapSwitch(系统接口)](arkts-input-pointer-settouchpadtapswitch-f-sys.md)<!--DelEnd-->
+  - [CursorConfig](arkts-input-pointer-cursorconfig-i.md)
+  - [CustomCursor](arkts-input-pointer-customcursor-i.md)
+  - [PointerStyle](arkts-input-pointer-pointerstyle-e.md)
+  - [PrimaryButton](arkts-input-pointer-primarybutton-e.md)
+  - [RightClickType](arkts-input-pointer-rightclicktype-e.md)
+- [@ohos.multimodalInput.shortKey](arkts-multimodalinput-shortkey.md)
+  - [shortKey](arkts-input-shortkey-n.md)
+    <!--Del-->
+    - [setKeyDownDuration(系统接口)](arkts-input-shortkey-setkeydownduration-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FingerprintEvent(系统接口)](arkts-input-multimodalinput-shortkey-fingerprintevent-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FingerprintAction(系统接口)](arkts-input-multimodalinput-shortkey-fingerprintaction-e-sys.md)<!--DelEnd-->
+- [@ohos.multimodalInput.touchEvent](arkts-multimodalinput-touchevent.md)
+  - [Touch](arkts-input-multimodalinput-touchevent-touch-i.md)
+  <!--Del-->
+  - [Touch(系统接口)](arkts-input-multimodalinput-touchevent-touch-i-sys.md)<!--DelEnd-->
+  - [TouchEvent](arkts-input-multimodalinput-touchevent-touchevent-i.md)
+  <!--Del-->
+  - [TouchEvent(系统接口)](arkts-input-multimodalinput-touchevent-touchevent-i-sys.md)<!--DelEnd-->
+  - [Action](arkts-input-multimodalinput-touchevent-action-e.md)
+  <!--Del-->
+  - [FixedMode(系统接口)](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md)<!--DelEnd-->
+  - [SourceType](arkts-input-multimodalinput-touchevent-sourcetype-e.md)
+  - [ToolType](arkts-input-multimodalinput-touchevent-tooltype-e.md)

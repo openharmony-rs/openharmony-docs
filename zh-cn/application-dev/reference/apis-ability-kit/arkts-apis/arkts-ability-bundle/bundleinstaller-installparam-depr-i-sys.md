@@ -1,0 +1,96 @@
+# InstallParam（系统接口）
+
+安装、恢复或卸载时需要指定的参数。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** [@ohos.bundle.installer:installer.InstallParam](../arkts-ability-installer-installparam-i-sys.md)
+
+<!--Device-unnamed-export interface InstallParam--><!--Device-unnamed-export interface InstallParam-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+## installFlag
+
+```TypeScript
+installFlag: number
+```
+
+指示安装标志, 默认值：1。 \_\_\_HTML\_TAG\_DESC\_USD\_0\_\_\_取值范围：\_\_\_HTML\_TAG\_DESC\_USD\_1\_\_\_1: 覆盖安装。\_\_\_HTML\_TAG\_DESC\_USD\_2\_\_\_16: 免安装。
+
+**类型：** number
+
+**默认值：** Indicates the install flag
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** [@ohos.bundle.installer:installer.InstallParam.installFlag](../arkts-ability-installer-installparam-i-sys.md#installflag)
+
+<!--Device-InstallParam-installFlag: number--><!--Device-InstallParam-installFlag: number-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+## isKeepData
+
+```TypeScript
+isKeepData: boolean
+```
+
+指示应用卸载时是否保留包数据，默认值：false，true表示保留，false表示不保留。
+
+**类型：** boolean
+
+**默认值：** Indicates whether the param has data
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** [@ohos.bundle.installer:installer.InstallParam.isKeepData](../arkts-ability-installer-installparam-i-sys.md#iskeepdata)
+
+<!--Device-InstallParam-isKeepData: boolean--><!--Device-InstallParam-isKeepData: boolean-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+
+## userId
+
+```TypeScript
+userId: number
+```
+
+指示用户id, 默认值：调用方的userId。
+
+**类型：** number
+
+**默认值：** Indicates the user id
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+**废弃版本：** 9
+
+**替代接口：** [@ohos.bundle.installer:installer.InstallParam.userId](../arkts-ability-installer-installparam-i-sys.md#userid)
+
+<!--Device-InstallParam-userId: number--><!--Device-InstallParam-userId: number-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework
+
+**系统接口：** 此接口为系统接口。
+

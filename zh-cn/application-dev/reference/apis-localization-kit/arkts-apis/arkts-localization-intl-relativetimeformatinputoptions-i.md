@@ -1,0 +1,88 @@
+# RelativeTimeFormatInputOptions
+
+创建相对时间格式化对象时可设置的配置项。 从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 20
+
+**替代接口：** [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#options)
+
+<!--Device-intl-export interface RelativeTimeFormatInputOptions--><!--Device-intl-export interface RelativeTimeFormatInputOptions-End-->
+
+**系统能力：** SystemCapability.Global.I18n
+
+## localeMatcher
+
+```TypeScript
+localeMatcher?: string
+```
+
+区域匹配算法，取值包括："best fit", "lookup"。 默认值：best fit。
+
+**类型：** string
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 20
+
+**替代接口：** [Intl.RelativeTimeFormatOptions.localeMatcher](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#localematcher)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string--><!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string-End-->
+
+**系统能力：** SystemCapability.Global.I18n
+
+## numeric
+
+```TypeScript
+numeric?: string
+```
+
+输出消息的格式，表示格式化结果中是否使用数字表示相对日期或时间。取值包括："always", "auto"。 默认值：always。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+
+**类型：** string
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 20
+
+**替代接口：** [Intl.RelativeTimeFormatOptions.numeric](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#numeric)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RelativeTimeFormatInputOptions-numeric?: string--><!--Device-RelativeTimeFormatInputOptions-numeric?: string-End-->
+
+**系统能力：** SystemCapability.Global.I18n
+
+## style
+
+```TypeScript
+style?: string
+```
+
+国际化消息的长度，取值包括："long", "short", "narrow"。 默认值：long。 不同取值的显示效果请参考\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_。
+
+**类型：** string
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 20
+
+**替代接口：** [Intl.RelativeTimeFormatOptions.style](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#style)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RelativeTimeFormatInputOptions-style?: string--><!--Device-RelativeTimeFormatInputOptions-style?: string-End-->
+
+**系统能力：** SystemCapability.Global.I18n
+

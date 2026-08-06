@@ -1,0 +1,66 @@
+# CredentialAbstract
+
+表示凭据的简要信息。
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+<!--Device-certificateManager-export interface CredentialAbstract--><!--Device-certificateManager-export interface CredentialAbstract-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## alias
+
+```TypeScript
+alias: string
+```
+
+表示凭据的别名，最大长度为128字节。
+
+**类型：** string
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+<!--Device-CredentialAbstract-alias: string--><!--Device-CredentialAbstract-alias: string-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## keyUri
+
+```TypeScript
+keyUri: string
+```
+
+表示凭据的唯一标识符，最大长度为256字节。
+
+**类型：** string
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+<!--Device-CredentialAbstract-keyUri: string--><!--Device-CredentialAbstract-keyUri: string-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## type
+
+```TypeScript
+type: string
+```
+
+表示凭据的类型，最大长度为8字节。
+
+**类型：** string
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+<!--Device-CredentialAbstract-type: string--><!--Device-CredentialAbstract-type: string-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+

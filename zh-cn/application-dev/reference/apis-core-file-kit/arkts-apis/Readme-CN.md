@@ -1,0 +1,634 @@
+# ArkTS API<!--arkts-corefilekit-->
+
+- [@ohos.application.BackupExtensionAbility](arkts-application-backupextensionability.md)
+  - [BackupExtensionAbility](arkts-corefile-application-backupextensionability-backupextensionability-c.md)
+  <!--Del-->
+  - [BackupExtensionAbility(系统接口)](arkts-corefile-application-backupextensionability-backupextensionability-c-sys.md)<!--DelEnd-->
+  - [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md)
+- [@ohos.document](arkts-document.md)
+  - [document](arkts-corefile-document-depr-n.md)
+  - [choose](arkts-corefile-document-choose-f.md)
+  - [show](arkts-corefile-document-show-f.md)
+- [@ohos.file.BackupExtensionContext](arkts-file-backupextensioncontext.md)
+  - [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
+- [@ohos.file.backup](arkts-file-backup.md)
+  <!--Del-->
+  - [fileSystemServiceRequest(系统接口)](arkts-corefile-backup-filesystemservicerequest-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBackupInfo(系统接口)](arkts-corefile-backup-getbackupinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBackupVersion(系统接口)](arkts-corefile-backup-getbackupversion-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getLocalCapabilities(系统接口)](arkts-corefile-backup-getlocalcapabilities-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateSendRate(系统接口)](arkts-corefile-backup-updatesendrate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateTimer(系统接口)](arkts-corefile-backup-updatetimer-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [IncrementalBackupSession(系统接口)](arkts-corefile-backup-incrementalbackupsession-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SessionBackup(系统接口)](arkts-corefile-backup-sessionbackup-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SessionRestore(系统接口)](arkts-corefile-backup-sessionrestore-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BackupParams(系统接口)](arkts-corefile-backup-backupparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BackupPriority(系统接口)](arkts-corefile-backup-backuppriority-i-sys.md)<!--DelEnd-->
+  - [File](arkts-corefile-backup-file-i.md)
+  <!--Del-->
+  - [FileData(系统接口)](arkts-corefile-backup-filedata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileManifestData(系统接口)](arkts-corefile-backup-filemanifestdata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileMeta(系统接口)](arkts-corefile-backup-filemeta-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileSystemRequestConfig(系统接口)](arkts-corefile-backup-filesystemrequestconfig-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [GeneralCallbacks(系统接口)](arkts-corefile-backup-generalcallbacks-i-sys.md)<!--DelEnd-->
+  - [IncrementalBackupData](arkts-corefile-backup-incrementalbackupdata-i.md)
+  <!--Del-->
+  - [IncrementalBackupTime(系统接口)](arkts-corefile-backup-incrementalbackuptime-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PathInfo(系统接口)](arkts-corefile-backup-pathinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BundlePara(系统接口)](arkts-corefile-backup-bundlepara-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnBackupSizeReport(系统接口)](arkts-corefile-backup-onbackupsizereport-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnFileReadyBatch(系统接口)](arkts-corefile-backup-onfilereadybatch-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnProcess(系统接口)](arkts-corefile-backup-onprocess-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnResultReport(系统接口)](arkts-corefile-backup-onresultreport-t-sys.md)<!--DelEnd-->
+- [@ohos.file.cloudDiskManager](arkts-file-clouddiskmanager.md)
+  <!--Del-->
+  - [SyncFolderAccessor(系统接口)](arkts-corefile-clouddiskmanager-syncfolderaccessor-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SyncFolder(系统接口)](arkts-corefile-clouddiskmanager-syncfolder-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SyncFolderState(系统接口)](arkts-corefile-clouddiskmanager-syncfolderstate-e-sys.md)<!--DelEnd-->
+- [@ohos.file.cloudSync](arkts-file-cloudsync.md)
+  - [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md)
+  <!--Del-->
+  - [getFileSyncState(系统接口)](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [optimizeStorage(系统接口)](arkts-corefile-cloudsync-optimizestorage-f-sys.md)<!--DelEnd-->
+  - [registerChange](arkts-corefile-cloudsync-registerchange-f.md)
+  <!--Del-->
+  - [startOptimizeSpace(系统接口)](arkts-corefile-cloudsync-startoptimizespace-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [stopOptimizeSpace(系统接口)](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md)<!--DelEnd-->
+  - [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md)
+  - [CloudFileCache](arkts-corefile-cloudsync-cloudfilecache-c.md)
+  <!--Del-->
+  - [CloudFileCache(系统接口)](arkts-corefile-cloudsync-cloudfilecache-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [Download(系统接口)](arkts-corefile-cloudsync-download-c-sys.md)<!--DelEnd-->
+  - [FileSync](arkts-corefile-cloudsync-filesync-c.md)
+  <!--Del-->
+  - [FileSync(系统接口)](arkts-corefile-cloudsync-filesync-c-sys.md)<!--DelEnd-->
+  - [FileVersion](arkts-corefile-cloudsync-fileversion-c.md)
+  <!--Del-->
+  - [GallerySync(系统接口)](arkts-corefile-cloudsync-gallerysync-c-sys.md)<!--DelEnd-->
+  - [MultiDownloadProgress](arkts-corefile-cloudsync-multidownloadprogress-c.md)
+  - [ChangeData](arkts-corefile-cloudsync-changedata-i.md)
+  - [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)
+  - [FailedFileInfo](arkts-corefile-cloudsync-failedfileinfo-i.md)
+  - [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md)
+  <!--Del-->
+  - [OptimizeSpaceParam(系统接口)](arkts-corefile-cloudsync-optimizespaceparam-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OptimizeSpaceProgress(系统接口)](arkts-corefile-cloudsync-optimizespaceprogress-i-sys.md)<!--DelEnd-->
+  - [SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)
+  <!--Del-->
+  - [UploadProgress(系统接口)](arkts-corefile-cloudsync-uploadprogress-i-sys.md)<!--DelEnd-->
+  - [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md)
+  - [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md)
+  - [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md)
+  - [ErrorType](arkts-corefile-cloudsync-errortype-e.md)
+  <!--Del-->
+  - [ErrorType(系统接口)](arkts-corefile-cloudsync-errortype-e-sys.md)<!--DelEnd-->
+  - [FileState](arkts-corefile-cloudsync-filestate-e.md)
+  <!--Del-->
+  - [FileSyncState(系统接口)](arkts-corefile-cloudsync-filesyncstate-e-sys.md)<!--DelEnd-->
+  - [NotifyType](arkts-corefile-cloudsync-notifytype-e.md)
+  <!--Del-->
+  - [OptimizeState(系统接口)](arkts-corefile-cloudsync-optimizestate-e-sys.md)<!--DelEnd-->
+  - [State](arkts-corefile-cloudsync-state-e.md)
+  <!--Del-->
+  - [State(系统接口)](arkts-corefile-cloudsync-state-e-sys.md)<!--DelEnd-->
+  - [SyncState](arkts-corefile-cloudsync-syncstate-e.md)
+  <!--Del-->
+  - [UploadState(系统接口)](arkts-corefile-cloudsync-uploadstate-e-sys.md)<!--DelEnd-->
+- [@ohos.file.cloudSyncManager](arkts-file-cloudsyncmanager.md)
+  <!--Del-->
+  - [changeAppCloudSwitch(系统接口)](arkts-corefile-cloudsyncmanager-changeappcloudswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [clean(系统接口)](arkts-corefile-cloudsyncmanager-clean-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [disableCloud(系统接口)](arkts-corefile-cloudsyncmanager-disablecloud-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [enableCloud(系统接口)](arkts-corefile-cloudsyncmanager-enablecloud-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBundlesLocalFilePresentStatus(系统接口)](arkts-corefile-cloudsyncmanager-getbundleslocalfilepresentstatus-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getDowngradeDownloadTaskState(系统接口)](arkts-corefile-cloudsyncmanager-getdowngradedownloadtaskstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [notifyDataChange(系统接口)](arkts-corefile-cloudsyncmanager-notifydatachange-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DowngradeDownload(系统接口)](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md)<!--DelEnd-->
+  - [DownloadProgress](arkts-corefile-cloudsyncmanager-downloadprogress-c.md)
+  - [CloudFileInfo](arkts-corefile-cloudsyncmanager-cloudfileinfo-i.md)
+  <!--Del-->
+  - [ExtraData(系统接口)](arkts-corefile-cloudsyncmanager-extradata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocalFilePresentStatus(系统接口)](arkts-corefile-cloudsyncmanager-localfilepresentstatus-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TransferProgress(系统接口)](arkts-corefile-cloudsyncmanager-transferprogress-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [Action(系统接口)](arkts-corefile-cloudsyncmanager-action-e-sys.md)<!--DelEnd-->
+  - [DownloadState](arkts-corefile-cloudsyncmanager-downloadstate-e.md)
+  <!--Del-->
+  - [DownloadState(系统接口)](arkts-corefile-cloudsyncmanager-downloadstate-e-sys.md)<!--DelEnd-->
+  - [DownloadStopReason](arkts-corefile-cloudsyncmanager-downloadstopreason-e.md)
+  <!--Del-->
+  - [TransferState(系统接口)](arkts-corefile-cloudsyncmanager-transferstate-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TransferStopReason(系统接口)](arkts-corefile-cloudsyncmanager-transferstopreason-e-sys.md)<!--DelEnd-->
+- [@ohos.file.environment](arkts-file-environment.md)
+  <!--Del-->
+  - [getExternalStorageDir(系统接口)](arkts-corefile-environment-getexternalstoragedir-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getStorageDataDir(系统接口)](arkts-corefile-environment-getstoragedatadir-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getUserDataDir(系统接口)](arkts-corefile-environment-getuserdatadir-f-sys.md)<!--DelEnd-->
+  - [getUserDesktopDir](arkts-corefile-environment-getuserdesktopdir-f.md)
+  - [getUserDocumentDir](arkts-corefile-environment-getuserdocumentdir-f.md)
+  - [getUserDownloadDir](arkts-corefile-environment-getuserdownloaddir-f.md)
+  <!--Del-->
+  - [getUserHomeDir(系统接口)](arkts-corefile-environment-getuserhomedir-f-sys.md)<!--DelEnd-->
+- [@ohos.file.fileAccess](arkts-file-fileaccess.md)
+  <!--Del-->
+  - [createFileAccessHelper(系统接口)](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getFileAccessAbilityInfo(系统接口)](arkts-corefile-fileaccess-getfileaccessabilityinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CopyResult(系统接口)](arkts-corefile-fileaccess-copyresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileAccessHelper(系统接口)](arkts-corefile-fileaccess-fileaccesshelper-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileInfo(系统接口)](arkts-corefile-fileaccess-fileinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileIterator(系统接口)](arkts-corefile-fileaccess-fileiterator-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [MoveResult(系统接口)](arkts-corefile-fileaccess-moveresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [NotifyMessage(系统接口)](arkts-corefile-fileaccess-notifymessage-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RootInfo(系统接口)](arkts-corefile-fileaccess-rootinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RootIterator(系统接口)](arkts-corefile-fileaccess-rootiterator-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileKey(系统接口)](arkts-corefile-fileaccess-filekey-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [NotifyType(系统接口)](arkts-corefile-fileaccess-notifytype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OPENFLAGS(系统接口)](arkts-corefile-fileaccess-openflags-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [常量(系统接口)](arkts-corefile-fileaccess-con-sys.md)<!--DelEnd-->
+- [@ohos.file.fileExtensionInfo](arkts-file-fileextensioninfo.md)
+  - [fileExtensionInfo](arkts-corefile-fileextensioninfo-n.md)
+    - [DeviceFlag](arkts-corefile-fileextensioninfo-deviceflag-n.md)
+      <!--Del-->
+      - [常量(系统接口)](arkts-corefile-deviceflag-con-sys.md)<!--DelEnd-->
+    - [DocumentFlag](arkts-corefile-fileextensioninfo-documentflag-n.md)
+      <!--Del-->
+      - [常量(系统接口)](arkts-corefile-documentflag-con-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [DeviceType(系统接口)](arkts-corefile-fileextensioninfo-devicetype-e-sys.md)<!--DelEnd-->
+- [@ohos.file.fileuri](arkts-file-fileuri.md)
+  - [getUriFromPath](arkts-corefile-fileuri-geturifrompath-f.md)
+  - [FileUri](arkts-corefile-fileuri-fileuri-c.md)
+- [@ohos.file.fs](arkts-file-fs.md)
+  - [fileIo](arkts-corefile-fileio-n.md)
+    - [OpenMode](arkts-corefile-fileio-openmode-n.md)
+      - [常量](arkts-corefile-openmode-con.md)
+  - [access](arkts-corefile-file-fs-access-f.md)
+  - [accessSync](arkts-corefile-file-fs-accesssync-f.md)
+  - [close](arkts-corefile-file-fs-close-f.md)
+  - [closeSync](arkts-corefile-file-fs-closesync-f.md)
+  - [connectDfs](arkts-corefile-file-fs-connectdfs-f.md)
+  - [copy](arkts-corefile-file-fs-copy-f.md)
+  - [copyDir](arkts-corefile-file-fs-copydir-f.md)
+  - [copyDirSync](arkts-corefile-file-fs-copydirsync-f.md)
+  - [copyFile](arkts-corefile-file-fs-copyfile-f.md)
+  - [copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md)
+  - [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md)
+  - [createRandomAccessFileSync](arkts-corefile-file-fs-createrandomaccessfilesync-f.md)
+  - [createReadStream](arkts-corefile-file-fs-createreadstream-f.md)
+  - [createStream](arkts-corefile-file-fs-createstream-f.md)
+  - [createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md)
+  - [createWatcher](arkts-corefile-file-fs-createwatcher-f.md)
+  - [createWriteStream](arkts-corefile-file-fs-createwritestream-f.md)
+  - [disconnectDfs](arkts-corefile-file-fs-disconnectdfs-f.md)
+  - [dup](arkts-corefile-file-fs-dup-f.md)
+  - [fdatasync](arkts-corefile-file-fs-fdatasync-f.md)
+  - [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md)
+  - [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md)
+  - [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md)
+  - [fsync](arkts-corefile-file-fs-fsync-f.md)
+  - [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md)
+  - [getxattr](arkts-corefile-file-fs-getxattr-f.md)
+  - [getxattrSync](arkts-corefile-file-fs-getxattrsync-f.md)
+  - [listFile](arkts-corefile-file-fs-listfile-f.md)
+  - [listFileExt](arkts-corefile-file-fs-listfileext-f.md)
+  - [listFileExtSync](arkts-corefile-file-fs-listfileextsync-f.md)
+  - [listFileSync](arkts-corefile-file-fs-listfilesync-f.md)
+  - [lseek](arkts-corefile-file-fs-lseek-f.md)
+  - [lstat](arkts-corefile-file-fs-lstat-f.md)
+  - [lstatSync](arkts-corefile-file-fs-lstatsync-f.md)
+  - [mkdir](arkts-corefile-file-fs-mkdir-f.md)
+  - [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md)
+  - [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md)
+  - [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md)
+  - [mmap](arkts-corefile-file-fs-mmap-f.md)
+  - [mmapSync](arkts-corefile-file-fs-mmapsync-f.md)
+  - [moveDir](arkts-corefile-file-fs-movedir-f.md)
+  - [moveDirSync](arkts-corefile-file-fs-movedirsync-f.md)
+  - [moveFile](arkts-corefile-file-fs-movefile-f.md)
+  - [moveFileSync](arkts-corefile-file-fs-movefilesync-f.md)
+  - [open](arkts-corefile-file-fs-open-f.md)
+  - [openSync](arkts-corefile-file-fs-opensync-f.md)
+  - [read](arkts-corefile-file-fs-read-f.md)
+  - [readLines](arkts-corefile-file-fs-readlines-f.md)
+  - [readLinesSync](arkts-corefile-file-fs-readlinessync-f.md)
+  - [readSync](arkts-corefile-file-fs-readsync-f.md)
+  - [readText](arkts-corefile-file-fs-readtext-f.md)
+  - [readTextSync](arkts-corefile-file-fs-readtextsync-f.md)
+  - [rename](arkts-corefile-file-fs-rename-f.md)
+  - [renameSync](arkts-corefile-file-fs-renamesync-f.md)
+  - [rmdir](arkts-corefile-file-fs-rmdir-f.md)
+  - [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md)
+  - [setxattr](arkts-corefile-file-fs-setxattr-f.md)
+  - [setxattrSync](arkts-corefile-file-fs-setxattrsync-f.md)
+  - [stat](arkts-corefile-file-fs-stat-f.md)
+  - [statSync](arkts-corefile-file-fs-statsync-f.md)
+  - [symlink](arkts-corefile-file-fs-symlink-f.md)
+  - [symlinkSync](arkts-corefile-file-fs-symlinksync-f.md)
+  - [truncate](arkts-corefile-file-fs-truncate-f.md)
+  - [truncateSync](arkts-corefile-file-fs-truncatesync-f.md)
+  - [unlink](arkts-corefile-file-fs-unlink-f.md)
+  - [unlinkSync](arkts-corefile-file-fs-unlinksync-f.md)
+  - [utimes](arkts-corefile-file-fs-utimes-f.md)
+  - [write](arkts-corefile-file-fs-write-f.md)
+  - [writeSync](arkts-corefile-file-fs-writesync-f.md)
+  - [AtomicFile](arkts-corefile-file-fs-atomicfile-c.md)
+  - [ReadStream](arkts-corefile-file-fs-readstream-c.md)
+  - [TaskSignal](arkts-corefile-file-fs-tasksignal-c.md)
+  - [WriteStream](arkts-corefile-file-fs-writestream-c.md)
+  - [ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)
+  - [CopyOptions](arkts-corefile-file-fs-copyoptions-i.md)
+  - [DfsListeners](arkts-corefile-file-fs-dfslisteners-i.md)
+  - [File](arkts-corefile-file-fs-file-i.md)
+  - [FileFilter](arkts-corefile-file-fs-filefilter-i.md)
+  - [FileMapping](arkts-corefile-file-fs-filemapping-i.md)
+  - [Filter](arkts-corefile-file-fs-filter-i.md)
+  - [ListFileExtOptions](arkts-corefile-file-fs-listfileextoptions-i.md)
+  - [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md)
+  - [Options](arkts-corefile-file-fs-options-i.md)
+  - [Progress](arkts-corefile-file-fs-progress-i.md)
+  - [RandomAccessFile](arkts-corefile-file-fs-randomaccessfile-i.md)
+  - [RandomAccessFileOptions](arkts-corefile-file-fs-randomaccessfileoptions-i.md)
+  - [ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md)
+  - [ReaderIteratorResult](arkts-corefile-file-fs-readeriteratorresult-i.md)
+  - [ReadOptions](arkts-corefile-file-fs-readoptions-i.md)
+  - [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md)
+  - [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md)
+  - [Stat](arkts-corefile-file-fs-stat-i.md)
+  - [Stream](arkts-corefile-file-fs-stream-i.md)
+  - [Watcher](arkts-corefile-file-fs-watcher-i.md)
+  - [WatchEvent](arkts-corefile-file-fs-watchevent-i.md)
+  - [WatchEventListener](arkts-corefile-file-fs-watcheventlistener-i.md)
+  - [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md)
+  - [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md)
+  - [ProgressListener](arkts-corefile-progresslistener-t.md)
+  - [AccessFlagType](arkts-corefile-file-fs-accessflagtype-e.md)
+  - [AccessModeType](arkts-corefile-file-fs-accessmodetype-e.md)
+  - [LocationType](arkts-corefile-file-fs-locationtype-e.md)
+  - [MappingMode](arkts-corefile-file-fs-mappingmode-e.md)
+  - [WhenceType](arkts-corefile-file-fs-whencetype-e.md)
+- [@ohos.file.fs](arkts-file-fs.md)
+  - [fileIo](arkts-corefile-fileio-n.md)
+    - [OpenMode](arkts-corefile-fileio-openmode-n.md)
+      - [常量](arkts-corefile-openmode-con.md)
+    - [access](arkts-corefile-fileio-access-f.md)
+    - [accessSync](arkts-corefile-fileio-accesssync-f.md)
+    - [close](arkts-corefile-fileio-close-f.md)
+    - [closeSync](arkts-corefile-fileio-closesync-f.md)
+    - [connectDfs](arkts-corefile-fileio-connectdfs-f.md)
+    - [copy](arkts-corefile-fileio-copy-f.md)
+    - [copyDir](arkts-corefile-fileio-copydir-f.md)
+    - [copyDirSync](arkts-corefile-fileio-copydirsync-f.md)
+    - [copyDirWithConflictFiles](arkts-corefile-fileio-copydirwithconflictfiles-f.md)
+    - [copyFile](arkts-corefile-fileio-copyfile-f.md)
+    - [copyFileSync](arkts-corefile-fileio-copyfilesync-f.md)
+    - [createRandomAccessFile](arkts-corefile-fileio-createrandomaccessfile-f.md)
+    - [createRandomAccessFileSync](arkts-corefile-fileio-createrandomaccessfilesync-f.md)
+    - [createReadStream](arkts-corefile-fileio-createreadstream-f.md)
+    - [createStream](arkts-corefile-fileio-createstream-f.md)
+    - [createStreamSync](arkts-corefile-fileio-createstreamsync-f.md)
+    - [createWatcher](arkts-corefile-fileio-createwatcher-f.md)
+    - [createWriteStream](arkts-corefile-fileio-createwritestream-f.md)
+    - [disconnectDfs](arkts-corefile-fileio-disconnectdfs-f.md)
+    - [dup](arkts-corefile-fileio-dup-f.md)
+    - [fdatasync](arkts-corefile-fileio-fdatasync-f.md)
+    - [fdatasyncSync](arkts-corefile-fileio-fdatasyncsync-f.md)
+    - [fdopenStream](arkts-corefile-fileio-fdopenstream-f.md)
+    - [fdopenStreamSync](arkts-corefile-fileio-fdopenstreamsync-f.md)
+    - [fsync](arkts-corefile-fileio-fsync-f.md)
+    - [fsyncSync](arkts-corefile-fileio-fsyncsync-f.md)
+    - [getxattr](arkts-corefile-fileio-getxattr-f.md)
+    - [getxattrSync](arkts-corefile-fileio-getxattrsync-f.md)
+    - [listFile](arkts-corefile-fileio-listfile-f.md)
+    - [listFileExt](arkts-corefile-fileio-listfileext-f.md)
+    - [listFileExtSync](arkts-corefile-fileio-listfileextsync-f.md)
+    - [listFileSync](arkts-corefile-fileio-listfilesync-f.md)
+    - [lseek](arkts-corefile-fileio-lseek-f.md)
+    - [lstat](arkts-corefile-fileio-lstat-f.md)
+    - [lstatSync](arkts-corefile-fileio-lstatsync-f.md)
+    - [mkdir](arkts-corefile-fileio-mkdir-f.md)
+    - [mkdirSync](arkts-corefile-fileio-mkdirsync-f.md)
+    - [mkdtemp](arkts-corefile-fileio-mkdtemp-f.md)
+    - [mkdtempSync](arkts-corefile-fileio-mkdtempsync-f.md)
+    - [mmap](arkts-corefile-fileio-mmap-f.md)
+    - [mmapSync](arkts-corefile-fileio-mmapsync-f.md)
+    - [moveDir](arkts-corefile-fileio-movedir-f.md)
+    - [moveDirSync](arkts-corefile-fileio-movedirsync-f.md)
+    - [moveDirWithConflictFiles](arkts-corefile-fileio-movedirwithconflictfiles-f.md)
+    - [moveFile](arkts-corefile-fileio-movefile-f.md)
+    - [moveFileSync](arkts-corefile-fileio-movefilesync-f.md)
+    - [open](arkts-corefile-fileio-open-f.md)
+    - [openSync](arkts-corefile-fileio-opensync-f.md)
+    - [read](arkts-corefile-fileio-read-f.md)
+    - [readLines](arkts-corefile-fileio-readlines-f.md)
+    - [readLinesSync](arkts-corefile-fileio-readlinessync-f.md)
+    - [readSync](arkts-corefile-fileio-readsync-f.md)
+    - [readText](arkts-corefile-fileio-readtext-f.md)
+    - [readTextSync](arkts-corefile-fileio-readtextsync-f.md)
+    - [rename](arkts-corefile-fileio-rename-f.md)
+    - [renameSync](arkts-corefile-fileio-renamesync-f.md)
+    - [rmdir](arkts-corefile-fileio-rmdir-f.md)
+    - [rmdirSync](arkts-corefile-fileio-rmdirsync-f.md)
+    - [setxattr](arkts-corefile-fileio-setxattr-f.md)
+    - [setxattrSync](arkts-corefile-fileio-setxattrsync-f.md)
+    - [stat](arkts-corefile-fileio-stat-f.md)
+    - [statSync](arkts-corefile-fileio-statsync-f.md)
+    - [symlink](arkts-corefile-fileio-symlink-f.md)
+    - [symlinkSync](arkts-corefile-fileio-symlinksync-f.md)
+    - [truncate](arkts-corefile-fileio-truncate-f.md)
+    - [truncateSync](arkts-corefile-fileio-truncatesync-f.md)
+    - [unlink](arkts-corefile-fileio-unlink-f.md)
+    - [unlinkSync](arkts-corefile-fileio-unlinksync-f.md)
+    - [utimes](arkts-corefile-fileio-utimes-f.md)
+    - [write](arkts-corefile-fileio-write-f.md)
+    - [writeSync](arkts-corefile-fileio-writesync-f.md)
+    - [AtomicFile](arkts-corefile-fileio-atomicfile-c.md)
+    - [ReadStream](arkts-corefile-fileio-readstream-c.md)
+    - [TaskSignal](arkts-corefile-fileio-tasksignal-c.md)
+    - [WriteStream](arkts-corefile-fileio-writestream-c.md)
+    - [CopyOptions](arkts-corefile-fileio-copyoptions-i.md)
+    - [DfsListeners](arkts-corefile-fileio-dfslisteners-i.md)
+    - [File](arkts-corefile-fileio-file-i.md)
+    - [FileMapping](arkts-corefile-fileio-filemapping-i.md)
+    - [Progress](arkts-corefile-fileio-progress-i.md)
+    - [RandomAccessFile](arkts-corefile-fileio-randomaccessfile-i.md)
+    - [ReaderIterator](arkts-corefile-fileio-readeriterator-i.md)
+    - [Stat](arkts-corefile-fileio-stat-i.md)
+    - [Stream](arkts-corefile-fileio-stream-i.md)
+    - [Watcher](arkts-corefile-fileio-watcher-i.md)
+    - [DfsListenerCallback](arkts-corefile-fileio-dfslistenercallback-t.md)
+    - [ProgressListener](arkts-corefile-fileio-progresslistener-t.md)
+    - [AccessFlagType](arkts-corefile-fileio-accessflagtype-e.md)
+    - [AccessModeType](arkts-corefile-fileio-accessmodetype-e.md)
+    - [LocationType](arkts-corefile-fileio-locationtype-e.md)
+    - [MappingMode](arkts-corefile-fileio-mappingmode-e.md)
+    - [WhenceType](arkts-corefile-fileio-whencetype-e.md)
+  - [ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)
+  - [FileFilter](arkts-corefile-file-fs-filefilter-i.md)
+  - [Filter](arkts-corefile-file-fs-filter-i.md)
+  - [ListFileExtOptions](arkts-corefile-file-fs-listfileextoptions-i.md)
+  - [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md)
+  - [Options](arkts-corefile-file-fs-options-i.md)
+  - [RandomAccessFileOptions](arkts-corefile-file-fs-randomaccessfileoptions-i.md)
+  - [ReaderIteratorResult](arkts-corefile-file-fs-readeriteratorresult-i.md)
+  - [ReadOptions](arkts-corefile-file-fs-readoptions-i.md)
+  - [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md)
+  - [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md)
+  - [WatchEvent](arkts-corefile-file-fs-watchevent-i.md)
+  - [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md)
+  - [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md)
+  - [AtomicFile](arkts-corefile-atomicfile-t.md)
+  - [TaskSignal](arkts-corefile-tasksignal-t.md)
+  - [Watcher](arkts-corefile-watcher-t.md)
+  - [WatchEventListener](arkts-corefile-watcheventlistener-t.md)
+- [@ohos.file.hash](arkts-file-hash.md)
+  - [createHash](arkts-corefile-hash-createhash-f.md)
+  - [hash](arkts-corefile-hash-f.md)
+  - [HashStream](arkts-corefile-hash-hashstream-c.md)
+- [@ohos.file.keyManager](arkts-file-keymanager.md)
+  <!--Del-->
+  - [deactivateUserKey(系统接口)](arkts-corefile-keymanager-deactivateuserkey-f-sys.md)<!--DelEnd-->
+- [@ohos.file.picker](arkts-file-picker.md)
+  - [AudioSaveOptions](arkts-corefile-picker-audiosaveoptions-c.md)
+  - [AudioSelectOptions](arkts-corefile-picker-audioselectoptions-c.md)
+  - [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+  - [DocumentSaveOptions](arkts-corefile-picker-documentsaveoptions-c.md)
+  <!--Del-->
+  - [DocumentSaveOptions(系统接口)](arkts-corefile-picker-documentsaveoptions-c-sys.md)<!--DelEnd-->
+  - [DocumentSelectOptions](arkts-corefile-picker-documentselectoptions-c.md)
+  <!--Del-->
+  - [DocumentSelectOptions(系统接口)](arkts-corefile-picker-documentselectoptions-c-sys.md)<!--DelEnd-->
+  - [DocumentViewPicker](arkts-corefile-picker-documentviewpicker-c.md)
+  - [PhotoSaveOptions](arkts-corefile-picker-photosaveoptions-c.md)
+  - [PhotoSelectOptions](arkts-corefile-picker-photoselectoptions-c.md)
+  - [PhotoSelectResult](arkts-corefile-picker-photoselectresult-c.md)
+  - [PhotoViewPicker](arkts-corefile-picker-photoviewpicker-c.md)
+  - [AudioSaveOptions](arkts-corefile-picker-audiosaveoptions-i.md)
+  - [AudioSelectOptions](arkts-corefile-picker-audioselectoptions-i.md)
+  - [DocumentSaveOptions](arkts-corefile-picker-documentsaveoptions-i.md)
+  - [DocumentSelectOptions](arkts-corefile-picker-documentselectoptions-i.md)
+  - [DocumentPickerMode](arkts-corefile-picker-documentpickermode-e.md)
+  - [DocumentSelectMode](arkts-corefile-picker-documentselectmode-e.md)
+  - [MergeTypeMode](arkts-corefile-picker-mergetypemode-e.md)
+  - [PhotoViewMIMETypes](arkts-corefile-picker-photoviewmimetypes-e.md)
+- [@ohos.file.recent](arkts-file-recent.md)
+  <!--Del-->
+  - [add(系统接口)](arkts-corefile-recent-add-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [listFile(系统接口)](arkts-corefile-recent-listfile-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [remove(系统接口)](arkts-corefile-recent-remove-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileInfo(系统接口)](arkts-corefile-recent-fileinfo-i-sys.md)<!--DelEnd-->
+- [@ohos.file.securityLabel](arkts-file-securitylabel.md)
+  - [getSecurityLabel](arkts-corefile-securitylabel-getsecuritylabel-f.md)
+  - [getSecurityLabelSync](arkts-corefile-securitylabel-getsecuritylabelsync-f.md)
+  - [setSecurityLabel](arkts-corefile-securitylabel-setsecuritylabel-f.md)
+  - [setSecurityLabelSync](arkts-corefile-securitylabel-setsecuritylabelsync-f.md)
+  - [DataLevel](arkts-corefile-securitylabel-datalevel-t.md)
+- [@ohos.file.statvfs](arkts-file-statvfs.md)
+  - [getFreeSize](arkts-corefile-statfs-getfreesize-f.md)
+  - [getFreeSizeSync](arkts-corefile-statfs-getfreesizesync-f.md)
+  - [getTotalSize](arkts-corefile-statfs-gettotalsize-f.md)
+  - [getTotalSizeSync](arkts-corefile-statfs-gettotalsizesync-f.md)
+- [@ohos.file.storageStatistics](arkts-file-storagestatistics.md)
+  <!--Del-->
+  - [getAllExtBundleStats(系统接口)](arkts-corefile-storagestatistics-getallextbundlestats-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBundleStats(系统接口)](arkts-corefile-storagestatistics-getbundlestats-f-sys.md)<!--DelEnd-->
+  - [getCurrentBundleInodes](arkts-corefile-storagestatistics-getcurrentbundleinodes-f.md)
+  - [getCurrentBundleStats](arkts-corefile-storagestatistics-getcurrentbundlestats-f.md)
+  <!--Del-->
+  - [getExtBundleStats(系统接口)](arkts-corefile-storagestatistics-getextbundlestats-f-sys.md)<!--DelEnd-->
+  - [getFreeInodes](arkts-corefile-storagestatistics-getfreeinodes-f.md)
+  - [getFreeSize](arkts-corefile-storagestatistics-getfreesize-f.md)
+  <!--Del-->
+  - [getFreeSizeOfVolume(系统接口)](arkts-corefile-storagestatistics-getfreesizeofvolume-f-sys.md)<!--DelEnd-->
+  - [getFreeSizeSync](arkts-corefile-storagestatistics-getfreesizesync-f.md)
+  <!--Del-->
+  - [getSystemDataSize(系统接口)](arkts-corefile-storagestatistics-getsystemdatasize-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getSystemSize(系统接口)](arkts-corefile-storagestatistics-getsystemsize-f-sys.md)<!--DelEnd-->
+  - [getTotalInodes](arkts-corefile-storagestatistics-gettotalinodes-f.md)
+  - [getTotalSize](arkts-corefile-storagestatistics-gettotalsize-f.md)
+  <!--Del-->
+  - [getTotalSizeOfVolume(系统接口)](arkts-corefile-storagestatistics-gettotalsizeofvolume-f-sys.md)<!--DelEnd-->
+  - [getTotalSizeSync](arkts-corefile-storagestatistics-gettotalsizesync-f.md)
+  <!--Del-->
+  - [getUserStorageStats(系统接口)](arkts-corefile-storagestatistics-getuserstoragestats-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [listUserdataDirInfo(系统接口)](arkts-corefile-storagestatistics-listuserdatadirinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setExtBundleStats(系统接口)](arkts-corefile-storagestatistics-setextbundlestats-f-sys.md)<!--DelEnd-->
+  - [BundleStats](arkts-corefile-storagestatistics-bundlestats-i.md)
+  <!--Del-->
+  - [ExtBundleStats(系统接口)](arkts-corefile-storagestatistics-extbundlestats-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [StorageStats(系统接口)](arkts-corefile-storagestatistics-storagestats-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [UserdataDirInfo(系统接口)](arkts-corefile-storagestatistics-userdatadirinfo-i-sys.md)<!--DelEnd-->
+- [@ohos.file.trash](arkts-file-trash.md)
+  <!--Del-->
+  - [completelyDelete(系统接口)](arkts-corefile-trash-completelydelete-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [listFile(系统接口)](arkts-corefile-trash-listfile-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [recover(系统接口)](arkts-corefile-trash-recover-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FileInfo(系统接口)](arkts-corefile-trash-fileinfo-i-sys.md)<!--DelEnd-->
+- [@ohos.file.volumeManager](arkts-file-volumemanager.md)
+  <!--Del-->
+  - [format(系统接口)](arkts-corefile-volumemanager-format-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getAllVolumes(系统接口)](arkts-corefile-volumemanager-getallvolumes-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getVolumeById(系统接口)](arkts-corefile-volumemanager-getvolumebyid-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getVolumeByUuid(系统接口)](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [mount(系统接口)](arkts-corefile-volumemanager-mount-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [partition(系统接口)](arkts-corefile-volumemanager-partition-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setVolumeDescription(系统接口)](arkts-corefile-volumemanager-setvolumedescription-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unmount(系统接口)](arkts-corefile-volumemanager-unmount-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [Volume(系统接口)](arkts-corefile-volumemanager-volume-i-sys.md)<!--DelEnd-->
+- [@ohos.fileio](arkts-fileio.md)
+  - [fileIO](arkts-corefile-fileio-depr-n.md)
+  - [access](arkts-corefile-fileio-access-f.md)
+  - [accessSync](arkts-corefile-fileio-accesssync-f.md)
+  - [chmod](arkts-corefile-fileio-chmod-f.md)
+  - [chmodSync](arkts-corefile-fileio-chmodsync-f.md)
+  - [chown](arkts-corefile-fileio-chown-f.md)
+  - [chownSync](arkts-corefile-fileio-chownsync-f.md)
+  - [close](arkts-corefile-fileio-close-f.md)
+  - [closeSync](arkts-corefile-fileio-closesync-f.md)
+  - [copyFile](arkts-corefile-fileio-copyfile-f.md)
+  - [copyFileSync](arkts-corefile-fileio-copyfilesync-f.md)
+  - [createStream](arkts-corefile-fileio-createstream-f.md)
+  - [createStreamSync](arkts-corefile-fileio-createstreamsync-f.md)
+  - [createWatcher](arkts-corefile-fileio-createwatcher-f.md)
+  - [fchmod](arkts-corefile-fileio-fchmod-f.md)
+  - [fchmodSync](arkts-corefile-fileio-fchmodsync-f.md)
+  - [fchown](arkts-corefile-fileio-fchown-f.md)
+  - [fchownSync](arkts-corefile-fileio-fchownsync-f.md)
+  - [fdatasync](arkts-corefile-fileio-fdatasync-f.md)
+  - [fdatasyncSync](arkts-corefile-fileio-fdatasyncsync-f.md)
+  - [fdopenStream](arkts-corefile-fileio-fdopenstream-f.md)
+  - [fdopenStreamSync](arkts-corefile-fileio-fdopenstreamsync-f.md)
+  - [fstat](arkts-corefile-fileio-fstat-f.md)
+  - [fstatSync](arkts-corefile-fileio-fstatsync-f.md)
+  - [fsync](arkts-corefile-fileio-fsync-f.md)
+  - [fsyncSync](arkts-corefile-fileio-fsyncsync-f.md)
+  - [ftruncate](arkts-corefile-fileio-ftruncate-f.md)
+  - [ftruncateSync](arkts-corefile-fileio-ftruncatesync-f.md)
+  - [hash](arkts-corefile-fileio-hash-f.md)
+  - [lchown](arkts-corefile-fileio-lchown-f.md)
+  - [lchownSync](arkts-corefile-fileio-lchownsync-f.md)
+  - [lstat](arkts-corefile-fileio-lstat-f.md)
+  - [lstatSync](arkts-corefile-fileio-lstatsync-f.md)
+  - [mkdir](arkts-corefile-fileio-mkdir-f.md)
+  - [mkdirSync](arkts-corefile-fileio-mkdirsync-f.md)
+  - [mkdtemp](arkts-corefile-fileio-mkdtemp-f.md)
+  - [mkdtempSync](arkts-corefile-fileio-mkdtempsync-f.md)
+  - [open](arkts-corefile-fileio-open-f.md)
+  - [opendir](arkts-corefile-fileio-opendir-f.md)
+  - [opendirSync](arkts-corefile-fileio-opendirsync-f.md)
+  - [openSync](arkts-corefile-fileio-opensync-f.md)
+  - [read](arkts-corefile-fileio-read-f.md)
+  - [readSync](arkts-corefile-fileio-readsync-f.md)
+  - [readText](arkts-corefile-fileio-readtext-f.md)
+  - [readTextSync](arkts-corefile-fileio-readtextsync-f.md)
+  - [rename](arkts-corefile-fileio-rename-f.md)
+  - [renameSync](arkts-corefile-fileio-renamesync-f.md)
+  - [rmdir](arkts-corefile-fileio-rmdir-f.md)
+  - [rmdirSync](arkts-corefile-fileio-rmdirsync-f.md)
+  - [stat](arkts-corefile-fileio-stat-f.md)
+  - [statSync](arkts-corefile-fileio-statsync-f.md)
+  - [symlink](arkts-corefile-fileio-symlink-f.md)
+  - [symlinkSync](arkts-corefile-fileio-symlinksync-f.md)
+  - [truncate](arkts-corefile-fileio-truncate-f.md)
+  - [truncateSync](arkts-corefile-fileio-truncatesync-f.md)
+  - [unlink](arkts-corefile-fileio-unlink-f.md)
+  - [unlinkSync](arkts-corefile-fileio-unlinksync-f.md)
+  - [write](arkts-corefile-fileio-write-f.md)
+  - [writeSync](arkts-corefile-fileio-writesync-f.md)
+  - [Dir](arkts-corefile-fileio-dir-depr-i.md)
+  - [Dirent](arkts-corefile-fileio-dirent-depr-i.md)
+  - [ReadOut](arkts-corefile-fileio-readout-depr-i.md)
+  - [Stat](arkts-corefile-fileio-stat-depr-i.md)
+  - [Stream](arkts-corefile-fileio-stream-depr-i.md)
+  - [Watcher](arkts-corefile-fileio-watcher-depr-i.md)
+- [@ohos.statfs](arkts-statfs.md)
+  - [getFreeBytes](arkts-corefile-statfs-getfreebytes-depr-f.md)
+  - [getTotalBytes](arkts-corefile-statfs-gettotalbytes-depr-f.md)
+- [@system.file](arkts-file.md)
+  - [File](arkts-corefile-file-file-depr-c.md)
+  - [FileAccessOption](arkts-corefile-file-fileaccessoption-depr-i.md)
+  - [FileCopyOption](arkts-corefile-file-filecopyoption-depr-i.md)
+  - [FileDeleteOption](arkts-corefile-file-filedeleteoption-depr-i.md)
+  - [FileGetOption](arkts-corefile-file-filegetoption-depr-i.md)
+  - [FileListOption](arkts-corefile-file-filelistoption-depr-i.md)
+  - [FileListResponse](arkts-corefile-file-filelistresponse-depr-i.md)
+  - [FileMkdirOption](arkts-corefile-file-filemkdiroption-depr-i.md)
+  - [FileMoveOption](arkts-corefile-file-filemoveoption-depr-i.md)
+  - [FileReadArrayBufferOption](arkts-corefile-file-filereadarraybufferoption-depr-i.md)
+  - [FileReadArrayBufferResponse](arkts-corefile-file-filereadarraybufferresponse-depr-i.md)
+  - [FileReadTextOption](arkts-corefile-file-filereadtextoption-depr-i.md)
+  - [FileReadTextResponse](arkts-corefile-file-filereadtextresponse-depr-i.md)
+  - [FileResponse](arkts-corefile-file-fileresponse-depr-i.md)
+  - [FileRmdirOption](arkts-corefile-file-filermdiroption-depr-i.md)
+  - [FileWriteArrayBufferOption](arkts-corefile-file-filewritearraybufferoption-depr-i.md)
+  - [FileWriteTextOption](arkts-corefile-file-filewritetextoption-depr-i.md)

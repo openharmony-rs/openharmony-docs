@@ -1,0 +1,67 @@
+# finishAsyncTrace
+
+## finishAsyncTrace
+
+```TypeScript
+function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void
+```
+
+标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。 finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace()]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_对应参数值一致。
+
+**起始版本：** 19
+
+**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+
+<!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void--><!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiTrace
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| level | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 跟踪输出级别，必须与流程开始的[startAsyncTrace()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的level参数值一致。 |
+| name | string | 是 | 要跟踪的任务名称，必须与流程开始的[startAsyncTrace()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的name参数值一致。 |
+| taskId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 任务id，必须与流程开始的[startAsyncTrace()]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_的taskId参数值一致。 |
+
+**示例：**
+
+```TypeScript
+const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
+```
+
+```TypeScript
+const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+// 跟踪并行执行的同名任务
+// 第一个跟踪的任务开始
+hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 1, "categoryTest", "key=value");
+// 业务流程......
+// 第二个跟踪的任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
+hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 2, "categoryTest", "key=value");
+// 业务流程......
+// 第一个跟踪的任务结束
+hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
+// 业务流程......
+// 第二个跟踪的任务结束
+hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 2);
+```
+
+```TypeScript
+const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+// 跟踪串行执行的同名任务
+// 第一个跟踪的任务开始
+hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 1, "categoryTest", "key=value");
+// 业务流程......
+// 第一个跟踪的任务结束
+hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
+// 业务流程......
+// 第二个跟踪的同名任务开始，同名的待跟踪任务串行执行
+hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 1, "categoryTest", "key=value");
+// 业务流程......
+// 第二个跟踪的同名任务结束
+hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
+```
+

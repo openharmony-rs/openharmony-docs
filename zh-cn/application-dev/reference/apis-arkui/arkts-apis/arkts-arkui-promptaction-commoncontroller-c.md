@@ -1,0 +1,78 @@
+# CommonController
+
+公共控制器，可以控制promptAction相关组件。
+
+**起始版本：** 18
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+<!--Device-promptAction-class CommonController--><!--Device-promptAction-class CommonController-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## close
+
+```TypeScript
+close(): void
+```
+
+关闭显示的自定义弹窗，若已关闭，则不生效。
+
+**起始版本：** 18
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CommonController-close(): void--><!--Device-CommonController-close(): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+控制器的构造函数。
+
+**起始版本：** 18
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CommonController-constructor()--><!--Device-CommonController-constructor()-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## getState
+
+```TypeScript
+getState(): CommonState
+```
+
+获取自定义弹窗的状态。
+
+**起始版本：** 20
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CommonController-getState(): CommonState--><!--Device-CommonController-getState(): CommonState-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 返回对应的弹窗状态。 |
+

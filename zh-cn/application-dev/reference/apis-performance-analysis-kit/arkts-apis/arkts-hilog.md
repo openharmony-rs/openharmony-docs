@@ -1,0 +1,39 @@
+# @ohos.hilog
+
+hilog日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容，帮助开发者了解应用/服务的运行状态，更好地调试程序。
+
+**起始版本：** 7
+
+**ArkTS模式：** ArkTS-Dyn起始版本为7；ArkTS-Sta起始版本为23。
+
+<!--Device-unnamed-declare namespace hilog--><!--Device-unnamed-declare namespace hilog-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
+## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [debug](arkts-performanceanalysis-hilog-debug-f.md#debug) | 打印DEBUG级别的日志。 DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试版本或打开调试开关的情况下才会打印。 |
+| [debug](arkts-performanceanalysis-hilog-debug-f.md#debug-1) | 打印DEBUG级别的日志。 |
+| [error](arkts-performanceanalysis-hilog-error-f.md#error) | 打印ERROR级别的日志。 |
+| [error](arkts-performanceanalysis-hilog-error-f.md#error-1) | 打印ERROR级别的日志。 |
+| [fatal](arkts-performanceanalysis-hilog-fatal-f.md#fatal) | 打印FATAL级别的日志。 |
+| [fatal](arkts-performanceanalysis-hilog-fatal-f.md#fatal-1) | 打印FATAL级别的日志。 |
+| [info](arkts-performanceanalysis-hilog-info-f.md#info) | 打印INFO级别的日志。 |
+| [info](arkts-performanceanalysis-hilog-info-f.md#info-1) | 打印INFO级别的日志。 |
+| [isLoggable](arkts-performanceanalysis-hilog-isloggable-f.md#isloggable) | 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。 |
+| [setLogLevel](arkts-performanceanalysis-hilog-setloglevel-f.md#setloglevel) | 设置当前应用程序进程的最低日志级别。 可通过prefer参数配置不同的偏好策略。如果选择策略PREFER\_\_\_ESCAPED\_UNDERSCORE\_\_\_CLOSE\_\_\_ESCAPED\_UNDERSCORE\_\_\_LOG，等同于调用setMinLogLevel函数。 > **注意：** > > debug版本应用下，此函数不生效。 |
+| [setMinLogLevel](arkts-performanceanalysis-hilog-setminloglevel-f.md#setminloglevel) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 > **注意：** > > 如果设置的日志级别低于\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_MD\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_，设置不生效。 > > debug版本应用下，此函数不生效。 |
+| [warn](arkts-performanceanalysis-hilog-warn-f.md#warn) | 打印WARN级别的日志。 |
+| [warn](arkts-performanceanalysis-hilog-warn-f.md#warn-1) | 打印WARN级别的日志。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [LogLevel](arkts-performanceanalysis-hilog-loglevel-e.md) | 日志级别。 |
+| [PreferStrategy](arkts-performanceanalysis-hilog-preferstrategy-e.md) | 偏好策略。 |
+

@@ -1,0 +1,36 @@
+# Stepper
+
+步骤导航器组件，适用于引导用户按照步骤完成任务的导航场景。 > **说明：** > - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper]{@link swiper}替代。详细示例请参考 > [示例2](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md#示例2使用swiper替代stepper)。
+
+## 子组件 仅能包含子组件[StepperItem]{@link stepper_item}。
+
+## Stepper
+
+```TypeScript
+Stepper(value?: { index?: number })
+```
+
+Called when the stepper component is used.
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 22
+
+**替代接口：** <!--SUBSTITUTE_API-->Swiper.SwiperAttribute#index<!--/SUBSTITUTE_API-->
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute--><!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | { index?: number } | 否 | Index of the **StepperItem** that is currently displayed.\_\_\_HTML\_TAG\_USD\_1\_\_\_Default value: **0**\_\_\_HTML\_TAG\_USD\_2\_\_\_ Since API version 10, this parameter supports two-way binding through \_\_\_MD\_LINK\_USD\_0\_\_\_.  |
+
+## 汇总
+

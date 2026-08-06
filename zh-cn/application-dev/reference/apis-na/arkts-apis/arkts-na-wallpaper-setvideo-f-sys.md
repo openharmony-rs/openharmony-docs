@@ -10,6 +10,8 @@ function setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncC
 
 **起始版本：** 10
 
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
 **需要权限：** ohos.permission.SET_WALLPAPER
 
 <!--Device-wallpaper-function setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void--><!--Device-wallpaper-function setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void-End-->
@@ -23,8 +25,8 @@ function setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
 
@@ -51,8 +53,6 @@ try {
 } catch (error) {
     console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
-
-
 ```
 
 
@@ -65,6 +65,8 @@ function setVideo(source: string, wallpaperType: WallpaperType): Promise<void>
 将视频资源设置为桌面或锁屏的动态壁纸。使用promise异步回调。
 
 **起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
 
 **需要权限：** ohos.permission.SET_WALLPAPER
 
@@ -79,7 +81,7 @@ function setVideo(source: string, wallpaperType: WallpaperType): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -110,6 +112,5 @@ try {
 } catch (error) {
     console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
-
 ```
 

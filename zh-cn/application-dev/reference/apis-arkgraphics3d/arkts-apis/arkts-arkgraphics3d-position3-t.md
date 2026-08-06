@@ -1,0 +1,18 @@
+# Position3
+
+```TypeScript
+export type Position3 = Vec3
+```
+
+3D位置信息, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-unnamed-export type Position3 = Vec3--><!--Device-unnamed-export type Position3 = Vec3-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**属性类型：** Vec3
+

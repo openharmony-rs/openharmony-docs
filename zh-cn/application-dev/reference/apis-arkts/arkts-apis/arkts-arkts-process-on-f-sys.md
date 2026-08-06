@@ -1,0 +1,27 @@
+# on（系统接口）
+
+## on
+
+```TypeScript
+function on(type: string, listener: EventListener): void
+```
+
+注册事件。
+
+**起始版本：** 7
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+
+<!--Device-process-function on(type: string, listener: EventListener): void--><!--Device-process-function on(type: string, listener: EventListener): void-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | string | 是 | 表示注册的事件类型。 |
+| listener | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示注册的事件函数。 |
+

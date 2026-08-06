@@ -1,0 +1,112 @@
+# XComponent
+
+**XComponent**提供用于图形绘制和媒体数据写入的[surface](docroot://ui/napi-xcomponent-guidelines.md#overview)，XComponent负责将其嵌入到视图中，支持应用自定义surface的位置和大小。同时支持AI图像分析、HDR视频亮度调节、防截屏录屏隐私保护、画布自绘制等能力，适用于视频播放、相机预览、游戏渲染、图像AI识别等需要高性能自绘制和媒体内容展示的场景。具体指南请参考[自定义渲染（XComponent）文档](docroot://ui/napi-xcomponent-guidelines.md)。 > **说明：**
+
+## 子组件 不支持
+
+## XComponent
+
+```TypeScript
+XComponent(value: { id: string; type: string; libraryname?: string; controller?: XComponentController })
+```
+
+构造参数
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+**废弃版本：** 12
+
+**替代接口：** <!--SUBSTITUTE_API-->(value:<!--/SUBSTITUTE_API-->
+
+<!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute--><!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | { id: string; type: string; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。  |
+
+## XComponent
+
+```TypeScript
+XComponent(value: { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController })
+```
+
+创建**XComponent**组件，其生命周期回调可以从native侧触发。 从API版本12开始，该接口不再维护。建议使用\_\_\_MD\_LINK\_DESC\_USD\_0\_\_\_替代。
+
+**起始版本：** 10
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-XComponentInterface-(value: { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController }): XComponentAttribute--><!--Device-XComponentInterface-(value: { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController }): XComponentAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController } | 是 | 表示XComponent的选项。  |
+
+## XComponent
+
+```TypeScript
+XComponent(options: XComponentOptions)
+```
+
+创建**XComponent**组件，允许您在ArkTS侧获取**SurfaceId**值，注册**XComponent**所持有的surface的生命周期回调以及触摸、鼠标、按键等组件事件的回调，并配置AI分析器功能。
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-XComponentInterface-(options: XComponentOptions): XComponentAttribute--><!--Device-XComponentInterface-(options: XComponentOptions): XComponentAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示XComponent的选项。  |
+
+## XComponent
+
+```TypeScript
+XComponent(params: NativeXComponentParameters)
+```
+
+在native侧获取**XComponent**节点实例，并注册**XComponent**所持有的surface的生命周期回调以及触摸、鼠标、按键等组件事件的回调。
+
+**起始版本：** 19
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+
+<!--Device-XComponentInterface-(params: NativeXComponentParameters): XComponentAttribute--><!--Device-XComponentInterface-(params: NativeXComponentParameters): XComponentAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| params | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 表示用于native开发的XComponent构造参数。  |
+
+## 汇总
+

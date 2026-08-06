@@ -1,0 +1,25 @@
+# OnScrollVisibleContentChangeCallback
+
+```TypeScript
+export type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end: VisibleListContentInfo) => void
+```
+
+有子组件划入或划出List显示区域时触发。 List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。 start和end的index同时返回0，代表List内只有一个子组件。 > **说明：** > > 从API version 14开始，该接口支持在[attributeModifier]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_中调用。
+
+**起始版本：** 23
+
+**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-export type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end: VisibleListContentInfo) => void--><!--Device-unnamed-export type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end: VisibleListContentInfo) => void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| start | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 1. 通过该参数获取List显示区域第一个子组件在List中的索引值。\_\_\_HTML\_TAG\_USD\_0\_\_\_2. 如果当前List显示区域第一个子组件是ListItemGroup，可 以获取当前List显示区域第一个组件属于该ListItemGroup的哪一区域。\_\_\_HTML\_TAG\_USD\_1\_\_\_3. 如果当前List显示区域第一个组件是ListItemGroup内的ListItem，可以获取该ListItem在 ListItemGroup内的索引值。  |
+| end | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 1. 通过该参数获取List显示区域最后一个子组件在List中的索引值。\_\_\_HTML\_TAG\_USD\_0\_\_\_2. 如果当前List显示区域最后一个子组件是ListItemGroup，可 以获取当前List显示区域最后一个组件属于该ListItemGroup的哪一区域。\_\_\_HTML\_TAG\_USD\_1\_\_\_3. 如果当前List显示区域最后一个组件是ListItemGroup内的ListItem，可以获取该ListItem在 ListItemGroup内的索引值。  |
+

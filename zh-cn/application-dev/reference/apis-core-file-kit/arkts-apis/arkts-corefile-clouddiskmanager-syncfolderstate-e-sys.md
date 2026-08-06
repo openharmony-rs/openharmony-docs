@@ -1,0 +1,50 @@
+# SyncFolderState（系统接口）
+
+枚举，云盘的同步根的状态。
+
+**起始版本：** 21
+
+**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+
+<!--Device-cloudDiskManager-enum SyncFolderState--><!--Device-cloudDiskManager-enum SyncFolderState-End-->
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
+**系统接口：** 此接口为系统接口。
+
+## INACTIVE
+
+```TypeScript
+INACTIVE = 0
+```
+
+表示同步根处于未激活状态。
+
+**起始版本：** 21
+
+**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncFolderState-INACTIVE = 0--><!--Device-SyncFolderState-INACTIVE = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
+**系统接口：** 此接口为系统接口。
+
+## ACTIVE
+
+```TypeScript
+ACTIVE = 1
+```
+
+表示同步根处于激活状态。
+
+**起始版本：** 21
+
+**ArkTS模式：** ArkTS-Dyn起始版本为21；ArkTS-Sta起始版本为23。
+
+<!--Device-SyncFolderState-ACTIVE = 1--><!--Device-SyncFolderState-ACTIVE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
+**系统接口：** 此接口为系统接口。
+

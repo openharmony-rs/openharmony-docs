@@ -1,0 +1,57 @@
+# getSubscribeInfo
+
+## getSubscribeInfo
+
+```TypeScript
+function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>
+```
+
+获取当前应用的通知扩展订阅信息。使用Promise异步回调。
+
+**起始版本：** 22
+
+**ArkTS模式：** ArkTS-Dyn起始版本为22；ArkTS-Sta起始版本为23。
+
+**需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
+
+<!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>--><!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;NotificationExtensionSubscriptionInfo[]&gt; | Promise对象，返回一个 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied or current device not supported. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+  let err = error as BusinessError
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+

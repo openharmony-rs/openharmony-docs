@@ -1,0 +1,62 @@
+# TimePickerDialogOptions
+
+时间选择器弹窗选项。 继承自[TimePickerOptions]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。
+
+**继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](../arkts-apis/arkts-arkui-component/timepicker-timepickeroptions-i.md)
+
+**起始版本：** 8
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
+<!--Device-unnamed-declare interface TimePickerDialogOptions extends TimePickerOptions--><!--Device-unnamed-declare interface TimePickerDialogOptions extends TimePickerOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## distortionMode
+
+```TypeScript
+distortionMode?: DistortionMode
+```
+
+设置系统材质下弹窗的非线性动画模式。 > **默认值：** DistortionMode.DISTORTION\_AUTO > **系统接口：** 此接口为系统接口。 > **说明：** 当取值为 DISTORTION\_AUTO 时，需设置 > [ImmersiveMaterial]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 类型材质方可生效，并依据设备算力档位自动生效非线性效果（高中档算力设备生效， > 低档算力设备不生效）。非线性动画会增加渲染开销，建议在低端设备上谨慎使用。 > 各枚举取值含义请参见[DistortionMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+
+**类型：** DistortionMode
+
+**默认值：** DistortionMode.DISTORTION_AUTO
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TimePickerDialogOptions-distortionMode?: DistortionMode--><!--Device-TimePickerDialogOptions-distortionMode?: DistortionMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## edgeLightMode
+
+```TypeScript
+edgeLightMode?: EdgeLightMode
+```
+
+设置系统材质下弹窗的流光动画模式。 > **默认值：** EdgeLightMode.EDGELIGHT\_AUTO > **系统接口：** 此接口为系统接口。 > **说明：** 当取值为 EDGELIGHT\_AUTO 时，需设置 > [ImmersiveMaterial]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ 类型材质方可生效，并依据设备算力档位自动生效流光效果（高档算力设备生效， > 中低档算力设备不生效）。流光动画会增加渲染开销，建议在低端设备上谨慎使用。各枚举取值含义请参见[EdgeLightMode]\_\_\_JSDOC\_LINK\_DESC\_USD\_1\_\_\_。
+
+**类型：** EdgeLightMode
+
+**默认值：** EdgeLightMode.EDGELIGHT_AUTO
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TimePickerDialogOptions-edgeLightMode?: EdgeLightMode--><!--Device-TimePickerDialogOptions-edgeLightMode?: EdgeLightMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+

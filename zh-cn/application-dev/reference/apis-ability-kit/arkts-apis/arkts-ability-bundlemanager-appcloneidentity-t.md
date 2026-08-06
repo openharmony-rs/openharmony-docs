@@ -1,0 +1,18 @@
+# AppCloneIdentity
+
+```TypeScript
+export type AppCloneIdentity = _BundleInfo.AppCloneIdentity
+```
+
+描述应用包的身份信息。
+
+**起始版本：** 15
+
+**ArkTS模式：** ArkTS-Dyn起始版本为15；ArkTS-Sta起始版本为23。
+
+<!--Device-bundleManager-export type AppCloneIdentity = _BundleInfo.AppCloneIdentity--><!--Device-bundleManager-export type AppCloneIdentity = _BundleInfo.AppCloneIdentity-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**属性类型：** _BundleInfo.AppCloneIdentity
+

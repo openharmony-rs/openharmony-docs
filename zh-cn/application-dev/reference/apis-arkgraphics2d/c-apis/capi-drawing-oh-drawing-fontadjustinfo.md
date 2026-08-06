@@ -1,0 +1,26 @@
+# OH_Drawing_FontAdjustInfo
+
+```c
+typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
+```
+
+## 概述
+
+This struct describes the information about a font weight mapping.
+
+**起始版本：** 12
+
+**相关模块：** [Drawing](capi-drawing.md)
+
+**所在头文件：** [drawing_text_typography.h](capi-drawing-text-typography-h.md)
+
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| int weight | Original font weight. |
+| int to | Font weight displayed in the application. |
+
+

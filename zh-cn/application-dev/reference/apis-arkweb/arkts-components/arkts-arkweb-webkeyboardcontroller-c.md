@@ -1,0 +1,134 @@
+# WebKeyboardController
+
+Define the controller to interact with a custom keyboard, related to the \_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_ event.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-unnamed-declare class WebKeyboardController--><!--Device-unnamed-declare class WebKeyboardController-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## close
+
+```TypeScript
+close(): void
+```
+
+Close the custom keyboard.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-WebKeyboardController-close(): void--><!--Device-WebKeyboardController-close(): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+Constructor.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebKeyboardController-constructor()--><!--Device-WebKeyboardController-constructor()-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## deleteBackward
+
+```TypeScript
+deleteBackward(length: number): void
+```
+
+Delete text from front to back.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-WebKeyboardController-deleteBackward(length: number): void--><!--Device-WebKeyboardController-deleteBackward(length: number): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | length of text, which will be deleted from front to back. |
+
+## deleteForward
+
+```TypeScript
+deleteForward(length: number): void
+```
+
+Delete text from back to front.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-WebKeyboardController-deleteForward(length: number): void--><!--Device-WebKeyboardController-deleteForward(length: number): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | length of text, which will be deleted from back to front. |
+
+## insertText
+
+```TypeScript
+insertText(text: string): void
+```
+
+Insert text into Editor.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-WebKeyboardController-insertText(text: string): void--><!--Device-WebKeyboardController-insertText(text: string): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | text which will be inserted. |
+
+## sendFunctionKey
+
+```TypeScript
+sendFunctionKey(key: number): void
+```
+
+Send the function of the key.
+
+**起始版本：** 12
+
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+
+<!--Device-WebKeyboardController-sendFunctionKey(key: number): void--><!--Device-WebKeyboardController-sendFunctionKey(key: number): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | number | 是 | action indicates the "enter" key related to the \_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_ |
+

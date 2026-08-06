@@ -1,0 +1,614 @@
+# CertExtension
+
+提供操作X.509证书扩展的API。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+<!--Device-cert-interface CertExtension--><!--Device-cert-interface CertExtension-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+## checkCA
+
+ArkTS-Dyn:
+```TypeScript
+checkCA(): number
+```
+
+ArkTS-Sta:
+```TypeScript
+checkCA(): int
+```
+
+检查证书是否为CA证书。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertExtension-checkCA(): int--><!--Device-CertExtension-checkCA(): int-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 当证书扩展中密钥用途扩展包含keyCertSign位，并且基本约束中cA字段为true时，表示证书为CA证书。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 内存拷贝失败；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 系统内部出现空指针；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 证书扩展域段二进制数据，需业务自行赋值。
+let extData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+
+let encodingBlob: cert.EncodingBlob = {
+  data: extData,
+  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+cert.createCertExtension(encodingBlob, (error, certExt) => {
+  if (error) {
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  } else {
+    console.info('createCertExtension result: success.');
+    try {
+      let res = certExt.checkCA();
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ext checkCA failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCheckCA() {
+  // 证书扩展域段二进制数据，需业务自行赋值。
+  let extData = new Uint8Array([
+    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+    0xD9, 0xE4
+  ]);
+
+  let encodingBlob: cert.EncodingBlob = {
+    data: extData,
+    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_DER
+  };
+  cert.createCertExtension(encodingBlob, (error, certExt) => {
+    if (error) {
+      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    } else {
+      console.info('createCertExtension result: success.');
+      if (certExt != undefined) {
+        try {
+          let res = certExt.checkCA();
+          console.info('checkCA result: success.');
+        } catch (err) {
+          let e: BusinessError = err as BusinessError;
+          console.error('ext checkCA failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        }
+      }
+    }
+  });
+}
+```
+
+## getEncoded
+
+```TypeScript
+getEncoded(): EncodingBlob
+```
+
+获取证书扩展的序列化数据。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertExtension-getEncoded(): EncodingBlob--><!--Device-CertExtension-getEncoded(): EncodingBlob-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 获取的证书扩展序列化数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 内存拷贝失败；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 系统内部出现空指针；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 证书扩展域段二进制数据，需业务自行赋值。
+let extData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+
+let encodingBlob: cert.EncodingBlob = {
+  data: extData,
+  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+
+cert.createCertExtension(encodingBlob, (error, certExt) => {
+  if (error) {
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  } else {
+    console.info('createCertExtension result: success.');
+    try {
+      let extEncodedBlob = certExt.getEncoded();
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ext getEncoded failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGetEncoded() {
+  // 证书扩展域段二进制数据，需业务自行赋值。
+  let extData = new Uint8Array([
+    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+    0xD9, 0xE4
+  ]);
+
+  let encodingBlob: cert.EncodingBlob = {
+    data: extData,
+    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_DER
+  };
+
+  cert.createCertExtension(encodingBlob, (error, certExt) => {
+    if (error) {
+      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    } else {
+      console.info('createCertExtension result: success.');
+      if (certExt != undefined) {
+        try {
+          let extEncodedBlob = certExt.getEncoded();
+          console.info('getEncoded result: success.');
+        } catch (err) {
+          let e: BusinessError = err as BusinessError;
+          console.error('ext getEncoded failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        }
+      }
+    }
+  });
+}
+```
+
+## getEntry
+
+```TypeScript
+getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob
+```
+
+根据OID获取证书扩展项的值。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob--><!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| valueType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定要获取的扩展信息类型。 |
+| oid | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定要获取的扩展项OID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 获取的证书扩展项数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 内存拷贝失败；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 系统内部出现空指针；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 证书扩展域段二进制数据，需业务自行赋值。
+let extData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+
+let encodingBlob: cert.EncodingBlob = {
+  data: extData,
+  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+
+cert.createCertExtension(encodingBlob, (error, certExt) => {
+  if (error) {
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  } else {
+    console.info('createCertExtension result: success.');
+    let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
+    let oidBlob: cert.DataBlob = {
+      data: oid
+    }
+    try {
+      let entry = certExt.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oidBlob);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ext getEntry failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGetEntry() {
+  // 证书扩展域段二进制数据，需业务自行赋值。
+  let extData = new Uint8Array([
+    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+    0xD9, 0xE4
+  ]);
+
+  let encodingBlob: cert.EncodingBlob = {
+    data: extData,
+    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_DER
+  };
+
+  cert.createCertExtension(encodingBlob, (error, certExt) => {
+    if (error) {
+      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    } else {
+      console.info('createCertExtension result: success.');
+      let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
+      let oidBlob: cert.DataBlob = {
+        data: oid
+      }
+      if (certExt != undefined) {
+        try {
+          let entry = certExt.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oidBlob);
+          console.info('getEntry result: success.');
+        } catch (err) {
+          let e: BusinessError = err as BusinessError;
+          console.error('ext getEntry failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        }
+      }
+    }
+  });
+}
+```
+
+## getOidList
+
+```TypeScript
+getOidList(valueType: ExtensionOidType): DataArray
+```
+
+获取证书扩展的OID列表。
+
+**起始版本：** 10
+
+**ArkTS模式：** ArkTS-Dyn起始版本为10；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray--><!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| valueType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 | 指定要获取的OID类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| \_\_\_MD\_LINK\_USD\_0\_\_\_ | 获取的证书扩展OID列表。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 必填参数未指定；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 参数类型不正确；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 内存拷贝失败；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 系统内部出现空指针；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 证书扩展域段二进制数据，需业务自行赋值。
+let extData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+
+let encodingBlob: cert.EncodingBlob = {
+  data: extData,
+  // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+
+cert.createCertExtension(encodingBlob, (error, certExt) => {
+  if (error) {
+    console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  } else {
+    console.info('createCertExtension result: success.');
+    try {
+      let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ext getOidList failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGetOidList() {
+  // 证书扩展域段二进制数据，需业务自行赋值。
+  let extData = new Uint8Array([
+    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+    0xD9, 0xE4
+  ]);
+
+  let encodingBlob: cert.EncodingBlob = {
+    data: extData,
+    // 根据encodingData的格式进行赋值，仅支持FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_DER
+  };
+
+  cert.createCertExtension(encodingBlob, (error, certExt) => {
+    if (error) {
+      console.error('createCertExtension failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    } else {
+      console.info('createCertExtension result: success.');
+      if (certExt != undefined) {
+        try {
+          let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
+          console.info('getOidList result: success.');
+        } catch (err) {
+          let e: BusinessError = err as BusinessError;
+          console.error('ext getOidList failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        }
+      }
+    }
+  });
+}
+```
+
+## hasUnsupportedCriticalExtension
+
+```TypeScript
+hasUnsupportedCriticalExtension(): boolean
+```
+
+判断是否存在不支持的关键扩展。
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean--><!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean-End-->
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 当存在不支持的关键扩展时，该方法返回true，否则返回false。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_1. 内存拷贝失败；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_1\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_2. 系统内部出现空指针；\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_HTML\_\_\_ESCAPED\_UNDERSCORE\_\_\_TAG\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_2\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let encodingData = new Uint8Array([
+  0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+  0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+  0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+  0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+  0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+  0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+  0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+  0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+  0xD9, 0xE4
+]);
+let encodingBlob: cert.EncodingBlob = {
+  data: new Uint8Array(encodingData),
+  encodingFormat: cert.EncodingFormat.FORMAT_DER
+};
+
+cert.createCertExtension(encodingBlob).then((extensionObj) => {
+  console.info('createCertExtension result: success.');
+  const result = extensionObj.hasUnsupportedCriticalExtension()
+  console.info('has unsupported critical extension result =' + result);
+}).catch((err: BusinessError) => {
+  console.error(`createCertExtension failed, errCode: ${err.code}, errMsg: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@ohos.base';
+
+async function TestHasUnsupportedCriticalExtension() {
+  let encodingData = new Uint8Array([
+    0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D,
+    0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03,
+    0x01, 0x01, 0xFF, 0x30, 0x0E, 0x06, 0x03, 0x55,
+    0x1D, 0x0F, 0x01, 0x01, 0xFF, 0x04, 0x04, 0x03,
+    0x02, 0x01, 0xC6, 0x30, 0x1D, 0x06, 0x03, 0x55,
+    0x1D, 0x0E, 0x04, 0x16, 0x04, 0x14, 0xE0, 0x8C,
+    0x9B, 0xDB, 0x25, 0x49, 0xB3, 0xF1, 0x7C, 0x86,
+    0xD6, 0xB2, 0x42, 0x87, 0x0B, 0xD0, 0x6B, 0xA0,
+    0xD9, 0xE4
+  ]);
+  let encodingBlob: cert.EncodingBlob = {
+    data: new Uint8Array(encodingData),
+    encodingFormat: cert.EncodingFormat.FORMAT_DER
+  };
+  try {
+    let extensionObj = await cert.createCertExtension(encodingBlob);
+    console.info('createCertExtension result: success.');
+    const result = extensionObj.hasUnsupportedCriticalExtension()
+    console.info('has unsupported critical extension result = ' + result);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertExtension failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+

@@ -1,0 +1,34 @@
+# PreloadMode（系统接口）
+
+表示预加载应用进程模式的枚举。
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+<!--Device-appManager-export enum PreloadMode--><!--Device-appManager-export enum PreloadMode-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PRESS_DOWN
+
+```TypeScript
+PRESS_DOWN = 0
+```
+
+The application process is preloaded when the application icon is pressed.
+
+**起始版本：** 12
+
+**ArkTS模式：** ArkTS-Dyn起始版本为12；ArkTS-Sta起始版本为23。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PreloadMode-PRESS_DOWN = 0--><!--Device-PreloadMode-PRESS_DOWN = 0-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+

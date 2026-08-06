@@ -1,0 +1,75 @@
+# addSerialRight（系统接口）
+
+## addSerialRight
+
+```TypeScript
+function addSerialRight(tokenId: int, portId: int): void
+```
+
+为应用程序添加访问串口设备权限。 serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRight不会触发弹窗，而是直接添加应用程序访问设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授 权。
+
+**起始版本：** 19
+
+**ArkTS模式：** ArkTS-Dyn起始版本为19；ArkTS-Sta起始版本为23。
+
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+
+<!--Device-serialManager-function addSerialRight(tokenId: int, portId: int): void--><!--Device-serialManager-function addSerialRight(tokenId: int, portId: int): void-End-->
+
+**系统能力：** SystemCapability.USB.USBManager.Serial
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| tokenId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 需要访问权限的tokenId。 |
+| portId | ArkTS-Dyn: number  \_\_\_HTML\_TAG\_USD\_0\_\_\_ArkTS-Sta：int | 是 | 目标设备的端口号，来自[getPortList]\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_JSDOC\_\_\_ESCAPED\_UNDERSCORE\_\_\_LINK\_\_\_ESCAPED\_UNDERSCORE\_\_\_DESC\_\_\_ESCAPED\_UNDERSCORE\_\_\_USD\_\_\_ESCAPED\_UNDERSCORE\_\_\_0\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_\_\_\_ESCAPED\_UNDERSCORE\_\_\_获取的串口参数SerialPort。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) |  |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
+| [14400005](../../apis-basic-services-kit/errorcode-usb.md#14400005-数据库操作异常) |  |
+| [31400001](../../apis-basic-services-kit/errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../../apis-basic-services-kit/errorcode-usb.md#31400003-端口号不存在) |  |
+
+**示例：**
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+import serialManager from '@ohos.usbManager.serial';
+
+// 获取串口列表
+function addSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('portList: ', JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('portList is empty');
+    return;
+  }
+
+  let portId: int = portList[0].portId;
+  // 串口增加权限
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+  bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
+    console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));
+    let tokenId = bundleInfo.appInfo.accessTokenId;
+    try {
+      serialManager.addSerialRight(tokenId, portId);
+      console.info('addSerialRight success, portId: ' + portId);
+    } catch (error) {
+      console.error('addSerialRight error, ' + JSON.stringify(error));
+    }
+  }).catch((error: BusinessError) => {
+    console.error('getBundleInfoForSelf failed, error = ' + JSON.stringify(error));
+  });
+}
+```
+

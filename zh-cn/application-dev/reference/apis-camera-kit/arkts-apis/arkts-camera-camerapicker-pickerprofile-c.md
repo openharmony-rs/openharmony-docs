@@ -1,0 +1,72 @@
+# PickerProfile
+
+相机选择器的配置信息。
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+<!--Device-cameraPicker-class PickerProfile--><!--Device-cameraPicker-class PickerProfile-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## cameraPosition
+
+```TypeScript
+cameraPosition: camera.CameraPosition
+```
+
+相机的位置。
+
+**类型：** camera.CameraPosition
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PickerProfile-cameraPosition: camera.CameraPosition--><!--Device-PickerProfile-cameraPosition: camera.CameraPosition-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## saveUri
+
+```TypeScript
+saveUri?: string
+```
+
+保存配置信息的uri，默认值请参考[文件uri]\_\_\_JSDOC\_LINK\_DESC\_USD\_0\_\_\_。当前saveUri参数为可选参数，若未配置该参数，则拍摄的照片和视频 会默认存入媒体库中；若不想将照片和视频存入媒体库中，请自行配置应用沙箱内的文件资源路径，如自行传入资源路径时请确保该文件存在且具备写入权限，否则会保存失败。
+
+**类型：** string
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PickerProfile-saveUri?: string--><!--Device-PickerProfile-saveUri?: string-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## videoDuration
+
+```TypeScript
+videoDuration?: int
+```
+
+录制的最大时长（单位：秒）。默认为0，不设置最大录制时长。
+
+**类型：** int
+
+**起始版本：** 11
+
+**ArkTS模式：** ArkTS-Dyn起始版本为11；ArkTS-Sta起始版本为23。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PickerProfile-videoDuration?: int--><!--Device-PickerProfile-videoDuration?: int-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+

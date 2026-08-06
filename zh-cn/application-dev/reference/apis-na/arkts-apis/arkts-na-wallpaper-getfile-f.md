@@ -10,6 +10,8 @@ function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>):
 
 **起始版本：** 8
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_WALLPAPER
@@ -22,8 +24,8 @@ function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
+| callback | \_\_\_MD\_LINK\_USD\_0\_\_\_&lt;number&gt; | 是 |  |
 
 **示例：**
 
@@ -37,7 +39,6 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
     }
     console.info(`success to getFile: ${JSON.stringify(data)}`);
 });
-
 ```
 
 
@@ -51,6 +52,8 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 
 **起始版本：** 8
 
+**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_WALLPAPER
@@ -63,7 +66,7 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
+| wallpaperType | \_\_\_MD\_LINK\_USD\_0\_\_\_ | 是 |  |
 
 **返回值：**
 
@@ -81,6 +84,5 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) 
   }).catch((error: BusinessError) => {
     console.error(`failed to getFile because: ${JSON.stringify(error)}`);
 });
-
 ```
 
