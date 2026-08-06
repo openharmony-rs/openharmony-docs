@@ -6,7 +6,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8ba6bc39fe942d4f7703731c1dea9b29e95f2e3a translatedAt=2026-08-04T11:11:44.125Z pushedAt=2026-08-06T08:07:00.494Z -->
+<!-- md-trans-meta sourceCommit=8ba6bc39fe942d4f7703731c1dea9b29e95f2e3a translatedAt=2026-08-04T11:11:44.125Z pushedAt=2026-08-06T10:23:45.534Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -285,4 +285,4 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .object | Barrier in the RelativeContainer component. The parameter type is [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md). When no barrier is set, **NULL** is returned. |
+| .object | Barrier in the **RelativeContainer** component. The parameter type is [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md). When no barrier is set, **NULL** is returned. |

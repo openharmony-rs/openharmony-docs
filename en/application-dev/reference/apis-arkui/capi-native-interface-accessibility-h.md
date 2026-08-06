@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-04T11:04:45.186Z pushedAt=2026-08-05T10:49:08.670Z -->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-04T11:04:45.186Z pushedAt=2026-08-06T09:30:11.733Z -->
 
 ## Overview
 
@@ -1714,7 +1714,7 @@ Sets the component identifier for [ArkUI_AccessibilityElementInfo](capi-arkui-ac
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the ArkUI_AccessibilityElementInfo. |
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to **ArkUI_AccessibilityElementInfo**. |
 | const char* identifier | Pointer to the unique identifier string of the component. It cannot be a null pointer.<br>The component identifier in the reported component tree must be unique, and the string length must not exceed 1024. If it exceeds 1024, it will be truncated. |
 
 **Returns**

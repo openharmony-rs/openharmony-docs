@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-04T11:12:41.287Z pushedAt=2026-08-06T09:06:48.946Z -->
+<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-04T11:12:41.287Z pushedAt=2026-08-06T10:26:06.349Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -14,7 +14,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attribute types that can be set by ArkUI on the native side for scrollable container components including the **Scroll**, **List**, **ListItem**, **ListItemGroup**, **Refresh**, **WaterFlow**, **Grid**, **GridItem**, **ArcList**, **ArcListItem**, and **ArcScrollBar**.
+Enumerates the attribute types that can be set by ArkUI on the native side for scrollable container components including the **Scroll**, **List**, **ListItem**, **ListItemGroup**, **Refresh**, **WaterFlow**, **Grid**, **GridItem**, **ArcList**, **ArcListItem**, and **ArcScrollBar** components.
 
 **Since**: 12
 
