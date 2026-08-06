@@ -76,9 +76,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -140,9 +140,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
   content: {
     notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
     normal: {
-      title: "test_title",
-      text: "test_text",
-      additionalText: "test_additionalText"
+      title: 'test_title',
+      text: 'test_text',
+      additionalText: 'test_additionalText'
     }
   }
 };
@@ -195,7 +195,7 @@ let cancelCallback = (err: BusinessError): void => {
     console.info(`Succeeded in canceling notification.`);
   } 
 }
-notificationManager.cancel(0, "label", cancelCallback);
+notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 ## notificationManager.cancel
@@ -1213,7 +1213,7 @@ getNotificationParameters(id: number, label?: string): Promise\<NotificationPara
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: number = 0;
-let label: string = "";
+let label: string = '';
 notificationManager.getNotificationParameters(id, label).then((data: notificationManager.NotificationParameters) => {
   console.info(`Succeeded in getting notification parameters, data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1259,7 +1259,7 @@ let cancelGroupCallback = (err: BusinessError): void => {
     console.info(`Succeeded in canceling group.`);
   }
 }
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName, cancelGroupCallback);
 ```
 
@@ -1299,7 +1299,7 @@ cancelGroup(groupName: string): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName).then(() => {
   console.info(`Succeeded in canceling group.`);
 }).catch((err: BusinessError) => {
@@ -2183,8 +2183,8 @@ type NotificationProgress = _NotificationProgress
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
-| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
-| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
-| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
-| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
-| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |
+| OTHER   | 'OTHER'   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | 'PRIMARY_CONTACT'   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | 'AT_ME'   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | 'URGENT_MESSAGE'   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | 'SCHEDULE_REMINDER'   | 表示通知优先级类型为日程待办。                 |
