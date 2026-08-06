@@ -393,6 +393,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
 ```ts
+  'use static'
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
   import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader'; 
   import { rpc } from '@kit.IPCKit';
