@@ -6,7 +6,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8ba6bc39fe942d4f7703731c1dea9b29e95f2e3a translatedAt=2026-08-04T11:11:44.125Z pushedAt=2026-08-06T10:23:45.534Z -->
+<!-- md-trans-meta sourceCommit=8ba6bc39fe942d4f7703731c1dea9b29e95f2e3a translatedAt=2026-08-04T11:11:44.125Z pushedAt=2026-08-06T10:58:41.894Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -143,7 +143,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ROW_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ROW = 1007000
 ```
 
-Vertical alignment mode of child components in the **Row** component. This attribute can be set, reset, and obtained as required through APIs. This attribute is used when the vertical alignment mode of child components in a **Row** container needs to be controlled, such as top alignment, center alignment, or bottom alignment. This addresses the issue where the default vertical alignment mode of child components in a **Row** container does not meet requirements, providing flexible vertical alignment control for child components to satisfy various vertical layout scenarios.<br>
+Vertical alignment mode of child components in the **Row** component. This attribute can be set, reset, and obtained as required through APIs. This attribute is used when the vertical alignment mode of child components in a **Row** container needs to be controlled, such as top alignment, center alignment, or bottom alignment. This addresses the issue where the default vertical alignment mode of child components in a **Row** container does not meet requirements, providing flexible vertical alignment control for child components to satisfy various horizontal layout scenarios.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
