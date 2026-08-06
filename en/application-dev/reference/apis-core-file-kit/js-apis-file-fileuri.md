@@ -1,10 +1,14 @@
 # @ohos.file.fileuri (File URI)
+
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=a5581ebdc8b3769d136c717e18a9285b34f82ebc translatedAt=2026-08-06T06:34:27.997Z pushedAt=2026-08-06T06:38:09.021Z -->
+
+fileuri inherits from [URI](../apis-arkts/js-apis-uri.md).
 
 The **fileUri** module allows the uniform resource identifier (URI) of a file to be obtained based on the file path. With the file URI, you can use the APIs provided by [@ohos.file.fs](js-apis-file-fs.md) to operate the file.
 
@@ -62,6 +66,7 @@ A constructor used to create a **FileUri** instance.
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
 | ID| Error Message       |
 | -------- | ---------- |
 | 13900005 | I/O error |
@@ -76,28 +81,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   let uri = fileUri.getUriFromPath(path);  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
   let fileUriObject = new fileUri.FileUri(uri);
   console.info("The name of FileUri is " + fileUriObject.name);
-  ```
-
-### toString<sup>10+</sup>
-
-toString(): string
-
-**System capability**: SystemCapability.FileManagement.AppFileService
-
-Converts this URI into a string.
-
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| string | URI in the string format.|
-
-**Example**
-
-  ```ts
-  let path = pathDir + '/test';
-  let fileUriObject = new fileUri.FileUri(path);
-  console.info("The uri of FileUri is " + fileUriObject.toString());
   ```
 
 ### getFullDirectoryUri<sup>11+</sup>
@@ -207,6 +190,7 @@ The URI of the application is generated based on the input path. When a path is 
 **Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message       |
 | ---------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types |
