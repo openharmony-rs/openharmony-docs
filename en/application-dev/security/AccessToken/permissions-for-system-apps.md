@@ -7770,7 +7770,7 @@ Allows an application to configure trace removal and update the trace removal st
 
 Allows an application to set the validity period of sensitive permissions.
 
-With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the micphone, in-vehicle cameras, and location services.
+With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the microphone, in-vehicle cameras, and location services.
 
 **Permission level**: system_basic
 
