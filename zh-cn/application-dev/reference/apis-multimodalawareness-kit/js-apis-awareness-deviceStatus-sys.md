@@ -6,7 +6,7 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供对设备状态的感知能力。该模块通过监听设备传感器数据，为应用提供设备姿态等感知能力。
+本模块提供对设备状态的感知能力。该模块通过监听设备传感器数据，为应用提供设备姿态等感知能力。如游戏控制、屏幕旋转自适应等。该模块基于传感器融合算法，提供高精度、低延迟的姿态数据，帮助应用实现更流畅的交互体验。
 
 > **说明：**
 >
@@ -23,13 +23,13 @@
 
 getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
-获取设备的姿态数据。
+获取设备的姿态数据。适用于屏幕自动旋转等需要根据设备姿态调整显示内容或交互行为的场景。
 
-姿态数据包含x、y、z三轴的姿态旋转角，即三轴的欧拉角，三轴定义与设备sensor定义相同，为右手系。姿态旋转角在ZXY旋转顺序、内旋下计算，通过传感器融合获取的四元数计算得到结果。
+姿态数据包含x、y、z三轴的姿态旋转角（单位：rad），即三轴的欧拉角，三轴定义与设备sensor定义相同，为右手系。姿态旋转角在ZXY旋转顺序、内旋（坐标系随设备旋转而变化）下计算，通过传感器融合获取的四元数计算得到结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **错误码**：
 
@@ -53,7 +53,7 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
       }).catch((err: BusinessError) => {
          console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
       });
-   } catch (err) {
+   } catch (err: BusinessError) {
       console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
    }
    ```
