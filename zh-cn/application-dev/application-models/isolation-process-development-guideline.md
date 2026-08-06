@@ -123,6 +123,7 @@
     
     ``` TypeScript
     import AbilityStage from '@ohos.app.ability.AbilityStage';
+    import { Want } from '@kit.AbilityKit';
     
     export default class MyAbilityStage extends AbilityStage {
     // ...
