@@ -781,6 +781,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+允许应用访问车载安全隐私服务的接口。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：否
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 允许应用和服务接入端侧模型运行态管理。

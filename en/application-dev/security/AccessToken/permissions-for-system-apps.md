@@ -7724,20 +7724,6 @@ Allows an application to write vehicle and head unit configurations.
 
 **Since**: 26.1.0
 
-## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
-
-Allows an application to access vehicle security and privacy service APIs.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: false
-
-**Supported devices**: cars
-
-**Since**: 26.1.0
-
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
 
 Allows an application to sign vehicle privacy agreements or policies.
@@ -7784,6 +7770,8 @@ Allows an application to configure trace removal and update the trace removal st
 
 Allows an application to set the validity period of sensitive permissions.
 
+With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the micphone, in-vehicle cameras, and location services.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -7797,6 +7785,8 @@ Allows an application to set the validity period of sensitive permissions.
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
 
 Allows an application to configure the toggle switch status for remote location control.
+
+With this permission, the application can enable or disable remote viewing of the vehicle's location.
 
 **Permission level**: system_basic
 
