@@ -8930,3 +8930,19 @@ Allows an application on the rear armrest screen to connect to the head unit for
 **Supported devices**: cars
 
 **Since**: 26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+Allows an application to obtain file management data using the sandbox.
+
+With this permission, the application can query the database using the sandbox in the client process to reduce query time.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**Since**: 26.1.0

@@ -8961,3 +8961,19 @@
 **支持设备**：Car
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+允许应用通过沙箱模式获取文件管理数据。
+
+获取权限后，应用可在客户端进程中通过沙箱模式查询数据库，减少查询时间。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**起始版本**：26.1.0
