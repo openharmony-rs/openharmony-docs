@@ -180,10 +180,14 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData) {
     // 处于录屏取码流状态。
 }
+
+void SetCallback(struct OH_AVScreenCapture *capture)
+{
 int *userData = nullptr;// 用户自定义数据。
 OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
 OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
 OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
+}
 ```
 
 ### 启动录屏
