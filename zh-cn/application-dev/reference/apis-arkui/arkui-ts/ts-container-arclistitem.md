@@ -77,9 +77,9 @@ ArkTS-Sta: autoScale(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型               | 必填 | 说明                                        |
 | ------ | ------------------ | ---- | ------------------------------------------- |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | ArcListItem是否支持自动缩放显示，true表示支持，false表示不支持。<br>默认值：true，支持自动缩放显示。<br/>取值为undefined时，按默认值处理。 |
 
@@ -99,9 +99,9 @@ ArkTS-Sta: swipeAction(options: SwipeActionOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名  | 类型                                                         | 必填 | 说明                    |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
 | options | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明)&gt;<br/>ArkTS-Sta: [SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明) \| undefined | 是 | ArcListItem划出操作的配置选项，具体配置请参考SwipeActionOptions对象说明。未设置时，不配置划出操作。<br/>取值为undefined时，按默认值处理。 |
 

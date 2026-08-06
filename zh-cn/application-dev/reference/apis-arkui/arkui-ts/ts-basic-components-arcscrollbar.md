@@ -82,7 +82,7 @@ ArcScrollBar的构造函数参数。
 | state | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 滚动条状态，取值包括BarState.Off（0，不显示）、BarState.Auto（1，按需显示，触摸时显示，2s后消失）、BarState.On（2，常驻显示）。<br/>默认值：BarState.Auto |
 
 >  **说明：**
->
+> 
 > ArcScrollBar与可滚动组件需通过scroller进行绑定后方能实现联动，且ArcScrollBar与可滚动组件仅限于一对一的绑定方式。
 
 ## 示例

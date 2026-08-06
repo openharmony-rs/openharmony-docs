@@ -93,7 +93,7 @@ sticky(value: Sticky)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                                       |
 | ------ | ----------------------------------- | ---- | ------------------------------------------ |
@@ -115,7 +115,7 @@ editable(value: boolean | EditMode)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                       |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------ |
@@ -139,7 +139,7 @@ ArkTS-Sta: selectable(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------- | ---- | ------------------------------------------------- |
@@ -169,7 +169,7 @@ ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-mana
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -191,7 +191,7 @@ ArkTS-Sta: swipeAction(value: SwipeActionOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                              | 必填 | 说明                 |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
@@ -251,8 +251,8 @@ ListItem元素编辑模式枚举。
 
 | 名称     | 值 | 说明      |
 | ------ | ------ | --------- |
-|   Spring   |    0    | ListItem划动距离超过划出组件大小后可以继续划动。<br>如果设置了删除区域，ListItem划动距离超过删除阈值后可以继续划动，<br/>松手后按照弹簧阻尼曲线回弹。 |
-|   None   |    1    | ListItem划动距离不能超过划出组件大小。<br>如果设置了删除区域，ListItem划动距离不能超过删除阈值，<br/>并且在设置删除回调的情况下，达到删除阈值后松手触发删除回调。 |
+|   Spring   |    0    | ListItem滑动距离超过划出组件大小后可以继续滑动。<br>如果设置了删除区域，ListItem滑动距离超过删除阈值后可以继续滑动，<br/>松手后按照弹簧阻尼曲线回弹。 |
+|   None   |    1    | ListItem滑动距离不能超过划出组件大小。<br>如果设置了删除区域，ListItem滑动距离不能超过删除阈值，<br/>并且在设置删除回调的情况下，达到删除阈值后松手触发删除回调。 |
 
 ## SwipeActionOptions<sup>9+</sup>对象说明
 
@@ -264,10 +264,10 @@ start和end对应的@builder函数中顶层必须是单个组件（如果顶层�
 
 | 名称                         | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| start | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| end | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| edgeEffect | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明) | 否 | 是 | 滑动效果。<br/>默认值：SwipeEdgeEffect.Spring<br/>SwipeEdgeEffect.Spring表示弹簧效果，划动距离超过划出组件大小后可继续划动并按弹簧阻尼曲线回弹；SwipeEdgeEffect.None表示无弹簧效果，划动距离不能超过划出组件大小。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| onOffsetChange<sup>11+</sup> | ArkTS-Dyn: (offset: number) => void<br/> ArkTS-Sta: (offset: double) => void | 否 | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| start | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向右滑动时item左边的组件（List垂直布局时）或ListItem向下滑动时item上方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| end | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向左滑动时item右边的组件（List垂直布局时）或ListItem向上滑动时item下方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| edgeEffect | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明) | 否 | 是 | 滑动效果。<br/>默认值：SwipeEdgeEffect.Spring<br/>SwipeEdgeEffect.Spring表示弹簧效果，滑动距离超过划出组件大小后可继续滑动并按弹簧阻尼曲线回弹；SwipeEdgeEffect.None表示无弹簧效果，滑动距离不能超过划出组件大小。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| onOffsetChange<sup>11+</sup> | ArkTS-Dyn: (offset: number) => void<br/> ArkTS-Sta: (offset: double) => void                                     | 否   | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## SwipeActionItem<sup>10+</sup>对象说明
 
@@ -281,13 +281,13 @@ SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| actionAreaDistance | [Length](ts-types.md#length) | 否 | 是 | 设置组件长距离滑动删除距离阈值。即划出组件被完全滑进视窗后，继续滑动触发删除的距离阈值。<br/>默认值：56vp <br/>**说明：** <br/>不支持设置百分比。<br/>删除距离阈值大于等于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸，或删除距离阈值小于等于0时，不会形成删除区域。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onAction | () => void | 否 | 是 | 组件进入长距删除区后抬手时触发。<br/>**说明：** <br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，滑动后松手的位置超过或等于该取值才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onEnterActionArea | () => void | 否 | 是 | 在滑动条目进入删除区域时调用，只触发一次，当再次进入时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，进入该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onExitActionArea | () => void | 否 | 是 | 当滑动条目退出删除区域时调用，只触发一次，当再次退出时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，退出该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| actionAreaDistance | [Length](ts-types.md#length) | 否 | 是 | 设置组件长距离滑动删除距离阈值。即划出组件被完全滑进视窗后，继续滑动触发删除的距离阈值。<br/>默认值：56vp <br/>**说明：** <br/>不支持设置百分比。<br/>删除距离阈值大于等于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸，或删除距离阈值小于等于0时，不会形成删除区域。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onAction | () => void | 否 | 是 | 组件进入长距删除区后抬手时触发。<br/>**说明：** <br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onEnterActionArea | () => void | 否 | 是 | 在滑动条目进入删除区域时调用，只触发一次，当再次进入时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，进入该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onExitActionArea | () => void | 否 | 是 | 当滑动条目退出删除区域时调用，只触发一次，当再次退出时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，退出该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>同时设置builderComponent时，builderComponent的优先级高于该参数。即同时设置builder和builderComponent时，以builderComponent设置的值为准。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | builderComponent<sup>18+</sup> | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<br/>ArkTS-Sta: [ComponentContentBase](../js-apis-arkui-ComponentContent.md#componentcontentbase) | 否 | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>该参数的优先级高于参数builder。即同时设置builder和builderComponent时，以builderComponent设置的值为准。<br/> 同一个builderComponent不推荐同时给不同的start/end使用，否则会导致显示问题。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| onStateChange<sup>11+</sup> | (state:[SwipeActionState](#swipeactionstate11枚举说明)) => void | 否 | 是 | 当列表项滑动状态变化时候触发。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| onStateChange<sup>11+</sup> | (state:[SwipeActionState](#swipeactionstate11枚举说明)) => void | 否 | 是 |当列表项滑动状态变化时候触发。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## ListItemOptions<sup>10+</sup>对象说明
 
@@ -345,7 +345,7 @@ ListItem组件卡片样式枚举。
 | --------- | --------- | ------------------------------------------------------------ |
 | COLLAPSED | 0 | 收起状态，操作项处于隐藏状态。 |
 | EXPANDED  | 1 | 展开状态，操作项处于显示状态。<br/>**说明：**<br/>需要ListItem设置划出操作项。 |
-| ACTIONING | 2 | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。 |
+| ACTIONING | 2 | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。 |
 
 ## 事件
 
@@ -359,7 +359,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 
 外层[List](ts-container-list.md)组件设置[multiSelectable](ts-container-list.md#multiselectable8)为true开启鼠标框选，且当前ListItem的[selectable](#selectable8)属性为true时，触发该回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -369,7 +369,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
@@ -417,13 +417,12 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
 | direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem划出菜单的展开方向。 |
-
 
 **错误码：**
 
@@ -450,12 +449,11 @@ collapse(node: FrameNode): void
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
-
 
 **错误码：**
 
@@ -700,7 +698,7 @@ struct ListItemExample2 {
         try {
           this.scroller.closeAllSwipeActions();
         } catch (error) {
-          console.info('Failed to close all swipe actions:', error);
+          console.error('Failed to close all swipe actions:', error);
         }
       })
     }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)

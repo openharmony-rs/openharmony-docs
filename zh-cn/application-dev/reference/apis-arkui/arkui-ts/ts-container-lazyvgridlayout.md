@@ -84,7 +84,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -126,13 +126,11 @@ ArkTS-Sta: columnsGap(value: LengthMetrics | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 列与列的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
-| 类型 | 说明           |
-| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+| value  |  ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### rowsGap
 
@@ -152,13 +150,11 @@ ArkTS-Sta: rowsGap(value: LengthMetrics | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 行与行的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
-| 类型 | 说明           |
-| T | 返回当前LazyVGridLayout组件自身，用于支持链式调用。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
 ### header
 

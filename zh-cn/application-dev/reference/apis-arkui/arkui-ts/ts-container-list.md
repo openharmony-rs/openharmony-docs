@@ -11,21 +11,21 @@ List是ArkUI中的列表容器组件，用于呈现连续、多行或多列的�
 
 List的懒加载是指组件按需加载显示区域内的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
 
-- 当List和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
+ - 当List和ForEach结合，会一次性创建所有的子组件，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
 
-- 当List和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，划出屏幕范围的节点会下树销毁，划入屏幕范围的节点会创建、布局、渲染。
+ - 当List和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，划出屏幕范围的节点会下树销毁，划入屏幕范围的节点会创建、布局、渲染。
 
-- 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
 
 如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](ts-container-listitemgroup.md)组件以优化性能。
 
 List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
 
-- 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子组件。
+ - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子组件。
 
-- 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子组件。
+ - 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子组件。
 
-- 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
 
 > **说明：**
 >
@@ -107,7 +107,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0。当stackFromEnd为true时，默认值为总item个数-1。<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach](ts-universal-events-show-hide.md#onattach12)事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | space<sup>7+</sup> | number&nbsp;\|&nbsp;string | 否 | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| spaceWidth | [Dimension](ts-types.md#dimension10) | 否 | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>spaceWidth参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/>List子组件的visibility属性设置为None时不显示，但该子组件上下的spaceWidth间隔还是会生效。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| spaceWidth | [Dimension](ts-types.md#dimension10) | 否 | 是 | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>spaceWidth参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/>List子组件的visibility属性设置为None时不显示，但该子组件上下的spaceWidth间隔还是会生效。如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | scroller<sup>7+</sup> | [Scroller](ts-container-scroll.md#scroller) | 否 | 是 | 可滚动组件的控制器。与List绑定后，可以通过它控制List的滚动。默认不绑定滚动控制器。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 属性
@@ -136,7 +136,7 @@ ArkTS-Sta: listDirection(value: Axis | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                                       |
 | ------ | --------------------------------- | ---- | ------------------------------------------ |
@@ -166,7 +166,7 @@ ListItem设置[多态样式](ts-universal-attributes-polymorphic-style.md)时，
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -190,7 +190,7 @@ scrollBar(value: BarState)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -208,7 +208,7 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup时，LazyForEach会在List显示区域外上下各创建cachedCount个ListItemGroup。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -220,7 +220,7 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -248,7 +248,7 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 **ArkTS-Dyn起始版本：** 14
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -288,7 +288,7 @@ ArkTS-Sta: cachedCount(count: int | CacheCountInfo | undefined, show: boolean | 
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -317,7 +317,7 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -350,7 +350,7 @@ ArkTS-Sta: chainAnimation(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -374,7 +374,7 @@ ArkTS-Sta: multiSelectable(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -403,7 +403,7 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 **ArkTS-Dyn起始版本：** 9
 
-**参数：**
+**参数：** 
 
 | 参数名               | 类型                                                         | 必填 | 说明                                     |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
@@ -430,7 +430,7 @@ ArkTS-Sta: lanes(value: int | LengthConstrain | ItemFillPolicy | undefined, gutt
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -455,7 +455,7 @@ ArkTS-Sta: alignListItem(value: ListItemAlign | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                     | 必填 | 说明                                                   |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------ |
@@ -469,7 +469,7 @@ ArkTS-Sta: sticky(value: StickyStyle | undefined)
 
 配合[ListItemGroup](ts-container-listitemgroup.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
 
-> **说明：**
+> **说明：** 
 >
 > 由于浮点数计算精度，设置sticky后，在List滑动过程中小概率产生缝隙，可以通过[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)指定当前组件向下像素取整解决该问题。
 
@@ -483,7 +483,7 @@ ArkTS-Sta: sticky(value: StickyStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                 | 必填 | 说明                                                       |
 | ------ | ------------------------------------ | ---- | ---------------------------------------------------------- |
@@ -509,7 +509,7 @@ ArkTS-Sta: scrollSnapAlign(value: ScrollSnapAlign | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                      |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -533,7 +533,7 @@ ArkTS-Sta: scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                      |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -557,13 +557,13 @@ enableScrollInteraction(value: boolean)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | boolean  | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
 
-> **说明：**
+> **说明：** 
 >
 > 组件无法通过鼠标按下拖动操作进行滚动。
 
@@ -585,7 +585,7 @@ nestedScroll(value: NestedScrollOptions)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -595,7 +595,7 @@ nestedScroll(value: NestedScrollOptions)
 
 friction(value: number | Resource)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
 
@@ -609,7 +609,7 @@ friction(value: number | Resource)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -633,7 +633,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 **ArkTS-Dyn起始版本：** 11
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
@@ -659,7 +659,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
@@ -683,7 +683,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 **ArkTS-Dyn起始版本：** 11
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
@@ -709,7 +709,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
@@ -723,7 +723,7 @@ ArkTS-Sta: childrenMainSize(value: ChildrenMainSize | undefined)
 
 设置List组件的子组件在主轴方向的大小信息。
 
-> **说明：**
+> **说明：** 
 > - 该属性通过向List组件提供所有子组件在主轴方向的大小信息，确保在面对子组件主轴大小不一致、增删子组件、使用[scrollToIndex](ts-container-scroll.md#scrolltoindex)等场景时，List组件能够维护其滑动位置准确性。这样，[scrollTo](ts-container-scroll.md#scrollto)可以准确地跳转到指定位置，[currentOffset](ts-container-scroll.md#currentoffset)可以获取到当前准确的滑动位置，内置滚动条可以实现平滑移动无跳变。
 > - 当子组件是ListItemGroup时，需要根据ListItemGroup的列数、ListItemGroup中ListItem在主轴方向的间距以及ListItemGroup中header、footer和ListItem的大小，来准确计算出ListItemGroup在主轴方向的整体大小，并传递给List组件。
 > - 如果子组件有ListItemGroup，必须为每一个ListItemGroup设置[childrenMainSize](./ts-container-listitemgroup.md#childrenmainsize12)属性。List组件和每一个ListItemGroup组件都要通过childrenMainSize属性接口一对一绑定一个ChildrenMainSize对象。
@@ -739,7 +739,7 @@ ArkTS-Sta: childrenMainSize(value: ChildrenMainSize | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -763,13 +763,13 @@ ArkTS-Sta: maintainVisibleContentPosition(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | enabled  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置显示区域上方插入或删除数据时是否要保持可见内容位置不变。false：显示区域上方插入或删除数据时可见内容位置会跟随变化。 true：显示区域上方插入或删除数据时可见内容位置不变。<br/>默认值：false|
 
-> **说明：**
+> **说明：** 
 > - 只有使用LazyForEach在显示区域外插入或删除数据时，属性设置为true才能保持可见内容位置不变。使用ForEach插入或删除数据、使用LazyForEach重新加载数据时，即使maintainVisibleContentPosition属性设置为true，可见区内容位置也会跟随变化。
 > - 从API version 20开始，使用[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)在懒加载场景下，显示区域外插入或删除数据时，属性设置为true也能保持可见内容位置不变。
 > - maintainVisibleContentPosition属性设置为true后，在显示区域上方插入或删除数据，会触发[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)、onScrollIndex事件。
@@ -793,13 +793,13 @@ ArkTS-Sta: stackFromEnd(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | enabled  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined  | 是   | 设置List组件是否从末尾开始布局。false：List从顶部开始布局。 true：List组件从末尾开始布局。<br/>默认值：false|
 
-> **说明：**
+> **说明：** 
 > - stackFromEnd属性设置为true后，当List内容小于List组件高度时，内容底部对齐。
 > - stackFromEnd属性设置为true后，显示区域内有ListItem变高，或有插入ListItem，内容上方的ListItem往上移动。
 > - stackFromEnd属性设置为true后，[ListOptions](#listoptions18对象说明)中initialIndex参数默认值为总item个数-1。
@@ -822,7 +822,7 @@ ArkTS-Sta: focusWrapMode(mode: FocusWrapMode | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -846,7 +846,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -890,7 +890,7 @@ editMode(value: boolean)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
@@ -912,7 +912,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
@@ -934,7 +934,7 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：**
+**参数：** 
 
 | 参数名| 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
@@ -1138,7 +1138,7 @@ List的边缘效果为弹簧效果时，在List划动到边缘继续划动和松
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1230,7 +1230,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                       |
 | ------ | ----------------------------------- | ---- | -------------------------- |
@@ -1300,13 +1300,13 @@ List的子组件[ListItem](ts-container-listitem.md)发生移动时触发。
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | event | ArkTS-Dyn: (from: number, to: number) => boolean <br/>ArkTS-Sta: ((from: int, to: int) => boolean) \|&nbsp;undefined | 是 | List的子组件[ListItem](ts-container-listitem.md)发生移动时触发的回调。<br/>from：移动前索引值。<br/>to：移动后索引值。<br/>undefined：不使用该回调函数。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型    | 说明           |
 | ------- | -------------- |
@@ -1334,7 +1334,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名    | 类型                                                      | 必填 | 说明                   |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
@@ -1356,7 +1356,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明           |
 | ------ | --------------------------------------------------------- | ---- | -------------- |
@@ -1378,7 +1378,7 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1400,7 +1400,7 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1424,7 +1424,7 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1474,19 +1474,19 @@ onItemDelete(event: (index: number) => boolean)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
 | index  | number | 是   | 被删除的列表项的索引值。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型    | 说明           |
 | ------- | -------------- |
 | boolean | 是否确认删除当前列表项。返回值为true时继续删除流程，返回值为false时取消删除流程。 |
 
-### onWillScroll<sup>23+</sup>
+### onWillScroll<sup>23+</sup> 
 
 onWillScroll(handler: OnWillScrollCallback | undefined)
 
@@ -1508,7 +1508,7 @@ onWillScroll(handler: OnWillScrollCallback | undefined)
 | ------ | ------ | ------ | ------|
 | handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | List滑动前触发的回调。 |
 
-### onDidScroll<sup>23+</sup>
+### onDidScroll<sup>23+</sup> 
 
 onDidScroll(handler: OnScrollCallback | undefined)
 
@@ -2009,7 +2009,7 @@ List组件可见区域item变化事件的回调类型。
 ### 示例1（添加滚动事件）
 该示例实现了设置纵向列表，并在当前显示界面发生改变时回调索引。
 
-ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。
+ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List提供子组件。 
 
 ArkTS-Dyn示例：
 
@@ -2719,7 +2719,7 @@ struct ListExample {
     try {
       this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
     } catch (error) {
-      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+      console.error('Failed to splice childrenMainSize for first 5 items:', error);
     }
   }
 
@@ -3060,7 +3060,7 @@ struct ListItemGroupExample {
                   this.listIndexInfo =
                     this.scroller.getVisibleListContentInfo(localX, localY);
                 } catch (error) {
-                  console.info('Failed to get visible list content info:', error);
+                  console.error('Failed to get visible list content info:', error);
                 }
                 let itemIndex: string = 'undefined';
                 let itemIndexInGroup = this.listIndexInfo.itemIndexInGroup;
@@ -3810,7 +3810,7 @@ struct ListExample {
             this.contentHeight = this.scrollerForList.contentSize().height;
           } catch (error) {
             let err: BusinessError = error as BusinessError;
-            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            console.error(`Failed to get contentSize of the List, code=${err.code}, message=${err.message}`);
           }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现

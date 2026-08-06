@@ -88,7 +88,7 @@ Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对�
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)和[滚动组件通用属性](ts-container-scrollable-common.md#属性)外，还支持以下属性：
-> **说明：**
+> **说明：** 
 >
 > Grid组件使用通用属性[clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12)和通用属性[clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18)时默认值都为true。
 >
@@ -127,7 +127,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -157,7 +157,7 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -194,7 +194,7 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -250,7 +250,7 @@ ArkTS-Sta: columnsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -274,7 +274,7 @@ ArkTS-Sta: rowsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -298,7 +298,7 @@ ArkTS-Sta: scrollBar(value: BarState | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -320,7 +320,7 @@ scrollBarColor(value: Color | number | string)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -344,7 +344,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -368,7 +368,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -394,7 +394,7 @@ ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -421,7 +421,7 @@ ArkTS-Sta: cachedCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -448,7 +448,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -468,7 +468,7 @@ ArkTS-Sta: editMode(value: boolean | undefined)
 >
 > 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,7 +476,7 @@ ArkTS-Sta: editMode(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
@@ -494,7 +494,7 @@ ArkTS-Sta: layoutDirection(value: GridDirection | undefined)
 >
 > 此属性仅在rowsTemplate和columnsTemplate都不设置时生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -502,7 +502,7 @@ ArkTS-Sta: layoutDirection(value: GridDirection | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                     | 必填 | 说明                                           |
 | ------ | ---------------------------------------- | ---- | ---------------------------------------------- |
@@ -534,7 +534,7 @@ ArkTS-Sta: maxCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
@@ -566,7 +566,7 @@ ArkTS-Sta: minCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -596,7 +596,7 @@ ArkTS-Sta: cellLength(value: double | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------- |
@@ -618,7 +618,7 @@ ArkTS-Sta: multiSelectable(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -642,7 +642,7 @@ supportAnimation动画效果参考[示例5（Grid拖拽场景）](#示例5grid�
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                             |
 | ------ | ------- | ---- | -------------------------------- |
@@ -664,7 +664,7 @@ ArkTS-Sta: edgeEffect(value: EdgeEffect | undefined, options?: EdgeEffectOptions
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -689,13 +689,13 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
-> **说明：**
+> **说明：** 
 >
 > 组件无法通过鼠标按下拖动操作进行滚动。
 
@@ -717,7 +717,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -741,11 +741,11 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                        |
 | ------ | ---------------------------------------------------- | ---- | ----------------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br/>从API version 11开始，非Wearable设备默认值为0.7。<br/>从API version 12开始，非Wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### alignItems<sup>12+</sup>
 
@@ -765,7 +765,7 @@ ArkTS-Sta: alignItems(alignment: GridItemAlignment | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -789,7 +789,7 @@ ArkTS-Sta: focusWrapMode(mode: FocusWrapMode | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -813,7 +813,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -835,7 +835,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
@@ -907,7 +907,7 @@ GridItem的对齐方式枚举。
 | STRETCH |  1  | 以一行中的最高的GridItem作为其他GridItem的高度。 |
 
 
-> **说明：**
+> **说明：** 
 >
 > 1、只有可滚动的Grid中，设置STRETCH参数会生效，其他场景不生效。<br/>
 > 2、在Grid的一行中，如果每个GridItem都是大小规律的（只占一行一列），设置STRETCH参数会生效，存在跨行或跨列的GridItem的场景不生效。<br/>
@@ -955,7 +955,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -987,7 +987,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
@@ -1011,7 +1011,7 @@ ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                  | 必填 | 说明           |
 | ------ | ------------------------------------- | ---- | -------------- |
@@ -1025,75 +1025,17 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 拖拽在GridItem范围内移动时触发。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名      | 类型                                  | 必填 | 说明           |
-| ----------- | ------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | number                                | 是   | 拖拽起始位置，表示被拖拽的GridItem在Grid中的索引值。 |
-| insertIndex | number                                | 是   | 当前拖拽插入位置，表示GridItem在拖拽移动过程中的目标插入索引值。 |
-
-### onItemDragLeave<sup>8+</sup>
-
-onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
-
-拖拽离开GridItem时触发。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名    | 类型                                  | 必填 | 说明                       |
-| --------- | ------------------------------------- | ---- | -------------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
-| itemIndex | number                                | 是   | 拖拽离开的GridItem索引值。 |
-
-### onItemDrop<sup>8+</sup>
-
-onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void)
-
-绑定该事件的GridItem可作为拖拽释放目标，当GridItem停止拖拽时触发。
-
-当拖拽释放位置在GridItem之内时，isSuccess会返回true；在GridItem之外时，isSuccess会返回false。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名      | 类型                                  | 必填 | 说明           |
-| ----------- | ------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | number                                | 是   | 拖拽起始位置。 |
-| insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的GridItem之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的GridItem之内；false：表示拖拽释放位置在设置了onItemDrop的GridItem之外。  |
-
-### onScrollBarUpdate<sup>10+</sup>
-
-onScrollBarUpdate(event: (index: number, offset: number) => ComputedBarAttribute)
-
-在Grid每帧布局结束时触发，可通过该回调设置滚动条的位置及长度。
-
-该接口只用作设置Grid的滚动条位置，不建议开发者在此接口中做业务逻辑处理。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 在Grid的网格区域内拖拽移动GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>undefined：不使用该回调函数。 |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 在Grid的网格区域内拖拽移动GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置，表示被拖拽的GridItem在Grid中的索引值。<br/>insertIndex：当前拖拽插入位置，表示GridItem在拖拽移动过程中的目标插入索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragLeave<sup>8+</sup>
 
@@ -1111,7 +1053,7 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1137,7 +1079,7 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1163,7 +1105,7 @@ ArkTS-Sta: onScrollBarUpdate(event: ((index: int, offset: double) => ComputedBar
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -1247,7 +1189,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
@@ -1301,7 +1243,7 @@ onScrollStop(event: () => void)
 | ------ | ------ | ------ | ------|
 | event | () => void | 是 | 网格滑动停止时触发的回调。 |
 
-### onWillScroll<sup>23+</sup>
+### onWillScroll<sup>23+</sup> 
 
 onWillScroll(handler: OnWillScrollCallback | undefined)
 
@@ -1325,7 +1267,7 @@ onWillScroll(handler: OnWillScrollCallback | undefined)
 | ------ | ------ | ------ | ------|
 | handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | Grid滑动前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
-### onDidScroll<sup>23+</sup>
+### onDidScroll<sup>23+</sup> 
 
 onDidScroll(handler: OnScrollCallback | undefined)
 
@@ -1386,7 +1328,7 @@ attributeModifier(modifier: AttributeModifier\<GridAttribute> | AttributeModifie
 | modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>GridAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ### onScroll<sup>(deprecated)</sup>
-onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void)
+onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void) 
 
 网格滑动时触发。
 
@@ -1749,7 +1691,7 @@ export class GridDataSource implements IDataSource {
       listener.onDataMove(from, to);
     })
   }
-
+  
   // 重新加载所有数据
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
@@ -2563,7 +2505,7 @@ struct GridExample {
 3.  在[onItemDrop](#onitemdrop8)中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](#onitemdrop8)中完成交换数组位置逻辑。
 4.  设置属性`supportAnimation(true)`支持动画。
 
-> **说明：**
+> **说明：** 
 >
 > 预览器窗口不支持显示拖拽跟手。
 
@@ -3885,7 +3827,7 @@ struct GridScrollToIndexSample {
     let list: string[] = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        list.push((i * 5 + j + 1).toString());
+        list.push((i * 5 + j  + 1).toString());
       }
     }
     this.numbers =  new GridDataSource(list);
@@ -4014,7 +3956,7 @@ try {
   HOT_AREA_LENGTH =
     Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+  console.error('Failed to get default display for HOT_AREA_LENGTH:', error);
 }
 // 滚动曲线: 贝塞尔曲线
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
@@ -4023,7 +3965,7 @@ let AUTO_SPEED_MAX: number = 0;
 try {
   AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+  console.error('Failed to get default display for AUTO_SPEED_MAX:', error);
 }
 @Entry
 @Component
@@ -4313,7 +4255,7 @@ try {
   HOT_AREA_LENGTH =
     Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+  console.error('Failed to get default display for HOT_AREA_LENGTH:', error);
 }
 // 滚动曲线: 贝塞尔曲线
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
@@ -4322,7 +4264,7 @@ let AUTO_SPEED_MAX: number = 0;
 try {
   AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
 } catch (error) {
-  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+  console.error('Failed to get default display for AUTO_SPEED_MAX:', error);
 }
 @Entry
 @Component

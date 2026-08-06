@@ -36,7 +36,7 @@ GridItem(value?: GridItemOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ ArkTS-Sta: rowStart(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
@@ -82,11 +82,11 @@ ArkTS-Sta: rowEnd(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是 | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)参数，详细可参考Grid的[示例1（固定行列Grid）](ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1]<br/>取值为undefined时，按默认值处理。 |
 
 ### columnStart
 
@@ -104,7 +104,7 @@ ArkTS-Sta: columnStart(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
@@ -126,7 +126,7 @@ ArkTS-Sta: columnEnd(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
@@ -177,7 +177,7 @@ forceRebuild(value: boolean)
 
 **ArkTS-Dyn起始版本：** 7
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                    |
 | ------ | ------- | ---- | ------------------------------------------------------- |
@@ -201,7 +201,7 @@ ArkTS-Sta: selectable(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                  |
 | ------ | ------- | ---- | ----------------------------------------------------- |
@@ -231,7 +231,7 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -282,7 +282,9 @@ GridItem样式枚举，用于定义GridItem的交互态样式。
 
 ### onSelect<sup>8+</sup>
 
-onSelect(event: (isSelected: boolean) => void)
+ArkTS-Dyn: onSelect(event:&nbsp;(isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onSelect(event:&nbsp;((isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) | undefined)
 
 GridItem元素被鼠标框选的状态改变时触发回调。
 
@@ -294,7 +296,7 @@ GridItem元素被鼠标框选的状态改变时触发回调。
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
@@ -443,7 +445,7 @@ struct GridItemExample {
       Grid() {
         ForEach(this.numbers, (rowItem: string) => {
           ForEach(this.numbers, (item: string) => {
-            GridItem({ style: GridItemStyle.NONE }) {
+            GridItem({style:GridItemStyle.NONE}) {
               Text(item)
                 .fontSize(16)
                 .width('100%')
@@ -467,7 +469,7 @@ struct GridItemExample {
       Grid() {
         ForEach(this.numbers, (rowItem: string) => {
           ForEach(this.numbers, (item: string) => {
-            GridItem({ style: GridItemStyle.PLAIN }) {
+            GridItem({style:GridItemStyle.PLAIN}) {
               Text(item)
                 .fontSize(16)
                 .width('100%')

@@ -46,15 +46,15 @@ import { ArcList } from '@kit.ArkUI';
 >
 > ArcList的子组件索引值计算规则：
 >
-> - 按子组件的顺序依次递增。
+> - 按子组件的顺序依次递增。  
 >
-> - [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)语句中，只有条件成立的分支内的子组件会参与索引值计算，条件不成立的分支内子组件不计算索引值。
+> - [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)语句中，只有条件成立的分支内的子组件会参与索引值计算，条件不成立的分支内子组件不计算索引值。  
 >
 > - [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)语句中，会计算展开所有子组件索引值。
 >
 > - [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)发生变化以后，会更新子组件索引值。
 >
-> - ArcList子组件[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为Hidden或None依然会计算索引值。
+> - ArcList子组件[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为Hidden或None依然会计算索引值。  
 
 
 ## 接口
@@ -97,9 +97,9 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt;<br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是 | 表冠响应灵敏度。<br>默认值：CrownSensitivity.MEDIUM，响应速度适中。<br/>取值为undefined时，按默认值处理。 |
 
@@ -119,9 +119,9 @@ ArkTS-Sta: space(space: LengthMetrics | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型                                                         | 必填 | 说明                               |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | space | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 列表子项之间的间距。<br>默认值：LengthMetrics.vp(0)<br>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。<br/>取值为undefined时，按默认值处理。 |
 
@@ -141,9 +141,9 @@ ArkTS-Sta: scrollBar(status: BarState | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
 | status | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BarState](ts-appendix-enums.md#barstate)&gt;<br/>ArkTS-Sta: [BarState](ts-appendix-enums.md#barstate) \| undefined | 是 | 滚动条状态。<br>默认值：BarState.Auto<br/>取值为undefined时，按默认值处理。 |
 
@@ -165,9 +165,9 @@ ArcList设置cachedCount后，显示区域外上下各会预加载并布局cache
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型              | 必填 | 说明                                       |
 | ------ | ----------------- | ---- | ------------------------------------------ |
 | count | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;number&gt;<br/>ArkTS-Sta: int \| undefined | 是 | ArcListItem的预加载数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)<br>设置为负数时，按1处理。<br/>取值为undefined时，按默认值处理。 |
 
@@ -189,9 +189,9 @@ ArkTS-Sta: chainAnimation(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型               | 必填 | 说明                                                         |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用链式联动动效。仅当边缘效果为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，链式联动动效才会生效。<br>默认值：false，不启用链式联动。true，启用链式联动。<br/>取值为undefined时，按默认值处理。 |
 
@@ -211,9 +211,9 @@ ArkTS-Sta: enableScrollInteraction(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型               | 必填 | 说明                                |
 | ------ | ------------------ | ---- | ----------------------------------- |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
@@ -233,9 +233,9 @@ ArkTS-Sta: fadingEdge(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是 | fadingEdge生效时，会覆盖原组件的`.overlay()`属性。<br>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br>默认值：false<br/>取值为undefined时，按默认值处理。 |
 
@@ -255,9 +255,9 @@ ArkTS-Sta: friction(friction: double | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名   | 类型              | 必填 | 说明                         |
 | -------- | ----------------- | ---- | ---------------------------- |
 | friction | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: double \| undefined | 是 | 摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。<br>默认值：0.8<br>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
@@ -277,9 +277,9 @@ ArkTS-Sta: scrollBarWidth(width: LengthMetrics | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | width | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | ArcList滚动条在按压态下的宽度。<br>默认值：LengthMetrics.vp(24)<br>非按压态宽度：LengthMetrics.vp(4)<br>设置为负值、undefined等异常值时，按滚动条的普通态宽度处理。<br>单位：vp |
 
@@ -299,9 +299,9 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | color | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt;<br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) \| undefined | 是 | 设置滚动条颜色。<br>默认值：ColorMetrics.numeric(0xA9FFFFFF)<br/>取值为undefined时，按默认值处理。 |
 
@@ -321,9 +321,9 @@ ArkTS-Sta: flingSpeedLimit(speed: double | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型              | 必填 | 说明                            |
 | ------ | ----------------- | ---- | ------------------------------- |
 | speed | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: double \| undefined | 是 | 惯性滚动动效开始时的最大初始速度。设置为小于等于0的值时，按默认值处理。<br>默认值：9000<br>单位：vp/s<br>取值范围：(0, +∞)<br/>取值为undefined时，按默认值处理。 |
 
@@ -343,7 +343,7 @@ ArkTS-Sta: childrenMainSize(size: ChildrenMainSize | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 <!--Table: 10%; auto; 10%; auto-->
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -388,7 +388,7 @@ ArcList的边缘效果为弹簧效果时，在ArcList滑动到边缘后继续滑
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                            |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
@@ -508,13 +508,15 @@ ArkTS-Sta: onWillScroll(handler: OnWillScrollCallback | undefined)
 | ------ | ------ | ------ | ------|
 | handler | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnWillScrollCallback](ts-container-scrollable-common.md#onwillscrollcallback12)&gt;<br/>ArkTS-Sta: [OnWillScrollCallback](ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | 列表滑动时每帧开始前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
-> **说明：**
->
+> **说明：** 
+> 
 > 调用[scrollEdge](ts-container-scroll.md#scrolledge)和不带动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)时，不触发onWillScroll。
 
 ### onDidScroll
 
-onDidScroll(handler: Optional\<OnScrollCallback>)
+ArkTS-Dyn: onDidScroll(handler: Optional\<OnScrollCallback>)
+
+ArkTS-Sta: onDidScroll(handler: OnScrollCallback | undefined)
 
 列表滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
 
@@ -595,7 +597,7 @@ function buildText() {
 @Entry
 @Component
 struct Index {
-  @State private numItems: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State  private numItems: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   private watchSize: string = '466px'; // Wearable默认宽高：466*466
   private listSize: string = '414px'; // item宽度

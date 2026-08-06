@@ -15,9 +15,9 @@ Refresh是提供下拉刷新交互的容器组件，适用于列表数据刷新�
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
+> - 该组件从API version 12开始支持与垂直滚动的[Swiper](ts-container-swiper.md)和[Web](../arkui-js/js-components-basic-web.md)的联动。当[Swiper](ts-container-swiper.md)设置[loop](ts-container-swiper.md#loop)属性为true时，Refresh无法和[Swiper](ts-container-swiper.md)产生联动。
 >
-> - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
+>  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
 >
 > - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
@@ -92,7 +92,7 @@ ArkTS-Sta: refreshOffset(value: double | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -118,7 +118,7 @@ ArkTS-Sta: refreshOffset(value: Resource | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -142,7 +142,7 @@ ArkTS-Sta: pullToRefresh(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -164,7 +164,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名  | 类型                 | 必填 | 说明                                                         |
 | ------- | -------------------- | ---- | ------------------------------------------------------------ |
@@ -282,7 +282,7 @@ ArkTS-Sta: onStateChange(callback: ((state: RefreshStatus) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
@@ -332,7 +332,7 @@ ArkTS-Sta: onOffsetChange(callback: Callback\<double> | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
@@ -360,7 +360,7 @@ RefreshStatus刷新状态枚举。
 | Done     | 4 | 刷新结束，返回初始状态（顶部）。     |
 
 
-## 示例
+## 示例 
 
 ### 示例1（默认刷新样式）
 
@@ -1076,7 +1076,7 @@ struct RefreshExample {
 
   aboutToAppear(): void {
     let uiContext = this.getUIContext();
-    this.contentNode = new ComponentContent<Params>(uiContext, wrapBuilder(customRefreshingContent));
+    this.contentNode = new ComponentContent<Object>(uiContext, wrapBuilder(customRefreshingContent));
   }
 
   build() {
@@ -1811,6 +1811,103 @@ struct RefreshExample {
           }
           this.arr = newArr;
 
+          this.isRefreshing = false;
+        }, 6000)
+        console.info('onRefreshing test');
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Component, ForEach, List, ListItem, Refresh, RefreshOptions, RefreshStatus, BarState, Column, Row, ListItemAlign, TextAlign, Stack, LoadingProgress, Alignment, VerticalAlign, Builder, wrapBuilder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ComponentContent } from '@ohos.arkui.node';
+
+class Params {
+  refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+  constructor(refreshStatus: RefreshStatus) {
+    this.refreshStatus = refreshStatus;
+  }
+}
+
+@Builder
+function customRefreshingContent(params: Params) {
+  Stack() {
+    Row() {
+      LoadingProgress().height(32)
+      Text('refreshStatus: ' + params.refreshStatus).fontSize(16).margin({ left: 20 })
+    }
+    .alignItems(VerticalAlign.Center)
+  }
+  .align(Alignment.Center)
+  .clip(true)
+  .constraintSize({ minHeight: 32 })
+  .width('100%')
+}
+
+@Entry
+@Component
+struct RefreshExample {
+  @State isRefreshing: boolean = false;
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  @State refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+  private contentNode?: ComponentContent<Object> = undefined;
+  private params: Params = new Params(RefreshStatus.Inactive);
+
+  aboutToAppear(): void {
+    let uiContext = this.getUIContext();
+    this.contentNode = new ComponentContent<Params>(uiContext, wrapBuilder(customRefreshingContent), this.params);
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: this.isRefreshing, refreshingContent: this.contentNode } as RefreshOptions) {
+        List() {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: string): string => item)
+        }
+        .onScrollIndex((first: Int): void => {
+          console.info(first.toString());
+        })
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .pullUpToCancelRefresh(false)  // 设置为false，上划不取消刷新。
+      .refreshOffset(96)
+      .onStateChange((refreshStatus: RefreshStatus): void => {
+        this.refreshStatus = refreshStatus;
+        this.params.refreshStatus = refreshStatus;
+        this.contentNode?.update(this.params);  // 刷新状态变化时更新ComponentContent。
+        console.info('Refresh onStateChange state is ' + refreshStatus);
+      })
+      .onRefreshing((): void => {
+        this.isRefreshing = true;
+        setTimeout((): void => {
+          // 模拟6秒刷新，完成后更新数据列表并结束刷新状态。
+          const newArr: string[] = [];
+          const lastNum = parseInt(this.arr[this.arr.length - 1]);
+          for (let i = 0; i < 11; i++) {
+            newArr.push((lastNum + 1 + i).toString());
+          }
+          this.arr = newArr;
           this.isRefreshing = false;
         }, 6000)
         console.info('onRefreshing test');

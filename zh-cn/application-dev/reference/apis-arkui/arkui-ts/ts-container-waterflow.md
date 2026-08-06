@@ -14,7 +14,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件从API version 9 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
 >
@@ -46,7 +46,7 @@
 
 ## 接口
 
-WaterFlow(options?: WaterFlowOptions)
+WaterFlow(options?:  WaterFlowOptions)
 
 创建瀑布流容器。
 
@@ -76,7 +76,7 @@ WaterFlow(options?: WaterFlowOptions)
 | footer | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 设置WaterFlow尾部组件，用于在瀑布流末尾显示自定义内容（如加载提示、底部标识等）。不设置时不显示尾部组件。<br/>**说明：** <br/>1. 使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>2. 同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>3. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | footerContent<sup>18+</sup> | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准；未设置footerContent时，footer参数仍可设置尾部组件。使用分组混合布局时不支持单独设置尾部组件，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 是 | 可滚动组件的控制器，与可滚动组件绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>1. 不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>2. 使用[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)布局模式时，scroller的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，回滑到顶部时会重新校准。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| sections<sup>12+</sup> | [WaterFlowSections](#waterflowsections12) | 否 | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
 | layoutMode<sup>12+</sup> | [WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 
@@ -130,7 +130,7 @@ ArkTS-Sta: splice(start: int, deleteCount?: int, sections?: Array\<SectionOption
 | deleteCount | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否    | 表示要从start开始删除的分组数量。<br/>默认值：0<br/>**说明：** <br/>1. 如果省略了deleteCount，或者其值大于或等于由start指定的位置到WaterFlowSections末尾的分组数量，那么从start到WaterFlowSections末尾的所有分组将被删除。<br/>2. 如果deleteCount是0或者负数，则不会删除任何分组。 |
 | sections | Array<[SectionOptions](#sectionoptions12对象说明)> | 否    | 表示要从start开始加入的分组。如果不指定，`splice()`将只从瀑布流中删除分组。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -159,7 +159,7 @@ push(section: SectionOptions): boolean
 | ---- | ----------------------------- | ---- | -------------------- |
 | section | [SectionOptions](#sectionoptions12对象说明) | 是    | 添加到瀑布流末尾的分组，包含该分组的FlowItem数量、列数/行数、间距、外边距和主轴大小回调等配置信息。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -187,10 +187,10 @@ ArkTS-Sta: update(sectionIndex: int, section: SectionOptions): boolean
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| sectionIndex | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是 | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`sectionIndex + WaterFlowSections.length()`。<br/>2. 如果`sectionIndex < -WaterFlowSections.length()`，则使用0。<br/>3. 如果`sectionIndex >= WaterFlowSections.length()`，则在最后添加新分组。 |
+| sectionIndex | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | 从0开始计算的索引，会转换为整数，表示要修改的分组的位置。<br/>**说明：** <br/>1. 如果索引是负数，则从末尾开始计算，使用`sectionIndex + WaterFlowSections.length()`。<br/>2. 如果`sectionIndex < -WaterFlowSections.length()`，则使用0。<br/>3. 如果`sectionIndex >= WaterFlowSections.length()`，则在最后添加新分组。 |
 | section | [SectionOptions](#sectionoptions12对象说明) | 是 | 新的分组信息，用于替换指定索引位置的FlowItem分组配置，包括FlowItem数量、列数/行数、间距、外边距和主轴大小回调等。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -212,7 +212,7 @@ values(): Array\<SectionOptions\>
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -236,7 +236,7 @@ ArkTS-Sta: length(): int
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -290,7 +290,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 | ---- | ----------------------------- | ---- | -------------------- |
 | index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子组件总数-1] |
 
-**返回值：**
+**返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -330,7 +330,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)和[滚动组件通用属性](ts-container-scrollable-common.md#属性)外，还支持以下属性：
-> **说明：**
+> **说明：** 
 >
 > WaterFlow组件使用通用属性[clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12)和通用属性[clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18)时默认值都为true。
 >
@@ -354,7 +354,7 @@ columnsTemplate(value: string)
 
 **ArkTS-Dyn起始版本：** 9
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
@@ -384,7 +384,7 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -411,7 +411,7 @@ ArkTS-Sta: rowsTemplate(value: string | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
@@ -421,7 +421,7 @@ ArkTS-Sta: rowsTemplate(value: string | undefined)
 
 ArkTS-Dyn: itemConstraintSize(value: ConstraintSizeOptions)
 
-ArkTS-Sta: itemConstraintSize(value: ConstraintSizeOptions | undefined)
+ArkTS-Sta: itemConstraintSize(value: ConstraintSizeOptions | undefined) 
 
 设置约束尺寸，用于在子组件布局时限制其尺寸范围。使用方法参考[示例1](#示例1使用基本瀑布流)。
 
@@ -433,7 +433,7 @@ ArkTS-Sta: itemConstraintSize(value: ConstraintSizeOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 <!--Table: 10%; auto; 10%; auto-->
 | 参数名 | 类型                                                       | 必填 | 说明       |
@@ -456,11 +456,11 @@ ArkTS-Sta: columnsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                          |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是 | 列与列的间距。 <br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 列与列的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### rowsGap
 
@@ -478,11 +478,11 @@ ArkTS-Sta: rowsGap(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                          |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是 | 行与行的间距。 <br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 行与行的间距。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### layoutDirection
 
@@ -500,7 +500,7 @@ ArkTS-Sta: layoutDirection(value: FlexDirection | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                              |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------- |
@@ -538,13 +538,13 @@ enableScrollInteraction(value: boolean)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | boolean | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
 
-> **说明：**
+> **说明：** 
 >
 > 组件无法通过鼠标按下拖动操作进行滚动。
 
@@ -566,7 +566,7 @@ nestedScroll(value: NestedScrollOptions)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -590,11 +590,11 @@ friction(value: number | Resource)
 
 **ArkTS-Dyn起始版本：** 10
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 摩擦系数。<br/>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br/>从API version 11开始，非Wearable设备默认值为0.7。<br/>从API version 12开始，非Wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### cachedCount<sup>11+</sup>
 
@@ -616,7 +616,7 @@ ArkTS-Sta: cachedCount(value: int | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -644,7 +644,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
@@ -669,7 +669,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 24
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -777,7 +777,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
@@ -807,13 +807,11 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发的回调。<br/>first：当前显示的瀑布流起始位置的索引值。取值范围：[0, 子组件总数-1]<br/>last：当前显示的瀑布流终止位置的索引值。取值范围：[0, 子组件总数-1]<br/>undefined：不使用该回调函数。 |
-| first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见下表。 |
-| last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见下表。 |
+| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发的回调。<br/>first：当前显示的瀑布流起始位置的索引值。正常取值范围：[0, 子组件总数-1]，列表为空时存在特殊取值，详见下表。<br/>last：当前显示的瀑布流终止位置的索引值。正常取值范围：[0, 子组件总数-1]，列表为空时存在特殊取值，详见下表。<br/>undefined：不使用该回调函数。 |
 
 通过`last`参数可以判断是否“继续加载数据”，参考[示例3（使用分组）](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 
@@ -825,7 +823,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 | ALWAYS_TOP_DOWN | 有 | 0 | -1 |
 | SLIDING_WINDOW | 可选 | 1000000 | -1 |
 
-### onWillScroll<sup>23+</sup>
+### onWillScroll<sup>23+</sup> 
 
 onWillScroll(handler: OnWillScrollCallback | undefined)
 
@@ -847,7 +845,7 @@ onWillScroll(handler: OnWillScrollCallback | undefined)
 | ------ | ------ | ------ | ------|
 | handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | WaterFlow滑动前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
-### onDidScroll<sup>23+</sup>
+### onDidScroll<sup>23+</sup> 
 
 onDidScroll(handler: OnScrollCallback | undefined)
 
@@ -1732,7 +1730,7 @@ struct WaterFlowDemo {
 
 
 ### 示例3（使用分组）
-该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
+该示例展示了分组的初始化以及splice、update、values、length等接口的不同效果。
 
 如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
@@ -2013,7 +2011,7 @@ struct ReusableFlowItem {
     console.info('Reuse item:' + this.item);
   }
 
-  // 组件生命周期：初始化尺寸数组和分组配置
+  // 组件生命周期：记录组件创建日志
   aboutToAppear(): void {
     console.info('new item:' + this.item);
   }
@@ -2355,7 +2353,7 @@ struct WaterFlowDemo {
             centerX: 0,
             centerY: 0
           })
-
+        
         WaterFlow() {
           LazyForEach(this.dataSource, (item: number) => {
             FlowItem() {
@@ -2594,7 +2592,7 @@ struct WaterFlowDemo {
                 if (pixmap) {
                   this.waterFlowSnapshot = pixmap;
                 } else {
-                  console.info('error:' + JSON.stringify(error));
+                  console.error('error:' + JSON.stringify(error));
                 }
               })
             })

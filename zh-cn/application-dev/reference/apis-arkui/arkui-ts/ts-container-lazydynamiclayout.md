@@ -442,8 +442,8 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
   public popData(): void {
     if (this.dataArray.length > 0) {
-      this.dataArray.pop();
-      this.notifyDataDelete(this.dataArray.length);
+    this.dataArray.pop();
+    this.notifyDataDelete(this.dataArray.length);
     }
   }
 

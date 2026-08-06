@@ -10,7 +10,7 @@
 拖拽排序用于实现列表条目或网格条目的手动排序，适用于待办列表排序、歌单管理等需要用户自定义条目顺序的场景。在List或Grid组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem或GridItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动起始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
 
 > **说明：**
->
+> 
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -37,13 +37,13 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
 | handler | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是 | 拖拽排序数据移动回调。当数据位置因拖拽发生变化时触发，需在回调中根据起始索引号和目标索引号修改数据源。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型      | 说明       |
 | ------ | --------- |
@@ -65,14 +65,14 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined, eventHandler: ItemDragEven
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
 | handler | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是 | 拖拽排序数据移动回调。当数据位置因拖拽发生变化时触发，需在回调中根据起始索引号和目标索引号修改数据源。 |
 | eventHandler | [ItemDragEventHandler](#itemdrageventhandler20) | 是 | 拖拽事件回调集合，用于监听长按、开始拖拽、经过其他组件、拖拽结束等拖拽阶段事件。 |
 
-**返回值：**
+**返回值：** 
 
 | 类型      | 说明       |
 | ------ | --------- |
@@ -94,7 +94,7 @@ ArkTS-Sta: type OnMoveHandler = (from: int, to: int) => void
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
+**参数：** 
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
@@ -145,7 +145,7 @@ struct ForEachSort {
           .borderRadius(10)
           .backgroundColor('#FFFFFFFF')
         }, (item: string) => item)
-          .onMove((from: number, to: number) => {
+          .onMove((from:number, to:number) => {
             // 根据拖拽起止索引移动数据，确保数据顺序与拖拽结果一致。
             let tmp = this.arr.splice(from, 1);
             this.arr.splice(to, 0, tmp[0]);

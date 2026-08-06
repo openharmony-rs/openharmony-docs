@@ -184,7 +184,7 @@ NODE_SCROLL_FRICTION = 1002006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 摩擦系数，默认值：非可穿戴设备为0.6，可穿戴设备为0.9。取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
+| .value[0].f32 | 摩擦系数，默认值：非Wearable设备为0.6，Wearable设备为0.9。取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
 
 **返回：**
 
@@ -267,7 +267,7 @@ NODE_SCROLL_OFFSET = 1002009
 | .value[0].f32 | 水平滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。 |
 | .value[1].f32 | 垂直滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。 |
 | .value[2]?.i32 | 可选值，滚动时长，单位为毫秒，默认值1000。滚动时长大于0或使能默认弹簧动效时，滚动带动画效果。 |
-| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。 |
+| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。 |
 | .value[4]?.i32 | 可选值，是否使能默认弹簧动效，默认值为0不使能。 |
 | .value[5]?.i32 | 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。 |
 | .value[6]?.i32 | 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。 |
@@ -301,7 +301,7 @@ NODE_SCROLL_EDGE = 1002010
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 容器是否位于边缘。-1表示未处于边缘；处于边缘状态时，返回值为[ArkUI_ScrollEdge](capi-scroll-h.md#arkui_scrolledge)枚举值，表示具体边缘位置。 |
+| .value[0].i32 | 容器是否位于边缘。-1表示未处于边缘；处于边缘状态时，返回值为[ArkUI_ScrollEdge](capi-native-type-h.md#arkui_scrolledge)枚举值，表示具体边缘位置。 |
 
 ## NODE_SCROLL_ENABLE_PAGING
 
@@ -444,7 +444,7 @@ NODE_SCROLL_CONTENT_START_OFFSET = 1002017
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 内容起始端偏移量，单位vp。 |
+| .value[0].f32 | 内容起始端偏移量，单位vp。默认值：0。取值范围：[0, +∞)。设置为负数时，按0处理。 |
 
 **返回：**
 
@@ -468,7 +468,7 @@ NODE_SCROLL_CONTENT_END_OFFSET = 1002018
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 内容末尾端偏移量，单位vp。 |
+| .value[0].f32 | 内容末尾端偏移量，单位vp。默认值：0。取值范围：[0, +∞)。设置为负数时，按0处理。 |
 
 **返回：**
 
@@ -492,7 +492,7 @@ NODE_SCROLL_FLING_SPEED_LIMIT = 1002019
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | Fling动效开始时的最大初始速度，单位：vp/s。 |
+| .value[0].f32 | Fling动效开始时的最大初始速度，单位：vp/s。非Wearable设备默认值为9000，Wearable设备默认值为5000。取值范围：(0, +∞)。设置为小于等于0的值时，按默认值处理。 |
 
 **返回：**
 
