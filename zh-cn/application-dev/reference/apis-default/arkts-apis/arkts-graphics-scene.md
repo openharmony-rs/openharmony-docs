@@ -1,2 +1,0 @@
-# @ohos.graphics.scene
-

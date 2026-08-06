@@ -1,3 +1,0 @@
-- 结构体
-    - [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md)
-    - [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md)
