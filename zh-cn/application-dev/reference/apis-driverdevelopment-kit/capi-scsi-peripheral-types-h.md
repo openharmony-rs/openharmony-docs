@@ -129,7 +129,7 @@ SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
 
 **描述**
 
-命令描述块的最大长度。
+命令描述符块的最大长度。
 
 **起始版本：** 18
 
