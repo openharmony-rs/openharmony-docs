@@ -45,7 +45,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | abiList | string | 是 | 应用二进制接口（Abi）。<br>示例：arm64-v8a |
 | securityPatchTag | string | 是 | 安全补丁级别。<br>示例：<!--RP7-->2021/01/01<!--RP7End--> |
 | displayVersion | string | 是 | 产品版本。<!--RP14--><!--RP14End--><br>示例：<!--RP8-->XXX X.X.X.X<!--RP8End--> |
-| incrementalVersion | string | 是 | 差异版本号，是编译时生成的ohos的版本号。 <br>示例：default |
+| incrementalVersion | string | 是 | 差异版本号，是编译时生成的ohos的版本号。 <br>示例：6.1.1.120 |
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--> |
 | osFullName | string | 是 | 系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x，其中x表示数字占位符。<!--RP12End-->如需获取版本号各段数值，建议直接使用majorVersion、seniorVersion、featureVersion、buildVersion字段，可提升效率，不建议解析osFullName获取。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br>示例：<!--RP10-->OpenHarmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br>示例：5 |
@@ -73,7 +73,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。<br>**使用场景**：用于根据设备能力进行性能适配，如调整动画复杂度、选择不同质量的资源、动态控制功能特性等。<br>示例：0 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号。<br>**使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。<br> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1。<br> 示例：100 |
-| deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.0.0<br> 示例：blue|
+| deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.0.0<br> 示例：gold |
 
 **错误码**：
 
@@ -189,7 +189,7 @@ let firstApiVersionInfo: number = deviceInfo.firstApiVersion;
 console.info('the value of the deviceInfo firstApiVersion is :' + firstApiVersionInfo);
 
 let versionIdInfo: string = deviceInfo.versionId;
-// 输出结果：the value of the versionId is :wearable/XXXX/XXXX/TAS/OpenHarmony-5.0.0.1/XXXX/XXXX/12/default/release:nolog
+// 输出结果：the value of the versionId is :wearable/XXXX/XXXX/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog
 console.info('the value of the deviceInfo versionId is :' + versionIdInfo);
 
 let buildTypeInfo: string = deviceInfo.buildType;
@@ -244,7 +244,7 @@ let diskSN: string = deviceInfo.diskSN;
 // 输出结果：the value of the deviceInfo diskSN is :2502EM400567
 console.info('the value of the deviceInfo diskSN is :' + diskSN);
 
-let performanceClass: PerformanceClassLevel = deviceInfo.performanceClass;
+let performanceClass = deviceInfo.performanceClass;
 // 输出结果：the value of the deviceInfo performanceClass is :0
 console.info('the value of the deviceInfo performanceClass is :' + performanceClass);
 
