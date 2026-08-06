@@ -14,7 +14,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 4. 处理H5代码兼容性问题。
 5. 从日志中排查生命周期和网络加载相关关键字。
 6. 检查是否开启[坚盾守护模式](./web-secure-shield-mode.md)，坚盾守护模式开启后相关限制见：[ArkWeb限制的HTML5特性](./web-secure-shield-mode.md#arkweb限制的html5特性)。
-7. 排查缓存协商导致的白屏，详见WebView默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏。
+7. 排查**WebView**缓存协商不一致导致的白屏（服务端资源更新后**WebView**白屏、系统浏览器正常），详见[缓存协商不一致导致白屏](#webview默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏)。
 
 ## 检查权限和网络状态
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
@@ -443,9 +443,4 @@ WebView默认的缓存模式`CacheMode.Default`行为是优先使用缓存。当
 
 **解决措施：**
 
-将Web组件的[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)缓存模式设置为`CacheMode.Online`，强制从网络获取最新资源，不是用任何缓存。`CacheMode.Online`发起无条件请求（不携带基于旧缓存的条件头），从而绕开缓存校验环节，避免触发412。
-
-```ts
-Web({ src: '', controller: this.controller })
-  .cacheMode(CacheMode.Online)
-```
+在Web组件上设置[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)属性为`CacheMode.Online`（即`.cacheMode(CacheMode.Online)`）。该模式下，WebView会向服务端发起无条件请求，不携带基于旧缓存的条件头（如`If-None-Match`），强制从网络获取最新资源、不使用任何缓存，从而绕过缓存协商校验环节，避免主资源因协商失败而加载失败导致白屏。
