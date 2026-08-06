@@ -183,10 +183,10 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 
 void SetCallback(struct OH_AVScreenCapture *capture)
 {
-int *userData = nullptr;// 用户自定义数据。
-OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
-OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
-OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
+    int *userData = nullptr;// 用户自定义数据。
+    OH_AVScreenCapture_SetErrorCallback(capture, OnError, userData);
+    OH_AVScreenCapture_SetStateCallback(capture, OnStateChange, userData);
+    OH_AVScreenCapture_SetDataCallback(capture, OnBufferAvailable, userData);
 }
 ```
 
