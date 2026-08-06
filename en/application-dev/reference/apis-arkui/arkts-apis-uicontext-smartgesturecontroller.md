@@ -1,12 +1,14 @@
 # Class (SmartGestureController)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-05T03:02:04.794Z pushedAt=2026-08-06T01:55:48.798Z -->
 
-Provides capabilities to enable, listen to, and control the selected state of smart gestures, as well as dynamically determine smart gesture behavior.
+Provides the capabilities of smart gestures enabling, listening, selected state control, and dynamic smart gesture behaviors decision. It is suitable for scenarios where an app integrates smart gestures, listens for the system's default gesture handling intent, and customizes gesture response behaviors, helping the app flexibly control the smart gesture interaction process.
 
 > **NOTE**
 >
@@ -37,7 +39,7 @@ Sets whether to enable tap and slide gestures in smart gestures.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| enabled | boolean | Yes| Whether to enable tap and slide gestures in smart gestures. The value **true** indicates to enable, and **false** indicates the opposite.|
+| enabled | boolean | Mandatory | Whether to enable tap and slide gestures in smart gestures. The value **true** indicates yes, and **false** indicates no. |
 
 **Example**
 
@@ -79,21 +81,22 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## registerMonitor
 
-registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
+registerMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
 Registers a callback for listening to smart gestures. Before the system handles the current smart gesture, an application can receive the default action handling of the current gesture and perform custom intervention. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> 
-> - This API allows an application to receive the handling intent of the current smart gesture event before the system handles it and perform custom intervention.
-> - You can use this callback to customize the behavior of the current smart gesture.
-> - You can register multiple listener callbacks, which are triggered in the principle of "last registered, first executed". When a listener callback consumes the smart gesture event, that is, the return value of [GestureHandlingResolution](#gesturehandlingresolution).isConsumed is **true**, subsequent listener callbacks will not be executed.
-> - If the same callback is registered repeatedly, only the callback registered for the first time is saved, and repeated registrations do not take effect.
-> - The return value of the callback must be a valid [GestureHandlingResolution](#gesturehandlingresolution) instance. Otherwise, the handling does not take effect.
+>
+> - This API enables an app to receive the system's handling intent before the system processes the current smart gesture event and perform custom intervention.
+> - An app can use this callback to customize the behavior of the current smart gesture.
+> - An app can register multiple listener callbacks, which are triggered in last-registered, first-executed order. When a listener callback consumes the smart gesture event, that is, when the return value [GestureHandlingResolution](#gesturehandlingresolution).isConsumed is **true**, subsequent listener callbacks are no longer executed.
+> - When an app registers the same callback repeatedly, only the first registration is retained, and duplicate registrations do not take effect.
+> - The callback return value must be a valid [GestureHandlingResolution](#gesturehandlingresolution) instance; otherwise, the override does not take effect.
 
 **Since**: 26.0.0
 
@@ -111,7 +114,7 @@ Registers a callback for listening to smart gestures. Before the system handles 
 
 **Example**
 
-This example shows how to register a callback for listening to smart gestures using the **registerMonitor** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to register a callback for listening to smart gestures using the **registerMonitor** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -124,8 +127,9 @@ import {
 struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
+    // Consume the current smart gesture and follow the system default action handling.
     return new GestureHandlingResolution(true);
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -160,11 +164,12 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## unregisterMonitor
 
-unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
+unregisterMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
 Unregisters a callback for listening to smart gestures.
 
@@ -184,7 +189,7 @@ Unregisters a callback for listening to smart gestures.
 
 **Example**
 
-This example shows how to unregister a callback for listening to smart gestures using the **unregisterMonitor** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to unregister a callback for listening to smart gestures using the **unregisterMonitor** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -198,7 +203,7 @@ struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
     return new GestureHandlingResolution(true);
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -233,6 +238,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## clearMonitors
@@ -251,7 +257,7 @@ Clears all callbacks for listening to smart gestures, which are registered in th
 
 **Example**
 
-This example shows how to clear all callbacks for listening to smart gestures using the **clearMonitors** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to clear all callbacks for listening to smart gestures using the **clearMonitors** API. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -265,7 +271,7 @@ struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
     return new GestureHandlingResolution(true);
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -300,6 +306,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## requestSelected
@@ -309,9 +316,9 @@ requestSelected(id: string): void
 Requests to set a specified component as the node selected by the current smart gesture. After the selection is successful, a selection dialog box is displayed. The style of the selection dialog box varies depending on the device.
 
 > **NOTE**
-> 
-> - The request takes effect only when the target component meets all of the following conditions: The component can respond to smart gestures, the component is visible on the screen, and the component is bound to [onClick](./arkui-ts/ts-universal-events-click.md#onclick) or [a tap gesture](using the ./arkui-ts/ts-basic-gestures-tapgesture.md#apis).
-> - Whether a component can respond to smart gestures is determined by **enabled** in [smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut).
+>
+> - The request takes effect only when the target component meets all of the following conditions: the component can respond to smart gestures, the component is visible on the screen, and the component is bound with [onClick](./arkui-ts/ts-universal-events-click.md#onclick) or a tap gesture [TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#apis).
+> - Whether a component can respond to smart gestures is determined by the **enabled** property in [smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut).
 
 **Since**: 26.0.0
 
@@ -325,11 +332,11 @@ Requests to set a specified component as the node selected by the current smart 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| id | string | Yes| [ID](./arkui-ts/ts-universal-attributes-component-id.md#id) of the component.|
+| id | string | Yes | Component [id](./arkui-ts/ts-universal-attributes-component-id.md#id). The target component corresponding to this ID must meet the following requirements: it can respond to smart gestures, is visible on the screen, and is bound with [onClick](./arkui-ts/ts-universal-events-click.md#onclick) or [TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#apis). |
 
 **Example**
 
-This example shows how to request the component to be selected and the selected state to be automatically cleared in 5,000 ms using the **requestSelected** and **clearSelected** APIs. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to request the component to be selected and the selected state to be automatically cleared in 5,000 ms using the **requestSelected** and **clearSelected** APIs. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 @Entry
@@ -365,7 +372,7 @@ struct SmartGestureControllerExample {
             setTimeout(() => {
               this.controller.clearSelected();
               console.info('smartGesture selected is clear');
-            }, 5000)
+            }, 5000);
           })
       }.width('100%')
     }
@@ -376,6 +383,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_02](figures/smartgesture_02.png)
 
 ## clearSelected
@@ -394,7 +402,7 @@ Clears the node selected by the current smart gesture.
 
 **Example**
 
-This example shows how to request the component to be selected and the selected state to be automatically cleared in 5,000 ms using the **requestSelected** and **clearSelected** APIs. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to request the component to be selected and the selected state to be automatically cleared in 5,000 ms using the **requestSelected** and **clearSelected** APIs. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 @Entry
@@ -430,7 +438,7 @@ struct SmartGestureControllerExample {
             setTimeout(() => {
               this.controller.clearSelected();
               console.info('smartGesture selected is clear');
-            }, 5000)
+            }, 5000);
           })
       }.width('100%')
     }
@@ -441,6 +449,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_02](figures/smartgesture_02.png)
 
 ## BaseGestureHandlingProposal
@@ -462,7 +471,7 @@ Base class for smart gesture handling. When the [registerMonitor](#registermonit
 
 **Example**
 
-This example shows how to obtain smart gesture handling information from **BaseGestureHandlingProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to obtain smart gesture handling information from **BaseGestureHandlingProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -474,9 +483,9 @@ import {
 struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
-    console.info('smartGesture action is ', proposal.action, ', operateIntention is ', proposal.operateIntention)
+    console.info('smartGesture action is ', proposal.action, ', operateIntention is ', proposal.operateIntention);
     return new GestureHandlingResolution(true);
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -511,6 +520,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## TargetedGestureProposal
@@ -531,7 +541,7 @@ Base class for smart gesture handling with a target node.
 
 **Example**
 
-This example shows how to obtain smart gesture handling information from **TargetedGestureProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to obtain smart gesture handling information from **TargetedGestureProposal** in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -549,7 +559,7 @@ struct SmartGestureControllerExample {
     console.info('smartGesture action is', targetProposal.action, ', operateIntention is',
       targetProposal.operateIntention, ', nodeId is', targetProposal.node.getId());
     return new GestureHandlingResolution(true);
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -584,6 +594,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## ClickActionProposal
@@ -591,9 +602,9 @@ struct SmartGestureControllerExample {
 Handles the click action of a smart gesture. When the [registerMonitor](#registermonitor) API is used to dynamically customize smart gesture behavior, if **selectedProposal** in the returned object [GestureHandlingResolution](#gesturehandlingresolution) is set to an object of the click type, the click action of the target component will be triggered.
 
 > **NOTE**
-> 
-> - The action handling follows the semantic of "select first, then click".
-> - If the target node has not been selected, the selection state is established first in this handling, and the click action is not triggered immediately.
+>
+> - This action handler follows the "select first, then click" handling semantics.
+> - When the target node has not been selected yet, this handling prioritizes establishing the selected state and does not immediately trigger a click.
 
 **Since**: 26.0.0
 
@@ -625,7 +636,7 @@ Constructor for handling the click action of a smart gesture.
 
 **Example**
 
-This example shows how to customize the smart gesture action as the click action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to customize the smart gesture action as the click action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -641,15 +652,16 @@ struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
     let targetProposal = proposal as TargetedGestureProposal;
+    // Consume the current smart gesture. Subsequently, the default action handling is rewritten through selectedProposal.
     let result = new GestureHandlingResolution(true);
     console.info('smartGesture action is', targetProposal.action, ', operateIntention is',
       targetProposal.operateIntention, ', nodeId is', targetProposal.node.getId());
     if (targetProposal.node && targetProposal.node.getId() == 'target_text') {
-      let clickProposal = new ClickActionProposal(targetProposal.node)
+      let clickProposal = new ClickActionProposal(targetProposal.node);
       result.selectedProposal = clickProposal;
     }
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -684,6 +696,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_01](figures/smartgesture_01.png)
 
 ## SelectActionProposal
@@ -720,7 +733,7 @@ Constructor for handling the selection action of a smart gesture.
 
 **Example**
 
-This example shows how to customize the smart gesture action as the selection action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to customize the smart gesture action as the selection action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -737,11 +750,11 @@ struct SmartGestureControllerExample {
     let result = new GestureHandlingResolution(true);
     let node = this.getUIContext().getFrameNodeById('target_text2');
     if (node) {
-      let selectProposal = new SelectActionProposal(node)
+      let selectProposal = new SelectActionProposal(node);
       result.selectedProposal = selectProposal;
     }
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -787,6 +800,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_03](figures/smartgesture_03.png)
 
 ## NoneActionProposal
@@ -817,7 +831,7 @@ Constructor for handling the empty action of a smart gesture.
 
 **Example**
 
-This example shows how to customize the smart gesture action as the empty action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to customize the smart gesture action as the empty action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -832,10 +846,10 @@ struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
     let result = new GestureHandlingResolution(true);
-    let noneProposal = new NoneActionProposal()
+    let noneProposal = new NoneActionProposal();
     result.selectedProposal = noneProposal;
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -881,6 +895,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_07](figures/smartgesture_07.png)
 
 ## BackPressActionProposal
@@ -911,7 +926,7 @@ Constructor for handling the back action of a smart gesture.
 
 **Example**
 
-This example shows how to customize the smart gesture action as the back action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to customize the smart gesture action as the back action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -926,10 +941,10 @@ struct SmartGestureControllerExample {
   private controller = this.getUIContext().getSmartGestureController();
   private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
     let result = new GestureHandlingResolution(true);
-    let backProposal = new BackPressActionProposal()
+    let backProposal = new BackPressActionProposal();
     result.selectedProposal = backProposal;
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -975,6 +990,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_07](figures/smartgesture_07.png)
 
 ## PageSwitchActionProposal
@@ -1008,7 +1024,7 @@ Constructor for handling the page switching action of a smart gesture.
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the page switching action.|
-| pageCount | number | Yes| Number of pages to be switched.<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.<br>The unit is page.|
+| pageCount | number | Yes | Number of pages to turn.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>The unit is pages. |
 
 ### Attributes
 
@@ -1022,11 +1038,11 @@ Constructor for handling the page switching action of a smart gesture.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| pageCount | number | No| No| Number of pages to be switched by a smart gesture.<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.<br>The unit is page.|
+| pageCount | number | No | No | Number of pages to be turned by a smart gesture.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: page. |
 
 **Example**
 
-This example shows how to customize the smart gesture action as the page switching action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling)](#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example shows how to customize the smart gesture action as the page switching action for handling in the smart gesture listening callback. For details, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {
@@ -1047,7 +1063,7 @@ struct SmartGestureControllerExample {
       result.selectedProposal = pageSwitchProposal;
     }
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -1097,6 +1113,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_04](figures/smartgesture_04.png)
 
 ## ScrollActionProposal
@@ -1130,7 +1147,7 @@ Constructor for handling the scrolling action of a smart gesture.
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | Yes| Target node that responds to the scrolling action.|
-| distance | number | Yes| Scrolling distance.<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.<br>The unit is vp.|
+| distance | number | Yes | Scroll distance.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: vp. |
 
 ### Attributes
 
@@ -1144,7 +1161,7 @@ Constructor for handling the scrolling action of a smart gesture.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| distance | number | No| Yes| Scrolling distance of a smart gesture.<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.<br>The unit is vp.|
+| distance | number | No | Yes | Scroll distance of a smart gesture.<br>Value range: [0, +∞). Values less than 0 are treated as 0.<br>Unit: vp. |
 
 **Example**
 
@@ -1170,7 +1187,7 @@ struct SmartGestureControllerExample {
       result.selectedProposal = scrollProposal;
     }
     return result;
-  }
+  };
 
   aboutToAppear(): void {
     this.controller.enableSmartTapAndSlideGestures(true);
@@ -1219,6 +1236,7 @@ struct SmartGestureControllerExample {
   }
 }
 ```
+
 ![smartgesture_05](figures/smartgesture_05.png)
 
 ## GestureHandlingResolution
@@ -1251,7 +1269,7 @@ Constructor for the smart gesture handling resolution.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| isConsumed | boolean | Yes| Whether to consume the current smart gesture.<br>The value **true** indicates to consume the current smart gesture. In this case, if [selectedProposal](#attributes-2) is not set, the default action handling is used; if [selectedProposal](#attributes-2) is set, the custom action handling is used.<br>The value **false** indicates not to consume the current smart gesture. In this case, the system considers the gesture as unhandled.|
+| isConsumed | boolean | Yes | Whether to consume the current smart gesture.<br>The value **true** indicates that the current smart gesture is consumed. In this case, if [selectedProposal](#attributes-2) is not set, the system default action handler is used; if [selectedProposal](#attributes-2) is set, the custom action handler is used.<br>The value **false** indicates that the gesture is not consumed, and the system treats this smart gesture as unhandled. |
 
 ### Attributes
 
@@ -1265,16 +1283,16 @@ Constructor for the smart gesture handling resolution.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| isConsumed | boolean | No| No| Whether to consume the current smart gesture.<br>The value **true** indicates to consume the current smart gesture. In this case, if **selectedProposal** is not set, the default action handling is used; if **selectedProposal** is set, the custom action handling is used.<br>The value **false** indicates not to consume the current smart gesture. In this case, the system considers the gesture as unhandled.|
-| selectedProposal | [BaseGestureHandlingProposal](#basegesturehandlingproposal) | No| Yes| User-defined smart gesture handling behavior.<br>When **isConsumed** is set to **true**, if **selectedProposal** is not set, the default action handling is used; if **selectedProposal** is set, the custom action handling is used.<br>When **isConsumed** is set to **false**, the **selectedProposal** setting does not take effect.|
+| isConsumed | boolean | No | No | Whether to consume the current smart gesture.<br>The value **true** indicates that the current smart gesture is consumed. In this case, if **selectedProposal** is not set, the system default action handler is used; if **selectedProposal** is set, the custom action handler is used.<br>The value **false** indicates that the gesture is not consumed, and the system treats this smart gesture as unhandled. |
+| selectedProposal | [BaseGestureHandlingProposal](#basegesturehandlingproposal) | No | Yes | Smart gesture handling behavior specified by the user.<br>When **isConsumed** is **true**, if **selectedProposal** is not set, the system default action handling is used; if **selectedProposal** is set, the custom action handling is used.<br>When **isConsumed** is **false**, the **selectedProposal** setting does not take effect. |
 
 ## Example
 
 ### Example 1: Enabling Smart Gestures and Customizing Action Handling
 
-This example shows how to enable and disable smart gestures using the [enableSmartTapAndSlideGestures](arkts-apis-uicontext-smartgesturecontroller.md#enablesmarttapandslidegestures) API, register, unregister, or clear monitors using the [registerMonitor](arkts-apis-uicontext-smartgesturecontroller.md#registermonitor), [unregisterMonitor](arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor), and [clearMonitors](arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors) APIs for custom action handling, and select a component using the [requestSelected](arkts-apis-uicontext-smartgesturecontroller.md#requestselected) API.
+The following example uses the [enableSmartTapAndSlideGestures](#enablesmarttapandslidegestures) API to enable and disable smart gestures, uses the [registerMonitor](#registermonitor), [unregisterMonitor](#unregistermonitor), and [clearMonitors](#clearmonitors) APIs to register, unregister, or clear listener callbacks for custom action handling, and uses [requestSelected](#requestselected) to select a component.
 
-Since API version 26.0.0, **enableSmartTapAndSlideGestures**, **registerMonitor**, **unregisterMonitor**, **clearMonitors**, and **requestSelected** are added.
+Since API version 26.0.0, **enableSmartTapAndSlideGestures**, **registerMonitor**, **unregisterMonitor**, **clearMonitors**, **requestSelected**, and **clearSelected** are added.
 
 ```ts
 import {
@@ -1300,6 +1318,7 @@ struct SmartGestureControllerExample {
     // proposal.action indicates the final action to be executed. The value can be NONE, SELECT, CLICK, PAGE_FORWARD, SCROLL_FORWARD, or BACK_PRESS.
     this.hint = `Intent=${proposal.operateIntention}, Action=${proposal.action}`;
 
+    // Consume the current smart gesture, and then rewrite the default action handling based on proposal.action.
     const resolution = new GestureHandlingResolution(true);
 
     // Override the action to click.
@@ -1308,36 +1327,26 @@ struct SmartGestureControllerExample {
       if (node) {
         resolution.selectedProposal = new ClickActionProposal(node);
       }
-    }
-    // Override the action to selection.
-    else if (proposal.action === SmartGestureAction.SELECT) {
+    } else if (proposal.action === SmartGestureAction.SELECT) { // Override as the select action.
       const node = this.getUIContext().getFrameNodeById('target_text');
       if (node) {
         resolution.selectedProposal = new SelectActionProposal(node);
       }
-    }
-    // Override the action to page switching.
-    else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) { // Override as the page turning action.
       const node = this.getUIContext().getFrameNodeById('scroll_area');
       if (node) {
         // pageCount: The value range is [0, +∞), in pages.
         resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
       }
-    }
-    // Override the action to scrolling.
-    else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) { // Override as the scroll action.
       const node = this.getUIContext().getFrameNodeById('scroll_area');
       if (node) {
         // distance: The value range is [0, +∞), in vp.
         resolution.selectedProposal = new ScrollActionProposal(node, 180);
       }
-    }
-    // Override the action to none (no action is performed).
-    else if (proposal.action === SmartGestureAction.NONE) {
+    } else if (proposal.action === SmartGestureAction.NONE) { // Override as the empty action (no operation is performed).
       resolution.selectedProposal = new NoneActionProposal();
-    }
-    // Override the action to back.
-    else if (proposal.action === SmartGestureAction.BACK_PRESS) {
+    } else if (proposal.action === SmartGestureAction.BACK_PRESS) { // Override as the back action.
       resolution.selectedProposal = new BackPressActionProposal();
     }
 
@@ -1415,7 +1424,6 @@ struct SmartGestureControllerExample {
         }.width('100%')
       }.width('100%')
     }
-    .width('100%')
     .layoutWeight(1)
     .onAppear(() => {
       this.controller.enableSmartTapAndSlideGestures(true);
@@ -1428,6 +1436,6 @@ struct SmartGestureControllerExample {
   }
 }
 ```
-![smartgesture_06](figures/smartgesture_06.png)
 
+![smartgesture_06](figures/smartgesture_06.png)
 <!--no_check-->

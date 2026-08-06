@@ -12,7 +12,7 @@
 
 本模块提供三大核心能力：1）通过`connectSystemChannel`建立系统面板与输入法应用之间的通信通道；2）通过`onSystemPanelStatusChange`订阅系统面板状态变化（包括输入类型、面板标志、面板升起状态、功能按钮需求），系统面板据此自适应调整自身布局；3）通过`onSystemPrivateCommand`/`sendPrivateCommand`实现系统面板与输入法应用之间的私有数据双向通信，用于传递自定义指令和配置数据。
 
-当开发输入法系统面板（系统级面板组件）时使用本模块。系统面板需要与系统预置输入法应用协同工作时，须先调用`connectSystemChannel`建立通道，再订阅状态变化和私有命令事件。本模块仅系统应用可调用，且仅支持Stage模型。
+当开发输入法系统面板（系统级面板组件）时使用本模块。系统面板需要与系统预置输入法应用协同工作时，须先调用`connectSystemChannel`建立通道，再订阅状态变化和私有命令事件。
 
 本模块的核心开放能力由以下关键类型承载：
 
@@ -67,6 +67,10 @@ inputMethodSystemPanelManager.offSystemPrivateCommand();
 > **说明：**
 >
 > `connectSystemChannel`必须在订阅事件和发送命令之前调用，否则相关操作将因通道未连接而返回错误码12800026。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **起始版本：** 26.0.0
 
@@ -318,7 +322,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | not system application. |
-| 12800026 | input method system panel error. Possible causes: 1. system panel not connected. 2. ipc failed due to large amount of data transferred or other reasons. 3. the caller is not system panel. |
+| 12800026 | input method system panel error. Possible causes: 1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel. |
 
 **示例：**
 

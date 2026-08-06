@@ -1,12 +1,14 @@
 # DynamicLayout
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:40:02.687Z pushedAt=2026-08-01T06:42:55.898Z -->
 
-Defines the dynamic layout container component, which supports dynamically switching between different layout algorithms at runtime without changing the status of child components.
+A dynamic layout container component that supports dynamically switching between different layout algorithms at runtime without altering the state of child components. Using **DynamicLayout** improves layout flexibility and simplifies the development process for UI adaptation and multi-view switching. It is suitable for scenarios such as responsive layouts (adapting to different screen sizes), multi-view mode switching (e.g., switching between list, grid, and waterfall layouts), and user-defined layouts.
 
 > **NOTE**
 >
@@ -24,11 +26,11 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 Defines the dynamic layout container.
 
-**Model restriction:** This API can be used only in the stage model.
-
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,7 @@ Defines the dynamic layout container.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | Yes| Layout algorithm of the dynamic layout container. If an invalid value is used, the child components are stacked and arranged according to [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm).|
+| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | Yes | Layout algorithm for the dynamic layout container. Supported layout algorithm instances include [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm) (horizontal linear layout, suitable for horizontal arrangement scenarios), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm) (vertical linear layout, suitable for vertical arrangement scenarios), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) (stack layout, suitable for overlapping scenarios), [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm) (grid layout, suitable for regular grid scenarios), and [CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm) (custom layout, suitable for complex and special layout scenarios). For details, see [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). If an invalid value (such as **null**, **undefined**, or an invalid layout algorithm object) is passed, child components are laid out according to [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), with child components stacked on top of each other. |
 
 ## Attributes
 
@@ -44,11 +46,13 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 
 > **NOTE**
 >
-> - When the layout algorithm is [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm) or [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), the [Flex layout](ts-universal-attributes-flex-layout.md) attributes set for child components take effect.
+> - When the layout algorithm is [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm) or [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), the [flex layout](ts-universal-attributes-flex-layout.md) attributes set on child components take effect, while the [layoutGravity](ts-universal-attributes-location.md#layoutgravity20) attribute does not.
 >
-> - When the layout algorithm is [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), the [layoutGravity](ts-universal-attributes-location.md#layoutgravity20) attribute set for child components takes effect.
+> - When the layout algorithm is [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), the [layoutGravity](ts-universal-attributes-location.md#layoutgravity20) attribute set on child components takes effect, while the [flex layout](ts-universal-attributes-flex-layout.md) attributes do not.
 >
-> - When the layout algorithm is [CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm), the [setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12) method of the [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) component of **DynamicLayout** has a higher priority than the [sizing](ts-universal-attributes-size.md) and [border styling](ts-universal-attributes-border.md) attributes. The [measure](../js-apis-arkui-frameNode.md#measure12) and [layout](../js-apis-arkui-frameNode.md#layout12) methods of the child component [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) have a higher priority than the [ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute.
+> - When the layout algorithm is [CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm), the [setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12) method of the **DynamicLayout** component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) takes precedence over the [size settings](ts-universal-attributes-size.md) and [border](ts-universal-attributes-border.md) attributes, and the [measure](../js-apis-arkui-frameNode.md#measure12) and [layout](../js-apis-arkui-frameNode.md#layout12) methods of the child component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) take precedence over the [ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute.
+>
+> - When the layout algorithm is [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm), the [flex layout](ts-universal-attributes-flex-layout.md) attributes set on child components do not take effect, the [layoutGravity](ts-universal-attributes-location.md#layoutgravity20) attribute does not take effect, and the positions of child components are controlled by the **GridLayoutAlgorithm** parameters.
 
 ## Events
 
@@ -58,7 +62,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ### Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm
 
-This example shows how to override the [onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout) functions to display the product list in waterfall layout.
+This example shows how to override the [onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout) functions to implement a waterfall layout for displaying a product list. In the waterfall layout, the heights of child components are calculated and the cumulative height of each column is recorded during the measurement phase, and child components are assigned to the column with the smallest current height during the layout phase, achieving an automatic fill effect.
 
 Since API version 24, **onMeasure** and **onLayout** are added.
 
@@ -227,11 +231,16 @@ interface Product {
   image: string;
 }
 ```
+
 ![](figures/dynamiclayout_waterflow_customlayout.png)
 
 ### Example 2: Switching the Layout Algorithm
 
-This example shows how to dynamically switch the layout algorithm of the **DynamicLayout** component by changing the [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) variable decorated by [@Local](../../../ui/state-management/arkts-new-local.md). Specifically, it shows how to switch between [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) and [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm).
+This example shows how to dynamically switch the layout algorithm of the **DynamicLayout** component by changing the [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) variable decorated with [@Local](../../../ui/state-management/arkts-new-local.md). The example demonstrates how to switch the layout algorithm to [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm) (horizontal linear layout), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm) (vertical linear layout), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) (stack layout), and [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm) (grid layout).
+
+> **NOTE**
+>
+> In this example, the preset **layoutGravity** attribute takes effect only under the **Stack** layout algorithm and does not take effect under the **Row** or **Column** layout algorithm.
 
 Since API version 24, **RowLayoutAlgorithm**, **ColumnLayoutAlgorithm**, **StackLayoutAlgorithm**, and **GridLayoutAlgorithm** have been added.
 
@@ -343,6 +352,7 @@ struct LayoutSwitchExample {
   }
 }
 ```
+
 ![](figures/dynamiclayout_change_flag.gif)
 
 ### Example 3: Modifying the Layout Algorithm Attributes
@@ -402,6 +412,7 @@ struct PropertyChangeExample {
         Button('Space between')
           .fontSize(14)
           .onClick(() => {
+            // Set the justifyContent attribute to space-between.
             this.algorithm.justifyContent = FlexAlign.SpaceBetween;
           })
       }
@@ -411,5 +422,5 @@ struct PropertyChangeExample {
   }
 }
 ```
+
 ![](figures/dynamiclayout_change_property.gif)
-<!--no_check-->

@@ -51,15 +51,15 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)](#oh_ability_childprocessconfigs_setisolationmode) | - | 设置子进程配置信息对象的数据沙箱与网络环境的共享模式，详见[NativeChildProcess_IsolationMode](#nativechildprocess_isolationmode)。该设置仅当调用[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)、[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口时生效。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName(Ability_ChildProcessConfigs* configs,const char* processName)](#oh_ability_childprocessconfigs_setprocessname) | - | 设置子进程配置信息对象中的进程名称。 |
 | [typedef void (\*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy)](#oh_ability_onnativechildprocessstarted) | OH_Ability_OnNativeChildProcessStarted | 通知子进程启动结果的回调函数。 |
-| [int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeChildProcessStarted onProcessStarted)](#oh_ability_createnativechildprocess) | - | 创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过回调参数异步通知，需注意回调通知为独立线程，回调函数实现需要注意线程同步，且不能执行高耗时操作避免长时间阻塞。参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。<br>**设备行为差异：** 对于API version 13及之前版本，该接口在PC/2in1中可正常使用，在Tablet设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。对于API version 14及之后版本，该接口在PC/2in1、Tablet设备可正常使用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。<br>**说明：** 对于API version 14及之前版本，单个进程只能启动1个Native子进程。从API version 15开始，单个进程最多支持启动50个Native子进程。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfigs(const char* libName,Ability_ChildProcessConfigs* configs, OH_Ability_OnNativeChildProcessStarted onProcessStarted)](#oh_ability_createnativechildprocesswithconfigs) | - | 根据传入的子进程配置信息创建子进程，并加载参数中指定的动态链接库文件。子进程的启动结果通过回调参数异步通知调用方。该回调在独立线程中执行，需要确保线程同步，且不能执行高耗时操作避免长时间阻塞。参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcessWithConfigs(libName, configs, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. <br>在NativeChildProcess_MainProc()函数返回后子进程退出。<br>**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。 |
+| [int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeChildProcessStarted onProcessStarted)](#oh_ability_createnativechildprocess) | - | 创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过回调参数异步通知，需注意回调通知为独立线程，回调函数实现需要注意线程同步，且不能执行高耗时操作避免长时间阻塞。参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(errCode, ipcRemote)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。<br>**设备行为差异：** 对于API version 13及之前版本，该接口在PC/2in1中可正常使用，在Tablet设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。对于API version 14及之后版本，该接口在PC/2in1、Tablet设备可正常使用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。<br>**说明：** 对于API version 14及之前版本，单个进程只能启动1个Native子进程。从API version 15开始，单个进程最多支持启动50个Native子进程。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfigs(const char* libName,Ability_ChildProcessConfigs* configs, OH_Ability_OnNativeChildProcessStarted onProcessStarted)](#oh_ability_createnativechildprocesswithconfigs) | - | 根据传入的子进程配置信息创建子进程，并加载参数中指定的动态链接库文件。子进程的启动结果通过回调参数异步通知调用方。该回调在独立线程中执行，需要确保线程同步，且不能执行高耗时操作避免长时间阻塞。参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcessWithConfigs(libName, configs, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(errCode, ipcRemote)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。<br>**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char* entry, NativeChildProcess_Args args,NativeChildProcess_Options options, int32_t *pid)](#oh_ability_startnativechildprocess) | - | 启动一个Native子进程，并加载指定的动态链接库文件。指定的动态库必须实现一个以NativeChildProcess_Args为参数的函数（函数名称可自定义），并导出该函数。示例如下：<br>1. void Main(NativeChildProcess_Args args);<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_StartNativeChildProcess(entryPoint, args, options)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("Main")<br>4. Main(args)<br>5. 子进程将在Main(args)函数返回后退出。<br>**设备行为差异：** 在API version 13及之前，该接口在PC/2in1设备中可正常使用，在其他设备类型中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。从API version 14开始，该接口在PC/2in1、Tablet中可正常使用，在其他设备类型中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs(const char* entry, NativeChildProcess_Args args, Ability_ChildProcessConfigs* configs, int32_t *pid)](#oh_ability_startnativechildprocesswithconfigs) | - | 根据参数中子进程配置信息启动Native子进程，加载参数中指定的动态链接库文件并调用入口函数。支持传参到子进程。指定的动态库必须实现一个以NativeChildProcess_Args为参数的函数（函数名称可自定义），并导出该函数。示例如下：<br>1. void Main(NativeChildProcess_Args args);<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_StartNativeChildProcessWithConfigs(entryPoint, args, configs, &pid)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("Main")<br>4. Main(args)<br>5. 子进程将在Main(args)函数返回后退出。<br>**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码。 |
 | [NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs()](#oh_ability_getcurrentchildprocessargs) | - | 子进程获取自身的启动参数。 |
 | [typedef void (\*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)](#oh_ability_onnativechildprocessexit) | OH_Ability_OnNativeChildProcessExit | 获取子进程退出信息。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | 注册子进程退出回调。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[childProcessManager.startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。重复注册同一个回调函数只会保留一个。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | 解注册子进程退出回调。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效，且仅当调用[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)、[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口时生效。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。 |
 | [OH_Ability_IsNativeChildProcessSupported()](#oh_ability_isnativechildprocesssupported) | - | 查询是否允许调用者在此设备上创建Native子进程。 |
 
@@ -92,7 +92,7 @@ enum Ability_NativeChildProcess_ErrCode
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。请检查动态库文件路径和名称是否正确，确保动态库实现并导出了对应的方法。|
 | NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。请检查NativeChildProcess_OnConnect函数的实现，确保返回有效的IPC对象指针。 |
 | NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。请检查回调函数是否已注册，确保在解注册前已成功注册该回调函数。<br>**起始版本：** 20 |
-| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。<br>**起始版本：** 22|
+| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。<br>**起始版本：** 22 |
 
 ### NativeChildProcess_IsolationMode
 
@@ -108,7 +108,7 @@ enum NativeChildProcess_IsolationMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NCP_ISOLATION_MODE_NORMAL = 0 | 普通隔离模式下，父进程与子进程共享同一沙箱环境或网络环境。 |
+| NCP_ISOLATION_MODE_NORMAL = 0 | 普通隔离模式下，父进程与子进程共享同一沙箱环境和网络环境。 |
 | NCP_ISOLATION_MODE_ISOLATED = 1 | 在隔离模式下，父进程与子进程不共享同一沙箱环境或网络环境。 |
 
 
@@ -122,7 +122,9 @@ Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs()
 
 **描述**
 
-创建一个子进程配置信息对象。创建对象成功后需要通过调用[OH_Ability_DestroyChildProcessConfigs](#oh_ability_destroychildprocessconfigs)来销毁对象从而避免内存泄漏。
+创建一个子进程配置信息对象。当需要使用[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)或[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)接口启动子进程时，需要先创建配置信息对象，用于设置子进程的进程名、隔离模式等参数。
+
+创建对象成功后需要通过调用[OH_Ability_DestroyChildProcessConfigs](#oh_ability_destroychildprocessconfigs)来销毁对象从而避免内存泄漏。
 
 **起始版本：** 20
 
@@ -309,7 +311,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfig
 
 根据传入的子进程配置信息创建子进程，并加载参数中指定的动态链接库文件。子进程的启动结果通过回调异步通知调用方。该回调在独立线程中执行，需要确保线程同步，且不能执行高耗时操作避免长时间阻塞。子进程中不支持创建ArkTS基础运行时环境。
 
-参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcessWithConfigs(libName, configs, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
+参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcessWithConfigs(libName, configs, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(errCode, ipcRemote)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
 
 **设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。
 
@@ -380,7 +382,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs
 
 **描述**
 
-根据参数中的子进程配置信息启动Native子进程，加载指定的动态链接库文件并调用入口函数。支持传参到子进程。指定的动态库必须实现一个以[NativeChildProcess_Args](capi-nativechildprocess-args.md)为参数的函数（函数名称可自定义），并导出该函数。
+根据参数中的子进程配置信息启动Native子进程，加载指定的动态链接库文件并调用入口函数。支持传参到子进程。子进程中不支持创建ArkTS基础运行时环境。指定的动态库必须实现一个以[NativeChildProcess_Args](capi-nativechildprocess-args.md)为参数的函数（函数名称可自定义），并导出该函数。
 
 示例如下：<br>void Main(NativeChildProcess_Args args);<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_StartNativeChildProcessWithConfigs(entryPoint, args, configs, &pid)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("Main")<br>4. Main(args)<br>5. 子进程将在Main(args)函数返回后退出。
 
@@ -437,7 +439,7 @@ typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t pid | 启动的子进程id。 |
+| int32_t pid | 退出的子进程id。 |
 | int32_t signal | 子进程退出信号值，表示子进程的退出原因。常见的信号值包括：1（SIGHUP挂起）、2（SIGINT中断）、9（SIGKILL强制终止）、15（SIGTERM终止）等。 |
 
 **参见：**

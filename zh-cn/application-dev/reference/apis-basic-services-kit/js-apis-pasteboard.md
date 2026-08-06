@@ -172,7 +172,6 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 | 参数名 | 类型 | 必填 | 说明                |
 | -------- | -------- | -------- |-------------------|
 | mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
-| value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。  |
 | value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。建议根据实际场景选择合适的数据类型，避免使用过大的数据对象以免影响剪贴板性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
 
 **返回值：**
@@ -634,7 +633,7 @@ struct PasteboardTest {
 
 | 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
+| destUri             | string                                        | 否 | 是 | 拷贝文件的目标路径对应的URI。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件复制处理，默认为空。 |
 | fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项。OVERWRITE（覆盖）适合需要确保目标路径使用最新文件内容的场景；SKIP（跳过）适合需要保留目标路径原有文件、避免意外覆盖的场景。默认为OVERWRITE。 |
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。设置为DEFAULT时采用系统默认进度显示；设置为NONE时需应用自行处理进度，此时progressListener和progressSignal参数才有效。 |
 | progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，用于获取粘贴过程的进度。仅当progressIndicator设置为NONE时此参数才生效，可设置该项自行处理进度显示；当progressIndicator设置为DEFAULT时此参数无效。默认为空（不监听进度）。 |
@@ -1479,6 +1478,7 @@ pasteComplete(): void
 
 通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
 
+pasteComplete与其他接口的使用步骤可参考：
 1. getData()获取剪贴板数据
 2. pasteStart()保留跨设备通道
 3. 使用剪贴板数据
@@ -2010,7 +2010,7 @@ systemPasteboard.setData(pasteData).then((data: void) => {
 
 getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
-读取系统剪贴板内容，使用callback异步回调。将剪贴板数据封装为PasteData对象返回。 调用此方法后，系统将从剪贴板服务读取当前内容，通过callback返回PasteData对象。读取成功后，应用可以通过PasteData对象的方法获取具体的数据内容（如文本、HTML、URI等）。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与getDataSync相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
+读取系统剪贴板内容，使用callback异步回调。将剪贴板数据封装为PasteData对象返回。 调用此方法后，系统将从剪贴板服务读取当前内容，通过callback返回PasteData对象。读取成功后，应用可以通过PasteData对象的方法获取具体的数据内容（如文本、HTML、URI等）。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与[getDataSync](#getdatasync11)相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
 
 **需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -2627,7 +2627,7 @@ try {
 
 getDataSync(): PasteData
 
-读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口getData。
+读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata9)。
 
 **需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 

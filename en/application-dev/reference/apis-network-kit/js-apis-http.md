@@ -111,7 +111,7 @@ httpRequest.request(// Enter the URL of the HTTP request. The URL can contain pa
         remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
       }
     ],
-    addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. This field is supported since API version 15.
+    addressFamily: http.AddressFamily.DEFAULT, // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. This field is supported since API version 15.
     customMethod: 'GET', // Optional. This field is supported since API version 23.
     maxRedirects: 30, // Optional. The default value is 30. This field is supported since API version 23.
     sniHostName: "www.example.com", // Optional. This field is supported since API version 23.
@@ -365,7 +365,7 @@ let options: http.HttpRequestOptions = {
     // You can add the header field based on service requirements.
     header: new Header('application/json'),
     readTimeout: 60000, // Optional. The default value is 60000, in ms.
-    connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+    connectTimeout: 60000, // Optional. The default value is 60000, in ms.
     usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
     usingProxy: false, // Optional. The system proxy is used by default. If this parameter is set to false, no proxy is used. This field is supported since API version 10.
 };
@@ -669,7 +669,7 @@ let options: http.HttpRequestOptions = {
     // You can add the header field based on service requirements.
     header: new Header('application/json'),
     readTimeout: 60000, // Optional. The default value is 60000, in ms.
-    connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+    connectTimeout: 60000, // Optional. The default value is 60000, in ms.
     usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
     usingProxy: false, // Optional. The system proxy is used by default. If this parameter is set to false, no proxy is used. This field is supported since API version 10.
 };
@@ -873,7 +873,7 @@ let options: http.HttpRequestOptions = {
     // You can add the header field based on service requirements.
     header: new Header('application/json'),
     readTimeout: 60000, // Optional. The default value is 60000, in ms.
-    connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+    connectTimeout: 60000, // Optional. The default value is 60000, in ms.
     usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
     usingProxy: false, // Optional. The system proxy is used by default. If this parameter is set to false, no proxy is used. This field is supported since API version 10.
 };

@@ -1,4 +1,4 @@
-#  @ohos.app.ability.application (应用工具类)
+# @ohos.app.ability.application (应用工具类)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -369,7 +369,7 @@ exitMasterProcessRole(): Promise\<void>
 
 退出当前进程的[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)身份。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异：** 该接口仅在PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
@@ -486,8 +486,7 @@ createModuleContextSync(context: Context, moduleName: string): \<Context>
 **示例：**
 
 ```ts
-import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {

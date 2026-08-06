@@ -6,17 +6,17 @@
 <!--Designer: @no86-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1f4a80309a2b57b7ebd6ee4eebbf5122fe8980a2 translatedAt=2026-07-29T01:27:35.805Z pushedAt=2026-07-29T11:55:39.804Z -->
+<!-- md-trans-meta sourceCommit=bb3fe7567540ccb1863f77532b1f5c54ec3874e8 translatedAt=2026-08-04T01:03:12.482Z pushedAt=2026-08-04T01:36:49.479Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 33600001 Word Selection Service Error
+## 33600001 Word Selection Service Invocation Error
 
 **Error Message**
 
-Selection service exception.
+Selection service invocation exception.
 
 **Description**
 
@@ -74,7 +74,7 @@ This error code is reported when a user calls the word selection service API usi
 
 **Possible Causes**
 
-The word selection app calling the word selection API is not the one selected by the user in system settings.
+The app calling the word selection service API is not the one selected by the user in system settings.
 
 **Solution**
 

@@ -1652,6 +1652,44 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 |pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| 是 | 设置当前路由栈中的路由页面信息数组。设置后，将当前路由栈更新为指定内容，并实现路由转场。开发者可在原有栈的基础上批量添加或删除页面。<br/>**说明：**<br/>数组长度无限制。|
 |animated| boolean | 否 | 是否开启转场动画。<br/>true：开启转场动画；false：不开启转场动画。<br /> 默认值：true|
 
+### preloadPath
+
+preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
+
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                     |
+| ---- | ---- | --- | ---|
+|info| [NavPathInfo](#navpathinfo10)| 是 | 预加载的NavDestination页面信息。|
+|options| [PreloadOptions](#preloadoptions)| 否 | 预加载页面选项。|
+
+**返回值：**
+
+| 类型                | 说明        |
+| ------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
+
+| 错误码ID   | 错误信息 |
+| --------- | ------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 100001    | Internal error.|
+| 100005    | Builder function not registered. |
+| 100006    | NavDestination not found.|
+
 ## NavPathInfo<sup>10+</sup>
 
 路由页面信息。
@@ -2219,13 +2257,13 @@ Navigation分割线颜色及上下边距。
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
 
-## NavigationConfiguration
+## PreloadOptions
 
-Navigation配置项。
+预加载页面选项。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2233,7 +2271,23 @@ Navigation配置项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。 |
+| onDestroy | Callback\<void\> | 否 | 是 | 预加载页面被系统销毁时的回调。 |
+
+## NavigationConfiguration
+
+Navigation配置项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -5835,3 +5889,111 @@ struct NavigationTitleMaterialDemo {
 ```
 
 ![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)
+
+
+### 示例21（开启左起右清栈效果）
+
+该示例演示如何使用clearContentStackOnPrimaryNavigation属性，开启Navigation左起右清栈效果。
+
+从API版本26.1.0开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
+
+```ts
+// xxx.ets
+@Component
+struct MyControlPanel {
+  private stack: NavPathStack | undefined = undefined;
+
+  aboutToAppear(): void {
+    let info = this.queryNavigationInfo();
+    if (info) {
+      this.stack = info.pathStack;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('push pageOne').onClick(() => {
+        this.stack?.pushPath({name: 'one'})
+      })
+        .margin({top: 25})
+      Button('push pageTwo').onClick(() => {
+        this.stack?.pushPath({name: 'two'})
+      })
+        .margin({top: 25})
+      Button('pop').onClick(() => {
+        this.stack?.pop()
+      })
+        .margin({top: 25})
+    }
+  }
+}
+
+@Component
+struct MyPageOne {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageOne')
+  }
+}
+
+@Component
+struct MyPageTwo {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageTwo')
+  }
+}
+
+@Entry
+@Component
+struct NavigationConfig {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyDestMap(name: string) {
+    if (name === 'one') {
+      MyPageOne()
+    } else {
+      MyPageTwo()
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('NavBar')
+    .titleMode(NavigationTitleMode.Mini)
+    .mode(NavigationMode.Split)
+    .navDestination(this.MyDestMap)
+    .configuration({
+      clearContentStackOnPrimaryNavigation: true
+    })
+  }
+}
+```
+
+![navigationClearContent.gif](figures/navigationClearContent.gif)
+
