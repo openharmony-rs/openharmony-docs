@@ -281,7 +281,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+子窗口创建后无标题栏，默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
