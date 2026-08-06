@@ -285,9 +285,9 @@ async function getResourceId(): Promise<string> {
 #### C++接口
 
 1. 在CMake脚本中链接相关动态库：
-```txt
-target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
-```
+   ```txt
+   target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+   ```
 
 2. 构造resourceId和propertyId，先调用[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)打开资源。
 

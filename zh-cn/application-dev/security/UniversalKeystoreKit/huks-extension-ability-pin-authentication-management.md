@@ -50,9 +50,9 @@ HUKS提供以下PIN码认证状态管理能力：
 #### C++接口
 
 1. 在CMake脚本中链接相关动态库：
-```txt
-target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
-```
+   ```txt
+   target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+   ```
 
 2. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)中的证书管理途径获取resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
