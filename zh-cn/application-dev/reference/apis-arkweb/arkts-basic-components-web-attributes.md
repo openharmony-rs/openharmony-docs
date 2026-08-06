@@ -5516,7 +5516,7 @@ ArkTS-Dyn: enableFollowSystemFontWeight(follow: boolean)
 
 ArkTS-Sta: enableFollowSystemFontWeight(follow: boolean | undefined)
 
-设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认字重不跟随系统设置变化。
 
 > **说明：**
 >
@@ -5532,7 +5532,7 @@ ArkTS-Sta: enableFollowSystemFontWeight(follow: boolean | undefined)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>ArkTS-Dyn：传入undefined或null时为true。<br>ArkTS-Sta：传入undefined时为true。 |
+| follow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。 |
 
 **示例：**
 
