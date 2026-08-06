@@ -9072,7 +9072,7 @@ export default class EntryAbility extends UIAbility {
 
 getDecorButtonStyle(): DecorButtonStyle
 
-获取标题栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+获取标题栏按钮样式，仅对主窗和子窗生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
