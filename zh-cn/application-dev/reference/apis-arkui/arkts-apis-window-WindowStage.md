@@ -1344,7 +1344,8 @@ export default class EntryAbility extends UIAbility {
     try {
       windowStage.on('windowStageClose', () => {
         console.info('Succeeded in enabling the listener for window stage close event.');
-        return false;
+        // Return true, indicating that the current main window will not be closed.
+        return true;
       });
     } catch (exception) {
       console.error(`Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1402,7 +1403,8 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     const callback = () => {
       // ...
-      return false;
+      // Return true, indicating that the current main window will not be closed.
+      return true;
     }
     try {
       windowStage.on('windowStageClose', callback);
