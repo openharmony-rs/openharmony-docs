@@ -99,7 +99,7 @@ Unsubscribes from the word selection completion event. This API is used together
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'selectionCompleted'**.               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No | Callback to be unregistered (that is, the callback instance registered using on). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -300,7 +300,7 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
-    // // Configure the word selection panel, including the panel type, position, and size.
+    // Configure the word selection panel, including the panel type, position, and size.
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
@@ -360,7 +360,7 @@ Defines the information of a word selection event.
 
 ## Panel
 
-Describes a Panel object, which is created using [createPanel](#createpanel). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
+Describes a **Panel** object, which is created using [createPanel](#createpanel). This method can be used to set, display, hide, and move the panel, as well as subscribe to events. It is applicable to scenarios where a custom operation UI needs to be displayed to users after word selection is complete.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -422,7 +422,7 @@ try {
 
 show(): Promise\<void>
 
-Shows the word selection panel. This API is used together with [hide](#hide). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Shows the word selection panel. This API is used together with [hide](#hide). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -462,7 +462,7 @@ selectionPanel.show().then(() => {
 
 hide(): Promise\<void>
 
-Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
+Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -613,7 +613,7 @@ try {
 
 moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
-Moves the word selection panel to the specified coordinates in the global coordinates system of the screen. The panel can be moved to an extended screen. This API can be called only after a Panel instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
+Moves the word selection panel to the specified coordinates in the global coordinates system of the screen. The panel can be moved to an extended screen. This API can be called only after a **Panel** instance is obtained by calling [createPanel](#createpanel). This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -707,7 +707,7 @@ Unsubscribes from the word selection panel destruction event. This API is used t
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Type of the event to unsubscribe from. The value is fixed to **'destroyed'**. |
-| callback | Callback\<void> | No | Callback to be unregistered (that is, the callback instance registered using **on**). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
@@ -769,7 +769,7 @@ Unsubscribes from the word selection panel hiding event. This API is used togeth
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes   | Type of the event to unsubscribe from. The value is fixed to **'hidden'**.               |
-| callback | Callback\<void> | No | Callback to be unregistered (that is, the callback instance registered using **on**). If this parameter is not specified, this API unregisters all callbacks for the specified type. |
+| callback | Callback\<void> | No | Callback to be unregistered, which the callback instance registered using **on**. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Example**
 
