@@ -1438,3 +1438,4 @@ struct SmartGestureControllerExample {
 ```
 
 ![smartgesture_06](figures/smartgesture_06.png)
+<!--no_check-->

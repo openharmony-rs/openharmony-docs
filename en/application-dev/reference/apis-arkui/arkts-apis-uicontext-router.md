@@ -1299,7 +1299,7 @@ Replaces the current page with a specified named route page and destroys the rep
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page. |
-| mode | [router.RouterMode](js-apis-router.md#routermode9) | Yes | Mode used for page replacement. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the sngleton mode can avoid duplicate pages from being pushed onto the stack, suitable for singleton scenarios such as sign-in pages and home pages. |
+| mode | [router.RouterMode](js-apis-router.md#routermode9) | Yes | Mode used for page replacement. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages from being pushed onto the stack, suitable for singleton scenarios such as sign-in pages and home pages. |
 | callback | AsyncCallback&lt;void&gt; | Yes | Callback for the page replacement result.<br/>If the page replacement is successful, **error** is **undefined**. When the page replacement fails, **error** is the error object returned by the system. |
 
 **Error codes**

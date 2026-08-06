@@ -208,7 +208,7 @@ struct TextDemo {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove characters.
-        let textAfterCut = this.displayedText + '…'; // Append an ellipsis.
+        let textAfterCut = this.displayedText + '...'; // Append an ellipsis.
         let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
@@ -219,7 +219,7 @@ struct TextDemo {
           console.info('displayedText: ' + this.displayedText);
         }
       }
-      this.displayedText = this.displayedText + '…';
+      this.displayedText = this.displayedText + '...';
     }
   }
 
