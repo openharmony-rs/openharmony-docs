@@ -841,7 +841,7 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -855,7 +855,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明           |
 | -------- | ------------------------------ | ---- | -------------- |
-| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量产生冲突。 |
+| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#event)中定义的系统事件名称常量产生冲突。 |
 | callback | AsyncCallback&lt;void&gt;      | 是   | 打点回调函数。 |
 
 **错误码：**
@@ -935,7 +935,7 @@ hiAppEvent.write({
 
 write(info: AppEventInfo): Promise&lt;void&gt;
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -949,7 +949,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 参数名 | 类型                           | 必填 | 说明           |
 | ------ | ------------------------------ | ---- | -------------- |
-| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量冲突混淆。 |
+| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#event)中定义的系统事件名称常量冲突混淆。 |
 
 **返回值：**
 
@@ -1755,7 +1755,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | BEHAVIOR  | 4    | 行为类型事件。 |
 
 
-## hiAppEvent.domain<sup>11+</sup>
+## domain<sup>11+</sup>
 
 ### 常量
 
@@ -1774,7 +1774,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | OS   | string | 是 | 系统领域。 |
 
 
-## hiAppEvent.event
+## event
 
 ### 常量
 
@@ -1801,7 +1801,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
-## hiAppEvent.param
+## param
 
 ### 常量
 
