@@ -237,7 +237,7 @@ struct BorderExample {
 }
 ```
 
-![en-us_image_0000001219982705](figures/en-us_image_0000001219982705.gif)
+![borderStyling1](figures/borderStyling1.gif)
 
 ### Example 2: Setting the Border Width Type and Border Color
 
@@ -315,11 +315,11 @@ struct BorderExample {
 
 The following shows how the example is represented with left-to-right scripts.
 
-![en-us_image_border_ltr](figures/en-us_image_border_ltr.png)
+![image-border-ltr](figures/image-border-ltr.png)
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_image_border_rtl](figures/en-us_image_border_rtl.png)
+![image-border-rtl](figures/image-border-rtl.png)
 
 ### Example 3: Configuring Offscreen Rounded Corners
 

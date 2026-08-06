@@ -6,11 +6,11 @@
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-The **cloudData** module provides APIs for implementing device-cloud synergy and device-cloud sharing and setting the device-cloud sync strategy.
+The **cloudData** module provides APIs for implementing device-cloud synergy and device-cloud sharing.
 
 Device-cloud synergy enables sync of the structured data (in RDB stores) between devices and the cloud. The cloud serves as a data hub to implement data backup in the cloud and data consistency between the devices with the same account.
 
-Device-cloud sharing enables data sharing across accounts based on device-cloud synergy. Understanding the following concepts helps you better understand the device-cloud sharing process: **sharingResource**: an identifier of the string type generated for each data record shared by an application before device-cloud sync is performed. It uniquely identifies the data record being shared.
+Device-cloud sharing enables data sharing across accounts based on device-cloud synergy. Understanding the following concepts helps you better understand the device-cloud sharing process: **sharingResource**: an identifier of the string type generated for each data record shared by an application when device-cloud sync is performed. It uniquely identifies the data record being shared.
 
 **Participant**: all participants involved in a share, including the inviter and invitees.
 
@@ -41,11 +41,11 @@ Enumerates the operations for clearing the downloaded cloud data locally.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name     | Description                        |
-| --------- | ---------------------------- |
-| CLEAR_CLOUD_INFO | Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.|
-| CLEAR_CLOUD_DATA_AND_INFO |Clear the data downloaded from the cloud, excluding the cloud data that has been modified locally.  |
-| CLEAR_CLOUD_NONE<sup>23+</sup> |Does not clear any data.  |
+| Name     |  Value| Description                        |
+| --------- | --- | ---------------------------- |
+| CLEAR_CLOUD_INFO | 0 |  Clear the cloud identifier of the data downloaded from the cloud (the flag indicating that the data comes from the cloud) and retain the data locally.|
+| CLEAR_CLOUD_DATA_AND_INFO | 1 | Clear the data downloaded from the cloud, excluding the cloud data that has been modified locally.  |
+| CLEAR_CLOUD_NONE<sup>23+</sup> | 2 | Does not clear any data.  |
 
 ## ExtraData<sup>11+</sup>
 
@@ -55,8 +55,8 @@ Represents the transparently transmitted data, which contains information requir
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| eventId   | string | No  | No  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
-| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
+| eventId   | string | No  | No  | Event ID. Currently, only the value **cloud_data_change** is supported, indicating cloud data change. Other values are invalid.|
+| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application bundle name, database name, database type, and database table name. All the fields cannot be empty.|
 
 **Example**
 
@@ -71,7 +71,6 @@ let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
   extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
-
 ```
 
 ## StatisticInfo<sup>12+</sup>
@@ -83,9 +82,9 @@ Represents the device-cloud sync statistics.
 | Name     | Type  | Read-Only| Optional| Description                                                 |
 | --------- | ------ | ---- | ---- |-----------------------------------------------------|
 | table   | string | No  | No  | Name of the table queried. For example, the value **cloud_notes** indicates that the sync information of the **cloud_notes** table is queried.|
-| inserted   | number | No  | No  | Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.         |
-| updated   | number | No  | No  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.    |
-| normal | number | No  | No  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.                    |
+| inserted   | number | No  | No  | Number of data records that are added locally but not synced to the cloud. For example, the value **2** indicates that two data records are added locally but not synced to the cloud.         |
+| updated   | number | No  | No  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.|
+| normal | number | No  | No  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.|
 
 ## SyncStatus<sup>18+</sup>
 
@@ -96,11 +95,11 @@ Enumerates the device-cloud sync task statuses.
 | Name     | Value  | Description             |
 | -------- |-----|-----------------|
 | RUNNING | 0  | The device-cloud sync task is running.|
-| FINISHED | 1   | The device-cloud sync task is completed.|
+| FINISHED | 1   | The device-cloud sync task is complete.|
 
 ## SyncInfo<sup>12+</sup>
 
-Represents information about the last device-cloud sync.
+Represents device-cloud sync information, including the time, result, and status of the last device-cloud sync.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -115,14 +114,18 @@ Represents information about the last device-cloud sync.
 
 Defines the switch information of a device-cloud synergy database.
 
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| enable     | boolean           | No  | No  | Whether to enable device-cloud synergy for the database. The value **true** indicates that device-cloud synergy is enabled, and the value **false** indicates the opposite.|
+| enable     | boolean           | No  | No  | Whether to enable device-cloud synergy for the database. The value **true** indicates that the device-cloud synergy is enabled, and the value **false** indicates the opposite.|
 | tableInfo  | Record<string, boolean> | No  | Yes  | Device-cloud synergy configuration of a table. The key is the table name, and the value is the switch status of the table. The value **true** indicates that device-cloud synergy is enabled for the table, and the value **false** indicates the opposite. If this parameter is not set, the device-cloud synergy is enabled for the database by default.|
 
 ## SwitchConfig<sup>23+</sup>
 
 Defines the switch configuration of a device-cloud synergy database.
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -132,14 +135,33 @@ Defines the switch configuration of a device-cloud synergy database.
 
 Defines the clearance information of a device-cloud synergy database.
 
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
 | action     | [ClearAction](#clearaction)           | No  | No  | Default data clearance mode of the database.|
 | tableInfo  | Record<string, [ClearAction](#clearaction)> | No  | Yes  | Information about the table whose data is to be cleared and the clearance rules. The key is the table name, and the value is the clearance mode of the table. If this parameter is not set, the data clearance mode of database is used by default.  |
 
+## BundleInfo
+
+Defines the device-cloud synergy application information.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| bundleName | string           | No  | No  | Bundle name of the application.|
+| storeId    | string | No  | Yes  | Name of the RDB store. The default value is an empty string. If the default value is used, this API queries all databases of this application.|
+
 ## ClearConfig<sup>23+</sup>
 
 Defines the clearance configuration of a device-cloud synergy database.
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
 | Name      | Type           | Read-Only| Optional| Description                      |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -155,6 +177,8 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 
 Enables device-cloud synergy. This API uses an asynchronous callback to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -163,9 +187,9 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| accountId | string                          | Yes  | ID of the cloud account.                                        |
+| accountId | string                          | Yes  | ID of the logged-in cloud account.                                        |
 | switches  | Record<string, boolean>         | Yes  | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
-| callback  | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result.                                                  |
+| callback  | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result. If device-cloud synergy is enabled successfully, the value of **err** is **undefined**; otherwise, the value is an error object.|
 
 **Error codes**
 
@@ -183,7 +207,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundleName2': false };
 try {
   cloudData.Config.enableCloud(account, switches, (err: BusinessError) => {
@@ -205,6 +229,8 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 
 Enables device-cloud synergy. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -213,7 +239,7 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| accountId | string                          | Yes  | ID of the cloud account.                                        |
+| accountId | string                          | Yes  | ID of the logged-in cloud account.                                        |
 | switches  | Record<string, boolean>         | Yes  | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
 
 **Return value**
@@ -238,7 +264,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundleName2': false };
 try {
   cloudData.Config.enableCloud(account, switches).then(() => {
@@ -258,6 +284,8 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 Disables device-cloud synergy. This API uses an asynchronous callback to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -266,8 +294,8 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 
 | Name   | Type                     | Mandatory| Description                |
 | --------- | ------------------------- | ---- | -------------------- |
-| accountId | string                    | Yes  | ID of the cloud account.|
-| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| accountId | string                    | Yes  | ID of the logged-in cloud account.|
+| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If device-cloud synergy is disabled successfully, the value of **err** is **undefined**. Otherwise, the value is an error object.|
 
 **Error codes**
 
@@ -285,7 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 try {
   cloudData.Config.disableCloud(account, (err: BusinessError) => {
     if (err === undefined) {
@@ -306,6 +334,8 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 Disables device-cloud synergy. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -314,7 +344,7 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 | Name   | Type  | Mandatory| Description                |
 | --------- | ------ | ---- | -------------------- |
-| accountId | string | Yes  | ID of the cloud account.|
+| accountId | string | Yes  | ID of the logged-in cloud account.|
 
 **Return value**
 
@@ -338,7 +368,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 try {
   cloudData.Config.disableCloud(account).then(() => {
     console.info('Succeeded in disabling cloud');
@@ -357,6 +387,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 Changes the device-cloud synergy setting for an application. This API uses an asynchronous callback to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -365,10 +397,10 @@ Changes the device-cloud synergy setting for an application. This API uses an as
 
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | Yes  | ID of the cloud account.|
+| accountId | string                          | Yes  | ID of the logged-in cloud account.|
 | bundleName| string                         | Yes  | Bundle name of the application.|
 | status    | boolean                        | Yes  | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
-| callback  | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result.                  |
+| callback  | AsyncCallback&lt;void&gt;       | Yes  | Callback used to return the result. If the device-cloud synergy setting for an application is successfully changed, the value of **err** is **undefined**; otherwise, the value is an error object.|
 
 **Error codes**
 
@@ -386,8 +418,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true, (err: BusinessError) => {
     if (err === undefined) {
@@ -408,6 +440,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 Changes the device-cloud synergy setting for an application. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -416,7 +450,7 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | Yes  | ID of the cloud account.|
+| accountId | string                          | Yes  | ID of the logged-in cloud account.|
 | bundleName| string                         | Yes  | Bundle name of the application.|
 | status    | boolean                        | Yes  | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
 
@@ -442,8 +476,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true).then(() => {
     console.info('Succeeded in changing App cloud switch');
@@ -464,6 +498,8 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -472,7 +508,7 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 
 | Name   | Type                           | Mandatory| Description                        |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | Yes  | ID of the cloud account.|
+| accountId | string                          | Yes  | ID of the logged-in cloud account.|
 | bundleName| string                         | Yes  | Bundle name of the application.|
 | status    | boolean                        | Yes  | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
 | config    | [SwitchConfig](#switchconfig23)   | No  | Switch configuration of a device-cloud synergy database. Device-cloud synergy priority: application > database > table. If this parameter is not set, the application-level device-cloud synergy is used by default.|
@@ -498,8 +534,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 let config: cloudData.SwitchConfig = {
   dbInfo: {
     'test_storeName1': {
@@ -529,6 +565,8 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 Notifies the data changes in the cloud. This API uses an asynchronous callback to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
@@ -537,9 +575,9 @@ Notifies the data changes in the cloud. This API uses an asynchronous callback t
 
 | Name    | Type                     | Mandatory| Description                |
 | ---------- | ------------------------- | ---- | -------------------- |
-| accountId  | string                    | Yes  | ID of the cloud account.|
+| accountId  | string                    | Yes  | ID of the logged-in cloud account.|
 | bundleName | string                    | Yes  | Bundle name of the application.            |
-| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the data changes in the cloud is successfully notified, the value of **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -557,8 +595,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.notifyDataChange(account, bundleName, (err: BusinessError) => {
     if (err === undefined) {
@@ -575,9 +613,11 @@ try {
 
 ### notifyDataChange
 
-static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&gt;
+static notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 Notifies the data changes in the cloud. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
@@ -587,7 +627,7 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 
 | Name    | Type  | Mandatory| Description                |
 | ---------- | ------ | ---- | -------------------- |
-| accountId  | string | Yes  | ID of the cloud account.|
+| accountId  | string | Yes  | ID of the logged-in cloud account.|
 | bundleName | string | Yes  | Bundle name of the application.            |
 
 **Return value**
@@ -612,8 +652,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.notifyDataChange(account, bundleName).then(() => {
     console.info('Succeeded in notifying the change of data');
@@ -628,9 +668,11 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
- static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback&lt;void&gt;):void
+static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback&lt;void&gt;):void
 
 Notifies the data changes in the cloud with the specified information, such as the database and table names (specified by the **extraData** field in **extInfo**). This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
@@ -649,7 +691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -679,9 +721,11 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-static notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallback&lt;void&gt;):void
 
 Notifies the data changes of a user in the cloud. This API uses an asynchronous callback to return the result. You can also specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user ID.
+
+**System API:** This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
@@ -692,7 +736,7 @@ Notifies the data changes of a user in the cloud. This API uses an asynchronous 
 | Name  | Type                     | Mandatory| Description                                           |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | Yes  | Transparently transmitted data, including information about the application that has data changes.       |
-| userId   | number                    | Yes  | User ID in the system.|
+| userId   | number                    | Yes  | User ID that exists in the system.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -701,7 +745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -736,6 +780,8 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 
 Notifies the data changes in the cloud. This API uses a promise to return the result. You can specify the database and tables with data changes in the **extraData** field in **extInfo**, and specify the user ID.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -759,7 +805,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -792,6 +838,8 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 Queries device-cloud data statistics, which include the data not synced, data synced and consistent, and data synced but inconsistent between the device and the cloud. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -800,7 +848,7 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 
 | Name | Type     | Mandatory| Description                               |
 | ------- |---------| ---- |-----------------------------------|
-| accountId | string  | Yes  | ID of the cloud account.                      |
+| accountId | string  | Yes  | ID of the logged-in cloud account.                      |
 | bundleName | string  | Yes  | Bundle name of the application.                            |
 | storeId  | string  | No  | Name of the RDB store. If this parameter is not specified, all local databases of this application are queried by default.|
 
@@ -808,7 +856,7 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 
 | Type                                                                                  | Description                    |
 |--------------------------------------------------------------------------------------| ------------------------ |
-| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | Promise used to return the table name and statistics.|
+| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | Promise used to return the result set where the table name is the key and the statistics array is the value.|
 
 **Error codes**
 
@@ -826,14 +874,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const accountId:string = "accountId";
-const bundleName:string = "bundleName";
-const storeId:string = "storeId";
+const accountId: string = "accountId";
+const bundleName: string = "bundleName";
+const storeId: string = "storeId";
 
 cloudData.Config.queryStatistics(accountId, bundleName, storeId).then((result) => {
-    console.info(`Succeeded in querying statistics. Info is ${JSON.stringify(result)}`);
+  console.info(`Succeeded in querying statistics. Info is ${JSON.stringify(result)}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -843,6 +891,8 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 Queries information about the last device-cloud sync. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -851,7 +901,7 @@ Queries information about the last device-cloud sync. This API uses a promise to
 
 | Name    | Type  | Mandatory| Description                                                        |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| accountId  | string | Yes  | ID of the cloud account.                                        |
+| accountId  | string | Yes  | ID of the logged-in cloud account.                                        |
 | bundleName | string | Yes  | Bundle name of the application.                                                  |
 | storeId    | string | No  | Name of the RDB store. The default value is an empty string. If the default value is used, this API queries the last device-cloud sync information of all databases of this application.|
 
@@ -877,18 +927,208 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const accountId:string = "accountId";
-const bundleName:string = "bundleName";
-const storeId:string = "storeId";
+const accountId: string = "accountId";
+const bundleName: string = "bundleName";
+const storeId: string = "storeId";
 try {
-    cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
-    	console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
-	}).catch((err: BusinessError) => {
-    	console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
+  cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
+    console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
 	});
 } catch(e) {
-    let error = e as BusinessError;
-  	console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### batchQueryLastSyncInfo
+
+static batchQueryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
+
+Queries information about the last device-cloud sync in batches. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                                                        |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId  | string | Yes  | ID of the logged-in cloud account.                                        |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | Yes  | Array of application information to be queried in batches. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned.|
+
+**Return value**
+
+| Type                                                        | Description                                        |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | Promise used to return the application bundle name and the result set of the last device-cloud sync for the database. The key of the outer record is the application bundle name, and the key of the inner record is the database name.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundlename is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountId: string = "accountId";
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+try {
+  cloudData.Config.batchQueryLastSyncInfo(accountId, bundleInfos).then((result) => {
+    console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### onSyncInfoChanged
+
+static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
+
+Subscribes to application sync information changes. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                                                        |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | Yes  | Array of application information to be subscribed to. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned.|
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | Yes  | Callback used to return the application bundle name and the sync result set of the database. The key of the outer record is the application bundle name, and the key of the inner record is the database name.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+try {
+  cloudData.Config.onSyncInfoChanged(bundleInfos, (result) => {
+    console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### offSyncInfoChanged
+
+static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
+
+Unsubscribes from application sync information changes. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                                                        |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | Yes  | Array of application information to be unsubscribed from. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned. The storeId of the application information during unsubscription must be the same as that during subscription.|
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | No  | Callback used to return the result. If this parameter is passed, the specified callback is unsubscribed. If this parameter is not passed, all callbacks of the application are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+const progressCallback = (result: Record<string, Record<string, cloudData.SyncInfo>>) => {
+  console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
+};
+
+// Subscribe to sync information changes.
+try {
+  cloudData.Config.onSyncInfoChanged(bundleInfos, progressCallback);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+
+// Unsubscribe from a specified callback.
+try {
+  cloudData.Config.offSyncInfoChanged(bundleInfos, progressCallback);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+
+// Unsubscribe from all callbacks.
+try {
+  cloudData.Config.offSyncInfoChanged(bundleInfos);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -897,6 +1137,8 @@ try {
 static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
 Sets a global device-cloud sync strategy. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
@@ -932,9 +1174,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
-    console.info('Succeeded in setting the global cloud strategy');
+  console.info('Succeeded in setting the global cloud strategy');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -944,6 +1186,8 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 Synchronizes data of a specified application on the device to the cloud. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -952,10 +1196,10 @@ Synchronizes data of a specified application on the device to the cloud. This AP
 
 | Name     | Type  | Mandatory| Description                 |
 | ---------- |--------| ---- |-----------------------|
-| bundleName | string | Yes  | Name of the application to sync.|
+| bundleName | string | Yes  | Bundle name of the application to sync.|
 | storeId    | string | Yes  | Name of the database to sync. |
 | mode       | [relationalStore.SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | Yes| Device-cloud sync mode.|
-| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes| Callback used to return the sync progress.|
+| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes| Callback used to return the **ProgressDetails** instance.|
 
 **Return value**
 
@@ -980,25 +1224,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { relationalStore } from '@kit.ArkData';
 
-try{
+try {
   cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress)=>{
     console.info('Succeeded in getting progress details.');
   }).then(() => {
-      console.info('Succeeded in syncing cloud data.');
+    console.info('Succeeded in syncing cloud data.');
   }).catch((err: BusinessError) => {
-      console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`Failed to sync cloud data. Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to sync cloud data. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-###  clear
+### clear
 
-static clear(accountId: string, appActions: Record<string, ClearAction>,  callback: AsyncCallback&lt;void&gt;): void
+static clear(accountId: string, appActions: Record<string, ClearAction>, callback: AsyncCallback&lt;void&gt;): void
 
 Clears the cloud data locally. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
@@ -1008,9 +1254,9 @@ Clears the cloud data locally. This API uses an asynchronous callback to return 
 
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
 | appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
-| callback   | AsyncCallback&lt;void&gt;                           | Yes  | Callback used to return the result.                      |
+| callback   | AsyncCallback&lt;void&gt;                           | Yes  | Callback used to return the result. If the local cloud data is cleared successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1037,7 +1283,7 @@ let appActions: dataType = {
 try {
   cloudData.Config.clear(account, appActions, (err: BusinessError) => {
     if (err === undefined) {
-      console.info('Succeeding in clearing cloud data');
+      console.info('Succeeded in clearing cloud data');
     } else {
       console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
     }
@@ -1054,6 +1300,8 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 Clears the cloud data locally. This API uses a promise to return the result.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1062,7 +1310,7 @@ Clears the cloud data locally. This API uses a promise to return the result.
 
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
 | appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
 
 **Return value**
@@ -1095,7 +1343,7 @@ let appActions: dataType = {
 };
 try {
   cloudData.Config.clear(account, appActions).then(() => {
-    console.info('Succeeding in clearing cloud data');
+    console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
@@ -1113,6 +1361,8 @@ Clears the cloud data locally. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API:** This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDDATA_CONFIG
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1121,9 +1371,9 @@ Clears the cloud data locally. This API uses a promise to return the result.
 
 | Name    | Type                                               | Mandatory| Description                            |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| accountId  | string                                              | Yes  | ID of the logged-in cloud account.            |
 | appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
-| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application bundle name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
 
 **Return value**
 
@@ -1152,7 +1402,7 @@ let appActions: Record<string, cloudData.ClearAction> = {
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
   'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
 };
-let config: Record<stringm, cloudData.ClearConfig> = {
+let config: Record<string, cloudData.ClearConfig> = {
   'test_bundleName': {
     dbInfo: {
       'test_storeName': {
@@ -1167,9 +1417,141 @@ let config: Record<stringm, cloudData.ClearConfig> = {
 }
 try {
   cloudData.Config.clear(account, appActions, config).then(() => {
-    console.info('Succeeding in clearing cloud data');
+    console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### cloudSyncEx
+
+static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
+
+Synchronizes data of a specified application between the device and cloud based on the cloud sync configuration. When **downloadOnly** in [CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig) is set to **true**, only the data on the cloud is synchronized to the device. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| bundleInfo | [BundleInfo](#bundleinfo) | Yes| Application bundle information configuration, which is a **BundleInfo** instance.|
+| config | [relationalStore.CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig) | Yes| Cloud sync configuration.|
+| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes| Callback used to return the **ProgressDetails** instance.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+
+**Example**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleInfo: cloudData.BundleInfo = {
+  bundleName: 'com.example.myapplication',
+  // Other BundleInfo fields
+};
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true
+};
+
+try {
+  cloudData.Config.cloudSyncEx(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
+    console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+  }).then(() => {
+    console.info('Succeeded in cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### stopCloudSync
+
+static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
+
+Stops data syncing with the cloud. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | Yes| Array of application bundle information configurations. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: 'com.example.myapplication1' },
+  { bundleName: 'com.example.myapplication2' }
+];
+
+try {
+  cloudData.Config.stopCloudSync(bundleInfos).then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -1275,6 +1657,8 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 Allocates a shared resource ID based on the data that matches the specified predicates. This API uses a promise to return the result set of the data to share, which also includes the column names if they are specified.
 
+**System API:** This is a system API.
+
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Parameters**
@@ -1336,7 +1720,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 }).catch((err: BusinessError) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1344,6 +1727,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates, participants: Array&lt;Participant&gt;, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;relationalStore.ResultSet&gt;): void
 
 Allocates a shared resource ID based on the data that matches the specified predicates. This API uses an asynchronous callback to return the result set of the data to share, which includes the shared resource ID and column names.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1403,7 +1788,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1411,6 +1795,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;relationalStore.ResultSet&gt;): void
 
 Allocates a shared resource ID based on the data that matches the specified predicates. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1469,7 +1855,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1477,6 +1862,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
 share(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 Shares data based on the specified shared resource ID and participants. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1527,7 +1914,6 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
 }).catch((err: BusinessError) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1535,6 +1921,8 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
 share(sharingResource: string, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;): void
 
 Shares data based on the specified shared resource ID and participants. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1582,7 +1970,6 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
   }
   console.info(`share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -1590,6 +1977,8 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
 unshare(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 Unshares data based on the specified shared resource ID and participants. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1640,7 +2029,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants).then((result) =
 }).catch((err: BusinessError) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -1648,6 +2036,8 @@ cloudData.sharing.unshare('sharing_resource_test', participants).then((result) =
 unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;): void
 
 Unshares data based on the specified shared resource ID and participants. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1695,7 +2085,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
   }
   console.info(`unshare succeeded, result: ${result}`);
 }))
-
 ```
 
 ### exit<sup>11+</sup>
@@ -1703,6 +2092,8 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
 exit(sharingResource: string): Promise&lt;Result&lt;void&gt;&gt;
 
 Exits the share of the specified shared resource. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1738,7 +2129,6 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### exit<sup>11+</sup>
@@ -1746,6 +2136,8 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
 exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 Exits the share of the specified shared resource. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1778,7 +2170,6 @@ cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) =>
   }
   console.info(`exit share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -1786,6 +2177,8 @@ cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) =>
 changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 Changes the privilege on the shared data. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1837,7 +2230,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
 }).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -1845,6 +2237,8 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
 changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;): void
 
 Changes the privilege on the shared data. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1854,7 +2248,7 @@ Changes the privilege on the shared data. This API uses an asynchronous callback
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                | Yes  | Shared resource ID.|
 | participants     | Array&lt;[Participant](#participant11)&gt;  | Yes  | Participants of the share.|
-| callback         | callback: AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | Yes  | Callback used to return the result.  |
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | Yes  | Callback used to return the result.  |
 
 **Error codes**
 
@@ -1893,7 +2287,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
   }
   console.info(`change privilege succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -1901,6 +2294,8 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
 queryParticipants(sharingResource: string): Promise&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;
 
 Queries the participants of the specified shared data. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1936,7 +2331,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -1944,6 +2338,8 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
 queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;): void
 
 Queries the participants of the specified shared data. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1976,7 +2372,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
   }
   console.info(`query participants succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -1984,6 +2379,8 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
 queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;
 
 Queries the participants based on the sharing invitation code. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2019,7 +2416,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
 }).catch((err: BusinessError) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2027,6 +2423,8 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
 queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;): void
 
 Queries the participants based on the sharing invitation code. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2059,7 +2457,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
   }
   console.info(`query participants by invitation succeeded, result: ${result}`);
 }))
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2067,6 +2464,8 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
 confirmInvitation(invitationCode: string, state: State): Promise&lt;Result&lt;string&gt;&gt;
 
 Confirms the invitation based on the sharing invitation code and obtains the shared resource ID. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2105,7 +2504,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 }).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2113,6 +2511,8 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&lt;Result&lt;string&gt;&gt;): void
 
 Confirms the invitation based on the sharing invitation code and obtains the shared resource ID. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2148,7 +2548,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
 }))
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2156,6 +2555,8 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 changeConfirmation(sharingResource: string, state: State): Promise&lt;Result&lt;void&gt;&gt;
 
 Changes the invitation confirmation state based on the shared resource ID. This API uses a promise to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2192,14 +2593,15 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }).catch((err: BusinessError) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
 
-changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void;
+changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 Changes the invitation confirmation state based on the shared resource ID. This API uses an asynchronous callback to return the result.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2233,6 +2635,5 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   }
   console.info(`change confirmation succeeded, result: ${result}`);
 }))
-
 ```
- 
+ <!--no_check-->

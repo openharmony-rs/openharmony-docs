@@ -8,19 +8,20 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **UiTest** module provides APIs that you can use to simulate UI actions during testing, such as clicks, double-clicks, long-clicks, and swipes.
+The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
 
 This module provides the following functions:
 
 - [On<sup>9+</sup>](#on9): provides UI component feature description APIs for component filtering and matching.
 - [Component<sup>9+</sup>](#component9): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
-- [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
+- [UiWindow<sup>9+</sup>](#uiwindow9): represents a window object on the UI and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
 - [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 - [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs of this module can be used only in <!--RP1-->[UITest](../../application-test/uitest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
@@ -28,7 +29,7 @@ This module provides the following functions:
 ## Modules to Import
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -70,10 +71,11 @@ Provides the coordinates of a point.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | number |  No  | No  | Horizontal coordinate of a coordinate point. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| y    | number |  No  | No  | Vertical coordinate of a coordinate point. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| x    | number |  No  | No  | Horizontal coordinate of a coordinate point, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| y    | number |  No  | No  | Vertical coordinate of a coordinate point, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayId<sup>20+</sup>    | number | No   | Yes  | ID of the display to which the coordinate point belongs. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Rect<sup>9+</sup>
@@ -82,12 +84,13 @@ Provides bounds information of a component.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name  | Type  | Read-Only| Optional| Description                     |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | number |  No  | No|X coordinate of the upper left corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| top    | number |  No  | No|Y coordinate of the upper left corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
-| right  | number |  No  | No|X coordinate of the lower right corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
-| bottom | number |  No  | No|Y coordinate of the lower right corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
+| left   | number |  No  | No|X coordinate of the upper left corner of the component border, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| top    | number |  No  | No|Y coordinate of the upper left corner of the component border, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
+| right  | number |  No  | No|X coordinate of the lower right corner of the component border, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
+| bottom | number |  No  | No|Y coordinate of the lower right corner of the component border, in pixels. The value is an integer greater than or equal to 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11. |
 | displayId<sup>20+</sup> | number |  No  | Yes|ID of the display to which the component border belongs. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
 
 ## WindowMode<sup>9+</sup>
@@ -126,12 +129,13 @@ Provides the flag attributes of this window.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name                | Type   | Read-Only| Optional| Description                                                                                    |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| title                | string  | No | Yes | Title of the window. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                         |
+| bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs, which is used to filter the target window in multi-window scenarios. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| title                | string  | No | Yes | Window title, which is used to filter the target window in multi-window scenarios. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                         |
 | focused              | boolean | No | Yes  | Whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| actived(deprecated)  | boolean | No  | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite.<br>This API is deprecated since API version 11. You are advised to use the **active** API instead.                                               |
+| actived(deprecated)  | boolean | No  | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite.<br>This API is supported since API version 9 and deprecated since API version 11. You are advised to use [active<sup>11+</sup>](#windowfilter9) instead.                                               |
 | active<sup>11+</sup> | boolean | No | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | displayId<sup>20+</sup> | number | No  | Yes | ID of the display to which the window belongs. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -209,7 +213,7 @@ Describes the extended configuration of window change event listening, which is 
 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
+| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The value is an integer greater than or equal to 500. The default value is **10000**. If the value is out of range, an error code is thrown.|
 | bundleName       | string | No  | Yes  | Bundle name of the window to be listened for. By default, all windows are listened for.      |
 
 
@@ -223,7 +227,7 @@ Describes the extended configuration of component operation event listening, whi
 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
+| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The value is an integer greater than or equal to 500. The default value is **10000**. If the value is out of range, an error code is thrown.|
 | on       | [On](#on9) | No  | Yes  | Attribute requirements of the target component to listen for. By default, all components are listened for.<br> **Note**: Only components with specified attributes can be listened for. Components with relative positions such as **On.isBefore**, **On.isAfter**, and **On.within** cannot be listened for.      |
 
 ## UIElementInfo<sup>10+</sup>
@@ -232,16 +236,17 @@ Provides information about the UI event.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 25%; 25%; 10%; 10%; 30%-->
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | type       | string | Yes  | No  | Component or window type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | text       | string | Yes  | No  | Text information of the component or window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | Yes  | Yes  | Window change event type. If the event is not a window change event, **WindowChangeType.WINDOW_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | Yes  | Yes  | Component operation event type. If it is not a component operation event, **ComponentEventType.COMPONENT_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| windowId<sup>22+</sup>       | number | Yes  | Yes  | ID of the window where the component belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | Yes  | Yes  | Window change event type. If the event is not a window change event, [WindowChangeType](#windowchangetype22).WINDOW_UNDEFINED is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | Yes  | Yes  | Component operation event type. If it is not a component operation event, [ComponentEventType](#componenteventtype22).COMPONENT_UNDEFINED is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| windowId<sup>22+</sup>       | number | Yes  | Yes  | ID of the window to which the component belongs. If it is not a window change event or component operation event, **-1** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | componentId<sup>22+</sup>       | string | Yes  | Yes  | Component ID. If it is not a component operation event, an empty string is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| componentRect<sup>22+</sup>       | [Rect](#rect9) | Yes  | Yes  | Component border information. If it is not a component operation event, a **Rect** object with all attribute values being **0** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | Yes  | Yes  | Component border information. If it is not a component operation event, a [Rect](#rect9) object whose attribute values are all **0** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -271,6 +276,97 @@ Describes the text input mode.
 | paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **Note**: If the input text contains Chinese characters, special characters, or the text length exceeds 200 characters, the text is copied and pasted regardless of the value of this parameter.|
 | addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, and **false** means the opposite. Default value: **false**|
 
+
+## KeyOptions
+
+Describes key options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| key1 | number | No | Yes | First key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.|
+| key2 | number | No | Yes | Second key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.<br> Note: If only **key2** is set, the 17000007 parameter verification failure error will be thrown.|
+
+## TouchOptions
+
+Describes common touch options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| speed | number | No | Yes | Operation speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number beyond the value range or is **null**/**undefined**, the default value **600** is used. If the value is a negative number, the error code 17000007 is thrown.|
+| duration | number | No | Yes | Operation duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
+| pressure | number | No | Yes | Pressure value of the touch. The value range is [0, 1]. The default value is **0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, the 17000007 error code is thrown.|
+
+## PenKey
+
+Enumerates stylus key types.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| HANDWRITING | 0 | Handwriting key.|
+| SMART | 1 | Smart key.|
+| AIR_MOUSE | 2 | Air mouse key.|
+
+## PenMode
+
+Enumerates stylus modes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| HANDWRITING | 0 | Handwriting mode.|
+| AIR_MOUSE | 1 | Air mouse mode.|
+
+## PenKeyOperation
+
+Enumerates stylus key operation types.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Value| Description|
+|------|---|------|
+| CLICK | 0 | Click.|
+| DOUBLE_CLICK | 1 | Double-click.|
+
+## PenKeyOperationOptions
+
+Describes stylus key operation options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| point | [Point](#point9) | No | Yes | Coordinates in air mouse mode. This attribute must be set when the **key** parameter is set to [AIR_MOUSE](#penkey) in the [triggerPenKey](#triggerpenkey) API. Otherwise, the API call will return the error code 17000007.|
 
 ## On<sup>9+</sup>
 
@@ -578,7 +674,7 @@ Specifies the scrollable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                       |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | No  | Scrollable status of the component. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
+| b      | boolean | No  |  Whether the specified component is scrollable. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -656,7 +752,7 @@ Specifies the focused attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                 |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
+| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. The default value is **true**.<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -838,6 +934,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
+### beforeComponent
+
+beforeComponent(com: Component): On
+
+Specifies that the target component is located before the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                                |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | **On** object.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').beforeComponent(component); // Search for the component whose text is 123 before the first text component.
+}
+```
+
 ### isAfter<sup>9+</sup>
 
 isAfter(on: On): On
@@ -878,6 +1019,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
+### afterComponent
+
+afterComponent(com: Component): On
+
+Specifies that the target component is located after the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                                |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | **On** object. |
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').afterComponent(component); // Search for the component whose text is 123 after the first text component.
+}
+```
+
 ### within<sup>10+</sup>
 
 within(on: On): On
@@ -916,6 +1102,51 @@ import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
 let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the Scroller component.
+```
+
+### withinComponent
+
+withinComponent(com: Component): On
+
+Specifies that the target component is located within the given feature component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | Yes  | Feature component.<!--RP3--><!--RP3End-->  |
+
+**Return value**
+
+| Type      | Description                                              |
+| ---------- | -------------------------------------------------- |
+| [On](#on9) | **On** object.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').withinComponent(component); // Search for the component whose text is 123 within the first text component.
+}
 ```
 
 ### inWindow<sup>10+</sup>
@@ -1001,7 +1232,7 @@ let on: On = ON.description('123'); // Use the static constructor ON to create a
 
 hint(val: string, pattern?: MatchPattern): On
 
-Obtains the component object of the specified hint text and returns the **On** object.
+Specifies the hint text attribute of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1018,7 +1249,7 @@ Obtains the component object of the specified hint text and returns the **On** o
 
 | Type      | Description                                    |
 | ---------- | ---------------------------------------- |
-| [On](#on9) | The **On** object of the specified hint text component.|
+| [On](#on9) | **On** object that matches the **hint** attribute of the target component.|
 
 **Error codes**
 
@@ -1041,7 +1272,7 @@ let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static construc
 
 belongingDisplay(displayId: number): On
 
-Obtains the component object on the specified display.
+Specifies the display to which the target component belongs.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1051,7 +1282,7 @@ Obtains the component object on the specified display.
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -1122,7 +1353,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 
 ## Component<sup>9+</sup>
 
-Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This module is available since API version 9.
 
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
@@ -1158,8 +1389,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 import { Driver, ON, Component } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for the Button component.
   let button: Component = await driver.findComponent(ON.type('Button'));
+  // Tap the component.
   await button.click();
 }
 ```
@@ -1471,7 +1705,7 @@ async function demo() {
   if (await button.isClickable()) {
     console.info('This button can be clicked');
   } else {
-    console.info('This button can not be clicked');
+    console.info('This button cannot be clicked');
   }
 }
 ```
@@ -1574,7 +1808,7 @@ Obtains the checkable status of this component. This API uses a promise to retur
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component object is checkable. The value **true** indicates that the component is checkable, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result of whether the component object is checkable. The value **true** indicates that the component is checkable, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1639,7 +1873,7 @@ async function demo() {
   if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
-    console.info('This scrollBar can not be operated');
+    console.info('This scrollBar cannot be operated');
   }
 }
 ```
@@ -1682,7 +1916,7 @@ async function demo() {
   if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
-    console.info('This button can not be operated');
+    console.info('This button cannot be operated');
   }
 }
 ```
@@ -1781,17 +2015,17 @@ Clears the original text in a component and inputs the specified text. This API 
 
 **System capability**: SystemCapability.Test.UiTest
 
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                          |
+| ------ | ------ | ---- | ---------------------------------------------- |
+| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
+
 **Return value**
 
 | Type            | Description             |
 |----------------|-----------------|
 | Promise\<void> | Promise that returns no value.|
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                                    |
-| ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
 
 **Error codes**
 
@@ -1810,8 +2044,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for the component whose text is 'hello world'.
   let text: Component = await driver.findComponent(ON.text('hello world'));
+  // Clear the original text and enter '123'.
   await text.inputText('123');
 }
 ```
@@ -1831,7 +2068,7 @@ Inputs text to a component in a specified text input mode. This API takes effect
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
 | text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
-| mode | [InputTextMode](#inputtextmode20)  | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If **InputTextMode.addition** is set to **true**, the specified text is added to the end of the existing text in the component. Otherwise, the specified text overwrites the existing text of the component.|
+| mode | [InputTextMode](#inputtextmode20)  | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If [InputTextMode](#inputtextmode20).addition is set to **true**, the specified text is added to the end of the existing text in the component. Otherwise, the specified text overwrites the existing text of the component.<br> If the input text contains Chinese characters or special characters or contains more than 200 characters, the text is copied and pasted regardless of the value of [InputTextMode](#inputtextmode20).paste.|
 
 **Return value**
 
@@ -1848,7 +2085,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **Example**
 ```ts
@@ -1939,8 +2176,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Obtain the scrollable Scroll component.
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+  // Scroll on the Scroll component to search for the component whose text is 'next page'.
   let button = await scrollBar.scrollSearch(ON.text('next page'));
 }
 ```
@@ -1961,7 +2201,7 @@ Scrolls on this component to search for the target component. This API is applic
 |------------------------| ---------- | ---- |-----------------------------------|
 | on                     | [On](#on9) | Yes  | Attributes of the target component.                       |
 | vertical |    boolean | No| Whether the search direction is vertical. The default value **true** indicates that the search direction is vertical. **false** indicates that the search direction is horizontal.|
-| offset   | number| No| Offset from the scrolling start/end point to the component border, in pixels. The default value is **80**. The value is an integer greater than or equal to 0.   |
+| offset   | number| No| Offset from the scrolling start/end point to the component border, in pixels. The default value is **80**. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.   |
 
 **Return value**
 
@@ -2086,7 +2326,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-Drags a component to the target component. This API uses a promise to return the result.
+Drags a component to the target component. This method is valid only for components that can be dragged. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2123,9 +2363,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for the target Button component.
   let button: Component = await driver.findComponent(ON.type('Button'));
+  // Search for the component whose text is 'hello world' as the drag target.
   let text: Component = await driver.findComponent(ON.text('hello world'));
+  // Drag the Button component to the Text component.
   await button.dragTo(text);
 }
 ```
@@ -2134,7 +2378,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-Pinches out a component at the specified scale. This API uses a promise to return the result.
+Pinches out a component at the specified scale. This method is valid only for components that support scaling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2144,7 +2388,7 @@ Pinches out a component at the specified scale. This API uses a promise to retur
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | Yes  | Scale factor, which is a value greater than 1.|
+| scale  | number | Yes  | Scale factor, which is a value greater than 1. If the input value is less than or equal to 1, error code 401 is thrown.|
 
 **Return value**
 
@@ -2179,7 +2423,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-Pinches in a component at the specified scale. This API uses a promise to return the result.
+Pinches in a component at the specified scale. This method is valid only for components that support scaling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2189,7 +2433,7 @@ Pinches in a component at the specified scale. This API uses a promise to return
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | Yes  | Scale factor, which is a value ranging from 0 to 1.|
+| scale  | number | Yes  | Scale factor, The value range is (0, 1]. If the value is **0** or a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2372,9 +2616,9 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 
-All methods provided by this class, except Driver.create() and Driver.createUIEventObserver(), are asynchronous methods using the Promise mode and must be invoked in await mode.
+All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
 
 ### create<sup>9+</sup>
 
@@ -2415,7 +2659,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays execution for the specified duration. This API uses a promise to return the result.
+Delays a duration of time. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2425,7 +2669,7 @@ Delays execution for the specified duration. This API uses a promise to return t
 
 | Name  | Type  | Mandatory| Description                           |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | number | Yes  | Specified time, in ms. The value is an integer greater than or equal to 0.|
+| duration | number | Yes  | Specified time, in ms. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2492,7 +2736,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for the component whose text is 'next page'.
   let button: Component = await driver.findComponent(ON.text('next page'));
 }
 ```
@@ -2535,7 +2781,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for all components whose text is 'next page'.
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
 }
 ```
@@ -2579,7 +2827,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
 }
 ```
 
@@ -2598,7 +2846,7 @@ Searches for the target component based on the attributes within a specified tim
 | Name| Type      | Mandatory| Description                                     |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | Yes  | Attributes of the target component.                     |
-| time   | number     | Yes  | Duration for searching for the target component, in ms. The value is an integer greater than or equal to 0.|
+| time   | number     | Yes  | Duration for searching for the target component, in ms. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2631,7 +2879,7 @@ async function demo() {
 
 assertComponentExist(on: On): Promise\<void>
 
-Asserts whether a component matches the specified attributes exists on the current page. This API uses a promise to return the result.
+Asserts whether a component matches the specified attributes exists on the current page. If the assertion fails, a JS exception is thrown, causing the test case to fail. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2675,7 +2923,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the Back button. This API uses a promise to return the result.
+Simulates pressing the Back button. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This method only simulates pressing the Back button on the home screen. To simulate pressing the Back button on a specified screen, use [pressBack(displayId: number)](#pressback20).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2711,7 +2963,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-Presses the Back button on the specified screen. This API uses a promise to return the result.
+Simulates pressing the Back button on a specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2721,7 +2973,7 @@ Presses the Back button on the specified screen. This API uses a promise to retu
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. |
 
 **Return value**
 
@@ -2754,7 +3006,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers a key event by passing the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key code value. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2764,7 +3016,7 @@ Triggers a key event by passing the key value. This API uses a promise to return
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
 **Return value**
 
@@ -2798,7 +3050,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-Triggers a key event by passing the key value on the specified screen. This API uses a promise to return the result.
+Triggers a key event by passing the key code value on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2808,8 +3060,8 @@ Triggers a key event by passing the key value on the specified screen. This API 
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| keyCode | number | Yes  | Key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 401 is reported.|
 
 **Return value**
 
@@ -2843,7 +3095,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-Triggers a combination key event based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
+Triggers a combination key event based on the specified key code values. This API uses a promise to return the result. For example, if the key code value is (2072, 2019), the module finds and clicks the key combination that matches the value, for example, **Ctrl+C**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2853,9 +3105,9 @@ Triggers a combination key event based on the specified key values. This API use
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key0   | number | Yes  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -2880,6 +3132,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // Inject the Ctrl+Alt+Delete key combination.
   await driver.triggerCombineKeys(2072, 2047, 2035);
 }
 ```
@@ -2888,7 +3141,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-Triggers a combination key event based on the specified key values on the specified screen. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
+Triggers a combination key event based on the specified key code values on the specified screen. This API uses a promise to return the result. For example, if the key code value is (2072, 2019), the module finds and clicks the key combination that matches the value, for example, **Ctrl+C**.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2898,10 +3151,10 @@ Triggers a combination key event based on the specified key values on the specif
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| displayId | number | No | Display ID. The value is an integer greater than or equal to 0. The default value is the default display ID of the device.|
+| key0   | number | Yes  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| displayId | number | No | Display ID. The value is an integer greater than or equal to 0. The default value is the default display ID of the device. If the input **displayId** does not exist, the exception 401 is reported.|
 
 **Return value**
 
@@ -2934,7 +3187,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks the target coordinate point. This API uses a promise to return the result.
+Clicks the target coordinate point. This method can be used only on the default screen of the device. To specify a screen, use [clickAt](#clickat20). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2942,10 +3195,10 @@ Clicks the target coordinate point. This API uses a promise to return the result
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                           |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -2969,7 +3222,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Perform a tap operation at the coordinate (100,100).
   await driver.click(100, 100);
 }
 ```
@@ -2988,7 +3243,7 @@ Clicks the target coordinate point. This API uses a promise to return the result
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| point      | [Point](#point9) | Yes  | [Point](#point9) object, which is used to transfer the target point information.|
 
 **Return value**
 
@@ -3017,13 +3272,15 @@ async function demo() {
 }
 ```
 
-### doubleClick<sup>9+</sup>
+### clickAtWithOptions
 
-doubleClick(x: number, y: number): Promise\<void>
+clickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
 
-Double-clicks the target coordinate point. This API uses a promise to return the result.
+Clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -3031,8 +3288,56 @@ Double-clicks the target coordinate point. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| point      | [Point](#point9) | Yes  | [Point](#point9) object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure** property in [TouchOptions](#touchoptions) can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    pressure: 0.5
+  };
+  // Clicks the target coordinate point and specifies the touch pressure.
+  await driver.clickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
+}
+```
+
+### doubleClick<sup>9+</sup>
+
+doubleClick(x: number, y: number): Promise\<void>
+
+Double-clicks the target coordinate point. This method can be used only on the default screen of the device. To specify a screen, use [doubleClickAt](#doubleclickat20). This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -3075,7 +3380,7 @@ Double-clicks the target coordinate point. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| point      | [Point](#point9) | Yes  | [Point](#point9) object, which is used to transfer the target point information.|
 
 **Return value**
 
@@ -3108,7 +3413,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks the target coordinate point. This API uses a promise to return the result.
+Long-clicks the target coordinate point. This method can be used only on the default screen of the device, and the long-click duration cannot be customized. To specify a screen or long-click duration, use [longClickAt](#longclickat20). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3116,10 +3421,10 @@ Long-clicks the target coordinate point. This API uses a promise to return the r
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                           |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -3162,8 +3467,8 @@ Long-clicks the target coordinate point for a specified duration. This API uses 
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
-| duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+| point      | [Point](#point9) | Yes  | [Point](#point9) object, which is used to transfer the target point information.|
+| duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
 
 **Return value**
 
@@ -3192,11 +3497,62 @@ async function demo() {
 }
 ```
 
+### longClickAtWithOptions
+
+longClickAtWithOptions(point: Point, options?: TouchOptions): Promise\<void>
+
+Long-clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory|Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | Yes  | [Point](#point9) object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **duration** and **pressure** properties in [TouchOptions](#touchoptions) can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    duration: 2000, // The click duration is 2000 ms.
+    pressure: 0.8 // Touch pressure value.
+  };
+  // Long-click the target coordinate point, and specify the touch duration and pressure.
+  await driver.longClickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
+}
+```
+
 ### swipe<sup>9+</sup>
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-Swipes from the start coordinate point to the target coordinate point. This API uses a promise to return the result.
+Swipes from the start coordinate point to the target coordinate point. This method can be used only on the default screen of the device. To specify a screen, use [swipeBetween](#swipebetween20). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3204,12 +3560,12 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                  |
-| ------ | ------ | ---- |------------------------------------------------------|
-| startx | number | Yes  | Number, which indicates the horizontal coordinate of the start point. The value is an integer greater than or equal to 0.                      |
-| starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
-| endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| startx | number | Yes  | Horizontal coordinate of the start point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| starty | number | Yes  | Vertical coordinate of the start point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| endx   | number | Yes  | Horizontal coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| endy   | number | Yes  | Vertical coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
@@ -3234,7 +3590,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Swipe from coordinates (100, 100) to coordinates (200, 200) at a speed of 600 px/s.
   await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
@@ -3253,8 +3611,8 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- |------------------------------------------------------|
-| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -3284,11 +3642,63 @@ async function demo() {
 }
 ```
 
+### swipeBetweenWithOptions
+
+swipeBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+Swipes from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                  |
+| ------ | ------ | ---- |------------------------------------------------------|
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **pressure** properties in [TouchOptions](#touchoptions) can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,   // Swipe speed: 800 px/s
+    pressure: 0.5  // Touch pressure value.
+  };
+  // Swipes from the start coordinate point to the target coordinate point, and specifies the swipe speed and touch pressure.
+  await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+}
+```
+
 ### drag<sup>9+</sup>
 
 drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-Drags from the start coordinate point to the target coordinate point. This API uses a promise to return the result.
+Drags from the start coordinate point to the target coordinate point. This method can be used only on the default screen of the device, and the long-click duration before dragging cannot be customized. To specify a screen or long-click duration, use [dragBetween](#dragbetween20). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3300,11 +3710,11 @@ Drags from the start coordinate point to the target coordinate point. This API u
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | Yes  | Number, which indicates the horizontal coordinate of the start point. The value is an integer greater than or equal to 0.             |
-| starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
-| endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+| startx | number | Yes  | Horizontal coordinate of the start point, in pixels. The value is an integer greater than or equal to 0.   |
+| starty | number | Yes  | Vertical coordinate of the start point, in pixels. The value is an integer greater than or equal to 0.   |
+| endx   | number | Yes  | Horizontal coordinate of the end point, in pixels. The value is an integer greater than or equal to 0.   |
+| endy   | number | Yes  | Vertical coordinate of the end point, in pixels. The value is an integer greater than or equal to 0.   |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used.|
 
 **Return value**
 
@@ -3349,10 +3759,10 @@ Drags from the start point to the target point. You can specify the drag speed a
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
-| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
 
 **Return value**
 
@@ -3381,6 +3791,61 @@ async function demo() {
 }
 ```
 
+### dragBetweenWithOptions
+
+dragBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+Drags from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                    |
+| ------ | ------ | ---- |--------------------------------------------------------|
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure**, **speed**, and **duration** properties in [TouchOptions](#touchoptions) can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000, // Click duration before dragging: 2000 ms.
+    pressure: 0.5   // Touch pressure value.
+  };
+  // Drag from the start coordinate point to the target coordinate point, and specify the drag speed, click duration, and touch pressure.
+  await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+}
+```
+
 ### screenCap<sup>9+</sup>
 
 screenCap(savePath: string): Promise\<boolean>
@@ -3401,7 +3866,7 @@ Captures the current screen and saves it as a PNG image to the given save path. 
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates the screenshot operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -3439,13 +3904,13 @@ Captures the specified screen and saves it as a PNG image to the given save path
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | Yes  | File save path. The path must be the [sandbox path](../../file-management/app-sandbox-directory.md) of the current application.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 401 is reported.               |
 
 **Return value**
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -3468,11 +3933,58 @@ async function demo() {
 }
 ```
 
+### dumpLayout
+
+dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
+
+Dumps the current layout information and saves it as a JSON file. This method is applicable to test scenarios where you need to analyze the hierarchy of UI controls or debug controls to locate issues. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                      |
+| -------- | ------ | ---- | ------------------------------------------ |
+| savePath | string | Yes  | Path for saving the JSON file. The path must be the [sandbox path](../../file-management/app-sandbox-directory.md) of the current application.|
+| displayId     | number | No | Display ID. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.|
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- |-------------------------------------------|
+| Promise\<boolean> | Promise used to return whether the layout information is successfully dumped and stored in the file storage. The value **true** indicates that the layout information is successfully dumped and stored in the file storage, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Obtain the current layout information and save it as a JSON file.
+  await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
+}
+```
+
 ### setDisplayRotation<sup>9+</sup>
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-Sets the display rotation of the current scene. This API uses a promise to return the result. It applies to rotatable scenarios.
+Sets the display rotation of the current scene. This API uses a promise to return the result. This API is applicable to scenarios where rotation is allowed. The rotation function can be enabled by setting **orientation=** to **auto_rotation** in [module.json5 Configuration File](../../quick-start/module-configuration-file.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3519,6 +4031,10 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 Obtains the display rotation of the current device. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This method can only be used to obtain the display rotation of the home screen. To obtain the display rotation of a specified screen, use [getDisplayRotation(displayId: number)](#getdisplayrotation20).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
@@ -3563,7 +4079,7 @@ Obtains the display rotation of the specified device. This API uses a promise to
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3596,7 +4112,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-Enables or disables display rotation. This API uses a promise to return the result.
+Enables or disables display rotation. This method is applicable to scenarios where the screen orientation needs to be locked during the test to maintain a specific display state, for example, testing the layout stability in landscape or portrait mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3640,6 +4156,10 @@ async function demo() {
 ### getDisplaySize<sup>9+</sup>
 
 getDisplaySize(): Promise\<Point>
+
+> **NOTE**
+>
+> This method can only be used to obtain the display size of the home screen. To obtain the display size of a specified screen, use [getDisplaySize(displayId: number)](#getdisplaysize20).
 
 Obtains the display size of the current device. This API uses a promise to return the result.
 
@@ -3687,7 +4207,7 @@ Obtains the size of the specified display on the current device. This API uses a
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.              |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.              |
 
 **Return value**
 
@@ -3721,6 +4241,10 @@ async function demo() {
 getDisplayDensity(): Promise\<Point>
 
 Obtains the display density of the current device. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This method can only be used to obtain the display density of the home screen. To obtain the display density of a specified screen, use [getDisplayDensity(displayId: number)](#getdisplaydensity20).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3766,7 +4290,7 @@ Obtains the density of the specified display of the current device. This API use
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3885,7 +4409,7 @@ Injects an operation of returning to the home screen on the specified display. T
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3918,7 +4442,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-Checks whether all components on the current UI are idle. This API uses a promise to return the result.
+Checks whether all components on the current UI are idle. This method is applicable to scenarios such as page redirection, animation playback, and loading. After calling this method, you can perform subsequent test operations only after the UI becomes stable. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3928,8 +4452,8 @@ Checks whether all components on the current UI are idle. This API uses a promis
 
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | number | Yes  | Idle time threshold, in ms. If the duration for which a component remains inactive reaches this threshold, it is considered as idle. The value must be an integer greater than or equal to 0.|
-| timeout  | number | Yes  | Maximum waiting time, in milliseconds. The value is an integer greater than or equal to 0.                   |
+| idleTime | number | Yes  | Idle time threshold, in ms. If the duration for which a component remains inactive reaches this threshold, it is considered as idle. The value must be an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.|
+| timeout  | number | Yes  | Maximum waiting time, in ms. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3974,8 +4498,8 @@ Simulates a fling operation. This API uses a promise to return the result.
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | Yes  | Coordinates of the point where the finger touches the screen.                                       |
 | to      | [Point](#point9) | Yes  | Coordinates of the point where the finger leaves the screen.                                        |
-| stepLen | number           | Yes  | Step length, in pixels. The value is an integer greater than or equal to 0.                                        |
-| speed   | number           | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+| stepLen | number           | Yes  | Sliding step length, in pixels. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.                                        |
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4008,7 +4532,7 @@ async function demo() {
 
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-Injects a multi-finger operation into a device. This API uses a promise to return the result.
+Injects a multi-finger operation into a device. This method applies to test scenarios where multi-finger gestures need to be simulated, such as pinching or spreading two fingers to zoom in or out on the image or swiping with multiple fingers to switch between pages. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4025,7 +4549,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 
 | Type             | Description                                 |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | Promise used to return whether the operation is successful. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the operation is successful. The value **true** indicates the screenshot operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -4043,18 +4567,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Create a 2-finger 5-step sliding track matrix.
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
+  // Set the sliding track of the first finger.
   pointers.setPoint(0, 0, { x: 250, y: 480 });
   pointers.setPoint(0, 1, { x: 250, y: 440 });
   pointers.setPoint(0, 2, { x: 250, y: 400 });
   pointers.setPoint(0, 3, { x: 250, y: 360 });
   pointers.setPoint(0, 4, { x: 250, y: 320 });
+  // Set the sliding track of the second finger.
   pointers.setPoint(1, 0, { x: 250, y: 480 });
   pointers.setPoint(1, 1, { x: 250, y: 440 });
   pointers.setPoint(1, 2, { x: 250, y: 400 });
   pointers.setPoint(1, 3, { x: 250, y: 360 });
   pointers.setPoint(1, 4, { x: 250, y: 320 });
+  // Inject the two-finger sliding operation.
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -4074,7 +4603,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4118,8 +4647,8 @@ Simulates a fling operation on a specified display with the specified direction 
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 401 is reported.               |
 
 **Return value**
 
@@ -4152,7 +4681,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-Captures the specified area of the current screen and saves the captured screenshot as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified area of the current screen and saves the captured screenshot as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported. Unlike [screenCap](#screencap9), this API allows you to specify the screenshot area using the **rect** parameter instead of capturing the entire screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4201,7 +4730,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
+Injects a mouse click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the key code value is **2072**, the **Ctrl** button is pressed with the mouse click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4211,10 +4740,10 @@ Injects a mouse click action at the specified coordinates, with the optional key
 
 | Name| Type                         | Mandatory| Description                          |
 | ------ | ----------------------------- | ---- | ------------------------------ |
-| p      | [Point](#point9)              | Yes  | Coordinates of the mouse click.              |
+| p      | [Point](#point9)              | Yes  | Target coordinates of the mouse click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4247,7 +4776,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse scroll action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the key code value is **2072**, the **Ctrl** button is pressed with mouse scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4257,11 +4786,11 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 | Name| Type            | Mandatory| Description                                                       |
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
-| p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                           |
+| p      | [Point](#point9) | Yes  | Target coordinates of mouse scrolling.                                        |
 | down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward.|
-| d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
+| d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px scroll at the mouse cursor position. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.        |
+| key1   | number           | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
+| key2   | number           | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
 
 **Return value**
 
@@ -4335,7 +4864,7 @@ async function demo() {
 
 ### createUIEventObserver<sup>10+</sup>
 
-createUIEventObserver(): UIEventObserver;
+createUIEventObserver(): UIEventObserver
 
 Creates a UI event listener.
 
@@ -4347,7 +4876,7 @@ Creates a UI event listener.
 
 | Type                                  | Description                                 |
 | ------------------------------------ | ------------------------------------- |
-|[UIEventObserver](#uieventobserver10) | UI event listener.|
+|[UIEventObserver](#uieventobserver10) | UI event listener object created.|
 
 **Error codes**
 
@@ -4383,11 +4912,11 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 | Name| Type            | Mandatory| Description                                                        |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                            |
+| p      | [Point](#point9) | Yes  | Target coordinates of mouse scrolling.                                             |
 | down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward. |
-| d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
+| d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px scroll at the mouse cursor position. The value is an integer greater than or equal to 0. If the value is a negative number, error code 401 is returned.         |
+| key1   | number           | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
+| key2   | number           | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
 | speed  | number           | No  | Scrolling speed of the mouse wheel, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
@@ -4421,7 +4950,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a double-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
+Injects a double-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the key code value is **2072**, the **Ctrl** button is pressed with the double-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4433,8 +4962,8 @@ Injects a double-click action at the specified coordinates, with the optional ke
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the double-click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4467,7 +4996,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse long-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the key code value is **2072**, the **Ctrl** button is pressed with the long-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4479,8 +5008,8 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4505,6 +5034,7 @@ import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // If the key code value is 2072, the Ctrl button is pressed with the long-click.
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
@@ -4513,7 +5043,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-Injects a mouse long-click action at the specified coordinates, with the optional key or key combination and the specified duration. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination and the specified duration. This API uses a promise to return the result. For example, if the key code value is **2072**, the **Ctrl** button is pressed with the long-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4525,9 +5055,9 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId    | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1     | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2     | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+| key1     | number                        | No  | First key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2     | number                        | No  | Second key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, error code 401 is thrown. If the value is **null** or **undefined**, the default value is used.|
 
 **Return value**
 
@@ -4552,6 +5082,7 @@ import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // If the key code value is 2072, the Ctrl button is pressed with the long-click for 2,000 ms.
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
@@ -4560,7 +5091,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-Moves the mouse pointer from the start point to the end point. This API uses a promise to return the result.
+Moves the mouse pointer from the start point to the end point, with a visible movement track. This method is applicable to test scenarios that depend on the mouse movement track, such as verification of the mouse hover effect and selecting an area by dragging with the mouse. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4605,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4652,7 +5183,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result. Since API version 26.0.0, this API supports cross-screen mouse dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4667,7 +5198,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 | from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
 | speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
-| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, error code 401 is thrown. If the value is **null** or **undefined**, the default value is used.|
 
 **Return value**
 
@@ -4693,6 +5224,65 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
+}
+```
+
+### mouseDragWithOptions
+
+mouseDragWithOptions(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+
+Drags from the start coordinate point to the end coordinate point by holding down the left mouse button. Touch options and key options can be specified. This API uses a promise to return the result. This API supports cross-screen mouse dragging.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name | Type            | Mandatory| Description                                                    |
+| --------- | ---------------- | ---- |--------------------------------------------------------|
+| from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
+| to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
+| touchOptions  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **duration** properties in [TouchOptions](#touchoptions) can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+| keyOptions  | [KeyOptions](#keyoptions) | No  | Key options. This parameter is used to specify the keys to be clicked during the dragging. The default values are inherited from the default values of the properties in [KeyOptions](#keyoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let touchOptions: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000  // Click duration before dragging: 2000 ms.
+  };
+  let keyOptions: KeyOptions = {
+    key1: 2072,  // Ctrl key
+    key2: 2019   // C key
+  };
+  // Drag the mouse and press Ctrl+C.
+  await driver.mouseDragWithOptions({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
@@ -4735,9 +5325,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Search for the target TextInput component.
   let text: Component = await driver.findComponent(ON.type('TextInput'));
+  // Obtain the coordinates of the component center point.
   let point = await text.getBoundsCenter();
+  // Enter the text '123' at the coordinate point.
   await driver.inputText(point, '123');
 }
 ```
@@ -4758,7 +5352,7 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the end point.|
 | text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.|
-| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **NOTE**<br> If **InputTextMode.addition** is set to **true**, the cursor moves to the end of the text and the specified text is input. If the value is **false**, the specified text is input at the coordinate point.|
+| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **NOTE**<br> If [InputTextMode](#inputtextmode20).addition is set to **true**, the cursor moves to the end of the text and the specified text is input. If the value is **false**, the specified text is input at the coordinate point.<br> If the input text contains Chinese characters or special characters or contains more than 200 characters, the text is copied and pasted regardless of the value of [InputTextMode](#inputtextmode20).paste.|
 
 **Return value**
 
@@ -4774,7 +5368,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **Example**
 
@@ -4789,7 +5383,7 @@ async function demo() {
   await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
-async function demo_Chinese() {
+async function demoChinese() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
@@ -4814,9 +5408,9 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 
 | Name| Type                                           | Mandatory| Description                   |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | number                                        | Yes | Number of fingers. The value can be 3 or 4.|
+| fingers      | number                                        | Yes | Number of fingers. The value can be 3 or 4. If the value is out of range, error code 401 is thrown.|
 | direction | [UiDirection](#uidirection10)                 | Yes | Swipe direction.          |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options for the multi-finger swipe gesture on the touchpad. The default values of the attributes in **TouchPadSwipeOptions** are used by default.       |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options for the multi-finger swipe gesture on the touchpad. The default values of the attributes in **TouchPadSwipeOptions** are used by default. This parameter is used to specify whether the multi-finger swipe gesture ends with a pause and the swipe speed. It is applicable to scenarios where multi-finger swipe gestures are simulated on the touchpad, for example, swiping up with three fingers to switch the task view.       |
 
 **Return value**
 
@@ -4864,7 +5458,7 @@ Simulates a two-finger scroll gesture on the touchpad. This API uses a promise t
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
 | direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
-| d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
+| d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A tick indicates a 120 px scroll at the mouse cursor position. The value is an integer greater than or equal to 0. If the value is a negative number, the 17000007 error code is returned.|
 | speed       | number           | No  | Scrolling speed of two fingers on the touchpad, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -4953,7 +5547,7 @@ Simulates a pen long-click operation. This API uses a promise to return the resu
 | Name| Type                                           | Mandatory| Description                           |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | Yes | Coordinates of the long-clicked point.                      |
-| pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**.|
+| pressure      | number | No | Long-click pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown.|
 
 **Return value**
 
@@ -5043,7 +5637,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 | startPoint      | [Point](#point9) | Yes | Coordinates of the start point.                                             |
 | endPoint      | [Point](#point9) | Yes | Coordinates of the end point.                                             |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
-| pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**.                       |
+| pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown.|
 
 **Return value**
 
@@ -5076,7 +5670,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a continuous multi-point pen injection operation. This API uses a promise to return the result.
+Simulates a continuous multi-point pen injection operation. This method is applicable to test scenarios where custom track operations, such as continuous writing and drawing with a pen, need to be simulated. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -5086,9 +5680,9 @@ Simulates a continuous multi-point pen injection operation. This API uses a prom
 
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>Note: Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**.|
 | speed      | number| No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.           |
-| pressure      | number | No | Injection pressure. The value ranges from 0.0 to 1.0. The default value is **1.0**.                                |
+| pressure      | number | No | Injection pressure. The value range is [0.0, 1.0]. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown.|
 
 
 **Return value**
@@ -5114,11 +5708,74 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // Create a single-finger 8-step sliding track matrix.
   let pointer = PointerMatrix.create(1, 8);
+  // Set the coordinates of each step cyclically to simulate a downward-to-upward sliding.
   for (let step = 0; step < 8; step++) {
     pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
+  // Inject swiping with a stylus at a speed of 600 px/s and a pressure of 0.5.
   await driver.injectPenPointerAction(pointer, 600, 0.5);
+}
+```
+
+### triggerPenKey
+
+triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
+
+Triggers a stylus key operation. This method is applicable to test scenarios where stylus switching needs to be simulated, for example, simulating a click operation in air mouse mode or invoking the smart key. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type      | Mandatory| Description                                                                |
+| ------ | ---------- | ---- | -------------------------------------------------------------------- |
+| key | [PenKey](#penkey) | Yes  | Stylus key type, which specifies the stylus key to be used for the operation, such as the handwriting key, air mouse key, and smart key.     |
+| mode | [PenMode](#penmode) | Yes  | Stylus mode, which specifies the current operation mode of the stylus, such as the handwriting mode or air mouse mode.        |
+| operation | [PenKeyOperation](#penkeyoperation) | Yes  | Stylus key operation mode, which specifies the operation mode of the key, such as single-tap or double-tap.               |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | No  | Operation options, including optional coordinates. The default values are inherited from the default values of the properties in [PenKeyOperationOptions](#penkeyoperationoptions).<br> Note: When **mode** is set to [AIR_MOUSE](#penmode) and **key** is set to [AIR_MOUSE](#penkey), the **point** attribute in **options** must be set. Otherwise, error code 17000007 will be thrown.|
+
+**Supported parameter combinations**:
+
+- When the value of **mode** is [HANDWRITING](#penmode): the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation).
+- When the value of **mode** is [AIR_MOUSE](#penmode): the value of **key** can be [AIR_MOUSE](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation) (the **point** needs to be specified in **options**); the value of **key** can be [HANDWRITING](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation) or [DOUBLE_CLICK](#penkeyoperation); the value of **key** can be [SMART](#penkey), and the value of **operation** can be [CLICK](#penkeyoperation).
+- If other parameter combinations are used, the 17000007 error code will be thrown.
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls. |
+| 17000005 | This operation is not supported. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, PenKey, PenMode, PenKeyOperation } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Trigger the handwriting key click in handwriting mode.
+  await driver.triggerPenKey(PenKey.HANDWRITING, PenMode.HANDWRITING, PenKeyOperation.CLICK);
+  // Trigger the air mouse key double-click in air mouse mode.
+  await driver.triggerPenKey(PenKey.AIR_MOUSE, PenMode.AIR_MOUSE, PenKeyOperation.DOUBLE_CLICK, { point: { x: 500, y: 500 } });
+  // Trigger the smart key click in air mouse mode.
+  await driver.triggerPenKey(PenKey.SMART, PenMode.AIR_MOUSE, PenKeyOperation.CLICK);
 }
 ```
 
@@ -5136,10 +5793,10 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 
 **Parameters**
 
-| Name| Type                                        | Mandatory| Description                                                            |
-| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| d      | number   | Yes  | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer.        |
-| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| d      | number | Yes  | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer. If the value is not an integer, error code 401 is returned.|
+| speed  | number | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
 
 **Return value**
 
@@ -5155,7 +5812,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
-| 801 | Capability not support, function can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
@@ -5192,8 +5849,8 @@ Simulates a knuckle knock on the display. This API uses a promise to return the 
 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | Array<[Point](#point9)>   | Yes  | Array of knuckle knock coordinates on the display. The array length can be 1 or 2.        |
-| times     | number   | Yes  | Number of consecutive knocks on the display. The value can be 1 or 2.|
+| pointers  | Array<[Point](#point9)>   | Yes  | Array of knuckle knock coordinates on the display. The array length can be 1 or 2. If the value is out of range, error code 17000007 is thrown.|
+| times     | number   | Yes  | Number of consecutive knocks on the display. The value can be 1 or 2. If the value is out of range, error code 17000007 is thrown.|
 
 **Return value**
 
@@ -5245,7 +5902,7 @@ Simulates a multi-point knuckle scrolling operation. This API uses a promise to 
 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>Note: Currently, only the single-finger operation is supported. The value of **fingers** in [PointerMatrix](#pointermatrix9) must be set to **1**.|
 | speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -5288,7 +5945,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-Long-clicks at the specified coordinates and checks whether the target component exists. This API uses a promise to return the result.
+Long-clicks at the specified coordinates and checks whether the target component exists. This method is applicable to verifying the UI elements that dynamically appear after a long-click, such as the context menu or edit button. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5333,7 +5990,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-Drags from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
+Drags from the start point to the end point and checks whether the target component exists. This method is applicable to verifying the dynamic UI elements that appear during the drag operation. For example, when dragging a file to a target folder, you can use this API to verify the highlight effect of the folder. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5344,8 +6001,8 @@ Drags from the start point to the end point and checks whether the target compon
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
-| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
@@ -5380,7 +6037,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-Swipes from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
+Swipes from the start point to the end point and checks whether the target component exists. This method is applicable to verifying the dynamic UI elements that appear during the swipe operation, for example, verifying whether the delete button appears when swiping is used to delete a list item. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5391,8 +6048,8 @@ Swipes from the start point to the end point and checks whether the target compo
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
-| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| from | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | [Point](#point9) object, which transfers the coordinates of the end point and the ID of the display to which the start point belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -5424,7 +6081,7 @@ async function demo() {
 
 ## PointerMatrix<sup>9+</sup>
 
-Implements a **PointerMatrix** object that stores coordinates and behaviors of each action of each finger in a multi-touch operation.
+Implements a **PointerMatrix** object that stores coordinates and behaviors of each action of each finger in a multi-touch operation. After creating an object using [create](#create9), use [setPoint](#setpoint9) to set the coordinates of each finger at each step. Then pass the coordinates to [injectMultiPointerAction](#injectmultipointeraction9) to perform a multi-finger operation.
 
 ### create<sup>9+</sup>
 
@@ -5438,10 +6095,10 @@ Creates a **PointerMatrix** object and returns the object created. This API is a
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                                      |
-| ------- | ------ | ---- | ------------------------------------------ |
-| fingers | number | Yes  | Number of fingers injected during the multi-finger operation. The value is an integer ranging from 1 to 10.|
-| steps   | number | Yes  | Number of steps performed by a finger. The value is an integer ranging from 1 to 1000.|
+| Name | Type  | Mandatory| Description                                                        |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| fingers | number | Yes  | Number of fingers injected during the multi-finger operation. The value is an integer ranging from 1 to 10. If the value is out of range, error code 401 is thrown.|
+| steps   | number | Yes  | Number of steps performed by a finger. The value is an integer ranging from 1 to 1000. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -5482,8 +6139,8 @@ Sets the coordinates for the action corresponding to the specified finger and st
 
 | Name| Type            | Mandatory| Description                                                      |
 | ------ | ---------------- | ---- | ---------------------------------------------------------- |
-| finger | number           | Yes  | Number of fingers. The value is an integer greater than or equal to 0 and cannot exceed the number of fingers set when the **PointerMatrix** object is constructed.                                             |
-| step   | number           | Yes  | Number of steps. The value is an integer greater than or equal to 0 and cannot exceed the number of steps set when the **PointerMatrix** object is constructed.                                              |
+| finger | number           | Yes  | Number of fingers. The value is an integer greater than or equal to 0 and cannot exceed the number of fingers set when the [PointerMatrix](#pointermatrix9) object is constructed.                                             |
+| step   | number           | Yes  | Number of steps. The value is an integer greater than or equal to 0 and cannot exceed the number of steps set when the [PointerMatrix](#pointermatrix9) object is constructed.                                              |
 | point  | [Point](#point9) | Yes  | Coordinates of the action. It is recommended that the distance between adjacent coordinates be within the range of 10 px to 80 px.|
 
 **Error codes**
@@ -5553,8 +6210,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  // Search for the active window.
+  let window: UiWindow = await driver.findWindow({ active: true });
+  // Obtain the bundle name of the application to which the window belongs.
   let name: string = await window.getBundleName();
 }
 ```
@@ -5591,8 +6251,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  // Search for the active window.
+  let window: UiWindow = await driver.findWindow({ active: true });
+  // Obtain the bounds information of the window.
   let rect = await window.getBounds();
 }
 ```
@@ -5630,7 +6293,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   let title = await window.getTitle();
 }
 ```
@@ -5668,7 +6331,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5687,7 +6350,7 @@ Checks whether a window is focused. This API uses a promise to return the result
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result of whether the window is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5706,7 +6369,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5746,7 +6409,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActived();
 }
 ```
@@ -5784,7 +6447,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.focus();
 }
 ```
@@ -5803,10 +6466,10 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                           |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 
 **Return value**
 
@@ -5833,7 +6496,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5854,8 +6517,8 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 | Name   | Type                                | Mandatory| Description                                                        |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | number                               | Yes  | Width of the adjusted window, in number format. The value is an integer greater than or equal to 0.                        |
-| height    | number                               | Yes  | Height of the adjusted window, in number format. The value is an integer greater than or equal to 0.                        |
+| wide      | number                               | Yes  | Width of the adjusted window, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
+| height    | number                               | Yes  | Height of the adjusted window, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown.|
 | direction | [ResizeDirection](#resizedirection9) | Yes  | Resize direction.|
 
 **Return value**
@@ -5881,7 +6544,7 @@ import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5890,7 +6553,7 @@ async function demo() {
 
 split(): Promise\<void>
 
-Switches to the split-screen mode. This API uses a promise to return the result. This API is applicable to windows that support screen splitting.
+Switches to the split-screen mode. A window can be resumed to its previous mode using [resume()](#resume9). This API uses a promise to return the result. This API is applicable to windows that support screen splitting.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5922,7 +6585,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.split();
 }
 ```
@@ -5931,7 +6594,7 @@ async function demo() {
 
 maximize(): Promise\<void>
 
-Maximizes a window. This API uses a promise to return the result. This API is applicable to windows that can be maximized.
+Maximizes a window. A window can be resumed to its previous mode using [resume()](#resume9). This API uses a promise to return the result. This API is applicable to windows that can be maximized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5963,7 +6626,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.maximize();
 }
 ```
@@ -5972,7 +6635,7 @@ async function demo() {
 
 minimize(): Promise\<void>
 
-Minimizes a window. This API uses a promise to return the result. This API is applicable to windows that can be minimized.
+Minimizes a window. A window can be resumed to its previous mode using [resume()](#resume9). This API uses a promise to return the result. This API is applicable to windows that can be minimized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6004,7 +6667,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.minimize();
 }
 ```
@@ -6045,7 +6708,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.resume();
 }
 ```
@@ -6086,7 +6749,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({ actived: true });
+  let window: UiWindow = await driver.findWindow({ active: true });
   await window.close();
 }
 ```
@@ -6169,7 +6832,7 @@ async function demo() {
 
 ## UIEventObserver<sup>10+</sup>
 
-UI event listener.
+Defines a UI event listener, which is used to listen for various events on the UI, including the display of the **Toast** and **Dialog** components, window change event, and component operation event. An instance can be created using [Driver.createUIEventObserver()](#createuieventobserver10).
 
 ### once('toastShow')<sup>10+</sup>
 
@@ -6203,13 +6866,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
+  // Create a Driver object.
   let driver: Driver = Driver.create();
+  // Register a UI event listener.
   let observer: UIEventObserver = driver.createUIEventObserver();
+  // Define a callback to output the attribute information of the Toast component.
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
   }
+  // Subscribe to the events of the Toast component display.
   observer.once('toastShow', callback);
 }
 ```
@@ -6749,7 +7416,7 @@ Specifies that the target component is located after the given attribute compone
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-// Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
+// Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
 let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
@@ -6786,7 +7453,7 @@ Clicks this component. This API uses a promise to return the result.
 
 ```ts
 // xxx.test.ets
-import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
   let driver: UiDriver = UiDriver.create();
@@ -7011,7 +7678,7 @@ async function demo() {
   if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button cannot be Clicked');
   }
 }
 ```
@@ -7046,7 +7713,7 @@ async function demo() {
   if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
-    console.info('This scrollBar can not be operated');
+    console.info('This scrollBar cannot be operated');
   }
 }
 ```
@@ -7082,7 +7749,7 @@ async function demo() {
   if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
-    console.info('This button can not be operated');
+    console.info('This button cannot be operated');
   }
 }
 
@@ -7165,7 +7832,7 @@ inputText(text: string): Promise\<void>
 Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 > **NOTE**
->
+
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
@@ -7275,7 +7942,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays this **UiDriver** object within the specified duration. This API uses a promise to return the result.
+Delays a duration of time. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7287,7 +7954,7 @@ Delays this **UiDriver** object within the specified duration. This API uses a p
 
 | Name  | Type  | Mandatory| Description        |
 | -------- | ------ | ---- | ------------ |
-| duration | number | Yes  | Duration of time.|
+| duration | number | Yes  | Specified time, in ms. The value is an integer greater than or equal to 0.|
 
 **Return value**
 
@@ -7459,7 +8126,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers the key of this **UiDriver** object that matches the given key code. This API uses a promise to return the result.
+Triggers a key event by passing the key code value. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -7471,7 +8138,7 @@ Triggers the key of this **UiDriver** object that matches the given key code. Th
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key code value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
 **Return value**
 
@@ -7483,7 +8150,7 @@ Triggers the key of this **UiDriver** object that matches the given key code. Th
 
 ```ts
 // xxx.test.ets
-import { Driver, UiDriver } from '@kit.TestKit';
+import { UiDriver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
@@ -7507,10 +8174,10 @@ Clicks a specific point of this **UiDriver** object based on the given coordinat
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                  |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
 
 **Return value**
 
@@ -7544,10 +8211,10 @@ Double-clicks a specific point of this **UiDriver** object based on the given co
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                  |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
 
 **Return value**
 
@@ -7581,10 +8248,10 @@ Long-clicks a specific point of this **UiDriver** object based on the given coor
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                  |
-| ------ | ------ | ---- | -------------------------------------- |
-| x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| x      | number | Yes  | Horizontal coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
+| y      | number | Yes  | Vertical coordinate of the target point, in pixels. The value is an integer greater than or equal to 0.|
 
 **Return value**
 
@@ -7618,12 +8285,12 @@ Swipes on this **UiDriver** object from the start point to the end point based o
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                  |
-| ------ | ------ | ---- | -------------------------------------- |
-| startx | number | Yes  | Number, which indicates the horizontal coordinate of the start point. The value is an integer greater than or equal to 0.|
-| starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.|
-| endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
-| endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| startx | number | Yes  | Horizontal coordinate of the start point, in pixels. The value is an integer greater than or equal to 0.|
+| starty | number | Yes  | Vertical coordinate of the start point, in pixels. The value is an integer greater than or equal to 0.|
+| endx   | number | Yes  | Horizontal coordinate of the end point, in pixels. The value is an integer greater than or equal to 0.|
+| endy   | number | Yes  | Vertical coordinate of the end point, in pixels. The value is an integer greater than or equal to 0.|
 
 **Return value**
 

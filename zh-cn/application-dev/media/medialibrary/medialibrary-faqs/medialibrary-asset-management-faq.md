@@ -18,8 +18,8 @@
 
 | 类型  | 形式  | 举例  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-| URI  | file://media/Photo/&lt;id&gt;/&lt;真实文件名(无后缀)&gt;/&lt;displayName&gt;  | 图片：<br>file://media/Photo/111/IMG\_1234567890\_123/A.jpg<br>视频：<br>file://media/Photo/222/VID\_1234567890\_321/B.mp4  | 字段定义与使用方式详见[媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。|
-| Path(媒体沙箱路径)  | /data/storage/el2/media/Photo/&lt;id&gt;/&lt;真实文件名(无后缀)&gt;/&lt;displayName&gt;  | 图片：<br>/data/storage/el2/media/Photo/111/IMG\_1234567890\_123/A.jpg<br>视频：<br>/data/storage/el2/media/Photo/222/VID\_1234567890\_321/B.mp4<br>  | 媒体沙箱路径用于三方应用访问媒体资源。  |
+| URI  | file://media/Photo/&lt;ID&gt;/&lt;真实文件名(无后缀)&gt;/&lt;displayName&gt;  | 图片：<br>file://media/Photo/111/IMG\_1234567890\_123/A.jpg<br>视频：<br>file://media/Photo/222/VID\_1234567890\_321/B.mp4  | 字段定义与使用方式详见[媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体文件uri)。|
+| Path(媒体沙箱路径)  | /data/storage/el2/media/Photo/&lt;ID&gt;/&lt;真实文件名(无后缀)&gt;/&lt;displayName&gt;  | 图片：<br>/data/storage/el2/media/Photo/111/IMG\_1234567890\_123/A.jpg<br>视频：<br>/data/storage/el2/media/Photo/222/VID\_1234567890\_321/B.mp4<br>  | 媒体沙箱路径用于三方应用访问媒体资源。  |
 | 真实路径  | /storage/cloud/100/files/Photo/&lt;所在桶目录&gt;/&lt;真实文件名&gt;  | 图片：<br>/storage/cloud/100/files/Photo/1/IMG\_1234567890\_123.jpg<br>视频：<br>/storage/cloud/100/files/Photo/2/VID\_1234567890\_321.mp4  | 媒体资源在设备文件系统内实际保存的位置。  |
 
 ## 标准媒体文件操作流程
@@ -37,4 +37,36 @@
 
 ### 能否通过修改生成或自行构造的媒体库路径来新增、删除、获取、重命名、移动文件或文件夹
 
-不可以。因为媒体库URI和Path为虚拟路径，是通过组合媒体资源的部分属性来对媒体文件进行唯一标识，并非实际存在对应目录层级，也不存在真实的物理文件，需要通过媒体库内部的寻址方式才能进行有效的媒体文件操作。若使用修改生成或自行构造的媒体库路径对媒体文件进行操作，可能会造成非预期的文件操作结果，为确保正确性与稳定性，请务必通过[标准媒体文件操作流程](#标准媒体文件操作流程)进行媒体文件管理。
+不可以。因为媒体库URI和Path为虚拟路径，是通过组合媒体资源的部分属性来对媒体文件进行唯一标识，并非实际存在对应目录层级，也不存在真实的物理文件，需要通过媒体库内部的寻址方式才能进行有效的媒体文件操作。若使用修改生成或自行构造的媒体库路径对媒体文件进行操作，可能会造成非预期的文件操作结果。  
+
+以下是常见错误用法示例（以媒体库虚拟路径“/data/storage/el2/media/Photo/111/IMG_1234567890_123/A.jpg”为例）：
+
+1. 截断生成的媒体路径。
+
+   1.1 从路径尾部删除部分目录层级。例如：
+
+   - 删除displayName部分：/data/storage/el2/media/Photo/111/IMG_1234567890_123/
+   - 删除真实文件名 + displayName部分：/data/storage/el2/media/Photo/111/
+   - 删除路径尾部的更多层级。
+
+   以上得到的路径均为无效的媒体库目录，不能用来表示媒体资源父目录。
+
+   1.2 删除路径中的某些目录层级。例如：
+
+   - 删除真实文件名部分：/data/storage/el2/media/Photo/111/A.jpg
+   - 删除ID部分：/data/storage/el2/media/Photo/IMG_1234567890_123/A.jpg
+   - 删除其他目录层级。
+
+   这些路径均为非法的媒体库目录，不能表示在某个目录层级下进行图片的新增或移动。
+
+2. 修改生成的媒体路径。
+
+   2.1 更改路径中的displayName。例如将“A.jpg”替换为“B.xxx”，得到“/data/storage/el2/media/Photo/111/IMG_1234567890_123/B.xxx”。这是一个非法的媒体库路径，不能表示在“原目录”下创建新文件“B.xxx”。
+
+   2.2 更改路径中的ID。例如将路径中的ID从111替换为1111，得到“/data/storage/el2/media/Photo/1111/IMG_1234567890_123/A.jpg”。这也是一个非法的媒体库路径，不能作为将ID=111的“A.jpg”映射到另一个ID=1111的实现方式。
+
+   2.3 更改路径中的其他目录层级。
+
+上述通过截断、修改媒体库目录层级而构造出的路径，均为非法的媒体库路径。**如果针对这些非法路径使用增、删、改、查的相关接口（如fs.stat、fs.lstat、fs.access、fs.open、fs.close、fs.read、fs.write、fs.unlink等），均会造成非预期的结果。**
+
+为确保正确性与稳定性，请务必通过[标准媒体文件操作流程](#标准媒体文件操作流程)进行媒体文件管理。

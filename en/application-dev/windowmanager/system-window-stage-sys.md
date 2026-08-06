@@ -1,14 +1,16 @@
 # System Window Development (Stage Model Only) (for System Applications Only)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:45:57.255Z pushedAt=2026-07-16T11:32:58.779Z -->
 
 ## Overview
 
-In the stage model, system applications are allowed to create and manage system windows, including the volume bar, wallpaper, notification panel, status bar, and navigation bar. For details about the supported system window types, see [WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7).
+In the stage model, system apps are allowed to create and manage system windows, including the volume bar, wallpaper, notification bar, status bar, navigation bar, and more. For details about the supported system window types, see [WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7).
 
 When a window is displayed, hidden, or switched, an animation is usually used to smooth the interaction process.
 
@@ -20,14 +22,13 @@ However, you can customize an animation to be played during the display or hidin
 >
 > This document involves the use of system APIs. You must use the full SDK for development. <!--Del-->For details, see [Guide to Switching to Full SDK](../faqs/full-sdk-switch-guide.md).<!--DelEnd-->
 
-
 ## Available APIs
 
-For details about more APIs, see [Window](../reference/apis-arkui/js-apis-window-sys.md).
+For more API details, see [@ohos.window (System API)](../reference/apis-arkui/js-apis-window-sys.md).
 
 | Instance           | API                                                      | Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Window static method   | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | Creates a child window or system window.<br>**config**: parameters used for creating the window.    |
+| Window static method    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | Creates a subwindow or system window.<br>-`config`: parameters for creating the window.     |
 | Window            | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the window size.                                          |
 | Window            | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | Moves this window.                                          |
 | Window            | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | Loads the content of a page, with its path in the current project specified, to this window.<br>**path**: path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project in the stage model.                                    |
@@ -45,7 +46,6 @@ For details about more APIs, see [Window](../reference/apis-arkui/js-apis-window
 This section uses the volume bar as an example to describe how to develop a system window.
 
 ### How to Develop
-
 
 1. Create a system window.
 
@@ -150,11 +150,11 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
 
 ## Customizing an Animation to Be Played During the Display or Hiding of a System Window
 
-You can determine whether to play an animation when a system window is showing or hiding.
+You can customize an animation to be played for showing or hiding a system window. The following use the show and hide animations as examples.
 
 ### How to Develop
 
-1. Obtain the transition animation controller.
+1. Obtain the window attribute transition controller.
 
    Call **getTransitionController** to obtain the controller, which completes subsequent animation operations.
 

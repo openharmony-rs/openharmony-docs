@@ -1,12 +1,12 @@
 # 页面间转场 (pageTransition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当路由([router](../js-apis-router.md))进行切换时，可以通过在[pageTransition](ts-custom-component-lifecycle.md#pagetransition9)函数中自定义页面入场和页面退场的转场动效。详细指导请参考[页面转场动画](../../../ui/arkts-page-transition-animation.md)。
+当路由（[router](../js-apis-router.md)）进行切换时，可以通过在[pageTransition](ts-custom-component-lifecycle.md#pagetransition9)函数中自定义页面入场和页面退场的转场动效。详细指导请参考[页面转场动画](../../../ui/arkts-page-transition-animation.md)。
 
 > **说明：**
 >
@@ -16,9 +16,13 @@
 
 ## PageTransitionEnter
 
+定义PageTransitionEnter组件。
+
+### PageTransitionEnter
+
 PageTransitionEnter(value: PageTransitionOptions)
 
-设置当前页面的自定义入场动效。继承自[CommonTransition](#commontransition)。
+设置当前页面的自定义入场动效，需在pageTransition()函数中配置，继承自[CommonTransition](#commontransition)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -28,13 +32,13 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 | 参数名 | 类型                                                   | 必填 | 说明                 |
 | ------ | ------------------------------------------------------ | ---- | -------------------- |
-| value  | [PageTransitionOptions](#pagetransitionoptions对象说明) | 是   | 配置入场动效的参数。 |
+| value  | [PageTransitionOptions](#pagetransitionoptions对象说明) | 是   | 配置入场动效的参数，包含页面转场效果的路由类型(type)、动画时长(duration)、动画曲线(curve)、动画延迟时长(delay)配置项。 |
 
 ### onEnter
 
 onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
-逐帧回调，直到入场动画结束，progress从0变化到1。
+逐帧回调，直到入场动画结束，progress从0变化到1。与slide、translate、scale、opacity等预设动效方法配合使用时，onEnter在预设动效基础上提供逐帧自定义逻辑；也可单独使用onEnter实现完全自定义的入场动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -44,7 +48,7 @@ onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
 | 参数名 | 类型                                                               | 必填 | 说明                                                |
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------    |
-| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
+| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 入场动画的逐帧回调，直到动画结束，progress从0变化到1。该回调仅在配置的type与实际路由类型匹配时触发。 |
 
 **示例：**
 
@@ -60,9 +64,13 @@ onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
 ## PageTransitionExit
 
+定义PageTransitionExit组件。
+
+### PageTransitionExit
+
 PageTransitionExit(value: PageTransitionOptions)
 
-设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)
+设置当前页面的自定义退场动效，需在pageTransition()函数中配置，继承自[CommonTransition](#commontransition)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -72,30 +80,30 @@ PageTransitionExit(value: PageTransitionOptions)
 
 | 参数名 | 类型                                                    | 必填 | 说明                 |
 | ------ | ------------------------------------------------------- | ---- | -------------------- |
-| value  | [PageTransitionOptions](#pagetransitionoptions对象说明) | 是   | 配置退场动效的参数。 |
+| value  | [PageTransitionOptions](#pagetransitionoptions对象说明) | 是   | 配置退场动效的参数，包含页面转场效果的路由类型(type)、动画时长(duration)、动画曲线(curve)、动画延迟时长(delay)配置项。 |
 
 ### onExit
 
 onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
-逐帧回调，直到出场动画结束，progress从0变化到1。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+逐帧回调，直到退场动画结束，progress从0变化到1。与slide、translate、scale、opacity等预设动效方法配合使用时，onExit在预设动效基础上提供逐帧自定义逻辑；也可单独使用onExit实现完全自定义的退场动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                                               | 必填 | 说明                                                |
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------    |
-| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 出场动画的逐帧回调直到出场动画结束，progress从0变化到1。 |
+| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 退场动画的逐帧回调，直到动画结束，progress从0变化到1。该回调仅在配置的type与实际路由类型匹配时触发。 |
 
 **示例：**
 
 ```js
   pageTransition() {
     PageTransitionExit({ duration: 1200, curve: Curve.Linear })
-      // 转场动画时出场动画 type 为路由类型 ，progress为从0到1逐渐变大
+      // 转场动画时退场动画 type 为路由类型 ，progress为从0到1逐渐变大
       .onExit((type: RouteType, progress: number) => {
         // 业务逻辑代码
       })
@@ -104,7 +112,7 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 ## PageTransitionOptions对象说明
 
-退场/进场动效的参数。
+退场/入场动效的参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -112,14 +120,14 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 | 名称     | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。    |
-| duration | number                                                       | 否   | 是   | 动画的时长。<br/>单位：毫秒<br/>默认值：1000<br/>取值范围：[0, +∞)                 |
-| curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 是   | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
-| delay    | number                                                       | 否   | 是   | 动画延迟时长。<br/>单位：毫秒<br/>默认值：0<br/>**说明：** <br/>没有匹配时使用系统默认的页面转场效果(根据设备可能会有差异)，如需禁用系统默认页面转场效果，可以指定duration为0。 |
+| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br>默认值：RouteType.None。<br>**说明：**<br>当pageTransition函数中配置了多个[PageTransitionEnter](#pagetransitionenter)或[PageTransitionExit](#pagetransitionexit)时，按照RouteType匹配规则生效：系统会根据当前路由操作类型（Push或Pop）从所有配置的PageTransitionEnter/PageTransitionExit中选择最后一个匹配的组件生效；若没有匹配的组件，则使用系统默认的页面转场效果（根据设备可能会有差异）。如果存在多个匹配相同RouteType的PageTransitionEnter，则最后配置的生效；如果存在多个匹配相同RouteType的PageTransitionExit，则最后配置的生效。RouteType.None与所有路由类型均匹配。<br>取值原则：None表示对所有路由类型生效；Push仅对push路由生效；Pop仅对pop路由生效。    |
+| duration | number                                                       | 否   | 是   | 动画的时长。<br>单位：毫秒<br>默认值：1000<br>取值范围：[0, +∞)                 |
+| curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 是   | 动画曲线。<br>推荐以Curve或ICurve形式指定。<br>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br>默认值：Curve.Linear |
+| delay    | number                                                       | 否   | 是   | 动画延迟时长。<br>单位：毫秒<br>默认值：0 |
 
 ## CommonTransition
 
-页面转场通用动效。
+页面转场通用动效，通过[PageTransitionEnter](#pagetransitionenter)和[PageTransitionExit](#pagetransitionexit)继承使用，需在pageTransition()函数中配置，slide与translate均涉及位置移动：slide适用于需要沿预置方向（左/右/上/下/START/END）滑入滑出的场景，使用简单；translate适用于需要自定义平移距离的场景，灵活性更高。当slide和translate同时设置时，默认生效slide。scale、opacity分别设置缩放和透明度效果，可与上述效果组合使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -139,7 +147,7 @@ constructor()
 
 slide(value: SlideEffect): T
 
-设置页面转场时的滑入滑出效果。
+设置页面转场时的滑入滑出效果，和translate同时设置时默认生效slide。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -155,7 +163,7 @@ slide(value: SlideEffect): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ### translate
 
@@ -171,13 +179,13 @@ translate(value: TranslateOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions对象说明) | 是   | 设置页面转场时的平移效果，为入场时起点和退场时终点的值，和slide同时设置时默认生效slide。<br/>-&nbsp;x：横向的平移距离。<br/>-&nbsp;y：纵向的平移距离。<br/>-&nbsp;z：竖向的平移距离。 |
+| value  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions对象说明) | 是   | 设置页面转场时的平移效果，为入场时起点和退场时终点的值，和slide同时设置时默认生效slide。<br>-&nbsp;x：横向的平移距离。<br>-&nbsp;y：纵向的平移距离。<br>-&nbsp;z：竖向的平移距离。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ### scale
 
@@ -193,13 +201,13 @@ scale(value: ScaleOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明) | 是   | 设置页面转场时的缩放效果，为入场时起点和退场时终点的值。<br/>-&nbsp;x：横向放大倍数（或缩小比例）。<br/>-&nbsp;y：纵向放大倍数（或缩小比例）。<br/>-&nbsp;z：竖向放大倍数（或缩小比例）。<br/>-&nbsp;centerX、centerY缩放中心点。centerX和centerY默认值是"50%"，即默认以页面的中心点为旋转中心点。<br/>-&nbsp;中心点为(0, 0)代表页面的左上角。 |
+| value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明) | 是   | 设置页面转场时的缩放效果，为入场时起点和退场时终点的值。<br>-&nbsp;x：横向放大倍数（或缩小比例）。<br>-&nbsp;y：纵向放大倍数（或缩小比例）。<br>-&nbsp;z：竖向放大倍数（或缩小比例）。<br>-&nbsp;centerX、centerY缩放中心点。centerX和centerY默认值是"50%"，即默认以页面的中心点为缩放中心点。<br>-&nbsp;中心点为(0, 0)代表页面的左上角。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ### opacity
 
@@ -215,13 +223,13 @@ opacity(value: number): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | number | 是   | 设置入场的起点透明度值或者退场的终点透明度值。<br/>取值范围：[0, 1] |
+| value   | number | 是   | 设置入场的起点透明度值或者退场的终点透明度值。<br>取值范围：[0, 1] |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## PageTransitionCallback<sup>18+</sup>
 
@@ -231,11 +239,15 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| type | [RouteType](#routetype枚举说明) | 是 |  页面转场类型。 |
+| type | [RouteType](#routetype枚举说明) | 是 |  页面转场效果生效的路由类型。 |
 | progress | number | 是 | 转场进度。progress从0变化到1。 |
 
 ## RouteType枚举说明
@@ -248,9 +260,9 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 | 名称 | 值 | 说明                                                         |
 | ---- | ---- | -------------------------------------------------------- |
-| None | 0 | 页面未重定向。如Push和Pop描述中RouteType为None的情形，即页面进场时PageTransitionEnter的转场效果生效；退场时PageTransitionExit的转场效果生效。 |
-| Push | 1 | 跳转到下一页面。PageA跳转到下一个新的界面PageB。对于PageA，指定RouteType为None或者Push的PageTransitionExit组件样式生效，对于PageB，指定RouteType为None或者Push的PageTransitionEnter组件样式生效。 |
-| Pop  | 2 | 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的PageTransitionEnter组件样式生效。 |
+| None | 0 | 页面未重定向。如Push和Pop描述中RouteType为None的情形，即页面入场时PageTransitionEnter的转场效果生效；退场时PageTransitionExit的转场效果生效。 |
+| Push | 1 | 跳转到下一页面，例如从PageA跳转到PageB。对于PageA，指定RouteType为None或Push的PageTransitionExit组件样式生效；对于PageB，指定RouteType为None或Push的PageTransitionEnter组件样式生效。 |
+| Pop  | 2 | 回退到上一页面，例如从PageB回退到PageA。对于PageB，指定RouteType为None或Pop的PageTransitionExit组件样式生效；对于PageA，指定RouteType为None或Pop的PageTransitionEnter组件样式生效。 |
 
 ## SlideEffect枚举说明
 
@@ -262,36 +274,36 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 | 名称                | 值 | 说明                                                         |
 | ------------------- | ---- | -------------------------------------------------------- |
-| Left                | 1 | 设置到入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Right               | 2 | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Top                 | 3 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Bottom              | 4 | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| Left                | 1 | 设置到入场时表示从左边滑入，退场时表示滑出到左边。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Right               | 2 | 设置到入场时表示从右边滑入，退场时表示滑出到右边。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Top                 | 3 | 设置到入场时表示从上边滑入，退场时表示滑出到上边。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Bottom              | 4 | 设置到入场时表示从下边滑入，退场时表示滑出到下边。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，退场时表示滑出到左边。RTL入场时表示从右边滑入，退场时表示滑出到右边。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，退场时表示滑出到右边。RTL入场时表示从左边滑入，退场时表示滑出到左边。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 示例
 
 ### 示例1（设置退入场动画）
 
-自定义方式1：通过不同的退入场类型配置不同的退场，入场动画。
+自定义方式1：通过不同的退入场类型配置不同的退场和入场动画。
 
 ```ts
 // Index.ets
 @Entry
 @Component
 struct Index {
-  @State scale1: number = 1;
-  @State opacity1: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
       // $r("app.media.transition_image1")需要替换为开发者所需的图像资源文件。
-      Image($r("app.media.transition_image1")).width('100%').height('100%')
+      Image($r('app.media.transition_image1')).width('100%').height('100%')
     }
     .width('100%')
     .height('100%')
-    .scale({ x: this.scale1 })
-    .opacity(this.opacity1)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .onClick(() => {
       this.getUIContext().getRouter().pushUrl({ url: 'pages/Page1' });
     })
@@ -301,15 +313,15 @@ struct Index {
     PageTransitionEnter({ duration: 1200, curve: Curve.Linear })
       .onEnter((type: RouteType, progress: number) => {
         if (type == RouteType.Push || type == RouteType.Pop) {
-          this.scale1 = progress;
-          this.opacity1 = progress;
+          this.pageScale = progress;
+          this.pageOpacity = progress;
         }
       })
     PageTransitionExit({ duration: 1200, curve: Curve.Ease })
       .onExit((type: RouteType, progress: number) => {
         if (type == RouteType.Push) {
-          this.scale1 = 1 - progress;
-          this.opacity1 = 1 - progress;
+          this.pageScale = 1 - progress;
+          this.pageOpacity = 1 - progress;
         }
       })
   }
@@ -321,8 +333,8 @@ struct Index {
 @Entry
 @Component
 struct Page1 {
-  @State scale2: number = 1;
-  @State opacity2: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
@@ -331,8 +343,8 @@ struct Page1 {
     }
     .width('100%')
     .height('100%')
-    .scale({ x: this.scale2 })
-    .opacity(this.opacity2)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .onClick(() => {
       this.getUIContext().getRouter().pushUrl({ url: 'pages/Index' });
     })
@@ -342,15 +354,15 @@ struct Page1 {
     PageTransitionEnter({ duration: 1200, curve: Curve.Linear })
       .onEnter((type: RouteType, progress: number) => {
         if (type == RouteType.Push || type == RouteType.Pop) {
-          this.scale2 = progress;
+          this.pageScale = progress;
         }
-        this.opacity2 = progress;
+        this.pageOpacity = progress;
       })
     PageTransitionExit({ duration: 1200, curve: Curve.Ease })
       .onExit((type: RouteType, progress: number) => {
         if (type == RouteType.Pop) {
-          this.scale2 = 1 - progress;
-          this.opacity2 = 1 - progress;
+          this.pageScale = 1 - progress;
+          this.pageOpacity = 1 - progress;
         }
       })
   }
@@ -376,7 +388,7 @@ struct Index {
     })
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式2：使用系统提供的多种默认效果（平移、缩放、透明度等）
   pageTransition() {
     // 该页面进入动画时长为1200ms，尽量与另一页面的退出动画时长匹配
     PageTransitionEnter({ duration: 1200 })
@@ -404,7 +416,7 @@ struct Page1 {
     })
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式2：使用系统提供的多种默认效果（平移、缩放、透明度等）
   pageTransition() {
     // 该页面进入动画时长为1000ms，尽量与另一页面的退出动画时长匹配
     PageTransitionEnter({ duration: 1000 })
@@ -428,8 +440,8 @@ struct Page1 {
 @Entry
 @Component
 struct Index {
-  @State scale1: number = 1;
-  @State opacity1: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
@@ -445,21 +457,21 @@ struct Index {
         .fontSize(36)
         .textAlign(TextAlign.Center)
     }
-    .scale({ x: this.scale1 })
-    .opacity(this.opacity1)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .height("100%")
     .width("100%")
     .justifyContent(FlexAlign.Center)
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式2：使用系统提供的多种默认效果（平移、缩放、透明度等）
   pageTransition() {
-    //设置入场动效
+    // 设置入场动效
     PageTransitionEnter({ duration: 200 })
       .slide(SlideEffect.START)
-    //设置退场动效
+    // 设置退场动效
     PageTransitionExit({ delay: 100 })
-      .slide(SlideEffect.START) //Left
+      .slide(SlideEffect.START) // Left
   }
 }
 ```
@@ -469,8 +481,8 @@ struct Index {
 @Entry
 @Component
 struct Page1 {
-  @State scale1: number = 1;
-  @State opacity1: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
@@ -486,19 +498,19 @@ struct Page1 {
         .fontSize(36)
         .textAlign(TextAlign.Center)
     }
-    .scale({ x: this.scale1 })
-    .opacity(this.opacity1)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .height("100%")
     .width("100%")
     .justifyContent(FlexAlign.Center)
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式2：使用系统提供的多种默认效果（平移、缩放、透明度等）
   pageTransition() {
     PageTransitionEnter({ duration: 200 })
-      .slide(SlideEffect.END) //Right
+      .slide(SlideEffect.END) // Right
     PageTransitionExit({ delay: 100 })
-      .slide(SlideEffect.END) //Right
+      .slide(SlideEffect.END)
   }
 }
 
@@ -513,8 +525,8 @@ struct Page1 {
 @Entry
 @Component
 struct Index {
-  @State scale1: number = 1;
-  @State opacity1: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
@@ -527,8 +539,8 @@ struct Index {
         .height(60)
         .fontSize(36)
     }
-    .scale({ x: this.scale1 })
-    .opacity(this.opacity1)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .height("100%")
     .width("100%")
     .justifyContent(FlexAlign.Center)
@@ -541,8 +553,8 @@ struct Index {
 @Entry
 @Component
 struct Page1 {
-  @State scale1: number = 1;
-  @State opacity1: number = 1;
+  @State pageScale: number = 1;
+  @State pageOpacity: number = 1;
 
   build() {
     Column() {
@@ -555,8 +567,8 @@ struct Page1 {
         .height(60)
         .fontSize(36)
     }
-    .scale({ x: this.scale1 })
-    .opacity(this.opacity1)
+    .scale({ x: this.pageScale })
+    .opacity(this.pageOpacity)
     .height("100%")
     .width("100%")
     .justifyContent(FlexAlign.Center)

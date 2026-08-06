@@ -1,8 +1,8 @@
 # ArkUI_CommandPathOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_CommandPath ArkUI_CommandPathOption
 
 ## 概述
 
-定义自定义路径配置项。
+定义自定义绘制路径配置项，用于为渲染节点创建基于路径的遮罩或裁剪效果。
 
 **起始版本：** 20
 

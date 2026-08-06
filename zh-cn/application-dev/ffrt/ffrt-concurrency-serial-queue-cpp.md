@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -26,58 +26,60 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 
 用例简化了异常处理和线程安全相关的一些逻辑，实现代码如下所示：
 
-```cpp
+<!-- @[serial_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue_cpp.h) -->
+
+``` C
 #include <chrono>
-#include <fstream>
-#include <iostream>
 #include <thread>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+```
+
+<!-- @[serial_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue_cpp.cpp) -->
+
+``` C++
+#undef LOG_TAG
+#define LOG_TAG "SerialCppTag"
 
 class Logger {
 public:
-    Logger(const std::string& filename)
+    Logger()
     {
         // 创建队列
         queue_ = std::make_unique<ffrt::queue>("loggerQueue");
-
-        // 以追加模式打开文件
-        logFile_.open(filename, std::ios::app);
-        if (!logFile_.is_open()) {
-            throw std::runtime_error("Failed to open log file: " + filename);
-        }
-        std::cout << "Log file opened: " << filename << std::endl;
+        
+        logFile_ = stdout;
+        OH_LOG_INFO(LOG_APP, "Log file opened");
     }
 
-    ~Logger() {
+    ~Logger()
+    {
         // 销毁队列
         queue_ = nullptr;
-
-        if (logFile_.is_open()) {
-            logFile_.close();
-            std::cout << "Log file closed" << std::endl;
-        }
+        OH_LOG_INFO(LOG_APP, "Log file closed");
     }
 
     // 添加日志任务
-    void log(const std::string& message) {
+    void Log(const std::string& message)
+    {
         queue_->submit([this, message] {
-            logFile_ << message << std::endl;
+            OH_LOG_INFO(LOG_APP, "Writing message %{public}s", message.c_str());
         });
     }
 
 private:
-    std::ofstream logFile_;
+    FILE *logFile_;
     std::unique_ptr<ffrt::queue> queue_;
 };
 
-int main()
+int SerialQueueCppExec()
 {
-    Logger logger("log.txt");
+    Logger logger;
 
     // 主线程添加日志任务
-    logger.log("Log message 1");
-    logger.log("Log message 2");
-    logger.log("Log message 3");
+    logger.Log("Log message 1");
+    logger.Log("Log message 2");
+    logger.Log("Log message 3");
 
     // 模拟主线程继续执行其他任务
     std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -97,7 +99,7 @@ int main()
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

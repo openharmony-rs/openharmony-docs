@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -26,12 +26,26 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-```c
-#include <stdio.h>
+<!-- @[concurrent_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.h) -->
+
+``` C
+#include <cstdio>
 #include <unistd.h>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 
-ffrt_queue_t create_bank_system(const char *name, int concurrency)
+#undef LOG_TAG
+#define LOG_TAG "ConcurrentTag"
+```
+
+<!-- @[concurrent_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.cpp) -->
+
+``` C++
+
+const int SLEEP_TIME = 100 * 1000;
+const int BANK_CONCURRENCY = 2;
+
+ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
 {
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
@@ -40,32 +54,32 @@ ffrt_queue_t create_bank_system(const char *name, int concurrency)
     // 创建一个并发队列
     ffrt_queue_t queue = ffrt_queue_create(ffrt_queue_concurrent, name, &queue_attr);
 
-    // 队列创建完成后需要销毁队列属性
+    // 队列创建完后需要销毁队列属性
     ffrt_queue_attr_destroy(&queue_attr);
     if (!queue) {
-        printf("create queue failed\n");
+        OH_LOG_INFO(LOG_APP, "create queue failed");
         return NULL;
     }
 
-    printf("create bank system successfully\n");
+    OH_LOG_INFO(LOG_APP, "create bank system successfully");
     return queue;
 }
 
-void destroy_bank_system(ffrt_queue_t queue_handle)
+void DestroyBankSystem(ffrt_queue_t queue_handle)
 {
     ffrt_queue_destroy(queue_handle);
-    printf("destroy bank system successfully\n");
+    OH_LOG_INFO(LOG_APP, "destroy bank system successfully");
 }
 
-void bank_business(void *arg)
+void BankBusiness(void *arg)
 {
-    usleep(100 * 1000);
+    usleep(SLEEP_TIME);
     const char *data = (const char *)arg;
-    printf("saving or withdraw for %s\n", data);
+    OH_LOG_INFO(LOG_APP, "saving or withdraw for %{public}s", data);
 }
 
 // 封装提交队列任务函数
-ffrt_task_handle_t commit_request(ffrt_queue_t bank, void (*func)(void *), const char *name,
+ffrt_task_handle_t CommitRequest(ffrt_queue_t bank, void (*func)(void *), const char *name,
     ffrt_queue_priority_t level, int delay)
 {
     ffrt_task_attr_t task_attr;
@@ -74,42 +88,43 @@ ffrt_task_handle_t commit_request(ffrt_queue_t bank, void (*func)(void *), const
     ffrt_task_attr_set_queue_priority(&task_attr, level);
     ffrt_task_attr_set_delay(&task_attr, delay);
 
-    return ffrt_queue_submit_h_f(bank, func, name, &task_attr);
+    return ffrt_queue_submit_h_f(bank, func, (void*)name, &task_attr);
 }
 
 // 封装取消队列任务函数
-int cancel_request(ffrt_task_handle_t request)
+int CancelRequest(ffrt_task_handle_t request)
 {
     return ffrt_queue_cancel(request);
 }
 
 // 封装等待队列任务函数
-void wait_for_request(ffrt_task_handle_t task)
+void WaitForRequest(ffrt_task_handle_t task)
 {
     ffrt_queue_wait(task);
 }
 
-int main()
+int ConcurrentQueueCExec()
 {
-    ffrt_queue_t bank = create_bank_system("Bank", 2);
+    ffrt_queue_t bank = CreateBankSystem("Bank", BANK_CONCURRENCY);
     if (!bank) {
         printf("create bank system failed\n");
+        OH_LOG_INFO(LOG_APP, "create bank system failed");
         return -1;
     }
 
-    ffrt_task_handle_t task1 = commit_request(bank, bank_business, "customer1", ffrt_queue_priority_low, 0);
-    ffrt_task_handle_t task2 = commit_request(bank, bank_business, "customer2", ffrt_queue_priority_low, 0);
+    ffrt_task_handle_t task1 = CommitRequest(bank, BankBusiness, "customer1", ffrt_queue_priority_low, 0);
+    ffrt_task_handle_t task2 = CommitRequest(bank, BankBusiness, "customer2", ffrt_queue_priority_low, 0);
     // VIP享受更优先的服务
-    ffrt_task_handle_t task3 = commit_request(bank, bank_business, "customer3 VIP", ffrt_queue_priority_high, 0);
-    ffrt_task_handle_t task4 = commit_request(bank, bank_business, "customer4", ffrt_queue_priority_low, 0);
-    ffrt_task_handle_t task5 = commit_request(bank, bank_business, "customer5", ffrt_queue_priority_low, 0);
+    ffrt_task_handle_t task3 = CommitRequest(bank, BankBusiness, "customer3 VIP", ffrt_queue_priority_high, 0);
+    ffrt_task_handle_t task4 = CommitRequest(bank, BankBusiness, "customer4", ffrt_queue_priority_low, 0);
+    ffrt_task_handle_t task5 = CommitRequest(bank, BankBusiness, "customer5", ffrt_queue_priority_low, 0);
 
     // 取消客户4的服务
-    cancel_request(task4);
+    CancelRequest(task4);
 
     // 等待所有的客户服务完成
-    wait_for_request(task5);
-    destroy_bank_system(bank);
+    WaitForRequest(task5);
+    DestroyBankSystem(bank);
 
     ffrt_task_handle_destroy(task1);
     ffrt_task_handle_destroy(task2);
@@ -126,19 +141,19 @@ int main()
 
 ## 接口说明
 
-上述样例中涉及到主要的FFRT的接口包括：
+上述样例中涉及到主要的FFRT的接口如下，详情请参考[Function Flow Runtime C API](ffrt-api-guideline-c.md)里的方法：
 
 | 名称                                                                             | 描述                                                                  |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_t)                        | 创建队列。                                                            |
-| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_t)                       | 销毁队列。                                                            |
-| [ffrt_task_attr_set_queue_priority](ffrt-api-guideline-c.md#ffrt_task_attr_t)    | 设置队列任务优先级。                                                  |
-| [ffrt_queue_attr_set_max_concurrency](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | 设置并发队列的并发度。                                                |
-| [ffrt_queue_submit_h_f](ffrt-api-guideline-c.md#ffrt_queue_t)                    | 向队列提交一个任务。<br/>**说明**：从API version 20开始，支持该接口。 |
+| ffrt_queue_create                        | 创建队列。                                                            |
+| ffrt_queue_destroy                       | 销毁队列。                                                            |
+| ffrt_task_attr_set_queue_priority        | 设置队列任务优先级。                                                   |
+| ffrt_queue_attr_set_max_concurrency      | 设置并发队列的并发度。                                                 |
+| ffrt_queue_submit_h_f                    | 向队列提交一个任务。<br/>**说明**：从API version 20开始，支持该接口。    |
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

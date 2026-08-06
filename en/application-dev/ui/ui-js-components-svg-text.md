@@ -33,7 +33,7 @@ Set the following attributes to define text styles: **x** (X coordinate), **y** 
 </div>
 ```
 
-![en-us_image_0000001227151887](figures/en-us_image_0000001227151887.png)
+![Text](figures/Text.png)
 
 
 ## Drawing Text Along the Path
@@ -55,4 +55,4 @@ Set **textpath** to draw text along the path.
 </div>
 ```
 
-![en-us_image_0000001181354262](figures/en-us_image_0000001181354262.png)
+![Drawing-Text-Along](figures/Drawing-Text-Along.png)

@@ -16,7 +16,7 @@ The module defines shortcut information configured in the configuration file. Fo
 > 
 > The APIs provided by this module are system APIs.
 
-## ShortcutWant<sup>(deprecated)<sup>
+## ShortcutWant<sup>(deprecated)</sup>
 
 > **NOTE**
 >

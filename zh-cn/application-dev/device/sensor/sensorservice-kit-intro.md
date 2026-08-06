@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 使用场景
@@ -16,7 +16,7 @@ Sensor Service Kit（传感器服务）使应用程序能够从传感器获取�
 
 - Vibrator（振动）模块最大化开放马达器件能力，通过拓展马达服务实现振动与交互融合设计，打造细腻精致的一体化振动体验和差异化体验，提升用户交互效率和易用性、提升用户体验、增强品牌竞争力。
   - 本地马达: 设备内置的马达，常用的包括转子马达、线性马达等。
-  - 动态马达: 设备外置的多个马达支持独立控制，且可以根据设备的连接、马达的状态等信息进行灵活的管理。动态马达广泛应用于外接设备，包括手柄、遥控器、外接振动器等, 为了管理这些动态接入的设备，应使用 vibrator.on('vibratorStateChange', callback) 来监听设备上下线事件。
+  - 动态马达: 设备外置的多个马达支持独立控制，且可以根据设备的连接、马达的状态等信息进行灵活的管理。动态马达广泛应用于外接设备，包括手柄、遥控器、外接振动器等，为了管理这些动态接入的设备，应使用 vibrator.on('vibratorStateChange', callback) 来监听设备上下线事件。
 
 
 ## 约束限制
@@ -36,3 +36,5 @@ Sensor Service Kit（传感器服务）使应用程序能够从传感器获取�
 - 要使用振动的功能，设备必须具有对应的器件。
 - 针对马达，开发者需要请求相应的权限才能使用。
 - 多个振动器的控制：当存在多个可控振动设备时，应用需要通过 getVibratorInfoSync() 查询可用的马达列表，并在调用 startVibration 或 stopVibration 时，传入 deviceId 和 vibratorId 等参数来精确控制目标马达。
+
+<!--RP1--><!--RP1End-->

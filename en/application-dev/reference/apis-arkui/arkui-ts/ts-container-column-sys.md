@@ -1,18 +1,22 @@
 # Column (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:38:08.362Z pushedAt=2026-08-01T06:42:55.890Z -->
 
-The **Column** component lays out child components vertically.
+A container that lays out child components along the vertical direction. The **Column** component arranges child components vertically in sequence, and supports setting attributes such as alignment and spacing, simplifying the implementation of vertical layouts. It is suitable for various scenarios such as forms, list items, and vertical navigation.
 
 > **NOTE**
 >
-> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [Column](ts-container-column.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This page contains only the system APIs of this module. For other public APIs, see [Column](ts-container-column.md).
 
 ## Attributes
 
@@ -20,7 +24,7 @@ The **Column** component lays out child components vertically.
 
 pointLight(value: PointLightStyle)
 
-Sets the point light style.
+Adds a point light effect to the **Column** component, affecting the lighting rendering of surrounding components marked as illuminable. A point light is a light source that emits light in all directions from a specific position, and can be used to enhance the three-dimensional appearance and visual depth of the UI. You can configure parameters such as the light position, color, and intensity through **PointLightStyle**. For details, see [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle).
 
 **System API**: This is a system API.
 
@@ -30,4 +34,4 @@ Sets the point light style.
 
 | Name| Type                                                        | Mandatory| Description        |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
-| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | Yes  | Point light style.|
+| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | Yes   | Point light style used to set the UI effect of a point light illuminating surrounding components. Only the **Image**, **Column**, **Flex**, **Row**, and **Stack** components support the point light setting. |

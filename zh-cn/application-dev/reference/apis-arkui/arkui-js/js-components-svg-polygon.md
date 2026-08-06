@@ -44,4 +44,4 @@
 ```
 
 
-![zh-cn_image_0000001173324721](figures/zh-cn_image_0000001173324721.png)
+![polygon](figures/polygon.png)

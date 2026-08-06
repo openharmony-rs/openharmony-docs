@@ -1,20 +1,20 @@
 # Theme Configuration
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-To configure the theme for a service widget, use the attribute described below.
+
+The following theme style can be modified for a widget.
 
 |      Name         |             Description                |
 | ------------------  |  -----------------------------  |
-|   app_background    |        Background color of the widget.       |
+|   app_background    |        Background color of the widget. The default color is white.       |
 
 
-To configure the theme, create the **resources** folder at the same level as **pages** in the **widget** folder and set the above attribute in the **widget/resources/styles/default.json** file. For example, to configure the default theme of a widget to light gray:
+To modify the theme style, manually create a **resources** folder at the same level as the **pages** folder in the widget folder, and configure the theme style in the **widget/resources/styles/default.json** file. For example, the sample code below changes the default background color of a service widget to light gray.
 
 ```json
 {

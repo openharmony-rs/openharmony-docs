@@ -57,7 +57,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 >
 >  The default value of the universal attribute [padding](ts-universal-attributes-size.md#padding) is as follows:<br>{<br>&nbsp;top: '8vp',<br>&nbsp;right: '16vp',<br>&nbsp;bottom: '8vp',<br>&nbsp;left: '16vp'<br> }
 >
->  Since API version 11, **.width('auto')** can be set for the **TextArea** component. Under this setting, the component auto-adapts its width to the text width, while respecting the **constraintSize** configuration and the maximum and minimum width restrictions received by the parent container. For details, see [Size](ts-universal-attributes-size.md).
+>  Since API version 11, **.width('auto')** can be set for the **TextArea** component. Under this setting, the component auto-adapts its width to the text width, while respecting the **constraintSize** configuration and the maximum and minimum width restrictions received by the parent container. For details, see [Sizing](ts-universal-attributes-size.md).
 
 ### placeholderColor
 
@@ -2627,7 +2627,7 @@ struct TextAreaExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        TextArea({text: '中文 Text'})
+        TextArea({text: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         TextArea({text: '中文Text'})
@@ -2802,6 +2802,9 @@ struct Index {
 ### Example 25: Setting the Placeholder Rich Text Style
 
 This example demonstrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
+
+The base text supports multiple languages, and **start** and **length** values vary by language. This example implements rich text styling on Chinese text.
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

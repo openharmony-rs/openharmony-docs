@@ -423,7 +423,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![en-us_sheet](figures/en-us_sheet1.gif)
+![en-us_sheet](figures/sheet1.gif)
 
 ### Example 2: Setting Three Different Height Detents
 
@@ -476,7 +476,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![en-us_sheet](figures/en-us_sheet2.gif)
+![en-us_sheet](figures/sheet2.gif)
 
 ### Example 3: Setting the Border Width and Color
 
@@ -532,11 +532,11 @@ struct SheetTransitionExample {
 
 The following shows how the example is represented with left-to-right scripts.
 
-![en-us_sheet](figures/en-us_sheet3_ltr.png)
+![en-us_sheet](figures/sheet3-ltr.png)
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_sheet](figures/en-us_sheet3_rtl.png)
+![en-us_sheet](figures/sheet3-rtl.png)
 
 ### Example 4: Using Dismiss Callbacks
 
@@ -588,7 +588,7 @@ struct bindSheetExample {
   }
 }
 ```
-![en-us_sheet](figures/en-us_sheet4.gif)
+![en-us_sheet](figures/sheet4.gif)
 
 ### Example 5: Setting the Content Update Mode
 
@@ -640,11 +640,11 @@ struct Index {
 ```
 The sheet's content height is not updated until the user stops dragging and releases the sheet.
 
-![en-us_sheet](figures/en-us_sheet5_ltr.gif)
+![en-us_sheet](figures/sheet5-ltr.gif)
 
 The sheet's content height is updated in real time as the user drags the sheet.
 
-![en-us_sheet](figures/en-us_sheet5_rtl.gif)
+![en-us_sheet](figures/sheet5-rtl.gif)
 
 ### Example 6: Configuring the Sheet to Resize to Avoid the Keyboard
 
@@ -760,7 +760,7 @@ struct ListenKeyboardHeightChange {
   }
 }
 ```
-![en-us_sheet](figures/en-us_sheet6.gif)
+![en-us_sheet](figures/sheet6.gif)
 
 ### Example 7: Setting the Corner Radius in a Mirrored Layout
 
@@ -813,11 +813,11 @@ struct SheetTransitionExample {
 
 The following shows how the example is represented with left-to-right scripts.
 
-![en-us_sheet](figures/en-us_sheet7_ltr.png)
+![en-us_sheet](figures/sheet7-ltr.png)
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_sheet](figures/en-us_sheet7_rtl.png)
+![en-us_sheet](figures/sheet7-rtl.png)
 
 ### Example 8: Implementing a Side Sheet
 
@@ -920,7 +920,7 @@ struct SheetSideExample {
 }
 ```
 
-![en-us_sheet](figures/sheet8_side.gif)
+![en-us_sheet](figures/sheet8-side.png)
 
 ### Example 9: Implementing a Full-Screen Content Cover Sheet
 

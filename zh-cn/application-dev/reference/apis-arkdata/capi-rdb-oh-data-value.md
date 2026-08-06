@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct OH_Data_Value OH_Data_Value
 
 ## 概述
 
-OH_Data_Value结构类型，用于储存单条数据值。
+OH_Data_Value结构类型，用于存储单条数据值。
 
 **起始版本：** 18
 

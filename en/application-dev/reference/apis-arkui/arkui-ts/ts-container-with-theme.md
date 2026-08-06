@@ -1,9 +1,9 @@
 # WithTheme
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **WithTheme** component is designed to customize the theme style for a specific part of an application page. It allows for the setting of light and dark modes for child components, as well as the use of custom color schemes.
@@ -12,7 +12,7 @@ The **WithTheme** component is designed to customize the theme style for a speci
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> **WithTheme** supports the following built-in components: [TextInput](./ts-basic-components-textinput.md), [Search](./ts-basic-components-search.md), [Button](./ts-basic-components-button.md), [Badge](./ts-container-badge.md), [Swiper](./ts-container-swiper.md), [Text](./ts-basic-components-text.md), [Select](./ts-basic-components-select.md), [Menu](./ts-basic-components-menu.md), [TimePicker](./ts-basic-components-timepicker.md), [DatePicker](./ts-basic-components-datepicker.md), [TextPicker](./ts-basic-components-textpicker.md), [Checkbox](./ts-basic-components-checkbox.md), [CheckboxGroup](./ts-basic-components-checkboxgroup.md), [Radio](./ts-basic-components-radio.md), [Slider](./ts-basic-components-slider.md), [Progress](./ts-basic-components-progress.md), [QRCode](./ts-basic-components-qrcode.md), [Toggle](./ts-basic-components-toggle.md), [PatternLock](./ts-basic-components-patternlock.md), and [Divider](./ts-basic-components-divider.md).
+> **WithTheme** supports the following built-in components: [TextInput](./ts-basic-components-textinput.md), [Search](./ts-basic-components-search.md), [Button](./ts-basic-components-button.md), [Badge](./ts-container-badge.md), [Swiper](./ts-container-swiper.md), [Text](./ts-basic-components-text.md), [Select](./ts-basic-components-select.md), [Menu](./ts-basic-components-menu.md), [TimePicker](./ts-basic-components-timepicker.md), [DatePicker](./ts-basic-components-datepicker.md), [TextPicker](./ts-basic-components-textpicker.md), [Checkbox](./ts-basic-components-checkbox.md), [CheckboxGroup](./ts-basic-components-checkboxgroup.md), [Radio](./ts-basic-components-radio.md), [Slider](./ts-basic-components-slider.md), [Progress](./ts-basic-components-progress.md), [QRCode](./ts-basic-components-qrcode.md), [Toggle](./ts-basic-components-toggle.md), [TextClock](./ts-basic-components-textclock.md), [PatternLock](./ts-basic-components-patternlock.md), and [Divider](./ts-basic-components-divider.md). Since API version 26.0.0, the following components are added: [CalendarPicker](./ts-basic-components-calendarpicker.md), [UIPickerComponent](./ts-container-ui-picker-component.md), [TextArea](./ts-basic-components-textarea.md), [styled string](./ts-universal-styled-string.md), [Gauge](./ts-basic-components-gauge.md), [DataPanel](./ts-basic-components-datapanel.md), [RichEditor](./ts-basic-components-richeditor.md), [MenuItem](./ts-basic-components-menuitem.md), [MenuItemGroup](./ts-basic-components-menuitemgroup.md), [Image](./ts-basic-components-image.md), [ImageAnimator](./ts-basic-components-imageanimator.md), [Counter](./ts-container-counter.md), [BindSheet](./ts-universal-attributes-sheet-transition.md), and [LoadingProgress](./ts-basic-components-loadingprogress.md).
 >
 > For details about how to use **WithTheme**, see [Configuring In-Application Theme Skinning](../../../ui/theme_skinning.md).
 

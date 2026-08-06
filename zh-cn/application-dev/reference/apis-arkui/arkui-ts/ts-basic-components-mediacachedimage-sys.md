@@ -1,4 +1,4 @@
-# MediaCachedImage（系统接口）
+# MediaCachedImage (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @baosiyuan-->
@@ -89,4 +89,4 @@ struct MediaCachedImageExample {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
+![zh-cn_image_0000001592882500](figures/mediacachedimage-sample-picture.gif)

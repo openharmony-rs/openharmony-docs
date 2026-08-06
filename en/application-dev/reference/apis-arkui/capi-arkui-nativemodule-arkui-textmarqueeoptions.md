@@ -12,10 +12,10 @@ typedef struct ArkUI_TextMarqueeOptions ArkUI_TextMarqueeOptions
 
 ## Overview
 
-Defines the marquee effect for text.
+Defines text marquee options.
 
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [text.h](capi-text-h.md)

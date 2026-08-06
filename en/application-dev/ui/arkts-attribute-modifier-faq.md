@@ -14,7 +14,9 @@ This topic addresses common issues related to dynamic attribute setting.
 
 A [JS crash](../dfx/jscrash-guidelines.md) occurs after **AttributeModifier** is used to [set dynamic attributes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md) for a component.
 
-![](figures/jscrash_happend.png)
+<!--RP1-->
+![](figures/jscrash_happened.png)
+<!--RP1End-->
 
 **Solution**
 

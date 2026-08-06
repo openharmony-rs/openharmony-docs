@@ -6,13 +6,171 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=279f58a08395cb7d60f140e1aaa1ae4b3733282e translatedAt=2026-06-11T08:19:38.418Z pushedAt=2026-06-15T12:10:43.297Z -->
 
-The **privacyManager** module provides APIs for privacy management, such as management of permission usage records.
+## Module Overview
+
+This module primarily provides privacy management APIs such as permission usage records, supporting system applications in recording, querying, listening to, and controlling the usage of sensitive permissions. A permission usage record describes when a sensitive permission was used, how it was used, whether it is currently in use, and whether these usage records are allowed to be recorded or queried.
+
+This module is mainly used in the following scenarios:
+
+- Adding/querying the sensitive permission access records of a specified application.
+
+- Subscribing to permission usage status change events, sensing changes in permission usage from unused to foreground use and background use, and linking with business logic.
+
+- Controlling the permission access record toggle for the current user.
+
+- Querying whether a certain permission is currently being used.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
+
+## Introduction to Key Classes/Interfaces
+
+### Core Enum Types
+
+- **[PermissionUsageFlag](#permissionusageflag):** Enum for querying permission usage records, used to specify querying summary data or detailed data.
+
+- **[PermissionActiveStatus](#permissionactivestatus):** Enum for permission usage status change types, used to indicate unused, foreground use, or background use status.
+
+- **[PermissionUsedType](#permissionusedtype12):** Enum for sensitive permission usage types, used to indicate the use of sensitive permissions through normal authorization, Picker, or security components.
+
+### Core Interface Types
+
+- **[PermissionUsedRequest](#permissionusedrequest):** Permission usage record query request object, used to specify the query application, permission, time range, and query method.
+
+- **[PermissionUsedResponse](#permissionusedresponse):** Permission usage record query response object, used to return the query time range and a collection of application-level records.
+
+- **[BundleUsedRecord](#bundleusedrecord):** Application or device-level permission usage record object, used to return the permission access records of a specific application or remote device.
+
+- **[PermissionUsedRecord](#permissionusedrecord):** Access record object for a single permission, used to return the number of accesses, number of denials, last access time, and detailed records.
+
+- **[UsedRecordDetail](#usedrecorddetail):** Single access record detail object, used to return information such as access status, timestamp, access duration, and usage type.
+
+- **[ActiveChangeResponse](#activechangeresponse):** Permission usage status change event object, used to return details of permission active status changes.
+
+- **[PermissionUsedTypeInfo](#permissionusedtypeinfo12):** Permission usage type information object, used to return the usage type when an application accesses a sensitive permission.
+
+- **[AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12):** Optional parameter object for adding a permission usage record, used to specify the sensitive permission usage type and extension identity.
+
+- **[PermissionUsingOptions](#permissionusingoptions):** Optional parameter object for permission usage, used to specify the extension identity.
+
+### Core Function Types
+
+- **[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord):** Adds a permission usage record.
+
+- **[getPermissionUsedRecord](#privacymanagergetpermissionusedrecord):** Queries permission usage records.
+
+- **[setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18):** Sets the permission usage record toggle status.
+
+- **[getPermissionUsedRecordToggleStatus](#privacymanagergetpermissionusedrecordtogglestatus18):** Queries the permission usage record toggle status.
+
+- **[startUsingPermission](#privacymanagerstartusingpermission):** Marks the start of using a sensitive permission.
+
+- **[stopUsingPermission](#privacymanagerstopusingpermission):** Marks the stop of using a sensitive permission.
+
+- **[checkPermissionInUse](#privacymanagercheckpermissioninuse):** Checks whether a specified permission is currently being used.
+
+- **[on](#privacymanageron):** Subscribes to permission usage status change events.
+
+- **[off](#privacymanageroff):** Unsubscribes from permission usage status change events.
+
+- **[getPermissionUsedTypeInfos](#privacymanagergetpermissionusedtypeinfos12):** Queries sensitive permission access type information.
+
+### Core Class
+
+- **privacyManager:** Provides the core class for privacy management.
+
+![](figures/privacyManager.png)
+
+### API Combination Usage Description
+
+Scenario 1: Maintaining permission usage records.
+
+Scenario Description:
+
+- When a system application accesses a sensitive permission, it needs to call [startUsingPermission](#privacymanagerstartusingpermission) at the start of use and [stopUsingPermission](#privacymanagerstopusingpermission) at the end of use, so that the system can sense the corresponding permission usage status change;
+
+- After a system application accesses a sensitive permission, it can call [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) so that the system records the corresponding sensitive permission access event.
+
+The typical usage flow is as follows:
+
+```ts
+import { privacyManager, Permissions } from '@kit.AbilityKit';
+
+let tokenID: number = 0; // For the method to obtain tokenID, refer to the description in the relevant BundleInfo section. refer to the description in the relevant BundleInfo section.
+let permissionName: Permissions = 'ohos.permission.CAMERA';
+let pid: number = 0; // It can be obtained through rpc.IPCSkeleton.getCallingPid().eton.getCallingPid().
+let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.NORMAL_TYPE;
+let successCount: number = 1;
+let failCount: number = 0;
+let options: privacyManager.AddPermissionUsedRecordOptions = {
+  usedType: privacyManager.PermissionUsedType.NORMAL_TYPE
+};
+
+// 1. Mark the application as starting to use a sensitive permission.
+await privacyManager.startUsingPermission(tokenID, permissionName, pid, usedType);
+
+// 2. Supplement the access record after the process ends.
+await privacyManager.addPermissionUsedRecord(tokenID, permissionName, successCount, failCount, options);
+
+// 3. Mark the application as ending the use of a sensitive permission.
+await privacyManager.stopUsingPermission(tokenID, permissionName, pid);
+```
+
+Scenario 2: Querying permission usage records.
+
+Scenario Description: When a system application needs to query the historical usage of sensitive permissions, it can construct a [PermissionUsedRequest](#permissionusedrequest) to specify the query scope, and then call [getPermissionUsedRecord](#privacymanagergetpermissionusedrecord) to obtain historical records such as access count, timestamp, and duration. If it needs to query the access method classification of sensitive permissions (normal authorization, Picker, or security component), it can call [getPermissionUsedTypeInfos](#privacymanagergetpermissionusedtypeinfos12).
+
+The typical usage flow is as follows:
+
+```ts
+import { privacyManager, Permissions } from '@kit.AbilityKit';
+
+let tokenID: number = 0; // For the method to obtain tokenID, refer to the description in the relevant BundleInfo section.
+let permissionName: Permissions = 'ohos.permission.CAMERA';
+let request: privacyManager.PermissionUsedRequest = {
+  tokenId: tokenID,
+  permissionNames: [permissionName],
+  beginTime: 0,
+  endTime: 0,
+  flag: privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL
+};
+
+// 1. Query historical permission usage records.
+await privacyManager.getPermissionUsedRecord(request);
+
+// 2. Query sensitive permission access type information.
+await privacyManager.getPermissionUsedTypeInfos(tokenID, permissionName);
+```
+
+Scenario 3: Listening to and checking permission usage status.
+
+Scenario Description: When a system application needs to sense whether a sensitive permission is currently in use, or link business processes when the permission usage status changes—for example, displaying the real-time permission usage status on the permission management interface, triggering a security audit when a permission is used, or issuing an alert when abnormal permission usage is detected—it can use a combination of [checkPermissionInUse](#privacymanagercheckpermissioninuse), [on](#privacymanageron), and [off](#privacymanageroff).
+
+The typical usage flow is as follows:
+
+```ts
+import { privacyManager, Permissions } from '@kit.AbilityKit';
+
+let permissionName: Permissions = 'ohos.permission.CAMERA';
+let permissionList: Array<Permissions> = [permissionName];
+let callback: (data: privacyManager.ActiveChangeResponse) => void =
+  (data: privacyManager.ActiveChangeResponse): void => {
+    console.info(`receive permission state change, data: ${JSON.stringify(data)}`);
+  };
+
+// 1. Query whether the current permission is being used.
+privacyManager.checkPermissionInUse(permissionName);
+
+// 2. Subscribe to usage status changes for a specified permission.
+privacyManager.on('activeStateChange', permissionList, callback);
+
+// 3. Unsubscribe when no longer needed.
+privacyManager.off('activeStateChange', permissionList, callback);
+```
 
 ## Modules to Import
 
@@ -20,16 +178,19 @@ The **privacyManager** module provides APIs for privacy management, such as mana
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-
 ## privacyManager.addPermissionUsedRecord
 
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, options?: AddPermissionUsedRecordOptions): Promise&lt;void&gt;
 
-Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses a promise to return the result.
+When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses a promise to return the result.
 
-The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
+The permission usage record includes the application identity of the caller, the name of the application permission used, and the number of successful and failed accesses to this application by the caller.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+The permission usage record is controlled by the toggle status set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). When the toggle is off, calling this API will not generate a permission usage record.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -37,28 +198,28 @@ The permission usage record includes the application identity (token ID) of the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Name of the permission.|
-| successCount | number | Yes  | Number of successful accesses.|
-| failCount | number | Yes  | Number of failed accesses.|
-| options<sup>12+</sup> | [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) | No  | Options for adding a permission usage record. The default value is **NORMAL_TYPE**. This parameter is supported since API version 12.|
+| tokenID   |  number   | Yes   | Caller's application identity identifier. It can be obtained through the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be recorded. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001. |
+| successCount | number | Yes   | Number of successful accesses. The value must be a non-negative integer. Passing an invalid value returns error code 12100001. |
+| failCount | number | Yes   | Number of failed accesses. The value must be a non-negative integer. Passing an invalid value returns error code 12100001. |
+| options<sup>12+</sup> | [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) | No   | Optional parameter for adding a permission usage record, used to specify the sensitive permission usage type and extension identity. Pass this parameter when you need to distinguish the permission access method (such as access via Picker or security control) or identify the caller's extension identity.<br>usedType: Supported from API version 12.<br>Default value: NORMAL_TYPE.<br>enhancedIdentity: Supported from API version 26.0.0, with a length not exceeding 48 characters.<br>Default value: "". |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the count value is invalid, or usedType in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the count value is invalid, usedType in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) is invalid, or the enhancedIdentity in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) exceeds 48 characters. |
 | 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
@@ -71,19 +232,21 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Add permission usage record
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
   console.info('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 // with options param
 let options: privacyManager.AddPermissionUsedRecordOptions = {
-  usedType: privacyManager.PermissionUsedType.PICKER_TYPE
+  usedType: privacyManager.PermissionUsedType.PICKER_TYPE,
+  enhancedIdentity: 'test'
 };
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, options).then(() => {
   console.info('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -92,11 +255,15 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, callback: AsyncCallback&lt;void&gt;): void
 
-Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses an asynchronous callback to return the result.
+When an application protected by a permission is called by another service or application, this API can be used to add a permission usage record. It is recommended to call this API after accessing a sensitive permission, so that the system records the corresponding sensitive permission access event. This API uses an asynchronous callback to return the result.
 
-The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
+The permission usage record includes the application identity of the caller, the name of the application permission used, and the number of successful and failed accesses to this application by the caller.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+The permission usage record is controlled by the toggle status set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). When the toggle is off, calling this API will not generate a permission usage record.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -104,15 +271,15 @@ The permission usage record includes the application identity (token ID) of the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Permission name. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| successCount | number | Yes  | Number of successful accesses.|
-| failCount | number | Yes  | Number of failed accesses.|
+| tokenID   |  number   | Yes   | Caller's application identity identifier. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be recorded. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001. |
+| successCount | number | Yes   | Number of successful accesses. The value must be a non-negative integer. Passing an invalid value returns error code 12100001. |
+| failCount | number | Yes   | Number of failed accesses. The value must be a non-negative integer. Passing an invalid value returns error code 12100001. |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -132,7 +299,8 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Add permission usage record
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
   if (err) {
     console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
@@ -146,9 +314,11 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 
 getPermissionUsedRecord(request: PermissionUsedRequest): Promise&lt;PermissionUsedResponse&gt;
 
-Obtains historical permission usage records. This API uses a promise to return the result.
+Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -162,11 +332,11 @@ Obtains historical permission usage records. This API uses a promise to return t
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise used to return the permission usage records obtained.|
+| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise used to return the queried permission usage record.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -183,19 +353,20 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: privacyManager.PermissionUsedRequest = {
-    'tokenId': 1,
+    'tokenId': 1, // It can be obtained through the accessTokenId field of ApplicationInfo in the application's BundleInfo.
     'isRemote': false,
     'deviceId': 'device',
     'bundleName': 'bundle',
     'permissionNames': [],
     'beginTime': 0,
     'endTime': 1,
-    'flag':privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
+    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
 };
 
+// Query historical permission usage records
 privacyManager.getPermissionUsedRecord(request).then((data) => {
   console.info(`getPermissionUsedRecord success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -204,9 +375,11 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 
 getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&lt;PermissionUsedResponse&gt;): void
 
-Obtains historical permission usage records. This API uses an asynchronous callback to return the result.
+Obtains historical permission usage records, which can be used in permission auditing or security monitoring scenarios, such as checking an application's usage of sensitive permissions within a specified time period. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -215,11 +388,11 @@ Obtains historical permission usage records. This API uses an asynchronous callb
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | request | [PermissionUsedRequest](#permissionusedrequest) | Yes| Request for querying permission usage records.|
-| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the permission usage record obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | Yes | Callback used to return the result. If the record query is successful, **err** is **undefined**, and data is the queried permission usage record; otherwise, **err** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -236,16 +409,17 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: privacyManager.PermissionUsedRequest = {
-    'tokenId': 1,
+    'tokenId': 1, // It can be obtained through the accessTokenId field in the ApplicationInfo of the application's BundleInfo.
     'isRemote': false,
     'deviceId': 'device',
     'bundleName': 'bundle',
     'permissionNames': [],
     'beginTime': 0,
     'endTime': 1,
-    'flag':privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
+    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
 };
 
+// Query historical permission usage records
 privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
   if (err) {
     console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
@@ -261,9 +435,11 @@ setPermissionUsedRecordToggleStatus(status: boolean): Promise&lt;void&gt;
 
 Sets whether to record the permission usage of this user. Sets the permission usage record switch for this user. This API uses a promise to return the result.
 
-If **status** is **true**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) can be called to add permission usage records. If **status** is set **false**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) does not add permission usage records. Instead, it deletes the historical records of the user.
+When **status** is **true**, the [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) API can add usage records normally; when **status** is **false**, the [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) API does not generate permission usage records, and deletes the current user's historical records.
 
-**Required permissions**: ohos.permission.PERMISSION_RECORD_TOGGLE (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_RECORD_TOGGLE
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -281,7 +457,7 @@ If **status** is **true**, [addPermissionUsedRecord](#privacymanageraddpermissio
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -297,9 +473,10 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Set permission usage record switch status
 privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
   console.info('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -308,9 +485,11 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 
 getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
-Obtains the settings of the permission usage record switch for this user. This API uses a promise to return the result.
+A system application can call this API to obtain the current user's permission usage record toggle status, for example, to display the current toggle setting status on the permission management interface. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -318,11 +497,11 @@ Obtains the settings of the permission usage record switch for this user. This A
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the switch is enabled. Returns **false** if the switch is disabled.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the switch status value of the current user is on, and **false** indicates that the switch status value of the current user is off.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -336,14 +515,15 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
+// Query permission usage record switch status
+privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
   console.info('getPermissionUsedRecordToggleStatus success');
-  if (res == true) {
+  if (status == true) {
     console.info('get status is TRUE');
   } else {
     console.info('get status is FALSE');
   }
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -352,11 +532,13 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
 
 startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;void&gt;
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses a promise to return the result.
+A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](#privacymanageron) for the subscription method). This API uses a promise to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+After starting to use a permission, [stopUsingPermission](#privacymanagerstopusingpermission) must be called to stop using the permission when the usage ends.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -364,8 +546,8 @@ When an application starts to use a permission, the privacy service notifies the
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be used. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
 
 **Return value**
 
@@ -375,7 +557,7 @@ When an application starts to use a permission, the privacy service notifies the
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -395,10 +577,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Start using specified permission
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -407,15 +590,13 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(
 
 startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, usedType?: PermissionUsedType): Promise&lt;void&gt;
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses a promise to return the result.
+A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](#privacymanageron) for the subscription method). This API uses a promise to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+After starting to use a permission, [stopUsingPermission](#privacymanagerstopusingpermission18) must be called to stop using the permission when the usage ends.
 
-For a multi-process application, you can specify the process ID (PID) of the application when reporting the permission usage. If no PID is specified, the privacy service responds by application. When the application exits, the privacy service notifies the privacy indicator and clears the cache.
+**System API**: This is a system API.
 
-If a PID is specified, the privacy service responds by process. When the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
-
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -423,10 +604,10 @@ If a PID is specified, the privacy service responds by process. When the process
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| pid            | number | No  | PID of the caller. The default value is **-1**, which indicates that the privacy service does not respond based on the process lifecycle.|
-| usedType       | [PermissionUsedType](#permissionusedtype12) | No| Sensitive permission access mode. The default value is **NORMAL_TYPE**.|
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the app's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be used. The permission name cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
+| pid            | number | No   | Process PID of the caller, used to manage the permission usage status based on the process lifecycle. Pass this parameter when you need to precisely control the permission usage status of a specific process (for example, automatically stopping permission usage when the process exits). It must be the same as the pid passed to [stopUsingPermission](#privacymanagerstopusingpermission18).<br>Default value: -1, indicating no response based on the process lifecycle.|
+| usedType       | [PermissionUsedType](#permissionusedtype12) | No | Access mode for the sensitive permission.<br>Default value: NORMAL_TYPE. |
 
 **Return value**
 
@@ -436,7 +617,7 @@ If a PID is specified, the privacy service responds by process. When the process
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -454,34 +635,127 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit'
+import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // accessTokenId can also be obtained by using getApplicationInfo.
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
-// without pid and usedType
+// Start using a specified permission
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.startUsingPermission
+
+startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, usedType?: PermissionUsedType, options?: PermissionUsingOptions): Promise&lt;void&gt;
+
+A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](#privacymanageron) for the subscription method). This API uses a promise to return the result.
+
+After starting to use a permission, [stopUsingPermission](#privacymanagerstopusingpermission-1) must be called to stop using the permission when the usage ends.
+
+When a pid is passed in, the pid must be the same as the pid passed into [stopUsingPermission](#privacymanagerstopusingpermission-1). If the pairing relationship is not satisfied, error code 12100004 is returned.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be used. The permission name must not exceed 256 characters. Passing in an invalid value returns error code 12100001.|
+| pid            | number | No   | Process ID of the caller, used to manage the permission usage status based on the process lifecycle. This parameter is passed in when precise control of the permission usage status for a specific process is required (for example, automatically stopping permission usage when the process exits).<br>Default value: -1, indicating no response based on the process lifecycle.|
+| usedType       | [PermissionUsedType](#permissionusedtype12) | No | Access mode for the sensitive permission.<br>Default value: NORMAL_TYPE. |
+| options        | [PermissionUsingOptions](#permissionusingoptions)| No | Optional parameter for permission usage, used to specify the extension identity. This parameter is passed in when the caller's extension identity information needs to be identified.<br>Default value: enhancedIdentity is an empty string. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, usedType is invalid, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
+| 12100007 | The service is abnormal. |
+| 12100008 | Out of memory. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
+
+// Without the pid and usedType parameters
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the pid parameter
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the usedType parameter
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the pid and usedType parameters
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With pid, usedType, and enhancedIdentity
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: 'test'}).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -490,11 +764,13 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, 
 
 startUsingPermission(tokenID: number, permissionName: Permissions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses an asynchronous callback to return the result.
+A system application can call this API to report the application's permission usage status in the foreground or background to the system. The privacy service notifies all subscribers of this permission usage status change event (refer to [on](#privacymanageron) for the subscription method). This API uses an asynchronous callback to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+After starting to use a permission, [stopUsingPermission](#privacymanagerstopusingpermission-2) must be called to stop using the permission when the usage ends.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -502,13 +778,13 @@ When an application starts to use a permission, the privacy service notifies the
 
 | Name         | Type                 | Mandatory| Description                                 |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions                | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID        | number                | Yes   | Identity identifier of the target application. It can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. If 0 is passed in, error code 12100001 is returned.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md)                | Yes   | Name of the permission to be used. The permission name cannot exceed 256 characters. If an invalid value is passed in, error code 12100001 is returned.|
 | callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -528,7 +804,8 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Start using the specified permission
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -542,9 +819,13 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err:
 
 stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;void&gt;
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses a promise to return the result.
+A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+This API must be used in conjunction with [startUsingPermission](#privacymanagerstartusingpermission).
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -552,8 +833,8 @@ Stops using a permission. This API must be called by a system application, and u
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to stop using. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
 
 **Return value**
 
@@ -563,7 +844,7 @@ Stops using a permission. This API must be called by a system application, and u
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -582,10 +863,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Stop using a specified permission
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -594,11 +876,13 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then((
 
 stopUsingPermission(tokenID: number, permissionName: Permissions, pid?: number): Promise&lt;void&gt;
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses a promise to return the result.
+A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result.
 
-The value of **pid** must match that used in **startUsingPermission**.
+The pid must be the same as the pid passed into [startUsingPermission](#privacymanagerstartusingpermission18).
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -606,9 +890,9 @@ The value of **pid** must match that used in **startUsingPermission**.
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| pid            | number | No  | PID of the application. The value must match that used in **startUsingPermission**. The default value is **-1**.|
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to stop using. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
+| pid            | number | No   | Must be the same as the pid passed to [startUsingPermission](#privacymanagerstartusingpermission18). A mismatch may cause the API call to fail (error code 12100004).<br>Default value: -1, indicating no response based on process lifecycle.|
 
 **Return value**
 
@@ -618,7 +902,7 @@ The value of **pid** must match that used in **startUsingPermission**.
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -636,22 +920,101 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit'
+import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // accessTokenId can also be obtained by using getApplicationInfo.
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // without pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // with pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.stopUsingPermission
+
+stopUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, options?: PermissionUsingOptions): Promise&lt;void&gt;
+
+A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses a promise to return the result.
+
+The PID must be the same as the PID passed in [startUsingPermission](#privacymanagerstartusingpermission-1).
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to stop using. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
+| pid            | number | No   | Process ID of the caller, which must be the same as the pid passed in [startUsingPermission](#privacymanagerstartusingpermission-1). Failure to meet the matching relationship may cause the API call to fail (error code 12100004).<br>Default value: -1, indicating no response based on the process lifecycle. |
+| options        | [PermissionUsingOptions](#permissionusingoptions)| No | Optional parameter for permission usage, used to specify the extension identity. Pass this parameter when the caller's extension identity information needs to be identified.<br>Default value: enhancedIdentity is an empty string. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100004 | The API is not used in pair with 'startUsingPermission'. |
+| 12100007 | The service is abnormal. |
+| 12100008 | Out of memory. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+
+// Without the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the extended identity ID
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: 'test'}).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -660,9 +1023,13 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).t
 
 stopUsingPermission(tokenID: number, permissionName: Permissions, callback: AsyncCallback&lt;void&gt;): void
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses an asynchronous callback to return the result.
+A system application calls this API to mark that the specified permission is no longer in use. After a successful call, the privacy service notifies all subscribers of this permission usage status change event of this status change. It is suitable for notifying the system that permission usage has ended when an application completes a sensitive operation or exits the foreground. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+This API must be used in conjunction with [startUsingPermission](#privacymanagerstartusingpermission-2).
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -670,13 +1037,13 @@ Stops using a permission. This API must be called by a system application, and u
 
 | Name         | Type                 | Mandatory| Description                                 |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
-| permissionName | Permissions                | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID        | number                | Yes   | Identity identifier of the target application. It can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing 0 returns error code 12100001.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md)                | Yes   | Name of the permission to stop using. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
 | callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -695,7 +1062,8 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Stop using a specified permission
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -705,17 +1073,77 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 });
 ```
 
+## privacyManager.checkPermissionInUse
+
+checkPermissionInUse(permissionName: Permissions): boolean
+
+Queries whether a specified sensitive permission is currently being used. It can be used in scenarios such as displaying the real-time permission usage status on the permission management interface. The judgment is based on whether there is currently an active call that has been marked as started by [startUsingPermission](#privacymanagerstartusingpermission) and has not yet been marked as stopped by [stopUsingPermission](#privacymanagerstopusingpermission).
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md)                | Yes   | Name of the permission to query. The permission name cannot be empty and its length cannot exceed 256 characters. An invalid value returns error code 12100001.|
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| boolean | Whether the specified sensitive permission is in use. true: The specified sensitive permission is in use. false: The specified sensitive permission is not in use.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100007 | The service is abnormal. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Query whether a specified permission is being used
+  let isPermissionInUse = privacyManager.checkPermissionInUse('ohos.permission.CAMERA');
+  console.info('checkPermissionInUse success, result: ' + isPermissionInUse);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`checkPermissionInUse fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## privacyManager.on
 
 on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;ActiveChangeResponse&gt;): void
 
-Subscribes to changes in the permission usage status of the specified permissions. This API uses an asynchronous callback to return the result.
+Subscribes to permission usage status change events for a specified permission list. Permission usage status changes are triggered by calls to [startUsingPermission](#privacymanagerstartusingpermission) and [stopUsingPermission](#privacymanagerstopusingpermission). After a successful subscription, when the permission usage status changes, the callback function is triggered, returning an [ActiveChangeResponse](#activechangeresponse) object containing details of the permission usage status change. This API uses an asynchronous callback to return the result.
 
-Multiple callbacks can be registered for the same **permissionList**.
+Multiple callback functions are allowed to be subscribed for the same permissionList.
 
-The same callback cannot be registered for the **permissionList** with overlapping values.
+It is not allowed to subscribe the same callback function using two permissionLists that have an intersection. That is, if two permissionLists contain the same permission name, the same callback function cannot be used for subscription.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+This API is typically used in conjunction with [off](#privacymanageroff). When listening is no longer needed, off should be called to unsubscribe.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -724,12 +1152,12 @@ The same callback cannot be registered for the **permissionList** with overlappi
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to usage changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes   | List of subscribed permission names. The array length cannot exceed 1,024. An empty value indicates subscription to the usage status changes of all permissions. If an invalid value is passed, error code 12100001 is returned.|
 | callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | Yes| Callback used to return the object of subscribing to state changes of the specified permission.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -750,11 +1178,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let permissionList: Array<Permissions> = [];
 try {
+    // Subscribe to permission usage status change events
     privacyManager.on('activeStateChange', permissionList, (data: privacyManager.ActiveChangeResponse) => {
-        console.debug(`receive permission state change, data: + ${data}`);
+        console.debug(`receive permission state change, data: ${data}`);
     });
-} catch(err) {
-    console.error(`Catch errcode: ${err.code}, message: ${err.message}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -762,11 +1192,15 @@ try {
 
 off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;ActiveChangeResponse&gt;): void
 
-Unsubscribes from changes in the permission usage of the specified permissions. This API uses an asynchronous callback to return the result.
+Unsubscribes from permission usage status change events for a specified permission list. After a successful unsubscription, status change notifications for the specified permission list will no longer be received.
 
-During unsubscribing, if no callback is passed, all callbacks in **permissionList** are deleted in batches.
+When unsubscribing, if no callback function is passed in, all callback functions under the permissionList are deleted in batch.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+This API is typically used in conjunction with [on](#privacymanageron) to cancel the listening relationship created by on.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -775,12 +1209,12 @@ During unsubscribing, if no callback is passed, all callbacks in **permissionLis
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#privacymanageron). If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback used to return the object of canceling the subscription to state changes of the specified token ID and permission.|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes   | List of permission names to unsubscribe from. If empty, unsubscribes from all permission status changes. Must be consistent with the input of [on](#privacymanageron).|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No | Callback used to return the object for unsubscribing from the status change event of the specified tokenId and permission names. Must be consistent with the callback passed to [on](#privacymanageron). If this parameter is not provided, all callback functions under permissionList will be deleted in batch.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -796,12 +1230,15 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 
 ```ts
 import { privacyManager, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let permissionList: Array<Permissions> = [];
 try {
+    // Unsubscribe from permission usage status change events
     privacyManager.off('activeStateChange', permissionList);
-} catch(err) {
-    console.error(`Catch errcode: ${err.code}, message: ${err.message}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -811,7 +1248,9 @@ getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions
 
 Obtains information about how a sensitive permission is used by an application.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -819,18 +1258,18 @@ Obtains information about how a sensitive permission is used by an application.
 
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
-| tokenId            | number \| null                | No  | ID of the application that uses the sensitive permission. If this parameter is **0**, this API obtains the sensitive permission access information of all applications. The **null** type is supported since API version 20.  |
-| permissionName     | Permissions           | No  | Name of the sensitive permission used. If this parameter is left blank, this API obtains the access information about all sensitive permissions.  |
+| tokenId            | number \| null                | No   | Application identity identifier for accessing sensitive permissions. It can be obtained through the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of the app's [BundleInfo](js-apis-bundleManager-bundleInfo.md). Pass a specific tokenId when querying the access type information of sensitive permissions for a particular app; 0 or null indicates querying the access type information of sensitive permissions for all apps. Starting from API version 20, the null type is newly supported.<br>Default value: 0.   |
+| permissionName     | [Permissions](../../security/AccessToken/app-permissions.md)           | No   | Name of the sensitive permission being accessed. Pass a specific permission name when querying the access type information of a particular sensitive permission; empty indicates querying the access type information of all sensitive permissions. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.<br>Default value: empty.   |
 
 **Return value**
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise used to return the list of permission access types.|
+| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise used to return the list of permission access type information.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -847,30 +1286,30 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenId: number = 0; // You can use bundleManager.getApplicationInfo to obtain accessTokenId.
+let tokenId: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let permissionName: Permissions = 'ohos.permission.CAMERA';
 // Without any parameter.
-privacyManager.getPermissionUsedTypeInfos().then(() => {
-  console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+privacyManager.getPermissionUsedTypeInfos().then((data: Array<privacyManager.PermissionUsedTypeInfo>) => {
+  console.info('getPermissionUsedTypeInfos success, result: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId only.
-privacyManager.getPermissionUsedTypeInfos(tokenId).then(() => {
-  console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+privacyManager.getPermissionUsedTypeInfos(tokenId).then((data: Array<privacyManager.PermissionUsedTypeInfo>) => {
+  console.info('getPermissionUsedTypeInfos success, result: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in permissionName only.
-privacyManager.getPermissionUsedTypeInfos(null, permissionName).then(() => {
-  console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+privacyManager.getPermissionUsedTypeInfos(null, permissionName).then((data: Array<privacyManager.PermissionUsedTypeInfo>) => {
+  console.info('getPermissionUsedTypeInfos success, result: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId and permissionName.
-privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
-  console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then((data: Array<privacyManager.PermissionUsedTypeInfo>) => {
+  console.info('getPermissionUsedTypeInfos success, result: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -878,6 +1317,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 ## PermissionUsageFlag
 
 Enumerates the modes for querying the permission usage records.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -890,22 +1331,26 @@ Enumerates the modes for querying the permission usage records.
 
 Represents the request for querying permission usage records.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| tokenId  | number         | No   | Yes   | Token ID of the application (caller).<br> The default value is **0**, indicating that all applications are queried.        |
-| isRemote | boolean         | No   | Yes   | Whether to query the permission usage records of the remote device.<br> **false** (default) to query the local device; **true** to query the remote device.|
-| deviceId  | string         | No   | Yes   | ID of the device hosting the target application.<br> The default value is the local device ID.  |
-| bundleName | string         | No   | Yes   | Bundle name of the target application.<br> By default, all applications are queried.|
-| permissionNames  | Array&lt;Permissions&gt;         | No   | Yes   | Permissions to query.<br> By default, the usage records of all permissions are queried.              |
-| beginTime | number         | No   | Yes   | Start time of the query, in ms.<br>The default value is **0**, which means the start time is not set.|
-| endTime | number         | No   | Yes   | End time of the query, in ms.<br>The default value is **0**, which means the end time is not set.|
-| flag | [PermissionUsageFlag](#permissionusageflag)         | No   | No   | Query mode.|
+| tokenId  | number         | No    | Yes    | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md).<br/>Default value: **0**, queries all applications.         |
+| isRemote | boolean         | No    | Yes    | Used to specify whether to query remote devices. The value **false** means to query the permission usage records of the local device, and **true** means to query the records of remote devices.<br>Default value: **false**. |
+| deviceId  | string         | No    | Yes    | ID of the device where the target application is located.<br>Default value: local device ID. |
+| bundleName | string         | No    | Yes    | Bundle name of the target application.<br>Default value: queries all applications. |
+| permissionNames  | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;         | No    | Yes    | Set of permissions to query.<br>Default value: queries usage records of all permissions. |
+| beginTime | number         | No    | Yes    | Start time of the query, in ms. The value range is [0, +∞).<br>Default value: **0**, indicating no limit on the start time. |
+| endTime | number         | No    | Yes    | End time of the query, in ms. The value range is [0, +∞). It must not be earlier than beginTime; otherwise, error code 12100001 is returned.<br>Default value: **0**, indicating no limit on the end time. |
+| flag | [PermissionUsageFlag](#permissionusageflag)         | No    | No    | Used to specify the query mode. When set to **FLAG_PERMISSION_USAGE_SUMMARY**, summary information is returned; when set to **FLAG_PERMISSION_USAGE_DETAIL**, detailed records are returned. |
 
 ## PermissionUsedResponse
 
-Represents the permission usage records of all applications.
+Represents the access records of all applications or devices.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -913,57 +1358,67 @@ Represents the permission usage records of all applications.
 | --------- | -------------- | ---- | ---- | ---------------------------------------- |
 | beginTime | number         | No   | No   | Start time of the query, in ms.|
 | endTime   | number         | No   | No   | End time of the query, in ms.|
-| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | No   | No   | Permission usage records.                                |
+| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | No    | No    | Each element represents the permission access record under an application dimension. Developers can further traverse permissionRecords to obtain specific permission usage details.                                 |
 
 ## BundleUsedRecord
 
-Represents the permission access records of an application.
+Represents the access records of an application or device.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| tokenId  | number         | No   | No   | Token ID of the application (caller).                                |
-| isRemote | boolean         | No   | No   | Whether it is a distributed device. **false** (default) means non-distributed devices; **true** means distributed devices.|
-| deviceId  | string         | No   | No   | ID of the device hosting the target application.                                |
-| bundleName | string         | No   | No   | Bundle name of the target application.|
-| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | No   | No   | Permission usage records of the target application.                                |
+| tokenId  | number         | No    | No    | Application identity identifier for using the permission. This field is invalid in distributed scenarios; the source device must be identified using deviceId and deviceName.                                 |
+| isRemote | boolean         | No    | No    | Whether it is an access record in a distributed scenario. false indicates a local application record, and true indicates a permission usage record on a remote device. |
+| deviceId  | string         | No    | No    | ID of the device where the application using the permission is located. Mainly used to identify the source of a remote device in distributed scenarios; this field can usually be ignored in local scenarios.                                 |
+| deviceName<sup>24+</sup>  | string         | No    | Yes    | Name of the device where the application using the permission is located, used only in distributed scenarios. It can be used to display a more understandable device identifier in the UI.<br>Default value: empty string.                                 |
+| bundleName | string         | No    | No    | Bundle name of the application using the permission. In local scenarios, it can be used to directly locate the target application; this field is invalid in distributed scenarios. |
+| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | No    | No    | Collection of permission usage records under the current application or device. Each element corresponds to a specific permission, allowing further viewing of access count, rejection count, last access time, and detailed records.                                 |
 
 ## PermissionUsedRecord
 
-Represents the usage records of a permission.
+Represents the access records of a permission.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| permissionName  | Permissions         | No   | No   | Name of the permission.                                |
-| accessCount | number         | No   | No   | Total number of times that the permission is accessed.|
-| rejectCount | number         | No   | No   | Total number of times that the access to the permission is rejected.|
+| permissionName  | [Permissions](../../security/AccessToken/app-permissions.md)         | No    | No    | Permission name, used to identify the sensitive permission corresponding to the current statistical record.                        |
+| accessCount | number         | No    | No    | Total number of accesses for this permission, indicating the cumulative number of successful uses of this permission within the query time window. |
+| rejectCount | number         | No    | No    | Total number of rejections for this permission, indicating the cumulative number of failed or denied permission accesses within the query time window. |
 | lastAccessTime | number         | No   | No   | Last time when the permission was accessed, accurate to ms.|
 | lastRejectTime | number         | No   | No   | Last time when the access to the permission was rejected, accurate to ms.|
 | lastAccessDuration | number         | No   | No   | Last access duration, in ms.|
-| accessRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No   | No   | Successful access records. This parameter is valid only when **flag** is **FLAG_PERMISSION_USAGE_DETAIL**. By default, 10 records are provided.                                |
-| rejectRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No   | No   | Rejected access records. This parameter is valid only when **flag** is **FLAG_PERMISSION_USAGE_DETAIL**. By default, 10 records are provided.                                |
+| accessRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No    | No    | Access record collection, effective only when flag is FLAG_PERMISSION_USAGE_DETAIL.<br>Default value: Query the last 10 successful access records.                                 |
+| rejectRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No    | No    | Rejection record collection, effective only when flag is FLAG_PERMISSION_USAGE_DETAIL.<br>Default value: Query the last 10 failed or rejected records.                                 |
+| enhancedIdentity| string | No | Yes | Extension identity, with a maximum length of 48 characters.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## UsedRecordDetail
 
 Represents the details of a single access record.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | No   | No   | Access status.|
-| lockScreenStatus<sup>11+</sup>  | number         | No   | Yes   | Status of the screen during the access.<br> - **1**: The screen is not locked when the permission is used.<br> - **2**: The screen is locked when the permission is used.|
+| status  | number         | No    | No    | Access status. 0 indicates stopped usage, 1 indicates foreground usage, and 2 indicates background usage. |
+| lockScreenStatus<sup>11+</sup>  | number         | No    | Yes    | Lock screen status at the time of access.<br> - 1: Indicates permission usage in a non-lock-screen scenario.<br> - 2: Indicates permission usage in a lock-screen scenario.<br>Default value: 1. |
 | timestamp | number         | No   | No   | Access timestamp, in ms.|
-| accessDuration  | number         | No   | No   | Access duration, in ms.|
-| count<sup>11+</sup> | number | No| Yes   | Number of successful or failed accesses.|
-| usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | No| Yes   | Means for using the sensitive permission.|
+| accessDuration  | number         | No    | No    | Access duration, in ms. The value range is [0, +∞). |
+| count<sup>11+</sup> | number | No | Yes    | Number of accesses. In accessRecords, it indicates the number of successful accesses; in rejectRecords, it indicates the number of failures or rejections.<br>Default value: 0. |
+| usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | No | Yes    | Sensitive permission access method.<br>Default value: NORMAL_TYPE. |
 
 ## PermissionActiveStatus
 
-Enumerates the permission usage statuses.
+Enumerates the types of permission usage status changes. It is used to describe the change type of permission usage status, returned in the callback of subscribing to permission usage status change events (via [on('activeStateChange')](#privacymanageron)), helping system applications sense the status switch of a permission from unused to foreground use and background use.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -977,47 +1432,73 @@ Enumerates the permission usage statuses.
 
 Defines the detailed permission usage information.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
-| callingTokenId<sup>18+</sup> | number   | No  | Yes  | Token ID of the caller. This parameter is invalid when **activeStatus** is **INACTIVE**.|
+| callingTokenId<sup>18+</sup> | number   | No   | Yes   | Application identity identifier of the API caller. This value is invalid when activeStatus is INACTIVE.<br>Default value: 0. |
 | tokenId        | number                 | No  | No  | Token ID of the application whose permission usage changes are subscribed to.   |
-| permissionName | Permissions            | No  | No  | Permissions whose usage status changes.|
-| deviceId       | string                 | No  | No  | Device ID.                |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md)            | No   | No   | Name of the permission whose usage status has changed. |
+| deviceId       | string                 | No   | No   | ID of the device where the permission usage status change occurred.                 |
 | activeStatus   | [PermissionActiveStatus](#permissionactivestatus) | No  | No  | Permission usage status.       |
-| usedType<sup>18+</sup> | [PermissionUsedType](#permissionusedtype12) | No  | Yes  | Sensitive permission access mode. This parameter is invalid when **activeStatus** is **INACTIVE**.|
+| usedType<sup>18+</sup> | [PermissionUsedType](#permissionusedtype12) | No   | Yes   | Sensitive permission usage type. This value is invalid when activeStatus is INACTIVE.<br>Default value: NORMAL_TYPE. |
+| enhancedIdentity | string | No | Yes | Extension identity, used to identify additional identity information of the caller. This field is returned when it is necessary to distinguish permission usage records from different call sources within the same application. The length does not exceed 48 characters.<br>Default value: Empty string.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## PermissionUsedType<sup>12+</sup>
 
 Enumerates the means for using a sensitive permission.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name                   | Value| Description             |
 | ----------------------- | -- | ---------------- |
 | NORMAL_TYPE             | 0  | The sensitive permission is used after authorization through a dialog box or a system settings page.  |
-| PICKER_TYPE             | 1  | The sensitive permission is used through a system picker. This access mode does not grant the permissions to the application.|
-| SECURITY_COMPONENT_TYPE | 2  | The sensitive permission is used through a security component, which comes with the authorization.|
+| PICKER_TYPE             | 1  | Indicates that a sensitive permission is used through a PICKER service, but this method does not grant the permission. |
+| SECURITY_COMPONENT_TYPE | 2  | Indicates that a sensitive permission is used through security component authorization. A security component is a system-provided authorization component; after the user taps it, the application can temporarily obtain the corresponding permission. |
 
 ## PermissionUsedTypeInfo<sup>12+</sup>
 
 Represents detailed information about the use of a permission.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
-| tokenId        | number                 | No  | No  | Token ID of the application that uses the sensitive permission.|
-| permissionName | Permissions            | No  | No  | Name of the sensitive permission.|
-| usedType | [PermissionUsedType](#permissionusedtype12) | No| No   | Access mode of the sensitive permission.|
+| tokenId        | number                 | No  | No  | Token ID of the application that accesses the sensitive permission.|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md)            | No   | No   | Name of the sensitive permission accessed. |
+| usedType | [PermissionUsedType](#permissionusedtype12) | No| No   | Usage type of the sensitive permission.|
 
 ## AddPermissionUsedRecordOptions<sup>12+</sup>
 
 Represents the options for adding a permission usage record.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
-| usedType | [PermissionUsedType](#permissionusedtype12) | No| Yes   | Access mode of the sensitive permission.|
+| usedType | [PermissionUsedType](#permissionusedtype12) | No | Yes    | Sensitive permission usage type.<br>Default value: NORMAL_TYPE. |
+| enhancedIdentity | string | No | Yes | Extension identity, used to identify additional identity information of the caller. This field is passed in when it is necessary to distinguish permission usage records from different call sources under the same application. The length does not exceed 48 characters. Passing an excessively long value when calling [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) will return error code 12100001.<br>Default value: empty string.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+
+## PermissionUsingOptions
+
+Represents the optional parameter set for using a permission.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System Capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name          | Type                   | Read-Only| Optional| Description                  |
+| -------------- | ---------------------- | ---- | ---- | --------------------- |
+| enhancedIdentity | string | No | Yes | Extension identity, used to identify additional identity information of the caller. This field is passed in when it is necessary to distinguish permission usage records from different call sources within the same application. The length must not exceed 48 characters. Passing an excessively long value when calling [startUsingPermission](#privacymanagerstartusingpermission) or [stopUsingPermission](#privacymanagerstopusingpermission) will return error code 12100001.<br>Default value: empty string.|

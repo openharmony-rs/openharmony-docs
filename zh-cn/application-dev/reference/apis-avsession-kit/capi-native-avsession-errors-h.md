@@ -1,7 +1,7 @@
 # native_avsession_errors.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -53,7 +53,7 @@ enum AVSession_ErrCode
 | AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | 会话不存在。 |
 | AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | 无效会话命令。 |
 | AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | 会话未激活。 |
-| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | 命令&消息过载。 |
+| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | 命令和消息过载。 |
 | AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 |  远端会话不存在。<br>**起始版本：** 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_UNSPECIFIED = 6611000 |  投播控制器出现未知错误。<br>**起始版本：** 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_REMOTE_ERROR = 6611001 |  远端设备出现未知错误。<br>**起始版本：** 23 |

@@ -163,7 +163,8 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：11+        |
+| 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
@@ -228,7 +229,8 @@ commitModify(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> 适用版本：11+        |
+| 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
@@ -313,7 +315,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let fd: number = await photoAsset.open('rw');
+    let fd: number = await photoAsset.getReadOnlyFd();
     console.info('file fd', fd);
     photoAsset.close(fd, (err) => {
       if (err === undefined) {
@@ -581,7 +583,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-克隆资产，可设置文件名，但不支持修改文件类型。使用promise异步回调。
+克隆资产，可设置文件名，但不支持修改文件类型。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -668,7 +670,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -702,7 +704,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(): Promise&lt;number&gt;
 
-以只读方式打开当前文件。使用promise异步回调。
+以只读方式打开当前文件。使用Promise异步回调。
 
 返回的文件描述符在使用完毕后需要调用close进行释放。
 
@@ -731,7 +733,7 @@ getReadOnlyFd(): Promise&lt;number&gt;
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 

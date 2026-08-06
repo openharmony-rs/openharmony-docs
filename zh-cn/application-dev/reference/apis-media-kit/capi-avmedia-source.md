@@ -1,7 +1,7 @@
 # AVMediaSource
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -9,8 +9,6 @@
 ## 概述
 
 定义AVMediaSource的API。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 

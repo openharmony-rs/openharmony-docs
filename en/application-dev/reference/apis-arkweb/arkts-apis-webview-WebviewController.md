@@ -9952,7 +9952,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -10025,7 +10025,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -10170,7 +10170,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -10227,7 +10227,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 

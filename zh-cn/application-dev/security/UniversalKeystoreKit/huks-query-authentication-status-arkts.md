@@ -7,11 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API 22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
-1. 通过证书管理系统能力提供的[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
 
 2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
 
@@ -43,7 +43,7 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: getUkeyPinAuthState input arg invalid`);
+    console.error('promise: getUkeyPinAuthState input arg invalid.');
   }
   return ret;
 }
@@ -51,10 +51,10 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
 async function testGetUkeyPinAuthState() {
   let ret: huksExternalCrypto.HuksExternalPinAuthState = await getUkeyPinAuthState();
   if (ret != huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED) {
-    console.error(`getUkeyPinAuthState failed`);
+    console.error('getUkeyPinAuthState failed.');
     return;
   }
 
-  console.info(`getUkeyPinAuthState success`);
+  console.info('getUkeyPinAuthState success.');
 }
 ```

@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-证书算法库框架提供证书相关接口。其中，依赖加解密算法库框架的基础算法能力的部分，详细接口说明可参考[cryptoFramework API参考](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
+证书算法库框架提供证书相关接口。其中，依赖加解密算法库框架的基础算法能力的部分，详细接口说明可参考[@ohos.security.cryptoFramework (加解密算法库框架)](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | INVALID_PARAMS                        | 401      | 非法入参。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | NOT_SUPPORT                           | 801      | 操作不支持。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | ERR_OUT_OF_MEMORY                     | 19020001 | 内存错误。   <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| ERR_RUNTIME_ERROR                     | 19020002 | 运行时外部错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
+| ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
 | ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书签名验证错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
@@ -40,7 +40,23 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 | ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | 证书的密钥用途不含证书签名。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  证书的密钥用途不含数字签名。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码错误。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码可能不正确。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| ERR_CERT_UNTRUSTED               | 19030009 | 证书不受信任。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CERT_HAS_REVOKED             | 19030010 | 证书已被吊销。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | 未知的关键扩展。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CERT_HOSTNAME_MISMATCH       | 19030012 | 证书主机名不匹配。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CERT_EMAIL_ADDRESS_MISMATCH  | 19030013 | 证书邮箱地址不匹配。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CERT_KEYUSAGE_MISMATCH       | 19030014 | 证书密钥用途不匹配。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## DataBlob
 
@@ -55,7 +71,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## DataArray
 
-buffer数组的列表。
+数据数组的列表。
 
  **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -76,11 +92,11 @@ buffer数组的列表。
 | ---------- | ------ | --------- |
 | FORMAT_DER | 0      | DER格式。 |
 | FORMAT_PEM | 1      | PEM格式。 |
-| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS7格式。 |
+| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7格式。 |
 
 ## EncodingBaseFormat<sup>18+</sup>
 
- 表示生成CSR的编码格式的枚举。
+ 表示生成证书相关数据的编码格式的枚举。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -94,7 +110,7 @@ buffer数组的列表。
 ## CsrAttribute<sup>18+</sup>
  表示生成CSR的编码格式配置参数中的扩展。
 
-openssl中规定了扩展类型，例如challengePassword、keyUsage等。
+OpenSSL中规定了扩展类型，例如challengePassword、keyUsage等。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -102,11 +118,12 @@ openssl中规定了扩展类型，例如challengePassword、keyUsage等。
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| type | string | 否   | 否   | openssl指定的扩展类型。 |
+| type | string | 否   | 否   | OpenSSL指定的扩展类型。 |
 | value | string | 否   | 否  | 扩展值。 |
 
 ## CsrGenerationConfig<sup>18+</sup>
-RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、输出格式等。
+
+用于生成CSR的配置参数，包含主体名称、扩展、摘要算法、输出格式等。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -114,18 +131,18 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| subject | [X500DistinguishedName](#x500distinguishedname12) | 否   | 否   | X509定义的Name类型的对象。 |
+| subject | [X500DistinguishedName](#x500distinguishedname12) | 否   | 否   | 主体名称。 |
 | mdName | string | 否   | 否   | 摘要算法名。 |
 | attributes | Array\<[CsrAttribute](#csrattribute18)> | 否   | 是   | 扩展。 |
 | outFormat | [EncodingBaseFormat](#encodingbaseformat18) | 否   | 是   | 输出类型。 |
 
 > **说明：**
 >
-> - subject是X509定义的Name类型的对象。
+> - subject是X500DistinguishedName对象。
 >
 > - mdName是摘要算法名，当前支持SHA1、SHA256、SHA384、SHA512。
 >
-> - attributes是可选参数，指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
+> - attributes是可选参数，指定OpenSSL中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
 >
 > - outFormat指定输出CSR的格式，若不指定默认为PEM格式。
 
@@ -147,7 +164,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 ## ExtensionOidType<sup>10+</sup>
 
- 表示获取扩展域中对象标识符类型的枚举。
+ 证书扩展OID类型的枚举。
 
  **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -155,13 +172,13 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称                          | 值   | 说明                                          |
 | ----------------------------- | ---- | --------------------------------------------- |
-| EXTENSION_OID_TYPE_ALL        | 0    | 表示获取扩展域中所有的对象标识符。            |
-| EXTENSION_OID_TYPE_CRITICAL   | 1    | 表示获取扩展域中critical为true的对象标识符。  |
-| EXTENSION_OID_TYPE_UNCRITICAL | 2    | 表示获取扩展域中critical为false的对象标识符。 |
+| EXTENSION_OID_TYPE_ALL        | 0    | 所有OID。            |
+| EXTENSION_OID_TYPE_CRITICAL   | 1    | critical为true的OID。  |
+| EXTENSION_OID_TYPE_UNCRITICAL | 2    | critical为false的OID。 |
 
 ## ExtensionEntryType<sup>10+</sup>
 
- 表示获取扩展域中对象类型的枚举。
+ 证书扩展项类型的枚举。
 
  **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -169,9 +186,9 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称                                | 值   | 说明                         |
 | ----------------------------------- | ---- | ---------------------------- |
-| EXTENSION_ENTRY_TYPE_ENTRY          | 0    | 表示获取整个对象。           |
-| EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL | 1    | 表示获取对象的critical属性。 |
-| EXTENSION_ENTRY_TYPE_ENTRY_VALUE    | 2    | 表示获取对象的数据。         |
+| EXTENSION_ENTRY_TYPE_ENTRY          | 0    | 整个扩展项。           |
+| EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL | 1    | 扩展项的critical属性。 |
+| EXTENSION_ENTRY_TYPE_ENTRY_VALUE    | 2    | 扩展项的值（扩展特定数据）。         |
 
 ## EncodingType<sup>12+</sup>
 
@@ -183,11 +200,11 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| ENCODING_UTF8 | 0      | UTF8编码格式。 |
+| ENCODING_UTF8 | 0      | UTF-8编码格式。 |
 
 ## EncodingBlob
 
-带编码格式的证书二进制数组。
+表示一个编码后的二进制数据块。
 
 ### 属性
 
@@ -197,8 +214,8 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                           |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------ |
-| data           | Uint8Array                        | 否   | 否   | 传入的证书数据。 |
-| encodingFormat | [EncodingFormat](#encodingformat) | 否   | 否   | 指明证书编码格式。             |
+| data           | Uint8Array                        | 否   | 否   | 编码数据。 |
+| encodingFormat | [EncodingFormat](#encodingformat) | 否   | 否   | 编码格式。             |
 
 
 ## CertChainData
@@ -213,13 +230,13 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| data           | Uint8Array                        | 否   | 否   | 证书数据，按照长度（2字节）-数据的形式传入。如：08ABCDEFGH07ABCDEFG，第一本证书，前2个字节表示证书的长度为8字节，后面附加8字节的证书数据；第2本证书前2个字节表示证书的长度为7字节，后面附加7字节的证书数据。 |
+| data           | Uint8Array                        | 否   | 否   | 证书数据，按照长度（2字节）-数据的形式传入。如：08ABCDEFGH07ABCDEFG，其中08ABCDEFGH是第一本证书，07ABCDEFG是第二本证书。第一本证书，前2个字节表示证书的长度为8字节，后面附加8字节的证书数据；第二本证书，前2个字节表示证书的长度为7字节，后面附加7字节的证书数据。 |
 | count          | number                            | 否   | 否   | 传入的数据中，包含的证书数量。                               |
-| encodingFormat | [EncodingFormat](#encodingformat) | 否   | 否   | 指明证书编码格式。                                           |
+| encodingFormat | [EncodingFormat](#encodingformat) | 否   | 否   | 编码格式。                                           |
 
 ## GeneralNameType<sup>12+</sup>
 
-表示证书主体用途的枚举。
+X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用者备用名称”（Subject Alternative Name）及其他扩展项中。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -239,7 +256,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 ## GeneralName<sup>12+</sup>
 
-用于表示证书主体信息对象。
+表示X.509 GeneralName，定义在RFC 5280中，可出现在Subject Alternative Name等扩展中。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -247,36 +264,35 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称           | 类型                              | 只读 | 可选 |说明               |
 | -------------- | --------------------------------- | ---- |  ---- |------------------ |
-| type | [GeneralNameType](#generalname12)    | 否 | 否 | 指定具体的证书主体类型。  |
-| name | Uint8Array    | 否  |  是 |指定具体的证书主体DER格式内容。  |
+| type | [GeneralNameType](#generalnametype12)    | 否 | 否 | GeneralName类型。  |
+| name | Uint8Array    | 否  |  是 | 指定GeneralName的DER编码值。  |
 
 ## X509CertMatchParameters<sup>11+</sup>
 
 用于匹配证书的过滤参数。如果参数中任一项都未指定，则匹配所有证书。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Cert
 
 | 名称           | 类型                              | 只读 | 可选 | 说明               |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | 否 | 是 | 指定具体的证书对象。  |
-| validDate | string    | 否  |  是 |指定证书有效期。  |
-| issuer | Uint8Array | 否  | 是 |指定证书颁发者，为DER编码格式。 |
-| keyUsage | Array\<boolean> | 否  | 是 |指定是否需要匹配密钥用途。true为需要，false为不需要。 |
-| serialNumber | bigint    | 否  |  是 |指定证书的序列号。  |
-| subject | Uint8Array | 否  | 是 |指定证书主题，DER编码格式。 |
-| publicKey | [DataBlob](#datablob) | 否  | 是 |指定证书公钥，DER编码格式。 |
-| publicKeyAlgID | string | 否  | 是 |指定证书公钥的算法。 |
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | 否  | 是 |指定证书主体名称。 |
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | 否  | 是 |指定是否需要匹配证书主体名称。true为需要，false为不需要。 |
-| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。 |
-| minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。 |
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。 |
-| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书的使用者名称。 |
-| certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。 |
-| privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。 |
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书公钥。 |
+| x509Cert | [X509Cert](#x509cert)    | 否 | 是 | 指定具体的证书对象。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| validDate | string    | 否  |  是 |指定证书有效期，例如：20231121074700Z。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| issuer | Uint8Array | 否  | 是 |指定证书颁发者，为DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| keyUsage | Array\<boolean> | 否  | 是 |指定是否需要匹配密钥用途。true为需要，false为不需要。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| serialNumber | bigint    | 否  |  是 |指定证书的序列号。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| subject | Uint8Array | 否  | 是 |指定证书主体名称，DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| publicKey | [DataBlob](#datablob) | 否  | 是 |指定证书公钥，DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| publicKeyAlgID | string | 否  | 是 |指定证书公钥的算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | 否  | 是 |指定证书主体名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | 否  | 是 |指定是否需要匹配证书主体名称。true为需要，false为不需要。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书的使用者名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| privateKey | string \| Uint8Array | 否  | 是 |指定证书私钥，string表示PEM格式私钥，Uint8Array表示DER格式私钥。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
@@ -288,15 +304,15 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称           | 类型                              | 只读 | 可选 |说明               |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
-| issuer | Array\<Uint8Array> | 否  | 是  |指定颁发者作为过滤条件, 至少要匹配到其中一个issuer。 |
-| x509Cert | [X509Cert](#x509cert) | 否  | 是  |指定具体的证书对象作为过滤条件, 判断该证书是否在CRL列表中。 |
-| updateDateTime<sup>12+</sup> | string | 否  | 是  |指定证书更新时间。 |
-| maxCRL<sup>12+</sup> | bigint | 否  | 是  |指定CRL个数最大值。 |
-| minCRL<sup>12+</sup> | bigint | 否  | 是  |指定CRL个数最小值。 |
+| issuer | Array\<Uint8Array> | 否  | 是  |指定CRL颁发者，为DER编码格式。 |
+| x509Cert | [X509Cert](#x509cert) | 否  | 是  |指定具体的证书对象作为过滤条件，判断该证书是否在CRL列表中。 |
+| updateDateTime<sup>12+</sup> | string | 否  | 是  |指定CRL更新时间，例如：20231121074700Z。 |
+| maxCRL<sup>12+</sup> | bigint | 否  | 是  |指定CRL编号（CRL number）的最大值。 |
+| minCRL<sup>12+</sup> | bigint | 否  | 是  |指定CRL编号（CRL number）的最小值。 |
 
 ## CertChainBuildParameters<sup>12+</sup>
 
-用于指定证书链创建参数。
+证书链创建参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -305,12 +321,12 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称           | 类型                              | 只读 | 可选 |说明               |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
 | certMatchParameters | [X509CertMatchParameters](#x509certmatchparameters11) | 否  | 否  |指定过滤条件。 |
-| maxLength | number | 否  | 是  |指定最终证书链中CA证书的最大长度。 |
+| maxLength | number | 否  | 是  |指定CA证书的最大数量。 |
 | validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | 否 | 否 |指定验证条件。 |
 
 ## CertChainBuildResult<sup>12+</sup>
 
-用于指定证书链创建结果。
+表示证书链创建结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -319,11 +335,11 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称           | 类型                              | 只读 | 可选 |说明               |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
 | certChain | [X509CertChain](#x509certchain11) | 是  | 否  |生成的证书链对象。 |
-| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | 是  |  否  |指定最终证书链的最大长度。 |
+| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | 是  |  否  |证书链校验结果。 |
 
 ## X509TrustAnchor<sup>11+</sup>
 
-表示X509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。
+表示X.509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -333,7 +349,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | --------- | --------------------- | ---- | ---- | --------------------------- |
 | CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。如果配置了CACert，则校验证书链时只使用CACert，不再使用CAPubKey和CASubject。|
 | CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。仅在未配置CACert时生效。 |
-| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主题还是颁发者。|
+| CASubject | Uint8Array            | 否   | 是   | 信任CA证书的DER格式主体名称。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主体还是颁发者名称。|
 | nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。只校验当前证书链的叶子证书。 |
 
 ## RevocationCheckOptions<sup>12+</sup>
@@ -385,6 +401,110 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | KEYUSAGE_ENCIPHER_ONLY | 7 | 证书持有者只能进行加密操作，不能进行解密操作。 |
 | KEYUSAGE_DECIPHER_ONLY | 8 | 证书持有者只能进行解密操作，不能进行加密操作。 |
 
+## CertRevocationFlag
+
+表示证书吊销检查标志的枚举。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                                  | 值   | 说明                          |
+| --------------------------------------| -------- | -----------------------------|
+| CERT_REVOCATION_PREFER_OCSP | 0 | 优先OCSP检查。仅当CERT_REVOCATION_CRL_CHECK与CERT_REVOCATION_OCSP_CHECK同时设置时，该标志生效。<br>设置后先执行OCSP检查，未找到响应或超时时回退CRL；<br>不设置则先执行CRL检查，未找到CRL或超时时回退OCSP。 |
+| CERT_REVOCATION_CRL_CHECK | 1 | 启用CRL检查。使用证书吊销列表检查证书状态。<br>首先使用[X509CertRevokedParams](#x509certrevokedparams)的crls参数，未匹配到CRL且[X509CertRevokedParams](#x509certrevokedparams)的allowDownloadCrl参数设置为true则尝试使用证书的CDP扩展下载CRL。 |
+| CERT_REVOCATION_OCSP_CHECK | 2 | 启用OCSP检查。使用在线证书状态协议检查证书状态。<br>首先使用[X509CertRevokedParams](#x509certrevokedparams)的ocspResponses参数，未匹配到响应且[X509CertRevokedParams](#x509certrevokedparams)的allowOcspCheckOnline参数设置为true则尝试从证书AIA扩展获取OCSP URL并发送请求获取响应。<br>始终使系统当前时间校验ocsp响应的有效期，并允许前后5分钟的时间容差。<br>允许ocsp响应缺少nonce和nextUpdate。 |
+| CERT_REVOCATION_CHECK_ALL_CERT | 3 | 检查所有证书的吊销状态。<br>设置后对证书链中所有证书执行吊销检查（跳过自签名证书）；<br>不设置则仅检查终端证书（证书链第一个证书）。 |
+
+## OcspDigest
+
+表示OCSP摘要算法的枚举。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                                  | 值   | 说明                          |
+| --------------------------------------| -------- | -----------------------------|
+| SHA1 | 0 | SHA1摘要算法。 |
+| SHA224 | 1 | SHA224摘要算法。 |
+| SHA256 | 2 | SHA256摘要算法。 |
+| SHA384 | 3 | SHA384摘要算法。 |
+| SHA512 | 4 | SHA512摘要算法。 |
+
+## X509CertRevokedParams
+
+表示证书吊销检查参数。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称         | 类型                                              | 只读 | 可选 |说明                                   |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| revocationFlags | Array\<[CertRevocationFlag](#certrevocationflag)> | 否   | 否   | 吊销检查标志。数量范围：[1, 4]。数组必须包含CERT_REVOCATION_CRL_CHECK或CERT_REVOCATION_OCSP_CHECK。|
+| crls | Array\<[X509CRL](#x509crl11)> | 否   | 是   | CRL列表。最大数量：100。 |
+| allowDownloadCrl | boolean | 否   | 是   | 是否允许下载CRL，默认值为false。true：尝试使用证书的CDP扩展下载CRL；false：不尝试下载CRL。 |
+| ocspResponses | Array\<Uint8Array> | 否   | 是   | OCSP响应数据。预置的OCSP响应数据。最大数量：100。 |
+| allowOcspCheckOnline | boolean | 否   | 是   | 是否允许在线OCSP检查，默认值为false。<br>true：执行在线OCSP检查，即尝试从证书AIA扩展获取OCSP URL并发送请求获取响应；<br>false：不执行在线OCSP检查。 |
+| ocspDigest | [OcspDigest](#ocspdigest) | 否   | 是   | OCSP请求使用的摘要算法，默认值为SHA256。|
+
+## CertValidationParams
+
+表示证书验证参数。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称         | 类型                                              | 只读 | 可选 |说明                                   |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| untrustedCerts | Array\<[X509Cert](#x509cert)> | 否   | 是   | 非信任证书列表。仅用于构建证书链的中间证书，不作为信任锚点。最大数量：100。 |
+| trustedCerts | Array\<[X509Cert](#x509cert)> | 否   | 是   | 信任证书列表。指定信任的根证书或中间CA证书，作为验证的信任锚点。最大数量：100。<br>验证时，证书链须追溯至信任证书，必须设置此参数或将trustSystemCa设为true。 |
+| trustSystemCa | boolean | 否   | 是   | 是否信任系统CA。默认值为false。<br>true：使用系统预置的CA证书库作为信任锚；<br>false：不使用系统预置的CA证书库作为信任锚。<br>适用于验证公共网站证书，无需手动配置根证书。 |
+| partialChain | boolean | 否   | 是   | 是否允许部分链验证。默认值为false。<br>true：允许使用信任证书中的任意证书作为信任锚，而非必须追溯到根证书；<br>false：构建证书链时必须追溯到根证书。 |
+| allowDownloadIntermediateCa | boolean | 否   | 是   | 是否允许从网络下载中间CA证书。默认值为false。<br>true：当构建证书链缺失中间证书时，尝试使用证书AIA扩展中颁发者地址下载颁发者证书，解决证书链不完整的问题；<br>false：不允许从网络下载中间的CA证书。<br>下载地址从证书的AIA扩展中获取，仅支持HTTP。若要使用网络进行下载，需要申请ohos.permission.INTERNET权限。关于权限配置的详细信息，请参见声明权限[Declaring Permissions](../../security/AccessToken/declare-permissions.md)。 |
+| date | string | 否   | 是   | 校验日期。格式为YYMMDDHHMMSSZ或YYYYMMDDHHMMSSZ，默认使用当前系统时间。<br>支持自定义验证时间，适用于离线验证历史签名等场景。 |
+| validateDate | boolean | 否   | 是   | 是否校验日期。默认值为true。true：验证证书和CRL有效期；false：不验证证书和CRL有效期。 |
+| ignoreErrs | Array\<[CertResult](#certresult)> | 否   | 是   | 允许忽略特定的验证错误。最大数量：8。<br>可忽略的错误包括：ERR_CERT_NOT_YET_VALID、ERR_CERT_HAS_EXPIRED、ERR_UNKNOWN_CRITICAL_EXTENSION、ERR_CRL_NOT_FOUND、ERR_CRL_NOT_YET_VALID、ERR_CRL_HAS_EXPIRED、ERR_OCSP_RESPONSE_NOT_FOUND、ERR_NETWORK_TIMEOUT。 |
+| hostnames | Array\<string> | 否   | 是   | 主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大数量：100，每个主机名最大长度：128。<br>用于HTTPS等场景。<br>只要匹配其中一个主机名即校验成功。 |
+| emailAddresses | Array\<string> | 否   | 是   | 邮箱地址列表。验证证书是否包含指定的邮箱地址。最大数量：1，邮箱地址最大长度：128。 |
+| keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是   | 密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大数量：9。<br>证书必须包含所有指定的密钥用途才校验成功。 |
+| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
+| revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | 否   | 是   | 证书吊销检查参数。用于检查证书是否被吊销。包含CRL列表、OCSP响应数据、是否允许在线检查等配置。 |
+
+## CertValidationResult
+
+表示证书验证结果。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称         | 类型                                              | 只读 | 可选 |说明                                   |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| certChain | Array\<[X509Cert](#x509cert)> | 是   | 否   | 验证后的证书链。验证成功时返回完整的证书链，从终端证书到信任锚点。可用于后续的证书信息查询或其他验证操作。 |
+
 ## RevocationCheckParameter<sup>12+</sup>
 
 表示证书链校验证书吊销状态的参数。
@@ -411,12 +531,12 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              | 只读 | 可选 |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| date         | string                                            | 否   | 是  |表示需要校验证书的有效期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| date         | string                                            | 否   | 是  |用于检查证书有效性的日期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示是否使用系统预置CA证书校验证书链。true表示使用；false表示不使用。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | allowDownloadIntermediateCa<sup>23+</sup>| boolean | 否   | 是  |表示是否允许尝试从网络下载缺失的中间CA证书。<br>true表示允许；false表示不允许。默认值为false。<br>下载地址将从证书AIA扩展中获取，仅支持http，如需使用网络下载，需申请ohos.permission.INTERNET权限。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |表示需要校验证书是否在证书吊销列表中。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要在线校验证证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |用于检查证书是否被吊销的CRL集合。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要校验证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | sslHostname<sup>12+</sup> | string | 否   | 是  |表示需要校验证书中主机名，与policy配合使用。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是  |表示需要校验证书中的密钥用途。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -435,22 +555,9 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | trustAnchor | [X509TrustAnchor](#x509trustanchor11) | 是   | 否   | 表示信任锚。   |
 | entityCert  | [X509Cert](#x509cert)                 | 是   | 否   | 表示实体证书。 |
 
-## EncodingBaseFormat<sup>18+</sup>
-
-编码基础格式。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.Cert
-
-| 名称 | 值 | 说明               |
-| ---- | --- | ------------------ |
-| PEM  | 0   | 表示PEM格式。      |
-| DER  | 1   | 表示DER格式。      |
-
 ## Pkcs12Data<sup>18+</sup>
 
-表示返回P12文件的解析后的证书、私钥及其他证书合集。
+P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -458,13 +565,13 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              | 只读 | 可选 |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| privateKey   | string \| Uint8Array                              | 否   | 是   |表示P12文件解析后的私钥。             |
-| cert         | [X509Cert](#x509cert)                             | 否   | 是   |表示P12文件解析后的证书。                       |
-| otherCerts   | Array\<[X509Cert](#x509cert)>                     | 否   | 是   |表示P12文件解析后的其他证书合集。 |
+| privateKey   | string \| Uint8Array                              | 否   | 是   |私钥。string对应PEM格式，Uint8Array对应DER格式。             |
+| cert         | [X509Cert](#x509cert)                             | 否   | 是   |和私钥匹配的证书。                       |
+| otherCerts   | Array\<[X509Cert](#x509cert)>                     | 否   | 是   |其他证书。 |
 
 ## Pkcs12ParsingConfig<sup>18+</sup>
 
-表示解析P12文件的配置。
+表示解析PKCS #12的配置。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -472,11 +579,11 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              |    只读   | 可选 | 说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | 否   | 否   |表示P12文件的密码。             |
-| needsPrivateKey  | boolean                                       | 否   | 是   |表示是否获取私钥。默认为true。<br>true为获取，返回PKCS8编码的私钥数据；false为不获取。|
+| password     | string                                            | 否   | 否   |密码。            |
+| needsPrivateKey  | boolean                                       | 否   | 是   |表示是否获取私钥。默认为true。<br>true为获取，返回PKCS #8编码的私钥数据；false为不获取。|
 | privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | 否   | 是   |表示获取私钥的格式，当前支持PEM和DER格式。参数缺省时，默认为PEM格式。<br>**注意**：当needsPrivateKey值为true时，该参数生效。 |
 | needsCert    | boolean                                           | 否   | 是   |表示是否获取证书。默认为true。true为获取，false为不获取。 |
-| needsOtherCerts  | boolean                                       | 否   | 是   |表示是否获取其他证书合集。默认为false。true为获取，false为不获取。 |
+| needsOtherCerts  | boolean                                       | 否   | 是   |表示是否获取其他证书。默认为false。true为获取，false为不获取。 |
 
 ## PbesEncryptionAlgorithm<sup>21+</sup>
 
@@ -508,7 +615,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 ## Pkcs12MacDigestAlgorithm<sup>21+</sup>
 
-表示PKCS12 MAC摘要算法枚举。
+表示PKCS #12的MAC摘要算法枚举。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -522,7 +629,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 ## Pkcs12CreationConfig<sup>21+</sup>
 
-表示创建P12文件的配置。
+表示创建PKCS #12的配置。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -530,13 +637,13 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              |    只读   | 可选 | 说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | 否   | 否   |表示P12文件的密码。最小长度为4。             |
+| password     | string                                            | 否   | 否   |表示PKCS #12的密码。最小长度为4。             |
 | keyEncParams | [PbesParams](#pbesparams21)                       | 否   | 是   |表示私钥加密的算法参数。                       |
 | encryptCert  | boolean                                           | 否   | 是   |表示是否加密证书。默认为true。true为加密，false为不加密。 |
 | certEncParams | [PbesParams](#pbesparams21)                      | 否   | 是   |表示证书加密的算法参数。 |
-| macSaltLen   | number                                            | 否   | 是   |表示P12 MAC的盐值长度。最小值为8，默认为16。 |
-| macIterations | number                                           | 否   | 是   |表示P12 MAC的迭代次数。默认为2048。 |
-| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | 否   | 是   |表示P12 MAC的摘要算法。默认为SHA256。 |
+| macSaltLen   | number                                            | 否   | 是   |表示PKCS #12的MAC的盐值长度。最小值为8，默认为16。 |
+| macIterations | number                                           | 否   | 是   |表示PKCS #12的MAC的迭代次数。默认为2048。 |
+| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | 否   | 是   |表示PKCS #12的MAC的摘要算法。默认为SHA256。 |
 
 ## CmsContentType<sup>18+</sup>
 
@@ -547,7 +654,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
 | SIGNED_DATA | 0 | 签名数据。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据，包含带认证的封装数据。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## CmsContentDataFormat<sup>18+</sup>
 
@@ -564,7 +671,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 ## CmsFormat<sup>18+</sup>
 
-表示Cms签名格式的枚举。
+表示CMS编码格式的枚举。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -585,8 +692,8 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称               | 值 | 说明                |
 |--------------------|----|---------------------|
-| PKCS1_PADDING      | 0  | PKCS1填充方式。     |
-| PKCS1_PSS_PADDING  | 1  | PKCS1 PSS填充方式。 |
+| PKCS1_PADDING      | 0  | PKCS #1 v1.5填充方式。     |
+| PKCS1_PSS_PADDING  | 1  | PKCS #1 PSS填充方式。 |
 
 ## CmsKeyAgreeRecipientDigestAlgorithm<sup>22+</sup>
 
@@ -604,7 +711,7 @@ CMS KeyAgree类型接收者摘要算法的枚举。
 
 ## CmsRecipientEncryptionAlgorithm<sup>22+</sup>
 
-CMS接收者对称算法的枚举。
+CMS封装数据的内容加密算法的枚举。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -654,7 +761,7 @@ CMS接收者对称算法的枚举。
 | 名称         | 类型                                                  |  只读  |  可选  |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384", 当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                |
-| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA 签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。             |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。             |
 | addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
 | addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
 | addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。            |
@@ -703,7 +810,7 @@ CMS封装数据的接收者信息。
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
-表示生成Cms签名结果的配置选项。
+表示生成CMS消息的配置选项。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -717,7 +824,7 @@ CMS封装数据的接收者信息。
 
 ## CmsVerificationConfig<sup>22+</sup>
 
-CMS验证的配置。
+CMS验签的配置。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -726,7 +833,7 @@ CMS验证的配置。
 | 名称                  | 类型                          | 只读 | 可选 |说明                                                   |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | trustCerts        |Array\<[X509Cert](#x509cert)>                        | 否   | 否   |信任证书。<br> **说明**：需要配置所有签名者的信任证书。   |
-| signerCerts       |Array\<[X509Cert](#x509cert)>                        | 否   | 是   |签名证书。默认为空。         |
+| signerCerts       |Array\<[X509Cert](#x509cert)>                        | 否   | 是   |签名者证书。默认为空。         |
 | contentData       |Uint8Array                                           | 否   | 是   |内容数据，如果是detached模式，则需要指定明文数据。attached模式可以不传。   |
 | contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 
@@ -749,7 +856,7 @@ CMS解封装的配置。
 
 createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : void
 
-表示创建X509证书对象。使用callback异步回调。
+表示创建X.509证书对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -759,8 +866,8 @@ createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : v
 
 | 参数名   | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)         | 是   | X509证书序列化数据。         |
-| callback | AsyncCallback\<[X509Cert](#x509cert)> | 是   | 回调函数，表示X509证书对象。 |
+| inStream | [EncodingBlob](#encodingblob)         | 是   | X.509证书序列化数据。         |
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | 是   | 回调函数，表示X.509证书对象。 |
 
 **错误码：**
 
@@ -768,10 +875,10 @@ createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : v
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -817,7 +924,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
-表示创建X509证书对象。使用Promise异步回调。
+表示创建X.509证书对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -827,13 +934,13 @@ createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
 | 参数名   | 类型                          | 必填 | 说明               |
 | -------- | ----------------------------- | ---- | ------------------ |
-| inStream | [EncodingBlob](#encodingblob) | 是   | X509证书序列化数据。 |
+| inStream | [EncodingBlob](#encodingblob) | 是   | X.509证书序列化数据。 |
 
 **返回值：**
 
 | 类型     | 说明             |
 | ------- | ---------------- |
-| Promise\<[X509Cert](#x509cert)> | 表示X509证书对象。 |
+| Promise\<[X509Cert](#x509cert)> | 表示X.509证书对象。 |
 
 **错误码：**
 
@@ -841,10 +948,10 @@ createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -887,7 +994,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 ## X509Cert
 
-X509证书类。
+提供用于X.509证书操作的API。
 
 ### verify
 
@@ -912,8 +1019,8 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -943,7 +1050,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+  // 根据encodingBlob的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -1001,8 +1108,8 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -1059,7 +1166,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书序列化数据。使用callback异步回调。
+表示获取X.509证书序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1069,7 +1176,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 参数名   | 类型                                          | 必填 | 说明                             |
 | -------- | --------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X509证书序列化数据。 |
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X.509证书序列化数据。 |
 
 **错误码：**
 
@@ -1077,10 +1184,10 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1133,7 +1240,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书序列化数据。使用Promise异步回调。
+表示获取X.509证书序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1143,7 +1250,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 类型                                    | 说明                   |
 | --------------------------------------- | ---------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | 表示X509证书序列化数据。 |
+| Promise\<[EncodingBlob](#encodingblob)> | 表示X.509证书序列化数据。 |
 
 **错误码：**
 
@@ -1151,10 +1258,10 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1204,7 +1311,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getPublicKey() : cryptoFramework.PubKey
 
-表示获取X509证书公钥。
+表示获取X.509证书公钥。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1214,7 +1321,7 @@ getPublicKey() : cryptoFramework.PubKey
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | X509证书公钥对象：仅用于X509Cert的verify接口。 |
+| [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | X.509证书公钥对象：仅用于X509Cert的verify接口。 |
 
 **错误码：**
 
@@ -1222,8 +1329,8 @@ getPublicKey() : cryptoFramework.PubKey
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1276,7 +1383,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 checkValidityWithDate(date: string) : void
 
-表示检查X509证书有效期。
+表示检查X.509证书有效期。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1286,7 +1393,7 @@ checkValidityWithDate(date: string) : void
 
 | 参数名   | 类型            | 必填 | 说明        |
 | -------- | -------------- | ---- | ---------- |
-| date     | string         | 是   | 日期，为ASN.1时间格式。 |
+| date     | string         | 是   | 日期，为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -1294,11 +1401,11 @@ checkValidityWithDate(date: string) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19030001 | crypto operation error.|
-| 19030003 | the certificate has not taken effect.                                     |
-| 19030004 | the certificate has expired.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19030001 | Crypto operation error.|
+| 19030003 | The certificate has not taken effect.                                     |
+| 19030004 | The certificate has expired.|
 
 **示例：**
 
@@ -1354,7 +1461,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getVersion() : number
 
-表示获取X509证书版本。
+表示获取X.509证书版本。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1364,7 +1471,7 @@ getVersion() : number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 表示X509证书版本。 |
+| number | 表示X.509证书版本。 |
 
 **示例：**
 
@@ -1410,7 +1517,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSerialNumber() : number
 
-表示获取X509证书序列号。
+表示获取X.509证书序列号。
 
 > **说明：**
 >
@@ -1422,7 +1529,7 @@ getSerialNumber() : number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 表示X509证书序列号。 |
+| number | 表示X.509证书序列号。 |
 
 **示例：**
 
@@ -1469,7 +1576,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getCertSerialNumber() : bigint
 
-表示获取X509证书序列号。
+表示获取X.509证书序列号。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1479,7 +1586,7 @@ getCertSerialNumber() : bigint
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| bigint | 表示X509证书序列号。 |
+| bigint | 表示X.509证书序列号。 |
 
 **错误码：**
 
@@ -1487,7 +1594,7 @@ getCertSerialNumber() : bigint
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 
 **示例：**
 
@@ -1540,11 +1647,13 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName() : DataBlob
 
-表示获取X509证书颁发者名称。
+表示获取X.509证书颁发者名称。
 
 > **说明：**
 >
-> 获取到的X509证书颁发者名称数据带字符串结束符。
+> 获取的X.509证书颁发者名称末尾包含一个NUL终止符（值为0），请根据业务需求决定是否去除该终止符。
+>
+> 获取的证书颁发者名称为ASCII编码，转换为字符串后，是以斜杠（/）开始，以斜杠（/）分隔相对可分辨名称的可分辨名称字符串。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1554,7 +1663,7 @@ getIssuerName() : DataBlob
 
 | 类型                  | 说明                   |
 | --------------------- | ---------------------- |
-| [DataBlob](#datablob) | 表示X509证书颁发者名称。 |
+| [DataBlob](#datablob) | 表示X.509证书颁发者名称。 |
 
 **错误码：**
 
@@ -1562,9 +1671,9 @@ getIssuerName() : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1617,7 +1726,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-根据编码类型获取X509证书颁发者名称。
+根据编码类型获取X.509证书颁发者名称。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1633,7 +1742,7 @@ getIssuerName(encodingType: EncodingType): string
 
 | 类型                  | 说明                   |
 | --------------------- | ---------------------- |
-| string  | 表示X509证书颁发者名称，使用逗号分隔相对可分辨名称。 |
+| string  | 表示X.509证书颁发者名称，使用逗号分隔相对可分辨名称。 |
 
 **错误码：**
 
@@ -1641,10 +1750,10 @@ getIssuerName(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1710,11 +1819,15 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectName(encodingType?: EncodingType) : DataBlob
 
-表示获取X509证书主体名称。
+表示获取X.509证书主体名称。
 
 > **说明：**
 >
-> 获取到的X509证书主体名称数据带字符串结束符。
+> 若不设置encodingType参数，获取的证书主体名称末尾包含一个NUL终止符（值为0），请根据业务需求决定是否去除该终止符。
+> 
+> 若不设置encodingType参数，获取的证书主体名称为ASCII编码，转换为字符串后，是以斜杠（/）开始，以斜杠（/）分隔相对可分辨名称的可分辨名称字符串。
+> 
+> 建议设置encodingType参数为EncodingType.ENCODING_UTF8，获取的证书主体名称是以逗号（,）分隔相对可分辨名称的可分辨名称字符串。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1724,13 +1837,13 @@ getSubjectName(encodingType?: EncodingType) : DataBlob
 
 | 参数名   | 类型                                  | 必填 | 说明                           |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | 否   |  编码类型。设置参数表示获取UTF8格式编码；不设置默认获取ASCII格式编码。<br>API 12后支持设置此参数。  |
+| encodingType | [EncodingType](#encodingtype12)     | 否   |  编码类型。设置参数表示获取UTF-8格式编码；不设置默认获取ASCII格式编码。<br>API 12后支持设置此参数。  |
 
 **返回值**：
 
 | 类型                  | 说明                 |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | 表示X509证书主体名称，转化成字符串后使用逗号分隔相对可分辨名称。 |
+| [DataBlob](#datablob) | 表示X.509证书主体名称。 |
 
 **错误码：**
 
@@ -1738,10 +1851,10 @@ getSubjectName(encodingType?: EncodingType) : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>适用版本：12+          |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1800,7 +1913,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotBeforeTime() : string
 
-表示获取X509证书有效期起始时间。
+表示获取X.509证书有效期起始时间。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1810,7 +1923,7 @@ getNotBeforeTime() : string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 表示X509证书有效期起始时间，日期为ASN.1时间格式。 |
+| string | 表示X.509证书生效时间，采用UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -1818,9 +1931,9 @@ getNotBeforeTime() : string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -1873,7 +1986,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotAfterTime() : string
 
-表示获取X509证书有效期截止时间。
+表示获取X.509证书有效期截止时间。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1883,7 +1996,7 @@ getNotAfterTime() : string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 表示X509证书有效期截止时间，日期为ASN.1时间格式。 |
+| string | 表示X.509证书过期时间，采用UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -1891,15 +2004,14 @@ getNotAfterTime() : string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
@@ -1947,7 +2059,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignature() : DataBlob
 
-表示获取X509证书签名数据。
+表示获取X.509证书签名数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1957,7 +2069,7 @@ getSignature() : DataBlob
 
 | 类型                  | 说明                 |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | 表示X509证书签名数据。 |
+| [DataBlob](#datablob) | 表示X.509证书签名数据。 |
 
 **错误码：**
 
@@ -1965,15 +2077,14 @@ getSignature() : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
@@ -2021,7 +2132,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgName() : string
 
-表示获取X509证书签名算法名称。
+表示获取X.509证书签名算法名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2031,7 +2142,7 @@ getSignatureAlgName() : string
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| string | 表示X509证书签名算法名称。 |
+| string | 表示X.509证书签名算法名称。 |
 
 **错误码：**
 
@@ -2039,15 +2150,14 @@ getSignatureAlgName() : string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // string转Uint8Array。
@@ -2095,7 +2205,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-表示获取X509证书签名算法的对象标志符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
+表示获取X.509证书签名算法的对象标识符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2105,7 +2215,7 @@ getSignatureAlgOid() : string
 
 | 类型   | 说明                              |
 | ------ | --------------------------------- |
-| string | 表示X509证书签名算法对象标志符OID。若OID长度超过128字节，则会被截断。 |
+| string | 表示X.509证书签名算法对象标识符OID。若OID长度超过127字节，则会被截断。 |
 
 **错误码：**
 
@@ -2113,9 +2223,9 @@ getSignatureAlgOid() : string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2168,7 +2278,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgParams() : DataBlob
 
-表示获取X509证书签名算法参数。
+表示获取X.509证书签名算法参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2178,7 +2288,7 @@ getSignatureAlgParams() : DataBlob
 
 | 类型                  | 说明                     |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | 表示X509证书签名算法参数。 |
+| [DataBlob](#datablob) | 表示X.509证书签名算法参数。 |
 
 **错误码：**
 
@@ -2186,10 +2296,10 @@ getSignatureAlgParams() : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2257,7 +2367,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getKeyUsage() : DataBlob
 
-表示获取X509证书密钥用途。
+表示获取X.509证书密钥用途。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2267,7 +2377,7 @@ getKeyUsage() : DataBlob
 
 | 类型                  | 说明                 |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | 表示X509证书密钥用途。 |
+| [DataBlob](#datablob) | 表示X.509证书密钥用途。 |
 
 **错误码：**
 
@@ -2275,8 +2385,8 @@ getKeyUsage() : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                    |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2339,7 +2449,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getExtKeyUsage() : DataArray
 
-表示获取X509证书扩展密钥用途。
+表示获取X.509证书扩展密钥用途。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2349,7 +2459,7 @@ getExtKeyUsage() : DataArray
 
 | 类型                    | 说明                     |
 | ----------------------- | ------------------------ |
-| [DataArray](#dataarray) | 表示X509证书扩展密钥用途。 |
+| [DataArray](#dataarray) | 表示X.509证书扩展密钥用途。 |
 
 **错误码：**
 
@@ -2357,9 +2467,9 @@ getExtKeyUsage() : DataArray
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2423,7 +2533,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getBasicConstraints() : number
 
-表示获取X509证书基本约束。
+表示获取X.509证书基本约束。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2433,7 +2543,7 @@ getBasicConstraints() : number
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 表示X509证书基本约束。 |
+| number | 表示X.509证书基本约束。 |
 
 **示例：**
 
@@ -2480,11 +2590,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectAltNames() : DataArray
 
-表示获取X509证书主体可选名称。
+表示获取X.509证书主体可选名称。
 
 > **说明：**
 >
-> 获取到的X509证书主体可选名称数据带字符串结束符。
+> 获取到的X.509证书主体可选名称数据带字符串结束符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2494,7 +2604,7 @@ getSubjectAltNames() : DataArray
 
 | 类型                    | 说明                     |
 | ----------------------- | ------------------------ |
-| [DataArray](#dataarray) | 表示X509证书主体可选名称。 |
+| [DataArray](#dataarray) | 表示X.509证书主体可选名称。 |
 
 **错误码：**
 
@@ -2502,9 +2612,9 @@ getSubjectAltNames() : DataArray
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2568,11 +2678,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerAltNames() : DataArray
 
-表示获取X509证书颁发者可选名称。
+表示获取X.509证书颁发者可选名称。
 
 > **说明：**
 >
-> 获取到的X509证书颁发者可选名称数据带字符串结束符。
+> 获取到的X.509证书颁发者可选名称数据带字符串结束符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2582,7 +2692,7 @@ getIssuerAltNames() : DataArray
 
 | 类型                    | 说明                       |
 | ----------------------- | -------------------------- |
-| [DataArray](#dataarray) | 表示X509证书颁发者可选名称。 |
+| [DataArray](#dataarray) | 表示X.509证书颁发者可选名称。 |
 
 **错误码：**
 
@@ -2590,9 +2700,9 @@ getIssuerAltNames() : DataArray
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **示例：**
 
@@ -2654,7 +2764,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getItem(itemType: CertItemType) : DataBlob
 
-表示获取X509证书对应的字段。
+表示获取X.509证书对应的字段。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2670,7 +2780,7 @@ getItem(itemType: CertItemType) : DataBlob
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [DataBlob](#datablob) | 表示X509证书对应的字段，返回值为DER格式。 |
+| [DataBlob](#datablob) | 表示X.509证书对应的字段，返回值为DER格式。 |
 
 **错误码：**
 
@@ -2678,10 +2788,10 @@ getItem(itemType: CertItemType) : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -2758,9 +2868,9 @@ match(param: X509CertMatchParameters): boolean
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -2838,7 +2948,7 @@ async function matchX509Cert() {
 
 getCRLDistributionPoint(): DataArray
 
-获取X509证书CRL的分发点统一资源标识符。
+获取X.509证书CRL的分发点统一资源标识符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2848,7 +2958,7 @@ getCRLDistributionPoint(): DataArray
 
 | 类型                    | 说明                       |
 | ----------------------- | -------------------------- |
-| [DataArray](#dataarray) | 表示X509证书CRL的分发点统一资源标识符。 |
+| [DataArray](#dataarray) | 表示X.509证书CRL的分发点统一资源标识符。 |
 
 **错误码：**
 
@@ -2856,9 +2966,9 @@ getCRLDistributionPoint(): DataArray
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -2913,7 +3023,7 @@ async function certGetCRLDistributionPoint() {
 
 getIssuerX500DistinguishedName(): X500DistinguishedName
 
-获取颁发者的X509可分辨名称。
+获取X.509证书颁发者的X.500可分辨名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2923,7 +3033,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500可分辨对象。|
 
 **错误码：**
 
@@ -2931,9 +3041,9 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -2998,7 +3108,7 @@ async function certGetIssuerX500DistinguishedName() {
 
 getSubjectX500DistinguishedName(): X500DistinguishedName
 
-获取证书主题的X509可分辨名称。
+获取X.509证书主体的X.500可分辨名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3008,7 +3118,7 @@ getSubjectX500DistinguishedName(): X500DistinguishedName
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500可分辨对象。|
 
 **错误码：**
 
@@ -3016,9 +3126,9 @@ getSubjectX500DistinguishedName(): X500DistinguishedName
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3101,9 +3211,9 @@ toString(): string
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3192,10 +3302,10 @@ toString(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3276,9 +3386,9 @@ hashCode(): Uint8Array
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3343,7 +3453,7 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-获取对应实体的扩展域DER格式数据。
+获取证书扩展对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3353,7 +3463,7 @@ getExtensionsObject(): CertExtension
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | 证书扩展域段类对象。|
+| [CertExtension](#certextension10) | 证书扩展对象。|
 
 **错误码：**
 
@@ -3361,9 +3471,9 @@ getExtensionsObject(): CertExtension
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3428,7 +3538,7 @@ async function certGetExtensionsObject() {
 
 createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExtension>) : void
 
-表示创建证书扩展域段的对象。使用callback异步回调。
+创建一个证书扩展对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3438,8 +3548,8 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)                     | 是   | 表示证书扩展域段序列化数据。 |
-| callback | AsyncCallback\<[CertExtension](#certextension10)> | 是   | 回调函数，表示扩展域段对象。 |
+| inStream | [EncodingBlob](#encodingblob)                     | 是   | 表示序列化的证书扩展数据。 |
+| callback | AsyncCallback\<[CertExtension](#certextension10)> | 是   | 回调函数，表示证书扩展对象。 |
 
 **错误码：**
 
@@ -3447,10 +3557,10 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -3489,7 +3599,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
-表示创建证书扩展域段的对象。使用Promise异步回调。
+创建一个证书扩展对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3499,13 +3609,13 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 | 参数名   | 类型                          | 必填 | 说明                       |
 | -------- | ----------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob) | 是   | 表示证书扩展域段序列化数据。 |
+| inStream | [EncodingBlob](#encodingblob) | 是   | 表示序列化的证书扩展数据。 |
 
 **返回值**：
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<[CertExtension](#certextension10)> | 表示证书扩展域段对象。 |
+| Promise\<[CertExtension](#certextension10)> | Promise对象，返回创建的CertExtension实例。 |
 
 **错误码：**
 
@@ -3513,10 +3623,10 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **示例：**
 
@@ -3552,13 +3662,13 @@ cert.createCertExtension(encodingBlob).then(certExt => {
 
 ## CertExtension<sup>10+</sup>
 
-证书扩展域段类。
+提供操作X.509证书扩展的API。
 
 ### getEncoded<sup>10+</sup>
 
 getEncoded() : EncodingBlob
 
-表示获取证书扩展域段序列化数据。
+获取证书扩展的序列化数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3568,7 +3678,7 @@ getEncoded() : EncodingBlob
 
 | 类型                          | 说明                         |
 | ----------------------------- | ---------------------------- |
-| [EncodingBlob](#encodingblob) | 表示证书扩展域段序列化数据。 |
+| [EncodingBlob](#encodingblob) | 获取的证书扩展序列化数据。 |
 
 **错误码：**
 
@@ -3576,9 +3686,9 @@ getEncoded() : EncodingBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3624,7 +3734,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getOidList(valueType : ExtensionOidType) : DataArray
 
-表示获取证书扩展域段对象标识符列表。
+获取证书扩展的OID列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3634,13 +3744,13 @@ getOidList(valueType : ExtensionOidType) : DataArray
 
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | --------- | ------------------------------------- | ---- | ------------------------------ |
-| valueType | [ExtensionOidType](#extensionoidtype10) | 是   | 表示证书扩展域段对象标识符类型。 |
+| valueType | [ExtensionOidType](#extensionoidtype10) | 是   | 指定要获取的OID类型。 |
 
 **返回值**：
 
 | 类型                    | 说明                             |
 | ----------------------- | -------------------------------- |
-| [DataArray](#dataarray) | 表示证书扩展域段对象标识符列表。 |
+| [DataArray](#dataarray) | 获取的证书扩展OID列表。 |
 
 **错误码：**
 
@@ -3648,10 +3758,10 @@ getOidList(valueType : ExtensionOidType) : DataArray
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3697,7 +3807,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
-表示获取证书扩展域段对象信息。
+根据OID获取证书扩展项的值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3707,14 +3817,14 @@ getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
 | 参数名    | 类型                                      | 必填 | 说明                             |
 | --------- | ----------------------------------------- | ---- | -------------------------------- |
-| valueType | [ExtensionEntryType](#extensionentrytype10) | 是   | 表示证书扩展域段获取的类型。       |
-| oid       | [DataBlob](#datablob)                     | 是   | 表示证书扩展域段获取的对象标识符。 |
+| valueType | [ExtensionEntryType](#extensionentrytype10) | 是   | 指定要获取的扩展信息类型。       |
+| oid       | [DataBlob](#datablob)                     | 是   | 指定要获取的扩展项OID。 |
 
 **返回值**：
 
 | 类型                  | 说明                         |
 | --------------------- | ---------------------------- |
-| [DataBlob](#datablob) | 表示证书扩展域段对象的数据。 |
+| [DataBlob](#datablob) | 获取的证书扩展项数据。 |
 
 **错误码：**
 
@@ -3722,10 +3832,10 @@ getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3776,7 +3886,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 checkCA() : number
 
-表示校验证书是否为CA证书。
+检查证书是否为CA证书。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3786,7 +3896,7 @@ checkCA() : number
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当证书扩展域段中密钥用途包含签名用途，并且基本约束中cA字段为true时，表示证书为CA证书。如果不是CA，则返回-1；否则返回基本约束中的路径长度。如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
+| number | 当证书扩展中密钥用途扩展包含keyCertSign位，并且基本约束中cA字段为true时，表示证书为CA证书。如果不是CA，则返回-1；否则返回基本约束中的路径长度。如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
 
 **错误码：**
 
@@ -3794,9 +3904,9 @@ checkCA() : number
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3859,9 +3969,9 @@ hasUnsupportedCriticalExtension(): boolean
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -3898,7 +4008,7 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
 
 createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : void
 
-表示创建X509证书吊销列表的对象。使用callback异步回调。
+表示创建X.509证书吊销列表对象。使用callback异步回调。
 
 > **说明：**
 >
@@ -3919,9 +4029,9 @@ createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **示例：**
 
@@ -3966,7 +4076,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
-表示创建X509证书吊销列表的对象。使用Promise异步回调。
+表示创建X.509证书吊销列表对象。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3992,9 +4102,9 @@ createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **示例：**
 
@@ -4038,7 +4148,7 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : void
 
-表示创建X509证书吊销列表的对象。使用callback异步回调。
+表示创建X.509证书吊销列表对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4057,9 +4167,9 @@ createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **示例：**
 
@@ -4104,7 +4214,7 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
 
 createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
-表示创建X509证书吊销列表的对象。使用Promise异步回调。
+表示创建X.509证书吊销列表对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4128,9 +4238,9 @@ createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **示例：**
 
@@ -4172,7 +4282,7 @@ cert.createX509CRL(encodingBlob).then(X509CRL => {
 
 ## X509Crl<sup>(deprecated)</sup>
 
-X509证书吊销列表对象。
+提供用于X.509证书吊销列表操作的API
 
 > **说明：**
 >
@@ -4208,7 +4318,7 @@ isRevoked(cert : X509Cert) : boolean
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **示例：**
 
@@ -4341,7 +4451,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书吊销列表的序列化数据。使用callback异步回调。
+表示获取X.509证书吊销列表的序列化数据。使用callback异步回调。
 
 > **说明：**
 >
@@ -4353,7 +4463,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 参数名   | 类型                         | 必填 | 说明                                       |
 | -------- | ---------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X509证书吊销列表的序列化数据。 |
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X.509证书吊销列表的序列化数据。 |
 
 **错误码：**
 
@@ -4361,10 +4471,10 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -4416,7 +4526,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书吊销列表的序列化数据。使用Promise异步回调。
+表示获取X.509证书吊销列表的序列化数据。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4428,7 +4538,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 类型                   | 说明                             |
 | ---------------------- | -------------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | 表示X509证书吊销列表的序列化数据。 |
+| Promise\<[EncodingBlob](#encodingblob)> | 表示X.509证书吊销列表的序列化数据。 |
 
 **错误码：**
 
@@ -4436,10 +4546,10 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -4488,7 +4598,7 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-表示对X509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
+表示对X.509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
 
 > **说明：**
 >
@@ -4501,7 +4611,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | 是   | 表示用于验签的公钥对象。                                       |
-| callback | AsyncCallback\<void> | 是   | 回调函数,使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
 
 **错误码：**
 
@@ -4509,8 +4619,8 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -4607,7 +4717,6 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -4642,7 +4751,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-表示对X509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
+表示对X.509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
 
 > **说明：**
 >
@@ -4668,8 +4777,8 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -4796,7 +4905,7 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 getVersion() : number
 
-表示获取X509证书吊销列表的版本号。
+表示获取X.509证书吊销列表的版本号。
 
 > **说明：**
 >
@@ -4808,7 +4917,7 @@ getVersion() : number
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| number | 表示获取X509证书吊销列表的版本号。 |
+| number | 表示获取X.509证书吊销列表的版本号。 |
 
 **示例：**
 
@@ -4854,7 +4963,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getIssuerName() : DataBlob
 
-表示获取X509证书吊销列表颁发者名称。
+表示获取X.509证书吊销列表颁发者名称。
 
 > **说明：**
 >
@@ -4866,7 +4975,7 @@ getIssuerName() : DataBlob
 
 | 类型                  | 说明                           |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | 表示X509证书吊销列表颁发者名称。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表颁发者名称。 |
 
 **错误码：**
 
@@ -4874,9 +4983,9 @@ getIssuerName() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -4928,7 +5037,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getLastUpdate() : string
 
-表示获取X509证书吊销列表最后一次更新日期，日期为ASN.1时间格式。
+表示获取X.509证书吊销列表最后一次更新日期，日期为UTC时间或通用时间字符串格式。
 
 > **说明：**
 >
@@ -4940,7 +5049,7 @@ getLastUpdate() : string
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| string | 表示X509证书吊销列表最后一次更新日期，日期为ASN.1时间格式。 |
+| string | 表示X.509证书吊销列表最后一次更新日期，日期为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -4948,9 +5057,9 @@ getLastUpdate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5002,7 +5111,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getNextUpdate() : string
 
-表示获取证书吊销列表下一次更新的日期，日期为ASN.1时间格式。
+表示获取证书吊销列表下一次更新的日期，日期为UTC时间或通用时间字符串格式。
 
 > **说明：**
 >
@@ -5014,7 +5123,7 @@ getNextUpdate() : string
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| string | 表示X509证书吊销列表下一次更新的日期，日期为ASN.1时间格式。 |
+| string | 表示X.509证书吊销列表下一次更新的日期，日期为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -5022,9 +5131,9 @@ getNextUpdate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5076,7 +5185,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCert(serialNumber : number) : X509CrlEntry
 
-表示通过指定证书序列号获取被吊销X509证书对象。
+表示通过指定证书序列号获取证书吊销条目。
 
 > **说明：**
 >
@@ -5090,11 +5199,11 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 | ------------ | ------ | ---- | -------------- |
 | serialNumber | number | 是   | 表示证书序列号。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                   | 说明                   |
 | ---------------------- | --------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | 表示被吊销X509证书对象。 |
+| [X509CrlEntry](#x509crlentrydeprecated) | 表示证书吊销条目。 |
 
 **错误码：**
 
@@ -5102,9 +5211,9 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5157,7 +5266,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
-表示通过指定证书对象获取被吊销X509证书对象。
+表示通过指定证书对象获取证书吊销条目。
 
 > **说明：**
 >
@@ -5171,11 +5280,11 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 | ------ | --------------------- | ---- | ------------ |
 | cert   | [X509Cert](#x509cert) | 是   | 表示证书对象。 |
 
-**返回值**:
+**返回值**：
 
 | 类型         | 说明                  |
 | ------------ | -------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | 表示被吊销X509证书对象。 |
+| [X509CrlEntry](#x509crlentrydeprecated) | 表示证书吊销条目。 |
 
 **错误码：**
 
@@ -5183,9 +5292,9 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5254,7 +5363,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509Crl result: success.');
-    // 创建X509证书对象。
+    // 创建X.509证书对象。
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509Crl.getRevokedCertWithCert(x509Cert);
@@ -5274,7 +5383,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
-表示获取被吊销X509证书列表。使用callback异步回调。
+表示获取证书吊销条目列表。使用callback异步回调。
 
 > **说明：**
 >
@@ -5286,7 +5395,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 | 参数名   | 类型                                                 | 必填 | 说明                             |
 | -------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | 是   | 回调函数，表示被吊销X509证书列表。 |
+| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | 是   | 回调函数，表示获取到的证书吊销条目列表。 |
 
 **错误码：**
 
@@ -5294,9 +5403,9 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5348,7 +5457,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
-表示获取被吊销X509证书列表。使用Promise异步回调。
+ 表示获取证书吊销条目列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5356,11 +5465,11 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                                           | 说明                   |
 | ---------------------------------------------- | ---------------------- |
-| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | 表示被吊销X509证书列表。 |
+| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | 表示证书吊销条目列表。 |
 
 **错误码：**
 
@@ -5368,9 +5477,9 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5427,7 +5536,7 @@ getTbsInfo() : DataBlob
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
@@ -5439,9 +5548,9 @@ getTbsInfo() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5493,7 +5602,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignature() : DataBlob
 
-表示获取X509证书吊销列表的签名数据。
+表示获取X.509证书吊销列表的签名数据。
 
 > **说明：**
 >
@@ -5505,7 +5614,7 @@ getSignature() : DataBlob
 
 | 类型                  | 说明                           |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | 表示X509证书吊销列表的签名数据。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表的签名数据。 |
 
 **错误码：**
 
@@ -5513,9 +5622,9 @@ getSignature() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5567,7 +5676,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgName() : string
 
-表示获取X509证书吊销列表签名的算法名称。
+表示获取X.509证书吊销列表签名的算法名称。
 
 > **说明：**
 >
@@ -5579,7 +5688,7 @@ getSignatureAlgName() : string
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| string | 表示X509证书吊销列表签名的算法名。 |
+| string | 表示X.509证书吊销列表签名的算法名。 |
 
 **错误码：**
 
@@ -5587,9 +5696,9 @@ getSignatureAlgName() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5641,7 +5750,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgOid() : string
 
-表示获取X509证书吊销列表签名算法的对象标志符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
+表示获取X.509证书吊销列表签名算法的对象标识符OID（Object Identifier）。OID是由国际标准化组织（ISO）的名称注册机构分配。
 
 > **说明：**
 >
@@ -5653,7 +5762,7 @@ getSignatureAlgOid() : string
 
 | 类型   | 说明                                          |
 | ------ | --------------------------------------------- |
-| string | 表示X509证书吊销列表签名算法的对象标志符OID。 |
+| string | 表示X.509证书吊销列表签名算法的对象标识符OID。 |
 
 **错误码：**
 
@@ -5661,9 +5770,9 @@ getSignatureAlgOid() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5715,7 +5824,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgParams() : DataBlob
 
-表示获取X509证书吊销列表签名的算法参数。
+表示获取X.509证书吊销列表签名的算法参数。
 
 > **说明：**
 >
@@ -5727,7 +5836,7 @@ getSignatureAlgParams() : DataBlob
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | 表示X509证书吊销列表签名的算法参数。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表签名的算法参数。 |
 
 **错误码：**
 
@@ -5735,10 +5844,10 @@ getSignatureAlgParams() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -5787,7 +5896,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 ```
 ## X509CRL<sup>11+</sup>
 
-被吊销证书列表对象。
+提供用于X.509证书吊销列表操作的API。
 
 ### isRevoked<sup>11+</sup>
 
@@ -5817,7 +5926,7 @@ isRevoked(cert : X509Cert) : boolean
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **示例：**
 
@@ -5948,7 +6057,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书吊销列表的序列化数据。使用callback异步回调。
+表示获取X.509证书吊销列表的序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5958,7 +6067,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 参数名   | 类型                                          | 必填 | 说明                                       |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X509证书吊销列表的序列化数据。 |
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示X.509证书吊销列表的序列化数据。 |
 
 **错误码：**
 
@@ -5966,10 +6075,10 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6021,7 +6130,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书吊销列表的序列化数据。使用Promise异步回调。
+表示获取X.509证书吊销列表的序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6031,7 +6140,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 类型                                    | 说明                             |
 | --------------------------------------- | -------------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | 表示X509证书吊销列表的序列化数据。 |
+| Promise\<[EncodingBlob](#encodingblob)> | 表示X.509证书吊销列表的序列化数据。 |
 
 **错误码：**
 
@@ -6039,10 +6148,10 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6091,7 +6200,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-表示对X509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
+表示对X.509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6102,7 +6211,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | 是   | 表示用于验签的公钥对象。                                       |
-| callback | AsyncCallback\<void>                                        | 是   | 回调函数,使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
+| callback | AsyncCallback\<void>                                        | 是   | 回调函数，使用AsyncCallback的第一个error参数判断是否验签成功，error为null表示成功，error不为null表示失败。 |
 
 **错误码：**
 
@@ -6110,8 +6219,8 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6208,7 +6317,6 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -6243,7 +6351,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-表示对X509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
+表示对X.509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6267,8 +6375,8 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6395,7 +6503,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 getVersion() : number
 
-表示获取X509证书吊销列表的版本号。
+表示获取X.509证书吊销列表的版本号。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6405,7 +6513,7 @@ getVersion() : number
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| number | 表示获取X509证书吊销列表的版本号。 |
+| number | 表示获取X.509证书吊销列表的版本号。 |
 
 **示例：**
 
@@ -6451,11 +6559,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName() : DataBlob
 
-表示获取X509证书吊销列表颁发者名称。
+表示获取X.509证书吊销列表颁发者名称。
 
 > **说明：**
 >
-> 获取到的X509证书吊销列表颁发者名称数据带字符串结束符。
+> 获取到的X.509证书吊销列表颁发者名称数据带字符串结束符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6465,7 +6573,7 @@ getIssuerName() : DataBlob
 
 | 类型                  | 说明                           |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | 表示X509证书吊销列表颁发者名称。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表颁发者名称。 |
 
 **错误码：**
 
@@ -6473,9 +6581,9 @@ getIssuerName() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6527,7 +6635,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-根据编码类型获取X509证书吊销列表颁发者名称。
+根据编码类型获取X.509证书吊销列表颁发者名称。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -6543,7 +6651,7 @@ getIssuerName(encodingType: EncodingType): string
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| string | 表示X509证书吊销列表颁发者名称，使用逗号分隔相对可分辨名称。 |
+| string | 表示X.509证书吊销列表颁发者名称，使用逗号分隔相对可分辨名称。 |
 
 **错误码：**
 
@@ -6551,10 +6659,10 @@ getIssuerName(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6610,7 +6718,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getLastUpdate() : string
 
-表示获取X509证书吊销列表最后一次更新日期，日期为ASN.1时间格式。
+表示获取X.509证书吊销列表最后一次更新日期，日期为UTC时间或通用时间字符串格式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6620,7 +6728,7 @@ getLastUpdate() : string
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| string | 表示X509证书吊销列表最后一次更新日期，日期为ASN.1时间格式。 |
+| string | 表示X.509证书吊销列表最后一次更新日期，日期为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -6628,9 +6736,9 @@ getLastUpdate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6682,7 +6790,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getNextUpdate() : string
 
-表示获取证书吊销列表下一次更新的日期，日期为ASN.1时间格式。
+表示获取证书吊销列表下一次更新的日期，日期为UTC时间或通用时间字符串格式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6692,7 +6800,7 @@ getNextUpdate() : string
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| string | 表示X509证书吊销列表下一次更新的日期，日期为ASN.1时间格式。 |
+| string | 表示X.509证书吊销列表下一次更新的日期，日期为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -6700,9 +6808,9 @@ getNextUpdate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6754,7 +6862,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
-表示通过指定证书序列号获取被吊销X509证书对象。
+表示通过指定证书序列号获取证书吊销条目。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6766,11 +6874,11 @@ getRevokedCert(serialNumber : bigint) : X509CRLEntry
 | ------------ | ------ | ---- | -------------- |
 | serialNumber | bigint | 是   | 表示证书序列号。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                            | 说明                   |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | 表示被吊销X509证书对象。 |
+| [X509CRLEntry](#x509crlentry11) | 表示证书吊销条目。 |
 
 **错误码：**
 
@@ -6778,9 +6886,9 @@ getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6833,7 +6941,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
-表示通过指定证书对象获取被吊销X509证书对象。
+表示通过指定证书对象获取证书吊销条目。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6845,11 +6953,11 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 | ------ | --------------------- | ---- | ------------ |
 | cert   | [X509Cert](#x509cert) | 是   | 表示证书对象。 |
 
-**返回值**:
+**返回值**：
 
 | 类型                            | 说明                   |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | 表示被吊销X509证书对象。 |
+| [X509CRLEntry](#x509crlentry11) | 表示证书吊销条目。 |
 
 **错误码：**
 
@@ -6857,9 +6965,9 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -6928,7 +7036,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509CRL result: success.');
-    // 创建X509证书对象。
+    // 创建X.509证书对象。
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
         let entry = x509CRL.getRevokedCertWithCert(x509Cert);
@@ -6948,7 +7056,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
-表示获取被吊销X509证书列表。使用callback异步回调。
+表示获取证书吊销条目列表。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6958,7 +7066,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
 | 参数名   | 类型                                                   | 必填 | 说明                             |
 | -------- | ------------------------------------------------------ | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | 是   | 回调函数，表示被吊销X509证书列表。 |
+| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | 是   | 回调函数，表示获取到的证书吊销条目列表。 |
 
 **错误码：**
 
@@ -6966,9 +7074,9 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7020,17 +7128,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
-表示获取被吊销X509证书列表。使用Promise异步回调。
+表示获取证书吊销条目列表。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                                             | 说明                   |
 | ------------------------------------------------ | ---------------------- |
-| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | 表示被吊销X509证书列表。 |
+| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | 表示证书吊销条目列表。 |
 
 **错误码：**
 
@@ -7038,9 +7146,9 @@ getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7089,7 +7197,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 getSignature() : DataBlob
 
-表示获取X509证书吊销列表的签名数据。
+表示获取X.509证书吊销列表的签名数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7099,7 +7207,7 @@ getSignature() : DataBlob
 
 | 类型                  | 说明                           |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | 表示X509证书吊销列表的签名数据。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表的签名数据。 |
 
 **错误码：**
 
@@ -7107,9 +7215,9 @@ getSignature() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7161,7 +7269,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgName() : string
 
-表示获取X509证书吊销列表签名的算法名称。
+表示获取X.509证书吊销列表签名的算法名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7171,7 +7279,7 @@ getSignatureAlgName() : string
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| string | 表示X509证书吊销列表签名的算法名。 |
+| string | 表示X.509证书吊销列表签名的算法名。 |
 
 **错误码：**
 
@@ -7179,9 +7287,9 @@ getSignatureAlgName() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7233,7 +7341,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgOid() : string
 
-表示获取X509证书吊销列表签名算法的对象标志符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
+表示获取X.509证书吊销列表签名算法的对象标识符OID（Object Identifier）。OID是由国际标准化组织（ISO）的名称注册机构分配。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7243,7 +7351,7 @@ getSignatureAlgOid() : string
 
 | 类型   | 说明                                          |
 | ------ | --------------------------------------------- |
-| string | 表示X509证书吊销列表签名算法的对象标志符OID。 |
+| string | 表示X.509证书吊销列表签名算法的对象标识符OID。|
 
 **错误码：**
 
@@ -7251,9 +7359,9 @@ getSignatureAlgOid() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7305,7 +7413,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgParams() : DataBlob
 
-表示获取X509证书吊销列表签名的算法参数。
+表示获取X.509证书吊销列表签名的算法参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7315,7 +7423,7 @@ getSignatureAlgParams() : DataBlob
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | 表示X509证书吊销列表签名的算法参数。 |
+| [DataBlob](#datablob) | 表示X.509证书吊销列表签名的算法参数。 |
 
 **错误码：**
 
@@ -7323,10 +7431,10 @@ getSignatureAlgParams() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7384,7 +7492,7 @@ getTBSInfo() : DataBlob
 
 **系统能力：** SystemCapability.Security.Cert
 
-**返回值**:
+**返回值**：
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
@@ -7396,9 +7504,9 @@ getTBSInfo() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7450,7 +7558,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getExtensions(): DataBlob
 
-表示获取CRL的扩展。
+表示获取CRL扩展的DER格式数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7460,7 +7568,7 @@ getExtensions(): DataBlob
 
 | 类型                  | 说明                |
 | --------------------- | ------------------- |
-| [DataBlob](#datablob) | 表示X509CRL扩展用途。 |
+| [DataBlob](#datablob) | 表示CRL扩展的DER格式数据。 |
 
 **错误码：**
 
@@ -7468,9 +7576,9 @@ getExtensions(): DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7549,9 +7657,9 @@ match(param: X509CRLMatchParameters): boolean
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.  |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.  |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7646,7 +7754,7 @@ async function crlMatch() {
 
 getIssuerX500DistinguishedName(): X500DistinguishedName
 
-获取颁发者的X509可分辨名称。
+获取CRL颁发者的X.500可分辨名称对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7656,7 +7764,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。 |
+| [X500DistinguishedName](#x500distinguishedname12) | X.500可分辨名称对象。 |
 
 **错误码：**
 
@@ -7664,9 +7772,9 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7734,9 +7842,9 @@ toString(): string
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7810,10 +7918,10 @@ toString(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7884,9 +7992,9 @@ hashCode(): Uint8Array
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7936,7 +8044,7 @@ async function crlHashCode() {
 
 getExtensionsObject(): CertExtension
 
-获取对应实体的扩展域DER格式数据。
+获取CRL扩展对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7946,7 +8054,7 @@ getExtensionsObject(): CertExtension
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | 证书扩展域段类对象。|
+| [CertExtension](#certextension10) | CRL扩展对象。|
 
 **错误码：**
 
@@ -7954,9 +8062,9 @@ getExtensionsObject(): CertExtension
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -7994,7 +8102,7 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-async function crlHashCode() {
+async function crlGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
@@ -8021,7 +8129,7 @@ createCertChainValidator(algorithm :string) : CertChainValidator
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| algorithm | string | 是   | 表示证书链校验器算法。当前仅支持输入“PKIX”。 |
+| algorithm | string | 是   | 表示证书链校验器算法。当前仅支持输入"PKIX"。 |
 
 **返回值**：
 
@@ -8035,11 +8143,11 @@ createCertChainValidator(algorithm :string) : CertChainValidator
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8066,16 +8174,16 @@ try {
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | -------------------------- |
-| algorithm  | string | 是   | 否   | X509证书链校验器算法名称。 |
+| algorithm  | string | 是   | 否   | X.509证书链校验器算法名称。 |
 
 
 ### validate
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
-表示校验X509证书链。使用callback异步回调。
+表示校验X.509证书链。使用callback异步回调。
 
-由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
+由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8085,7 +8193,7 @@ validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| certChain | [CertChainData](#certchaindata) | 是   | 表示X509证书链序列化数据。                                    |
+| certChain | [CertChainData](#certchaindata) | 是   | 表示X.509证书链序列化数据。                                    |
 | callback  | AsyncCallback\<void>            | 是   | 回调函数，使用AsyncCallback的第一个error参数判断是否校验成功，error为null表示成功，error不为null表示失败。 |
 
 **错误码：**
@@ -8094,16 +8202,16 @@ validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -8202,8 +8310,9 @@ try {
 
 validate(certChain : CertChainData) : Promise\<void>
 
-表示校验X509证书链。使用Promise异步回调。
-由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
+表示校验X.509证书链。使用Promise异步回调。
+
+由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8213,7 +8322,7 @@ validate(certChain : CertChainData) : Promise\<void>
 
 | 参数名    | 类型                            | 必填 | 说明                       |
 | --------- | ------------------------------- | ---- | -------------------------- |
-| certChain | [CertChainData](#certchaindata) | 是   | 表示X509证书链序列化数据。 |
+| certChain | [CertChainData](#certchaindata) | 是   | 表示X.509证书链序列化数据。 |
 
 **返回值**：
 
@@ -8227,16 +8336,16 @@ validate(certChain : CertChainData) : Promise\<void>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -8329,13 +8438,196 @@ try {
 }
 ```
 
+### validateCert
+
+validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValidationResult&gt;
+
+通过构建并验证证书链来验证证书。使用Promise异步回调。
+
+证书链构建过程遵循以下规则：
+1. 可信锚点源：始终使用可信任证书列表（trustedCerts）作为信任锚点源。仅当trustSystemCa设置为true时，预配置的证书才会被用作信任锚源。
+2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
+3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
+4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
+5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名    | 类型                            | 必填 | 说明                       |
+| --------- | ------------------------------- | ---- | -------------------------- |
+| cert | [X509Cert](#x509cert) | 是   | 待验证的证书。 |
+| params | [CertValidationParams](#certvalidationparams) | 是   | 证书验证参数。 |
+
+**返回值：**
+
+| 类型           | 说明        |
+| -------------- | ----------- |
+| Promise\<[CertValidationResult](#certvalidationresult)> | Promise对象，返回验证结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed.                           |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
+| 19030009 | Untrusted certificate.    |
+| 19030010 | The certificate has been revoked.             |
+| 19030011 | Unsupported critical extension.          |
+| 19030012 | Hostname mismatch in the certificate. |
+| 19030013 | Email address mismatch in the certificate.     |
+| 19030014 | Key usage mismatch in the certificate. |
+| 19030015 | Failed to obtain the certificate revocation list.          |
+| 19030016 | The certificate revocation list has not taken effect.             |
+| 19030017 | The certificate revocation list has expired.                      |
+| 19030018 | Failed to verify the signature of the certificate revocation list.          |
+| 19030019 | Failed to find the issuer of the certificate revocation list. |
+| 19030020 | Failed to obtain the OCSP response.     |
+| 19030021 | Invalid OCSP response.             |
+| 19030022 | Failed to verify the OCSP signature.                      |
+| 19030023 | Unknown OCSP certificate status.          |
+| 19030024 | Network connection timed out. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// EC P-256证书链数据
+const endEntityCertPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICwzCCAmmgAwIBAgIUIThWddD/8p7w5QyXOoRY05O61FMwCgYIKoZIzj0EAwIw\n' +
+    'gYsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlq\n' +
+    'aW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEdMBsGA1UECwwUVGVzdCBJ\n' +
+    'bnRlcm1lZGlhdGUgQ0ExHTAbBgNVBAMMFFRlc3QgSW50ZXJtZWRpYXRlIENBMB4X\n' +
+    'DTI2MDMzMTA4MjY1OFoXDTI3MDMzMTA4MjY1OFowgYIxCzAJBgNVBAYTAkNOMRAw\n' +
+    'DgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0\n' +
+    'IE9yZ2FuaXphdGlvbjEYMBYGA1UECwwPVGVzdCBEZXBhcnRtZW50MRkwFwYDVQQD\n' +
+    'DBB0ZXN0LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEspH8\n' +
+    'JVcqNrg7oP4PYHADsW8tc1kIF86JG5SSjh1fz4ja3dF98PMMrsbQtcBZiwp8rD5e\n' +
+    'Gp2Nv/C2ymnjJfrig6OBsTCBrjAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDAd\n' +
+    'BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwHQYDVR0OBBYEFH6aJ7ZQayEZ\n' +
+    'LeenLt7zowBoafRpMB8GA1UdIwQYMBaAFI2lMRV2YgzF/DBP92jUzOLdzSDdMDIG\n' +
+    'A1UdEQQrMCmCEHRlc3QuZXhhbXBsZS5jb22CD3d3dy5leGFtcGxlLmNvbYcEfwAA\n' +
+    'ATAKBggqhkjOPQQDAgNIADBFAiEAidnsForpQc9qTBpa68YEYS0TQRUySHaUB/pr\n' +
+    'PNfAYqECIGGKM44mqQgSvZyYQHnlnu3jkbHpFJTaQBAvz9B1jFuc\n' +
+    '-----END CERTIFICATE-----\n';
+
+const intermediateCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICbzCCAhWgAwIBAgIUI8/xor2S98OupuBX6hWevxhvK+wwCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NThaFw0z\n' +
+    'MTAzMzAwODI2NThaMIGLMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQ\n' +
+    'MA4GA1UEBwwHQmVpamluZzEaMBgGA1UECgwRVGVzdCBPcmdhbml6YXRpb24xHTAb\n' +
+    'BgNVBAsMFFRlc3QgSW50ZXJtZWRpYXRlIENBMR0wGwYDVQQDDBRUZXN0IEludGVy\n' +
+    'bWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABER6WRsCn7Bh3v8c\n' +
+    'k6PIkLeM+ot5l0A46XJdfvuJco58ifzBHjtu4kFOkZTA9F0Hb6JefG590CK5ddiD\n' +
+    'g5lOHwKjZjBkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgEGMB0G\n' +
+    'A1UdDgQWBBSNpTEVdmIMxfwwT/do1Mzi3c0g3TAfBgNVHSMEGDAWgBS/nd4dYdW3\n' +
+    'zFxQ1pl2U8I/bfUA3zAKBggqhkjOPQQDAgNIADBFAiEA87NkGCv47e5RWc8DsFd/\n' +
+    'zL6/2Xn2EoveC+HoUYpxhZMCIAG+ZuTLmUsjalUGbWyR101hxHfvr4ImbEMeYSaA\n' +
+    'sVBn\n' +
+    '-----END CERTIFICATE-----\n';
+
+const rootCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICWzCCAgGgAwIBAgIUd/I1bFJJw/xQtPEJP6C1E4Fj9jswCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NTdaFw0z\n' +
+    'NjAzMjgwODI2NTdaMHsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAw\n' +
+    'DgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEVMBMG\n' +
+    'A1UECwwMVGVzdCBSb290IENBMRUwEwYDVQQDDAxUZXN0IFJvb3QgQ0EwWTATBgcq\n' +
+    'hkjOPQIBBggqhkjOPQMBBwNCAASFeWawqQET+c6EowNooKYiTw1KPzJBgssxQXo7\n' +
+    'UEXSQnLHh8sBwVvNN4oFVFImT31DyJVKwxBXpwbrEN1s8J1Io2MwYTAPBgNVHRMB\n' +
+    'Af8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUv53eHWHVt8xcUNaZ\n' +
+    'dlPCP231AN8wHwYDVR0jBBgwFoAUv53eHWHVt8xcUNaZdlPCP231AN8wCgYIKoZI\n' +
+    'zj0EAwIDSAAwRQIhAIbyIrOZL1GhkRiI2i4IhKmFa4AoXJftTEA5wev99QpkAiA3\n' +
+    'khFrJ4rRSpHqbfGN1U14HkFKiCXBalaIe+NISxgC3Q==\n' +
+    '-----END CERTIFICATE-----\n';
+
+// string转Uint8Array
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function validateCert(): Promise<void> {
+  try {
+    // 创建终端实体证书对象
+    let certEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(endEntityCertPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+
+    // 创建信任锚证书（根CA）
+    let rootCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rootCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let rootCaCert = await cert.createX509Cert(rootCaEncodingBlob);
+
+    // 创建中间证书
+    let intermediateCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(intermediateCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let intermediateCaCert = await cert.createX509Cert(intermediateCaEncodingBlob);
+
+    // 设置验证参数
+    let params: cert.CertValidationParams = {
+      trustedCerts: [rootCaCert],
+      untrustedCerts: [intermediateCaCert],
+      validateDate: false
+    };
+
+    // 创建验证器并验证证书
+    let validator = cert.createCertChainValidator('PKIX');
+    let result = await validator.validateCert(x509Cert, params);
+
+    console.info('Certificate validation succeeded!');
+    console.info(`Verified chain length: ${result.certChain.length}`);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i}: ${subject}`);
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+
+validateCert();
+```
+
 ## X509CrlEntry<sup>(deprecated)</sup>
 
-被吊销证书对象。
+证书吊销条目。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CrlEntry](#x509crlentry11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry](#x509crlentry11)替代。
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8361,10 +8653,10 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8444,10 +8736,10 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8571,7 +8863,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getCertIssuer() : DataBlob
 
-表示获取被吊销证书的颁发者信息。
+表示获取被吊销的证书的颁发者名称。
 
 > **说明：**
 >
@@ -8583,7 +8875,7 @@ getCertIssuer() : DataBlob
 
 | 类型                  | 说明                     |
 | --------------------- | ----------------------- |
-| [DataBlob](#datablob) | 表示被吊销证书的颁发者信息。 |
+| [DataBlob](#datablob) | 被吊销的证书的颁发者名称。 |
 
 **错误码：**
 
@@ -8591,9 +8883,9 @@ getCertIssuer() : DataBlob
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 
 **示例：**
 
@@ -8647,7 +8939,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getRevocationDate() : string
 
-表示获取证书被吊销的日期，日期为ASN.1时间格式。
+获取证书的吊销日期。
 
 > **说明：**
 >
@@ -8659,7 +8951,7 @@ getRevocationDate() : string
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| string | 表示证书被吊销的日期，日期为ASN.1时间格式。 |
+| string | 表示证书被吊销的日期，日期为UTC时间或通用时间字符串格式。 |
 
 **错误码：**
 
@@ -8667,9 +8959,9 @@ getRevocationDate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8721,13 +9013,13 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 ## X509CRLEntry<sup>11+</sup>
 
-被吊销证书对象。
+证书吊销条目。
 
 ### getEncoded<sup>11+</sup>
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取被吊销证书的序列化数据。使用callback异步回调。
+表示获取证书吊销条目的序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8737,7 +9029,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 参数名   | 类型                                          | 必填 | 说明                                 |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示被吊销证书的序列化数据。 |
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | 是   | 回调函数，表示证书吊销条目的序列化数据。 |
 
 **错误码：**
 
@@ -8745,10 +9037,10 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8808,7 +9100,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取被吊销证书的序列化数据。使用Promise异步回调。
+表示获取证书吊销条目的序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8818,7 +9110,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 类型                                    | 说明                       |
 | --------------------------------------- | -------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | 表示被吊销证书的序列化数据。 |
+| Promise\<[EncodingBlob](#encodingblob)> | 表示证书吊销条目的序列化数据。 |
 
 **错误码：**
 
@@ -8826,10 +9118,10 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8887,7 +9179,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getSerialNumber() : bigint
 
-表示获取被吊销证书的序列号。
+表示获取被吊销的证书的序列号。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8897,7 +9189,7 @@ getSerialNumber() : bigint
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| bigint | 表示被吊销证书的序列号。 |
+| bigint | 表示证书吊销条目的序列号。 |
 
 **错误码：**
 
@@ -8905,9 +9197,9 @@ getSerialNumber() : bigint
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -8961,11 +9253,11 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuer() : DataBlob
 
-表示获取被吊销证书的颁发者信息。
+表示获取被吊销证书的颁发者名称。
 
 > **说明：**
 >
-> 获取到的被吊销证书的颁发者信息数据带字符串结束符。
+> 获取到的被吊销证书的颁发者名称数据带字符串结束符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8975,7 +9267,7 @@ getCertIssuer() : DataBlob
 
 | 类型                  | 说明                       |
 | --------------------- | -------------------------- |
-| [DataBlob](#datablob) | 表示被吊销证书的颁发者信息。 |
+| [DataBlob](#datablob) | 表示被吊销证书的颁发者名称。 |
 
 **错误码：**
 
@@ -8983,10 +9275,10 @@ getCertIssuer() : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9040,7 +9332,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuer(encodingType: EncodingType): string
 
-根据编码类型获取被吊销证书的颁发者信息。
+根据编码类型获取被吊销证书的颁发者名称。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -9056,7 +9348,7 @@ getCertIssuer(encodingType: EncodingType): string
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| string | 表示被吊销证书的颁发者信息，使用逗号分隔相对可分辨名称。 |
+| string | 表示被吊销证书的颁发者名称，使用逗号分隔相对可分辨名称。 |
 
 **错误码：**
 
@@ -9064,11 +9356,11 @@ getCertIssuer(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9142,9 +9434,9 @@ getRevocationDate() : string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9216,9 +9508,9 @@ getExtensions(): DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9275,7 +9567,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 hasExtensions(): boolean
 
-表示判断CRL Entry是否有扩展。
+表示判断CRL条目是否有扩展。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9285,7 +9577,7 @@ hasExtensions(): boolean
 
 | 类型    | 说明                                                 |
 | ------- | ---------------------------------------------------- |
-| boolean | 返回true则表示CRL Entry有扩展，返回false则表示无扩展。 |
+| boolean | 返回true则表示CRL条目有扩展，返回false则表示无扩展。 |
 
 **错误码：**
 
@@ -9293,9 +9585,9 @@ hasExtensions(): boolean
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9349,7 +9641,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
-获取证书颁发者的X509可分辨名称。
+获取被吊销证书的颁发者的X.500可分辨名称对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9359,7 +9651,7 @@ getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 类型    | 说明                                                 |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500可分辨名称对象。|
 
 **错误码：**
 
@@ -9367,9 +9659,9 @@ getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9436,9 +9728,9 @@ toString(): string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9505,9 +9797,9 @@ hashCode(): Uint8Array
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9556,7 +9848,7 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-获取对应实体的扩展域DER格式数据。
+获取CRL条目的扩展对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9566,7 +9858,7 @@ getExtensionsObject(): CertExtension
 
 | 类型    | 说明                                                 |
 | ------- | ---------------------------------------------------- |
-| [CertExtension](#certextension10) | 证书扩展域段类对象。|
+| [CertExtension](#certextension10) | CRL条目的扩展对象。|
 
 **错误码：**
 
@@ -9574,9 +9866,9 @@ getExtensionsObject(): CertExtension
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9709,7 +10001,7 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 | 类型               | 说明                 |
 | ------------------ | -------------------- |
-| [CertCRLCollection](#certcrlcollection11) | 表示证书和证书吊销列表集合对象。 |
+| [CertCRLCollection](#certcrlcollection11) | 证书和证书吊销列表集合。 |
 
 **错误码：**
 
@@ -9717,8 +10009,8 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
 
 **示例：**
 
@@ -9803,7 +10095,7 @@ async function createCollection() {
 
 ## CertCRLCollection<sup>11+</sup>
 
-证书和证书吊销列表集合对象。
+证书和证书吊销列表集合。
 
 ### selectCerts<sup>11+</sup>
 
@@ -9833,9 +10125,9 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -9923,9 +10215,9 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10018,9 +10310,9 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10144,9 +10436,9 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10251,7 +10543,7 @@ async function selectCRLs() {
 
 createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
-表示创建X509证书链对象。使用Promise异步回调。
+表示创建X.509证书链对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10261,13 +10553,13 @@ createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| inStream | [EncodingBlob](#encodingblob) | 是   | X509证书序列化数据。 |
+| inStream | [EncodingBlob](#encodingblob) | 是   | X.509证书序列化数据。 |
 
 **返回值：**
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise\<[X509CertChain](#x509certchain11)> | 表示X509证书链对象。 |
+| Promise\<[X509CertChain](#x509certchain11)> | 表示X.509证书链对象。 |
 
 **错误码：**
 
@@ -10275,9 +10567,9 @@ createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10373,7 +10665,7 @@ createX509CertChain();
 
 createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertChain>): void
 
-表示创建X509证书链对象。使用callback异步回调。
+表示创建X.509证书链对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10383,8 +10675,8 @@ createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertCha
 
 | 参数名   | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)         | 是   | X509证书序列化数据。        |
-| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | 是   | 回调函数，表示X509证书链对象。 |
+| inStream | [EncodingBlob](#encodingblob)         | 是   | X.509证书序列化数据。        |
+| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | 是   | 回调函数，表示X.509证书链对象。 |
 
 **错误码：**
 
@@ -10392,9 +10684,9 @@ createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertCha
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10485,7 +10777,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 
 createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
-表示使用X509Cert数组方式创建X509证书链对象，并同步返回结果。
+表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10495,13 +10787,13 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| certs    | Array\<[X509Cert](#x509cert)> | 是   | X509证书对象数组。 |
+| certs    | Array\<[X509Cert](#x509cert)> | 是   | X.509证书对象数组。 |
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| [X509CertChain](#x509certchain11) | 表示X509证书链对象。 |
+| [X509CertChain](#x509certchain11) | 表示X.509证书链对象。 |
 
 **错误码：**
 
@@ -10509,9 +10801,9 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -10575,7 +10867,7 @@ createX509CertChain();
 
 buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12)): Promise\<CertChainBuildResult>
 
-表示使用CertChainBuildParameters对象方式创建X509证书链对象。使用Promise异步回调。
+表示使用CertChainBuildParameters对象方式创建X.509证书链对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10585,13 +10877,13 @@ buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| param | [CertChainBuildParameters](#certchainbuildparameters12) | 是   | 构建证书链的参数对象。  <br> [CertChainBuildParameters](#certchainbuildparameters12)中的maxLength要小于证书集合中证书数量。|
+| param | [CertChainBuildParameters](#certchainbuildparameters12) | 是   | 构建证书链的参数对象。|
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | 表示X509证书链对象。 |
+| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | 表示X.509证书链对象。 |
 
 **错误码：**
 
@@ -10599,16 +10891,16 @@ buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -10715,7 +11007,7 @@ buildX509CertChain();
 
 parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
-表示从P12文件中解析证书、私钥及其他证书合集，并返回结果。
+解析PKCS #12。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -10725,14 +11017,14 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | Uint8Array | 是 | P12文件，DER格式。 |
-| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | 是 | P12文件的解析配置。 |
+| data | Uint8Array | 是 | DER格式的PKCS #12文件原始数据。 |
+| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | 是 | PKCS #12文件的解析配置。 |
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| [Pkcs12Data](#pkcs12data18) | 表示P12文件解析后的证书、私钥及其他证书合集。 |
+| [Pkcs12Data](#pkcs12data18) | 表示PKCS #12文件解析后的证书、私钥及其他证书合集。 |
 
 **错误码：**
 
@@ -10740,11 +11032,11 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030008 | maybe wrong password.            |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030008 | Maybe wrong password.            |
 
 **示例：**
 
@@ -10927,7 +11219,7 @@ function doTestParsePkcs12() {
 
 parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
-表示从Pkcs12文件中解析证书、私钥及其他证书合集。使用Promise异步回调。
+解析PKCS #12。使用Promise方式返回结果。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -10937,14 +11229,14 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | Uint8Array | 是 | Pkcs12文件，DER格式。 |
-| password | string | 是 | Pkcs12的密码。 |
+| data | Uint8Array | 是 | DER格式的PKCS #12文件原始数据。|
+| password | string | 是 | 密码。 |
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| Promise\<[Pkcs12Data](#pkcs12data18)> | Promise对象，返回Pkcs12文件解析后的证书、私钥及其他证书合集。返回的Pkcs12Data中的私钥采用PEM格式编码。 |
+| Promise\<[Pkcs12Data](#pkcs12data18)> | Promise对象，返回解析后的PKCS #12数据。返回的Pkcs12Data中的私钥采用PEM编码。 |
 
 **错误码：**
 
@@ -10952,11 +11244,11 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030008 | maybe wrong password.            |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is too large.                                    |
+| 19030001 | Crypto operation error.                           |
+| 19030008 | Maybe wrong password.            |
 
 **示例：**
 
@@ -11143,7 +11435,7 @@ async function doTestParsePkcs12() {
 
 createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Array>
 
-表示创建Pkcs12数据。使用Promise异步回调。
+表示创建PKCS #12。使用Promise异步回调。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -11153,14 +11445,14 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | [Pkcs12Data](#pkcs12data18) | 是 | 要打包的Pkcs12数据对象。 |
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | 是 | Pkcs12文件的创建配置。 |
+| data | [Pkcs12Data](#pkcs12data18) | 是 | 要打包的PKCS #12数据对象。 |
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | 是 | PKCS #12的创建配置。 |
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> | Promise对象。表示创建的Pkcs12文件，DER格式。 |
+| Promise\<Uint8Array> | Promise对象。返回创建的PKCS #12，DER格式。 |
 
 **错误码：**
 
@@ -11168,10 +11460,10 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
-| 19030001 | crypto operation error.                           |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | Crypto operation error.                           |
 
 **示例：**
 
@@ -11317,11 +11609,11 @@ async function doTestCreatePkcs12() {
 }
 ```
 
-## cert.createPkcs12<sup>21+</sup>
+## cert.createPkcs12Sync<sup>21+</sup>
 
 createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
-表示创建Pkcs12数据，同步返回结果。
+表示创建PKCS #12，同步返回结果。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -11331,14 +11623,14 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | [Pkcs12Data](#pkcs12data18) | 是 | 要打包的P12数据对象。 |
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | 是 | P12文件的创建配置。 |
+| data | [Pkcs12Data](#pkcs12data18) | 是 | 要打包的PKCS #12数据对象。 |
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | 是 | PKCS #12的创建配置。 |
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| Uint8Array | 表示创建的P12文件，DER格式。 |
+| Uint8Array | 表示创建的PKCS #12，DER格式。 |
 
 **错误码：**
 
@@ -11346,10 +11638,10 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
-| 19030001 | crypto operation error.                           |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | Crypto operation error.                           |
 
 **示例：**
 
@@ -11499,7 +11791,7 @@ async function doTestCreatePkcs12Sync() {
 
 createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<[X509TrustAnchor](#x509trustanchor11)>>
 
-表示从P12文件中读取ca证书来构造[TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
+表示从PKCS #12中读取ca证书来构造[TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11509,8 +11801,8 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 | 参数名   | 类型                  | 必填 | 说明                       |
 | -------- | -------------------- | ---- | -------------------------- |
-| keystore | Uint8Array | 是 | P12文件，DER格式。 |
-| pwd | string | 是 | P12文件的密码。 |
+| keystore | Uint8Array | 是 | DER格式的PKCS #12文件原始数据。 |
+| pwd | string | 是 | 密码。|
 
 **返回值：**
 
@@ -11524,16 +11816,16 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -11656,13 +11948,13 @@ try {
 
 ## X509CertChain<sup>11+</sup>
 
-X509证书链对象。
+X.509证书链对象。
 
 ### getCertList<sup>11+</sup>
 
 getCertList(): Array\<X509Cert>
 
-获取X509证书列表。
+获取X.509证书列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11672,7 +11964,7 @@ getCertList(): Array\<X509Cert>
 
 | 类型           | 说明        |
 | -------------- | ----------- |
-| Array\<[X509Cert](#x509cert)> | X509证书数组。 |
+| Array\<[X509Cert](#x509cert)> | X.509证书数组。 |
 
 **错误码：**
 
@@ -11680,9 +11972,9 @@ getCertList(): Array\<X509Cert>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -11790,7 +12082,7 @@ validate(param: CertChainValidationParameters): Promise\<CertChainValidationResu
 
 | 参数名    | 类型                            | 必填 | 说明            |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | 是   | 表示校验X509证书链的参数。 |
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | 是   | 表示校验X.509证书链的参数。 |
 
 **返回值**：
 
@@ -11804,16 +12096,16 @@ validate(param: CertChainValidationParameters): Promise\<CertChainValidationResu
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error.           |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect.           |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer.           |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error.           |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect.           |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer.           |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.      |
 
 **示例：**
 
@@ -11945,7 +12237,7 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChai
 
 | 参数名    | 类型                            | 必填 | 说明      |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | 是   | 表示校验X509证书链的参数。 |
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | 是   | 表示校验X.509证书链的参数。 |
 | callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | 是   | 回调函数，返回证书链校验结果。 |
 
 **错误码：**
@@ -11954,16 +12246,16 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChai
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error.           |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect.           |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer.           |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error.           |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect.           |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer.           |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.      |
 
 **示例：**
 
@@ -12095,9 +12387,9 @@ toString(): string
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12222,9 +12514,9 @@ hashCode(): Uint8Array
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12332,7 +12624,7 @@ async function certChainHashCode() {
 
 generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 
-表示使用指定的RSA私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。
+表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12357,11 +12649,11 @@ generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030008 | maybe wrong password. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030008 | Maybe wrong password. |
 
 **示例：**
 
@@ -12442,13 +12734,13 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | 是 |X509定义的Name字符串格式，使用斜杠'/'进行分割可分辨名称，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
+| nameStr | string | 是 |使用斜杠"/"分隔可分辨名称字符串格式，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
 
 **返回值：**
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X509的可分辨对象。|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X.509的可分辨对象。|
 
 **错误码：**
 
@@ -12456,16 +12748,16 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature. |
 
 **示例：**
 
@@ -12513,13 +12805,13 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameDer | Uint8Array | 是 |X509定义的Uint8Array类型的DER格式数据。|
+| nameDer | Uint8Array | 是 |DER格式的X.500可分辨名称。|
 
 **返回值：**
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X509的可分辨对象。|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X.509的可分辨对象。|
 
 **错误码：**
 
@@ -12527,16 +12819,16 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature. |
 
 **示例：**
 
@@ -12565,7 +12857,7 @@ async function createX500DistinguishedName() {
 ```
 ## X500DistinguishedName<sup>12+</sup>
 
-X509定义的Name类型的对象。
+提供X.500可分辨名称操作的API。
 
 ### getName<sup>12+</sup>
 
@@ -12589,9 +12881,9 @@ getName(): string
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12624,7 +12916,7 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-按类型获取可分辨名的字符串。
+按指定类型获取相对可分辨名称的字符串。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12634,13 +12926,13 @@ getName(type: string): Array\<string>
 
 | 参数名       | 类型   | 必填 | 说明           |
 | ------------ | ------ | ---- | -------------- |
-| type | string | 是 | 指定类型的名称。|
+| type | string | 是 | 指定类型的名称。如"CN"、"OU"等。 |
 
 **返回值**：
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| Array\<string> | 可分辨名的字符串数组。|
+| Array\<string> | 相对可分辨名称的字符串数组。|
 
 **错误码：**
 
@@ -12648,10 +12940,10 @@ getName(type: string): Array\<string>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12681,7 +12973,7 @@ async function getName() {
 
 getName(encodingType: EncodingType): string
 
-根据指定的编码类型获取可分辨名的字符串。
+根据指定编码格式获取可分辨名称的字符串。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -12691,13 +12983,13 @@ getName(encodingType: EncodingType): string
 
 | 参数名       | 类型          | 必填 | 说明           |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | 是 | 表示编码类型。|
+| encodingType | [EncodingType](#encodingtype12) | 是 | 表示编码格式。|
 
 **返回值**：
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| string | 表示可分辨名的字符串，使用逗号分隔相对可分辨名称。|
+| string | 表示可分辨名称的字符串，使用逗号分隔相对可分辨名称。|
 
 **错误码：**
 
@@ -12705,10 +12997,10 @@ getName(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12734,11 +13026,73 @@ async function getName() {
 }
 ```
 
+### getName
+
+getName(type: string, encodingType: EncodingType): Array\<string>
+
+根据指定类型和编码格式获取相对可分辨名称的字符串数组。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数**：
+
+| 参数名       | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| type | string | 是 | 指定类型的名称。如"CN"、"OU"等。 |
+| encodingType | [EncodingType](#encodingtype12) | 是 | 表示编码格式。|
+
+**返回值**：
+
+| 类型    | 说明                                              |
+| ------- | ------------------------------------------------- |
+| Array\<string> | 相对可分辨名称的字符串数组。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19030001 | Crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let nameStr = '/CN=Example CA/OU=test cert/O=test/L=XA/ST=SX/C=CN/CN=RSA CA/CN=测试';
+async function getName() {
+  try {
+    cert.createX500DistinguishedName(nameStr)
+      .then((data) => {
+        console.info('createX500DistinguishedName result: success.');
+        console.info('createX500DistinguishedName getName: ' + data.getName("CN", cert.EncodingType.ENCODING_UTF8));
+      })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      })
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
 ### getEncoded<sup>12+</sup>
 
 getEncoded(): EncodingBlob
 
-获取X509证书扩展域的数据。
+获取X.500可分辨名称的DER编码数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12748,7 +13102,7 @@ getEncoded(): EncodingBlob
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| [EncodingBlob](#encodingblob) | X509证书序列化数据。|
+| [EncodingBlob](#encodingblob) | X.500可分辨名称的DER编码数据。|
 
 **错误码：**
 
@@ -12756,9 +13110,9 @@ getEncoded(): EncodingBlob
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12812,10 +13166,10 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -12873,12 +13227,12 @@ function testcreateCmsGenerator() {
 
 ## CmsGenerator<sup>18+</sup>
 
-CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消息。
+提供生成CMS（Cryptographic Message Syntax）消息的API。
 
 > **说明：**
 >
-> PKCS#7是用于存储签名或加密数据的标准语法。注意CMS是PKCS#7的扩展，PKCS#7支持的数据类型包括数据、签名数据、信封数据、
-> 签名和信封数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
+> PKCS #7是用于存储签名或加密数据的标准语法。注意CMS是PKCS #7的扩展，PKCS #7支持的数据类型包括数据、签名数据、封装数据、
+> 签名和封装数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
 
 ### addSigner<sup>18+</sup>
 
@@ -12888,7 +13242,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
   
 > **说明：**
 >
-> 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
+> 由于OpenSSL不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12898,7 +13252,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 参数名       | 类型   | 必填 | 说明           |
 | ------------ | ------ | ---- | -------------- |
-| cert |  [X509Cert](#x509cert) | 是 | 指定X509证书。|
+| cert |  [X509Cert](#x509cert) | 是 | 指定X.509证书。|
 | keyInfo | [PrivateKeyInfo](#privatekeyinfo18) | 是 | 指定私钥信息。|
 | config | [CmsSignerConfig](#cmssignerconfig18) | 是 | 指定签名者选项。|
 
@@ -12908,11 +13262,11 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030008 | maybe wrong password. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030008 | Maybe wrong password. |
 
 **示例：**
 
@@ -13016,7 +13370,7 @@ addCert(cert: X509Cert): void
 
 | 参数名 | 类型      | 必填 | 说明                     |
 | ------ | --------- | ---- | ------------------------ |
-| cert   | [X509Cert](#x509cert)  | 是   | 要添加的X509证书。      |
+| cert   | [X509Cert](#x509cert)  | 是   | 要添加的X.509证书。      |
 
 **错误码：**
 
@@ -13024,10 +13378,10 @@ addCert(cert: X509Cert): void
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13110,10 +13464,10 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13164,10 +13518,10 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13273,7 +13627,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise<Uint8Array \| string> | 返回Cms最终数据的Promise。 |
+| Promise<Uint8Array \| string> | Promise对象，返回CMS消息。|
 
 **错误码：**
 
@@ -13281,10 +13635,10 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13389,7 +13743,7 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。（同步方法）。
+用于获取CMS消息，例如CMS签名数据或CMS封装数据。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -13406,7 +13760,7 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Uint8Array \| string            | 返回Cms最终数据。 |
+| Uint8Array \| string            | 生成的CMS消息。 |
 
 **错误码：**
 
@@ -13414,10 +13768,10 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13539,9 +13893,9 @@ getEncryptedContentData(): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13662,9 +14016,9 @@ createCmsParser(): CmsParser
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 ```ts
@@ -13778,22 +14132,23 @@ async function testCmsVerifyTest() {
 ```
 
 ## CmsParser<sup>22+</sup>
-CmsParser对象用于对已签名跟封装的CMS（Cryptographic Message Syntax）格式的消息进行验签和解封装。
+
+提供解析、验签和解封装CMS消息的API。
 
 > **说明：**
 >
-> PKCS#7是用于存储签名或加密数据的标准语法。注意CMS是PKCS#7的扩展，PKCS#7支持的数据类型包括数据、签名数据、信封数据、
-> 签名和信封数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
+> PKCS #7是用于存储签名或加密数据的标准语法。注意CMS是PKCS #7的扩展，PKCS #7支持的数据类型包括数据、签名数据、封装数据、
+> 签名和封装数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
 
 ### setRawData<sup>22+</sup>
 
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
-用于把CMS格式的数据转成CMS对象。使用Promise异步回调。
+设置CMS消息数据。使用Promise异步回调。
   
 > **说明：**
 >
-> 支持PEM跟DER格式的CMS数据。string对应PEM格式；Uint8Array对应DER格式数据。
+> 支持PEM跟DER格式的CMS消息。string对应PEM格式；Uint8Array对应DER格式数据。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -13803,7 +14158,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 | 参数名       | 类型   | 必填 | 说明           |
 | ------------ | ------ | ---- | -------------- |
-| data |  Uint8Array \| string | 是 | CMS数据内容。|
+| data |  Uint8Array \| string | 是 | CMS消息内容。|
 | cmsFormat | [CmsFormat](#cmsformat18) | 是 | 指定输入的CMS格式。|
 
 **返回值**：
@@ -13818,10 +14173,10 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -13941,7 +14296,7 @@ async function testCmsVerifyTest() {
 
 getContentType(): CmsContentType
 
-用于获取CMS的数据类型。当前支持获取签名数据、解封装数据两种类型。
+用于获取CMS内容类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -13951,7 +14306,7 @@ getContentType(): CmsContentType
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| [CmsContentType](#cmscontenttype18) |返回CMS数据类型。 |
+| [CmsContentType](#cmscontenttype18) |返回CMS内容类型。 |
 
 **错误码：**
 
@@ -13959,9 +14314,9 @@ getContentType(): CmsContentType
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -14083,7 +14438,7 @@ async function testCmsVerifyTest() {
 
 verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
-用于验证Signed_DATA内容类型的CMS。使用Promise异步回调。
+用于验证签名数据类型的CMS消息。使用Promise方式返回结果。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -14107,13 +14462,13 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
-| 19030001 | crypto operation error. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
+| 19030001 | Crypto operation error. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
 
 **示例：**
 
@@ -14232,7 +14587,7 @@ async function testCmsVerifyTest() {
 
 getContentData(): Promise\<Uint8Array>
 
-用于从签名类型的CMS数据中获取明文数据。使用Promise异步回调。
+用于从签名数据类型的CMS消息中获取内容数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -14250,9 +14605,9 @@ getContentData(): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -14373,7 +14728,7 @@ async function testCmsVerifyTest() {
 
 getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
-传入枚举值，用于从签名类型的CMS数据中获取证书。当前支持获取签名者证书或全部证书。使用Promise异步回调。
+传入枚举值，用于从签名数据类型的CMS消息中获取证书。当前支持获取签名者证书或全部证书。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -14397,10 +14752,10 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of type is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -14523,7 +14878,7 @@ async function testCmsVerifyTest() {
 
 decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
-用于验证Enveloped_DATA内容类型的CMS。使用Promise异步回调。
+用于解密封装数据类型的CMS消息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -14533,13 +14888,13 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 | 参数名       | 类型   | 必填 | 说明           |
 | ------------ | ------ | ---- | -------------- |
-| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | 是 | CMS解封装配置内容。|
+| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | 是 | CMS解密的配置。|
 
 **返回值：**
 
 | 类型                              | 说明                 |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> |Promise对象，返回解封装结果。 |
+| Promise\<Uint8Array> |Promise对象，返回解密结果。 |
 
 **错误码：**
 
@@ -14547,10 +14902,10 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **示例：**
 
@@ -14631,7 +14986,7 @@ async function testCmsDecryptTest() {
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```

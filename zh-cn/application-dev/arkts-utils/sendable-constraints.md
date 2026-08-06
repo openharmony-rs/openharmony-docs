@@ -1,23 +1,26 @@
 # Sendable使用规则与约束
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 继承规则
 
 ### Sendable类必须继承自Sendable类
 
-Sendable对象的布局和原型链不可变，而非Sendable对象可以通过特殊方式修改布局。因此，不允许互相继承。这里的类不包含变量，Sendable类不能继承自变量。
+Sendable对象的布局和原型链不可变，而非Sendable对象可以通过特殊方式修改布局。因此，不允许互相继承。此处的继承规则针对类定义本身，不涉及类的实例变量。Sendable类只能继承自Sendable类的定义。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/inheritonly/src/main/ets/pages/Index.ets) --> 
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 class A {
   constructor() {
+    console.info('hello world');
   }
 }
 
@@ -28,7 +31,6 @@ class B extends A {
   }
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/inheritonly/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -52,20 +54,23 @@ class B extends A { // A不是sendable class，B不能继承它，编译报错
 Sendable对象的布局和原型链不可变，而非Sendable对象可以通过特殊方式修改布局，因此不允许互相继承。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/inheritedfromnon/src/main/ets/pages/Index.ets) --> 
 
-```ts
+``` TypeScript
+// 正例：
 class A {
   constructor() {
+    console.info('hello world');
   }
 }
 
 class B extends A {
   constructor() {
+    console.info('HELLO WORLD');
     super()
   }
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/inheritedfromnon/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -90,13 +95,18 @@ class B extends A { // A是sendable class，B不能继承它，编译报错
 非Sendable类实现Sendable接口时，可能被误认为是Sendable类，导致错误使用。
 
 **正例：**
+<!-- @[counter_example_achieve_non](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/achievenon/src/main/ets/pages/Index.ets) -->  
 
-```ts
-interface I {};
+``` TypeScript
+// 正例：
+interface I {
+  a: string;
+};
 
-class B implements I {};
+class B implements I {
+  a: string = 'hello world';
+};
 ```
-<!-- @[counter_example_achieve_non](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/achievenon/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -117,8 +127,10 @@ class B implements I {};  // I是sendable interface，B不能实现，编译报�
 Sendable数据不得持有非Sendable数据，因此Sendable类或接口的成员变量必须是[Sendable支持的数据类型](arkts-sendable.md#sendable支持的数据类型)。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/variablesupport/src/main/ets/pages/Index.ets) -->  
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 class A {
   constructor() {
@@ -126,7 +138,6 @@ class A {
   a: number = 0;
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/variablesupport/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -145,8 +156,10 @@ class A {
 Sendable对象的成员属性必须赋初值，而“!”修饰的变量可以不赋初值，因此不支持使用“!”。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/variablenotsupported/src/main/ets/pages/Index.ets) -->  
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 class A {
   constructor() {
@@ -154,7 +167,6 @@ class A {
   a: number = 0;
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/variablenotsupported/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -173,28 +185,30 @@ class A {
 Sendable对象的布局不可更改，因为计算属性无法静态确定对象布局，所以不支持。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/nocalculationsupport/src/main/ets/pages/Index.ets) --> 
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 class A {
-    num1: number = 1;
-    num2: number = 2;
-    add(): number {
-      return this.num1 + this.num2;
-    }
+  num1: number = 1;
+  num2: number = 2;
+
+  add(): number {
+    return this.num1 + this.num2;
+  }
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/nocalculationsupport/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
 ```ts
 enum B {
-    b1 = "bbb"
+    b1 = 'bbb'
 }
 @Sendable
 class A {
-    ["aaa"]: number = 1; // 编译报错，不支持["aaa"]
+    ['aaa']: number = 1; // 编译报错，不支持['aaa']
     [B.b1]: number = 2; // 编译报错，不支持[B.b1]
 }
 ```
@@ -233,24 +247,24 @@ class B {
 
 ## 泛型规则
 
-### 泛型类中的Sendable类、SendableLruCache、collections.Array、collections.Map和collections.Set的模板类型必须是Sendable类型
+### 泛型类中的Sendable类、SendableLruCache、collections.Array、collections.ConcatArray、collections.Map和collections.Set的模板类型必须是Sendable类型
 
-Sendable数据不能持有非Sendable数据，因此泛型类中的Sendable数据的模版类型必须是Sendable类型。
+Sendable数据不能持有非Sendable数据，因此泛型类中的Sendable数据的模板类型必须是Sendable类型。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/templatetype/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { collections } from '@kit.ArkTS';
 
 try {
-  let arr1: collections.Array<number> = new collections.Array<number>();
+  let arr: collections.Array<number> = new collections.Array<number>();
   let num: number = 1;
-  arr1.push(num);
+  arr.push(num);
 } catch (e) {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`create collections error: Code: ${e.code}, message: ${e.message}`);
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/templatetype/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -263,7 +277,7 @@ try {
   arr2.push(1);
   arr1.push(arr2);
 } catch (e) {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`create collections error: Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -279,8 +293,10 @@ try {
 > 从API version 12开始，Sendable class的内部支持使用top level的Sendable class对象。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/notallowedInside/src/main/ets/pages/Index.ets) --> 
 
-```ts
+``` TypeScript
+// 正例：
 import { lang } from '@kit.ArkTS';
 
 type ISendable = lang.ISendable;
@@ -290,6 +306,7 @@ interface I extends ISendable {}
 @Sendable
 class B implements I {
   static o: number = 1;
+
   static bar(): B {
     return new B();
   }
@@ -305,7 +322,6 @@ class C {
   }
 }
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/notallowedInside/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -331,7 +347,7 @@ let b = new B();
 
   @Sendable
   class C {
-    u: I = bar(); // bar不是sendable class对象，编译报错
+    u: I = bar(); // bar不是sendable function对象，编译报错
     v: I = new A(); // A不是定义在top level中，编译报错
 
     foo() {
@@ -348,26 +364,22 @@ let b = new B();
 当前仅支持修饰类和函数。
 
 **正例：**
+<!-- @[counter_example_only_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/achievenon/src/main/ets/pages/Index.ets) -->  
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 type SendableFuncType = () => void;
-
-@Sendable
-class C {}
-
-@Sendable
-function SendableFunc() {
-  console.info("Sendable func");
-}
 ```
-<!-- @[counter_example_only_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/achievenon/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
 ```ts
 @Sendable
 type A = number; // 编译报错
+
+@Sendable
+class C {}
 
 @Sendable
 type D = C; // 编译报错
@@ -378,14 +390,16 @@ type D = C; // 编译报错
 在ts文件中定义类装饰器时，可能会改变类的结构，进而引发运行时错误。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/cannotbeused/src/main/ets/pages/Index.ets) --> 
 
-```ts
+``` TypeScript
+// 正例：
 @Sendable
 class A {
   num: number = 1;
 }
+
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/cannotbeused/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -434,13 +448,14 @@ class C {
 对象字面量和数组字面量不是Sendable类型。Sendable类型必须通过Sendable类型的new表达式创建。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/objectliterals/src/main/ets/pages/Index.ets) -->  
 
-```ts
+``` TypeScript
+// 正例：
 import { collections } from '@kit.ArkTS';
 
 let arr1: collections.Array<number> = new collections.Array<number>(1, 2, 3); // 是Sendable类型
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/objectliterals/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -459,8 +474,10 @@ let arr4: number[] = new collections.Array<number>(1, 2, 3); // 编译报错
 除了Object类型，非Sendable类型不能强转成Sendable类型。非Sendable类型通过as强转成Sendable类型后，实际数据仍为非Sendable类型，会导致错误使用。Sendable类型在不违反Sendable规则的前提下，需要和非Sendable类型行为兼容，因此Sendable类型可以通过as强转成非Sendable类型。
 
 **正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/typecannot/src/main/ets/pages/Index.ets) -->  
 
-```ts
+``` TypeScript
+// 正例：
 class A {
   state: number = 0;
 }
@@ -472,7 +489,6 @@ class SendableA {
 
 let a1: A = new SendableA() as A;
 ```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/typecannot/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 
@@ -493,30 +509,9 @@ let a2: SendableA = new A() as SendableA; // 编译报错
 
 ### 箭头函数不可标记为Sendable
 
-箭头函数不支持\@Sendable装饰器，因此它是非Sendable函数，因此不支持共享。
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/typecannot/src/main/ets/pages/Index.ets) --> 
 
-**正例：**
 
-```ts
-@Sendable
-type SendableFuncType = () => void;
-
-@Sendable
-function SendableFunc() {
-  console.info("Sendable func");
-}
-
-@Sendable
-class SendableClass {
-  constructor(f: SendableFuncType) {
-    this.func = f;
-  }
-  func: SendableFuncType;
-}
-
-let sendableClass = new SendableClass(SendableFunc);
-```
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/arrowfunctions/src/main/ets/pages/Index.ets) -->
 
 **反例：**
 

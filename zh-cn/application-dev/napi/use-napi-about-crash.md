@@ -1,10 +1,10 @@
 # 使用Node-API接口产生的异常日志/崩溃分析
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 以下维测手段多数依赖于ArkTS运行时的多线程检测能力，因此建议在调试前启用此功能。启用方法参考文档[分析CppCrash（进程崩溃）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-multi-thread-check)。
 
@@ -531,7 +531,7 @@ napi_value TriggerDFXInsGetXT(napi_env env, napi_callback_info info)
 
 > **关键日志**
 >
-> Crash occured on &lt;function name&gt;, callback: &lt;callback ptr&gt;
+> Crash occurred on &lt;function name&gt;, callback: &lt;callback ptr&gt;
 
 该维测手段覆盖范围如下：
 
@@ -591,7 +591,7 @@ ArkTools.forceFullGC();
 ``` text
 Device Memory(kB): Total 11871352, Free 332976, Available 5793792
 Reason:Signal:SIGABRT(SI_TKILL)@0x01317bf10000b226 from:45606:20020209
-LastFatalMessage:[NAPI] Crash occured on ProcessAll, callback: 385297425128
+LastFatalMessage:[NAPI] Crash occurred on ProcessAll, callback: 385297425128
 ```
 
 将callback指针地址385297425128转为16进制表示为0x59B58422E8。在该crash文件的Maps中搜索该回调函数的地址，用得到的16进制数减去libentry.so模块开始地址得到偏移地址0x22E8。

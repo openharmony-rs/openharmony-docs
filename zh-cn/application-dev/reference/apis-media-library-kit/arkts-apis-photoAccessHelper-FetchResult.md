@@ -77,7 +77,7 @@ isAfterLast(): boolean
 
 | 类型      | 说明                                 |
 | ------- | ---------------------------------- |
-| boolean | 当读到最后一条记录后，后续没有记录返回true，否则返回false。 |
+| boolean | 当结果集指向最后一行时返回true，否则返回false。|
 
 **错误码：**
 
@@ -117,7 +117,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(): void
 
-释放FetchResult实例并使其失效，无法再调用其他方法。
+释放FetchResult实例并使其失效，释放后无法再调用其他方法。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

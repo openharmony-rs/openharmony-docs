@@ -11,7 +11,7 @@ OpenHarmony APIs provide the capability of sharing strong references across ArkT
 
 ## When to Use
 
-You can use the **napi_create_strong_sendable_reference** API to create a Sendable strong reference to a Sendable ArkTS object, use the **napi_get_strong_sendable_reference_value** API to obtain the referenced ArkTS object, and use the **napi_delete_strong_sendable_reference** API to delete the Sendable strong reference. These operations can be performed in the same ArkTS thread or different ArkTS threads.
+You can use the [napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference) API to create a Sendable strong reference to a Sendable ArkTS object, use the [napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value) API to obtain the referenced ArkTS object, and use the [napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference) API to delete the Sendable strong reference. These operations can be performed in the same ArkTS thread or different ArkTS threads.
 
 ## Available APIs
 

@@ -1,8 +1,8 @@
 # 渐变样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -83,7 +83,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 4. 重复渐变。
 
    ```css
-   /* 从左向右重复渐变，重复渐变区域30px（60-30）透明度0.5 */
+   /* 从左向右重复渐变，重复渐变区域30vp（60-30）透明度0.5 */
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30vp,rgba(0, 0, 255, .5) 60vp);
    ```
 

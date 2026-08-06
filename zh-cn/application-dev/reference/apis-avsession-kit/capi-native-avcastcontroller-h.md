@@ -1,7 +1,7 @@
 # native_avcastcontroller.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -36,11 +36,11 @@
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_MediaItemChange)(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avQueueItem, void* userData)](#oh_avcastcontrollercallback_mediaitemchange) | OH_AVCastControllerCallback_MediaItemChange | 媒体项目变更的回调函数。 |
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_PlayNext)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_playnext) | OH_AVCastControllerCallback_PlayNext | 播放下一首的回调函数。 |
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_PlayPrevious)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_playprevious) | OH_AVCastControllerCallback_PlayPrevious | 播放上一首的回调函数。 |
-| [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData)](#oh_avcastcontrollercallback_seekdone) | OH_AVCastControllerCallback_SeekDone | 搜索完成的回调函数。 |
+| [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData)](#oh_avcastcontrollercallback_seekdone) | OH_AVCastControllerCallback_SeekDone | 跳转完成的回调函数。 |
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_EndOfStream)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_endofstream) | OH_AVCastControllerCallback_EndOfStream | 播放流结束的回调函数。 |
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_Error)(OH_AVCastController* avcastcontroller, void* userData, AVSession_ErrCode error)](#oh_avcastcontrollercallback_error) | OH_AVCastControllerCallback_Error | 播放错误的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_Destroy(OH_AVCastController* avcastcontroller)](#oh_avcastcontroller_destroy) | - | 请求销毁播控控制器对象。 |
-| [AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState** playbackState)](#oh_avcastcontroller_getplaybackstate) | - | 获取当前播放器的播放状态。不要单独释放playbackState指针。<br> 当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时播控控制器将被销毁。 |
+| [AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState** playbackState)](#oh_avcastcontroller_getplaybackstate) | - | 获取当前播放器的播放状态。不要单独释放playbackState指针。<br> 当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时，该指针将随播控控制器一同销毁。 |
 | [AVSession_ErrCode OH_AVCastController_RegisterPlaybackStateChangedCallback(OH_AVCastController* avcastcontroller, int32_t filter, OH_AVCastControllerCallback_PlaybackStateChanged callback, void* userData)](#oh_avcastcontroller_registerplaybackstatechangedcallback) | - | 请求注册播放状态改变的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlaybackStateChangedCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlaybackStateChanged callback)](#oh_avcastcontroller_unregisterplaybackstatechangedcallback) | - | 请求取消注册播放状态改变的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_RegisterMediaItemChangedCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_MediaItemChange callback, void* userData)](#oh_avcastcontroller_registermediaitemchangedcallback) | - | 请求注册当前播放的媒体资源发生改变的回调函数。 |
@@ -49,20 +49,20 @@
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlayNextCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayNext callback)](#oh_avcastcontroller_unregisterplaynextcallback) | - | 请求取消注册由远程端或媒体中心发送的播放下一首的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_RegisterPlayPreviousCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayPrevious callback, void* userData)](#oh_avcastcontroller_registerplaypreviouscallback) | - | 请求注册由远程端或媒体中心发送的播放上一首的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlayPreviousCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayPrevious callback)](#oh_avcastcontroller_unregisterplaypreviouscallback) | - | 请求取消注册由远程端或媒体中心发送的播放上一首的回调函数。 |
-| [AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback, void* userData)](#oh_avcastcontroller_registerseekdonecallback) | - | 请求注册搜索完成的回调函数。 |
-| [AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback)](#oh_avcastcontroller_unregisterseekdonecallback) | - | 请求取消注册搜索完成的回调函数。 |
+| [AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback, void* userData)](#oh_avcastcontroller_registerseekdonecallback) | - | 请求注册跳转完成的回调函数。 |
+| [AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback)](#oh_avcastcontroller_unregisterseekdonecallback) | - | 请求取消注册跳转完成的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_RegisterEndOfStreamCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_EndOfStream callback, void* userData)](#oh_avcastcontroller_registerendofstreamcallback) | - | 请求注册播放流结束的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_UnregisterEndOfStreamCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_EndOfStream callback)](#oh_avcastcontroller_unregisterendofstreamcallback) | - | 请求取消注册播放流结束的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_RegisterErrorCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_Error callback, void* userData)](#oh_avcastcontroller_registererrorcallback) | - | 请求注册监听播放错误事件的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_UnregisterErrorCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_Error callback)](#oh_avcastcontroller_unregistererrorcallback) | - | 请求取消注册监听播放错误事件的回调函数。 |
 | [AVSession_ErrCode OH_AVCastController_SendCommonCommand(OH_AVCastController* avcastcontroller, AVSession_AVCastControlCommandType* avCastControlcommand)](#oh_avcastcontroller_sendcommoncommand) | - | 请求发送普通命令到远程端。只支持发送播放、暂停、停止、播放下一首和播放上一首等命令。 |
-| [AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcastcontroller, int32_t seekTimeMS)](#oh_avcastcontroller_sendseekcommand) | - | 请求向远程端发送搜索命令。 |
+| [AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcastcontroller, int32_t seekTimeMS)](#oh_avcastcontroller_sendseekcommand) | - | 请求向远程端发送跳转命令。 |
 | [AVSession_ErrCode OH_AVCastController_SendFastForwardCommand(OH_AVCastController* avcastcontroller, int32_t forwardTimeS)](#oh_avcastcontroller_sendfastforwardcommand) | - | 请求向远程端发送快进命令。 |
-| [AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avcastcontroller, int32_t rewindTimeS)](#oh_avcastcontroller_sendrewindcommand) | - | 请求向远程端发送后退命令。 |
+| [AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avcastcontroller, int32_t rewindTimeS)](#oh_avcastcontroller_sendrewindcommand) | - | 请求向远程端发送快退命令。 |
 | [AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* avcastcontroller, AVSession_PlaybackSpeed speed)](#oh_avcastcontroller_sendsetspeedcommand) | - | 请求向远程端发送设置倍速命令。 |
 | [AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avcastcontroller, int32_t volume)](#oh_avcastcontroller_sendvolumecommand) | - | 请求向远程端发送音量控制命令。 |
 | [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_prepare) | - | 请求准备当前播放队列项，该操作是实现输出媒体信息展示的前置步骤。 |
-| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_start) | - | 播放当前项目的请求，应该包含媒体资源，否则将播放失败。 |
+| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_start) | - | 请求播放当前项，参数应包含媒体资源，否则播放失败。 |
 
 ## 函数说明
 
@@ -122,7 +122,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCas
 
 **描述**
 
-搜索完成的回调函数。
+跳转完成的回调函数。
 
 **起始版本：** 23
 
@@ -182,7 +182,7 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 
 **描述**
 
-获取当前播放器的播放状态。不要单独释放playbackState指针。当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时播控控制器将被销毁。
+获取当前播放器的播放状态。不要单独释放playbackState指针。当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时，该指针将随播控控制器一同销毁。
 
 **起始版本：** 23
 
@@ -412,7 +412,7 @@ AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastControll
 
 **描述**
 
-请求注册搜索完成的回调函数。
+请求注册跳转完成的回调函数。
 
 **起始版本：** 23
 
@@ -438,7 +438,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastContro
 
 **描述**
 
-请求取消注册搜索完成的回调函数。
+请求取消注册跳转完成的回调函数。
 
 **起始版本：** 23
 
@@ -590,7 +590,7 @@ AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcas
 
 **描述**
 
-请求向远程端发送搜索命令。
+请求向远程端发送跳转命令。
 
 **起始版本：** 23
 
@@ -599,7 +599,7 @@ AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcas
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| int32_t seekTimeMS | 寻找时间。单位为毫秒。 |
+| int32_t seekTimeMS | 跳转时间。单位为毫秒（ms）。 |
 
 **返回：**
 
@@ -624,7 +624,7 @@ AVSession_ErrCode OH_AVCastController_SendFastForwardCommand(OH_AVCastController
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| int32_t forwardTimeS | 快进时间。单位为秒。 |
+| int32_t forwardTimeS | 快进时间。单位为秒（s）。 |
 
 **返回：**
 
@@ -640,7 +640,7 @@ AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avc
 
 **描述**
 
-请求向远程端发送后退命令。
+请求向远程端发送快退命令。
 
 **起始版本：** 23
 
@@ -649,7 +649,7 @@ AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avc
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| int32_t rewindTimeS | 后退时间。单位为秒。 |
+| int32_t rewindTimeS | 快退时间。单位为秒（s）。 |
 
 **返回：**
 
@@ -740,7 +740,7 @@ AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontrolle
 
 **描述**
 
-播放当前项目的请求，应该包含媒体资源，否则将播放失败。
+请求播放当前项，参数应包含媒体资源，否则播放失败。
 
 **起始版本：** 23
 

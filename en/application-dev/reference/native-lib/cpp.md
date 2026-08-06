@@ -1,4 +1,4 @@
-# libc++
+# C++ Standard Library
 
 <!--Kit: Standard Libraries-->
 <!--Subsystem: arkcompiler-->
@@ -11,11 +11,11 @@ OpenHarmony uses [libc++](https://libcxx.llvm.org/) of the open-source LLVM proj
 
 ## libc++ Version
 
-- Clang/LLVM 15.0.4 for OpenHarmony 4.0 to <!--RP1-->OpenHarmony 6.0<!--RP1End-->
+Clang/LLVM 15.0.4 for OpenHarmony 4.0 to <!--RP1-->OpenHarmony 6.0<!--RP1End-->
 
-- Clang/LLVM 12.0.1 from OpenHarmony 3.2
+Clang/LLVM 12.0.1 from OpenHarmony 3.2
 
-- Clang/LLVM 10.0.1 from OpenHarmony 3.0
+Clang/LLVM 10.0.1 from OpenHarmony 3.0
 
 ## Support for C++ Capabilities
 
@@ -41,6 +41,6 @@ In OpenHarmony, both the system library and the application native library use l
 
 ## Precautions
 
-- The upgrade of the C++ runtime library toolchain to a major version does not ensure ABI compatibility. If an application package has multiple dynamic libraries, these dynamic libraries must be compiled using the Clang toolchain of the same major version and depend on the libc++_shared library of the same version. Otherwise, unpredictable errors may occur.
+1. The upgrade of the C++ runtime library toolchain to a major version does not ensure ABI compatibility. If an application package has multiple dynamic libraries, these dynamic libraries must be compiled using the Clang toolchain of the same major version and depend on the libc++_shared library of the same version. Otherwise, unpredictable errors may occur.
 
-- If there is only one shared library in your application project, you are advised to use **c++_static**, which simplifies the C++ runtime code run by the linker and reduces the package size. Dynamic linking of libc++ is recommended if there are multiple libraries in your project, the dependency is a HAR package of a dynamic library, or there are binary .so packages in the OHPM library. Static linking may cause multiple copies of a function or an object defined in an application, which violates the One Definition Rule of C++.
+2. If there is only one shared library in your application project, you are advised to use **c++_static**, which simplifies the C++ runtime code run by the linker and reduces the package size. Dynamic linking of libc++ is recommended if there are multiple libraries in your project, the dependency is a HAR package of a dynamic library, or there are binary .so packages in the OHPM library. Static linking may cause multiple copies of a function or an object defined in an application, which violates the One Definition Rule of C++.

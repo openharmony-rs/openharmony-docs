@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997; @dboy190-->
+<!--Designer: @htt1997; @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -48,19 +48,22 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中存在数据，使用该接口将数据迁移到E类数据库。
 
-<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 export class Mover {
   async move(eStore: distributedKVStore.SingleKVStore, cStore: distributedKVStore.SingleKVStore): Promise<void> {
     if (eStore != null && cStore != null) {
-      let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
-      await eStore.putBatch(entries);
-      Logger.info(`ECDB_Encry move success`);
+      try {
+        let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
+        await eStore.putBatch(entries);
+        Logger.info(`ECDB_Encry move success`);
+      } catch (e) {
+        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+      }
     }
   }
 }
@@ -70,12 +73,11 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。
 
-<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) -->
+<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 let kvManager: distributedKVStore.KVManager;
@@ -241,7 +243,7 @@ export let lockObserve = new SecretKeyObserver();
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
 
-<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) -->
+<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -249,7 +251,6 @@ import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { StoreInfo, Store } from './Store';
 import { SecretStatus } from './SecretKeyObserver';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 let store = new Store();
@@ -339,7 +340,7 @@ export class ECStoreManager {
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -352,7 +353,6 @@ import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// Logger为hilog封装后实现的打印功能
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
@@ -388,57 +388,59 @@ let eInfo: StoreInfo | null = null;
 export default class EntryAbility extends UIAbility {
   async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void> {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let cContext = this.context;
-    cInfo = {
-      'kvManagerConfig': {
-        context: cContext,
-        bundleName: 'com.example.ecstoresamples'
-      },
-      'storeId': 'cstore',
-      'option': {
-        createIfMissing: true,
-        encrypt: false,
-        backup: false,
-        autoSync: false,
-        // kvStoreType不填时，默认创建多设备协同数据库
-        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
-        securityLevel: distributedKVStore.SecurityLevel.S3
-      }
-    }
-    let eContext = await application.createModuleContext(this.context,'entry');
-    eContext.area = contextConstant.AreaMode.EL5;
-    eInfo = {
-      'kvManagerConfig': {
-        context: eContext,
-        bundleName: 'com.example.ecstoresamples'
-      },
-      'storeId': 'estore',
-      'option': {
-        createIfMissing: true,
-        encrypt: false,
-        backup: false,
-        autoSync: false,
-        // kvStoreType不填时，默认创建多设备协同数据库
-        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
-        securityLevel: distributedKVStore.SecurityLevel.S3
-      }
-    }
-    Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
-    // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
     try {
+      let cContext = this.context;
+      cInfo = {
+        'kvManagerConfig': {
+          context: cContext,
+          bundleName: 'com.example.ecstoresamples'
+        },
+        'storeId': 'cstore',
+        'option': {
+          createIfMissing: true,
+          encrypt: false,
+          backup: false,
+          autoSync: false,
+          // kvStoreType不填时，默认创建多设备协同数据库
+          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+          // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+          securityLevel: distributedKVStore.SecurityLevel.S3
+        }
+      }
+      let eContext = await application.createModuleContext(this.context,'entry');
+      eContext.area = contextConstant.AreaMode.EL5;
+      eInfo = {
+        'kvManagerConfig': {
+          context: eContext,
+          bundleName: 'com.example.ecstoresamples'
+        },
+        'storeId': 'estore',
+        'option': {
+          createIfMissing: true,
+          encrypt: false,
+          backup: false,
+          autoSync: false,
+          // kvStoreType不填时，默认创建多设备协同数据库
+          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+          // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+          securityLevel: distributedKVStore.SecurityLevel.S3
+        }
+      }
+      Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
+      // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
+
       commonEventManager.createSubscriber({
         events: [ 'COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED' ]
       }, createCB);
       Logger.info(`ECDB_Encry success subscribe`);
+
+      storeManager.config(cInfo, eInfo);
+      storeManager.configDataMover(mover);
+      e_secretKeyObserver.initialize(storeManager);
     } catch (error) {
       const err: BusinessError = error as BusinessError;
       Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     }
-    storeManager.config(cInfo, eInfo);
-    storeManager.configDataMover(mover);
-    e_secretKeyObserver.initialize(storeManager);
   }
 
   onDestroy(): void {
@@ -582,7 +584,7 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -606,7 +608,7 @@ export class Store {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context, storeInfo.config);
       if (rdbStore.version == 0) {
         await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {

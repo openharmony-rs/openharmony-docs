@@ -1,14 +1,14 @@
 # Drawing
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能函数。<br>本模块采用屏幕物理像素单位px。
+Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能函数。<br>本模块采用屏幕物理像素单位px。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -49,7 +49,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_shadow_layer.h](capi-drawing-shadow-layer-h.md) | 声明与绘图模块中的阴影层对象相关的函数。 |
 | [drawing_surface.h](capi-drawing-surface-h.md) | 文件中定义与surface相关的功能函数，包括surface的创建、销毁和使用等。 |
 | [drawing_text_blob.h](capi-drawing-text-blob-h.md) | 文件中定义了与文字相关的功能函数。 |
-| [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | 提供2d 绘制文本相关的数据结构声明 |
+| [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | 提供2D绘制文本相关的数据结构声明。 |
 | [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md) | 定义了字体信息的相关接口，比如获取字体信息，查找指定字体等。 |
 | [drawing_text_global.h](capi-drawing-text-global-h.md) | 提供文本全局信息的相关接口，比如设置文本渲染高对比度模式等。 |
 | [drawing_text_line.h](capi-drawing-text-line-h.md) | 提供获取文本行内的字符位置、获取渲染单元信息和按行截断等功能。 |

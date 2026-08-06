@@ -194,7 +194,7 @@ This example demonstrates the basic usage of **ArcButton**. **ArcButton** is add
 
 2. **bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
 
-This example is recommended to run on a wearable device for optimal display effects and is also supported on other devices. To run the example on a wearable device, configure **wearable** in the [deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes) tag of the [module.json5] configuration file (../../../quick-start/module-configuration-file.md) in the **src/main** directory.
+This example is recommended to run on a wearable device for optimal display effects and is also supported on other devices. To run the example on a wearable device, configure **wearable** in the [deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes) tag of the [module.json5](../../../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
 
 ```json5
 // module.json5

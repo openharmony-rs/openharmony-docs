@@ -6,8 +6,9 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:55.163Z pushedAt=2026-06-25T07:44:32.936Z -->
 
-As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. The **type** attribute of [extensionAbilities](../../quick-start/module-configuration-file.md#extensionabilities) in the module-level configuration file [module.json5](../../quick-start/module-configuration-file.md) must be set to **partnerAgent**.
+As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. The **type** attribute of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities) in the module-level configuration file [module.json5](../../quick-start/module-configuration-file.md) must be set to **partnerAgent**.
 
 > **NOTE**
 >
@@ -19,6 +20,7 @@ As the base class of the peripheral interconnection extension capability, **Part
 ```ts
 import { PartnerAgentExtensionAbility, partnerAgent } from '@kit.ConnectivityKit';
 ```
+
 ## PartnerDeviceAddress
 
 type PartnerDeviceAddress = partnerAgent.PartnerDeviceAddress
@@ -47,7 +49,8 @@ Describes the reason why **PartnerAgentExtensionAbility** is destroyed.
 | ------------------- | ------------------- |
 | [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartneragentextensionabilitydestroyreason) | Reason why **PartnerAgentExtensionAbility** is destroyed.|
 
-## PartnerAgentExtensionAbility 
+## PartnerAgentExtensionAbility
+
 As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. It is inherited from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md).
 
 ### Attribute

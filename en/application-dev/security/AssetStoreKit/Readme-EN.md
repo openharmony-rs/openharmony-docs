@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-- [About This Kit](asset-store-kit-overview.md)
+- [Introduction to Asset Store Kit](asset-store-kit-overview.md)
 - Scenarios<!--asset-scenarios-->
   - [Protecting Asset Data](asset-scenario1.md)
   - [Protecting Asset Data with User Authentication](asset-scenario2.md)
@@ -17,6 +17,9 @@
   - [Updating an Asset (ArkTS)](asset-js-update.md)
   - [Querying Assets (ArkTS)](asset-js-query.md)
   - [Querying Assets Used for User Authentication (ArkTS)](asset-js-query-auth.md)
+  - [Adding Assets in Batches (ArkTS)](asset-js-batch-add.md)
+  - [Removing Assets in Batches (ArkTS)](asset-js-batch-remove.md)
+  - [Updating Assets in Batches (ArkTS)](asset-js-batch-update.md)
   - [Managing Assets in a Group (ArkTS)](asset-js-group-access-control.md)
   - [Syncing Assets (Backup and Restore) (ArkTS)](asset-js-sync.md)
   <!--Del-->

@@ -201,9 +201,9 @@ Enumerates the key codes for key events.
 | KEY_MUHENKAN = 2608 | Muhenkan key|
 | KEY_LINEFEED = 2609 | Linefeed key|
 | KEY_MACRO = 2610 | Macro key|
-| KEY_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on the numeric keypad|
+| KEY_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on numeric keypad|
 | KEY_SCALE = 2612 | Scale key|
-| KEY_HANGUEL = 2613 | Hanguel key|
+| KEY_HANGUEL = 2613 | Hangul key|
 | KEY_HANJA = 2614 | Hanja key|
 | KEY_YEN = 2615 | Yen key|
 | KEY_STOP = 2616 | Stop key|
@@ -239,8 +239,8 @@ Enumerates the key codes for key events.
 | KEY_FINANCE = 2647 | Finance key|
 | KEY_CANCEL = 2648 | Cancel key|
 | KEY_KBDILLUM_TOGGLE = 2649 | Keyboard Illumination Toggle key|
-| KEY_KBDILLUM_DOWN = 2650 | Keyboard Illumination Up key|
-| KEY_KBDILLUM_UP = 2651 | Keyboard Illumination Down key|
+| KEY_KBDILLUM_DOWN = 2650 | Keyboard Illumination Down key|
+| KEY_KBDILLUM_UP = 2651 | Keyboard Illumination Up key|
 | KEY_SEND = 2652 | Send key|
 | KEY_REPLY = 2653 | Reply key|
 | KEY_FORWARDMAIL = 2654 | Forward Mail key|
@@ -265,7 +265,7 @@ Enumerates the key codes for key events.
 | KEY_TV2 = 2673 | TV key 2|
 | KEY_VCR = 2674 | VCR key|
 | KEY_VCR2 = 2675 | VCR key 2|
-| KEY_SAT = 2676 | SAT key|
+| KEY_SAT = 2676 | Satellite key|
 | KEY_CD = 2677 | CD key|
 | KEY_TAPE = 2678 | Tape key|
 | KEY_TUNER = 2679 | Tuner key|
@@ -317,8 +317,8 @@ Enumerates the key codes for key events.
 | KEY_BRIGHTNESS_MAX = 2725 | Max Brightness key|
 | KEY_KBDINPUTASSIST_PREV = 2726 | Keyboard Input-assisted Previous key|
 | KEY_KBDINPUTASSIST_NEXT = 2727 | Keyboard Input-assisted Next key|
-| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | Keyboard Input-assisted Previous key|
-| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input-assisted Next key|
+| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | Keyboard Input-assisted Previous Group key|
+| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input-assisted Next Group key|
 | KEY_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input-assisted Accept key|
 | KEY_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key|
 | KEY_FRONT = 2800 | Front key, which is used to launch the windshield defogger|
@@ -333,7 +333,7 @@ Enumerates the key codes for key events.
 | KEY_SCREENLOCK = 2809 | Screen Lock key|
 | KEY_DIRECTION_ROTATE_DISPLAY = 2810 | Directional Rotation Display key|
 | KEY_CYCLEWINDOWS = 2811 | Windows Cycle key|
-| KEY_COMPUTER = 2812 | Key|
+| KEY_COMPUTER = 2812 | Computer key|
 | KEY_EJECTCLOSECD = 2813 | Eject CD key|
 | KEY_ISO = 2814 | ISO key|
 | KEY_MOVE = 2815 | Move key|
@@ -366,7 +366,7 @@ Enumerates the key codes for key events.
 | KEY_WLAN = 2844 | WLAN key|
 | KEY_UWB = 2845 | Ultra-wideband key|
 | KEY_WWAN_WIMAX = 2846 | WWAN WiMAX key|
-| KEY_RFKILL = 2847 | RF Kill key|
+| KEY_RFKILL = 2847 | Radio disabling key|
 | KEY_CHANNEL = 3001 | Channel key|
 | KEY_BTN_0 = 3100 | Button 0|
 | KEY_BTN_1 = 3101 | Button 1|

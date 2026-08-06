@@ -5,13 +5,16 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:26:14.273Z pushedAt=2026-07-02T09:00:12.452Z -->
 
 The **Counter** component provides an operation to increase or decrease the number.
 
 >  **NOTE**
 >
-> This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
+> 
 
 ## Child Components
 
@@ -40,13 +43,15 @@ Sets whether to enable the increment button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the increment button.<br>Default value: **true**. **true**: Enable the increment button. **false**: Disable the increment button.|
+| value  | boolean | Yes  | Whether to enable the increment button.<br>Default value: **true**. The value **true** means to enable the increment button, and the value **false** means the opposite.|
 
 ### enableDec<sup>10+</sup>
 
@@ -56,13 +61,15 @@ Sets whether to enable the decrement button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the decrement button.<br>Default value: **true**. **true**: Enable the decrement button. **false**: Disable the decrement button.|
+| value  | boolean | Yes  | Whether to enable the decrement button.<br>Default value: **true**. The value **true** means to enable the decrement button, and the value **false** means the opposite.|
 
 ## Events
 
@@ -148,4 +155,4 @@ struct CounterExample {
 }
 ```
 
-![en-us_image_0000001212378424](figures/en-us_image_0000001212378424.gif)
+![counter](figures/counter.gif)

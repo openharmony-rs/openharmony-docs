@@ -1,10 +1,10 @@
 # Class (ArrayBuffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 ArkTS TypedArray（[Int8Array](arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](arkts-apis-arkts-collections-Float32Array.md)）的底层数据结构。
 
 > **说明：**
@@ -44,15 +44,14 @@ constructor(byteLength: number)
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------|
-| byteLength  | number | 是   | buffer所占的字节数， 最大值不能超过2147483647，否则会抛出异常。     |
+| byteLength  | number | 是   | buffer所占的字节数，取值范围是[0, 2147483647]，否则会抛出异常。0代表构造的ArkTS ArrayBuffer的长度为0，2147483647表示构造的ArkTS ArrayBuffer的长度为2147483647。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                          |
 | 10200012 | The ArrayBuffer's constructor cannot be directly invoked. |
 
 **示例：**
@@ -73,24 +72,23 @@ slice(begin: number, end?: number): ArrayBuffer
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                              |
+| 参数名 | 类型   | 必填 |说明                                              |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| begin  | number | 是   | 开始索引，如果`begin < 0`，则会从`begin + arrayBuffer.byteLength`位置开始。 |
-| end    | number | 否   | 结束索引（不包括该元素），如果`end < 0`，则会到`end + arrayBuffer.byteLength`位置结束。默认为原ArkTS ArrayBuffer的长度。|
+| begin  | number | 否   | 开始索引。如果`begin < 0`，则会从`begin + arrayBuffer.byteLength`位置开始。如果`begin < -arrayBuffer.byteLength`，则从0开始。默认值为0。 |
+| end    | number | 否   | 结束索引（不包括该元素）。如果`end < 0`，则会到`end + arrayBuffer.byteLength`位置结束。如果`end > arrayBuffer.byteLength`，则截取到arrayBuffer.byteLength位置。默认为原ArkTS ArrayBuffer的长度。|
 
 **返回值：**
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| ArrayBuffer | 新的ArkTS ArrayBuffer对象。 |
+| ArrayBuffer | collections.ArrayBuffer |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                    错误信息                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error.                             |
 | 10200011 | The slice method cannot be bound.            |
 | 10200201 | Concurrent modification error.               |
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
 
 ## 概述
 
-定义[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)结构类型。
+定义OH_RDB_TransOptions结构体类型。
 
 **起始版本：** 18
 

@@ -35,7 +35,7 @@ Create a **&lt;marquee&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001231683172](figures/en-us_image_0000001231683172.png)
+![marquee-Component](figures/marquee-Component.png)
 
 
 ## Setting Attributes and Styles
@@ -75,7 +75,7 @@ Set the **color** and **font-weight** attributes to define the color, font weigh
 }
 ```
 
-![en-us_image_0000001275803193](figures/en-us_image_0000001275803193.png)
+![Attributes-and-Styles](figures/Attributes-and-Styles.png)
 
 Set the **scrollamount**, **loop**, and **direction** attributes to define the maximum scroll length, number of scrolling times, and text scrolling direction.
 
@@ -156,7 +156,7 @@ export default {
 >
 > When the value of **loop** is less than or equal to 0, the marquee scrolls continuously. If **loop** is not set, the default value **-1** is used.
 
-![en-us_image_0000001227701867](figures/en-us_image_0000001227701867.gif)
+![Attributes-and-Styles](figures/Attributes-and-Styles.gif)
 
 
 ## Example Scenario
@@ -241,4 +241,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001176075554](figures/en-us_image_0000001176075554.gif)
+![marquee](figures/marquee.gif)

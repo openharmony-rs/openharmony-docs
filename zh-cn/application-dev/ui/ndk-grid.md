@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs-->
-<!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @guozejun-->
+<!--Designer: @guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -135,8 +135,8 @@ grid->SetColumnsTemplate("repeat(auto-fill, 100vp)");  // 自动填充100vp宽�
 
 | 需求场景 | 推荐方法 | 说明 |
 |------|---------|------|
-| 固定行列网格，部分项占多行多列 | [OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | 灵活控制每个项的位置和大小。 |
-| 可滚动网格，分组标题占整行 | [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes) | 指定索引占整行。 |
+| 固定行列网格，部分项占多行多列 | [OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | 灵活控制每个项的位置和大小。 |
+| 可滚动网格，分组标题占整行 | [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-grid-h.md#oh_arkui_gridlayoutoptions_setirregularindexes) | 指定索引占整行。 |
 
 ### 设置固定行列场景下子组件的位置和大小
 
@@ -144,7 +144,7 @@ grid->SetColumnsTemplate("repeat(auto-fill, 100vp)");  // 自动填充100vp宽�
 
 ![grid_irregular](figures/grid_irregular.png)
 
-通过[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback)给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即[ArkUI_GridItemRect](../reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)。上图布局可以通过如下代码实现。
+通过[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback)给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即[ArkUI_GridItemRect](../reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)。上图布局可以通过如下代码实现。
 
 “0”从网格左上角开始占据2行4列，需要将其对应的`ArkUI_GridItemRect`设置为`{0, 0, 2, 4}`。其他子组件的位置和大小设置以此类推。
 
@@ -196,7 +196,7 @@ grid->SetRowsGap(10.0f);
 grid->SetScrollBar(ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
 ```
 
-分组显示数据，可以通过[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
+分组显示数据，可以通过[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-grid-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
 
 <!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
 
@@ -226,7 +226,7 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 | NODE_SCROLL_EVENT_ON_REACH_START | 网格组件到达起始位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_REACH_END | 网格组件到达末尾位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_WILL_STOP_DRAGGING | 网格组件拖划即将离手回调。 | 20 |
-| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划结束回调。 | 21 |
+| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_DRAGGING | 网格组件拖划结束回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_WILL_START_FLING | 网格组件滑动动画即将开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_FLING | 网格组件滑动动画结束回调。 | 21 |
@@ -244,5 +244,5 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 ## 完整示例
 
 <!--RP2-->
-[使用网格](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample)
+[使用网格](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKGridSample)
 <!--RP2End-->

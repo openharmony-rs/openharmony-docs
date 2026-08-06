@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
-<!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
+<!--Designer: @yylong; @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct ArkUI_ListItemSwipeActionItem ArkUI_ListItemSwipeActionItem
 
 ## Overview
 
-Defines the item configuration for **ListItemSwipeActionOption**.
+Defines a configuration of a swipe action item on a list item.
 
 **Since**: 12
 

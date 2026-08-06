@@ -3,11 +3,11 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供HDR（高动态显示范围）能力涉及到的相关枚举类型。
+本模块提供HDR（High Dynamic Range，高动态范围）能力涉及到的相关枚举类型。HDR技术能够显著扩展图像的动态范围和色彩表现力，适用于视频播放、图像显示等场景，可解决传统SDR在高对比度场景下亮部过曝、暗部细节丢失的问题，带来更真实、更丰富的视觉体验。
 
 > **说明：**
 >
@@ -35,4 +35,4 @@ HDR格式枚举。
 | IMAGE_HDR_VIVID_SINGLE       | 5      | 支持图片的HDR_VIVID格式，以single HEIF格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | IMAGE_HDR_ISO_DUAL           | 6      | 支持图片的HDR_ISO格式，以dual JPEG格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | IMAGE_HDR_ISO_SINGLE         | 7      | 支持图片的HDR_ISO格式，以single HEIF格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| VIDEO_AIHDR<sup>24+</sup>     | 8      | 支持视频的AIHDR格式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| VIDEO_AIHDR<sup>24+</sup>     | 8      | 支持视频的AIHDR格式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束**：此接口仅可在Stage模型下使用。 |

@@ -83,4 +83,4 @@ The [universal methods](js-components-common-methods.md) are supported.
 }
 ```
 
-![en-us_image_0000001127284958](figures/en-us_image_0000001127284958.png)
+![example-3](figures/example-3.png)

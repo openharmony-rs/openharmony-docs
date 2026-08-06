@@ -532,10 +532,10 @@ createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **示例：**
 
@@ -589,10 +589,10 @@ destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **示例：**
 
@@ -647,10 +647,10 @@ addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **示例：**
 
@@ -714,11 +714,11 @@ deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<voi
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
-| 2100401 | The input ip address not found. |
+| 2100400 | The input network interface name is incorrect. |
+| 2100401 | The input IP address is not found. |
 
 **示例：**
 

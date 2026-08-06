@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -52,12 +52,12 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
         "srcEntry": "./ets/entryability/EntryAbility.ets", // UIAbility组件的代码路径
         "description": "$string:EntryAbility_desc", // UIAbility组件的描述信息
         "icon": "$media:layered_image", // UIAbility组件的图标
-        "label": "$string:EntryAbility_label", // UIAbility组件对用户显示的名称
+        "label": "$string:EntryAbility_label", // UIAbility组件的标签
         "startWindowIcon": "$media:startIcon", // UIAbility组件启动页面图标资源文件的索引
         "startWindowBackground": "$color:start_window_background", // UIAbility组件启动页面背景颜色资源文件的索引
         // ···
       }
-    ]
+    ],
     // ···
   }
 }

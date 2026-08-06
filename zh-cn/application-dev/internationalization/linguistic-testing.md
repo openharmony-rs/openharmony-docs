@@ -3,9 +3,9 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 语言测试是指应用国际化和本地化完成后，在正式发布和上市前，需要本地用户专家进行巡检，查看界面显示等是否符合当地应用习惯。
 

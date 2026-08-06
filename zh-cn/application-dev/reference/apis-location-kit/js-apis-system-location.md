@@ -405,7 +405,7 @@ fail返回错误代码：
 | longitude | number | 否 | 否 | 设备位置信息：经度。 |
 | latitude | number | 否 | 否 | 设备位置信息：纬度。 |
 | altitude | number | 否 | 否 | 设备位置信息：海拔。 |
-| accuracy | number | 否 | 否 | 设备位置信息：精确度。 |
+| accuracy | number | 否 | 否 | 设备位置信息：精确度。<!--RP1-->（该字段由GNSS定位芯片或网络定位服务提供，如果不支持该功能则返回默认值0）<!--RP1End--> |
 | time | number | 否 | 否 | 设备位置信息：时间。 |
 
 ## GetLocationTypeOption<sup>(deprecated)</sup>

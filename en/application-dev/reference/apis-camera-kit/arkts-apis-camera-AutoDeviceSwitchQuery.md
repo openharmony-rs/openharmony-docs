@@ -8,7 +8,7 @@
 
 **AutoDeviceSwitchQuery** is used to check whether a device supports automatic camera switch.
 
-[Automatic Camera Switching](../../media/camera/camera-auto-switch.md) is supported only on foldable devices. For details about how to enable this capability, see [enableAutoDeviceSwitch](./arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13).
+[Automatic Camera Switching](./arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13) is supported only on foldable devices. For details about how to enable this capability, see [enableAutoDeviceSwitch](./arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13).
 
 > **NOTE**
 >
@@ -36,6 +36,14 @@ Checks whether the device supports automatic camera switch.
 | Type                                            | Description         |
 | ----------------------------------------------- |-------------|
 | boolean               | Check result for the support of automatic camera switch. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID  | Error Message                                                                                                                                      |
+|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| 7400103 | Session not config, only throw in session usage.<br>Applicable versions: 13-17|
 
 **Example**
 

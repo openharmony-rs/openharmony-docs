@@ -36,7 +36,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400105                |  Session config locked.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+            |
 
 **Example**
 
@@ -190,7 +190,8 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                                 |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+                             |
 
 **Example**
 
@@ -231,8 +232,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -304,8 +306,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -346,8 +349,9 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17                |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12+           |
 
 **Example**
 
@@ -387,7 +391,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -429,7 +433,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 

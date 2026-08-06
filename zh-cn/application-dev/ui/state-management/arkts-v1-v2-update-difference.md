@@ -1,8 +1,8 @@
 # 状态管理V1和V2更新机制差异
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @s10021109-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -124,9 +124,9 @@ Button('Change state variable')
 V2装饰变量赋值，对象属性或数组（Map、Set）项变化，会触发@Monitor的异步执行。如果状态变量被修改多次，则@Monitor函数只会执行一次。
 
 ```typescript
-@Local arr: Array<ObsObjC> = [new ObsObjC('propC1')];
+@Local obsObjA: ObsObjA = new ObsObjA('propANew');
 
-@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA发生变化时异步执行
+@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // @Monitor函数在被监听的V2装饰变量obsObjA.propA发生变化时异步执行
   console.info(`${mon.dirty[0]}`); // 执行顺序4（onClick相关逻辑执行完后，才执行onChange回调）
 }
 
@@ -156,7 +156,7 @@ Button('Change state variable')
 
 步骤4：更新脏节点列表，更新顺序是，先更新父组件，再更新子组件；
 
-步骤5: 如果状态变量再次发生变化，就会执行步骤4，步骤4在一个Vsync周期内的迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
+步骤5： 如果状态变量再次发生变化，就会执行步骤4，步骤4在一个Vsync周期内的迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
 
 ### V2组件的更新
 
@@ -178,4 +178,4 @@ V2状态管理相比V1状态管理，新增异步执行@Computed，@Monitor和�
 
 步骤8：更新脏节点列表，更新顺序是，先更新父组件，再更新子组件；
 
-步骤9: 在更新过程中，如果状态变量再次发生变化，就会执行步骤8，步骤8在一个Vsync周期中迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。
+步骤9： 在更新过程中，如果状态变量再次发生变化，就会执行步骤8，步骤8在一个Vsync周期中迭代次数不会超过3次，第3次迭代后，标脏的节点会加到脏节点列表中，在下一个Vsync到来时进行脏节点更新。

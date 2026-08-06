@@ -11,7 +11,7 @@ Before requesting permissions for your application, read and understand the [per
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is user_grant.
 > - Applications of a lower APL can request these permissions via [Access Control List (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
@@ -25,7 +25,7 @@ Allows an application to obtain the list of installed applications.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 10
 
@@ -37,19 +37,19 @@ Allows an application to answer incoming calls.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 9
 
 ## ohos.permission.MANAGE_VOICEMAIL
 
-Allows an application to access messages in the voice mailbox.
+Allows an application to manage messages in the voice mailbox.
 
 **Permission level**: system_basic
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -61,7 +61,7 @@ Allows an application to read call logs.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -73,7 +73,7 @@ Allows an application to read cell broadcast messages received by the device.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -85,7 +85,7 @@ Allows an application to read messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -97,7 +97,7 @@ Allows an application to receive and process MMS messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -109,7 +109,7 @@ Allows an application to receive and process SMS messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -121,7 +121,7 @@ Allows an application to receive and process WAP messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -133,7 +133,7 @@ Allows an application to send messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -145,6 +145,168 @@ Allows an application to add, remove, and edit call logs.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_VISION
+
+Allows a system application to use visual-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_HEARING
+
+Allows a system application to use hearing-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_ACTION
+
+Allows a system application to use interaction-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.BUNDLE_ACTIVE_INFO
+
+Allows an application to query the running status of specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.INSTALL_BUNDLE
+
+Allows an application to install and uninstall applications other than enterprise applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.UNINSTALL_BUNDLE
+
+Allows an application to uninstall specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.GET_BUNDLE_INFO_PRIVILEGED
+
+Allows an application to query information about specific applications using CLI commands, such as the bundle name and version.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.REMOVE_BUNDLE_DATA_AND_CACHE_FILES
+
+Allows an application to clear the cache and data (including internal and external storage) of a specified application using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_DISPOSED_APP_STATUS
+
+Allows an application to set and query the disposition status of specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_TOGGLE
+
+Allows an application to enable or disable Wi-Fi via CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_SCAN
+
+Allows an application to set Wi-Fi scanning via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_CONNECT
+
+Allows an application to set Wi-Fi connections via CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0

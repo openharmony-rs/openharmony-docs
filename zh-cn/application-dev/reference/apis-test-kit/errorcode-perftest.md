@@ -1,4 +1,4 @@
-# perftest错误码
+# PerfTest错误码
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -27,7 +27,7 @@ Initialization failed.
 
 **处理步骤**
 
-使用ps等shell命令查看，确保测试应用进程存在。
+检查测试应用是否正常安装并可用，确保能够成功获取测试应用包名。
 
 ## 32400002 内部错误
 **错误信息**
@@ -46,7 +46,7 @@ Internal error.
 **处理步骤**
 
 1. 尝试通过重试解决IPC传输失败问题。
-2. 判断PerfTest对象是否已被销毁，若已销毁需要重新[创建PerfTest对象](js-apis-perftest.md#create)。
+2. 判断PerfTest对象是否已被销毁，若已销毁需要重新使用[PerfTest.create](js-apis-perftest.md#create)创建PerfTest对象。
 
 ## 32400003 参数校验失败
 **错误信息**
@@ -59,11 +59,11 @@ Parameter verification failed.
 
 **可能原因**
 
-参数类型错误/参数取值超出规定范围。
+参数类型错误、参数取值超出规定范围。
 
 **处理步骤**
 
-检查接口入参是否符合要求。
+检查接口入参的类型和取值范围是否符合接口定义要求。
 
 ## 32400004 执行回调函数失败
 **错误信息**
@@ -72,7 +72,7 @@ Failed to execute the callback.
 
 **错误描述**
 
-执行回调代码段失败。
+执行回调函数失败。
 
 **可能原因**
 
@@ -81,7 +81,7 @@ Failed to execute the callback.
 
 **处理步骤**
 
-检查回调函数内部逻辑，确保回调函数执行不会抛出异常或超时。
+检查回调函数内部逻辑，包括异常处理和超时控制机制，确保回调函数执行不会抛出异常或超时。
 
 ## 32400005 采集性能数据失败
 **错误信息**

@@ -1,10 +1,12 @@
 # form
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:09.268Z pushedAt=2026-06-24T01:30:36.608Z -->
 
 >  **NOTE**
 >
@@ -12,26 +14,21 @@
 
 The **\<form>** component allows the content in **input** elements to be submitted and reset.
 
-
 ## Required Permissions
 
 None
-
 
 ## Child Components
 
 Supported
 
-
 ## Attributes
 
 The [universal attributes](js-components-common-attributes.md) are supported.
 
-
 ## Styles
 
 The [universal styles](js-components-common-styles.md) are supported.
-
 
 ## Events
 
@@ -39,7 +36,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| submit | FormResult | Triggered when the **Submit** button is touched.|
+| submit | FormResult | Triggered when the **Submit** button is clicked.|
 | reset | - | Triggered when the **Reset** button is clicked.|
 
 **Table 1** FormResult
@@ -48,11 +45,9 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | -------- | -------- | -------- |
 | value | Object | Values of **name** and **value** of the input element.|
 
-
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
-
 
 ## Example
 
@@ -78,13 +73,12 @@ The [universal methods](js-components-common-methods.md) are supported.
 // xxx.js
 export default{
   onSubmit(result) {
-    console.log(result.value.radioGroup) // radio1 or radio2
-    console.log(result.value.user) // text input value
+    console.info(result.value.radioGroup) // radio1 or radio2
+    console.info(result.value.user) // text input value
   },
   onReset() {
-    console.log('reset all value')
+    console.info('reset all value')
   }
 }
 ```
 
-![001](figures/001.gif)

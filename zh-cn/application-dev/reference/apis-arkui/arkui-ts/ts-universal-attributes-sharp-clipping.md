@@ -1,8 +1,8 @@
 # 形状裁剪
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,9 @@
 
 clip(value: boolean): T
 
-是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。
+是否对子组件超出当前组件范围外的区域进行裁剪。设置value为true时，子组件超出当前组件范围外的区域将被裁剪不可见；设置value为false时，不对子组件进行裁剪。未设置时，默认不对子组件超出当前组件范围外的区域进行裁剪。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,19 +30,21 @@ clip(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置子组件是否按照当前组件边缘轮廓进行裁剪。<br/>true表示子组件按照当前组件边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
+| value  | boolean | 是   | 设置子组件是否按照当前组件边缘轮廓进行裁剪。<br>true表示子组件按照当前组件边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## clip<sup>18+</sup>
 
 clip(clip: Optional\<boolean>): T
 
-是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip12)相比，新增了对undefined类型的支持。
+是否对子组件超出当前组件范围外的区域进行裁剪。未设置时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip12)相比，新增了对undefined类型的支持。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,19 +56,19 @@ clip(clip: Optional\<boolean>): T
 
 | 参数名 | 类型               | 必填                                                         | 说明 |
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 设置子组件是否按照当前组件边缘轮廓进行裁剪。<br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br/>当clip的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。    |
+| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 设置子组件是否按照当前组件边缘轮廓进行裁剪。true表示子组件按照当前组件边缘轮廓进行裁剪，false表示不对子组件进行裁剪。<br>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br>当clip的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。    |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## clip<sup>(deprecated)</sup>
 
 clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute): T
 
-按指定的形状对当前组件进行裁剪。
+按指定的形状对当前组件进行裁剪，或设置是否按照当前组件边缘轮廓进行裁剪。
 
 > **说明：**  
 >
@@ -80,19 +84,19 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件和子组件进行裁剪；参数为boolean类型时，设置是否按照当前组件边缘轮廓进行裁剪。<br>默认值：false <br>true表示按当前组件边缘轮廓进行裁剪，false表示不进行裁剪。<br>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## clipShape<sup>12+</sup>
 
 clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
-按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。
+按指定的形状（形状中可包含位置信息）对当前组件进行裁剪，将组件超出形状范围外的区域裁剪掉使其不可见。与[maskShape](#maskshape12)不同，clipShape是将组件超出形状范围外的区域裁剪掉（不可见），而maskShape是在组件上叠加指定形状的遮罩覆盖层。
 
 > **说明：**  
 >
@@ -101,6 +105,8 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 > 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,13 +118,13 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## clipShape<sup>18+</sup>
 
@@ -134,6 +140,8 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -144,20 +152,22 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当shape的值为undefined时，会重置当前值。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br>当shape的值为undefined时，恢复为不添加指定形状的遮罩。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -166,14 +176,16 @@ type CircleShape = CircleShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -182,14 +194,16 @@ type EllipseShape = EllipseShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -198,13 +212,15 @@ type PathShape = PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,13 +230,15 @@ type RectShape = RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 
 mask(value: ProgressMask): T
 
-为组件上添加可调节进度的遮罩。
+为组件添加可调节进度的遮罩，遮罩覆盖在组件内容上方，通过进度值控制遮罩的显示范围。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,13 +254,15 @@ mask(value: ProgressMask): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## mask<sup>18+</sup>
 
 mask(mask: Optional\<ProgressMask>): T
 
-为组件上添加可调节进度的遮罩。与[mask<sup>12+</sup>](#mask12)相比，新增了对undefined类型的支持。
+为组件添加可调节进度的遮罩，遮罩覆盖在组件内容上方，通过进度值控制遮罩的显示范围。与[mask<sup>12+</sup>](#mask12)相比，新增了对undefined类型的支持。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,19 +272,19 @@ mask(mask: Optional\<ProgressMask>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ProgressMask](#progressmask10)> | 是 | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。<br/>当mask的值为undefined时，恢复为无进度遮罩效果。     |
+| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ProgressMask](#progressmask10)> | 是 | 在当前组件上加上可动态设置进度和颜色的遮罩。遮罩的最大值(total)在构造ProgressMask对象时设定，不可动态修改。可通过ProgressMask对象的updateProgress()方法更新进度值、updateColor()方法更新颜色、enableBreathingAnimation()方法开关呼吸光晕动画。<br>当mask的值为undefined时，恢复为无进度遮罩效果。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## mask<sup>(deprecated)</sup>
 
 mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute | ProgressMask): T
 
-为组件上添加指定形状的遮罩。
+为组件添加指定形状或可调节进度的遮罩。
 
 > **说明：**  
 >
@@ -280,19 +300,29 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | 是   | 参数为对应形状类型的组件时，在当前组件上加上指定形状的遮罩（圆形、椭圆、路径或矩形）；参数为ProgressMask时，在当前组件上加上可动态设置进度和颜色的遮罩。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## maskShape<sup>12+</sup>
 
 maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
-为组件上添加指定形状的遮罩。
+为组件添加指定形状的遮罩，在组件上叠加指定形状的覆盖层。
+
+> **说明：**
+>
+> - 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。
+>
+> - 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。
+>
+> - 形状中的fill属性对maskShape接口生效，用于设置遮罩的颜色。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,19 +334,29 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 在当前组件上加上指定形状的遮罩或可调节进度的遮罩。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## maskShape<sup>18+</sup>
 
 maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-为组件上添加指定形状的遮罩。与[maskShape<sup>12+</sup>](#maskshape12)相比，新增了对undefined类型的支持。
+为组件添加指定形状的遮罩，在组件上叠加指定形状的覆盖层。与[maskShape<sup>12+</sup>](#maskshape12)相比，新增了对undefined类型的支持。
+
+> **说明：**
+>
+> 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。
+>
+> 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。
+>
+> 形状中的fill属性对maskShape接口生效，用于设置遮罩的颜色。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,19 +368,21 @@ maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 在当前组件上加上指定形状的遮罩。<br/>当shape的值为undefined时，会重置当前值。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为对应形状类型的组件时，在当前组件上加上指定形状的遮罩（圆形、椭圆、路径或矩形）；参数为ProgressMask时，在当前组件上加上可动态设置进度、最大值和颜色的遮罩。<br>当shape的值为undefined时，会重置当前值，恢复为无指定形状遮罩效果。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## ProgressMask<sup>10+</sup>
 
-ProgressMask设置遮罩的进度、最大值和颜色。
+ProgressMask用于设置遮罩的进度、最大值和颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,14 +394,16 @@ constructor(value: number, total: number, color: ResourceColor)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| value  | number                                     | 是   | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
-| total  | number                                     | 是   | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
+| value  | number                                     | 是   | 进度遮罩的当前值，与total配合使用确定进度比例，当value等于total时表示进度满。<br>取值范围：[0.0, +∞)。传入负数时自动修正为0。 |
+| total  | number                                     | 是   | 进度遮罩的最大值。<br> 取值范围：[0.0, +∞)。传入负数时自动修正为100。 |
 | color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 进度遮罩的颜色。   |
 
 ### updateProgress<sup>10+</sup>
@@ -368,7 +412,13 @@ updateProgress(value: number): void
 
 更新进度遮罩的进度值。
 
+**使用说明：**
+- 需先通过[mask()](#mask12)方法将ProgressMask对象应用到组件上，调用此方法后遮罩的进度值会动态更新。
+- 若ProgressMask尚未通过mask()方法应用到组件，调用此方法仅更新ProgressMask对象的内部状态，不会产生可见的遮罩效果变化。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,7 +426,7 @@ updateProgress(value: number): void
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | -------- | ---- | ------------------ |
-| value  | number   | 是   | 进度遮罩的当前值。 |
+| value  | number   | 是   | 进度遮罩的当前值。<br>取值范围：[0.0, +∞)。传入负数时自动修正为0。 |
 
 ### updateColor<sup>10+</sup>
 
@@ -384,7 +434,13 @@ updateColor(value: ResourceColor): void
 
 更新进度遮罩的颜色。
 
+**使用说明：**
+- 需先通过[mask()](#mask12)方法将ProgressMask对象应用到组件上，调用此方法后遮罩颜色会动态更新。
+- 若ProgressMask尚未通过mask()方法应用到组件，调用此方法仅更新ProgressMask对象的内部状态，不会产生可见的遮罩效果变化。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,9 +454,11 @@ updateColor(value: ResourceColor): void
 
 enableBreathingAnimation(value: boolean): void
 
-进度满时的呼吸光晕动画开关。不设置该接口时，默认关闭呼吸光晕动画。
+进度满时的呼吸光晕动画开关，开启后进度满时遮罩边缘会出现周期性明暗变化的发光效果。未设置时，默认关闭呼吸光晕动画。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -408,7 +466,7 @@ enableBreathingAnimation(value: boolean): void
 
 | 参数名 | 类型                                   | 必填 | 说明         |
 | ------ | ------------------------------------------ | ---- | ---------------- |
-| value  | boolean | 是   | 是否开启呼吸光晕动画。<br/>true：开启呼吸光晕动画。<br/>false：关闭呼吸光晕动画。 |
+| value  | boolean | 是   | 是否开启进度满时的呼吸光晕动画。<br>true：开启呼吸光晕动画。<br>false：关闭呼吸光晕动画。 |
 
 
 ## 示例
@@ -469,8 +527,7 @@ struct ClipAndMaskExample {
 @Entry
 @Component
 struct ProgressMaskExample {
-  @State progressFlag1: boolean = true;
-  @State color: Color = 0x01006CDE;
+  @State isRedColor: boolean = true;
   @State value: number = 10.0;
   @State enableBreathingAnimation: boolean = false;
   @State progress: ProgressMask = new ProgressMask(10.0, 100.0, Color.Gray);
@@ -478,7 +535,7 @@ struct ProgressMaskExample {
   build() {
     Column({ space: 15 }) {
       Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // 给图片添加了一个280px*280px的进度遮罩
+      // 给图片添加了一个进度遮罩
       // $r("app.media.testImg")需要替换为开发者所需的图像资源文件。
       Image($r('app.media.testImg'))
         .width('500px').height('280px')
@@ -489,7 +546,7 @@ struct ProgressMaskExample {
           delay: 0, // 动画延迟
           iterations: 1, // 播放次数
           playMode: PlayMode.Normal // 动画模式
-        }) // 对Button组件的宽高属性进行动画配置
+        }) // 对Image组件的遮罩进度变化进行动画配置
 
       // 更新进度遮罩的进度值
       Button('updateProgress')
@@ -501,12 +558,12 @@ struct ProgressMaskExample {
       // 更新进度遮罩的颜色
       Button('updateColor')
         .onClick((event?: ClickEvent) => {
-          if (this.progressFlag1) {
+          if (this.isRedColor) {
             this.progress.updateColor(0x9fff0000);
           } else {
             this.progress.updateColor(0x9f0000ff);
           }
-          this.progressFlag1 = !this.progressFlag1
+          this.isRedColor = !this.isRedColor;
         }).width(200).height(50).margin(20)
 
       // 开关呼吸光晕动画
@@ -517,7 +574,7 @@ struct ProgressMaskExample {
         }).width(200).height(50).margin(20)
 
       // 恢复进度遮罩
-      Button('click reset!')
+      Button('click reset')
         .onClick((event?: ClickEvent) => {
           this.value = 0;
           this.progress.updateProgress(this.value);

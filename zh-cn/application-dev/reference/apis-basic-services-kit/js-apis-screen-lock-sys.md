@@ -1,10 +1,10 @@
-# @ohos.screenLock (锁屏管理)（系统接口）
+# @ohos.screenLock (锁屏管理)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
 <!--Designer: @starrylight; @jiayunpeng2-->
 <!--Tester: @yaoruijiang-->
-<!--Adviser: @zhangaof-->
+<!--Adviser: @fang-jinxu-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
@@ -112,7 +112,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

@@ -1,8 +1,8 @@
 # @ohos.animation.windowAnimationManager (窗口动画管理)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -45,7 +45,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-      },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -54,7 +54,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         console.info('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
-    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
         console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         finishCallback.onAnimationFinish();
@@ -119,7 +119,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
     },
-    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
         console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         target = toWindowTarget;
@@ -203,7 +203,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         console.info('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
-    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
         console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         finishCallback.onAnimationFinish();
@@ -441,7 +441,7 @@ onAnimationFinish():void
 | ------- | ------ | ------ | ------ | ----------------------- |
 | bundleName   | string          | 是 | 否 | 动画目标窗口所对应的包名。 |
 | abilityName  | string          | 是 | 否 | 动画目标窗口所对应的Ability名称。 |
-| windowBounds | [RRect](#rrect) | 是 | 否 | 动画目标窗口所对应的实际大小。 |
+| windowBounds | [RRect](#rrect) | 是 | 否 | 动画目标窗口的边界信息，包括左上角坐标、宽高和圆角半径。 |
 | missionId    | number          | 是 | 否 | 任务ID，多任务中用于与ability进行匹配。|
 
 ## RRect

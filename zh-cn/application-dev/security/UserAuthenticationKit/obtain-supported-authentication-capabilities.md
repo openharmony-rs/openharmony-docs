@@ -34,7 +34,7 @@ obtainingSupported() {
   try {
     // 查询认证能力是否支持
     userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
-    Logger.info('current auth trust level is supported');
+    Logger.info('current auth trust level is supported.');
     return true;
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -47,4 +47,4 @@ obtainingSupported() {
 
 ## 示例代码
 
-  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

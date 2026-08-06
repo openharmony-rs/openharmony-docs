@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
@@ -13,7 +13,7 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 
 ## 概述
 
-定义短时任务返回信息结构体。
+定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。
 
 **起始版本：** 13
 
@@ -28,6 +28,4 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 | 名称 | 描述 |
 | -- | -- |
 | int32_t requestId | 短时任务请求ID。 |
-| int32_t actualDelayTime | 剩余时间（单位：毫秒）。 |
-
-
+| int32_t actualDelayTime | 剩余时间（单位：ms）。取值范围：[0, 180000]。 |

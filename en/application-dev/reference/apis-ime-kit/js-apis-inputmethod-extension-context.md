@@ -1,7 +1,7 @@
 # @ohos.InputMethodExtensionContext (InputMethodExtensionContext)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -10,8 +10,8 @@ The **InputMethodExtensionContext** module, inherited from **ExtensionContext**,
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module can be used only in the stage model.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -29,7 +29,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 }
 ```
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {
@@ -95,7 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {

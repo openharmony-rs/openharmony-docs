@@ -1,12 +1,12 @@
 # OH_NativeColorSpaceManager
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
+<!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 ```
 

@@ -1,7 +1,7 @@
 # OH_AVCastController
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -12,7 +12,7 @@ typedef struct OH_AVCastController OH_AVCastController
 
 ## 概述
 
-声明投播控制器对象。投播控制器对象可以使用[OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller)方法创建。
+声明投播控制器对象。该对象可以使用[OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller)函数创建。
 
 **起始版本：** 23
 

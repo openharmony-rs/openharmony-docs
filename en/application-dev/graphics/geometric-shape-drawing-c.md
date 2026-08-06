@@ -87,7 +87,7 @@ OH_Drawing_PenDestroy(pen);
 The effect is as follows:
 
 
-![image_0000002194110913](figures/image_0000002194110913.png)
+![Drawing-Points](figures/Drawing-Points.png)
 
 
 ## Drawing an Arc
@@ -128,7 +128,7 @@ OH_Drawing_RectDestroy(rect);
 
 The effect is as follows:
 
-![image_0000002158744174](figures/image_0000002158744174.png)
+![Drawing-Arc](figures/Drawing-Arc.png)
 
 
 ## Drawing a Circle
@@ -167,7 +167,7 @@ OH_Drawing_PointDestroy(point);
 
 The effect is as follows:
 
-![image_0000002158584390](figures/image_0000002158584390.png)
+![Drawing-a-Circle](figures/Drawing-a-Circle.png)
 
 
 ## Drawing a Path
@@ -237,7 +237,7 @@ OH_Drawing_PathDestroy(path);
 
 The effect is as follows:
 
-![image_0000002194025277](figures/image_0000002194025277.png)
+![Drawing-a-Path](figures/Drawing-a-Path.png)
 
 
 ## Drawing a Region
@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 The effect is as follows:
 
-![image_draw_rect](figures/image_draw_rect.png)
+![draw-rect](figures/draw-rect.png)
 
 
 ## Drawing a Rounded Rectangle
@@ -352,7 +352,7 @@ OH_Drawing_RoundRectDestroy(roundRect);
 The effect is as follows:
 
 
-![image_0000002158744170](figures/image_0000002158744170.png)
+![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## Samples

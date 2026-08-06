@@ -11,7 +11,7 @@
 
 ![image](figures/dialogLevelorder.png)
 
-对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/js-apis-router.md)的接口进行跳转。[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)和[Navdestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组成的页面可以通过[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)接口进行跳转。
+对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/js-apis-router.md)的接口进行跳转。[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)和[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组成的页面可以通过[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)接口进行跳转。
 
 ![pageLevelMode1](figures/pageLevelMode1.png)
 
@@ -37,7 +37,7 @@
 
  - 弹窗显示在独立窗口内，窗口层级高于应用所在窗口。
 
-   在PC/2in1等设备上，开发者常期望弹窗的显示在应用窗口之外，此时需要借助子窗的能力。例如自定义弹窗可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的showInSubwindow属性控制是否使用子窗功能。基于子窗显示的弹窗效果如下图所示。
+   在PC/2in1等设备上，开发者常期望弹窗的显示在应用窗口之外，此时需要借助子窗的能力。例如自定义弹窗可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的showInSubWindow属性控制是否使用子窗功能。基于子窗显示的弹窗效果如下图所示。
 
    ![pageLevelMode3](figures/pageLevelMode3.png)
 
@@ -74,6 +74,8 @@
 | [绑定模态页面（bindContentCover/bindSheet）](arkts-modal-overview.md)  | 当需要新的界面覆盖在旧的界面上，且旧的界面不消失的一种转场方式时，例如缩略图片点击后查看大图等，应优先考虑使用此弹窗。 |
 |  [即时反馈（Toast）](arkts-create-toast.md)  | 当需要在一个小的窗口中提供用户当前操作的简单反馈时，例如提示文件保存成功等，应优先考虑使用此弹窗。 |
 |  [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)  | 当需要完全自定义内容、行为、样式时，可以使用浮层将UI展示在页面之上，例如音乐/语音播放悬浮球/胶囊等，应优先考虑使用此弹窗。 |
+
+<!--RP1--><!--RP1End-->
 
 ## 规格约束
 

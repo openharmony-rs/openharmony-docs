@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听时所需参数的枚举。
+可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听时所需参数的对象。
 
 > **说明：**
 >
@@ -23,6 +23,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
 ## 属性
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **系统接口**：此接口为系统接口。
 

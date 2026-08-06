@@ -166,11 +166,11 @@ Enumerates the reasons why the rendering process exits.
 
 | Name                        | Value| Description               |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | The rendering process exits abnormally.        |
+| ProcessAbnormalTermination | 0 | The rendering process terminates abnormally. Possible causes include: rendering process startup timeout, system reclaiming older rendering processes upon reaching the process limit, or simultaneous closure of multiple tabs.        |
 | ProcessWasKilled           | 1 | The rendering process receives a SIGKILL message or is manually terminated.|
 | ProcessCrashed             | 2 | The rendering process crashes due to segmentation or other errors.   |
 | ProcessOom                 | 3 | The program memory is insufficient.          |
-| ProcessExitUnknown         | 4 | Other reason.            |
+| ProcessExitUnknown         | 4 | Other reasons, such as failure to spawn the rendering process.            |
 
 ## SslError<sup>9+</sup>
 
@@ -444,7 +444,7 @@ Enumerates whether to allow the rendering process to bypass the vsync scheduling
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | The rendering process does not bypass the vsync scheduling. Default value.        |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | When **scrollby** is used (only the scrolling offset is supported) and the scrolling offset of the web page is **0**, the rendering process bypasses the vsync scheduling.|
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | When **scrollBy** is used (only the scrolling offset is supported) and the scrolling offset of the web page is **0**, the rendering process bypasses the vsync scheduling.|
 
 ## PdfLoadResult<sup>20+</sup>
 

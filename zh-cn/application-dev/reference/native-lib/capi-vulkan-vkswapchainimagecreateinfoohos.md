@@ -17,6 +17,8 @@ typedef struct VkSwapchainImageCreateInfoOHOS {...} VkSwapchainImageCreateInfoOH
 
 **起始版本：** 10
 
+**废弃版本：** 23
+
 **相关模块：** [Vulkan](capi-vulkan.md)
 
 **所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)

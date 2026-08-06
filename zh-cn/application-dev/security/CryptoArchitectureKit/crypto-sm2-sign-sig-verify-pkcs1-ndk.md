@@ -1,4 +1,4 @@
-# 使用SM2密钥对签名验签 (C/C++)
+# 使用SM2密钥对签名验签(C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -166,7 +166,7 @@ bool DoTestSm2Signature()
         return false;
     }
     bool res = OH_CryptoVerify_Final(verify, &msgBlob, &signBlob);
-    if (ret != true) {
+    if (res != true) {
         OH_CryptoVerify_Destroy(verify);
         OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
         return false;

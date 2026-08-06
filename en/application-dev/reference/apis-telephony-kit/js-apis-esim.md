@@ -37,7 +37,7 @@ Checks whether the specified card slot supports the eSIM function.
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| boolean | A boolean value indicating whether the specified card slot supports the eSIM function. The value **true** indicates that the card slot supports the eSIM function, and the value **false** indicates the opposite.|
+| boolean | Whether the specified card slot supports the eSIM function. If yes, **true** is returned. If no, **false** is returned.|
 
 **Error codes**
 

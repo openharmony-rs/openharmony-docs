@@ -141,7 +141,7 @@ nodeAPI->unregisterNodeEventReceiver();
            nativeModule_ = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
            // 事件触发时需要通过函数获取对应的事件对象，这边通过设置节点自定义数据将封装类指针保持在组件上，方便后续事件分发。
            nativeModule_->setUserData(handle_, this);
-           // 注册节点监听事件接受器。
+           // 注册节点监听事件接收器。
            nativeModule_->addNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
        }
    
@@ -707,7 +707,7 @@ ArkUI开发框架在NDK接口提供了以组件为注册单位的系统深浅色
 >
 > - 一个回调内可以自行设计多个组件的深浅色变更。
 >
-> - 同一组件仅能注册一个系统深浅变更回调。
+> - 同一组件仅能注册一个系统深浅色变更回调。
 >
 > - 建议将注册操作放置于页面生命周期中不会被销毁的节点上，以避免因节点销毁导致回调失效的问题。
 

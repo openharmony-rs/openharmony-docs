@@ -79,7 +79,7 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 | 参数名 | 类型                                                                                       | 必填 | 说明                 |
 | ------ |------------------------------------------------------------------------------------------| ---- | -------------------- |
-| params | [QueryMediaEntityParam](arkts-apis-avMusicTemplate-i.md#querymediaentityparam) | 是   | 查询媒体实例的参数。 |
+| params | [QueryMediaEntityParam](arkts-apis-avMusicTemplate-i.md#querymediaentityparam) | 是   | 查询媒体实体的参数。 |
 
 **返回值：**
 
@@ -125,7 +125,7 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMedi
 | 参数名    | 类型                                                     | 必填 | 说明           |
 | --------- | ------------------------------------------------------ | ---- | -------------- |
 | pageIndex | number                                                    | 是   | 页面的索引。   |
-| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | 是   | 排序的枚举值。 |
+| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | 是   | 排序类型。 |
 
 **返回值：**
 
@@ -209,7 +209,7 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | Promise对象，返回推荐的媒体实例的数组。 |
+| Promise<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | Promise对象，返回推荐的媒体实体的数组。 |
 
 ## QueryHotWordsEvent
 
@@ -313,7 +313,7 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 | 参数名     | 类型                                                         | 必填 | 说明                   |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| actionType | [DialogActionType](#dialogactiontype)                        | 是   | 对话框类型。           |
+| actionType | [DialogActionType](#dialogactiontype)                        | 是   | 对话框操作类型。           |
 | actionInfo | [DialogActionInfo](arkts-apis-avMusicTemplate-i.md#dialogactioninfo) | 否   | 对话框动作结果的信息。 |
 
 **返回值：**
@@ -435,8 +435,8 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                       |
 | ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------ |
-| controlType | [DownloadControlType](#downloadcontroltype)                | 是   | controlType的可选项包括：用户信息，选项卡，合集，设置。 |
-| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 媒体实例。                                 |
+| controlType | [DownloadControlType](#downloadcontroltype)                | 是   | controlType的可选项包括：开始下载、删除下载、恢复下载、暂停下载。 |
+| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。                                 |
 
 **返回值：**
 
@@ -528,6 +528,31 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回搜播的操作结果对象。 |
 
+## CustomCommandEvent
+
+type CustomCommandEvent = (command: string, args: string) => Promise&lt;OperResult&gt;
+
+自定义控制命令事件。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**参数：**
+
+| 参数名     | 类型   | 必填 |      说明       |
+| ---------- | ------ | ---- | -------------- |
+| command    | string | 是   | 自定义控制命令。 |
+| args       | string | 是   | 自定义控制命令事件的参数。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回自定义控制命令的操作结果对象。 |
+
 ## ExecuteActionEvent
 
 type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;string&gt;
@@ -549,7 +574,7 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 | 类型                  | 说明                                  |
 | --------------------- | ------------------------------------- |
-| Promise&lt;string&gt; | Promise对象，返回执行操作的结果对象。 |
+| Promise&lt;string&gt; | Promise对象，返回执行操作的结果字符串。 |
 
 ## PlayMediaEntityEvent
 

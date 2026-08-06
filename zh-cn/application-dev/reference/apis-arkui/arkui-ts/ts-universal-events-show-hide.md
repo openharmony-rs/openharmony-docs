@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-挂载卸载事件指组件从组件树上挂载、卸载时触发的事件。
+挂载卸载事件指组件从组件树上挂载、卸载时触发的事件，可用于监听组件挂载与卸载过程中的生命周期变化，并在相应时机执行相关业务处理。
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onAttach<sup>12+</sup>
 
@@ -26,6 +26,8 @@ onAttach(callback: Callback\<void>): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -38,16 +40,18 @@ onAttach(callback: Callback\<void>): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 
 ## onDetach<sup>12+</sup>
 
 onDetach(callback: Callback\<void>): T
 
-组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
+组件从组件树卸载时触发此回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +65,7 @@ onDetach(callback: Callback\<void>): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## onAppear
 
@@ -89,7 +93,7 @@ onAppear(event: () => void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 
 ## onDisAppear
@@ -114,7 +118,7 @@ onDisAppear(event: () => void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 
 ## 示例
@@ -123,8 +127,6 @@ onDisAppear(event: () => void): T
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {
@@ -136,7 +138,7 @@ struct AppearExample {
     Column() {
       Button(this.changeAppear)
         .onClick(() => {
-          this.isShow = !this.isShow
+          this.isShow = !this.isShow;
         }).margin(15)
       if (this.isShow) {
         Text(this.myText).fontSize(26).fontWeight(FontWeight.Bold)
@@ -160,4 +162,4 @@ struct AppearExample {
 }
 ```
 
-![zh-cn_image_0000001219864151](figures/zh-cn_image_0000001219864151.gif)
+![attach_and_detach](figures/onDisAppear.gif)

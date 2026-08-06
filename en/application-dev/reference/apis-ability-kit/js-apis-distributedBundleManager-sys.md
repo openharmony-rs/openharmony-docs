@@ -1,10 +1,12 @@
 # @ohos.bundle.distributedBundleManager (distributedBundleManager Module) (System API)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:01.304Z pushedAt=2026-06-25T06:27:56.429Z -->
 
 The module provides APIs for managing distributed bundles.
 
@@ -553,6 +555,67 @@ try {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteBundleVersionCode
+
+getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<number>
+
+Obtains the version information of an app with a specified bundle name on a specified remote device. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.DistributedBundleFramework
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name        | Type                                                | Mandatory | Description                    |
+| ------------ | --------------------------------------------------- | ---- | ----------------------- |
+| deviceId | string | Yes   | ID of the remote device. You can call [getAvailableDeviceList](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelist) to obtain all trusted device lists. The value is the **networkId** field in the trusted device information. |
+| bundleName  | string |Yes | Bundle name of the app. |
+
+**Return value**
+
+| Type                                                         | Description                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise\<number> | Promise object. If the call succeeds, the version information is returned; if the call fails, an error object is returned. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID |    Error Message                   |
+|----------|-------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle name is not found. |
+| 17700007 | The specified device ID is not found. |
+| 17700027 | The distributed service is not running. |
+
+**Example**
+
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedBundleManager.getRemoteBundleVersionCode('1111', 'com.hap.myapplication').then((data: number) => {
+    console.info(`getRemoteBundleVersionCode succeed:` + data);
+  }).catch((err: BusinessError) => {
+    console.error(`getRemoteBundleVersionCode failed: error code is ${err.code}  and error msg is ${err.message}`);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
 

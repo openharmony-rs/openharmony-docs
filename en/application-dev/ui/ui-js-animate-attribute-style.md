@@ -89,7 +89,7 @@ text {
 ```
 
 
-![en-us_image_0000001217168141](figures/en-us_image_0000001217168141.gif)
+![attributeStyleAnimation2](figures/attributeStyleAnimation2.gif)
 
 
 > **NOTE**

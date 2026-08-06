@@ -1,13 +1,13 @@
 # Interface (AVTranscoder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 
-视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12)构建一个AVTranscoder实例。
+视频转码管理接口，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12)构建一个AVTranscoder实例。
 
 视频转码demo可参考：[视频转码开发指导](../../media/media/using-avtranscoder-for-transcodering.md)
 
@@ -32,6 +32,75 @@ import { media } from '@kit.MediaKit';
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
 | fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移：0，字节长度：100。其文件描述为AVFileDescriptor{ fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 | fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
+
+## addWatermark
+
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+
+为视频转码添加水印。使用Promise异步回调。
+ 
+> **说明：**
+>
+> - 应用最多可以添加5个水印。
+> - 此接口只能在prepared状态之前调用。
+ 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**参数：**
+
+| 参数名    | 类型                                    | 必填 | 说明                       |
+| --------- | --------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 水印图像。                 |
+| config   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
+
+**返回值：**
+
+| 类型        | 说明                   |
+| ----------- | ---------------------- |
+| Promise\<number\> | Promise对象，返回添加的水印ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                   |
+| -------- | ------------------------------------------ |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.              |
+| 5400105  | Service died. Return by promise.          |
+| 5400108  | The parameter check failed, parameter value out of range. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { image } from '@kit.ImageKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  
+  // 配置水印参数。
+  let watermarkConfig: media.WatermarkConfiguration = {
+      // 根据实际需求配置水印参数，单位为像素（px）。
+      top: 40,
+      left: 40,
+      width: 200,
+      height: 300,
+  };
+
+  avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
+    console.info('addWatermark success, watermarkId: ' + watermarkId);
+  }).catch((err: BusinessError) => {
+    console.error('addWatermark failed and catch error is ' + err.message);
+  });
+}
+```
 
 ## prepare<sup>12+</sup>
 
@@ -61,7 +130,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 401  | The parameter check failed. Return by promise. |
+| 401  | The parameter check failed. Return by promise. <br>适用版本：22+ |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.       |
@@ -332,7 +401,7 @@ on(type:'progressUpdate', callback: Callback\<number\>):void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码进度。 |
+| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码百分比进度。 |
 
 **示例：**
 
@@ -393,7 +462,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| type     | string        | 是   | 转码错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
+| type     | string        | 是   | 转码错误事件回调类型'error'。转码过程中发生错误，触发该事件。 |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 转码错误事件回调方法。                                       |
 
 **错误码：**
@@ -459,7 +528,7 @@ async function test() {
 
 on(type: 'complete', callback: Callback\<void>): void
 
-注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。使用callback异步回调。
+注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个完成事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。使用callback异步回调。
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
 
@@ -471,7 +540,7 @@ on(type: 'complete', callback: Callback\<void>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 完成事件回调类型，支持的事件：'complete'，在转码过程中系统会自动触发此事件。 |
+| type     | string   | 是   | 完成事件回调类型，支持的事件：'complete'，在转码完成时系统会自动触发此事件。 |
 | callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回完成事件回调方法。 |
 
 **示例：**

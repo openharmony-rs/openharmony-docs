@@ -1,8 +1,8 @@
 # Rect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -384,7 +384,7 @@ struct RectExample {
 }
 ```
 
-![en-us_image_0000001174264386](figures/en-us_image_0000001174264386.png)
+![rect1](figures/rect1.png)
 
 ### Example 2: Drawing a Gradient Rectangle
 
@@ -425,7 +425,7 @@ struct RectExample {
 }
 ```
 
-![en-us_image_0000001174264386](figures/en-us_image_0000001174264387.jpeg)
+![rect2](figures/rect2.jpeg)
 
 ### Example 3: Drawing a Rectangle with Different Parameter Types
 

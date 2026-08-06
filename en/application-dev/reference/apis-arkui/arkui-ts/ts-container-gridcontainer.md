@@ -21,7 +21,15 @@ Supported
 
 ## APIs
 
+### GridContainer<sup>(deprecated)</sup>
+
 GridContainer(value?: GridContainerOptions)
+
+Defines the grid container that lays out child components vertically.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridCol](ts-container-gridcol.md#apis) or [GridRow](ts-container-gridrow.md#apis) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +39,11 @@ GridContainer(value?: GridContainerOptions)
 | -------- | -------- | -------- | -------- |
 | value | GridContainerOptions | No| Options of the **GridContainer** component.|
 
-## GridContainerOptions
+## GridContainerOptions<sup>(deprecated)</sup>
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridColOptions](ts-container-gridcol.md#gridcoloptions) or [GridRowOptions](ts-container-gridrow.md#gridrowoptions) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +54,11 @@ GridContainer(value?: GridContainerOptions)
 | gutter | number&nbsp;\|&nbsp;string | No| Yes| Gutter of the grid layout. This parameter cannot be set to a percentage.|
 | margin | number&nbsp;\|&nbsp;string | No| Yes| Margin of the grid layout. This parameter cannot be set to a percentage.|
 
-## SizeType
+## SizeType<sup>(deprecated)</sup>
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridColColumnOption](ts-container-gridcol.md#gridcolcolumnoption) or [GridRowColumnOption](ts-container-gridrow.md#gridrowcolumnoption) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,4 +152,4 @@ struct GridContainerExample {
 }
 ```
 
-![en-us_image_0000001256858425](figures/en-us_image_0000001256858425.gif)
+![en-us_image_0000001219744187](figures/en-us_image_0000001219744187.gif)

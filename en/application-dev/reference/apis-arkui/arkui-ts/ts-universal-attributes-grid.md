@@ -115,15 +115,15 @@ struct GridContainerExample1 {
 
 **Figure 1** Device width type SM
 
-![en-us_image_0000001256858405](figures/en-us_image_0000001256858405.png)
+![SM](figures/SM.png)
 
 **Figure 2** Device width type MD
 
-![en-us_image_0000001257058415](figures/en-us_image_0000001257058415.png)
+![MD](figures/MD.png)
 
 **Figure 3** Device width type LG
 
-![en-us_image_0000001212378416](figures/en-us_image_0000001212378416.png)
+![LG](figures/LG.png)
 
 **Figure 4** Setting gridSpan and gridOffset separately has the same effect as useSizeType for a specific device width type
 

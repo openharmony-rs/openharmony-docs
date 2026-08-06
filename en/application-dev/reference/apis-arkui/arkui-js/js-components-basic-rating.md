@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:26.242Z pushedAt=2026-06-23T01:07:19.237Z -->
 
 >  **NOTE**
 >
@@ -101,4 +102,4 @@ export default {
 }
 ```
 
-![1-6](figures/1-6.png)
+![rating](figures/rating.png)

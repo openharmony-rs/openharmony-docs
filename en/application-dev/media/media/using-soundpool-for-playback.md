@@ -12,7 +12,7 @@ Short sound effects (such as the camera shutter sound effect and system notifica
 
 SoundPool currently supports playing of audio files that are under 1 MB in size after decoding. For audio files that exceed this limit after decoding, only the first 1 MB of data is played. This is equivalent to approximately 5.6 seconds of audio duration at a 44.1 kHz sampling rate with 16-bit depth for stereo sound. (At lower sampling rates or in mono mode, the duration may be slightly longer.)
 
-This topic walks you through on how to use the SoundPool APIs to implement low-latency playback. For details about the API, see [SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md).
+This topic walks you through on how to use the SoundPool APIs to implement low-latency playback. For details about the API declaration, see [SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md).
 
 The full process includes creating a SoundPool instance, loading a sound (including decapsulation and decoding), setting playback parameters (loop mode, and playback priority), playing the sound, stopping the playback, and releasing the instance. (For details about the decoding formats, see [Audio Decoding](../avcodec/audio-decoding.md).)
 
@@ -24,7 +24,7 @@ During application development, you must subscribe to playback state changes and
 
 ## How to Develop
 
-1. Call **createSoundPool()** to create a SoundPool instance.
+1. Call [createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10-1) to create a SoundPool instance.
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -43,7 +43,7 @@ During application development, you must subscribe to playback state changes and
    this.soundPool = await media.createSoundPool(14, audioRendererInfo); // A maximum of 14 streams can be played simultaneously.
    ```
 
-2. Call **on('loadComplete')** to listen for the completion of sound loading.
+2. Call [on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete) to listen for the completion of sound loading.
 
    ```ts
    private soundId: number = 0;
@@ -56,9 +56,9 @@ During application development, you must subscribe to playback state changes and
 
 3. Call **on('playFinished')** or **on('playFinishedWithStreamId')** to listen for the completion of audio playback.
 
-    When only **'playFinished'** or **'playFinishedWithStreamId'** is subscribed to, the registered callback is triggered when the audio playback is complete.
+    When only the **'playFinished'** or **'playFinishedWithStreamId'** event callback is registered, the registered callback is triggered when audio playback finishes.
 
-    When both **'playFinished'** and **'playFinishedWithStreamId'** are subscribed to, the **'playFinishedWithStreamId'** callback is triggered, but the **'playFinished'** callback is not triggered, when the audio playback is complete.
+    When both the **'playFinished'** and **'playFinishedWithStreamId'** event callbacks are registered, only the **'playFinishedWithStreamId'** event callback is triggered when audio playback finishes. The **'playFinished'** event callback is not triggered.
 
     ```ts
     this.soundPool!.on('playFinished', () => {
@@ -87,7 +87,6 @@ During application development, you must subscribe to playback state changes and
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
 
     private soundId: number = 0;
     // Obtain the context of the ability to which the current component belongs and obtain the application file path through the context.
@@ -162,7 +161,7 @@ During application development, you must subscribe to playback state changes and
     await this.soundPool!.off('loadComplete');
     ```
 
-13. Call **off('playFinished')** to stop listening for the completion of sound playing.
+13. Call **off('playFinished')** to stop listening for the completion of audio playback.
 
     ```ts
     await this.soundPool!.off('playFinished');
@@ -187,7 +186,7 @@ Refer to the sample project to use SoundPool to play audio at a low latency.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS), and copy its resources to the corresponding directories.
 
-    ```
+    ```txt
     SoundPoolArkTS
     entry/src/main/ets/
     └── pages

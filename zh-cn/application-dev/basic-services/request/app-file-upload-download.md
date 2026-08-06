@@ -4,9 +4,19 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。
+
+> **说明：**
+>
+> · 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)创建上传下载任务。
+>
+> · 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+>
+> · 上传下载模块不支持Charles、Fiddler等代理抓包工具。
+>
+> · 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
 
 ## 上传应用文件
 
@@ -15,12 +25,6 @@
 > **说明：**
 >
 > · 当前上传应用文件功能，request.uploadFile方式仅支持上传应用缓存文件路径（cacheDir）下的文件，request.agent方式支持上传用户公共文件和应用缓存文件路径下的文件。
->
-> · 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
->
-> · 上传下载模块不支持Charles、Fiddler等代理抓包工具。
->
-> · 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
 
 以下示例代码展示了两种将缓存文件上传至服务器的方法：
 
@@ -36,9 +40,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 新建一个本地应用文件
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +50,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 上传任务配置项
   let files: request.File[] = [
-  //uri前缀internal://cache 对应cacheDir目录
+  // uri前缀internal://cache 对应cacheDir目录
     {
       filename: fileName,
       name: 'test',
@@ -147,9 +151,11 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 
 > **说明：**
 >
-> 当前网络资源文件仅支持下载至应用文件目录。
+> 从API version 20开始支持下载网络资源文件到用户文件。
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
 
@@ -229,11 +235,13 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ```
 
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
-> 从API version 20开始支持下载网络资源文件至用户文件。
+> 从API version 20开始支持下载网络资源文件到用户文件。
+>
+> 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
 ### 下载文档类文件
 
@@ -561,7 +569,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### HTTP拦截
 
-开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)，了解需要配置的具体参数。
+开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration)，了解需要配置的具体参数。
 
 参考配置文件如下所示：
 
@@ -584,7 +592,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
             "include-subdomains": true,
             "name": "*.example.com"
           }
-        ],
+        ]
       }
     ]
   }
@@ -669,8 +677,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // 获取文件状态信息，其中包含大小
         let filePath = filesDir + '/' + fileName;
         // 获取文件状态信息，其中包含大小

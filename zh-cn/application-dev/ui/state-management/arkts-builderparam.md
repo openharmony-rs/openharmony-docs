@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[页面跳转](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了[\@BuilderParam](../../reference/apis-arkui/arkui-ts/ts-universal-builderparam-dynamic.md#builderparam)装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -54,7 +54,7 @@
 
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) --> 
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
   
   ``` TypeScript
   @Component
@@ -82,13 +82,14 @@
   
     build() {
       Column() {
+        // 使用父组件自定义构建函数初始化子组件@BuilderParam装饰的方法
         Child({ customBuilderParam: this.componentBuilder })
       }
     }
   }
   ```
 
-**图1** 示例效果图
+示例效果图
 
 ![builderparam-demo1](figures/builderparam-demo1.png)
 
@@ -151,7 +152,7 @@
   }
   ```
 
-**图2** 示例效果图
+示例效果图
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
 
@@ -224,7 +225,7 @@ struct Parent {
   }
 }
 ```
-**图3** 示例效果图
+示例效果图
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
 
@@ -297,7 +298,7 @@ struct CustomContainerUser {
   }
 }
 ```
-**图4** 示例效果图
+示例效果图
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
 
@@ -374,7 +375,9 @@ struct ParentPage {
   }
 }
 ```
+示例效果图
 
+![builderparam-demo8](figures/builderparam-demo8.png)
 
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
@@ -468,7 +471,7 @@ struct ChildPage_BuilderParam {
 ```
 
 
-<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) -->
+<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -482,6 +485,7 @@ struct HelloWorldPage {
   @State pathStack: NavPathStack = new NavPathStack();
 
   build() {
+    // 用于跳转的子页面
     NavDestination() {
       Column() {
         Text(this.message)
@@ -495,33 +499,7 @@ struct HelloWorldPage {
 }
 ```
 
-
-**router_map.json**
-这个文件位于项目的`resources/base/profile`目录下。
-```ts
-{
-  "routerMap": [
-    {
-      "name": "HelloWorldPage",
-      "buildFunction": "HelloWorldPageBuilder",
-      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
-    }
-  ]
-}
-```
-**module.json5**
-这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
-
-```ts
-{
-  "module": {
-    "routerMap": "$profile:router_map",
-    ......
-  }
-}   
-```
-
-**图5** 示例效果图
+示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
 
@@ -608,7 +586,7 @@ struct ParentPage {
   }
 }
 ```
-**图6** 示例效果图
+示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
 
@@ -671,7 +649,7 @@ struct ParentPage {
         // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
         // this指向的是子组件ChildPage，所以label变量的值为'Child Page'。
         customBuilderParam: this.componentBuilder,
-        // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderPara
+        // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
         // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
         customChangeThisBuilderParam: (): void => {
           this.componentBuilder()
@@ -695,7 +673,7 @@ struct ParentPage {
   }
 }
 ```
-**图7** 示例效果图
+示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 
@@ -830,7 +808,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
-      // 由于未对@Require装饰的变量ChildBuilder进行赋值，此处无论是编译还是编辑，均会报错。
+      // 由于未对@Require装饰的变量ChildBuilder进行赋值，会出现编译和编辑报错。
       ChildPage()
     }
   }
@@ -852,7 +830,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) -->
+<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -865,6 +843,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // childBuilder被@Require装饰，必须从外部初始化
       ChildPage({ childBuilder: globalBuilder })
     }
   }
@@ -923,7 +902,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) -->
+<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -936,6 +915,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // 正确写法
       ChildPage({ childBuilder: globalBuilder })
     }
   }

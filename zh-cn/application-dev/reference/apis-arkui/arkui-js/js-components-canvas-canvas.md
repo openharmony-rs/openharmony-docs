@@ -1,8 +1,8 @@
 # canvas组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -111,4 +111,4 @@ export default {
 }
 ```
 
-![zh-cn_image_js_canvas_canvas](figures/zh-cn_image_js_canvas_canvas.png)
+![image-js-canvas-canvas](figures/image-js-canvas-canvas.png)

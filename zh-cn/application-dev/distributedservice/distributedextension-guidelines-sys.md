@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 简介
 
@@ -166,7 +166,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 设备A和设备B开启USB调试功能，用USB线连接设备和PC。执行shell命令：
 
-```
+```shell
 hdc shell
 hidumper -s 4700 -a "buscenter -l remote_device_info"
 ```

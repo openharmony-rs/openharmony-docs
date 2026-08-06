@@ -1,24 +1,24 @@
 # @ohos.curves (Interpolation Calculation)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-07-29T09:24:17.320Z pushedAt=2026-08-04T01:12:53.142Z -->
 
-The **Curves** module provides APIs for interpolation calculation to create step, cubic Bezier, and spring curves.
+This module provides the capability of setting interpolation curves for animations, which is used to construct step curve objects, cubic Bézier curve objects, spring curve objects, spring animation curve objects, responsive spring animation curve objects, interpolating spring curve objects, and custom curve objects.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
 ```ts
 import { curves } from '@kit.ArkUI';
 ```
-
 
 ## curves.initCurve<sup>9+</sup>
 
@@ -53,7 +53,7 @@ Defines an interpolation curve. For details about the curves and animations, see
 | Name               | Value| Description                                                        |
 | ------------------- | -- | ------------------------------------------------------------ |
 | Linear              | 0 | The animation speed keeps unchanged.                          |
-| Ease                | 1 | The animation starts at a low speed and then accelerates. It slows down before the animation ends. **cubic-bezier(0.25, 0.1, 0.25, 1.0)**|
+| Ease                | 1 | The animation starts at a low speed and then accelerates. It slows down before the animation ends. The cubic-bezier curve (0.25, 0.1, 0.25, 1.0) is used.|
 | EaseIn              | 2 | The animation starts at a low speed and then picks up speed until the end. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used.      |
 | EaseOut             | 3 | The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used.      |
 | EaseInOut           | 4 | The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.|
@@ -70,9 +70,8 @@ Defines an interpolation curve. For details about the curves and animations, see
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.initCurve(Curve.EaseIn) // Create a default ease-in curve, where the interpolation starts slowly and then picks up speed.
+curves.initCurve(Curve.EaseIn); // Create a default ease-in curve, where the interpolation starts slowly and then picks up speed.
 ```
-
 
 ## curves.stepsCurve<sup>9+</sup>
 
@@ -101,15 +100,14 @@ Creates a step curve.
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.stepsCurve(9, true)  // Create a step curve.
+curves.stepsCurve(9, true);  // Create a step curve.
 ```
-
 
 ## curves.cubicBezierCurve<sup>9+</sup>
 
 cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
 
-Creates a cubic Bezier curve, with x-coordinates automatically normalized between 0 and 1.
+Creates a cubic Bézier curve object. The x-coordinates (x1 and x2) of the two control points of the curve must be from 0 to 1.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -130,26 +128,25 @@ Creates a cubic Bezier curve, with x-coordinates automatically normalized betwee
 | ---------------------------------- | ---------------- |
 | [ICurve](#icurve9) | Interpolation curve.|
 
-
 **Example**
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // Create a cubic Bézier curve.
+curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0); // Create a cubic Bézier curve.
 ```
-
 
 ## curves.springCurve<sup>9+</sup>
 
 springCurve(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration is subject to the **duration** parameter in **animation** and **animateTo**.
+Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration is subject to the duration parameter in the animation parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name   | Type  | Mandatory| Description                                                        |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
 | velocity  | number | Yes  | Initial velocity. It is applied by external factors to the spring animation, designed to help ensure the smooth transition from the previous motion state. The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of the animation divided by the animation attribute change value.<br>Value range: (-∞, +∞)|
@@ -157,21 +154,18 @@ Creates a spring curve. The curve shape is subject to the spring parameters, and
 | stiffness | number | Yes  | Stiffness. It is the degree to which an object deforms by resisting the force applied. In an elastic system, the greater the stiffness, the stronger the ability to resist deformation, and the faster the speed of restoring to the equilibrium position.<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the value **1** is used.|
 | damping   | number | Yes  | Damping. It is used to describe the oscillation and attenuation of the system after being disturbed. The larger the damping, the smaller the number of oscillations of elastic motion, and the smaller the oscillation amplitude.<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the value **1** is used.|
 
-
 **Return value**
 
 | Type                          | Description            |
 | ---------------------------------- | ---------------- |
 | [ICurve](#icurve9) | Interpolation curve.|
 
-
 **Example**
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.springCurve(10, 1, 228, 30) // Create a spring curve.
+curves.springCurve(10, 1, 228, 30); // Create a spring curve.
 ```
-
 
 ## curves.springMotion<sup>9+</sup>
 
@@ -188,9 +182,8 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 | Name      | Type    | Mandatory  | Description   |
 | --------- | ------ | ---- | ----- |
 | response  | number | No   | Duration of one complete oscillation.<br>Default value: **0.55**<br>Unit: second<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value **0.55** is used.|
-| dampingFraction      | number | No   | Damping coefficient.<br>**0**: undamped. In this case, the spring oscillates forever.<br>> 0 and < 1: underdamped. In this case, the spring overshoots the equilibrium position.<br>**1**: critically damped.<br>> 1: overdamped. In this case, the spring approaches equilibrium gradually.<br>Default value: **0.825**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.825**.|
+| dampingFraction      | number | No    | Damping coefficient.<br>**0**: undamped. In this case, the spring oscillates forever.<br>&gt; 0 and &lt; 1: underdamped. In this case, the spring overshoots the equilibrium position.<br>**1**: critically damped.<br>&gt; 1: overdamped. In this case, the spring approaches equilibrium gradually.<br>Default value: **0.825**<br/>Value range: [0, +∞)<br/>Note: A value less than 0 evaluates to the default value **0.825**. |
 | overlapDuration | number | No   | Duration for animations to overlap, in seconds. When animations overlap, the **response** values of these animations will transit smoothly over this duration if they are different.<br>Default value: **0**<br>Unit: second<br>Value range: [0, +∞)<br> **NOTE**<br>A value less than 0 evaluates to the default value **0**.<br>The spring animation curve is physics-based. Its duration depends on the **springMotion** parameters and the previous velocity, rather than the **duration** parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the **interpolate** function of the curve.|
-
 
 **Return value**
 
@@ -201,13 +194,12 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.springMotion() // Create a spring animation curve with default settings.
-curves.springMotion(0.5) // Create a spring animation curve with the specified response value.
-curves.springMotion(0.5, 0.6) // Create a spring animation curve with the specified response and dampingFraction values.
-curves.springMotion(0.5, 0.6, 0) // Create a spring animation curve with the specified parameter values.
+import { curves } from '@kit.ArkUI';
+curves.springMotion(); // Create a spring animation curve with default settings.
+curves.springMotion(0.5); // Create a spring animation curve with the specified response value.
+curves.springMotion(0.5, 0.6); // Create a spring animation curve with the specified response and dampingFraction values.
+curves.springMotion(0.5, 0.6, 0); // Create a spring animation curve with the specified parameter values.
 ```
-
 
 ## curves.responsiveSpringMotion<sup>9+</sup>
 
@@ -224,34 +216,36 @@ Creates a responsive spring animation curve. It is a special case of [springMoti
 | Name      | Type    | Mandatory  | Description   |
 | --------- | ------ | ---- | ----- |
 | response  | number | No   | See **response** in **springMotion**.<br>Default value: **0.15**<br>Unit: second<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value **0.15** is used.|
-| dampingFraction      | number | No   | See **dampingFraction** in **springMotion**.<br>Default value: **0.86**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.86**.|
+| dampingFraction      | number | No    | See **dampingFraction** in **springMotion**.<br/>Default value: **0.86**<br/>Value range: [0, +∞)<br/>**NOTE**<br/>A value less than 0 evaluates to the default value **0.86**. |
 | overlapDuration | number | No   | See **overlapDuration** in **springMotion**.<br>Default value: **0.25**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.25**.<br>**ResponsiveSpringMotion** is a special case of **springMotion**, with the only difference in the default values. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the **interpolate** function of the curve.|
 
 **Return value**
 
 | Type                          | Description            |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>1. **ResponsiveSpringMotion** is a special case of **springMotion**, with the only difference in the default values. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>2. The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
+| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>1. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>2. The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
 
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.responsiveSpringMotion() // Create a responsive spring animation curve with default settings.
+import { curves } from '@kit.ArkUI';
+curves.responsiveSpringMotion(); // Create a responsive spring animation curve with default settings.
 ```
-
 
 ## curves.interpolatingSpring<sup>10+</sup>
 
 interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve. The animation duration is subject to the curve parameters, rather than the **duration** parameter in **animation** or **animateTo**.
+Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve. The animation duration is subject to the curve parameters, rather than the duration parameter in the animation parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name      | Type    | Mandatory  | Description   |
 | --------- | ------ | ---- | ----- |
 | velocity  | number | Yes   | Initial velocity. It is applied by external factors to the spring animation, designed to help ensure the smooth transition from the previous motion state. The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of the animation divided by the animation attribute change value.<br>Value range: (-∞, +∞)|
@@ -268,8 +262,8 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.interpolatingSpring(10, 1, 228, 30) // Create an interpolating spring curve whose duration is subject to spring parameters.
+import { curves } from '@kit.ArkUI';
+curves.interpolatingSpring(10, 1, 228, 30); // Create an interpolating spring curve whose duration is subject to spring parameters.
 ```
 
 ## curves.customCurve<sup>10+</sup>
@@ -279,6 +273,8 @@ customCurve(interpolate: (fraction: number) => number): ICurve
 Creates a custom curve.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,11 +293,11 @@ Creates a custom curve.
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-let interpolate = (fraction:number):number => {
-  return Math.sqrt(fraction)
-}
-let curve = curves.customCurve(interpolate) // Create a custom interpolation curve.
+import { curves } from '@kit.ArkUI';
+let interpolate = (fraction: number): number => {
+  return Math.sqrt(fraction);
+};
+let curve = curves.customCurve(interpolate); // Create a custom interpolation curve.
 ```
 
 ## ICurve<sup>9+</sup>
@@ -310,7 +306,7 @@ Represents a curve object. Different types of curve objects can be created using
 
 ### interpolate<sup>9+</sup>
 
-interpolate(fraction: number): number
+interpolate(fraction:&nbsp;number): number
 
 Calculates the interpolated value along the curve at the specified normalized time point.
 
@@ -334,21 +330,19 @@ Calculates the interpolated value along the curve at the specified normalized ti
 
 ```ts
 import { curves } from '@kit.ArkUI'
-let curveValue = curves.initCurve(Curve.EaseIn) // Create an ease-in curve.
-let value: number = curveValue.interpolate(0.5) // Calculate the interpolation for half of the time.
+let curveValue = curves.initCurve(Curve.EaseIn); // Create an ease-in curve.
+let interpolatedValue: number = curveValue.interpolate(0.5); // Calculate the interpolation for half of the time.
 ```
-
 
 ## curves.init<sup>(deprecated)</sup>
 
 init(curve?: Curve): string
 
-
 Implements initialization for the interpolation curve, which is used to create an interpolation curve based on the input parameter.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.initCurve](#curvesinitcurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.initCurve](#curvesinitcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -364,17 +358,15 @@ Implements initialization for the interpolation curve, which is used to create a
 | -------- | -------- |
 | string | Interpolation curve object.|
 
-
 ## curves.steps<sup>(deprecated)</sup>
 
 steps(count: number, end: boolean): string
 
-
 Creates a step curve.
 
-> **NOTE** 
+> **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.stepsCurve](#curvesstepscurve9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [curves.stepsCurve](#curvesstepscurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,21 +383,20 @@ Creates a step curve.
 | -------- | -------- |
 | string | Steps curve object.|
 
-
 ## curves.cubicBezier<sup>(deprecated)</sup>
 
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
-
-Creates a cubic Bézier curve. The curve values must be between 0 and 1.
+Creates a cubic Bézier curve object. The x-coordinates (x1 and x2) of the two control points of the curve must be from 0 to 1.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name | Type    | Mandatory  | Description            |
 | ---- | ------ | ---- | -------------- |
 | x1   | number | Yes   | X coordinate of the first point on the Bézier curve.|
@@ -419,7 +410,6 @@ Creates a cubic Bézier curve. The curve values must be between 0 and 1.
 | -------- | -------- |
 | string | Cubic Bézier curve object.|
 
-
 ## curves.spring<sup>(deprecated)</sup>
 
 spring(velocity: number, mass: number, stiffness: number, damping: number): string
@@ -428,7 +418,7 @@ Constructs a spring curve object.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.springCurve](#curvesspringcurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.springCurve](#curvesspringcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -472,9 +462,9 @@ struct ImageComponent {
           this.heightSize = curve.interpolate(0.5) * this.heightSize;
         })
         .animation({ duration: 2000, curve: curves.stepsCurve(9, true) })
-    }.width("100%").height("100%")
+    }.width('100%').height('100%')
   }
 }
 ```
 
-![en-us_image_0000001174104410](figures/en-us_image_0000001174104410.gif)
+![en-us_image_0000001174104410](figures/curves-spring-example.gif)

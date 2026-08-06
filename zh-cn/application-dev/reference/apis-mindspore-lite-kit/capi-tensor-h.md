@@ -64,7 +64,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 **描述**
 
-创建一个张量对象。
+创建一个张量对象。需要和[OH_AI_TensorDestroy](#oh_ai_tensordestroy)配合使用。
 
 **起始版本：** 9
 

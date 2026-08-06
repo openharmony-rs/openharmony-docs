@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
+[\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require)是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
@@ -114,7 +114,7 @@ struct ChildPage {
       Text(`ChildPage childInfo age :${this.childInfo.age}`)
         .fontSize(15)
         .height(30)
-      Text(`ChildPage stateValue age :${this.stateValue}`)
+      Text(`ChildPage stateValue :${this.stateValue}`)
         .fontSize(15)
         .height(30)
     }

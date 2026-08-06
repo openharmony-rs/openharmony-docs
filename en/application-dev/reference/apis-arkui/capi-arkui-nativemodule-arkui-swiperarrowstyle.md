@@ -1,8 +1,8 @@
 # ArkUI_SwiperArrowStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,10 +12,10 @@ typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
 
 ## Overview
 
-Defines the arrow style for the **Swiper** component.
+Defines the navigation arrow style of the **Swiper** component, which is used to provide more intuitive page turning instructions in scenarios such as carousel.
 
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [swiper.h](capi-swiper-h.md)

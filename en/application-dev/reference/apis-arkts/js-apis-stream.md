@@ -301,7 +301,7 @@ Registers an event processing callback to listen for different events on the wri
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event    | string   | Yes| Type of the event. The following events are supported:| `'drain' `\|`'error'` \|  <br>\- **'close'**: triggered when the call of [end()](#end) is complete and the write operation ends.<br>\- **'drain'**: triggered when the data in the buffer of the writable stream is cleared.<br>\- **'error'**: triggered when an exception occurs in the writable stream.<br>\- **'finish'**: triggered when all data in the buffer is written to the target.|
+| event    | string   | Yes| Type of the event. The following events are supported: `'close'` \| `'drain' `\|`'error'` \| `'finish'`<br>\- **'close'**: triggered when the call of [end()](#end) is complete and the write operation ends.<br>\- **'drain'**: triggered when the data in the buffer of the writable stream is cleared.<br>\- **'error'**: triggered when an exception occurs in the writable stream.<br>\- **'finish'**: triggered when all data in the buffer is written to the target.|
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | Yes| Callback function used to return the event data.|
 
 **Error codes**
@@ -348,7 +348,7 @@ Unregisters an event processing callback used to listen for different events on 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event    | string   | Yes| Type of the event. The following events are supported:| `'drain' `\|`'error'` \|  <br>\- **'close'**: triggered when the call of [end()](#end) is complete and the write operation ends.<br>\- **'drain'**: triggered when the data in the buffer of the writable stream is cleared.<br>\- **'error'**: triggered when an exception occurs in the writable stream.<br>\- **'finish'**: triggered when all data in the buffer is written to the target.|
+| event    | string   | Yes| Type of the event. The following events are supported: `'close'` \| `'drain' `\|`'error'` \| `'finish'`<br>\- **'close'**: triggered when the call of [end()](#end) is complete and the write operation ends.<br>\- **'drain'**: triggered when the data in the buffer of the writable stream is cleared.<br>\- **'error'**: triggered when an exception occurs in the writable stream.<br>\- **'finish'**: triggered when all data in the buffer is written to the target.|
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | No| Callback function.|
 
 **Error codes**
@@ -938,7 +938,7 @@ Registers an event processing callback to listen for different events on the rea
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event    | string   | Yes| Type of the event. The following events are supported:| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\| <br>\- **'close'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'data'**: triggered when a data chunk is transferred to a consumer.<br>\- **'end'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'error'**: triggered when an exception occurs in the stream.<br>\- **'readable'**: triggered when there is data available to be read from the stream.<br>\- **'pause'**: triggered when [pause()](#pause) is called.<br>\- **'resume'**: triggered when [resume()](#resume) is called.|
+| event    | string   | Yes| Type of the event. The following events are supported: `'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'`<br>\- **'close'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'data'**: triggered when a data chunk is transferred to a consumer.<br>\- **'end'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'error'**: triggered when an exception occurs in the stream.<br>\- **'readable'**: triggered when there is data available to be read from the stream.<br>\- **'pause'**: triggered when [pause()](#pause) is called.<br>\- **'resume'**: triggered when [resume()](#resume) is called.|
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | Yes| Callback function used to return the event data.|
 
 **Error codes**
@@ -983,7 +983,7 @@ Unregisters an event processing callback used to listen for different events on 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event    | string   | Yes| Type of the event. The following events are supported:| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\| <br>\- **'close'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'data'**: triggered when a data chunk is transferred to a consumer.<br>\- **'end'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'error'**: triggered when an exception occurs in the stream.<br>\- **'readable'**: triggered when there is data available to be read from the stream.<br>\- **'pause'**: triggered when [pause()](#pause) is called.<br>\- **'resume'**: triggered when [resume()](#resume) is called.|
+| event    | string   | Yes| Type of the event. The following events are supported: `'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'`<br>\- **'close'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'data'**: triggered when a data chunk is transferred to a consumer.<br>\- **'end'**: triggered when [push()](#push) is called, with **null** passed in.<br>\- **'error'**: triggered when an exception occurs in the stream.<br>\- **'readable'**: triggered when there is data available to be read from the stream.<br>\- **'pause'**: triggered when [pause()](#pause) is called.<br>\- **'resume'**: triggered when [resume()](#resume) is called.|
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | No| Callback function.|
 
 **Error codes**
@@ -1117,7 +1117,7 @@ Pushes data into the buffer of the readable stream.
 
 | Name   | Type    | Mandatory    | Description|
 | -------- | -------- | -------- | -------- |
-| chunk | Uint8Array \| string  \| undefined \| null | Yes| Data to read.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `Uint8Array \| string \| null`.|  |  |
+| chunk | Uint8Array \| string  \| undefined \| null | Yes| Data to read.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `Uint8Array \| string \| null`.|
 | encoding | string | No| Encoding format. The default value is **'utf8'**. Currently, **'utf8'**, **'gb18030'**, **'gbk'**, and **'gb2312'** are supported.|
 
 **Return value**

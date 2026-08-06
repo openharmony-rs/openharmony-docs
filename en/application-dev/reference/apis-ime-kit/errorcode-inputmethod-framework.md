@@ -1,7 +1,7 @@
 # Input Method Framework Error Codes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -66,7 +66,7 @@ This error code is reported when the API for showing or hiding the keyboard fail
 
 1. The application is not focused.
 2. The input method is disconnected from the application due to a service error with the application.
-3. IPC fails because the data volume to be transmitted is too large.
+3. IPC fails because the data volume to transmit is too large.
 
 **Solution**
 
@@ -434,3 +434,30 @@ The **displayId** passed to the [getSystemPanelCurrentInsets](js-apis-inputmetho
 **Solution**
 
 You can call the [getDisplayId](js-apis-inputmethodengine.md#getdisplayid15) API to obtain the ID of the current window.
+<!--Del-->
+## 12800026 Input Method System Panel Error
+
+**Error Message**
+
+Input method system panel error. Possible causes: 
+1. system panel not connected.
+2. ipc failed due to large amount of data transferred or other reasons.
+3. the caller is not system panel.
+
+**Description**
+
+The operation on the input method system panel fails.
+
+**Possible Causes**
+
+1. The system panel is not connected.
+2. IPC fails because the data volume to transmit is too large.
+3. The caller is not the system panel.
+
+**Solution**
+
+1. Ensure that the system channel is connected by calling the [connectSystemChannel](./js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel) API.
+2. Adjust the volume of data to be transmitted by referring to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints).
+3. Ensure that the caller is the system panel.
+<!--DelEnd-->
+<!--no_check-->

@@ -1,14 +1,14 @@
 # usb_ddk_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
-Claims the USB DDK APIs used by the USB host to access USB devices.
+Declares the USB DDK APIs used by the USB host to access USB devices.
 
 **File to include**: <usb/usb_ddk_api.h>
 
@@ -43,6 +43,8 @@ Claims the USB DDK APIs used by the USB host to access USB devices.
 | [int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)](#oh_usb_createdevicememmap) | Creates a buffer. To avoid resource leakage, use [OH_Usb_DestroyDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_destroydevicememmap) to destroy a buffer after use.|
 | [void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)](#oh_usb_destroydevicememmap) | Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.|
 | [int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)](#oh_usb_getdevices) | Obtains the USB device ID list. Ensure that the pointer parameters passed in are valid. To avoid excessive memory usage, the size of the requested device ID array is recommended not to exceed 128. After using the struct, release the memory of its members; otherwise, resource leaks may occur. Besides, make sure that the obtained USB device ID has been filtered by **vid** in the driver configuration information.|
+| [int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)](#oh_usb_controltransfer) | Performs USB control transfer. This API returns the result synchronously.|
+| [int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)](#oh_usb_getnonroothubs) | Queries and returns the non-root hub list. Ensure that the input pointer is valid. It is recommended that the number of non-root hub IDs do not exceed 128 to prevent excessive memory usage. After using the struct, release the memory of its members; otherwise, resource leaks may occur.|
 
 ## Function Description
 
@@ -484,3 +486,60 @@ Obtains the USB device ID list. Ensure that the pointer parameters passed in are
 | Type| Description|
 | -- | -- |
 | int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode): The operation is successful.<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode): The permission check fails.<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode): The USB DDK service connection fails.<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode): The input **devices** is a null pointer.|
+
+### OH_Usb_ControlTransfer()
+
+```c
+int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)
+```
+
+**Description**
+
+Performs USB control transfer. This API returns the result synchronously.
+
+**Required permissions**: ohos.permission.ACCESS_DDK_USB
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint64_t deviceID | Device ID.|
+| [const struct UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) *setupPacket | Setup packet parameter that controls the transfer request, including the transfer direction and data length.|
+| uint8_t *data | Requested buffer for storing input or output data. The buffer size must be the same as the value of the **wLength** field in the setup packet and cannot exceed 1,024 bytes. Otherwise, the data will be truncated.|
+| uint32_t timeout | Timeout interval, in milliseconds, which is the maximum waiting time before a response is received. The value **0** means to wait infinitely.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Number of actually transferred bytes upon success (a non-negative number).<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode): The permission check fails.<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode): DDK initialization fails. Call **OH_Usb_Init** to initialize the DDK.<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode): The **setupPacket** or **data** parameter is invalid.<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode): Controls transfer timeout.<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode): Controls transfer request I/O exceptions.|
+
+### OH_Usb_GetNonRootHubs()
+
+```c
+int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
+```
+
+**Description**
+
+Queries and returns the non-root hub list. Ensure that the input pointer is valid. It is recommended that the number of non-root hub IDs do not exceed 128 to prevent excessive memory usage. After using the struct, release the memory of its members; otherwise, resource leaks may occur.
+
+**Required permissions**: ohos.permission.ACCESS_DDK_USB
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [struct Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) *nonRootHub | Requested non-root hub memory address, which is used to store the queried non-root hub ID list and quantity.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode): The query is successful.<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode): The permission check fails.<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode): DDK initialization fails. Call **OH_Usb_Init** to initialize the DDK.<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode): The input **nonRootHub** is a null pointer.|

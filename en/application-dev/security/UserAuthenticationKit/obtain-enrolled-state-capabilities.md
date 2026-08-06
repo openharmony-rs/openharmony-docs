@@ -11,7 +11,7 @@ Use **getEnrolledState()** to obtain the change in the credentials (face, finger
 
 ## Available APIs
 
-For details about the parameters, return values, and error codes, see [getEnrolledState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12).
+For details about the parameters, return values, and error codes, see [userAuth.getEnrolledState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12).
 
 | API| Description| 
 | -------- | -------- |
@@ -28,18 +28,17 @@ Example: Obtain information about the credentials enrolled for facial authentica
 <!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  obtainingEnrolledCredentialInformation() {
-    try {
-      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
-      Logger.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
-      return enrolledState.credentialDigest;
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
-      return false;
-    }
+obtainingEnrolledCredentialInformation() {
+  try {
+    let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
+    Logger.info('get current enrolled state successfully');
+    return enrolledState.credentialDigest;
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+    return false;
   }
-
+}
 ```
 
 

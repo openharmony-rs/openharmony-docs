@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -31,6 +31,7 @@ Defines the structs of the HiDebug module.
 | [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | Defines the system memory information.|
 | [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | Defines the local memory information of an application process.|
 | [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | Defines the memory limit of an application process.|
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | Defines the trace collection configuration.|
 | [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | Defines the JS stack frame content.|
 | [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | Defines the native stack frame content.|
 | [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content.|
@@ -39,6 +40,8 @@ Defines the structs of the HiDebug module.
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | Defines the sampling configuration.|
 | [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines the object used for stack backtracing and stack parsing.|
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | Defines the pointer to **HiDebug_ThreadCpuUsage**.|
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | Defines the resource profiling configurations.|
+| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | Define the encapsulated result of a single resource profiling.|
 
 ### Enums
 
@@ -48,6 +51,8 @@ Defines the structs of the HiDebug module.
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | Enumerates the thread types for trace collection.|
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | Enumerates the stack frame types.|
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | Enumerates the data types of debugging information.|
+| [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | Enumerates the resource profiling types.|
+| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | Enumerates the memory listener callback types. You can process the related logic based on the callback type.|
 
 ### Macros
 
@@ -86,6 +91,13 @@ Defines the structs of the HiDebug module.
 | [HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT](#hidebug_trace_tag_distributed_input) (1ULL << 59)                                     | Indicates the distributed input.<br>**Since**: 12          |
 | [HIDEBUG_TRACE_TAG_BLUETOOTH](#hidebug_trace_tag_bluetooth) (1ULL << 60)                                                     | Indicates the Bluetooth.<br>**Since**: 12             |
 
+### Functions
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [typedef void (\*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)](#oh_hidebug_requesttracecallback) | OH_HiDebug_RequestTraceCallback | Triggered for the trace collection request.|
+| [typedef void (\*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)](#oh_hidebug_profilingcallback) | OH_HiDebug_ProfilingCallback | Triggered for the resource profiling.|
+
 ## Enum Description
 
 ### HiDebug_ErrorCode
@@ -108,10 +120,30 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.|
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.|
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.|
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | The trace file storage reaches the upper limit.<br>**Since**: 24|
 | HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
 | HIDEBUG_NOT_SUPPORTED = 11400300 | Current device is not supported.<br>**Since**: 22|
 | HIDEBUG_UNDER_SAMPLING = 11400301 | Current process is being sampled.<br>**Since**: 22|
 | HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | Sampling resources are unavailable.<br>**Since**: 22|
+| HIDEBUG_RES_PROF_SUCCESS = 11400400 | Resource profiling started or stopped successfully.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | Invalid resource profiling parameter.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | Invalid maximum duration for resource profiling.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | Invalid resource profiling filtering size.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | Invalid maximum stack depth for resource profiling.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | Invalid statistics interval for resource profiling.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | Invalid sampling size for resource profiling.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | Invalid resource type for resource profiling.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | Resource profiling is repeatedly started.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | Failed to stop resource profiling because it is not started.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | The number of resource profiling processes exceeds 4.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_CONFLICT = 11400424 | Resource profiling conflicts with CLI tools or system collection tasks.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | Resource profiling automatically stopped due to the duration limit.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | The daily quota for resource profiling exceeded 10 times.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | The system CPU is overloaded, with the CPU usage exceeding 70%.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | The available memory space is less than 15%.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | The available storage space is less than 15%.<br>**Since**: 24|
+| HIDEBUG_RES_PROF_FAILURE = 11400430 | Failed to start or stop resource profiling.<br>**Since**: 24|
 
 ### HiDebug_TraceFlag
 
@@ -167,6 +199,44 @@ Enumerates the data types of debugging information.
 | HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024-byte memory block.|
 | HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048-byte memory block.|
 | HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096-byte memory block.|
+
+### OH_HiDebug_ResourceType
+
+```c
+enum OH_HiDebug_ResourceType
+```
+
+**Description**
+
+Enumerates the resource profiling types.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_RES_TYPE_FD | File descriptor.<br>**Since**: 24|
+| OH_RES_TYPE_THREAD | Thread.<br>**Since**: 24|
+| OH_RES_TYPE_NATIVE | Native memory.<br>**Since**: 24|
+| OH_RES_TYPE_GPU | GPU memory.<br>**Since**: 24|
+| OH_RES_TYPE_GLOBAL_HANDLE | Global handle.<br>**Since**: 24|
+
+### OH_HiDebug_MemListenerType
+
+```c
+enum OH_HiDebug_MemListenerType
+```
+
+**Description**
+
+Enumerates the memory listener callback types. You can process the related logic based on the callback type.
+
+**Since:** 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_HIDEBUG_DO_NOTHING = 0 | No specific operation is performed. Only a notification callback is performed.<br>**Since:** 26.0.0|
+| OH_HIDEBUG_RUNNING_GC = 1 | Perform garbage collection (GC).<br>**Since:** 26.0.0|
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | Export memory snapshot.<br>**Since:** 26.0.0|
 
 ## Macro Description
 
@@ -553,3 +623,42 @@ Indicates the distributed input.
 Indicates the Bluetooth.
 
 **Since**: 12
+
+## Function Description
+
+### OH_HiDebug_RequestTraceCallback()
+
+```c
+typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)
+```
+
+**Description**
+
+Triggered for the trace collection request.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| HiDebug_ErrorCode errorCode | Result code. For details, see [HiDebug_ErrorCode](#hidebug_errorcode).|
+| const char\* filePath | Pointer to the collected trace file. If the operation fails, a null pointer may be returned.|
+
+### OH_HiDebug_ProfilingCallback()
+
+```c
+typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
+```
+
+**Description**
+
+Triggered for the resource profiling.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| OH_HiDebug_ProfilingResult\* result | Pointer to the parameters of the resource profiling callback function.|

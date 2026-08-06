@@ -14,17 +14,17 @@ The **Select** component provides a drop-down menu that allows users to select a
 >
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [Select](./ts-basic-components-select.md).
 
-## menuSystemMaterial<sup>23+</sup>
+## menuDistortionMode
 
-menuSystemMaterial(material:Optional\<SystemUiMaterial>)
+menuDistortionMode(mode: DistortionMode)
 
-Sets the system material of the drop-down menu. Different system materials correspond to different attribute effects. This API affects paramters of the drop-down menu, such as [menuBackgroundColor](ts-basic-components-select.md#menubackgroundcolor18), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), and [shadow](ts-universal-attributes-image-effect.md#shadow). It is not recommended to use this API together with the preceding APIs.
+Sets the distortion animation mode for a drop-down menu with the system material. If this API is not used, the default value is **DistortionMode.DISTORTION_AUTO**.
+
+**Since**: 26.0.0
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -32,41 +32,24 @@ Sets the system material of the drop-down menu. Different system materials corre
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is set.|
+| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | Yes| Distortion mode of the drop-down menu with a system material.|
 
-## Examples
-### Example 1 Setting System Material for the Select Component and Drop-down Menu
+## menuEdgeLightMode
 
-This example uses the [menuSystemMaterial](#menusystemmaterial23) API to apply the system material effect to the drop-down menu, and the [systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23) API to apply the system material effect to the **Select** component.
+menuEdgeLightMode(mode: EdgeLightMode)
 
-The **menuSystemMaterial** and **systemMaterial** APIs are added since API version 23.
+Sets the edge light mode for a drop-down menu with the system material. If this API is not used, the default value is **EdgeLightMode.EDGELIGHT_DISABLED**.
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+**Since**: 26.0.0
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Select([{ value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' }])
-        .value('Click Show Options')
-        .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
-        .menuSystemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
-    }
-    // Replace $r('app.media.img') with the image resource file you use.
-    .backgroundImage($r('app.media.img'))
-  }
-}
-```
-System material not set
+**System API**: This is a system API.
 
-![select-without-menu-new-material](figures/selectWithoutNewMaterial.PNG)
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-System material set
+**Model restriction**: This API can be used only in the stage model.
 
-![select-menu-new-material](figures/selectNewMaterial.PNG)
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| mode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | Yes| Edge light mode of the drop-down menu with a system material.|

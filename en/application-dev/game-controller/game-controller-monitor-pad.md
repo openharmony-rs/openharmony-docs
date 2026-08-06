@@ -1,19 +1,19 @@
-# Listening for Game Controller Axis and Button Events (C/C++)
+# Listening for Gamepad Axis and Button Events (C/C++)
+
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
+<!--Tester: @fei_0805-->
 <!--Adviser: @luwy2025-->
+<!-- md-trans-meta sourceCommit=ae8fea910c203d6791a838e7a3fb4d5339bb907d translatedAt=2026-06-22T10:07:25.226Z pushedAt=2026-06-22T10:10:10.247Z -->
 
 > **NOTE**<br>
-> You need to develop [game controller online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for game controller axis and button events.
-
+> You need to develop [device online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for gamepad axis and button events.
 
 ## When to Use
 
-Game Controller Kit provides the capability of listening for game controller axis and button events. After you register a listener for these events, callback notifications can be obtained when players operate the controller's buttons and joysticks.
-
+Game Controller Kit provides the capability of listening for gamepad axis and button events. After you register a listener for these events, callback notifications can be obtained when players operate the gamepad's buttons and joysticks.
 
 ## Buttons
 
@@ -21,10 +21,9 @@ The following figure shows the buttons supported by Game Controller Kit.
 
 ![gamepad](figures/gamepad.png)
 
-
 ## Available APIs
 
-For details about the APIs, please refer to the [API reference](../reference/apis-game-controller-kit/capi-game-controller.md).
+For detailed API descriptions, see [GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -51,9 +50,7 @@ For details about the APIs, please refer to the [API reference](../reference/api
 | OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor | Registers a listener for the Left Thumbstick axis event.| 
 | OH_GamePad_RightThumbstick_RegisterAxisInputMonitor | Registers a listener for the Right Thumbstick axis event.| 
 
-
 ## How to Develop
-
 
 ### Linking the Dynamic Library
 
@@ -61,13 +58,11 @@ For details about the APIs, please refer to the [API reference](../reference/api
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
-
 ### Importing the Module
 
 ```c
 #include <GameControllerKit/game_pad.h>
 ```
-
 
 ### Registering and Unregistering a Listener for the Axis Event
 
@@ -124,7 +119,6 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
     OnAxisEvent(axisEvent, "LeftThumbstick_OnAxisEvent", val);
 }
 ```
-
 
 ### Registering and Unregistering a Listener for the Button Event
 

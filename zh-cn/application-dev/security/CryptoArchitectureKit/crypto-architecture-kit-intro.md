@@ -9,13 +9,13 @@
 
 Crypto Architecture Kit屏蔽了第三方密码学算法库实现差异的算法框架，提供加解密、签名验签、消息认证码、哈希、安全随机数、密钥派生等相关功能。
 
-开发者可以通过调用加解密算法框架服务，忽略底层不同第三方密码学算法库的差异，实现迅捷开发。
+开发者可以通过调用加解密算法框架服务，忽略底层不同第三方密码学算法库的差异，实现快速开发。
 
 ## 约束与限制
 
 - Crypto Architecture Kit不支持多线程并发操作。
 
-- Crypto Architecture Kit当前只支持OpenSSL。
+- Crypto Architecture Kit当前基于OpenSSL实现。
 
 - Crypto Architecture Kit提供了大部分常用的算法。然而，部分算法和规格并不适用于对安全要求较高的场景，例如 MD5。请开发者根据实际需求选择合适的算法。
 
@@ -23,9 +23,9 @@ Crypto Architecture Kit屏蔽了第三方密码学算法库实现差异的算法
 
 加解密算法库为开发者提供了以下相关功能，并提供了对应的算法规格说明和开发指导，请开发者参照开发。
 
-- [密钥生成和转换](crypto-key-generation-conversion-overview.md)
+- [密钥生成和转换](crypto-key-generation-conversion.md)
 
-- [加解密](crypto-encryption-decryption-overview.md)
+- [加解密](crypto-encryption-decryption.md)
 
 - [签名验签](crypto-sign-sig-verify-overview.md)
 

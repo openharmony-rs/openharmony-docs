@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 
 开发者在开发应用时，需要配置应用的一些标签，例如应用的Bundle名称、图标等标识特征的属性。这一章节描述了开发者在开发应用时需要配置的一些关键标签。
@@ -69,7 +69,7 @@ PageAbility的图标和标签配置请参见[PageAbility组件配置](pageabilit
         "type": "page",
         "visible": true,
         "launchType": "singleton"
-      },
+      }
     ]
   }
 }

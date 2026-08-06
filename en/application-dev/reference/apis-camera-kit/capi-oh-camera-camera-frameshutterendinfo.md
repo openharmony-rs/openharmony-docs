@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:28.233Z pushedAt=2026-06-25T06:57:19.549Z -->
 
 ```c
 typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
@@ -26,4 +27,4 @@ The struct describes the frame shutter end information during capture.
 
 | Name| Description|
 | -- | -- |
-| int32_t captureId | Capture ID.|
+| int32_t captureId | Capture ID. |

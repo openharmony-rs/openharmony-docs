@@ -8,7 +8,7 @@
 <!--Adviser: @fang-jinxu-->
 
 - ArkTS API<!--common-basic-arkts-->
-  - [Console (控制台)](js-apis-logs.md)
+  - [Class (Console)](js-apis-logs.md)
   - [loadNativeModule (同步动态加载系统库接口)](js-apis-common-load-native-module.md)
   - [SysCap (系统能力)](js-apis-syscap.md)
   - [Timer (定时器)](js-apis-timer.md)
@@ -54,3 +54,4 @@
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
     - [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md)
     - [PurgMem*](capi-memory-purgmem.md)
+    - [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)

@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -59,9 +59,9 @@ Enumerates the pointer styles.
 | NORTH_EAST_SOUTH_WEST = 11   | North-east and south-west adjustment|![North_East_South_West.png](./figures/North_East_South_West.png)|
 | NORTH_WEST_SOUTH_EAST = 12   | North-west and south-east adjustment|![North_West_South_East.png](./figures/North_West_South_East.png)|
 | CROSS = 13   | Cross (accurate selection)  |![Cross.png](./figures/Cross.png)|
-| CURSOR_COPY = 14   | Copy    |![Copy.png](./figures/Copy.png)|
+| CURSOR_COPY = 14   | Copy.    |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID = 15   | Forbid   |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER = 16   | Sucker    |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER = 16   | Color picker    |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING = 17   | Grabbing hand  |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN = 18   | Opening hand  |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING = 19   | Hand-shaped pointer  |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
@@ -94,7 +94,7 @@ Enumerates the pointer styles.
 | RUNNING_RIGHT = 46   | Running in the background (extension 2)|![Loading_Right.png](./figures/Loading_Right.png)|
 | AECH_DEVELOPER_DEFINED_ICON = 47   | Custom circular pointer|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR = 48   | Screen recording |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
-| LASER_CURSOR = 49   | Floating This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
-| LASER_CURSOR_DOT = 50   | Click This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
-| LASER_CURSOR_DOT_RED = 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| LASER_CURSOR = 49   | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT = 50   | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED = 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
 | DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the [OH_Input_SetCustomCursor](./capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom pointer, but not the [OH_Input_SetPointerStyle](./capi-oh-input-manager-h.md#oh_input_setpointerstyle).|You can customize pointers as needed via API.|

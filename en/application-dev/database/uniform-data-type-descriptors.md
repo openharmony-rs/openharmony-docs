@@ -1,11 +1,12 @@
 # UTDs (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=c0d91caa7d12d601aaaaed4180389822d2d2a888 translatedAt=2026-07-28T06:46:42.751Z pushedAt=2026-07-28T08:35:32.587Z -->
 
 ## When to Use
 
@@ -19,9 +20,11 @@ UTDs are used in image preview and file sharing.
 
 ### Hierarchical Structure
 
-Defining data types by MIME type or file name extension may cause loose data type definitions, which cannot describe the compatibility and inheritance relationships between different types and further increase development complexity in data type processing. For example, in a scenario where a user searches for any type of animal images, loose data type definitions may involve search of any image, video, or audio assets related to animals. UTDs are defined in a hierarchical structure to address this problem.
+Another drawback of type differentiation based on MIME types or file extensions is the flat definition of data types.
 
-The data type hierarchies identify the relationships between different data types, helping organize data in a way that makes it easier to understand, manage, and analyze. For example, when the data to be shared or dragged includes images, videos, and audio clips, the system or application can sort the data by data type hierarchy, for example, to share or drag photos, videos, or media files as required.
+Flat or loose type definitions make it difficult to accurately describe compatibility and inheritance relationships between different types, and in practice, they increase the development complexity when applications handle data types. For example, in a search scenario, a user who has precisely searched for animal-related images may wish to further expand the search to include animal-related images, videos, or audio resources. To meet this need, we must support a type hierarchy when defining data types.
+
+Building a hierarchical structure for standard types and defining type affiliation relationships within the hierarchy helps systems and applications achieve layered and categorized management of data types. When users share or drag-and-drop data, if the data contains images, videos, audio, and other content simultaneously, the system/application can organize the shared content on demand based on the hierarchy—for example, how many images, how many videos, or how many media resource files were shared.
 
 ### Classification of UTDs
 
@@ -33,7 +36,7 @@ The UTDs can be classified by physical property or logic. OpenHarmony is prebuil
 
 According to the classification principles, data types can be described from two dimensions. For example, an image can be defined as an image object or a file.
 
-However, not all data formats have two dimensions. For example, **general.calendar** focuses more on the functionality of the calendar object.
+Not all formats have two dimensions. For example, **general.calendar** focuses more on the functional description of the calendar object.
 
 **Figure 1** UTD based on physical properties
 
@@ -48,25 +51,30 @@ However, not all data formats have two dimensions. For example, **general.calend
 A UTD contains information such as the ID, relationships, and brief description of a uniform data type. For details, see [TypeDescriptor properties](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#properties). Each UTD contains the following information:
 
 + **typeId**: unique ID of the UTD.
+
 + **belongingToTypes**: types to which the UTD belongs. A UTD may belong to multiple data types.
+
 + **description**: brief description of the uniform data type.
+
 + **referenceURL**: URL of the data type reference, which provides detailed information about the data type.
+
 + **iconFile**: path of the default icon file for the data type. If the data type has no default icon, it is an empty string. The application can determine whether to use the default icon.
+
 + **filenameExtensions**: File name extensions associated with the uniform data type.
+
 + **mimeTypes**: MIME types associated with the uniform data type.
 
 ## Prebuilt UTDs
 
 The system is prebuilt with common UTDs. For example, **general.audio** is used to represent an audio file, and **general.video** is used to represent a video file. For details about the prebuilt UTDs, see [Prebuilt UTDs](./uniform-data-type-list.md).
 
-
 ## Custom UTDs
 
-You can also customize UTDs for your application.
+Since preset data types cannot cover all data types, and cross-application and cross-device interactions may involve application-specific data types, you can define custom data types for your application.
 
 Custom UTDs can inherit from existing UTDs. For example, a custom image type can use **com.company.x-image** as its identifier.
 
-The custom UTDs of a service can be used by other services after being registered with the device system.
+Developers can register custom data types with the device's local system. In this way, other services can reference them when needed, thereby enabling the sharing and unification of custom data types across applications within the ecosystem.
 
 ### Working Principles
 
@@ -92,14 +100,14 @@ The fields of a custom UTD must comply with the following requirements:
 
 + **ReferenceURL**: The value cannot exceed 255 characters. It can be left blank.
 
-
 ### How to Develop
 
 The following walks you through on how to define a custom UTD for media files.
 
-1. Create the **utd.json5** file in the **entry\src\main\resources\rawfile\arkdata\utd** directory of the application, for example, application A.
+1. Create the **utd.json5** file in the **entry\src\main\resources\rawfile\arkdata\utd** directory of the application.
 
 2. Add a custom UTD in the **utd.json5** file.
+
    ```json
    {
         "UniformDataTypeDeclarations": [
@@ -167,18 +175,18 @@ The following walks you through on how to define a custom UTD for media files.
    }
    ```
 
-## Available APIs
+## API Description
 
 The following table describes the commonly used APIs, which are applicable to both prebuilt and custom UTDs. For more information, see [@ohos.data.uniformTypeDescriptor](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
 
-| API                                                    | Description                                                        |
+| API | Description |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| UniformDataType                                              | Enumerates the UTDs, which are not provided here.|
-| belongsTo(type: string): boolean                             | Checks whether a UTD belongs to the specified UTD. The value **true** means the UTD belongs to the specified UTD, and the value **false** means the opposite.     |
-| isLowerLevelType(type: string): boolean                      | Checks whether a UTD is a lower-level type of the specified UTD. The value **true** means the UTD is a lower-level type, and the value **false** means the opposite.|
-| isHigherLevelType(type: string): boolean                     | Checks whether a UTD is a higher-level type of the specified UTD. The value **true** means the UTD is a higher-level type, and the value **false** means the opposite.|
-| getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string> | Obtains the UTD type IDs based on the given file name extension and data type.|
-| getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<string> | Obtains the UTD type IDs based on the given MIME type and data type.|
+| UniformDataType | Enumeration definition of Uniform Data Types. Individual enumerations are not listed here. |
+| belongsTo(type: string): boolean | Determines whether the current Uniform Data Type belongs to the specified Uniform Data Type. Returns true if it belongs, and false otherwise. |
+| isLowerLevelType(type: string): boolean | Determines whether the current Uniform Data Type is a lower-level type of the specified Uniform Data Type. Returns true if it is a lower-level type, and false otherwise. |
+| isHigherLevelType(type: string): boolean | Determines whether the current Uniform Data Type is a higher-level type of the specified Uniform Data Type. Returns true if it is a higher-level type, and false otherwise. |
+| getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string> | Queries the list of Uniform Data Type IDs based on the given filename extension and the Uniform Data Type to which it belongs. |
+| getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<string> | Queries the list of Uniform Data Type IDs based on the given MIME type and the Uniform Data Type to which it belongs. |
 
 ## Obtaining belongingToTypes of a Media File
 
@@ -187,16 +195,19 @@ The following walks you through on how to obtain **belongingToTypes** of a media
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
-    // 1. Import modules.
+    // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID based on the file name extension .mp3, and then obtain properties of the specific UTD.
+
 3. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **audio/mp3**, and then obtain properties of the specific UTD.
+
 4. Compare the UTDs obtained in the preceding steps to check whether they are the same.
+
 5. Check whether **general.mp3** belongs to **general.audio**.
 
     <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
@@ -204,7 +215,7 @@ The following walks you through on how to obtain **belongingToTypes** of a media
     ``` TypeScript
     function uniformTypeDescriptorTest() {
       try {
-        // 2. Obtain the UTD type ID (typeId) based on the file name extension .mp3, and then obtain properties of the UTD.
+        // 2. Query the corresponding UTD data type based on the ".mp3" file extension, and query the specific attributes of the corresponding UTD data type.
         let fileExtension = '.mp3';
         let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
         if (typeIds1.length == 0) {
@@ -216,8 +227,8 @@ The following walks you through on how to obtain **belongingToTypes** of a media
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj1.filenameExtensions}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj1.mimeTypes}`);
-
-        // 3. Obtain the UTD type ID based on audio/mp3, and then obtain properties of the UTD.
+    
+        // 3. Query the corresponding UTD data type by the "audio/mp3" MIME type, and query the specific attributes of the corresponding UTD data type.
         let mimeType = 'audio/mp3';
         let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
         if (typeIds2.length == 0) {
@@ -229,19 +240,19 @@ The following walks you through on how to obtain **belongingToTypes** of a media
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj2.filenameExtensions}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj2.mimeTypes}`);
-
-        // 4. Compare the two UTDs to check whether they are the same.
+    
+        // 4. Compare the data types to determine whether they are the same data type.
         if (typeObj1 != null && typeObj2 != null) {
           let ret = typeObj1.equals(typeObj2);
           hilog.info(0xFF00, '[Sample_Udmf]', `typeObj1 equals typeObj2, ret: ${ret}`);
         }
-
-        // 5. Check whether general.mp3 belongs to general.audio.
+    
+        // 5. Compare the queried standard data type "general.mp3" with the known standard data type "general.audio" that represents audio data, and determine whether a belonging relationship exists.
         if (typeObj1 != null) {
           let ret = typeObj1.belongsTo('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
           let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
-          // Check whether there is an ownership relationship.
+          // Determine whether a belonging relationship exists.
           ret = mediaTypeObj.isHigherLevelType('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
         }
@@ -258,25 +269,26 @@ The following walks you through on how to obtain MIME types based on the file na
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
-    // 1. Import modules.
+    // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID (**typeId**) based on the file name extension .ts.
+
 3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
     <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
     try {
-      // 2. Obtain the UTD type ID based on the file name extension .ts.
+      // 2. Query the corresponding UTD data type based on the ".ts" file extension.
       let fileExtension = '.ts';
       let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
       for (let typeId of typeIds) {
-        // 3. Obtain the MIME types based on the UTD type ID.
+        // 3. Query the corresponding MIME type list based on the UTD data type.
         let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
         let mimeTypes = typeObj.mimeTypes;
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
@@ -293,25 +305,26 @@ The following walks you through on how to obtain the file name extensions based 
 1. Import the **uniformTypeDescriptor** module.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
-    // 1. Import modules.
+    // 1. Import the module.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.
+
 3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
     <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
     try {
-      // 2. Obtain the UTD type ID based on the MIME type text/plain.
+      // 2. Query the corresponding UTD data type based on the "text/plain" MIME type.
       let mimeType = 'text/plain';
       let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
       for (let typeId of typeIds) {
-        // 3. Obtain the file name extensions based on the UTD type ID.
+        // 3. Query the corresponding file extension list based on the UTD data type.
         let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
         let filenameExtensions = typeObj.filenameExtensions;
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
@@ -321,3 +334,8 @@ The following walks you through on how to obtain the file name extensions based 
     }
     ```
 
+## Samples
+
+For the development of uniform data definitions, the following sample is available:
+
+- [UTDType (ArkTS) (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)

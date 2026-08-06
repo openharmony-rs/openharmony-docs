@@ -1,7 +1,7 @@
 # Enums
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,8 +18,8 @@ Enumerates the protocol types supported by the remote device.
 
 | Name                       | Value  | Description        |
 | --------------------------- | ---- | ----------- |
-| TYPE_LOCAL<sup>11+</sup>      | 0    | Local device, which can be the built-in speaker or audio jack of the device, or an A2DP device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+ stream mode, indicating that the media asset is being displayed on another device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| TYPE_LOCAL     | 0    | Local device, which can be the built-in speaker or audio jack of the device, or an A2DP device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| TYPE_CAST_PLUS_STREAM      | 2    | Cast+ stream mode, indicating that the media asset is being displayed on another device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DLNA<sup>12+</sup>      | 4    | DLNA protocol, indicating that the media asset is being displayed on another device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM mode, indicating that the media asset is being displayed on another device.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -201,6 +201,8 @@ Enumerates the error codes used in the media session.
 | ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | Too many commands or messages.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
 | ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | Connection to the device fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
 | ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | The remote session does not exist.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
+| ERR_CODE_DESKTOP_LYRIC_NOT_ENABLED<sup>23+</sup>    | 6600110 | The desktop lyrics feature of the application is not enabled.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
+| ERR_CODE_DESKTOP_LYRIC_NOT_SUPPORTED<sup>23+</sup>    | 6600111 | The current device does not support the desktop lyrics feature.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**System capability**: SystemCapability.Multimedia.AVSession.Core|
 | ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | An undefined error occurs during cast control.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | An unknown error occurs in the remote player.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | The playback is delayed.<br>**Atomic service API**: This API can be used in atomic services since API version 13.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
@@ -268,3 +270,31 @@ Enumerates the fast-forward or rewind intervals supported by the media session.
 | SECONDS_10             | 10 | The time is 10 seconds.            |
 | SECONDS_15             | 15 | The time is 15 seconds.            |
 | SECONDS_30             | 30 | The time is 30 seconds.            |
+
+## BackgroundPlayMode<sup>24+</sup>
+
+Enumerates the background playback modes supported by the media session.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+| Name                     | Value| Description                   |
+| ------------------------- | - | ----------------------- |
+| ENABLE_BACKGROUND_PLAY    | 0 | Background playback is supported.           |
+| DISABLE_BACKGROUND_PLAY   | 1 | Background playback is not supported.         |
+
+## ExtraKey
+
+Enumerates the extra keys used in different scenarios.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+| Name                       | Value  | Description        |
+| --------------------------- | ---- | ----------- |
+| DLNA_CURRENT_URI_METADATA      | "CurrentURIMetadata"    | Key used to provide resource-related metadata in the DLNA casting scenario.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|
+| DLNA_DIDL_LITE      | "DIDL-Lite"    | Key used to describe content metadata during transmission in the DLNA casting scenario.<br>**System capability**: SystemCapability.Multimedia.AVSession.AVCast|

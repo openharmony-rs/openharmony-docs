@@ -5,11 +5,16 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
-本模块提供资源获取能力。根据当前的[Configuration](#configuration)配置，获取最匹配的应用资源或系统资源。具体匹配规则参考[资源匹配](../../quick-start/resource-categories-and-access.md#资源匹配)。
+本模块提供应用资源和系统资源的访问能力，允许应用根据当前的[Configuration](#configuration)配置，获取最匹配的应用资源或系统资源，支持国际化资源匹配和多设备适配。具体匹配规则参考[资源匹配](../../quick-start/resource-categories-and-access.md#资源匹配)。
 
-Configuration配置包括语言、区域、横竖屏、Mcc（移动国家码）和Mnc（移动网络码）、Device capability（设备类型）、Density（分辨率）。
+Configuration配置包括语言-文字-国家地区、横竖屏、颜色模式、Mcc（移动国家码）和Mnc（移动网络码）、设备类型、屏幕密度。
+
+**使用场景**：
+- 应用国际化：根据用户语言和地区自动获取匹配的字符串资源。
+- 多设备适配：根据设备类型、屏幕密度获取合适的媒体资源。
+- 动态资源配置：根据设备状态（横竖屏、颜色模式等）获取对应配置的资源。
 
 > **说明：**
 >
@@ -23,29 +28,27 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 ## 使用说明
 
-从API version 9开始，Stage模型支持通过Context获取资源管理resourceManager对象，无需再导入模块。
+- FA模型需要先导入模块，再调用[getResourceManager](#resourcemanagergetresourcemanager)接口获取资源管理对象。
 
-FA模型仍需要先导入模块，再调用[getResourceManager](#resourcemanagergetresourcemanager)接口获取资源管理对象。 
+- 从API version 9开始，Stage模型无需导入模块，支持通过Context获取资源管理resourceManager对象。Context的更多介绍请参考[应用上下文Context](../../application-models/application-context-stage.md)。
 
-Stage模型下Context的引用方法请参考[Stage模型的Context详细介绍](../../application-models/application-context-stage.md)。
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let context = this.context;
-    let resourceManager = context.resourceManager;
-  }
-}
-```
+   ```ts
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window } from '@kit.ArkUI';
+   
+   export default class EntryAbility extends UIAbility {
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       let context = this.context;
+       let resourceManager = context.resourceManager;
+     }
+   }
+   ```
 
 ## resourceManager.getResourceManager
 
 getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 
-获取当前应用的资源管理对象，使用callback异步回调。
+获取当前应用的资源管理对象。使用callback异步回调。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -55,7 +58,7 @@ getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 
 | 参数名      | 类型                                       | 必填   | 说明                            |
 | -------- | ---------------------------------------- | ---- | ----------------------------- |
-| callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回资源管理ResourceManager对象。 |
+| callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回资源管理对象。 |
 
 **示例：**
 <!--code_no_check_fa-->
@@ -88,7 +91,7 @@ export default {
 
 getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManager&gt;): void
 
-获取指定应用的资源管理对象，使用callback异步回调。
+获取指定应用的资源管理对象。使用callback异步回调。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -99,7 +102,7 @@ getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManage
 | 参数名        | 类型                                       | 必填   | 说明                            |
 | ---------- | ---------------------------------------- | ---- | ----------------------------- |
 | bundleName | string                                   | 是    | 应用包名。                 |
-| callback   | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
+| callback   | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回应用包名对应的资源管理对象。 |
 
 **示例：**
 <!--code_no_check_fa-->
@@ -134,7 +137,7 @@ export default {
 
 getResourceManager(): Promise&lt;ResourceManager&gt;
 
-获取当前应用的资源管理对象，使用Promise异步回调。
+获取当前应用的资源管理对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -144,7 +147,7 @@ getResourceManager(): Promise&lt;ResourceManager&gt;
 
 | 类型                                       | 说明                |
 | ---------------------------------------- | ----------------- |
-| Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回资源管理ResourceManager对象。 |
+| Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回资源管理对象。 |
 
 **示例：**
 <!--code_no_check_fa-->
@@ -173,7 +176,7 @@ export default {
 
 getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
 
-获取指定应用的资源管理对象，使用Promise异步回调。
+获取指定应用的资源管理对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -189,7 +192,7 @@ getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
 
 | 类型                                       | 说明                 |
 | ---------------------------------------- | ------------------ |
-| Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
+| Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回应用包名对应的资源管理对象。 |
 
 **示例：**
 <!--code_no_check_fa-->
@@ -221,7 +224,7 @@ export default {
 
 getSysResourceManager(): ResourceManager
 
-获取系统资源管理对象。
+获取系统资源管理对象，用于访问系统预置的资源。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -361,6 +364,8 @@ try {
 
 type RawFileDescriptor = _RawFileDescriptor
 
+表示rawfile文件所在HAP的文件描述符信息。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
@@ -373,6 +378,8 @@ type RawFileDescriptor = _RawFileDescriptor
 
 type Resource = _Resource
 
+表示资源相关信息，包括应用包名、应用模块名、资源ID、资源类型和格式化参数等。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
@@ -383,7 +390,7 @@ type Resource = _Resource
 
 ## ResourceManager
 
-提供访问应用资源和系统资源的能力。
+提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。
 
 > **说明：**
 >
@@ -425,7 +432,7 @@ getStringSync(resId: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -466,7 +473,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringSync(resId: number, ...args: Array<string | number>): string
 
-获取指定资源ID对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源ID对应的字符串，并使用args参数依次替换字符串中的格式化占位符。使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -477,7 +484,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| ...args | Array<string \| number> | 否 | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array<string \| number> | 否 | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。|
 
 **返回值：**
 
@@ -491,7 +498,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                               |
 | 9001002  | No matching resource is found based on the resource ID.                 |
 | 9001006  | The resource is referenced cyclically.                    |
@@ -557,7 +564,7 @@ getStringByNameSync(resName: string): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -598,7 +605,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
-获取指定资源名称对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源名称对应的字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -609,7 +616,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
 | resName | string | 是    | 资源名称。 |
-| ...args | Array<string \| number> | 否    | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。|
+| args | Array<string \| number> | 否    | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。|
 
 **返回值：**
 
@@ -623,11 +630,11 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
-| 9001008  | Failed to format the resource obtained based on the resource Name. |
+| 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **示例：**
 ```json5
@@ -665,7 +672,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID对应的字符串，使用callback异步回调。
+获取指定资源ID对应的字符串。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -684,7 +691,7 @@ getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -724,7 +731,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringValue(resId: number): Promise&lt;string&gt;
 
-获取指定资源ID对应的字符串，使用Promise异步回调。
+获取指定资源ID对应的字符串。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -748,7 +755,7 @@ getStringValue(resId: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -786,7 +793,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源名称对应的字符串，使用callback异步回调。
+获取指定资源名称对应的字符串。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -797,7 +804,7 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 | 参数名      | 类型                          | 必填   | 说明              |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | 是    | 资源名称。            |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是    |返回获取的字符串。 |
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是  |回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -805,7 +812,7 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -845,7 +852,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByName(resName: string): Promise&lt;string&gt;
 
-获取指定资源名称对应的字符串，使用Promise异步回调。
+获取指定资源名称对应的字符串。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -869,7 +876,7 @@ getStringByName(resName: string): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -931,7 +938,7 @@ getStringArrayValueSync(resId: number): Array&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1000,7 +1007,7 @@ getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1045,7 +1052,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定资源ID对应的字符串数组，使用callback异步回调。
+获取指定资源ID对应的字符串数组。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1064,7 +1071,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&g
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1109,7 +1116,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定资源ID对应的字符串数组，使用Promise异步回调。
+获取指定资源ID对应的字符串数组。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1133,7 +1140,7 @@ getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1177,7 +1184,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定资源名称对应的字符串数组，使用callback异步回调。
+获取指定资源名称对应的字符串数组。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1196,7 +1203,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;strin
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1241,7 +1248,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定资源名称对应的字符串数组，使用Promise异步回调。
+获取指定资源名称对应的字符串数组。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1265,7 +1272,7 @@ getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1309,7 +1316,7 @@ export default class EntryAbility extends UIAbility {
 
 getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 
-获取指定资源ID对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源ID对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
@@ -1327,7 +1334,7 @@ getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | 
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resId   | number                  | 是   | 资源ID值。                                                   |
 | num     | number                  | 是   | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1393,7 +1400,7 @@ export default class EntryAbility extends UIAbility {
 
 getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 
-获取指定资源名称对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源名称对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
@@ -1411,7 +1418,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resName | string                  | 是   | 资源名称。                                                   |
 | num     | number                  | 是   | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1477,7 +1484,7 @@ export default class EntryAbility extends UIAbility {
 
 getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string
 
-获取指定资源ID对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源ID对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
@@ -1495,7 +1502,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resId   | number                  | 是   | 资源ID值。                                                   |
 | num     | number                  | 是   | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1561,7 +1568,7 @@ export default class EntryAbility extends UIAbility {
 
 getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string
 
-获取指定资源名称对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定资源名称对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
@@ -1579,7 +1586,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resName | string                  | 是   | 资源名称。                                                   |
 | num     | number                  | 是   | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -1656,7 +1663,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -1670,7 +1677,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1717,7 +1724,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -1731,7 +1738,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -1767,7 +1774,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定资源ID对应的媒体文件内容，使用callback异步回调。
+获取指定资源ID对应的媒体文件内容。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1786,7 +1793,7 @@ getMediaContent(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.              | 
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              | 
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1820,7 +1827,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number, density: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定资源ID对应的指定屏幕密度媒体文件内容，使用callback异步回调。
+获取指定资源ID对应的指定屏幕密度媒体文件内容。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1831,7 +1838,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback&lt;Uint
 | 参数名      | 类型                              | 必填   | 说明                 |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resId    | number                          | 是    | 资源ID值。              |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | 是    | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
@@ -1840,7 +1847,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback&lt;Uint
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1873,7 +1880,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number): Promise&lt;Uint8Array&gt;
 
-获取指定资源ID对应的媒体文件内容，使用Promise异步回调。
+获取指定资源ID对应的媒体文件内容。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1897,7 +1904,7 @@ getMediaContent(resId: number): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1928,7 +1935,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContent(resId: number, density: number): Promise&lt;Uint8Array&gt;
 
-获取指定资源ID对应的指定屏幕密度媒体文件内容，使用Promise异步回调。
+获取指定资源ID对应的指定屏幕密度媒体文件内容。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1939,7 +1946,7 @@ getMediaContent(resId: number, density: number): Promise&lt;Uint8Array&gt;
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -1953,7 +1960,7 @@ getMediaContent(resId: number, density: number): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -1984,7 +1991,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定资源名称对应的媒体文件内容，使用callback异步回调。
+获取指定资源名称对应的媒体文件内容。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2003,7 +2010,7 @@ getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2036,7 +2043,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string, density: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定资源名称对应的指定屏幕密度媒体文件内容，使用callback异步回调。
+获取指定资源名称对应的指定屏幕密度媒体文件内容。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2047,7 +2054,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback&lt;Uin
 | 参数名      | 类型                              | 必填   | 说明                 |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resName  | string                          | 是    | 资源名称。               |
-| [density](#screendensity)  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | 是    | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
@@ -2056,7 +2063,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback&lt;Uin
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2089,7 +2096,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 
-获取指定资源名称对应的媒体文件内容，使用Promise异步回调。
+获取指定资源名称对应的媒体文件内容。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2113,7 +2120,7 @@ getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2144,7 +2151,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaByName(resName: string, density: number): Promise&lt;Uint8Array&gt;
 
-获取指定资源名称对应的指定屏幕密度媒体文件内容，使用Promise异步回调。
+获取指定资源名称对应的指定屏幕密度媒体文件内容。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2155,7 +2162,7 @@ getMediaByName(resName: string, density: number): Promise&lt;Uint8Array&gt;
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -2169,7 +2176,7 @@ getMediaByName(resName: string, density: number): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2211,7 +2218,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -2225,7 +2232,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2272,7 +2279,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -2286,7 +2293,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -2322,7 +2329,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID对应的图片资源Base64编码，使用callback异步回调。
+获取指定资源ID对应的图片资源Base64编码。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2341,7 +2348,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback&lt;string&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2374,7 +2381,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
+获取指定资源ID对应的指定屏幕密度图片资源Base64编码。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2385,7 +2392,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&l
 | 参数名      | 类型                          | 必填   | 说明                       |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resId    | number                      | 是    | 资源ID值。                    |
-| [density](#screendensity)  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是    | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
@@ -2394,7 +2401,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&l
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2427,7 +2434,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number): Promise&lt;string&gt;
 
-获取指定资源ID对应的图片资源Base64编码，使用Promise异步回调。
+获取指定资源ID对应的图片资源Base64编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2451,7 +2458,7 @@ getMediaContentBase64(resId: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2482,7 +2489,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 
-获取指定资源ID对应的指定屏幕密度图片资源Base64编码，使用Promise异步回调。
+获取指定资源ID对应的指定屏幕密度图片资源Base64编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2493,7 +2500,7 @@ getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -2507,7 +2514,7 @@ getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2538,7 +2545,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源名称对应的图片资源Base64编码，使用callback异步回调。
+获取指定资源名称对应的图片资源Base64编码。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2557,7 +2564,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2590,11 +2597,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源名称对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
-
-> **说明**
->
-> 推荐使用[getMediaBase64ByName](#getmediacontentbase6410)或[getMediaContentBase64](#getmediacontentbase6410)接口，具体请参考[ResourceManager](#resourcemanager)的说明。
+获取指定资源名称对应的指定屏幕密度图片资源Base64编码。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2605,7 +2608,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&
 | 参数名      | 类型                          | 必填   | 说明                       |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resName  | string                      | 是    | 资源名称。                     |
-| [density](#screendensity)  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是    | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
@@ -2614,7 +2617,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2647,7 +2650,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 
-获取指定资源名称对应的图片资源Base64编码，使用Promise异步回调。
+获取指定资源名称对应的图片资源Base64编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2671,7 +2674,7 @@ getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2702,7 +2705,7 @@ export default class EntryAbility extends UIAbility {
 
 getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 
-获取指定资源名称对应的指定屏幕密度图片资源Base64编码，使用Promise异步回调。
+获取指定资源名称对应的指定屏幕密度图片资源Base64编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2713,7 +2716,7 @@ getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -2727,7 +2730,7 @@ getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2769,8 +2772,8 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
-| type<sup>11+</sup> | number | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
+| type<sup>11+</sup> | number | 否    | 图标类型。默认值为0。<br>0：表示获取应用自身图标资源。<br>1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
@@ -2784,7 +2787,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2839,8 +2842,8 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
 | resName | string | 是    | 资源名称。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
-| type<sup>11+</sup> | number | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
+| type<sup>11+</sup> | number | 否    | 图标类型。默认值为0。<br>0：表示获取应用自身图标资源。<br>1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
@@ -2854,7 +2857,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2922,7 +2925,7 @@ getBoolean(resId: number): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -2987,7 +2990,7 @@ getBooleanByName(resName: string): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3044,7 +3047,7 @@ getNumber(resId: number): number
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| number | 资源ID值对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值，具体参考示例代码。 |
+| number | 资源ID值对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
@@ -3052,7 +3055,7 @@ getNumber(resId: number): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3136,7 +3139,7 @@ getNumberByName(resName: string): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 资源名称对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值。 |
+| number | 资源名称对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。|
 
 **错误码：**
 
@@ -3144,7 +3147,7 @@ getNumberByName(resName: string): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3235,7 +3238,7 @@ getColorSync(resId: number) : number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3301,7 +3304,7 @@ getColorByNameSync(resName: string) : number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3342,7 +3345,7 @@ export default class EntryAbility extends UIAbility {
 
 getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 
-获取指定资源ID对应的颜色值，使用callback异步回调。
+获取指定资源ID对应的颜色值。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3361,7 +3364,7 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -3401,7 +3404,7 @@ export default class EntryAbility extends UIAbility {
 
 getColor(resId: number): Promise&lt;number&gt;
 
-获取指定资源ID对应的颜色值，使用Promise异步回调。
+获取指定资源ID对应的颜色值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3425,7 +3428,7 @@ getColor(resId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3466,7 +3469,7 @@ export default class EntryAbility extends UIAbility {
 
 getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 
-获取指定资源名称对应的颜色值，使用callback异步回调。
+获取指定资源名称对应的颜色值。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3485,7 +3488,7 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3525,7 +3528,7 @@ export default class EntryAbility extends UIAbility {
 
 getColorByName(resName: string): Promise&lt;number&gt;
 
-获取指定资源名称对应的颜色值，使用Promise异步回调。
+获取指定资源名称对应的颜色值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3549,7 +3552,7 @@ getColorByName(resName: string): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -3599,7 +3602,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 | 参数名      | 类型                              | 必填   | 说明                      |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | 是    | rawfile文件路径。             |
+| path     | string                          | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。             |
 
 **返回值：**
 
@@ -3613,7 +3616,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -3639,7 +3642,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取resources/rawfile目录下对应的rawfile文件内容，使用callback异步回调。
+获取resources/rawfile目录下对应的rawfile文件内容。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3649,7 +3652,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 | 参数名      | 类型                              | 必填   | 说明                      |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | 是    | rawfile文件路径。             |
+| path     | string                          | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。             |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | 是    | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
@@ -3658,7 +3661,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -3690,7 +3693,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
-获取resources/rawfile目录下对应的rawfile文件内容，使用Promise异步回调。
+获取resources/rawfile目录下对应的rawfile文件内容。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3700,7 +3703,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -3714,7 +3717,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -3744,7 +3747,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileListSync(path: string): Array\<string>
 
-获取resources/rawfile目录下文件夹及文件列表，使用同步形式返回。
+获取resources/rawfile下指定子目录中的文件夹及文件列表，使用同步形式返回。
 
 >**说明**
 >
@@ -3758,13 +3761,13 @@ getRawFileListSync(path: string): Array\<string>
 
 | 参数名      | 类型                              | 必填   | 说明                      |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | 是    | rawfile文件夹路径。             |
+| path     | string                          | 是    | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。<br>空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
 
 **返回值：**
 
 | 类型                        | 说明          |
 | ------------------------- | ----------- |
-| Array\<string> | rawfile文件目录下的文件夹及文件列表。 |
+| Array\<string> | rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -3772,7 +3775,7 @@ getRawFileListSync(path: string): Array\<string>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.       |
 
 **示例：**
@@ -3801,7 +3804,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): void
 
-获取resources/rawfile目录下文件夹及文件列表，使用callback异步回调。
+获取resources/rawfile下指定子目录中的文件夹及文件列表。使用callback异步回调。
 
 >**说明**
 >
@@ -3815,8 +3818,8 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 
 | 参数名      | 类型                              | 必填   | 说明                      |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | 是    | rawfile文件夹路径。             |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Array\<string\>&gt; | 是 | 回调函数，返回rawfile文件目录下的文件夹及文件列表。 |
+| path     | string                          | 是    | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。<br>空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Array\<string\>&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -3824,7 +3827,7 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.       |
 
 **示例：**
@@ -3852,7 +3855,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 
-获取resources/rawfile目录下文件夹及文件列表，使用Promise异步回调。
+获取resources/rawfile下指定子目录中的文件夹及文件列表。使用Promise异步回调。
 
 >**说明**
 >
@@ -3866,13 +3869,13 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件夹路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。<br>空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
 
 **返回值：**
 
 | 类型                        | 说明          |
 | ------------------------- | ----------- |
-| Promise&lt;Array\<string\>&gt; | Promise对象，返回rawfile文件目录下的文件夹及文件列表。 |
+| Promise&lt;Array\<string\>&gt; | Promise对象，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -3880,7 +3883,7 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -3922,7 +3925,7 @@ getRawFdSync(path: string): RawFileDescriptor
 
 | 参数名      | 类型                                       | 必填   | 说明                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | 是    | rawfile文件路径。                     |
+| path     | string                                   | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。                     |
 
 **返回值：**
 
@@ -3936,7 +3939,7 @@ getRawFdSync(path: string): RawFileDescriptor
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -3962,7 +3965,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd），使用callback异步回调。
+获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd）。使用callback异步回调。
 
 > **说明**
 >
@@ -3976,7 +3979,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
 | 参数名      | 类型                                       | 必填   | 说明                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | 是    | rawfile文件路径。                      |
+| path     | string                                   | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。                      |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | 是    | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
@@ -3985,7 +3988,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4020,7 +4023,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用Promise异步回调。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用Promise异步回调。
 
 > **说明**
 >
@@ -4034,7 +4037,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -4048,7 +4051,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4091,7 +4094,7 @@ closeRawFdSync(path: string): void
 
 | 参数名      | 类型                        | 必填   | 说明          |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | 是    | rawfile文件路径 。|
+| path     | string                    | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。|
 
 **错误码：**
 
@@ -4099,7 +4102,7 @@ closeRawFdSync(path: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4129,7 +4132,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
-关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用callback异步回调。
+关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4139,7 +4142,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明          |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | 是    | rawfile文件路径。 |
+| path     | string                    | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt; | 是    | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -4148,7 +4151,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4182,7 +4185,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFd(path: string): Promise&lt;void&gt;
 
-关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用Promise异步回调。
+关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4192,7 +4195,7 @@ closeRawFd(path: string): Promise&lt;void&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -4206,7 +4209,7 @@ closeRawFd(path: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4268,7 +4271,7 @@ export default class EntryAbility extends UIAbility {
 
 getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
-获取设备的Configuration，使用callback异步回调。
+获取设备的Configuration。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4289,12 +4292,12 @@ import { resourceManager } from '@kit.LocalizationKit';
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
-            this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
+            this.context.resourceManager.getConfiguration((error: BusinessError, config: resourceManager.Configuration) => {
                 if (error != null) {
                     console.error("getConfiguration callback error is " + error);
                 } else {
-                    let direction = value.direction;
-                    let locale = value.locale;
+                    let direction = config.direction;
+                    let locale = config.locale;
                 }
             });
         } catch (error) {
@@ -4308,7 +4311,7 @@ export default class EntryAbility extends UIAbility {
 
 getConfiguration(): Promise&lt;Configuration&gt;
 
-获取设备的Configuration，使用Promise异步回调。
+获取设备的Configuration。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4329,9 +4332,9 @@ import { resourceManager } from '@kit.LocalizationKit';
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
-            this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
-                let direction = value.direction;
-                let locale = value.locale;
+            this.context.resourceManager.getConfiguration().then((config: resourceManager.Configuration) => {
+                let direction = config.direction;
+                let locale = config.locale;
             }).catch((error: BusinessError) => {
                 console.error("getConfiguration promise error is " + error);
             });
@@ -4379,7 +4382,7 @@ export default class EntryAbility extends UIAbility {
 
 getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
-获取设备的DeviceCapability，使用callback异步回调。
+获取设备的DeviceCapability。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4419,7 +4422,7 @@ export default class EntryAbility extends UIAbility {
 
 getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
-获取设备的DeviceCapability，使用Promise异步回调。
+获取设备的DeviceCapability。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4457,7 +4460,7 @@ export default class EntryAbility extends UIAbility {
 
 addResource(path: string): void
 
-应用运行时加载指定的资源路径，实现资源覆盖。
+应用运行时加载指定的overlay资源，实现主题切换或资源覆盖。
 
 > **说明**
 >
@@ -4471,7 +4474,7 @@ addResource(path: string): void
 
 | 参数名      | 类型                     | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
-| path | string | 是    | 资源路径。 |
+| path | string | 是    | 待加载的HSP或HAP资源包的绝对路径。 |
 
 **错误码：**
 
@@ -4479,7 +4482,7 @@ addResource(path: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
@@ -4506,7 +4509,7 @@ export default class EntryAbility extends UIAbility {
 
 removeResource(path: string): void
 
-应用运行时移除指定的资源路径，还原被覆盖前的资源。
+应用运行时移除指定的overlay资源，还原被覆盖前的资源。
 
 > **说明**
 >
@@ -4520,7 +4523,7 @@ removeResource(path: string): void
 
 | 参数名      | 类型            | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
-| path | string | 是    | 资源路径。 |
+| path | string | 是    | 待移除的HSP或HAP资源包的绝对路径。 |
 
 **错误码：**
 
@@ -4528,7 +4531,7 @@ removeResource(path: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001010  | Invalid overlay path.            |
 
 **示例：**
@@ -4579,7 +4582,7 @@ getLocales(includeSystem?: boolean): Array\<string>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例：**
 ```ts
@@ -4644,7 +4647,7 @@ getSymbol(resId: number): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4699,7 +4702,7 @@ getSymbolByName(resName: string): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4739,7 +4742,7 @@ isRawDir(path: string): boolean
 
 | 参数名     | 类型     | 必填   | 说明   |
 | ------- | ------ | ---- | ---- |
-| path | string | 是    | rawfile路径。 |
+| path | string | 是    | 相对于resources/rawfile目录的rawfile文件或子目录路径。格式为不以"/"开头的相对路径，如"test.txt"、"subdir"。 |
 
 **返回值：**
 
@@ -4753,7 +4756,7 @@ isRawDir(path: string): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001005  | Invalid relative path.          |
 
 **示例：**
@@ -4790,7 +4793,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 获取可以加载差异化资源的资源管理对象，使用同步方式返回。
 
-普通的资源管理对象获取的资源的配置（语言、深浅色、分辨率、横竖屏等）是由系统决定的，而通过该接口返回的对象，应用可以获取符合指定配置的资源，即差异化资源，比如在浅色模式时可以获取深色资源。
+普通的资源管理对象获取的资源的配置（语言、深浅色、分辨率、横竖屏等）是由系统决定的，而通过该接口返回的对象，应用可以获取符合指定配置的资源，即差异化资源，比如在浅色模式时可以获取深色资源。差异化资源仅限于应用自身资源和系统资源，不包括主题资源。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4806,7 +4809,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 | 类型            | 说明                               |
 | --------------- | ---------------------------------- |
-| ResourceManager | 可以加载差异化资源的资源管理对象。 |
+| [ResourceManager](#resourcemanager) | 可以加载差异化资源的资源管理对象。 |
 
 **错误码：**
 
@@ -4814,7 +4817,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例：**
 
@@ -4843,7 +4846,9 @@ export default class EntryAbility extends UIAbility {
 
 getOverrideConfiguration(): Configuration
 
-获取差异化资源的配置，使用同步方式返回。普通资源管理对象与通过它的[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象调用该方法可获得相同的返回值。
+获取差异化资源的配置，使用同步方式返回。
+
+无论是普通资源管理对象，还是通过[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象，调用该接口都会返回相同的配置信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4882,7 +4887,9 @@ export default class EntryAbility extends UIAbility {
 
 updateOverrideConfiguration(configuration: Configuration): void
 
-更新差异化资源配置。普通资源管理对象与通过它的[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象调用该方法均可更新差异化资源管理对象的配置。
+更新差异化资源管理对象的配置。
+
+无论是普通资源管理对象，还是通过[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象，调用该方法均可更新差异化资源管理对象的配置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4900,7 +4907,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 
 **示例：**
 
@@ -4936,6 +4943,8 @@ getResourceName(resId: number): string
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：** 
 
@@ -4993,7 +5002,7 @@ export default class EntryAbility extends UIAbility {
 
 release()
 
-释放创建的resourceManager, 此接口暂不支持。
+释放创建的resourceManager。此接口暂不支持，调用后无实际作用。
 
 > **说明**
 >
@@ -5016,7 +5025,7 @@ try {
 
 getString(resId: number, callback: AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID对应的字符串，使用callback异步回调。
+获取指定资源ID对应的字符串。使用callback异步回调。
 
 > **说明**
 >
@@ -5049,7 +5058,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getString(resId: number): Promise&lt;string&gt;
 
-获取指定资源ID对应的字符串，使用Promise异步回调。
+获取指定资源ID对应的字符串。使用Promise异步回调。
 
 > **说明**
 >
@@ -5089,7 +5098,7 @@ getStringSync(resource: Resource): string
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync9)或[getStringSync](#getstringsync9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringSync](#getstringsync9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5115,7 +5124,7 @@ getStringSync(resource: Resource): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5156,11 +5165,11 @@ try {
 
 getStringSync(resource: Resource, ...args: Array<string | number>): string
 
-获取指定resource对象对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定resource对象对应的字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync10)或[getStringSync](#getstringsync10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringSync](#getstringsync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5173,7 +5182,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | 参数名      | 类型                     | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| ...args | Array<string \| number> | 否    | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。|
+| args | Array<string \| number> | 否    | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。|
 
 **返回值：**
 
@@ -5187,7 +5196,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5228,11 +5237,11 @@ try {
 
 getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定resource对象对应的字符串，使用callback异步回调。
+获取指定resource对象对应的字符串。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByName](#getstringbyname9)或[getStringValue](#getstringvalue9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringValue](#getstringvalue9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5253,7 +5262,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5293,11 +5302,11 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 getStringValue(resource: Resource): Promise&lt;string&gt;
 
-获取指定resource对象对应的字符串，使用Promise异步回调。
+获取指定resource对象对应的字符串。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByName](#getstringbyname9-1)或[getStringValue](#getstringvalue9-1)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringValue](#getstringvalue9-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5323,7 +5332,7 @@ getStringValue(resource: Resource): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5352,7 +5361,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 
 getStringArray(resId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定资源ID对应的字符串数组，使用callback异步回调。
+获取指定资源ID对应的字符串数组。使用callback异步回调。
 
 > **说明**
 >
@@ -5385,7 +5394,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getStringArray(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定资源ID对应的字符串数组，使用Promise异步回调。
+获取指定资源ID对应的字符串数组。使用Promise异步回调。
 
 > **说明**
 >
@@ -5426,7 +5435,7 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringArrayByNameSync](#getstringarraybynamesync10)或[getStringArrayValueSync](#getstringarrayvaluesync10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringArrayValueSync](#getstringarrayvaluesync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5452,7 +5461,7 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5496,11 +5505,11 @@ try {
 
 getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定resource对象对应的字符串数组，使用callback异步回调。
+获取指定resource对象对应的字符串数组。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayByName](#getstringarraybyname9)或[getStringArrayValue](#getstringarrayvalue9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayValue](#getstringarrayvalue9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5521,7 +5530,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5565,11 +5574,11 @@ this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError
 
 getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定resource对象对应的字符串数组，使用Promise异步回调。
+获取指定resource对象对应的字符串数组。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayByName](#getstringarraybyname9-1)或[getStringArrayValue](#getstringarrayvalue9-1)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayValue](#getstringarrayvalue9-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5595,7 +5604,7 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5639,7 +5648,7 @@ this.context.resourceManager.getStringArrayValue(resource)
 
 getMedia(resId: number, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定资源ID对应的媒体文件内容，使用callback异步回调。
+获取指定资源ID对应的媒体文件内容。使用callback异步回调。
 
 > **说明**
 >
@@ -5671,7 +5680,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getMedia(resId: number): Promise&lt;Uint8Array&gt;
 
-获取指定资源ID对应的媒体文件内容，使用Promise异步回调。
+获取指定资源ID对应的媒体文件内容。使用Promise异步回调。
 
 > **说明**
 >
@@ -5712,7 +5721,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByNameSync](#getmediabynamesync10)或[getMediaContentSync](#getmediacontentsync10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContentSync](#getmediacontentsync10)替代。
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -5726,7 +5735,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -5740,7 +5749,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5775,11 +5784,11 @@ try {
 
 getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定resource对象对应的媒体文件内容，使用callback异步回调。
+获取指定resource对象对应的媒体文件内容。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname9)或[getMediaContent](#getmediacontent9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaContent](#getmediacontent9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5800,7 +5809,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;):
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5833,11 +5842,11 @@ try {
 
 getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
-获取指定resource对象对应的指定屏幕密度媒体文件内容，使用callback异步回调。
+获取指定resource对象对应的指定屏幕密度媒体文件内容。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname10)或[getMediaContent](#getmediacontent10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContent](#getmediacontent10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5850,7 +5859,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt
 | 参数名      | 类型                              | 必填   | 说明                 |
 | -------- | ------------------------------- | ---- | ------------------ |
 | resource | [Resource](#resource9)          | 是    | 资源信息。               |
-| [density](#screendensity)  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;Uint8Array&gt; | 是    | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
@@ -5859,7 +5868,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5892,11 +5901,11 @@ try {
 
 getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 
-获取指定resource对象对应的媒体文件内容，使用Promise异步回调。
+获取指定resource对象对应的媒体文件内容。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname9-1)或[getMediaContent](#getmediacontent9-1)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaContent](#getmediacontent9-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5922,7 +5931,7 @@ getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -5953,11 +5962,11 @@ try {
 
 getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 
-获取指定resource对象对应的指定屏幕密度媒体文件内容，使用Promise异步回调。
+获取指定resource对象对应的指定屏幕密度媒体文件内容。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname10-1)或[getMediaContent](#getmediacontent10-1)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContent](#getmediacontent10-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5970,7 +5979,7 @@ getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 | 参数名      | 类型                     | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -5984,7 +5993,7 @@ getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6015,7 +6024,7 @@ try {
 
 getMediaBase64(resId: number, callback: AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID对应的图片资源Base64编码，使用callback异步回调。
+获取指定资源ID对应的图片资源Base64编码。使用callback异步回调。
 
 > **说明**
 >
@@ -6048,7 +6057,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getMediaBase64(resId: number): Promise&lt;string&gt;
 
-获取指定资源ID对应的图片资源Base64编码，使用Promise异步回调。
+获取指定资源ID对应的图片资源Base64编码。使用Promise异步回调。
 
 > **说明**
 >
@@ -6088,7 +6097,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByNameSync](#getmediabase64bynamesync10)或[getMediaContentBase64Sync](#getmediacontentbase64sync10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContentBase64Sync](#getmediacontentbase64sync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6101,7 +6110,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
 
 **返回值：**
 
@@ -6115,7 +6124,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6149,11 +6158,11 @@ try {
 
 getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定resource对象对应的图片资源Base64编码，使用callback异步回调。
+获取指定resource对象对应的图片资源Base64编码。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname9)或[getMediaContentBase64](#getmediacontentbase649)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase649)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6174,7 +6183,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6207,11 +6216,11 @@ try {
 
 getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定resource对象对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
+获取指定resource对象对应的指定屏幕密度图片资源Base64编码。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname10)或[getMediaContentBase64](#getmediacontentbase6410)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase6410)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6224,7 +6233,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | 参数名      | 类型                          | 必填   | 说明                       |
 | -------- | --------------------------- | ---- | ------------------------ |
 | resource | [Resource](#resource9)      | 是    | 资源信息。                     |
-| [density](#screendensity)  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number        | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是    | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
@@ -6233,7 +6242,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6266,11 +6275,11 @@ try {
 
 getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 
-获取指定resource对象对应的图片资源Base64编码，使用Promise异步回调。
+获取指定resource对象对应的图片资源Base64编码。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname9-1)或[getMediaContentBase64](#getmediacontentbase649-1)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase649-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6296,7 +6305,7 @@ getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6327,11 +6336,11 @@ try {
 
 getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt;
 
-获取指定resource对象对应的指定屏幕密度图片资源Base64编码，使用Promise异步回调。
+获取指定resource对象对应的指定屏幕密度图片资源Base64编码。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname10-1)或[getMediaContentBase64](#getmediacontentbase6410-1)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaContentBase64](#getmediacontentbase6410-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6344,7 +6353,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt
 | 参数名      | 类型                     | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| [density](#screendensity)  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。    |
+| density  | number                          | 是    | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。    |
 
 **返回值：**
 
@@ -6358,7 +6367,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6392,7 +6401,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getDrawableDescriptorByName](#getdrawabledescriptorbyname10)或[getDrawableDescriptor](#getdrawabledescriptor10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getDrawableDescriptor](#getdrawabledescriptor10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6405,8 +6414,8 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 | 参数名      | 类型                     | 必填   | 说明   |
 | -------- | ---------------------- | ---- | ---- |
 | resource | [Resource](#resource9) | 是    | 资源信息。 |
-| [density](#screendensity) | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。 |
-| type<sup>11+</sup> | number | 否    | - 1表示获取主题资源包中应用的分层图标资源。<br> - 0或缺省表示获取应用自身图标资源。 |
+| density | number | 否    | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](#screendensity)。 |
+| type<sup>11+</sup> | number | 否    | 图标类型。默认值为0。<br>0：表示获取应用自身图标资源。<br>1：表示获取主题资源包中应用的分层图标资源。|
 
 **返回值：**
 
@@ -6420,7 +6429,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -6462,11 +6471,11 @@ try {
 
 getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 
-获取指定resource对象对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定resource对象对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
-> - 从API version 18开始支持，从API version 20开始废弃，建议使用[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)或[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> - 从API version 18开始支持，从API version 20开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 >
 > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
@@ -6482,7 +6491,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)  | 是   | 资源信息。                                                   |
 | num      | number                  | 是   | 数量值（整数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args  | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args  | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -6549,11 +6558,11 @@ try {
 
 getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string
 
-获取指定resource对象对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
+获取指定resource对象对应的[单复数](../../internationalization/l10n-singular-plural.md)字符串，并使用args参数依次替换字符串中的格式化占位符，使用同步方式返回。
 
 > **说明**
 >
-> - 从API version 18开始支持，从API version 20开始废弃，建议使用[getDoublePluralStringByNameSync](#getdoublepluralstringbynamesync18)或[getDoublePluralStringValueSync](#getdoublepluralstringvaluesync18)替代。
+> - 从API version 18开始支持，从API version 20开始废弃，建议使用[getDoublePluralStringValueSync](#getdoublepluralstringvaluesync18)替代。
 >
 > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
@@ -6569,7 +6578,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)  | 是   | 资源信息。                                                   |
 | num      | number                  | 是   | 数量值（浮点数）。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| ...args  | Array<string \| number> | 否   | 格式化字符串资源参数。<br>支持参数类型：`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`、`%数字$s`。<br>说明：`%%`转义为`%`; `%数字$d`中的数字表示使用args中的第几个参数。<br>举例：`%%d`格式化后为`%d`字符串; `%1$d`表示使用第一个参数。 |
+| args  | Array<string \| number> | 否   | 格式化字符串资源参数。支持的参数类型包括`%d`、`%f`、`%s`、`%%`、`%数字$d`、`%数字$f`和`%数字$s`。<br>**说明：**<br>- `%%`转义为`%`，如`%%d`格式化后为`%d`。<br>- `%数字$d`中的数字表示参数索引，从`1`开始计数。如`%1$d`表示使用`args[0]`格式化，`%2$d`表示使用`args[1]`格式化，依此类推。 |
 
 **返回值：**
 
@@ -6653,7 +6662,7 @@ getPluralStringValueSync(resId: number, num: number): string
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | resId  | number | 是   | 资源ID值。                                                   |
-| num    | number | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num    | number | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6667,7 +6676,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6719,7 +6728,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
+> 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6732,7 +6741,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9) | 是   | 资源信息。                                                   |
-| num      | number                 | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                 | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6746,7 +6755,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6815,7 +6824,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
 | resName | string | 是   | 资源名称。                                                   |
-| num     | number | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num     | number | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6829,7 +6838,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6875,7 +6884,7 @@ try {
 
 getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID，指定资源数量的单复数字符串，使用callback异步回调。
+获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。
 
 > **说明**
 >
@@ -6892,7 +6901,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resId    | number                      | 是   | 资源ID值。                                                   |
-| num      | number                      | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                      | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是   | 回调函数，返回资源ID值对应的指定数量的单复数字符串。           |
 
 **错误码：**
@@ -6901,7 +6910,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -6947,7 +6956,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
 
 getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 
-获取指定资源ID，指定资源数量的单复数字符串，使用Promise异步回调。
+获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。
 
 > **说明**
 >
@@ -6964,7 +6973,7 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | resId  | number | 是   | 资源ID值。                                                   |
-| num    | number | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num    | number | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -6978,7 +6987,7 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7023,13 +7032,13 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
 
 getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源信息，指定资源数量的单复数字符串，使用callback异步回调。
+获取指定资源信息，指定资源数量的单复数字符串。使用callback异步回调。
 
 > **说明**
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7042,7 +7051,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9)      | 是   | 资源信息。                                                   |
-| num      | number                      | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                      | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是   | 回调函数，返回resource对象对应的指定数量的单复数字符串。       |
 
 **错误码：**
@@ -7051,7 +7060,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7103,13 +7112,13 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
 
 getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 
-获取指定资源信息，指定资源数量的单复数字符串，使用Promise异步回调。
+获取指定资源信息，指定资源数量的单复数字符串。使用Promise异步回调。
 
 > **说明**
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7122,7 +7131,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | resource | [Resource](#resource9) | 是   | 资源信息。                                                   |
-| num      | number                 | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                 | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7136,7 +7145,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7187,7 +7196,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
 
 getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;string&gt;): void
 
-获取指定资源名称，指定资源数量的单复数字符串，使用callback异步回调。
+获取指定资源名称，指定资源数量的单复数字符串。使用callback异步回调。
 
 > **说明**
 >
@@ -7204,7 +7213,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | resName  | string                      | 是   | 资源名称。                                                   |
-| num      | number                      | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                      | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | 是   | 回调函数，返回资源名称对应的指定数量的单复数字符串。             |
 
 **错误码：**
@@ -7213,7 +7222,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7258,7 +7267,7 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
 
 getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 
-获取指定资源名称，指定资源数量的单复数字符串，使用Promise异步回调。
+获取指定资源名称，指定资源数量的单复数字符串。使用Promise异步回调。
 
 > **说明**
 >
@@ -7275,7 +7284,7 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
 | resName | string | 是   | 资源名称。                                                   |
-| num     | number | 是   | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num     | number | 是   | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7289,7 +7298,7 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001003  | Invalid resource name.                                       |
 | 9001004  | No matching resource is found based on the resource name.    |
 | 9001006  | The resource is referenced cyclically.                       |
@@ -7334,7 +7343,7 @@ this.context.resourceManager.getPluralStringByName("test", 1)
 
 getPluralString(resId: number, num: number): Promise&lt;string&gt;
 
-获取指定资源ID，指定资源数量的单复数字符串，使用Promise异步回调。
+获取指定资源ID，指定资源数量的单复数字符串。使用Promise异步回调。
 
 > **说明**
 >
@@ -7349,7 +7358,7 @@ getPluralString(resId: number, num: number): Promise&lt;string&gt;
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
 | resId | number | 是    | 资源ID值。 |
-| num   | number | 是    | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num   | number | 是    | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 
 **返回值：**
 
@@ -7376,7 +7385,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt;): void
 
-获取指定资源ID，指定资源数量的单复数字符串，使用callback异步回调。
+获取指定资源ID，指定资源数量的单复数字符串。使用callback异步回调。
 
 > **说明**
 >
@@ -7391,7 +7400,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt
 | 参数名      | 类型                          | 必填   | 说明                              |
 | -------- | --------------------------- | ---- | ------------------------------- |
 | resId    | number                      | 是    | 资源ID值。                           |
-| num      | number                      | 是    | 数量值。根据当前语言的复数规则获取该数量值对应的字符串数字，语言的复数规则参见[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| num      | number                      | 是    | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。|
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | 是    | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **示例：**
@@ -7417,7 +7426,7 @@ getBoolean(resource: Resource): boolean
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getBooleanByName](#getbooleanbyname9)或[getBoolean](#getboolean9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getBoolean](#getboolean9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7443,7 +7452,7 @@ getBoolean(resource: Resource): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7487,7 +7496,7 @@ getNumber(resource: Resource): number
 
 > **说明**
 >
-> 从API version 9开始支持，从API version 20开始废弃，建议使用[getNumberByName](#getnumberbyname9)或[getNumber](#getnumber9)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getNumber](#getnumber9)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7505,7 +7514,7 @@ getNumber(resource: Resource): number
 
 | 类型     | 说明              |
 | ------ | --------------- |
-| number | resource对象对应的数值。<br>integer对应的是原数值，float不带单位时对应的是原数值，带"vp","fp"单位时对应的是px值。 |
+| number | resource对象对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
 
 **错误码：**
 
@@ -7513,7 +7522,7 @@ getNumber(resource: Resource): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7559,7 +7568,7 @@ getColorSync(resource: Resource): number
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByNameSync](#getcolorbynamesync10)或[getColorSync](#getcolorsync10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorSync](#getcolorsync10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7585,7 +7594,7 @@ getColorSync(resource: Resource): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7625,11 +7634,11 @@ try {
 
 getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 
-获取指定resource对象对应的颜色值，使用callback异步回调。
+获取指定resource对象对应的颜色值。使用callback异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByName](#getcolorbyname10)或[getColor](#getcolor10)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColor](#getcolor10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7650,7 +7659,7 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7690,11 +7699,11 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
 
 getColor(resource: Resource): Promise&lt;number&gt;
 
-获取指定resource对象对应的颜色值，使用Promise异步回调。
+获取指定resource对象对应的颜色值。使用Promise异步回调。
 
 > **说明**
 >
-> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByName](#getcolorbyname10-1)或[getColor](#getcolor10-1)替代。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getColor](#getcolor10-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7720,7 +7729,7 @@ getColor(resource: Resource): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7762,7 +7771,7 @@ getSymbol(resource: Resource): number
 
 > **说明**
 >
-> 从API version 11开始支持，从API version 20开始废弃，建议使用[getSymbolByName](#getsymbolbyname11)或[getSymbol](#getsymbol11)替代。
+> 从API version 11开始支持，从API version 20开始废弃，建议使用[getSymbol](#getsymbol11)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7788,7 +7797,7 @@ getSymbol(resource: Resource): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -7818,7 +7827,7 @@ try {
 
 getRawFile(path: string, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-获取resources/rawfile目录下对应的rawfile文件内容，使用callback异步回调。
+获取resources/rawfile目录下对应的rawfile文件内容。使用callback异步回调。
 
 > **说明**
 >
@@ -7830,7 +7839,7 @@ getRawFile(path: string, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 | 参数名      | 类型                              | 必填   | 说明                      |
 | -------- | ------------------------------- | ---- | ----------------------- |
-| path     | string                          | 是    | rawfile文件路径。             |
+| path     | string                          | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。             |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | 是    | 回调函数，返回rawfile文件内容。 |
 
 **示例：**
@@ -7853,7 +7862,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFile(path: string): Promise&lt;Uint8Array&gt;
 
-获取resources/rawfile目录下对应的rawfile文件内容，使用Promise异步回调。
+获取resources/rawfile目录下对应的rawfile文件内容。使用Promise异步回调。
 
 > **说明**
 >
@@ -7865,7 +7874,7 @@ getRawFile(path: string): Promise&lt;Uint8Array&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -7891,7 +7900,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFileDescriptor(path: string, callback: AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-获取resources/rawfile目录下对应rawfile文件的文件描述符（fd），使用callback异步回调。
+获取resources/rawfile目录下对应rawfile文件的文件描述符（fd）。使用callback异步回调。
 
 > **说明**
 >
@@ -7903,7 +7912,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback&lt;RawFileDescriptor&
 
 | 参数名      | 类型                                       | 必填   | 说明                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| path     | string                                   | 是    | rawfile文件路径。                      |
+| path     | string                                   | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。                      |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | 是    | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
 **示例：**
@@ -7927,7 +7936,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getRawFileDescriptor(path: string): Promise&lt;RawFileDescriptor&gt;
 
-获取resources/rawfile目录下对应rawfile文件的文件描述符（fd），使用Promise异步回调。
+获取resources/rawfile目录下对应rawfile文件的文件描述符（fd）。使用Promise异步回调。
 
 > **说明**
 >
@@ -7939,7 +7948,7 @@ getRawFileDescriptor(path: string): Promise&lt;RawFileDescriptor&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -7966,7 +7975,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 closeRawFileDescriptor(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-关闭resources/rawfile目录下rawfile文件的文件描述符（fd），使用callback异步回调。
+关闭resources/rawfile目录下rawfile文件的文件描述符（fd）。使用callback异步回调。
 
 > **说明**
 >
@@ -7978,7 +7987,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明          |
 | -------- | ------------------------- | ---- | ----------- |
-| path     | string                    | 是    | rawfile文件路径。 |
+| path     | string                    | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;void&gt; | 是    | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。|
 
 **示例：**
@@ -7998,7 +8007,7 @@ resourceManager.getResourceManager((error, mgr) => {
 
 closeRawFileDescriptor(path: string): Promise&lt;void&gt;
 
-关闭resources/rawfile目录下rawfile文件的文件描述符（fd），使用Promise异步回调。
+关闭resources/rawfile目录下rawfile文件的文件描述符（fd）。使用Promise异步回调。
 
 > **说明**
 >
@@ -8010,7 +8019,7 @@ closeRawFileDescriptor(path: string): Promise&lt;void&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| path | string | 是    | rawfile文件路径。 |
+| path | string | 是    | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 
 **返回值：**
 
@@ -8031,12 +8040,11 @@ resourceManager.getResourceManager((error, mgr) => {
 
 getSystemResourceManager(): ResourceManager
 
-获取系统资源管理ResourceManager对象。
+获取系统资源管理对象，用于访问系统预置的资源。
 
 > **说明**
 >
-> 当前接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：
-> {"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。
+> 该接口获取到的系统资源管理ResourceManager对象中的Configuration为默认值。默认值如下：{"locale": "", "direction": -1, "deviceType": -1, "screenDensity": 0, "colorMode": 1, "mcc": 0, "mnc": 0}。
 > 
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[resourceManager.getSysResourceManager](#resourcemanagergetsysresourcemanager20)替代。
 

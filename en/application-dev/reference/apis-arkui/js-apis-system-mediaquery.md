@@ -50,7 +50,7 @@ Creates a **MediaQueryList** object based on the query condition.
 
 | Type          | Description                                      |
 | -------------- | ---------------------------------------- |
-| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | Attributes of the **MediaQueryList** object created. For details, see the descriptions below.|
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | Created **MediaQueryList** object. For details, see the following description.|
 
 **Example**
 

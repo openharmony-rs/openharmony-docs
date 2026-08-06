@@ -2242,7 +2242,7 @@ Create and use a VM startup snapshot.
 
 Example:
 
-See [Working with VM Snapshots Using JSVM-API] (use-jsvm-create-snapshot.md).
+See [Working with VM Snapshots Using JSVM-API](use-jsvm-create-snapshot.md).
 
 ### Checking Input Parameters
 

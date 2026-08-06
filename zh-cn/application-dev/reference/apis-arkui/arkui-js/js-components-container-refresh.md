@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
-<!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -43,7 +43,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | background-color | &lt;color&gt; | white<br/> | 否 | 设置刷新组件的背景颜色。 |
-| progress-color | &lt;color&gt; | black<br/> | 否 | 设置刷新组件的loading图标颜色。 |
+| progress-color | &lt;color&gt; | black<br/> | 否 | 设置刷新组件的进度图标颜色。 |
 
 
 ## 事件
@@ -144,4 +144,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001150719520](figures/zh-cn_image_0000001150719520.gif)
+![refresh](figures/refresh.gif)

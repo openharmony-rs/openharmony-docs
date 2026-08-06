@@ -1,8 +1,14 @@
 # NativeDisplaySoloist
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
-主要是用于UI线程以外的线程中进行帧率控制的Native侧业务。
+NativeDisplaySoloist是用于在独立线程中实现帧率控制的Native侧模块。该模块允许开发者在独立线程中精确控制帧的生成节奏，适用于需要高性能图形绘制的场景。通过该模块，开发者可以实现自定义的帧调度逻辑，以满足不同场景的需求。
 
 **起始版本：** 12
 ## 文件汇总

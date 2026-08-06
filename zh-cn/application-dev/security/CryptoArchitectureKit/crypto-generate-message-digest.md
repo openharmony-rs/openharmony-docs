@@ -11,7 +11,7 @@
 
 > **说明：**
 > 
-> 从API version 12开始，轻量级智能穿戴设备支持消息摘要的计算与操作。
+> 从API版本12开始，轻量级智能穿戴设备支持消息摘要的计算与操作。
 
 ## 开发步骤
 
@@ -39,7 +39,7 @@
   
   async function doMd() {
     let mdAlgName = 'SHA256'; // 摘要算法名
-    let message = 'mdTestMessgae'; // 待摘要的数据
+    let message = 'mdTestMessage'; // 待摘要的数据
     let md = cryptoFramework.createMd(mdAlgName);
     // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
     await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
@@ -61,7 +61,7 @@
   
   function doMdBySync() {
     let mdAlgName = 'SHA256'; // 摘要算法名
-    let message = 'mdTestMessgae'; // 待摘要的数据
+    let message = 'mdTestMessage'; // 待摘要的数据
     let md = cryptoFramework.createMd(mdAlgName);
     // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
     md.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });

@@ -10,7 +10,7 @@ The **\<badge>** component is used to mark new events that require user attentio
 
 >  **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Child Components
@@ -18,18 +18,18 @@ The **\<badge>** component is used to mark new events that require user attentio
 This component supports only one child component.
 
 
-## attributes
+## Attributes
 
 In addition to the [universal attributes](js-service-widget-common-attributes.md), the following attributes are supported.
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| placement | string | rightTop | No| Position of a number or dot badge. Available values are as follows:<br>**right**: on the right border of the component.<br>- **rightTop**: in the upper right corner of the component border.<br>- **left**: on the left border of the component.|
-| count | number | 0 | No| Number of notifications displayed via the badge. The default value is **0**. If the number of notifications is greater than 0, the badge changes from a dot to the number. If this attribute is not set or the value is less than or equal to 0, the badge is a dot.<br>When the **count** value is greater than the **maxcount** value, *maxcount***+** is displayed. The largest integer value supported for **count** is **2147483647**.|
+| placement | string | rightTop | No| Position of a number or dot badge. Available values are as follows:<br>- **right**: on the right border of the component.<br>- **rightTop**: in the upper right corner of the component border.<br>- **left**: on the left border of the component.|
+| count | number | 0 | No| Number of notifications displayed via the badge. The default value is **0**. If the number of notifications is greater than 0, the badge changes from a dot to the number. If this attribute is not set or the value is less than or equal to 0, the badge is a dot.<br>Note: When the **count** value is greater than the **maxcount** value, *maxcount***+** is displayed. The largest integer value supported for **count** is **2147483647**.|
 | visible | boolean | false | No| Whether to display the badge. The value **true** means that the badge shows up when a new notification is received. To use a number badge, set the **count** attribute.|
-| maxcount | number | 99 | No| Maximum number of notifications. When the number of new notifications exceeds the value of this attribute, *maxcount***+** is displayed, for example, **99+**.<br>Note: The maximum integer value is 2147483647.|
+| maxcount | number | 99 | No| Maximum number of notifications. When the number of new notifications exceeds the value of this attribute, *maxcount***+** is displayed.<br>Note: The largest integer value supported for **maxcount** is **2147483647**.|
 | config | BadgeConfig | - | No| Configuration of the badge.|
-| label | string | - | No| Text of the new notification displayed via the badge.<br>When this attribute is set, attributes **count** and **maxcount** do not take effect.|
+| label | string | - | No| Text of the new notification displayed via the badge.<br>Note: When this attribute is set, attributes **count** and **maxcount** do not take effect.|
 
 ### BadgeConfig
 
@@ -38,7 +38,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | badgeColor | &lt;color&gt; | #fa2a2d | No| Background color of the badge.|
 | textColor | &lt;color&gt; | #ffffff | No| Text color of the number badge.|
 | textSize | &lt;length&gt; | 10px | No| Text size of the number badge.|
-| badgeSize | &lt;length&gt; | 6px | No| Size of the dot badge.|
+| badgeSize | &lt;length&gt; | 6px | No| Size of the dot marker.|
 
 
 ## Styles

@@ -25,6 +25,7 @@ The NFC service fails to enable or disable NFC.
 
 1. Communication with the NFC service failed.
 2. The NFC chip communication is abnormal.
+3. The NFC switch is not allowed to be operated according to the policy published by the Enterprise Device Management service.
 
 **Solution**
 
@@ -101,22 +102,6 @@ The NFC tag does not support the read/write operation.
 
 **Solution**
 Implement error handling and display error messages based on service scenarios.
-
-## 3100205 Abnormal NFC Tag Status
-
-**Error Message**
-
-The tag leaves the field.
-
-**Description**
-
-The NFC tag has been removed.
-
-**Possible Causes**
-The NFC tag is out of the NFC device's sensing range.
-
-**Solution**
-Place the NFC tag close to the NFC card reader.
 
 ## 3100301 Abnormal NFC Card Emulation Status
 

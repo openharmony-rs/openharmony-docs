@@ -1,22 +1,22 @@
 # @ohos.enterprise.deviceControl (Device Control Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **deviceControl** module provides APIs for device control.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to the [MDM application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application), and can be called only after the device administrator application is activated via [enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceControl](js-apis-enterprise-deviceControl.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceControl](js-apis-enterprise-deviceControl.md).
 
 ## Modules to Import
 
@@ -24,11 +24,15 @@ The **deviceControl** module provides APIs for device control.
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want, callback: AsyncCallback\<void>): void
 
 Restores factory settings. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **Required permissions**: ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -78,11 +82,15 @@ deviceControl.resetFactory(wantTemp, (err) => {
 })
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want): Promise\<void>
 
 Restores factory settings. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **Required permissions**: ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -135,11 +143,15 @@ deviceControl.resetFactory(wantTemp).then(() => {
 })
 ```
 
-## deviceControl.shutdown<sup>11+</sup>
+## deviceControl.shutdown<sup>(deprecated)</sup>
 
 shutdown(admin: Want): void
 
 Shuts down the device.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **Required permissions**: ohos.permission.ENTERPRISE_REBOOT
 
@@ -186,11 +198,15 @@ try {
 }
 ```
 
-## deviceControl.reboot<sup>11+</sup>
+## deviceControl.reboot<sup>(deprecated)</sup>
 
 reboot(admin: Want): void
 
 Reboots the device.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **Required permissions**: ohos.permission.ENTERPRISE_REBOOT
 
@@ -237,11 +253,15 @@ try {
 }
 ```
 
-## deviceControl.lockScreen<sup>11+</sup>
+## deviceControl.lockScreen<sup>(deprecated)</sup>
 
 lockScreen(admin: Want): void
 
 Locks the device screen immediately.  
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **Required permissions**: ohos.permission.ENTERPRISE_LOCK_DEVICE
 

@@ -941,7 +941,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Name  | Type                  | Mandatory| Description                |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.<br>The unit is bytes.|
 
 **Example**
 
@@ -972,7 +972,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise used to return the buffer size.|
+| Promise\<number> | Promise used to return the buffer size.<br>The unit is bytes.|
 
 **Example**
 
@@ -1001,7 +1001,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API return
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| number | Buffer size.|
+| number | Buffer size, in bytes.|
 
 **Example**
 
@@ -1060,7 +1060,7 @@ Obtains the playback speed.
 
 | Type                                             | Description       |
 | ------------------------------------------------- |-----------|
-| number | Playback speed.|
+| number | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Example**
 
@@ -1267,7 +1267,7 @@ Obtains the minimum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1294,7 +1294,7 @@ Obtains the minimum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the minimum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the minimum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1320,7 +1320,7 @@ Obtains the minimum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Minimum volume, which is in the range [0, 1].|
+| number| Minimum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -1348,7 +1348,7 @@ Obtains the maximum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1375,7 +1375,7 @@ Obtains the maximum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the maximum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the maximum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1401,7 +1401,7 @@ Obtains the maximum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Maximum volume, which is in the range [0, 1].|
+| number| Maximum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -1726,7 +1726,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
@@ -1773,7 +1773,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioRenderer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -2735,10 +2735,50 @@ Obtains the playback loudness.
 
 | Type   | Description            |
 |------- |-----------------  |
-| number | Playback loudness.|
+| number | Playback loudness, in decibels.|
 
 **Example**
 
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
+```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+Sets the independent audio session strategy and behavior parameters.
+
+> **NOTE**
+>
+> If this API is called while an audio renderer is running, you must call the [start](./arkts-apis-audio-AudioRenderer.md#start8) API again for the settings to take effect.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters**
+
+| Name      | Type   | Mandatory| Description                                     |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | Yes  | Audio session strategy.|
+| behavior   | number           | Yes  | Specifies the audio session behavior.<br>This can be a single flag or a bitwise OR combination of multiple flags.<br>For details about the supported audio session behaviors, see [AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24).|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**Example**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```

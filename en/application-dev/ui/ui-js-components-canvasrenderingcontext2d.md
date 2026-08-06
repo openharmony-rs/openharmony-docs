@@ -209,7 +209,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223064173](figures/en-us_image_0000001223064173.gif)
+![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
 
 ## Drawing Border
@@ -306,7 +306,7 @@ export default {
 ```
 
 
-![en-us_image_0000001177466006](figures/en-us_image_0000001177466006.gif)
+![Drawing-Border](figures/Drawing-Border.gif)
 
 
 ## Setting Gradient Fill Colors
@@ -435,7 +435,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001222985801](figures/en-us_image_0000001222985801.gif)
+![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
 
 ## Filling Text
@@ -569,7 +569,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223064401](figures/en-us_image_0000001223064401.gif)
+![Filling-Text](figures/Filling-Text.gif)
 
 > **NOTE**
 >
@@ -749,7 +749,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001218279600](figures/en-us_image_0000001218279600.gif)
+![Adding-Images](figures/Adding-Images.gif)
 
 > **NOTE**
 > - Unlike the **transform()** function, the **setTransform()** function resets the existing transformation matrix and creates a transformation matrix even if it uses the same parameters.
@@ -851,4 +851,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001177624696](figures/en-us_image_0000001177624696.gif)
+![Adding-Methods](figures/Adding-Methods.gif)

@@ -1,8 +1,8 @@
 # 使用动画开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -225,7 +225,7 @@
        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
@@ -279,7 +279,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001903284256](figures/zh-cn_image_0000001903284256.gif)
+   ![zh-cn_image_0000001903284256](figures/Appearance-Disappearance-Transitions.gif)
 
 
 ## 一镜到底转场
@@ -315,7 +315,7 @@
        nodeAPI->setAttribute(firstImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(firstImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 25}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -359,7 +359,7 @@
        nodeAPI->setAttribute(secondImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 200}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(secondImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -436,7 +436,7 @@
    }
    ```
 
-   ![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
+   ![zh-cn_image_one_shot_transition](figures/one-shot-transition.gif)
 
 ## 使用关键帧动画
 
@@ -553,7 +553,7 @@
    column->AddChild(button);
    ```
 
-   ![zh-cn_image_0000001903284256](figures/zh-cn_image_keyframeAnimateTo.gif)
+   ![zh-cn_image_0000001903284256](figures/image-keyframeAnimateTo.gif)
 
 ## 使用帧动画
 
@@ -773,4 +773,4 @@
    }
    ```
 
-   ![zh-cn_image_animator](figures/zh-cn_image_animator.gif)
+   ![zh-cn_image_animator](figures/Frame-Animations.gif)

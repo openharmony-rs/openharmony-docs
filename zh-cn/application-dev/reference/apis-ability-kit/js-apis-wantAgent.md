@@ -4,12 +4,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 <!--deprecated_code_no_check-->
 
-WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取want信息、比较WantAgent实例和获取bundle名称等能力。
+WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取Want信息、比较WantAgent实例和获取Bundle名称等能力。
 
 > **说明：**
 > 
@@ -101,7 +101,7 @@ getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<WantAgent\> | 以Promise形式返回WantAgent。 |
+| Promise\<WantAgent\> | Promise对象，返回用于触发指定操作的WantAgent实例。 |
 
 **示例：**
 
@@ -153,7 +153,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的包名的回调方法。 |
+| callback | AsyncCallback\<string\> | 是   | 获取WantAgent实例的Bundle名称的回调方法。 |
 
 **示例：**
 
@@ -512,7 +512,7 @@ cancel(agent: WantAgent): Promise\<void\>
 
 | 类型            | 说明                            |
 | --------------- | ------------------------------- |
-| Promise\<void\> | 以Promise形式获取异步返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -822,8 +822,8 @@ wantAgent.getWantAgent({
 
 | 名称           | 类型                           | 只读 | 可选 | 说明                |
 | -------------- | ----------------------------- | ---- | ---- | ------------------ |
-| info           | WantAgent                       | 否   | 否   | 触发的wantAgent。       |
-| want           | Want                            | 否   | 否   | 存在的被触发的want。     |
+| info           | WantAgent                       | 否   | 否   | 触发的WantAgent。       |
+| want           | Want                            | 否   | 否   | 存在的被触发的Want。     |
 | finalCode      | number                          | 否   | 否   | 触发wantAgent的请求代码。|
 | finalData      | string                          | 否   | 否   | 公共事件收集的最终数据。  |
 | extraInfo      | { [key: string]: any }          | 否   | 是   | 额外数据。               |

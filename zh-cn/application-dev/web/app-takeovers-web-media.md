@@ -2,11 +2,15 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
 Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。
+
+## 约束与限制
+
+受系统控件回调处理能力限制，单个Web组件实例内建议同时托管的本地播放器实例不超过6个。超出建议数量可能导致页面卡顿或者冻结，建议仅托管页面可见、正在播放的视频内容。
 
 ## 使用场景
 
@@ -46,8 +50,8 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
   > - 上图中1的详细说明见[开启接管网页媒体播放](#开启接管网页媒体播放)。
   > - 上图中2的详细说明见[创建本地播放器](#创建本地播放器nativemediaplayer)。
   > - 上图中3的详细说明见[绘制本地播放器组件](#绘制本地播放器组件)。
-  > - 上图中4的详细说明见[执行 ArkWeb 内核发送给本地播放器的播控指令](#执行arkweb内核发送给本地播放器的播控指令)。
-  > - 上图中5的详细说明见[将本地播放器的状态信息通知给 ArkWeb 内核](#将本地播放器的状态信息通知给arkweb内核)。
+  > - 上图中4的详细说明见[执行ArkWeb内核发送给本地播放器的播控命令](#执行arkweb内核发送给本地播放器的播控命令)。
+  > - 上图中5的详细说明见[将本地播放器的状态信息通知给ArkWeb内核](#将本地播放器的状态信息通知给arkweb内核)。
 
 ## 开发指导
 
@@ -248,7 +252,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 动态创建组件并绘制到Surface上的详细介绍见[同层渲染](web-same-layer.md)。
 
-### 执行ArkWeb内核发送给本地播放器的播控指令
+### 执行ArkWeb内核发送给本地播放器的播控命令
 
 为了方便ArkWeb内核对本地播放器进行播控操作，应用需要令本地播放器实现[NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)接口，并根据每个接口方法的功能对本地播放器进行相应操作。
 
@@ -967,7 +971,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
                 event.result?.setGestureEventResult(false);
                 return;
               }
-              // 将触摸事件传递给NodeContrloller
+              // 将触摸事件传递给NodeController
               let ret = native_player_info.node_controller.postTouchEvent(event.touchEvent);
               console.info(`WebComponent.postTouchEvent, ret[${ret}], touchEvent[${JSON.stringify(event.touchEvent)}]`);
               event.result?.setGestureEventResult(ret);
@@ -1168,7 +1172,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       return result;
     }
 
-    // 执行播放指令
+    // 执行播放命令
     play() {
       let commandName = 'play';
       let checkResult = this.checkCommand(commandName, 'pause');
@@ -1188,7 +1192,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }, name: commandName});
       this.schedule();
     }
-    // 执行暂停指令
+    // 执行暂停命令
     pause() {
       let commandName = 'pause';
       let checkResult = this.checkCommand(commandName, 'play');
@@ -1209,7 +1213,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }, name: commandName});
       this.schedule();
     }
-    // 执行资源释放指令
+    // 执行资源释放命令
     release() {
       this.commands.push({ func: ()=>{
         console.info('AVPlayer.release()');
@@ -1217,7 +1221,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
-    // 执行跳转指令
+    // 执行跳转命令
     seek(time: number) {
       this.commands.push({ func: ()=>{
         console.info(`AVPlayer.seek(${time})`);
@@ -1225,7 +1229,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
-    // 执行设置音量指令
+    // 执行设置音量命令
     setVolume(volume: number) {
       this.commands.push({ func: ()=>{
         console.info(`AVPlayer.setVolume(${volume})`);
@@ -1233,7 +1237,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
       }});
       this.schedule();
     }
-    // 执行设置播放速度指令
+    // 执行设置播放速度命令
     setPlaybackRate(playbackRate: number) {
       let speed = media.PlaybackSpeed.SPEED_FORWARD_1_00_X;
       let delta = 0.05;

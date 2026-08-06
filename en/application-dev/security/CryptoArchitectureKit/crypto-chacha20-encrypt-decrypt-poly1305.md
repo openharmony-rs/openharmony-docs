@@ -23,7 +23,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance for encryption. The key type is ChaCha20, and the mode is Poly1305.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption), **key** to **SymKey** (the key for encryption), and **params** to **Poly1305ParamsSpec** corresponding to the Poly1305 mode.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **Poly1305ParamsSpec** corresponding to the Poly1305 mode.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
 
@@ -43,7 +43,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance for decryption. The key type is ChaCha20, and the mode is Poly1305.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption), **key** to **SymKey** (the key for decryption), and **params** to **Poly1305ParamsSpec** corresponding to the Poly1305 mode.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption), key to **SymKey** (the key for decryption), and parameter to **Poly1305ParamsSpec** corresponding to the Poly1305 mode.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 
@@ -99,13 +99,13 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = await decoder.update(cipherText);
+    let decryptData = await decoder.update(cipherText);
     // In Poly1305 mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptData;
   }
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
@@ -186,13 +186,13 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = decoder.updateSync(cipherText);
+    let decryptData = decoder.updateSync(cipherText);
     // In Poly1305 mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptData;
   }
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };

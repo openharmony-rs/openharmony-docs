@@ -52,7 +52,7 @@ Encapsulate **javaScriptProxy** and **runJavaScript** to implement the JSBridge 
   }
   ```
 
-- In the **initJSBridge** method, use **webviewControll.runJavaScript()** to inject the JSBridge initialization script into the HTML5 page for execution. When HTML5 is called, the **window.callID** is generated to identify the callback function, and then the callID and request parameters are transferred to the native side using **JSBridgeHandle.call**. Use **JSBridgeCallback** to receive the execution result from the native side, find the callback based on the ID and execute it, and then free the memory.
+- In the **initJSBridge** method, use **WebviewController.runJavaScript()** to inject the JSBridge initialization script into the HTML5 page for execution. When HTML5 is called, the **window.callID** is generated to identify the callback function, and then the callID and request parameters are transferred to the native side using **JSBridgeHandle.call**. Use **JSBridgeCallback** to receive the execution result from the native side, find the callback based on the ID and execute it, and then free the memory.
   ```ts
   // bridgeKey and bridgeMethod dynamically generate the entry for invoking on the HTML5 side.
   bridgeKey: string = 'JSBridge'
@@ -76,7 +76,7 @@ Encapsulate **javaScriptProxy** and **runJavaScript** to implement the JSBridge 
   }
   ```
 
-- **JSBridgeHandle.call()** is the unified entry for HTML5 to call native APIs. In this method, find the matching API to call based on the name of the method called by HTML5. After the call is complete, use the **this.callback()** method to return the result to HTML5. In the callback, use **webviewControll.runJavaScript()** to call **JSBridgeCallback** of HTML5 to return the **callID** and result.
+- **JSBridgeHandle.call()** is the unified entry for HTML5 to call native APIs. In this method, find the matching API to call based on the name of the method called by HTML5. After the call is complete, use the **this.callback()** method to return the result to HTML5. In the callback, use **WebviewController.runJavaScript()** to call **JSBridgeCallback** of HTML5 to return the **callID** and result.
   ```ts
   // The call method calls the native method and receives the result.
   private call = (fun, params) => {
@@ -186,71 +186,9 @@ Use the **runJavaScript** API in **WebviewController** to asynchronously execute
 
 **Solution**
 
-1. Prepare an HTML file. Below is the sample code:
+Use the **JavaScriptProxy** API in ArkTs to register the object in ArkTS with the window object of HTML5, and then use the window object to call the method in HTML5. In the following example, the **testObj** object is registered with the HTML5 window object under the alias **testObjName** in ArkTS. Then in HTML5, **window.testObjName** can then be used to access the object.
 
-   ```html
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
-   </head>
-   <body>
-       <h1>Title</h1>
-       <h5 id="h5"></h5>
-       <h5 id="h6"></h5>
-       <button onclick="handleFromH5">Invoke ArkTS method </button>
-       <script type="text/javascript">
-           function handleFromH5(){
-               let result = window.objName.test();
-               document.getElementById('h6').innerHTML = result;
-           }
-       </script>
-   </body>
-   </html>
-   ```
-
-2. Use the **JavaScriptProxy** API in ArkTs to register the object in ArkTS with the window object of HTML5, and then use the window object to call the method in HTML5. In the following example, the **testObj** object in ArkTS is registered with the HTML5 window object under the alias **objName**. In HTML5, **window.objName** can then be used to access the object.
-
-   ```ts
-   // xxx.ets
-   import web_webview from '@ohos.web.webview'
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World'
-     controller: web_webview.WebviewController = new web_webview.WebviewController()
-     testObj = {
-       test: (data1, data2, data3) => {
-         console.log("data1:" + data1);
-         console.log("data2:" + data2);
-         console.log("data3:" + data3);
-         return "AceString";
-       },
-       toString: () => {
-         console.log('toString' + "interface instead.");
-       }
-     }
-     build() {
-       Row() {
-         Column() {
-           Web({ src:$rawfile('index.html'), controller:this.controller })
-             .javaScriptAccess(true)
-             .javaScriptProxy({
-               object: this.testObj,
-               name: "objName",
-               methodList: ["test", "toString"],
-               controller: this.controller,
-            })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+For details about the example, see [Invoking Application Functions on the Frontend Page](../web/web-in-page-app-function-invoking.md#establishing-an-interaction-channel-between-the-application-side-and-the-html5-page).
 
 **Reference**
 
@@ -308,7 +246,7 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
       .onControllerAttached(() => {
-        console.log("onControllerAttached");
+        console.info("onControllerAttached");
         try {
           let userAgent = this.controller.getUserAgent() + this.customUserAgent;
           this.controller.setCustomUserAgent(userAgent);

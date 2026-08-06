@@ -1,20 +1,22 @@
 # WithTheme
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。
+WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。当全局主题无法满足局部区域独立风格需求时，可使用该组件在不影响其他区域的前提下实现局部换肤或独立主题风格的定制。
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)
+> - 本模块接口仅可在Stage模型下使用。
 >
-> WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme_skinning.md)。
+> - WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[TextClock](./ts-basic-components-textclock.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)。从API版本26.0.0开始，新增[CalendarPicker](./ts-basic-components-calendarpicker.md)、[UIPickerComponent](./ts-container-ui-picker-component.md)、[TextArea](./ts-basic-components-textarea.md)、[属性字符串](./ts-universal-styled-string.md)、[Gauge](./ts-basic-components-gauge.md)、[DataPanel](./ts-basic-components-datapanel.md)、[RichEditor](./ts-basic-components-richeditor.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[Image](./ts-basic-components-image.md)、[ImageAnimator](./ts-basic-components-imageanimator.md)、[Counter](./ts-container-counter.md)、[bindSheet](./ts-universal-attributes-sheet-transition.md#bindsheet)、[LoadingProgress](./ts-basic-components-loadingprogress.md)。
+>
+> - WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme_skinning.md)。
 
 ## 子组件
 
@@ -34,7 +36,7 @@ WithTheme(options: WithThemeOptions)
 
 | 参数名                            | 类型                                  | 必填  | 说明     |
 |--------------------------------|---------------------------------------|-----|---------------|
-| options | [WithThemeOptions](#withthemeoptions) | 是   | 设置作用域内组件配色。 |
+| options | [WithThemeOptions](#withthemeoptions) | 是   | 用于配置WithTheme作用域内组件的主题配色和深浅色模式，支持范围见上方说明中的组件列表。 |
 
 ## 属性
 
@@ -46,7 +48,7 @@ WithTheme(options: WithThemeOptions)
 
 ## WithThemeOptions
 
-设置WithTheme作用域内组件缺省样式及深浅色模式。
+用于设置WithTheme作用域内组件主题配色及深浅色模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -54,14 +56,14 @@ WithTheme(options: WithThemeOptions)
 
 | 名称        | 类型                               | 只读  | 可选 | 说明                |
 |------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于自定义WithTheme作用域内组件缺省配色。 <br/> 默认值：undefined，缺省样式跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM       |
+| theme     | [CustomTheme](#customtheme)    | 否 | 是  | 用于设置WithTheme作用域内组件的自定义主题配色。<br/>默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。 |
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明) | 否 | 是  | 用于指定WithTheme作用域内组件配色的深浅色模式。取值原则：ThemeColorMode.SYSTEM跟随系统深浅色设置，ThemeColorMode.DARK强制使用深色模式，ThemeColorMode.LIGHT强制使用浅色模式。设置深浅色模式时需要添加dark.json资源文件才能生效。<br/>默认值：ThemeColorMode.SYSTEM |
 
 ## CustomTheme
 
-type CustomTheme = CustomTheme
+type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
-自定义配色。
+用于自定义WithTheme作用域内组件的配色方案，具体配色项通过CustomColors接口配置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -69,16 +71,16 @@ type CustomTheme = CustomTheme
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件缺省配色。 |
+| import('../api/@ohos.arkui.theme').[CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件默认主题配色。 |
 
 ## 示例
 
-设置局部深浅色时，需要添加dark.json资源文件，深浅色模式才会生效。
+设置局部深浅色模式时，需要添加dark.json资源文件，深浅色模式才会生效。
 
 ![resources_dark](figures/resources_dark.png)
 
 dark.json数据示例：
-  ```ts
+  ```json
     {
       "color": [
         {
@@ -146,7 +148,7 @@ struct Index {
 ```
 ![withThemeColorMode](figures/witheThemeColorMode.png)
 
-### 示例2（自定义WithTheme作用域内组件缺省配色）
+### 示例2（自定义WithTheme作用域内组件默认配色）
 
 ```ts
 // 自定义WithTheme作用域内组件缺省配色
@@ -171,10 +173,10 @@ class RedColors implements CustomColors {
 }
 
 class PageCustomTheme implements CustomTheme {
-  colors?: CustomColors
+  colors?: CustomColors;
 
   constructor(colors: CustomColors) {
-    this.colors = colors
+    this.colors = colors;
   }
 }
 
@@ -187,13 +189,13 @@ struct IndexPage {
     undefined, // System
     new PageCustomTheme(new GreenColors()),
     new PageCustomTheme(new RedColors())
-  ]
+  ];
   @State themeIndex: number = 0;
 
   build() {
     Column() {
       Column({ space: '8vp' }) {
-        Text(`未使用WithTheme`)
+        Text('未使用WithTheme')
         // 点击按钮切换局部换肤
         Button(`切换theme配色：${this.themeNames[this.themeIndex]}`)
           .onClick(() => {
@@ -215,7 +217,7 @@ struct IndexPage {
       WithTheme({ theme: this.themeArray[this.themeIndex] }) {
         // WithTheme作用域
         Column({ space: '8vp' }) {
-          Text(`使用WithTheme`)
+          Text('使用WithTheme')
           Button('Button.style(NORMAL) with Custom Theme')
             .buttonStyle(ButtonStyleMode.NORMAL)
           Button('Button.style(EMP..ED) with Custom Theme')

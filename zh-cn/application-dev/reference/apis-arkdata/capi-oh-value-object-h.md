@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -20,11 +20,17 @@
 
 **相关模块：** [RDB](capi-rdb.md)
 
+## OH_VObject
+
+表示支持int64、double、text等多种数据类型的值对象。
+
+**起始版本：** 10
+
 ## 汇总
 
 ### 结构体
 
 | 名称                             | typedef关键字 | 描述               |
 | -------------------------------- | ------------- | ------------------ |
-| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 提供类型转换方法。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
 

@@ -6,10 +6,12 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=56bb123f81b3c1c6ce89c67e24c5686a564c7577 translatedAt=2026-07-29T04:49:49.149Z pushedAt=2026-07-29T07:03:58.061Z -->
 
 For details about the algorithm specifications, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 ## Adding the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -19,45 +21,48 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 **Creating an Object**
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being AES and the key length being 128 bits.
-   
+
    For details about how to generate an AES symmetric key, see the following example. To learn more, see [Symmetric Key Generation and Conversion Specifications: AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
 
-**Encrypting a Message**
+**Encryption**
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'AES128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The key algorithm is **AES128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
-2. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set encryption parameters.
+2. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set corresponding encryption parameters.
 
-3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the symmetric key (**OH_CryptoSymKey**) and the encryption parameter instance (**OH_CryptoSymCipherParams**) of the GCM mode.
+3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the symmetric key (**OH_CryptoSymKey**) and the encryption parameter (**OH_CryptoSymCipherParams**) of the GCM mode.
 
 4. Set the size of the data to be passed in each time to 20 bytes, and call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) multiple times to pass in the data (plaintext) to be encrypted.
-   
+
    - Currently, there is no length limit for a single update. You can call **OH_CryptoSymCipher_Update** based on the data volume.
-   - You are advised to check the result of each **OH_CryptoSymCipher_Update()**. If the result is not **null**, obtain the ciphertext and combine the data segments into complete ciphertext. The **OH_CryptoSymCipher_Update()** result may vary with the key specifications.
-      
-      If a block cipher mode (ECB or CBC) is used, data is encrypted and output based on the block size. When the update operation fills a block, the ciphertext is output. If the block is not filled, the update operation outputs **null**, and the unencrypted data is concatenated with the data input next time, and then the data is output by block. When **OH_CryptoSymCipher_Final()** is called, the unencrypted data is padded to the block size based on the specified padding mode, and then encrypted. The **Cipher.update** API works in the same way in decryption.
+
+   - You are advised to check the result of each update. If the result is not **null**, obtain the ciphertext and combine the data segments into complete ciphertext. The update result may vary with the mode.
+
+      1) For example, in ECB and CBC modes, encryption is always performed in units of blocks, and the encrypted block results produced by the current update are output. That is, when the current update operation accumulates a full block, the ciphertext is output; if a full block is not yet accumulated, the current update outputs null, and the unencrypted data is concatenated with the next input data before block-based output. During the final operation, the unencrypted data is padded according to the specified padding mode, and the remaining encryption result is output. The same applies to the update operation during decryption.
 
       If a stream cipher mode (CTR or OFB) is used, the ciphertext length is usually the same as the plaintext length.
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the ciphertext.
-   
-   - If data has been passed in by **update**, pass **null** in this step.
-   - The output of **OH_CryptoSymCipher_Final** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
-   > **NOTE**
-   > If GCM mode is used, **authTag** returned by **OH_CryptoSymCipher_Final()** will be used to initialize the authentication information during decryption and needs to be saved.
-   > In GCM mode, **authTag** must be of 16 bytes. It is used as the authentication information during decryption. In the example, **authTag** is of 16 bytes.
 
-**Decrypting a Message**
+   - If data has been passed in by **update**, pass **null** in this step.
+
+   - The output of **OH_CryptoSymCipher_Final** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
+
+   > **NOTE**
+   >
+   > In GCM mode, during a single encryption process, concatenating the results of each update and the final result yields "ciphertext + authTag", where authTag is the last 16 bytes. The rest is the ciphertext. If the data parameter of final is passed as null, the result of final is the authTag.
+
+**Decryption**
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the parameter **'AES128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The key type is **AES128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
 2. Call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set **authTag** as the authentication information for decryption.
-   
-   In GCM mode, extract the last 16 bytes from the encrypted data as the authentication information for initializing the **Cipher** instance in decryption. In the example, **authTag** is of 16 bytes.
+
+   In GCM mode, extract the last 16 bytes from the encrypted data as the authentication information for initializing the **Cipher** instance in decryption. In the example, **authTag** is 16 bytes.
 
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the decryption key (**OH_CryptoSymKey**) and the decryption parameter instance (**OH_CryptoSymCipherParams**) corresponding to the GCM mode.
 
-4. Set the size of the data to be passed in each time to 20 bytes, and call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) multiple times to pass in the data (ciphertext) to be encrypted.
+4. Set the size of the data to be passed in each time to 20 bytes, and call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) multiple times to pass in the data (ciphertext).
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
@@ -65,14 +70,17 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 Call [OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy), [OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy), and [OH_CryptoSymCipherParams_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_destroy) to destroy the objects.
 
-```c++
-#include <string.h>
+<!-- @[gcm_seg_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_segment_encryption_decryption.cpp) -->
+
+``` C++
+#include <cstring>
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
+#include "file.h"
 
 #define OH_CRYPTO_GCM_TAG_LEN 16
 #define OH_CRYPTO_MAX_TEST_DATA_LEN 128
-static OH_Crypto_ErrCode doTestAesGcmSeg()
+OH_Crypto_ErrCode doTestAesGcmSeg()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -89,27 +97,19 @@ static OH_Crypto_ErrCode doTestAesGcmSeg()
     Crypto_DataBlob tag = {.data = nullptr, .len = 0};
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     Crypto_DataBlob aadBlob = {.data = aad, .len = sizeof(aad)};
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
     Crypto_DataBlob tagInit = {.data = tagArr, .len = sizeof(tagArr)};
     int32_t cipherLen = 0;
     int blockSize = 20;
     int32_t randomLen = strlen(plainText);
-    Crypto_DataBlob cipherBlob;
-    // Define the encryption variables.
     int cnt = randomLen / blockSize;
     int rem = randomLen % blockSize;
     uint8_t cipherText[OH_CRYPTO_MAX_TEST_DATA_LEN] = {0};
-
-    // Define the decryption variables.
-    int decCnt = cipherLen / blockSize;
-    int decRem = cipherLen % blockSize;
-    int32_t plantLen = 0;
-    uint8_t plantText[OH_CRYPTO_MAX_TEST_DATA_LEN] = {0};
+    Crypto_DataBlob cipherBlob;
     
     // Generate a key.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -136,7 +136,7 @@ static OH_Crypto_ErrCode doTestAesGcmSeg()
         goto end;
     }
     
-    // Encrypt the message.
+    // Encrypt data.
     ret = OH_CryptoSymCipher_Create("AES128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -148,30 +148,34 @@ static OH_Crypto_ErrCode doTestAesGcmSeg()
     
     for (int i = 0; i < cnt; i++) {
         msgBlob.len = blockSize;
-        ret = OH_CryptoSymCipher_Update(encCtx, &msgBlob, &encData);
+        ret = OH_CryptoSymCipher_Update(encCtx, &msgBlob, &outUpdate);
         if (ret != CRYPTO_SUCCESS) {
             goto end;
         }
         msgBlob.data += blockSize;
-        memcpy(&cipherText[cipherLen], encData.data, encData.len);
-        cipherLen += encData.len;
+        memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
+        cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     if (rem > 0) {
         msgBlob.len = rem;
-        ret = OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &encData);
+        ret = OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &outUpdate);
         if (ret != CRYPTO_SUCCESS) {
             goto end;
         }
-        memcpy(&cipherText[cipherLen], encData.data, encData.len);
-        cipherLen += encData.len;
+        memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
+        cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     ret = OH_CryptoSymCipher_Final(encCtx, nullptr, &tag);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
-    // Decrypt the message.
+    // Decrypt data.
     cipherBlob = {.data = reinterpret_cast<uint8_t *>(cipherText), .len = (size_t)cipherLen};
+    msgBlob.data -= strlen(plainText) - rem;
+    msgBlob.len = strlen(plainText);
     ret = OH_CryptoSymCipher_Create("AES128|GCM|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -184,26 +188,7 @@ static OH_Crypto_ErrCode doTestAesGcmSeg()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    for (int i = 0; i < decCnt; i++) {
-        cipherBlob.len = blockSize;
-        ret = OH_CryptoSymCipher_Update(decCtx, &cipherBlob, &decData);
-        if (ret != CRYPTO_SUCCESS) {
-            goto end;
-        }
-        cipherBlob.data += blockSize;
-        memcpy(&plantText[plantLen], decData.data, decData.len);
-        plantLen += decData.len;
-    }
-    if (decRem > 0) {
-        cipherBlob.len = decRem;
-        ret = OH_CryptoSymCipher_Update(decCtx, &cipherBlob, &decData);
-        if (ret != CRYPTO_SUCCESS) {
-            goto end;
-        }
-        memcpy(&plantText[plantLen], decData.data, decData.len);
-        plantLen += decData.len;
-    }
-    ret = OH_CryptoSymCipher_Final(decCtx, nullptr, &decData);
+    ret = OH_CryptoSymCipher_Final(decCtx, &cipherBlob, &decUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -214,9 +199,9 @@ end:
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
     OH_Crypto_FreeDataBlob(&tag);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     return ret;
 }
 ```

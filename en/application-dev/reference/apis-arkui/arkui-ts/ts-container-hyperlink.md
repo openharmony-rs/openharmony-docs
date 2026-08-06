@@ -34,7 +34,7 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
-| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>Default value: **''**. If this parameter is not passed and the component does not have child components, the value of the **address** parameter is displayed by default.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
 
 ## Attributes
 

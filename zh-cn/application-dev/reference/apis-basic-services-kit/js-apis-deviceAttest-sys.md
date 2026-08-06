@@ -60,7 +60,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }
     })
 } catch (error) {
@@ -104,7 +104,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }).catch((error: BusinessError) => {
         console.error("error code:" + error.code + " message:" + error.message);
     });
@@ -149,7 +149,7 @@ try {
     " patchLevelResult:" + value.softwareResultDetail[1],
     " rootHashResult:" + value.softwareResultDetail[2],
     " PCIDResult:" + value.softwareResultDetail[3],
-    " reserver:" + value.softwareResultDetail[4]);
+    " reserved:" + value.softwareResultDetail[4]);
 } catch (error) {
     let code: number = (error as BusinessError).code;
     let message: string = (error as BusinessError).message;

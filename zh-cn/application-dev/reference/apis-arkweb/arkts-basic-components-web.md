@@ -1,12 +1,12 @@
 # 组件描述
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-提供具有网页显示能力的Web组件，Web控制能力请参考[模块描述](arkts-apis-webview.md)。
+Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在应用内嵌入和展示网页内容。开发者可通过Web组件加载在线网页和本地网页，支持隐私模式浏览、同步渲染模式、共享渲染进程等特性，满足混合开发、内容嵌入、浏览器类应用等多种场景下的网页展示需求。Web组件的控制器（WebviewController）及相关控制能力由[模块描述](arkts-apis-webview.md)提供。在使用Web组件时需注意：同一页面内的多个Web组件应分别绑定不同的WebviewController实例以保证独立性和性能隔离；移动设备上当Web实例超过10个时系统会主动回收后台页面数据。
 
 <!--RP1--><!--RP1End-->
 
@@ -27,7 +27,7 @@
 - [EventResult](./arkts-basic-components-web-EventResult.md)：同层事件消费结果。
 - [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md)：Web组件获取文件对象。
 - [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md)：Web组件文件选择结果。
-- [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md)：Web组件退出全屏的操作对象。
+- [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md)：Web组件退出全屏的处理操作对象。
 - [HttpAuthHandler](./arkts-basic-components-web-HttpAuthHandler.md)：HttpAuth认证请求相关操作功能对象。
 - [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md)：地理位置信息权限功能。
 - [JsResult](./arkts-basic-components-web-JsResult.md)：弹窗操作。
@@ -41,6 +41,7 @@
 - [WebResourceError](./arkts-basic-components-web-WebResourceError.md)：资源管理错误。
 - [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md)：资源获取请求。
 - [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)：资源获取响应。
+- [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md)：PIN码验证请求。
 
 ## 需要权限
 
@@ -66,7 +67,7 @@ Web(value: WebOptions)
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 **示例：**
 
@@ -136,13 +137,13 @@ Web组件指定共享渲染进程。
   @Entry
   @Component
   struct WebComponent {
-    controller1: webview.WebviewController = new webview.WebviewController();
-    controller2: webview.WebviewController = new webview.WebviewController();
+    exampleController: webview.WebviewController = new webview.WebviewController();
+    w3Controller: webview.WebviewController = new webview.WebviewController();
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: "111" })
-        Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.example.com', controller: this.exampleController, sharedRenderProcessToken: '111' })
+        Web({ src: 'www.w3.org', controller: this.w3Controller, sharedRenderProcessToken: '111' })
       }
     }
   }
@@ -157,13 +158,13 @@ Web组件指定共享渲染进程。
   @Entry
   @Component
   struct WebComponent {
-    controller1: webview.WebviewController = new webview.WebviewController();
-    controller2: webview.WebviewController = new webview.WebviewController();
+    noEmulateController: webview.WebviewController = new webview.WebviewController();
+    emulateTouchController: webview.WebviewController = new webview.WebviewController();
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
-        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+        Web({ src: 'www.example.com', controller: this.noEmulateController, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.emulateTouchController, emulateTouchFromMouseEvent: true })
       }
     }
   }
@@ -190,7 +191,7 @@ Web组件指定共享渲染进程。
   }
   ```
 
-通过resources协议加载。
+通过resource协议加载。
 
 使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
   ```ts
@@ -211,7 +212,7 @@ Web组件指定共享渲染进程。
   }
   ```
 
-在“src\main\resources\rawfile”文件夹下创建index.html：
+在“src/main/resources/rawfile”文件夹下创建index.html：
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -269,12 +270,13 @@ Web组件指定共享渲染进程。
    }
    ```
 
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { GlobalContext } from '../GlobalContext';
 
-   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+   let url = 'file://' + GlobalContext.getContext().getObject('filesDir') + '/index.html';
 
    @Entry
    @Component
@@ -295,6 +297,7 @@ Web组件指定共享渲染进程。
 
    以filesDir为例，获取沙箱路径。若想获取其他路径，请参考[应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -304,8 +307,8 @@ Web组件指定共享渲染进程。
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。
-       GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       GlobalContext.getContext().setObject('filesDir', this.context.filesDir);
+       console.info('Sandbox path is ' + GlobalContext.getContext().getObject('filesDir'));
      }
    }
    ```

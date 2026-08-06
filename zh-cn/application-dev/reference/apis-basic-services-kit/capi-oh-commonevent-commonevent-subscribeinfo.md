@@ -1,9 +1,8 @@
 # CommonEvent_SubscribeInfo
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -13,7 +12,7 @@ typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
 
 ## 概述
 
-提供CommonEvent_SubscribeInfo订阅者信息结构体声明。
+提供公共事件订阅者信息结构体声明。该结构体用于描述订阅者的配置信息，在调用创建订阅者接口时作为参数传入。
 
 **起始版本：** 12
 

@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-在多设备开发的场景中，开发者可以使用[\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。
+在多设备开发的场景中，开发者可以使用[@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。
 
 >**说明：**
 >
@@ -16,18 +16,27 @@
 
 ## 概述
 \@Env是响应式系统环境变量装饰器，其功能包括：
-- 根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
+
+根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
   - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口不同宽高阈值下对应的断点值信息。
   - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为vp。
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为px。
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为vp。
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
-- 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
-- \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
+  - [ReadonlyEnvKey.WINDOW_DISPLAY_ID](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的ID，从API版本26.0.0开始支持。
+  - [ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的系统显示大小缩放系数，从API版本26.0.0开始支持。
+  - [ReadonlyEnvKey.WINDOW_IS_FOCUSED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取当前自定义组件所在窗口是否处于获焦状态，从API版本26.0.0开始支持。
+  - [ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取当前自定义组件所在窗口是否处于高亮状态，从API版本26.0.0开始支持。
+  - [WritableEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
+  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
+  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableEnvKey.FONT_SCALE和WritableEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)中的[.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env)方法向子组件中的\@Env传值。
+  - \@Env装饰的变量不允许开发者初始化。
+    - 当\@Env装饰的类型是复杂类型时，\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
+    - 当\@Env装饰的类型是简单类型时，开发者可以在\@Component中使用[\@Watch](state-management/arkts-watch.md)，在\@ComponentV2中使用\@Monitor监听变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
 
 ## \@Env支持参数
 
-@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。
+@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt)。
 
 ## \@Env和Environment能力对比
 \@Env和[Environment](./state-management/arkts-environment.md)都是系统环境变量相关，但两者能力有较大的不同，具体能力对比见下表。
@@ -35,8 +44,8 @@
 | 能力 | \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |起始API version|从API version 22开始支持。|从API version 7开始支持。|
-|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
-|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
+|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。<br/>API版本26.0.0之后支持[SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)\|[SystemEnvKey\<T\>类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt)| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
+|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。<br/>API版本26.0.0之后，开发者可通过WithEnv的env接口设置SystemEnvKey\<T\>类型参数的系统环境变量。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
 |是否有响应式能力|有，当系统环境变量变化时，会通知\@Env装饰的环境变量的改变，并通知\@Env关联组件刷新。|无，系统环境变量变化时，不会通知Environment改变。|
 
 ## 限制条件
@@ -100,6 +109,13 @@
   - \@Env使用`SystemProperties.WINDOW_SIZE_PX`时，装饰的变量类型必须为`window.Size`类型。
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoVP`类型。
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA_PX`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoPX`类型。
+  - \@Env使用`ReadonlyEnvKey.WINDOW_DISPLAY_ID`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`ReadonlyEnvKey.WINDOW_IS_FOCUSED`时，装饰的变量类型必须为`boolean`类型。
+  - \@Env使用`ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED`时，装饰的变量类型必须为`boolean`类型。
+  - \@Env使用`WritableEnvKey.FONT_SCALE`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`WritableEnvKey.DIRECTION`时，装饰的变量类型必须为`Direction`类型。
+
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -113,7 +129,7 @@
     }
   }
   ```
-- \@Env只能单独使用，不能和其他V1V2状态变量装饰器或@Require联用，否则会有编译时报错。
+- \@Env只能单独使用，不能和其他V1V2状态变量装饰器或@Require联用，否则会有编译时报错。从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
   ```ts
   @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // 正确写法
   @State @Env(SystemProperties.BREAK_POINT) breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // 错误写法，编译时报错
@@ -210,7 +226,9 @@
    - 查找当前窗口：有\@Env对应的`SystemProperties.BREAK_POINT`实例。
    - 复用窗口中`SystemProperties.BREAK_POINT`对应的环境变量实例。
 
-```TypeScript
+<!-- @[EnvInitFlow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInitFlow.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -229,6 +247,7 @@ struct Index {
 
 @Component
 struct Child1 {
+  // @Env读取系统环境变量
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {
@@ -273,7 +292,6 @@ struct GrandChild2 {
     }
   }
 }
-
 ```
 
 ## 使用场景
@@ -281,12 +299,12 @@ struct GrandChild2 {
 
 下面的例子中：
 - 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口尺寸的布局断点信息，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.breakpoint`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为vp，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInVP`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为px，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInPX`的属性的变化。
 - 将\@Env装饰的变量传递给`CompV2`中[\@Param](./state-management/arkts-new-param.md)装饰的变量和`Comp`中的常规变量。
 - 点击`Button('Landscape')`和`Button('Portrait')`切换横竖屏，`Index`、`CompV2`和`Comp`关联组件进行对应的刷新，`orientationChange`被触发监听回调。
 
-```ts
+<!-- @[EnvInComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponentV2.ets) -->
+
+``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -294,8 +312,6 @@ import { common } from '@kit.AbilityKit';
 @ComponentV2
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -313,18 +329,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -334,8 +344,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -343,17 +353,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -361,17 +365,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -381,7 +379,9 @@ struct Comp {
 
 \@Env在\@Component中使用和其在\@ComponentV2中使用类似，示例如下。
 
-```ts
+<!-- @[EnvInComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponent.ets) -->
+
+``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -389,8 +389,6 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -408,18 +406,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -429,8 +421,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -438,17 +430,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -456,17 +442,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -474,7 +454,7 @@ struct Comp {
 
 ### 通过BuilderNode切换窗口
 
-\@Env用于展示\@Component/\@ComponentV2所在[窗口](../reference/apis-arkui/arkts-apis-window-Window.md)的环境变量信息。开发者通过BuilderNode切换@Component\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
+\@Env用于展示\@Component/\@ComponentV2所在[窗口](../reference/apis-arkui/arkts-apis-window.md)的环境变量信息。开发者通过BuilderNode切换@Component\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
 
 在下面的示例中：
 1. 点击```Button('add node to tree')```，创建BuilderNode节点挂载到`NodeContainer`下。
@@ -484,9 +464,9 @@ struct Comp {
    - `ComponentUnderBuilderNode`在被挂载到新的窗口下时，会触发\@Env重新获取新的环境变量。
    - \@Env重新获取新的环境变量后，触发其关联组件的刷新。其中`ComponentUnderBuilderNode`中`@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo`会通知`CompV2`内的`@Param breakpoint`刷新，但是并不会通知`Comp`内的常规变量`breakpoint`触发UI刷新。所以在切换窗口，\@Env重新获取环境变量的场景下，建议开发者不要将\@Env传递给常规变量，以避免常规变量不能被通知UI刷新的问题。
 
-下面的示例包含了创建子窗的流程，具体可参考[管理应用窗口（Stage模型）](../windowmanager/application-window-stage.md)。
+下面的示例包含了创建子窗的流程，具体可参考[子窗口开发指导](../windowmanager/subwindow-guide.md)。
 
-```Typescript
+``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -510,16 +490,17 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```Typescript
-// Index.ets
+<!-- @[EnvBuilderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNode.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, uiObserver, window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 
-let windowStage_: window.WindowStage | undefined = undefined;
-let sub_windowClass: window.Window | undefined = undefined;
+let windowStage: window.WindowStage | undefined = undefined;
+let subWindowClass: window.Window | undefined = undefined;
 let globalBuilderNode: BuilderNode<[]> | undefined = undefined;
 
 export class MyNodeController extends NodeController {
@@ -569,25 +550,25 @@ struct Index {
   private nodeController: MyNodeController = new MyNodeController();
 
   private createSubWindow() {
-    windowStage_ = AppStorage.get('windowStage');
-    if (windowStage_ == null) {
-      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage_ is null');
+    windowStage = AppStorage.get('windowStage');
+    if (windowStage == null) {
+      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage is null');
     } else {
       // 创建应用子窗口。
-      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
+      windowStage.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
           hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: ' + JSON.stringify(err));
           return;
         }
-        sub_windowClass = data;
-        if (!sub_windowClass) {
-          hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
+        subWindowClass = data;
+        if (!subWindowClass) {
+          hilog.error(DOMAIN, 'testTag', 'subWindowClass is null');
           return;
         }
         hilog.info(DOMAIN, 'testTag', 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         // 子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
-        sub_windowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
+        subWindowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to move the window. Cause:' + JSON.stringify(err));
@@ -595,7 +576,7 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in moving the window.');
         });
-        sub_windowClass.resize(900, 1800, (err: BusinessError) => {
+        subWindowClass.resize(900, 1800, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -604,18 +585,18 @@ struct Index {
           hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
         });
          // 为子窗口加载对应的目标页面。
-        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
+        subWindowClass.setUIContent('pages/EnvBuilderNodeSubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause:' + JSON.stringify(err));
             return;
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-          if (!sub_windowClass) {
-            hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
+          if (!subWindowClass) {
+            hilog.error(DOMAIN, 'testTag', 'subWindowClass is null');
             return;
           }
-          sub_windowClass.showWindow((err: BusinessError) => {
+          subWindowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
               hilog.error(DOMAIN, 'testTag', 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -629,12 +610,12 @@ struct Index {
   }
 
   private destroySubWindow() {
-    if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
+    if (!subWindowClass) {
+      console.error('subWindowClass is null');
       return;
     }
     // 销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
-    sub_windowClass.destroyWindow((err: BusinessError) => {
+    subWindowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
@@ -714,9 +695,10 @@ struct Comp {
 }
 ```
 
-```Typescript
-// SubWindow.ets
-import { MyNodeController } from './Index';
+<!-- @[EnvBuilderNodeSubWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeSubWindow.ets) -->
+
+``` TypeScript
+import { MyNodeController } from './EnvBuilderNode';
 
 @Entry
 @Component
@@ -751,171 +733,12 @@ struct SubWindow {
 
 可以使用lambda闭包函数将`ComponentUnderBuilderNode`中的\@Env向下传递。通过这种方式`ComponentUnderBuilderNode`中的\@Env可以收集到子组件`Comp`内组件的依赖，在切换窗口实例的时候触发`Comp`内组件的刷新。
 
-具体示例如下。
+仅需修改`ComponentUnderBuilderNode`向`Comp`的传参方式以及`Comp`自身的取值方式，其余部分（`EntryAbility`、`MyNodeController`、`Index`、`createSubWindow`、`destroySubWindow`、`SubWindow`、`CompV2`）与上例完全相同。具体示例如下。
 
-```TypeScript
-import { BuilderNode, FrameNode, NodeController, uiObserver, window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[EnvBuilderNodeLambda](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeLambda.ets) -->
 
-const DOMAIN = 0x0000;
-
-let windowStage_: window.WindowStage | undefined = undefined;
-let sub_windowClass: window.Window | undefined = undefined;
-let globalBuilderNode: BuilderNode<[]> | undefined = undefined;
-
-export class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private uiContext: UIContext | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-    this.uiContext = uiContext;
-    return this.rootNode;
-  }
-
-  addBuilderNode(): void {
-    if (!globalBuilderNode && this.uiContext) {
-      globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildComponent), undefined);
-    }
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  removeBuilderNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  disposeNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      globalBuilderNode.dispose();
-      globalBuilderNode = undefined;
-    }
-  }
-}
-
-@Builder
-function buildComponent() {
-  Column() {
-    ComponentUnderBuilderNode()
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  private nodeController: MyNodeController = new MyNodeController();
-
-  private createSubWindow() {
-    windowStage_ = AppStorage.get('windowStage');
-    if (windowStage_ == null) {
-      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage_ is null');
-    } else {
-      // 创建应用子窗口。
-      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-          return;
-        }
-        sub_windowClass = data;
-        if (!sub_windowClass) {
-          hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
-          return;
-        }
-        hilog.info(DOMAIN, 'testTag', 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        // 子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
-        sub_windowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to move the window. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in moving the window.');
-        });
-        sub_windowClass.resize(900, 1800, (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to change the window size. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
-        });
-         // 为子窗口加载对应的目标页面。
-        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-          if (!sub_windowClass) {
-            hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
-            return;
-          }
-          sub_windowClass.showWindow((err: BusinessError) => {
-            let errCode: number = err.code;
-            if (errCode) {
-              hilog.error(DOMAIN, 'testTag', 'Failed to show the window. Cause: ' + JSON.stringify(err));
-              return;
-            }
-            hilog.info(DOMAIN, 'testTag', 'Succeeded in showing the window.');
-          });
-        });
-      })
-    }
-  }
-
-  private destroySubWindow() {
-    if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
-      return;
-    }
-    // 销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
-    sub_windowClass.destroyWindow((err: BusinessError) => {
-      let errCode: number = err.code;
-      if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
-        return;
-      }
-      console.info('Succeeded in destroying the window.');
-    });
-  }
-
-  build() {
-    Column({ space: 10 }) {
-      Text(`Index`)
-      // 第一步：创建globalBuilderNode，并将globalBuilderNode下的节点挂在NodeContainer的占位节点下
-      Button('add node to tree').width(200).onClick(() => {
-        this.nodeController.addBuilderNode();
-      })
-      // 第二步：从NodeContainer的占位节点下移除globalBuilderNode下的节点
-      Button('remove node from tree').width(200).onClick(() => {
-        this.nodeController.removeBuilderNode();
-      })
-      // 销毁globalBuilderNode下的节点
-      Button('dispose node').width(200).onClick(() => {
-        this.nodeController.disposeNode();
-      })
-      // 第三步：创建子窗
-      Button(`create sub window`).width(200).onClick(() => {
-        this.createSubWindow();
-      })
-      // 销毁子窗
-      Button(`destroy sub window`).width(200).onClick(() => {
-        this.destroySubWindow();
-      })
-      NodeContainer(this.nodeController).backgroundColor('#FFEEF0')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
+``` TypeScript
+// 仅修改 ComponentUnderBuilderNode 与 Comp，其余与上例相同
 @Component
 struct ComponentUnderBuilderNode {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
@@ -928,18 +751,6 @@ struct ComponentUnderBuilderNode {
       CompV2({ breakpoint: this.breakpoint })
       // 通过lambda闭包函数，使得@Env可以关联到Comp内的组件
       Comp({ getEnv: () => this.breakpoint })
-    }
-  }
-}
-
-@ComponentV2
-struct CompV2 {
-  @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-
-  build() {
-    Column() {
-      Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`)
-      Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`)
     }
   }
 }
@@ -961,3 +772,108 @@ struct Comp {
 运行效果图如下。
 
 ![gif](./figures/env_switch_instance2.gif)
+
+### \@Watch与\@Monitor监听\@Env装饰的变量
+从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
+<!-- @[EnvWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvWatch.ets) -->
+
+``` TypeScript
+import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State fontScaleNum: number = 1;
+
+  build() {
+    Column() {
+      Button('update').onClick(() => {
+        this.fontScaleNum++;
+      })
+
+      WithEnv() {
+        ChildV1()
+      }
+      .env(WritableEnvKey.FONT_SCALE, this.fontScaleNum)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildV1 {
+  @Env(WritableEnvKey.FONT_SCALE) @Watch('onEnvUpdate') fontScaleVal: number;
+
+  onEnvUpdate(){
+    hilog.info(0x0000, 'testTag',`Env value has changed Watched`);
+  }
+
+  build() {
+    Column() {
+      Text('FontScale val is:'  + this.fontScaleVal)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+运行效果图如下。
+
+![png](./figures/env-f.png)
+
+在\@ComponentV2中，可通过\@Monitor监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
+<!-- @[EnvMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvMonitor.ets) -->
+
+``` TypeScript
+import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+
+@Entry
+@ComponentV2
+struct MonitorTest {
+  @Local message: number = 2;
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+        WithEnv() {
+          Child()
+        }.env(WritableEnvKey.FONT_SCALE, this.message)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Env(WritableEnvKey.FONT_SCALE) message: number;
+
+  @Monitor('message')
+  onStrChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(0x0000, 'testTag',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text('message' + `${this.message}`)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+```
+
+运行效果图如下。
+
+![image](./figures/env-m.png)

@@ -1,22 +1,28 @@
 # AlphabetIndexer
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7c02fd7d3bf79d983e83eb56a10b2587305ecd75 translatedAt=2026-07-30T02:35:52.464Z pushedAt=2026-08-01T06:42:55.885Z -->
 
-The **AlphabetIndexer** component can create a logically indexed array of items in a container for instant location.
+The **AlphabetIndexer** component can be used with container components to quickly locate the display area of the container based on logical structure. It is suitable for scenarios requiring quick content location, such as contacts, city lists, and category lists.
 
->  **NOTE**
+> **NOTE**
 >
->  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - Primary indexes: letter indexes on the index bar, such as '#', 'A', 'B', 'C', etc.
+>
+> - Secondary indexes: specific content list items displayed in the pop-up window, returned through the **onRequestPopupData** callback.
+>
+> - Since API version 12, haptic feedback is enabled by default. Before using it, configure the vibration permission as described in [enableHapticFeedback](#enablehapticfeedback12).
 
 ## Child Components
 
 Not supported
-
 
 ## APIs
 
@@ -44,12 +50,14 @@ Defines the options of the **AlphabetIndexer** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | No| No| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used. When this parameter and the [selected](#selected8) property are set at the same time, the **selected** property has a higher priority.<br>Value range: [0, arrayValue.length-1]<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -75,7 +83,7 @@ Sets the text color for unselected items.
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of unselected items.<br>Default value: **0x99182431**, which is a slightly transparent brown.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of unselected items.<br>Default value: **0x99182431**, displayed as a slightly transparent dark blue.|
 
 ### selectedColor
 
@@ -91,7 +99,7 @@ Sets the text color for the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the selected item.<br>Default value: **0xFF007DFF**, which is blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Selected item text color.<br/>Default value: **0xFF007DFF**, displayed as opaque blue. |
 
 ### popupColor
 
@@ -107,7 +115,7 @@ Sets the text color for the primary index item in the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the primary index item in the pop-up window.<br>Default value: **0xFF007DFF**, which is blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Text color of the pop-up window primary index item.<br/>Default value: **0xFF007DFF**, displayed as opaque blue. |
 
 ### selectedBackgroundColor
 
@@ -123,13 +131,18 @@ Sets the background color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected item.<br>Default value: **0x1A007DFF**, which is semi-transparent blue-green.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected item.<br>Default value: **0x1A007DFF**, displayed as a semi-transparent blue.|
 
 ### popupBackground
 
 popupBackground(value: ResourceColor)
 
-Sets the background color for the pop-up window.
+Sets the background color of the pop-up window.<br />
+When this API is not actively called or the parameter **value** is set to **undefined**:<br />
+In API version 11 and earlier, the default background color of the pop-up window is **0xFFFFFFFF**, displayed as white.<br />
+From API version 12 to API version 24, the default is **#66808080**, displayed as semi-transparent gray.<br />
+Starting from API version 26.0.0, if neither [popupBackground](#popupbackground) nor [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) is actively called, or both are called with **value** set to **undefined**, the default display on high-computing-power and medium-computing-power devices is the **THICK** style of the immersive system material [ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle), and the default display on low-computing-power devices is a white background.<br />
+If **popupBackgroundBlurStyle** is actively called with a valid **value**, the default background color of the pop-up window is **#66808080**, displayed as semi-transparent gray.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -139,7 +152,7 @@ Sets the background color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>Default value:<br>API version 11 and earlier: **0xFFFFFFFF**, which is white.<br>Since API version 12: **#66808080**, which is semi-transparent gray.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>|
 
 ### usingPopup
 
@@ -242,7 +255,7 @@ Sets the alignment style of the indexer pop-up window.
 
 selected(index: number)
 
-Sets the index of the selected item.
+Sets the index of the selected item. When this attribute and the **selected** attribute in [AlphabetIndexerOptions](#alphabetindexeroptions18) are set at the same time, this attribute has a higher priority.
 
 Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
@@ -254,13 +267,13 @@ Since API version 10, this parameter supports two-way binding through [$$](../..
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | Yes  | Index of the selected item.<br>Default value: **0**|
+| index  | number | Yes  | Index of the selected item.<br>Value range: [0, [arrayValue](#alphabetindexeroptions18).length – 1]<br>If the index value is out of the range, the default value **0** is used.<br>Default value: **0**|
 
 ### popupPosition<sup>8+</sup>
 
 popupPosition(value: Position)
 
-Sets the position of the pop-up window relative to the center of the indexer's top border.
+Sets the position of the pop-up window relative to the midpoint of the top edge of the index bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -270,7 +283,7 @@ Sets the position of the pop-up window relative to the center of the indexer's t
 
 | Name| Type                             | Mandatory| Description                                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | Yes  | Position of the pop-up window relative to the center of the indexer's top border.<br>Default value: **{x: 60.0, y: 48.0}**|
+| value  | [Position](ts-types.md#position) | Yes   | Position of the pop-up window relative to the midpoint of the top edge of the index bar. When set simultaneously with [alignStyle](#alignstyle), the horizontal direction is controlled by the **offset** parameter of [alignStyle](#alignstyle), and **value.y** takes effect in the vertical direction.<br/>Default value: **{x: 60.0, y: 48.0}**<br/>Unit: vp |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -279,6 +292,8 @@ popupSelectedColor(value: ResourceColor)
 Sets the text color for the selected secondary index item in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +311,8 @@ Sets the text color for the unselected secondary index items in the pop-up windo
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -311,6 +328,8 @@ popupItemFont(value: Font)
 Sets the text style for the secondary index item in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,29 +347,33 @@ Sets the background color for the secondary index item in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                    | Mandatory| Description                                           |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>Since API version 12: **#00000000**, which is black.|
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes | Background color of the pop-up window secondary index item.<br/>Default value:<br />API version 11 and earlier: #FFFFFFFF, displayed as white.<br />API version 12 and later: #00000000, displayed as transparent. |
 
-### autoCollapse<sup>11+</sup>   
+### autoCollapse<sup>11+</sup>
 
 autoCollapse(value: boolean)
 
 Sets whether to enable the adaptive collapse behavior for the indexer.
 
-When the first index item is **"#"**: Remaining items ≤ 9: Full display mode; 9 < Remaining items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; remaining items > 13: Adapts between short and long collapse modes based on the indexer height.
+When the first index item is **"#"**: Remaining items ≤ 9: Full display mode (all index items are fully displayed); 9 < Remaining items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; remaining items > 13: Adapts between short and long collapse modes based on the indexer height.
 
-When the first index item is not **"#"**: All items ≤ 9: Full display mode; 9 < All items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; all items > 13: Adapts between short and long collapse modes based on the indexer height.
+When the first index item is not **"#"**: All items ≤ 9: Full display mode (all index items are fully displayed); 9 < All items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; all items > 13: Adapts between short and long collapse modes based on the indexer height.
 
 >**NOTE**
 >
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -360,13 +383,15 @@ When the first index item is not **"#"**: All items ≤ 9: Full display mode; 9 
 | ------ | ------- | ---- | ------------------------------------------ |
 | value  | boolean | Yes  | Whether to auto-collapse or expand the indexer bar.<br>Default value:<br>Before API version 12: **false**<br>Since API version 12: **true**<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
 
-### popupItemBorderRadius<sup>12+</sup>   
+### popupItemBorderRadius<sup>12+</sup>
 
 popupItemBorderRadius(value: number)
 
 Sets the radius of the index border corners in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,13 +401,15 @@ Sets the radius of the index border corners in the pop-up window.
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | Yes  | Radius of the index background border corners in the pop-up window.<br>Default value: **24vp**.<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the pop-up window is automatically adaptive (radius of the index corners + 4 vp).|
 
-### itemBorderRadius<sup>12+</sup>   
+### itemBorderRadius<sup>12+</sup>
 
 itemBorderRadius(value: number)
 
 Sets the radius of the index background border corners in the alphabetic index bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,13 +419,15 @@ Sets the radius of the index background border corners in the alphabetic index b
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | Yes  | Radius of the index background border corners in the alphabetic index bar.<br>Default value: **8vp**<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the alphabetic index bar is automatically adaptive (radius of the index corners + 4 vp).|
 
-### popupBackgroundBlurStyle<sup>12+</sup>   
+### popupBackgroundBlurStyle<sup>12+</sup>
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-Sets the background blur style of the pop-up window. If this API is not called, the component is regularly blurred by default. The corresponding value is **COMPONENT_REGULAR** in **BlurStyle**.
+Sets the background blur material of the pop-up window. Before API version 26.0.0, when this API is not called, the default is the component's regular material blur, corresponding to **COMPONENT_REGULAR** in **BlurStyle**. Starting from API version 26.0.0, if neither [popupBackground](#popupbackground) nor [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) is actively called, or both are called with **value** set to **undefined**, the default display on high-computing-power and medium-computing-power devices is the **THICK** style of the immersive system material [ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle), and the default display on low-computing-power devices is a white background.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -408,13 +437,15 @@ Sets the background blur style of the pop-up window. If this API is not called, 
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the pop-up window.<br>The background blur effect can affect [popupBackground](#popupbackground). You can disable the effect by setting it to **NONE**.|
 
-### popupTitleBackground<sup>12+</sup>   
+### popupTitleBackground<sup>12+</sup>
 
 popupTitleBackground(value: ResourceColor)
 
 Sets the background color for the primary index item in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,9 +459,11 @@ Sets the background color for the primary index item in the pop-up window.
 
 enableHapticFeedback(value: boolean)
 
-Sets whether to enable haptic feedback.
+Sets whether to enable haptic feedback. When enabled, haptic feedback is triggered when a finger touches or slides to select an index item.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -450,8 +483,8 @@ Enumerates the alignment styles of the indexer pop-up window.
 | -------- | --- | ----- |
 | Left | 0 | The pop-up window is displayed on the right of the indexer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Right | 1 | The pop-up window is displayed on the left of the indexer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| START<sup>12+</sup> | 2 | The pop-up window is displayed on the right of the indexer for left-to-right scripts, and on the left of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| END<sup>12+</sup> | 3 | The pop-up window is displayed on the left of the indexer for left-to-right scripts, and on the right of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| START<sup>12+</sup> | 2 | The pop-up window is displayed on the right of the indexer for left-to-right scripts, and on the left of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction:** This API can be used only in the stage model.|
+| END<sup>12+</sup> | 3 | The pop-up window is displayed on the left of the indexer for left-to-right scripts, and on the right of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## Events
 
@@ -461,7 +494,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-Triggered when an index item is selected, with the callback parameter being the index of the currently selected item.
+Registers the callback for the index item selection event. The callback parameter is the current selected item index.
 
 > **NOTE**
 >
@@ -489,7 +522,7 @@ Triggered when an index item is selected, with the callback parameter being the 
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) | Yes  | Event triggered when an index item is selected.|
+| callback  | [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) | Yes  | Callback used to process the index item selection event.|
 
 ### onRequestPopupData<sup>8+</sup>
 
@@ -505,13 +538,13 @@ Triggered for a secondary index item content event in the pop-up window. The cal
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | Yes  | Callback for setting the secondary index item content event in the pop-up window.|
+| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | Yes  | Callback used to provide the content of the secondary index item in the pop-up window. You need to set [usingPopup](#usingpopup) to **true** first.|
 
 ### onPopupSelect<sup>8+</sup>
 
 onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
-Triggered when a secondary index item in the pop-up window is selected. The callback parameter is the index of the selected secondary index item.
+Triggered when a secondary index item in the pop-up window is selected. The callback parameter is the index of the selected secondary index item. This event is triggered only when [usingPopup](#usingpopup) is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -521,57 +554,70 @@ Triggered when a secondary index item in the pop-up window is selected. The call
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | Yes  | Event triggered when a secondary index item in the pop-up window is selected.|
+| callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | Yes  | Callback used to process the secondary index selection event of the pop-up window. You need to set [usingPopup](#usingpopup) to **true** first.|
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
+
 type OnAlphabetIndexerSelectCallback = (index: number) => void
 
 Represents the callback invoked when an index item is selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index    | number  | Yes  | Index of the currently selected index item.|
 
 ## OnAlphabetIndexerPopupSelectCallback<sup>18+</sup>
+
 type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 Represents the callback invoked when a secondary index item in the pop-up window is selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index   | number  | Yes  | Index of the currently selected secondary index item in the pop-up window.|
 
 ## OnAlphabetIndexerRequestPopupDataCallback<sup>18+</sup>
+
 type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array\<string\>
 
 Represents the callback invoked when an index item is selected and [usingPopup](#usingpopup) is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index   | number  | Yes  | Index of the currently selected index item.|
 
 **Return value**
+
 | Type         | Description                |
 | ------------- | -------------------- |
 | Array\<string\> | Array of secondary index items to be displayed in the pop-up window. Up to 5 items can be displayed vertically, with scrollable support for more items.|
 
 ## Example
- 
+
 ### Example 1: Setting the Display Text for the Index Pop-up Window
 
 This example demonstrates how to customize the display text for the index pop-up window using the [onRequestPopupData](#onrequestpopupdata8) event.
@@ -767,19 +813,19 @@ struct AlphabetIndexerSample {
               .popupBackground (0xD2B48C) // Background color of the pop-up window.
               .usingPopup(true) // Display a pop-up window when an index item is selected.
               .selectedFont({ size: 16, weight: FontWeight.Bolder }) // Text style of the selected item.
-              .popupFont({ size: 30, weight: FontWeight.Bolder }) // Text style of the pop-up window.
+              .popupFont({ size: 30, weight: FontWeight.Bolder }) // Text style of the primary index item in the pop-up window.
               .itemSize(28) // Size of an item in the alphabetic index bar.
               .alignStyle(IndexerAlign.Right) // The pop-up window is displayed on the left of the indexer.
-              .popupTitleBackground("#D2B48C") // Background color of the primary index item in the pop-up window.
-              .popupSelectedColor(0x00FF00) // Text color of the unselected secondary index items in the pop-up window.
-              .popupUnselectedColor(0x0000FF) // Text color of the selected secondary index item in the pop-up window.
+              .popupTitleBackground(0xD2B48C) // Background color of the primary index item in the pop-up window.
+              .popupSelectedColor(0x00FF00) // Text color of the selected secondary index items in the pop-up window.
+              .popupUnselectedColor(0x0000FF) // Text color of the unselected secondary index item in the pop-up window.
               .popupItemFont({ size: 30, style: FontStyle.Normal }) // Text style of the secondary index item in the pop-up window.
               .popupItemBackgroundColor(0xCCCCCC) // Background color of the secondary index item in the pop-up window.
               .onSelect((index: number) => {
                 console.info(this.value[index] + ' Selected!');
               })
               .onRequestPopupData((index: number) => {
-                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or L will display their respective arrays.
+                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or J will display their respective arrays.
                 // For other index items, the pop-up window will only show the primary index item.
                 if (this.value[index] == 'A') {
                   return this.arrayA;

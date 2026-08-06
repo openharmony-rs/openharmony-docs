@@ -24,6 +24,7 @@ The SecureElement (SE) service is abnormal.
 **Possible Causes**
 
 1. The SE service is disconnected.
+2. If the application accesses an SIM card or SIM2 card, check whether the corresponding card is inserted into the card slot.
 
 **Solution**
 

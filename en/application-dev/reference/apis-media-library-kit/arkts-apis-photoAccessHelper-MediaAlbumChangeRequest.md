@@ -1,10 +1,12 @@
 # Class (MediaAlbumChangeRequest)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:11.121Z pushedAt=2026-06-23T09:25:46.740Z -->
 
 MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
@@ -35,7 +37,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 constructor(album: Album)
 
-Constructor used to initialize a new object.
+Initializes a newly created object. The constructor is used to perform operations on an album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -128,9 +130,13 @@ setAlbumName(name: string): void
 Sets the album name.
 
 The album name must meet the following requirements:
+
 - The total length of the album name must be between 1 and 255 characters.
+
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
+
 - It is case-insensitive.
+
 - Duplicate album names are not allowed.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core

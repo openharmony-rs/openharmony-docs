@@ -1,8 +1,8 @@
 # ArkUI_Node
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
  
@@ -12,7 +12,7 @@ struct ArkUI_Node
 
 ## 概述 
 
-定义ArkUI native组件实例对象。
+定义ArkUI Native组件实例对象，供ArkUI_NodeHandle指针在Native接口中标识和传递组件实例。
 
 **起始版本：** 22
 

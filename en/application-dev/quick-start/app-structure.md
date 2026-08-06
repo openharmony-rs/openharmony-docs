@@ -11,6 +11,7 @@ The **app** tag contains application-wide configuration. The following table des
 
 **Table 1** Internal structure of the app tag
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | bundleName | Bundle name, which uniquely identifies an application.<br> The bundle name must start with a letter and can contain only letters, digits, underscores (_), and periods (.).<br> The bundle name is represented as a reverse domain name of 7 to 128 bytes, for example, **"com.example.myapplication"**. It is recommended that the first level be the domain suffix "com" and the second level be the vendor/individual name. More levels are also accepted.| String| No|
@@ -25,6 +26,7 @@ The **app** tag contains application-wide configuration. The following table des
 
 **Table 2** Internal structure of the version attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Application version number displayed to users. The value can be customized and cannot exceed 127 bytes. The configuration rules are as follows:<br>For API version 5 and earlier versions, use the three-part format *A.B.C* (compatible with a two-part format *A.B*), where A, B, and C are integers ranging from 0 to 999.  <br>A indicates the major version number.<br>B indicates the minor version number.<br>C indicates the patch version number. <br>For API version 6 and later versions, the four-part format *A.B.C.D* is recommended, where A, B, and C are integers ranging from 0 to 99, and D is an integer ranging from 0 to 999.<br>A indicates the major version number.<br>B indicates the minor version number.<br>C indicates the feature version number.<br>D indicates the patch version number.| String| No|
@@ -39,7 +41,7 @@ The **app** tag contains application-wide configuration. The following table des
 | -------- | -------- | -------- | -------- |
 | compatible | Minimum API version required for running the application. The value ranges from 0 to 2147483647.| Number| Yes (initial value: configured in **build.profile** and filled in **config.json** by DevEco Studio during packaging)|
 | target | Target API version required for running the application. The value ranges from 0 to 2147483647.| Number| Yes (initial value: configured in **build.profile** and filled in **config.json** by DevEco Studio during packaging)|
-| releaseType | SDK status when the application is running.<br>**canary**: preliminary release open only to specific developers. This release does not promise API stability and may require tolerance of instability.<br>**beta**: release open to all developers. This release does not promise API stability and may require tolerance of instability. After several releases, the beta version is declared as an API stability milestone through Release Notes, and APIs of later versions are frozen.<br>**release**: official release open to all developers. This release promises that all APIs are stable. When a version is in this state, the stage field is not displayed in the version number.| String| Yes (initial value: configured in **build.profile** and filled in **config.json** by DevEco Studio during packaging)|
+| releaseType | SDK status when the application is running.<br>**canaryN**: Early preview version for specific developers. No quality guarantee or API stability guarantee is provided. *N* represents an integer greater than 0 and is used to distinguish different versions.<br>**betaN**: Publicly released Beta version. Early Beta versions do not guarantee API stability. After several releases, a Beta version may be declared as an API stability milestone for developers through the Release Notes. APIs are frozen in subsequent versions. *N* represents an integer greater than 0 and is used to distinguish different versions.<br>**release**: official release open to all developers. This release promises that all APIs are stable. When a version is in this state, the stage field is not displayed in the version number.| String| Yes (initial value: configured in **build.profile** and filled in **config.json** by DevEco Studio during packaging)|
 
 Example of the **app** tag:
 

@@ -43,7 +43,7 @@
 
 以下步骤说明了如何将视频解码器输出的本机缓冲区（OHNativeBuffer）导入为Vulkan内存，并绑定到VkImage/VkBuffer。
 
-1. 启动渲染子线程，初始化Vulkan环境，动态加载libvulkan.so, 并加载Vulkan基础函数的指针。
+1. 启动渲染子线程，初始化Vulkan环境，动态加载libvulkan.so，并加载Vulkan基础函数的指针。
     ```c++
     void VulkanRenderThread::ThreadMainLoop() {
         threadId_ = std::this_thread::get_id();
@@ -163,7 +163,7 @@
     }
     ```
 
-    同时更新初始化Vulkan的上下文，包括Vulkan的实列、选择物理设备、创建渲染管线等。
+    同时更新初始化Vulkan的上下文，包括Vulkan的实例、选择物理设备、创建渲染管线等。
     ```c++
     void VulkanRender::SetupWindow(NativeWindow *nativeWindow) {
         nativeWindow_ = nativeWindow;
@@ -189,7 +189,7 @@
         VkSurfaceCreateInfoOHOS surfaceCreateInfo{};
         surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS;
         if (nativeWindow_ == nullptr) {
-            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nulptr.Failed to create surface !");
+            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nullptr.Failed to create surface !");
             return false;
         }
         surfaceCreateInfo.window = nativeWindow_;
@@ -424,7 +424,7 @@
         VkMemoryDedicatedAllocateInfo dedicatedAllocateInfo = {
             .sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO,
             .pNext = &importBufferInfo,
-            .image = VK_NULL_HANDLE, // wiLl be set later
+            .image = VK_NULL_HANDLE, // will be set later
             .buffer = VK_NULL_HANDLE
         };
 
@@ -595,7 +595,7 @@
         vkUpdateDescriptorSets(device, 2, gfxPipelineInfo.descWrites, 0, nullptr);
 
         createGraphicsPipeline();
-        createOtherStaff();
+        createOtherStuff();
 
         recordCommandBuffer();
         OH_LOG_INFO(LOG_APP, "hwBufferToTexture end");
@@ -607,4 +607,4 @@
 
 针对Vulkan External Memory的使用，具体可见以下相关实例：
 
-- [NdkVulkanExternalMemory(API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkanExternalMemory)
+- [NdkVulkanExternalMemory(API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkanExternalMemory)

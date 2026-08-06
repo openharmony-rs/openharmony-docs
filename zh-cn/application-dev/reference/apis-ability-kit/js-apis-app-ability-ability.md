@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 Ability类是应用生命周期调度的基本单元，是[UIAbility](js-apis-app-ability-uiAbility.md)和[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的基类，提供系统配置更新回调和系统内存级别变化回调能力。该基类不支持开发者直接继承，开发者应根据具体的业务场景选择使用[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，相关指南参见[Ability Kit简介](../../application-models/abilitykit-overview.md)。
 
@@ -49,7 +49,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息。 |
+| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息，包含语言、颜色模式等系统配置项。 |
 
 **示例：**
 
@@ -91,6 +91,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
+  // 接收系统内存级别变化回调
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }

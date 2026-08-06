@@ -1,8 +1,8 @@
 # 动画样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,6 +12,7 @@
 
 组件支持动态的旋转、平移、缩放效果，可在style或css中设置。
 
+## 属性
 
 | 名称                                | 类型                                       | 描述                                       |
 | --------------------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -46,7 +47,7 @@
 | scaleX                   | &lt;number&gt;                           | X轴方向缩放动画属性。                              |
 | scaleY                   | &lt;number&gt;                           | Y轴方向缩放动画属性。                              |
 | scaleZ<sup>6+</sup>      | &lt;number&gt;                           | Z轴的缩放参数。                                 |
-| rotate                   | &lt;deg&gt;&nbsp;\|&nbsp;&lt;rad&gt;&nbsp;\|&nbsp;&lt;grad&gt;<sup>6+</sup>&nbsp;\|&nbsp;&lt;turn&gt;6+ | 旋转动画属性，支持设置x轴和y轴两个维度的旋转参数。               |
+| rotate                   | &lt;deg&gt;&nbsp;\|&nbsp;&lt;rad&gt;&nbsp;\|&nbsp;&lt;grad&gt;<sup>6+</sup>&nbsp;\|&nbsp;&lt;turn&gt;<sup>6+</sup> | 旋转动画属性，支持设置x轴和y轴两个维度的旋转参数。                              |
 | rotate3d<sup>6+</sup>    | &lt;deg&gt;&nbsp;\|&nbsp;&lt;rad&gt;&nbsp;\|&nbsp;&lt;grad&gt;&nbsp;\|&nbsp;&lt;turn&gt; | 四个入参，前三个分别为X轴、Y轴、Z轴的旋转向量，第四个是旋转角度。       |
 | rotateX                  | &lt;deg&gt;&nbsp;\|&nbsp;&lt;rad&gt;&nbsp;\|&nbsp;&lt;grad&gt;<sup>6+</sup>&nbsp;\|&nbsp;&lt;turn&gt;<sup>6+</sup> | X轴方向旋转动画属性。                              |
 | rotateY                  | &lt;deg&gt;&nbsp;\|&nbsp;&lt;rad&gt;&nbsp;\|&nbsp;&lt;grad&gt;<sup>6+</sup>&nbsp;\|&nbsp;&lt;turn&gt;<sup>6+</sup> | Y轴方向旋转动画属性。                              |
@@ -111,7 +112,7 @@
 ```
 
 
-![zh-cn_image_0000001173324797](figures/zh-cn_image_0000001173324797.gif)
+![Animation-Styles02](figures/Animation-Styles02.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -150,7 +151,7 @@ export default {
     playState: "running"
   },
   toggleState() {
-    if (this.playState ===  "running") {
+    if (this.playState === "running") {
       this.playState = "paused";
     } else {
       this.playState = "running";
@@ -160,7 +161,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001127285034](figures/zh-cn_image_0000001127285034.gif)
+![animation-styles](figures/animation-styles.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -219,7 +220,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001152833768](figures/zh-cn_image_0000001152833768.gif)
+![animation-styles01](figures/animation-styles01.gif)
 
 
 >  **说明：**
@@ -227,4 +228,4 @@ export default {
 >
 >  steps函数的end和start含义如下图所示。
 >
->  ![zh-cn_image_0000001127125220](figures/zh-cn_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

@@ -1,12 +1,12 @@
 # 创建并使用图片资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础色、法线等等。
+图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础颜色、法线等等。
 
 ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。
 
@@ -60,7 +60,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
 4. 获取几何体节点。
 
-   通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
+   通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后能够恢复至原始材质状态。
 
    <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -71,9 +71,9 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
-5. 创建图片资源并绑定到材质。
+5. 创建图片资源。
 
-   使用SceneResourceFactory.createImage()创建图片资源，再通过createMaterial()创建Shader材质。将图片资源绑定到Shader输入属性BASE_COLOR_Image上，使模型表面贴图生效。
+   使用SceneResourceFactory.createImage()创建图片资源。
 
    <!-- @[create_image_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
@@ -105,7 +105,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
 6. 应用图片材质到模型节点。
 
-   在按钮点击回调中，通过createShader()创建Shader并绑定材质对象，调用createImagePromise()获取图片资源并将其应用到模型几何体上，实现贴图替换。
+   在按钮点击回调中，通过createShader()和createMaterial()创建Shader材质，调用createImagePromise()获取图片资源并绑定到Shader输入属性BASE_COLOR_Image上，最后将材质应用到模型几何体，使模型表面贴图生效，实现贴图替换。
 
    <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    

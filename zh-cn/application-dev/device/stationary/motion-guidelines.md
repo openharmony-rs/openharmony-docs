@@ -31,7 +31,15 @@
   ```JSON5
   "requestPermissions":[
       {
-        "name" : "ohos.permission.ACTIVITY_MOTION"
+        "name" : "ohos.permission.ACTIVITY_MOTION",
+        // reason和usedScene按需填写
+        "reason" : "", // 用于应用上架校验
+        "usedScene" : {
+           "abilities" : [
+              "" // 使用权限的名称
+           ],
+           "when" : "" // 调用时机
+        },
       },
       {
         "name" : "ohos.permission.DETECT_GESTURE"
@@ -50,6 +58,8 @@
  - 能力有效范围：不包含距离屏幕边缘8mm内区域。
  
  - 结果上报条件：首次订阅或切换操作手后，连续点数次触发。
+ 
+ - 触控响应说明：屏幕四周边缘8mm范围内不支持触控响应。
 
 ### 开发步骤
 
@@ -74,43 +84,49 @@
 
 3. 订阅操作手感知
 
-   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    try {
-      motion.on('operatingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('operatingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
 4. 取消订阅操作手感知
 
-   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      motion.off('operatingHandChanged');
-      console.info("off succeeded");
+     motion.off('operatingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
 
 5. 获取最新操作手状态
 
-   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-      console.info('get succeeded' + data);
+     let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
+     console.info('get succeeded' + data);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed get and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed get and err code is ' + error.code);
+     // ...
    }
    ```
 
@@ -153,47 +169,55 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   
 
 2. 定义回调函数接收握持手结果
 
-   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
      console.info('callback succeeded' + data);
    };
    ```
 
+
 3. 订阅握持手感知
 
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
    try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('holdingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
+   
 
 4. 取消订阅握持手感知
 
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```ts
+   ``` TypeScript
    try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
+     motion.off('holdingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
+

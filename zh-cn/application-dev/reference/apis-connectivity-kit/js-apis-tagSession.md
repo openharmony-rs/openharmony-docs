@@ -15,7 +15,7 @@
 
 > **注意：**
 >
-> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
+> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## **导入模块**
 
@@ -25,11 +25,11 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## TagSession
 
-TagSession是所有[nfcTag技术类型](js-apis-nfctech.md)的基类， 提供建立连接和发送数据等共同接口。
+TagSession是所有nfcTag技术类型[nfctech](js-apis-nfctech.md)的基类， 提供建立连接和发送数据等共同接口。
 
 需要通过其子类来访问以下接口。在下面的示例中 统一用 getXXX()表示获取子类实例的方法。
 
-具体使用时,请根据实际采用的nfcTag技术，选择对应的方法，具体请参见[nfcTag](js-apis-nfcTag.md)文档。
+具体使用时，请根据实际采用的nfcTag技术，选择对应的方法，具体请参见[nfc-Tag](js-apis-nfcTag.md)文档。
 
 ### getTagInfo<sup>(deprecated)</sup>
 

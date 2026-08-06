@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @liusu23-->
 <!--Designer: @ccllee1; @xukeke-->
-<!--Tester: @lixueqing513; @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang; @lusq-->
+<!--Adviser: @HelloCrease-->
 
 ## uris标签说明
 当在[module.json5](../quick-start/module-configuration-file.md)文件的[skills字段](../quick-start/module-configuration-file.md#skills标签)中声明uris时，主要包含如下字段。
@@ -60,6 +60,7 @@
     |Navigation|指示导航功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |RoutePlan|指示路线规划功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |PlaceSearch|指示地点搜索功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |DetailLocation|指示地点详情功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |Transfer|指示转账汇款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |CreditCardRepayment|指示信用卡还款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|

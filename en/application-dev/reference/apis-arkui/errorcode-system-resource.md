@@ -1,8 +1,8 @@
 # System Resource Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@
 
 **Error Message**
 
-System resources does not exist.
+System resource does not exist.
 
 **Description**
 

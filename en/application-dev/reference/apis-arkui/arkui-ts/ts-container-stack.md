@@ -23,6 +23,8 @@ Supported.
 
 Stack(options?: StackOptions)
 
+The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
+
 > **NOTE**
 >
 > Excessive component nesting can lead to performance degradation. In some scenarios, using component attributes directly or leveraging system APIs can achieve the same effect as the stack container, reducing the number of nested components and optimizing performance. For best practices, see [Preferentially Using Component Properties Instead of Nested Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-nesting-optimization#section78181114123811).
@@ -40,6 +42,8 @@ Stack(options?: StackOptions)
 | options | [StackOptions](#stackoptions18)| No  | Alignment of child components in the container.|
 
 ## StackOptions<sup>18+</sup>
+
+Sets the alignment method of the child component in the stack container.
 
 > **NOTE**
 >
@@ -77,13 +81,35 @@ Sets the alignment of child components in the container. When both this attribut
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
 | value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment of child components in the container.<br>Default value: **Alignment.Center**<br>Invalid values are treated as the default value.|
 
+### syncLoad
+
+syncLoad(enable: boolean)
+
+Sets whether to synchronously load all child components in the stack container.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                |
+| ------ | ------------------------------------------- | ---- | ----------------------------------- |
+| enable   | boolean | Yes  | Whether to synchronously load all child components in the stack container.<br>**true**: yes; **false**: no.<br>Default value: **true**<br>**NOTE**<br>If this parameter is set to **false**, during the initial display, if the current frame layout exceeds 50 ms, the child components that have not been laid out in the stack container will be delayed to the next frame for layout.|
+
 ## Events
 
 The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates the display effect of child components when the **alignContent** attribute of the **Stack** component is set to **Alignment.Bottom**.
+When the [alignContent](#aligncontent) attribute of the **Stack** component is set to **Alignment.Bottom** and [syncLoad](#syncload) is set to **true**, the child components are displayed horizontally centered at the bottom of the **Stack** component, and all child components are loaded within the same frame.
+
+The **syncLoad** attribute is added since API version 26.0.0.
 
 ```ts
 // xxx.ets
@@ -95,8 +121,10 @@ struct StackExample {
       Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
       Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
     }.width('100%').height(150).margin({ top: 5 })
+    // The syncLoad attribute is added since API version 26.0.0.
+    .syncLoad(true)
   }
 }
 ```
 
-![en-us_image_0000001219982699](figures/en-us_image_0000001219982699.PNG)
+![stack](figures/stack.PNG)

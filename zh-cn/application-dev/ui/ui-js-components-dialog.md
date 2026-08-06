@@ -60,14 +60,14 @@ button{
 ```js
 // xxx.js
 export default {
-  //Touch to open the dialog box.
+  // Click to open the dialog box.
   openDialog(){
     this.$element('dialogId').show()
   },
 }
 ```
 
-![zh-cn_image_0000001211246571](figures/zh-cn_image_0000001211246571.gif)
+![dialog-Component](figures/dialog-Component.gif)
 
 
 ## 设置弹窗响应
@@ -148,7 +148,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001163229150](figures/zh-cn_image_0000001163229150.gif)
+![Dialog-Box-Response](figures/Dialog-Box-Response.gif)
 
 
 > **说明：**
@@ -306,13 +306,11 @@ export default {
       message: 'Event setting canceled.'
     })
   },
-//    Touch OK to save the data.
+  // Click OK to save the data.
   setSchedule(e) {
-    if (e.text === '') {
-      this.schedule = info
-    } else {
-      this.schedule = info
-      var addItem =  {schedule: this.schedule,}
+    this.schedule = info
+    if (e.text !== '') {
+      var addItem = {schedule: this.schedule}
       this.scheduleList.push(addItem)
     }
     this.$element('dateDialog').close()
@@ -321,7 +319,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001234329527](figures/zh-cn_image_0000001234329527.gif)
+![Example-Scenario-3](figures/Example-Scenario-3.gif)
 
 
 ## 相关实例

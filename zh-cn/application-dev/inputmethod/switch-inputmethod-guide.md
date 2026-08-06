@@ -1,7 +1,7 @@
 # 切换输入法应用
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -26,8 +26,8 @@
        await inputMethod.switchCurrentInputMethodSubtype(item);
        this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
      } catch (err) {
-       console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`);
        let error: BusinessError = err as BusinessError;
+       console.error(`SwitchCurrentInputMethodSubtype error: ${error.code} ${error.message}`);
      }
    }
    ```
@@ -89,7 +89,7 @@ export class KeyboardController {
         if (inputMethods[i].name != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
           let subTypes = await inputMethod.getSetting().listInputMethodSubtype(inputMethods[i]); // 获取目标输入法的子类型
           if (subTypes.length > 0) {
-            await inputMethod.switchCurrentInputMethodAndSubtype(inputMethods[i], subTypes[0]); // 本示例默认切换到获取的第一个子类型
+            await inputMethod.switchCurrentInputMethodAndSubtype(inputMethods[i], subTypes[0]); // 本示例默认切换到获取的首个子类型
           }
           return;
         }

@@ -27,11 +27,11 @@
    
    若开发者需要进行Native相关工程的开发，请选择Native C++模板，更多模板的使用和说明请见[工程模板介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-template)。
 
-   ![createProject](figures/zh-cn_image_00250403.png)
+   ![Native-C++-template](figures/Native-C++-template.png)
 
 3. 进入配置工程界面，**Compatible SDK**表示兼容的最低API Version，此处以选择5.0.0(12)为例，其他参数保持默认设置即可。
 
-   ![chooseStageModel](figures/zh-cn_image_compatible_version.png)
+   ![compatible-version](figures/compatible-version.png)
 
 4. 点击**Finish**，工具会自动生成示例代码和相关资源，等待工程创建完成，此时创建的工程为HarmonyOS工程。
 
@@ -155,7 +155,7 @@
 
 3. 在编辑窗口右上角的侧边工具栏，点击Previewer，打开预览器。第一个页面效果如下图所示：
 
-   ![zh-cn_image_0000001311334976](figures/zh-cn_image_0000001311334976.png)
+   ![Previewer](figures/Previewer.png)
 
 
 ## 构建第二个页面
@@ -221,7 +221,7 @@
 
 ## 实现页面间的跳转
 
-页面间的导航可以通过[页面路由router](../reference/apis-arkui/js-apis-router.md)来实现。页面路由router根据页面url找到目标页面，从而实现跳转。使用页面路由请导入router模块。
+页面间的导航可以通过页面路由[router](../reference/apis-arkui/js-apis-router.md)来实现。页面路由router根据页面url找到目标页面，从而实现跳转。使用页面路由请导入router模块。
 
 如果需要实现更好的转场动效等，推荐使用[Navigation转场动画](../ui/arkts-navigation-animation.md)。
 
@@ -335,9 +335,9 @@
    }
    ```
 
-3. 打开Index.ets文件，点击预览器中的![zh-cn_image_0000001311015192](figures/zh-cn_image_0000001311015192.png)按钮进行刷新。效果如下图所示：
+3. 打开Index.ets文件，点击预览器中的![refresh](figures/refresh.png)按钮进行刷新。效果如下图所示：
 
-   ![zh-cn_image_0000001364254729](figures/zh-cn_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 
 ## 使用真机运行应用
@@ -348,8 +348,8 @@
 
    ![signConfig](figures/signConfig.png)
 
-3. 在编辑窗口右上角的工具栏，点击![zh-cn_image_0000001364054485](figures/zh-cn_image_0000001364054485.png)按钮运行。效果如下图所示：
+3. 在编辑窗口右上角的工具栏，点击![start](figures/start.png)按钮运行。效果如下图所示：
 
-   ![zh-cn_image_0000001364254729](figures/zh-cn_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 恭喜您已经使用ArkTS语言开发（Stage模型）完成了第一个OpenHarmony应用，快来探索更多的OpenHarmony功能吧。

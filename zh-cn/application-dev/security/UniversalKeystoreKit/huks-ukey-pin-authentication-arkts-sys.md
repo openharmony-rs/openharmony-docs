@@ -1,4 +1,4 @@
-# Ukey PIN码认证(ArkTS)
+# UKey PIN码认证(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，huksExternalCrypto提供PIN码认证功能接口。生态应用调用证书HAP界面，展示证书列表，用户选择证书后，浏览器根据选择的证书获取到resourceId，然后[打开资源](huks-open-close-resource-ndk.md)并进入PIN码认证。具体的场景介绍，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API 22开始，huksExternalCrypto提供PIN码认证功能接口。生态应用调用证书HAP界面，展示证书列表，用户选择证书后，浏览器根据选择的证书获取到resourceId，然后[打开资源](huks-open-close-resource-ndk.md)并进入PIN码认证。具体的场景介绍，请参考[UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
@@ -61,12 +61,12 @@ async function authUkeyPin(): Promise<void> {
     /* 3.验证PIN码 */
     await huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
       .then(() => {
-        console.info(`promise: getUkeyPinAuthState success`);
+        console.info('promise: getUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: getUkeyPinAuthState input arg invalid`);
+    console.error('promise: getUkeyPinAuthState input arg invalid.');
   }
 }
 

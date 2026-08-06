@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
-<!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自身的排列规则，将不同大小的"项目"自上而下如瀑布般紧密布局。
@@ -60,6 +60,7 @@ public:
     {
         // 释放创建的组件。
         while (!cachedItems_.empty()) {
+            nodeApi_->disposeNode(cachedItems_.top());
             cachedItems_.pop();
         }
         // 释放Adapter相关资源。
@@ -204,11 +205,24 @@ private:
 #endif // MYAPPLICATION_FLOWITEMADAPTER_H
 ```
 
+### 更新和复用FlowItem
+
+通过NodeAdapter复用FlowItem时，建议保持FlowItem及其直属子组件的节点结构稳定，并通过[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)更新已有子组件的内容或样式。上述示例在复用FlowItem时，仅更新已有Text组件的文本内容。
+
+> **说明：**
+>
+> 对于已经显示且设置固定尺寸的FlowItem，不建议在WaterFlow滚动过程中先调用[removeChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)移除其直属子组件，再调用[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)挂载新的直属子组件。该写法可能导致新挂载的子组件未及时参与布局，造成显示异常。
+>
+> 需要更新复杂内容时，建议采用以下方式之一：
+>
+> - 保持FlowItem的直属容器（例如[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)或[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)）不变，仅更新容器内的内容。
+> - 创建新的FlowItem及其完整子树，并通过[OH_ArkUI_NodeAdapter_ReloadItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_reloaditem)通知NodeAdapter更新对应数据项。
+
 ## 创建分组
 使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
 
 
-<!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
+<!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
 ``` C
 // WaterflowSection.h

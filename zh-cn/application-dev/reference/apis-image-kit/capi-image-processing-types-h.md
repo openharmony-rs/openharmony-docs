@@ -68,10 +68,10 @@ enum ImageDetailEnhancer_QualityLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 细节增强质量较低，但速度较快。默认级别。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 细节增强质量中等，速度介于低级别与高级别之间。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 细节增强质量较低，但速度较快。默认级别。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 细节增强质量中等，速度介于低级别与高级别之间。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。<br>API version 13-22支持输入分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 13-22支持输出分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 23及以后支持输入分辨率（px）：宽：[180, 2000]，高：[180, 2000]。<br>API version 23及以后支持输出分辨率（px）：宽：[512, 2000]，高：[512, 2000]。 |
 
 **参考：**
 
@@ -92,7 +92,7 @@ enum ImageProcessing_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IMAGE_PROCESSING_SUCCESS | 成功。 |
-| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | 输入参数无效。<br>在以下错误条件返回该错误码：<br>1. 输入或输出buffer无效，例如图片buffer为空。<br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
+| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | 输入参数无效。<br>在以下错误条件下返回该错误码：<br>1. 输入或输出buffer无效，例如图片buffer为空。<br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
 | IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | 未知错误，例如GPU计算失败或memcpy失败。 |
 | IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | 全局环境初始化失败，例如GPU环境初始化失败。 |
 | IMAGE_PROCESSING_ERROR_CREATE_FAILED | 创建图片处理实例失败，例如实例数量超过上限。 |

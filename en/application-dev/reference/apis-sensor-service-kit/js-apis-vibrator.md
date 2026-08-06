@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **vibrator** module allows precise control over the vibration of device vibrators. With the APIs provided by this module, you can start vibration in various modes such as specified duration, preset effect, and custom effect and stop any or all of them.
@@ -1024,7 +1024,7 @@ Enables listening for vibrator status changes.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | Yes  | Event type. The value **vibratorStateChange** indicates a vibrator online/offline event.             |
+| type     | string                       | Yes  | Event type. The value **vibratorStateChange** indicates a vibrator online/offline event.             |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | Yes  | Callback used to return the vibrator status change event.|
 
 **Error codes**
@@ -1070,7 +1070,7 @@ Disables listening for vibrator status changes.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | Yes  | Event type. The value **vibratorStateChange** indicates a vibrator online/offline event.             |
+| type     | string                       | Yes  | Event type. The value **vibratorStateChange** indicates a vibrator online/offline event.             |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | No  | Callback used to return the vibrator status change event. If this parameter is not specified, all callbacks of vibrator status change events will be unregistered.|
 
 **Error codes**
@@ -1114,7 +1114,7 @@ Defines the vibrator status change event.
 
 | Name              | Type     | Read-Only| Optional| Description                              |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | No | No | Event timestamp.                       |
+| timestamp        | number  | No | No | Timestamp when the event is reported, in milliseconds.                       |
 | deviceId         | number  | No | No | Device ID.                          |
 | vibratorCount    | number  | No | No | Number of vibrators on the device.                      |
 | isVibratorOnline | boolean | No | No | Vibrator status. The value **true** indicates that the device is online, and the value **false** indicates the opposite.|
@@ -1173,7 +1173,7 @@ Checks whether HD vibration is supported.
 
 | Type   | Description                                                     |
 | ------- | --------------------------------------------------------- |
-| boolean | Boolean value indicating whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite.|
+| boolean | Whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1202,11 +1202,15 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 ## VibratorPatternBuilder<sup>18+</sup>
 
-### vibrator('addContinuousEvent')<sup>18+</sup>
+Provides methods for adding continuous and transient vibration events and generating a **VibratorPattern** object.
+
+**System capability**: SystemCapability.Sensors.MiscDevice
+
+### addContinuousEvent<sup>18+</sup>
 
 addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
 
-Adds a long vibration event as a **VibratorPattern** object.
+Adds a continuous vibration event. After the event is added, use the [build](#build18) method to generate a [VibratorPattern](#vibratorpattern18) object.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1268,11 +1272,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    }
    ```
 
-### vibrator('addTransientEvent')<sup>18+</sup>
+### addTransientEvent<sup>18+</sup>
 
 addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
 
-Adds a short vibration event as a **VibratorPattern** object.
+Adds a transient vibration event. After the event is added, use the [build](#build18) method to generate a [VibratorPattern](#vibratorpattern18) object.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1319,7 +1323,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    }
    ```
 
-### vibrator('build')<sup>18+</sup>
+### build<sup>18+</sup>
 
 build(): VibratorPattern;
 
@@ -1374,7 +1378,7 @@ Constructor used to create a **VibratorPattern** object, which determines the vi
 
 ## EffectId
 
-Enumerates the preset vibration effect IDs. This parameter is needed when you call [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.stopVibration9+](#vibratorstopvibration9-1) to deliver the vibration effect specified by [VibratePreset](#vibratepreset9). This parameter supports a variety of values, such as **haptic.clock.timer**. [HapticFeedback<sup>12+</sup>](#hapticfeedback12) provides several frequently used **EffectId** values.
+Enumerates the preset vibration effect IDs. This type is used when the [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9) or [vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1) API is called to deliver the [VibratePreset](#vibratepreset9) vibration. This parameter supports a variety of values, such as **haptic.clock.timer**. [HapticFeedback<sup>12+</sup>](#hapticfeedback12) provides several frequently used **EffectId** values.
 
 > **NOTE**
 > 
@@ -1388,7 +1392,7 @@ Enumerates the preset vibration effect IDs. This parameter is needed when you ca
 
 ## HapticFeedback<sup>12+</sup>
 
-Defines the vibration effect. The frequency of the same vibration effect may vary depending on the vibrator, but the frequency trend remains consistent. These vibration effects correspond to the specific **EffectId** values. For details, see the sample code that demonstrates how to use [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.stopVibration9+](#vibratorstopvibration9-1) to deliver the vibration effect defined by [VibratePreset](#vibratepreset9).
+Defines the vibration effect. The frequency of the same vibration effect may vary depending on the vibrator, but the frequency trend remains consistent. These vibration effects are specific values of the **EffectId** parameter. For details about how to use them, see the sample code for delivering the [VibratePreset](#vibratepreset9) vibration effect using the [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9) or [vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1) API.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1403,7 +1407,7 @@ Defines the vibration effect. The frequency of the same vibration effect may var
 
 ## VibratorStopMode
 
-Enumerates vibration stop modes. This parameter is required for [vibrator.stopVibration9+](#vibratorstopvibration9) or [vibrator.stopVibration9+](#vibratorstopvibration9-1). The stop mode must match that delivered in [VibrateEffect9+](#vibrateeffect9).
+Enumerates vibration stop modes. This type is used to specify the vibration stop mode when the [vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9) or [vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1) API is called. The stop mode must match that delivered in [VibrateEffect<sup>9+</sup>](#vibrateeffect9).
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1416,7 +1420,7 @@ Enumerates vibration stop modes. This parameter is required for [vibrator.stopVi
 
 type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
 
-Enumerates vibration effects of the vibrator. You can specify the vibration effect when calling [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.startVibration9+](#vibratorstartvibration9-1).
+Defines the vibration effect. This parameter is required for [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9) or [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1).
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1442,7 +1446,7 @@ Represents vibration of the specified duration.
 
 ## VibratePreset<sup>9+</sup>
 
-Represents the preset vibration effect. You can pass **VibratePreset** to [VibrateEffect9+](#vibrateeffect9) to specify a preset vibration effect when calling [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.startVibration9+](#vibratorstartvibration9-1).
+Represents the preset vibration effect. When [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9) or [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1) is called, the value of [VibrateEffect<sup>9+</sup>](#vibrateeffect9) can be **VibratePreset**, indicating that the preset vibration effect is triggered.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1455,7 +1459,7 @@ Represents the preset vibration effect. You can pass **VibratePreset** to [Vibra
 
 ## VibrateFromFile<sup>10+</sup>
 
-Represents a custom vibration pattern. It is supported only by certain devices. An error code will be returned if a device does not support this vibration mode. You can pass **VibrateFromFile** to [VibrateEffect9+](#vibrateeffect9) to specify a custom vibration pattern when calling [vibrator.startVibration9+](#vibratorstartvibration9) or [vibrator.startVibration9+](#vibratorstartvibration9-1).
+Represents a custom vibration pattern. It is supported only by certain devices. An error code will be returned if a device does not support this vibration mode. When [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9) or [vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1) is called, the value of [VibrateEffect<sup>9+</sup>](#vibrateeffect9) can be **VibrateFromFile**, indicating that a custom vibration pattern is triggered.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1478,7 +1482,7 @@ Describes the FD of a custom vibration configuration file. Ensure that the file 
 
 ## VibratorEventType<sup>18+</sup>
 
-Vibration event type.
+Enumerates vibration event types.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1495,13 +1499,13 @@ Defines the gain relative to the vibration intensity.
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| time      | number | No  | No  | Start time offset.                                              |
+| time      | number | No  | No  | Start time offset, in milliseconds.                                              |
 | intensity | number | No  | Yes  | Gain relative to the vibration intensity. This parameter is optional. The value range is [0,100%]. If this parameter is left empty, the default value is **1**.|
 | frequency | number | No  | Yes  | Change relative to the vibration frequency. This parameter is optional. The value range is [-100,100]. If this parameter is left empty, the default value is **0**.|
 
 ## VibratorEvent<sup>18+</sup>
 
-Vibration event.
+Enumerates vibration events.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1509,7 +1513,7 @@ Vibration event.
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | eventType | VibratorEventType               | No  | No  | Vibration event type.                                              |
 | time      | number                          | No  | No  | Vibration start time, in ms. The value range is [0,1800000].   |
-| duration  | number                          | No  | Yes  | Vibration duration. This parameter is optional. The value range is (0,5000]. The default value is **48** for short vibration and **1000** for long vibration.|
+| duration  | number                          | No  | Yes  | Vibration duration, in ms. This parameter is optional. The value is an integer in the range (0, 5000]. The default value is **48** for short vibration and **1000** for long vibration.|
 | intensity | number                          | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
 | frequency | number                          | No  | Yes  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
 | index     | number                          | No  | Yes  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.       |
@@ -1523,8 +1527,8 @@ Defines the vibration sequence.
 
 | Name  | Type                      | Read-Only| Optional| Description                                                |
 | ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
-| time   | number                     | No  | No  | Absolute vibration start time.                                  |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | No  | No  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
+| time   | number                     | No  | No  | Absolute start time of the vibration, in milliseconds.                                  |
+| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | No  | No  | Array of vibration events.|
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1560,7 +1564,7 @@ Defines the custom vibration effect.
 | Name   | Type           | Read-Only| Optional| Description                                                |
 | ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
 | type    | 'pattern'       | No  | No  | If the value is **pattern**, the vibrator vibrates based on the specified pattern.           |
-| pattern | VibratorPattern | No  | No  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
+| pattern | VibratorPattern | No  | No  | A [VibratorPattern](#vibratorpattern18) object returned by the [build](#build18) method.|
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1644,7 +1648,9 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 Triggers vibration based on a specified duration. This API uses an asynchronous callback to return the result.
 
-This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup> instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9) instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1679,7 +1685,9 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 Triggers vibration based on a specified effect. This API uses a promise to return the result.
 
-This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup> instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1) instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1751,7 +1759,9 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 Stops vibration in the specified mode. This API uses a promise to return the result.
 
-This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup> instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1798,7 +1808,9 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 Stops vibration in the specified mode. This API uses an asynchronous callback to return the result.
 
-This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup> instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 

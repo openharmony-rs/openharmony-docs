@@ -29,7 +29,7 @@ Sets a color space.
 
 Before the setting, call [getSupportedColorSpaces](arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12) to obtain the supported color spaces. You are advised to call this API after [addOutput](arkts-apis-camera-Session.md#addoutput11) and before [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1). If this API is called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), the camera session configuration will take a longer time.
 
-**P3 and HDR Imaging**  
+P3 wide color gamut and HDR imaging:
 
 An application can deliver different color space parameters to declare its support for P3 and HDR. If an application does not proactively set the color space, SDR is used by default in photo and video recording modes.
 
@@ -41,17 +41,17 @@ Since API version 23, you can call the [getSupportedFullOutputCapability](arkts-
  - If the application does not set the color space, the default color space in photo mode is SRGB when the **CameraFormat** is **CAMERA_FORMAT_YUV_420_SP**, and the default color space is **BT2020_HLG** when the **CameraFormat** is **CAMERA_FORMAT_YCRCB_P010** or **CAMERA_FORMAT_YCBCR_P010**.
  - If the application sets the color space, in photo mode, the **CameraFormat** and **ColorSpace** must be configured according to the following mapping table. Otherwise, an error code will be returned in [setColorSpace](arkts-apis-camera-ColorManagement.md#setcolorspace12) or [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1).
 
-  **Photo Mode**
+Photo mode:
 
-| SDR/HDR Photo Capture       | CameraFormat| ColorSpace|
-|--------------------|------------| ------------|
-| SDR(Default)       | CAMERA_FORMAT_YUV_420_SP       | SRGB       |
-| HDR P3               | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |
-| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
+  | SDR/HDR Photo Capture       | CameraFormat| ColorSpace|
+  |--------------------|------------| ------------|
+  | SDR(Default)       | CAMERA_FORMAT_YUV_420_SP       | SRGB       |
+  | HDR P3               | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |
+  | HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
 
-**Recording Mode**
+Recording mode:
 
 | SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
 |--------------------|--------------------------|------------------|

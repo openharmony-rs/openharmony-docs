@@ -1,10 +1,10 @@
 # 使用JSVM-API提供的proxy接口
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 ## 简介
 JSVM-API 提供了创建 Proxy、判断 JSVM_Value 是否为 Proxy 类型和获取 Proxy 中的目标对象的接口。
 
@@ -20,7 +20,7 @@ JSVM-API 提供了创建 Proxy、判断 JSVM_Value 是否为 Proxy 类型和获�
 JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++相关代码。
 
 cpp 部分代码
-```
+```cpp
 // OH_JSVM_CreateProxy 的样例方法
 static JSVM_Value CreateProxy(JSVM_Env env, JSVM_CallbackInfo info) {
     // 接受两个入参，第 1 个参数为 target，第 2 个参数为 handler
@@ -104,7 +104,7 @@ const char *srcCallNative = R"JS(
 ```
 
 预期的输出结果
-```
+```txt
 JSVM OH_JSVM_CreateProxy: success
 JSVM OH_JSVM_IsProxy: success: is a proxy
 JSVM OH_JSVM_ProxyGetTarget: success

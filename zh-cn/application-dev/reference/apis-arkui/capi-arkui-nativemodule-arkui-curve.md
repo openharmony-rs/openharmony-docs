@@ -1,8 +1,8 @@
 # ArkUI_Curve
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_Curve ArkUI_Curve
 
 ## 概述
 
-提供曲线的插值对象定义。
+提供动画曲线的插值对象定义，用于动画属性值的插值计算。
 
 **起始版本：** 12
 

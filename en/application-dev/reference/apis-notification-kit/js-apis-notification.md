@@ -1,8 +1,8 @@
 # @ohos.notification (Notification)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -134,7 +134,7 @@ import Base from '@ohos.base';
 // cancel callback
 let cancelCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancel failed " + JSON.stringify(err));
+    console.error("cancel failed " + JSON.stringify(err));
   } else {
     console.info("cancel success");
   }
@@ -202,7 +202,7 @@ import Base from '@ohos.base';
 // cancel callback
 let cancelCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancel failed " + JSON.stringify(err));
+    console.error("cancel failed " + JSON.stringify(err));
   } else {
     console.info("cancel success");
   }
@@ -234,7 +234,7 @@ import Base from '@ohos.base';
 // cancel callback
 let cancelAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancelAll failed " + JSON.stringify(err));
+    console.error("cancelAll failed " + JSON.stringify(err));
   } else {
     console.info("cancelAll success");
   }
@@ -291,7 +291,7 @@ import Base from '@ohos.base';
 // addSlot callback
 let addSlotCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlot failed " + JSON.stringify(err));
+    console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
@@ -354,7 +354,7 @@ import Base from '@ohos.base';
 // getSlot callback
 let getSlotCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("getSlot failed " + JSON.stringify(err));
+    console.error("getSlot failed " + JSON.stringify(err));
   } else {
     console.info("getSlot success");
   }
@@ -418,7 +418,7 @@ import Base from '@ohos.base';
 // getSlots callback
 function getSlotsCallback(err: Base.BusinessError) {
   if (err) {
-    console.info("getSlots failed " + JSON.stringify(err));
+    console.error("getSlots failed " + JSON.stringify(err));
   } else {
     console.info("getSlots success");
   }
@@ -475,7 +475,7 @@ import Base from '@ohos.base';
 // removeSlot callback
 let removeSlotCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeSlot failed " + JSON.stringify(err));
+    console.error("removeSlot failed " + JSON.stringify(err));
   } else {
     console.info("removeSlot success");
   }
@@ -538,7 +538,7 @@ import Base from '@ohos.base';
 
 let removeAllCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAllSlots failed " + JSON.stringify(err));
+    console.error("removeAllSlots failed " + JSON.stringify(err));
   } else {
     console.info("removeAllSlots success");
   }
@@ -593,7 +593,7 @@ import Base from '@ohos.base';
 
 let getActiveNotificationCountCallback = (err: Base.BusinessError, data: number) => {
   if (err) {
-    console.info("getActiveNotificationCount failed " + JSON.stringify(err));
+    console.error("getActiveNotificationCount failed " + JSON.stringify(err));
   } else {
     console.info("getActiveNotificationCount success");
   }
@@ -624,7 +624,7 @@ import Base from '@ohos.base';
 Notification.getActiveNotificationCount().then((data: number) => {
   console.info("getActiveNotificationCount success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`getAllActiveNotifications failed, code is ${err}`);
+  console.error(`getActiveNotificationCount failed, code is ${err}`);
 });
 ```
 
@@ -650,7 +650,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
   if (err) {
-    console.info("getActiveNotifications failed " + JSON.stringify(err));
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
   } else {
     console.info("getActiveNotifications success");
   }
@@ -680,9 +680,9 @@ import Base from '@ohos.base';
 import NotificationManager from '@ohos.notificationManager';
 
 Notification.getActiveNotifications().then((data: NotificationManager.NotificationRequest[]) => {
-  console.info("removeGroupByBundle success, data: " + JSON.stringify(data));
+  console.info("getActiveNotifications success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`removeGroupByBundle failed, code is ${err}`);
+  console.error(`getActiveNotifications failed, code is ${err}`);
 });
 ```
 
@@ -708,7 +708,7 @@ import Base from '@ohos.base';
 
 let cancelGroupCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancelGroup failed " + JSON.stringify(err));
+    console.error("cancelGroup failed " + JSON.stringify(err));
   } else {
     console.info("cancelGroup success");
   }
@@ -756,7 +756,7 @@ Notification.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified template exists. This API uses an asynchronous callback to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -764,7 +764,7 @@ Checks whether a specified template exists. This API uses an asynchronous callba
 
 | Name      | Type                    | Mandatory| Description                      |
 | ------------ | ------------------------ | ---- | -------------------------- |
-| templateName | string                   | Yes  | Template name.                  |
+| templateName | string                   | Yes  | Template name. Currently, only **downloadTemplate** is supported.                  |
 | callback     | AsyncCallback\<boolean\> | Yes  | Callback used to return the result.|
 
 **Example**
@@ -775,7 +775,7 @@ import Base from '@ohos.base';
 let templateName: string = 'process';
 function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
   if (err) {
-    console.info("isSupportTemplate failed " + JSON.stringify(err));
+    console.error("isSupportTemplate failed " + JSON.stringify(err));
   } else {
     console.info("isSupportTemplate success");
   }
@@ -788,7 +788,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Checks whether a specified template exists. This API uses a promise to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -796,7 +796,7 @@ Checks whether a specified template exists. This API uses a promise to return th
 
 | Name      | Type  | Mandatory| Description    |
 | ------------ | ------ | ---- | -------- |
-| templateName | string | Yes  | Template name.|
+| templateName | string | Yes  | Template name. Currently, only **downloadTemplate** is supported.|
 
 **Return value**
 
@@ -838,7 +838,7 @@ import Base from '@ohos.base';
 
 let requestEnableNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("requestEnableNotification failed " + JSON.stringify(err));
+    console.error("requestEnableNotification failed " + JSON.stringify(err));
   } else {
     console.info("requestEnableNotification success");
   }
@@ -894,7 +894,7 @@ import Base from '@ohos.base';
 
 let isDistributedEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isDistributedEnabled failed " + JSON.stringify(err));
+    console.error("isDistributedEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isDistributedEnabled success " + JSON.stringify(data));
   }

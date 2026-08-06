@@ -1,7 +1,7 @@
 # @ohos.application.NotificationSubscriberExtensionContext (ExtensionAbility Context for Notification Subscription)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->

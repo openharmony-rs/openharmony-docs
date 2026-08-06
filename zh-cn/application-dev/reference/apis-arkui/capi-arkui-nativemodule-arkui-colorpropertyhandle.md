@@ -1,8 +1,8 @@
 # ArkUI_ColorPropertyHandle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_ColorProperty* ArkUI_ColorPropertyHandle
 
 ## 概述
 
-定义颜色属性指针。
+定义颜色属性指针，用于表示ArkUI中的颜色属性。
 
 **起始版本：** 20
 

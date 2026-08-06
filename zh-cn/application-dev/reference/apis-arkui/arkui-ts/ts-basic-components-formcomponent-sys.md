@@ -1,9 +1,9 @@
 # FormComponent (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 提供卡片组件，实现卡片的显示功能。
@@ -54,7 +54,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明                                                                |
 | --------- | ------------------------------- | ---- |---- |-------|
-| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。                                        |
+| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br>id大于等于0小于2^32。                                        |
 | name      | string                          |  否   | 否   | 卡片名称。                                                              |
 | bundle    | string                          |  否   | 否   | 目标卡片包名。                                                          |
 | ability   | string                          |  否   | 否   | 目标卡片Ability名称。                                                   |
@@ -76,8 +76,8 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明              |
 | --------- | ------------------------------- | ---- | ---- | ----------------- |
-| id        | number                 |   否   |  否   | 卡片标识（number类型）。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
-| idString      | string            |   否   |  否   | 卡片标识（string类型）。                             |
+| id        | number                 |   否   |  否   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
+| idString      | string            |   否   |  否   | 卡片标识。                             |
 | isLocked<sup>22+</sup>      | boolean             |   否   |   否   | 表示卡片是否被锁定，true表示卡片被锁定，false表示卡片没有被锁定。|
 
 ## FormSize<sup>18+</sup>
@@ -272,7 +272,7 @@ colorMode(value: FormColorMode)
 
 ### onAcquired
 
-onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onAcquired(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 获取到卡片后触发的回调。
 
@@ -320,7 +320,7 @@ onRouter(callback: Callback\<object\>)
 
 ### onUninstall
 
-onUninstall(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUninstall(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 卡片卸载回调。
 
@@ -352,7 +352,7 @@ onLoad(callback: VoidCallback)
 
 ### onUpdate<sup>18+</sup>
 
-onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 卡片内容更新回调。
 

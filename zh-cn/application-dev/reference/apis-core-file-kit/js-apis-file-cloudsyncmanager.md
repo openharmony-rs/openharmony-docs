@@ -3,10 +3,10 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
+该模块向云盘管理应用提供端云同步管理能力，包括全量下载的状态和停止原因，以及应用本地和云端文件数量信息。开发者可在云盘管理应用中使用该模块监控应用云端文件的全量下载进度、处理下载停止原因，并统计应用本地和云端文件数量及大小。
 
 > **说明：**
 >
@@ -19,7 +19,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 ## DownloadStopReason<sup>20+</sup>
 
-降级下载停止原因的枚举，默认值为NO_STOP。
+全量下载停止原因的枚举，默认值为NO_STOP。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -35,7 +35,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 ## DownloadState<sup>20+</sup>
 
-降级下载任务状态的枚举。
+全量下载任务状态的枚举。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -47,7 +47,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 ## DownloadProgress<sup>20+</sup>
 
-降级下载任务的进度信息。
+全量下载任务的进度信息。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -55,13 +55,13 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 | 名称            | 类型                                        | 只读 | 可选 | 说明                                                                          |
 | --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
-| state           | [DownloadState](#downloadstate20)           | 否   | 否   | 下载任务的状态。                                                              |
-| successfulCount | number                                      | 否   | 否   | 已下载的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| failedCount     | number                                      | 否   | 否   | 下载失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。      |
-| totalCount      | number                                      | 否   | 否   | 待下载文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| downloadedSize  | number                                      | 否   | 否   | 已下载数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| totalSize       | number                                      | 否   | 否   | 需要下载文件的总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| stopReason      | [DownloadStopReason](#downloadstopreason20) | 否   | 否   | 下载停止的原因。                                                              |
+| state           | [DownloadState](#downloadstate20)           | 否   | 否   | 下载任务的状态。 |
+| successfulCount | number                                      | 否   | 否   | 已下载的文件个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| failedCount     | number                                      | 否   | 否   | 下载失败的文件个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| totalCount      | number                                      | 否   | 否   | 待下载文件总个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| downloadedSize  | number                                      | 否   | 否   | 已下载数据大小，正常取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| totalSize       | number                                      | 否   | 否   | 需要下载文件的总大小，正常取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| stopReason      | [DownloadStopReason](#downloadstopreason20) | 否   | 否   | 下载停止的原因。 |
 
 ## CloudFileInfo<sup>20+</sup>
 
@@ -77,5 +77,5 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | cloudFileTotalSize | number | 否   | 否   | 本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
 | localFileCount     | number | 否   | 否   | 本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
 | localFileTotalSize | number | 否   | 否   | 本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
-| bothFileCount      | number | 否   | 否   | 本地已上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| bothFileTotalSize | number | 否   | 否   | 本地已上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
+| bothFileCount      | number | 否   | 否   | 同时存在于本地和云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。 |
+| bothFileTotalSize  | number | 否   | 否   | 同时存在于本地和云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |

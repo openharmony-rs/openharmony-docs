@@ -1,12 +1,12 @@
 # Region
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct {...} Region
+typedef struct Region {...} Region
 ```
 
 ## 概述
@@ -25,6 +25,6 @@ typedef struct {...} Region
 
 | 名称               | 描述                                             |
 | ------------------ | ------------------------------------------------ |
-| * rects            | 如果rects是空指针nullptr，默认Buffer大小为脏区。 |
+| [Rect](capi-nativewindow-rect.md)* rects            | 如果rects是空指针nullptr，默认Buffer大小为脏区。 |
 | int32_t rectNumber | 如果rectNumber为0，默认Buffer大小为脏区。        |
 

@@ -1,7 +1,7 @@
 # jsvm.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -88,6 +88,7 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | Allocates a segment of BackingStore memory to the array buffer.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingStoreData**.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | Creates an array buffer in the allocated BackingStore memory.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env,void* externalData,size_t byteLength,JSVM_FinalizeArrayBuffer finalizeCb,void* finalizeHint,bool* copied,JSVM_Value* result)](#oh_jsvm_createarraybufferfromexternalmemory) | Creates an array buffer from the external memory. (This API can be used only after the **JSVM_EXPERIMENTAL** macro is defined.)|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | Creates a date. This API ignores leap seconds because ECMAScript complies with the POSIX time specifications.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | Creates a JavaScript value with external data. This is used to pass external data through JavaScript code. You can use **OH_JSVM_GetValueExternal** to retrieve the value from the native code. This API adds a **JSVM_Finalize** callback, which will be called when the newly created JavaScript object is garbage-collected. The created value is not an object, so it does not support additional properties. It is considered as a unique value type: Calling **OH_JSVM_Typeof()** with an external value generates **JSVM_EXTERNAL**.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | Creates a default JavaScript object. This function is equivalent to executing **new Object()** in JavaScript.|
@@ -259,7 +260,8 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | Deletes the **private** property corresponding to the private key from the input object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | Creates a reference to a given **JSVM_Data** object. The initial reference count is the input value of **initialRefcount**.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | Obtains the **JSVM_Data** (a JavaScript value associated with the JSVM reference) through the **result** parameter if the reference is still valid. Otherwise, the result is null.|
-
+| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | Deserializes the **JSVM_CodeCache** in the thread pool and releases the **JSVM_DeserializeResult** through the **OH_JSVM_ReleaseDeserializeResult** API.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | Releases the **JSVM_DeserializeResult** when it is no longer used.|
 ## Function Description
 
 ### OH_JSVM_Init()
@@ -1637,6 +1639,44 @@ Creates an array buffer in the allocated BackingStore memory.
 | Type| Description|
 | -- | -- |
 | [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if one of the following exceptions occurs:<br>         1. The sum of **offset** and **arrayBufferSize** is larger than **backingStoreSize**.<br>         2. The value of **backingStoreSize** or **arrayBufferSize** is **0**.<br>         3. **data** or **result** is null.|
+
+### OH_JSVM_CreateArrayBufferFromExternalMemory()
+
+```c
+#ifdef JSVM_EXPERIMENTAL
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result);
+#endif // JSVM_EXPERIMENTAL
+```
+
+**Description**
+
+> **NOTE**
+>
+> This API is an experimental API and can be used only after the **JSVM_EXPERIMENTAL** macro is defined.
+
+Creates an **ArrayBuffer** object from the external memory.  
+
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| void *externalData | Pointer to the external memory. It must be 8-byte aligned.|
+| size_t byteLength | Length of the external memory, in bytes. The value cannot exceed the maximum size of the engine's **ArrayBuffer**.|
+| [JSVM_FinalizeArrayBuffer](capi-jsvm-types-h.md#jsvm_finalizearraybuffer) finalizeCb | Optional. Callback invoked when the **ArrayBuffer** is collected by the GC. The callback signature contains the **bool copied** parameter, indicating whether a copy is performed.|
+| void* finalizeHint | Optional. Custom hint data passed to **finalizeCb**.|
+| bool* copied | Optional output parameter. The value **true** indicates that the data is copied, and the value **false** indicates zero copy.  |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | Output parameter. **ArrayBuffer** object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if one of the following exceptions occurs:<br>         1. The input **result** parameter is **NULL**.<br>         2. **byteLength** is greater than 0 but **externalData** is **NULL**.<br>         3. **externalData** is not 8-byte aligned.<br>         4. **byteLength** exceeds the maximum limit of the engine.<br>         5. **byteLength** == **0** but **finalizeCb** is not **NULL**.|
 
 ### OH_JSVM_CreateDate()
 
@@ -5317,7 +5357,7 @@ Compiles the WebAssembly bytecode to obtain a WebAssembly module. If the WebAsse
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmBytecode** parameter is empty, or the input data length parameter is invalid.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmBytecode** parameter is empty, or the input data length parameter is invalid.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5345,7 +5385,7 @@ Compiles a WebAssembly function with the specified index at a specified optimiza
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmModule** parameter is empty, or **wasmModule** is not a real WebAssembly module.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the function index is out of range or the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmModule** parameter is empty, or **wasmModule** is not a real WebAssembly module.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the function index is out of range or the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5400,7 +5440,7 @@ Creates a WebAssembly cache. If this API does not have the JIT permission, a log
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the cache fails to be generated.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the cache fails to be generated.|
 
 ### OH_JSVM_ReleaseCache()
 
@@ -6098,7 +6138,7 @@ Defines a class with options. When a C++ class is encapsulated, the C++ construc
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input pointer contains a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the execution fails due to invalid **utf8name**,| **constructor**,| or **properties**.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input pointer contains a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): The operation fails because the input **utf8name** \| **constructor** \| **properties** is invalid.|
 
 ### OH_JSVM_CreateExternalStringLatin1()
 
@@ -6320,6 +6360,56 @@ Obtains the **JSVM_Data** (a JavaScript value associated with the JSVM reference
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM reference for requesting the corresponding value.|
 | [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | Pointer to the **JSVM_Data** referenced by **JSVM_Ref**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
+
+### OH_JSVM_BackgroundDeserialize()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result);
+```
+
+**Description**
+
+Deserializes the **JSVM_CodeCache** in the thread pool and releases the **JSVM_DeserializeResult** through the **OH_JSVM_ReleaseDeserializeResult** API.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description |
+| -- | -- |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Environment for calling the JSVM-API.|
+| [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md) cacheData | Bytecode cache data to be deserialized.|
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | Background deserialization result.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
+
+### OH_JSVM_ReleaseDeserializeResult()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result);
+```
+
+**Description**
+
+Releases the **JSVM_DeserializeResult** when it is no longer used.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description |
+| -- | -- |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | Background deserialization result to be released.|
 
 **Returns**
 

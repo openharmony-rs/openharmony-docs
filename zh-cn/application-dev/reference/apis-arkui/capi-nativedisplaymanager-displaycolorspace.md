@@ -1,8 +1,8 @@
 # NativeDisplayManager_DisplayColorSpace
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,7 +26,7 @@ typedef struct {...} NativeDisplayManager_DisplayColorSpace
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t colorSpaceLength | 显示设备的色域长度。 |
-| uint32_t* colorSpaces | 显示设备的色域数据。 |
+| uint32_t colorSpaceLength | 显示设备支持的色域类型数量。 |
+| uint32_t* colorSpaces | 显示设备支持的色域类型数据。 |
 
 

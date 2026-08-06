@@ -1,4 +1,4 @@
-# @ohos.accessibility (Accessibility) (System API)
+# @ohos.accessibility (Accessibility)(System API)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -102,6 +102,7 @@ Enumerates accessibility event types.
 | TYPE_FOUR_FINGER_SWIPE_LEFT  |67| Event indicating the four-finger swipe-left gesture.|
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| Event indicating the four-finger swipe-right gesture.|
 | TYPE_PAGE_ACTIVE<sup>23+</sup> |69| Event indicating the page is active.|
+| TYPE_NOTIFICATION_UPDATE |70| Event indicating the notification is active.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AccessibilityAction
 
@@ -136,6 +137,7 @@ Accessibility node elements are UI components that support accessibility actions
 | NOTIFICATION_CENTER        | 18   | Open the notification center.                 |
 | CONTROL_CENTER             | 19   | Open the control center.                 |
 | SPAN_CLICK                 | 20   | Click a text span.            |
+| INJECT_ACTION              | 21   | Injection action.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## FocusMoveResultCode<sup>23+</sup>
 
@@ -157,3 +159,21 @@ Enumerates the result codes returned by the focusable node query.
 | DOUBLE_CHECK_CHILD_PROPERTY               | 6  | The returned node is not focusable. Continue to query from all descendants of the returned node.   |
 | DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | The returned node is not focusable. Continue to query from the last child node of the returned node. |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | Failed to query the node in the scrollable component.       |
+
+## InjectActionType
+
+Enumerates injection actions.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+| Name                        | Value   | Description                  |
+| -------------------------- | ---- | ------------------------ |
+| CLICK                      | 1    | Injects a click action.        |
+| DOUBLE_CLICK               | 2    | Injects a double-click action.        |
+| LONG_CLICK                 | 3    | Injects a long-click action.        |

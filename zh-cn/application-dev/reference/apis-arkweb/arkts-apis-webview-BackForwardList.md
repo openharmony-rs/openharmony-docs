@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-当前Webview的历史信息列表。
+BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接口，通过[getBackForwardEntries](./arkts-apis-webview-WebviewController.md#getbackforwardentries)方法获取。该接口提供对页面导航历史记录的只读访问能力，开发者可以获取当前历史列表的基本信息（当前索引和历史条目总数），以及通过索引获取指定历史记录项的详细信息。
 
 > **说明：**
 >
@@ -29,13 +29,13 @@ import { webview } from '@kit.ArkWeb';
 | 名称         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | currentIndex | number | 否   | 否   | 当前在页面历史列表中的索引。                                 |
-| size         | number | 否   | 否   | 历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。 |
+| size         | number | 否   | 否   | 历史列表中历史记录的数量，最多保存50条，超过时起始记录会被覆盖。 |
 
 ## getItemAtIndex
 
 getItemAtIndex(index: number): HistoryItem
 
-获取历史列表中指定索引的历史记录项信息。
+获取历史列表中指定索引的历史记录项信息。需先通过[getBackForwardEntries](./arkts-apis-webview-WebviewController.md#getbackforwardentries)方法获取BackForwardList实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

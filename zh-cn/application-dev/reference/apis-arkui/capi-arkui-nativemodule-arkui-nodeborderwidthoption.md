@@ -1,8 +1,8 @@
 # ArkUI_NodeBorderWidthOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
 
 ## 概述
 
-定义边框宽度配置项。
+定义边框宽度配置项，用于配置渲染节点各边的边框宽度。
 
 **起始版本：** 20
 

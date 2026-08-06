@@ -19,7 +19,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
    
    **RSACommonParamsSpec** is a child class of **AsyKeySpec**. Specify the RSA algorithm in the **algName** parameter, and set the key parameter type to **AsyKeySpecType.COMMON_PARAMS_SPEC**, which indicates the common parameter for both the public and private keys.
 
-   When key parameters are specified for generating a key, the bigint value must be a positive number in big-endian format.
+   When key parameters are specified for generating a key, parameters of the bigint type must be input in big-endian format, and the values must be a positive number to satisfy the requirements of mathematical operations.
 
 2. Create an [RSAPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#rsapubkeyspec10) object to specify the parameters (**n**, **pk**) contained in the public key of the RSA algorithm.
    
@@ -192,7 +192,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
 
    **ECCCommonParamsSpec** is a child class of **AsyKeySpec**. Specify the ECC algorithm in the **algName** parameter, and set the key parameter type to **AsyKeySpecType.COMMON_PARAMS_SPEC**, which indicates the common parameter for both the public and private keys.
 
-   When key parameters are specified for generating a key, the bigint value must be a positive number in big-endian format.
+   When key parameters are specified for generating a key, parameters of the bigint type must be input in big-endian format, and the values must be a positive number to satisfy the requirements of mathematical operations.
 
 2. Call [cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) with the **ECCCommonParamsSpec** object to create an asymmetric key generator (**AsyKeyGeneratorBySpec**) object.
 
@@ -392,7 +392,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
   // Generate an ECC key pair based on the EccCommonSpec instance and obtain the key specifications.
   function testEccUseCommKeySpecGetSync() {
     try {
-      let commKeySpec = genEccCommonSpec(); // Construct the commKeySpec object.
+      let commKeySpec = genEccCommonSpec(); // Construct the commKeySpec parameter.
       let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an generatorBySpec instance based on the commKeySpec parameter.
       let keyPair = generatorBySpec.generateKeyPairSync(); // Generate an ECC key pair.
       if (keyPair != null) {
@@ -416,7 +416,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
 
 1. Create an [ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecccommonparamsspec10) object to specify common parameters of the private and public keys. Call [genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with an NID string to generate the common parameters for the SM2 key pair.
 
-    When key parameters are specified for generating a key, the bigint value must be a positive number in big-endian format.
+   When key parameters are specified for generating a key, parameters of the bigint type must be input in big-endian format, and the values must be a positive number to satisfy the requirements of mathematical operations.
 
 2. Create an [ECCKeyPairSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecckeypairspec10) object with **algName** set to **SM2** to specify the SM2 key pair parameters.
 

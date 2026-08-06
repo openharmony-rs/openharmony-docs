@@ -34,7 +34,7 @@ You can develop a single UIAbility or multiple UIAbility components for your app
 
 > **NOTE**
 >
-> The recent task list is used for quickly viewing and managing all missions or applications running on the current device.
+>The recent task list is used for quickly viewing and managing all missions or applications running on the current device.
 
 ## Declaration Configuration
 
@@ -52,7 +52,7 @@ To enable an application to properly use a UIAbility component, declare the UIAb
         "srcEntry": "./ets/entryability/EntryAbility.ets", // Code path of the UIAbility component.
         "description": "$string:EntryAbility_desc", // Description of the UIAbility component.
         "icon": "$media:layered_image", // Icon of the UIAbility component.
-        "label": "$string:EntryAbility_label", // Label of the UIAbility component.
+        "label": "$string:EntryAbility_label", // Name of the UIAbility component displayed to users.
         "startWindowIcon": "$media:startIcon", // Index of the icon resource file.
         "startWindowBackground": "$color:start_window_background", // Index of the background color resource file.
         // ···

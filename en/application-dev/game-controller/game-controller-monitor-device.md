@@ -1,15 +1,16 @@
-# Listening for Game Controller Online/Offline Events (C/C++)
+# Listening for Device Online/Offline Events (C/C++)
+
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
+<!--Tester: @fei_0805-->
 <!--Adviser: @luwy2025-->
+<!-- md-trans-meta sourceCommit=ae8fea910c203d6791a838e7a3fb4d5339bb907d translatedAt=2026-06-22T10:07:23.987Z pushedAt=2026-06-22T10:09:52.126Z -->
 
 ## When to Use
 
-Game Controller Kit allows you to monitor controller online/offline events and query information about online controllers. After registering a listener for these events, you can receive real-time callback notifications when controllers are plugged in or unplugged. It also supports querying specific information about all online devices.
-
+Game Controller Kit allows you to monitor game device online/offline events and query information about online devices. After registering a listener for these events, you can receive real-time callback notifications when devices are plugged in or unplugged. It also supports querying specific information about all online devices.
 
 ## Service Flow
 
@@ -17,34 +18,31 @@ Game Controller Kit allows you to monitor controller online/offline events and q
 
 1. A player starts a game.
 
-2. The game calls **OH_GameDevice_RegisterDeviceMonitor** to register a listener for controller status change events.
+2. The game calls **OH_GameDevice_RegisterDeviceMonitor** to register a listener for device status change events.
 
-3. The player plugs in or unplugs a game controller.
+3. The player plugs in or unplugs a device.
 
-4. The device system notifies Game Controller Kit of the controller status change.
+4. The device system notifies Game Controller Kit of the device status change.
 
-5. Game Controller Kit feeds back the controller status change to the game.
+5. Game Controller Kit feeds back the device status change to the game.
 
-6. The game calls **OH_GameDevice_GetAllDeviceInfos** to query information about all online game controllers from Game Controller Kit.
+6. The game calls **OH_GameDevice_GetAllDeviceInfos** to query information about all online devices from Game Controller Kit.
 
-7. Game Controller Kit obtains information about all online game controllers from the device system.
+7. Game Controller Kit obtains information about all online devices from the device system.
 
 8. Unregister via **OH_GameDevice_UnregisterDeviceMonitor** if monitoring is no longer needed.
 
-
 ## Available APIs
 
-For details about the APIs, please refer to the [API reference](../reference/apis-game-controller-kit/capi-game-controller.md).
+For detailed API descriptions, see [GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md).
 
 | API| Description| 
 | -------- | -------- |
-| GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | Registers the listening callback for controller status change events.| 
-| GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void) | Unregisters the listening callback for controller status change events.| 
-| GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | Obtains information about all online controllers.| 
-
+| GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | Registers the listening callback for device status change events.| 
+| GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void) | Unregisters the listening callback for device status change events.| 
+| GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | Obtains information about all online devices.| 
 
 ## How to Develop
-
 
 ### Linking the Dynamic Library
 
@@ -52,17 +50,15 @@ For details about the APIs, please refer to the [API reference](../reference/api
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
-
 ### Importing the Module
 
 ```c
 #include <GameControllerKit/game_device.h>
 ```
 
+### Registering a Listener for Device Status Changes
 
-### Registering a Listener for Controller Status Changes
-
-Call **OH_GameDevice_RegisterDeviceMonitor** to register a listener for controller status changes and receive callback notifications.
+Call **OH_GameDevice_RegisterDeviceMonitor** to register a listener for device status changes and receive callback notifications.
 
 ```c
 napi_value DeviceApi::RegisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -90,10 +86,9 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 }
 ```
 
+### Unregistering a Listener for Device Status Changes
 
-### Unregistering a Listener for Controller Status Changes
-
-If subscription is no longer needed, call **OH_GameDevice_UnregisterDeviceMonitor** to unregister the listener for controller status change events.
+If subscription is no longer needed, call **OH_GameDevice_UnregisterDeviceMonitor** to unregister the listener for device status change events.
 
 ```c
 napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -110,10 +105,9 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
 }
 ```
 
+### Querying All Online Devices
 
-### Querying All Online Controllers
-
-Call **OH_GameDevice_GetAllDeviceInfos** to query information about all online game controllers.
+Call **OH_GameDevice_GetAllDeviceInfos** to query information about all online devices.
 
 ```c
 GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {

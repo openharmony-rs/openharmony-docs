@@ -1,13 +1,13 @@
 # OH_NativeBuffer_Planes
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes
+typedef struct {...} OH_NativeBuffer_Planes
 ```
 ## 概述
 

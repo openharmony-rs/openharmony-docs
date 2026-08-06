@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -63,6 +63,8 @@
 **权限级别**：normal
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -162,11 +164,13 @@
 
 ## ohos.permission.READ_HEALTH_DATA
 
-允许应用读取用户的健康数据。
+允许应用读取用户的健康数据，如心率数据等。
 
 **权限级别**：normal
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -222,11 +226,11 @@
 
 **授权方式**：用户授权（user_grant）
 
-**支持设备**：PC/2in1 | Tablet | Phone
+**支持设备**：PC/2in1 | Tablet | Phone | TV | Car | Wearable
 
 **起始版本**：14
 
-**变更信息**：API 14-20，该权限仅支持在平板、PC/2in1设备上申请；从API 21开始，增加支持在手机上申请。
+**变更信息**：API 14-20，该权限仅支持在平板、PC/2in1设备上申请；从API 21开始，增加支持在手机上申请；从API 26.1.0开始，增加支持在TV、Car、Wearable设备上申请。
 
 ## ohos.permission.READ_MEDIA
 

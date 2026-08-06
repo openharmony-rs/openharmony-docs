@@ -1,8 +1,8 @@
 # AppStorageV2: 应用全局UI状态存储
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -70,7 +70,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被@Trace装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码：
 
-<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->    
+<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -97,23 +97,31 @@ struct Index {
     Column() {
       // 修改@Trace装饰的类属性，UI能同步刷新
       Button(`Index userID: ${this.message.userID}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userID += 1;
         })
       // 修改非@Trace装饰的类属性，UI不会同步刷新，但修改的类属性已同步回AppStorageV2
       Button(`Index userName: ${this.message.userName}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userName += 'suf';
         })
       // remove key Message, 会从AppStorageV2中删除key为Message的对象
       // remove之后，修改父组件的userId，子组件能同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorageV2.remove<Message>(Message);
         })
       // connect key Message, 会从AppStorageV2中添加key为Message的对象
       // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，子组件重新connect之后，数据一致
       Button('connect key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = AppStorageV2.connect<Message>(Message, () => new Message(5, 'Rose'))!;
         })
@@ -135,21 +143,31 @@ struct Child {
     Column() {
       // 修改@Trace装饰的类属性，UI同步刷新，父组件能感知该变化
       Button(`Child userID: ${this.message.userID}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userID += 5;
         })
       // 修改父组件中的userName属性，点击name可以同步父组件的类属性修改
       Button(`Child name: ${this.name}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.name = this.message.userName;
         })
       // remove key Message, 会从AppStorageV2中删除key为Message的对象
+      // remove之后，修改父子组件的userID，父子组件同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorageV2.remove<Message>(Message);
         })
       // connect key Message, 会从AppStorageV2中添加key为Message的对象
+      // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，父组件重新connect之后，数据一致
       Button('connect key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = AppStorageV2.connect<Message>(Message, () => new Message(10, 'Lucy'))!;
         })
@@ -160,10 +178,12 @@ struct Child {
 }
 ```
 
+![appstoragev2-sync-0](./figures/appstoragev2-sync-0.gif)
+
 ### 在两个页面之间存储数据
 
 数据页面
-<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->    
+<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
 ``` TypeScript
 // 数据中心
@@ -176,7 +196,7 @@ export class Sample {
 ```
 
 页面1
-<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->    
+<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -193,17 +213,23 @@ struct PageOne {
     Navigation(this.pageStack) {
       Column() {
         Button('Go to pageTwo')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.pageStack.pushPathByName('PageTwo', null);
           })
 
         Button('PageOne connect the key Sample')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
             this.prop = AppStorageV2.connect(Sample, 'Sample', () => new Sample())!;
           })
 
         Button('PageOne remove the key Sample')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 从AppStorageV2中删除后，prop将不会再与key为Sample的值关联
             AppStorageV2.remove(Sample);
@@ -211,20 +237,23 @@ struct PageOne {
 
         Text(`PageOne add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             this.prop.p1++;
           })
 
         Text(`PageOne add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             // 页面不刷新，但是p2的值改变了
             this.prop.p2++;
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
+          .margin(10)
       }
     }
   }
@@ -232,7 +261,7 @@ struct PageOne {
 ```
 
 页面2
-<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->    
+<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -253,6 +282,8 @@ struct PageTwo {
     NavDestination() {
       Column() {
         Button('PageTwo connect the key Sample1')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 在AppStorageV2中创建一个key为Sample1的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
             this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
@@ -260,20 +291,23 @@ struct PageTwo {
 
         Text(`PageTwo add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             this.prop.p1++;
           })
 
         Text(`PageTwo add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             // 页面不刷新，但是p2的值改变了；只有重新初始化才会改变
             this.prop.p2++;
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
+          .margin(10)
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -299,3 +333,5 @@ struct PageTwo {
   ]
 }
 ```
+
+![appstoragev2-sync-1](./figures/appstoragev2-sync-1.gif)

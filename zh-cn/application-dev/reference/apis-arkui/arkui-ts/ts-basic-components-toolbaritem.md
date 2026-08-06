@@ -1,8 +1,8 @@
 # ToolBarItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件一般配合[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性进行使用。
+>  - 本模块接口仅可在Stage模型下使用。
+>
+>  - 该组件一般配合[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性进行使用。
 
 
 ## 子组件
@@ -33,7 +35,7 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [ToolBarItemOptions](#toolbaritemoptions对象说明) | 否   | 为ToolBarItem提供可选参数，该对象内含有[ToolBarItemPlacement](#toolbaritemplacement枚举说明)枚举类型的placement参数。<br/>默认值：placement: ToolBarItemPlacement.TOP_BAR_LEADING |
+| options | [ToolBarItemOptions](#toolbaritemoptions对象说明) | 否   | 为ToolBarItem提供可选参数，该对象内含有[ToolBarItemPlacement](#toolbaritemplacement枚举说明)枚举类型的placement参数。<br>默认值：placement: ToolBarItemPlacement.TOP_BAR_LEADING |
 
 ## 属性
 
@@ -47,7 +49,7 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 | 名称      | 类型                                                  | 只读 | 可选 | 说明                                                         |
 | --------- | -------------------------------------------- | --------- | ---- | ------------------------------------------------------------ |
-| placement | [ToolBarItemPlacement](#toolbaritemplacement枚举说明) | 否 | 是   | 设置工具栏项的放置位置。<br/>默认值: ToolBarItemPlacement.TOP_BAR_LEADING<br/>设置为ToolBarItemPlacement.TOP_BAR_LEADING时，将工具栏项放置在对应顶部栏的开头位置。<br/>设置为ToolBarItemPlacement.TOP_BAR_TRAILING时，将工具栏项放置在对应顶部栏的末尾位置。<br/> |
+| placement | [ToolBarItemPlacement](#toolbaritemplacement枚举说明) | 否 | 是   | 设置工具栏项的放置位置。<br>默认值: ToolBarItemPlacement.TOP_BAR_LEADING<br>设置为ToolBarItemPlacement.TOP_BAR_LEADING时，将工具栏项放置在对应顶部栏的开头位置。<br>设置为ToolBarItemPlacement.TOP_BAR_TRAILING时，将工具栏项放置在对应顶部栏的末尾位置。<br> |
 
 ## ToolBarItemPlacement枚举说明
 

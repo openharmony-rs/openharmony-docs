@@ -1,7 +1,7 @@
 # Filter
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -139,7 +139,7 @@ struct Index {
         }
       }) {
         List({ initialIndex: 0 }) {
-          ForEach(this.arr, (item: string, index: number) => {
+          ForEach(this.arr, (item: number, index: number) => {
             ListItem() {
               Text(item.toString())
                 .width('100%')
@@ -161,4 +161,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001665809293](figures/zh-cn_image_0000001665809293.png)
+![calendar](figures/calendar.png)

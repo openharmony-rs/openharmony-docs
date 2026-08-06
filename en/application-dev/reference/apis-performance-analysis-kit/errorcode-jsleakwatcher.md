@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -48,7 +48,7 @@ When the **enableLeakWatcher** function is called, the invalid parameter **confi
 
 2. Mandatory parameters are not specified.
 
-3. Parameter verification failed. This parameter is an array of strings. The array must contain one or more of **XComponent**, **NodeContainer**, **Window**, Custom Component, and Ability.
+3. Parameter verification failed. This parameter is an array of strings. The array must contain one or more of **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.
 
 **Solution**
 

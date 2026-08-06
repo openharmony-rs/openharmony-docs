@@ -1,18 +1,18 @@
 # fdsan使用指导
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
-## 1. 功能介绍
+## 功能介绍
 
-fdsan主要用于检测不同使用者对相同文件描述符的错误操作，如多次关闭（double-close）和关闭后使用（use-after-close）。这些文件描述符可以是操作系统中的文件、目录、网络套接字或其他I/O设备等。在程序中，打开文件或套接字会生成一个文件描述符。如果此文件描述符在使用后出现反复关闭或关闭后使用等情形，会导致内存泄露或文件句柄泄露等安全隐患。这类问题非常隐蔽，难以排查。为此，引入了fdsan这种检测工具。
+fdsan主要用于检测不同使用者对相同文件描述符的错误操作，如多次关闭（double-close）和关闭后使用（use-after-close）。这些文件描述符可以是操作系统中的文件、目录、网络套接字或其他I/O设备等。在程序中，打开文件或套接字会生成一个文件描述符。如果此文件描述符在使用后出现反复关闭或关闭后使用等情形，会导致内存泄漏或文件句柄泄漏等安全隐患。这类问题非常隐蔽，难以排查。为此，引入了fdsan这种检测工具。
 
-## 2. 实现原理
+## 实现原理
 
-设计思路：当打开已有文件或创建一个新文件的时候，在得到返回fd后，设置一个关联的tag，来标记fd的属主信息；关闭文件前，检测fd关联的tag，判断是否符合预期(属主信息一致)，符合就继续走正常文件关闭流程；如果不符合就是检测到异常，根据设置，调用对应的异常处理。
+设计思路：当打开已有文件或创建一个新文件的时候，在得到返回fd后，设置一个关联的tag，来标记fd的属主信息；关闭文件前，检测fd关联的tag，判断是否符合预期（属主信息一致），符合就继续走正常文件关闭流程；如果不符合就是检测到异常，根据设置，调用对应的异常处理。
 
 tag由两部分组成，最高位的8-bit构成type，后面的56-bit构成value。
 
@@ -26,7 +26,7 @@ value用于标识实际的owner tag。
 
 
 
-## 3. 接口说明
+## 接口说明
 
 ### fdsan_set_error_level
 
@@ -163,7 +163,7 @@ uint64_t fdsan_get_tag_value(uint64_t tag);
 
 **返回值：** 返回对应tag的value。
 
-## 4. 使用示例
+## 使用示例
 
 如何使用fdsan？这是一个简单的double-close问题：
 
@@ -257,7 +257,11 @@ void good_write()
 
 从这里的错误信息中可以看出，FILE接口的文件被其他人错误地关闭了。FILE接口的地址可以协助进一步定位。
 
-此外，可以在代码中使用`fdsan_set_error_level`设置错误等级error_level。设置为Fatal之后，如果fdsan检测到错误，会提示日志信息并crash生成堆栈信息，用于定位。下面是 error_level 设置为Fatal之后生成的crash堆栈信息：
+开发者有两种选项：
+
+**方式一：设置error_level为Fatal**
+
+在代码中使用`fdsan_set_error_level`设置错误等级error_level。设置为Fatal之后，如果fdsan检测到错误，应用会崩溃，落盘crash日志生成堆栈信息用于定位。下面是 error_level 设置为Fatal之后生成的crash堆栈信息：
 
 ```txt
 Reason:Signal:SIGABRT(SI_TKILL)@0x0000076e from:1902:20010043
@@ -275,7 +279,39 @@ Tid:15312, Name:e.myapplication
 #09 pc 00105a6c /system/lib/ld-musl-arm.so.1(start+248)(3de40c79448a2bbced06997e583ef614)
 #10 pc 000700b0 /system/lib/ld-musl-arm.so.1(3de40c79448a2bbced06997e583ef614)
 ```
-此时，从crash信息中可以看到bad_close存在问题，同时crash中包含所有打开的文件，协助定位问题，提升效率。
+
+此时，从crash信息中可以看到bad_close存在问题，同时crash信息中包含所有打开的文件，协助定位问题，提升效率。
+
+**方式二：使用默认的error_level**
+
+以默认错误等级运行。该场景检测到错误后应用不会崩溃，生成的日志文件名遵循模板`[fdsan]-[bundleName]-[uid]-[happenedTime].log`，日志中同样也会记录堆栈信息，额外会多一些LastFatalMessage来辅助定位。具体日志获取方式可参考[日志获取方式](../dfx/address-sanitizer-guidelines.md#日志获取方式)。示例日志如下：
+
+```txt
+Reason:Signal:DEBUG SIGNAL(FDSAN)
+LastFatalMessage:attempted to close file descriptor 57, expected to be unowned, actually owned by FILE* 0x0000005b0fe4b3e0
+Fault thread info:
+Tid:39450, Name:xample.dfx_test
+#00 pc 000000000016a004 /system/lib/ld-musl-aarch64.so.1(fdsan_error+732)(d3497e8ceee5e58a8879aa14e39d8297)
+#01 pc 000000000016a444 /system/lib/ld-musl-aarch64.so.1(fdsan_close_with_tag+936)(d3497e8ceee5e58a8879aa14e39d8297)
+#02 pc 000000000016a4d0 /system/lib/ld-musl-aarch64.so.1(close+20)(d3497e8ceee5e58a8879aa14e39d8297)
+#03 pc 0000000000129acc /data/storage/el1/bundle/libs/arm64/libentry.so(8c7260d3f574c5523ac6eb595e3971c393d00051)
+#04 pc 0000000000066f10 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+288)(cf709147fa67ebbe6123eceb4ed2c2fd)
+#05 pc 0000000000e1f394 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+40)
+#06 pc 000000000046d8fc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+392)
+#07 at anonymous entry (entry/src/main/ets/pages/page_second/page_third_xsan/xsan_fileHandleCloseillegally.ets:39:30)
+```
+
+其中，LastFatalMessage可能由如下几种情况：
+
+| LastFatalMessage | 含义 | 常见原因 |
+|---|---|---|
+| `attempted to close file descriptor <fd>, expected to be unowned, actually owned by <owner>` | fd被非法关闭 | 对已有属主的fd执行了原始close()，而非属主对应的关闭接口（如fclose或fdsan_close_with_tag） |
+| `attempted to close file descriptor <fd>, expected to be owned by <owner>, actually unowned` | fd被关闭后仍尝试属主关闭 | fd已被关闭或属主tag已清除，再使用fdsan_close_with_tag关闭，属于use-after-close或double-close |
+| `attempted to close file descriptor <fd>, expected to be owned by <owner1>, actually owned by <owner2>` | fd属主不匹配 | fd的所有权已被其他对象接管，当前属主再尝试关闭 |
+| `EBADF: close failed for fd <fd> with expected tag: <tag>` | fclose关闭无效fd | FILE*对应的fd已被原始close()关闭，fclose再尝试关闭时fd已无效 |
+| `failed to exchange ownership of file descriptor: fd <fd>, was owned by <owner>, was expected to be unowned` | exchange时fd已有属主 | 对已设置tag的fd调用fdsan_exchange_owner_tag设置新tag，期望fd无属主但实际已有属主 |
+| `failed to exchange ownership of file descriptor: fd <fd> is unowned, was expected to be owned by <owner>` | exchange时fd已无属主 | fd已被关闭后仍尝试以原属主tag调用fdsan_exchange_owner_tag，属于use-after-close |
+| `failed to exchange ownership of file descriptor: fd <fd>, was owned by <owner1>, was expected to be owned by <owner2>` | exchange时属主不匹配 | fd的所有权已被其他对象接管，再尝试以原属主tag调用fdsan_exchange_owner_tag |
 
 OpenFiles列出所有打开的文件
 
@@ -460,7 +496,17 @@ void good_write()
 
 此时运行该程序可以检测到另一个线程的double-close问题，详细信息可以<a href="#日志信息">参考日志</a>。同样也可以设置error_level为fatal，这样可以使fdsan在检测到crash之后主动crash以获取更多信息。
 
-## 5. close函数信号安全性说明
+## 多线程场景下的注意事项
+
+在多线程环境中使用fdsan时，由于文件描述符（fd）的分配和回收是全局性的，fdsan检测到的tag不匹配错误信息可能存在与实际根因不一致的情况。开发者需要注意以下场景：
+
+**fd快速回收导致报错指向错误属主：** 当线程A关闭一个fd后，该fd可能立即被线程B回收并绑定新的tag。此时如果线程A（或系统中其他模块）对该fd执行了非法close或double close，fdsan报错信息中显示的owner将是线程B的tag，而非原始属主的信息。这并不意味着线程B的tag设置有误，而是当前进程内其他业务逻辑存在非法close或double close的问题。
+
+**检测与执行的竞态窗口：** `fdsan_close_with_tag`内部在"校验tag"与"执行close"之间存在极小的时间窗口。在多线程并发场景下，fd可能在该窗口内被回收并重新分配给其他线程，导致校验结果指向的属主并非当前fd的实际使用者。
+
+**排查建议：** 当看到fdsan报错时，不应直接认定日志中显示的owner就是问题的直接责任方。建议结合fd的生命周期、调用栈信息以及系统中其他模块对fd的使用情况进行综合排查，确认是否存在其他模块的非法close或double close行为。
+
+## close函数信号安全性说明
 在POSIX标准中，`close`函数原本被定义为信号安全函数（async-signal-safe），这意味着它可以安全地在信号处理函数（signal handler）中调用。然而，在集成了fdsan（File Descriptor Sanitizer）机制的系统实现中，这一性质发生了变化。
 
 由于fdsan的实现依赖于mmap系统调用，而`mmap`本身不是信号安全函数，这会导致close函数也不再是信号安全的。因此，在信号处理函数中避免使用 `close`，可以通过其他系统调用来实现相同功能。

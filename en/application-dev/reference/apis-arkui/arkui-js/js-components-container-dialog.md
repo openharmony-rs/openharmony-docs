@@ -6,6 +6,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:33:53.249Z pushedAt=2026-06-23T08:29:09.822Z -->
 
 >  **NOTE**
 >
@@ -17,11 +18,9 @@ The **\<dialog>** component is a custom dialog box.
 
 None
 
-
 ## Child Components
 
 This component supports only one child component.
-
 
 ## Attributes
 
@@ -29,17 +28,15 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name                   | Type     | Default Value  | Mandatory  | Description          |
 | --------------------- | ------- | ----- | ---- | ------------ |
-| dragable<sup>7+</sup> | boolean | false | No   | Whether the dialog box can be dragged.|
+| dragable<sup>7+</sup> | boolean | false | No   | Whether the dialog box can be dragged. The value **true** indicates the dialog box can be dragged, and **false** indicates the opposite.|
 
 >  **NOTE**
 >
 >  The **\<dialog>** component does not support the **focusable** and **click-effect** attributes.
 
-
 ## Styles
 
 Only the **width**, **height**, **margin**, **margin-[left | top | right | bottom]**, and **margin-[start | end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
-
 
 ## Events
 
@@ -51,7 +48,6 @@ The following events are supported. The [universal events](js-components-common-
 | show<sup>7+</sup>  | -    | Triggered when the dialog box is displayed.              |
 | close<sup>7+</sup> | -    | Triggered when the dialog box is closed.              |
 
-
 ## Methods
 
 The following methods are supported. The [universal methods](js-components-common-methods.md) are not supported.
@@ -59,12 +55,11 @@ The following methods are supported. The [universal methods](js-components-commo
 | Name   | Parameter  | Description    |
 | ----- | ---- | ------ |
 | show  | -    | Shows a dialog box.|
-| close | -    | Close the dialog box.|
+| close | -    | Closes the dialog box.|
 
 >  **NOTE**
 >
 >  Attributes and styles of a **\<dialog>** component cannot be dynamically updated.
-
 
 ## Example
 
@@ -169,4 +164,4 @@ export default {
 }
 ```
 
-![4](figures/4.gif)
+![dialog](figures/dialog.gif)

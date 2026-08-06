@@ -5,7 +5,7 @@
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 ## 如何获取设备横竖屏的状态变化通知(API 9)
@@ -342,7 +342,7 @@ console.info('onStartRemoteAbility end');
 
 **解决措施**
 
-可以先创建FA模型的卡片,步骤如下：
+可以先创建FA模型的卡片，步骤如下：
 
 1. 实现卡片生命周期接口
 

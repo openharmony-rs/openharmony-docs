@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **brightness** module provides APIs for querying and adjusting the screen brightness and mode.
 
@@ -28,8 +28,11 @@ The **brightness** module provides APIs for querying and adjusting the screen br
 import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
 ```
 
+## Brightness
 
-## brightness.getValue<sup>(deprecated)</sup>
+The **brightness** module provides APIs for querying and adjusting the screen brightness and mode.
+
+### getValue<sup>(deprecated)</sup>
 
 getValue(options?: GetBrightnessOptions): void
 
@@ -45,10 +48,11 @@ Obtains the current screen brightness.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
@@ -56,8 +60,56 @@ Obtains the current screen brightness.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Value" style="width: 240px; height: 50px; margin: 5px;" onclick="getValue"></input>
+    <text class="title">getValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setValue<sup>(deprecated)</sup>
+export default {
+    data: {
+        value: ''
+    },
+    getValue() {
+        let TAG = 'get_value_success_test';
+        brightness.getValue({
+            success: (brightnessResponse) => {
+                this.value = brightnessResponse.value;
+                console.info(`${TAG} brightnessResponse.value: ${brightnessResponse.value}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getValue complete`);
+            }
+        });
+    },
+}
+```
+
+### setValue<sup>(deprecated)</sup>
 
 setValue(options?: SetBrightnessOptions): void
 
@@ -73,11 +125,12 @@ Sets the screen brightness.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
@@ -85,8 +138,56 @@ Sets the screen brightness.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Value" style="width: 240px; height: 50px; margin: 5px;" onclick="setValue"></input>
+    <text class="title">setValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.getMode<sup>(deprecated)</sup>
+export default {
+    data: {
+        value: 100
+    },
+    setValue() {
+        let TAG = 'set_value_success_test';
+        brightness.setValue({
+            value: this.value,
+            success: () => {
+                console.info(`${TAG} setValue success!`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setValue complete`);
+            }
+        });
+    },
+}
+```
+
+### getMode<sup>(deprecated)</sup>
 
 getMode(options?: GetBrightnessModeOptions): void
 
@@ -102,10 +203,11 @@ Obtains the screen brightness adjustment mode.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
@@ -113,8 +215,56 @@ Obtains the screen brightness adjustment mode.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="getMode"></input>
+    <text class="title">getMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setMode<sup>(deprecated)</sup>
+export default {
+    data: {
+        mode: ''
+    },
+    getMode() {
+        let TAG = 'get_mode_success_test';
+        brightness.getMode({
+            success: (brightnessModeResponse) => {
+                this.mode = brightnessModeResponse.mode;
+                console.info(`${TAG} brightnessModeResponse mode: ${brightnessModeResponse.mode}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getMode complete`);
+            }
+        });
+    },
+}
+```
+
+### setMode<sup>(deprecated)</sup>
 
 setMode(options?: SetBrightnessModeOptions): void
 
@@ -129,11 +279,12 @@ Sets the screen brightness mode.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
@@ -141,14 +292,65 @@ Sets the screen brightness mode.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="setMode"></input>
+    <text class="title">setMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setKeepScreenOn<sup>(deprecated)</sup>
+export default {
+    data: {
+        mode: 1
+    },
+    setMode() {
+        let TAG = 'set_mode_success_test';
+        brightness.setMode({
+            mode: this.mode,
+            success: () => {
+                console.info(`${TAG} setMode success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setMode complete`);
+            }
+        });
+    },
+}
+```
+
+### setKeepScreenOn<sup>(deprecated)</sup>
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
-
 Sets whether to always keep the screen on. Call this API in **onShow()**.
+
+> **NOTE**
+>
+> - This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
+> - On lite wearables, this API can only prevent the screen from turning off (automatically) due to inactivity. It cannot prevent the screen from turning off due to user actions (such as covering the screen) or the end of screen-on time.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -160,17 +362,68 @@ Sets whether to always keep the screen on. Call this API in **onShow()**.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
       }
   });
   ```
+
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="SetKeepScreenOn" style="width: 240px; height: 50px; margin: 5px;" onclick="setKeepScreenOn"></input>
+    <text class="title">setKeepScreenOn: {{ keepScreenOn }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        keepScreenOn: true
+    },
+    setKeepScreenOn() {
+        let TAG = 'set_keep_screen_on_success_test';
+        brightness.setKeepScreenOn({
+            keepScreenOn: this.keepScreenOn,
+            success: () => {
+                console.info(`${TAG} setKeepScreenOn success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setKeepScreenOn complete`);
+            }
+        });
+    },
+}
+```
+
 ## GetBrightnessOptions<sup>(deprecated)</sup>
 
 Options for obtaining the screen brightness.

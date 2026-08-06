@@ -1,12 +1,12 @@
-# 监听输入框事件
+# 添加输入框文本事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-输入框包含多种交互行为，开发者可注册事件监听并获取状态。
+输入框包含多种交互行为，开发者可注册事件监听并获取状态。以下以多行文本输入框为例进行说明，单行文本输入框添加文本事件监听的步骤与此类似。
 
 要实现实时搜索功能，可注册[NODE_TEXT_AREA_ON_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，输入框文本发生变化时会收到通知，并能获取当前文本内容。
 
@@ -18,7 +18,7 @@
 
 - 注册事件
     
-    事件注册有统一接口，详情请参见[registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)。输入框支持的事件类型，请参见[NativeNode组件支持的事件类型定义](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，搜索前缀NODE_TEXT_AREA_。
+    事件注册有统一接口，详情请参见[registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)。输入框支持的事件类型，请参见NativeNode组件支持的事件类型定义[ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，搜索前缀NODE_TEXT_AREA_。
 
     <!-- @[obtain_create_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
     
@@ -81,29 +81,83 @@
     #include <sstream>
     #include <arkui/native_interface.h>
     #include <arkui/styled_string.h>
-    
-    namespace NativeNode::Manager {
+    #include <hilog/log.h>
+
+    #define CUSTOM_LOG_TAG "manager"
+    #define LOG_ERROR(...) OH_LOG_Print(LOG_APP, LOG_ERROR, 0xD001400, CUSTOM_LOG_TAG, __VA_ARGS__)
+    #define LOG_INFO(...) OH_LOG_Print(LOG_APP, LOG_INFO, 0xD001400, CUSTOM_LOG_TAG, __VA_ARGS__)
+
+    namespace ConstIde {
+    const uint32_t NUMBER_0 = 0;
+    const uint32_t NUMBER_1 = 1;
+    constexpr const char *K_LOG_DOMAIN = "Manager";
+    } // namespace ConstIde
+
+    Manager Manager::manager_;
+    ArkUI_NativeNodeAPI_1 *Manager::nodeAPI_ = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+    template <class MakeNodeFn>
+    static napi_value CreateNativeNode(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
+    {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s BEGIN", who);
+
+        if ((env == nullptr) || (info == nullptr)) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s env or info is null",
+                         who);
+            return nullptr;
+        }
+
+        size_t argc = ConstIde::NUMBER_1;
+        napi_value args[ConstIde::NUMBER_1] = {nullptr};
+        napi_status st = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        if (st != napi_ok || argc < ConstIde::NUMBER_1) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
+                         who);
+            return nullptr;
+        }
+
+        ArkUI_NodeContentHandle nodeContentHandle = nullptr;
+        OH_ArkUI_GetNodeContentFromNapiValue(env, args[ConstIde::NUMBER_0], &nodeContentHandle);
+        if (nodeContentHandle == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN,
+                         "%{public}s nodeContentHandle is null", who);
+            return nullptr;
+        }
+
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s after GetNodeContent", who);
+
+        // 可选：保留对 nodeAPI_ 的健壮性检查（与你现有代码一致）
+        if (Manager::nodeAPI_ == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s nodeAPI_ is null", who);
+            return nullptr;
+        }
+
+        // 构建具体节点 & 挂载
+        ArkUI_NodeHandle page = makeNodeFn();
+        if (page == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s makeNodeFn return null",
+                         who);
+            return nullptr;
+        }
+
+        OH_ArkUI_NodeContent_AddNode(nodeContentHandle, page);
+        return nullptr;
+    }
+
     constexpr int32_t NUM_10 = 10;
     constexpr int32_t NUM_28 = 28;
     constexpr int32_t NUM_400 = 400;
-    NodeManager &NodeManager::GetInstance()
+
+    napi_value Manager::CreateTextAreaNativeNode(napi_env__* env, napi_callback_info__* info)
     {
-        static NodeManager instance;
-        return instance;
+        return CreateNativeNode(env, info, "CreateTextAreaNativeNode",
+                                []() -> ArkUI_NodeHandle { return CreateTextAreaNativeNode(); });
     }
     
-    void NodeManager::SetXComponent(OH_NativeXComponent *xComponent) { xComponent_ = xComponent; }
-    
-    void NodeManager::CreateTextAreaNode()
+    ArkUI_NodeHandle Manager::CreateTextAreaNativeNode()
     {
-        if (!xComponent_) {
-            return;
-        }
-        ArkUI_NativeNodeAPI_1 *nodeApi = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-        if (nodeApi == nullptr) {
-            return;
-        }
+        ArkUI_NativeNodeAPI_1 *nodeApi = Manager::nodeAPI_;
+
         ArkUI_NodeHandle column = nodeApi->createNode(ARKUI_NODE_COLUMN);
         ArkUI_NumberValue colWidth[] = {{.f32 = 300}};
         ArkUI_AttributeItem widthItem = {.value = colWidth, .size = 1};
@@ -140,10 +194,10 @@
         nodeApi->registerNodeEvent(textArea, NODE_TEXT_AREA_ON_TEXT_SELECTION_CHANGE, id, selectionText);
         TextAreaNodeEventReceiver(nodeApi);
         nodeApi->addChild(column, textArea);
-        OH_NativeXComponent_AttachNativeRootNode(xComponent_, column);
+        return column;
     }
     
-    void NodeManager::TextAreaNodeEventReceiver(ArkUI_NativeNodeAPI_1* nodeApi)
+    void Manager::TextAreaNodeEventReceiver(ArkUI_NativeNodeAPI_1* nodeApi)
     {
         nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
             ArkUI_NodeEventType eventType = OH_ArkUI_NodeEvent_GetEventType(event);
@@ -167,7 +221,6 @@
             }
         });
     }
-    } // namespace NativeNode::Manager
     ```
 
 

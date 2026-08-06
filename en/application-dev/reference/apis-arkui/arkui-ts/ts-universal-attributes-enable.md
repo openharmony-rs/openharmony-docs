@@ -59,4 +59,4 @@ struct EnabledExample {
 }
 ```
 
-![en-us_image_0000001219982713](figures/en-us_image_0000001219982713.gif)
+![enabled](figures/enabled.gif)

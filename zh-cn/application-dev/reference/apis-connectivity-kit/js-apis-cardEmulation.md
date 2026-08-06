@@ -18,7 +18,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
 
 开发HCE卡模拟相关应用时，需要在应用的属性配置文件中，声明与NFC相关的属性值，比如，在module.json5文件中，声明下面属性值：
 ```json5
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 {
   "module": {
     // 其他已声明的属性
@@ -117,12 +117,12 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
 >1. 声明"actions"字段的内容填写，必须包含"ohos.nfc.cardemulation.action.HOST_APDU_SERVICE"，不能更改。
 >2. 声明aid（参考ISO/IEC 7816-4规范）时，name必须为payment-aid或者other-aid。填写错误会造成解析失败。
 >3. 声明权限时"requestPermissions"中的"name"字段的内容填写，必须是"ohos.permission.NFC_CARD_EMULATION"，不能更改。
->4. 轻量级智能穿戴产品不同于其他设备，仅支持[FA模型](../../application-models/ability-terminology.md#fa模型)，属性配置和接口调用方式与其它设备有所区别，详见示例。
+>4. 轻量级智能穿戴产品不同于其他设备，仅支持[FA模型](../../application-models/ability-terminology.md#fa模型)，属性配置和接口调用方式与其他设备有所区别，详见示例。
 
 ## 导入模块
 
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 ```
 
@@ -188,7 +188,7 @@ isSupported(feature: number): boolean
 **示例：**
 
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 
 let isHceSupported: boolean = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
@@ -237,7 +237,7 @@ hasHceCapability(): boolean
 **示例：**
 
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 
 let hasHceCap: boolean = cardEmulation.hasHceCapability();
@@ -294,7 +294,7 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 
 **示例：**
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { bundleManager, Want } from '@kit.AbilityKit';
 
@@ -346,11 +346,13 @@ startHCE(aidList: string[]): boolean
 | ------- | -------------------------------------- |
 | boolean | true: 启动HCE功能或HCE已启动，&nbsp;false: 启动失败。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 示例请参见[on](#on8)接口的示例。
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
@@ -457,11 +459,13 @@ stopHCE(): boolean
 | ------- | -------------------------------------- |
 | boolean | true: 禁用HCE功能或HCE已禁用，false: 禁用失败。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 示例请参见[on](#on8)接口的示例。
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
@@ -575,17 +579,18 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 |401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, param: AbilityConstant.LaunchParam) {
@@ -605,11 +610,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onDestroy');
     hceService.stop(element);
   }
-  // 生命周期内的其它功能
+  // 生命周期内的其他功能
 }
 ```
 
-**JS示例：**
+JS示例：
 <!--code_no_check_fa-->
 ```js
 // 适用于轻量级智能穿戴设备
@@ -637,7 +642,7 @@ export default {
     HceService.start(appName, this.paymentAid);
     HceService.on("hceCmd", (data) => {
       console.info('data:' + data);
-      // 应用程序实际想要发送的数据， 此处仅做为示例
+      // 应用程序实际想要发送的数据， 此处仅作为示例
       let responseData = [0x1, 0x2];
       HceService.transmit(responseData, () => {
         console.info('sendResponse start');
@@ -647,7 +652,7 @@ export default {
   },
   onDestroy() {
   }
-  // 生命周期内的其它功能
+  // 生命周期内的其他功能
 }
 ```
 
@@ -668,7 +673,7 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 | 参数名   | 类型                    | 必填 | 说明                                         |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | 是   | 要取消订阅的事件类型，固定填"hceCmd"字符串。                         |
-| callback | AsyncCallback\<number[]> | 否   | 回调函数，返回的每个number十六进制表示，范围是0x00~0xFF。 |
+| callback | AsyncCallback\<number[]> | 否   | 回调函数，返回的每个number十六进制表示，范围是0x00~0xFF。不填该参数则取消订阅该type对应的回调。 |
 
 **错误码：**
 
@@ -681,15 +686,14 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
 **示例：**
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // 处理数据和异常
   console.info("AsyncCallback got apdu data");
@@ -710,7 +714,7 @@ export default class EntryAbility extends UIAbility {
     hceService.off('hceCmd', apduCallback);
     hceService.stop(element);
   }
-  // 生命周期内的其它功能
+  // 生命周期内的其他功能
 }
 ```
 
@@ -733,11 +737,13 @@ sendResponse(responseApdu: number[]): void
 | ------------ | -------- | ---- | -------------------------------------------------- |
 | responseApdu | number[] | 是   | 发送到对端读卡设备的符合APDU协议的数据，每个number十六进制表示，范围是0x00~0xFF。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 示例请参见[transmit](#transmit9)接口的示例。
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- 适用于轻量级智能穿戴设备 -->
@@ -839,13 +845,13 @@ transmit(response: number[]): Promise\<void>
 
 **示例：**
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 
-// 应用程序实际想要发送的数据， 此处仅做为示例
+// 应用程序实际想要发送的数据， 此处仅作为示例
 const responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // 处理 promise 的回调
@@ -862,7 +868,7 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let hceService = new cardEmulation.HceService();
 
-// 应用程序实际想要发送的数据， 此处仅做为示例
+// 应用程序实际想要发送的数据， 此处仅作为示例
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // 处理 promise 的回调
@@ -903,13 +909,13 @@ transmit(response: number[], callback: AsyncCallback\<void>): void
 
 **示例：**
 ```js
-// 适用于除轻量级智能穿戴产品之外其它设备
+// 适用于除轻量级智能穿戴产品之外其他设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 
-// 应用程序实际想要发送的数据， 此处仅做为示例
+// 应用程序实际想要发送的数据， 此处仅作为示例
 try {
   const responseData = [0x1, 0x2];
 
@@ -933,7 +939,7 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let hceService = new cardEmulation.HceService();
 
-// 应用程序实际想要发送的数据， 此处仅做为示例
+// 应用程序实际想要发送的数据， 此处仅作为示例
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData, () => {
   console.info("transmit Promise success.");

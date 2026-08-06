@@ -1506,8 +1506,6 @@ struct SearchExample {
 }
 ```
 
-![searchEnterKeyType](figures/searchEnterKey.gif)
-
 ### Example 5: Setting the Text Style
 
 This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, available since API version 12.
@@ -2325,7 +2323,7 @@ struct SearchExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        Search({value: '中文 Text'})
+        Search({value: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
         Search({value: '中文Text'})

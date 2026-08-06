@@ -129,8 +129,8 @@ In this example, when pixel rounding is initially disabled (that is, the **pixel
 
 **Figure 1** Layout with pixelRound
 
-![en-us_image_pixel_round_enable.png](figures/en-us_image_pixel_round_enable.png)
+![image-pixel-round-enable.png](figures/image-pixel-round-enable.png)
 
 **Figure 2** Layout without pixelRound
 
-![en-us_image_pixel_round_disable.png](figures/en-us_image_pixel_round_disable.png)
+![image-pixel-round-disable.png](figures/image-pixel-round-disable.png)

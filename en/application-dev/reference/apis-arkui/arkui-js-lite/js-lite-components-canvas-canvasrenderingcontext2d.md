@@ -1,13 +1,18 @@
 # CanvasRenderingContext2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=015e6dd99f8bdcdb767d5f0c5dc94490a11f868d translatedAt=2026-07-31T01:11:56.749Z pushedAt=2026-07-31T12:04:26.563Z -->
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.
+
+> **NOTE**
+>
+> Since API version 23, the previewer is no longer subject to the restriction that the JS file size cannot exceed 48 KB. For API version 22 and earlier, the JS file size cannot exceed 48 KB.
 
 **Example**
 
@@ -18,7 +23,6 @@
     <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
 </div>
 ```
-
 
 ```javascript
 // xxx.js
@@ -33,8 +37,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001431548113](figures/en-us_image_0000001431548113.png)
-
+  ![CanvasRenderingContext2D](figures/CanvasRenderingContext2D.png)
 
 ## fillRect()
 
@@ -42,7 +45,7 @@ Fills a rectangle on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | x | number | X-coordinate of the upper left corner of the rectangle.|
 | y | number | Y-coordinate of the upper left corner of the rectangle.|
@@ -51,13 +54,11 @@ Fills a rectangle on the canvas.
 
 **Example**
 
- ![en-us_image_0000001431388525](figures/en-us_image_0000001431388525.png)
-
+ ![fillRect](figures/fillRect.png)
 
   ```javascript
   ctx.fillRect(20, 20, 200, 150);
   ```
-
 
 ## fillStyle
 
@@ -65,20 +66,18 @@ Sets the style to fill an area.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | color | &lt;color&gt; | Color used to fill the area|
 
 **Example**
 
-  ![en-us_image_0000001431388505](figures/en-us_image_0000001431388505.png)
-
+  ![fillStyle](figures/fillStyle.png)
 
   ```javascript
   ctx.fillStyle = '#0000ff';
   ctx.fillRect(20, 20, 150, 100);
   ```
-
 
 ## strokeRect()
 
@@ -86,7 +85,7 @@ Draws a rectangle stroke on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | x | number | X-coordinate of the upper left corner of the rectangle.|
 | y | number | Y-coordinate of the upper left corner of the rectangle.|
@@ -95,13 +94,11 @@ Draws a rectangle stroke on the canvas.
 
 **Example**
 
-  ![en-us_image_0000001381268264](figures/en-us_image_0000001381268264.png)
-
+  ![strokeRect](figures/strokeRect.png)
 
   ```javascript
   ctx.strokeRect(30, 30, 200, 150);
   ```
-
 
 ## fillText()
 
@@ -109,22 +106,20 @@ Draws filled text on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | text | string | Text to draw.|
-| x | number | X-coordinate of the lower left corner of the text.|
-| y | number | Y-coordinate of the lower left corner of the text.|
+| x | number | X coordinate of the lower left corner of the text to be drawn.|
+| y | number | Y coordinate of the lower left corner of the text to be drawn.|
 
 **Example**
 
-  ![en-us_image_0000001431548109](figures/en-us_image_0000001431548109.png)
-
+  ![fillText](figures/fillText.png)
 
   ```javascript
   ctx.font = '35px sans-serif';
   ctx.fillText("Hello World!", 20, 60);
   ```
-
 
 ## lineWidth
 
@@ -132,20 +127,18 @@ Sets the width of a line.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | lineWidth | number | Line width.|
 
 **Example**
 
-  ![en-us_image_0000001431548121](figures/en-us_image_0000001431548121.png)
-
+  ![lineWidth](figures/lineWidth.png)
 
   ```javascript
   ctx.lineWidth = 5;
   ctx.strokeRect(25, 25, 85, 105);
   ```
-
 
 ## strokeStyle
 
@@ -153,14 +146,13 @@ Sets the stroke style.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | color | &lt;color&gt; | Color of the stroke.|
 
 **Example**
 
-  ![en-us_image_0000001380789172](figures/en-us_image_0000001380789172.png)
-
+  ![strokeStyle](figures/strokeStyle.png)
 
   ```javascript
   ctx.lineWidth = 10;
@@ -168,14 +160,13 @@ Sets the stroke style.
   ctx.strokeRect(25, 25, 155, 105);
   ```
 
-
 ### stroke()<sup>5+</sup>
 
 Draws a stroke.
 
 **Example**
 
-![en-us_image_0000001431388513](figures/en-us_image_0000001431388513.png)
+![stroke](figures/stroke.png)
 
   ```javascript
   ctx.moveTo(25, 25);
@@ -184,40 +175,37 @@ Draws a stroke.
   ctx.stroke();
   ```
 
-
 ### beginPath()<sup>5+</sup>
 
 Creates a drawing path.
 
 **Example**
 
-  ![en-us_image_0000001431548125](figures/en-us_image_0000001431548125.png)
-
+  ![beginPath](figures/beginPath.png)
 
   ```javascript
   ctx.beginPath();              
-  ctx.lineWidth = '6';
+  ctx.lineWidth = 6;
   ctx.strokeStyle = '#0000ff';
   ctx.moveTo(15, 80); 
   ctx.lineTo(280, 80);
   ctx.stroke();
   ```
 
-
 ### moveTo()<sup>5+</sup>
 
-Moves a drawing path to a target position on the canvas.
+Moves a drawing path from the current position to a target position on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | x | number | X-coordinate of the target position.|
 | y | number | Y-coordinate of the target position.|
 
 **Example**
 
-  ![en-us_image_0000001431388529](figures/en-us_image_0000001431388529.png)
+  ![moveTo](figures/moveTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -225,7 +213,6 @@ Moves a drawing path to a target position on the canvas.
   ctx.lineTo(280, 160);
   ctx.stroke();
   ```
-
 
 ### lineTo()<sup>5+</sup>
 
@@ -233,14 +220,14 @@ Connects the current point to a target position using a straight line.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | x | number | X-coordinate of the target position.|
 | y | number | Y-coordinate of the target position.|
 
 **Example**
 
-![en-us_image_0000001431148365](figures/en-us_image_0000001431148365.png)
+![lineTo](figures/lineTo.png)
 
   ```javascript
   ctx.beginPath();
@@ -249,15 +236,13 @@ Connects the current point to a target position using a straight line.
   ctx.stroke();
   ```
 
-
 ### closePath()<sup>5+</sup>
 
 Draws a closed path.
 
 **Example**
 
-  ![en-us_image_0000001381268284](figures/en-us_image_0000001381268284.png)
-
+  ![closePath](figures/closePath.png)
 
   ```javascript
   ctx.beginPath();
@@ -268,27 +253,24 @@ Draws a closed path.
   ctx.stroke();
   ```
 
-
 ## font
 
-Sets the font style.
+Font style.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | value | string | Font style. **sans-serif**, **serif**, and **monospace** are supported. The default value is **30px HYQiHei-65S**.|
 
 **Example**
 
-  ![en-us_image_0000001381108328](figures/en-us_image_0000001381108328.png)
-
+  ![font](figures/font.png)
 
   ```javascript
   ctx.font = '30px sans-serif';
   ctx.fillText("Hello World", 20, 60);
   ```
-
 
 ## textAlign
 
@@ -296,14 +278,13 @@ Sets the text alignment mode.
 
 **Parameters**
 
-| Parameter| Type| Description|
+| Name| Type| Description|
 | -------- | -------- | -------- |
 | align | string | Available values are as follows:<br>- **left** (default): The text is left-aligned.<br>- **right**: The text is right-aligned.<br>- **center**: The text is center-aligned.|
 
 **Example**
 
-  ![en-us_image_0000001431388517](figures/en-us_image_0000001431388517.png)
-
+  ![textAlign](figures/textAlign.png)
 
   ```javascript
   ctx.strokeStyle = '#0000ff';
@@ -322,25 +303,24 @@ Sets the text alignment mode.
   ctx.fillText('textAlign=right',140, 140);
   ```
 
-
 ## arc()<sup>5+</sup>
 
 Draws an arc on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
-| -------- | -------- | -------- |
-| x | number | X-coordinate of the center point of the arc.|
-| y | number | Y-coordinate of the center point of the arc.|
-| radius | number | Radius of the arc.|
-| startAngle | number | Start radian of the arc.|
-| endAngle | number | End radian of the arc.|
-| anticlockwise | boolean | Whether to draw the arc counterclockwise.<br/>**true**: Draw the arc in a counterclockwise direction.<br/>**false**: Draw the arc in a clockwise direction.<br/>Default value: **false**. |
+| Name| Type| Mandatory   | Description|
+| -------- | -------- | -------- | -------- |
+| x | number | Yes| X coordinate of the center point of the arc, in vp.|
+| y | number | Yes| Y coordinate of the center point of the arc, in vp.|
+| radius | number | Yes| Radius of the arc, in vp.|
+| startAngle | number | Yes| Start radian of the arc, in radians|
+| endAngle | number | Yes| End radian of the arc, in radians.|
+| anticlockwise | boolean | No| Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>The default value is **false**. |
 
 **Example**
 
-![en-us_image_0000001381108320](figures/en-us_image_0000001381108320.png)
+![arc](figures/arc.png)
 
   ```javascript
   ctx.beginPath();
@@ -348,23 +328,22 @@ Draws an arc on the canvas.
   ctx.stroke();
   ```
 
-
 ### rect()<sup>5+</sup>
 
 Creates a rectangle on the canvas.
 
 **Parameters**
 
-| Parameter| Type| Description|
-| -------- | -------- | -------- |
-| x | number | X-coordinate of the upper left corner of the rectangle.|
-| y | number | Y-coordinate of the upper left corner of the rectangle.|
-| width | number | Width of the rectangle.|
-| height | number | Height of the rectangle.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| x | number | Yes| X coordinate of the upper left corner of the rectangle, in vp.|
+| y | number | Yes| Y coordinate of the upper left corner of the rectangle, in vp.|
+| width | number | Yes| Width of the rectangle, in vp.|
+| height | number | Yes| Height of the rectangle, in vp.|
 
 **Example**
 
-![en-us_image_0000001381108312](figures/en-us_image_0000001381108312.png)
+![rect](figures/rect.png)
 
   ```javascript
   ctx.rect(20, 20, 100, 100); // Create a 100*100 rectangle at (20, 20)

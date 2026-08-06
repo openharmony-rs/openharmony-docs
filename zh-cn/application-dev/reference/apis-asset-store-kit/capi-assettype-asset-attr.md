@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -13,7 +13,7 @@ typedef struct {...} Asset_Attr
 
 ## 概述
 
-关键资产属性。
+关键资产属性，属性由标签和值组成，以键值对的形式存在。
 
 **起始版本：** 11
 
@@ -27,7 +27,7 @@ typedef struct {...} Asset_Attr
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t tag | 关键资产属性名称。 |
-| [Asset_Value](capi-assettype-asset-value.md) value | 关键资产属性内容。 |
+| uint32_t tag | 关键资产属性的标签。 |
+| [Asset_Value](capi-assettype-asset-value.md) value | 关键资产属性的值（内容）。 |
 
 

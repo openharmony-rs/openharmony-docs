@@ -2,9 +2,9 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @dwhuawei-->
-<!--Designer: @yingguofeng-->
+<!--Designer: @dwhuawei-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是指识别并释放内存中的不再使用的对象，以回收内存空间。目前广泛使用的编程语言实现的GC算法主要分为两大类：引用计数和对象追踪（即Tracing GC）。
 
@@ -18,7 +18,9 @@ GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是
 
 - 优点：引用计数算法设计简单，而且会在对象成为垃圾时及时回收该部分内存，因此无需引入单独的暂停业务代码（Stop The World，STW）阶段。
 - 缺点：在对象操作时插入了计数环节，增加了内存分配和赋值的开销，影响性能。存在因循环引用而导致的内存泄漏问题。
-```ts
+<!-- @[reference_counting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/ReferenceCounting.ts) -->
+
+``` TypeScript
 class Parent {
   constructor() {
     this.child = null;
@@ -89,7 +91,7 @@ ArkTS运行时采用传统的分代模型，将对象进行分类。大多数新
 
 ![image](./figures/generational-model.png)
 
-ArkTS运行时将新分配的对象直接分配到年轻代（Young Space，又称Semi Space）的From空间。经过一次GC后依然存活的对象，会移动到To空间。经过再次GC后依然存活的对象，会被移动到老年代（Old Space）。
+ArkTS运行时将新分配的对象直接分配到年轻代（YoungSpace，又称SemiSpace）的From空间。经过一次GC后依然存活的对象，会移动到To空间。经过再次GC后依然存活的对象，会被移动到老年代（OldSpace）。
 
 **混合算法**
 
@@ -117,13 +119,106 @@ HPP GC是部分复制、部分整理和部分清扫的混合算法。根据年�
 
 HPP GC流程中引入了大量的并发和并行优化，以减少对应用性能的影响。采用了并发+并行标记（Marking）、并发+并行清扫（Sweep）、并行复制/整理（Evacuation）、并行回改（Update）和并发清理（Clear）执行GC任务。
 
-## Heap结构及其配置参数
+## GC流程
 
-### Heap结构
+![image](./figures/gc-process.png)
+
+### HPP GC的类型
+
+**Young GC**
+
+- 触发机制：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
+- 功能描述：主要回收YoungSpace新分配的年轻代对象。
+- 场景：前台场景。
+- 日志关键词：`[ HPP YoungGC ]`
+
+**Old GC**
+
+- 触发机制：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
+- 功能描述：对年轻代和部分老年代空间做整理压缩，其他空间做清理。触发频率比年轻代GC低很多，由于会做全量标记，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
+- 场景：前台场景。
+- 日志关键词：`[ HPP OldGC ]`
+
+**Full GC**
+
+- 触发机制：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
+- 功能描述：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
+- 场景：后台场景。
+- 日志关键词：`[ CompressGC ]`
+
+此后，Smart GC或Idle GC会从上述三种GC中选择。
+
+### 触发策略
+
+**空间阈值触发GC**
+
+- 限制参数：对应的空间阈值。
+- 策略描述：对象申请空间到达阈值时触发GC。
+- 典型日志：日志可区分GCReason::ALLOCATION_LIMIT。
+
+**Native绑定大小达到阈值触发GC**
+
+- 限制参数：`globalSpaceNativeLimit`
+- 策略描述：按条件进行全量标记和开启并发标记。
+
+**切换后台触发GC**
+
+- 策略描述：切换到后台场景后主动触发一次Full GC。
+- 典型日志：`app is inBackground`和`app is not inBackground`。GC日志中可区分GCReason::SWITCH_BACKGROUND。
+
+**空闲时触发GC**
+
+- 触发条件：
+  - Young GC：年轻代对象分配量超过预期，且空间使用率达到阈值。
+  - Old GC：老年代对象增长超过预期，满足以下任一条件：
+    - Native绑定内存增长超过阈值。
+    - 老年代空间使用率达到空闲限制阈值。
+    - 全局分配限制达到空闲限制阈值。
+  - Full GC：满足以下任一条件：
+    - 堆对象大小超过预期。
+    - 碎片大小超过预期。
+- 策略描述：应用空闲时，根据内存使用情况选择合适的GC类型进行回收，避免在性能敏感场景触发GC影响用户体验。
+- 典型日志：`IdleGCTrigger: trigger full gc`、`IdleGCTrigger: trigger young gc`。GC日志中可区分GCReason::IDLE。
+
+### 执行策略
+
+**ConcurrentMark**
+
+- 策略描述：尝试触发并发标记，将遍历对象进行标记的任务交由线程池中并发运行，减少UI主线程挂起时间。
+- 典型日志：`fullMarkRequested`、`trigger full mark`、`Trigger the first full mark`、`Trigger full mark`、`Trigger the first semi mark`、`Trigger semi mark`。
+
+**YoungSpace GC前后的阈值调整**
+
+- 策略描述：GC后调整YoungSpace的触发阈值，优化空间结构。
+- 典型日志：无直接日志。可以通过GC统计日志看出，GC前YoungSpace的阈值有动态调整。
+
+**第一次Old GC后阈值的调整**
+
+- 策略描述：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
+- 日志关键词：`AdjustOldSpaceLimit`
+
+**第二次及以后的Old GC对OldSpace和GlobalSpace阈值调整，以及增长因子的调整**
+
+- 策略描述：根据当前GC统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
+- 日志关键词：`RecomputeLimits`
+
+**Partial Old GC的CSet 选择策略**
+
+- 策略描述：Partial GC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
+- 典型日志：
+    - `Select CSet failure: number is too few`
+    - `Max evacuation size is 6_MB. The CSet Region number`
+    - `Select CSet success: number is`
+
+## Heap
+
+Heap包含两种类型：LocalHeap和SharedHeap。LocalHeap是应用进程中每个ArkTS线程独有的虚拟机堆，SharedHeap是应用进程中所有ArkTS线程共享的虚拟机堆。
+
+### LocalHeap结构
 
 ![image](./figures/gc-heap-space.png)
 
-- Young Space：年轻代（Young Generation），又称Semi Space，存放新创建出来的对象，存活率低，主要使用复制算法进行内存回收。
+- YoungSpace：年轻代（Young Generation），又称SemiSpace，存放新创建出来的对象，存活率低，主要使用半空间复制算法进行内存回收。
 - OldSpace：老年代（Old Generation），存放年轻代多次回收仍存活的对象会被移动到该空间，根据场景混合多种算法进行内存回收。
 - HugeObjectSpace：大对象空间，使用单独的Region存放一个大对象的空间。
 - ReadOnlySpace：只读空间，存放运行期间的只读数据。
@@ -134,7 +229,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 > **说明：**<br/>
 > 每个空间由一个或多个Region进行分区域管理。Region是空间向内存分配器申请的单位。
 
-### 相关参数
+### LocalHeap相关参数
 
 > **注意：**
 > 
@@ -142,7 +237,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 
 根据系统分配堆空间总大小64MB-128MB/128MB-256MB/大于256MB的三个范围，以下参数系统会设置不同的大小。如果表格内范围仅有一个值，则表示该参数值不随堆空间总大小变化。手机设备堆空间总大小默认为大于256MB。
 
-开发者可以查阅[hidebug接口文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
+开发者可以查阅[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
 
 **堆大小相关参数**
 
@@ -154,23 +249,23 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 | SnapshotSpaceSize | 512KB | 快照空间大小。 |
 | MachineCodeSpaceSize | 2MB | 机器码空间大小。 |
 
-**worker线程堆上限**
+**Worker线程堆上限**
 
 | 参数名 | 范围 | 作用 |
 | --- | --- | --- |
-| HeapSize  | 768 MB | worker类型线程堆空间大小。 |
+| HeapSize  | 768 MB | Worker类型线程堆空间大小。 |
 
-**Semi Space**
+**SemiSpace**
 
-heap中生成两个Semi Space，供copying使用。
+Heap中生成两个SemiSpace，供复制使用。
 
 | 参数名 | 范围 | 作用 |
 | --- | --- | --- |
 | semiSpaceSize | 2MB-4MB/2MB-8MB/2MB-16MB | SemiSpace空间大小，会根据堆总大小有不同的范围限制。 |
-| semiSpaceTriggerConcurrentMark | 1MB/1.5MB/1.5MB | 首次单独触发Semi Space的并发mark的界限值，超过该值则触发。 |
+| semiSpaceTriggerConcurrentMark | 1MB/1.5MB/1.5MB | 首次单独触发SemiSpace的并发标记的界限值，超过该值则触发。 |
 | semiSpaceStepOvershootSize| 2MB | 允许过冲最大大小。 |
 
-**Old Space 和 Huge Object Space**
+**OldSpace和HugeObjectSpace**
 
 初始化时均设定为Heap剩余未分配空间的大小，默认手机设备主线程OldSpaceSize上限接近350MB。
 
@@ -207,132 +302,71 @@ heap中生成两个Semi Space，供copying使用。
 
 | 参数名 | 值 | 作用 |
 | --- | --- | --- |
-| minAllocLimitGrowingStep | 2MB/4MB/8MB | heap 整体重新计算空间大小限制时，此参数用于控制oldSpace、heapObject和globalNative的最小增长步长。 |
-| minGrowingStep | 4MB/8MB/16MB | 调整oldSpace的最小增长步长。 |
+| minAllocLimitGrowingStep | 2MB/4MB/8MB | Heap整体重新计算空间大小限制时，此参数用于控制OldSpace、heapObject和globalNative的最小增长步长。 |
+| minGrowingStep | 4MB/8MB/16MB | 调整OldSpace的最小增长步长。 |
 | longPauseTime | 40ms | 判断是否为超长GC界限。超长GC会触发完整GC日志信息的打印，便于开发者定位和分析。可通过`gc-long-paused-time`进行配置。 |
 
-## GC流程
-
-![image](./figures/gc-process.png)
-
-### HPP GC的类型
-
-**Young GC**
-
-- **触发机制**：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
-- **功能描述**：主要回收semi Space新分配的年轻代对象。
-- **场景**：前台场景。
-- **日志关键词**：`[ HPP YoungGC ]`
-
-**Old GC**
-
-- **触发机制**：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
-- **功能描述**：对年轻代和部分老年代空间做整理压缩，其他空间做sweep清理。触发频率比年轻代GC低很多，由于会做全量mark，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
-- **场景**：前台场景。
-- **日志关键词**：`[ HPP OldGC ]`
-
-**Full GC**
-
-- **触发机制**：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
-- **功能描述**：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
-- **场景**：后台场景。
-- **日志关键词**：`[ CompressGC ]`
-
-此后，Smart GC或IDLE GC会从上述三种GC中选择。
-
-### 触发策略
-
-**空间阈值触发GC**
-
-- 函数方法：`AllocateYoungOrHugeObject`，`AllocateHugeObject`等分配函数。
-- 限制参数：对应的空间阈值。
-- 策略描述：对象申请空间到达阈值时触发GC。
-- 典型日志：日志可区分GCReason::ALLOCATION_LIMIT。
-
-**native绑定大小达到阈值触发GC**
-
-- 函数方法：`GlobalNativeSizeLargerThanLimit`
-- 限制参数：`globalSpaceNativeLimit`
-- 策略描述：按条件进行全量mark和开启并发mark。
-
-**切换后台触发GC**
-
-- 函数方法：`ChangeGCParams`
-- 策略描述：切换到后台场景后主动触发一次Full GC。
-- 典型日志：`app is inBackground` 和 `app is not inBackground`。GC日志中可区分GCReason::SWITCH_BACKGROUND。
-
-### 执行策略
-
-**ConcurrentMark**
-
-- 函数方法：`TryTriggerConcurrentMarking`
-- 策略描述：尝试触发并发mark，将遍历对象进行标记的任务交由线程池中并发运行，减少UI主线程挂起时间。
-- 典型日志：`fullMarkRequested`，`trigger full mark`，`Trigger the first full mark`，`Trigger full mark`，`Trigger the first semi mark`，`Trigger semi mark`。
-
-**new space GC前后的阈值调整**
-
-- 函数方法：`AdjustCapacity`
-- 策略描述：GC后，调整SemiSpace的触发水线，优化空间结构。
-- 典型日志：无直接日志。可以通过GC统计日志看出，GC前Young space的阈值有动态调整。
-
-**第一次OldGC后阈值的调整**
-
-- 函数方法：`AdjustOldSpaceLimit`
-- 策略描述：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
-- 日志关键词：`AdjustOldSpaceLimit`
-
-**第二次及以后的OldGC对old Space和global space阈值调整，以及增长因子的调整**
-
-- 函数方法：`RecomputeLimits`
-- 策略描述：根据当前 GC 统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
-- 日志关键词：`RecomputeLimits`
-
-**Partial Old GC的CSet 选择策略**
-
-- 函数方法：`OldSpace::SelectCSet()`
-- 策略描述：PartialGC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
-- 典型日志：
-    - `Select CSet failure: number is too few`
-    - `Max evacuation size is 6_MB. The CSet Region number`
-    - `Select CSet success: number is`
-
-## SharedHeap
 
 ### SharedHeap结构
 
 ![image](./figures/gc-shared-heap.png)
 
-- SharedOldSpace：共享老年代空间（不区分年轻代老年代），存放一般的共享对象。
-- SharedHugeObjectSpace：共享大对象空间，使用单独的Region存放一个大对象的空间。
-- SharedReadOnlySpace：共享只读空间，存放运行期间的只读数据。
-- SharedNonMovableSpace：共享不可移动空间，存放不可移动的对象。
+- SharedOldSpace：共享堆老年代空间，存放一般的共享对象。
+- SharedHugeObjectSpace：共享堆大对象空间，使用单独的Region存放一个大对象的空间。
+- SharedReadOnlySpace：共享堆只读空间，存放运行期间的只读数据。
+- SharedNonMovableSpace：共享堆不可移动空间，存放不可移动的共享对象。
 
-注：SharedHeap用于线程间共享对象，提高效率并节省内存。共享堆不单独属于任何线程，保存具有共享价值的对象，提高对象的存活率，去除了SemiSpace类型。
+> **说明：**
+>
+> SharedHeap用于存储线程间共享对象，提高效率并节省内存。共享堆不单独属于任何线程，保存具有共享价值的对象，提高对象的存活率。
+>
+> SharedHeap去除了SemiSpace类型，因为共享对象通常生命周期较长，不需要年轻代的复制算法。
+>
+> 每个空间由一个或多个Region进行分区域管理。Region是空间向内存分配器申请的单位。
+
+### SharedHeap相关参数
+
+以下参数适用于手机等大内存设备，开发者可以通过[getAllVMHeapMemoryInfo](../reference/apis-arkts/js-apis-util.md#getallvmheapmemoryinfo24)获取Shared堆内存信息。
+
+> **说明：**
+>
+> SharedOldSpace和SharedHugeObjectSpace的阈值上限在共享堆初始化时均设定为SharedHeap剩余未分配空间的一半，手机设备默认分配的空间上限接近350MB，超过该值会发生内存溢出。
+
+| 参数名                    | 范围                       | 作用                                           |
+| -------------------- | ------------------------ | -------------------------------------------- |
+| SharedHeapSize       | 778MB                    | SharedHeap默认堆空间总大小。             |
+| SharedOldSpaceSize   | 约350MB                    | SharedOldSpace空间容量。             |
+| SharedHugeObjectSpaceSize      | 约350MB                    | SharedHugeObjectSpace空间容量。             |
+| SharedReadOnlySpaceSize          | 256KB                    | SharedReadOnlySpace空间容量。             |
+| SharedNonMovableSpaceSize        | 64MB             | SharedNonMovableSpace空间容量。           |
 
 ## 特性
 
 ### Smart GC
 
-**特性介绍**
+Smart GC是一种智能GC抑制机制，在冷启动场景和性能敏感场景中通过临时提高GC触发阈值来降低GC触发频率，避免因GC而导致应用掉帧，从而影响用户体验。
 
-在应用性能敏感场景，通过将线程（SmartGC对worker线程和taskpool线程不生效）GC触发水线临时调整到线程的堆最大值（主线程默认448MB），尽量避免触发GC导致应用掉帧。如果敏感场景持续时间过久，对象分配已经达到了堆最大值，则还是会触发GC，且这次GC由于积累的对象太多，GC时间会相对较久。
-
-**支持敏感场景**
+**支持场景**
 
 - 应用冷启动（默认支持）。
 - 应用滑动。
 - 应用点击页面跳转。
 - 超长帧。
 
-该特性使能由系统侧进行管控，三方应用暂无接口直接调用。
+**注意事项**
 
-日志关键词: `SmartGC`
+- Smart GC对Worker线程和TaskPool线程不生效，仅对主线程生效。
+- 如果敏感场景持续时间过久，对象分配仍可能达到提高后的GC阈值，仍会触发GC，且由于积累对象较多，GC时间会较长。
+- 该特性由系统侧管控，三方应用暂无接口直接调用。
+
+**日志关键词**
+
+- 敏感场景：`SmartGC: set high sensitive status`
+- 冷启动场景：`SmartGC: app cold start just finished`
 
 **交互流程**
 
 ![image](./figures/gc-smart-feature.png)
-
-标记性能敏感场景。在进入和退出性能敏感场景时，在堆上标记，避免不必要的GC，维持高性能表现。
 
 ## 日志解释
 
@@ -426,7 +460,9 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 **使用参考：**
 
-```ts
+<!-- @[arktools_hintGC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 首先需要声明接口
 declare class ArkTools {
   static hintGC(): void;
@@ -443,8 +479,9 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button("触发HintGC").onClick((event: ClickEvent) => {
+        Button('触发HintGC').onClick((event: ClickEvent) => {
           ArkTools.hintGC(); // 方法内直接调用
+          this.message = 'Success';
         })
       }
       .width('100%')
@@ -471,7 +508,7 @@ GC稳定性问题主要由两种异常引起：一是非法多线程操作导致
 
 0xffff000000000048 是对象的异常偏移地址。
 
-``` text
+```text
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0xffff000000000048 
 Fault thread info:
 Tid:6490, Name:OS_GC_Thread
@@ -490,7 +527,7 @@ Tid:6490, Name:OS_GC_Thread
 
 0x000056c2fffc0008 指针出现异常，指针映射出错。
 
-``` text
+```text
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x000056c2fffc0008 
 Fault thread info:
 Tid:2936, Name:OS_GC_Thread

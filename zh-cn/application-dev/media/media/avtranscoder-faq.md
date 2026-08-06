@@ -1,14 +1,14 @@
 # 转码常见问题
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 应用发送视频进行转码，音频编码格式为什么变化
 
-在转码过程中，若未指定音频轨道格式，系统默认将其转换为AAC编码格式。
+在转码过程中，若未指定音频编码格式，系统默认将其转换为AAC编码格式。
 
 <!--RP2--><!--RP2End-->
 

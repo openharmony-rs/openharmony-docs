@@ -91,11 +91,11 @@ struct BlankExample {
 
 Portrait mode
 
-![en-us_image_0000001256858407](figures/en-us_image_0000001256858407.gif)
+![portraitMode](figures/portraitMode.gif)
 
 Landscape mode
 
-![en-us_image_0000001212378418](figures/en-us_image_0000001212378418.gif)
+![landscapeMode](figures/landscapeMode.gif)
 
 
 ### Example 2: Filling a Fixed Width

@@ -3,14 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 [module.json5配置文件](../../quick-start/module-configuration-file.md)中定义的权限详细信息，通过接口[bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)获取。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -30,5 +30,5 @@ import { bundleManager } from '@kit.AbilityKit';
 | -------------- | ------ | ---- | ---- | -------------- |
 | permissionName | string | 是   | 否   | 用户权限名称。   |
 | grantMode      | number | 是   | 否   | [权限的授予方式](../../security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。 |
-| labelId        | number | 是   | 否   | 权限的标签ID。   |
-| descriptionId  | number | 是   | 否   | 描述权限的ID。   |
+| labelId        | number | 是   | 否   | 权限标签的资源ID，用于显示权限名称。   |
+| descriptionId  | number | 是   | 否   | 权限描述信息的资源ID。   |

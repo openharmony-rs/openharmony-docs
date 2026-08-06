@@ -29,8 +29,8 @@
 | @form | 卡片能力 | **从API版本26.0.0开始:**<br>**卡片能力**：从API版本x开始，该接口支持在ArkTS卡片中使用。<br>**在API版本26.0.0之前：** <br>**卡片能力**：从API version x开始，该接口支持在ArkTS卡片中使用。 |
 | @atomicservice | 原子化服务是否可用 | **从API版本26.0.0开始:**<br>**原子化服务API**：从API版本x开始，该接口支持在原子化服务中使用。<br>**在API版本26.0.0之前：** <br>**原子化服务API**：从API version x开始，该接口支持在原子化服务中使用。 |
 | @systemapi | 系统接口 | **系统接口**：此接口为系统接口。 |
-| @syscap | 系统能力 | **系统能力**：SystemCapability.xxx.xxx |  1. 如果仅涉及一个权限，格式：<br/>    **需要权限**：ohos.permission.xxxx   <br/>2. 如果该接口涉及多个权限，则采用“和、或”进行分割，格式：<br/>    **需要权限**：ohos.permission.A 和 ohos.permission.B<br/>    **需要权限：**：ohos.permission.A 或 ohos.permission.B |
-| @permission | 权限 |  1. 如果仅涉及一个权限，格式：<br/>    **需要权限**：ohos.permission.xxxx   <br/>2. 如果该接口涉及多个权限，则采用“和、或”进行分割，格式：<br/>    **需要权限**：ohos.permission.A 和 ohos.permission.B<br/>    **需要权限**：ohos.permission.A 或 ohos.permission.B <br/>3. 涉及版本变更时，“需要权限”后跟当前版本的权限要求，历史版本的权限要求换行按列表描述，样例：<br/>**需要权限**：ohos.permission.A <br/>- 对于API版本x-(y-1)，需要申请权限ohos.permission.A和B。<br/>- 从API版本y开始，仅需申请ohos.permission.A。<br/>4. 仅在某些固定场景下，需要申请权限。“需要权限”后跟d.ts的@permission保持一致，再补充情况说明，分为两类情况，当情况较为简单时，可采用括号补充描述；当情况较为复杂时，换行描述。<br/>样例1：<br/> **需要权限**：ohos.permission.A（仅当创建窗口类型为AA时需要申请）<br/>样例2：<br/> **需要权限**：ohos.permission.A<br/>- 当应用处于xx情况时，需要同步申请ohos.permission.B。<br/>- 当应用处于yy情况时，无需申请任何权限。|
+| @syscap | 系统能力 | **系统能力**：SystemCapability.xxx.xxx |
+| @permission | 权限 |  1. 如果仅涉及一个权限，格式：<br/>    **需要权限**：ohos.permission.xxxx   <br/>2. 如果该接口涉及多个权限，则采用“和、或”进行分割，格式：<br/>    **需要权限**：ohos.permission.A 和 ohos.permission.B<br/>    **需要权限**：ohos.permission.A 或 ohos.permission.B <br/>3. 涉及版本变更时，根据各版本实际情况按列表描述，版本号大的在前。样例：<br/>**需要权限**：<br/>- API版本y+：ohos.permission.B<br/>- API版本x-(y-1)：ohos.permission.A<br/>4. 仅在某些固定场景下，需要申请权限。“需要权限”后跟d.ts的@permission保持一致，再补充情况说明，分为两类情况，当情况较为简单时，可采用括号补充描述；当情况较为复杂时，换行描述。<br/>样例1：<br/> **需要权限**：ohos.permission.A（仅当创建窗口类型为AA时需要申请）<br/>样例2：<br/> **需要权限**：ohos.permission.A<br/>- 当应用处于xx情况时，需要同步申请ohos.permission.B。<br/>- 当应用处于yy情况时，无需申请任何权限。|
 | @extends | 继承 |  带有该标签或实际存在extends关系但未带该标签时，在相关描述处应明确说明“xxx继承自xxx（提供链接）。” |
 | @装饰器名称 | 装饰器类型 | 若Class/Interface/属性被装饰器修饰，则需要在相关描述处明确说明“**装饰器类型**：@装饰器名称”，例如“**装饰器类型**：@Sendable”。|
 
@@ -278,8 +278,8 @@ import { call } from '@kit.TelephonyKit';
 
 | 错误码ID | 错误信息（此处仅提供错误抛出的关键信息） |
 | -------- | ---------------------------------------- |
-| 1300001  | This is repeat operation.                |
-| 1300002  | This window state is abnormally.         |
+| 1300001  | This is a repeat operation. <br>适用版本：x-y （SDK注释中错误码如标记为[since x-y]时，采用此方式。）        |
+| 1300002  | This window state is abnormal. <br>适用版本：y+  （SDK注释中错误码如标记为[since y]时，采用此方式。）   |
 
 **示例：**
 
@@ -551,11 +551,11 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 获取指定资源ID对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 本接口存在已知问题，详情请参见“已知问题”（链接到《版本说明书》对应的已知问题处）。
 
-
 ## 变更日志
 
 | 变更说明                                                                 | 日期         |
 | ----------------------------------------------------------------------- | ------------ |
+| 增加错误码适用版本格式的写法。 | 2026/05/21 |
 | 增加API版本26.0.0后，三段式版本说明的写法。 | 2026/03/20 |
 | @deprecated标签说明细化，补充表格中的写法。 | 2025/12/03 |
 | 新增被装饰器修饰的Class/Interface/属性写法。 | 2025/09/19|

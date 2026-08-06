@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 Ability模块将二级模块API组织在一起方便开发者进行导出。
 
@@ -47,7 +47,7 @@ API版本11+：此接口可在Stage模型和FA模型下使用。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | DataAbilityHelper二级模块。 |
+| [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | PacMap类型，用于存储键值对数据。 |
 
 
 ## DataAbilityOperation

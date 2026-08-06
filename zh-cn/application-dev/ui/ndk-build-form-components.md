@@ -39,7 +39,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
      circleBtn->SetMargin(PARAM_20, false);
      column->AddChild(button);
      column->AddChild(circleBtn);
-     // 将Column添加到Content中
+     // 返回Column，由调用方添加到Content中
      return column;
  }
  ```
@@ -47,7 +47,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
 
 ### 设置Button类型
 
-Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考[ArkUI_ButtonType](../reference/apis-arkui/capi-native-type-h.md#arkui_buttontype)。
+Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考[ArkUI_ButtonType](../reference/apis-arkui/capi-button-h.md#arkui_buttontype)。
 
 下述示例将按钮类型设置为ARKUI_BUTTON_TYPE_CIRCLE圆形按钮。
 
@@ -111,7 +111,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateSliderExample()
 
 ### 设置Slider样式
 
-Slider支持两种样式，通过[ARKUI_SliderStyle](../reference/apis-arkui/capi-native-type-h.md#arkui_sliderstyle)枚举定义：
+Slider支持两种样式，通过[ARKUI_SliderStyle](../reference/apis-arkui/capi-slider-h.md#arkui_sliderstyle)枚举定义：
 
 - ARKUI_SLIDER_STYLE_OUT_SET：滑块在滑动条外（默认值）。
 - ARKUI_SLIDER_STYLE_IN_SET：滑块在滑动条内。
@@ -253,7 +253,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateCheckboxExample()
     column->AddChild(checkbox2);
     column->AddChild(checkbox3);
 
-    // 将Column添加到Content中
+    // 返回Column，由调用方添加到Content中
     return column;
 }
 ```
@@ -382,7 +382,3 @@ Radio独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 | NODE_RADIO_STYLE | 设置单选框选中状态和非选中状态的样式（包括开启状态底板颜色、关闭状态描边颜色、开启状态内部圆饼颜色）。 |
 | NODE_RADIO_VALUE | 设置单选按钮值。 |
 | NODE_RADIO_GROUP | 设置所属组名，同一组内的Radio互斥。 |
-
-## 完整示例
-
-- [NativeFormExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample)：包含Button、Slider、Toggle、Checkbox、Radio组件的完整示例。

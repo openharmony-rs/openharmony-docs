@@ -1,8 +1,8 @@
 # UI Context Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -62,7 +62,7 @@ An invalid negative parameter value is provided.
 
 **Solution**
 
-Ensure all parameter values meet minimum value requirements.
+Pass a parameter value greater than or equal to 0.
 
 ## 100102 Incorrect Parameter Type
 
@@ -108,7 +108,7 @@ The UIContext is not available.
 
 **Description**
 
-The instance does not exist.
+This error code is reported when the instance does not exist.
 
 **Possible Causes**
 

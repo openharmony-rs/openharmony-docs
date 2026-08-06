@@ -45,4 +45,4 @@
 ```
 
 
-![zh-cn_image_0000001173164891](figures/zh-cn_image_0000001173164891.png)
+![path](figures/path.png)

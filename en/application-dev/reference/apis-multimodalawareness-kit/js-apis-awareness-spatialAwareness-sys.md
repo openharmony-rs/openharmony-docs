@@ -30,7 +30,7 @@ Provides the type of an input signal. This API executes the corresponding algori
 | WIFI_RSSI           | 1    | Wi-Fi strength.     |
 | ULTRASOUND          | 2    | Ultrasonic strength.     |
 | NEAR_LINK           | 3    | NearLink strength. |
-| BLE_WIFI_RSSI       | 4    | Bluetooth and Wi-Fi strength.|
+| WIFI_BLE_RSSI       | 4    | Wi-Fi and Bluetooth strength.|
 
 ## spatialAwareness.ReportingMode
 
@@ -129,6 +129,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -179,6 +180,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -229,6 +231,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -279,6 +282,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |

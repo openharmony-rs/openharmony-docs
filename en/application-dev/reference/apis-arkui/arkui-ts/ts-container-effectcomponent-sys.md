@@ -1,17 +1,26 @@
 # EffectComponent (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:25:36.268Z pushedAt=2026-07-02T09:00:21.752Z -->
+
 The **EffectComponent** component defines combined special effects for child components to optimize the special effect drawing performance.
 
 >  **NOTE**
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this component are system APIs.
+> - The APIs provided by this module are system APIs.
 >
-> - Currently, this component provides only combined background blur effects for child components.
+> - The APIs of this module can be used only in the stage model.
 >
-> - To use this component for combined background blur effects, first replace the **backgroundBlurStyle(BlurStyle)** attribute of the target child components with **useEffect(true)**.
-
+> - Currently, this component only supports the drawing combination optimization of the background blur effect of child components.
+>
+> - When performing drawing combination on the background blur effect of a child component, replace the child component's **backgroundBlurStyle(BlurStyle)** attribute with **useEffect(true)**.
 
 ## Child Components
 
@@ -61,9 +70,9 @@ Sets the construction parameters of the current EffectComponent, including the r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                   | Mandatory| Description                                                    |
-| ----------- | --------------------------------------- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20) | No  | Rendering layer of the EffectComponent.<br>Default value: EffectLayer.NONE|
+| Name        | Type                                    | Read-only| Optional| Description                                                    |
+| ----------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| effectLayer | [EffectLayer](#effectlayer20)| No   | No   | Rendering layer of the **EffectComponent**.<br/>Default value: **EffectLayer.NONE** |
 
 ## EffectLayer<sup>20+</sup>
 

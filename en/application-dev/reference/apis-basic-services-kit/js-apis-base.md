@@ -1,12 +1,14 @@
 # @ohos.base (Public Callback Information)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Base-->
 <!--Owner: @majiajun518-->
 <!--Designer: @majiajun518-->
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f7a482829a5596cd435cf217903cb200279c5c9f translatedAt=2026-08-04T08:39:48.109Z pushedAt=2026-08-04T09:11:59.530Z -->
 
-The **Base** module defines the public callback types of ArkTS APIs, including the common and error callbacks.
+The **Base** module defines the public callback types of ArkTS APIs, including the common and error callbacks. These callbacks provide a unified asynchronous processing mechanism for processing asynchronous operation results and error messages. They can help developers simplify the asynchronous programming model and improve code readability and maintainability.
 
 > **NOTE**
 >
@@ -17,9 +19,11 @@ The **Base** module defines the public callback types of ArkTS APIs, including t
 ## Modules to Import
 
 ArkTS example:
+
 ```typescript
 import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
 ```
+
 JS example:
 
 ```typescript
@@ -34,17 +38,19 @@ Callback\<T> {
 
 }
 
-Defines a common callback.
+Defines a common callback used to return the processing result when an asynchronous operation is successful. You need to define the callback type.
 
-You can set **data** to customize the data type of the information returned by the callback.
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
 
+**Parameters**
+
 | Name| Type| Mandatory| Description                      |
 | ---- | ---- | ---- | -------------------------- |
-| data | T    | Yes  | Common callback information.|
+| data | T | Yes | Common callback information. You need to define the callback type. The callback is used to return data of the corresponding type. No data is returned if the callback fails. |
 
 ## ErrorCallback
 
@@ -54,9 +60,9 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 }
 
-Defines a common callback that carries an error parameter.
+Defines a common callback that carries an error parameter. It is used to return error information when an asynchronous operation fails. The specific error code is defined by each API. For details, please refer to the error code description of the corresponding API.
 
-The information returned by the callback is of the [BusinessError](#businesserror) type.
+The information returned by the callback is an error parameter of the [BusinessError](#businesserror) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -66,7 +72,7 @@ The information returned by the callback is of the [BusinessError](#businesserro
 
 | Name| Type| Mandatory| Description                        |
 | ---- | ---- | ---- | ---------------------------- |
-| err  | T    | Yes  | Common error information about the API invoking failure.|
+| err  | T    | Yes   | Common error information returned when the API fails to be called. The default type is **BusinessError**, including the error code (**code**) and optional additional data (**data**). |
 
 ## AsyncCallback
 
@@ -76,32 +82,46 @@ AsyncCallback\<T, E = void> {
 
 }
 
-Defines a common callback that carries an error parameter and asynchronous return value.
+Defines a common callback that carries an error parameter and asynchronous return value. It is used to return error information or success data when an asynchronous operation is complete.
 
 The error parameter is of the [BusinessError](#businesserror) type.
 
 The type of the asynchronous return value is defined by the developer.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
 
+**Parameters**
+
 | Name| Type                                                        | Mandatory| Description                        |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| err  | [BusinessError](#businesserror) | Yes  | Common error information about the API invoking failure.|
-| data | T                                                            | Yes  | Common callback information.  |
+| err  |  [BusinessError\<E>](#businesserror) | Yes   | Common error information returned when the API fails to be called, including the error code and optional additional data. If the **E** parameter is not specified, the default value **void** is used. In this case, **BusinessError** contains only the error code. If the API call succeeds, this parameter returns **null**. |
+| data | T                                                            | Yes  | Data returned asynchronously when the API is successfully called. The data type is defined by the developer. This parameter is unavailable when the API fails to be called.  |
 
 ## BusinessError
 
 BusinessError\<T = void> extends Error { code: number; data?: T; }
 
-Defines the error parameter.
+Defines an error parameter. This API inherits from the **Error** class and is used to pass standard error information, including the error code and optional additional information.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
 
-| Name| Type  | Mandatory| Description                                                      |
-| ---- | ------ | ---- | ---------------------------------------------------------- |
-| code | number | Yes  | Common error information about the API invoking failure.                            |
-| data | T      | No  | Common callback information. If this parameter is left empty, no related information is returned.|
+### Properties
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Base
+
+| Name| Type  | Read-Only| Optional| Description                                                      |
+| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| code | number | No | No | Error code returned when the API fails to be called. The specific error code is defined by each API. For details, see the error code description of the corresponding API. |
+| data | T      | No| Yes  | Error message returned when the API fails to be called. If this parameter is left empty, the error object does not contain additional data.|

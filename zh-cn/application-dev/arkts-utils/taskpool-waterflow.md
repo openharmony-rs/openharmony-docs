@@ -1,10 +1,10 @@
 # ArkUI瀑布流渲染场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 此处提供使用任务池[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)提升[WaterFlow瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
 
@@ -165,8 +165,8 @@
    
      // 重新加载数据
      public reload(): void {
-       this.dataArray.splice(1, 1);
        this.dataArray.splice(3, 2);
+       this.dataArray.splice(1, 1);
        this.notifyDataReload();
      }
    }
@@ -179,7 +179,6 @@
    ``` TypeScript
    import { WaterFlowDataSource } from './WaterFlowDataSource';
    import { getImgFromDB } from './Mock';
-   import resource from '../util/resource';
    
    // 模拟图片数组
    let img = new Array<string>(33);
@@ -249,7 +248,7 @@
                  // 为了模拟图片加载，使用Text组件显示，正常加载jpg文件时，可以直接使用Image组件
                  // 参考 Image(this.img[item % 33]).objectFit(ImageFit.Contain).width('100%').layoutWeight(1)
                  if (img[item % 33] == null) {
-                   Text(resource.resourceToString($r('app.string.Image_loading')))
+                   Text($r('app.string.Image_loading')) // 加载资源，可根据项目实际资源自定义
                      .width('100%')
                      .layoutWeight(1);
                  }

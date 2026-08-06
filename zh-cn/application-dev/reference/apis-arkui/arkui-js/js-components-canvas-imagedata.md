@@ -1,8 +1,8 @@
 # ImageData对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -35,13 +35,13 @@ ImageData对象可以存储[canvas组件](js-components-canvas-canvas.md)渲染�
 import promptAction from '@ohos.promptAction';
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
-    ctx.fillRect(0,0,200,200);
-    var imageData = ctx.createImageData(1,1);
+    ctx.fillRect(0, 0, 200, 200);
+    var imageData = ctx.createImageData(1, 1);
     promptAction.showToast({
-      message:imageData,
-      duration:5000
+      message: imageData,
+      duration: 5000
     })
   }
 }

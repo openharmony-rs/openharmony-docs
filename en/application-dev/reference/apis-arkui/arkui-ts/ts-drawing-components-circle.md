@@ -1,8 +1,8 @@
 # Circle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -279,7 +279,7 @@ struct CircleExample {
 }
 ```
 
-![en-us_image_0000001219744191](figures/en-us_image_0000001219744191.png)
+![circle1](figures/circle1.png)
 
 ### Example 2: Drawing a Circle with Different Parameter Types for Width and Height
 

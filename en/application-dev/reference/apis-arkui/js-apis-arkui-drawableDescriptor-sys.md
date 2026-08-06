@@ -32,4 +32,6 @@ Creates a **DrawableDescriptor** or **LayeredDrawableDescriptor** object. The [g
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

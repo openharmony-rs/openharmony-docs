@@ -1,8 +1,8 @@
 # 自定义占位节点
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是用来占位的系统组件，主要用于自定义节点以及自定义节点树的显示，支持组件的通用属性，对通用属性的处理请参考默认左上角对齐的[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件。
 
-[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)提供了一系列生命周期回调，通过[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)回调返回一个[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树的根节点。将[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树挂载到对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)下。同时提供了[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)、[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)、[aboutToResize](../reference/apis-arkui/js-apis-arkui-nodeController.md#abouttoresize)、[onTouchEvent](../reference/apis-arkui/js-apis-arkui-nodeController.md#ontouchevent)、[rebuild](../reference/apis-arkui/js-apis-arkui-nodeController.md#rebuild)五个回调方法用于监听对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)的状态。
+[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)提供了一系列生命周期回调，通过[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)回调返回一个[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树的根节点。将[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树挂载到对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)下。同时提供了[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)、[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)、[aboutToResize](../reference/apis-arkui/js-apis-arkui-nodeController.md#abouttoresize)、[onTouchEvent](../reference/apis-arkui/js-apis-arkui-nodeController.md#ontouchevent)四个回调方法用于监听对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)的状态，以及[rebuild](../reference/apis-arkui/js-apis-arkui-nodeController.md#rebuild)方法用于主动触发[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)重新回调[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)以更新子节点。
 
 每个生命周期的回调的具体含义参考[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)的接口文档说明。
 
@@ -26,7 +26,7 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 ## 基本概念
 
-- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（FrameNode）、自定义渲染节点（RenderNode）、自定义声明式节点（BuilderNode）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
+- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)）、自定义渲染节点（[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)）、自定义声明式节点（[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
 
 - 自定义节点树：根节点为自定义节点的节点树。
 
@@ -237,7 +237,6 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   controller = new NodeContentCtrl(this.getUIContext());
   myNodeController = new MyNodeController();
 

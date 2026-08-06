@@ -1,11 +1,11 @@
-# AgentExtensionConnectCallback（系统接口）
+# AgentExtensionConnectCallback (系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过AgentExtensionConnectCallback中提供的回调接口来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。
 
@@ -57,8 +57,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, handshakeData: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -103,7 +103,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
@@ -153,8 +153,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onAuth, handshakeData: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, handshakeData: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -199,7 +199,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
@@ -243,8 +243,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onAuth, handshakeData: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, handshakeData: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -289,7 +289,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;

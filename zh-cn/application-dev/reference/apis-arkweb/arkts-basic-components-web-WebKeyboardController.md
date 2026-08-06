@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-控制自定义键盘的输入、删除、关闭等操作。示例代码参考[onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12)。
+WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行为的控制器类。当Web页面中的输入框需要弹出键盘时，开发者可通过[onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12)事件拦截系统默认键盘的挂载，并使用WebKeyboardController向当前聚焦的Web输入框执行插入字符、前向/后向删除、发送Enter等功能键以及关闭自定义键盘等操作。该类适用于需要为Web场景实现自定义安全键盘、表情键盘、手写键盘或业务专属输入面板的应用，使开发者能够完全接管Web输入框的键盘输入逻辑。
 
 > **说明：**
 >
@@ -36,13 +36,13 @@ Web输入框中插入字符。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | --------------------- |
-| text | string | 是 | 向Web输入框插入字符。 |
+| text | string | 是 | 在当前光标位置插入Web输入框的文本。若存在选中文本则替换为该文本；触发输入事件；光标移动到插入文本末尾。 |
 
 ## deleteForward<sup>12+</sup>
 
 deleteForward(length: number): void
 
-从后往前删除Web输入框中指定长度的字符。
+删除光标前面的指定长度字符。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,13 +50,13 @@ deleteForward(length: number): void
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                   |
 | ------ | -------- | ---- |------------------------------------------------------------------------------------------------------|
-| length | number   | 是   | 从后往前删除Web输入框中指定长度的字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number   | 是   | 删除光标前面的指定长度字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## deleteBackward<sup>12+</sup>
 
 deleteBackward(length: number): void
 
-从前往后删除Web输入框中指定长度的字符。
+删除光标后面的指定长度字符。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +64,7 @@ deleteBackward(length: number): void
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------ | -------- | ---- | ------------------------ |
-| length | number   | 是   | 从前往后删除Web输入框中指定长度的字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number   | 是   | 删除光标后面的指定长度字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## sendFunctionKey<sup>12+</sup>
 
@@ -78,7 +78,7 @@ sendFunctionKey(key: number): void
 
 | 参数名 | 类型 | 必填 | 说明                                   |
 | ------ | -------- | ---- | ------------------------------------------ |
-| key    | number   | 是   | 向Web输入框传递功能键，目前仅支持Enter键。 |
+| key    | number   | 是   | 功能键类型，仅支持Enter键。 |
 
 ## close<sup>12+</sup>
 

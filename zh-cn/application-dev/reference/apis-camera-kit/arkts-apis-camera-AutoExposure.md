@@ -89,7 +89,7 @@ setExposureMode(aeMode: ExposureMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                | Operation not allowed.                                 |
+| 7400102                | Operation not allowed.<br>适用版本：19+                                 |
 | 7400103                |  Session not config.                                   |
 
 **示例：**
@@ -154,9 +154,9 @@ function getMeteringPoint(photoSession: camera.PhotoSession): camera.Point | und
 
 setMeteringPoint(point: Point): void
 
-设置曝光区域中心点，曝光点应在0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。
+设置曝光区域中心点，曝光点应在0-1坐标系内，该坐标系左上角为{0,0}，右下角为{1,1}。
 
-此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触摸点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
+此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w,h}，且触摸点为{x,y}，则转换后的坐标点为{y/h,1-x/w}。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -166,7 +166,7 @@ setMeteringPoint(point: Point): void
 
 | 参数名           | 类型                            | 必填 | 说明                 |
 | ------------- | -------------------------------| ---- | ------------------- |
-| point | [Point](arkts-apis-camera-i.md#point)                | 是   | 曝光点，x、y设置范围应在[0，1]之内，超过范围，如果小于0设置0，大于1设置1。             |
+| point | [Point](arkts-apis-camera-i.md#point)                | 是   | 曝光点，x、y设置范围应在[0,1]之内，超过范围，如果小于0设置0，大于1设置1。             |
 
 **错误码：**
 
@@ -217,7 +217,7 @@ setExposureBias(exposureBias: number): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                 |
 | 7400103                |  Session not config.                                   |
 
 **示例：**
@@ -363,5 +363,77 @@ function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMo
     let err = error as BusinessError;
     console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
   }
+}
+```
+
+## onExposureStateChange
+
+onExposureStateChange(callback: Callback\<ExposureState\>): void
+
+监听曝光状态事件变更。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 是   | 回调函数，返回当前曝光状态。            |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.onExposureStateChange(callback);
+}
+```
+
+## offExposureStateChange
+
+offExposureStateChange(callback?: Callback\<ExposureState\>): void
+
+注销监听曝光状态事件变更。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange(callback);
+}
+
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange();
 }
 ```

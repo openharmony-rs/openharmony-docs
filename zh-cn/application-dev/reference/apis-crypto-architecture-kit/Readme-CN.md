@@ -63,4 +63,4 @@
     - [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md)
     - [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md)
 - 错误码<!--crypto-architecture-arkts-errcode-->
-  - [crypto framework错误码](errorcode-crypto-framework.md)
+  - [cryptoFramework错误码](errorcode-crypto-framework.md)

@@ -1,9 +1,9 @@
 # ArkTS Widget Adaptation FAQs
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ## Does ArkTS widget development support V2 decorators? How do I migrate from V1 to V2?

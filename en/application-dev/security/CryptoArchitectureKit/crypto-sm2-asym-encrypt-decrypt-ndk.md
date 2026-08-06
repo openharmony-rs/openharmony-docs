@@ -15,7 +15,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
 
    For details about how to generate an SM2 asymmetric key pair, see the following example. To learn more, see [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
 
-2. Call [OH_CryptoAsymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_create) with the string parameter **'SM2_256|SM3'** to create a **Cipher** instance for encryption. The key type is **SM2_256**, and the digest algorithm is **SM3**.
+2. Call [OH_CryptoAsymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_create) with the string parameter **'SM2_256|SM3'** to create a **Cipher** instance for encryption and decryption. The key type is **SM2_256**, and the digest algorithm is **SM3**.
 
 3. Call [OH_CryptoAsymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the key for encryption (**keyPair**).
 
@@ -31,7 +31,10 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
 
 3. Call [OH_CryptoAsymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final) and pass the ciphertext to obtain the decrypted data.
 
-```C++
+<!-- @[encrypt_decrypt_sm2_asymkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/SM2EncryptionDecryption.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <algorithm>
 #include <vector>
@@ -99,7 +102,7 @@ static std::vector<uint8_t> doTestSm2Dec(OH_CryptoKeyPair *keyPair, std::vector<
     return decryptText;
 }
 
-static OH_Crypto_ErrCode doTestSm2EncMessage()
+OH_Crypto_ErrCode doTestSm2EncMessage()
 {
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("SM2_256", &keyGen);

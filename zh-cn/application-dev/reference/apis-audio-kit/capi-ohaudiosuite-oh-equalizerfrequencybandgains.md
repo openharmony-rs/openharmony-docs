@@ -1,8 +1,8 @@
 # OH_EqualizerFrequencyBandGains
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,4 +26,4 @@ typedef struct {...} OH_EqualizerFrequencyBandGains
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t gains[EQUALIZER_BAND_NUM] | 均衡器频带增益配置，EQUALIZER_BAND_NUM为10，输入范围为[-10, 10]，单位为dB（分贝）。<br> 频带：31Hz、62Hz、125Hz、250Hz、500Hz、1kHz、2kHz、4kHz、8kHz、16kHz。<br>**起始版本：** 22 |
+| int32_t gains[EQUALIZER_BAND_NUM] | 均衡器频带增益配置。数组长度EQUALIZER_BAND_NUM为10，增益输入范围为[-10, 10]，单位为dB（分贝）。<br> 频带：31Hz、62Hz、125Hz、250Hz、500Hz、1kHz、2kHz、4kHz、8kHz、16kHz。<br>**起始版本：** 22 |

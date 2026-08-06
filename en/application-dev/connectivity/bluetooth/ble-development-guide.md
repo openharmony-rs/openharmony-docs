@@ -6,6 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:21.922Z pushedAt=2026-06-17T12:33:07.060Z -->
 
 ## Introduction
 This guide describes how to implement Bluetooth Low Energy (BLE) scanning and advertising. It supports scenarios such as discovering nearby BLE devices and enabling other devices to detect the local device.
@@ -371,7 +372,7 @@ try {
 ### BLE Scanning
 ```ts
 import { ble } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = 'BleScanManager';
 

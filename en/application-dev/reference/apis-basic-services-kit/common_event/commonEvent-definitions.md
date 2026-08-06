@@ -1,14 +1,19 @@
-# System Common Events (To Be Deprecated Soon)
+# System Common Events (Deprecated)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 This document provides indexes for predefined system common events.
 
-Common event types are defined in [Support enumeration of the ohos.commonEvent module](../js-apis-commonEvent.md#support).
+Common event types are defined in [Support](../js-apis-commonEvent.md#support) of the **ohos.commonEventManager** module.
+
+> **NOTE**
+>
+> This type is supported since API version 7 and deprecated since API version 9. You are advised to use [System Common Events](commonEventManager-definitions.md) instead.
+
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

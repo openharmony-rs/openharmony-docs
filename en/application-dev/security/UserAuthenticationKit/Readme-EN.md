@@ -18,4 +18,4 @@
   - [Obtaining Enrolled Credential Information](obtain-enrolled-state-capabilities.md)
   - [Using userAuthIcon](user-auth-icon.md)
   - [Querying the Locking Status of a Specified Authentication Type](obtain-auth-lock-state-capabilities.md)
-<!--no_check-->
+- [Glossary](user-authentication-glossary.md)

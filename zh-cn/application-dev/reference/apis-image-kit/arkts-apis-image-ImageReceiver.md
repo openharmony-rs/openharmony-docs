@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -49,7 +49,7 @@ getReceivingSurfaceId(callback: AsyncCallback\<string>): void
 | -------- | ---------------------- | ---- | -------------------------- |
 | callback | AsyncCallback\<string> | 是   | 回调函数，当获取surface id成功，err为undefined，data为获取到的surface id；否则为错误对象。 |
 
-**示例:**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -100,7 +100,8 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 从ImageReceiver读取最新的图片。使用callback异步回调。
 
 > **注意**：
-> 此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+>
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -116,12 +117,25 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadLatestImage(receiver : image.ImageReceiver) {
-  receiver.readLatestImage((err: BusinessError, img: image.Image) => {
-    if (err) {
-      console.error(`Failed to read the latest Image.code ${err.code},message is ${err.message}`);
-    } else {
-      console.info('Succeeded in reading the latest Image.');
+  receiver.readLatestImage((err: BusinessError, latestImage: image.Image) => {
+    if (err || latestImage === undefined) {
+      console.error('Failed to readLatestImage.');
+      return;
     }
+    // 解析图像内容。
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+        return;
+      }
+      if (imgComponent.byteBuffer) {
+        // 处理二进制图像数据。
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   });
 }
 ```
@@ -133,7 +147,8 @@ readLatestImage(): Promise\<Image>
 从ImageReceiver读取最新的图片。使用Promise异步回调。
 
 > **注意**：
->此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+>
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -149,8 +164,21 @@ readLatestImage(): Promise\<Image>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadLatestImage(receiver : image.ImageReceiver) {
-  receiver.readLatestImage().then((img: image.Image) => {
-    console.info('Succeeded in reading the latest Image.');
+  receiver.readLatestImage().then((latestImage: image.Image) => {
+    // 解析图像内容。
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+        return;
+      }
+      if (imgComponent.byteBuffer) {
+        // 处理二进制图像数据。
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })    
   }).catch((error: BusinessError) => {
     console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
   });
@@ -164,7 +192,8 @@ readNextImage(callback: AsyncCallback\<Image>): void
 从ImageReceiver读取下一张图片。使用callback异步回调。
 
 > **注意**：
->此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+>
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -180,12 +209,25 @@ readNextImage(callback: AsyncCallback\<Image>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadNextImage(receiver : image.ImageReceiver) {
-  receiver.readNextImage((err: BusinessError, img: image.Image) => {
-    if (err) {
-      console.error(`Failed to read the next Image.code ${err.code},message is ${err.message}`);
-    } else {
-      console.info('Succeeded in reading the next Image.');
+  receiver.readNextImage((err: BusinessError, nextImage: image.Image) => {
+    if (err || nextImage === undefined) {
+      console.error('Failed to readNextImage.');
+      return;
     }
+    // 解析图像内容。
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+        return;
+      }
+      if (imgComponent.byteBuffer) {
+        // 处理二进制图像数据。
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   });
 }
 ```
@@ -197,7 +239,8 @@ readNextImage(): Promise\<Image>
 从ImageReceiver读取下一张图片。使用Promise异步回调。
 
 > **注意**：
->此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
+>
+> 此接口需要在[on](#on9)回调触发后调用，才能正常地接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -213,8 +256,21 @@ readNextImage(): Promise\<Image>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadNextImage(receiver : image.ImageReceiver) {
-  receiver.readNextImage().then((img: image.Image) => {
+  receiver.readNextImage().then((nextImage: image.Image) => {
     console.info('Succeeded in reading the next Image.');
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+        return;
+      }
+      if (imgComponent.byteBuffer) {
+        // 处理二进制图像数据。
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   }).catch((error: BusinessError) => {
     console.error(`Failed to read the next Image.code ${error.code},message is ${error.message}`);
   });
@@ -233,7 +289,7 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| type     | string               | 是   | 注册事件的类型，固定为'imageArrival'，接收图片时触发。 |
+| type     | string               | 是   | 注册事件的类型，固定为'imageArrival'，接收图片到达时触发。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当注册事件触发成功，err为undefined，否则为错误对象。                                        |
 
 **示例：**
@@ -241,7 +297,13 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 ```ts
 async function On(receiver : image.ImageReceiver) {
   receiver.on('imageArrival', () => {
-    // 接收到图片，实现回调函数逻辑。
+    // 图片到达回调触发后，读取最新或下一张图片进行处理。
+    receiver.readLatestImage().then((img: image.Image) => {
+      console.info('Succeeded in reading the latest Image.');
+      // 处理图片数据。
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to read the latest Image.`);
+    });
   });
 }
 ```
@@ -323,7 +385,7 @@ release(): Promise\<void>
 
 | 类型           | 说明               |
 | -------------- | ------------------ |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **示例：**
 

@@ -8,7 +8,7 @@
 
 表冠事件从API version 18开始支持，是指通过旋转表冠触发的事件，通过硬件采样频率上报旋转角度的变化。
 
-表冠事件分发依赖于应用内组件焦点，只有拥有焦点的组件才能接收到该事件，因此，接收此事件的组件应正确管理其焦点状态，并通过[onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)和[onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)接口监听自身焦点状态变化，当正在接收表冠事件的组件失焦时，接下来的表冠事件都不会再发送给这个组件。
+表冠事件分发依赖于应用内组件焦点，只有拥有焦点的组件才能接收到该事件。因此，接收此事件的组件应正确管理其焦点状态，并通过[onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)和[onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)接口监听自身焦点状态变化。当正在接收表冠事件的组件失焦时，接下来的表冠事件都不会再发送给这个组件。
 
 目前，系统中一些组件已默认支持与表冠的交互，例如，旋转手表表冠后，滚动条会根据表冠的旋转方向滚动。
 
@@ -28,7 +28,7 @@
 
 1. 组件获焦
 
-    确保接收事件的组件获得焦点，可以通过使用[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)等方法来实现。如需更详细的焦点控制信息，请参考[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)文档。
+    确保接收事件的组件获焦，可以通过使用[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)等方法来实现。如需更详细的焦点控制信息，请参考[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)文档。
     
     <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
     

@@ -27,9 +27,9 @@ type ValueType = number | string | boolean
 
 该类型用于表示数据库允许的数据字段类型。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
-
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
 
 | 类型    | 说明                 |
 | ------- | -------------------- |

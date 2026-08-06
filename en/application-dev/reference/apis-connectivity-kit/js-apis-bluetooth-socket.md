@@ -750,6 +750,7 @@ Defines the socket configuration parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name    | Type               | Read-Only  | Optional  | Description         |
 | ------ | ------------------- | ---- | ---- | ----------- |
 | uuid   | string              | No   | No   | Service UUID of the RFCOMM socket, for example, **00001101-0000-1000-8000-00805F9B34FB**.<br>- You are advised to use a custom service UUID (which can be generated using the [util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)) or the Serial Port UUID (00001101-0000-1000-8000-00805F9B34FB) defined in the standard protocol.<br>- This parameter is mandatory when **SppType** is set to **SPP_RFCOMM**.<br>- This parameter is set to an empty string when **SppType** is set to **SPP_L2CAP** or **SPP_L2CAP_BLE**.|

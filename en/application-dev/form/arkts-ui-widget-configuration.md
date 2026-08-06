@@ -1,9 +1,9 @@
 # Configuring ArkTS Widget Configuration Files
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 Widget-related configuration includes [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) configuration and widget configuration. A [standalone widget package](./arkts-ui-widget-creation.md) includes the [standalone widget package configuration](./arkts-ui-widget-configuration.md#standalone-widget-package-configuration).

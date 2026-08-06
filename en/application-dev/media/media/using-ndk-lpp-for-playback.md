@@ -1,24 +1,38 @@
-# Using LPP to Play Audio and Video (C/C++)
+# Using LPP to Play Videos (C/C++)
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Starting from API version 20, the Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
+Starting from API version 20, the low power player (LPP) can be used to implement the video path capability from the media source to rendering with low power consumption. This guide walks you through playing a local video file using the LPP APIs.
+
+> **NOTE**
+>
+> The LPP does not support pure video or audio playback. For details about low-power audio playback, see [Low-Power Audio Playback](../audio/power-saving-for-playback.md).
 
 The full playback process includes creating a demuxer, creating a player, setting callback functions, configuring playback parameters (speed and volume), controlling playback (play, pause, resume, stop, and reset), and releasing the player instance.
 
 **Figure 1** Playback state transition 
 ![LPP status change](figures/lpp-status-change-ndk.png)
 
+The playback process consists of five phases: created, initialized, ready, decoding, and rendering.
+
+The application calls **CreateByMime** to initialize and create a decoder instance. After the decoder parameters are configured, it is switched to the initialized state.
+
+Then, the decoder resources are preloaded (Prepare), and the video enters the ready state. The decoding process (StartDecode) is then started, the decoder is switched to the decoding state, and the first frame rendering (RenderFirstFrame) is triggered. Finally, the rendering process (StartRender) is started, and the decoder is switched to the rendering state.
+
+During rendering, if the video is paused (Pause), the decoder is switched to the paused state. In this case, the decoding and rendering are temporarily suspended but resources are not released. When rendering resumes (Resume), the video resumes and returns to the rendering state. If the video is stopped (Stop), the decoder is switched to the stopped state. In this case, the decoder stops working, but the instance still exists. When the stream ends (EoS) during rendering, the decoder is switched to the EoS state.
+
+If an error occurs during playback (OnError), the decoder enters an abnormal state and must be reset or switched to the released state to destroy the decoder instance and release all resources.
+
 When the player is in the ready, decoding, rendering, paused, or stopped state, it occupies system resources. Call **reset** or **destroy** to reclaim the resources when it is no longer needed.
 
 ## Development Tips
 
-This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description to handle the situation based on your service requirements.
+This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description as needed.
 
 - Due to hardware differences, LPP capabilities are only available on certain smartphones. You are advised to use [OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability) to check whether the LPP capabilities are supported. This API is available since API version 21. If they are not supported, use [AVCodec](../avcodec/avcodec-kit-intro.md) for playback.
 
@@ -44,13 +58,13 @@ This topic describes only how to implement the playback of a media asset. In pra
 
 Link the dynamic libraries in the CMake script.
 
-```
+```c
 target_link_libraries(sample PUBLIC liblowpower_avsink.so)
 ```
 
 Include the header files.
 
-```
+```c++
 #include "multimedia/player_framework/lowpower_audio_sink_base.h"
 #include "multimedia/player_framework/lowpower_audio_sink.h"
 #include "multimedia/player_framework/lowpower_video_sink.h"
@@ -59,19 +73,19 @@ Include the header files.
 
 To use system logging, include the following header file:
 
-```
+```c++
 #include <hilog/log.h>
 ```
 
 In addition, link the following dynamic libraries in the CMake script:
 
-```
+```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 Include the following libraries: demuxer, basic decoding, and display rendering.
 
-```
+```c
 set(BASE_LIBRARY
     libnative_media_codecbase.so libnative_media_core.so libnative_media_vdec.so libnative_window.so
     libnative_media_venc.so libnative_media_acodec.so libnative_media_avdemuxer.so libnative_media_avsource.so
@@ -84,9 +98,9 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 1.  Creates a player.
 
-    Based on actual service requirements, you can use a self-developed demuxer or create an [OH_AVSource](../../reference/apis-avcodec-kit/capi-avsource-oh-avsource.md) instance by calling [OH_AVSource_CreateWithDataSource()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithdatasource), [OH_AVSource_CreateWithFD()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithfd), or [OH_AVSource_CreateWithURI()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithuri). Then call [OH_AVDemuxer_CreateWithSource()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#oh_avdemuxer_createwithsource) through the OH_AVSource instance to create a demuxer and obtain video metadata.
+     Based on actual service requirements, you can use a self-developed demuxer or create an [OH_AVSource](../../reference/apis-avcodec-kit/capi-avsource-oh-avsource.md) instance by calling [OH_AVSource_CreateWithDataSource()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithdatasource), [OH_AVSource_CreateWithFD()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithfd), or [OH_AVSource_CreateWithURI()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithuri). Then call [OH_AVDemuxer_CreateWithSource()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#oh_avdemuxer_createwithsource) through the OH_AVSource instance to create a demuxer and obtain video metadata.
 
-    ```
+    ```c++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
     int32_t ret = GetTrackInfo(sourceFormat, info);
@@ -94,16 +108,16 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 2.  Based on the video metadata, call [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime) or [OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime) to create a player.
 
-    ```
+    ```c++
     lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(codecMime.c_str());
     lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(codecMime.c_str());
     ```
 
 3.  Set callbacks.
 
-    Call [OH_LowPowerAudioSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_create) or [OH_LowPowerVideoSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_create) to create a callback for [OH_LowPowerAudioSinkCallback](../../reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) or [OH_LowPowerVideoSinkCallback](../../reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosinkcallback.md). Add the callbacks to the structure via the **setListener** API, and register them with **registerCallback**.
+     Call [OH_LowPowerAudioSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_create) or [OH_LowPowerVideoSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_create) to create a callback for [OH_LowPowerAudioSinkCallback](../../reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) or [OH_LowPowerVideoSinkCallback](../../reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosinkcallback.md). Add the callbacks to the structure via the **setListener** API, and register them with **registerCallback**.
 
-    ```
+    ```c++
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
     OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_, LppCallback::OnDataNeeded, lppUserData);
     OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_, LppCallback::OnPositionUpdated, lppUserData);
@@ -112,9 +126,9 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 4.  Configure the player.
 
-    Based on the metadata obtained through demultiplexing, create and configure [OH_AVFormat](../../reference/apis-avcodec-kit/capi-core-oh-avformat.md). Configure the player by calling [OH_LowPowerAudioSink_Configure](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure) or [OH_LowPowerVideoSink_Configure](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_configure). For details about the parameters, see the sample code. For video streams, call [OH_LowPowerVideoSink_SetVideoSurface](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setvideosurface) to set the display window.
+     Based on the metadata obtained through demultiplexing, create and configure [OH_AVFormat](../../reference/apis-avcodec-kit/capi-core-oh-avformat.md). Configure the player by calling [OH_LowPowerAudioSink_Configure](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure) or [OH_LowPowerVideoSink_Configure](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_configure). For details about the parameters, see the sample code. For video streams, call [OH_LowPowerVideoSink_SetVideoSurface](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setvideosurface) to set the display window.
 
-    ```
+    ```c++
     OH_AVFormat *format = OH_AVFormat_Create();
      
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
@@ -128,17 +142,17 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 5.  Prepare for playback.
 
-    Call [OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) to set audio-video synchronization binding. Then, call [OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare) or [OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare). After a successful call, the player enters the preparing state.
+     Call [OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) to set audio-video synchronization binding. Then, call [OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare) or [OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare). After a successful call, the player enters the ready state.
 
-    ```
+    ```c++
     OH_LowPowerVideoSink_Prepare(lppVideoStreamer_);
     ```
 
 6.  Start playback.
 
-    Call [OH_LowPowerAudioSink_Start](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerVideoSink_StartRenderer](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startrenderer) to start rendering. For video streams, before rendering, call [OH_LowPowerVideoSink_StartDecoder](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startdecoder) to start decoding, or call [OH_LowPowerVideoSink_RenderFirstFrame](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_renderfirstframe) to start decoding and display the first frame.
+     Call [OH_LowPowerAudioSink_Start](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerVideoSink_StartRenderer](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startrenderer) to start rendering. For video streams, before rendering, call [OH_LowPowerVideoSink_StartDecoder](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startdecoder) to start decoding, or call [OH_LowPowerVideoSink_RenderFirstFrame](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_renderfirstframe) to start decoding and display the first frame, thereby entering the decoding state.
 
-    ```
+    ```c++
     OH_LowPowerVideoSink_StartDecoder(lppVideoStreamer_);
     OH_LowPowerVideoSink_StartRenderer(lppVideoStreamer_);
     ```
@@ -154,20 +168,20 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 8.  (Optional) Replace resources.
 
-    Call [OH_LowPowerAudioSink_Reset](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_reset) or [OH_LowPowerVideoSink_Reset](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_reset) to reset the resource. You can replace resources and reconfigure the player.
+     Call [OH_LowPowerAudioSink_Reset](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_reset) or [OH_LowPowerVideoSink_Reset](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_reset) to reset the resource. You can replace resources and reconfigure the player.
 
 9.  Exit the playback.
 
-    Call [OH_LowPowerAudioSink_Destroy](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_destroy) or [OH_LowPowerVideoSink_Destroy](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_destroy) to destroy the instance. The player enters the RELEASED state and exits the playback.
+     Call [OH_LowPowerAudioSink_Destroy](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_destroy) or [OH_LowPowerVideoSink_Destroy](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_destroy) to destroy the instance. The player enters the released state and exits the playback.
 
 ## Running the Sample Project
 
 1. Create a project. Download the [sample project](https://gitcode.com/HarmonyOS_Samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample), and copy its resources to the corresponding directories.
 
-   ```
+   ```txt
    lpp_demo-sample/entry/src/main/          
    ├── cpp                                # Native layer
-   │   ├── capbilities                    # Capability interfaces and implementation
+   │   ├── capabilities                   # Capability interfaces and implementation
    │   │   ├── include                    # Capability interfaces
    │   │   ├── demuxer.cpp                # Demuxer implementation
    │   │   ├── lpp_audio_streamer.cpp     # LPP audio stream implementation

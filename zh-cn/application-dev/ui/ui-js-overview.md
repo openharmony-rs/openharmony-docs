@@ -17,7 +17,7 @@
 
 
 
-![zh-cn_image_0000001117452952](figures/zh-cn_image_0000001117452952.png)
+![Overall-Architecture](figures/Overall-Architecture.png)
 
 - **Application**
 
@@ -34,3 +34,12 @@
 - **Porting Layer**
 
   适配层主要对平台层进行抽象，提供抽象接口，可以对接到系统平台。比如：事件对接、渲染管线对接和系统生命周期对接等。
+
+
+## ArkUI.Full与ArkUI.Lite
+
+兼容JS的类Web开发范式根据功能完整度和适用场景的不同，分为ArkUI.Full和ArkUI.Lite两个版本。ArkUI.Lite是ArkUI.Full的子集，ArkUI.Full包含ArkUI.Lite的所有能力，同时提供更多的组件和功能支持。开发者可根据应用的复杂度和资源需求选择合适的版本。
+
+- **ArkUI.Full**：完整的类Web开发范式，提供全面的UI开发能力，支持完整的容器组件、基础组件、媒体组件、画布组件、栅格组件、SVG组件以及自定义组件功能。面向手机、平板等设备，适用于功能复杂、交互丰富的应用开发。<!--RP2--><!--RP2End-->
+
+- **ArkUI.Lite**：轻量级类Web开发范式，是ArkUI.Full的子集，仅支持部分核心容器组件、基础组件以及基础的画布组件。面向运动手表等资源受限的小型设备，适用于轻量级应用开发。<!--RP3--><!--RP3End-->

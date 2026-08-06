@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -687,7 +687,7 @@ The image ICC information is incorrect.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 62980173 DMA Memory Space Error
 
@@ -971,6 +971,60 @@ This error code is reported when memory copy fails.
 
 Check whether the instance to be copied has been released. Check whether the memory type matches.
 
+## 7600101 Unsupported MIME Type
+
+**Error Message**
+
+Unsupported mime type.
+
+**Symptom**
+
+This error code is reported when the MIME type is not supported.
+
+**Possible Cause**
+
+The device does not support the MIME type.
+
+**Solution**
+
+Verify the image data or use another image. You can call relevant APIs to query the codec capability range.
+
+## 7600102 Unknown MIME Type
+
+**Error Message**
+
+Unknown mime type.
+
+**Symptom**
+
+This error is reported for an unknown MIME type.
+
+**Possible Cause**
+
+The device does not support the image type or the image is damaged.
+
+**Solution**
+
+Verify the image data or use another image.
+
+## 7600103 Data or Image Too Large
+
+**Error Message**
+
+Too large data or image.
+
+**Symptom**
+
+This error code is reported if the data or image is too large.
+
+**Possible Cause**
+
+The image dimensions are too large.
+
+**Solution**
+
+Use a smaller image.
+
 ## 7600104 Failed to Obtain Image Data
 
 **Error Message**
@@ -989,6 +1043,78 @@ This error code is reported when image data fails to be obtained.
 **Solution**
 
 Verify the image data source or use new image data.
+
+## 7600105 PixelMap Object Has Been Released
+
+**Error Message**
+
+PixelMap has been released.
+
+**Symptom**
+
+The PixelMap object has been released.
+
+**Possible Cause**
+
+The PixelMap object has been released, and its associated native object no longer exists.
+
+**Solution**
+
+Check whether the PixelMap object may be released in advance (for example, released unexpectedly in an asynchronous task or another thread). Ensure that the object is not released before it is no longer used and all asynchronous methods are executed.
+
+## 7600106 PixelMap Has Been Passed to Another Thread
+
+**Error Message**
+
+PixelMap has been passed to another thread.
+
+**Symptom**
+
+The PixelMap has been passed to another thread.
+
+**Possible Cause**
+
+The PixelMap object has been passed to another thread, and the object in the original thread cannot continue to call the API.
+
+**Solution**
+
+Do not call the API of the PixelMap object in the original thread after the object has been passed to another thread.
+
+## 7600173 DMA Memory Does Not Exist
+
+**Error Message**
+
+DMA memory does not exist.
+
+**Symptom**
+
+This error code is reported if the DMA memory does not exist.
+
+**Possible Cause**
+
+The DMA memory is not used to decode HDR images.
+
+**Solution**
+
+Use a correct memory allocation type.
+
+## 7600174 DMA Operation Failed
+
+**Error Message**
+
+DMA operation failed.
+
+**Symptom**
+
+This error code is reported if the operation on the DMA memory fails.
+
+**Possible Cause**
+
+The synchronization operation is not correctly performed when data is read from or written to the DMA memory.
+
+**Solution**
+
+Read and write the DMA memory in a correct way.
 
 ## 7600201 Unsupported Operation
 
@@ -1025,6 +1151,24 @@ The metadata read/write operation is not supported. For example, the Exif field 
 **Solution**
 
 Check whether the auxiliary picture type corresponds to the metadata type, and then perform the read and write operations.
+
+## 7600203 Unsupported Conversion
+
+**Error Message**
+
+Unsupported conversion.
+
+**Symptom**
+
+This error code is reported for unsupported conversion.
+
+**Possible Cause**
+
+The PixelMap data cannot be converted.
+
+**Solution**
+
+Use PixelMap data with a matching format.
 
 ## 7600204 Invalid Region
 
@@ -1080,6 +1224,44 @@ An input parameter is invalid.
 
 Enter correct parameters.
 
+## 7600207 Unsupported Data Format
+
+**Error Message**
+
+Unsupported data format.
+
+**Symptom**
+
+Unsupported data format.
+
+**Possible Cause**
+
+1. The API does not support the input pixel data format.
+2. The data format in the object does not support the specific operation.
+
+**Solution**
+
+Check the API reference and use the data format supported by the API.
+
+## 7600208 Failed to Decompose an HDR Image
+
+**Error Message**
+
+HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs.
+
+**Symptom**
+
+Failed to decompose the HDR image.
+
+**Possible Cause**
+
+1. The decomposition is not supported.
+2. An error occurred during HDR image processing.
+
+**Solution**
+
+Check whether the pixel format of the HDR PixelMap supports decomposition, or change the image and try again.
+
 ## 7600301 Memory Allocation Failure
 
 **Error Message**
@@ -1106,7 +1288,7 @@ Memory copy failed.
 
 **Symptom**
 
-This error code is reported when memory copy failed.
+This error code is reported when memory copy fails.
 
 **Possible Cause**
 
@@ -1115,6 +1297,24 @@ The memory to copy does not exist, or the device memory is insufficient.
 **Solution**
 
 Check whether the memory to copy exists. Clear the memory and try again.
+
+## 7600303 Memory Lock or Unlock Failed
+
+**Error Message**
+
+Memory lock or unlock failed.
+
+**Symptom**
+
+This error is reported if memory lock or unlock fails.
+
+**Possible Cause**
+
+The PixelMap or memory address is invalid.
+
+**Solution**
+
+Ensure that the PixelMap or memory address is valid.
 
 ## 7600305 Failed to Create the PixelMap
 
@@ -1134,6 +1334,44 @@ This error code is reported when the PixelMap fails to be created.
 **Solution**
 
 Ensure that the input parameters are correct and the instance is available.
+
+## 7600306 Data Conversion Failed
+
+**Error Message**
+
+Data conversion failed.
+
+**Symptom**
+
+Data conversion failed.
+
+**Possible Cause**
+
+1. The size of the input pixel data buffer does not meet the expectation.
+2. The pixel data in the PixelMap is damaged.
+
+**Solution**
+
+1. If a buffer is passed, check whether the buffer size meets the expectation.
+2. Ensure that the pixel data and metadata of the PixelMap are normal.
+
+## 7600501 Unsupported Allocator Mode
+
+**Error Message**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**Symptom**
+
+This error code is reported for unsupported allocator mode.
+
+**Possible Cause**
+
+No memory allocation type is specified, or an incorrect memory allocation type is specified. For example, an error occurs when an HDR image is decoded in shared memory mode, because only the DMA mode supports HDR metadata.
+
+**Solution**
+
+Use a correct memory allocation type.
 
 ## 7600901 Unknown Error
 
@@ -1171,7 +1409,7 @@ This error code is reported when the image source is abnormal.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700102 Unsupported MIME Type
 
@@ -1189,7 +1427,7 @@ The device does not support the image type.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700103 Image Oversized
 
@@ -1207,7 +1445,7 @@ The image size exceeds the upper limit.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700201 Unsupported Memory Allocation Type
 
@@ -1262,7 +1500,7 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
 
 ## 7700204 Invalid Parameter
 
@@ -1300,7 +1538,7 @@ This error code is reported when decoding fails.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700302 Memory Allocation Failed
 
@@ -1320,6 +1558,44 @@ This error code is reported when the memory allocation fails.
 **Solution**
 
 Check the device memory or input data.
+
+## 7700303 Image Does Not Contain Thumbnail Data
+
+**Error Message**
+
+Image does not carry thumbnail data.
+
+**Symptom**
+
+This error is reported when the image does not contain thumbnail data.
+
+**Possible Cause**
+
+The image file does not contain thumbnail data, and the thumbnail generation function is not enabled.
+
+**Solution**
+
+Ensure that the image file contains thumbnail data and that the thumbnail generation function is enabled. Then try again.
+
+## 7700305 Thumbnail Generation Failed
+
+**Error Message**
+
+Thumbnail generation failed.
+
+**Symptom**
+
+This error code is reported when the thumbnail generation fails.
+
+**Possible Cause**
+
+1. The input image data is abnormal.
+2. The thumbnail generation parameters are improper.
+3. Device resources are insufficient.
+
+**Solution**
+
+Verify the input image data and thumbnail generation parameters, and release the system resources if necessary. Then try again.
 
 ## 7700304 Failed to Write Image Information to the File
 
@@ -1356,7 +1632,25 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
+
+## 7800202 Invalid ImagePacker Parameter
+
+**Error Message**
+
+Invalid parameter for ImagePacker.
+
+**Symptom**
+
+This error code is reported if the encoding parameter is invalid.
+
+**Possible Cause**
+
+The encoding parameter is empty or invalid.
+
+**Solution**
+
+Verify the encoding parameter settings.
 
 ## 7800301 Encoding Failure
 

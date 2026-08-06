@@ -1,19 +1,19 @@
 # @ohos.multimedia.avInputCastPicker (录音设备选择组件)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-本模块提供创建录音设备选择组件AVInputCastPicker的功能，提供录音设备发现连接的统一入口。
+本模块提供创建录音设备选择组件AVInputCastPicker的功能，提供录音设备发现与连接的统一入口。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 示例效果请以真机为准，当前DevEco Studio预览器无实际录音设备选择功能。<!--Del-->
 > - 当前组件的使用，依赖于设备支持“录音设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“录音设备选择界面”。
-> - 此组件仅支持在PC上使用。<!--DelEnd-->
+> - API版本26.0.0之前，此组件仅支持在PC/2in1上使用；API版本26.0.0及之后，此组件新增支持在手机、平板上使用。<!--DelEnd-->
 
 ## 导入模块
 
@@ -48,7 +48,7 @@ AVInputCastPicker({
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件渲染性能。 |
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议开发者自定义组件样式，可有效提升组件渲染性能。 |
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。 |
 
 ## OnPickerStateCallback

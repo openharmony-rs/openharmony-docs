@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 23开始，算法库支持从私钥对象中获取公钥对象的操作。
+从API版本23开始，算法库支持从私钥对象中获取公钥对象的操作。
 
 以RSA为例，根据私钥对象获取公钥对象。
 
@@ -16,7 +16,7 @@
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
-对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-asym-key-generation-conversion-spec.md#rsa)。
+对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 
 ## 开发步骤
 
@@ -38,7 +38,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 #include <cstring>
 #include "file.h"
 
-static OH_Crypto_ErrCode CovertPriketToKeyPair(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertPrikeyToKeyPair(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyPair)
 {
     uint8_t privData[] = {
         0x30, 0x82, 0x01, 0x3c, 0x02, 0x01, 0x00, 0x02, 0x41, 0x00, 0xe4, 0x0c, 0xc1, 0x45, 0x43, 0xff,
@@ -90,7 +90,7 @@ OH_Crypto_ErrCode doTestGetPubkeyFromPrikey()
         0x3f, 0x8c, 0x58, 0x5d, 0xdd, 0x9f, 0x0c, 0x04, 0xc1, 0x02, 0x03, 0x01, 0x00, 0x01
     };
 
-    ret = CovertPriketToKeyPair(ctx, &keyPair);
+    ret = ConvertPrikeyToKeyPair(ctx, &keyPair);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
         OH_CryptoKeyPair_Destroy(keyPair);

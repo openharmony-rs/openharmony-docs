@@ -1,10 +1,12 @@
 # native_color_space_manager.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
+<!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:36:44.189Z pushedAt=2026-07-16T07:42:26.679Z -->
 
 ## Overview
 
@@ -26,8 +28,8 @@ This file declares the functions for creating and using a color space.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) | ColorSpacePrimaries | Describes the color space primaries.|
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | - | Describes a white point array. Each white point indicates the coordinates of white in the active color space.|
+| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) | ColorSpacePrimaries | Provides the declaration for the color primary structure, which is used to store the coordinates of the red, green, and blue primary colors and white point in the color space.|
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | WhitePointArray | Provides a white point array structure. The white point is the coordinate that represents white in the current color space.|
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Provides the declaration of an **OH_NativeColorSpaceManager** struct.|
 
 ### Enumerated value
@@ -42,7 +44,7 @@ This file declares the functions for creating and using a color space.
 | -- | -- |
 | [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)](#oh_nativecolorspacemanager_createfromname) | Creates an **OH_NativeColorSpaceManager** instance based on a color space name.<br>A new **OH_NativeColorSpaceManager** instance is created each time this function is called.|
 | [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)](#oh_nativecolorspacemanager_createfromprimariesandgamma) | Creates an **OH_NativeColorSpaceManager** instance based on the color primaries and gamma value.<br>A new **OH_NativeColorSpaceManager** instance is created each time this function is called.|
-| [void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_destroy) | Destroys an **OH_NativeColorSpaceManager** instance.|
+| [void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_destroy) | Destroys an **OH_NativeColorSpaceManager** instance. When the OH_NativeColorSpaceManager instance is no longer needed, you need to call this function to destroy the instance to release the memory.|
 | [int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getcolorspacename) | Obtains the color space name.|
 | [WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getwhitepoint) | Obtains the white points.|
 | [float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getgamma) | Obtains the gamma value.|
@@ -93,8 +95,9 @@ Defines an enum for the color space names.
 | DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of Full.|
 | DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full.|
 | DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full.|
+| BT2020_LOG_FULL = 27 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of Full.<br>**Since**: 26.0.0|
+| BT2020_LOG_LIMIT = 28 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of LIMIT.<br>**Since**: 26.0.0|
 | CUSTOM = 5 | Custom color space.|
-
 
 ## Function Description
 
@@ -111,7 +114,6 @@ Creates an **OH_NativeColorSpaceManager** instance based on a color space name.<
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -139,13 +141,12 @@ Creates an **OH_NativeColorSpaceManager** instance based on the color primaries 
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | Primary color of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance.|
-| float gamma | Gamma value of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance. The gamma value is a floating point number used to correct the brightness range.<br>Generally, the gamma value is positive. A negative value results in increased brightness in low-light areas and decreased brightness in high-light areas. The value **0** indicates a linear color space.|
+| float gamma | Gamma value of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance. The gamma value is a floating point number used to correct the brightness range.<br>Gamma values are usually positive. Negative values brighten dark areas and dim bright areas. A gamma value of **1.0** represents a linear color space.|
 
 **Returns**
 
@@ -161,12 +162,11 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 **Description**
 
-Destroys an **OH_NativeColorSpaceManager** instance.
+Destroys an **OH_NativeColorSpaceManager** instance. When the OH_NativeColorSpaceManager instance is no longer needed, you need to call this function to destroy the instance to release the memory.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -188,7 +188,6 @@ Obtains the color space name.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -199,7 +198,7 @@ Obtains the color space name.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the color space name, which is defined in [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). The return value **0** means that the function call fails.|
+| int | Value corresponding to the color space enum [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). A return value of 0 indicates that the API operation failed. Possible failure cause: the nativeColorSpaceManager parameter is a null pointer. Suggestion: check whether the parameter is a valid pointer. |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -215,7 +214,6 @@ Obtains the white points.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -226,7 +224,7 @@ Obtains the white points.
 
 | Type| Description|
 | -- | -- |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | Returns a float array of white points. The value **<0.0, 0.0>** means that the function call fails.|
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | Return value is a float array. Return value <0.0, 0.0> indicates that the API operation failed, and other return values indicate that the operation is successful. Possible failure cause: The nativeColorSpaceManager parameter is a null pointer. Suggestion: Check whether the parameter is a valid pointer. |
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
@@ -242,7 +240,6 @@ Obtains the gamma value.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -253,4 +250,4 @@ Obtains the gamma value.
 
 | Type| Description|
 | -- | -- |
-| float | Returns a float value. The value **0.0** means that the function call fails.|
+| float | Value of the float type. 0.0 indicates that the API operation failed, and other return values indicate success. Possible failure cause: The nativeColorSpaceManager parameter is a null pointer. Suggestion: Check whether the parameter is a valid pointer. |

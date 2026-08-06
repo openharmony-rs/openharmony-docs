@@ -21,8 +21,8 @@ WebSocket常用接口如下表所示，详细的接口说明请参考[net_websoc
 | OH_WebSocketClient_AddHeader(struct WebSocket \*client, struct WebSocket_Header header) | 将header头信息添加到client客户端request中。  |
 | OH_WebSocketClient_Connect(struct WebSocket \*client, const char \*url, struct WebSocket_RequestOptions options) | 客户端连接服务端。  |
 | OH_WebSocketClient_Send(struct WebSocket \*client, char \*data, size_t length) | 客户端向服务端发送数据。  |
-| OH_WebSocketClient_Close(struct WebSocket \*client, struct WebSocket_CloseOption options) | 客户端主动关闭websocket连接。  |
-| OH_WebSocketClient_Destroy(struct WebSocket \*client) | 释放websocket连接上下文和资源。  |
+| OH_WebSocketClient_Close(struct WebSocket \*client, struct WebSocket_CloseOption options) | 客户端主动关闭WebSocket连接。  |
+| OH_WebSocketClient_Destroy(struct WebSocket \*client) | 释放WebSocket连接上下文和资源。  |
 
 ## WebSocket接口开发示例
 
@@ -87,6 +87,7 @@ static void onMessage(struct WebSocket *wsClient, char *data, uint32_t length)
     }
     tmp[length] = '\0';
     OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s", length, tmp);
+    delete[] tmp;
 }
 
 static void onError(struct WebSocket *wsClient, WebSocket_ErrorResult errorResult)

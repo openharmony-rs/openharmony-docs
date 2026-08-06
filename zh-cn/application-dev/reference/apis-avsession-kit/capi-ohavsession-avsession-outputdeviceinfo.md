@@ -1,18 +1,18 @@
 # AVSession_OutputDeviceInfo
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-struct AVSession_OutputDeviceInfo {...}
+typedef struct AVSession_OutputDeviceInfo {...}
 ```
 
 ## 概述
 
-目标设备信息的定义。
+输出设备信息的定义。
 
 **起始版本：** 23
 

@@ -1,5 +1,12 @@
 # 通用错误码
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zengyawen-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zengyawen-->
+
 ## 201 权限校验失败
 
 **错误信息**
@@ -52,7 +59,7 @@ This function is prohibited by enterprise management policies.
 
 **处理步骤**
 
-请使用[getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)接口检查该系统功能是否被禁用，并使用[setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口解除禁用状态。
+请使用[getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated)接口检查该系统功能是否被禁用，并使用[setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口解除禁用状态。
 
 <!--Del-->
 ## 204 用户访问控制策略拒绝此访问

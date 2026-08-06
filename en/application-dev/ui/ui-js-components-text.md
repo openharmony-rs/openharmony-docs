@@ -32,7 +32,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001222807780](figures/en-us_image_0000001222807780.png)
+![text-Component](figures/text-Component.png)
 
 
 ## Setting the Text Style and Attributes
@@ -66,7 +66,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   }
   ```
 
-    ![en-us_image_0000001222967764](figures/en-us_image_0000001222967764.png)
+    ![Text-Style](figures/Text-Style.png)
 
 
 
@@ -100,7 +100,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   }
   ```
 
-  ![en-us_image_0000001223287688](figures/en-us_image_0000001223287688.png)
+  ![Text-Style-2](figures/Text-Style-2.png)
 
 
 
@@ -139,7 +139,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   > - **max-lines** indicates the maximum number of lines in the text.
 
 
-  ![en-us_image_0000001267647865](figures/en-us_image_0000001267647865.png)
+  ![Text-Style-3](figures/Text-Style-3.png)
 
 - Setting the [&lt;span&gt;](../reference/apis-arkui/arkui-js/js-components-basic-span.md) child component
 
@@ -158,7 +158,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   </div>
   ```
 
-  ![en-us_image_0000001223127720](figures/en-us_image_0000001223127720.png)
+  ![Text-Style-1](figures/Text-Style-1.png)
   > **NOTE**
   > - When the **&lt;span&gt;** child component is used to form a text paragraph, incorrect **&lt;span&gt;** attribute settings (for example, setting of **font-weight** to **1000**) will result in abnormal display of the text paragraph.
     >
@@ -220,4 +220,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001267887849](figures/en-us_image_0000001267887849.gif)
+![Example-Scenario-14](figures/Example-Scenario-14.gif)

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ The specified ability does not exist.
     ```bash
     hdc shell bm dump -a
     ```
-3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的hap和ability，说明ability所属的hap未被安装。
+3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若查询结果中没有包含ability所属的HAP，说明该HAP未被安装。
     ```bash
     hdc shell bm dump -n 包名
     ```
@@ -50,13 +50,15 @@ Incorrect ability type.
 **可能原因**
 
 1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
-2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
+2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
+3. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
 1. 检查Want中的bundleName、moduleName和abilityName是否正确。
 2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
-3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
+3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
+4. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName保持一致。<!--DelEnd-->
 
 ## 16000003 指定的ID不存在
 
@@ -293,7 +295,7 @@ Redirection to a third-party application is not allowed in API version greater t
 
 使用隐式启动方式或通过[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)跳转其他应用。
 
-## 16000019 隐式启动未查找到匹配应用
+## 16000019 隐式启动未查找到匹配Ability
 
 **错误信息**
 
@@ -333,6 +335,26 @@ The context is not ability context.
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
 <!--DelEnd-->
 
+## 16000021 模块名不存在
+
+**错误信息**
+
+The module name does not exist.
+
+**错误描述**
+
+模块名不存在。
+
+**可能原因**
+
+1. 传入的moduleName参数为空。
+2. HAP包中不存在moduleName对应的模块。
+
+**处理步骤**
+
+1. 确保传入的moduleName参数不为空。
+2. 确保传入的moduleName是在HAP包中存在的模块名。
+
 ## 16000050 内部错误
 
 **错误信息**
@@ -359,7 +381,7 @@ Internal error.
 3. 确保设备上已安装应用市场App，或者在拉起应用前检查应用市场App是否已安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
 
-## 16000053 非顶层应用
+## 16000053 非顶层Ability
 
 **错误信息**
 
@@ -367,17 +389,17 @@ The ability is not on the top of the UI.
 
 **错误描述**
 
-当前应用未显示在界面顶层时，方法将返回该错误码。
+当前Ability未显示在界面顶层时，方法将返回该错误码。
 
 **可能原因**
 
-用户执行免安装启动时需要确保应用在前台，但应用未显示在界面顶层。
+用户执行免安装启动时需要确保Ability在前台，但Ability未显示在界面顶层。
 
 **处理步骤**
 
-1. 请确保当前应用已启动并处于前台运行状态。
-2. 请核实应用界面是否完全显示，且未被其他应用窗口遮挡或最小化。
-3. 如设备启用了分屏或多窗口模式，请确保当前应用为焦点窗口。
+1. 请确保当前Ability已启动并处于前台运行状态。
+2. 请核实Ability界面是否完全显示，且未被其他Ability窗口遮挡或最小化。
+3. 如设备启用了分屏或多窗口模式，请确保当前Ability为焦点窗口。
 
 ## 16000055 免安装超时
 
@@ -747,7 +769,7 @@ BackToCaller is not supported.
 
 **错误信息**
 
-The app instance key is invalid.
+The app instance key does not exist.
 
 **错误描述**
 
@@ -844,7 +866,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -858,6 +880,24 @@ Failed to obtain the target application information.
 2. 检查分身应用索引是否在允许范围内。
 3. 检查目标应用是否创建了该索引对应的分身应用。
 <!--DelEnd-->
+
+## 16000082 UIAbility正在启动中
+
+**错误信息**
+
+The UIAbility is being started.
+
+**错误描述**
+
+UIAbility正在启动中，onCreate或onWindowStageCreate生命周期回调尚未完成。
+
+**可能原因**
+
+UIAbility仍处于启动阶段，onCreate或onWindowStageCreate回调尚未执行完成。
+
+**处理步骤**
+
+等待UIAbility完成onCreate或onWindowStageCreate生命周期回调后再执行相关操作。
 
 ## 16000083 不允许该类型ExtensionAbility启动指定Ability
 
@@ -1239,7 +1279,7 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
-## 16000125 不支持启动插件
+## 16000125 不支持启动插件UIAbility
 
 **错误信息**
 
@@ -1280,7 +1320,7 @@ Want中传入了DLP文件。
 
 **错误信息**
 
-The UIAbility not belong to caller.
+The UIAbility does not belong to the caller.
 
 **错误描述**
 
@@ -1316,7 +1356,7 @@ startSelfUIAbilityInCurrentProcess用于冷启动一个新的UIAbility实例，�
 
 **错误信息**
 
-The main window of this ability of this context does not exits.
+The main window of this ability of this context does not exist.
 
 **错误描述**
 
@@ -1348,6 +1388,62 @@ The UIAbility is prohibited from launching itself via App Linking.
 
 - 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
+
+<!--Del-->
+## 16000137 跨设备执行意图连接失败
+
+**错误信息**
+
+Cross-device execution failed due to a connection error.
+
+**错误描述**
+
+跨设备执行意图时，设备连接失败。
+
+**可能原因**
+
+入参[ExecuteParam](../apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md#executeparam)中的deviceId不为空且无效。
+
+**处理步骤**
+
+检查deviceId是否有效。
+
+## 16000138 跨设备执行意图设备断连
+
+**错误信息**
+
+Device disconnected during cross-device intent execution.
+
+**错误描述**
+
+跨设备执行意图时，设备断开连接。
+
+**可能原因**
+
+设备距离过远、设备异常或设备主动退出账号，导致设备连接断开。
+
+**处理步骤**
+
+检查设备状态是否正常，并重新连接。
+<!--DelEnd-->
+
+## 16000150 发送请求失败
+
+**错误信息**
+
+Failed to send request to system service.
+
+**错误描述**
+
+当向系统服务发送请求失败时，方法将返回该错误码。
+
+**可能原因**
+
+设置快启使能状态或者重新初始化快启时，发送请求失败。
+
+**处理步骤**
+
+请尝试重新调用接口或者重启设备。
 
 ## 16000151 无效wantAgent对象
 
@@ -1580,7 +1676,7 @@ The target application is not the current application.
 
 **错误信息**
 
-The bundle does not exist or no patch has been applied.
+Invalid bundle name.
 
 **错误描述**
 
@@ -1658,15 +1754,15 @@ The observer does not exist.
 
 **错误描述**
 
-当监听器不存在时，方法将返回该错误码。
+当observer不存在时，方法将返回该错误码。
 
 **可能原因**
 
-当前监听器不存在或者已注销。
+当前observer不存在或者已注销。
 
 **处理步骤**
 
-请检查是否有重复注销监听器。
+请检查是否有重复注销observer。
 
 <!--Del-->
 ## 16300005 指定的包信息不存在
@@ -1691,7 +1787,7 @@ The target bundle does not exist.
 
 **错误信息**
 
-The target bundle has no MainAbility.
+The target bundle has no main UIAbility.
 
 **错误描述**
 
@@ -1761,7 +1857,7 @@ Internal error.
 1. 确认系统内存是否足够，设备使用的系统版本是否存在异常。
 2. 尝试重启设备。
 
-## 29600002 图片编辑内部错误
+## 29600002 图片输入错误
 
 **错误信息**
 
@@ -1913,7 +2009,7 @@ The input bundleName is not a system HSP.
 
 **错误信息**
 
-Invalid main element type.
+The main element is not an appService ExtensionAbility.
 
 **错误描述**
 
@@ -2576,11 +2672,13 @@ The specified agentId does not exist.
 
 **可能原因**
 
-目标应用中不存在指定agentId对应的AgentCard。
+1. 目标应用中不存在指定agentId对应的AgentCard。<!--Del-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
-检查一下目标应用的静态配置信息，重新传入正确的agentId。
+1. 检查目标应用的静态配置信息，重新传入正确的agentId。<!--Del-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName保持一致。<!--DelEnd-->
 
 ## 35600002 IPC消息发送失败
 
@@ -2619,3 +2717,316 @@ Maximum connections from the same caller have been reached.
 **处理步骤**
 
 调用方断开一些连接后重新发起连接。
+
+<!--Del-->
+## 35600030 CLI工具不存在
+
+**错误信息**
+
+No tool with the specified name exists.
+
+**错误描述**
+
+指定的工具不存在。
+
+**可能原因**
+
+系统内不存在此工具。
+
+**处理步骤**
+
+检查传入的cliName是否正确，需重新传入正确的cliName。
+
+## 35600031 工具并发数已达上限
+
+**错误信息**
+
+Maximum number of concurrent tools has been reached.
+
+**错误描述**
+
+工具并发数已达上限。
+
+**可能原因**
+
+系统内正在运行的工具已达到系统允许的上限，不允许再发起新的连接请求。
+
+**处理步骤**
+
+等待部分工具执行结束后重新发起连接。
+
+## 35600032 指定的session不存在
+
+**错误信息**
+
+The session does not exist.
+
+**错误描述**
+
+指定的session不存在。
+
+**可能原因**
+
+传入了错误的sessionId。
+
+**处理步骤**
+
+检查sessionId是否正确，传入正确的sessionId。
+
+## 35600033 向工具进程写入消息失败
+
+**错误信息**
+
+Failed to write message to tool.
+
+**错误描述**
+
+向工具进程写入消息失败。
+
+**可能原因**
+
+write系统调用失败。
+
+**处理步骤**
+
+缓冲区满或对端异常，尝试等待一段时间后重新写入。
+
+## 35600050 偶发性报错
+
+**错误信息**
+
+System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module.
+
+**错误描述**
+
+系统运行过程中出现的一些应用无法解决的偶发性报错。
+
+**可能原因**
+
+1. 不能连接到系统服务。
+2. 系统服务之间通信失败。
+
+**处理步骤**
+
+1. 退出应用后重新尝试。
+2. 重启设备后重新尝试。
+
+## 35600060 Function不存在
+
+**错误信息**
+
+The function does not exist.
+
+**错误描述**
+
+函数不存在。
+
+**可能原因**
+
+需要执行的Function没有在系统中注册。
+
+**处理步骤**
+
+1. 检查需要执行的Function信息是否拼写错误。
+2. 检查需要执行的Function是否已注册。
+
+## 35600061 Function执行失败
+
+**错误信息**
+
+The function execution failed.
+
+**错误描述**
+
+函数执行失败。
+
+**可能原因**
+
+系统故障、abc加载或者执行异常。
+
+**处理步骤**
+
+检查函数执行条件是否具备，稍后重试。
+
+## 35600062 Function执行超时
+
+**错误信息**
+
+The function execution timed out.
+
+**错误描述**
+
+函数执行超时。
+
+**可能原因**
+
+实现逻辑复杂、外部服务响应慢、数据量过大或系统资源紧张导致执行时间过长。
+
+**处理步骤**
+
+检查函数执行过程和执行环境，稍后重试。
+<!--DelEnd-->
+
+## 16000161 当前进程延迟退出未处于等待状态，无法调用此API
+
+**错误信息**
+
+Delayed process exit is not pending in the current process, and this API cannot be called.
+
+**错误描述**
+
+在当前进程中，由于延迟退出进程未处于等待状态，因此无法调用此API。
+
+**可能原因**
+
+调用方在调用该API前，未启用当前进程延迟退出功能。
+
+**处理步骤**
+
+调用方先调用启用当前进程延迟退出接口，再调用该API。
+
+## 16000162 当前的进程中仍有其他UIAbility，无法调用此API
+
+**错误信息**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**错误描述**
+
+当前的进程中仍有其他UIAbility，此API无法被调用。
+
+**可能原因**
+
+调用方当前进程中还存在其他的UIAbility。
+
+**处理步骤**
+
+调用方保证当前进程中只有一个UIAbility且处于退出状态。
+
+## 16000163 文件类型错误
+
+**错误信息**
+
+The file type is incorrect.
+
+**错误描述**
+
+文件类型错误。
+
+**可能原因**
+
+1. 调用appMemoryOptimizer.evictFilePages接口时，传入的fileNames数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+2. 调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件中`evictFilePages`数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+
+**处理步骤**
+
+1. 若调用appMemoryOptimizer.evictFilePages接口，检查传入的fileNames数组，确保所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+2. 若调用appMemoryOptimizer.evictModuleFilePages接口，检查对应模块的`memory_optimizer.json`配置文件，确保`evictFilePages`数组中所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+
+## 16000164 解析配置文件失败
+
+**错误信息**
+
+Failed to parse the configuration file.
+
+**错误描述**
+
+解析配置文件失败。
+
+**可能原因**
+
+调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件不存在、路径错误或内容格式错误。
+
+**处理步骤**
+
+检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。
+
+## 35600004 指定的AgentCard版本低于当前版本
+
+**错误信息**
+
+The specified AgentCard version is older than the current version.
+
+**错误描述**
+
+指定的AgentCard版本低于当前版本。
+
+**可能原因**
+
+调用updateAgentCard接口时新版本号低于旧版本号。
+
+**处理步骤**
+
+将AgentCard中的version字段进行更新。
+
+## 35600005 指定的AgentCard版本无效
+
+**错误信息**
+
+The specified AgentCard version is invalid.
+
+**错误描述**
+
+指定的AgentCard版本无效。
+
+**可能原因**
+
+AgentCard中的version字段没有遵循SemVer的版本规则。
+
+**处理步骤**
+
+更新AgentCard中的version字段并遵循SemVer的版本规则。
+
+## 35600006 指定的AgentCard已被注册
+
+**错误信息**
+
+The specified AgentCard has already been registered. Use updateAgentCard instead.
+
+**错误描述**
+
+指定的AgentCard已被注册，请使用updateAgentCard接口。
+
+**可能原因**
+
+指定的AgentCard已被注册。
+
+**处理步骤**
+
+使用updateAgentCard接口。
+
+## 35600007 指定的LOW_CODE类型智能体已触发且尚未完成工作流
+
+**错误信息**
+
+The specified LOW_CODE agent has already been triggered and is not yet completed.
+
+**错误描述**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**可能原因**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**处理步骤**
+
+调用notifyLowCodeAgentComplete接口结束指定的LOW_CODE类型智能体。
+
+## 35600008 同一应用下AgentCard数量达到了上限
+
+**错误信息**
+
+The number of AgentCards in the bundle reaches the limit.
+
+**错误描述**
+
+同一应用下AgentCard数量达到了上限。
+
+**可能原因**
+
+同一应用下最多只能存在1000张AgentCard，调用agentManager.registerAgentCard接口时已达到此上限。
+
+**处理步骤**
+
+调用agentManager.deleteAgentCard删除不再需要的AgentCard。

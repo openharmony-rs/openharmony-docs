@@ -4,12 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用，推荐通过指定[应用链接](app-startup-overview.md#应用链接)的方式来实现。
 
 本章节介绍如何从显式Want跳转切换到应用链接跳转。
+
+> **说明：**
+>
+> 暂不支持显式Want中flag字段的转换。如需使用flag字段，建议仍采用显式Want跳转的方式。
 
 ## 启动其他应用的UIAbility
 
@@ -96,7 +100,7 @@
              *   message is ${paramError.message}`);
              * }
              */
-            let link: string = 'https://www.example.com';
+            let link: string = 'https://www.example.com'; // 此处为实际应用链接
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,
@@ -205,7 +209,7 @@
              *   message is ${paramError.message}`);
              * }
              */
-            let link: string = 'https://www.example.com';
+            let link: string = 'https://www.example.com'; // 此处为实际应用链接
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,

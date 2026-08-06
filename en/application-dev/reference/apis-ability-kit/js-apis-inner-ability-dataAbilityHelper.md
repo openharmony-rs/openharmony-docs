@@ -1249,9 +1249,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
 );
 dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     'method', 'arg', {'key1':'value1'}).then((data) => {
-    console.info('call success, data: ${data}');
+    console.info(`call success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('call failed, error: ${error}');
+    console.error(`call failed, error: ${error}`);
 });
 ```
 
@@ -1331,9 +1331,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
     'dataability:///com.example.jsapidemo.UserDataAbility'
 );
 dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbility', op).then((data) => {
-    console.info('executeBatch success, data: ${data}');
+    console.info(`executeBatch success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('executeBatch failed, error: ${error}');
+    console.error(`executeBatch failed, error: ${error}`);
 });
 
 ```

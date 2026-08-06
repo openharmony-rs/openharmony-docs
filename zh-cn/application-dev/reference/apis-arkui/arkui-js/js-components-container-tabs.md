@@ -1,8 +1,8 @@
 # tabs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -113,4 +113,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125116](figures/zh-cn_image_0000001127125116.gif)
+![zh-cn_image_0000001127125116](figures/tab-example.gif)

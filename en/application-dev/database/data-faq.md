@@ -1,10 +1,12 @@
 # ArkData FAQs
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @widecode-->
-<!--Designer: @widecode-->
+<!--Owner: @baijidong-->
+<!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=f98277379e11f7ce13311ac3d3872f1ad1168cce translatedAt=2026-07-28T06:45:02.888Z pushedAt=2026-07-28T07:47:44.219Z -->
 
 ## How do I view detailed SQL execution error logs of an RDB store?
 
@@ -19,3 +21,32 @@ Call [relationalStore.getUpdateSqlInfo](../reference/apis-arkdata/arkts-apis-dat
 Call [relationalStore.getDeleteSqlInfo](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetdeletesqlinfo20) to obtain the SQL statement used to delete data.
 
 Call [relationalStore.getQuerySqlInfo](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetquerysqlinfo20) to obtain the SQL statement used to query data.
+
+## Different Files in an RDB Store
+
+When an RDB store is used, different file artifacts may be generated. The purpose of each file is described in the following table.
+
+| **File Type** | **Description**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| .db          | Database persistent file, used to store database data.                                               |
+| .db-wal     | Used to save operation logs, allowing changes to be rolled back upon transaction failure to ensure data consistency.<br>This file exists only when the database uses WAL mode (the system default logging mode is WAL (Write Ahead Log) mode).  |
+| .db-shm      | Shared memory file, used to coordinate changes to the same db file by multiple database connections to prevent data conflicts.<br>This file exists only when the database uses WAL mode (the system default logging mode is WAL (Write Ahead Log) mode).                   |
+| .key_lock      | Used to save file lock information.                            |
+| .pub_key     | Used to save database key information.<br>This file exists only when database encryption is configured and custom encryption parameters are not configured (that is, when encrypt is set to true via [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig) and cryptoParam is not configured).                                                  |
+| .db-dwr      | Used to save file header information.                                       |
+| .db-compare      | Used to save all DDL statements.                                    |
+
+## How to Configure the encryptionKey Parameter When Calling getRdbStore to Open an Encrypted Relational Database with a Raw Key?
+
+In an RDB store, when you call [getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open an encrypted database with a raw key, configure the [CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14) parameter as follows:
+
+```ts
+import { relationalStore } from '@kit.ArkData'
+
+let password: string = "x'3605d7de19311edba4d3c88143c61cdd79dd5a58bc829c8b1234567891234567'"; // Replace with the actual database password.
+let key = new Uint8Array(buffer.from(password, 'utf8').buffer); // Returns a Uint8Array.
+// Configure encryption parameters.
+const cryptoParam: relationalStore.CryptoParam = {
+  encryptionKey: key, // Mandatory. Specifies the key.
+};
+```

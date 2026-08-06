@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 21开始，可以选择使用硬件熵源生成安全随机数。
+从API版本21开始，可以选择使用硬件熵源生成安全随机数。
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。
 
@@ -93,7 +93,7 @@ OH_Crypto_ErrCode doTestHardwareRandomNumber()
 
     // 生成指定长度的随机数。
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // 生成24字节的随机数。
+    int randomLength = 24; // 生成24字节的随机数。
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

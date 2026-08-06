@@ -1,8 +1,8 @@
 # CanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,7 @@
 >
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-使用CanvasRenderingContext2D在[canvas画布组件](./js-components-canvas-canvas.md)上进行绘制，绘制对象可以是矩形、文本、图片等。
+使用CanvasRenderingContext2D在[canvas组件](./js-components-canvas-canvas.md)上进行绘制，绘制对象可以是矩形、文本、图片等。
 
 
 **示例：** 
@@ -38,18 +38,18 @@
       const ctx = el.getContext('2d', { antialias: true });
       ctx.beginPath();   
       ctx.arc(100, 75, 50, 0, 6.28);
-      ctx.stroke(); 
-      }
+      ctx.stroke();
     }
+  }
   ```
 
 - 示意图（关闭抗锯齿）
 
-  ![zh-cn_image_0000001214837333](figures/zh-cn_image_0000001214837333.png)
+  ![disabled-anti-aliasing](figures/disabled-anti-aliasing.png)
 
 - 示意图（开启抗锯齿）
 
-  ![zh-cn_image_0000001127125162](figures/zh-cn_image_0000001127125162.png)
+  ![enabled-anti-aliasing](figures/enabled-anti-aliasing.png)
 
 
 ## 属性
@@ -63,7 +63,7 @@
 | [miterLimit](#miterlimit)                | number                                   | 设置斜接面限制值，该值指定了线条相交处内角和外角的距离。<br>默认值：10   |
 | [font](#font)                            | string                                   | 设置文本绘制中的字体样式。<br/>语法：ctx.font="font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family"<sup>5+</sup><br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：normal,&nbsp;italic。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：normal,&nbsp;bold,&nbsp;bolder,&nbsp;lighter,&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位只支持px。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：sans-serif,&nbsp;serif,&nbsp;monospace。<br>默认值："normal&nbsp;normal&nbsp;14px&nbsp;sans-serif" |
 | [textAlign](#textalign)                  | string                                   | 设置文本绘制中的文本对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐。<br/>-&nbsp;right：文本右对齐。<br/>-&nbsp;center：文本居中对齐。<br/>-&nbsp;start：文本对齐界线开始的地方。<br/>-&nbsp;end：文本对齐界线结束的地方。<br/>ltr布局模式下start和left一致，rtl布局模式下start和right一致。<br>默认值：left |
-| [textBaseline](#textbaseline)            | string                                   | 设置文本绘制中的水平对齐方式，可选值为：<br/>-&nbsp;alphabetic：文本基线是标准的字母基线。<br/>-&nbsp;top：文本基线在文本块的顶部。<br/>-&nbsp;hanging：文本基线是悬挂基线。<br/>-&nbsp;middle：文本基线在文本块的中间。<br/>-&nbsp;ideographic：文字基线是表意字基线；如果字符本身超出了alphabetic&nbsp;基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;bottom：文本基线在文本块的底部。&nbsp;与&nbsp;ideographic&nbsp;基线的区别在于&nbsp;ideographic&nbsp;基线不需要考虑下行字母。<br>默认值： alphabetic |
+| [textBaseline](#textbaseline)            | string                                   | 设置文本绘制中的基线对齐方式，可选值为：<br/>-&nbsp;alphabetic：文本基线是标准的字母基线。<br/>-&nbsp;top：文本基线在文本块的顶部。<br/>-&nbsp;hanging：文本基线是悬挂基线。<br/>-&nbsp;middle：文本基线在文本块的中间。<br/>-&nbsp;ideographic：文字基线是表意字基线；如果字符本身超出了alphabetic&nbsp;基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;bottom：文本基线在文本块的底部。&nbsp;与&nbsp;ideographic&nbsp;基线的区别在于&nbsp;ideographic&nbsp;基线不需要考虑下行字母。<br>默认值： alphabetic |
 | [globalAlpha](#globalalpha)              | number                                   | 设置透明度。<br>范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。   |
 | [lineDashOffset](#linedashoffset)        | number                                   | 设置画布的虚线偏移量，精度为float。<br>默认值：0.0          |
 | [globalCompositeOperation](#globalcompositeoperation) | string                                   | 设置合成操作的方式。类型字段可选值有source-over，source-atop，source-in，source-out，destination-over，destination-atop，destination-in，destination-out，lighter，copy，xor。具体请参考[类型字段说明](#globalcompositeoperation)。<br>默认值：source-over |
@@ -95,7 +95,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001166962736](figures/zh-cn_image_0000001166962736.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -120,7 +120,7 @@ export default {
 
 ```
 
-![zh-cn_image_0000001166484430](figures/zh-cn_image_0000001166484430.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -146,7 +146,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001212124299](figures/zh-cn_image_0000001212124299.png)
+![strokeStyle](figures/strokeStyle.png)
 
 ### lineCap
 
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214837127](figures/zh-cn_image_0000001214837127.png)
+![example-lineCap](figures/example-lineCap.png)
 
 ### lineJoin
 
@@ -201,7 +201,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214717247](figures/zh-cn_image_0000001214717247.png)
+![example-lineJoin](figures/example-lineJoin.png)
 
 ### miterLimit
 
@@ -218,7 +218,7 @@ export default {
   onShow() {
     const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
-    ctx.lineWidth =14;
+    ctx.lineWidth = 14;
     ctx.lineJoin = 'miter';
     ctx.miterLimit = 3;
     ctx.moveTo(30, 30);
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167001464](figures/zh-cn_image_0000001167001464.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -253,7 +253,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167046832](figures/zh-cn_image_0000001167046832.png)
+![font](figures/font.png)
 
 
 ### textAlign
@@ -293,7 +293,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167472798](figures/zh-cn_image_0000001167472798.png)
+![textAlign](figures/textAlign.png)
 
 ### textBaseline
 
@@ -329,7 +329,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001169315920](figures/zh-cn_image_0000001169315920.png)
+![textBaseline](figures/textBaseline.png)
 
 ### globalAlpha
 
@@ -356,7 +356,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167953648](figures/zh-cn_image_0000001167953648.png)
+![globalAlpha](figures/globalAlpha.png)
 
 ### lineDashOffset
 
@@ -374,14 +374,14 @@ export default {
     const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.arc(100, 75, 50, 0, 6.28);
-    ctx.setLineDash([10,20]);
+    ctx.setLineDash([10, 20]);
     ctx.lineDashOffset = 10.0;
     ctx.stroke();
   }
 }
 ```
 
-![zh-cn_image_0000001167950468](figures/zh-cn_image_0000001167950468.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 ### globalCompositeOperation
 
@@ -431,7 +431,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
+![red-blue-matrix](figures/red-blue-matrix.png)
 
   示例中，新绘制内容是蓝色矩形，现有绘制内容是红色矩形。
 
@@ -458,7 +458,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111514](figures/zh-cn_image_0000001168111514.png)
+![shadowBlur](figures/shadowBlur.png)
 
 ### shadowColor
 
@@ -483,7 +483,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111610](figures/zh-cn_image_0000001168111610.png)
+![shadowColor](figures/shadowColor.png)
 
 ### shadowOffsetX
 
@@ -510,7 +510,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167631876](figures/zh-cn_image_0000001167631876.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 ### shadowOffsetY
 
@@ -532,11 +532,11 @@ export default {
     ctx.shadowColor = 'rgb(0,0,0)';
     ctx.fillStyle = 'rgb(255,0,0)';
     ctx.fillRect(30, 30, 100, 100);
- }
+  }
 }
 ```
 
-![zh-cn_image_0000001213193285](figures/zh-cn_image_0000001213193285.png)
+![red-shadowOffsetY](figures/red-shadowOffsetY.png)
 
 ### imageSmoothingEnabled
 
@@ -557,14 +557,14 @@ export default {
     // 'common/image/example.jpg'需要替换为开发者所需的图像资源文件
     img.src = 'common/image/example.jpg';
     img.onload = function() {
-    ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(img, 0, 0, 400, 200);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, 0, 0, 400, 200);
     };
   }
 }
 ```
 
-![zh-cn_image_0000001167952236](figures/zh-cn_image_0000001167952236.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 
@@ -607,7 +607,7 @@ fillRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214811029](figures/zh-cn_image_0000001214811029.png)
+  ![example-fillRect](figures/example-fillRect.png)
 
 ### clearRect
 
@@ -647,7 +647,7 @@ clearRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214619417](figures/zh-cn_image_0000001214619417.png)
+  ![example-clearRect](figures/example-clearRect.png)
 
 
 ### strokeRect
@@ -686,7 +686,7 @@ strokeRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214822091](figures/zh-cn_image_0000001214822091.png)
+  ![example2-strokeRect](figures/example2-strokeRect.png)
 
 
 ### fillText
@@ -725,7 +725,7 @@ fillText(text: string, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214469787](figures/zh-cn_image_0000001214469787.png)
+  ![example-fillText](figures/example-fillText.png)
 
 ### strokeText
 
@@ -763,7 +763,7 @@ strokeText(text: string, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214460669](figures/zh-cn_image_0000001214460669.png)
+  ![example-strokeText](figures/example-strokeText.png)
 
 ### measureText
 
@@ -807,7 +807,7 @@ measureText(text: string): TextMetrics
   }
   ```
 
-  ![zh-cn_image_0000001169142476](figures/zh-cn_image_0000001169142476.png)
+  ![measureText](figures/measureText.png)
 
 
 ### stroke
@@ -833,14 +833,14 @@ stroke(): void
       const ctx = el.getContext('2d');
       ctx.moveTo(25, 25);
       ctx.lineTo(25, 250);
-      ctx.lineWidth = '6';
+      ctx.lineWidth = 6;
       ctx.strokeStyle = 'rgb(0,0,255)';
       ctx.stroke();
     }
   }
   ```
 
-  ![zh-cn_image_0000001236697937](figures/zh-cn_image_0000001236697937.png)
+  ![Blue-cursor](figures/Blue-cursor.png)
 
 
 ### beginPath
@@ -865,7 +865,7 @@ beginPath(): void
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();              
-      ctx.lineWidth = '6';
+      ctx.lineWidth = 6;
       ctx.strokeStyle = '#0000ff';
       ctx.moveTo(15, 80); 
       ctx.lineTo(280, 80);
@@ -874,7 +874,7 @@ beginPath(): void
   }
   ```
 
-  ![zh-cn_image_0000001214629745](figures/zh-cn_image_0000001214629745.png)
+  ![example-beginPath](figures/example-beginPath.png)
 
 
 ### moveTo
@@ -913,7 +913,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169309948](figures/zh-cn_image_0000001169309948.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -952,7 +952,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169469914](figures/zh-cn_image_0000001169469914.png)
+  ![lineTo01](figures/lineTo01.png)
 
 
 ### closePath
@@ -986,7 +986,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001169151508](figures/zh-cn_image_0000001169151508.png)
+  ![closePath](figures/closePath.png)
 
 ### createPattern
 
@@ -1033,7 +1033,7 @@ createPattern(image: Image, repetition: string): Object
   }
   ```
 
-  ![zh-cn_image_0000001169301188](figures/zh-cn_image_0000001169301188.png)
+  ![createPattern](figures/createPattern.png)
 
 ### bezierCurveTo
 
@@ -1076,7 +1076,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
   }
   ```
 
-  ![zh-cn_image_0000001214621177](figures/zh-cn_image_0000001214621177.png)
+  ![example-bezierCurveTo](figures/example-bezierCurveTo.png)
 
 ### quadraticCurveTo
 
@@ -1117,7 +1117,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169461910](figures/zh-cn_image_0000001169461910.png)
+  ![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 
 ### arc
@@ -1134,8 +1134,8 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 | x             | number  | 是 | 弧线圆心的x坐标值。<br>单位：vp |
 | y             | number  | 是 | 弧线圆心的y坐标值。<br>单位：vp |
 | radius        | number  | 是 | 弧线的圆半径。<br>单位：vp    |
-| startAngle    | number  | 是 | 弧线的起始弧度。<br>单位：vp  |
-| endAngle      | number  | 是 | 弧线的终止弧度。<br>单位：vp   |
+| startAngle    | number  | 是 | 弧线的起始弧度。<br>单位：弧度  |
+| endAngle      | number  | 是 | 弧线的终止弧度。<br>单位：弧度   |
 | counterclockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
 
 **示例：** 
@@ -1159,7 +1159,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001169470288](figures/zh-cn_image_0000001169470288.png)
+  ![arc](figures/arc.png)
 
 ### arcTo
 
@@ -1200,7 +1200,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169143586](figures/zh-cn_image_0000001169143586.png)
+  ![arcTo](figures/arcTo.png)
 
 ### ellipse
 
@@ -1218,10 +1218,10 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
 | y             | number | 是 | 椭圆圆心的y轴坐标。<br>单位：vp                           |
 | radiusX       | number | 是 | 椭圆x轴的半径长度。 <br>单位：vp                          |
 | radiusY       | number | 是 | 椭圆y轴的半径长度。 <br>单位：vp                          |
-| rotation      | number | 是 | 椭圆的旋转角度，单位为弧度。<br>单位：vp                       |
-| startAngle    | number | 是 | 椭圆绘制的起始点角度，以弧度表示。<br>单位：vp                    |
-| endAngle      | number | 是 | 椭圆绘制的结束点角度，以弧度表示。<br>单位：vp                    |
-| counterclockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br>单位：vp <br/>默认值：0 |
+| rotation      | number | 是 | 椭圆的旋转角度。<br>单位：弧度                       |
+| startAngle    | number | 是 | 椭圆绘制的起始点角度。<br>单位：弧度                    |
+| endAngle      | number | 是 | 椭圆绘制的结束点角度。<br>单位：弧度                    |
+| counterclockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
 
 **示例：** 
   ```html
@@ -1244,7 +1244,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001214823665](figures/zh-cn_image_0000001214823665.png)
+  ![example-ellipse](figures/example-ellipse.png)
 
 
 ### rect
@@ -1283,7 +1283,7 @@ rect(x: number, y: number, width: number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214630783](figures/zh-cn_image_0000001214630783.png)
+  ![example-rect](figures/example-rect.png)
 
 ### fill
 
@@ -1313,7 +1313,7 @@ fill(): void
   }
   ```
 
-  ![zh-cn_image_0000001214703717](figures/zh-cn_image_0000001214703717.png)
+  ![example-fill](figures/example-fill.png)
 
 ### clip
 
@@ -1347,7 +1347,7 @@ clip(): void
   }
   ```
 
-  ![zh-cn_image_0000001169303414](figures/zh-cn_image_0000001169303414.png)
+  ![clip](figures/clip.png)
 
 ### rotate
 
@@ -1361,7 +1361,7 @@ rotate(rotate: number): void
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| rotate | number | 是 | 设置顺时针旋转的弧度值，可以通过Math.PI&nbsp;/&nbsp;180将角度转换为弧度值。<br>单位：vp |
+| rotate | number | 是 | 设置顺时针旋转的弧度值，可以通过Math.PI&nbsp;/&nbsp;180将角度转换为弧度值。<br>单位：弧度 |
 
 **示例：** 
   ```html
@@ -1383,7 +1383,7 @@ rotate(rotate: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169463368](figures/zh-cn_image_0000001169463368.png)
+  ![rotate](figures/rotate.png)
 
 ### scale
 
@@ -1397,8 +1397,8 @@ scale(x: number, y: number): void
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| x    | number | 是 | 设置水平方向的缩放值。<br>单位：vp |
-| y    | number | 是 | 设置垂直方向的缩放值。<br>单位：vp |
+| x    | number | 是 | 设置水平方向的缩放值。 |
+| y    | number | 是 | 设置垂直方向的缩放值。 |
 
 **示例：** 
   ```html
@@ -1421,13 +1421,13 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214463281](figures/zh-cn_image_0000001214463281.png)
+  ![example-strokeRect](figures/example-strokeRect.png)
 
 ### transform
 
 transform(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void
 
-transform方法对应一个变换矩阵，想对一个图形进行变化的时候，只要设置此变换矩阵相应的参数，对图形的各个定点的坐标分别乘以这个矩阵，就能得到新的定点的坐标。矩阵变换效果可叠加。
+transform方法对应一个变换矩阵，想对一个图形进行变化的时候，只要设置此变换矩阵相应的参数，对图形的各个顶点的坐标分别乘以这个矩阵，就能得到新的顶点的坐标。矩阵变换效果可叠加。
 
 >  **说明：**
 >  变换后的坐标计算方式（x和y为变换前坐标，x'和y'为变换后坐标）：
@@ -1442,10 +1442,10 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| scaleX     | number | 是 | 指定水平缩放值。<br>单位：vp |
-| skewX      | number | 是 | 指定水平倾斜值。<br>单位：vp |
-| skewY      | number | 是 | 指定垂直倾斜值。<br>单位：vp |
-| scaleY     | number | 是 | 指定垂直缩放值。<br>单位：vp |
+| scaleX     | number | 是 | 指定水平缩放值。 |
+| skewX      | number | 是 | 指定水平倾斜值。 |
+| skewY      | number | 是 | 指定垂直倾斜值。 |
+| scaleY     | number | 是 | 指定垂直缩放值。 |
 | translateX | number | 是 | 指定水平移动值。<br>单位：vp |
 | translateY | number | 是 | 指定垂直移动值。<br>单位：vp |
 
@@ -1475,7 +1475,7 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
   }
   ```
 
-  ![zh-cn_image_0000001214623227](figures/zh-cn_image_0000001214623227.png)
+  ![example-transform](figures/example-transform.png)
 
 ### setTransform
 
@@ -1489,10 +1489,10 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| scaleX     | number | 是 | 指定水平缩放值。<br>单位：vp |
-| skewX      | number | 是 | 指定水平倾斜值。<br>单位：vp |
-| skewY      | number | 是 | 指定垂直倾斜值。<br>单位：vp |
-| scaleY     | number | 是 | 指定垂直缩放值。<br>单位：vp |
+| scaleX     | number | 是 | 指定水平缩放值。 |
+| skewX      | number | 是 | 指定水平倾斜值。 |
+| skewY      | number | 是 | 指定垂直倾斜值。 |
+| scaleY     | number | 是 | 指定垂直缩放值。 |
 | translateX | number | 是 | 指定水平移动值。<br>单位：vp |
 | translateY | number | 是 | 指定垂直移动值。<br>单位：vp |
 
@@ -1519,7 +1519,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001168984880](figures/zh-cn_image_0000001168984880.png)
+  ![setTransform](figures/setTransform.png)
 
 ### translate
 
@@ -1557,7 +1557,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169144864](figures/zh-cn_image_0000001169144864.png)
+  ![translate](figures/translate.png)
 
 ### createPath2D<sup>6+</sup>
 
@@ -1606,7 +1606,7 @@ createPath2D(path: Path2D, cmds: string): Path2D
   }
   ```
 
-  ![zh-cn_image_0000001214824709](figures/zh-cn_image_0000001214824709.png)
+  ![example-createPath2D](figures/example-createPath2D.png)
 
 ### drawImage
 
@@ -1652,7 +1652,7 @@ drawImage(image: Image | PixelMap, sx: number, sy: number, sWidth: number, sHeig
   }
   ```
 
-  ![zh-cn_image_0000001214704759](figures/zh-cn_image_0000001214704759.png)
+  ![example-drawImage](figures/example-drawImage.png)
 
 ### restore
 
@@ -1759,7 +1759,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): Object
   }
   ```
 
-  ![zh-cn_image_0000001169303416](figures/zh-cn_image_0000001169303416.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 ### createRadialGradient<sup>6+</sup>
 
@@ -1814,7 +1814,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001169463370](figures/zh-cn_image_0000001169463370.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createImageData
 
@@ -2022,12 +2022,12 @@ putImageData(imageData: ImageData, dx: number, dy: number): void
         imgData.data[i + 2] = 0;
         imgData.data[i + 3] = 255;
     }
-      ctx.putImageData(imgData, 10, 10);
+    ctx.putImageData(imgData, 10, 10);
     }
   }
   ```
 
-  ![zh-cn_image_0000001214463283](figures/zh-cn_image_0000001214463283.png)
+  ![example-putImageData](figures/example-putImageData.png)
 
 ### getPixelMap<sup>9+</sup>
 
@@ -2101,13 +2101,13 @@ setLineDash(segments: Array): void
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.arc(100, 75, 50, 0, 6.28);
-      ctx.setLineDash([10,20]);
+      ctx.setLineDash([10, 20]);
       ctx.stroke();
     }
   }
   ```
 
-  ![zh-cn_image_0000001214623229](figures/zh-cn_image_0000001214623229.png)
+  ![example-setLineDash](figures/example-setLineDash.png)
 
 ### getLineDash
 
@@ -2171,7 +2171,7 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
       const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var canvas = this.$refs.canvas.getContext('2d');
-      var offscreen = new OffscreenCanvas(500,500);
+      var offscreen = new OffscreenCanvas(500, 500);
       var offscreenCanvasCtx = offscreen.getContext("2d");
       offscreenCanvasCtx.fillRect(0, 0, 200, 200); 
 
@@ -2181,4 +2181,4 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
   }
   ```
 
-  ![zh-cn_image_0000001168984882](figures/zh-cn_image_0000001168984882.png)
+  ![transferFromImageBitmap](figures/transferFromImageBitmap.png)

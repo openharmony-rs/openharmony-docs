@@ -1,12 +1,12 @@
 # Firewall Error Codes
 
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:55.311Z pushedAt=2026-06-26T03:00:41.281Z -->
 
 > **NOTE**
 >
@@ -159,3 +159,25 @@ The DNS rule to be added or updated is duplicate.
 **Solution**
 
 Check whether the DNS rule to be added or updated already exists.
+
+## 2100001 Invalid Parameter Value
+
+**Error Message**
+
+Invalid parameter value.
+
+**Description**
+
+Invalid parameter value.
+
+**Possible Causes**
+
+1. Invalid parameter: one or more of the following are invalid — user ID, rule ID, IP address, port, protocol, domain name, or application UID..
+
+2. Invalid pagination query parameter: invalid parameter for querying the rule list.
+
+**Solution**
+
+1. Check whether the value range of the input parameter is correct.
+
+2. Check whether the type of the input parameter is standard, for example, whether the IP address, port, and domain name are standard.

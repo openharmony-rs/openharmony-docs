@@ -1,7 +1,7 @@
 # 媒体会话管理错误码
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -85,7 +85,7 @@ The remote session connection failed.
 
 **处理步骤**
 
-停止对该会话发送控制命令，并监听输出设备变化，当输出设备发送变化后恢复发送。
+停止对该会话发送控制命令，并监听输出设备变化，当输出设备发生变化后恢复发送。
 <!--DelEnd-->
 
 ## 6600105 无效会话命令
@@ -170,7 +170,7 @@ The remote connection is not established.
 
 **错误描述**
 
-查看的远端会话不存在，对应相关的接口调用失败返回。
+查看的远端会话不存在，对应接口调用失败返回。
 
 **可能原因**
 
@@ -199,6 +199,8 @@ The desktop lyrics feature of this application is not enabled.
 调用[enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口启用桌面歌词功能。
 
 ## 6600111 当前设备不支持桌面歌词功能
+
+**错误信息**
 
 The desktop lyrics feature is not supported.
 
@@ -262,7 +264,7 @@ The playback position falls behind the live window.
 
 **错误描述**
 
-加载位置超过投播视频的总进度导致。
+加载位置超过投播视频的总进度。
 
 **可能原因**
 
@@ -336,7 +338,7 @@ The specified seek mode is not supported.
 
 **错误描述**
 
-不支持当前进度条模式
+不支持当前进度条模式。
 
 **可能原因**
 
@@ -486,11 +488,12 @@ An unspecified input/output error occurs.
 
 **可能原因**
 
-对端设备回复的消息不符合标准、解析失败等。
+1. 本端设备发送的消息不符合标准、解析失败等。
+2. 对端设备回复的消息不符合标准、解析失败等。
 
 **处理步骤**
 
-当前远端设备异常，先重启远端设备，再重新发起会话。
+检查本端设备发送参数，重启异常的远端设备，再重新发起会话。
 
 ## 6612001 网络连接失败
 
@@ -636,7 +639,7 @@ Reading data out of the data bound.
 
 检查自身设置的资源是否可用，更换资源后，再重新发起会话。
 
-## 6612100 缺少可播放的媒体资源。
+## 6612100 缺少可播放的媒体资源
 
 **错误信息**
 
@@ -1194,7 +1197,7 @@ DRM许可证已过期。
 
 当前远端设备的DRM出现异常，更新DRM组件之后重新发起会话。
 
-## 6616100 DRM进程秘钥响应错误
+## 6616100 DRM进程密钥响应错误
 
 **错误信息**
 
@@ -1202,11 +1205,11 @@ An error occurs when the DRM processes the key response.
 
 **错误描述**
 
-DRM进程秘钥响应错误。
+DRM进程密钥响应错误。
 
 **可能原因**
 
-DRM秘钥响应的处理过程出现了问题。
+DRM密钥响应的处理过程出现了问题。
 
 **处理步骤**
 

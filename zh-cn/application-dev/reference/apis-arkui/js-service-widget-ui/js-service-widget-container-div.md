@@ -1,8 +1,8 @@
 # div
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -97,7 +97,7 @@
    ```
     **2*4卡片**
 
-    ![zh-cn_image_0000001231610863](figures/zh-cn_image_0000001231610863.png)
+    ![zh-cn_image_0000001231610863](figures/Flex-example.png)
 
 2. Flex Wrap样式
   
@@ -147,5 +147,5 @@
    ```
    **4*4卡片**
 
-   ![zh-cn_image_0000001186131150](figures/zh-cn_image_0000001186131150.png)
+   ![zh-cn_image_0000001186131150](figures/Flex-Wrap-example.png)
 

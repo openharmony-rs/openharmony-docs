@@ -10,6 +10,7 @@ The **module** tag contains the HAP configuration.
 
  **Table 1** Internal structure of the module tag
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | mainAbility | Ability whose icon is displayed in the Service Center. When the resident process is started, the **mainAbility** is started.| String| Yes (initial value: left empty)|
@@ -100,6 +101,7 @@ Example of the **module** tag structure:
 
 **Table 2** Internal structure of the distro attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application updates. However, if it is changed, directories related to the module must be migrated. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).| String| No|
@@ -194,7 +196,7 @@ Example of the metadata attribute:
 | Smart watch| wearable | Watch that provides call features.|
 | Sports watch| liteWearable | - |
 | Telematics device| car | - |
-| Default device| default | Default device type. For details, see [Standard-System Development Boards](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/dev-board-on-the-master.md#standard-system-development-boards).|
+| Default device| default | Default device type. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).|
 | 2-in-1 device| 2-in-1 device| PC, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity.|
 <!--RP2End-->
 
@@ -202,6 +204,7 @@ Example of the metadata attribute:
 
 **Table 8** Internal structure of the abilities attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | process | Name of the process running the application or ability. If the **process** attribute is configured in the **deviceConfig** tag, all abilities of the application run in this process. You can set the **process** attribute for a specific ability in the **abilities** attribute, so that the ability can run in the particular process. If this attribute is set to the name of the process running other applications, all these applications can run in the same process, provided they have the same unified user ID and the same signature. The value can contain a maximum of 31 bytes.| String| Yes (initial value: left empty)|
@@ -362,6 +365,7 @@ Example of the **abilities** attribute structure:
 
 **Table 10** Internal structure of the skills attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | actions | Actions of the **want** that can be accepted by the ability. Generally, the value is an **action** value predefined in the system.| String array| Yes (initial value: left empty)|
@@ -430,6 +434,7 @@ Example of the **skills** attribute structure:
 
 **Table 14** Internal structure of the js attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the JavaScript component.| String| No|
@@ -522,6 +527,7 @@ Example of the **shortcuts** attribute structure:
 
 **Table 19** Internal structure of the forms attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Class name of the widget. The value is a string with a maximum of 127 bytes.| String| No|
@@ -646,6 +652,7 @@ Example of the **forms** attribute structure:
 
 **Table 25** Internal structure of the screenDensity attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|

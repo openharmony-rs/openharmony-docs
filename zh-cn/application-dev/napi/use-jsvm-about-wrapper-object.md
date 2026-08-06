@@ -1,10 +1,10 @@
 # 使用JSVM-API接口进行Wrapper object相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -74,6 +74,6 @@ const char *srcCallNative = R"JS(wrapperObject();)JS";
 ```
 
 预期输出：
-```
+```txt
 JSVM OH_JSVM_IsNumberObject: 1
 ```

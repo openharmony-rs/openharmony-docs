@@ -128,7 +128,7 @@ struct OverlayExample {
 }
 ```
 
-![en-us_image_0000001205769446](figures/en-us_image_0000001205769446.png)
+![overlayControl1](figures/overlayControl1.png)
 
 ### Example 2: Setting an Overlay Using a Custom Builder
 
@@ -163,7 +163,7 @@ struct OverlayExample {
   }
 }
 ```
-![en-us_image_0000001210111632](figures/en-us_image_0000001210111632.png)
+![overlayControl2](figures/overlayControl2.png)
 
 ### Example 3: Setting an Overlay Using ComponentContent
 

@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -26,10 +26,23 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-```cpp
-#include <iostream>
+<!-- @[concurrent_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.h) -->
+
+``` C
 #include <unistd.h>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+
+#undef LOG_TAG
+#define LOG_TAG "ConcurrentCppTag"
+```
+
+<!-- @[concurrent_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.cpp) -->
+
+``` C++
+
+const int SLEEP_TIME = 100 * 1000;
+const int BANK_CONCURRENCY = 2;
 
 class BankQueueSystem {
 private:
@@ -40,13 +53,13 @@ public:
     {
         queue_ = std::make_unique<ffrt::queue>(
             ffrt::queue_concurrent, name, ffrt::queue_attr().max_concurrency(concurrency));
-        std::cout << "bank system has been initialized" << std::endl;
+        OH_LOG_INFO(LOG_APP, "bank system has been initialized");
     }
 
     ~BankQueueSystem()
     {
         queue_ = nullptr;
-        std::cout << "bank system has been destroyed" << std::endl;
+        OH_LOG_INFO(LOG_APP, "bank system has been destroyed");
     }
 
     // 开始排队，即提交队列任务
@@ -70,19 +83,19 @@ public:
 
 void BankBusiness()
 {
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw ordinary customer" << std::endl;
+    usleep(SLEEP_TIME);
+    OH_LOG_INFO(LOG_APP, "saving or withdraw ordinary customer");
 }
 
 void BankBusinessVIP()
 {
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw VIP" << std::endl;
+    usleep(SLEEP_TIME);
+    OH_LOG_INFO(LOG_APP, "saving or withdraw VIP");
 }
 
-int main()
+int ConcurrentQueueCppExec()
 {
-    BankQueueSystem bankQueue("Bank", 2);
+    BankQueueSystem bankQueue("Bank", BANK_CONCURRENCY);
 
     auto task1 = bankQueue.Enter(BankBusiness, "customer1", ffrt_queue_priority_low, 0);
     auto task2 = bankQueue.Enter(BankBusiness, "customer2", ffrt_queue_priority_low, 0);
@@ -112,7 +125,7 @@ int main()
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#using-ffrt-c-api-1)。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

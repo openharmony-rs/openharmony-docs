@@ -5,11 +5,33 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
 > - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+
+## 20900001 服务异常
+
+**错误信息**
+
+Service exception. Possible causes:
+1. A system error, such as null pointer, container-related exception, or IPC exception.
+2. N-API invocation exception or invalid N-API status.
+
+**错误描述**
+
+当调用键鼠穿越接口时系统内部发生异常，会产生此错误码。
+
+**可能原因**
+
+1. 系统内部错误，如空指针、容器相关异常或IPC异常。
+2. N-API调用异常或无效的N-API状态。
+
+**处理步骤**
+
+1. 检查系统服务是否正常运行，尝试重新执行操作。
+2. 如果问题持续存在，请联系技术支持。
 
 ## 4400001 目标设备描述符错误
 

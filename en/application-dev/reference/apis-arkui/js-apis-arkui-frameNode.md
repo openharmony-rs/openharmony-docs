@@ -1,12 +1,14 @@
 # FrameNode
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=00dce3decf0762303db24df00c77b5a9d42cfc02 translatedAt=2026-07-29T09:23:06.029Z pushedAt=2026-08-03T11:17:15.972Z -->
 
-**FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
+**FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
 > **NOTE**
 >
@@ -19,11 +21,13 @@
 > - FrameNode objects do not support JSON serialization.
 >
 > - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
+>
+> - In the FrameNode APIs, only the mandatory parameters of the [Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt) type can be set to null or undefined.
 
 ## Modules to Import
 
 ```ts
-import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "@kit.ArkUI";
+import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, NodeAdapter } from '@kit.ArkUI';
 ```
 
 ## LayoutConstraint<sup>12+</sup>
@@ -31,6 +35,8 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 Describes the layout constraints of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,25 +52,47 @@ Provides options for configuring or querying the cross-language access permissio
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>Default value: **false**.|
+| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| treeOperating  | boolean | No  | Yes  | Whether the FrameNode supports cross-language operations on the component tree.<br>The value **true** means the FrameNode supports cross-language operations on the component tree, and **false** means the opposite.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: When **treeOperating** is set to **true** for a FrameNode, the FrameNode can call [addChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild), [insertChildAfter](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter), [insertChildAt](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat), [insertChildBefore](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore), and [removeChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild) across languages.|
 
 ## ExpandMode<sup>15+</sup>
 
 Enumerates the expansion mode of child nodes.
 
-**Atomic service API**: This API can be used in atomic services since API version 15.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| NOT_EXPAND | 0 | The child nodes of the current FrameNode are not expanded. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the child nodes are not expanded when the nodes in the main tree are being obtained. The child node sequence numbers are calculated based on the nodes in the main tree.|
-| EXPAND | 1 | The child nodes of the current FrameNode are expanded. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, all child nodes are expanded when being obtained. The child node sequence numbers are calculated based on all child nodes.|
-| LAZY_EXPAND | 2 | The child nodes of the current FrameNode are expanded on demand. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the child nodes are not expanded when the nodes in the main tree are being obtained, but are expanded when nodes not in the main tree are being obtained. The child node sequence numbers are calculated based on all child nodes.|
+| NOT_EXPAND | 0 | The child nodes of the current FrameNode are not expanded. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the child nodes of the current FrameNode are not expanded when the child nodes on the main node tree are being obtained. The child node sequence numbers are calculated based on the child nodes on the main node tree.<br/>Application scenario: Only expanded child nodes on the main node tree need to be obtained without triggering expansion.<br/>**Atomic service API:** This API can be used in atomic services since API version 15.|
+| EXPAND | 1 | The child nodes of the current FrameNode are expanded. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the child nodes of the current FrameNode are expanded when all child nodes are being obtained. The child node sequence numbers are calculated based on all child nodes.<br/>Application scenario: All child nodes, including lazy loading ones, need to be obtained.<br/>**Atomic service API:** This API can be used in atomic services since API version 15. |
+| LAZY_EXPAND | 2 | The child nodes of the current FrameNode are expanded on demand. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the child nodes of the current FrameNode are not expanded when the child nodes on the main node tree are being obtained, and are expanded when the child nodes not on the main node tree are being obtained. The child node sequence numbers are calculated based on all child nodes.<br/>Application scenario: Child nodes on both the main node tree and non-main node tree need to be obtained on demand.<br/>**Atomic service API:** This API can be used in atomic services since API version 15. |
+| LAZY_NOT_EXPAND | 3 | The child nodes of the current FrameNode are not expanded. If the FrameNode contains [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, already expanded child nodes can be returned directly. When obtaining unexpanded child nodes, only the node at the corresponding position is created without expanding all child nodes. The child node sequence numbers are calculated based on all child nodes.<br/>Application scenario: Child nodes need to be obtained precisely by position without batch expansion of lazy loading child nodes.<br/>**Since:** 26.0.0 <br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+
+## ChildrenCountMode
+
+Enumerates the modes of counting child nodes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| ALL_EXPAND | 0 | Counting all child nodes after expansion. When a lazy loading node (such as [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)) is encountered, the node is expanded and the total number of child nodes is returned.<br/>Whether to expand lazy loading nodes: yes <br/> Application scenario: scenarios where all child nodes need to be expanded and the total number returned. |
+| ONLY_EXPANDED | 1 | Counting currently expanded child nodes. Lazy loading nodes are not expanded, and only the number of currently expanded child nodes is returned. Lazy loading nodes that are not expanded are not included in the count.<br> Whether to expand lazy loading nodes: no<br> Application scenario: Only the number of expanded child nodes needs to be queried.|
+| ALL_NOT_EXPAND | 2 | Counting all child nodes. Lazy loading nodes are not expanded, but the total number of potential child nodes (including both expanded and unexpanded lazy loading nodes) is returned. This counting mode provides the total number of potential child nodes without triggering any expansion.<br> Whether to expand lazy loading nodes: no<br> Application scenario: This counting mode is used when the total number of all child nodes needs to be obtained. Unlike **ALL_EXPAND**, this mode does not expand child nodes.|
 
 ## InteractionEventBindingInfo<sup>19+</sup>
 
@@ -72,38 +100,45 @@ Describes the binding state of interaction events on components. When querying r
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+<!--Table: 26%; 10%; 8%; 8%; 48%-->
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
-| nodeEventRegistered  | boolean | No  | No  | Whether the event is bound through a custom component node. For the implementation example, see [Basic Event Example](#basic-event-example).<br>The value **true** means that the event is bound through a custom component node, and **false** means the opposite.|
+| nodeEventRegistered  | boolean | No   | No   | Whether the event is bound through a custom component node. For details, see [Basic Event Example](#basic-event-example).<br/>The value **true** indicates that the event is bound through a custom component node, and **false** indicates the opposite. |
 | nativeEventRegistered  | boolean | No  | No  | Whether the event is bound through node event registration ([registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)).<br>The value **true** means that the event is bound through node event registration, and **false** means the opposite.|
-| builtInEventRegistered  | boolean | No  | No  | Whether the component has built-in events (events that are defined internally by the component and do not require manual binding).<br>The value **true** means that the component has built-in events, and **false** means the opposite.|
+| builtInEventRegistered  | boolean | No   | No   | Whether the component has built-in events (events that are defined internally by the component and do not require manual binding).<br/>The value **true** indicates that the component has built-in events, and **false** indicates the opposite. |
 
 ## UIState<sup>20+</sup>
 
 Enumerates polymorphic style states, which are used to process polymorphic styles.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| NORMAL | 0 | Normal state.|
-| PRESSED | 1 << 0 | Pressed state.|
-| FOCUSED | 1 << 1 | Focused state.|
-| DISABLED | 1 << 2 | Disabled state.|
-| SELECTED | 1 << 3 | Selected state.<br>Only supported by specific components: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, **MenuItem**.|
+| NORMAL | 0 | Normal state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| PRESSED | 1 << 0 | Pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| FOCUSED | 1 << 1 | Focused state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| DISABLED | 1 << 2 | Disabled state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| SELECTED | 1 << 3 | Selected state.<br>Only supported by specific components: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, **MenuItem**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| HOVERED | 1 << 4 | Hovered state.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
 type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
 
-Defines the callback triggered when the UI state changes. Defines the callback triggered on UI state changes. It receives the current [UIState](#uistate20) value when triggered. The parameter represents **UIState** enumerated values or their bitwise combinations.
+Defines the callback triggered when the UI state changes. It receives the current [UIState](#uistate20) value when triggered. The parameter represents **UIState** enumerated values or their bitwise combinations.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +147,7 @@ Defines the callback triggered when the UI state changes. Defines the callback t
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | node    | [FrameNode](#framenode-1) | Yes  | Node triggering the UI state change.                                           |
-| currentUIStates    | number         | Yes  | Current UI states when the callback is triggered.<br>You can use the bitwise AND operation to check the [UI states](#uistate20) that are currently included.<br>Example: **if (currentState & UIState.PRESSED == UIState.PRESSED)**.<br>Direct comparison: **if (currentState == UIState.PRESSED)**.                                           |
+| currentUIStates    | number         | Yes   | Current UI states when the callback is triggered.<br>You can use a bitwise AND operation to determine which [UI states](#uistate20) are currently included.<br>Bitwise AND operation: **if ((currentUIStates & UIState.PRESSED) == UIState.PRESSED)**.<br>If you only need to determine whether there is a single state, you can directly use **if (currentUIStates == UIState.PRESSED)**. Note: This method is valid only when a single state is active. To determine whether a specific state is included among multiple states, use a bitwise AND operation.                                            |
 
 ## FrameNode
 
@@ -123,6 +158,8 @@ constructor(uiContext: UIContext)
 A constructor used to create a FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,6 +176,8 @@ getRenderNode(): RenderNode | null
 Obtains the [RenderNode](./js-apis-arkui-renderNode.md) held by the FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +222,8 @@ struct Index {
   }
 }
 ```
-### isModifiable<sup>12+</sup> 
+
+### isModifiable<sup>12+</sup>
 
 isModifiable(): boolean
 
@@ -191,19 +231,21 @@ Checks whether this FrameNode is modifiable.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether this FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
+| boolean | Whether the current node is modifiable.<br/>The value **true** indicates that the current node is modifiable, and **false** indicates the opposite.<br/>The value **false** is returned when the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or when the node has been [disposed](#dispose12) of.<br/>When **false** is returned, the current FrameNode does not support the following operations: [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), [cancelAnimations](#cancelanimations20), [moveTo](#moveto18), [addComponentContent](#addcomponentcontent12), [adoptChild](#adoptchild22), and [removeAdoptedChild](#removeadoptedchild22). |
 
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### appendChild<sup>12+</sup> 
+### appendChild<sup>12+</sup>
 
 appendChild(node: FrameNode): void
 
@@ -211,13 +253,15 @@ Appends a child node to the end of this FrameNode. If this FrameNode is not modi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                   | Mandatory| Description                 |
 | ------ | ----------------------- | ---- | --------------------- |
-| node   | [FrameNode](#framenode-1) | Yes  | Child node to append.<br> The target node must not be a declaratively created node, that is, a FrameNode that is not modifiable. Only declarative nodes obtained from a BuilderNode can be used as child nodes. If the child node does not meet the specifications, an exception is thrown.<br> The FrameNode cannot have a parent node. Otherwise, an exception is thrown.|
+| node   | [FrameNode](#framenode-1) | Yes   | FrameNode to add.<br/> The node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained through the **getFrameNode** API of [BuilderNode](./js-apis-arkui-builderNode.md) can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br/> The node cannot have a parent node; otherwise, an exception is thrown.|
 
 **Error codes**
 
@@ -226,19 +270,21 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>Applicable versions: 22+|
 
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### insertChildAfter<sup>12+</sup> 
+### insertChildAfter<sup>12+</sup>
 
 insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
-Inserts a child node after the specified child node of this FrameNode. If this FrameNode is not modifiable, an exception is thrown.
+Adds a new child node after the specified child node of this FrameNode. If the current FrameNode is not modifiable, an exception is thrown. [typeNode](#typenode12) validates the child component type or count during **insertChildAfter**, and throws an exception if the validation fails. For restrictions, see the description of [typeNode](#typenode12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,7 +292,7 @@ Inserts a child node after the specified child node of this FrameNode. If this F
 
 | Name | Type                                     | Mandatory| Description                                                                        |
 | ------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| child   | [FrameNode](#framenode-1)                   | Yes  | Child node to add.<br>The target child node must not be a declaratively created node, that is, a FrameNode that is not modifiable. Only declarative nodes obtained from a BuilderNode can be used as child nodes. If the child node does not meet the specifications, an exception is thrown.<br> The child node cannot have a parent node. Otherwise, an exception is thrown.                                                          |
+| child   | [FrameNode](#framenode-1)                   | Yes   | Child node to add.<br/>The child node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained by [BuilderNode](./js-apis-arkui-builderNode.md) through the **getFrameNode** API can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br/>The child node cannot have a parent node; otherwise, an exception is thrown.                                                           |
 | sibling | [FrameNode](#framenode-1)&nbsp;\|&nbsp;null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
 
 **Error codes**
@@ -256,19 +302,21 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>Applicable versions: 22+|
 
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### removeChild<sup>12+</sup> 
+### removeChild<sup>12+</sup>
 
 removeChild(node: FrameNode): void
 
 Deletes the specified child node from this FrameNode. If this FrameNode is not modifiable, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -290,13 +338,15 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### clearChildren<sup>12+</sup> 
+### clearChildren<sup>12+</sup>
 
 clearChildren(): void
 
 Clears all child nodes of this FrameNode. If this FrameNode is not modifiable, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,13 +362,15 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getChild<sup>12+</sup> 
+### getChild<sup>12+</sup>
 
 getChild(index: number): FrameNode | null
 
 Obtains the child node in the specified position of this node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,13 +390,15 @@ Obtains the child node in the specified position of this node.
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getChild<sup>15+</sup> 
+### getChild<sup>15+</sup>
 
 getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 Obtains a child node at a specified index from this FrameNode, with optional support for specifying the expansion mode of the child node.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,13 +419,15 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 
 See [Example of Node Operations in the LazyForEach Scenario](#example-of-node-operations-in-the-lazyforeach-scenario).
 
-### getFirstChildIndexWithoutExpand<sup>15+</sup> 
+### getFirstChildIndexWithoutExpand<sup>15+</sup>
 
 getFirstChildIndexWithoutExpand(): number
 
 Obtains the sequence number of the first child node of this node that is in the main node tree. The child node sequence numbers are calculated based on all child nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,13 +441,15 @@ Obtains the sequence number of the first child node of this node that is in the 
 
 See [Example of Node Operations in the LazyForEach Scenario](#example-of-node-operations-in-the-lazyforeach-scenario).
 
-### getLastChildIndexWithoutExpand<sup>15+</sup> 
+### getLastChildIndexWithoutExpand<sup>15+</sup>
 
 getLastChildIndexWithoutExpand(): number
 
 Obtains the sequence number of the last child node of this node that is in the main node tree. The child node sequence numbers are calculated based on all child nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -405,13 +463,15 @@ Obtains the sequence number of the last child node of this node that is in the m
 
 See [Example of Node Operations in the LazyForEach Scenario](#example-of-node-operations-in-the-lazyforeach-scenario).
 
-### getFirstChild<sup>12+</sup> 
+### getFirstChild<sup>12+</sup>
 
 getFirstChild(): FrameNode | null
 
 Obtains the first child node of this FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -425,13 +485,15 @@ Obtains the first child node of this FrameNode.
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getNextSibling<sup>12+</sup> 
+### getNextSibling<sup>12+</sup>
 
 getNextSibling(): FrameNode | null
 
 Obtains the next sibling node of this FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -445,13 +507,15 @@ Obtains the next sibling node of this FrameNode.
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getPreviousSibling<sup>12+</sup> 
+### getPreviousSibling<sup>12+</sup>
 
 getPreviousSibling(): FrameNode | null
 
 Obtains the previous sibling node of this FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -465,13 +529,15 @@ Obtains the previous sibling node of this FrameNode.
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getParent<sup>12+</sup> 
+### getParent<sup>12+</sup>
 
 getParent(): FrameNode | null
 
 Obtains the parent node of this FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -485,8 +551,7 @@ Obtains the parent node of this FrameNode.
 
 See [Example of Node Operations](#example-of-node-operations) and [Example of Obtaining the Root Node](#example-of-obtaining-the-root-node).
 
-
-### getChildrenCount<sup>12+</sup> 
+### getChildrenCount<sup>12+</sup>
 
 getChildrenCount(): number
 
@@ -494,17 +559,270 @@ Obtains the number of child nodes of this FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
 | Type    | Description                           |
 | -------- | ------------------------------- |
-| number | Number of child nodes of the current FrameNode.|
+| number | Number of child nodes of the current FrameNode. |
 
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
+
+### getChildrenCount
+
+getChildrenCount(countMode?: ChildrenCountMode): number
+
+Obtains the number of child nodes of this FrameNode based on the specified counting mode.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | ---- | -------- |
+| countMode | [ChildrenCountMode](#childrencountmode) | No| Mode of counting child nodes. The default value is **ChildrenCountMode.ALL_EXPAND**.|
+
+**Return value**
+
+| Type    | Description                           |
+| -------- | ------------------------------- |
+| number | Number of child nodes of the current FrameNode returned based on the counting mode. |
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, UIContext, BuilderNode, ChildrenCountMode, LengthUnit } from '@kit.ArkUI';
+
+const TEST_TAG: string = 'FrameNode ';
+
+// BasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // Called by the framework to register a listener with the LazyForEach data source.
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // This method is called by the framework to remove the listener from the LazyForEach data source.
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // Notify LazyForEach that all child components need to be reloaded.
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // Notify LazyForEach that a child component needs to be added for the data item with the specified index.
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // Notify LazyForEach that the data item with the specified index has changed and the child component needs to be rebuilt.
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // Notify LazyForEach that the child component that matches the specified index needs to be deleted.
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // Notify LazyForEach that data needs to be swapped between the from and to positions.
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    })
+  }
+}
+
+// Manage the string array using the custom data management class.
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = []
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+class Params {
+  data: MyDataSource | null = null;
+  scroller: Scroller | null = null;
+
+  constructor(data: MyDataSource, scroller: Scroller) {
+    this.data = data;
+    this.scroller = scroller;
+  }
+}
+
+@Builder
+function buildData(params: Params) {
+  List({ scroller: params.scroller }) {
+    LazyForEach(params.data, (item: string) => {
+      ListItem() {
+        Column() {
+          Text(item)
+            .fontSize(20)
+            .onAppear(() => {
+              console.info(`${TEST_TAG} node appear: ${item}`)
+            })
+            .backgroundColor(Color.Pink)
+            .margin({
+              top: 30,
+              bottom: 30,
+              left: 10,
+              right: 10
+            })
+        }
+      }
+      .id(item)
+    }, (item: string) => item)
+  }
+  .cachedCount(5)
+  .listDirection(Axis.Horizontal)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+  private data: MyDataSource = new MyDataSource();
+  private scroller: Scroller = new Scroller();
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    for (let i = 0; i <= 20; i++) {
+      this.data.pushData(`N${i}`);
+    }
+    const params: Params = new Params(this.data, this.scroller);
+    const dataNode: BuilderNode<[Params]> = new BuilderNode(uiContext);
+    dataNode.build(wrapBuilder<[Params]>(buildData), params);
+    this.rootNode = dataNode.getFrameNode();
+    const scrollToIndexOptions: ScrollToIndexOptions = {
+      extraOffset: {
+        value: 20, unit: LengthUnit.VP
+      }
+    };
+    this.scroller.scrollToIndex(6, true, ScrollAlign.START, scrollToIndexOptions);
+    return this.rootNode;
+  }
+
+  getChildCountAllExpand() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ALL_EXPAND);
+    console.info(TEST_TAG + 'ALL_EXPAND, childCount=' + childCount);
+  }
+
+  getChildCountOnlyExpanded() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ONLY_EXPANDED);
+    console.info(TEST_TAG + 'ONLY_EXPANDED, childCount=' + childCount);
+  }
+  
+  getChildCountAllNotExpand() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ALL_NOT_EXPAND);
+    console.info(TEST_TAG + 'ALL_NOT_EXPAND, childCount=' + childCount);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  private scroller: Scroller = new Scroller();
+
+  build() {
+    Scroll(this.scroller) {
+      Column({ space: 8 }) {
+        Column() {
+          Text('This is a NodeContainer.')
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+          NodeContainer(this.myNodeController)
+            .borderWidth(1)
+            .width(300)
+            .height(100)
+        }
+
+        Button('getChildCount(ALL_EXPAND)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountAllExpand();
+          })
+        Button('getChildCount(ONLY_EXPANDED)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountOnlyExpanded();
+          })
+        Button('getChildCount(ALL_NOT_EXPAND)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountAllNotExpand();
+          })
+      }
+      .width('100%')
+    }
+    .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
+  }
+}
+```
 
 ### moveTo<sup>18+</sup>
 
@@ -520,6 +838,8 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -527,7 +847,7 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 | Name       | Type                   | Mandatory| Description                 |
 | ------------ | ----------------------- | ---- | --------------------- |
 | targetParent | [FrameNode](#framenode-1) | Yes  | Target parent node.<br>The target parent node must not be a declaratively created node, that is, a FrameNode that is not modifiable. If it does not meet the specifications, an exception is thrown.|
-| index        | number                  | No  | Index of the child node. The current FrameNode will be inserted before the child node at the specified sequence number in the target FrameNode. If the target FrameNode has *n* nodes, the value range for **index** is 0, *n*-1].<br>If the parameter is invalid or not specified, the current FrameNode will be added to the end of the target FrameNode.<br>Default value: **-1**|
+| index        | number                  | No  | Index of the child node. The current FrameNode will be inserted before the child node at the specified sequence number in the target FrameNode. If the target FrameNode has *n* nodes, the value range for **index** is [0, *n*-1].<br>If the parameter is invalid or not specified, the current FrameNode will be added to the end of the target FrameNode.<br>Default value: **-1**|
 
 **Error codes**
 
@@ -536,19 +856,21 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>Applicable versions: 22+|
 
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getPositionToWindow<sup>12+</sup> 
+### getPositionToWindow<sup>12+</sup>
 
 getPositionToWindow(): Position
 
 Obtains the position offset of this FrameNode relative to the window, in vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -563,7 +885,7 @@ Obtains the position offset of this FrameNode relative to the window, in vp.
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -591,13 +913,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -609,13 +930,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToWindow")
+        Button('getPositionToWindow')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindow();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -625,7 +946,6 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
-
 ### getPositionToParent<sup>12+</sup>
 
 getPositionToParent(): Position
@@ -633,6 +953,8 @@ getPositionToParent(): Position
 Obtains the position offset of this FrameNode relative to the parent component, in vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -647,7 +969,7 @@ Obtains the position offset of this FrameNode relative to the parent component, 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -676,13 +998,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -694,13 +1015,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToParent")
+        Button('getPositionToParent')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParent();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -710,13 +1031,15 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
-### getPositionToScreen<sup>12+</sup> 
+### getPositionToScreen<sup>12+</sup>
 
 getPositionToScreen(): Position
 
 Obtains the position offset of this FrameNode relative to the screen, in vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -731,7 +1054,7 @@ Obtains the position offset of this FrameNode relative to the screen, in vp.
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -760,13 +1083,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -778,13 +1100,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToScreen")
+        Button('getPositionToScreen')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreen();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -794,14 +1116,15 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
-
-### getGlobalPositionOnDisplay<sup>20+</sup> 
+### getGlobalPositionOnDisplay<sup>20+</sup>
 
 getGlobalPositionOnDisplay(): Position
 
-Obtains the position offset of this FrameNode relative to the global display, in vp.
+Obtains the position offset of this FrameNode relative to the global display, in vp. The coordinate system reference differs from that of [getPositionToScreen](#getpositiontoscreen12). Choose the appropriate API based on the actual scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -815,14 +1138,15 @@ Obtains the position offset of this FrameNode relative to the global display, in
 
 See [Example of Node Operations](#example-of-node-operations).
 
-
 ### getPositionToParentWithTransform<sup>12+</sup>
 
 getPositionToParentWithTransform(): Position
 
-Obtains the position offset of a FrameNode relative to its drawing-enabled parent component, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -830,14 +1154,14 @@ Obtains the position offset of a FrameNode relative to its drawing-enabled paren
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | Position offset of the node relative to the parent component, in vp. If other drawing attributes (such as **transform** and **translate**) are set, the return value may slightly deviate due to the precision of floating point numbers.|
+| [Position](./js-apis-arkui-graphics.md#position) | Offset of the node relative to its parent component, in vp. When other drawing attributes (such as **transform** and **translate**) are set, the return value may have slight deviations due to floating-point precision. |
 
 **Example**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -866,13 +1190,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -884,13 +1207,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToParentWithTransform")
+        Button('getPositionToParentWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParentWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -903,9 +1226,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getPositionToWindowWithTransform(): Position
 
-Obtains the position offset of a FrameNode relative to the drawing-enabled window, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -913,14 +1238,14 @@ Obtains the position offset of a FrameNode relative to the drawing-enabled windo
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | Position offset of the node relative to the window, in vp. If other drawing attributes (such as **transform** and **translate**) are set, the return value may slightly deviate due to the precision of floating point numbers.|
+| [Position](./js-apis-arkui-graphics.md#position) | Offset of the node relative to the window, in vp. When other drawing attributes (such as **transform** and **translate**) are set, the return value may have a slight deviation due to floating-point precision. |
 
 **Example**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -949,13 +1274,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -966,13 +1290,13 @@ struct Index {
             .width(300)
             .height(100)
         }
-        Button("getPositionToWindowWithTransform")
+        Button('getPositionToWindowWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindowWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -985,9 +1309,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getPositionToScreenWithTransform(): Position
 
-Obtains the position offset of a FrameNode relative to the drawing-enabled screen, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the upper left corner coordinates after component layout.
+Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](./arkui-ts/ts-universal-attributes-transformation.md#transform) and [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -995,14 +1321,14 @@ Obtains the position offset of a FrameNode relative to the drawing-enabled scree
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | Position offset of the node relative to the screen, in vp. If other drawing attributes (such as **transform** and **translate**) are set, the return value may slightly deviate due to the precision of floating point numbers.|
+| [Position](./js-apis-arkui-graphics.md#position) | Position offset of the node relative to the screen, in vp. When other drawing attributes (such as **transform**, and **translate**) are set, the return value may have slight deviations due to floating-point precision. |
 
 **Example**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -1031,13 +1357,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1049,13 +1374,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToScreenWithTransform")
+        Button('getPositionToScreenWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreenWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -1064,7 +1389,6 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
-
 ### getMeasuredSize<sup>12+</sup>
 
 getMeasuredSize(): Size
@@ -1072,6 +1396,8 @@ getMeasuredSize(): Size
 Obtains the measured size of this FrameNode, in px.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1085,7 +1411,6 @@ Obtains the measured size of this FrameNode, in px.
 
 See [Example of Node Operations](#example-of-node-operations).
 
-
 ### getLayoutPosition<sup>12+</sup>
 
 getLayoutPosition(): Position
@@ -1093,6 +1418,8 @@ getLayoutPosition(): Position
 Obtains the position offset of this FrameNode relative to the parent component after layout, in px. The offset is the result of the parent component's layout on this node; therefore, the **offset** attribute that takes effect after layout and the **position** attribute that does not participate in layout do not affect this offset value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1114,6 +1441,8 @@ Obtains the border width set by the user.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1133,6 +1462,8 @@ getUserConfigPadding(): Edges\<LengthMetrics\>
 Obtains the padding set by the user.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1154,6 +1485,8 @@ Obtains the margin set by the user.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1173,6 +1506,8 @@ getUserConfigSize(): SizeT\<LengthMetrics\>
 Obtains the width and height set by the user.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1194,6 +1529,8 @@ Obtains the node ID set by the user, which is the same as the value of the [comp
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1210,9 +1547,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getUniqueId(): number
 
-Obtains the system-assigned unique ID of the node.
+Obtains the unique identifier (**UniqueID**) assigned by the system to this node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1220,7 +1559,7 @@ Obtains the system-assigned unique ID of the node.
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | System-assigned unique ID of the node.|
+| number | Unique identifier (**UniqueID**) assigned by the system. |
 
 **Example**
 
@@ -1233,6 +1572,8 @@ getNodeType(): string
 Obtains the type of the node. For built-in components, the node type corresponds to the component name. For example, the node type of the [Button](arkui-ts/ts-basic-components-button.md) component is **Button**. For custom components that implement rendering, the node type is **__Common__**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1253,6 +1594,8 @@ getOpacity(): number
 Obtains the opacity of the node. The minimum value is 0, and the maximum value is 1.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1278,6 +1621,8 @@ Obtains whether the node is visible.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1294,9 +1639,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 isClipToFrame(): boolean
 
-Checks whether the node is clipped to the component area. This API returns **true** after the [dispose](#dispose12) API is called to release the reference to the FrameNode.
+Obtains whether the node is clipped to the component area. After [dispose](#dispose12) is called to release the reference to the entity FrameNode, the return value is **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1304,7 +1651,7 @@ Checks whether the node is clipped to the component area. This API returns **tru
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| boolean | Whether the node is clipped to the component area.<br>The value **true** means that the node is clipped to the component area, and **false** means the opposite.|
+| boolean | Whether the node is clipped to the component area.<br/>The value **true** indicates that the node is clipped to the component area, and **false** indicates the opposite. |
 
 **Example**
 
@@ -1317,6 +1664,8 @@ isAttached(): boolean
 Obtains whether the node is mounted to the main node tree.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1334,9 +1683,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 isDisposed(): boolean
 
-Checks whether this FrameNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current **FrameNode** object has been released from the reference to the backend entity node. Each frontend node is bound to a corresponding backend entity node. After a node calls the **dispose** API to release the binding, calling other APIs of this node may result in crashes or return default values. Due to service requirements, there may be cases where a node's APIs are still called after the call to **dispose**. To address this, this API is provided for you to check the validity of a node before operating on it, thereby avoiding potential risks.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1362,6 +1713,8 @@ Obtains the structure information of the node, which is consistent with what is 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1371,6 +1724,7 @@ Obtains the structure information of the node, which is consistent with what is 
 | Object | Structure information of the node.|
 
 The following example shows partial values from the query result of a [Button](arkui-ts/ts-basic-components-button.md) node:
+
 ```json5
 {
     "$type": "Button",
@@ -1407,6 +1761,8 @@ Obtains the component's custom property by its name.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1433,13 +1789,15 @@ Immediately releases the reference to the underlying FrameNode entity.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 > **NOTE**
 >
-> - After the **dispose** API is called, the FrameNode object no longer corresponds to any entity FrameNode. In this case, attempts to call certain query APIs, such as [getMeasuredSize](#getmeasuredsize12) and [getLayoutPosition](#getlayoutposition12), will result in a JS crash in the application.
+> - After a **FrameNode** object calls **dispose**, since it does not correspond to any entity FrameNode, calling certain query APIs (such as [getMeasuredSize](#getmeasuredsize12) and [getLayoutPosition](#getlayoutposition12)) will cause a jscrash in the application.
 >
-> - To check whether the current FrameNode object corresponds to an entity FrameNode, you can use [getUniqueId](#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
+> - You can use [getUniqueId](#getuniqueid12) to determine whether the current FrameNode corresponds to an entity FrameNode. When the value of **UniqueID** is greater than 0, the object corresponds to an entity FrameNode.
 
 **Example**
 
@@ -1529,7 +1887,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/en-us_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -1547,6 +1905,8 @@ Note that only the attributes of a custom node can be modified.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1570,6 +1930,8 @@ In scenarios involving **LazyForEach**, where nodes may be destroyed and reconst
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1586,9 +1948,13 @@ See [Basic Event Example](#basic-event-example) and [Example of Using Basic Even
 
 get gestureEvent(): UIGestureEvent
 
-Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [declarative gesture API](./arkui-ts/ts-gesture-settings.md). If both APIs are used to set gestures, the declarative API takes precedence.
+Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [gesture binding API](./arkui-ts/ts-gesture-settings.md). If both APIs are used to set gestures, the gesture binding API takes precedence.
+
+In LazyForEach scenarios, due to node destruction and reconstruction, gesture event callbacks must be re-set for reconstructed nodes to ensure that the listening events respond properly.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1612,6 +1978,8 @@ Note: The Canvas provided in the [DrawContext](./js-apis-arkui-graphics.md#drawc
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1631,6 +1999,8 @@ onMeasure(constraint: LayoutConstraint): void
 Called when this FrameNode needs to determine its size. This API provides custom measurement and overrides the default measurement method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1652,13 +2022,15 @@ Called when this FrameNode needs to determine its layout. This API provides cust
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Position information used in layout.|
+| position | [Position](./js-apis-arkui-graphics.md#position) | Yes   | Position used for component layout. The unit is px. |
 
 **Example**
 
@@ -1668,9 +2040,11 @@ See [Example of Customizing a Node](#example-of-customizing-a-node).
 
 setMeasuredSize(size: Size): void
 
-Sets the measured size of this FrameNode. The default unit is PX. If the configured width or height values are negative, they are automatically set to 0.
+Sets the measured size of this FrameNode. The default unit is px. If the set width or height values are negative, they are automatically set to 0. It is recommended to call this API in [onMeasure](#onmeasure12) to set the result of custom measurement.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1678,7 +2052,7 @@ Sets the measured size of this FrameNode. The default unit is PX. If the configu
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| size | [Size](./js-apis-arkui-graphics.md#size) | Yes  | Measured size of the FrameNode.|
+| size | [Size](./js-apis-arkui-graphics.md#size) | Yes   | Measured size of the FrameNode, in px. |
 
 **Example**
 
@@ -1688,9 +2062,11 @@ See [Example of Customizing a Node](#example-of-customizing-a-node).
 
 setLayoutPosition(position: Position): void
 
-Sets the position of this FrameNode after layout. The default unit is PX.
+Sets the position of this FrameNode after layout. The default unit is px. It is recommended to call this API in [onLayout](#onlayout12) to set the result of custom layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1698,7 +2074,7 @@ Sets the position of this FrameNode after layout. The default unit is PX.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Position of the FrameNode after layout.|
+| position | [Position](./js-apis-arkui-graphics.md#position) | Yes | Position of the FrameNode after layout, in px. |
 
 **Example**
 
@@ -1711,6 +2087,8 @@ measure(constraint: LayoutConstraint): void
 Measures this FrameNode and calculates its size based on the layout constraints of the parent container. If the measurement method is overridden, the overridden method is called. It is recommended that this API be called in [onMeasure](#onmeasure12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1732,13 +2110,15 @@ Lays out this FrameNode, specifying the layout positions for the FrameNode and i
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Position information used in layout.|
+| position | [Position](./js-apis-arkui-graphics.md#position) | Yes | Position used for component layout. The unit is px. |
 
 **Example**
 
@@ -1748,9 +2128,11 @@ See [Example of Customizing a Node](#example-of-customizing-a-node).
 
 setNeedsLayout(): void
 
-Marks this FrameNode as needing layout, so that it will be relaid out in the next frame.
+Marks this FrameNode as needing layout, so that it will be re-laid out in the next frame, triggering the calls of [onMeasure](#onmeasure12) and [onLayout](#onlayout12) .
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1762,9 +2144,11 @@ See [Example of Customizing a Node](#example-of-customizing-a-node).
 
 invalidate(): void
 
-Invalidates this FrameNode to trigger a re-rendering of the self-drawing content.
+Invalidates this FrameNode to trigger a re-rendering of the self-drawing content, that is, re-invokes [onDraw](#ondraw12) for self-drawing.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1775,6 +2159,8 @@ addComponentContent\<T>(content: ComponentContent\<T> | ReactiveComponentContent
 Adds component content. The current node must be modifiable, which means the return value of [isModifiable](#ismodifiable12) must be **true**. If the node is not modifiable, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1810,21 +2196,21 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     let node = new FrameNode(uiContext)
     node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
-    let col = typeNode.createNode(uiContext, "Column")
+    let col = typeNode.createNode(uiContext, 'Column')
     col.initialize({ space: 10 })
     node.appendChild(col)
-    let row4 = typeNode.createNode(uiContext, "Row")
-    row4.attribute.width(200)
+    let row = typeNode.createNode(uiContext, 'Row')
+    row.attribute.width(200)
       .height(200)
       .borderWidth(1)
       .borderColor(Color.Black)
       .backgroundColor(Color.Green)
     // Create component content.
     let component = new ComponentContent<Object>(uiContext, wrapBuilder(buildText))
-    if (row4.isModifiable()) {
-      // Add the builderText created to row4.
-      row4.addComponentContent(component)
-      col.appendChild(row4)
+    if (row.isModifiable()) {
+      // Add the newly created builderText to the row.
+      row.addComponentContent(component)
+      col.appendChild(row)
     }
     return node
   }
@@ -1850,6 +2236,8 @@ disposeTree(): void
 Traverses down the tree and recursively releases the subtree with this node as the root.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2032,19 +2420,21 @@ struct Index {
 }
 ```
 
-![en-us_image_disposeTree](figures/en-us_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
 setCrossLanguageOptions(options: CrossLanguageOptions): void
 
-Sets the cross-language access options for this FrameNode. This API allows you to specify whether a FrameNode created in ArkTS can be accessed or modified by non-ArkTS languages. If the current FrameNode is not modifiable or does not support setting cross-language access options, an exception will be thrown.
+Sets the cross-language access options for this FrameNode. For example, for nodes created using ArkTS, this API can set whether non-ArkTS languages are allowed to set the attributes of these nodes. Since API version 26.0.0, this API can set whether non-ArkTS languages are allowed to perform operations on the component tree. If the current FrameNode is not modifiable or does not support setting cross-language access options, an exception will be thrown.
 
 > **NOTE**
 >
-> Currently, the cross-ArkTS language access option can only be configured for the following components: [Scroll](#scroll12), [Swiper](#swiper12), [List](#list12), [ListItem](#listitem12), [ListItemGroup](#listitemgroup12), [WaterFlow](#waterflow12), [FlowItem](#flowitem12), [Grid](#grid14), [GridItem](#griditem14), [TextInput](#textinput12), [TextArea](#textarea14), [Column](#column12), [Row](#row12), [Stack](#stack12), [Flex](#flex12), [RelativeContainer](#relativecontainer12), [Progress](#progress12), [LoadingProgress](#loadingprogress12), [Image](#image12), [Button](#button12), [CheckBox](#checkbox18), [Radio](#radio18), [Slider](#slider18), [Toggle](#toggle18), and [TypedFrameNode](#typedframenode12) of the [XComponent](#xcomponent12) type.
+> Currently, the cross-ArkTS language access option can only be configured for the following components: [Scroll](#scroll12), [Swiper](#swiper12), [List](#list12), [ListItem](#listitem12), [ListItemGroup](#listitemgroup12), [WaterFlow](#waterflow12), [FlowItem](#flowitem12), [Grid](#grid14), [GridItem](#griditem14), [TextInput](#textinput12), [TextArea](#textarea14), [Column](#column12), [Row](#row12), [Stack](#stack12), [Flex](#flex12), [RelativeContainer](#relativecontainer12), [Progress](#progress12), [LoadingProgress](#loadingprogress12), [Image](#image12), [Button](#button12), [Checkbox](#checkbox18), [Radio](#radio18), [Slider](#slider18), [Toggle](#toggle18), and [TypedFrameNode](#typedframenode12) of the [XComponent](#xcomponent12) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2070,9 +2460,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getCrossLanguageOptions(): CrossLanguageOptions
 
-Obtains the cross-language access options for this FrameNode. This API allows you to check whether a FrameNode created in ArkTS can be accessed or modified by non-ArkTS languages.
+Obtains the cross-language access options for this FrameNode. For example, for nodes created using ArkTS, this API can obtain whether non-ArkTS languages are allowed to set the properties of these nodes and perform operations on the cross-language component tree. Since API version 26.0.0, this API can obtain whether non-ArkTS languages are allowed to perform operations on the component tree.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2094,19 +2486,21 @@ Obtains the event binding information for the target node. Returns **undefined**
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| eventType | [EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19) | Yes | Type of the interaction event to query.|
+| eventType | [EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19) | Yes | Type of the interaction event to query. For example, **EventQueryType.ON_CLICK** indicates querying the binding information of the tap event. For details about the enumerated values, see [EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19). |
 
 **Return value**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise.|
+| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | **InteractionEventBindingInfo** object if the queried type of interaction event is bound on the current node, indicating event binding details; **undefined** otherwise. |
 
 **Example**
 
@@ -2116,9 +2510,11 @@ See [Example of Node Operations](#example-of-node-operations).
 
 recycle(): void
 
-Triggers child component recycling in global reuse scenarios and fully releases FrameNode backend resources for reuse. This ensures efficient resource reclamation and reuse.
+Triggers child component recycling in global reuse scenarios and fully releases FrameNode backend resources for [reuse](#reuse18). This ensures efficient resource reclamation and reuse.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2134,6 +2530,8 @@ Triggers child component reuse in global reuse scenarios to recycle FrameNode ba
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
@@ -2148,15 +2546,17 @@ Adds the polymorphic style states supported by the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                      |
+| uiStates    | number | Yes   | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
-| excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
+| excludeInner  | boolean | No   | Whether to disable internal default state style processing. The default value is **false**. Internal default state style processing refers to the built-in state style response of a component (for example, the default visual feedback when a button is pressed).<br>The value **true** means to disable internal default state style processing, and **false** means not to disable it. |
 
 **Example**
 
@@ -2170,13 +2570,15 @@ Removes the state processing registration from the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                         |
 
 **Example**
 
@@ -2190,22 +2592,28 @@ Creates a property animation for the FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
+<!--Table: 12%; 20%; 8%; 60%-->
+
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | Yes  | Animation property type.|
-| startValue  | Optional\<number[]> | Yes| Animation start value. The value can be **undefined** or an array. If the value is **undefined**, the animation uses the last set value of the property on the node as the starting value. If the value is an array, the length must match the property type requirements:<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity] (value range: [0, 1]).<br>For the first animation of a property, **startValue** must be explicitly specified. For subsequent animations, it is recommended that you either omit **startValue** or set it to the previous animation's end value to avoid abrupt changes.|
-| endValue  | number[] | Yes| Animation end value. The value is an array. The array length must match the property type requirements:<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity] (value range: [0, 1]).|
+| startValue  | [Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)\<number[]> | Yes | Animation start value. The value can be **undefined** or an array. If it is an array, the array length must match the property enumeration. If it is **undefined**, the animation start value is not explicitly specified, and the last property end value set on the node is used as the start point of this animation. If it is an array:<br/>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ], in degrees (°), indicating the rotation angles around the x, y, and z axes.<br/>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY], in px, indicating the translation amounts along the x and y axes.<br/>- **AnimationPropertyType.SCALE**: [scaleX, scaleY], indicating the scale ratios in the x and y directions.<br/>- ** AnimationPropertyType.OPACITY**: [opacity], indicating the opacity. The value range of opacity is [0, 1]. Values outside this range are clamped to [0, 1], and the animation is created normally.<br/>When the property has never been set on the node, **startValue** must be explicitly specified to create the animation properly. When the property has already been set on the node (for example, when creating an animation for the second time or later), it is recommended not to explicitly specify **startValue**, or to explicitly specify **startValue** as the previous end value, so that the previous end value is used as the new animation start point to avoid a jump in the start value. |
+| endValue  | number[] | Yes | Animation end value. The value is an array, and the array length must match the property enumeration.<br/>- ** AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ], in degrees (°), indicating the rotation angles around the x, y, and z axes.<br/>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY], in px, indicating the translation amounts along the x and y axes.<br/>- **AnimationPropertyType.SCALE**: [scaleX, scaleY], indicating the scale ratios in the x and y directions.<br/>- **AnimationPropertyType.OPACITY**: [opacity], indicating the opacity. The value range of opacity is [0, 1]. Values outside this range are clamped to [0, 1], and the animation is created normally. |
 | param  | [AnimateParam](./arkui-ts/ts-explicit-animation.md#animateparam)| Yes| Animation parameters, including the duration, animation curve, and end callback.|
 
 **Return value**
 
+<!--Table: 10%; 90%-->
+
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
+| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
 
 **Example**
 
@@ -2219,6 +2627,8 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -2231,7 +2641,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. The property array contains invalid enumerated values.<br>&nbsp;4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br>&nbsp;2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
+| boolean | Whether the animation is canceled successfully.<br/>The value **true** indicates that the animation is canceled successfully.<br/>The value **false** indicates that the animation cancellation fails.<br/>Possible causes of animation cancellation failure:<br/>&nbsp;1. The node has been released and the [dispose](#dispose12) API has been called.<br/>&nbsp;2. For a proxy node of a system component, that is, a node whose [isModifiable](#ismodifiable12) is set to **false**, calling this API will fail.<br/>&nbsp;3. The property enumeration array contains invalid enumeration values.<br/>&nbsp;4. System exception. For example, an IPC exception causes the animation cancellation to fail.<br/>Additional notes:<br/>&nbsp;1. Even if there is no animation on the property, attempting to cancel the animation on that property will also return **true** when no system exception occurs.<br/>&nbsp;2. If you ensure that the input parameters are valid and the node is normal, a return value of **false** indicates that a system exception has occurred. In this case, you can try to cancel again after a period of time, or stop the animation on the property by calling the [createAnimation](#createanimation20) API with **duration** being set to **0**.|
 
 **Example**
 
@@ -2245,6 +2655,8 @@ Obtains the property value of the FrameNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -2257,7 +2669,7 @@ Obtains the property value of the FrameNode.
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| number[] | Current property value from the render node. The array length corresponds to the property type.<br>The return value format varies by property:<br>- An empty array (length 0) is returned if the node has been disposed, the [dispose](#dispose12) API has been called, or the property enumeration is invalid.<br>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ] in degrees (°).<br>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY] in px.<br>- **AnimationPropertyType.SCALE**: [scaleX, scaleY] (scale factors).<br>- **AnimationPropertyType.OPACITY**: [opacity].<br>1. After animation cancellation, the node's property value is restored to the display value at the time of cancellation, which can be obtained using this API.<br>2. During animation playback, this API returns the final target value rather than real-time interpolated values.<br>|
+| number[] | Property value of the FrameNode. The length of the returned array depends on the property enumeration. An empty array is returned in case of exceptions.<br/>Return value formats for different property enumerations:<br/>- When the node has been released, the [dispose](#dispose12) API has been called, or the property enumeration is invalid, an empty array with a length of 0 is returned.<br/>- **AnimationPropertyType.ROTATION**: [rotationX, rotationY, rotationZ], in degrees (°), indicating the rotation angles around the x, y, and z axes.<br/>- **AnimationPropertyType.TRANSLATION**: [translateX, translateY], in px, indicating the translation amounts along the x and y axes.<br/>- **AnimationPropertyType.SCALE**: [scaleX, scaleY], indicating the scale ratios in the x and y directions.<br/>- **AnimationPropertyType.OPACITY**: [opacity], indicating the opacity.<br/>1. After an animation is normally canceled, the property value on the node is restored to the value at the time of cancellation. This API can be used to obtain the displayed value after cancellation.<br/>2. During an animation, the return value of this API is the final value of the property, not the real-time value during the animation process.<br/>|
 
 **Example**
 
@@ -2275,12 +2687,14 @@ This API ensures rendering synchronization by triggering immediate property upda
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
 
 Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
- 
+
 ```ts
 // index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
@@ -2288,7 +2702,7 @@ import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 // Implement a custom NodeAdapter controller by extending NodeController.
 class MyNodeAdapterController extends NodeController {
   rootNode: FrameNode | null = null;
-  imageUrl: string = "";
+  imageUrl: string = '';
 
   constructor(imageUrl: string) {
     super();
@@ -2296,7 +2710,7 @@ class MyNodeAdapterController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r(this.imageUrl))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     // Force immediate node updates within the current frame to prevent flickering.
@@ -2312,7 +2726,7 @@ struct NodeComponent3 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -2331,7 +2745,7 @@ struct NodeComponent4 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -2351,7 +2765,7 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       if (this.flag) {
         NodeComponent3()
       } else {
@@ -2376,7 +2790,7 @@ struct ListNodeTest {
       })
     }
     .borderWidth(1)
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -2385,7 +2799,7 @@ struct ListNodeTest {
 
 adoptChild(child: FrameNode): void
 
-Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.
+Adopts the target node as an affiliated node. If the current FrameNode is not modifiable, an exception is thrown. The adopted affiliated node must not already have a parent node. Calling this API does not actually add the target node as a child node. Instead, it only allows the current node to receive lifecycle callbacks of the affiliated node. When you need to listen to a lifecycle callback of a node without changing its parent-child relationship or the component tree structure, you can adopt it as an affiliated node through this API.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2395,7 +2809,7 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Node to be adopted.|
+| child | [FrameNode](#framenode-1) | Yes | Node to be adopted. The child node must not have a parent node; otherwise, an exception is thrown. |
 
 **Error codes**
 
@@ -2415,7 +2829,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously-adopted affiliated node.
+Removes the adopted target affiliated node. If the current FrameNode is not modifiable, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2425,7 +2839,7 @@ Removes a previously-adopted affiliated node.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Node to remove.|
+| child | [FrameNode](#framenode-1) | Yes | Target affiliated node that has been adopted. |
 
 **Error codes**
 
@@ -2449,20 +2863,22 @@ Converts a coordinate point from this node's coordinate system to the target nod
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| position | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Coordinates relative to the current node's coordinate system.|
-| targetNode  | [FrameNode](#framenode-1) | Yes  | Target node for coordinate transformation.|
+| position | [Position](./js-apis-arkui-graphics.md#position) | Yes   | Relative coordinates in the coordinate system of the current node. The unit is vp. |
+| targetNode  | [FrameNode](#framenode-1) | Yes   | Target node for this coordinate conversion. The converted point coordinates are relative coordinates in the coordinate system of this node. The targetNode must not be a released node and must share a common ancestor node with the current node; otherwise, an exception is thrown. |
 
 **Return value**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates relative to the target node's local coordinate system.|
+| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the local coordinate system of the target node, in vp. |
 
 **Error codes**
 
@@ -2482,7 +2898,7 @@ struct ConvertPositionTestOnly {
   private uiContext: UIContext = this.getUIContext();
   @State message: string = 'Hello World';
   @State nodeAOk: boolean = false;
-  @State nodeBOK: boolean = false;
+  @State nodeBOk: boolean = false;
 
   build() {
     Column() {
@@ -2499,7 +2915,7 @@ struct ConvertPositionTestOnly {
           .fontSize($r('app.float.page_text_font_size'))
           .fontWeight(FontWeight.Bold)
           .onAppear(() => {
-            this.nodeBOK = true
+            this.nodeBOk = true
           })
 
       }
@@ -2516,7 +2932,7 @@ struct ConvertPositionTestOnly {
   }
 
   private runBasicTest() {
-    if (!this.nodeAOk || !this.nodeBOK) {
+    if (!this.nodeAOk || !this.nodeBOk) {
       return
     }
 
@@ -2532,10 +2948,9 @@ struct ConvertPositionTestOnly {
       return;
     }
 
-    const testPoint: Position = { x: 10, y: 10 };
     const result: Position | undefined = nodeA.convertPosition({ x: 30, y: 10 }, nodeB); // Explicitly declare that the method may return undefined.
     if (result === undefined) {
-      console.info("Coordinate conversion failed: undefined returned");
+      console.info('convertPosition Conversion failed, returning undefined');
       return;
     }
     console.info(`Converted coordinates: (${result.x}, ${result.y})`);
@@ -2544,13 +2959,15 @@ struct ConvertPositionTestOnly {
 }
 ```
 
- ### isInRenderState<sup>23+</sup>
+### isInRenderState<sup>23+</sup>
 
- isInRenderState(): boolean
+isInRenderState(): boolean
 
- Checks whether this node is in render state. A node is considered to be in render state when its corresponding RenderNode is present in the render tree.
+Obtains whether the node is in render state. A node is considered to be in render state when its corresponding RenderNode is present in the render tree.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2574,7 +2991,7 @@ struct Index {
 
   // Listen for state changes and log the render status.
   change() {
-    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    let buttonNode = this.getUIContext().getFrameNodeById('testButton');
     if (buttonNode == null) {
       return;
     }
@@ -2606,17 +3023,17 @@ struct Index {
       }
       .width('30%')
       .alignSelf(ItemAlign.Center)
-      .height("10%")
+      .height('10%')
       .onReachEnd(() => {
-        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        let textNode8 = this.getUIContext().getFrameNodeById('hello8');
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
           hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
-        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        let textNode1 = this.getUIContext().getFrameNodeById('hello1');
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : 'is not on render tree'
+          if (isOnRenderTree) { this.message = 'is on render tree'; }
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
@@ -2632,9 +3049,11 @@ struct Index {
 
 isOnMainTree(): boolean
 
-Queries whether a node is mounted to the main node tree.
+Queries whether the node is mounted to the main node tree. Both this API and [isAttached](#isattached12) are used to determine whether a node is mounted to the main node tree. The difference is that this API throws error code 100026 when the node has called [dispose](#dispose12) to release the reference. You can choose this API or [isAttached](#isattached12) based on whether error code validation upon node dispose (that is, throwing error code 100026) is needed.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2658,7 +3077,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TEST_TAG: string = 'FrameNode '
+const TEST_TAG: string = 'FrameNode ';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -2759,7 +3178,7 @@ class MyNodeController extends NodeController {
     } else {
       console.info(`${TEST_TAG} getParent result: fail.`);
     }
-    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+    if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
@@ -2778,8 +3197,8 @@ class MyNodeController extends NodeController {
         console.info(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
-      console.info(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
-      console.info(`${TEST_TAG} moveTo result: fail.`);
+      console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
+      console.error(`${TEST_TAG} moveTo result: fail.`);
     }
   }
 
@@ -3181,19 +3600,21 @@ Converts the coordinates of a point from the coordinate system of the current no
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| positionByLocal | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Coordinates relative to the current node's coordinate system.|
+| positionByLocal | [Position](./js-apis-arkui-graphics.md#position) | Yes   | Relative coordinates in the current node's coordinate system. The unit is vp. |
 
 **Return value**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the coordinate system of the window where the current node is located.|
+| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates of the current node in the coordinate system of the window where the node is located, in vp. |
 
 **Error codes**
 
@@ -3206,7 +3627,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 **Example**
 
-For details, see [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+See [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
 
 ### convertPositionFromWindow<sup>23+</sup>
 
@@ -3216,19 +3637,21 @@ Converts the coordinates of a point from the coordinate system of the window whe
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| positionByWindow | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Relative coordinates in the coordinate system of the window where the current node is located.|
+| positionByWindow | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Relative coordinates in the coordinate system of the window where the current node is located. The unit is vp. |
 
 **Return value**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the coordinate system of the current node.|
+| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the current node's coordinate system, in vp. |
 
 **Error codes**
 
@@ -3241,30 +3664,258 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 **Example**
 
-For details, see [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+See [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+
+### createFrameNodes
+
+static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
+
+Creates a specified number of FrameNodes in batches and returns a FrameNode array.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
+| count | number | Yes  | Number of nodes to be created. The value is an integer greater than 0. If the value is less than or equal to 0 or is not an integer, an empty array is returned.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1)[] | Array of created FrameNodes.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create 20 FrameNodes and add them to the root node.
+    const children: FrameNode[] = FrameNode.createFrameNodes(uiContext, 20);
+    for (let i = 0; i < children.length; i++) {
+      this.rootNode.appendChild(children[i]);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width('100%')
+  }
+}
+```
+
+### getFrameNodeById
+
+getFrameNodeById(id: string): FrameNode | null
+
+Searches for all child nodes layer by layer from the current node (which is used as the root node) and returns the first node that matches the specified ID. The search sequence is as follows: Search for direct child nodes first, then level-2 child nodes, and so on. The search stops as soon as a matching node is found.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| id | string | Yes  | ID of the child node to be queried, which is the same as the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1) \| null | First node that matches the specified ID, which is returned by searching for all child nodes layer by layer from the current node (which is used as the root node). If no child node of the current node matches the specified ID, a null is returned.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+  private id: string = 'text';
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create a Column node.
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    this.rootNode.appendChild(col);
+
+    // Create a Text component and add it to the Column node.
+    let text = typeNode.createNode(uiContext, 'Text');
+    text.initialize('Hello').id(this.id);
+    col.appendChild(text);
+
+    // Create another Text component with the same ID and add it to the Column node.
+    let text1 = typeNode.createNode(uiContext, 'Text');
+    text1.initialize('World').id(this.id);
+    col.appendChild(text1);
+    this.update();
+    return this.rootNode;
+  }
+
+  update() {
+    if (this.rootNode) {
+      // Query and return the first component whose ID is text, and set the backgroundColor attribute.
+      let node = this.rootNode.getFrameNodeById(this.id);
+      node?.commonAttribute.backgroundColor('rgb(39,135,217)');
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width('100%')
+  }
+}
+```
+
+### getFrameNodeByUniqueId
+
+getFrameNodeByUniqueId(id: number): FrameNode | null
+
+Searches for and returns the child node with the specified unique ID (which can be obtained using the [getUniqueId](#getuniqueid12) API) under the current node (which is used as the root node).
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| id | number | Yes  | Unique ID of the child node to be queried.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1) \| null | Child node with the unique ID, which is found from the current node (which is used as the root node). If the child node with the unique ID cannot be found under the current node, a null is returned.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+  private uniqueId: number = 0;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create a Column node.
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    this.rootNode.appendChild(col);
+
+    // Create a Text component and add it to the Column node.
+    let text = typeNode.createNode(uiContext, 'Text');
+    text.initialize('Hello');
+    col.appendChild(text);
+
+    // Create another Text component and add it to the Column node.
+    let text1 = typeNode.createNode(uiContext, 'Text');
+    text1.initialize('World');
+    this.uniqueId = text1.getUniqueId();
+    col.appendChild(text1);
+    this.update();
+    return this.rootNode;
+  }
+
+  update() {
+    if (this.rootNode) {
+      // Query and return the component with the unique ID, and set the backgroundColor attribute.
+      let node = this.rootNode.getFrameNodeByUniqueId(this.uniqueId);
+      node?.commonAttribute.backgroundColor('rgb(39,135,217)');
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width('100%')
+  }
+}
+```
 
 ## TypedFrameNode<sup>12+</sup>
 
-Extends [FrameNode](#framenode-1) to define a FrameNode with specific type constraints.
+Extends [FrameNode](#framenode-1) to define a FrameNode with specific type constraints. It supports various component types such as **Text**, **Image**, **Button**, and **Column**, and is suitable for scenarios where component nodes of specific types need to be dynamically created through code.
 
 ### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type| Read-Only| Optional| Description                                                        |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| initialize | C    | No  | No  | Construction parameters for creating a component, used to set or update the component's initial values.|
-| attribute  | T    | Yes  | No  | Attribute configuration object for setting or updating common and specific attributes of the component.|
+| initialize | C    | No   | No   | Passes construction parameters for creating a component, used to set or update the component's initial values. |
+| attribute  | T    | Yes   | No   | Obtains the attribute setting object of the corresponding component to set or update its common and private attributes. |
 
 > **NOTE**
 >
-> The [commonAttribute](#commonattribute12) API is only effective on **CustomFrameNode**. For **TypedFrameNode**, the behavior of **commonAttribute** is undefined. For setting universal attributes, it is recommended that you use the [attribute](#properties) API, such as **node.attribute.backgroundColor(Color.Pink)**, rather than [commonAttribute](#commonattribute12).
+> [commonAttribute](#commonattribute12) is only effective on the FrameNode. The behavior of **commonAttribute** on **TypedFrameNode** is undefined. It is recommended to use the [attribute](#properties) API instead of the [commonAttribute](#commonattribute12) API for setting universal attributes, for example, **node.attribute.backgroundColor(Color.Pink)**.
 
 ## typeNode<sup>12+</sup>
 
-Provides APIs for creating a specific type of FrameNode, which can be mounted through the basic API of the FrameNode and be displayed using a placeholder container.
+Provides APIs for creating a specific type of FrameNode, which can be mounted through the basic API of the FrameNode and be displayed using a placeholder container. It is suitable for scenarios where component nodes of specific types need to be dynamically created through code and custom-mounted.
 
 When **typeNode** is used to create [Text](./arkui-ts/ts-basic-components-text.md), [Image](./arkui-ts/ts-basic-components-image.md), [Select](./arkui-ts/ts-basic-components-select.md), or [Toggle](./arkui-ts/ts-basic-components-toggle.md) nodes, if the UI instance corresponding to the input [UIContext](./arkts-apis-uicontext-uicontext.md) is destroyed, this API returns an invalid FrameNode that cannot be properly mounted or displayed.
 
@@ -3280,19 +3931,23 @@ Represents a FrameNode of the **Text** type. This type of node does not allow ch
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[TextInterface](./arkui-ts/ts-basic-components-text.md#apis), [TextAttribute](./arkui-ts/ts-basic-components-text.md#attributes)&gt; | FrameNode of the **Text** type.<br> **TextInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Text** component.<br> **TextAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Text** component.|
+| TypedFrameNode&lt;TextInterface, TextAttribute&gt; | FrameNode of the **Text** type.<br> **TextInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Text** component.<br> **TextAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Text** component.<br> **TextInterface** indicates the [API](./arkui-ts/ts-basic-components-text.md#apis) of the **Text** component, and **TextAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-text.md#attributes) of the **Text** component.|
 
 ### createNode('Text')<sup>12+</sup>
 
 createNode(context: UIContext, nodeType: 'Text'): Text
 
-Creates a FrameNode of the **Text** type.
+Creates a FrameNode of the **Text** type. When **typeNode** is used to create a **Text** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3324,7 +3979,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Text node.
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     typeNode.getAttribute(text, 'Text')?.fontWeight(FontWeight.Bold);
     col.appendChild(text);
     return node;
@@ -3352,6 +4007,8 @@ getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute | undefined
 Obtains the attributes of a **Text** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3383,13 +4040,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Text node.
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello");
+    text.initialize('Hello');
     // Obtain the Text node attributes.
     typeNode.getAttribute(text, 'Text')?.fontColor(Color.Red)
     col.appendChild(text);
     // Create another text for comparison.
     let text2 = typeNode.createNode(uiContext, 'Text');
-    text2.initialize("world");
+    text2.initialize('world');
     col.appendChild(text2);
     return node;
   }
@@ -3417,6 +4074,8 @@ Binds a [TextController](arkui-ts/ts-basic-components-text.md#textcontroller11) 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -3425,7 +4084,7 @@ Binds a [TextController](arkui-ts/ts-basic-components-text.md#textcontroller11) 
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | Target node for controller binding.|
 | controller | [TextController](arkui-ts/ts-basic-components-text.md#textcontroller11) | Yes  | **TextController** instance to bind.|
-| nodeType | 'Text' | Yes| Node type. Set to **'Text'**.|
+| nodeType | 'Text' | Yes | Type of the target node bound to the controller. Set to **Text**. |
 
 **Error codes**
 
@@ -3454,7 +4113,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Text node.
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     typeNode.getAttribute(text, 'Text')?.fontWeight(FontWeight.Bold)
     // Bind a TextController instance.
     typeNode.bindController(text, this.controller, 'Text');
@@ -3491,11 +4150,13 @@ Represents a FrameNode of the **Column** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ColumnInterface](./arkui-ts/ts-container-column.md#apis), [ColumnAttribute](./arkui-ts/ts-container-column.md#attributes)&gt; | FrameNode of the **Column** type.<br> **ColumnInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Column** component.<br> **ColumnAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Column** component.|
+| TypedFrameNode&lt;ColumnInterface, ColumnAttribute&gt; | FrameNode of the **Column** type.<br> **ColumnInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Column** component.<br> **ColumnAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Column** component.<br> **ColumnInterface** indicates the [API](./arkui-ts/ts-container-column.md#apis) of the **Column** component, and **ColumnAttribute** indicates the [attribute](./arkui-ts/ts-container-column.md#attributes) of the **Column** component.|
 
 ### createNode('Column')<sup>12+</sup>
 
@@ -3504,6 +4165,8 @@ createNode(context: UIContext, nodeType: 'Column'): Column
 Creates a FrameNode of the **Column** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3528,7 +4191,7 @@ import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 // Implement a custom Column controller by extending NodeController.
 class MyColumnController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
-    let node = new FrameNode(uiContext)
+    let node = new FrameNode(uiContext);
     node.commonAttribute
     // Create a Column node.
     let col = typeNode.createNode(uiContext, 'Column')
@@ -3563,13 +4226,15 @@ Obtains the attributes of a **Column** node. If the node is not created using Ar
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | Target node from which to obtain attributes.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | Target node from which attributes are obtained.|
 | nodeType | 'Column' | Yes| Node type. Set to **'Column'**.|
 
 **Return value**
@@ -3592,13 +4257,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Column node.
     let col1 = typeNode.createNode(uiContext, 'Column');
-    col1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    col1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // Obtain the attributes of the Column node.
-    typeNode.getAttribute(col1, 'Column')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(col1, 'Column')?.backgroundColor(Color.Blue).width('100%');
     col.appendChild(col1);
     // Create another Column node for comparison.
     let col2 = typeNode.createNode(uiContext, 'Column');
-    col2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    col2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(col2);
     return node;
   }
@@ -3626,11 +4291,13 @@ Represents a FrameNode of the **Row** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                            | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[RowInterface](./arkui-ts/ts-container-row.md#apis), [RowAttribute](./arkui-ts/ts-container-row.md#attributes)&gt; | FrameNode of the **Row** type.<br> **RowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Row** component.<br> **RowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Row** component.|
+| TypedFrameNode&lt;RowInterface, RowAttribute&gt; | FrameNode of the **Row** type.<br> **RowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Row** component.<br> **RowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Row** component.<br> **RowInterface** indicates the [API](./arkui-ts/ts-container-row.md#apis) of the **Row** component, and **RowAttribute** indicates the [attribute](./arkui-ts/ts-container-row.md#attributes) of the **Row** component.|
 
 ### createNode('Row')<sup>12+</sup>
 
@@ -3639,6 +4306,8 @@ createNode(context: UIContext, nodeType: 'Row'): Row
 Creates a FrameNode of the Row type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3698,6 +4367,8 @@ Obtains the attributes of a **Row** node. If the node is not created using ArkTS
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -3727,13 +4398,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Row node.
     let row1 = typeNode.createNode(uiContext, 'Row');
-    row1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    row1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // Obtain the attributes of the Row node.
-    typeNode.getAttribute(row1, 'Row')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(row1, 'Row')?.backgroundColor(Color.Blue).width('100%');
     col.appendChild(row1);
     // Create another Row node for comparison.
     let row2 = typeNode.createNode(uiContext, 'Row');
-    row2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    row2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(row2);
     return node;
   }
@@ -3761,11 +4432,13 @@ Represents a FrameNode of the **Stack** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[StackInterface](./arkui-ts/ts-container-stack.md#apis), [StackAttribute](./arkui-ts/ts-container-stack.md#attributes)&gt; | FrameNode of the **Stack** type.<br> **StackInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Stack** component.<br> **StackAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Stack** component.|
+| TypedFrameNode&lt;StackInterface, StackAttribute&gt; | FrameNode of the **Stack** type.<br> **StackInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Stack** component.<br> **StackAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Stack** component.<br> **StackInterface** indicates the [API](./arkui-ts/ts-container-stack.md#apis) of the **Stack** component, and **StackAttribute** indicates the [attribute](./arkui-ts/ts-container-stack.md#attributes) of the **Stack** component.|
 
 ### createNode('Stack')<sup>12+</sup>
 
@@ -3774,6 +4447,8 @@ createNode(context: UIContext, nodeType: 'Stack'): Stack
 Creates a FrameNode of the **Stack** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3808,7 +4483,7 @@ class MyStackController extends NodeController {
       .backgroundColor(Color.Gray)
     node.appendChild(stack)
     let text = typeNode.createNode(uiContext, 'Text')
-    text.initialize("This is Text")
+    text.initialize('This is Text')
     // Add a Text node to the Stack node.
     stack.appendChild(text)
     return node;
@@ -3836,6 +4511,8 @@ getAttribute(node: FrameNode, nodeType: 'Stack'): StackAttribute | undefined
 Obtains the attributes of a **Stack** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3866,13 +4543,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Stack node.
     let stack1 = typeNode.createNode(uiContext, 'Stack');
-    stack1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    stack1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // Obtain the Stack attributes.
-    typeNode.getAttribute(stack1, 'Stack')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(stack1, 'Stack')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(stack1);
     // Create another Stack node for comparison.
     let stack2 = typeNode.createNode(uiContext, 'Stack');
-    stack2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    stack2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(stack2);
     return node;
   }
@@ -3900,11 +4577,13 @@ Represents a FrameNode of the **GridRow** type. This type of node only allows ch
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[GridRowInterface](./arkui-ts/ts-container-gridrow.md#apis), [GridRowAttribute](./arkui-ts/ts-container-gridrow.md#attributes)&gt; | FrameNode of the **GridRow** type.<br> **GridRowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridRow** component.<br> **GridRowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridRow** component.|
+| TypedFrameNode&lt;GridRowInterface, GridRowAttribute&gt; | FrameNode of the **GridRow** type.<br> **GridRowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridRow** component.<br> **GridRowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridRow** component.<br> **GridRowInterface** indicates the [API](./arkui-ts/ts-container-gridrow.md#apis) of the **GridRow** component, and **GridRowAttribute** indicates the [attribute](./arkui-ts/ts-container-gridrow.md#attributes) of the **GridRow** component.|
 
 ### createNode('GridRow')<sup>12+</sup>
 
@@ -3913,6 +4592,8 @@ createNode(context: UIContext, nodeType: 'GridRow'): GridRow
 Creates a FrameNode of the **GridRow** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3949,7 +4630,7 @@ class MyGridRowController extends NodeController {
     // Create a GridCol node.
     let gridCol = typeNode.createNode(uiContext, 'GridCol')
     gridCol.initialize({ span: 2, offset: 4 })
-      .height("100%")
+      .height('100%')
       .backgroundColor(Color.Red)
     // Add gridCol to gridRow.
     gridRow.appendChild(gridCol)
@@ -3979,11 +4660,13 @@ Represents a FrameNode of the **GridCol** type. This type of node does not allow
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[GridColInterface](./arkui-ts/ts-container-gridcol.md#apis), [GridColAttribute](./arkui-ts/ts-container-gridcol.md#attributes)&gt; | FrameNode of the **GridCol** type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.|
+| TypedFrameNode&lt;GridColInterface, GridColAttribute&gt; | FrameNode of the **GridCol** type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.<br> **GridColInterface** indicates the [API](./arkui-ts/ts-container-gridcol.md#apis) of the **GridCol** component, and **GridColAttribute** indicates the [attribute](./arkui-ts/ts-container-gridcol.md#attributes) of the **GridCol** component.|
 
 ### createNode('GridCol')<sup>12+</sup>
 
@@ -3992,6 +4675,8 @@ createNode(context: UIContext, nodeType: 'GridCol'): GridCol
 Creates a FrameNode of the **GridCol** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4028,7 +4713,7 @@ class MyGridRowController extends NodeController {
     // Create a GridCol node.
     let gridCol = typeNode.createNode(uiContext, 'GridCol')
     gridCol.initialize({ span: 2, offset: 4 })
-      .height("100%")
+      .height('100%')
       .backgroundColor(Color.Red)
     // Add gridCol to gridRow.
     gridRow.appendChild(gridCol)
@@ -4058,11 +4743,13 @@ Represents a FrameNode of the Flex type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[FlexInterface](./arkui-ts/ts-container-flex.md#apis), [FlexAttribute](./arkui-ts/ts-container-flex.md#attributes)&gt; | FrameNode of the Flex type.<br> **FlexInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Flex** component.<br> **FlexAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Flex** component.|
+| TypedFrameNode&lt;FlexInterface, FlexAttribute&gt; | FrameNode of the Flex type.<br> **FlexInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Flex** component.<br> **FlexAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Flex** component.<br> **FlexInterface** indicates the [API](./arkui-ts/ts-container-flex.md#apis) of the **Flex** component, and **FlexAttribute** indicates the [attribute](./arkui-ts/ts-container-flex.md#attributes) of the **Flex** component.|
 
 ### createNode('Flex')<sup>12+</sup>
 
@@ -4071,6 +4758,8 @@ createNode(context: UIContext, nodeType: 'Flex'): Flex
 Creates a FrameNode of the Flex type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4130,6 +4819,8 @@ Obtains the Flex node attributes. If the node is not created using ArkTS, cross-
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -4159,13 +4850,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Flex.
     let flex1 = typeNode.createNode(uiContext, 'Flex');
-    flex1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    flex1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // Obtain the Flex attributes.
-    typeNode.getAttribute(flex1, 'Flex')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(flex1, 'Flex')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(flex1);
     // Create another Flex node for comparison.
     let flex2 = typeNode.createNode(uiContext, 'Flex');
-    flex2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    flex2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(flex2);
     return node;
   }
@@ -4193,11 +4884,13 @@ Represents a FrameNode of the **Swiper** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[SwiperInterface](./arkui-ts/ts-container-swiper.md#apis), [SwiperAttribute](./arkui-ts/ts-container-swiper.md#attributes)&gt; | FrameNode of the **Swiper** type.<br> **SwiperInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Swiper** component.<br> **SwiperAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Swiper** component.|
+| TypedFrameNode&lt;SwiperInterface, SwiperAttribute&gt; | FrameNode of the **Swiper** type.<br> **SwiperInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Swiper** component.<br> **SwiperAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Swiper** component.<br> **SwiperInterface** indicates the [API](./arkui-ts/ts-container-swiper.md#apis) of the **Swiper** component, and **SwiperAttribute** indicates the [attribute](./arkui-ts/ts-container-swiper.md#attributes) of the **Swiper** component.|
 
 ### createNode('Swiper')<sup>12+</sup>
 
@@ -4206,6 +4899,8 @@ createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 Creates a FrameNode of the **Swiper** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4239,7 +4934,7 @@ class MySwiperController extends NodeController {
 
     // Create a Text node.
     let text0 = typeNode.createNode(uiContext, 'Text')
-    text0.initialize("0")
+    text0.initialize('0')
       .width('100%')
       .height('100%')
       .textAlign(TextAlign.Center)
@@ -4247,7 +4942,7 @@ class MySwiperController extends NodeController {
     swiperNode.appendChild(text0)
     // Create another Text node for switching.
     let text1 = typeNode.createNode(uiContext, 'Text')
-    text1.initialize("1")
+    text1.initialize('1')
       .width('100%')
       .height('100%')
       .textAlign(TextAlign.Center)
@@ -4286,6 +4981,8 @@ Obtains the attributes of a **Swiper** node. If the node is not created using Ar
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -4312,6 +5009,8 @@ bindController(node: FrameNode, controller: SwiperController, nodeType: 'Swiper'
 Binds a [SwiperController](arkui-ts/ts-container-swiper.md#swipercontroller) instance to the [Swiper](#swiper12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4344,11 +5043,13 @@ Represents a FrameNode of the **Progress** type. This type of node does not allo
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ProgressInterface](./arkui-ts/ts-basic-components-progress.md#apis), [ProgressAttribute](./arkui-ts/ts-basic-components-progress.md#attributes)&gt; | FrameNode of the **Progress** type.<br> **ProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Progress** component.<br> **ProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Progress** component.|
+| TypedFrameNode&lt;ProgressInterface, ProgressAttribute&gt; | FrameNode of the **Progress** type.<br> **ProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Progress** component.<br> **ProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Progress** component.<br> **ProgressInterface** indicates the [API](./arkui-ts/ts-basic-components-progress.md#apis) of the **Progress** component, and **ProgressAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-progress.md#attributes) of the **Progress** component.|
 
 ### createNode('Progress')<sup>12+</sup>
 
@@ -4357,6 +5058,8 @@ createNode(context: UIContext, nodeType: 'Progress'): Progress
 Creates a FrameNode of the **Progress** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4418,6 +5121,8 @@ getAttribute(node: FrameNode, nodeType: 'Progress'): ProgressAttribute | undefin
 Obtains the attributes of a **Progress** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4481,11 +5186,13 @@ Represents a FrameNode of the **Scroll** type. This type of node allows only one
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#apis), [ScrollAttribute](./arkui-ts/ts-container-scroll.md#attributes)&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.|
+| TypedFrameNode&lt;ScrollInterface, ScrollAttribute&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.<br> **ScrollInterface** indicates the [API](./arkui-ts/ts-container-scroll.md#apis) of the **Scroll** component, and **ScrollAttribute** indicates the [attribute](./arkui-ts/ts-container-scroll.md#attributes) of the **Scroll** component.|
 
 ### createNode('Scroll')<sup>12+</sup>
 
@@ -4494,6 +5201,8 @@ createNode(context: UIContext, nodeType: 'Scroll'): Scroll
 Creates a FrameNode of the **Scroll** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4527,7 +5236,7 @@ class MyScrollController extends NodeController {
     // Create a Scroll node and set its properties.
     let scrollNode = typeNode.createNode(uiContext, 'Scroll');
     scrollNode.initialize(scroller).size({ width: '100%', height: 500 });
-    typeNode.getAttribute(scrollNode, "Scroll")?.friction(0.6);
+    typeNode.getAttribute(scrollNode, 'Scroll')?.friction(0.6);
 
     let colNode = typeNode.createNode(uiContext, 'Column');
     // Add a Column node to Scroll.
@@ -4570,6 +5279,8 @@ Obtains the attributes of a **Scroll** node. If the node is not created using Ar
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -4593,9 +5304,11 @@ See the example for [createNode('Scroll')](#createnodescroll12).
 
 getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined
 
-Obtains the **UIScrollEvent** object associated with the **Scroll** node for configuring scroll events. The scroll events configured through this API coexist with declarative events without overriding them. If both event callbacks are registered, the declaratively defined event callback takes precedence.
+Obtains the **UIScrollEvent** object held by the **Scroll** node, which is used to set scroll events. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, **undefined** is returned. This API does not support nodes created in a declarative manner. The scroll events set through this API coexist with declaratively defined events. The set scroll events do not override the original declarative events. When both event callbacks are set, the declarative event callback takes precedence.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4620,9 +5333,11 @@ See [Scroll Event Example](#scroll-event-example).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 
-Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
+Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0. Versions earlier than API version 26.0.0 do not support this.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4641,7 +5356,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>Applicable versions: 15-24|
 
 **Example**
 
@@ -4659,11 +5374,13 @@ Represents a FrameNode of the **RelativeContainer** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[RelativeContainerInterface](./arkui-ts/ts-container-relativecontainer.md#apis), [RelativeContainerAttribute](./arkui-ts/ts-container-relativecontainer.md#attributes)&gt; | FrameNode of the RelativeContainer type.<br> **RelativeContainerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **RelativeContainerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **RelativeContainer** component.|
+| TypedFrameNode&lt;RelativeContainerInterface, RelativeContainerAttribute&gt; | FrameNode of the RelativeContainer type.<br> **RelativeContainerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **RelativeContainerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **RelativeContainer** component.<br> **RelativeContainerInterface** indicates the [API](./arkui-ts/ts-container-relativecontainer.md#apis) of the **RelativeContainer** component, and **RelativeContainerAttribute** indicates the [attribute](./arkui-ts/ts-container-relativecontainer.md#attributes) of the **RelativeContainer** component.|
 
 ### createNode('RelativeContainer')<sup>12+</sup>
 
@@ -4672,6 +5389,8 @@ createNode(context: UIContext, nodeType: 'RelativeContainer'): RelativeContainer
 Creates a FrameNode of the **RelativeContainer** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4731,6 +5450,8 @@ Obtains the attributes of a **RelativeContainer** node. If the node is not creat
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -4760,13 +5481,13 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a RelativeContainer node.
     let relative1 = typeNode.createNode(uiContext, 'RelativeContainer');
-    relative1.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    relative1.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     // Obtain the attributes of the RelativeContainer node.
-    typeNode.getAttribute(relative1, 'RelativeContainer')?.backgroundColor(Color.Blue).width("100%")
+    typeNode.getAttribute(relative1, 'RelativeContainer')?.backgroundColor(Color.Blue).width('100%')
     col.appendChild(relative1);
     // Create another RelativeContainer node for comparison.
     let relative2 = typeNode.createNode(uiContext, 'RelativeContainer');
-    relative2.initialize().width("50%").height("20%").backgroundColor(Color.Pink);
+    relative2.initialize().width('50%').height('20%').backgroundColor(Color.Pink);
     col.appendChild(relative2);
     return node;
   }
@@ -4794,11 +5515,13 @@ Represents a FrameNode of the **Divider** type. This type of node does not allow
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[DividerInterface](./arkui-ts/ts-basic-components-divider.md#apis), [DividerAttribute](./arkui-ts/ts-basic-components-divider.md#attributes)&gt; | FrameNode of the **Divider** type.<br> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.|
+| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | FrameNode of the **Divider** type.<br/> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Divider** component. <br/> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.<br/> **DividerInterface** indicates the [API](./arkui-ts/ts-basic-components-divider.md#apis) of the **Divider** component, and **DividerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-divider.md#attributes) of the **Divider** component. |
 
 ### createNode('Divider')<sup>12+</sup>
 
@@ -4807,6 +5530,8 @@ createNode(context: UIContext, nodeType: 'Divider'): Divider
 Creates a FrameNode of the **Divider** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4872,11 +5597,13 @@ Represents a FrameNode of the **LoadingProgress** type. This type of node does n
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[LoadingProgressInterface](./arkui-ts/ts-basic-components-loadingprogress.md#apis), [LoadingProgressAttribute](./arkui-ts/ts-basic-components-loadingprogress.md#attributes)&gt; | FrameNode of the **LoadingProgress** type.<br> **LoadingProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **LoadingProgress** component.<br> **LoadingProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **LoadingProgress** component.|
+| TypedFrameNode&lt;LoadingProgressInterface, LoadingProgressAttribute&gt; | FrameNode of the **LoadingProgress** type.<br> **LoadingProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **LoadingProgress** component.<br> **LoadingProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **LoadingProgress** component.<br> **LoadingProgressInterface** indicates the [API](./arkui-ts/ts-basic-components-loadingprogress.md#apis) of the **LoadingProgress** component, and **LoadingProgressAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-loadingprogress.md#attributes) of the **LoadingProgress** component.|
 
 ### createNode('LoadingProgress')<sup>12+</sup>
 
@@ -4885,6 +5612,8 @@ createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingProgress
 Creates a FrameNode of the **LoadingProgress** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4944,6 +5673,8 @@ getAttribute(node: FrameNode, nodeType: 'LoadingProgress'): LoadingProgressAttri
 Obtains the attributes of a [LoadingProgress](arkui-ts/ts-basic-components-loadingprogress.md) node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5005,11 +5736,13 @@ Represents a FrameNode of the **Search** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[SearchInterface](./arkui-ts/ts-basic-components-search.md#apis), [SearchAttribute](./arkui-ts/ts-basic-components-search.md#attributes)&gt; | FrameNode of the **Search** type.<br> **SearchInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Search** component.<br> **SearchAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Search** component.|
+| TypedFrameNode&lt;SearchInterface, SearchAttribute&gt; | FrameNode of the **Search** type.<br> **SearchInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Search** component.<br> **SearchAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Search** component.<br> **SearchInterface** indicates the [API](./arkui-ts/ts-basic-components-search.md#apis) of the **Search** component, and **SearchAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-search.md#attributes) of the **Search** component.|
 
 ### createNode('Search')<sup>12+</sup>
 
@@ -5018,6 +5751,8 @@ createNode(context: UIContext, nodeType: 'Search'): Search
 Creates a FrameNode of the **Search** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5049,7 +5784,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Search node.
     let search = typeNode.createNode(uiContext, 'Search');
-    search.initialize({ value: "Search" })
+    search.initialize({ value: 'Search' })
       .searchButton('SEARCH')
       .textFont({ size: 14, weight: 400 })
     col.appendChild(search);
@@ -5079,18 +5814,23 @@ Represents a FrameNode of the **Blank** type. This type of node does not allow c
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[BlankInterface](./arkui-ts/ts-basic-components-blank.md#apis), [BlankAttribute](./arkui-ts/ts-basic-components-blank.md#attributes)&gt; | FrameNode of the **Blank** type.<br> **BlankInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Blank** component.<br> **BlankAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Blank** component.|
+| TypedFrameNode&lt;BlankInterface, BlankAttribute&gt; | FrameNode of the **Blank** type.<br> **BlankInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Blank** component.<br> **BlankAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Blank** component.<br> **BlankInterface** indicates the [API](./arkui-ts/ts-basic-components-blank.md#apis) of the **Blank** component, and **BlankAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-blank.md#attributes) of the **Blank** component.|
 
 ### createNode('Blank')<sup>12+</sup>
+
 createNode(context: UIContext, nodeType: 'Blank'): Blank
 
 Creates a FrameNode of the **Blank** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5157,19 +5897,23 @@ Represents a FrameNode of the **Image** type. This type of node does not allow c
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ImageInterface](./arkui-ts/ts-basic-components-image.md#apis), [ImageAttribute](./arkui-ts/ts-basic-components-image.md#attributes)&gt; | FrameNode of the **Image** type.<br> **ImageInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Image** component.<br> **ImageAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Image** component.|
+| TypedFrameNode&lt;ImageInterface, ImageAttribute&gt; | FrameNode of the **Image** type.<br> **ImageInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Image** component.<br> **ImageAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Image** component.<br> **ImageInterface** indicates the [API](./arkui-ts/ts-basic-components-image.md#apis) of the **Image** component, and **ImageAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-image.md#attributes) of the **Image** component.|
 
 ### createNode('Image')<sup>12+</sup>
 
 createNode(context: UIContext, nodeType: 'Image'): Image
 
-Creates a FrameNode of the **Image** type.
+Creates a FrameNode of the **Image** type. When **typeNode** is used to create an **Image** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5240,6 +5984,8 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -5256,7 +6002,6 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 | ImageAttribute&nbsp;\|&nbsp;undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
 
 **Example**
-
 
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
@@ -5310,18 +6055,23 @@ Represents a FrameNode of the **List** type. This type of node only allows child
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListInterface](./arkui-ts/ts-container-list.md#apis), [ListAttribute](./arkui-ts/ts-container-list.md#attributes)&gt; | FrameNode of the **List** type.<br> **ListInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **List** component.<br> **ListAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **List** component.|
+| TypedFrameNode&lt;ListInterface, ListAttribute&gt; | FrameNode of the **List** type.<br> **ListInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **List** component.<br> **ListAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **List** component.<br> **ListInterface** indicates the [API](./arkui-ts/ts-container-list.md#apis) of the **List** component, and **ListAttribute** indicates the [attribute](./arkui-ts/ts-container-list.md#attributes) of the **List** component.|
 
 ### createNode('List')<sup>12+</sup>
+
 createNode(context: UIContext, nodeType: 'List'): List
 
 Creates a FrameNode of the **List** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5330,7 +6080,7 @@ Creates a FrameNode of the **List** type.
 | Name| Type| Mandatory| Description |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
-| nodeType | 'List' | Yes| Node type, which is **List** in this API.|
+| nodeType | 'List' | Yes| Node type. Set to **'List'**.|
 
 **Return value**
 
@@ -5353,7 +6103,7 @@ class MyListController extends NodeController {
     // Create a List node.
     let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).size({ width: '100%', height: '100%' });
-    typeNode.getAttribute(listNode, "List")?.friction(0.6);
+    typeNode.getAttribute(listNode, 'List')?.friction(0.6);
 
     // Create a ListItemGroup node in the List.
     let listItemGroupNode = typeNode.createNode(uiContext, 'ListItemGroup');
@@ -5371,7 +6121,7 @@ class MyListController extends NodeController {
     // Create a ListItem, add a Text to the ListItem, and add the ListItem to listItemGroup.
     let listItemNode2 = typeNode.createNode(uiContext, 'ListItem');
     listItemNode2.initialize({ style: ListItemStyle.CARD }).borderWidth(1).backgroundColor('#FF00FF');
-    typeNode.getAttribute(listItemNode2, "ListItem")?.height(100);
+    typeNode.getAttribute(listItemNode2, 'ListItem')?.height(100);
     let text2 = typeNode.createNode(uiContext, 'Text');
     text2.initialize('ListItem2');
     listItemNode2.appendChild(text2);
@@ -5401,9 +6151,11 @@ struct FrameNodeTypeTest {
 
 getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
-Obtains the **UIListEvent** object associated with the **List** node for configuring scroll events. The scroll events configured through this API coexist with declarative events without overriding them. If both event callbacks are registered, the declaratively defined event callback takes precedence.
+Obtains the **UIListEvent** object held by the **List** node, which is used to set scroll events. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, **undefined** is returned. This API does not support nodes created in a declarative manner. The scroll events set through this API coexist with declaratively defined events. The set scroll events do not override the original declarative events. When both event callbacks are set, the declarative event callback takes precedence.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5432,6 +6184,8 @@ Obtains the attributes of a **List** node. If the node is not created using ArkT
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -5455,9 +6209,11 @@ See the example for [createNode('List')](#createnodelist12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0. Versions earlier than API version 26.0.0 do not support this.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5476,7 +6232,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -5494,18 +6250,23 @@ Represents a FrameNode of the **ListItem** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListItemInterface](./arkui-ts/ts-container-listitem.md#apis), [ListItemAttribute](./arkui-ts/ts-container-listitem.md#attributes)&gt; | FrameNode of the **ListItem** type.<br> **ListItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItem** component.<br> **ListItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItem** component.|
+| TypedFrameNode&lt;ListItemInterface, ListItemAttribute&gt; | FrameNode of the **ListItem** type.<br> **ListItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItem** component.<br> **ListItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItem** component.<br> **ListItemInterface** indicates the [API](./arkui-ts/ts-container-listitem.md#apis) of the **ListItem** component, and **ListItemAttribute** indicates the [attribute](./arkui-ts/ts-container-listitem.md#attributes) of the **ListItem** component.|
 
 ### createNode('ListItem')<sup>12+</sup>
+
 createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 
 Creates a FrameNode of the **ListItem** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5534,6 +6295,8 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -5554,17 +6317,20 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 See the example for [createNode('List')](#createnodelist12).
 
 ### TextInput<sup>12+</sup>
+
 type TextInput = TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt;
 
 Represents a FrameNode of the **TextInput** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[TextInputInterface](./arkui-ts/ts-basic-components-textinput.md#apis), [TextInputAttribute](./arkui-ts/ts-basic-components-textinput.md#attributes)&gt; | FrameNode of the **TextInput** type.<br> **TextInputInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextInput** component.<br> **TextInputAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextInput** component.|
+| TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt; | FrameNode of the **TextInput** type.<br> **TextInputInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextInput** component.<br> **TextInputAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextInput** component.<br> **TextInputInterface** indicates the [API](./arkui-ts/ts-basic-components-textinput.md#apis) of the **TextInput** component, and **TextInputAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textinput.md#attributes) of the **TextInput** component.|
 
 ### createNode('TextInput')<sup>12+</sup>
 
@@ -5573,6 +6339,8 @@ createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 Creates a FrameNode of the **TextInput** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5604,7 +6372,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a TextInput.
     let textInput = typeNode.createNode(uiContext, 'TextInput');
-    textInput.initialize({ text: "TextInput" });
+    textInput.initialize({ text: 'TextInput' });
     col.appendChild(textInput);
     return node;
   }
@@ -5631,6 +6399,8 @@ getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputAttribute | undef
 Obtains the attributes of a **TextInput** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5685,11 +6455,14 @@ struct FrameNodeTypeTest {
 ```
 
 ### bindController('TextInput')<sup>20+</sup>
+
 bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 
-Binds the [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) to the [TextInput](#textinput12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the input box controller [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) to the [TextInput](#textinput12) node. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, an exception is thrown. Since API version 26.0.0, this API supports nodes created in a declarative manner. Versions earlier than API version 26.0.0 do not support this.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5725,7 +6498,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create and initialize TextInput. By default, the focus is obtained.
     let textInput = typeNode.createNode(uiContext, 'TextInput');
-    textInput.initialize({ text: "TextInput" })
+    textInput.initialize({ text: 'TextInput' })
       .defaultFocus(true)
     col.appendChild(textInput);
     // Bind TextInputController and set the cursor position.
@@ -5754,15 +6527,17 @@ struct FrameNodeTypeTest {
 
 type Button = TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt;
 
-Represents a FrameNode of the **Button** type. When created in child component mode, this type of node allows only one child component to be added. When created in label mode, it does not child components to be added.
+Represents a FrameNode of the **Button** type. When created in child component mode, this type of node allows only one child component to be added. When created in label mode, it does not allow child components to be added.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ButtonInterface](./arkui-ts/ts-basic-components-button.md#apis), [ButtonAttribute](./arkui-ts/ts-basic-components-button.md#attributes)&gt; | FrameNode of the **Button** type.<br> **ButtonInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Button** component.<br> **ButtonAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Button** component.<br> If a value is specified for the **label** parameter, a **Button** component is created in label mode. This component cannot contain child components, and any attempt to set child components will result in an exception. The mode in which the **Button** component is created cannot be dynamically modified in subsequent **initialize** calls. As such, to include child components, do not set the **label** parameter during the first **initialize** call.<br> When created in child component mode, a **Button** component can contain a single child component. Any attempt to set multiple child components will result in an exception.|
+| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | FrameNode of the **Button** type.<br/> **ButtonInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Button** component. <br/> **ButtonAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**, which returns the attribute setting object of the **Button** component.<br/> If a value is specified for the **label** parameter, a **Button** component is created in label mode. In this mode, the component cannot contain child components, and any attempt to set child components will result in an exception. In addition, the label mode and child component mode cannot be dynamically changed in subsequent **initialize** calls after the first **initialize** call for creation. As such, to include child components, do not set the **label** parameter during the first **initialize** call.<br/> When the component is created in child component mode, only one child component can be included. Any attempt to set multiple child components will result in an exception.<br/> **ButtonInterface** indicates the [API](./arkui-ts/ts-basic-components-button.md#apis) of the **Button** component, and **ButtonAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-button.md#attributes) of the **Button** component. |
 
 ### createNode('Button')<sup>12+</sup>
 
@@ -5771,6 +6546,8 @@ createNode(context: UIContext, nodeType: 'Button'): Button
 Creates a FrameNode of the **Button** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5804,9 +6581,9 @@ class MyButtonController extends NodeController {
     node.appendChild(col)
     // Create a Button node.
     let button = typeNode.createNode(uiContext, 'Button')
-    button.initialize("This is Button")
+    button.initialize('This is Button')
       .onClick(() => {
-        uiContext.getPromptAction().showToast({ message: "Button clicked" })
+        uiContext.getPromptAction().showToast({ message: 'Button clicked' })
       })
     col.appendChild(button)
 
@@ -5836,6 +6613,8 @@ getAttribute(node: FrameNode, nodeType: 'Button'): ButtonAttribute | undefined
 Obtains the attributes of a **Button** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5868,12 +6647,12 @@ class MyButtonController extends NodeController {
       .height('100%')
     node.appendChild(col)
     let button = typeNode.createNode(uiContext, 'Button')
-    button.initialize("This is Button")
+    button.initialize('This is Button')
       .onClick(() => {
-        uiContext.getPromptAction().showToast({ message: "Button clicked" })
+        uiContext.getPromptAction().showToast({ message: 'Button clicked' })
       })
     // Obtain the attributes of the Button node.
-    typeNode.getAttribute(button,'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL)
+    typeNode.getAttribute(button, 'Button')?.buttonStyle(ButtonStyleMode.TEXTUAL);
     col.appendChild(button)
 
     return node;
@@ -5896,17 +6675,20 @@ struct FrameNodeTypeTest {
 ```
 
 ### ListItemGroup<sup>12+</sup>
+
 type ListItemGroup = TypedFrameNode&lt;ListItemGroupInterface, ListItemGroupAttribute&gt;
 
 Represents a FrameNode of the **ListItemGroup** type. Only [ListItem](./arkui-ts/ts-container-listitem.md) child components can be added.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListItemGroupInterface](./arkui-ts/ts-container-listitem.md#apis), [ListItemGroupAttribute](./arkui-ts/ts-container-listitem.md#attributes)&gt; | FrameNode of the **ListItemGroup** type.<br> **ListItemGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItemGroup** component.<br> **ListItemGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItemGroup** component.|
+| TypedFrameNode&lt;ListItemGroupInterface, ListItemGroupAttribute&gt; | FrameNode of the **ListItemGroup** type.<br> **ListItemGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItemGroup** component.<br> **ListItemGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItemGroup** component.<br> **ListItemGroupInterface** indicates the [API](./arkui-ts/ts-container-listitem.md#apis) of the **ListItemGroup** component, and **ListItemGroupAttribute** indicates the [attribute](./arkui-ts/ts-container-listitem.md#attributes) of the **ListItemGroup** component.|
 
 ### createNode('ListItemGroup')<sup>12+</sup>
 
@@ -5915,6 +6697,8 @@ createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGroup
 Creates a FrameNode of the **ListItemGroup** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5942,6 +6726,8 @@ getAttribute(node: FrameNode, nodeType: 'ListItemGroup'): ListItemGroupAttribute
 Obtains the attributes of a **ListItemGroup** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5974,11 +6760,13 @@ Represents a FrameNode of the **WaterFlow** type. Only [FlowItem](./arkui-ts/ts-
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[WaterFlowInterface](./arkui-ts/ts-container-waterflow.md#apis), [WaterFlowAttribute](./arkui-ts/ts-container-waterflow.md#attributes)&gt; | Provides the FrameNode of the [WaterFlow](#waterflow12) type.<br> **WaterFlowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **WaterFlow** component.<br> **WaterFlowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **WaterFlow** component.|
+| TypedFrameNode&lt;WaterFlowInterface, WaterFlowAttribute&gt; | Provides the FrameNode of the [WaterFlow](#waterflow12) type.<br> **WaterFlowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **WaterFlow** component.<br> **WaterFlowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **WaterFlow** component.<br> **WaterFlowInterface** indicates the [API](./arkui-ts/ts-container-waterflow.md#apis) of the **WaterFlow** component, and **WaterFlowAttribute** indicates the [attribute](./arkui-ts/ts-container-waterflow.md#attributes) of the **WaterFlow** component.|
 
 ### createNode('WaterFlow')<sup>12+</sup>
 
@@ -5987,6 +6775,8 @@ createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow
 Creates a FrameNode of the **WaterFlow** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6016,8 +6806,8 @@ class MyWaterFlowController extends NodeController {
 
   // Calculate the FlowItem height.
   private getHeight() {
-    let ret = Math.floor(Math.random() * this.maxHeight);
-    return (ret > this.minHeight ? ret : this.minHeight);
+    let randomHeight = Math.floor(Math.random() * this.maxHeight);
+    return (randomHeight > this.minHeight ? randomHeight : this.minHeight);
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -6029,13 +6819,13 @@ class MyWaterFlowController extends NodeController {
       .columnsTemplate('1fr 1fr')
       .columnsGap(10)
       .rowsGap(5);
-    typeNode.getAttribute(waterFlowNode, "WaterFlow")?.friction(0.6);
+    typeNode.getAttribute(waterFlowNode, 'WaterFlow')?.friction(0.6);
 
     // Create a FlowItem node and set its properties.
     for (let i = 0; i < 20; i++) {
       let flowItemNode = typeNode.createNode(uiContext, 'FlowItem');
       flowItemNode.attribute.size({ height: this.getHeight() });
-      typeNode.getAttribute(flowItemNode, "FlowItem")?.width('100%');
+      typeNode.getAttribute(flowItemNode, 'FlowItem')?.width('100%');
       waterFlowNode.appendChild(flowItemNode);
 
       let text = typeNode.createNode(uiContext, 'Text');
@@ -6070,9 +6860,11 @@ struct FrameNodeTypeTest {
 
 getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined
 
-Obtains the **UIWaterFlowEvent** object associated with the [WaterFlow](#waterflow12) node for configuring scroll events. The scroll events configured through this API coexist with declarative events without overriding them. If both event callbacks are registered, the declaratively defined event callback takes precedence.
+Obtains the **UIWaterFlowEvent** object held by the [WaterFlow](#waterflow12) node, which is used to set scroll events. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, **undefined** is returned. This API does not support nodes created in a declarative manner. The scroll events set through this API coexist with declaratively defined events. The set scroll events do not override the original declarative events. When both event callbacks are set, the declarative event callback takes precedence.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6101,6 +6893,8 @@ Obtains the attributes of a **WaterFlow** node. If the node is not created using
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6128,6 +6922,8 @@ Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Wa
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6145,7 +6941,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -6163,11 +6959,13 @@ Represents a FrameNode of the **FlowItem** type. This type of node allows only o
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[FlowItemInterface](./arkui-ts/ts-container-flowitem.md#apis), [FlowItemAttribute](./arkui-ts/ts-container-flowitem.md#attributes)&gt; | FrameNode of the **FlowItem** type.<br> **FlowItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **FlowItem** component.<br> **FlowItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **FlowItem** component.|
+| TypedFrameNode&lt;FlowItemInterface, FlowItemAttribute&gt; | FrameNode of the **FlowItem** type.<br> **FlowItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **FlowItem** component.<br> **FlowItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **FlowItem** component.<br> **FlowItemInterface** indicates the [API](./arkui-ts/ts-container-flowitem.md#apis) of the **FlowItem** component, and **FlowItemAttribute** indicates the [attribute](./arkui-ts/ts-container-flowitem.md#attributes) of the **FlowItem** component.|
 
 ### createNode('FlowItem')<sup>12+</sup>
 
@@ -6176,6 +6974,8 @@ createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 Creates a FrameNode of the **FlowItem** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6204,6 +7004,8 @@ Obtains the attributes of a **FlowItem** node. If the node is not created using 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6231,11 +7033,13 @@ Represents a FrameNode of the **XComponent** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[XComponentInterface](./arkui-ts/ts-basic-components-xcomponent.md#apis), [XComponentAttribute](./arkui-ts/ts-basic-components-xcomponent.md#attributes)&gt; | FrameNode of the **XComponent** type.<br> **XComponentInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **XComponent** component.<br> **XComponentAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **XComponent** component.|
+| TypedFrameNode&lt;XComponentInterface, XComponentAttribute&gt; | FrameNode of the **XComponent** type.<br> **XComponentInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **XComponent** component.<br> **XComponentAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **XComponent** component.<br> **XComponentInterface** indicates the [API](./arkui-ts/ts-basic-components-xcomponent.md#apis) of **XComponent**, and **XComponentAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-xcomponent.md#attributes) of **XComponent**.|
 
 ### createNode('XComponent')<sup>12+</sup>
 
@@ -6244,6 +7048,8 @@ createNode(context: UIContext, nodeType: 'XComponent'): XComponent
 Creates a FrameNode of the **XComponent** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6305,6 +7111,8 @@ createNode(context: UIContext, nodeType: 'XComponent', options: XComponentOption
 Creates a FrameNode of the **XComponent** type based on the settings specified in **options**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6374,6 +7182,8 @@ Creates a FrameNode of the **XComponent** type based on the settings specified i
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6440,6 +7250,8 @@ Obtain the attributes of an **XComponent** node. If the node is not created usin
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6464,17 +7276,20 @@ typeNode.getAttribute(node, 'XComponent');
 ```
 
 ### QRCode<sup>14+</sup>
+
 type QRCode = TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt;
 
 Represents a FrameNode of the **QRCode** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[QRCodeInterface](./arkui-ts/ts-basic-components-qrcode.md#apis), [QRCodeAttribute](./arkui-ts/ts-basic-components-qrcode.md#attributes)&gt; | FrameNode of the **QRCode** type.<br> **QRCodeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **QRCode** component.<br> **QRCodeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **QRCode** component.|
+| TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt; | FrameNode of the **QRCode** type.<br> **QRCodeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **QRCode** component.<br> **QRCodeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **QRCode** component.<br> **QRCodeInterface** indicates the [API](./arkui-ts/ts-basic-components-qrcode.md#apis) of the **QRCode** component, and **QRCodeAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-qrcode.md#attributes) of the **QRCode** component.|
 
 ### createNode('QRCode')<sup>14+</sup>
 
@@ -6483,6 +7298,8 @@ createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 Creates a FrameNode of the **QRCode** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6515,11 +7332,13 @@ Represents a FrameNode of the **Badge** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[BadgeInterface](./arkui-ts/ts-container-badge.md#apis), [BadgeAttribute](./arkui-ts/ts-container-badge.md#attributes)&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.|
+| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#apis) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
 
 ### createNode('Badge')<sup>14+</sup>
 
@@ -6528,6 +7347,8 @@ createNode(context: UIContext, nodeType: 'Badge'): Badge
 Creates a FrameNode of the **Badge** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6560,11 +7381,13 @@ Represents a FrameNode of the **Grid** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[GridInterface](./arkui-ts/ts-container-grid.md#apis), [GridAttribute](./arkui-ts/ts-container-grid.md#attributes)&gt; | FrameNode of the **Grid** type.<br> **GridInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Grid** component.<br> **GridAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Grid** component.|
+| TypedFrameNode&lt;GridInterface, GridAttribute&gt; | FrameNode of the **Grid** type.<br> **GridInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Grid** component.<br> **GridAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Grid** component.<br> **GridInterface** indicates the [API](./arkui-ts/ts-container-grid.md#apis) of the **Grid** component, and **GridAttribute** indicates the [attribute](./arkui-ts/ts-container-grid.md#attributes) of the **Grid** component.|
 
 ### createNode('Grid')<sup>14+</sup>
 
@@ -6573,6 +7396,8 @@ createNode(context: UIContext, nodeType: 'Grid'): Grid
 Creates a FrameNode of the **Grid** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6610,13 +7435,13 @@ class MyGridController extends NodeController {
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)
       .rowsGap(10);
-    typeNode.getAttribute(gridNode, "Grid")?.friction(0.6);
+    typeNode.getAttribute(gridNode, 'Grid')?.friction(0.6);
 
     // Create a GridItem node and set its properties.
     for (let i = 0; i < 25; i++) {
       let gridItemNode = typeNode.createNode(uiContext, 'GridItem');
       gridItemNode.initialize({ style: GridItemStyle.NONE }).size({ height: '100%' });
-      typeNode.getAttribute(gridItemNode, "GridItem")?.width('100%');
+      typeNode.getAttribute(gridItemNode, 'GridItem')?.width('100%');
 
       let text = typeNode.createNode(uiContext, 'Text');
       text.initialize((i % 5).toString())
@@ -6651,9 +7476,11 @@ struct FrameNodeTypeTest {
 
 getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
-Obtains the **UIGridEvent** object associated with the **Grid** node for configuring scroll events. The scroll events configured through this API coexist with declarative events without overriding them. If both event callbacks are registered, the declaratively defined event callback takes precedence.
+Obtains the **UIGridEvent** object held by the **Grid** node, which is used to set scroll events. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, **undefined** is returned. This API does not support nodes created in a declarative manner. The scroll events set through this API coexist with declaratively defined events. The set scroll events do not override the original declarative events. When both event callbacks are set, the declarative event callback takes precedence.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6682,6 +7509,8 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6705,9 +7534,11 @@ See the example for [createNode('Grid')](#createnodegrid14).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0. Versions earlier than API version 26.0.0 do not support this.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6726,7 +7557,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
 
 **Example**
 
@@ -6744,11 +7575,13 @@ Represents a FrameNode of the **GridItem** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[GridItemInterface](./arkui-ts/ts-container-griditem.md#apis), [GridItemAttribute](./arkui-ts/ts-container-griditem.md#attributes)&gt; | FrameNode of the **GridItem** type.<br> **GridItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridItem** component.<br> **GridItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridItem** component.|
+| TypedFrameNode&lt;GridItemInterface, GridItemAttribute&gt; | FrameNode of the **GridItem** type.<br> **GridItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridItem** component.<br> **GridItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridItem** component.<br> **GridItemInterface** indicates the [API](./arkui-ts/ts-container-griditem.md#apis) of the **GridItem** component, and **GridItemAttribute** indicates the [attribute](./arkui-ts/ts-container-griditem.md#attributes) of the **GridItem** component.|
 
 ### createNode('GridItem')<sup>14+</sup>
 
@@ -6757,6 +7590,8 @@ createNode(context: UIContext, nodeType: 'GridItem'): GridItem
 Creates a FrameNode of the **GridItem** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6785,6 +7620,8 @@ Obtains the attributes of a **GridItem** node. If the node is not created using 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -6812,11 +7649,13 @@ Represents a FrameNode of the **TextClock** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextClockInterface](./arkui-ts/ts-basic-components-textclock.md#apis), [TextClockAttribute](./arkui-ts/ts-basic-components-textclock.md#attributes)&gt; | FrameNode of the **TextClock** type.<br> **TextClockInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextClock** component.<br> **TextClockAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextClock** component.|
+| TypedFrameNode&lt;TextClockInterface, TextClockAttribute&gt; | FrameNode of the **TextClock** type.<br> **TextClockInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextClock** component.<br> **TextClockAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextClock** component.<br> **TextClockInterface** indicates the [API](./arkui-ts/ts-basic-components-textclock.md#apis) of the **TextClock** component, and **TextClockAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textclock.md#attributes) of the **TextClock** component.|
 
 ### createNode('TextClock')<sup>14+</sup>
 
@@ -6825,6 +7664,8 @@ createNode(context: UIContext, nodeType: 'TextClock'): TextClock
 Creates a FrameNode of the **TextClock** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6857,11 +7698,13 @@ Represents a FrameNode of the **TextTimer** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextTimerInterface](./arkui-ts/ts-basic-components-texttimer.md#apis), [TextTimerAttribute](./arkui-ts/ts-basic-components-texttimer.md#attributes)&gt; | FrameNode of the **TextTimer** type.<br> **TextTimerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextTimer** component.<br> **TextTimerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextTimer** component.|
+| TypedFrameNode&lt;TextTimerInterface, TextTimerAttribute&gt; | FrameNode of the **TextTimer** type.<br> **TextTimerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextTimer** component.<br> **TextTimerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextTimer** component.<br> **TextTimerInterface** indicates the [API](./arkui-ts/ts-basic-components-texttimer.md#apis) of the **TextTimer** component, and **TextTimerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-texttimer.md#attributes) of the **TextTimer** component.|
 
 ### createNode('TextTimer')<sup>14+</sup>
 
@@ -6870,6 +7713,8 @@ createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 Creates a FrameNode of the **TextTimer** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6902,11 +7747,13 @@ Represents a FrameNode of the **Marquee** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[MarqueeInterface](./arkui-ts/ts-basic-components-marquee.md#apis), [MarqueeAttribute](./arkui-ts/ts-basic-components-marquee.md#attributes)&gt; | FrameNode of the **Marquee** type.<br> **MarqueeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Marquee** component.<br> **MarqueeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Marquee** component.|
+| TypedFrameNode&lt;MarqueeInterface, MarqueeAttribute&gt; | FrameNode of the **Marquee** type.<br> **MarqueeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Marquee** component.<br> **MarqueeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Marquee** component.<br> **MarqueeInterface** indicates the [API](./arkui-ts/ts-basic-components-marquee.md#apis) of the **Marquee** component, and **MarqueeAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-marquee.md#attributes) of the **Marquee** component.|
 
 ### createNode('Marquee')<sup>14+</sup>
 
@@ -6915,6 +7762,8 @@ createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 Creates a FrameNode of the **Marquee** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6946,7 +7795,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Marquee node.
     let marquee = typeNode.createNode(uiContext, 'Marquee');
-    marquee.initialize({start:true,src:'Marquee, if need display, src shall be long'})
+    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' });
       .width(100);
     col.appendChild(marquee);
     return node;
@@ -6975,11 +7824,13 @@ Represents a FrameNode of the **TextArea** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextAreaInterface](./arkui-ts/ts-basic-components-textarea.md#apis), [TextAreaAttribute](./arkui-ts/ts-basic-components-textarea.md#attributes)&gt; | FrameNode of the **TextArea** type.<br> **TextAreaInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextArea** component.<br> **TextAreaAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextArea** component.|
+| TypedFrameNode&lt;TextAreaInterface, TextAreaAttribute&gt; | FrameNode of the **TextArea** type.<br> **TextAreaInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextArea** component.<br> **TextAreaAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextArea** component.<br> **TextAreaInterface** indicates the [API](./arkui-ts/ts-basic-components-textarea.md#apis) of the **TextArea** component, and **TextAreaAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textarea.md#attributes) of the **TextArea** component.|
 
 ### createNode('TextArea')<sup>14+</sup>
 
@@ -6988,6 +7839,8 @@ createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 Creates a FrameNode of the **TextArea** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7019,7 +7872,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a TextArea node.
     let textArea = typeNode.createNode(uiContext, 'TextArea');
-    textArea.initialize({ text: "TextArea" });
+    textArea.initialize({ text: 'TextArea' });
     col.appendChild(textArea);
     return node;
   }
@@ -7046,6 +7899,8 @@ getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAttribute | undefin
 Obtains the attributes of a **TextArea** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7103,9 +7958,11 @@ struct FrameNodeTypeTest {
 
 bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 
-Binds a [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) instance to the [TextArea](#textarea14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the input box controller [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) to the [TextArea](#textarea14) node. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, an exception is thrown. Since API version 26.0.0, this API supports nodes created in a declarative manner. Versions earlier than API version 26.0.0 do not support this.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7141,7 +7998,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create and initialize a TextArea node. By default, the node is focused.
     let textArea = typeNode.createNode(uiContext, 'TextArea');
-    textArea.initialize({ text: "TextArea" })
+    textArea.initialize({ text: 'TextArea' })
       .defaultFocus(true)
     col.appendChild(textArea);
     // Bind a TextAreaController instance and set the cursor position.
@@ -7174,11 +8031,13 @@ Represents a FrameNode of the **SymbolGlyph** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SymbolGlyphInterface](./arkui-ts/ts-basic-components-symbolGlyph.md#apis), [SymbolGlyphAttribute](./arkui-ts/ts-basic-components-symbolGlyph.md#attributes)&gt; | FrameNode of the **SymbolGlyph** type.<br> **SymbolGlyphInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **SymbolGlyph** component.<br> **SymbolGlyphAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **SymbolGlyph** component.|
+| TypedFrameNode&lt;SymbolGlyphInterface, SymbolGlyphAttribute&gt; | FrameNode of the **SymbolGlyph** type.<br> **SymbolGlyphInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **SymbolGlyph** component.<br> **SymbolGlyphAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **SymbolGlyph** component.<br> **SymbolGlyphInterface** indicates the [API](./arkui-ts/ts-basic-components-symbolGlyph.md#apis) of the **SymbolGlyph** component, and **SymbolGlyphAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-symbolGlyph.md#attributes) of the **SymbolGlyph** component.|
 
 ### createNode('SymbolGlyph')<sup>14+</sup>
 
@@ -7187,6 +8046,8 @@ createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph
 Creates a FrameNode of the **SymbolGlyph** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7246,11 +8107,13 @@ Represents a FrameNode of the **Checkbox** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[CheckboxInterface](./arkui-ts/ts-basic-components-checkbox.md#apis), [CheckboxAttribute](./arkui-ts/ts-basic-components-checkbox.md#attributes)&gt; | FrameNode of the **Checkbox** type.<br> **CheckboxInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Checkbox** component.<br> **CheckboxAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Checkbox** component.|
+| TypedFrameNode&lt;CheckboxInterface, CheckboxAttribute&gt; | FrameNode of the **Checkbox** type.<br> **CheckboxInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Checkbox** component.<br> **CheckboxAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Checkbox** component.<br> **CheckboxInterface** indicates the [API](./arkui-ts/ts-basic-components-checkbox.md#apis) of the **Checkbox** component, and **CheckboxAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-checkbox.md#attributes) of the **Checkbox** component.|
 
 ### createNode('Checkbox')<sup>18+</sup>
 
@@ -7259,6 +8122,8 @@ createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 Creates a FrameNode of the **Checkbox** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7327,6 +8192,8 @@ Obtains the attributes of a **Checkbox** node. If the node is not created using 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -7364,7 +8231,7 @@ class MyCheckboxController extends NodeController {
     // Create another Checkbox node.
     let checkbox1 = typeNode.createNode(uiContext, 'Checkbox')
     checkbox1.initialize({ name: 'checkbox2', group: 'checkboxGroup1' })
-    // Set the shape property for the first Checkbox.
+    // Set the shape attribute for another Checkbox.
     typeNode.getAttribute(checkbox1,'Checkbox')?.shape(CheckBoxShape.ROUNDED_SQUARE)
     // Add the two Checkbox nodes to col for comparison.
     col.appendChild(checkbox)
@@ -7395,11 +8262,13 @@ Represents a FrameNode of the **CheckboxGroup** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[CheckboxGroupInterface](./arkui-ts/ts-basic-components-checkboxgroup.md#apis), [CheckboxGroupAttribute](./arkui-ts/ts-basic-components-checkboxgroup.md#attributes)&gt; | FrameNode of the **CheckboxGroup** type.<br> **CheckboxGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **CheckboxGroup** component.<br> **CheckboxGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **CheckboxGroup** component.|
+| TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttribute&gt; | FrameNode of the **CheckboxGroup** type.<br> **CheckboxGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **CheckboxGroup** component.<br> **CheckboxGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **CheckboxGroup** component.<br> **CheckboxGroupInterface** indicates the [API](./arkui-ts/ts-basic-components-checkboxgroup.md#apis) of the **CheckboxGroup** component, and **CheckboxGroupAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-checkboxgroup.md#attributes) of the **CheckboxGroup** component.|
 
 ### createNode('CheckboxGroup')<sup>18+</sup>
 
@@ -7408,6 +8277,8 @@ createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup
 Creates a FrameNode of the **CheckboxGroup** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7478,11 +8349,13 @@ Represents a FrameNode of the **Rating** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[RatingInterface](./arkui-ts/ts-basic-components-rating.md#apis), [RatingAttribute](./arkui-ts/ts-basic-components-rating.md#attributes)&gt; | FrameNode of the **Rating** type.<br> **RatingInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Rating** component.<br> **RatingAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Rating** component.|
+| TypedFrameNode&lt;RatingInterface, RatingAttribute&gt; | FrameNode of the **Rating** type.<br> **RatingInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Rating** component.<br> **RatingAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Rating** component.<br> **RatingInterface** indicates the [API](./arkui-ts/ts-basic-components-rating.md#apis) of the **Rating** component, and **RatingAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-rating.md#attributes) of the **Rating** component.|
 
 ### createNode('Rating')<sup>18+</sup>
 
@@ -7491,6 +8364,8 @@ createNode(context: UIContext, nodeType: 'Rating'): Rating
 Creates a FrameNode of the **Rating** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7554,11 +8429,13 @@ Represents a FrameNode of the **Radio** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[RadioInterface](./arkui-ts/ts-basic-components-radio.md#apis), [RadioAttribute](./arkui-ts/ts-basic-components-radio.md#attributes)&gt; | FrameNode of the **Radio** type.<br> **RadioInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Radio** component.<br> **RadioAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Radio** component.|
+| TypedFrameNode&lt;RadioInterface, RadioAttribute&gt; | FrameNode of the **Radio** type.<br> **RadioInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Radio** component.<br> **RadioAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Radio** component.<br> **RadioInterface** indicates the [API](./arkui-ts/ts-basic-components-radio.md#apis) of the **Radio** component, and **RadioAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-radio.md#attributes) of the **Radio** component.|
 
 ### createNode('Radio')<sup>18+</sup>
 
@@ -7567,6 +8444,8 @@ createNode(context: UIContext, nodeType: 'Radio'): Radio
 Creates a FrameNode of the **Radio** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7633,6 +8512,8 @@ getAttribute(node: FrameNode, nodeType: 'Radio'): RadioAttribute | undefined
 Obtains the attributes of a **Radio** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7701,11 +8582,13 @@ Represents a FrameNode of the **Slider** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SliderInterface](./arkui-ts/ts-basic-components-slider.md#apis), [SliderAttribute](./arkui-ts/ts-basic-components-slider.md#attributes)&gt; | FrameNode of the **Slider** type.<br> **SliderInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Slider** component.<br> **SliderAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Slider** component.|
+| TypedFrameNode&lt;SliderInterface, SliderAttribute&gt; | FrameNode of the **Slider** type.<br> **SliderInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Slider** component.<br> **SliderAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Slider** component.<br> **SliderInterface** indicates the [API](./arkui-ts/ts-basic-components-slider.md#apis) of the **Slider** component, and **SliderAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-slider.md#attributes) of the **Slider** component.|
 
 ### createNode('Slider')<sup>18+</sup>
 
@@ -7714,6 +8597,8 @@ createNode(context: UIContext, nodeType: 'Slider'): Slider
 Creates a FrameNode of the **Slider** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7775,6 +8660,8 @@ getAttribute(node: FrameNode, nodeType: 'Slider'): SliderAttribute | undefined
 Obtains the attributes of a **Slider** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7838,19 +8725,23 @@ Represents a FrameNode of the **Select** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SelectInterface](./arkui-ts/ts-basic-components-select.md#apis), [SelectAttribute](./arkui-ts/ts-basic-components-select.md#attributes)&gt; | FrameNode of the **Select** type.<br> **SelectInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Select** component.<br> **SelectAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Select** component.|
+| TypedFrameNode&lt;SelectInterface, SelectAttribute&gt; | FrameNode of the **Select** type.<br> **SelectInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Select** component.<br> **SelectAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Select** component.<br> **SelectInterface** indicates the [API](./arkui-ts/ts-basic-components-select.md#apis) of the **Select** component, and **SelectAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-select.md#attributes) of the **Select** component.|
 
 ### createNode('Select')<sup>18+</sup>
 
 createNode(context: UIContext, nodeType: 'Select'): Select
 
-Creates a FrameNode of the **Select** type.
+Creates a FrameNode of the **Select** type. When **typeNode** is used to create a **Select** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7884,7 +8775,7 @@ class MySelectController extends NodeController {
     node.appendChild(col)
     // Create a Select node and set its options.
     let select = typeNode.createNode(uiContext, 'Select')
-    select.initialize([{ value: "option one" }, { value: "option two" }, { value: "option three" }])
+    select.initialize([{ value: 'option one' }, { value: 'option two' }, { value: 'option three' }])
     col.appendChild(select)
     return node;
   }
@@ -7906,25 +8797,29 @@ struct FrameNodeTypeTest {
 
 ### Toggle<sup>18+</sup>
 
-type Toggle = TypedFrameNode&lt;[ToggleInterface](./arkui-ts/ts-basic-components-toggle.md#apis), [ToggleAttribute](./arkui-ts/ts-basic-components-toggle.md#attributes)&gt;
+type Toggle = TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt;
 
 FrameNode of the [Toggle](arkui-ts/ts-basic-components-toggle.md) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[ToggleInterface](./arkui-ts/ts-basic-components-toggle.md#apis), [ToggleAttribute](./arkui-ts/ts-basic-components-toggle.md#attributes)&gt; | FrameNode of the **Toggle** type.<br> **ToggleInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Toggle** component.<br> **ToggleAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Toggle** component.|
+| TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt; | FrameNode of the **Toggle** type.<br> **ToggleInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Toggle** component.<br> **ToggleAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Toggle** component.<br> **ToggleInterface** indicates the [API](./arkui-ts/ts-basic-components-toggle.md#apis) of the **Toggle** component, and **ToggleAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-toggle.md#attributes) of the **Toggle** component.|
 
 ### createNode('Toggle')<sup>18+</sup>
 
 createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle
 
-Creates a FrameNode of the **Toggle** type.
+Creates a FrameNode of the **Toggle** type. When **typeNode** is used to create a **Toggle** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7934,7 +8829,7 @@ Creates a FrameNode of the **Toggle** type.
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
 | nodeType | 'Toggle' | Yes| Node type. Set to **'Toggle'**.|
-| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18) | No| Options for configuring the node of the Toggle type, including setting the style through the **type** property.|
+| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18) | No | Options for creating a **Toggle** node. The switch style can only be set through the **type** attribute in **ToggleOptions**. When this parameter is not passed, the **type** attribute of **Toggle** must be set through the **initialize** API. |
 
 **Return value**
 
@@ -7988,6 +8883,8 @@ getAttribute(node: FrameNode, nodeType: 'Toggle'): ToggleAttribute | undefined
 Obtains the attributes of a **Toggle** node. If the node is not created using ArkTS, cross-language access must be enabled; otherwise, **undefined** is returned. This API does not support declaratively created nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8045,11 +8942,11 @@ struct FrameNodeTypeTest {
 
 ## NodeAdapter<sup>12+</sup>
 
-Provides lazy loading capabilities for FrameNode data, implementing [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md) API functionality.
+Provides lazy loading capabilities for FrameNode data, implementing API functionality through [LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md). It is suitable for scenarios such as long lists where node data needs to be loaded on demand, improving rendering performance and reducing memory usage.
 
 > **NOTE**
 >
-> Negative input parameters are ignored and trigger no processing.
+> Numeric input parameters (such as **start**, **count**, **from**, and **to**) in **NodeAdapter** APIs must not be negative. Negative input parameters are ignored and trigger no processing.
 
 **Example**
 
@@ -8063,6 +8960,8 @@ A constructor used to create a **NodeAdapter** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### dispose<sup>12+</sup>
@@ -8073,6 +8972,8 @@ Disposes of this **NodeAdapter** object. Bindings, if any, of the object will be
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### totalNodeCount<sup>12+</sup>
@@ -8082,6 +8983,8 @@ set totalNodeCount(count: number)
 Sets the total number of items in this node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8097,6 +9000,8 @@ Obtains the total number of items in this node.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -8109,9 +9014,11 @@ Obtains the total number of items in this node.
 
 reloadAllItems(): void
 
-Reloads all items in this node. This API calls the [OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded) API in **LazyForEach** to trigger component data refresh.
+Reloads all items in this node. This API actually calls the [onDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded) API in **LazyForEach** to instruct the component to reload all data.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8122,6 +9029,8 @@ reloadItem(start: number, count: number): void
 Reloads a specified number of items starting from a specific index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8140,6 +9049,8 @@ Removes a specified number of items starting from a specific index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8156,6 +9067,8 @@ insertItem(start: number, count: number): void
 Inserts a specified number of items starting from a specific index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8174,6 +9087,8 @@ Moves items from the starting index to the ending index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8191,13 +9106,15 @@ Obtains all available items. Available nodes include both currently displayed an
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
 | Type                    | Description                |
 | ----------------- | ------------ |
-| Array&lt;FrameNode&gt; | Array of items in the FrameNode.|
+| Array&lt;[FrameNode](#framenode-1)&gt; | Set of FrameNode data nodes. |
 
 ### onAttachToNode<sup>12+</sup>
 
@@ -8205,7 +9122,15 @@ onAttachToNode?(target: FrameNode): void
 
 Called when a FrameNode is attached to the NodeAdapter.
 
+> **NOTE**
+>
+> In versions earlier than API version 26.0.0, this callback is triggered when the host node is mounted to the main tree. If you set this callback by dynamically assigning a value, you can complete the setting after calling [attachNodeAdapter](#attachnodeadapter12) and before the host node is mounted to the main tree, and receive this callback when the host node is mounted to the main tree.
+>
+> Since API version 26.0.0, this callback is triggered immediately when the NodeAdapter is bound to the host node, rather than when the host node is mounted to the main node tree. At this point, the host node may not yet be mounted to the main node tree. If the callback logic depends on the node being mounted (for example, accessing layout information or executing animations), it is recommended to register [onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear) in this callback and place the relevant logic in **onAppear** for execution. If you set this callback by dynamically assigning a value, complete the setting before calling [attachNodeAdapter](#attachnodeadapter12); otherwise, the callback may not be triggered.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8213,7 +9138,7 @@ Called when a FrameNode is attached to the NodeAdapter.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| target | FrameNode | Yes  | FrameNode attached to the NodeAdapter.|
+| target | [FrameNode](#framenode-1) | Yes | FrameNode node bound to the NodeAdapter. |
 
 ### onDetachFromNode<sup>12+</sup>
 
@@ -8222,6 +9147,8 @@ onDetachFromNode?(): void
 Called when detachment occurs.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8232,6 +9159,8 @@ onGetChildId?(index: number): number
 Called during node initialization or when new child nodes are detected. The **index** parameter enables custom ID generation. Ensure that IDs remain unique across different index values.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8255,6 +9184,8 @@ Called during node initialization or when new child nodes are detected. When add
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8267,7 +9198,7 @@ Called during node initialization or when new child nodes are detected. When add
 
 | Type                    | Description                |
 | ----------------- | ------------ |
-| FrameNode | FrameNode created by you.|
+| [FrameNode](#framenode-1) | FrameNode node you created. |
 
 ### onDisposeChild<sup>12+</sup>
 
@@ -8277,6 +9208,8 @@ Called when a child node is about to be disposed. Nodes that are neither display
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8284,7 +9217,7 @@ Called when a child node is about to be disposed. Nodes that are neither display
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | id | number | Yes  | ID of the child node to be disposed of.|
-| node | FrameNode | Yes  | FrameNode to be disposed of.|
+| node | [FrameNode](#framenode-1) | Yes | FrameNode node to be disposed of. |
 
 ### onUpdateChild<sup>12+</sup>
 
@@ -8294,6 +9227,8 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8301,7 +9236,7 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | id | number | Yes  | ID of the node to be reused.|
-| node | FrameNode | Yes  | FrameNode that is reused.|
+| node | [FrameNode](#framenode-1) | Yes | FrameNode node to be reused. |
 
 ### attachNodeAdapter<sup>12+</sup>
 
@@ -8315,6 +9250,8 @@ Attaches a FrameNode to a NodeAdapter. Each node can be bound to only one NodeAd
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -8322,7 +9259,7 @@ Attaches a FrameNode to a NodeAdapter. Each node can be bound to only one NodeAd
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | adapter | [NodeAdapter](#nodeadapter12) | Yes  | NodeAdapter class for lazy loading.|
-| node | FrameNode | Yes  | FrameNode to be attached.|
+| node | [FrameNode](#framenode-1) | Yes | Attached FrameNode node. |
 
 **Return value**
 
@@ -8338,21 +9275,25 @@ Detaches a FrameNode from its NodeAdapter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | FrameNode | Yes  | FrameNode to detach.|
+| node | [FrameNode](#framenode-1) | Yes  | FrameNode node to be detached. |
 
 ### isDisposed<sup>20+</sup>
 
 isDisposed(): boolean
 
-Checks whether the NodeAdapter's backend reference has been released. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current **NodeAdapter** object has been released from the reference to the backend entity node. Each frontend node is bound to a corresponding backend entity node. After a node calls the **dispose** API to release the binding, calling other APIs of this node may result in crashes or return default values. Due to service requirements, there may be cases where a node's APIs are still called after the call to **dispose**. To address this, this API is provided for you to check the validity of a node before operating on it, thereby avoiding potential risks.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -8387,7 +9328,7 @@ class MyNodeController extends NodeController {
       .width('100%').height('100%').margin({ top: 5 });
     node.appendChild(col);
     let text = typeNode.createNode(uiContext, 'Text');
-    text.initialize("Hello").fontColor(Color.Blue).fontSize(14);
+    text.initialize('Hello').fontColor(Color.Blue).fontSize(14);
     col.appendChild(text);
     return node;
   }
@@ -8409,11 +9350,12 @@ struct FrameNodeTypeTest {
 ![FrameNodeTextTest](figures/FrameNodeTextTest.png)
 
 ## Example of Node Operations
+
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -8442,7 +9384,7 @@ class MyNodeController extends NodeController {
     }
 
     // Create a Stack container node.
-    let stackNode = typeNode.createNode(uiContext, "Stack");
+    let stackNode = typeNode.createNode(uiContext, 'Stack');
     this.frameNode.appendChild(stackNode);
     return this.rootNode;
   }
@@ -8525,7 +9467,7 @@ class MyNodeController extends NodeController {
     } else {
       console.info(`${TEST_TAG} getParent result: fail.`);
     }
-    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+    if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
@@ -8545,8 +9487,8 @@ class MyNodeController extends NodeController {
         console.info(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
-      console.info(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
-      console.info(`${TEST_TAG} moveTo result: fail.`);
+      console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
+      console.error(`${TEST_TAG} moveTo result: fail.`);
     }
   }
 
@@ -8657,7 +9599,7 @@ class MyNodeController extends NodeController {
 
   // Set the cross-language interaction option.
   setCrossLanguageOptions() {
-    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions)}`);
+    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions())}`);
     try {
       this.frameNode?.setCrossLanguageOptions({
         attributeSetting: true
@@ -8667,7 +9609,7 @@ class MyNodeController extends NodeController {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
       console.error(`${TEST_TAG} setCrossLanguageOptions fail.`);
     }
-    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions)}`);
+    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions())}`);
   }
 
   getInteractionEventBindingInfo() {
@@ -8710,18 +9652,18 @@ struct Index {
       Column({ space: 8 }) {
         Column() {
           Row() {
-            Button("ADD")
+            Button('ADD')
               .onClick(() => {
                 this.index++;
               })
-            Button("DEC")
+            Button('DEC')
               .onClick(() => {
                 this.index--;
               })
           }
 
           // Display the current index value.
-          Text("Current index is " + this.index)
+          Text('Current index is ' + this.index)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -8730,7 +9672,7 @@ struct Index {
         }
 
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -8744,153 +9686,153 @@ struct Index {
             .height(100)
         }
 
-        Button("appendChild")
+        Button('appendChild')
           .width(300)
           .onClick(() => {
             this.myNodeController.appendChild();
           })
-        Button("insertChildAfter")
+        Button('insertChildAfter')
           .width(300)
           .onClick(() => {
             this.myNodeController.insertChildAfter(this.index);
           })
-        Button("removeChild")
+        Button('removeChild')
           .width(300)
           .onClick(() => {
             this.myNodeController.removeChild(this.index);
           })
-        Button("clearChildren")
+        Button('clearChildren')
           .width(300)
           .onClick(() => {
             this.myNodeController.clearChildren();
           })
-        Button("getChildNumber")
+        Button('getChildNumber')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildNumber();
           })
-        Button("searchFrameNode")
+        Button('searchFrameNode')
           .width(300)
           .onClick(() => {
             this.myNodeController.searchFrameNode();
           })
-        Button("moveFrameNode")
+        Button('moveFrameNode')
           .width(300)
           .onClick(() => {
             this.myNodeController.moveFrameNode();
           })
-        Button("getPositionToWindow")
+        Button('getPositionToWindow')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindow();
           })
-        Button("getPositionToParent")
+        Button('getPositionToParent')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParent();
           })
-        Button("getPositionToScreen")
+        Button('getPositionToScreen')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreen();
           })
-        Button("getGlobalPositionOnDisplay")
+        Button('getGlobalPositionOnDisplay')
           .width(300)
           .onClick(() => {
             this.myNodeController.getGlobalPositionOnDisplay();
           })
-        Button("getPositionToParentWithTransform")
+        Button('getPositionToParentWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParentWithTransform();
           })
-        Button("getPositionToWindowWithTransform")
+        Button('getPositionToWindowWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindowWithTransform();
           })
-        Button("getPositionToScreenWithTransform")
+        Button('getPositionToScreenWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreenWithTransform();
           })
-        Button("getMeasuredSize")
+        Button('getMeasuredSize')
           .width(300)
           .onClick(() => {
             this.myNodeController.getMeasuredSize();
           })
-        Button("getLayoutPosition")
+        Button('getLayoutPosition')
           .width(300)
           .onClick(() => {
             this.myNodeController.getLayoutPosition();
           })
-        Button("getUserConfigBorderWidth")
+        Button('getUserConfigBorderWidth')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigBorderWidth();
           })
-        Button("getUserConfigPadding")
+        Button('getUserConfigPadding')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigPadding();
           })
-        Button("getUserConfigMargin")
+        Button('getUserConfigMargin')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigMargin();
           })
-        Button("getUserConfigSize")
+        Button('getUserConfigSize')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigSize();
           })
-        Button("getId")
+        Button('getId')
           .width(300)
           .onClick(() => {
             this.myNodeController.getId();
           })
-        Button("getUniqueId")
+        Button('getUniqueId')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUniqueId();
           })
-        Button("getNodeType")
+        Button('getNodeType')
           .width(300)
           .onClick(() => {
             this.myNodeController.getNodeType();
           })
-        Button("getOpacity")
+        Button('getOpacity')
           .width(300)
           .onClick(() => {
             this.myNodeController.getOpacity();
           })
-        Button("isVisible")
+        Button('isVisible')
           .width(300)
           .onClick(() => {
             this.myNodeController.isVisible();
           })
-        Button("isClipToFrame")
+        Button('isClipToFrame')
           .width(300)
           .onClick(() => {
             this.myNodeController.isClipToFrame();
           })
-        Button("isAttached")
+        Button('isAttached')
           .width(300)
           .onClick(() => {
             this.myNodeController.isAttached();
           })
-        Button("getInspectorInfo")
+        Button('getInspectorInfo')
           .width(300)
           .onClick(() => {
             this.myNodeController.getInspectorInfo();
           })
-        Button("getCustomProperty")
+        Button('getCustomProperty')
           .width(300)
           .onClick(() => {
             const uiContext: UIContext = this.getUIContext();
             if (uiContext) {
               // Obtain the FrameNode node based on the component ID.
-              const node: FrameNode | null = uiContext.getFrameNodeById("Test_Button") || null;
+              const node: FrameNode | null = uiContext.getFrameNodeById('Test_Button') || null;
               if (node) {
                 for (let i = 1; i < 4; i++) {
                   const key = 'customProperty' + i;
@@ -8912,23 +9854,23 @@ struct Index {
           })
           .customProperty('customProperty2', {})
           .customProperty('customProperty2', undefined)
-        Button("setCrossLanguageOptions")
+        Button('setCrossLanguageOptions')
           .width(300)
           .onClick(() => {
             this.myNodeController.setCrossLanguageOptions();
           })
-        Button("getInteractionEventBindingInfo")
+        Button('getInteractionEventBindingInfo')
           .width(300)
           .onClick(() => {
             this.myNodeController.getInteractionEventBindingInfo();
           })
-        Button("throwError")
+        Button('throwError')
           .width(300)
           .onClick(() => {
             this.myNodeController.throwError();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -8940,7 +9882,7 @@ struct Index {
 ```ts
 import { NodeController, FrameNode, UIContext, BuilderNode, ExpandMode, LengthUnit } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // BasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
 class BasicDataSource implements IDataSource {
@@ -9114,7 +10056,7 @@ class MyNodeController extends NodeController {
   getChildWithNotExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.NOT_EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N9") {
+    if (childNode!.getId() === 'N9') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`);
     } else {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
@@ -9124,7 +10066,7 @@ class MyNodeController extends NodeController {
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N3") {
+    if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: success.`);
     } else {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
@@ -9134,7 +10076,7 @@ class MyNodeController extends NodeController {
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N3") {
+    if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`);
     } else {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
@@ -9152,7 +10094,7 @@ struct Index {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -9164,33 +10106,33 @@ struct Index {
             .height(100)
         }
 
-        Button("getFirstChildIndexWithoutExpand")
+        Button('getFirstChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getFirstChildIndexWithoutExpand();
           })
-        Button("getLastChildIndexWithoutExpand")
+        Button('getLastChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getLastChildIndexWithoutExpand();
           })
-        Button("getChildWithNotExpand")
+        Button('getChildWithNotExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithNotExpand();
           })
-        Button("getChildWithExpand")
+        Button('getChildWithExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithExpand();
           })
-        Button("getChildWithLazyExpand")
+        Button('getChildWithLazyExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithLazyExpand();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
@@ -9198,6 +10140,7 @@ struct Index {
 ```
 
 ## Basic Event Example
+
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
 
@@ -9278,11 +10221,11 @@ struct Index {
 
   build() {
     Column() {
-      Button("add CommonEvent to Text")
+      Button('add CommonEvent to Text')
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
         })
-      Text("this is a Text")
+      Text('this is a Text')
         .fontSize(16)
         .borderWidth(1)
         .onHover(((isHover: boolean, event: HoverEvent): void => {
@@ -9321,7 +10264,7 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(100)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -9332,19 +10275,19 @@ struct Index {
 
 ```ts
 // index.ets
-import {Track, TrackManager, TrackNode} from "./track"
+import {Track, TrackManager, TrackNode} from './track'
 
 @Builder
 function page1() {
   Column() {
-    Text("Page1")
-    PageList().height("90%")
-    Button("DumpMessage")
+    Text('Page1')
+    PageList().height('90%')
+    Button('DumpMessage')
       .onClick(() => {
         TrackManager.get().dump()
       })
 
-  }.width("100%").height("100%")
+  }.width('100%').height('100%')
 }
 
 class BasicDataSource implements IDataSource {
@@ -9450,7 +10393,7 @@ struct PageList {
       LazyForEach(this.data, (item: string, index: number) => {
         ListItem() {
           // Encapsulate and instrument the component with tracking through TrackNode.
-          TrackNode({track: new Track().tag("xxx"+ item).id(index + 30000)}) {
+          TrackNode({track: new Track().tag('xxx'+ item).id(index + 30000)}) {
             Row() {
               Text(item).fontSize(30)
                 .onClick(() => {
@@ -9470,7 +10413,7 @@ struct TrackTest {
   pageInfos: NavPathStack = new NavPathStack()
   build() {
     Row() {
-      TrackNode({ track: new Track().tag("root").id(10000)}) {
+      TrackNode({ track: new Track().tag('root').id(10000)}) {
         page1()
       }
     }
@@ -9560,7 +10503,7 @@ export struct TrackNode {
 
 export class Track {
   public areaPercent: number = 0
-  private trackTag: string = ""
+  private trackTag: string = ''
   private trackId: number = 0
 
   constructor() {
@@ -9632,7 +10575,7 @@ export class TrackManager {
 
   startListenClick(context: UIContext) {
     //Obtain the tracking information of the FrameNode through seamless listening.
-    context.getUIObserver().on("willClick", (event: ClickEvent, node?: FrameNode) => {
+    context.getUIObserver().on('willClick', (event: ClickEvent, node?: FrameNode) => {
       console.info(`Track clicked:${node}`)
       if (node == undefined) {
         return
@@ -9651,7 +10594,9 @@ export class TrackManager {
   }
 }
 ```
+
 ## Gesture Event Example
+
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
 
@@ -9661,7 +10606,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100)
+    this.rootNode.commonAttribute
       .overlay('This is a FrameNode')
       .backgroundColor(Color.Pink)
       .width('100%')
@@ -9715,17 +10660,18 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
+
 ## Example of Customizing a Node
 
 ```ts
 import { UIContext, DrawContext, FrameNode, NodeController, LayoutConstraint, Size, Position } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
-function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
+function getChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
   const size = child.getUserConfigSize();
   const width = Math.max(
     Math.min(constraint.maxSize.width, size.width.value),
@@ -9755,7 +10701,7 @@ class MyFrameNode extends FrameNode {
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
       if (child) {
-        let childConstraint = GetChildLayoutConstraint(constraint, child);
+        let childConstraint = getChildLayoutConstraint(constraint, child);
         child.measure(childConstraint);
         let size = child.getMeasuredSize();
         sizeRes.height += size.height + this.space;
@@ -9845,6 +10791,7 @@ struct Index {
   }
 }
 ```
+
 ## NodeAdapter Usage Example
 
 ```ts
@@ -9887,7 +10834,7 @@ class MyNodeAdapter extends NodeAdapter {
 
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
@@ -9895,7 +10842,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.changed = !this.changed;
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data[index] = "Adapter ListItem " + (this.changed ? "changed:" : "") + index + " r:" + this.reloadTimes;
+      this.data[index] = 'Adapter ListItem ' + (this.changed ? 'changed:' : '') + index + ' r:' + this.reloadTimes;
     }
     this.reloadItem(from, count);
   }
@@ -9903,7 +10850,7 @@ class MyNodeAdapter extends NodeAdapter {
   insertData(from: number, count: number): void {
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
+      this.data.splice(index, 0, 'Adapter ListItem ' + from + '-' + i);
     }
     this.insertItem(from, count);
     this.totalNodeCount += count;
@@ -9918,8 +10865,8 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   moveData(from: number, to: number): void {
-    let tmp = this.data.splice(from, 1);
-    this.data.splice(to, 0, tmp[0]);
+    let movedItem = this.data.splice(from, 1);
+    this.data.splice(to, 0, movedItem[0]);
     this.moveItem(from, to);
   }
 
@@ -9929,7 +10876,7 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   onDetachFromNode(): void {
-    console.info("UINodeAdapter onDetachFromNode");
+    console.info('UINodeAdapter onDetachFromNode');
   }
 
   onGetChildId(index: number): number {
@@ -9949,9 +10896,9 @@ class MyNodeAdapter extends NodeAdapter {
         return cacheNode;
       }
     }
-    console.info("UINodeAdapter onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    console.info('UINodeAdapter onCreateChild createNew');
+    let itemNode = typeNode.createNode(this.uiContext, 'ListItem');
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     textNode.initialize(this.data[index]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
@@ -9984,7 +10931,7 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
     this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
@@ -10000,45 +10947,45 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black);
       Row() {
-        Button("Reload")
+        Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
           })
-        Button("Change")
+        Button('Change')
           .onClick(() => {
             this.adapterController.nodeAdapter?.changeData(5, 10)
           })
-        Button("Insert")
+        Button('Insert')
           .onClick(() => {
             this.adapterController.nodeAdapter?.insertData(10, 10);
           })
       }
 
       Row() {
-        Button("Remove")
+        Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
           })
-        Button("Move")
+        Button('Move')
           .onClick(() => {
             this.adapterController.nodeAdapter?.moveData(2, 5);
           })
-        Button("Refresh")
+        Button('Refresh')
           .onClick(() => {
             this.adapterController.nodeAdapter?.refreshData();
           })
-        Button("Detach")
+        Button('Detach')
           .onClick(() => {
             this.adapterController.nodeAdapter?.detachData();
           })
       }
     }.borderWidth(1)
-    .width("100%")
+    .width('100%')
   }
 }
 
@@ -10050,7 +10997,7 @@ struct ListNodeTest {
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  text: string = 'this is a text'
 }
 
 @Builder
@@ -10074,32 +11021,32 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       this.rootNode = new FrameNode(uiContext);
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" });
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' });
       this.rootNode.appendChild(this.buttonNode.getFrameNode());
     }
     return this.rootNode;
   }
 
   onAttach(): void {
-    console.info("myButton on attach");
+    console.info('myButton on attach');
   }
 
   onDetach(): void {
-    console.info("myButton on detach");
+    console.info('myButton on detach');
   }
 
-  // The child node has been added to the tree again. In this case, reuse is called to ensure that the child component can be reused.
+  // During onBind, the child node has been reattached to the tree. Call reuse at this point to ensure that the child component can be reused.
   onBind(containerId: number): void {
     // This method triggers the reuse of child components. In the global reuse scenario, the backend resources of FrameNode are reused.
     this.rootNode?.reuse();
-    console.info("myButton reuse");
+    console.info('myButton reuse');
   }
 
-  // The child node has been removed from the tree. In this case, recycle is called to ensure that the child component can be completely recycled.
+  // During onUnbind, the child node has been completely detached from the tree. Call recycle at this point to ensure that the child component can be fully recycled.
   onUnbind(containerId: number): void {
     // This method triggers the recycling of child components. In the global reuse scenario, the backend resources of FrameNode are recycled for reuse.
     this.rootNode?.recycle();
-    console.info("myButton recycle");
+    console.info('myButton recycle');
   }
 
   getButtonNode(): BuilderNode<[Params]> | null {
@@ -10123,11 +11070,11 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Bind/Unbind")
+        Button('Bind/Unbind')
           .onClick(() => {
             this.buttonIndex++;
           }).margin(5)
-        Button("onAttach/onDetach")
+        Button('onAttach/onDetach')
           .onClick(() => {
             this.buttonShow = !this.buttonShow
           }).margin(5)
@@ -10138,14 +11085,16 @@ struct Index {
       }
     }
     .padding({ left: 35, right: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 
 ```
 
 ## Example of Setting and Deleting a Polymorphic Style State
+
+Since API version 26.0.0, the **HOVERED** enumeration is added to [UIState](#uistate20).
 
 ```ts
 import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
@@ -10154,7 +11103,7 @@ import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 class MyNodeController extends NodeController {
   private isEnable: boolean = true;
   private theStatesToBeSupported =
-    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED;
+    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED | UIState.HOVERED;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     // Create and organize node relationships.
@@ -10172,7 +11121,7 @@ class MyNodeController extends NodeController {
     node.appendChild(column);
 
     let styleText = typeNode.createNode(uiContext, 'Text');
-    styleText.initialize("StyleTarget")
+    styleText.initialize('StyleTarget')
       .width('50%')
       .height('5%')
       .margin({ top: 5, bottom: 5 })
@@ -10192,6 +11141,11 @@ class MyNodeController extends NodeController {
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
+      }
+      if ((currentState & UIState.HOVERED) == UIState.HOVERED) {
+        // HOVERED state: Apply hovered UI effects.
+        console.info('Callback UIState.HOVERED')
+        node.commonAttribute.backgroundColor(Color.Blue)
       }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
         // PRESSED state: Apply pressed UI effects.
@@ -10221,7 +11175,7 @@ class MyNodeController extends NodeController {
 
     // Delete the polymorphic style processing capability from the Text component.
     let buttonRemove = typeNode.createNode(uiContext, 'Button');
-    buttonRemove.initialize("RemoveUIStatus")
+    buttonRemove.initialize('RemoveUIStatus')
       .width('50%')
       .height('5%')
       .fontSize(14)
@@ -10233,7 +11187,7 @@ class MyNodeController extends NodeController {
 
     // Change the enabling status of the target node of the polymorphic style.
     let buttonEnable = typeNode.createNode(uiContext, 'Button');
-    buttonEnable.initialize("DisableText")
+    buttonEnable.initialize('DisableText')
       .width('50%')
       .height('5%')
       .fontSize(14)
@@ -10260,6 +11214,8 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+![frameNode_stateStyles](./figures/frameNode_stateStyles.gif)
 
 ## Example of Creating and Canceling an Animation
 
@@ -10319,7 +11275,7 @@ class MyNodeController extends NodeController {
         let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue,
           { duration: 3000, curve: Curve.Linear, iterations: -1 });
         console.info(`create rotation animation from ${startValue ? String(startValue[2]) :
-          "undefined"} to ${endValue[2]}`);
+          'undefined'} to ${endValue[2]}`);
         if (result) {
           this.isRunning = true;
         } else {
@@ -10380,7 +11336,7 @@ class MyNodeController extends NodeController {
   }
 
   addCommonEvent(frameNode: FrameNode) {
-    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, "Grid");
+    let gridEvent: UIGridEvent | undefined = typeNode.getEvent(frameNode, 'Grid');
     gridEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
       console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`)
     })
@@ -10412,7 +11368,6 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State index: number = 0;
   private myNodeController: MyNodeController = new MyNodeController();
   @State numbers: string[] = []
 
@@ -10426,7 +11381,7 @@ struct Index {
 
   build() {
     Column() {
-      Button("add CommonEvent to Grid")
+      Button('add CommonEvent to Grid')
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
@@ -10451,14 +11406,14 @@ struct Index {
       .height(300)
 
       NodeContainer(this.myNodeController)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
 
 ## FrameNode Validity Check Example
 
-This example shows how to verify a FrameNode's state using the [isDisposed](#isdisposed20) API. This API returns **true** before node release and **false** after node release.
+This example demonstrates using the [isDisposed](#isdisposed20) API to verify the state of a FrameNode before and after node release. Before the node is released, calling **isDisposed** returns **false**; after the node is released, calling **isDisposed** returns **true**.
 
 ```ts
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -10573,7 +11528,7 @@ struct Index {
 
 ## NodeAdapter Validity Check Example
 
-This example shows how to verify a [NodeAdapter](#nodeadapter12)'s state using the [isDisposed](#isdisposed20) API. This API returns **true** before node release and **false** after node release.
+This example demonstrates using the [isDisposed](#isdisposed20) API to verify the state of a [NodeAdapter](#nodeadapter12) before and after node release. Before the node is released, calling **isDisposed** returns **false**; after the node is released, calling **isDisposed** returns **true**.
 
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
@@ -10596,7 +11551,7 @@ class MyNodeAdapter extends NodeAdapter {
 
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
@@ -10612,9 +11567,9 @@ class MyNodeAdapter extends NodeAdapter {
         return cacheNode;
       }
     }
-    console.info("UINodeAdapter onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    console.info('UINodeAdapter onCreateChild createNew');
+    let itemNode = typeNode.createNode(this.uiContext, 'ListItem');
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     textNode.initialize(this.data[index]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
@@ -10628,7 +11583,7 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
     this.nodeAdapter = new MyNodeAdapter(uiContext, 20);
@@ -10662,11 +11617,11 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black);
-      Button("NodeAdapter dispose")
+      Button('NodeAdapter dispose')
         .onClick(() => {
           this.adapterController.dispose();
           this.text = '';
@@ -10674,7 +11629,7 @@ struct ListNodeTest {
         .width(200)
         .height(50)
         .margin({ top: 10, bottom: 10 })
-      Button("NodeAdapter isDisposed")
+      Button('NodeAdapter isDisposed')
         .onClick(() => {
           this.text = this.adapterController.isDisposed();
         })
@@ -10683,7 +11638,7 @@ struct ListNodeTest {
       Text(this.text)
         .fontSize(25)
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -10711,7 +11666,7 @@ struct ChildView {
         })
         .onClick(() => {
           // Obtain the FrameNode object of the Text node by ID. Avoid setting multiple nodes with the same ID.
-          let node = this.getUIContext().getFrameNodeById("HelloWorld");
+          let node = this.getUIContext().getFrameNodeById('HelloWorld');
           console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
           // Use a while loop to traverse and find the root node of the page. If the current node is a custom component, continue traversing its parent node.
           while (node && node.getParent() && node.getParent()!.getUniqueId() > 0) {
@@ -10749,7 +11704,7 @@ This example demonstrates how to adopt a node as an affiliate node using the [ad
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -10774,7 +11729,7 @@ class MyNodeController extends NodeController {
       this.rootNode?.adoptChild(this.frameNode);
       console.info(`${TEST_TAG} adoptChild success`);
     } catch (e) {
-      console.info(`${TEST_TAG} adoptChild fail: ${JSON.stringify(e)}`);
+      console.error(`${TEST_TAG} adoptChild fail. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
     }
   }
 
@@ -10783,7 +11738,7 @@ class MyNodeController extends NodeController {
       this.rootNode?.removeAdoptedChild(this.frameNode);
       console.info(`${TEST_TAG} removeAdoptedChild success`);
     } catch (e) {
-      console.info(`${TEST_TAG} removeAdoptedChild fail: ${JSON.stringify(e)}`);
+      console.error(`${TEST_TAG} removeAdoptedChild fail. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
     }
   }
 }
@@ -10868,7 +11823,7 @@ struct ConvertPositionWithWindow {
 
     const testPoint: Position = { x: 10, y: 10 };
     try {
-      const result: Position = nodeA.convertPositionToWindow(testPoint); // The explicit declaration may return undefined.
+      const result: Position = nodeA.convertPositionToWindow(testPoint);
       console.info(`Node-relative coordinates (10, 10) are converted to window-relative coordinates (${result?.x}, ${result?.y}).`);
     } catch (e) {
       const exception = e as BusinessError<void>;
@@ -10876,7 +11831,7 @@ struct ConvertPositionWithWindow {
     }
 
     try {
-      const result: Position = nodeA.convertPositionFromWindow(testPoint); // The explicit declaration may return undefined.
+      const result: Position = nodeA.convertPositionFromWindow(testPoint);
       console.info(`Window-relative coordinates (10, 10) are converted to node-relative coordinates (${result?.x}, ${result?.y}).`);
     } catch (e) {
       const exception = e as BusinessError<void>;

@@ -14,8 +14,8 @@
 > **说明：**
 >
 >1. 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->2. 调用本模块接口和常量时请使用canIUse("SystemCapability.Communication.NFC.Tag")判断设备是否支持NFC能力，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
->3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
+>2. 从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/init.md#caniuse) && [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
+>3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## **导入模块**
 
@@ -23,7 +23,7 @@
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-## **tag.TagInfo**
+## **tag.TagInfo示例**
 
 在对相关Tag类型卡片进行读写之前，必须先获取[TagInfo](#taginfo)相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。这样Tag应用程序才能调用正确的接口和所读取到的Tag卡片进行通信。
 ```js
@@ -657,11 +657,11 @@ export default class MainAbility extends UIAbility {
 }
 ```
 
-## tag.on<sup>11+</sup>
+## tag.on('readerMode')<sup>11+</sup>
 
 on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-订阅NFC Tag读卡事件，实现前台应用优先分发。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息。需要与取消读卡器模式的[tag.off](#tagoff11)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff11)。使用callback异步回调。
+订阅NFC Tag读卡事件，实现前台应用优先分发。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息。需要与取消读卡器模式的[tag.off](#tagoffreadermode11)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoffreadermode11)。使用callback异步回调。与注册读卡器模式的[tag.on](#tagonreadermodewithinterval23)互斥使用。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -675,7 +675,7 @@ on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bu
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注册的回调类型，固定填"readerMode"字符串。 |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
+| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息，不可以为空。 |
 
 **错误码：**
@@ -692,13 +692,13 @@ on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bu
 
 **示例：**
 
-示例请参见[tag.off](#tagoff11)接口的示例。
+示例请参见[tag.off](#tagoffreadermode11)接口的示例。
 
-## tag.off<sup>11+</sup>
+## tag.off('readerMode')<sup>11+</sup>
 
 off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), callback?: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagon11)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。
+取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagonreadermode11)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -712,7 +712,7 @@ off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-b
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注销的回调类型，固定填"readerMode"字符串。|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
-| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。 |
+| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。不填该参数则取消订阅该type对应的读卡回调。 |
 
 **错误码：**
 
@@ -787,14 +787,15 @@ export default class MainAbility extends UIAbility {
 }
 ```
 
-## tag.on<sup>23+</sup>
+## tag.on('readerModeWithInterval')<sup>23+</sup>
 
 on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: Callback&lt;TagInfo&gt;, interval: number): void
 
 订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。使用callback异步回调。
 - 设备会进入读卡器模式，同时关闭卡模拟。
 - 通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。
-- 需要与取消读卡器模式的[tag.off](#tagoff23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff23)。
+- 需要与取消读卡器模式的[tag.off](#tagoffreadermodewithinterval23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoffreadermodewithinterval23)。
+- 与注册读卡器模式的[tag.on](#tagonreadermode11)互斥使用。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -808,9 +809,9 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注册的回调类型，固定填"readerModeWithInterval"字符串。 |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
+| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量), [SKIP_NDEF](#常量)中的一种或多种）。 |
 | callback | Callback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息。 |
-| interval | number | 是 | 设置卡在位检测间隔，单位为ms。 |
+| interval | number | 是 | 设置卡在位检测间隔，单位为ms。推荐范围100-2000，若传入负值则不生效，系统会使用默认卡在位间隔（150ms）。 |
 
 **错误码：**
 
@@ -825,13 +826,13 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 
 **示例：**
 
-示例请参见[tag.off](#tagoff23)接口的示例。
+示例请参见[tag.off](#tagoffreadermodewithinterval23)接口的示例。
 
-## tag.off<sup>23+</sup>
+## tag.off('readerModeWithInterval')<sup>23+</sup>
 
 off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callback&lt;TagInfo&gt;): void
 
-取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagon23)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。使用callback异步回调。
+取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagonreadermodewithinterval23)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用[tag.off](#tagoffreadermodewithinterval23)进行取消。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -845,7 +846,7 @@ off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callbac
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注销的回调类型，固定填"readerModeWithInterval"字符串。|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
-| callback | Callback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。 |
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。不填该参数则取消订阅该type对应的读卡回调。 |
 
 **错误码：**
 
@@ -869,13 +870,12 @@ let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需�
 let elementName : bundleManager.ElementName;
 let interval : number = 200;
 
-function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
-    if (!err) {
-        console.info("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
-    } else {
-        console.error("offCallback err: " + err.message);
-        return;
+function readerModeCb(tagInfo: tag.TagInfo) {
+    if (tagInfo == null) {
+      console.error('readerModeWithInterval tagInfo is invalid');
+      return;
     }
+    console.info("readerModeWithInterval: tag found tagInfo = ", JSON.stringify(tagInfo));
   // taginfo的其他操作
 }
 
@@ -973,7 +973,7 @@ try {
 
 makeTextRecord(text: string, locale: string): NdefRecord
 
-根据输入的文本数据和编码类型，构建NDEF标签的Record。
+根据输入的文本数据和语言类型，构建NDEF标签的Record。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -983,8 +983,8 @@ makeTextRecord(text: string, locale: string): NdefRecord
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| text   | string | 是   | 写入到NDEF Record里面的文本数据内容。 |
-| locale | string | 是   | 文本数据内容的编码方式。              |
+| text   | string | 是   | 写入到NDEF Record里面的文本数据内容。长度小于待写入的NFC标签容量。 |
+| locale | string | 是   | Record中记录文本的语言类型。长度小于待写入的NFC标签容量。              |
 
 **返回值：**
 
@@ -1351,6 +1351,11 @@ NFC Tag有多种不同的技术类型，定义常量描述不同的技术类型�
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic技术。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight技术。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE技术。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。               |
+| SKIP_NDEF                    | number |     11  | 跳过NDEF检查的技术。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | 文本类型的NDEF Record，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| RTD_URI<sup>9+</sup>         | number[] | [0x55] | URI类型的NDEF Record，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+
+
 
 ## TnfType<sup>9+</sup>
 NDEF Record的TNF(Type Name Field)类型值，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。
@@ -1368,18 +1373,6 @@ NDEF Record的TNF(Type Name Field)类型值，参考NDEF标签技术规范《NFC
 | TNF_EXT_APP      | 0x4    | NFC Forum external type [NFC RTD]。              |
 | TNF_UNKNOWN      | 0x5    | Unknown。                                        |
 | TNF_UNCHANGED    | 0x6    | Unchanged (see section 2.3.3)。                  |
-
-## NDEF Record RTD类型定义
-NDEF Record的RTD(Record Type Definition)类型值，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。
-
-**系统能力：** SystemCapability.Communication.NFC.Tag
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-| **名称**              |**类型**| **值** | **说明**                |
-| --------------------- | ------ | ------ | ----------------------- |
-| RTD_TEXT<sup>9+</sup> |number[]| [0x54] | 文本类型的NDEF Record。 |
-| RTD_URI<sup>9+</sup>  |number[]| [0x55] | URI类型的NDEF Record。  |
 
 ## NfcForumType<sup>9+</sup>
 NFC Forum标准里面Tag类型的定义。
