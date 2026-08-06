@@ -99,7 +99,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -165,7 +165,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -248,7 +248,7 @@ ArkTS-Sta: open(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -343,7 +343,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -450,7 +450,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）。     |
 
 **错误码：**
@@ -550,7 +550,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
 | timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
@@ -662,7 +662,7 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
 | timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
@@ -766,7 +766,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
 | timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
@@ -873,7 +873,7 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。     |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。     |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
 | timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
 
@@ -986,7 +986,7 @@ ArkTS-Sta: close(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
@@ -1084,7 +1084,7 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 
 **返回值：**
 
