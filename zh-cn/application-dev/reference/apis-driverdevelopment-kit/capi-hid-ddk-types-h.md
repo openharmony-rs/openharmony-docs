@@ -44,7 +44,7 @@
 | [Hid_DeviceProp](#hid_deviceprop) | Hid_DeviceProp | 输入设备特性定义。 |
 | [Hid_EventType](#hid_eventtype) | Hid_EventType | 事件类型。用于标识HID设备产生的事件类别，在驱动开发中用于事件分类和处理。 |
 | [Hid_SynEvent](#hid_synevent) | Hid_SynEvent | 同步事件编码。 |
-| [Hid_KeyCode](#hid_keycode) | Hid_KeyCode | 键值编码。 |
+| [Hid_KeyCode](#hid_keycode) | Hid_KeyCode | 键值编码。包括键盘、鼠标、触摸屏等输入设备的按键和事件编码。 |
 | [Hid_AbsAxes](#hid_absaxes) | Hid_AbsAxes | 绝对坐标编码。 |
 | [Hid_RelAxes](#hid_relaxes) | Hid_RelAxes | 相对坐标编码。 |
 | [Hid_MscEvent](#hid_mscevent) | Hid_MscEvent | 不适合其他类型的输入事件编码。 |
