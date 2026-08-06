@@ -71,28 +71,10 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
    > - 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   
    ``` TypeScript
-   let audioStreamInfo: audio.AudioStreamInfo = {
-     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-     channels: audio.AudioChannel.CHANNEL_2,
-     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-   };
-
-   let audioCapturerInfo: audio.AudioCapturerInfo = {
-     source: audio.SourceType.SOURCE_TYPE_MIC,
-     capturerFlags: 0
-   };
-
-   let audioCapturerOptions: audio.AudioCapturerOptions = {
-     streamInfo: audioStreamInfo,
-     capturerInfo: audioCapturerInfo,
-     playbackCaptureMode: audio.AudioPlaybackCaptureMode.MODE_MEDIA |
-       audio.AudioPlaybackCaptureMode.MODE_EXCLUDING_SELF
-   };
-
-   let audioCapturer: audio.AudioCapturer | undefined =
-     await audio.createAudioCapturer(audioCapturerOptions);
+   playbackCaptureMode: audio.AudioPlaybackCaptureMode.MODE_MEDIA |
+     audio.AudioPlaybackCaptureMode.MODE_EXCLUDING_SELF
    ```
 
 3. 调用[on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11)订阅音频数据读入回调。
@@ -260,96 +242,10 @@ C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-
    单独使用排除自身模式时，会录制大部分允许被采集的音频流并排除应用自身播放的音频；与媒体模式组合时，只录制媒体类音频并排除应用自身播放的音频。
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   
    ``` C++
-   bool ConfigurePlaybackCaptureBuilder(OH_AudioStreamBuilder* builder)
-   {
-       OH_AudioStreamBuilder_SetSamplingRate(builder, PLAYBACK_CAPTURE_SAMPLE_RATE);
-       OH_AudioStreamBuilder_SetChannelCount(builder, PLAYBACK_CAPTURE_CHANNEL_COUNT);
-       OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
-       OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
-       OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, MyOnPlaybackCaptureReadData, nullptr);
-
-       OH_AudioStream_Result result =
-           OH_AudioStreamBuilder_SetPlaybackCaptureMode(builder, PLAYBACK_CAPTURE_MODE);
-       return result == AUDIOSTREAM_SUCCESS;
-   }
-
-   OH_AudioCapturer* CreatePlaybackCapture()
-   {
-       OH_AudioStreamBuilder* builder = nullptr;
-       OH_AudioStream_Result result =
-           OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
-       if (result != AUDIOSTREAM_SUCCESS || builder == nullptr) {
-           return nullptr;
-       }
-       if (!ConfigurePlaybackCaptureBuilder(builder)) {
-           OH_AudioStreamBuilder_Destroy(builder);
-           return nullptr;
-       }
-
-       OH_AudioCapturer* audioCapturer = nullptr;
-       result = OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
-       OH_AudioStreamBuilder_Destroy(builder);
-       if (result != AUDIOSTREAM_SUCCESS || audioCapturer == nullptr) {
-           return nullptr;
-       }
-       return audioCapturer;
-   }
-
-   bool StorePlaybackCapture(OH_AudioCapturer* audioCapturer)
-   {
-       std::lock_guard<std::mutex> lock(g_playbackCaptureMutex);
-       if (g_playbackCaptureCapturer != nullptr) {
-           return false;
-       }
-       g_playbackCaptureCapturer = audioCapturer;
-       g_playbackCaptureStartState.store(-1);
-       g_playbackCaptureReadBytes.store(0);
-       return true;
-   }
-
-   <!-- @[RequestPlaybackCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-   bool RequestPlaybackCaptureStart(OH_AudioCapturer* audioCapturer)
-   {
-       OH_AudioStream_Result result = OH_AudioCapturer_RequestPlaybackCaptureStart(
-           audioCapturer, MyOnPlaybackCaptureStart, nullptr);
-       if (result == AUDIOSTREAM_SUCCESS) {
-           return true;
-       }
-
-       bool shouldRelease = false;
-       {
-           std::lock_guard<std::mutex> lock(g_playbackCaptureMutex);
-           if (g_playbackCaptureCapturer == audioCapturer) {
-               g_playbackCaptureCapturer = nullptr;
-               shouldRelease = true;
-           }
-       }
-       if (shouldRelease) {
-           OH_AudioCapturer_Release(audioCapturer);
-       }
-       return false;
-   }
-
-   void StartPlaybackCapture()
-   {
-       {
-           std::lock_guard<std::mutex> lock(g_playbackCaptureMutex);
-           if (g_playbackCaptureCapturer != nullptr) {
-               return;
-           }
-       }
-
-       OH_AudioCapturer* audioCapturer = CreatePlaybackCapture();
-       if (audioCapturer == nullptr) {
-           return;
-       }
-       if (!StorePlaybackCapture(audioCapturer)) {
-           OH_AudioCapturer_Release(audioCapturer);
-           return;
-       }
-       RequestPlaybackCaptureStart(audioCapturer);
-   }
+   OH_AudioStream_Result playbackCaptureModeResult =
+       OH_AudioStreamBuilder_SetPlaybackCaptureMode(builder, PLAYBACK_CAPTURE_MODE);
    ```
 
    生成`OH_AudioCapturer`后，构造器不再使用，需要立即调用`OH_AudioStreamBuilder_Destroy()`释放构造器资源。设置内录模式失败时也需要销毁构造器。
