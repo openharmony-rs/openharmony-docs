@@ -60,7 +60,7 @@ import { faceAuth } from '@kit.UserAuthenticationKit';
 
 ## FaceAuthManager
 
-人脸认证管理器对象。用于提供人脸录入过程中的管理功能，目前支持设置人脸预览界面的Surface ID。
+人脸认证管理器对象。用于提供人脸录入过程中的管理功能，目前支持设置人脸预览界面的SurfaceId。
 
 ### constructor
 
@@ -90,7 +90,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 
 setSurfaceId(surfaceId: string): void
 
-用于在录入人脸时设置人脸预览界面的Surface ID。该接口需要配合[addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)使用，通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取Xcomponent组件的SurfaceId来显示人脸预览画面。
+用于在录入人脸时设置人脸预览界面的SurfaceId。该接口需要配合[addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)使用，通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法获取Xcomponent组件的SurfaceId来显示人脸预览画面。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.FaceAuth
 
