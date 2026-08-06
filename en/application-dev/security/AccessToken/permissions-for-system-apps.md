@@ -8916,3 +8916,17 @@ Allows an application on the rear armrest screen to connect to the head unit for
 **Supported devices**: cars
 
 **Since**: 26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+Allows an application to sign data using OEM certificates.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
