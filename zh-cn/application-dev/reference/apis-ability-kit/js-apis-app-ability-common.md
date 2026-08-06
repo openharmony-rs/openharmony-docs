@@ -349,6 +349,9 @@ type PacMap = _PacMap
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
