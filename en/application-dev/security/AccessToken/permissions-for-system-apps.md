@@ -8943,6 +8943,6 @@ With this permission, the application can query the database using the sandbox i
 
 **Certificate-based authorization**: true
 
-**Supported devices**: General | PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+**Supported devices**: PC/2in1 | Phone | Tablet | TV | Smartlock | Car
 
 **Since**: 26.1.0
