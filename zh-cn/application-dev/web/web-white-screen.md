@@ -431,16 +431,16 @@ Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进�
    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
    ```
    
-## WebView默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏。
+## WebView默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏
 
-**问题现象：**
+**问题：**
 
 网页在系统自带浏览器访问正常，但是在应用的WebView中加载出现页面白屏。
 
-**可能原因：**
+**原因：**
 
 WebView默认的缓存模式`CacheMode.Default`行为是优先使用缓存。当缓存中存在资源时，WebView会在后续请求中自动附加基于缓存内容的条件请求头`If-None-Match`（携带缓存的ETag值），向服务端做协商缓存校验。当服务端资源更新导致ETag变化时，条件匹配失败，服务端返回412。WebView收到412后不会自动降级重试，直接判定主资源加载失败，页面白屏。
 
-**解决措施：**
+**解决方案：**
 
 在Web组件上设置[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)属性为`CacheMode.Online`（即`.cacheMode(CacheMode.Online)`）。该模式下，WebView会向服务端发起无条件请求，不携带基于旧缓存的条件头（如`If-None-Match`），强制从网络获取最新资源、不使用任何缓存，从而绕过缓存协商校验环节，避免主资源因协商失败而加载失败导致白屏。
