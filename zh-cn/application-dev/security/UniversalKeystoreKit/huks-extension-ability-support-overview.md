@@ -21,10 +21,6 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 3. 注销下线：在设备拔出、服务停止等不可用场景下调用[unregisterProvider](#注册注销)注销已注册的能力，避免资源残留。
 
-![huks_extension_crypto_ability.png](figures/huks_extension_crypto_ability.png)
-
-//整体流程图和图注
-
 ## 接入能力
 
 密钥管理扩展应用需实现以下机制，使单个ExtensionAbility实例能够安全地管理一个或多个外部密钥管理资源（如UKey物理设备、软件资源等）。
@@ -39,7 +35,7 @@ CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../appl
 
 ### 可用性检测与注册/注销时机
 
-密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)和[CryptoExtensionAbility注册与注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)。
+密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销(ArkTS)](huks-extension-registration-and-unregistration-arkts-ndk.md)和[CryptoExtensionAbility注册与注销(C/C++)](huks-extension-registration-and-unregistration-arkts-ndk.md)。
 
 检测机制因设备形态而异：
 - UKey物理设备：监听USB插拔事件。
