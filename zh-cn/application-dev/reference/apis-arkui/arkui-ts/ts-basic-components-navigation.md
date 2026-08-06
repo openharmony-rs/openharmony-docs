@@ -2287,6 +2287,7 @@ Navigation配置项。
 | ---- | ---- | ---- | ---- | ---- |
 | stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -5888,3 +5889,111 @@ struct NavigationTitleMaterialDemo {
 ```
 
 ![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)
+
+
+### 示例21（开启左起右清栈效果）
+
+该示例演示如何使用clearContentStackOnPrimaryNavigation属性，开启Navigation左起右清栈效果。
+
+从API版本26.1.0开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
+
+```ts
+// xxx.ets
+@Component
+struct MyControlPanel {
+  private stack: NavPathStack | undefined = undefined;
+
+  aboutToAppear(): void {
+    let info = this.queryNavigationInfo();
+    if (info) {
+      this.stack = info.pathStack;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('push pageOne').onClick(() => {
+        this.stack?.pushPath({name: 'one'})
+      })
+        .margin({top: 25})
+      Button('push pageTwo').onClick(() => {
+        this.stack?.pushPath({name: 'two'})
+      })
+        .margin({top: 25})
+      Button('pop').onClick(() => {
+        this.stack?.pop()
+      })
+        .margin({top: 25})
+    }
+  }
+}
+
+@Component
+struct MyPageOne {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageOne')
+  }
+}
+
+@Component
+struct MyPageTwo {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageTwo')
+  }
+}
+
+@Entry
+@Component
+struct NavigationConfig {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyDestMap(name: string) {
+    if (name === 'one') {
+      MyPageOne()
+    } else {
+      MyPageTwo()
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('NavBar')
+    .titleMode(NavigationTitleMode.Mini)
+    .mode(NavigationMode.Split)
+    .navDestination(this.MyDestMap)
+    .configuration({
+      clearContentStackOnPrimaryNavigation: true
+    })
+  }
+}
+```
+
+![navigationClearContent.gif](figures/navigationClearContent.gif)
+
