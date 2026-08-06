@@ -818,7 +818,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes: 1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
+| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
 | 11400104 | Set limit failed due to remote exception. |
 
 **示例**：
@@ -1003,7 +1003,7 @@ getVMRuntimeStat(item: string): number
 
 | 错误码ID | 错误信息                                                                                                       |
 | ------- |------------------------------------------------------------------------------------------------------------|
-| 401 | Possible causes:1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| 401 | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
 
 **示例**：
 
