@@ -89,35 +89,12 @@
   - CryptoExtensionAbility适配<!--huks-cryptoextensionability-adaptation-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
     - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
-    - [CryptoExtensionAbility注册与注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)
-    - [CryptoExtensionAbility注册与注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)
+    - [CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)
   - 密钥管理扩展使用<!--huks-key-management-extension-usage-->
-    - 密钥生成/导入/导出<!--huks-key-generation-import-export-->
-      - [密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)
-      - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
-      - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
-      - [密钥导出(ArkTS)](huks-extension-key-export-arkts.md)
-    - 签名/验签<!--huks-signing-verification-->
-      - [签名/验签介绍及算法规格](huks-extension-ability-signing-signature-verification-overview.md)
-      - [签名/验签(ArkTS)](huks-extension-ability-signing-signature-verification-arkts.md)
-      - [签名/验签(C/C++)](huks-extension-ability-signing-signature-verification-ndk.md)
-    - PIN码访问控制<!--huks-pin-access-control-->
-      - [PIN码认证介绍及规格](huks-extension-ability-pin-authentication-management-overview.md)
-      <!--Del-->
-      - [PIN码认证(ArkTS)(仅对系统应用开放)](huks-extension-ability-pin-authentication-arkts-sys.md)
-      <!--DelEnd-->
-      - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
-      - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
-      - [清除PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)
-    - 其它操作<!--huks-other-operations-->
-      - [其它操作介绍及规格](huks-extension-ability-general-query-overview.md)
-      - [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
-      - [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
-      - [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
-      - [查询(ArkTS)](huks-extension-ability-general-query-arkts.md)
-      - [查询(C/C++)](huks-extension-ability-general-query-ndk.md)
-      - [属性设置(ArkTS)](huks-extension-set-property-arkts.md)
-      - [获取错误信息(ArkTS)](huks-extension-ability-get-error-info-arkts.md)
+    - [密钥生成与导入导出](huks-extension-key-generation-import-export.md)
+    - [签名/验签](huks-extension-ability-signing-signature-verification.md)
+    - [PIN码访问控制](huks-extension-ability-pin-authentication-management.md)
+    - [通用操作](huks-extension-ability-general-operation.md)
 - 应用场景<!--huks-application-scenarios-->
   - [浏览器双向SSL登录](huks-extension-ability-best-dev.md)
 <!--RP4--><!--RP4End-->

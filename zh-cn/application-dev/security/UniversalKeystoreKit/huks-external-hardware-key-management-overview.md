@@ -36,11 +36,9 @@ HUKS框架保持设备无关——既支持UKey物理设备，也支持软件形
 
   密钥管理扩展应用需继承HUKS提供的CryptoExtensionAbility，并按需完成能力接口实现。具体参考[CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)。
 
-  CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类。开发者可以通过继承CryptoExtensionAbility并实现自定义接口，实现定制化的外部密钥管理功能，包括：调用外部密钥管理能力的资源打开与关闭接口、PIN认证实现、三段式接口等，可参考[CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)。
-
 - 将密钥管理扩展能力注册到系统HUKS服务中。
 
-  CryptoExtensionAbility可以隔离不同外部密钥管理能力提供方的实现差异。密钥管理扩展应用完成接口实现后，需在设备或服务可用时将CryptoExtensionAbility注册到HUKS，**注册成功后能力即对外开放**；在设备拔出、服务停止等不可用场景下，需注销已注册的能力，避免资源残留。注册/注销的具体实现可参考[注册/注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)和[注册/注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)。
+  CryptoExtensionAbility可以隔离不同外部密钥管理能力提供方的实现差异。密钥管理扩展应用完成接口实现后，需在设备或服务可用时将CryptoExtensionAbility注册到HUKS，**注册成功后能力即对外开放**；在设备拔出、服务停止等不可用场景下，需注销已注册的能力，避免资源残留。注册/注销的具体实现可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
 
   能力注册成功后，将通过HUKS和[证书管理](../DeviceCertificateKit/certManager-overview.md)的SDK开放给上层应用与系统模块使用，覆盖证书查询、PIN码认证、签名验签等典型操作。
 
@@ -56,17 +54,17 @@ HUKS框架保持设备无关——既支持UKey物理设备，也支持软件形
 
 2. [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)：参考项目搭建、状态管理与功能接口的实现示例。
 
-3. [注册/注销(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)/[注册/注销(C/C++)](huks-extension-registration-and-unregistration-ndk.md)：在设备或服务可用时调用registerProvider将已实现的CryptoExtensionAbility注册到HUKS，使能力对外开放；不可用时调用unregisterProvider注销，避免资源残留。
+3. [CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)：在设备或服务可用时调用registerProvider将已实现的CryptoExtensionAbility注册到HUKS，使能力对外开放；不可用时调用unregisterProvider注销，避免资源残留。
 
 ### 能力使用方
 
-1. [密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)：密钥生成与导入/导出的能力与算法规格。
+1. [密钥生成与导入导出](huks-extension-key-generation-import-export.md)：密钥生成与导入导出的能力介绍与开发指导。
 
-2. [签名/验签介绍及算法规格](huks-extension-ability-signing-signature-verification-overview.md)：签名验签能力介绍。
+2. [签名/验签](huks-extension-ability-signing-signature-verification.md)：通过HUKS提供的密钥管理扩展场景下的三段式接口，提供签名验签的能力介绍与开发指导。
 
-3. [PIN码认证介绍及规格](huks-extension-ability-pin-authentication-management-overview.md)：PIN码认证流程与认证状态查询。
+3. [PIN码访问控制](huks-extension-ability-pin-authentication-management.md)：密钥管理扩展场景下的PIN码访问控制能力与开发指导。
 
-4. [其它操作介绍及规格](huks-extension-ability-general-query-overview.md)：打开/关闭资源、查询、属性设置、获取错误信息等通用能力。
+4. [通用操作](huks-extension-ability-general-operation.md)：介绍打开/关闭资源、查询、属性设置、获取错误信息等通用能力，并提供开发指导。
 
 ### 应用场景
 

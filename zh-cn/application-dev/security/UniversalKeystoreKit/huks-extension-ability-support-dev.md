@@ -13,7 +13,7 @@
 
 ## 适配指导
 
-本文档旨在指导**密钥管理扩展应用开发者**如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)中的接口能力，涵盖项目搭建、核心实现模式、17个接口的参考示例。此处给出实现参考，可根据业务按需实现其中部分接口，其他实现依照业务需要依次调用driver封装的底层驱动函数。
+本文档旨在指导**密钥管理扩展应用开发者**如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)中的接口能力，涵盖项目搭建、核心实现模式、所有接口的参考示例。此处给出实现参考，可根据业务按需实现其中部分接口，其他实现依照业务需要依次调用driver封装的底层驱动函数。
 
 在DevEco Studio工程中手动新建一个CryptoExtensionAbility组件，具体步骤如下：
 
@@ -141,43 +141,6 @@
    ```
 
 ## 接口实现
-
-### onGetResourceId
-
-从API版本26.0.0开始，onGetResourceId用于获取密钥扩展能力的资源ID。当调用成功时，返回值中的resultCode成员需设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
-
-   ```ts
-   onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
-     const result: HuksCryptoExtensionResult = {
-       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
-     };
-
-     // 解析必选参数
-     const resourceInfo = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
-       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO
-     )?.value as Uint8Array;
-     const abilityName = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
-       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME
-     )?.value.toString();
-     const bundleName = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
-       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME
-     )?.value.toString();
-
-     if (resourceInfo === undefined || abilityName === undefined || bundleName === undefined) {
-       return Promise.resolve(result);
-     }
-
-     try {
-       const driverRes: YourDriverGetResourceIdResult = YourDriverInstance.YourDriver_onGetResourceId(abilityName, bundleName, resourceInfo);
-       result.resultCode = driverRes.resultCode;
-       result.resourceId = driverRes.resourceId;
-       if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
-     } catch (error) {
-       this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL, error);
-     }
-     return Promise.resolve(result);
-   }
-   ```
 
 ### onOpenResource
 
@@ -452,127 +415,6 @@ onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返
   }
    ```
 
-### onGenerateKeyItem
-
-从API版本26.0.0开始，onGenerateKeyItem用于在密钥管理扩展服务中生成密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
-
-   ```ts
-   onGenerateKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
-    const result: HuksCryptoExtensionResult = {
-      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
-    };
-
-    const uid = this.extractUid(params);
-    if (uid === undefined) {
-      return Promise.resolve(result);
-    }
-
-    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
-    if (driverHandle === undefined) {
-      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
-      return Promise.resolve(result);
-    }
-
-    // 解析参数；如未传入参数，驱动应用应设置默认值
-    const algorithm = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value 
-      as huks.HuksKeyAlg) ?? huks.HuksKeyAlg.HUKS_ALG_RSA;
-    const keySize = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value 
-      as huks.HuksKeySize) ?? huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
-    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
-      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
-
-    try {
-      const driverRes: YourDriverResult = YourDriverInstance.YourDriver_onGenerateKeyItem(driverHandle, algorithm, keySize, purpose);
-      result.resultCode = driverRes.resultCode;
-      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
-    } catch (error) {
-      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, error);
-    }
-    return Promise.resolve(result);
-   }
-   ```
-
-### onExportKeyItem
-
-从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由密钥管理扩展应用定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员需设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
-
-   ```ts
-
-   onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
-    const result: HuksCryptoExtensionResult = {
-      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
-      outData: new Uint8Array()
-    };
-
-    const uid = this.extractUid(params);
-    if (uid === undefined) {
-      return Promise.resolve(result);
-    }
-
-    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
-    if (driverHandle === undefined) {
-      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
-      return Promise.resolve(result);
-    }
-
-    // 推荐使用HUKS_TAG_PURPOSE参数
-    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
-      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
-
-    try {
-      const driverRes: YourDriverExportKeyResult = YourDriverInstance.YourDriver_onExportKeyItem(driverHandle, purpose);
-      result.resultCode = driverRes.resultCode;
-      result.outData = driverRes.pubKey;
-      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
-    } catch (error) {
-      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, error);
-    }
-    return Promise.resolve(result);
-   }
-   ```
-
-### onImportWrappedKeyItem
-
-从API版本26.0.0开始，onImportWrappedKeyItem用于导入加密封装的密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
-
-   ```ts
-   onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCryptoExtensionParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
-    const result: HuksCryptoExtensionResult = {
-      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
-    };
-
-    const uid = this.extractUid(params);
-    if (uid === undefined) {
-      return Promise.resolve(result);
-    }
-
-    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
-    if (driverHandle === undefined) {
-      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
-      return Promise.resolve(result);
-    }
-
-    // 解析参数；如未传入参数，驱动应用应设置默认值
-    const algorithm = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value 
-      as huks.HuksKeyAlg) ?? huks.HuksKeyAlg.HUKS_ALG_RSA;
-    const keySize = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value 
-      as huks.HuksKeySize) ?? huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
-    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
-      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
-
-    try {
-      const driverRes: YourDriverResult = YourDriverInstance.YourDriver_onImportWrappedKeyItem(
-        driverHandle, wrappingHandle, algorithm, keySize, purpose, wrappedKey
-      );
-      result.resultCode = driverRes.resultCode;
-      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
-    } catch (e) {
-      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, e);
-    }
-    return Promise.resolve(result);
-   }
-   ```
-
 ### onInitSession
 
 onInitSession用于初始化密钥会话。当调用成功时，返回值中的resultCode成员需设置为0，handle成员非空。调用失败时，resultCode携带错误码信息。
@@ -826,5 +668,164 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
        console.error('promise: onSetProperty failed.');
      }
      return Promise.resolve(result);
+   }
+   ```
+
+
+### onGetResourceId
+
+从API版本26.0.0开始，onGetResourceId用于获取密钥扩展能力的资源ID。当调用成功时，返回值中的resultCode成员需设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
+
+   ```ts
+   onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+     const result: HuksCryptoExtensionResult = {
+       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+     };
+
+     // 解析必选参数
+     const resourceInfo = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
+       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO
+     )?.value as Uint8Array;
+     const abilityName = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
+       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME
+     )?.value.toString();
+     const bundleName = (params as Array<huksExternalCrypto.HuksExternalCryptoParam>).find(p => 
+       p.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME
+     )?.value.toString();
+
+     if (resourceInfo === undefined || abilityName === undefined || bundleName === undefined) {
+       return Promise.resolve(result);
+     }
+
+     try {
+       const driverRes: YourDriverGetResourceIdResult = YourDriverInstance.YourDriver_onGetResourceId(abilityName, bundleName, resourceInfo);
+       result.resultCode = driverRes.resultCode;
+       result.resourceId = driverRes.resourceId;
+       if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
+     } catch (error) {
+       this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL, error);
+     }
+     return Promise.resolve(result);
+   }
+   ```
+
+### onGenerateKeyItem
+
+从API版本26.0.0开始，onGenerateKeyItem用于在密钥管理扩展服务中生成密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
+
+   ```ts
+   onGenerateKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+    };
+
+    const uid = this.extractUid(params);
+    if (uid === undefined) {
+      return Promise.resolve(result);
+    }
+
+    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
+    if (driverHandle === undefined) {
+      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
+      return Promise.resolve(result);
+    }
+
+    // 解析参数；如未传入参数，驱动应用应设置默认值
+    const algorithm = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value 
+      as huks.HuksKeyAlg) ?? huks.HuksKeyAlg.HUKS_ALG_RSA;
+    const keySize = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value 
+      as huks.HuksKeySize) ?? huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
+    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
+      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
+
+    try {
+      const driverRes: YourDriverResult = YourDriverInstance.YourDriver_onGenerateKeyItem(driverHandle, algorithm, keySize, purpose);
+      result.resultCode = driverRes.resultCode;
+      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
+    } catch (error) {
+      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, error);
+    }
+    return Promise.resolve(result);
+   }
+   ```
+
+### onExportKeyItem
+
+从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由密钥管理扩展应用定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员需设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
+
+   ```ts
+
+   onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      outData: new Uint8Array()
+    };
+
+    const uid = this.extractUid(params);
+    if (uid === undefined) {
+      return Promise.resolve(result);
+    }
+
+    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
+    if (driverHandle === undefined) {
+      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
+      return Promise.resolve(result);
+    }
+
+    // 推荐使用HUKS_TAG_PURPOSE参数
+    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
+      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
+
+    try {
+      const driverRes: YourDriverExportKeyResult = YourDriverInstance.YourDriver_onExportKeyItem(driverHandle, purpose);
+      result.resultCode = driverRes.resultCode;
+      result.outData = driverRes.pubKey;
+      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
+    } catch (error) {
+      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, error);
+    }
+    return Promise.resolve(result);
+   }
+   ```
+
+### onImportWrappedKeyItem
+
+从API版本26.0.0开始，onImportWrappedKeyItem用于导入加密封装的密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
+
+   ```ts
+   onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCryptoExtensionParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+    };
+
+    const uid = this.extractUid(params);
+    if (uid === undefined) {
+      return Promise.resolve(result);
+    }
+
+    const driverHandle = this.handleMap.get(this.makeStorageKey(uid, handle));
+    if (driverHandle === undefined) {
+      result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST;
+      return Promise.resolve(result);
+    }
+
+    // 解析参数；如未传入参数，驱动应用应设置默认值
+    const algorithm = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value 
+      as huks.HuksKeyAlg) ?? huks.HuksKeyAlg.HUKS_ALG_RSA;
+    const keySize = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value 
+      as huks.HuksKeySize) ?? huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
+    const purpose = (params.find(p => p.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value 
+      as huks.HuksKeyPurpose) ?? huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
+
+    try {
+      const driverRes: YourDriverResult = YourDriverInstance.YourDriver_onImportWrappedKeyItem(
+        driverHandle, wrappingHandle, algorithm, keySize, purpose, wrappedKey
+      );
+      result.resultCode = driverRes.resultCode;
+      if (driverRes.errInfo) result.errInfo = driverRes.errInfo;
+    } catch (e) {
+      this.failResult(result, HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL, e);
+    }
+    return Promise.resolve(result);
    }
    ```
