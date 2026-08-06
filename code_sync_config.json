@@ -65168,5 +65168,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-playback-no-sound-troubleshooting.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
+				"functions":[
+					{
+						"end_line":177,
+						"name":"Render_ConfigStream",
+						"start_line":163
+					},
+					{
+						"end_line":192,
+						"name":"Render_SetRendererWriteDataCallback",
+						"start_line":60
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-playback-performance-troubleshooting.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
+				"functions":[
+					{
+						"end_line":177,
+						"name":"Render_ConfigStream",
+						"start_line":163
+					}
+				]
+			}
+		]
 	}
 ]
