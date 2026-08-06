@@ -8946,3 +8946,17 @@ With this permission, the application can query the database using the sandbox i
 **Supported devices**: PC/2in1 | Phone | Tablet | TV | Smartlock | Car
 
 **Since**: 26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+Allows an application to sign data using OEM certificates.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
