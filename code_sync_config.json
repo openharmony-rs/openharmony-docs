@@ -57972,7 +57972,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"dynamic_isolation_process",
 						"start_line":15
 					}
