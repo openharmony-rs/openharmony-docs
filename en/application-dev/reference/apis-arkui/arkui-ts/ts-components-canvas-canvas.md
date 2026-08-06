@@ -1,16 +1,18 @@
 #  Canvas
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:32:03.386Z pushedAt=2026-08-01T06:42:55.873Z -->
 
 The **Canvas** component can be used to customize drawings.
 
 > **NOTE**
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
@@ -22,15 +24,15 @@ Not supported
 
 Canvas(params: CanvasParams)
 
-Creates a **Canvas** component that does not cache commands using **CanvasParams**. Creates a **Canvas** component. The maximum allowed size cannot exceed 10000 px × 10000 px. If the size exceeds this limit, the **Canvas** component will fail to be created.
+Creates a **Canvas** component that does not cache commands using **CanvasParams**. When creating a **Canvas** component, the maximum area cannot exceed 10000 px × 10000 px. If the area exceeds this limit, the **Canvas** component cannot be created properly. When the **Canvas** component does not have a fixed size set, it expands to its maximum available size by default.
 
 > **NOTE**
 >
-> - The **Canvas** component created using this API will return a [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) object in the input parameter of the [onReady<sup>23+</sup>](#onready23) callback, which can be used for drawing on the **Canvas** component.
+> - The **Canvas** component created using this API returns a [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) object in the input parameter of the [onReady<sup>23+</sup>](#onready23) callback, which can be used for drawing on the **Canvas** component.
 >
-> - The **Canvas** component created using this API will not respond to drawing commands when it is not visible.
+> - The **Canvas** component created using this API does not respond to drawing instructions when the component is invisible.
 >
-> - Scenarios where the component is not visible mainly include: the page containing the component moves to the background, the component slides outside the window, or the [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to hidden. This does not include scenarios where the component is obscured by other components or windows.
+> - Invisible scenarios mainly include the page where the component is located entering the background, the component sliding out of the window, and setting the [visibility](ts-universal-attributes-visibility.md#visibility) attribute to hidden. Scenarios where the component is obscured by other components or other windows are not included.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -42,13 +44,15 @@ Creates a **Canvas** component that does not cache commands using **CanvasParams
 
 | Name | Type   | Mandatory| Description  |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| params | [CanvasParams](#canvasparams23) | Yes | Construction parameters of the **Canvas** component.|
+| params | [CanvasParams](#canvasparams23) | Yes | Construction parameters of the **Canvas** component, used to create a **Canvas** component that does not cache drawing instructions. For details about the configuration parameters, see [CanvasParams](#canvasparams23). |
 
 ### Canvas
 
 Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 Creates a **Canvas** component. The maximum allowed size cannot exceed 10000 px × 10000 px. If the size exceeds this limit, the **Canvas** component will fail to be created.
+
+The **Canvas** component created using this API does not respond to drawing instructions when the component is invisible. Invisible scenarios mainly include the page where the component is located entering the background, the component sliding out of the window, and setting the [visibility](ts-universal-attributes-visibility.md#visibility) attribute to hidden. Scenarios where the component is obscured by other components or other windows are not included.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -66,9 +70,13 @@ Creates a **Canvas** component. The maximum allowed size cannot exceed 10000 px 
 
 Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions)
 
-Creates a **Canvas** component. You can specify a **CanvasRenderingContext2D** or **DrawingRenderingContext** object, along with AI image analysis options.
+When creating a **Canvas** component, the maximum area cannot exceed 10000 px × 10000 px. If the size exceeds this limit, the **Canvas** component will fail to be created. You can specify a **CanvasRenderingContext2D** or **DrawingRenderingContext** object, along with AI analysis options.
+
+The **Canvas** component created using this API does not respond to drawing instructions when the component is invisible. Invisible scenarios mainly include the page where the component is located entering the background, the component sliding out of the window, and setting the [visibility](ts-universal-attributes-visibility.md#visibility) attribute to hidden. Scenarios where the component is obscured by other components or other windows are not included.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,8 +99,8 @@ Defines the parameters of the **Canvas** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No| Yes| Unit used for drawing on the canvas.<br>It can only be set when creating the **Canvas** component and cannot be modified afterwards.<br>Default value: **LengthMetricsUnit.DEFAULT**|
-| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes| AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No | Yes | Unit mode used for **Canvas** drawing. Different unit modes affect the coordinate and size calculation methods during drawing. For details, see [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12).<br>This attribute can only be set when creating the **Canvas** and cannot be modified afterwards.<br>Default value: **LengthMetricsUnit.DEFAULT** |
+| imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No | Yes | AI analysis option for the component. Through this option, you can configure the analysis type or bind an analysis controller.<br>Abnormal values **null** and **undefined** are treated as not enabling the AI analysis function.<br>Default value: AI analysis function not enabled. |
 
 ## Attributes
 
@@ -100,11 +108,13 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### enableAnalyzer<sup>12+</sup>
 
+enableAnalyzer(enable: boolean)
+
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
-For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12) and [StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12) of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).
+This API must be used together with [startImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12) and [stopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12) in [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).
 
-This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This feature depends on device capabilities.
+This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** will become invalid. This feature depends on the device capability. You can use the [ImageAnalyzerController.getImageAnalyzerSupportTypes](ts-image-common.md#getimageanalyzersupporttypes12) API to query the analysis types supported by the device.
 
 >**NOTE**
 >
@@ -112,13 +122,15 @@ This attribute cannot be used together with the [overlay](ts-universal-attribute
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | Yes  | Whether to enable the AI image analyzer for subject recognition, text recognition, and object lookup within the component content.<br>**true**: Enable the AI image analyzer. **false**: Disable the AI analyzer.<br>The **null** and **undefined** values are handled as the default value.<br>Default value: **false**|
+| enable | boolean | Yes | Whether to enable the AI analysis function for the component. When enabled, the component content must support subject recognition, text recognition, or object search.<br>When set to **true**, the component can perform AI analysis; when set to **false**, the component cannot perform AI analysis.<br>Abnormal values **null** and **undefined** are processed as **false**.<br>Default value: **false** |
 
 ## Events
 
@@ -142,7 +154,7 @@ When this event is triggered, the canvas is cleared. The width and height of the
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Triggered when the **Canvas** component is initialized or when its size changes.|
+| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes   | Callback event triggered when the **Canvas** component initialization is complete or when its size changes. |
 
 ### onReady<sup>23+</sup>
 
@@ -164,7 +176,8 @@ When this event is triggered, the canvas is cleared. The width and height of the
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | Callback<[DrawingRenderingContext](ts-drawingrenderingcontext.md) \| undefined> \| undefined | Yes| Triggered when the **Canvas** component is initialized or when its size changes.<br>Constraints on input parameters of the Callback<DrawingRenderingContext \|undefined> type:<br>1. Only **Canvas** components created using [CanvasParams](#canvasparams23) will return a **DrawingRenderingContext** object in this callback; otherwise, **undefined** is returned.<br>2. The **DrawingRenderingContext** object returned by this callback must not be used as a parameter to create **Canvas** components, as doing so will cause the application to crash.|
+| event  | Callback<[DrawingRenderingContext](ts-drawingrenderingcontext.md) \| undefined> \| undefined | Yes | Callback invoked when the **Canvas** component initialization is complete or when its size changes.<br>Regarding the input parameter of the **Callback<DrawingRenderingContext \| undefined>** type:<br>1. Only the **Canvas** component created using [CanvasParams](#canvasparams23) returns a **DrawingRenderingContext** object in this callback; otherwise, **undefined** is returned.<br>2. The **DrawingRenderingContext** object returned by this callback must not be used as a parameter to create a **Canvas** component; otherwise, the app will crash. |
+
 ## Example
 
 ### Example 1: Using APIs in CanvasRenderingContext2D
@@ -194,6 +207,7 @@ struct CanvasExample {
   }
 }
 ```
+
   ![canvas1](figures/canvas1.png)
 
 ### Example 2: Using APIs in DrawingRenderingContext
@@ -223,6 +237,7 @@ struct CanvasExample {
   }
 }
 ```
+
   ![en-us_image_0000001194032666](figures/CanvasDemo2.png)
 
 ### Example 3: Dynamically Setting Attributes and Methods of the Canvas Component Using attributeModifier
@@ -231,7 +246,7 @@ This example demonstrates how to use [attributeModifier](ts-universal-attributes
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
+> The resources in this example are not located in the **src > main > resource** directory. Starting from DevEco Studio 6.0.0 Beta2, when creating a project or module, the default module does not package resources outside the resources directory. You need to enable the related switch: set **buildOption** > **resOptions** > **copyCodeResource** > **enable** to **true** in the module's **build-profile.json5**. For details, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
 
 ```ts
 // xxx.ets
@@ -247,7 +262,7 @@ class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
       let image = new ImageBitmap("common/img.png")
       this.context.drawImage(image, 0, 0, 200, 200)
     })
-    // Enable the AI image analyzer, which can be triggered by a long press after the start button is tapped.
+    // Enable the component AI analysis function, and click the start button to call the startImageAnalyzer method to start AI analysis.
     instance.enableAnalyzer(true)
   }
 }
@@ -280,8 +295,7 @@ struct attributeDemo {
                 console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                let e: BusinessError = error as BusinessError
-                console.error(`Error code: ${e.code}, message: ${e.message}`)
+                console.error(`Error code: ${error.code}, message: ${error.message}`)
               })
           })
         Button('stop')
@@ -319,6 +333,7 @@ struct attributeDemo {
 This example demonstrates how to use [CanvasParams](#canvasparams23) to create a **Canvas** component that does not cache commands for drawing.
 
 The **CanvasParams** API is supported since API version 23.
+
 ``` ts
 // xxx.ets
 import { LengthMetricsUnit } from '@kit.ArkUI';

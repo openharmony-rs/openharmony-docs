@@ -1,24 +1,28 @@
 # ContentSlot
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d89c4be0c26be57dcac6e3a0bb8b7f968642aa19 translatedAt=2026-07-30T02:33:56.675Z pushedAt=2026-08-01T06:42:55.879Z -->
 
-The **ContentSlot** component is a component designed to render and manage components created on the native layer using C APIs.
+Renders components created using C-API on the native side and manages these components through the Content manager.
 
 With support for hybrid development, the **ContentSlot** component is recommended when the container is an ArkTS component and the child component is created on the native side.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## APIs
 
 ContentSlot(content: Content)
 
-Called when content is added to a placeholder component
+Creates a **ContentSlot** placeholder component for rendering components created on the native side in the Content manager.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -28,11 +32,11 @@ Called when content is added to a placeholder component
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| content | [Content](#content)  | Yes  | Manager of the **ContentSlot** component. Through the APIs provided by the native side, it can register and trigger the attach and detach event callbacks for **ContentSlot**, as well as manage the child components of **ContentSlot**.|
+| content | [Content](#content) | Yes | Manager of **ContentSlot**. Through the APIs provided by the native side, it can register and trigger the callback for **ContentSlot** attach/detach events (i.e., when a component node is added to or removed from the component rendering tree) and manage child components of **ContentSlot**. |
 
 ## Content
 
-type Content = Content
+type Content = import('../api/@ohos.arkui.node').Content
 
 Defines a base class for **ComponentContent** and **NodeContent**.
 
@@ -42,7 +46,7 @@ Defines a base class for **ComponentContent** and **NodeContent**.
 
 | Type| Description                                                    |
 | ---- | ------------------------------------------------------------ |
-| [Content](../js-apis-arkui-Content.md)   | Base class for **ComponentContent** and **NodeContent**.|
+| import('../api/@ohos.arkui.node').[Content](../js-apis-arkui-Content.md)   | Defines the base class of ComponentContent and NodeContent. |
 
 ## Example
 
@@ -50,7 +54,7 @@ The following example shows the basic usage of **ContentSlot**.
 
 ```ts
 import { nativeNode } from 'libNativeNode.so'; // Developer-implemented .so file.
-import { NodeContent } from '@kit.ArkUI';
+import { NodeContent, Content } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -71,4 +75,4 @@ struct Parent {
 }
 ```
 
-For details about the implementation of the .so file in the preceding code, see [Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent).
+For the implementation of the .so file in the above code, see [Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent).

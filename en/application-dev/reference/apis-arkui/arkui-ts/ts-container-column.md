@@ -1,25 +1,24 @@
 # Column
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:27:31.887Z pushedAt=2026-07-02T09:00:06.738Z -->
+<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:39:25.106Z pushedAt=2026-08-01T06:42:55.896Z -->
 
-The **Column** component lays out child components vertically.
+A container that lays out child components along the vertical direction. It is suitable for scenarios where multiple child components need to be arranged sequentially in the vertical direction, such as list items, form items, and card content. It supports setting attributes such as child component spacing and alignment, enabling quick implementation of vertical linear layout.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If no height or width is set for the **Column** component, the component automatically adapts to the size of its child components in the main axis and cross axis respectively.
-
+>  If no height or width is set for the **Column** component, it adapts to the size of child components in the main axis (vertical direction) or cross axis (horizontal direction).
 
 ## Child Components
 
 Supported
-
 
 ## APIs
 
@@ -31,7 +30,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 >  **NOTE**
 >
->  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see <!--RP1-->[Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance)<!--RP1End-->.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -43,12 +42,17 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [ColumnOptions](#columnoptions18) | No | Configuration options for vertical layout elements, which can set the vertical spacing of child components.<br/>**Model restriction:** This API can be used only in the stage model. |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18) | No | Spacing configuration options of the **Column** component. It sets the vertical spacing between elements in the column layout through the **space** attribute. Pass this parameter when a fixed vertical spacing needs to be set for child components; if omitted, no child component spacing is set.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ### Column<sup>18+</sup>
+
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
 Creates a vertical linear layout container. You can set the spacing between child components.
+
+>  **NOTE**
+>
+>  When using multi-component nesting in complex UIs, if layout components are nested too deeply or too many components are nested, additional overhead will be incurred. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly adopting rendering control syntax and layout component methods. For best practices, see <!--RP1-->[Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance)<!--RP1End-->.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -62,7 +66,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No | Configuration options for the vertical layout element, which can set the vertical spacing of child components.|
+| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No | Spacing configuration options of the **Column** component. The **space** attribute sets the vertical spacing between elements in the column layout. **space** supports settings of the number, string, or Resource type. Pass this parameter when a fixed vertical spacing needs to be set for child components; if omitted, no child component spacing is set. |
 
 ## ColumnOptions<sup>18+</sup>
 
@@ -82,7 +86,7 @@ Sets the spacing between child components of the **Column** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if [justifyContent](ts-container-column.md#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**<br>Default value: **0**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No | Yes | Vertical spacing between child components in the column layout.<br>If **space** is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Invalid value: handled as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a non-negative number.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 
 ## ColumnOptionsV2<sup>18+</sup>
 
@@ -98,7 +102,7 @@ Sets the spacing between child components of the **Column** component. The spaci
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](#spacetype18) | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| space | [SpaceType](#spacetype18) | No | Yes | Vertical spacing between elements in the column layout.<br>If **space** is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Unit: vp<br>Invalid value: The default value is used.<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, a string that can be converted to a non-negative number, or a Resource type that can be converted to a number. |
 
 ## SpaceType<sup>18+</sup>
 
@@ -116,10 +120,9 @@ Describes the supported data types for the **space** parameter in the constructo
 
 |Type|Description|
 |---|---|
-|number|Represents a numeric value. It can take any numerical value.|
-|string|Represents a string value. It can take any string value.|
-|[Resource](ts-types.md#resource)|Represents a resource reference type. It can take values from system resources or application resources.|
-
+|number|The value type is number, and the value must be greater than or equal to 0. If a negative number or invalid value is set, the default value **0** is used.|
+|string|The value type is string, and the value must be a string that can be converted to a non-negative number. If a negative number or a string that cannot be converted is set, the default value **0** is used.|
+|[Resource](ts-types.md#resource)|The value type is a resource reference type. It can take values from system resources or application resources.|
 
 ## Attributes
 
@@ -141,7 +144,7 @@ Alignment mode of the child components in the horizontal direction.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [HorizontalAlign](ts-appendix-enums.md#horizontalalign) | Yes  | Alignment mode of child components in the horizontal direction.<br>Default value: **HorizontalAlign.Center**|
+| value  | [HorizontalAlign](ts-appendix-enums.md#horizontalalign) | Yes   | Alignment format of the child components in the horizontal direction.<br>Default value: **HorizontalAlign.Center** |
 
 ### justifyContent<sup>8+</sup>
 
@@ -159,7 +162,7 @@ Alignment mode of the child components in the vertical direction.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | Yes  | Alignment mode of child components in the vertical direction.<br>Default value: **FlexAlign.Start**|
+| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | Yes   | Alignment format of child components in the vertical direction.<br>Default value: **FlexAlign.Start**<br>**Note:** If the child component does not set [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink), **FlexAlign.Center** and **FlexAlign.End** may not take effect. For details, see the description below. When this parameter is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, the [space](#columnoptions18) attribute does not take effect. |
 
 >  **NOTE**
 >
@@ -183,11 +186,11 @@ Sets whether to reverse the vertical arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes   | Whether the child components are arranged in reverse order in the vertical direction.<br>Default value: **true**. The value **true** indicates that the child components are arranged in reverse order in the vertical direction, and **false** indicates that they are arranged in normal order. |
 
 >  **NOTE**
 >
->  If the **reverse** attribute is not set, the arrangement on the main axis remains in the normal order. If the attribute is set to **undefined**, it defaults to **true**, which reverses the arrangement on the main axis.<br>The **direction** attribute only changes the cross axis direction of the column and does not impact the main axis direction. Therefore, it is independent of the **reverse** attribute.
+>  If the **reverse** attribute is not set, the main axis direction is not reversed. If the attribute is set and the parameter value is **undefined**, it defaults to **true**, and the main axis direction is reversed.<br>The universal attribute **direction** only changes the cross axis direction of **Column**, not the main axis direction of **Column**, so it does not affect the **reverse** attribute.
 
 ## Events
 
@@ -197,7 +200,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ### Example 1: Setting the Layout Attributes of the Column Component
 
-This example demonstrates how to set the layout attributes of the **Column** component, such as the spacing and alignment mode and its effect.
+This example demonstrates how to set the layout attributes of the **Column** component, such as the spacing and alignment mode, and its effect.
 
 ```json
 // resources/base/element/string.json

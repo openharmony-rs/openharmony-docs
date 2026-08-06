@@ -547,7 +547,7 @@ POI信息结构体。
 | RUNNING   | 1 |  表示跑步。 |
 | WALKING    | 2 | 表示步行。 |
 | CYCLING     | 3 | 表示骑行。 |
-| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0 |
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0  <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
@@ -650,6 +650,8 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+  
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -678,6 +680,21 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 | -------- | -------- | -------- | -------- | -------- |
 | deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示蓝牙设备的地址列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。仅当扫描到的蓝牙设备的地址与该数组中的一个元素相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回蓝牙扫描结果。数组中每个元素的格式如下："XX:XX:XX:XX:XX:XX"。 |
 | rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-128至127。 |
+  
+ ## Point
+
+表示一个位置点。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| latitude | number | 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。 |
+| longitude | number | 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。 |
 
 
 ## geoLocationManager.on('locationChange')
@@ -827,7 +844,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -844,7 +861,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  从API 26.0.0开始无需申请权限，不涉及此错误码。|
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -2707,6 +2724,8 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+  
+**需要权限：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **参数**：
 
@@ -3050,8 +3069,8 @@ getDistanceBetweenLocations(location1: Location, location2: Location): number
       "additionSize": 0
     }
     let location2: geoLocationManager.Location = {
-      "latitude": 30.12,
-      "longitude": 120.11,
+      "latitude": 31.12,
+      "longitude": 121.11,
       "altitude": 0,
       "accuracy": 0,
       "speed": 0,
@@ -3170,7 +3189,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：从API26.0.0开始无需申请权限，API版本小于26.0.0需申请ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -3193,7 +3212,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  从26.0.0开始无需申请权限，不涉及此错误码。 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
 |3501602 | Failed to delete the fence due to incorrect beacon fence information. |
 
@@ -3544,6 +3563,8 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 获取当前设备所在区域的信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+  
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3555,7 +3576,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | request | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
+  | params | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
 
 **返回值**：
 
@@ -3620,6 +3641,8 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 根据传入的[sportsType](#sportstype18)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，并在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
 
 **起始版本：** 26.0.0
+  
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -3631,7 +3654,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | sportsType | [SportsType](#sportstype18) | 否 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
+  | sportsType | [SportsType](#sportstype18) | 是 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
 
 **返回值**：
 
@@ -3650,7 +3673,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 |801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.  |
-|3301200 | Failed to obtain the geographical location.  |
+|3301200 | Failed to obtain the post processing track because sports type is not supported.  |
 
 **示例**
 

@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-07-30T11:34:18.189Z pushedAt=2026-07-30T12:25:46.013Z -->
+<!-- md-trans-meta sourceCommit=4cc3df80595b2a698b94cafe15eb7c4f61aeaf15 translatedAt=2026-08-01T00:25:09.343Z pushedAt=2026-08-01T01:47:16.301Z -->
 
 [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) provides a canvas component for custom drawing. You can use the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object and the [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) object to draw on the Canvas component. Drawing objects can be basic shapes, text, images, and more.
 
@@ -423,41 +423,43 @@ You can use the following two methods to monitor Canvas component visibility and
 
 - Starting from API version 13, use the [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange) API to monitor Canvas component visibility.
 
-  ```ts
-  import { ColorMetrics } from '@kit.ArkUI';
+<!-- @[canvasContentSetOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentSetOnVisibleAreaApproximateChange.ets) -->
 
-  @Entry
-  @Component
-  struct Page {
-    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
-    private timerId: number = -1;
+``` TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
 
-    drawRandomCircle(): void {
-      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
-      let radius: number = Math.random() * 20 + 10
-      let color: ColorMetrics =
-        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255))
+@Entry
+@Component
+struct CanvasContentSetOnVisibleAreaApproximateChange {
+  private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+  private timerId: number = -1;
 
-      // Clear the previous content and canvas state.
-      this.canvasContext.reset()
+  drawRandomCircle(): void {
+    let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+    let radius: number = Math.random() * 20 + 10
+    let color: ColorMetrics =
+      ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255))
 
-      // Start drawing.
-      this.canvasContext.fillStyle = color.color
-      let path: Path2D = new Path2D()
-      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
-      this.canvasContext.fill(path)
-    }
+    // Clear the previous content and canvas state.
+    this.canvasContext.reset()
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.canvasContext)
-          .width(300)
-          .height(300)
-          .onReady(() => {
-            let frameNode = this.canvasContext.canvas;
-            frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
-              (isVisible: boolean, currentRatio: number) => {
+    // Start drawing.
+    this.canvasContext.fillStyle = color.color
+    let path: Path2D = new Path2D()
+    path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+    this.canvasContext.fill(path)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.canvasContext)
+        .width(300)
+        .height(300)
+        .onReady(() => {
+          let frameNode = this.canvasContext.canvas;
+          frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
+            (isVisible: boolean, currentRatio: number) => {
               // Canvas is invisible.
               if (!isVisible && currentRatio <= 0) {
                 clearInterval(this.timerId)
@@ -472,87 +474,89 @@ You can use the following two methods to monitor Canvas component visibility and
                 }
               }
             })
-          })
-        Button("draw sth")
-          .onClick(() => {
-            if (this.timerId < 0) {
-              this.timerId = setInterval(() => {
-                this.drawRandomCircle()
-              }, 500)
-            }
-          })
-      }
-      .width('100%')
-      .height('100%')
+        })
+      Button('draw sth')
+        .onClick(() => {
+          if (this.timerId < 0) {
+            this.timerId = setInterval(() => {
+              this.drawRandomCircle()
+            }, 500)
+          }
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
 ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - Starting from API version 17, use the [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) API to listen for Canvas component visibility changes.
 
-  ```ts
-  import { ColorMetrics } from '@kit.ArkUI';
+<!-- @[canvasContentOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentOnVisibleAreaApproximateChange.ets) -->
 
-  @Entry
-  @Component
-  struct Page {
-    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
-    private timerId: number = -1;
+``` TypeScript
+import { ColorMetrics } from '@kit.ArkUI';
 
-    drawRandomCircle(): void {
-      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
-      let radius: number = Math.random() * 20 + 10
-      let color: ColorMetrics =
-        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255))
+@Entry
+@Component
+struct CanvasContentOnVisibleAreaApproximateChange {
+  private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+  private timerId: number = -1;
 
-      // Clear the previous content and canvas state.
-      this.canvasContext.reset()
+  drawRandomCircle(): void {
+    let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+    let radius: number = Math.random() * 20 + 10
+    let color: ColorMetrics =
+      ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+        Math.floor(Math.random() * 255))
 
-      // Start drawing.
-      this.canvasContext.fillStyle = color.color
-      let path: Path2D = new Path2D()
-      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
-      this.canvasContext.fill(path)
-    }
+    // Clear the previous content and canvas state.
+    this.canvasContext.reset()
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.canvasContext)
-          .width(300)
-          .height(300)
-          .onVisibleAreaApproximateChange({ ratios: [0.0] },
-              (isVisible: boolean, currentRatio: number) => {
-                // Canvas is invisible.
-                if (!isVisible && currentRatio <= 0) {
-                  clearInterval(this.timerId)
-                  this.timerId = -2
-                }
-                // Canvas is visible.
-                if (isVisible) {
-                  if (this.timerId == -2) {
-                    this.timerId = setInterval(() => {
-                      this.drawRandomCircle()
-                    }, 500)
-                  }
-                }
-              })
-        Button("draw sth")
-          .onClick(() => {
-            if (this.timerId < 0) {
-              this.timerId = setInterval(() => {
-                this.drawRandomCircle()
-              }, 500)
+    // Start drawing.
+    this.canvasContext.fillStyle = color.color
+    let path: Path2D = new Path2D()
+    path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+    this.canvasContext.fill(path)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.canvasContext)
+        .width(300)
+        .height(300)
+        .onVisibleAreaApproximateChange({ ratios: [0.0] },
+          (isVisible: boolean, currentRatio: number) => {
+            // The canvas is invisible.
+            if (!isVisible && currentRatio <= 0) {
+              clearInterval(this.timerId)
+              this.timerId = -2
+            }
+            // The canvas is visible.
+            if (isVisible) {
+              if (this.timerId == -2) {
+                this.timerId = setInterval(() => {
+                  this.drawRandomCircle()
+                }, 500)
+              }
             }
           })
-      }
-      .width('100%')
-      .height('100%')
+      Button('draw sth')
+        .onClick(() => {
+          if (this.timerId < 0) {
+            this.timerId = setInterval(() => {
+              this.drawRandomCircle()
+            }, 500)
+          }
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
   ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 

@@ -43,8 +43,8 @@ native_interface_arkweb.h是ArkWeb Native API的核心入口头文件，定义�
 | [typedef char* (\*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc)](#nativearkweb_onjavascriptproxycallback) | NativeArkWeb_OnJavaScriptProxyCallback | 定义注入对象的回调函数的类型。 |
 | [typedef void (\*NativeArkWeb_OnValidCallback)(const char*)](#nativearkweb_onvalidcallback) | NativeArkWeb_OnValidCallback | 定义Web组件可用时的回调函数的类型。 |
 | [typedef void (\*NativeArkWeb_OnDestroyCallback)(const char*)](#nativearkweb_ondestroycallback) | NativeArkWeb_OnDestroyCallback | 定义Web组件销毁时的回调函数的类型。 |
-| [typedef void (\*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)](#oh_arkweb_oncookiesavecallback) | OH_ArkWeb_OnCookieSaveCallback | 定义保存cookie的回调函数的类型。<br>**起始版本：** 20 |
-| [typedef void (\*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char\* cookieValue)](#oh_arkweb_oncookiefetchcallback) | OH_ArkWeb_OnCookieFetchCallback | 定义在获取cookie操作完成时调用的回调函数类型。<br>**起始版本：** 26.0.0 |
+| [typedef void (\*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)](#oh_arkweb_oncookiesavecallback) | OH_ArkWeb_OnCookieSaveCallback | 定义保存cookies的回调函数的类型。<br>**起始版本：** 20 |
+| [typedef void (\*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char\* cookieValue)](#oh_arkweb_oncookiefetchcallback) | OH_ArkWeb_OnCookieFetchCallback | 定义在获取cookies操作完成时调用的回调函数类型。<br>**起始版本：** 26.0.0 |
 | [void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)](#oh_nativearkweb_runjavascript) | - | 在当前显示页面的环境下，加载并异步执行一段JavaScript代码。 |
 | [void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList, NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)](#oh_nativearkweb_registerjavascriptproxy) | - | 注册对象及函数名称列表。 |
 | [void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)](#oh_nativearkweb_unregisterjavascriptproxy) | - | 删除已注册的对象及其下的回调函数。 |
@@ -54,8 +54,8 @@ native_interface_arkweb.h是ArkWeb Native API的核心入口头文件，定义�
 | [NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)](#oh_nativearkweb_getdestroycallback) | - | 获取已注册的Web组件销毁时的回调函数。 |
 | [ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,const char* mimeType,const char* encoding,const char* baseUrl,const char* historyUrl)](#oh_nativearkweb_loaddata) | - | 加载数据或URL，此函数应在主线程中调用。 |
 | [void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)](#oh_nativearkweb_registerasyncthreadjavascriptproxy) | - | 注册一个包含回调方法的 JavaScript 对象，这些方法可带有返回值。该对象将被注入到当前页面的所有frame中，包括所有的 iframe，并且可以通过在 ArkWeb_ProxyObjectWithResult 中指定的名称进行访问。该对象只会在下一次加载或重新加载页面后在 JavaScript 中生效。这些方法将在 ArkWeb 的工作线程中执行。 |
-| [ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()](#oh_arkwebcookiemanager_savecookiesync) | - | 将当前可通过CookieManager API访问的所有cookie持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用OH_ArkWeb_GetNativeAPI初始化CookieManager接口。<br>**起始版本：** 20 |
-| [void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)](#oh_arkwebcookiemanager_savecookieasync) | - | 将当前可通过CookieManager API访问的所有cookie持久化到磁盘。在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。<br>**起始版本：** 20 |
+| [ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()](#oh_arkwebcookiemanager_savecookiesync) | - | 将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用OH_ArkWeb_GetNativeAPI初始化CookieManager接口。<br>**起始版本：** 20 |
+| [void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)](#oh_arkwebcookiemanager_savecookieasync) | - | 将当前可通过CookieManager API访问的所有cookies持久化到磁盘。在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。<br>**起始版本：** 20 |
 | [ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)](#oh_nativearkweb_getblanklessinfowithkey) | - | 获取页面首屏加载预测信息（详细说明见[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)），并开始本次加载过渡帧生成，应用根据此信息确定是否需要启用无白屏加载。必须与[OH_NativeArkWeb_SetBlanklessLoadingWithKey](#oh_nativearkweb_setblanklessloadingwithkey)接口配套使用，并且必须在触发加载页面的接口之前调用。需在WebViewController与Web组件绑定后才能使用。 |
 | [ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)](#oh_nativearkweb_setblanklessloadingwithkey) | - | 设置无白屏加载是否启用。本接口必须与[OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey)接口配套使用。 |
 | [void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)](#oh_nativearkweb_clearblanklessloadingcache) | - | 清除指定key值页面无白屏优化缓存，本接口只清除缓存。 |
@@ -152,7 +152,7 @@ typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 
 **描述：**
 
-定义保存cookie的回调函数的类型。
+定义保存cookies的回调函数的类型。
 
 **起始版本：** 20
 
@@ -160,7 +160,7 @@ typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookie成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookie失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。 |
 
 ### OH_ArkWeb_OnCookieFetchCallback()
 
@@ -170,7 +170,7 @@ typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char
 
 **描述：**
 
-定义在获取cookie操作完成时调用的回调函数类型。
+定义在获取cookies操作完成时调用的回调函数类型。
 
 **起始版本：** 26.0.0
 
@@ -178,7 +178,7 @@ typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | 获取cookie回调错误码。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookie成功。<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode) 打开动态链接库失败。<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode) 动态链接库中找不到所需的符号。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | 获取cookies回调错误码。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookies成功。<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode) 打开动态链接库失败。<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode) 动态链接库中找不到所需的符号。 |
 | char* cookieValue | 获取与URL对应的cookies。函数将为cookieValue分配内存，开发者必须通过[OH_ArkWeb_ReleaseString](capi-arkweb-scheme-handler-h.md#oh_arkweb_releasestring)释放该字符串。 |
 
 ### OH_NativeArkWeb_RunJavaScript()
@@ -411,7 +411,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 **描述：**
 
-将当前可通过CookieManager API访问的所有cookie持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。典型使用场景：可在应用退出或特定时机保存cookie状态时使用。例如保存用户登录状态、应用配置信息、会话数据等，确保应用重启后能够恢复之前的状态。
+将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。典型使用场景：可在应用退出或特定时机保存cookies状态时使用。例如保存用户登录状态、应用配置信息、会话数据等，确保应用重启后能够恢复之前的状态。
 
 **起始版本：** 20
 
@@ -419,7 +419,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | OH_ArkWebCookieManager_SaveCookieSync 错误码。请检查磁盘空间是否充足、是否有写入权限、cookie数据格式是否正确。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookie成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookie失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | OH_ArkWebCookieManager_SaveCookieSync 错误码。请检查磁盘空间是否充足、是否有写入权限、cookie数据格式是否正确。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies成功。<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) 保存cookies失败。<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode) CookieManager初始化失败。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。 |
 
 ### OH_ArkWebCookieManager_SaveCookieAsync()
 
@@ -429,7 +429,7 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 
 **描述：**
 
-将当前可通过CookieManager API访问的所有cookie持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口；在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。典型使用场景：需要异步保存cookie状态时使用，例如在页面加载完成、用户操作完成后异步保存cookie，避免阻塞主线程。
+将当前可通过CookieManager API访问的所有cookies持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口；在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。典型使用场景：需要异步保存cookies状态时使用，例如在页面加载完成、用户操作完成后异步保存cookies，避免阻塞主线程。
 
 **起始版本：** 20
 
@@ -437,7 +437,7 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback) callback | 保存cookie成功或失败后执行该回调。传入callback时使用回调方式异步接收操作结果，适用于需要异步通知保存结果的场景；不传入时根据具体实现可能有不同的行为。 |
+| [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback) callback | 保存cookies成功或失败后执行该回调。传入callback时使用回调方式异步接收操作结果，适用于需要异步通知保存结果的场景；不传入时根据具体实现可能有不同的行为。 |
 ### OH_NativeArkWeb_GetBlanklessInfoWithKey()
 
 ```c
@@ -666,10 +666,10 @@ void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bo
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* url | 指定cookie所属的URL。建议填写完整的URL。 |
-| bool incognito | true表示获取隐私模式下webview的内存cookie, false表示获取非隐私模式下的cookie。 |
-| bool includeHttpOnly | true表示标记为HTTP-Only属性的cookie也将包含在cookieValue中，false表示不包含。 |
-| bool includePartitionedCookies | true表示第一方partitioned cookies也将包含在cookieValue中，false表示不包含。 |
+| const char* url | 指定cookies所属的URL。建议填写完整的URL。 |
+| bool incognito | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。 |
+| bool includeHttpOnly | 标记为HTTP-Only属性的cookies是否包含在cookieValue。true表示包含，false表示不包含。 |
+| bool includePartitionedCookies | 标记为Partitioned属性的cookies是否包含在cookieValue。true表示包含，false表示不包含。 |
 | [OH_ArkWeb_OnCookieFetchCallback](#oh_arkweb_oncookiefetchcallback) callback | 获取cookies完成后执行该回调。 |
 
 ### OH_ArkWebCookieManager_FetchCookieSync()
@@ -688,14 +688,14 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool in
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* url | 指定cookie所属的URL。建议填写完整的URL。 |
-| bool incognito | true表示获取隐私模式下webview的内存cookie, false表示获取非隐私模式下的cookie。 |
-| bool includeHttpOnly | true表示标记为HTTP-Only属性的cookie也将包含在cookieValue中，false表示不包含。 |
-| bool includePartitionedCookies | true表示第一方partitioned cookies也将包含在cookieValue中，false表示不包含。 |
-| char** cookieValue | 获取与URL对应的cookie值。函数将为cookieValue分配内存，开发者必须通过[OH_ArkWeb_ReleaseString](capi-arkweb-scheme-handler-h.md#oh_arkweb_releasestring)释放该字符串。 |
+| const char* url | 指定cookies所属的URL。建议填写完整的URL。 |
+| bool incognito | true表示获取隐私模式下webview的内存cookies，false表示获取非隐私模式下的cookies。 |
+| bool includeHttpOnly | 标记为HTTP-Only属性的cookies是否包含在cookieValue。true表示包含，false表示不包含。 |
+| bool includePartitionedCookies | 标记为Partitioned属性的cookies是否包含在cookieValue。true表示包含，false表示不包含。 |
+| char** cookieValue | 获取与URL对应的cookies。函数将为cookieValue分配内存，开发者必须通过[OH_ArkWeb_ReleaseString](capi-arkweb-scheme-handler-h.md#oh_arkweb_releasestring)释放该字符串。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | 返回值错误码。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookie成功。<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用OH_ArkWeb_GetNativeAPI初始化CookieManager接口。<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode) 打开动态链接库失败。<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode) 动态链接库中找不到所需的符号。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | 返回值错误码。<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 获取cookies成功。<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode) 无效的URL。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode) 在非UI线程中，不允许在不初始化CookieManager接口的情况下调用该接口。请先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode) 打开动态链接库失败。<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode) 动态链接库中找不到所需的符号。 |
