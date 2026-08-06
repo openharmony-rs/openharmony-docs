@@ -42,6 +42,9 @@ PacMap二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 | 类型 | 说明 |
 | --- | --- |
 | [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | DataAbilityHelper二级模块。 |
