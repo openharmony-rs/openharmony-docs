@@ -7,13 +7,11 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与 执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
+本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
 > **说明：** 
 >
 > - 本模块同时支持ArkTs-Dyn、ArkTS-Sta。
->
-> - 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -28,11 +26,7 @@ import { backgroundLoader } from '@ohos.resourceschedule.backgroundLoader';
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
-**系统接口：** 此接口为系统接口。 
 
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -52,8 +46,6 @@ registerTask(taskInfo: TaskInfo): void
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 | 参数名  | 类型                    | 必填   | 说明             |
@@ -142,8 +134,6 @@ unregisterTask(taskInfo: TaskInfo): void
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数**：
 | 参数名  | 类型                    | 必填   | 说明             |
 | ----   | --------------------- | ---- | -------------- |
@@ -230,7 +220,6 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -303,8 +292,6 @@ finishTask(taskInfo: TaskInfo): void
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 | 参数名  | 类型                    | 必填   | 说明             |
@@ -468,8 +455,6 @@ ArkTS-Sta示例：
 
 **ArkTs-Sta起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
@@ -485,8 +470,6 @@ ArkTS-Sta示例：
 **ArkTs-Dyn起始版本：** 26.0.0
 
 **ArkTs-Sta起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -504,8 +487,6 @@ ArkTS-Sta示例：
 **ArkTs-Dyn起始版本：** 26.0.0
 
 **ArkTs-Sta起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
