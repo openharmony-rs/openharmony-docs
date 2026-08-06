@@ -789,8 +789,6 @@ Allows an application to access vehicle security and privacy service APIs.
 
 **Authorization mode**: system_grant
 
-**Certificate-based authorization**: false
-
 **Supported devices**: cars
 
 **Since**: 26.1.0
