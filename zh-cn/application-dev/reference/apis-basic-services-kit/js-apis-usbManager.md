@@ -241,7 +241,7 @@ async function hasRight(): boolean {
 
 requestRight(deviceName: string): Promise&lt;boolean&gt;
 
-请求应用的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。
+请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -835,13 +835,13 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 > **说明：** 
 >
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
-// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后,再调用该接口。
+// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后，再调用该接口。
 async function bulkTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -922,7 +922,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1025,7 +1025,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1468,7 +1468,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
-| 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |

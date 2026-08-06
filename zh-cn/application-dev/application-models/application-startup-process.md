@@ -41,7 +41,7 @@
 
 **不建议在此回调中：**
 
-- 执行与特定UIAbility实例强相关的业务逻辑（应在UIAbility的`onCreate()`中完成）。
+- 执行与特定UIAbility实例强相关的业务逻辑（应在UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)中完成）。
 - 执行大量耗时同步操作阻塞主线程，建议将耗时任务异步化或交由子线程处理。
 
 ### 指定实例模式路由（AbilityStage.onAcceptWant）
@@ -77,6 +77,8 @@
 
 应用的启动入口是指用户进入应用的途径（如桌面图标、快捷方式等）。不同入口在触发UIAbility启动时，系统传入的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数（如`action`、`uri`、`parameters`）可能不同，开发者可在UIAbility的`onCreate()`或`onNewWant()`中据此区分来源并执行相应逻辑。
 
+应用也可被其他应用通过[Want](./want-overview.md)或[应用链接](./app-uri-config.md)拉起，或被系统通过[意图框架](./insight-intent-overview.md)调度启动。这类跨应用启动场景的详细说明请参见[应用间跳转](./link-between-apps-overview.md)。
+
 ### 应用图标（桌面图标）
 
 应用图标是应用最常见的启动入口，通常显示在系统桌面上。用户点击桌面图标后，系统会根据[module.json5配置文件](../quick-start/module-configuration-file.md)中声明的入口UIAbility（通常为entry类型HAP中`startWindowIcon`与`label`所对应的UIAbility）发起启动。
@@ -89,7 +91,3 @@
 - 开发者可在UIAbility的`onCreate()`或`onNewWant()`中解析Want参数，直接加载目标功能页，减少用户操作层级。
 
 <!--RP1--><!--RP1End-->
-
-> **说明：**
->
-> 除了上述入口，应用也可被其他应用通过[Want](./want-overview.md)或[应用链接](./app-uri-config.md)拉起，或被系统通过[意图框架](./insight-intent-overview.md)调度启动。这类跨应用启动场景的详细说明请参见[应用间跳转](./link-between-apps-overview.md)。
