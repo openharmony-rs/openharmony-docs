@@ -241,7 +241,7 @@ async function extensionKeyImport(): Promise<void> {
 
 在密钥管理扩展场景下，HUKS支持从密钥管理扩展服务中导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商、PIN加密等场景。
 
-应用通过调用HUKS的[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口完成公钥导出。详细接口使用请参考[密钥导出(ArkTS)](huks-extension-key-export-arkts.md)。
+应用通过调用HUKS的[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口完成公钥导出。
 
 ### 开发步骤
 

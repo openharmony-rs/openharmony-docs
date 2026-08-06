@@ -35,7 +35,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 ## 查询认证状态
 
-应用可以通过该接口查询PIN码是否认证通过。
+应用可以通过对应接口查询PIN码是否认证通过。
 
 ### 开发步骤
 
@@ -173,7 +173,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 
 ## 清除认证状态
 
-应用在密钥操作完成后或需要重置认证状态时，可以调用该接口清除指定资源的PIN码认证状态。
+应用在密钥操作完成后或需要重置认证状态时，可以调用对应接口清除指定资源的PIN码认证状态。
 
 ### 使用场景
 
@@ -214,7 +214,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
 <!--Del-->
 ## PIN认证
 
-应用在用户输入PIN码后，可调用该接口完成PIN码认证。在发起PIN认证流程前，调用方需要先获取密钥管理扩展服务中的公钥用于加密用户输入的PIN码。调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)接口并传入SKF_ExportPublicKey作为propertyId。
+应用在用户输入PIN码后，可调用对应接口完成PIN码认证。在发起PIN认证流程前，调用方需要先获取密钥管理扩展服务中的公钥用于加密用户输入的PIN码。调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)接口并传入SKF_ExportPublicKey作为propertyId。
 
 ### 开发步骤
 
@@ -272,12 +272,12 @@ async function authUkeyPin(): Promise<void> {
     /* 3.验证PIN码 */
     await huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
       .then(() => {
-        console.info('promise: getUkeyPinAuthState success.');
+        console.info('promise: authUkeyPin success.');
       }).catch((error: BusinessError) => {
-        console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: authUkeyPin failed, errCode: ${error.code}, errMsg: ${error.message}`);
       });
   } catch (error) {
-    console.error('promise: getUkeyPinAuthState input arg invalid.');
+    console.error('promise: authUkeyPin input arg invalid.');
   }
 }
 
