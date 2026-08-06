@@ -26,10 +26,9 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
- **ArkTS-Dyn起始版本：** 6 
+**ArkTS-Dyn起始版本：** 6 
  
- 
- **ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 **权限**：以下各项所需要的权限有所不同，详见下表。
 
 | 名称 | 类型 | 只读 | 说明 |
