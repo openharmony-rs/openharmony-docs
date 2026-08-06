@@ -207,7 +207,7 @@ libchild_process.so
 
 5. 主进程-添加编译依赖项。
 
-    修改CMaklist.txt添加必要的依赖库，假设主进程所在的so名称为libmainprocesssample.so（主进程和子进程的实现也可以选择编译到同一个动态库文件）。
+    修改CMakeList.txt添加必要的依赖库，假设主进程所在的so名称为libmainprocesssample.so（主进程和子进程的实现也可以选择编译到同一个动态库文件）。
 
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
@@ -360,7 +360,7 @@ libchild_process.so
 
 4. 主进程-添加编译依赖项。
 
-    修改CMaklist.txt添加必要的依赖库，假设主进程所在的so名称为libmainprocesssample.so（主进程和子进程的实现也可以选择编译到同一个动态库文件）。
+    修改CMakeList.txt添加必要的依赖库，假设主进程所在的so名称为libmainprocesssample.so（主进程和子进程的实现也可以选择编译到同一个动态库文件）。
 
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
@@ -420,7 +420,7 @@ void ThreadFunc()
     if (args == nullptr) {
         return;
     }
-    // 获取启动参数中的entryPrams
+    // 获取启动参数中的entryParams
     char *entryParams = args->entryParams;
     // 获取fd列表
     NativeChildProcess_Fd *current = args->fdList.head;
