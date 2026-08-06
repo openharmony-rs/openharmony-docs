@@ -782,7 +782,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
@@ -809,7 +809,7 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetY()
 
@@ -835,7 +835,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
@@ -862,7 +862,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalX()
 
@@ -885,7 +885,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalX (const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
 
@@ -915,7 +915,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex (const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回特定接触点相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回特定接触点相对于当前组件左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalY()
 
@@ -938,7 +938,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalY (const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
 
@@ -968,7 +968,7 @@ float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex (const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回特定接触点相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+| float | 返回特定接触点相对于当前组件左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
@@ -994,7 +994,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
@@ -1021,7 +1021,7 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
@@ -1047,7 +1047,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前应用窗口左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
@@ -1074,7 +1074,7 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前应用窗口左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
@@ -1100,7 +1100,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
@@ -1127,7 +1127,7 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的X坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
@@ -1153,7 +1153,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回当前指向性输入事件相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回当前指向性输入事件相对于当前屏幕左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
@@ -1180,7 +1180,7 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前屏幕左上角的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
@@ -1206,7 +1206,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1233,7 +1233,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件中特定接触点相对于全局显示的X坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于全局显示的X坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
@@ -1259,7 +1259,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
@@ -1286,7 +1286,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标。默认单位为vp，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
