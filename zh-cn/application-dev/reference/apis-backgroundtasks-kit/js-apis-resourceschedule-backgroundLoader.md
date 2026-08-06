@@ -11,10 +11,7 @@
 
 > **说明：** 
 >
-> -本模块同时支持ArkTs-Dyn、ArkTS-Sta
->
->
->
+> - 本模块同时支持ArkTs-Dyn、ArkTS-Sta。
 >
 
 **起始版本：**  26.0.0
@@ -47,9 +44,9 @@ registerTask(taskInfo: TaskInfo): void
 
 注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。
 
-**ArkTs-Dyn起始版本：** 26
+**ArkTs-Dyn起始版本：** 26.0.0
 
-**ArkTs-Sta起始版本：** 26
+**ArkTs-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
